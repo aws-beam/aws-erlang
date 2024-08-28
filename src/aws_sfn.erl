@@ -3,8 +3,7 @@
 
 %% @doc Step Functions
 %%
-%% Step Functions is a service that lets you coordinate the components of
-%% distributed applications
+%% Step Functions coordinates the components of distributed applications
 %% and microservices using visual workflows.
 %%
 %% You can use Step Functions to build applications from individual
@@ -125,9 +124,18 @@
 
 %% Example:
 %% describe_state_machine_for_execution_input() :: #{
-%%   <<"executionArn">> := string()
+%%   <<"executionArn">> := string(),
+%%   <<"includedData">> => list(any())
 %% }
 -type describe_state_machine_for_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsDataKeyReusePeriodSeconds">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_executions_output() :: #{
@@ -191,7 +199,8 @@
 
 %% Example:
 %% describe_execution_input() :: #{
-%%   <<"executionArn">> := string()
+%%   <<"executionArn">> := string(),
+%%   <<"includedData">> => list(any())
 %% }
 -type describe_execution_input() :: #{binary() => any()}.
 
@@ -254,6 +263,12 @@
 -type delete_state_machine_version_output() :: #{binary() => any()}.
 
 %% Example:
+%% kms_throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_throttling_exception() :: #{binary() => any()}.
+
+%% Example:
 %% list_state_machine_aliases_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"stateMachineAliases">> => list(state_machine_alias_list_item()())
@@ -271,6 +286,7 @@
 
 %% Example:
 %% describe_state_machine_input() :: #{
+%%   <<"includedData">> => list(any()),
 %%   <<"stateMachineArn">> := string()
 %% }
 -type describe_state_machine_input() :: #{binary() => any()}.
@@ -480,6 +496,7 @@
 %% describe_activity_output() :: #{
 %%   <<"activityArn">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"name">> => string()
 %% }
 -type describe_activity_output() :: #{binary() => any()}.
@@ -538,6 +555,7 @@
 %% Example:
 %% describe_state_machine_for_execution_output() :: #{
 %%   <<"definition">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"label">> => string(),
 %%   <<"loggingConfiguration">> => logging_configuration(),
 %%   <<"mapRunArn">> => string(),
@@ -697,6 +715,7 @@
 %% Example:
 %% create_state_machine_input() :: #{
 %%   <<"definition">> := string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"loggingConfiguration">> => logging_configuration(),
 %%   <<"name">> := string(),
 %%   <<"publish">> => boolean(),
@@ -707,6 +726,12 @@
 %%   <<"versionDescription">> => string()
 %% }
 -type create_state_machine_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_encryption_configuration() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% cloud_watch_logs_log_group() :: #{
@@ -729,6 +754,7 @@
 
 %% Example:
 %% create_activity_input() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => list(tag()())
 %% }
@@ -902,6 +928,12 @@
 -type map_iteration_event_details() :: #{binary() => any()}.
 
 %% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
 %% update_state_machine_alias_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"routingConfiguration">> => list(routing_configuration_list_item()()),
@@ -941,8 +973,15 @@
 -type validate_state_machine_definition_output() :: #{binary() => any()}.
 
 %% Example:
+%% activity_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type activity_already_exists() :: #{binary() => any()}.
+
+%% Example:
 %% update_state_machine_input() :: #{
 %%   <<"definition">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"loggingConfiguration">> => logging_configuration(),
 %%   <<"publish">> => boolean(),
 %%   <<"roleArn">> => string(),
@@ -1097,6 +1136,7 @@
 
 %% Example:
 %% start_sync_execution_input() :: #{
+%%   <<"includedData">> => list(any()),
 %%   <<"input">> => string(),
 %%   <<"name">> => string(),
 %%   <<"stateMachineArn">> := string(),
@@ -1252,6 +1292,13 @@
 -type delete_state_machine_version_input() :: #{binary() => any()}.
 
 %% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"kmsKeyState">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
 %% validate_state_machine_definition_diagnostic() :: #{
 %%   <<"code">> => string(),
 %%   <<"location">> => string(),
@@ -1367,6 +1414,7 @@
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"definition">> => string(),
 %%   <<"description">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"label">> => string(),
 %%   <<"loggingConfiguration">> => logging_configuration(),
 %%   <<"name">> => string(),
@@ -1382,7 +1430,11 @@
 -type create_activity_errors() ::
     too_many_tags() | 
     invalid_name() | 
-    activity_limit_exceeded().
+    activity_limit_exceeded() | 
+    activity_already_exists() | 
+    kms_access_denied_exception() | 
+    invalid_encryption_configuration() | 
+    kms_throttling_exception().
 
 -type create_state_machine_errors() ::
     invalid_arn() | 
@@ -1392,10 +1444,13 @@
     validation_exception() | 
     invalid_name() | 
     invalid_definition() | 
+    kms_access_denied_exception() | 
     state_machine_limit_exceeded() | 
+    invalid_encryption_configuration() | 
     conflict_exception() | 
     state_machine_already_exists() | 
     invalid_tracing_configuration() | 
+    kms_throttling_exception() | 
     state_machine_type_not_supported().
 
 -type create_state_machine_alias_errors() ::
@@ -1431,6 +1486,9 @@
 
 -type describe_execution_errors() ::
     invalid_arn() | 
+    kms_invalid_state_exception() | 
+    kms_access_denied_exception() | 
+    kms_throttling_exception() | 
     execution_does_not_exist().
 
 -type describe_map_run_errors() ::
@@ -1439,7 +1497,10 @@
 
 -type describe_state_machine_errors() ::
     invalid_arn() | 
-    state_machine_does_not_exist().
+    kms_invalid_state_exception() | 
+    state_machine_does_not_exist() | 
+    kms_access_denied_exception() | 
+    kms_throttling_exception().
 
 -type describe_state_machine_alias_errors() ::
     invalid_arn() | 
@@ -1448,16 +1509,25 @@
 
 -type describe_state_machine_for_execution_errors() ::
     invalid_arn() | 
+    kms_invalid_state_exception() | 
+    kms_access_denied_exception() | 
+    kms_throttling_exception() | 
     execution_does_not_exist().
 
 -type get_activity_task_errors() ::
     invalid_arn() | 
+    kms_invalid_state_exception() | 
     activity_does_not_exist() | 
-    activity_worker_limit_exceeded().
+    kms_access_denied_exception() | 
+    activity_worker_limit_exceeded() | 
+    kms_throttling_exception().
 
 -type get_execution_history_errors() ::
     invalid_arn() | 
+    kms_invalid_state_exception() | 
+    kms_access_denied_exception() | 
     invalid_token() | 
+    kms_throttling_exception() | 
     execution_does_not_exist().
 
 -type list_activities_errors() ::
@@ -1511,9 +1581,12 @@
     execution_does_not_exist().
 
 -type send_task_failure_errors() ::
+    kms_invalid_state_exception() | 
     task_does_not_exist() | 
+    kms_access_denied_exception() | 
     task_timed_out() | 
-    invalid_token().
+    invalid_token() | 
+    kms_throttling_exception().
 
 -type send_task_heartbeat_errors() ::
     task_does_not_exist() | 
@@ -1521,32 +1594,44 @@
     invalid_token().
 
 -type send_task_success_errors() ::
+    kms_invalid_state_exception() | 
     task_does_not_exist() | 
+    kms_access_denied_exception() | 
     task_timed_out() | 
     invalid_token() | 
-    invalid_output().
+    invalid_output() | 
+    kms_throttling_exception().
 
 -type start_execution_errors() ::
     invalid_arn() | 
     invalid_execution_input() | 
+    kms_invalid_state_exception() | 
     state_machine_deleting() | 
     validation_exception() | 
     invalid_name() | 
     execution_already_exists() | 
     state_machine_does_not_exist() | 
-    execution_limit_exceeded().
+    kms_access_denied_exception() | 
+    execution_limit_exceeded() | 
+    kms_throttling_exception().
 
 -type start_sync_execution_errors() ::
     invalid_arn() | 
     invalid_execution_input() | 
+    kms_invalid_state_exception() | 
     state_machine_deleting() | 
     invalid_name() | 
     state_machine_does_not_exist() | 
+    kms_access_denied_exception() | 
+    kms_throttling_exception() | 
     state_machine_type_not_supported().
 
 -type stop_execution_errors() ::
     invalid_arn() | 
+    kms_invalid_state_exception() | 
     validation_exception() | 
+    kms_access_denied_exception() | 
+    kms_throttling_exception() | 
     execution_does_not_exist().
 
 -type tag_resource_errors() ::
@@ -1576,9 +1661,12 @@
     validation_exception() | 
     invalid_definition() | 
     state_machine_does_not_exist() | 
+    kms_access_denied_exception() | 
+    invalid_encryption_configuration() | 
     service_quota_exceeded_exception() | 
     conflict_exception() | 
     invalid_tracing_configuration() | 
+    kms_throttling_exception() | 
     missing_required_parameter().
 
 -type update_state_machine_alias_errors() ::
@@ -1652,6 +1740,12 @@ create_activity(Client, Input, Options)
 %% it
 %% publishes version `1' as the first revision of the state machine.
 %%
+%% For additional control over security, you can encrypt your data using a
+%% customer-managed key for Step Functions state machines. You can configure
+%% a symmetric KMS key and data key reuse period when creating or updating a
+%% State Machine. The execution history and state machine definition will be
+%% encrypted with the key applied to the State Machine.
+%%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
@@ -1660,10 +1754,10 @@ create_activity(Client, Input, Options)
 %% duplicate resource if it was already created.
 %% `CreateStateMachine''s idempotency
 %% check is based on the state machine `name', `definition',
-%% `type', `LoggingConfiguration', and
-%% `TracingConfiguration'. The check is also based on the `publish'
-%% and `versionDescription' parameters. If a following request has a
-%% different
+%% `type', `LoggingConfiguration',
+%% `TracingConfiguration', and `EncryptionConfiguration' The check is
+%% also based on the `publish' and `versionDescription' parameters.
+%% If a following request has a different
 %% `roleArn' or `tags', Step Functions will ignore these differences
 %% and treat
 %% it as an idempotent request of the previous. In this case, `roleArn'
@@ -1858,9 +1952,7 @@ delete_state_machine_alias(Client, Input, Options)
 %% After
 %% you delete a version, you can't call `StartExecution' using that
 %% version's ARN
-%% or use
-%% the
-%% version with a state machine alias:
+%% or use the version with a state machine alias:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html.
 %%
 %% Deleting a state machine version won't terminate its in-progress
@@ -2057,9 +2149,8 @@ describe_state_machine_alias(Client, Input, Options)
 %% configuration.
 %%
 %% If a Map Run dispatched the execution, this action returns the Map Run
-%% Amazon Resource Name (ARN) in the response.
-%% The
-%% state machine returned is the state machine associated with the
+%% Amazon Resource Name (ARN) in the response. The state machine returned is
+%% the state machine associated with the
 %% Map Run.
 %%
 %% This operation is eventually consistent. The results are best effort and
@@ -2494,6 +2585,13 @@ redrive_execution(Client, Input, Options)
 %% pattern, and optionally Task states using the job run:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
 %% pattern to report that the task identified by the `taskToken' failed.
+%%
+%% For an execution with encryption enabled, Step Functions will encrypt the
+%% error and cause fields using the KMS key for the execution role.
+%%
+%% A caller can mark a task as fail without using any KMS permissions in the
+%% execution role if the caller provides a null value for both `error'
+%% and `cause' fields because no data needs to be encrypted.
 -spec send_task_failure(aws_client:aws_client(), send_task_failure_input()) ->
     {ok, send_task_failure_output(), tuple()} |
     {error, any()} |
@@ -2678,6 +2776,13 @@ start_sync_execution(Client, Input, Options)
 %% @doc Stops an execution.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
+%%
+%% For an execution with encryption enabled, Step Functions will encrypt the
+%% error and cause fields using the KMS key for the execution role.
+%%
+%% A caller can stop an execution without using any KMS permissions in the
+%% execution role if the caller provides a null value for both `error'
+%% and `cause' fields because no data needs to be encrypted.
 -spec stop_execution(aws_client:aws_client(), stop_execution_input()) ->
     {ok, stop_execution_output(), tuple()} |
     {error, any()} |
@@ -2834,7 +2939,8 @@ update_map_run(Client, Input, Options)
     request(Client, <<"UpdateMapRun">>, Input, Options).
 
 %% @doc Updates an existing state machine by modifying its `definition',
-%% `roleArn', or `loggingConfiguration'.
+%% `roleArn', `loggingConfiguration', or
+%% `EncryptionConfiguration'.
 %%
 %% Running executions will continue
 %% to use the previous `definition' and `roleArn'. You must include

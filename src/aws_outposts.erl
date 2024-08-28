@@ -120,7 +120,8 @@
 
 %% Example:
 %% instance_type_item() :: #{
-%%   <<"InstanceType">> => string()
+%%   <<"InstanceType">> => string(),
+%%   <<"VCPUs">> => integer()
 %% }
 -type instance_type_item() :: #{binary() => any()}.
 

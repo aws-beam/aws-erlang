@@ -1,7 +1,25 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Chatbot API
+%% @doc The AWS Chatbot API Reference provides descriptions, API request
+%% parameters, and the XML response for each of the AWS Chatbot API actions.
+%%
+%% AWS Chatbot APIs are currently available in the following Regions:
+%%
+%% US East (Ohio) - `us-east-2'
+%%
+%% US West (Oregon) - `us-west-2'
+%%
+%% Asia Pacific (Singapore) - `ap-southeast-1'
+%%
+%% Europe (Ireland) - `eu-west-1'
+%%
+%% The AWS Chatbot console can only be used in US East (Ohio). Your
+%% configuration data however, is stored in each of the relevant available
+%% Regions.
+%%
+%% Your AWS CloudTrail events are logged in whatever Region you call from,
+%% not US East (N. Virginia) by default.
 -module(aws_chatbot).
 
 -export([create_chime_webhook_configuration/2,
@@ -932,7 +950,7 @@
 %% API
 %%====================================================================
 
-%% @doc Creates Chime Webhook Configuration
+%% @doc Creates an AWS Chatbot configuration for Amazon Chime.
 -spec create_chime_webhook_configuration(aws_client:aws_client(), create_chime_webhook_configuration_request()) ->
     {ok, create_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
@@ -966,7 +984,7 @@ create_chime_webhook_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates MS Teams Channel Configuration
+%% @doc Creates an AWS Chatbot configuration for Microsoft Teams.
 -spec create_microsoft_teams_channel_configuration(aws_client:aws_client(), create_teams_channel_configuration_request()) ->
     {ok, create_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
@@ -1000,7 +1018,7 @@ create_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates Slack Channel Configuration
+%% @doc Creates an AWS Chatbot confugration for Slack.
 -spec create_slack_channel_configuration(aws_client:aws_client(), create_slack_channel_configuration_request()) ->
     {ok, create_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
@@ -1034,7 +1052,7 @@ create_slack_channel_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Chime Webhook Configuration
+%% @doc Deletes a Amazon Chime webhook configuration for AWS Chatbot.
 -spec delete_chime_webhook_configuration(aws_client:aws_client(), delete_chime_webhook_configuration_request()) ->
     {ok, delete_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
@@ -1068,7 +1086,7 @@ delete_chime_webhook_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes MS Teams Channel Configuration
+%% @doc Deletes a Microsoft Teams channel configuration for AWS Chatbot
 -spec delete_microsoft_teams_channel_configuration(aws_client:aws_client(), delete_teams_channel_configuration_request()) ->
     {ok, delete_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
@@ -1140,7 +1158,7 @@ delete_microsoft_teams_configured_team(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Teams user identity
+%% @doc Identifes a user level permission for a channel configuration.
 -spec delete_microsoft_teams_user_identity(aws_client:aws_client(), delete_microsoft_teams_user_identity_request()) ->
     {ok, delete_microsoft_teams_user_identity_result(), tuple()} |
     {error, any()} |
@@ -1174,7 +1192,7 @@ delete_microsoft_teams_user_identity(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes Slack Channel Configuration
+%% @doc Deletes a Slack channel configuration for AWS Chatbot
 -spec delete_slack_channel_configuration(aws_client:aws_client(), delete_slack_channel_configuration_request()) ->
     {ok, delete_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
@@ -1208,7 +1226,7 @@ delete_slack_channel_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Slack user identity
+%% @doc Deletes a user level permission for a Slack channel configuration.
 -spec delete_slack_user_identity(aws_client:aws_client(), delete_slack_user_identity_request()) ->
     {ok, delete_slack_user_identity_result(), tuple()} |
     {error, any()} |
@@ -1279,7 +1297,7 @@ delete_slack_workspace_authorization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists Chime Webhook Configurations optionally filtered by
+%% @doc Lists Amazon Chime webhook configurations optionally filtered by
 %% ChatConfigurationArn
 -spec describe_chime_webhook_configurations(aws_client:aws_client(), describe_chime_webhook_configurations_request()) ->
     {ok, describe_chime_webhook_configurations_result(), tuple()} |
@@ -1314,7 +1332,7 @@ describe_chime_webhook_configurations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists Slack Channel Configurations optionally filtered by
+%% @doc Lists Slack channel configurations optionally filtered by
 %% ChatConfigurationArn
 -spec describe_slack_channel_configurations(aws_client:aws_client(), describe_slack_channel_configurations_request()) ->
     {ok, describe_slack_channel_configurations_result(), tuple()} |
@@ -1383,7 +1401,8 @@ describe_slack_user_identities(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all authorized Slack Workspaces for AWS Account
+%% @doc List all authorized Slack workspaces connected to the AWS Account
+%% onboarded with AWS Chatbot.
 -spec describe_slack_workspaces(aws_client:aws_client(), describe_slack_workspaces_request()) ->
     {ok, describe_slack_workspaces_result(), tuple()} |
     {error, any()} |
@@ -1417,7 +1436,7 @@ describe_slack_workspaces(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get Chatbot account level preferences
+%% @doc Returns AWS Chatbot account preferences.
 -spec get_account_preferences(aws_client:aws_client(), get_account_preferences_request()) ->
     {ok, get_account_preferences_result(), tuple()} |
     {error, any()} |
@@ -1451,7 +1470,7 @@ get_account_preferences(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get a single MS Teams Channel Configurations
+%% @doc Returns a Microsoft Teams channel configuration in an AWS account.
 -spec get_microsoft_teams_channel_configuration(aws_client:aws_client(), get_teams_channel_configuration_request()) ->
     {ok, get_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
@@ -1485,7 +1504,8 @@ get_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists MS Teams Channel Configurations optionally filtered by TeamId
+%% @doc Lists all AWS Chatbot Microsoft Teams channel configurations in an
+%% AWS account.
 -spec list_microsoft_teams_channel_configurations(aws_client:aws_client(), list_teams_channel_configurations_request()) ->
     {ok, list_teams_channel_configurations_result(), tuple()} |
     {error, any()} |
@@ -1519,7 +1539,7 @@ list_microsoft_teams_channel_configurations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all authorized MS teams for AWS Account
+%% @doc Lists all authorized Microsoft Teams for an AWS Account
 -spec list_microsoft_teams_configured_teams(aws_client:aws_client(), list_microsoft_teams_configured_teams_request()) ->
     {ok, list_microsoft_teams_configured_teams_result(), tuple()} |
     {error, any()} |
@@ -1553,7 +1573,7 @@ list_microsoft_teams_configured_teams(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all Microsoft Teams user identities with a mapped role.
+%% @doc A list all Microsoft Teams user identities with a mapped role.
 -spec list_microsoft_teams_user_identities(aws_client:aws_client(), list_microsoft_teams_user_identities_request()) ->
     {ok, list_microsoft_teams_user_identities_result(), tuple()} |
     {error, any()} |
@@ -1587,7 +1607,10 @@ list_microsoft_teams_user_identities(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the list of tags applied to a configuration.
+%% @doc Lists all of the tags associated with the Amazon Resource Name (ARN)
+%% that you specify.
+%%
+%% The resource can be a user, server, or role.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1621,7 +1644,10 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Applies the supplied tags to a configuration.
+%% @doc Attaches a key-value pair to a resource, as identified by its Amazon
+%% Resource Name (ARN).
+%%
+%% Resources are users, servers, roles, and other entities.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1655,7 +1681,10 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the supplied tags from a configuration
+%% @doc Detaches a key-value pair from a resource, as identified by its
+%% Amazon Resource Name (ARN).
+%%
+%% Resources are users, servers, roles, and other entities.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -1689,7 +1718,7 @@ untag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update Chatbot account level preferences
+%% @doc Updates AWS Chatbot account preferences.
 -spec update_account_preferences(aws_client:aws_client(), update_account_preferences_request()) ->
     {ok, update_account_preferences_result(), tuple()} |
     {error, any()} |
@@ -1723,7 +1752,7 @@ update_account_preferences(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a Chime Webhook Configuration
+%% @doc Updates a Amazon Chime webhook configuration.
 -spec update_chime_webhook_configuration(aws_client:aws_client(), update_chime_webhook_configuration_request()) ->
     {ok, update_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
@@ -1757,7 +1786,7 @@ update_chime_webhook_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates MS Teams Channel Configuration
+%% @doc Updates an Microsoft Teams channel configuration.
 -spec update_microsoft_teams_channel_configuration(aws_client:aws_client(), update_teams_channel_configuration_request()) ->
     {ok, update_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
@@ -1791,7 +1820,7 @@ update_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates Slack Channel Configuration
+%% @doc Updates a Slack channel configuration.
 -spec update_slack_channel_configuration(aws_client:aws_client(), update_slack_channel_configuration_request()) ->
     {ok, update_slack_channel_configuration_result(), tuple()} |
     {error, any()} |

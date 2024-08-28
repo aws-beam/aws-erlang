@@ -274,6 +274,8 @@
 %%   <<"createdDate">> => [float()],
 %%   <<"dashboardEndpoint">> => [string()],
 %%   <<"description">> => [string()],
+%%   <<"failureCode">> => [string()],
+%%   <<"failureMessage">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"kmsKeyArn">> => [string()],
 %%   <<"lastModifiedDate">> => [float()],
@@ -420,6 +422,8 @@
 %% Example:
 %% vpc_endpoint_detail() :: #{
 %%   <<"createdDate">> => [float()],
+%%   <<"failureCode">> => [string()],
+%%   <<"failureMessage">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"securityGroupIds">> => list(string()()),

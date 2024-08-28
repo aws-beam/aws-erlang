@@ -157,6 +157,7 @@
 %% Example:
 %% snowflake_destination_update() :: #{
 %%   <<"AccountUrl">> => string(),
+%%   <<"BufferingHints">> => snowflake_buffering_hints(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
 %%   <<"ContentColumnName">> => string(),
 %%   <<"DataLoadingOption">> => list(any()),
@@ -176,6 +177,20 @@
 %%   <<"User">> => string()
 %% }
 -type snowflake_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_destination_update() :: #{
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CatalogConfiguration">> => catalog_configuration(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration()
+%% }
+-type iceberg_destination_update() :: #{binary() => any()}.
 
 %% Example:
 %% start_delivery_stream_encryption_input() :: #{
@@ -222,6 +237,7 @@
 %%   <<"ElasticsearchDestinationConfiguration">> => elasticsearch_destination_configuration(),
 %%   <<"ExtendedS3DestinationConfiguration">> => extended_s3_destination_configuration(),
 %%   <<"HttpEndpointDestinationConfiguration">> => http_endpoint_destination_configuration(),
+%%   <<"IcebergDestinationConfiguration">> => iceberg_destination_configuration(),
 %%   <<"KinesisStreamSourceConfiguration">> => kinesis_stream_source_configuration(),
 %%   <<"MSKSourceConfiguration">> => m_s_k_source_configuration(),
 %%   <<"RedshiftDestinationConfiguration">> => redshift_destination_configuration(),
@@ -283,6 +299,7 @@
 %%   <<"AuthenticationConfiguration">> => authentication_configuration(),
 %%   <<"DeliveryStartTimestamp">> => non_neg_integer(),
 %%   <<"MSKClusterARN">> => string(),
+%%   <<"ReadFromTimestamp">> => non_neg_integer(),
 %%   <<"TopicName">> => string()
 %% }
 -type m_s_k_source_description() :: #{binary() => any()}.
@@ -298,6 +315,7 @@
 %% m_s_k_source_configuration() :: #{
 %%   <<"AuthenticationConfiguration">> => authentication_configuration(),
 %%   <<"MSKClusterARN">> => string(),
+%%   <<"ReadFromTimestamp">> => non_neg_integer(),
 %%   <<"TopicName">> => string()
 %% }
 -type m_s_k_source_configuration() :: #{binary() => any()}.
@@ -372,6 +390,7 @@
 %%   <<"ElasticsearchDestinationDescription">> => elasticsearch_destination_description(),
 %%   <<"ExtendedS3DestinationDescription">> => extended_s3_destination_description(),
 %%   <<"HttpEndpointDestinationDescription">> => http_endpoint_destination_description(),
+%%   <<"IcebergDestinationDescription">> => iceberg_destination_description(),
 %%   <<"RedshiftDestinationDescription">> => redshift_destination_description(),
 %%   <<"S3DestinationDescription">> => s3_destination_description(),
 %%   <<"SnowflakeDestinationDescription">> => snowflake_destination_description(),
@@ -382,6 +401,7 @@
 %% Example:
 %% snowflake_destination_description() :: #{
 %%   <<"AccountUrl">> => string(),
+%%   <<"BufferingHints">> => snowflake_buffering_hints(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
 %%   <<"ContentColumnName">> => string(),
 %%   <<"DataLoadingOption">> => list(any()),
@@ -410,6 +430,13 @@
 -type open_x_json_ser_de() :: #{binary() => any()}.
 
 %% Example:
+%% snowflake_buffering_hints() :: #{
+%%   <<"IntervalInSeconds">> => integer(),
+%%   <<"SizeInMBs">> => integer()
+%% }
+-type snowflake_buffering_hints() :: #{binary() => any()}.
+
+%% Example:
 %% update_destination_input() :: #{
 %%   <<"AmazonOpenSearchServerlessDestinationUpdate">> => amazon_open_search_serverless_destination_update(),
 %%   <<"AmazonopensearchserviceDestinationUpdate">> => amazonopensearchservice_destination_update(),
@@ -419,6 +446,7 @@
 %%   <<"ElasticsearchDestinationUpdate">> => elasticsearch_destination_update(),
 %%   <<"ExtendedS3DestinationUpdate">> => extended_s3_destination_update(),
 %%   <<"HttpEndpointDestinationUpdate">> => http_endpoint_destination_update(),
+%%   <<"IcebergDestinationUpdate">> => iceberg_destination_update(),
 %%   <<"RedshiftDestinationUpdate">> => redshift_destination_update(),
 %%   <<"S3DestinationUpdate">> => s3_destination_update(),
 %%   <<"SnowflakeDestinationUpdate">> => snowflake_destination_update(),
@@ -448,6 +476,20 @@
 -type copy_command() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_destination_configuration() :: #{
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CatalogConfiguration">> => catalog_configuration(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration()
+%% }
+-type iceberg_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -458,6 +500,15 @@
 %%   <<"DurationInSeconds">> => integer()
 %% }
 -type amazonopensearchservice_retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% destination_table_configuration() :: #{
+%%   <<"DestinationDatabaseName">> => string(),
+%%   <<"DestinationTableName">> => string(),
+%%   <<"S3ErrorOutputPrefix">> => string(),
+%%   <<"UniqueKeys">> => list(string()())
+%% }
+-type destination_table_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% document_id_options() :: #{
@@ -483,6 +534,7 @@
 %% Example:
 %% snowflake_destination_configuration() :: #{
 %%   <<"AccountUrl">> => string(),
+%%   <<"BufferingHints">> => snowflake_buffering_hints(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
 %%   <<"ContentColumnName">> => string(),
 %%   <<"DataLoadingOption">> => list(any()),
@@ -769,6 +821,20 @@
 -type put_record_output() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_destination_description() :: #{
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CatalogConfiguration">> => catalog_configuration(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3DestinationDescription">> => s3_destination_description()
+%% }
+-type iceberg_destination_description() :: #{binary() => any()}.
+
+%% Example:
 %% delivery_stream_description() :: #{
 %%   <<"CreateTimestamp">> => non_neg_integer(),
 %%   <<"DeliveryStreamARN">> => string(),
@@ -888,6 +954,12 @@
 %%   <<"TypeName">> => string()
 %% }
 -type amazonopensearchservice_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_configuration() :: #{
+%%   <<"CatalogARN">> => string()
+%% }
+-type catalog_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% retry_options() :: #{

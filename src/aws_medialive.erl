@@ -615,6 +615,14 @@
 
 
 %% Example:
+%% srt_caller_decryption_request() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"PassphraseSecretArn">> => string()
+%% }
+-type srt_caller_decryption_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_channel_response() :: #{
 %%   <<"Channel">> => channel()
 %% }
@@ -637,6 +645,14 @@
 %%   <<"Pipelines">> => list(pipeline_pause_state_settings()())
 %% }
 -type pause_state_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_decryption() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"PassphraseSecretArn">> => string()
+%% }
+-type srt_caller_decryption() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1333,6 +1349,17 @@
 %% smpte_tt_destination_settings() :: #{}
 -type smpte_tt_destination_settings() :: #{}.
 
+
+%% Example:
+%% srt_caller_source() :: #{
+%%   <<"Decryption">> => srt_caller_decryption(),
+%%   <<"MinimumLatency">> => integer(),
+%%   <<"SrtListenerAddress">> => string(),
+%%   <<"SrtListenerPort">> => string(),
+%%   <<"StreamId">> => string()
+%% }
+-type srt_caller_source() :: #{binary() => any()}.
+
 %% Example:
 %% stop_channel_request() :: #{}
 -type stop_channel_request() :: #{}.
@@ -1635,6 +1662,7 @@
 %%   <<"RequestId">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"Sources">> => list(input_source_request()()),
+%%   <<"SrtSettings">> => srt_settings_request(),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> => list(any()),
 %%   <<"Vpc">> => input_vpc_request()
@@ -1780,6 +1808,7 @@
 %%   <<"RoleArn">> => string(),
 %%   <<"SecurityGroups">> => list(string()()),
 %%   <<"Sources">> => list(input_source()()),
+%%   <<"SrtSettings">> => srt_settings(),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> => list(any())
@@ -1820,7 +1849,8 @@
 %%   <<"MediaConnectFlows">> => list(media_connect_flow_request()()),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"Sources">> => list(input_source_request()())
+%%   <<"Sources">> => list(input_source_request()()),
+%%   <<"SrtSettings">> => srt_settings_request()
 %% }
 -type update_input_request() :: #{binary() => any()}.
 
@@ -2028,6 +2058,13 @@
 
 
 %% Example:
+%% srt_settings_request() :: #{
+%%   <<"SrtCallerSources">> => list(srt_caller_source_request()())
+%% }
+-type srt_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_channel_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
@@ -2113,7 +2150,8 @@
 %% Example:
 %% update_multiplex_request() :: #{
 %%   <<"MultiplexSettings">> => multiplex_settings(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"PacketIdentifiersMapping">> => map()
 %% }
 -type update_multiplex_request() :: #{binary() => any()}.
 
@@ -2255,6 +2293,7 @@
 %%   <<"RoleArn">> => string(),
 %%   <<"SecurityGroups">> => list(string()()),
 %%   <<"Sources">> => list(input_source()()),
+%%   <<"SrtSettings">> => srt_settings(),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> => list(any())
@@ -2432,9 +2471,12 @@
 
 %% Example:
 %% multiplex_program_packet_identifiers_map() :: #{
+%%   <<"AribCaptionsPid">> => integer(),
 %%   <<"AudioPids">> => list(integer()()),
 %%   <<"DvbSubPids">> => list(integer()()),
 %%   <<"DvbTeletextPid">> => integer(),
+%%   <<"DvbTeletextPids">> => list(integer()()),
+%%   <<"EcmPid">> => integer(),
 %%   <<"EtvPlatformPid">> => integer(),
 %%   <<"EtvSignalPid">> => integer(),
 %%   <<"KlvDataPids">> => list(integer()()),
@@ -2443,6 +2485,7 @@
 %%   <<"PrivateMetadataPid">> => integer(),
 %%   <<"Scte27Pids">> => list(integer()()),
 %%   <<"Scte35Pid">> => integer(),
+%%   <<"Smpte2038Pid">> => integer(),
 %%   <<"TimedMetadataPid">> => integer(),
 %%   <<"VideoPid">> => integer()
 %% }
@@ -2631,6 +2674,17 @@
 %%   <<"OutputChannel">> => integer()
 %% }
 -type audio_channel_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_source_request() :: #{
+%%   <<"Decryption">> => srt_caller_decryption_request(),
+%%   <<"MinimumLatency">> => integer(),
+%%   <<"SrtListenerAddress">> => string(),
+%%   <<"SrtListenerPort">> => string(),
+%%   <<"StreamId">> => string()
+%% }
+-type srt_caller_source_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3720,6 +3774,13 @@
 %%   <<"Message">> => string()
 %% }
 -type gateway_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_settings() :: #{
+%%   <<"SrtCallerSources">> => list(srt_caller_source()())
+%% }
+-type srt_settings() :: #{binary() => any()}.
 
 
 %% Example:

@@ -1,8 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the Zonal Shift API Reference Guide for Amazon Route 53
-%% Application Recovery Controller (Route 53 ARC).
+%% @doc Welcome to the API Reference Guide for zonal shift and zonal
+%% autoshift in Amazon Route 53 Application Recovery Controller (Route 53
+%% ARC).
 %%
 %% You can start a zonal shift to move traffic for a load balancer resource
 %% away from an Availability Zone to
@@ -12,36 +13,53 @@
 %% deployment or from an
 %% Amazon Web Services infrastructure failure in a single Availability Zone.
 %%
-%% You can also configure zonal autoshift for a load balancer resource. Zonal
-%% autoshift
-%% is a capability in Route 53 ARC where Amazon Web Services shifts away
-%% application resource
-%% traffic from an Availability Zone, on your behalf, to help reduce your
-%% time to recovery during events.
-%% Amazon Web Services shifts away traffic for resources that are enabled for
-%% zonal autoshift whenever Amazon Web Services
-%% determines that there's an issue in the Availability Zone that could
-%% potentially affect
-%% customers.
+%% You can also configure zonal autoshift for supported load balancer
+%% resources. Zonal autoshift
+%% is a capability in Route 53 ARC where you authorize Amazon Web Services to
+%% shift away application resource
+%% traffic from an Availability Zone during events, on your behalf, to help
+%% reduce your time to recovery.
+%% Amazon Web Services starts an autoshift when internal telemetry indicates
+%% that there is an Availability
+%% Zone impairment that could potentially impact customers.
 %%
-%% To ensure that zonal autoshift is safe for your application, you must
+%% To help make sure that zonal autoshift is safe for your application, you
+%% must
 %% also configure practice runs when you enable zonal autoshift for a
 %% resource. Practice runs start
-%% weekly zonal shifts for a resource, to shift
-%% traffic for the resource out of an Availability Zone. Practice runs make
-%% sure, on a regular basis,
-%% that you have enough capacity in all the Availability Zones in an Amazon
-%% Web Services Region
-%% for your application to continue to operate normally
+%% weekly zonal shifts for a resource, to shift traffic for the resource away
+%% from an Availability Zone.
+%% Practice runs help you to make sure, on a regular basis, that you have
+%% enough capacity in all the
+%% Availability Zones in an Amazon Web Services Region for your application
+%% to continue to operate normally
 %% when traffic for a resource is shifted away from one Availability Zone.
 %%
-%% You must prescale resource capacity in all Availability Zones in the
-%% Region
-%% where your application is deployed, before you configure practice runs or
-%% enable zonal autoshift
-%% for a resource. You should not rely on scaling on demand when an autoshift
-%% or practice run
-%% starts.
+%% Before you configure practice runs or enable zonal autoshift, we strongly
+%% recommend
+%% that you prescale your application resource capacity in all Availability
+%% Zones in the Region where
+%% your application resources are deployed. You should not rely on scaling on
+%% demand when an
+%% autoshift or practice run starts. Zonal autoshift, including practice
+%% runs, works independently,
+%% and does not wait for auto scaling actions to complete. Relying on auto
+%% scaling, instead of
+%% pre-scaling, can result in loss of availability.
+%%
+%% If you use auto scaling to handle regular cycles of traffic, we strongly
+%% recommend that you configure
+%% the minimum capacity of your auto scaling to continue operating normally
+%% with the loss of an
+%% Availability Zone.
+%%
+%% Be aware that Route 53 ARC does not inspect the health of individual
+%% resources. Amazon Web Services only starts an
+%% autoshift when Amazon Web Services telemetry detects that there is an
+%% Availability Zone impairment that could
+%% potentially impact customers. In some cases, resources might be shifted
+%% away that are not experiencing
+%% impact.
 %%
 %% For more information about using zonal shift and zonal autoshift, see the
 %% Amazon Route 53 Application Recovery Controller
@@ -55,6 +73,9 @@
          create_practice_run_configuration/3,
          delete_practice_run_configuration/3,
          delete_practice_run_configuration/4,
+         get_autoshift_observer_notification_status/1,
+         get_autoshift_observer_notification_status/3,
+         get_autoshift_observer_notification_status/4,
          get_managed_resource/2,
          get_managed_resource/4,
          get_managed_resource/5,
@@ -69,6 +90,8 @@
          list_zonal_shifts/4,
          start_zonal_shift/2,
          start_zonal_shift/3,
+         update_autoshift_observer_notification_status/2,
+         update_autoshift_observer_notification_status/3,
          update_practice_run_configuration/3,
          update_practice_run_configuration/4,
          update_zonal_autoshift_configuration/3,
@@ -210,7 +233,7 @@
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
-%%   <<"reason">> => string(),
+%%   <<"reason">> => list(any()),
 %%   <<"zonalShiftId">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
@@ -272,6 +295,13 @@
 
 
 %% Example:
+%% update_autoshift_observer_notification_status_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type update_autoshift_observer_notification_status_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_practice_run_configuration_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"name">> => string(),
@@ -286,6 +316,20 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_autoshift_observer_notification_status_request() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_autoshift_observer_notification_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_autoshift_observer_notification_status_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type get_autoshift_observer_notification_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_managed_resource_request() :: #{}
@@ -356,6 +400,10 @@
 %% }
 -type create_practice_run_configuration_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_autoshift_observer_notification_status_request() :: #{}
+-type get_autoshift_observer_notification_status_request() :: #{}.
+
 
 %% Example:
 %% practice_run_configuration() :: #{
@@ -399,6 +447,11 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_autoshift_observer_notification_status_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type get_managed_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -431,6 +484,12 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type update_autoshift_observer_notification_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type update_practice_run_configuration_errors() ::
     throttling_exception() | 
@@ -513,6 +572,13 @@ cancel_zonal_shift(Client, ZonalShiftId, Input0, Options0) ->
 %% outcome alarm, to monitor application health during practice runs and,
 %% optionally, a blocking alarm, to block practice runs from starting.
 %%
+%% When a resource has a practice run configuration, Route 53 ARC starts
+%% zonal shifts for the resource
+%% weekly, to shift traffic for practice runs. Practice runs help you to
+%% ensure that
+%% shifting away traffic from an Availability Zone during an autoshift is
+%% safe for your application.
+%%
 %% For more information, see
 %%
 %% Considerations when you configure zonal autoshift:
@@ -591,6 +657,61 @@ delete_practice_run_configuration(Client, ResourceIdentifier, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the status of autoshift observer notification.
+%%
+%% Autoshift observer
+%% notification enables you to be notified, through Amazon EventBridge, when
+%% there is an autoshift event for zonal autoshift.
+%%
+%% If the status is `ENABLED',
+%% Route 53 ARC includes all autoshift events when you use the EventBridge
+%% pattern
+%% `Autoshift In Progress'. When the status is `DISABLED',
+%% Route 53 ARC includes only autoshift events for autoshifts when one or
+%% more of your
+%% resources is included in the autoshift.
+%%
+%% For more information, see
+%%
+%% Notifications for practice runs and autoshifts:
+%% https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.how-it-works.html#ZAShiftNotification
+%% in the Amazon Route 53 Application Recovery Controller Developer Guide.
+-spec get_autoshift_observer_notification_status(aws_client:aws_client()) ->
+    {ok, get_autoshift_observer_notification_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_autoshift_observer_notification_status_errors(), tuple()}.
+get_autoshift_observer_notification_status(Client)
+  when is_map(Client) ->
+    get_autoshift_observer_notification_status(Client, #{}, #{}).
+
+-spec get_autoshift_observer_notification_status(aws_client:aws_client(), map(), map()) ->
+    {ok, get_autoshift_observer_notification_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_autoshift_observer_notification_status_errors(), tuple()}.
+get_autoshift_observer_notification_status(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_autoshift_observer_notification_status(Client, QueryMap, HeadersMap, []).
+
+-spec get_autoshift_observer_notification_status(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_autoshift_observer_notification_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_autoshift_observer_notification_status_errors(), tuple()}.
+get_autoshift_observer_notification_status(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/autoshift-observer-notification"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Get information about a resource that's been registered for zonal
 %% shifts with Amazon Route 53 Application Recovery Controller in this Amazon
 %% Web Services Region.
@@ -638,7 +759,12 @@ get_managed_resource(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the active autoshifts for a specified resource.
+%% @doc Returns a list of autoshifts for an Amazon Web Services Region.
+%%
+%% By default, the call returns
+%% only `ACTIVE' autoshifts. Optionally, you can specify the `status'
+%% parameter to return
+%% `COMPLETED' autoshifts.
 -spec list_autoshifts(aws_client:aws_client()) ->
     {ok, list_autoshifts_response(), tuple()} |
     {error, any()} |
@@ -735,7 +861,7 @@ list_managed_resources(Client, QueryMap, HeadersMap, Options0)
 %% Application Recovery Controller in your Amazon Web Services account in
 %% this Amazon Web Services Region.
 %%
-%% `ListZonalShifts' returns customer-started zonal shifts, as well as
+%% `ListZonalShifts' returns customer-initiated zonal shifts, as well as
 %% practice run zonal shifts that Route 53 ARC started on
 %% your behalf for zonal autoshift.
 %%
@@ -843,6 +969,58 @@ start_zonal_shift(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Update the status of autoshift observer notification.
+%%
+%% Autoshift observer
+%% notification enables you to be notified, through Amazon EventBridge, when
+%% there is an autoshift event for zonal autoshift.
+%%
+%% If the status is `ENABLED',
+%% Route 53 ARC includes all autoshift events when you use the EventBridge
+%% pattern
+%% `Autoshift In Progress'. When the status is `DISABLED',
+%% Route 53 ARC includes only autoshift events for autoshifts when one or
+%% more of your
+%% resources is included in the autoshift.
+%%
+%% For more information, see
+%%
+%% Notifications for practice runs and autoshifts:
+%% https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.how-it-works.html#ZAShiftNotification
+%% in the Amazon Route 53 Application Recovery Controller Developer Guide.
+-spec update_autoshift_observer_notification_status(aws_client:aws_client(), update_autoshift_observer_notification_status_request()) ->
+    {ok, update_autoshift_observer_notification_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_autoshift_observer_notification_status_errors(), tuple()}.
+update_autoshift_observer_notification_status(Client, Input) ->
+    update_autoshift_observer_notification_status(Client, Input, []).
+
+-spec update_autoshift_observer_notification_status(aws_client:aws_client(), update_autoshift_observer_notification_status_request(), proplists:proplist()) ->
+    {ok, update_autoshift_observer_notification_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_autoshift_observer_notification_status_errors(), tuple()}.
+update_autoshift_observer_notification_status(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/autoshift-observer-notification"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Update a practice run configuration to change one or more of the
 %% following: add,
 %% change, or remove the blocking alarm; change the outcome alarm; or add,
@@ -881,15 +1059,23 @@ update_practice_run_configuration(Client, ResourceIdentifier, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc You can update the zonal autoshift status for a resource, to enable
-%% or disable zonal
-%% autoshift.
+%% @doc The zonal autoshift configuration for a resource includes the
+%% practice run configuration and the status for
+%% running autoshifts, zonal autoshift status.
 %%
-%% When zonal autoshift is `ENABLED', Amazon Web Services shifts away
-%% resource traffic from an Availability Zone, on your behalf, when Amazon
-%% Web Services
-%% determines that there's an issue in the Availability Zone that could
-%% potentially affect customers.
+%% When a resource has a practice run configuation, Route 53 ARC
+%% starts weekly zonal shifts for the resource, to shift traffic away from an
+%% Availability Zone. Weekly practice
+%% runs help you to make sure that your application can continue to operate
+%% normally with the loss of one Availability Zone.
+%%
+%% You can update the zonal autoshift autoshift status to enable or disable
+%% zonal autoshift. When zonal
+%% autoshift is `ENABLED', you authorize Amazon Web Services to shift
+%% away resource traffic for
+%% an application from an Availability Zone during events, on your behalf, to
+%% help reduce time to recovery.
+%% Traffic is also shifted away for the required weekly practice runs.
 -spec update_zonal_autoshift_configuration(aws_client:aws_client(), binary() | list(), update_zonal_autoshift_configuration_request()) ->
     {ok, update_zonal_autoshift_configuration_response(), tuple()} |
     {error, any()} |

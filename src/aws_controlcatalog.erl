@@ -35,8 +35,12 @@
 %% Client and server errors that all operations can return.
 -module(aws_controlcatalog).
 
--export([list_common_controls/2,
+-export([get_control/2,
+         get_control/3,
+         list_common_controls/2,
          list_common_controls/3,
+         list_controls/2,
+         list_controls/3,
          list_domains/2,
          list_domains/3,
          list_objectives/2,
@@ -90,6 +94,15 @@
 
 
 %% Example:
+%% control_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => [string()],
+%%   <<"Name">> => [string()]
+%% }
+-type control_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_resource_filter() :: #{
 %%   <<"Arn">> => string()
 %% }
@@ -105,6 +118,24 @@
 %%   <<"Name">> => [string()]
 %% }
 -type domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_control_request() :: #{
+%%   <<"ControlArn">> := string()
+%% }
+-type get_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_control_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Behavior">> => list(any()),
+%%   <<"Description">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"RegionConfiguration">> => region_configuration()
+%% }
+-type get_control_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -129,6 +160,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_common_controls_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_controls_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_controls_response() :: #{
+%%   <<"Controls">> => list(control_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_controls_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -191,6 +238,21 @@
 
 
 %% Example:
+%% region_configuration() :: #{
+%%   <<"DeployableRegions">> => list(string()()),
+%%   <<"Scope">> => list(any())
+%% }
+-type region_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -203,7 +265,20 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type get_control_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_common_controls_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_controls_errors() ::
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
@@ -224,6 +299,51 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Returns details about a specific control, most notably a list of
+%% Amazon Web Services Regions where this control is supported.
+%%
+%% Input a value for the ControlArn parameter, in ARN form. `GetControl'
+%% accepts controltower or controlcatalog control ARNs as input. Returns a
+%% controlcatalog ARN format.
+%%
+%% In the API response, controls that have the value `GLOBAL' in the
+%% `Scope' field do not show the `DeployableRegions' field, because
+%% it does not apply. Controls that have the value `REGIONAL' in the
+%% `Scope' field return a value for the `DeployableRegions' field, as
+%% shown in the example.
+-spec get_control(aws_client:aws_client(), get_control_request()) ->
+    {ok, get_control_response(), tuple()} |
+    {error, any()} |
+    {error, get_control_errors(), tuple()}.
+get_control(Client, Input) ->
+    get_control(Client, Input, []).
+
+-spec get_control(aws_client:aws_client(), get_control_request(), proplists:proplist()) ->
+    {ok, get_control_response(), tuple()} |
+    {error, any()} |
+    {error, get_control_errors(), tuple()}.
+get_control(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-control"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of common controls from the Amazon Web
 %% Services Control
@@ -246,6 +366,47 @@ list_common_controls(Client, Input) ->
 list_common_controls(Client, Input0, Options0) ->
     Method = post,
     Path = ["/common-controls"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of all available controls in the Amazon Web
+%% Services Control Catalog library.
+%%
+%% Allows you to discover available controls. The list of controls is given
+%% as structures of type controlSummary. The ARN is returned in the global
+%% controlcatalog format, as shown in the examples.
+-spec list_controls(aws_client:aws_client(), list_controls_request()) ->
+    {ok, list_controls_response(), tuple()} |
+    {error, any()} |
+    {error, list_controls_errors(), tuple()}.
+list_controls(Client, Input) ->
+    list_controls(Client, Input, []).
+
+-spec list_controls(aws_client:aws_client(), list_controls_request(), proplists:proplist()) ->
+    {ok, list_controls_response(), tuple()} |
+    {error, any()} |
+    {error, list_controls_errors(), tuple()}.
+list_controls(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-controls"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -256,6 +256,7 @@
 
 %% Example:
 %% create_profile_request() :: #{
+%%   <<"acceptRoleSessionName">> => [boolean()],
 %%   <<"durationSeconds">> => [integer()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"managedPolicyArns">> => list([string()]()),
@@ -298,6 +299,7 @@
 
 %% Example:
 %% update_profile_request() :: #{
+%%   <<"acceptRoleSessionName">> => [boolean()],
 %%   <<"durationSeconds">> => [integer()],
 %%   <<"managedPolicyArns">> => list([string()]()),
 %%   <<"name">> => string(),
@@ -332,6 +334,7 @@
 
 %% Example:
 %% profile_detail() :: #{
+%%   <<"acceptRoleSessionName">> => [boolean()],
 %%   <<"attributeMappings">> => list(attribute_mapping()()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],

@@ -134,6 +134,7 @@
 %%   <<"includeSeedInOutput">> => [boolean()],
 %%   <<"metrics">> => audience_quality_metrics(),
 %%   <<"name">> => string(),
+%%   <<"protectedQueryIdentifier">> => [string()],
 %%   <<"seedAudience">> => audience_generation_job_data_source(),
 %%   <<"startedBy">> => string(),
 %%   <<"status">> => list(any()),
@@ -503,6 +504,15 @@
 
 
 %% Example:
+%% protected_query_s_q_l_parameters() :: #{
+%%   <<"analysisTemplateArn">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"queryString">> => [string()]
+%% }
+-type protected_query_s_q_l_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_configured_audience_model_policy_response() :: #{
 %%   <<"configuredAudienceModelPolicy">> => string(),
 %%   <<"policyHash">> => string()
@@ -601,7 +611,8 @@
 %% Example:
 %% audience_generation_job_data_source() :: #{
 %%   <<"dataSource">> => s3_config_map(),
-%%   <<"roleArn">> => string()
+%%   <<"roleArn">> => string(),
+%%   <<"sqlParameters">> => protected_query_s_q_l_parameters()
 %% }
 -type audience_generation_job_data_source() :: #{binary() => any()}.
 

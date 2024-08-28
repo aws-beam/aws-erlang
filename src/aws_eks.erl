@@ -758,6 +758,7 @@
 %%   <<"resourcesVpcConfig">> := vpc_config_request(),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => map(),
+%%   <<"upgradePolicy">> => upgrade_policy_request(),
 %%   <<"version">> => string()
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
@@ -872,6 +873,13 @@
 
 
 %% Example:
+%% upgrade_policy_response() :: #{
+%%   <<"supportType">> => list(any())
+%% }
+-type upgrade_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_encryption_config_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"encryptionConfig">> := list(encryption_config()())
@@ -917,6 +925,7 @@
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
+%%   <<"upgradePolicy">> => upgrade_policy_response(),
 %%   <<"version">> => string()
 %% }
 -type cluster() :: #{binary() => any()}.
@@ -1140,6 +1149,13 @@
 %% Example:
 %% delete_fargate_profile_request() :: #{}
 -type delete_fargate_profile_request() :: #{}.
+
+
+%% Example:
+%% upgrade_policy_request() :: #{
+%%   <<"supportType">> => list(any())
+%% }
+-type upgrade_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1675,7 +1691,8 @@
 %%   <<"accessConfig">> => update_access_config_request(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"logging">> => logging(),
-%%   <<"resourcesVpcConfig">> => vpc_config_request()
+%%   <<"resourcesVpcConfig">> => vpc_config_request(),
+%%   <<"upgradePolicy">> => upgrade_policy_request()
 %% }
 -type update_cluster_config_request() :: #{binary() => any()}.
 

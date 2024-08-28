@@ -3,8 +3,7 @@
 
 %% @doc
 %%
-%% Amazon Connect
-%% actions:
+%% Amazon Connect actions:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html
 %%
 %% Amazon Connect
@@ -457,6 +456,8 @@
          resume_contact/3,
          resume_contact_recording/2,
          resume_contact_recording/3,
+         search_agent_statuses/2,
+         search_agent_statuses/3,
          search_available_phone_numbers/2,
          search_available_phone_numbers/3,
          search_contact_flow_modules/2,
@@ -481,6 +482,8 @@
          search_routing_profiles/3,
          search_security_profiles/2,
          search_security_profiles/3,
+         search_user_hierarchy_groups/2,
+         search_user_hierarchy_groups/3,
          search_users/2,
          search_users/3,
          search_vocabularies/3,
@@ -1005,6 +1008,20 @@
 %% }
 -type list_traffic_distribution_group_users_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% routing_criteria_input() :: #{
+%%   <<"Steps">> => list(routing_criteria_input_step()())
+%% }
+-type routing_criteria_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_hierarchy_group_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type user_hierarchy_group_search_filter() :: #{binary() => any()}.
+
 %% Example:
 %% describe_traffic_distribution_group_request() :: #{}
 -type describe_traffic_distribution_group_request() :: #{}.
@@ -1034,6 +1051,21 @@
 %% Example:
 %% disassociate_flow_request() :: #{}
 -type disassociate_flow_request() :: #{}.
+
+
+%% Example:
+%% list_condition() :: #{
+%%   <<"Conditions">> => list(condition()()),
+%%   <<"TargetListType">> => list(any())
+%% }
+-type list_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_criteria_input_step_expiry() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type routing_criteria_input_step_expiry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1454,6 +1486,15 @@
 
 
 %% Example:
+%% agent_status_search_criteria() :: #{
+%%   <<"AndConditions">> => list(agent_status_search_criteria()()),
+%%   <<"OrConditions">> => list(agent_status_search_criteria()()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type agent_status_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_security_profile_response() :: #{
 %%   <<"SecurityProfileArn">> => string(),
 %%   <<"SecurityProfileId">> => string()
@@ -1543,6 +1584,15 @@
 
 
 %% Example:
+%% search_user_hierarchy_groups_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserHierarchyGroups">> => list(hierarchy_group()())
+%% }
+-type search_user_hierarchy_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% credentials() :: #{
 %%   <<"AccessToken">> => string(),
 %%   <<"AccessTokenExpiration">> => non_neg_integer(),
@@ -1609,6 +1659,15 @@
 %% Example:
 %% delete_attached_file_response() :: #{}
 -type delete_attached_file_response() :: #{}.
+
+
+%% Example:
+%% control_plane_attribute_filter() :: #{
+%%   <<"AndCondition">> => common_attribute_and_condition(),
+%%   <<"OrConditions">> => list(common_attribute_and_condition()()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type control_plane_attribute_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1866,6 +1925,16 @@
 
 
 %% Example:
+%% number_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"MaxValue">> => integer(),
+%%   <<"MinValue">> => integer()
+%% }
+-type number_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_routing_profiles_request() :: #{
 %%   <<"InstanceId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -1911,6 +1980,15 @@
 %%   <<"SecondaryEmail">> => string()
 %% }
 -type user_identity_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segment_post_contact_summary() :: #{
+%%   <<"Content">> => string(),
+%%   <<"FailureCode">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type real_time_contact_analysis_segment_post_contact_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2070,6 +2148,17 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_evaluation_form_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_agent_statuses_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => agent_status_search_criteria(),
+%%   <<"SearchFilter">> => agent_status_search_filter()
+%% }
+-type search_agent_statuses_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_view_version_request() :: #{}
@@ -2600,6 +2689,14 @@
 %%   <<"User">> => user_reference()
 %% }
 -type user_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_reference() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type connect_reference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3914,6 +4011,14 @@
 
 
 %% Example:
+%% condition() :: #{
+%%   <<"NumberCondition">> => number_condition(),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_phone_number_contact_flow_request() :: #{
 %%   <<"ContactFlowId">> := string(),
 %%   <<"InstanceId">> := string()
@@ -4478,6 +4583,15 @@
 
 
 %% Example:
+%% user_hierarchy_group_search_criteria() :: #{
+%%   <<"AndConditions">> => list(user_hierarchy_group_search_criteria()()),
+%%   <<"OrConditions">> => list(user_hierarchy_group_search_criteria()()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type user_hierarchy_group_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% rule_summary() :: #{
 %%   <<"ActionSummaries">> => list(action_summary()()),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -4574,6 +4688,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_bots_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_criteria_input_step() :: #{
+%%   <<"Expiry">> => routing_criteria_input_step_expiry(),
+%%   <<"Expression">> => expression()
+%% }
+-type routing_criteria_input_step() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4705,6 +4827,7 @@
 %% user_search_criteria() :: #{
 %%   <<"AndConditions">> => list(user_search_criteria()()),
 %%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
+%%   <<"ListCondition">> => list_condition(),
 %%   <<"OrConditions">> => list(user_search_criteria()()),
 %%   <<"StringCondition">> => string_condition()
 %% }
@@ -4713,6 +4836,13 @@
 %% Example:
 %% describe_contact_evaluation_request() :: #{}
 -type describe_contact_evaluation_request() :: #{}.
+
+
+%% Example:
+%% agent_status_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type agent_status_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4993,7 +5123,8 @@
 %% Example:
 %% update_contact_routing_data_request() :: #{
 %%   <<"QueuePriority">> => float(),
-%%   <<"QueueTimeAdjustmentSeconds">> => integer()
+%%   <<"QueueTimeAdjustmentSeconds">> => integer(),
+%%   <<"RoutingCriteria">> => routing_criteria_input()
 %% }
 -type update_contact_routing_data_request() :: #{binary() => any()}.
 
@@ -5095,6 +5226,13 @@
 %%   <<"Notes">> => map()
 %% }
 -type submit_contact_evaluation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% common_attribute_and_condition() :: #{
+%%   <<"TagConditions">> => list(tag_condition()())
+%% }
+-type common_attribute_and_condition() :: #{binary() => any()}.
 
 %% Example:
 %% describe_user_request() :: #{}
@@ -5916,14 +6054,6 @@
 
 
 %% Example:
-%% aws_connect_reference() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type aws_connect_reference() :: #{binary() => any()}.
-
-
-%% Example:
 %% metric_data_v2() :: #{
 %%   <<"Metric">> => metric_v2(),
 %%   <<"Value">> => float()
@@ -6040,6 +6170,15 @@
 %%   <<"Status">> => list(any())
 %% }
 -type evaluation_form_scoring_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_agent_statuses_response() :: #{
+%%   <<"AgentStatuses">> => list(agent_status()()),
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_agent_statuses_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6412,6 +6551,17 @@
 %%   <<"Id">> => string()
 %% }
 -type create_task_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_user_hierarchy_groups_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => user_hierarchy_group_search_criteria(),
+%%   <<"SearchFilter">> => user_hierarchy_group_search_filter()
+%% }
+-type search_user_hierarchy_groups_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8230,6 +8380,13 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type search_agent_statuses_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type search_available_phone_numbers_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -8308,6 +8465,13 @@
     internal_service_exception().
 
 -type search_security_profiles_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_user_hierarchy_groups_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
@@ -9915,6 +10079,11 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
 %% also does not allow for any configurations on features, such as Contact
 %% Lens for Amazon Connect.
 %%
+%% For more information, see Create an Amazon Connect
+%% instance:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-instances.html
+%% in the Amazon Connect Administrator Guide.
+%%
 %% Amazon Connect enforces a limit on the total number of instances that you
 %% can create or delete in 30 days.
 %% If you exceed this limit, you will get an error message indicating there
@@ -10071,6 +10240,14 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 
 %% @doc Creates a new predefined attribute for the specified Amazon Connect
 %% instance.
+%%
+%% Predefined
+%% attributes are attributes in an Amazon Connect instance that can be used
+%% to route
+%% contacts to an agent or pools of agents within a queue. For more
+%% information, see Create
+%% predefined attributes for routing contacts to agents:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 -spec create_predefined_attribute(aws_client:aws_client(), binary() | list(), create_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -10316,6 +10493,15 @@ create_rule(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a security profile.
+%%
+%% For information about security profiles, see Security Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
+%% in the
+%% Amazon Connect Administrator Guide. For a mapping of the API name and
+%% user interface name of the security profile permissions, see List of
+%% security profile
+%% permissions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec create_security_profile(aws_client:aws_client(), binary() | list(), create_security_profile_request()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
@@ -10941,7 +11127,11 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
-%% Deletes the Amazon Connect instance.
+%% Deletes the Amazon Connect instance. For more information, see Delete your
+%% Amazon Connect instance:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/delete-connect-instance.html
+%% in the Amazon Connect Administrator
+%% Guide.
 %%
 %% Amazon Connect enforces a limit on the total number of instances that you
 %% can create or delete in 30 days.
@@ -11091,6 +11281,9 @@ delete_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a queue.
+%%
+%% It isn't possible to delete a queue by using the Amazon Connect admin
+%% website.
 -spec delete_queue(aws_client:aws_client(), binary() | list(), binary() | list(), delete_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -12134,6 +12327,14 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a predefined attribute for the specified Amazon Connect
 %% instance.
+%%
+%% Predefined
+%% attributes are attributes in an Amazon Connect instance that can be used
+%% to route
+%% contacts to an agent or pools of agents within a queue. For more
+%% information, see Create
+%% predefined attributes for routing contacts to agents:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 -spec describe_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
@@ -12358,7 +12559,16 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets basic information about the security profle.
+%% @doc Gets basic information about the security profile.
+%%
+%% For information about security profiles, see Security Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
+%% in the
+%% Amazon Connect Administrator Guide. For a mapping of the API name and
+%% user interface name of the security profile permissions, see List of
+%% security profile
+%% permissions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec describe_security_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
@@ -14773,6 +14983,14 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 
 %% @doc Lists predefined attributes for the specified Amazon Connect
 %% instance.
+%%
+%% Predefined
+%% attributes are attributes in an Amazon Connect instance that can be used
+%% to route
+%% contacts to an agent or pools of agents within a queue. For more
+%% information, see Create
+%% predefined attributes for routing contacts to agents:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 -spec list_predefined_attributes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
@@ -15264,6 +15482,15 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the permissions granted to a security profile.
+%%
+%% For information about security profiles, see Security Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
+%% in the
+%% Amazon Connect Administrator Guide. For a mapping of the API name and
+%% user interface name of the security profile permissions, see List of
+%% security profile
+%% permissions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec list_security_profile_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_security_profile_permissions_response(), tuple()} |
     {error, any()} |
@@ -15311,7 +15538,11 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 %% For more information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
 %% in the
-%% Amazon Connect Administrator Guide.
+%% Amazon Connect Administrator Guide. For a mapping of the API name and
+%% user interface name of the security profile permissions, see List of
+%% security profile
+%% permissions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec list_security_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
@@ -16105,6 +16336,41 @@ resume_contact_recording(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches AgentStatuses in an Amazon Connect instance, with optional
+%% filtering.
+-spec search_agent_statuses(aws_client:aws_client(), search_agent_statuses_request()) ->
+    {ok, search_agent_statuses_response(), tuple()} |
+    {error, any()} |
+    {error, search_agent_statuses_errors(), tuple()}.
+search_agent_statuses(Client, Input) ->
+    search_agent_statuses(Client, Input, []).
+
+-spec search_agent_statuses(aws_client:aws_client(), search_agent_statuses_request(), proplists:proplist()) ->
+    {ok, search_agent_statuses_response(), tuple()} |
+    {error, any()} |
+    {error, search_agent_statuses_errors(), tuple()}.
+search_agent_statuses(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-agent-statuses"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches for available phone numbers that you can claim to your
 %% Amazon Connect instance
 %% or traffic distribution group.
@@ -16287,7 +16553,15 @@ search_hours_of_operations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Predefined attributes that meet certain criteria.
+%% @doc Searches predefined attributes that meet certain criteria.
+%%
+%% Predefined
+%% attributes are attributes in an Amazon Connect instance that can be used
+%% to route
+%% contacts to an agent or pools of agents within a queue. For more
+%% information, see Create
+%% predefined attributes for routing contacts to agents:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 -spec search_predefined_attributes(aws_client:aws_client(), search_predefined_attributes_request()) ->
     {ok, search_predefined_attributes_response(), tuple()} |
     {error, any()} |
@@ -16499,6 +16773,15 @@ search_routing_profiles(Client, Input0, Options0) ->
 %% @doc Searches security profiles in an Amazon Connect instance, with
 %% optional
 %% filtering.
+%%
+%% For information about security profiles, see Security Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
+%% in the
+%% Amazon Connect Administrator Guide. For a mapping of the API name and
+%% user interface name of the security profile permissions, see List of
+%% security profile
+%% permissions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec search_security_profiles(aws_client:aws_client(), search_security_profiles_request()) ->
     {ok, search_security_profiles_response(), tuple()} |
     {error, any()} |
@@ -16513,6 +16796,47 @@ search_security_profiles(Client, Input) ->
 search_security_profiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-security-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches UserHierarchyGroups in an Amazon Connect instance, with
+%% optional
+%% filtering.
+%%
+%% The UserHierarchyGroup with `&quot;LevelId&quot;: &quot;0&quot;' is
+%% the foundation for building
+%% levels on top of an instance. It is not user-definable, nor is it visible
+%% in the UI.
+-spec search_user_hierarchy_groups(aws_client:aws_client(), search_user_hierarchy_groups_request()) ->
+    {ok, search_user_hierarchy_groups_response(), tuple()} |
+    {error, any()} |
+    {error, search_user_hierarchy_groups_errors(), tuple()}.
+search_user_hierarchy_groups(Client, Input) ->
+    search_user_hierarchy_groups(Client, Input, []).
+
+-spec search_user_hierarchy_groups(aws_client:aws_client(), search_user_hierarchy_groups_request(), proplists:proplist()) ->
+    {ok, search_user_hierarchy_groups_response(), tuple()} |
+    {error, any()} |
+    {error, search_user_hierarchy_groups_errors(), tuple()}.
+search_user_hierarchy_groups(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-user-hierarchy-groups"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -18370,6 +18694,14 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 
 %% @doc Updates a predefined attribute for the specified Amazon Connect
 %% instance.
+%%
+%% Predefined
+%% attributes are attributes in an Amazon Connect instance that can be used
+%% to route
+%% contacts to an agent or pools of agents within a queue. For more
+%% information, see Create
+%% predefined attributes for routing contacts to agents:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 -spec update_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), update_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -18944,6 +19276,15 @@ update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a security profile.
+%%
+%% For information about security profiles, see Security Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
+%% in the
+%% Amazon Connect Administrator Guide. For a mapping of the API name and
+%% user interface name of the security profile permissions, see List of
+%% security profile
+%% permissions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html.
 -spec update_security_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_security_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

@@ -7,7 +7,7 @@
 %% standards and best practices.
 %%
 %% Security Hub collects security data across Amazon Web Services accounts,
-%% Amazon Web Services, and
+%% Amazon Web Servicesservices, and
 %% supported third-party products and helps you analyze your security trends
 %% and identify the highest priority security
 %% issues.
@@ -26,12 +26,12 @@
 %% compliance against security best practices.
 %%
 %% In addition to generating control findings, Security Hub also receives
-%% findings from other Amazon Web Services,
+%% findings from other Amazon Web Servicesservices,
 %% such as Amazon GuardDuty and Amazon Inspector, and
 %% supported third-party products. This gives you a single pane of glass into
 %% a variety of security-related issues. You
-%% can also send Security Hub findings to other Amazon Web Services and
-%% supported third-party products.
+%% can also send Security Hub findings to other Amazon Web Servicesservices
+%% and supported third-party products.
 %%
 %% Security Hub offers automation features that help you triage and remediate
 %% security issues. For example,
@@ -51,7 +51,7 @@
 %% user guide explains key concepts and provides procedures
 %% that demonstrate how to use Security Hub features. It also provides
 %% information about topics such as
-%% integrating Security Hub with other Amazon Web Services.
+%% integrating Security Hub with other Amazon Web Servicesservices.
 %%
 %% In addition to interacting with Security Hub by making calls to the
 %% Security Hub API, you can
@@ -61,8 +61,8 @@
 %% and platforms, such as PowerShell,
 %% Java, Go, Python, C++, and .NET. These tools and SDKs provide convenient,
 %% programmatic access to
-%% Security Hub and other Amazon Web Services . They also handle tasks such
-%% as signing requests,
+%% Security Hub and other Amazon Web Servicesservices . They also handle
+%% tasks such as signing requests,
 %% managing errors, and retrying requests automatically. For information
 %% about installing and using the Amazon Web Services tools
 %% and SDKs, see Tools to Build on Amazon Web Services:
@@ -12361,15 +12361,17 @@ update_finding_aggregator(Client, Input0, Options0) ->
 %% Instead of `UpdateFindings', use
 %% the `BatchUpdateFindings' operation.
 %%
-%% Updates the `Note' and `RecordState' of the Security
-%% Hub-aggregated
+%% The `UpdateFindings' operation updates the `Note' and
+%% `RecordState' of the Security Hub aggregated
 %% findings that the filter attributes specify. Any member account that can
 %% view the finding
-%% also sees the update to the finding.
+%% can also see the update to the finding.
 %%
-%% Finding updates made with `UpdateFindings' might not be persisted if
-%% the same finding is later updated by the
-%% finding provider through the `BatchImportFindings' operation.
+%% Finding updates made with `UpdateFindings' aren't persisted if the
+%% same finding is later updated by the
+%% finding provider through the `BatchImportFindings' operation. In
+%% addition, Security Hub doesn't
+%% record updates made with `UpdateFindings' in the finding history.
 -spec update_findings(aws_client:aws_client(), update_findings_request()) ->
     {ok, update_findings_response(), tuple()} |
     {error, any()} |

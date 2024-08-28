@@ -140,7 +140,8 @@
 %% Example:
 %% id_mapping_techniques() :: #{
 %%   <<"idMappingType">> => list(any()),
-%%   <<"providerProperties">> => provider_properties()
+%%   <<"providerProperties">> => provider_properties(),
+%%   <<"ruleBasedProperties">> => id_mapping_rule_based_properties()
 %% }
 -type id_mapping_techniques() :: #{binary() => any()}.
 
@@ -320,7 +321,8 @@
 %% Example:
 %% id_namespace_id_mapping_workflow_properties() :: #{
 %%   <<"idMappingType">> => list(any()),
-%%   <<"providerProperties">> => namespace_provider_properties()
+%%   <<"providerProperties">> => namespace_provider_properties(),
+%%   <<"ruleBasedProperties">> => namespace_rule_based_properties()
 %% }
 -type id_namespace_id_mapping_workflow_properties() :: #{binary() => any()}.
 
@@ -409,6 +411,16 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type get_schema_mapping_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% namespace_rule_based_properties() :: #{
+%%   <<"attributeMatchingModel">> => list(any()),
+%%   <<"recordMatchingModels">> => list(list(any())()),
+%%   <<"ruleDefinitionTypes">> => list(list(any())()),
+%%   <<"rules">> => list(rule()())
+%% }
+-type namespace_rule_based_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -536,6 +548,9 @@
 %% id_mapping_job_metrics() :: #{
 %%   <<"inputRecords">> => [integer()],
 %%   <<"recordsNotProcessed">> => [integer()],
+%%   <<"totalMappedRecords">> => [integer()],
+%%   <<"totalMappedSourceRecords">> => [integer()],
+%%   <<"totalMappedTargetRecords">> => [integer()],
 %%   <<"totalRecordsProcessed">> => [integer()]
 %% }
 -type id_mapping_job_metrics() :: #{binary() => any()}.
@@ -547,7 +562,7 @@
 %%   <<"idMappingTechniques">> := id_mapping_techniques(),
 %%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()()),
 %%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
-%%   <<"roleArn">> := string(),
+%%   <<"roleArn">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"workflowName">> := string()
 %% }
@@ -639,6 +654,13 @@
 %% Example:
 %% get_provider_service_input() :: #{}
 -type get_provider_service_input() :: #{}.
+
+
+%% Example:
+%% id_namespace_id_mapping_workflow_metadata() :: #{
+%%   <<"idMappingType">> => list(any())
+%% }
+-type id_namespace_id_mapping_workflow_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -734,7 +756,7 @@
 %%   <<"idMappingTechniques">> := id_mapping_techniques(),
 %%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()()),
 %%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
-%%   <<"roleArn">> := string()
+%%   <<"roleArn">> => string()
 %% }
 -type update_id_mapping_workflow_input() :: #{binary() => any()}.
 
@@ -951,6 +973,7 @@
 %% id_namespace_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_metadata()()),
 %%   <<"idNamespaceArn">> => string(),
 %%   <<"idNamespaceName">> => string(),
 %%   <<"type">> => list(any()),
@@ -988,6 +1011,7 @@
 %% schema_input_attribute() :: #{
 %%   <<"fieldName">> => string(),
 %%   <<"groupName">> => string(),
+%%   <<"hashed">> => [boolean()],
 %%   <<"matchKey">> => string(),
 %%   <<"subType">> => string(),
 %%   <<"type">> => list(any())
@@ -1029,6 +1053,7 @@
 %% Example:
 %% rule_based_properties() :: #{
 %%   <<"attributeMatchingModel">> => list(any()),
+%%   <<"matchPurpose">> => list(any()),
 %%   <<"rules">> => list(rule()())
 %% }
 -type rule_based_properties() :: #{binary() => any()}.
@@ -1048,6 +1073,16 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type create_id_namespace_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_rule_based_properties() :: #{
+%%   <<"attributeMatchingModel">> => list(any()),
+%%   <<"recordMatchingModel">> => list(any()),
+%%   <<"ruleDefinitionType">> => list(any()),
+%%   <<"rules">> => list(rule()())
+%% }
+-type id_mapping_rule_based_properties() :: #{binary() => any()}.
 
 
 %% Example:

@@ -1,22 +1,30 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Contact Lens for Amazon Connect enables you to analyze conversations
-%% between customer and agents,
-%% by using speech transcription, natural language processing, and
-%% intelligent search
+%% @doc
+%%
+%% Contact Lens actions:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Contact_Lens.html
+%%
+%% Contact Lens data types:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Contact_Lens.html
+%%
+%% Amazon Connect Contact Lens enables you to analyze conversations between
+%% customer and agents, by using
+%% speech transcription, natural language processing, and intelligent search
 %% capabilities.
 %%
 %% It performs sentiment analysis, detects issues, and enables you to
 %% automatically
 %% categorize contacts.
 %%
-%% Contact Lens for Amazon Connect provides both real-time and post-call
+%% Amazon Connect Contact Lens provides both real-time and post-call
 %% analytics of customer-agent
-%% conversations. For more information, see Analyze conversations using
-%% Contact Lens:
+%% conversations. For more information, see Analyze conversations
+%% using speech analytics:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/analyze-conversations.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 -module(aws_connect_contact_lens).
 
 -export([list_realtime_contact_analysis_segments/2,
@@ -104,8 +112,18 @@
 
 
 %% Example:
+%% post_contact_summary() :: #{
+%%   <<"Content">> => string(),
+%%   <<"FailureCode">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type post_contact_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% realtime_contact_analysis_segment() :: #{
 %%   <<"Categories">> => categories(),
+%%   <<"PostContactSummary">> => post_contact_summary(),
 %%   <<"Transcript">> => transcript()
 %% }
 -type realtime_contact_analysis_segment() :: #{binary() => any()}.

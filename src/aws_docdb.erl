@@ -82,6 +82,8 @@
          describe_pending_maintenance_actions/3,
          failover_db_cluster/2,
          failover_db_cluster/3,
+         failover_global_cluster/2,
+         failover_global_cluster/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          modify_db_cluster/2,
@@ -682,6 +684,12 @@
 %%   <<"message">> => string()
 %% }
 -type db_subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% failover_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type failover_global_cluster_result() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_global_cluster_state_fault() :: #{
@@ -1646,6 +1654,15 @@
 -type create_db_instance_result() :: #{binary() => any()}.
 
 %% Example:
+%% failover_global_cluster_message() :: #{
+%%   <<"AllowDataLoss">> => boolean(),
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"Switchover">> => boolean(),
+%%   <<"TargetDbClusterIdentifier">> := string()
+%% }
+-type failover_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
 %% db_cluster_parameter_group_details() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"Parameters">> => list(parameter()())
@@ -1845,6 +1862,12 @@
     invalid_db_instance_state_fault() | 
     db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault().
+
+-type failover_global_cluster_errors() ::
+    global_cluster_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
+    invalid_global_cluster_state_fault().
 
 -type list_tags_for_resource_errors() ::
     db_cluster_not_found_fault() | 
@@ -2747,6 +2770,33 @@ failover_db_cluster(Client, Input)
 failover_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverDBCluster">>, Input, Options).
+
+%% @doc Promotes the specified secondary DB cluster to be the primary DB
+%% cluster in the global cluster when failing over a global cluster occurs.
+%%
+%% Use this operation to respond to an unplanned event, such as a regional
+%% disaster in the primary region.
+%% Failing over can result in a loss of write transaction data that
+%% wasn't replicated to the chosen secondary before the failover event
+%% occurred.
+%% However, the recovery process that promotes a DB instance on the chosen
+%% seconday DB cluster to be the primary writer DB instance guarantees that
+%% the data is in a transactionally consistent state.
+-spec failover_global_cluster(aws_client:aws_client(), failover_global_cluster_message()) ->
+    {ok, failover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, failover_global_cluster_errors(), tuple()}.
+failover_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    failover_global_cluster(Client, Input, []).
+
+-spec failover_global_cluster(aws_client:aws_client(), failover_global_cluster_message(), proplists:proplist()) ->
+    {ok, failover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, failover_global_cluster_errors(), tuple()}.
+failover_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"FailoverGlobalCluster">>, Input, Options).
 
 %% @doc Lists all tags on an Amazon DocumentDB resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->

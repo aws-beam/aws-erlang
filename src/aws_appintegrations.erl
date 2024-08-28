@@ -1,26 +1,41 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Amazon AppIntegrations service enables you to configure and reuse
+%% @doc
+%%
+%% Amazon AppIntegrations
+%% actions:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_AppIntegrations_Service.html
+%%
+%% Amazon AppIntegrations
+%% data types:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_AppIntegrations_Service.html
+%%
+%% The Amazon AppIntegrations service enables you to configure and reuse
 %% connections to external
 %% applications.
 %%
 %% For information about how you can use external applications with Amazon
 %% Connect, see
-%% Set up pre-built
-%% integrations:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/crm.html and Deliver
-%% information to agents
-%% using Amazon Connect Wisdom:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-wisdom.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% the following topics in the Amazon Connect Administrator
+%% Guide:
+%%
+%% Third-party
+%% applications (3p apps) in the agent workspace:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/3p-apps.html
+%%
+%% Use
+%% Amazon Q in Connect for generative AI–powered agent assistance in
+%% real-time:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-q-connect.html
 -module(aws_appintegrations).
 
 -export([create_application/2,
          create_application/3,
          create_data_integration/2,
          create_data_integration/3,
+         create_data_integration_association/3,
+         create_data_integration_association/4,
          create_event_integration/2,
          create_event_integration/3,
          delete_application/3,
@@ -67,6 +82,8 @@
          update_application/4,
          update_data_integration/3,
          update_data_integration/4,
+         update_data_integration_association/4,
+         update_data_integration_association/5,
          update_event_integration/3,
          update_event_integration/4]).
 
@@ -86,7 +103,10 @@
 %% data_integration_association_summary() :: #{
 %%   <<"ClientId">> => string(),
 %%   <<"DataIntegrationArn">> => string(),
-%%   <<"DataIntegrationAssociationArn">> => string()
+%%   <<"DataIntegrationAssociationArn">> => string(),
+%%   <<"DestinationURI">> => string(),
+%%   <<"ExecutionConfiguration">> => execution_configuration(),
+%%   <<"LastExecutionStatus">> => last_execution_status()
 %% }
 -type data_integration_association_summary() :: #{binary() => any()}.
 
@@ -111,6 +131,14 @@
 %% Example:
 %% get_event_integration_request() :: #{}
 -type get_event_integration_request() :: #{}.
+
+
+%% Example:
+%% last_execution_status() :: #{
+%%   <<"ExecutionStatus">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type last_execution_status() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -163,6 +191,10 @@
 %% }
 -type application_source_config() :: #{binary() => any()}.
 
+%% Example:
+%% update_data_integration_association_response() :: #{}
+-type update_data_integration_association_response() :: #{}.
+
 
 %% Example:
 %% create_data_integration_request() :: #{
@@ -173,7 +205,7 @@
 %%   <<"Name">> := string(),
 %%   <<"ObjectConfiguration">> => map(),
 %%   <<"ScheduleConfig">> => schedule_configuration(),
-%%   <<"SourceURI">> := string(),
+%%   <<"SourceURI">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_data_integration_request() :: #{binary() => any()}.
@@ -200,6 +232,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_integration_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_integration_association_request() :: #{
+%%   <<"ClientAssociationMetadata">> => map(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationURI">> => string(),
+%%   <<"ExecutionConfiguration">> => execution_configuration(),
+%%   <<"ObjectConfiguration">> => map()
+%% }
+-type create_data_integration_association_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -314,6 +358,15 @@
 
 
 %% Example:
+%% execution_configuration() :: #{
+%%   <<"ExecutionMode">> => list(any()),
+%%   <<"OnDemandConfiguration">> => on_demand_configuration(),
+%%   <<"ScheduleConfiguration">> => schedule_configuration()
+%% }
+-type execution_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% event_filter() :: #{
 %%   <<"Source">> => string()
 %% }
@@ -333,6 +386,14 @@
 %% Example:
 %% delete_application_response() :: #{}
 -type delete_application_response() :: #{}.
+
+
+%% Example:
+%% create_data_integration_association_response() :: #{
+%%   <<"DataIntegrationArn">> => string(),
+%%   <<"DataIntegrationAssociationId">> => string()
+%% }
+-type create_data_integration_association_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_event_integration_response() :: #{}
@@ -439,6 +500,13 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% update_data_integration_association_request() :: #{
+%%   <<"ExecutionConfiguration">> := execution_configuration()
+%% }
+-type update_data_integration_association_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -572,6 +640,14 @@
 %% delete_application_request() :: #{}
 -type delete_application_request() :: #{}.
 
+
+%% Example:
+%% on_demand_configuration() :: #{
+%%   <<"EndTime">> => string(),
+%%   <<"StartTime">> => string()
+%% }
+-type on_demand_configuration() :: #{binary() => any()}.
+
 -type create_application_errors() ::
     duplicate_resource_exception() | 
     throttling_exception() | 
@@ -588,6 +664,14 @@
     access_denied_exception() | 
     resource_quota_exceeded_exception() | 
     invalid_request_exception().
+
+-type create_data_integration_association_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    resource_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 -type create_event_integration_errors() ::
     duplicate_resource_exception() | 
@@ -711,6 +795,13 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type update_data_integration_association_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type update_event_integration_errors() ::
     throttling_exception() | 
     internal_service_error() | 
@@ -722,9 +813,7 @@
 %% API
 %%====================================================================
 
-%% @doc This API is in preview release and subject to change.
-%%
-%% Creates and persists an Application resource.
+%% @doc Creates and persists an Application resource.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
@@ -798,6 +887,40 @@ create_data_integration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates and persists a DataIntegrationAssociation resource.
+-spec create_data_integration_association(aws_client:aws_client(), binary() | list(), create_data_integration_association_request()) ->
+    {ok, create_data_integration_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_integration_association_errors(), tuple()}.
+create_data_integration_association(Client, DataIntegrationIdentifier, Input) ->
+    create_data_integration_association(Client, DataIntegrationIdentifier, Input, []).
+
+-spec create_data_integration_association(aws_client:aws_client(), binary() | list(), create_data_integration_association_request(), proplists:proplist()) ->
+    {ok, create_data_integration_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_integration_association_errors(), tuple()}.
+create_data_integration_association(Client, DataIntegrationIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/dataIntegrations/", aws_util:encode_uri(DataIntegrationIdentifier), "/associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an EventIntegration, given a specified name, description, and
 %% a reference to an
 %% Amazon EventBridge bus in your account and a partner event source that
@@ -842,8 +965,8 @@ create_event_integration(Client, Input0, Options0) ->
 
 %% @doc Deletes the Application.
 %%
-%% Only Applications that don't have any Application Associations can be
-%% deleted.
+%% Only Applications that don't have any Application Associations
+%% can be deleted.
 -spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
@@ -960,9 +1083,7 @@ delete_event_integration(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release and subject to change.
-%%
-%% Get an Application resource.
+%% @doc Get an Application resource.
 -spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
@@ -1123,9 +1244,7 @@ list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release and subject to change.
-%%
-%% Lists applications in the account.
+%% @doc Lists applications in the account.
 -spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
@@ -1457,9 +1576,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release and subject to change.
-%%
-%% Updates and persists an Application resource.
+%% @doc Updates and persists an Application resource.
 -spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
@@ -1515,6 +1632,43 @@ update_data_integration(Client, Identifier, Input) ->
 update_data_integration(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/dataIntegrations/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates and persists a DataIntegrationAssociation resource.
+%%
+%% Updating a DataIntegrationAssociation with ExecutionConfiguration will
+%% rerun the on-demand job.
+-spec update_data_integration_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_integration_association_request()) ->
+    {ok, update_data_integration_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_integration_association_errors(), tuple()}.
+update_data_integration_association(Client, DataIntegrationAssociationIdentifier, DataIntegrationIdentifier, Input) ->
+    update_data_integration_association(Client, DataIntegrationAssociationIdentifier, DataIntegrationIdentifier, Input, []).
+
+-spec update_data_integration_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_integration_association_request(), proplists:proplist()) ->
+    {ok, update_data_integration_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_integration_association_errors(), tuple()}.
+update_data_integration_association(Client, DataIntegrationAssociationIdentifier, DataIntegrationIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/dataIntegrations/", aws_util:encode_uri(DataIntegrationIdentifier), "/associations/", aws_util:encode_uri(DataIntegrationAssociationIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

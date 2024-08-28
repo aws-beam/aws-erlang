@@ -1449,47 +1449,45 @@ get_policy(Client, Input, Options)
 %% marked critical in the imported CA
 %% certificate or chain.
 %%
-%% Authority key identifier
-%%
 %% Basic constraints (must be marked critical)
 %%
-%% Certificate policies
-%%
-%% Extended key usage
-%%
-%% Inhibit anyPolicy
-%%
-%% Issuer alternative name
+%% Subject alternative names
 %%
 %% Key usage
 %%
-%% Name constraints
+%% Extended key usage
 %%
-%% Policy mappings
-%%
-%% Subject alternative name
-%%
-%% Subject directory attributes
+%% Authority key identifier
 %%
 %% Subject key identifier
 %%
+%% Issuer alternative name
+%%
+%% Subject directory attributes
+%%
 %% Subject information access
+%%
+%% Certificate policies
+%%
+%% Policy mappings
+%%
+%% Inhibit anyPolicy
 %%
 %% Amazon Web Services Private CA rejects the following extensions when they
 %% are marked critical in an
 %% imported CA certificate or chain.
 %%
-%% Authority information access
-%%
-%% CRL distribution points
-%%
-%% Freshest CRL
+%% Name constraints
 %%
 %% Policy constraints
 %%
-%% Amazon Web Services Private Certificate Authority will also reject any
-%% other extension marked as critical not contained on the preceding list of
-%% allowed extensions.
+%% CRL distribution points
+%%
+%% Authority information access
+%%
+%% Freshest CRL
+%%
+%% Any other extension
 -spec import_certificate_authority_certificate(aws_client:aws_client(), import_certificate_authority_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

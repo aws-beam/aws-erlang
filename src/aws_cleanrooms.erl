@@ -40,6 +40,12 @@
          create_configured_table_analysis_rule/4,
          create_configured_table_association/3,
          create_configured_table_association/4,
+         create_configured_table_association_analysis_rule/4,
+         create_configured_table_association_analysis_rule/5,
+         create_id_mapping_table/3,
+         create_id_mapping_table/4,
+         create_id_namespace_association/3,
+         create_id_namespace_association/4,
          create_membership/2,
          create_membership/3,
          create_privacy_budget_template/3,
@@ -56,6 +62,12 @@
          delete_configured_table_analysis_rule/5,
          delete_configured_table_association/4,
          delete_configured_table_association/5,
+         delete_configured_table_association_analysis_rule/5,
+         delete_configured_table_association_analysis_rule/6,
+         delete_id_mapping_table/4,
+         delete_id_mapping_table/5,
+         delete_id_namespace_association/4,
+         delete_id_namespace_association/5,
          delete_member/4,
          delete_member/5,
          delete_membership/3,
@@ -74,6 +86,9 @@
          get_collaboration_configured_audience_model_association/3,
          get_collaboration_configured_audience_model_association/5,
          get_collaboration_configured_audience_model_association/6,
+         get_collaboration_id_namespace_association/3,
+         get_collaboration_id_namespace_association/5,
+         get_collaboration_id_namespace_association/6,
          get_collaboration_privacy_budget_template/3,
          get_collaboration_privacy_budget_template/5,
          get_collaboration_privacy_budget_template/6,
@@ -89,6 +104,15 @@
          get_configured_table_association/3,
          get_configured_table_association/5,
          get_configured_table_association/6,
+         get_configured_table_association_analysis_rule/4,
+         get_configured_table_association_analysis_rule/6,
+         get_configured_table_association_analysis_rule/7,
+         get_id_mapping_table/3,
+         get_id_mapping_table/5,
+         get_id_mapping_table/6,
+         get_id_namespace_association/3,
+         get_id_namespace_association/5,
+         get_id_namespace_association/6,
          get_membership/2,
          get_membership/4,
          get_membership/5,
@@ -113,6 +137,9 @@
          list_collaboration_configured_audience_model_associations/2,
          list_collaboration_configured_audience_model_associations/4,
          list_collaboration_configured_audience_model_associations/5,
+         list_collaboration_id_namespace_associations/2,
+         list_collaboration_id_namespace_associations/4,
+         list_collaboration_id_namespace_associations/5,
          list_collaboration_privacy_budget_templates/2,
          list_collaboration_privacy_budget_templates/4,
          list_collaboration_privacy_budget_templates/5,
@@ -131,6 +158,12 @@
          list_configured_tables/1,
          list_configured_tables/3,
          list_configured_tables/4,
+         list_id_mapping_tables/2,
+         list_id_mapping_tables/4,
+         list_id_mapping_tables/5,
+         list_id_namespace_associations/2,
+         list_id_namespace_associations/4,
+         list_id_namespace_associations/5,
          list_members/2,
          list_members/4,
          list_members/5,
@@ -152,6 +185,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         populate_id_mapping_table/4,
+         populate_id_mapping_table/5,
          preview_privacy_impact/3,
          preview_privacy_impact/4,
          start_protected_query/3,
@@ -172,6 +207,12 @@
          update_configured_table_analysis_rule/5,
          update_configured_table_association/4,
          update_configured_table_association/5,
+         update_configured_table_association_analysis_rule/5,
+         update_configured_table_association_analysis_rule/6,
+         update_id_mapping_table/4,
+         update_id_mapping_table/5,
+         update_id_namespace_association/4,
+         update_id_namespace_association/5,
          update_membership/3,
          update_membership/4,
          update_privacy_budget_template/4,
@@ -264,11 +305,27 @@
 
 
 %% Example:
+%% list_id_mapping_tables_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_mapping_tables_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_members_output() :: #{
 %%   <<"memberSummaries">> := list(member_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_members_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_id_namespace_associations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_id_namespace_associations_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -294,6 +351,14 @@
 %%   <<"analysisRule">> := configured_table_analysis_rule()
 %% }
 -type get_configured_table_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_association_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list(),
+%%   <<"analysisRuleType">> := list(any())
+%% }
+-type create_configured_table_association_analysis_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -360,11 +425,39 @@
 
 
 %% Example:
+%% protected_query_member_output_configuration() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_query_member_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_analysis_templates_output() :: #{
 %%   <<"analysisTemplateSummaries">> := list(analysis_template_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_analysis_templates_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_id_namespace_association_output() :: #{}
+-type delete_id_namespace_association_output() :: #{}.
+
+
+%% Example:
+%% collaboration_id_namespace_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties_summary(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_id_namespace_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -373,6 +466,7 @@
 %%   <<"id">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
+%%   <<"receiverConfigurations">> => list(receiver_configuration()()),
 %%   <<"status">> => string()
 %% }
 -type protected_query_summary() :: #{binary() => any()}.
@@ -394,8 +488,20 @@
 -type delete_privacy_budget_template_input() :: #{}.
 
 %% Example:
+%% delete_id_mapping_table_input() :: #{}
+-type delete_id_mapping_table_input() :: #{}.
+
+%% Example:
 %% delete_membership_output() :: #{}
 -type delete_membership_output() :: #{}.
+
+
+%% Example:
+%% receiver_configuration() :: #{
+%%   <<"analysisType">> => list(any()),
+%%   <<"configurationDetails">> => list()
+%% }
+-type receiver_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -414,6 +520,28 @@
 
 
 %% Example:
+%% id_namespace_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties_summary(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type id_namespace_association_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_id_namespace_association_input() :: #{}
+-type get_collaboration_id_namespace_association_input() :: #{}.
+
+
+%% Example:
 %% list_configured_tables_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -426,6 +554,14 @@
 %%   <<"collaboration">> := collaboration()
 %% }
 -type create_collaboration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_association_input_reference_config() :: #{
+%%   <<"inputReferenceArn">> => string(),
+%%   <<"manageResourcePolicies">> => [boolean()]
+%% }
+-type id_namespace_association_input_reference_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -517,6 +653,7 @@
 
 %% Example:
 %% configured_table_association() :: #{
+%%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"arn">> => string(),
 %%   <<"configuredTableArn">> => string(),
 %%   <<"configuredTableId">> => string(),
@@ -537,6 +674,10 @@
 %%   <<"membership">> := membership()
 %% }
 -type get_membership_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configured_table_association_analysis_rule_output() :: #{}
+-type delete_configured_table_association_analysis_rule_output() :: #{}.
 
 
 %% Example:
@@ -569,6 +710,7 @@
 
 %% Example:
 %% analysis_rule_aggregation() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
 %%   <<"aggregateColumns">> => list(aggregate_column()()),
 %%   <<"allowedJoinOperators">> => list(string()()),
 %%   <<"dimensionColumns">> => list(string()()),
@@ -611,10 +753,34 @@
 
 
 %% Example:
+%% update_id_mapping_table_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type update_id_mapping_table_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_id_namespace_association_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingConfig">> => id_mapping_config(),
+%%   <<"name">> => string()
+%% }
+-type update_id_namespace_association_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_collaboration_output() :: #{
 %%   <<"collaboration">> := collaboration()
 %% }
 -type update_collaboration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_mapping_table_output() :: #{
+%%   <<"idMappingTable">> => id_mapping_table()
+%% }
+-type create_id_mapping_table_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -629,6 +795,7 @@
 %% Example:
 %% schema_status_detail() :: #{
 %%   <<"analysisRuleType">> => list(any()),
+%%   <<"analysisType">> => list(any()),
 %%   <<"configurations">> => list(list(any())()),
 %%   <<"reasons">> => list(schema_status_reason()()),
 %%   <<"status">> => list(any())
@@ -675,12 +842,26 @@
 
 
 %% Example:
+%% id_mapping_table_schema_type_properties() :: #{
+%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source()())
+%% }
+-type id_mapping_table_schema_type_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_memberships_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"status">> => string()
 %% }
 -type list_memberships_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_id_namespace_association_output() :: #{
+%%   <<"idNamespaceAssociation">> => id_namespace_association()
+%% }
+-type get_id_namespace_association_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -716,9 +897,11 @@
 
 %% Example:
 %% analysis_rule_custom() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
 %%   <<"allowedAnalyses">> => list(string()()),
 %%   <<"allowedAnalysisProviders">> => list(string()()),
-%%   <<"differentialPrivacy">> => differential_privacy_configuration()
+%%   <<"differentialPrivacy">> => differential_privacy_configuration(),
+%%   <<"disallowedOutputColumns">> => list(string()())
 %% }
 -type analysis_rule_custom() :: #{binary() => any()}.
 
@@ -768,6 +951,13 @@
 %% }
 -type privacy_budget_template_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_configured_table_association_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => configured_table_association_analysis_rule()
+%% }
+-type create_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_collaboration_input() :: #{}
 -type delete_collaboration_input() :: #{}.
@@ -778,6 +968,14 @@
 %%   <<"targetStatus">> := string()
 %% }
 -type update_protected_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_analysis_rule_custom() :: #{
+%%   <<"allowedAdditionalAnalyses">> => list(string()()),
+%%   <<"allowedResultReceivers">> => list(string()())
+%% }
+-type configured_table_association_analysis_rule_custom() :: #{binary() => any()}.
 
 
 %% Example:
@@ -835,11 +1033,36 @@
 
 
 %% Example:
+%% create_id_mapping_table_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputReferenceConfig">> := id_mapping_table_input_reference_config(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_id_mapping_table_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_configured_table_analysis_rule_input() :: #{
 %%   <<"analysisRulePolicy">> := list(),
 %%   <<"analysisRuleType">> := list(any())
 %% }
 -type create_configured_table_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_id_namespace_association_output() :: #{
+%%   <<"idNamespaceAssociation">> => id_namespace_association()
+%% }
+-type update_id_namespace_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_constraint_require_overlap() :: #{
+%%   <<"columns">> => list(string()())
+%% }
+-type query_constraint_require_overlap() :: #{binary() => any()}.
 
 
 %% Example:
@@ -860,6 +1083,14 @@
 
 
 %% Example:
+%% id_namespace_association_input_reference_properties() :: #{
+%%   <<"idMappingWorkflowsSupported">> => list([any()]()),
+%%   <<"idNamespaceType">> => list(any())
+%% }
+-type id_namespace_association_input_reference_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% protected_query_result_configuration() :: #{
 %%   <<"outputConfiguration">> => list()
 %% }
@@ -871,6 +1102,13 @@
 %%   <<"configuredTableAssociation">> := configured_table_association()
 %% }
 -type update_configured_table_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_association_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list()
+%% }
+-type update_configured_table_association_analysis_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -959,6 +1197,13 @@
 
 
 %% Example:
+%% populate_id_mapping_table_output() :: #{
+%%   <<"idMappingJobId">> => string()
+%% }
+-type populate_id_mapping_table_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% privacy_budget_template() :: #{
 %%   <<"arn">> => string(),
 %%   <<"autoRefresh">> => list(any()),
@@ -973,6 +1218,14 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type privacy_budget_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_analysis_rule_aggregation() :: #{
+%%   <<"allowedAdditionalAnalyses">> => list(string()()),
+%%   <<"allowedResultReceivers">> => list(string()())
+%% }
+-type configured_table_association_analysis_rule_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1043,10 +1296,15 @@
 %%   <<"name">> => string(),
 %%   <<"partitionKeys">> => list(column()()),
 %%   <<"schemaStatusDetails">> => list(schema_status_detail()()),
+%%   <<"schemaTypeProperties">> => list(),
 %%   <<"type">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type schema() :: #{binary() => any()}.
+
+%% Example:
+%% get_configured_table_association_analysis_rule_input() :: #{}
+-type get_configured_table_association_analysis_rule_input() :: #{}.
 
 
 %% Example:
@@ -1062,6 +1320,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_privacy_budget_templates_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configured_table_association_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => configured_table_association_analysis_rule()
+%% }
+-type get_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1094,7 +1359,15 @@
 
 
 %% Example:
+%% id_mapping_config() :: #{
+%%   <<"allowUseAsDimensionColumn">> => [boolean()]
+%% }
+-type id_mapping_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% analysis_rule_list() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
 %%   <<"allowedJoinOperators">> => list(string()()),
 %%   <<"joinColumns">> => list(string()()),
 %%   <<"listColumns">> => list(string()())
@@ -1121,6 +1394,17 @@
 
 
 %% Example:
+%% create_id_namespace_association_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingConfig">> => id_mapping_config(),
+%%   <<"inputReferenceConfig">> := id_namespace_association_input_reference_config(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_id_namespace_association_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
@@ -1130,6 +1414,15 @@
 %% Example:
 %% get_configured_table_analysis_rule_input() :: #{}
 -type get_configured_table_analysis_rule_input() :: #{}.
+
+
+%% Example:
+%% analysis_rule_id_mapping_table() :: #{
+%%   <<"dimensionColumns">> => list(string()()),
+%%   <<"joinColumns">> => list(string()()),
+%%   <<"queryConstraints">> => list(list()())
+%% }
+-type analysis_rule_id_mapping_table() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1234,6 +1527,29 @@
 
 
 %% Example:
+%% id_mapping_table() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"inputReferenceConfig">> => id_mapping_table_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_mapping_table_input_reference_properties(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type id_mapping_table() :: #{binary() => any()}.
+
+%% Example:
+%% delete_id_mapping_table_output() :: #{}
+-type delete_id_mapping_table_output() :: #{}.
+
+
+%% Example:
 %% create_collaboration_input() :: #{
 %%   <<"creatorDisplayName">> := string(),
 %%   <<"creatorMemberAbilities">> := list(string()()),
@@ -1258,6 +1574,13 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type configured_table_analysis_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_id_mapping_table_output() :: #{
+%%   <<"idMappingTable">> => id_mapping_table()
+%% }
+-type update_id_mapping_table_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1288,12 +1611,26 @@
 
 
 %% Example:
+%% get_id_mapping_table_output() :: #{
+%%   <<"idMappingTable">> => id_mapping_table()
+%% }
+-type get_id_mapping_table_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% aggregation_constraint() :: #{
 %%   <<"columnName">> => string(),
 %%   <<"minimum">> => [integer()],
 %%   <<"type">> => string()
 %% }
 -type aggregation_constraint() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_collaboration_id_namespace_association_output() :: #{
+%%   <<"collaborationIdNamespaceAssociation">> => collaboration_id_namespace_association()
+%% }
+-type get_collaboration_id_namespace_association_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1325,6 +1662,14 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type collaboration_privacy_budget_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_namespace_associations_output() :: #{
+%%   <<"idNamespaceAssociationSummaries">> => list(id_namespace_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_namespace_associations_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_schema_analysis_rule_input() :: #{}
@@ -1372,6 +1717,13 @@
 
 
 %% Example:
+%% create_id_namespace_association_output() :: #{
+%%   <<"idNamespaceAssociation">> => id_namespace_association()
+%% }
+-type create_id_namespace_association_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
@@ -1384,6 +1736,13 @@
 %%   <<"columns">> => list(differential_privacy_column()())
 %% }
 -type differential_privacy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% direct_analysis_configuration_details() :: #{
+%%   <<"receiverAccountIds">> => list(string()())
+%% }
+-type direct_analysis_configuration_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1459,6 +1818,27 @@
 %% }
 -type update_configured_table_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% configured_table_association_analysis_rule_list() :: #{
+%%   <<"allowedAdditionalAnalyses">> => list(string()()),
+%%   <<"allowedResultReceivers">> => list(string()())
+%% }
+-type configured_table_association_analysis_rule_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_analysis_rule() :: #{
+%%   <<"configuredTableAssociationArn">> => string(),
+%%   <<"configuredTableAssociationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"policy">> => list(),
+%%   <<"type">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_table_association_analysis_rule() :: #{binary() => any()}.
+
 %% Example:
 %% get_schema_input() :: #{}
 -type get_schema_input() :: #{}.
@@ -1479,6 +1859,10 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaborations_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_id_namespace_association_input() :: #{}
+-type delete_id_namespace_association_input() :: #{}.
 
 
 %% Example:
@@ -1521,6 +1905,24 @@
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% collaboration_id_namespace_association() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"idMappingConfig">> => id_mapping_config(),
+%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_id_namespace_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1576,12 +1978,24 @@
 %% }
 -type protected_query_s_q_l_parameters() :: #{binary() => any()}.
 
+%% Example:
+%% get_id_namespace_association_input() :: #{}
+-type get_id_namespace_association_input() :: #{}.
+
 
 %% Example:
 %% get_collaboration_output() :: #{
 %%   <<"collaboration">> := collaboration()
 %% }
 -type get_collaboration_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_id_mapping_table_input() :: #{}
+-type get_id_mapping_table_input() :: #{}.
+
+%% Example:
+%% delete_configured_table_association_analysis_rule_input() :: #{}
+-type delete_configured_table_association_analysis_rule_input() :: #{}.
 
 
 %% Example:
@@ -1716,6 +2130,14 @@
 
 
 %% Example:
+%% id_mapping_table_input_source() :: #{
+%%   <<"idNamespaceAssociationId">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type id_mapping_table_input_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_protected_query_input() :: #{
 %%   <<"resultConfiguration">> => protected_query_result_configuration(),
 %%   <<"sqlParameters">> := protected_query_s_q_l_parameters(),
@@ -1804,11 +2226,38 @@
 
 
 %% Example:
+%% list_id_namespace_associations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_namespace_associations_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_configured_tables_output() :: #{
 %%   <<"configuredTableSummaries">> := list(configured_table_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_tables_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_association() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"idMappingConfig">> => id_mapping_config(),
+%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type id_namespace_association() :: #{binary() => any()}.
 
 %% Example:
 %% get_collaboration_configured_audience_model_association_input() :: #{}
@@ -1844,6 +2293,13 @@
 
 
 %% Example:
+%% id_namespace_association_input_reference_properties_summary() :: #{
+%%   <<"idNamespaceType">> => list(any())
+%% }
+-type id_namespace_association_input_reference_properties_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_schema_error() :: #{
 %%   <<"code">> => [string()],
 %%   <<"message">> => [string()],
@@ -1874,6 +2330,13 @@
 
 
 %% Example:
+%% id_mapping_table_input_reference_properties() :: #{
+%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source()())
+%% }
+-type id_mapping_table_input_reference_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% membership() :: #{
 %%   <<"arn">> => string(),
 %%   <<"collaborationArn">> => string(),
@@ -1892,9 +2355,37 @@
 %% }
 -type membership() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_configured_table_association_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => configured_table_association_analysis_rule()
+%% }
+-type update_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_table_output() :: #{}
 -type delete_configured_table_output() :: #{}.
+
+
+%% Example:
+%% id_mapping_table_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"inputReferenceConfig">> => id_mapping_table_input_reference_config(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type id_mapping_table_summary() :: #{binary() => any()}.
+
+%% Example:
+%% populate_id_mapping_table_input() :: #{}
+-type populate_id_mapping_table_input() :: #{}.
 
 
 %% Example:
@@ -1909,6 +2400,14 @@
 
 
 %% Example:
+%% id_mapping_table_input_reference_config() :: #{
+%%   <<"inputReferenceArn">> => string(),
+%%   <<"manageResourcePolicies">> => [boolean()]
+%% }
+-type id_mapping_table_input_reference_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% differential_privacy_sensitivity_parameters() :: #{
 %%   <<"aggregationExpression">> => string(),
 %%   <<"aggregationType">> => list(any()),
@@ -1920,10 +2419,26 @@
 
 
 %% Example:
+%% list_id_mapping_tables_output() :: #{
+%%   <<"idMappingTableSummaries">> => list(id_mapping_table_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_mapping_tables_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_configured_table_output() :: #{
 %%   <<"configuredTable">> := configured_table()
 %% }
 -type get_configured_table_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_id_namespace_associations_output() :: #{
+%%   <<"collaborationIdNamespaceAssociationSummaries">> => list(collaboration_id_namespace_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_id_namespace_associations_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2009,6 +2524,32 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_configured_table_association_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_id_mapping_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_id_namespace_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_membership_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2070,6 +2611,28 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_configured_table_association_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_id_mapping_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_id_namespace_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_member_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2120,6 +2683,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_collaboration_id_namespace_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_collaboration_privacy_budget_template_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2149,6 +2719,27 @@
     resource_not_found_exception().
 
 -type get_configured_table_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_table_association_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_id_mapping_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_id_namespace_association_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2211,6 +2802,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_collaboration_id_namespace_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_collaboration_privacy_budget_templates_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2250,6 +2848,20 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_id_mapping_tables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_id_namespace_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_members_errors() ::
     throttling_exception() | 
@@ -2295,6 +2907,14 @@
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     resource_not_found_exception().
+
+-type populate_id_mapping_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type preview_privacy_impact_errors() ::
     throttling_exception() | 
@@ -2362,6 +2982,28 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type update_configured_table_association_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_id_mapping_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_id_namespace_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_membership_errors() ::
     throttling_exception() | 
@@ -2706,6 +3348,108 @@ create_configured_table_association(Client, MembershipIdentifier, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new analysis rule for an associated configured table.
+-spec create_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_configured_table_association_analysis_rule_input()) ->
+    {ok, create_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, create_configured_table_association_analysis_rule_errors(), tuple()}.
+create_configured_table_association_analysis_rule(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input) ->
+    create_configured_table_association_analysis_rule(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input, []).
+
+-spec create_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_configured_table_association_analysis_rule_input(), proplists:proplist()) ->
+    {ok, create_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, create_configured_table_association_analysis_rule_errors(), tuple()}.
+create_configured_table_association_analysis_rule(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), "/analysisRule"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an ID mapping table.
+-spec create_id_mapping_table(aws_client:aws_client(), binary() | list(), create_id_mapping_table_input()) ->
+    {ok, create_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, create_id_mapping_table_errors(), tuple()}.
+create_id_mapping_table(Client, MembershipIdentifier, Input) ->
+    create_id_mapping_table(Client, MembershipIdentifier, Input, []).
+
+-spec create_id_mapping_table(aws_client:aws_client(), binary() | list(), create_id_mapping_table_input(), proplists:proplist()) ->
+    {ok, create_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, create_id_mapping_table_errors(), tuple()}.
+create_id_mapping_table(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idmappingtables"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an ID namespace association.
+-spec create_id_namespace_association(aws_client:aws_client(), binary() | list(), create_id_namespace_association_input()) ->
+    {ok, create_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, create_id_namespace_association_errors(), tuple()}.
+create_id_namespace_association(Client, MembershipIdentifier, Input) ->
+    create_id_namespace_association(Client, MembershipIdentifier, Input, []).
+
+-spec create_id_namespace_association(aws_client:aws_client(), binary() | list(), create_id_namespace_association_input(), proplists:proplist()) ->
+    {ok, create_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, create_id_namespace_association_errors(), tuple()}.
+create_id_namespace_association(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idnamespaceassociations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a membership for a specific collaboration identifier and
 %% joins the
 %% collaboration.
@@ -2987,6 +3731,109 @@ delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes
+%% an analysis rule for a configured table association.
+-spec delete_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_configured_table_association_analysis_rule_input()) ->
+    {ok, delete_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_configured_table_association_analysis_rule_errors(), tuple()}.
+delete_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input) ->
+    delete_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input, []).
+
+-spec delete_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_configured_table_association_analysis_rule_input(), proplists:proplist()) ->
+    {ok, delete_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_configured_table_association_analysis_rule_errors(), tuple()}.
+delete_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an ID mapping table.
+-spec delete_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list(), delete_id_mapping_table_input()) ->
+    {ok, delete_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, delete_id_mapping_table_errors(), tuple()}.
+delete_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input) ->
+    delete_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec delete_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list(), delete_id_mapping_table_input(), proplists:proplist()) ->
+    {ok, delete_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, delete_id_mapping_table_errors(), tuple()}.
+delete_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idmappingtables/", aws_util:encode_uri(IdMappingTableIdentifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an ID namespace association.
+-spec delete_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_id_namespace_association_input()) ->
+    {ok, delete_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, delete_id_namespace_association_errors(), tuple()}.
+delete_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, Input) ->
+    delete_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, Input, []).
+
+-spec delete_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_id_namespace_association_input(), proplists:proplist()) ->
+    {ok, delete_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, delete_id_namespace_association_errors(), tuple()}.
+delete_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idnamespaceassociations/", aws_util:encode_uri(IdNamespaceAssociationIdentifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes the specified member from a collaboration.
 %%
 %% The removed member is placed in the
@@ -3245,6 +4092,43 @@ get_collaboration_configured_audience_model_association(Client, CollaborationIde
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves an ID namespace association from a specific collaboration.
+-spec get_collaboration_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_collaboration_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_id_namespace_association_errors(), tuple()}.
+get_collaboration_id_namespace_association(Client, CollaborationIdentifier, IdNamespaceAssociationIdentifier)
+  when is_map(Client) ->
+    get_collaboration_id_namespace_association(Client, CollaborationIdentifier, IdNamespaceAssociationIdentifier, #{}, #{}).
+
+-spec get_collaboration_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_collaboration_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_id_namespace_association_errors(), tuple()}.
+get_collaboration_id_namespace_association(Client, CollaborationIdentifier, IdNamespaceAssociationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_collaboration_id_namespace_association(Client, CollaborationIdentifier, IdNamespaceAssociationIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_collaboration_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_collaboration_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_id_namespace_association_errors(), tuple()}.
+get_collaboration_id_namespace_association(Client, CollaborationIdentifier, IdNamespaceAssociationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/idnamespaceassociations/", aws_util:encode_uri(IdNamespaceAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns details about a specified privacy budget template.
 -spec get_collaboration_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_collaboration_privacy_budget_template_output(), tuple()} |
@@ -3417,6 +4301,119 @@ get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, M
 get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc
+%% Retrieves
+%% the analysis rule for a configured table association.
+-spec get_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_configured_table_association_analysis_rule_errors(), tuple()}.
+get_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    get_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, #{}, #{}).
+
+-spec get_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_configured_table_association_analysis_rule_errors(), tuple()}.
+get_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_configured_table_association_analysis_rule_errors(), tuple()}.
+get_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves an ID mapping table.
+-spec get_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_mapping_table_errors(), tuple()}.
+get_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    get_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, #{}, #{}).
+
+-spec get_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_mapping_table_errors(), tuple()}.
+get_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_mapping_table_errors(), tuple()}.
+get_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idmappingtables/", aws_util:encode_uri(IdMappingTableIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves an ID namespace association.
+-spec get_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_namespace_association_errors(), tuple()}.
+get_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    get_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, #{}, #{}).
+
+-spec get_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_namespace_association_errors(), tuple()}.
+get_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_namespace_association_errors(), tuple()}.
+get_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idnamespaceassociations/", aws_util:encode_uri(IdNamespaceAssociationIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3741,6 +4738,48 @@ list_collaboration_configured_audience_model_associations(Client, CollaborationI
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of the ID namespace associations in a collaboration.
+-spec list_collaboration_id_namespace_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_collaboration_id_namespace_associations_output(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_id_namespace_associations_errors(), tuple()}.
+list_collaboration_id_namespace_associations(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_id_namespace_associations(Client, CollaborationIdentifier, #{}, #{}).
+
+-spec list_collaboration_id_namespace_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_collaboration_id_namespace_associations_output(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_id_namespace_associations_errors(), tuple()}.
+list_collaboration_id_namespace_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_id_namespace_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_collaboration_id_namespace_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_collaboration_id_namespace_associations_output(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_id_namespace_associations_errors(), tuple()}.
+list_collaboration_id_namespace_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/idnamespaceassociations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns an array that summarizes each privacy budget template in a
 %% specified collaboration.
 -spec list_collaboration_privacy_budget_templates(aws_client:aws_client(), binary() | list()) ->
@@ -3984,6 +5023,90 @@ list_configured_tables(Client, QueryMap, HeadersMap)
 list_configured_tables(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuredTables"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of ID mapping tables.
+-spec list_id_mapping_tables(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_id_mapping_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_mapping_tables_errors(), tuple()}.
+list_id_mapping_tables(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_id_mapping_tables(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_id_mapping_tables(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_id_mapping_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_mapping_tables_errors(), tuple()}.
+list_id_mapping_tables(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_id_mapping_tables(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_id_mapping_tables(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_id_mapping_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_mapping_tables_errors(), tuple()}.
+list_id_mapping_tables(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idmappingtables"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of ID namespace associations.
+-spec list_id_namespace_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_id_namespace_associations_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_namespace_associations_errors(), tuple()}.
+list_id_namespace_associations(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_id_namespace_associations(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_id_namespace_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_id_namespace_associations_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_namespace_associations_errors(), tuple()}.
+list_id_namespace_associations(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_id_namespace_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_id_namespace_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_id_namespace_associations_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_namespace_associations_errors(), tuple()}.
+list_id_namespace_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idnamespaceassociations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4296,6 +5419,41 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Defines the information that's necessary to populate an ID
+%% mapping table.
+-spec populate_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list(), populate_id_mapping_table_input()) ->
+    {ok, populate_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, populate_id_mapping_table_errors(), tuple()}.
+populate_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input) ->
+    populate_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec populate_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list(), populate_id_mapping_table_input(), proplists:proplist()) ->
+    {ok, populate_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, populate_id_mapping_table_errors(), tuple()}.
+populate_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idmappingtables/", aws_util:encode_uri(IdMappingTableIdentifier), "/populate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc An estimate of the number of aggregation functions that the member
 %% who can query can run given epsilon and noise parameters.
@@ -4622,6 +5780,112 @@ update_configured_table_association(Client, ConfiguredTableAssociationIdentifier
 update_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Updates
+%% the analysis rule for a configured table association.
+-spec update_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_configured_table_association_analysis_rule_input()) ->
+    {ok, update_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, update_configured_table_association_analysis_rule_errors(), tuple()}.
+update_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input) ->
+    update_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input, []).
+
+-spec update_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_configured_table_association_analysis_rule_input(), proplists:proplist()) ->
+    {ok, update_configured_table_association_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, update_configured_table_association_analysis_rule_errors(), tuple()}.
+update_configured_table_association_analysis_rule(Client, AnalysisRuleType, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredTableAssociations/", aws_util:encode_uri(ConfiguredTableAssociationIdentifier), "/analysisRule/", aws_util:encode_uri(AnalysisRuleType), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the details that are necessary to update an ID mapping
+%% table.
+-spec update_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list(), update_id_mapping_table_input()) ->
+    {ok, update_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, update_id_mapping_table_errors(), tuple()}.
+update_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input) ->
+    update_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input, []).
+
+-spec update_id_mapping_table(aws_client:aws_client(), binary() | list(), binary() | list(), update_id_mapping_table_input(), proplists:proplist()) ->
+    {ok, update_id_mapping_table_output(), tuple()} |
+    {error, any()} |
+    {error, update_id_mapping_table_errors(), tuple()}.
+update_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idmappingtables/", aws_util:encode_uri(IdMappingTableIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the details that are necessary to update an ID namespace
+%% association.
+-spec update_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_id_namespace_association_input()) ->
+    {ok, update_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, update_id_namespace_association_errors(), tuple()}.
+update_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, Input) ->
+    update_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, Input, []).
+
+-spec update_id_namespace_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_id_namespace_association_input(), proplists:proplist()) ->
+    {ok, update_id_namespace_association_output(), tuple()} |
+    {error, any()} |
+    {error, update_id_namespace_association_errors(), tuple()}.
+update_id_namespace_association(Client, IdNamespaceAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/idnamespaceassociations/", aws_util:encode_uri(IdNamespaceAssociationIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -36,6 +36,8 @@
          batch_get_triggers/3,
          batch_get_workflows/2,
          batch_get_workflows/3,
+         batch_put_data_quality_statistic_annotation/2,
+         batch_put_data_quality_statistic_annotation/3,
          batch_stop_job_run/2,
          batch_stop_job_run/3,
          batch_update_partition/2,
@@ -184,6 +186,10 @@
          get_custom_entity_type/3,
          get_data_catalog_encryption_settings/2,
          get_data_catalog_encryption_settings/3,
+         get_data_quality_model/2,
+         get_data_quality_model/3,
+         get_data_quality_model_result/2,
+         get_data_quality_model_result/3,
          get_data_quality_result/2,
          get_data_quality_result/3,
          get_data_quality_rule_recommendation_run/2,
@@ -308,6 +314,10 @@
          list_data_quality_ruleset_evaluation_runs/3,
          list_data_quality_rulesets/2,
          list_data_quality_rulesets/3,
+         list_data_quality_statistic_annotations/2,
+         list_data_quality_statistic_annotations/3,
+         list_data_quality_statistics/2,
+         list_data_quality_statistics/3,
          list_dev_endpoints/2,
          list_dev_endpoints/3,
          list_jobs/2,
@@ -334,6 +344,8 @@
          list_workflows/3,
          put_data_catalog_encryption_settings/2,
          put_data_catalog_encryption_settings/3,
+         put_data_quality_profile_annotation/2,
+         put_data_quality_profile_annotation/3,
          put_resource_policy/2,
          put_resource_policy/3,
          put_schema_version_metadata/2,
@@ -533,6 +545,22 @@
 -type get_custom_entity_type_response() :: #{binary() => any()}.
 
 %% Example:
+%% statistic_summary() :: #{
+%%   <<"ColumnsReferenced">> => list(string()()),
+%%   <<"DoubleValue">> => float(),
+%%   <<"EvaluationLevel">> => list(any()),
+%%   <<"InclusionAnnotation">> => timestamped_inclusion_annotation(),
+%%   <<"ProfileId">> => string(),
+%%   <<"RecordedOn">> => non_neg_integer(),
+%%   <<"ReferencedDatasets">> => list(string()()),
+%%   <<"RunIdentifier">> => run_identifier(),
+%%   <<"StatisticId">> => string(),
+%%   <<"StatisticName">> => string(),
+%%   <<"StatisticProperties">> => map()
+%% }
+-type statistic_summary() :: #{binary() => any()}.
+
+%% Example:
 %% list_data_quality_results_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Results">> => list(data_quality_result_description()())
@@ -669,6 +697,7 @@
 %%   <<"Database">> => string(),
 %%   <<"Inputs">> => list(string()()),
 %%   <<"Name">> => string(),
+%%   <<"PartitionKeys">> => list(list(string()())()),
 %%   <<"Table">> => string()
 %% }
 -type basic_catalog_target() :: #{binary() => any()}.
@@ -806,6 +835,13 @@
 %%   <<"Ruleset">> => string()
 %% }
 -type update_data_quality_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
+%% timestamped_inclusion_annotation() :: #{
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Value">> => list(any())
+%% }
+-type timestamped_inclusion_annotation() :: #{binary() => any()}.
 
 %% Example:
 %% import_labels_task_run_properties() :: #{
@@ -965,11 +1001,31 @@
 -type list_data_quality_rulesets_request() :: #{binary() => any()}.
 
 %% Example:
+%% run_identifier() :: #{
+%%   <<"JobRunId">> => string(),
+%%   <<"RunId">> => string()
+%% }
+-type run_identifier() :: #{binary() => any()}.
+
+%% Example:
 %% partition_index() :: #{
 %%   <<"IndexName">> => string(),
 %%   <<"Keys">> => list(string()())
 %% }
 -type partition_index() :: #{binary() => any()}.
+
+%% Example:
+%% table_status() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Details">> => status_details(),
+%%   <<"Error">> => error_detail(),
+%%   <<"RequestTime">> => non_neg_integer(),
+%%   <<"RequestedBy">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateTime">> => non_neg_integer(),
+%%   <<"UpdatedBy">> => string()
+%% }
+-type table_status() :: #{binary() => any()}.
 
 %% Example:
 %% delete_registry_input() :: #{
@@ -1155,6 +1211,7 @@
 %%   <<"JobName">> => string(),
 %%   <<"JobRunId">> => string(),
 %%   <<"Observations">> => list(data_quality_observation()()),
+%%   <<"ProfileId">> => string(),
 %%   <<"ResultId">> => string(),
 %%   <<"RuleResults">> => list(data_quality_rule_result()()),
 %%   <<"RulesetEvaluationRunId">> => string(),
@@ -1343,6 +1400,7 @@
 %%   <<"Id">> => string(),
 %%   <<"JobMode">> => list(any()),
 %%   <<"JobName">> => string(),
+%%   <<"JobRunQueuingEnabled">> => boolean(),
 %%   <<"JobRunState">> => list(any()),
 %%   <<"LastModifiedOn">> => non_neg_integer(),
 %%   <<"LogGroupName">> => string(),
@@ -1355,6 +1413,7 @@
 %%   <<"ProfileName">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
 %%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"StateDetail">> => string(),
 %%   <<"Timeout">> => integer(),
 %%   <<"TriggerName">> => string(),
 %%   <<"WorkerType">> => list(any())
@@ -1525,6 +1584,13 @@
 %%   <<"PartitionValueList">> => list(string()())
 %% }
 -type batch_update_partition_failure_entry() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_model_result_request() :: #{
+%%   <<"ProfileId">> := string(),
+%%   <<"StatisticId">> := string()
+%% }
+-type get_data_quality_model_result_request() :: #{binary() => any()}.
 
 %% Example:
 %% data_quality_rule_recommendation_run_description() :: #{
@@ -1802,6 +1868,7 @@
 %% get_table_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
+%%   <<"IncludeStatusDetails">> => boolean(),
 %%   <<"Name">> := string(),
 %%   <<"QueryAsOfTime">> => non_neg_integer(),
 %%   <<"TransactionId">> => string()
@@ -1969,6 +2036,13 @@
 -type s3_direct_target() :: #{binary() => any()}.
 
 %% Example:
+%% put_data_quality_profile_annotation_request() :: #{
+%%   <<"InclusionAnnotation">> := list(any()),
+%%   <<"ProfileId">> := string()
+%% }
+-type put_data_quality_profile_annotation_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_ml_task_run_request() :: #{
 %%   <<"TaskRunId">> := string(),
 %%   <<"TransformId">> := string()
@@ -1985,6 +2059,15 @@
 %%   <<"TransactionId">> => string()
 %% }
 -type create_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% statistic_annotation() :: #{
+%%   <<"InclusionAnnotation">> => timestamped_inclusion_annotation(),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string(),
+%%   <<"StatisticRecordedOn">> => non_neg_integer()
+%% }
+-type statistic_annotation() :: #{binary() => any()}.
 
 %% Example:
 %% get_dev_endpoint_request() :: #{
@@ -2010,6 +2093,13 @@
 %%   <<"Name">> := string()
 %% }
 -type create_security_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_statistic_annotations_response() :: #{
+%%   <<"Annotations">> => list(statistic_annotation()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_statistic_annotations_response() :: #{binary() => any()}.
 
 %% Example:
 %% find_matches_parameters() :: #{
@@ -2252,6 +2342,13 @@
 -type query_schema_version_metadata_input() :: #{binary() => any()}.
 
 %% Example:
+%% get_data_quality_model_result_response() :: #{
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"Model">> => list(statistic_model_result()())
+%% }
+-type get_data_quality_model_result_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_crawlers_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -2286,6 +2383,7 @@
 %%   <<"ExecutionProperty">> => execution_property(),
 %%   <<"GlueVersion">> => string(),
 %%   <<"JobMode">> => list(any()),
+%%   <<"JobRunQueuingEnabled">> => boolean(),
 %%   <<"LogUri">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
 %%   <<"MaxCapacity">> => float(),
@@ -2483,9 +2581,11 @@
 
 %% Example:
 %% get_tables_request() :: #{
+%%   <<"AttributesToGet">> => list(list(any())()),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"Expression">> => string(),
+%%   <<"IncludeStatusDetails">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"QueryAsOfTime">> => non_neg_integer(),
@@ -2512,6 +2612,13 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% status_details() :: #{
+%%   <<"RequestedChange">> => table(),
+%%   <<"ViewValidations">> => list(view_validation()())
+%% }
+-type status_details() :: #{binary() => any()}.
 
 %% Example:
 %% list_data_quality_ruleset_evaluation_runs_response() :: #{
@@ -2636,6 +2743,12 @@
 -type get_table_versions_request() :: #{binary() => any()}.
 
 %% Example:
+%% batch_put_data_quality_statistic_annotation_response() :: #{
+%%   <<"FailedInclusionAnnotations">> => list(annotation_error()())
+%% }
+-type batch_put_data_quality_statistic_annotation_response() :: #{binary() => any()}.
+
+%% Example:
 %% scheduler_transitioning_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2756,6 +2869,16 @@
 -type get_databases_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_data_quality_statistic_annotations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string(),
+%%   <<"TimestampFilter">> => timestamp_filter()
+%% }
+-type list_data_quality_statistic_annotations_request() :: #{binary() => any()}.
+
+%% Example:
 %% filter_value() :: #{
 %%   <<"Type">> => list(any()),
 %%   <<"Value">> => list(string()())
@@ -2846,17 +2969,6 @@
 -type o_auth2_client_application() :: #{binary() => any()}.
 
 %% Example:
-%% aws_glue_node() :: #{
-%%   <<"CrawlerDetails">> => crawler_node_details(),
-%%   <<"JobDetails">> => job_node_details(),
-%%   <<"Name">> => string(),
-%%   <<"TriggerDetails">> => trigger_node_details(),
-%%   <<"Type">> => list(any()),
-%%   <<"UniqueId">> => string()
-%% }
--type aws_glue_node() :: #{binary() => any()}.
-
-%% Example:
 %% register_schema_version_response() :: #{
 %%   <<"SchemaVersionId">> => string(),
 %%   <<"Status">> => list(any()),
@@ -2910,6 +3022,7 @@
 %%   <<"ExecutionProperty">> => execution_property(),
 %%   <<"GlueVersion">> => string(),
 %%   <<"JobMode">> => list(any()),
+%%   <<"JobRunQueuingEnabled">> => boolean(),
 %%   <<"LogUri">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
 %%   <<"MaxCapacity">> => float(),
@@ -3356,6 +3469,7 @@
 %% data_quality_rule_result() :: #{
 %%   <<"Description">> => string(),
 %%   <<"EvaluatedMetrics">> => map(),
+%%   <<"EvaluatedRule">> => string(),
 %%   <<"EvaluationMessage">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Result">> => list(any())
@@ -3368,6 +3482,13 @@
 %%   <<"RegistryId">> := registry_id()
 %% }
 -type update_registry_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_data_quality_statistic_annotation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InclusionAnnotations">> := list(datapoint_inclusion_annotation()())
+%% }
+-type batch_put_data_quality_statistic_annotation_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_job_run_response() :: #{
@@ -3420,6 +3541,12 @@
 -type get_dev_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
+%% put_data_quality_profile_annotation_response() :: #{
+
+%% }
+-type put_data_quality_profile_annotation_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_column_statistics_for_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"ColumnName">> := string(),
@@ -3465,6 +3592,7 @@
 %% get_data_quality_rule_recommendation_run_response() :: #{
 %%   <<"CompletedOn">> => non_neg_integer(),
 %%   <<"CreatedRulesetName">> => string(),
+%%   <<"DataQualitySecurityConfiguration">> => string(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"ErrorString">> => string(),
 %%   <<"ExecutionTime">> => integer(),
@@ -3520,6 +3648,17 @@
 %%   <<"RunProperties">> => map()
 %% }
 -type get_workflow_run_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% statistic_model_result() :: #{
+%%   <<"ActualValue">> => float(),
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"InclusionAnnotation">> => list(any()),
+%%   <<"LowerBound">> => float(),
+%%   <<"PredictedValue">> => float(),
+%%   <<"UpperBound">> => float()
+%% }
+-type statistic_model_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_job_request() :: #{
@@ -3580,7 +3719,8 @@
 %% metric_based_observation() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"MetricValues">> => data_quality_metric_values(),
-%%   <<"NewRules">> => list(string()())
+%%   <<"NewRules">> => list(string()()),
+%%   <<"StatisticId">> => string()
 %% }
 -type metric_based_observation() :: #{binary() => any()}.
 
@@ -4001,10 +4141,29 @@
 -type get_ml_task_runs_request() :: #{binary() => any()}.
 
 %% Example:
+%% view_validation() :: #{
+%%   <<"Dialect">> => list(any()),
+%%   <<"DialectVersion">> => string(),
+%%   <<"Error">> => error_detail(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateTime">> => non_neg_integer(),
+%%   <<"ViewValidationText">> => string()
+%% }
+-type view_validation() :: #{binary() => any()}.
+
+%% Example:
 %% illegal_workflow_state_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type illegal_workflow_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% datapoint_inclusion_annotation() :: #{
+%%   <<"InclusionAnnotation">> => list(any()),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string()
+%% }
+-type datapoint_inclusion_annotation() :: #{binary() => any()}.
 
 %% Example:
 %% sort_criterion() :: #{
@@ -4337,6 +4496,14 @@
 -type blueprint() :: #{binary() => any()}.
 
 %% Example:
+%% annotation_error() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string()
+%% }
+-type annotation_error() :: #{binary() => any()}.
+
+%% Example:
 %% crawler_history() :: #{
 %%   <<"CrawlId">> => string(),
 %%   <<"DPUHour">> => float(),
@@ -4406,6 +4573,13 @@
 -type condition() :: #{binary() => any()}.
 
 %% Example:
+%% get_data_quality_model_request() :: #{
+%%   <<"ProfileId">> := string(),
+%%   <<"StatisticId">> => string()
+%% }
+-type get_data_quality_model_request() :: #{binary() => any()}.
+
+%% Example:
 %% location() :: #{
 %%   <<"DynamoDB">> => list(code_gen_node_arg()()),
 %%   <<"Jdbc">> => list(code_gen_node_arg()()),
@@ -4472,6 +4646,17 @@
 %%   <<"Label">> => string()
 %% }
 -type datatype() :: #{binary() => any()}.
+
+%% Example:
+%% glue_node() :: #{
+%%   <<"CrawlerDetails">> => crawler_node_details(),
+%%   <<"JobDetails">> => job_node_details(),
+%%   <<"Name">> => string(),
+%%   <<"TriggerDetails">> => trigger_node_details(),
+%%   <<"Type">> => list(any()),
+%%   <<"UniqueId">> => string()
+%% }
+-type glue_node() :: #{binary() => any()}.
 
 %% Example:
 %% connection_password_encryption() :: #{
@@ -4670,6 +4855,7 @@
 %% start_data_quality_rule_recommendation_run_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CreatedRulesetName">> => string(),
+%%   <<"DataQualitySecurityConfiguration">> => string(),
 %%   <<"DataSource">> := data_source(),
 %%   <<"NumberOfWorkers">> => integer(),
 %%   <<"Role">> := string(),
@@ -4816,6 +5002,15 @@
 %%   <<"Table">> => string()
 %% }
 -type microsoft_s_q_l_server_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_model_response() :: #{
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_data_quality_model_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_registry_response() :: #{
@@ -4986,6 +5181,20 @@
 -type delete_column_statistics_for_table_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_data_quality_statistics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Statistics">> => list(statistic_summary()())
+%% }
+-type list_data_quality_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% timestamp_filter() :: #{
+%%   <<"RecordedAfter">> => non_neg_integer(),
+%%   <<"RecordedBefore">> => non_neg_integer()
+%% }
+-type timestamp_filter() :: #{binary() => any()}.
+
+%% Example:
 %% federated_resource_already_exists_exception() :: #{
 %%   <<"AssociatedGlueResource">> => string(),
 %%   <<"Message">> => string()
@@ -5013,6 +5222,7 @@
 %%   <<"ExecutionClass">> => list(any()),
 %%   <<"JobName">> := string(),
 %%   <<"JobRunId">> => string(),
+%%   <<"JobRunQueuingEnabled">> => boolean(),
 %%   <<"MaxCapacity">> => float(),
 %%   <<"NotificationProperty">> => notification_property(),
 %%   <<"NumberOfWorkers">> => integer(),
@@ -5268,6 +5478,16 @@
 %%   <<"Name">> := string()
 %% }
 -type start_trigger_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_statistics_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string(),
+%%   <<"TimestampFilter">> => timestamp_filter()
+%% }
+-type list_data_quality_statistics_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_table_response() :: #{
@@ -5596,6 +5816,7 @@
 %%   <<"JobName">> => string(),
 %%   <<"JobRunId">> => string(),
 %%   <<"Observations">> => list(data_quality_observation()()),
+%%   <<"ProfileId">> => string(),
 %%   <<"ResultId">> => string(),
 %%   <<"RuleResults">> => list(data_quality_rule_result()()),
 %%   <<"RulesetEvaluationRunId">> => string(),
@@ -5748,6 +5969,7 @@
 %%   <<"ExecutionProperty">> => execution_property(),
 %%   <<"GlueVersion">> => string(),
 %%   <<"JobMode">> => list(any()),
+%%   <<"JobRunQueuingEnabled">> => boolean(),
 %%   <<"LastModifiedOn">> => non_neg_integer(),
 %%   <<"LogUri">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
@@ -6007,6 +6229,7 @@
 %% search_tables_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Filters">> => list(property_predicate()()),
+%%   <<"IncludeStatusDetails">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceShareType">> => list(any()),
@@ -6104,6 +6327,7 @@
 %% Example:
 %% create_data_quality_ruleset_request() :: #{
 %%   <<"ClientToken">> => string(),
+%%   <<"DataQualitySecurityConfiguration">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Ruleset">> := string(),
@@ -6752,6 +6976,7 @@
 %%   <<"Parameters">> => map(),
 %%   <<"PartitionKeys">> => list(column()()),
 %%   <<"Retention">> => integer(),
+%%   <<"Status">> => table_status(),
 %%   <<"StorageDescriptor">> => storage_descriptor(),
 %%   <<"TableType">> => string(),
 %%   <<"TargetTable">> => table_identifier(),
@@ -6965,6 +7190,7 @@
 %% Example:
 %% get_data_quality_ruleset_response() :: #{
 %%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"DataQualitySecurityConfiguration">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"LastModifiedOn">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -7413,6 +7639,12 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception().
+
+-type batch_put_data_quality_statistic_annotation_errors() ::
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
 
 -type batch_stop_job_run_errors() ::
     invalid_input_exception() | 
@@ -7897,6 +8129,18 @@
     internal_service_exception() | 
     operation_timeout_exception().
 
+-type get_data_quality_model_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_data_quality_model_result_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type get_data_quality_result_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -8292,6 +8536,15 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type list_data_quality_statistic_annotations_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type list_data_quality_statistics_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type list_dev_endpoints_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -8368,6 +8621,11 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception().
+
+-type put_data_quality_profile_annotation_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
 
 -type put_resource_policy_errors() ::
     condition_check_failure_exception() | 
@@ -9057,6 +9315,23 @@ batch_get_workflows(Client, Input)
 batch_get_workflows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetWorkflows">>, Input, Options).
+
+%% @doc Annotate datapoints over time for a specific data quality statistic.
+-spec batch_put_data_quality_statistic_annotation(aws_client:aws_client(), batch_put_data_quality_statistic_annotation_request()) ->
+    {ok, batch_put_data_quality_statistic_annotation_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_data_quality_statistic_annotation_errors(), tuple()}.
+batch_put_data_quality_statistic_annotation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_put_data_quality_statistic_annotation(Client, Input, []).
+
+-spec batch_put_data_quality_statistic_annotation(aws_client:aws_client(), batch_put_data_quality_statistic_annotation_request(), proplists:proplist()) ->
+    {ok, batch_put_data_quality_statistic_annotation_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_data_quality_statistic_annotation_errors(), tuple()}.
+batch_put_data_quality_statistic_annotation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchPutDataQualityStatisticAnnotation">>, Input, Options).
 
 %% @doc Stops one or more job runs for a specified job definition.
 -spec batch_stop_job_run(aws_client:aws_client(), batch_stop_job_run_request()) ->
@@ -10486,6 +10761,41 @@ get_data_catalog_encryption_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataCatalogEncryptionSettings">>, Input, Options).
 
+%% @doc Retrieve the training status of the model along with more information
+%% (CompletedOn, StartedOn, FailureReason).
+-spec get_data_quality_model(aws_client:aws_client(), get_data_quality_model_request()) ->
+    {ok, get_data_quality_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_quality_model_errors(), tuple()}.
+get_data_quality_model(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_quality_model(Client, Input, []).
+
+-spec get_data_quality_model(aws_client:aws_client(), get_data_quality_model_request(), proplists:proplist()) ->
+    {ok, get_data_quality_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_quality_model_errors(), tuple()}.
+get_data_quality_model(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataQualityModel">>, Input, Options).
+
+%% @doc Retrieve a statistic's predictions for a given Profile ID.
+-spec get_data_quality_model_result(aws_client:aws_client(), get_data_quality_model_result_request()) ->
+    {ok, get_data_quality_model_result_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_quality_model_result_errors(), tuple()}.
+get_data_quality_model_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_quality_model_result(Client, Input, []).
+
+-spec get_data_quality_model_result(aws_client:aws_client(), get_data_quality_model_result_request(), proplists:proplist()) ->
+    {ok, get_data_quality_model_result_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_quality_model_result_errors(), tuple()}.
+get_data_quality_model_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataQualityModelResult">>, Input, Options).
+
 %% @doc Retrieves the result of a data quality rule evaluation.
 -spec get_data_quality_result(aws_client:aws_client(), get_data_quality_result_request()) ->
     {ok, get_data_quality_result_response(), tuple()} |
@@ -11677,6 +11987,40 @@ list_data_quality_rulesets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataQualityRulesets">>, Input, Options).
 
+%% @doc Retrieve annotations for a data quality statistic.
+-spec list_data_quality_statistic_annotations(aws_client:aws_client(), list_data_quality_statistic_annotations_request()) ->
+    {ok, list_data_quality_statistic_annotations_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_quality_statistic_annotations_errors(), tuple()}.
+list_data_quality_statistic_annotations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_statistic_annotations(Client, Input, []).
+
+-spec list_data_quality_statistic_annotations(aws_client:aws_client(), list_data_quality_statistic_annotations_request(), proplists:proplist()) ->
+    {ok, list_data_quality_statistic_annotations_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_quality_statistic_annotations_errors(), tuple()}.
+list_data_quality_statistic_annotations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityStatisticAnnotations">>, Input, Options).
+
+%% @doc Retrieves a list of data quality statistics.
+-spec list_data_quality_statistics(aws_client:aws_client(), list_data_quality_statistics_request()) ->
+    {ok, list_data_quality_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_quality_statistics_errors(), tuple()}.
+list_data_quality_statistics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_statistics(Client, Input, []).
+
+-spec list_data_quality_statistics(aws_client:aws_client(), list_data_quality_statistics_request(), proplists:proplist()) ->
+    {ok, list_data_quality_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_quality_statistics_errors(), tuple()}.
+list_data_quality_statistics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityStatistics">>, Input, Options).
+
 %% @doc Retrieves the names of all `DevEndpoint' resources in this Amazon
 %% Web Services account, or the
 %% resources with the specified tag.
@@ -11954,6 +12298,23 @@ put_data_catalog_encryption_settings(Client, Input)
 put_data_catalog_encryption_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataCatalogEncryptionSettings">>, Input, Options).
+
+%% @doc Annotate all datapoints for a Profile.
+-spec put_data_quality_profile_annotation(aws_client:aws_client(), put_data_quality_profile_annotation_request()) ->
+    {ok, put_data_quality_profile_annotation_response(), tuple()} |
+    {error, any()} |
+    {error, put_data_quality_profile_annotation_errors(), tuple()}.
+put_data_quality_profile_annotation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_data_quality_profile_annotation(Client, Input, []).
+
+-spec put_data_quality_profile_annotation(aws_client:aws_client(), put_data_quality_profile_annotation_request(), proplists:proplist()) ->
+    {ok, put_data_quality_profile_annotation_response(), tuple()} |
+    {error, any()} |
+    {error, put_data_quality_profile_annotation_errors(), tuple()}.
+put_data_quality_profile_annotation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutDataQualityProfileAnnotation">>, Input, Options).
 
 %% @doc Sets the Data Catalog resource policy for access control.
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->

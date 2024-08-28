@@ -13,7 +13,11 @@
 %% you can use to manage Amazon QuickSight.
 -module(aws_quicksight).
 
--export([cancel_ingestion/5,
+-export([batch_create_topic_reviewed_answer/4,
+         batch_create_topic_reviewed_answer/5,
+         batch_delete_topic_reviewed_answer/4,
+         batch_delete_topic_reviewed_answer/5,
+         cancel_ingestion/5,
          cancel_ingestion/6,
          create_account_customization/3,
          create_account_customization/4,
@@ -328,6 +332,9 @@
          list_topic_refresh_schedules/3,
          list_topic_refresh_schedules/5,
          list_topic_refresh_schedules/6,
+         list_topic_reviewed_answers/3,
+         list_topic_reviewed_answers/5,
+         list_topic_reviewed_answers/6,
          list_topics/2,
          list_topics/4,
          list_topics/5,
@@ -1116,6 +1123,16 @@
 %% }
 -type cell_value_synonym() :: #{binary() => any()}.
 
+
+%% Example:
+%% topic_visual() :: #{
+%%   <<"Ir">> => topic_i_r(),
+%%   <<"Role">> => list(any()),
+%%   <<"SupportingVisuals">> => list(topic_visual()()),
+%%   <<"VisualId">> => string()
+%% }
+-type topic_visual() :: #{binary() => any()}.
+
 %% Example:
 %% describe_data_source_request() :: #{}
 -type describe_data_source_request() :: #{}.
@@ -1260,7 +1277,9 @@
 
 %% Example:
 %% date_time_picker_control_display_options() :: #{
+%%   <<"DateIconVisibility">> => list(any()),
 %%   <<"DateTimeFormat">> => string(),
+%%   <<"HelperTextVisibility">> => list(any()),
 %%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
 %%   <<"TitleOptions">> => label_options()
 %% }
@@ -1283,6 +1302,15 @@
 %%   <<"ColorSort">> => list(field_sort_options()())
 %% }
 -type combo_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% anchor() :: #{
+%%   <<"AnchorType">> => list(any()),
+%%   <<"Offset">> => integer(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type anchor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1404,6 +1432,13 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_ingestions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% quicksight_identifier() :: #{
+%%   <<"Identity">> => string()
+%% }
+-type quicksight_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2037,6 +2072,14 @@
 
 
 %% Example:
+%% customer_managed_key_unavailable_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type customer_managed_key_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_topic_refresh_schedule_request() :: #{
 %%   <<"RefreshSchedule">> := topic_refresh_schedule()
 %% }
@@ -2332,6 +2375,14 @@
 
 
 %% Example:
+%% slot() :: #{
+%%   <<"SlotId">> => string(),
+%%   <<"VisualId">> => string()
+%% }
+-type slot() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_refresh_schedule_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"RefreshSchedule">> => refresh_schedule(),
@@ -2536,7 +2587,17 @@
 
 
 %% Example:
+%% named_entity_ref() :: #{
+%%   <<"NamedEntityName">> => string()
+%% }
+-type named_entity_ref() :: #{binary() => any()}.
+
+
+%% Example:
 %% anonymous_user_dashboard_embedding_configuration() :: #{
+%%   <<"DisabledFeatures">> => list(list(any())()),
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"FeatureConfigurations">> => anonymous_user_dashboard_feature_configurations(),
 %%   <<"InitialDashboardId">> => string()
 %% }
 -type anonymous_user_dashboard_embedding_configuration() :: #{binary() => any()}.
@@ -3128,6 +3189,7 @@
 %%   <<"FilterGroups">> => list(filter_group()()),
 %%   <<"Options">> => asset_options(),
 %%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
+%%   <<"QueryExecutionOptions">> => query_execution_options(),
 %%   <<"Sheets">> => list(sheet_definition()())
 %% }
 -type template_version_definition() :: #{binary() => any()}.
@@ -3232,6 +3294,17 @@
 %%   <<"RichText">> => string()
 %% }
 -type long_format_text() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_constant_value() :: #{
+%%   <<"ConstantType">> => list(any()),
+%%   <<"Maximum">> => string(),
+%%   <<"Minimum">> => string(),
+%%   <<"Value">> => string(),
+%%   <<"ValueList">> => list(collective_constant_entry()())
+%% }
+-type topic_constant_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3566,6 +3639,15 @@
 
 
 %% Example:
+%% topic_i_r_comparison_method() :: #{
+%%   <<"Period">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"WindowSize">> => integer()
+%% }
+-type topic_i_r_comparison_method() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_topic_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"RefreshArn">> => string(),
@@ -3628,6 +3710,7 @@
 %%   <<"FilterGroups">> => list(filter_group()()),
 %%   <<"Options">> => asset_options(),
 %%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
+%%   <<"QueryExecutionOptions">> => query_execution_options(),
 %%   <<"Sheets">> => list(sheet_definition()())
 %% }
 -type analysis_definition() :: #{binary() => any()}.
@@ -3885,6 +3968,21 @@
 
 
 %% Example:
+%% topic_i_r_metric() :: #{
+%%   <<"CalculatedFieldReferences">> => list(quicksight_identifier()()),
+%%   <<"ComparisonMethod">> => topic_i_r_comparison_method(),
+%%   <<"DisplayFormat">> => list(any()),
+%%   <<"DisplayFormatOptions">> => display_format_options(),
+%%   <<"Expression">> => string(),
+%%   <<"Function">> => agg_function(),
+%%   <<"MetricId">> => quicksight_identifier(),
+%%   <<"NamedEntity">> => named_entity_ref(),
+%%   <<"Operands">> => list(quicksight_identifier()())
+%% }
+-type topic_i_r_metric() :: #{binary() => any()}.
+
+
+%% Example:
 %% display_format_options() :: #{
 %%   <<"BlankCellFormat">> => string(),
 %%   <<"CurrencySymbol">> => string(),
@@ -4087,6 +4185,17 @@
 
 
 %% Example:
+%% list_topic_reviewed_answers_response() :: #{
+%%   <<"Answers">> => list(topic_reviewed_answer()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type list_topic_reviewed_answers_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% missing_data_configuration() :: #{
 %%   <<"TreatmentOption">> => list(any())
 %% }
@@ -4164,6 +4273,30 @@
 %%   <<"IconDisplayOption">> => list(any())
 %% }
 -type conditional_formatting_icon_display_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_i_r_filter_option() :: #{
+%%   <<"AggMetrics">> => list(filter_agg_metrics()()),
+%%   <<"Aggregation">> => list(any()),
+%%   <<"AggregationFunctionParameters">> => map(),
+%%   <<"AggregationPartitionBy">> => list(aggregation_partition_by()()),
+%%   <<"Anchor">> => anchor(),
+%%   <<"Constant">> => topic_constant_value(),
+%%   <<"FilterClass">> => list(any()),
+%%   <<"FilterType">> => list(any()),
+%%   <<"Function">> => list(any()),
+%%   <<"Inclusive">> => boolean(),
+%%   <<"Inverse">> => boolean(),
+%%   <<"LastNextOffset">> => topic_constant_value(),
+%%   <<"NullFilter">> => list(any()),
+%%   <<"OperandField">> => quicksight_identifier(),
+%%   <<"Range">> => topic_constant_value(),
+%%   <<"SortDirection">> => list(any()),
+%%   <<"TimeGranularity">> => list(any()),
+%%   <<"TopBottomLimit">> => topic_constant_value()
+%% }
+-type topic_i_r_filter_option() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4302,6 +4435,19 @@
 %%   <<"Name">> => string()
 %% }
 -type column_group_column_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_reviewed_answer() :: #{
+%%   <<"AnswerId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"Mir">> => topic_i_r(),
+%%   <<"PrimaryVisual">> => topic_visual(),
+%%   <<"Question">> => string(),
+%%   <<"Template">> => topic_template()
+%% }
+-type topic_reviewed_answer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4482,6 +4628,13 @@
 
 
 %% Example:
+%% query_execution_options() :: #{
+%%   <<"QueryExecutionMode">> => list(any())
+%% }
+-type query_execution_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% subtotal_options() :: #{
 %%   <<"CustomLabel">> => string(),
 %%   <<"FieldLevel">> => list(any()),
@@ -4559,6 +4712,7 @@
 %% Example:
 %% registered_user_dashboard_feature_configurations() :: #{
 %%   <<"Bookmarks">> => bookmarks_configurations(),
+%%   <<"SharedView">> => shared_view_configurations(),
 %%   <<"StatePersistence">> => state_persistence_configurations()
 %% }
 -type registered_user_dashboard_feature_configurations() :: #{binary() => any()}.
@@ -4804,6 +4958,21 @@
 
 
 %% Example:
+%% contribution_analysis_factor() :: #{
+%%   <<"FieldName">> => string()
+%% }
+-type contribution_analysis_factor() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_topic_reviewed_answer() :: #{
+%%   <<"AnswerId">> => string(),
+%%   <<"Error">> => list(any())
+%% }
+-type invalid_topic_reviewed_answer() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_job_data_source_override_tags() :: #{
 %%   <<"DataSourceIds">> => list(string()()),
 %%   <<"Tags">> => list(tag()())
@@ -4856,6 +5025,14 @@
 %%   <<"ExportHiddenFieldsOption">> => export_hidden_fields_option()
 %% }
 -type dashboard_visual_publish_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_template() :: #{
+%%   <<"Slots">> => list(slot()()),
+%%   <<"TemplateType">> => string()
+%% }
+-type topic_template() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4992,6 +5169,15 @@
 %%   <<"Properties">> => list(list(any())())
 %% }
 -type asset_bundle_export_job_theme_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_agg_metrics() :: #{
+%%   <<"Function">> => list(any()),
+%%   <<"MetricOperand">> => quicksight_identifier(),
+%%   <<"SortDirection">> => list(any())
+%% }
+-type filter_agg_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5673,6 +5859,14 @@
 
 
 %% Example:
+%% contribution_analysis_time_ranges() :: #{
+%%   <<"EndRange">> => topic_i_r_filter_option(),
+%%   <<"StartRange">> => topic_i_r_filter_option()
+%% }
+-type contribution_analysis_time_ranges() :: #{binary() => any()}.
+
+
+%% Example:
 %% word_cloud_options() :: #{
 %%   <<"CloudLayout">> => list(any()),
 %%   <<"MaximumStringLength">> => integer(),
@@ -5682,6 +5876,13 @@
 %%   <<"WordScaling">> => list(any())
 %% }
 -type word_cloud_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_topic_reviewed_answer_request() :: #{
+%%   <<"AnswerIds">> => list(string()())
+%% }
+-type batch_delete_topic_reviewed_answer_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5941,10 +6142,29 @@
 
 
 %% Example:
+%% batch_create_topic_reviewed_answer_response() :: #{
+%%   <<"InvalidAnswers">> => list(invalid_topic_reviewed_answer()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"SucceededAnswers">> => list(succeeded_topic_reviewed_answer()()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type batch_create_topic_reviewed_answer_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_path_type() :: #{
 %%   <<"PivotTableDataPathType">> => list(any())
 %% }
 -type data_path_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% anonymous_user_dashboard_feature_configurations() :: #{
+%%   <<"SharedView">> => shared_view_configurations()
+%% }
+-type anonymous_user_dashboard_feature_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6221,6 +6441,10 @@
 %% }
 -type update_topic_permissions_response() :: #{binary() => any()}.
 
+%% Example:
+%% list_topic_reviewed_answers_request() :: #{}
+-type list_topic_reviewed_answers_request() :: #{}.
+
 
 %% Example:
 %% set_parameter_value_configuration() :: #{
@@ -6228,6 +6452,16 @@
 %%   <<"Value">> => destination_parameter_value_configuration()
 %% }
 -type set_parameter_value_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_i_r_contribution_analysis() :: #{
+%%   <<"Direction">> => list(any()),
+%%   <<"Factors">> => list(contribution_analysis_factor()()),
+%%   <<"SortType">> => list(any()),
+%%   <<"TimeRanges">> => contribution_analysis_time_ranges()
+%% }
+-type topic_i_r_contribution_analysis() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6823,6 +7057,14 @@
 
 
 %% Example:
+%% topic_sort_clause() :: #{
+%%   <<"Operand">> => quicksight_identifier(),
+%%   <<"SortDirection">> => list(any())
+%% }
+-type topic_sort_clause() :: #{binary() => any()}.
+
+
+%% Example:
 %% theme_configuration() :: #{
 %%   <<"DataColorPalette">> => data_color_palette(),
 %%   <<"Sheet">> => sheet_style(),
@@ -7012,6 +7254,18 @@
 
 
 %% Example:
+%% create_topic_reviewed_answer() :: #{
+%%   <<"AnswerId">> => string(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"Mir">> => topic_i_r(),
+%%   <<"PrimaryVisual">> => topic_visual(),
+%%   <<"Question">> => string(),
+%%   <<"Template">> => topic_template()
+%% }
+-type create_topic_reviewed_answer() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_topic_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"RefreshArn">> => string(),
@@ -7105,6 +7359,13 @@
 
 
 %% Example:
+%% batch_create_topic_reviewed_answer_request() :: #{
+%%   <<"Answers">> := list(create_topic_reviewed_answer()())
+%% }
+-type batch_create_topic_reviewed_answer_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% default_filter_list_control_options() :: #{
 %%   <<"DisplayOptions">> => list_control_display_options(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
@@ -7162,9 +7423,22 @@
 
 %% Example:
 %% registered_user_console_feature_configurations() :: #{
+%%   <<"SharedView">> => shared_view_configurations(),
 %%   <<"StatePersistence">> => state_persistence_configurations()
 %% }
 -type registered_user_console_feature_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_i_r() :: #{
+%%   <<"ContributionAnalysis">> => topic_i_r_contribution_analysis(),
+%%   <<"Filters">> => list(list(topic_i_r_filter_option()())()),
+%%   <<"GroupByList">> => list(topic_i_r_group_by()()),
+%%   <<"Metrics">> => list(topic_i_r_metric()()),
+%%   <<"Sort">> => topic_sort_clause(),
+%%   <<"Visual">> => visual_options()
+%% }
+-type topic_i_r() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7207,6 +7481,14 @@
 %%   <<"Status">> => integer()
 %% }
 -type create_account_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% collective_constant_entry() :: #{
+%%   <<"ConstantType">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type collective_constant_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7891,6 +8173,13 @@
 
 
 %% Example:
+%% visual_options() :: #{
+%%   <<"type">> => string()
+%% }
+-type visual_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_data_set_permissions_response() :: #{
 %%   <<"DataSetArn">> => string(),
 %%   <<"DataSetId">> => string(),
@@ -8023,6 +8312,18 @@
 %%   <<"UnapplyCustomPermissions">> => boolean()
 %% }
 -type update_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_i_r_group_by() :: #{
+%%   <<"DisplayFormat">> => list(any()),
+%%   <<"DisplayFormatOptions">> => display_format_options(),
+%%   <<"FieldName">> => quicksight_identifier(),
+%%   <<"NamedEntity">> => named_entity_ref(),
+%%   <<"Sort">> => topic_sort_clause(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type topic_i_r_group_by() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9833,6 +10134,13 @@
 
 
 %% Example:
+%% shared_view_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type shared_view_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% ui_color_palette() :: #{
 %%   <<"Accent">> => string(),
 %%   <<"AccentForeground">> => string(),
@@ -10040,6 +10348,14 @@
 
 
 %% Example:
+%% aggregation_partition_by() :: #{
+%%   <<"FieldName">> => string(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type aggregation_partition_by() :: #{binary() => any()}.
+
+
+%% Example:
 %% analysis_defaults() :: #{
 %%   <<"DefaultNewSheetConfiguration">> => default_new_sheet_configuration()
 %% }
@@ -10164,6 +10480,18 @@
 %%   <<"SameSheetTargetVisualConfiguration">> => same_sheet_target_visual_configuration()
 %% }
 -type filter_operation_target_visuals_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_topic_reviewed_answer_response() :: #{
+%%   <<"InvalidAnswers">> => list(invalid_topic_reviewed_answer()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"SucceededAnswers">> => list(succeeded_topic_reviewed_answer()()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type batch_delete_topic_reviewed_answer_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10473,6 +10801,16 @@
 
 
 %% Example:
+%% agg_function() :: #{
+%%   <<"Aggregation">> => list(any()),
+%%   <<"AggregationFunctionParameters">> => map(),
+%%   <<"Period">> => list(any()),
+%%   <<"PeriodField">> => string()
+%% }
+-type agg_function() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_role_custom_permission_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -10529,6 +10867,13 @@
 %%   <<"FieldValue">> => string()
 %% }
 -type data_path_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% succeeded_topic_reviewed_answer() :: #{
+%%   <<"AnswerId">> => string()
+%% }
+-type succeeded_topic_reviewed_answer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10928,6 +11273,21 @@
 %% }
 -type section_based_layout_configuration() :: #{binary() => any()}.
 
+-type batch_create_topic_reviewed_answer_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type batch_delete_topic_reviewed_answer_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type cancel_ingestion_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -10996,6 +11356,7 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    customer_managed_key_unavailable_exception() | 
     internal_failure_exception().
 
 -type create_folder_errors() ::
@@ -11985,6 +12346,13 @@
     conflict_exception() | 
     internal_failure_exception().
 
+-type list_topic_reviewed_answers_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type list_topics_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -12238,6 +12606,7 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    customer_managed_key_unavailable_exception() | 
     internal_failure_exception().
 
 -type update_data_source_permissions_errors() ::
@@ -12445,6 +12814,74 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates new reviewed answers for a Q Topic.
+-spec batch_create_topic_reviewed_answer(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_topic_reviewed_answer_request()) ->
+    {ok, batch_create_topic_reviewed_answer_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_topic_reviewed_answer_errors(), tuple()}.
+batch_create_topic_reviewed_answer(Client, AwsAccountId, TopicId, Input) ->
+    batch_create_topic_reviewed_answer(Client, AwsAccountId, TopicId, Input, []).
+
+-spec batch_create_topic_reviewed_answer(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_topic_reviewed_answer_request(), proplists:proplist()) ->
+    {ok, batch_create_topic_reviewed_answer_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_topic_reviewed_answer_errors(), tuple()}.
+batch_create_topic_reviewed_answer(Client, AwsAccountId, TopicId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/batch-create-reviewed-answers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes reviewed answers for Q Topic.
+-spec batch_delete_topic_reviewed_answer(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_topic_reviewed_answer_request()) ->
+    {ok, batch_delete_topic_reviewed_answer_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_topic_reviewed_answer_errors(), tuple()}.
+batch_delete_topic_reviewed_answer(Client, AwsAccountId, TopicId, Input) ->
+    batch_delete_topic_reviewed_answer(Client, AwsAccountId, TopicId, Input, []).
+
+-spec batch_delete_topic_reviewed_answer(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_topic_reviewed_answer_request(), proplists:proplist()) ->
+    {ok, batch_delete_topic_reviewed_answer_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_topic_reviewed_answer_errors(), tuple()}.
+batch_delete_topic_reviewed_answer(Client, AwsAccountId, TopicId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/batch-delete-reviewed-answers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels an ongoing ingestion of data into SPICE.
 -spec cancel_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request()) ->
@@ -17546,6 +17983,43 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap
 list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all reviewed answers for a Q Topic.
+-spec list_topic_reviewed_answers(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_topic_reviewed_answers_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_reviewed_answers_errors(), tuple()}.
+list_topic_reviewed_answers(Client, AwsAccountId, TopicId)
+  when is_map(Client) ->
+    list_topic_reviewed_answers(Client, AwsAccountId, TopicId, #{}, #{}).
+
+-spec list_topic_reviewed_answers(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_topic_reviewed_answers_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_reviewed_answers_errors(), tuple()}.
+list_topic_reviewed_answers(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_topic_reviewed_answers(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
+
+-spec list_topic_reviewed_answers(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_topic_reviewed_answers_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_reviewed_answers_errors(), tuple()}.
+list_topic_reviewed_answers(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/reviewed-answers"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

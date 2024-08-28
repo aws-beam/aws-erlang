@@ -187,17 +187,6 @@
 -type describe_parameters_response() :: #{binary() => any()}.
 
 %% Example:
-%% aws_dax_node() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Endpoint">> => endpoint(),
-%%   <<"NodeCreateTime">> => non_neg_integer(),
-%%   <<"NodeId">> => string(),
-%%   <<"NodeStatus">> => string(),
-%%   <<"ParameterGroupStatus">> => string()
-%% }
--type aws_dax_node() :: #{binary() => any()}.
-
-%% Example:
 %% invalid_parameter_group_state_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -480,6 +469,17 @@
 %%   <<"URL">> => string()
 %% }
 -type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% dax_node() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"NodeCreateTime">> => non_neg_integer(),
+%%   <<"NodeId">> => string(),
+%%   <<"NodeStatus">> => string(),
+%%   <<"ParameterGroupStatus">> => string()
+%% }
+-type dax_node() :: #{binary() => any()}.
 
 %% Example:
 %% event() :: #{

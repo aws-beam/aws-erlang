@@ -1,14 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc MemoryDB for Redis is a fully managed, Redis-compatible, in-memory
-%% database that delivers ultra-fast performance and Multi-AZ durability for
-%% modern applications built using microservices architectures.
+%% @doc MemoryDB is a fully managed, Redis OSS-compatible, in-memory database
+%% that delivers ultra-fast performance and Multi-AZ durability for modern
+%% applications built using microservices architectures.
 %%
 %% MemoryDB stores the entire database in-memory, enabling low latency and
-%% high throughput data access. It is compatible with Redis, a popular open
-%% source data store, enabling you to leverage Redis’ flexible and friendly
-%% data structures, APIs, and commands.
+%% high throughput data access. It is compatible with Redis OSS, a popular
+%% open source data store, enabling you to leverage Redis OSS’ flexible and
+%% friendly data structures, APIs, and commands.
 -module(aws_memorydb).
 
 -export([batch_update_cluster/2,
@@ -154,16 +154,6 @@
 %%   <<"Cluster">> => cluster()
 %% }
 -type failover_shard_response() :: #{binary() => any()}.
-
-%% Example:
-%% aws_memorydb_node() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Endpoint">> => endpoint(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
-%% }
--type aws_memorydb_node() :: #{binary() => any()}.
 
 %% Example:
 %% describe_engine_versions_request() :: #{
@@ -458,6 +448,16 @@
 %%   <<"UserNames">> => list(string()())
 %% }
 -type acl() :: #{binary() => any()}.
+
+%% Example:
+%% memorydb_node() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type memorydb_node() :: #{binary() => any()}.
 
 %% Example:
 %% subnet_group_not_found_fault() :: #{
@@ -1822,6 +1822,10 @@ delete_acl(Client, Input, Options)
 %% @doc Deletes a cluster.
 %%
 %% It also deletes all associated nodes and node endpoints
+%%
+%% `CreateSnapshot' permission is required to create a final snapshot.
+%% Without this permission, the API call will fail with an `Access
+%% Denied' exception.
 -spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
@@ -1955,7 +1959,7 @@ describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
-%% @doc Returns a list of the available Redis engine versions.
+%% @doc Returns a list of the available Redis OSS engine versions.
 -spec describe_engine_versions(aws_client:aws_client(), describe_engine_versions_request()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()} |

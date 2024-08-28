@@ -1180,6 +1180,15 @@
 
 
 %% Example:
+%% greengrass_function() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionConfiguration">> => function_configuration(),
+%%   <<"Id">> => string()
+%% }
+-type greengrass_function() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_group_request() :: #{
 %%   <<"AmznClientToken">> => string(),
 %%   <<"InitialVersion">> => group_version(),
@@ -1553,15 +1562,6 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_greengrass_function() :: #{
-%%   <<"FunctionArn">> => string(),
-%%   <<"FunctionConfiguration">> => function_configuration(),
-%%   <<"Id">> => string()
-%% }
--type aws_greengrass_function() :: #{binary() => any()}.
 
 
 %% Example:

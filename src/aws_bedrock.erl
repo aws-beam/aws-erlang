@@ -5,20 +5,30 @@
 %% and evaluating Amazon Bedrock models.
 -module(aws_bedrock).
 
--export([create_evaluation_job/2,
+-export([batch_delete_evaluation_job/2,
+         batch_delete_evaluation_job/3,
+         create_evaluation_job/2,
          create_evaluation_job/3,
          create_guardrail/2,
          create_guardrail/3,
          create_guardrail_version/3,
          create_guardrail_version/4,
+         create_model_copy_job/2,
+         create_model_copy_job/3,
          create_model_customization_job/2,
          create_model_customization_job/3,
+         create_model_import_job/2,
+         create_model_import_job/3,
+         create_model_invocation_job/2,
+         create_model_invocation_job/3,
          create_provisioned_model_throughput/2,
          create_provisioned_model_throughput/3,
          delete_custom_model/3,
          delete_custom_model/4,
          delete_guardrail/3,
          delete_guardrail/4,
+         delete_imported_model/3,
+         delete_imported_model/4,
          delete_model_invocation_logging_configuration/2,
          delete_model_invocation_logging_configuration/3,
          delete_provisioned_model_throughput/3,
@@ -35,9 +45,24 @@
          get_guardrail/2,
          get_guardrail/4,
          get_guardrail/5,
+         get_imported_model/2,
+         get_imported_model/4,
+         get_imported_model/5,
+         get_inference_profile/2,
+         get_inference_profile/4,
+         get_inference_profile/5,
+         get_model_copy_job/2,
+         get_model_copy_job/4,
+         get_model_copy_job/5,
          get_model_customization_job/2,
          get_model_customization_job/4,
          get_model_customization_job/5,
+         get_model_import_job/2,
+         get_model_import_job/4,
+         get_model_import_job/5,
+         get_model_invocation_job/2,
+         get_model_invocation_job/4,
+         get_model_invocation_job/5,
          get_model_invocation_logging_configuration/1,
          get_model_invocation_logging_configuration/3,
          get_model_invocation_logging_configuration/4,
@@ -56,9 +81,24 @@
          list_guardrails/1,
          list_guardrails/3,
          list_guardrails/4,
+         list_imported_models/1,
+         list_imported_models/3,
+         list_imported_models/4,
+         list_inference_profiles/1,
+         list_inference_profiles/3,
+         list_inference_profiles/4,
+         list_model_copy_jobs/1,
+         list_model_copy_jobs/3,
+         list_model_copy_jobs/4,
          list_model_customization_jobs/1,
          list_model_customization_jobs/3,
          list_model_customization_jobs/4,
+         list_model_import_jobs/1,
+         list_model_import_jobs/3,
+         list_model_import_jobs/4,
+         list_model_invocation_jobs/1,
+         list_model_invocation_jobs/3,
+         list_model_invocation_jobs/4,
          list_provisioned_model_throughputs/1,
          list_provisioned_model_throughputs/3,
          list_provisioned_model_throughputs/4,
@@ -70,6 +110,8 @@
          stop_evaluation_job/4,
          stop_model_customization_job/3,
          stop_model_customization_job/4,
+         stop_model_invocation_job/3,
+         stop_model_invocation_job/4,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -105,6 +147,7 @@
 %%   <<"creationTimeAfter">> => non_neg_integer(),
 %%   <<"creationTimeBefore">> => non_neg_integer(),
 %%   <<"foundationModelArnEquals">> => string(),
+%%   <<"isOwned">> => [boolean()],
 %%   <<"maxResults">> => integer(),
 %%   <<"nameContains">> => string(),
 %%   <<"nextToken">> => string(),
@@ -116,6 +159,13 @@
 %% Example:
 %% delete_provisioned_model_throughput_response() :: #{}
 -type delete_provisioned_model_throughput_response() :: #{}.
+
+
+%% Example:
+%% create_model_import_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_model_import_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -168,8 +218,36 @@
 -type delete_guardrail_request() :: #{binary() => any()}.
 
 %% Example:
+%% stop_model_invocation_job_request() :: #{}
+-type stop_model_invocation_job_request() :: #{}.
+
+%% Example:
 %% delete_custom_model_response() :: #{}
 -type delete_custom_model_response() :: #{}.
+
+
+%% Example:
+%% create_model_invocation_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_model_invocation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_inference_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_inference_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_evaluation_job_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"jobIdentifier">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type batch_delete_evaluation_job_error() :: #{binary() => any()}.
 
 %% Example:
 %% get_evaluation_job_request() :: #{}
@@ -236,6 +314,20 @@
 %%   <<"topicsConfig">> => list(guardrail_topic_config()())
 %% }
 -type guardrail_topic_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_invocation_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any()),
+%%   <<"submitTimeAfter">> => non_neg_integer(),
+%%   <<"submitTimeBefore">> => non_neg_integer()
+%% }
+-type list_model_invocation_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -314,6 +406,21 @@
 
 
 %% Example:
+%% get_inference_profile_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"inferenceProfileArn">> => string(),
+%%   <<"inferenceProfileId">> => string(),
+%%   <<"inferenceProfileName">> => string(),
+%%   <<"models">> => list(inference_profile_model()()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_inference_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% human_workflow_config() :: #{
 %%   <<"flowDefinitionArn">> => string(),
 %%   <<"instructions">> => string()
@@ -326,6 +433,20 @@
 %%   <<"filters">> => list(guardrail_content_filter()())
 %% }
 -type guardrail_content_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_import_jobs_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any())
+%% }
+-type list_model_import_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -377,6 +498,14 @@
 %% Example:
 %% stop_evaluation_job_request() :: #{}
 -type stop_evaluation_job_request() :: #{}.
+
+
+%% Example:
+%% list_inference_profiles_response() :: #{
+%%   <<"inferenceProfileSummaries">> => list(inference_profile_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_inference_profiles_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -434,6 +563,31 @@
 
 
 %% Example:
+%% create_model_copy_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"modelKmsKeyId">> => string(),
+%%   <<"sourceModelArn">> := string(),
+%%   <<"targetModelName">> := string(),
+%%   <<"targetModelTags">> => list(tag()())
+%% }
+-type create_model_copy_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_import_job_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"importedModelArn">> => string(),
+%%   <<"importedModelName">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type model_import_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_managed_words_config() :: #{
 %%   <<"type">> => list(any())
 %% }
@@ -445,6 +599,42 @@
 %%   <<"text">> => [string()]
 %% }
 -type guardrail_word() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_profile_model() :: #{
+%%   <<"modelArn">> => string()
+%% }
+-type inference_profile_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_profile_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"inferenceProfileArn">> => string(),
+%%   <<"inferenceProfileId">> => string(),
+%%   <<"inferenceProfileName">> => string(),
+%%   <<"models">> => list(inference_profile_model()()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type inference_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_invocation_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"inputDataConfig">> := list(),
+%%   <<"jobName">> := string(),
+%%   <<"modelId">> := string(),
+%%   <<"outputDataConfig">> := list(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"timeoutDurationInHours">> => integer()
+%% }
+-type create_model_invocation_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -465,9 +655,30 @@
 %% }
 -type get_provisioned_model_throughput_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% model_invocation_job_s3_output_data_config() :: #{
+%%   <<"s3EncryptionKeyId">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type model_invocation_job_s3_output_data_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_foundation_model_request() :: #{}
 -type get_foundation_model_request() :: #{}.
+
+
+%% Example:
+%% imported_model_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"modelName">> => string()
+%% }
+-type imported_model_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_imported_model_request() :: #{}
+-type get_imported_model_request() :: #{}.
 
 %% Example:
 %% stop_model_customization_job_response() :: #{}
@@ -486,6 +697,10 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_copy_job_request() :: #{}
+-type get_model_copy_job_request() :: #{}.
 
 
 %% Example:
@@ -511,6 +726,10 @@
 %%   <<"value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+%% Example:
+%% get_inference_profile_request() :: #{}
+-type get_inference_profile_request() :: #{}.
 
 %% Example:
 %% delete_provisioned_model_throughput_request() :: #{}
@@ -558,6 +777,14 @@
 
 
 %% Example:
+%% list_model_invocation_jobs_response() :: #{
+%%   <<"invocationJobSummaries">> => list(model_invocation_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_model_invocation_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_custom_model_response() :: #{
 %%   <<"baseModelArn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
@@ -575,6 +802,23 @@
 %%   <<"validationMetrics">> => list(validator_metric()())
 %% }
 -type get_custom_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_copy_job_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"sourceModelArn">> => string(),
+%%   <<"sourceModelName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetModelArn">> => string(),
+%%   <<"targetModelKmsKeyArn">> => string(),
+%%   <<"targetModelName">> => string(),
+%%   <<"targetModelTags">> => list(tag()())
+%% }
+-type model_copy_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -635,6 +879,14 @@
 
 
 %% Example:
+%% batch_delete_evaluation_job_response() :: #{
+%%   <<"errors">> => list(batch_delete_evaluation_job_error()()),
+%%   <<"evaluationJobs">> => list(batch_delete_evaluation_job_item()())
+%% }
+-type batch_delete_evaluation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_pii_entity() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"type">> => list(any())
@@ -647,6 +899,19 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_imported_models_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_imported_models_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_model_invocation_logging_configuration_response() :: #{}
@@ -676,8 +941,47 @@
 -type update_guardrail_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_model_import_job_request() :: #{}
+-type get_model_import_job_request() :: #{}.
+
+
+%% Example:
+%% get_model_import_job_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"importedModelArn">> => string(),
+%%   <<"importedModelKmsKeyArn">> => string(),
+%%   <<"importedModelName">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelDataSource">> => list(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type get_model_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_invocation_job_s3_input_data_config() :: #{
+%%   <<"s3InputFormat">> => list(any()),
+%%   <<"s3Uri">> => string()
+%% }
+-type model_invocation_job_s3_input_data_config() :: #{binary() => any()}.
+
+%% Example:
 %% get_custom_model_request() :: #{}
 -type get_custom_model_request() :: #{}.
+
+
+%% Example:
+%% list_imported_models_response() :: #{
+%%   <<"modelSummaries">> => list(imported_model_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_imported_models_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_model_customization_job_request() :: #{}
@@ -695,6 +999,10 @@
 %% Example:
 %% get_model_invocation_logging_configuration_request() :: #{}
 -type get_model_invocation_logging_configuration_request() :: #{}.
+
+%% Example:
+%% delete_imported_model_response() :: #{}
+-type delete_imported_model_response() :: #{}.
 
 
 %% Example:
@@ -735,12 +1043,24 @@
 %% }
 -type guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
 
+%% Example:
+%% delete_imported_model_request() :: #{}
+-type delete_imported_model_request() :: #{}.
+
 
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_copy_jobs_response() :: #{
+%%   <<"modelCopyJobSummaries">> => list(model_copy_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_model_copy_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_guardrail_response() :: #{}
@@ -752,6 +1072,18 @@
 %%   <<"validators">> => list(validator()())
 %% }
 -type validation_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_evaluation_job_item() :: #{
+%%   <<"jobIdentifier">> => string(),
+%%   <<"jobStatus">> => list(any())
+%% }
+-type batch_delete_evaluation_job_item() :: #{binary() => any()}.
+
+%% Example:
+%% stop_model_invocation_job_response() :: #{}
+-type stop_model_invocation_job_response() :: #{}.
 
 %% Example:
 %% update_provisioned_model_throughput_response() :: #{}
@@ -795,6 +1127,24 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_imported_model_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"modelArchitecture">> => [string()],
+%%   <<"modelArn">> => string(),
+%%   <<"modelDataSource">> => list(),
+%%   <<"modelKmsKeyArn">> => string(),
+%%   <<"modelName">> => string()
+%% }
+-type get_imported_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_invocation_job_request() :: #{}
+-type get_model_invocation_job_request() :: #{}.
 
 
 %% Example:
@@ -898,6 +1248,13 @@
 
 
 %% Example:
+%% create_model_copy_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_model_copy_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_pii_entity_config() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"type">> => list(any())
@@ -948,6 +1305,23 @@
 
 
 %% Example:
+%% get_model_copy_job_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"sourceModelArn">> => string(),
+%%   <<"sourceModelName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetModelArn">> => string(),
+%%   <<"targetModelKmsKeyArn">> => string(),
+%%   <<"targetModelName">> => string(),
+%%   <<"targetModelTags">> => list(tag()())
+%% }
+-type get_model_copy_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_custom_models_response() :: #{
 %%   <<"modelSummaries">> => list(custom_model_summary()()),
 %%   <<"nextToken">> => string()
@@ -977,11 +1351,42 @@
 
 
 %% Example:
+%% create_model_import_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"importedModelKmsKeyId">> => string(),
+%%   <<"importedModelName">> := string(),
+%%   <<"importedModelTags">> => list(tag()()),
+%%   <<"jobName">> := string(),
+%%   <<"jobTags">> => list(tag()()),
+%%   <<"modelDataSource">> := list(),
+%%   <<"roleArn">> := string(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type create_model_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_guardrail_version_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"description">> => string()
 %% }
 -type create_guardrail_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_copy_jobs_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"sourceAccountEquals">> => string(),
+%%   <<"sourceModelArnEquals">> => string(),
+%%   <<"statusEquals">> => list(any()),
+%%   <<"targetModelNameContains">> => string()
+%% }
+-type list_model_copy_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1015,6 +1420,13 @@
 
 
 %% Example:
+%% batch_delete_evaluation_job_request() :: #{
+%%   <<"jobIdentifiers">> := list(string()())
+%% }
+-type batch_delete_evaluation_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_evaluation_job_response() :: #{
 %%   <<"jobArn">> => string()
 %% }
@@ -1029,6 +1441,26 @@
 %%   <<"version">> => string()
 %% }
 -type update_guardrail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_invocation_job_summary() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"inputDataConfig">> => list(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobExpirationTime">> => non_neg_integer(),
+%%   <<"jobName">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"outputDataConfig">> => list(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"submitTime">> => non_neg_integer(),
+%%   <<"timeoutDurationInHours">> => integer()
+%% }
+-type model_invocation_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1070,7 +1502,8 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"customizationType">> => list(any()),
 %%   <<"modelArn">> => string(),
-%%   <<"modelName">> => string()
+%%   <<"modelName">> => string(),
+%%   <<"ownerAccountId">> => string()
 %% }
 -type custom_model_summary() :: #{binary() => any()}.
 
@@ -1122,6 +1555,49 @@
 %% }
 -type human_evaluation_config() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_model_invocation_job_response() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"inputDataConfig">> => list(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobExpirationTime">> => non_neg_integer(),
+%%   <<"jobName">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"outputDataConfig">> => list(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"submitTime">> => non_neg_integer(),
+%%   <<"timeoutDurationInHours">> => integer()
+%% }
+-type get_model_invocation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_import_jobs_response() :: #{
+%%   <<"modelImportJobSummaries">> => list(model_import_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_model_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_data_source() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_data_source() :: #{binary() => any()}.
+
+-type batch_delete_evaluation_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_evaluation_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1150,8 +1626,33 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_model_copy_job_errors() ::
+    too_many_tags_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_model_customization_job_errors() ::
     too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_model_import_job_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_model_invocation_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1178,6 +1679,14 @@
     conflict_exception().
 
 -type delete_guardrail_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_imported_model_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1226,7 +1735,42 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_imported_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_inference_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_model_copy_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_model_customization_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_model_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_model_invocation_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1270,7 +1814,38 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_imported_models_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_inference_profiles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_model_copy_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_model_customization_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_model_import_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_model_invocation_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1304,6 +1879,14 @@
     conflict_exception().
 
 -type stop_model_customization_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_model_invocation_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1346,11 +1929,49 @@
 %% API
 %%====================================================================
 
+%% @doc Creates a batch deletion job.
+%%
+%% A model evaluation job can only be deleted if it has following status
+%% `FAILED', `COMPLETED', and `STOPPED'. You can request up to 25
+%% model evaluation jobs be deleted in a single request.
+-spec batch_delete_evaluation_job(aws_client:aws_client(), batch_delete_evaluation_job_request()) ->
+    {ok, batch_delete_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_evaluation_job_errors(), tuple()}.
+batch_delete_evaluation_job(Client, Input) ->
+    batch_delete_evaluation_job(Client, Input, []).
+
+-spec batch_delete_evaluation_job(aws_client:aws_client(), batch_delete_evaluation_job_request(), proplists:proplist()) ->
+    {ok, batch_delete_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_evaluation_job_errors(), tuple()}.
+batch_delete_evaluation_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluation-jobs/batch-delete"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc API operation for creating and managing Amazon Bedrock automatic
 %% model evaluation jobs and model evaluation jobs that use human workers.
 %%
 %% To learn more about the requirements for creating a model evaluation job
-%% see, Model evaluations:
+%% see, Model evaluation:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html.
 -spec create_evaluation_job(aws_client:aws_client(), create_evaluation_job_request()) ->
     {ok, create_evaluation_job_response(), tuple()} |
@@ -1490,6 +2111,45 @@ create_guardrail_version(Client, GuardrailIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Copies a model to another region so that it can be used there.
+%%
+%% For more information, see Copy models to be used in other regions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html in
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
+-spec create_model_copy_job(aws_client:aws_client(), create_model_copy_job_request()) ->
+    {ok, create_model_copy_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_copy_job_errors(), tuple()}.
+create_model_copy_job(Client, Input) ->
+    create_model_copy_job(Client, Input, []).
+
+-spec create_model_copy_job(aws_client:aws_client(), create_model_copy_job_request(), proplists:proplist()) ->
+    {ok, create_model_copy_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_copy_job_errors(), tuple()}.
+create_model_copy_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/model-copy-jobs"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a fine-tuning job to customize a base model.
 %%
 %% You specify the base foundation model and the location of the training
@@ -1509,7 +2169,8 @@ create_guardrail_version(Client, GuardrailIdentifier, Input0, Options0) ->
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Amazon Bedrock User Guide.
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec create_model_customization_job(aws_client:aws_client(), create_model_customization_job_request()) ->
     {ok, create_model_customization_job_response(), tuple()} |
     {error, any()} |
@@ -1543,6 +2204,88 @@ create_model_customization_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a model import job to import model that you have customized
+%% in other environments, such as Amazon SageMaker.
+%%
+%% For more information,
+%% see Import a customized model:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html
+-spec create_model_import_job(aws_client:aws_client(), create_model_import_job_request()) ->
+    {ok, create_model_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_import_job_errors(), tuple()}.
+create_model_import_job(Client, Input) ->
+    create_model_import_job(Client, Input, []).
+
+-spec create_model_import_job(aws_client:aws_client(), create_model_import_job_request(), proplists:proplist()) ->
+    {ok, create_model_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_import_job_errors(), tuple()}.
+create_model_import_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/model-import-jobs"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a batch inference job to invoke a model on multiple prompts.
+%%
+%% Format your data according to Format your inference data:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-data
+%% and upload it to an Amazon S3 bucket. For more information, see Process
+%% multiple prompts with batch inference:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference.html.
+%%
+%% The response returns a `jobArn' that you can use to stop or get
+%% details about the job.
+-spec create_model_invocation_job(aws_client:aws_client(), create_model_invocation_job_request()) ->
+    {ok, create_model_invocation_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_invocation_job_errors(), tuple()}.
+create_model_invocation_job(Client, Input) ->
+    create_model_invocation_job(Client, Input, []).
+
+-spec create_model_invocation_job(aws_client:aws_client(), create_model_invocation_job_request(), proplists:proplist()) ->
+    {ok, create_model_invocation_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_invocation_job_errors(), tuple()}.
+create_model_invocation_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/model-invocation-job"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates dedicated throughput for a base or custom model with the
 %% model units and for the duration that you specify.
 %%
@@ -1550,7 +2293,8 @@ create_model_customization_job(Client, Input0, Options0) ->
 %% http://aws.amazon.com/bedrock/pricing/. For more information, see
 %% Provisioned Throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
-%% in the Amazon Bedrock User Guide.
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec create_provisioned_model_throughput(aws_client:aws_client(), create_provisioned_model_throughput_request()) ->
     {ok, create_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
@@ -1588,7 +2332,8 @@ create_provisioned_model_throughput(Client, Input0, Options0) ->
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Amazon Bedrock User Guide.
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec delete_custom_model(aws_client:aws_client(), binary() | list(), delete_custom_model_request()) ->
     {ok, delete_custom_model_response(), tuple()} |
     {error, any()} |
@@ -1665,6 +2410,46 @@ delete_guardrail(Client, GuardrailIdentifier, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a custom model that you imported earlier.
+%%
+%% For more information,
+%% see Import a customized model:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
+-spec delete_imported_model(aws_client:aws_client(), binary() | list(), delete_imported_model_request()) ->
+    {ok, delete_imported_model_response(), tuple()} |
+    {error, any()} |
+    {error, delete_imported_model_errors(), tuple()}.
+delete_imported_model(Client, ModelIdentifier, Input) ->
+    delete_imported_model(Client, ModelIdentifier, Input, []).
+
+-spec delete_imported_model(aws_client:aws_client(), binary() | list(), delete_imported_model_request(), proplists:proplist()) ->
+    {ok, delete_imported_model_response(), tuple()} |
+    {error, any()} |
+    {error, delete_imported_model_errors(), tuple()}.
+delete_imported_model(Client, ModelIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/imported-models/", aws_util:encode_uri(ModelIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete the invocation logging.
 -spec delete_model_invocation_logging_configuration(aws_client:aws_client(), delete_model_invocation_logging_configuration_request()) ->
     {ok, delete_model_invocation_logging_configuration_response(), tuple()} |
@@ -1704,7 +2489,8 @@ delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
 %% You can't delete a Provisioned Throughput before the commitment term
 %% is over. For more information, see Provisioned Throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
-%% in the Amazon Bedrock User Guide.
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec delete_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), delete_provisioned_model_throughput_request()) ->
     {ok, delete_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
@@ -1741,7 +2527,8 @@ delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0
 %% @doc Get the properties associated with a Amazon Bedrock custom model that
 %% you have created.For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Amazon Bedrock User Guide.
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec get_custom_model(aws_client:aws_client(), binary() | list()) ->
     {ok, get_custom_model_response(), tuple()} |
     {error, any()} |
@@ -1782,8 +2569,8 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 %% including the
 %% status of the job.
 %%
-%% For more information, see Model evaluations:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/latest/userguide/model-evaluation.html.
+%% For more information, see Model evaluation:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html.
 -spec get_evaluation_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_evaluation_job_response(), tuple()} |
     {error, any()} |
@@ -1901,12 +2688,131 @@ get_guardrail(Client, GuardrailIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets properties associated with a customized model you imported.
+-spec get_imported_model(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_imported_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_imported_model_errors(), tuple()}.
+get_imported_model(Client, ModelIdentifier)
+  when is_map(Client) ->
+    get_imported_model(Client, ModelIdentifier, #{}, #{}).
+
+-spec get_imported_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_imported_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_imported_model_errors(), tuple()}.
+get_imported_model(Client, ModelIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_imported_model(Client, ModelIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_imported_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_imported_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_imported_model_errors(), tuple()}.
+get_imported_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/imported-models/", aws_util:encode_uri(ModelIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about an inference profile.
+%%
+%% For more information, see the Amazon Bedrock User Guide.
+-spec get_inference_profile(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_inference_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_inference_profile_errors(), tuple()}.
+get_inference_profile(Client, InferenceProfileIdentifier)
+  when is_map(Client) ->
+    get_inference_profile(Client, InferenceProfileIdentifier, #{}, #{}).
+
+-spec get_inference_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_inference_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_inference_profile_errors(), tuple()}.
+get_inference_profile(Client, InferenceProfileIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_inference_profile(Client, InferenceProfileIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_inference_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_inference_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_inference_profile_errors(), tuple()}.
+get_inference_profile(Client, InferenceProfileIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/inference-profiles/", aws_util:encode_uri(InferenceProfileIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a model copy job.
+%%
+%% For more information, see Copy models to be used in other regions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html in
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
+-spec get_model_copy_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_model_copy_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_copy_job_errors(), tuple()}.
+get_model_copy_job(Client, JobArn)
+  when is_map(Client) ->
+    get_model_copy_job(Client, JobArn, #{}, #{}).
+
+-spec get_model_copy_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_model_copy_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_copy_job_errors(), tuple()}.
+get_model_copy_job(Client, JobArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_model_copy_job(Client, JobArn, QueryMap, HeadersMap, []).
+
+-spec get_model_copy_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_model_copy_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_copy_job_errors(), tuple()}.
+get_model_copy_job(Client, JobArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/model-copy-jobs/", aws_util:encode_uri(JobArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the properties associated with a model-customization job,
 %% including the status of the job.
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Amazon Bedrock User Guide.
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec get_model_customization_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_model_customization_job_response(), tuple()} |
     {error, any()} |
@@ -1930,6 +2836,91 @@ get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap)
 get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/model-customization-jobs/", aws_util:encode_uri(JobIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the properties associated with import model job, including
+%% the status of the
+%% job.
+%%
+%% For more information,
+%% see Import a customized model:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
+-spec get_model_import_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_model_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_import_job_errors(), tuple()}.
+get_model_import_job(Client, JobIdentifier)
+  when is_map(Client) ->
+    get_model_import_job(Client, JobIdentifier, #{}, #{}).
+
+-spec get_model_import_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_model_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_import_job_errors(), tuple()}.
+get_model_import_job(Client, JobIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_model_import_job(Client, JobIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_model_import_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_model_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_import_job_errors(), tuple()}.
+get_model_import_job(Client, JobIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/model-import-jobs/", aws_util:encode_uri(JobIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets details about a batch inference job.
+%%
+%% For more information, see View details about a batch inference job:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view
+-spec get_model_invocation_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_model_invocation_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_invocation_job_errors(), tuple()}.
+get_model_invocation_job(Client, JobIdentifier)
+  when is_map(Client) ->
+    get_model_invocation_job(Client, JobIdentifier, #{}, #{}).
+
+-spec get_model_invocation_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_model_invocation_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_invocation_job_errors(), tuple()}.
+get_model_invocation_job(Client, JobIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_model_invocation_job(Client, JobIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_model_invocation_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_model_invocation_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_model_invocation_job_errors(), tuple()}.
+get_model_invocation_job(Client, JobIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/model-invocation-job/", aws_util:encode_uri(JobIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1984,7 +2975,8 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options
 %%
 %% For more information, see Provisioned Throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
-%% in the Amazon Bedrock User Guide.
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec get_provisioned_model_throughput(aws_client:aws_client(), binary() | list()) ->
     {ok, get_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
@@ -2026,7 +3018,8 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Amazon Bedrock User Guide.
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec list_custom_models(aws_client:aws_client()) ->
     {ok, list_custom_models_response(), tuple()} |
     {error, any()} |
@@ -2065,6 +3058,7 @@ list_custom_models(Client, QueryMap, HeadersMap, Options0)
         {<<"creationTimeAfter">>, maps:get(<<"creationTimeAfter">>, QueryMap, undefined)},
         {<<"creationTimeBefore">>, maps:get(<<"creationTimeBefore">>, QueryMap, undefined)},
         {<<"foundationModelArnEquals">>, maps:get(<<"foundationModelArnEquals">>, QueryMap, undefined)},
+        {<<"isOwned">>, maps:get(<<"isOwned">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
@@ -2128,7 +3122,8 @@ list_evaluation_jobs(Client, QueryMap, HeadersMap, Options0)
 %% You can filter the results with the request parameters. For more
 %% information, see Foundation models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html
-%% in the Amazon Bedrock User Guide.
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec list_foundation_models(aws_client:aws_client()) ->
     {ok, list_foundation_models_response(), tuple()} |
     {error, any()} |
@@ -2224,6 +3219,159 @@ list_guardrails(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of models you've imported.
+%%
+%% You can filter the results to return based on one or more criteria.
+%% For more information,
+%% see Import a customized model:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
+-spec list_imported_models(aws_client:aws_client()) ->
+    {ok, list_imported_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_imported_models_errors(), tuple()}.
+list_imported_models(Client)
+  when is_map(Client) ->
+    list_imported_models(Client, #{}, #{}).
+
+-spec list_imported_models(aws_client:aws_client(), map(), map()) ->
+    {ok, list_imported_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_imported_models_errors(), tuple()}.
+list_imported_models(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_imported_models(Client, QueryMap, HeadersMap, []).
+
+-spec list_imported_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_imported_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_imported_models_errors(), tuple()}.
+list_imported_models(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/imported-models"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"creationTimeAfter">>, maps:get(<<"creationTimeAfter">>, QueryMap, undefined)},
+        {<<"creationTimeBefore">>, maps:get(<<"creationTimeBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of inference profiles that you can use.
+-spec list_inference_profiles(aws_client:aws_client()) ->
+    {ok, list_inference_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_inference_profiles_errors(), tuple()}.
+list_inference_profiles(Client)
+  when is_map(Client) ->
+    list_inference_profiles(Client, #{}, #{}).
+
+-spec list_inference_profiles(aws_client:aws_client(), map(), map()) ->
+    {ok, list_inference_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_inference_profiles_errors(), tuple()}.
+list_inference_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_inference_profiles(Client, QueryMap, HeadersMap, []).
+
+-spec list_inference_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_inference_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_inference_profiles_errors(), tuple()}.
+list_inference_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/inference-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of model copy jobs that you have submitted.
+%%
+%% You can filter the jobs to return based on
+%% one or more criteria. For more information, see Copy models to be used in
+%% other regions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html in
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
+-spec list_model_copy_jobs(aws_client:aws_client()) ->
+    {ok, list_model_copy_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_copy_jobs_errors(), tuple()}.
+list_model_copy_jobs(Client)
+  when is_map(Client) ->
+    list_model_copy_jobs(Client, #{}, #{}).
+
+-spec list_model_copy_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_model_copy_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_copy_jobs_errors(), tuple()}.
+list_model_copy_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_model_copy_jobs(Client, QueryMap, HeadersMap, []).
+
+-spec list_model_copy_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_model_copy_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_copy_jobs_errors(), tuple()}.
+list_model_copy_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/model-copy-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"creationTimeAfter">>, maps:get(<<"creationTimeAfter">>, QueryMap, undefined)},
+        {<<"creationTimeBefore">>, maps:get(<<"creationTimeBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"sourceAccountEquals">>, maps:get(<<"sourceAccountEquals">>, QueryMap, undefined)},
+        {<<"sourceModelArnEquals">>, maps:get(<<"sourceModelArnEquals">>, QueryMap, undefined)},
+        {<<"statusEquals">>, maps:get(<<"statusEquals">>, QueryMap, undefined)},
+        {<<"outputModelNameContains">>, maps:get(<<"outputModelNameContains">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of model customization jobs that you have submitted.
 %%
 %% You can filter the jobs to return based on
@@ -2231,7 +3379,8 @@ list_guardrails(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Amazon Bedrock User Guide.
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec list_model_customization_jobs(aws_client:aws_client()) ->
     {ok, list_model_customization_jobs_response(), tuple()} |
     {error, any()} |
@@ -2279,11 +3428,118 @@ list_model_customization_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of import jobs you've submitted.
+%%
+%% You can filter the results to return based on one or more criteria.
+%% For more information,
+%% see Import a customized model:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
+-spec list_model_import_jobs(aws_client:aws_client()) ->
+    {ok, list_model_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_import_jobs_errors(), tuple()}.
+list_model_import_jobs(Client)
+  when is_map(Client) ->
+    list_model_import_jobs(Client, #{}, #{}).
+
+-spec list_model_import_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_model_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_import_jobs_errors(), tuple()}.
+list_model_import_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_model_import_jobs(Client, QueryMap, HeadersMap, []).
+
+-spec list_model_import_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_model_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_import_jobs_errors(), tuple()}.
+list_model_import_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/model-import-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"creationTimeAfter">>, maps:get(<<"creationTimeAfter">>, QueryMap, undefined)},
+        {<<"creationTimeBefore">>, maps:get(<<"creationTimeBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"statusEquals">>, maps:get(<<"statusEquals">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all batch inference jobs in the account.
+%%
+%% For more information, see View details about a batch inference job:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view.
+-spec list_model_invocation_jobs(aws_client:aws_client()) ->
+    {ok, list_model_invocation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_invocation_jobs_errors(), tuple()}.
+list_model_invocation_jobs(Client)
+  when is_map(Client) ->
+    list_model_invocation_jobs(Client, #{}, #{}).
+
+-spec list_model_invocation_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_model_invocation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_invocation_jobs_errors(), tuple()}.
+list_model_invocation_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_model_invocation_jobs(Client, QueryMap, HeadersMap, []).
+
+-spec list_model_invocation_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_model_invocation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_invocation_jobs_errors(), tuple()}.
+list_model_invocation_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/model-invocation-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"statusEquals">>, maps:get(<<"statusEquals">>, QueryMap, undefined)},
+        {<<"submitTimeAfter">>, maps:get(<<"submitTimeAfter">>, QueryMap, undefined)},
+        {<<"submitTimeBefore">>, maps:get(<<"submitTimeBefore">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the Provisioned Throughputs in the account.
 %%
 %% For more information, see Provisioned Throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
-%% in the Amazon Bedrock User Guide.
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec list_provisioned_model_throughputs(aws_client:aws_client()) ->
     {ok, list_provisioned_model_throughputs_response(), tuple()} |
     {error, any()} |
@@ -2336,7 +3592,8 @@ list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Tagging resources:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
-%% Amazon Bedrock User Guide.
+%% Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -2442,7 +3699,8 @@ stop_evaluation_job(Client, JobIdentifier, Input0, Options0) ->
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Amazon Bedrock User Guide.
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec stop_model_customization_job(aws_client:aws_client(), binary() | list(), stop_model_customization_job_request()) ->
     {ok, stop_model_customization_job_response(), tuple()} |
     {error, any()} |
@@ -2476,11 +3734,50 @@ stop_model_customization_job(Client, JobIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Stops a batch inference job.
+%%
+%% You're only charged for tokens that were already processed. For more
+%% information, see Stop a batch inference job:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-stop.
+-spec stop_model_invocation_job(aws_client:aws_client(), binary() | list(), stop_model_invocation_job_request()) ->
+    {ok, stop_model_invocation_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_model_invocation_job_errors(), tuple()}.
+stop_model_invocation_job(Client, JobIdentifier, Input) ->
+    stop_model_invocation_job(Client, JobIdentifier, Input, []).
+
+-spec stop_model_invocation_job(aws_client:aws_client(), binary() | list(), stop_model_invocation_job_request(), proplists:proplist()) ->
+    {ok, stop_model_invocation_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_model_invocation_job_errors(), tuple()}.
+stop_model_invocation_job(Client, JobIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/model-invocation-job/", aws_util:encode_uri(JobIdentifier), "/stop"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Associate tags with a resource.
 %%
 %% For more information, see Tagging resources:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
-%% Amazon Bedrock User Guide.
+%% Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -2518,7 +3815,8 @@ tag_resource(Client, Input0, Options0) ->
 %%
 %% For more information, see Tagging resources:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
-%% Amazon Bedrock User Guide.
+%% Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -2630,7 +3928,8 @@ update_guardrail(Client, GuardrailIdentifier, Input0, Options0) ->
 %%
 %% For more information, see Provisioned Throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
-%% in the Amazon Bedrock User Guide.
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec update_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), update_provisioned_model_throughput_request()) ->
     {ok, update_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |

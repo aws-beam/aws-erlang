@@ -63,6 +63,8 @@
          create_stack/3,
          create_streaming_url/2,
          create_streaming_url/3,
+         create_theme_for_stack/2,
+         create_theme_for_stack/3,
          create_updated_image/2,
          create_updated_image/3,
          create_usage_report_subscription/2,
@@ -89,6 +91,8 @@
          delete_image_permissions/3,
          delete_stack/2,
          delete_stack/3,
+         delete_theme_for_stack/2,
+         delete_theme_for_stack/3,
          delete_usage_report_subscription/2,
          delete_usage_report_subscription/3,
          delete_user/2,
@@ -119,6 +123,8 @@
          describe_sessions/3,
          describe_stacks/2,
          describe_stacks/3,
+         describe_theme_for_stack/2,
+         describe_theme_for_stack/3,
          describe_usage_report_subscriptions/2,
          describe_usage_report_subscriptions/3,
          describe_user_stack_associations/2,
@@ -176,10 +182,25 @@
          update_image_permissions/2,
          update_image_permissions/3,
          update_stack/2,
-         update_stack/3]).
+         update_stack/3,
+         update_theme_for_stack/2,
+         update_theme_for_stack/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% theme() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"StackName">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"ThemeFaviconURL">> => string(),
+%%   <<"ThemeFooterLinks">> => list(theme_footer_link()()),
+%%   <<"ThemeOrganizationLogoURL">> => string(),
+%%   <<"ThemeStyling">> => list(any()),
+%%   <<"ThemeTitleText">> => string()
+%% }
+-type theme() :: #{binary() => any()}.
 
 %% Example:
 %% describe_app_block_builders_result() :: #{
@@ -209,6 +230,7 @@
 %%   <<"ImageArn">> => string(),
 %%   <<"ImageBuilderErrors">> => list(resource_error()()),
 %%   <<"InstanceType">> => string(),
+%%   <<"LatestAppstreamAgentVersion">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"NetworkAccessConfiguration">> => network_access_configuration(),
 %%   <<"Platform">> => list(any()),
@@ -393,6 +415,12 @@
 -type app_block_builder() :: #{binary() => any()}.
 
 %% Example:
+%% describe_theme_for_stack_request() :: #{
+%%   <<"StackName">> := string()
+%% }
+-type describe_theme_for_stack_request() :: #{binary() => any()}.
+
+%% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -445,6 +473,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_image_builders_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_theme_for_stack_result() :: #{
+
+%% }
+-type delete_theme_for_stack_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_usage_report_subscription_request() :: #{
@@ -538,6 +572,12 @@
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type update_app_block_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_theme_for_stack_result() :: #{
+%%   <<"Theme">> => theme()
+%% }
+-type describe_theme_for_stack_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_image_permissions_request() :: #{
@@ -851,6 +891,19 @@
 -type compute_capacity() :: #{binary() => any()}.
 
 %% Example:
+%% update_theme_for_stack_request() :: #{
+%%   <<"AttributesToDelete">> => list(list(any())()),
+%%   <<"FaviconS3Location">> => s3_location(),
+%%   <<"FooterLinks">> => list(theme_footer_link()()),
+%%   <<"OrganizationLogoS3Location">> => s3_location(),
+%%   <<"StackName">> := string(),
+%%   <<"State">> => list(any()),
+%%   <<"ThemeStyling">> => list(any()),
+%%   <<"TitleText">> => string()
+%% }
+-type update_theme_for_stack_request() :: #{binary() => any()}.
+
+%% Example:
 %% fleet_error() :: #{
 %%   <<"ErrorCode">> => list(any()),
 %%   <<"ErrorMessage">> => string()
@@ -1142,6 +1195,12 @@
 -type delete_app_block_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_theme_for_stack_result() :: #{
+%%   <<"Theme">> => theme()
+%% }
+-type update_theme_for_stack_result() :: #{binary() => any()}.
+
+%% Example:
 %% stop_app_block_builder_request() :: #{
 %%   <<"Name">> := string()
 %% }
@@ -1352,6 +1411,13 @@
 -type update_application_result() :: #{binary() => any()}.
 
 %% Example:
+%% theme_footer_link() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"FooterLinkURL">> => string()
+%% }
+-type theme_footer_link() :: #{binary() => any()}.
+
+%% Example:
 %% entitlement() :: #{
 %%   <<"AppVisibility">> => list(any()),
 %%   <<"Attributes">> => list(entitlement_attribute()()),
@@ -1372,15 +1438,19 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
+%%   <<"DynamicAppProvidersEnabled">> => list(any()),
 %%   <<"ImageBuilderName">> => string(),
 %%   <<"ImageBuilderSupported">> => boolean(),
 %%   <<"ImageErrors">> => list(resource_error()()),
 %%   <<"ImagePermissions">> => image_permissions(),
+%%   <<"ImageSharedWithOthers">> => list(any()),
+%%   <<"LatestAppstreamAgentVersion">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"Platform">> => list(any()),
 %%   <<"PublicBaseImageReleasedDate">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
 %%   <<"StateChangeReason">> => image_state_change_reason(),
+%%   <<"SupportedInstanceFamilies">> => list(string()()),
 %%   <<"Visibility">> => list(any())
 %% }
 -type image() :: #{binary() => any()}.
@@ -1601,6 +1671,12 @@
 -type describe_fleets_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_theme_for_stack_request() :: #{
+%%   <<"StackName">> := string()
+%% }
+-type delete_theme_for_stack_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_usage_report_subscriptions_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UsageReportSubscriptions">> => list(usage_report_subscription()())
@@ -1719,12 +1795,29 @@
 -type disable_user_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_theme_for_stack_result() :: #{
+%%   <<"Theme">> => theme()
+%% }
+-type create_theme_for_stack_result() :: #{binary() => any()}.
+
+%% Example:
 %% application_settings_response() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"S3BucketName">> => string(),
 %%   <<"SettingsGroup">> => string()
 %% }
 -type application_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_theme_for_stack_request() :: #{
+%%   <<"FaviconS3Location">> := s3_location(),
+%%   <<"FooterLinks">> => list(theme_footer_link()()),
+%%   <<"OrganizationLogoS3Location">> := s3_location(),
+%%   <<"StackName">> := string(),
+%%   <<"ThemeStyling">> := list(any()),
+%%   <<"TitleText">> := string()
+%% }
+-type create_theme_for_stack_request() :: #{binary() => any()}.
 
 %% Example:
 %% domain_join_info() :: #{
@@ -1981,6 +2074,14 @@
     invalid_parameter_combination_exception() | 
     resource_not_available_exception().
 
+-type create_theme_for_stack_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_account_status_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception().
+
 -type create_updated_image_errors() ::
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
@@ -2055,6 +2156,11 @@
     resource_not_found_exception() | 
     resource_in_use_exception().
 
+-type delete_theme_for_stack_errors() ::
+    concurrent_modification_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception().
+
 -type delete_usage_report_subscription_errors() ::
     invalid_account_status_exception() | 
     resource_not_found_exception().
@@ -2107,6 +2213,10 @@
     invalid_parameter_combination_exception().
 
 -type describe_stacks_errors() ::
+    resource_not_found_exception().
+
+-type describe_theme_for_stack_errors() ::
+    operation_not_permitted_exception() | 
     resource_not_found_exception().
 
 -type describe_usage_report_subscriptions_errors() ::
@@ -2265,6 +2375,14 @@
     resource_not_found_exception() | 
     invalid_parameter_combination_exception() | 
     resource_in_use_exception().
+
+-type update_theme_for_stack_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_account_status_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_combination_exception().
 
 %%====================================================================
 %% API
@@ -2638,6 +2756,24 @@ create_streaming_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStreamingURL">>, Input, Options).
 
+%% @doc Creates custom branding that customizes the appearance of the
+%% streaming application catalog page.
+-spec create_theme_for_stack(aws_client:aws_client(), create_theme_for_stack_request()) ->
+    {ok, create_theme_for_stack_result(), tuple()} |
+    {error, any()} |
+    {error, create_theme_for_stack_errors(), tuple()}.
+create_theme_for_stack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_theme_for_stack(Client, Input, []).
+
+-spec create_theme_for_stack(aws_client:aws_client(), create_theme_for_stack_request(), proplists:proplist()) ->
+    {ok, create_theme_for_stack_result(), tuple()} |
+    {error, any()} |
+    {error, create_theme_for_stack_errors(), tuple()}.
+create_theme_for_stack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateThemeForStack">>, Input, Options).
+
 %% @doc Creates a new image with the latest Windows operating system updates,
 %% driver updates, and AppStream 2.0 agent software.
 %%
@@ -2885,6 +3021,24 @@ delete_stack(Client, Input)
 delete_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStack">>, Input, Options).
+
+%% @doc Deletes custom branding that customizes the appearance of the
+%% streaming application catalog page.
+-spec delete_theme_for_stack(aws_client:aws_client(), delete_theme_for_stack_request()) ->
+    {ok, delete_theme_for_stack_result(), tuple()} |
+    {error, any()} |
+    {error, delete_theme_for_stack_errors(), tuple()}.
+delete_theme_for_stack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_theme_for_stack(Client, Input, []).
+
+-spec delete_theme_for_stack(aws_client:aws_client(), delete_theme_for_stack_request(), proplists:proplist()) ->
+    {ok, delete_theme_for_stack_result(), tuple()} |
+    {error, any()} |
+    {error, delete_theme_for_stack_errors(), tuple()}.
+delete_theme_for_stack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteThemeForStack">>, Input, Options).
 
 %% @doc Disables usage report generation.
 -spec delete_usage_report_subscription(aws_client:aws_client(), delete_usage_report_subscription_request()) ->
@@ -3172,6 +3326,26 @@ describe_stacks(Client, Input)
 describe_stacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStacks">>, Input, Options).
+
+%% @doc Retrieves a list that describes the theme for a specified stack.
+%%
+%% A theme is custom branding that customizes the appearance of the streaming
+%% application catalog page.
+-spec describe_theme_for_stack(aws_client:aws_client(), describe_theme_for_stack_request()) ->
+    {ok, describe_theme_for_stack_result(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_for_stack_errors(), tuple()}.
+describe_theme_for_stack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_theme_for_stack(Client, Input, []).
+
+-spec describe_theme_for_stack(aws_client:aws_client(), describe_theme_for_stack_request(), proplists:proplist()) ->
+    {ok, describe_theme_for_stack_result(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_for_stack_errors(), tuple()}.
+describe_theme_for_stack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeThemeForStack">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more usage report
 %% subscriptions.
@@ -3755,6 +3929,24 @@ update_stack(Client, Input)
 update_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStack">>, Input, Options).
+
+%% @doc Updates custom branding that customizes the appearance of the
+%% streaming application catalog page.
+-spec update_theme_for_stack(aws_client:aws_client(), update_theme_for_stack_request()) ->
+    {ok, update_theme_for_stack_result(), tuple()} |
+    {error, any()} |
+    {error, update_theme_for_stack_errors(), tuple()}.
+update_theme_for_stack(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_theme_for_stack(Client, Input, []).
+
+-spec update_theme_for_stack(aws_client:aws_client(), update_theme_for_stack_request(), proplists:proplist()) ->
+    {ok, update_theme_for_stack_result(), tuple()} |
+    {error, any()} |
+    {error, update_theme_for_stack_errors(), tuple()}.
+update_theme_for_stack(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateThemeForStack">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

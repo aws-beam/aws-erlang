@@ -116,6 +116,7 @@
 %%   <<"autoBranchCreationPatterns">> => list(string()()),
 %%   <<"basicAuthCredentials">> => string(),
 %%   <<"buildSpec">> => string(),
+%%   <<"cacheConfig">> => cache_config(),
 %%   <<"createTime">> => non_neg_integer(),
 %%   <<"customHeaders">> => string(),
 %%   <<"customRules">> => list(custom_rule()()),
@@ -220,6 +221,7 @@
 %%   <<"autoBranchCreationPatterns">> => list(string()()),
 %%   <<"basicAuthCredentials">> => string(),
 %%   <<"buildSpec">> => string(),
+%%   <<"cacheConfig">> => cache_config(),
 %%   <<"customHeaders">> => string(),
 %%   <<"customRules">> => list(custom_rule()()),
 %%   <<"description">> => string(),
@@ -621,6 +623,13 @@
 
 
 %% Example:
+%% cache_config() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type cache_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_backend_environments_request() :: #{
 %%   <<"environmentName">> => string(),
 %%   <<"maxResults">> => integer(),
@@ -742,6 +751,7 @@
 %%   <<"autoBranchCreationPatterns">> => list(string()()),
 %%   <<"basicAuthCredentials">> => string(),
 %%   <<"buildSpec">> => string(),
+%%   <<"cacheConfig">> => cache_config(),
 %%   <<"customHeaders">> => string(),
 %%   <<"customRules">> => list(custom_rule()()),
 %%   <<"description">> => string(),

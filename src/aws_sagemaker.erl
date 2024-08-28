@@ -1497,6 +1497,8 @@
 %%   <<"ClarifyCheck">> => clarify_check_step_metadata(),
 %%   <<"Condition">> => condition_step_metadata(),
 %%   <<"EMR">> => emr_step_metadata(),
+%%   <<"Endpoint">> => endpoint_step_metadata(),
+%%   <<"EndpointConfig">> => endpoint_config_step_metadata(),
 %%   <<"Fail">> => fail_step_metadata(),
 %%   <<"Lambda">> => lambda_step_metadata(),
 %%   <<"Model">> => model_step_metadata(),
@@ -2853,6 +2855,12 @@
 -type create_trial_component_response() :: #{binary() => any()}.
 
 %% Example:
+%% auto_ml_compute_config() :: #{
+%%   <<"EmrServerlessComputeConfig">> => emr_serverless_compute_config()
+%% }
+-type auto_ml_compute_config() :: #{binary() => any()}.
+
+%% Example:
 %% create_endpoint_input() :: #{
 %%   <<"DeploymentConfig">> => deployment_config(),
 %%   <<"EndpointConfigName">> := string(),
@@ -2949,6 +2957,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_hub_contents_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type endpoint_step_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% labeling_job_data_source() :: #{
@@ -4848,6 +4862,12 @@
 -type artifact_source() :: #{binary() => any()}.
 
 %% Example:
+%% emr_serverless_compute_config() :: #{
+%%   <<"ExecutionRoleARN">> => string()
+%% }
+-type emr_serverless_compute_config() :: #{binary() => any()}.
+
+%% Example:
 %% metric_datum() :: #{
 %%   <<"MetricName">> => list(any()),
 %%   <<"Set">> => list(any()),
@@ -6227,6 +6247,7 @@
 
 %% Example:
 %% create_auto_ml_job_v2_request() :: #{
+%%   <<"AutoMLComputeConfig">> => auto_ml_compute_config(),
 %%   <<"AutoMLJobInputDataConfig">> := list(auto_ml_job_channel()()),
 %%   <<"AutoMLJobName">> := string(),
 %%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
@@ -7100,6 +7121,7 @@
 %% Example:
 %% canvas_app_settings() :: #{
 %%   <<"DirectDeploySettings">> => direct_deploy_settings(),
+%%   <<"EmrServerlessSettings">> => emr_serverless_settings(),
 %%   <<"GenerativeAiSettings">> => generative_ai_settings(),
 %%   <<"IdentityProviderOAuthSettings">> => list(identity_provider_o_auth_setting()()),
 %%   <<"KendraSettings">> => kendra_settings(),
@@ -8036,6 +8058,7 @@
 
 %% Example:
 %% describe_auto_ml_job_v2_response() :: #{
+%%   <<"AutoMLComputeConfig">> => auto_ml_compute_config(),
 %%   <<"AutoMLJobArn">> => string(),
 %%   <<"AutoMLJobArtifacts">> => auto_ml_job_artifacts(),
 %%   <<"AutoMLJobInputDataConfig">> => list(auto_ml_job_channel()()),
@@ -10050,6 +10073,13 @@
 -type default_ebs_storage_settings() :: #{binary() => any()}.
 
 %% Example:
+%% emr_settings() :: #{
+%%   <<"AssumableRoleArns">> => list(string()()),
+%%   <<"ExecutionRoleArns">> => list(string()())
+%% }
+-type emr_settings() :: #{binary() => any()}.
+
+%% Example:
 %% list_cluster_nodes_response() :: #{
 %%   <<"ClusterNodeSummaries">> => list(cluster_node_summary()()),
 %%   <<"NextToken">> => string()
@@ -10264,6 +10294,12 @@
 %%   <<"S3Uri">> => string()
 %% }
 -type metrics_source() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_config_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type endpoint_config_step_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% trial_component_summary() :: #{
@@ -10928,6 +10964,7 @@
 %%   <<"CodeRepositories">> => list(code_repository()()),
 %%   <<"CustomImages">> => list(custom_image()()),
 %%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"EmrSettings">> => emr_settings(),
 %%   <<"LifecycleConfigArns">> => list(string()())
 %% }
 -type jupyter_lab_app_settings() :: #{binary() => any()}.
@@ -11123,6 +11160,13 @@
 %%   <<"TuningJobCompletionCriteria">> => tuning_job_completion_criteria()
 %% }
 -type hyper_parameter_tuning_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% emr_serverless_settings() :: #{
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type emr_serverless_settings() :: #{binary() => any()}.
 
 %% Example:
 %% create_context_response() :: #{
@@ -12696,6 +12740,31 @@ create_artifact(Client, Input, Options)
 %% @doc Creates an Autopilot job also referred to as Autopilot experiment or
 %% AutoML job.
 %%
+%% An AutoML job in SageMaker is a fully automated process that allows you to
+%% build machine
+%% learning models with minimal effort and machine learning expertise. When
+%% initiating an
+%% AutoML job, you provide your data and optionally specify parameters
+%% tailored to your use
+%% case. SageMaker then automates the entire model development lifecycle,
+%% including data
+%% preprocessing, model training, tuning, and evaluation. AutoML jobs are
+%% designed to simplify
+%% and accelerate the model building process by automating various tasks and
+%% exploring
+%% different combinations of machine learning algorithms, data preprocessing
+%% techniques, and
+%% hyperparameter values. The output of an AutoML job comprises one or more
+%% trained models
+%% ready for deployment and inference. Additionally, SageMaker AutoML jobs
+%% generate a candidate
+%% model leaderboard, allowing you to select the best-performing model for
+%% deployment.
+%%
+%% For more information about AutoML jobs, see
+%% [https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html]
+%% in the SageMaker developer guide.
+%%
 %% We recommend using the new versions CreateAutoMLJobV2:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
 %% and DescribeAutoMLJobV2:
@@ -12737,6 +12806,37 @@ create_auto_ml_job(Client, Input, Options)
 
 %% @doc Creates an Autopilot job also referred to as Autopilot experiment or
 %% AutoML job V2.
+%%
+%% An AutoML job in SageMaker is a fully automated process that allows you to
+%% build machine
+%% learning models with minimal effort and machine learning expertise. When
+%% initiating an
+%% AutoML job, you provide your data and optionally specify parameters
+%% tailored to your use
+%% case. SageMaker then automates the entire model development lifecycle,
+%% including data
+%% preprocessing, model training, tuning, and evaluation. AutoML jobs are
+%% designed to simplify
+%% and accelerate the model building process by automating various tasks and
+%% exploring
+%% different combinations of machine learning algorithms, data preprocessing
+%% techniques, and
+%% hyperparameter values. The output of an AutoML job comprises one or more
+%% trained models
+%% ready for deployment and inference. Additionally, SageMaker AutoML jobs
+%% generate a candidate
+%% model leaderboard, allowing you to select the best-performing model for
+%% deployment.
+%%
+%% For more information about AutoML jobs, see
+%% [https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html]
+%% in the SageMaker developer guide.
+%%
+%% AutoML jobs V2 support various problem types such as regression, binary,
+%% and multiclass
+%% classification with tabular data, text and image classification,
+%% time-series forecasting,
+%% and fine-tuning of large language models (LLMs) for text generation.
 %%
 %% CreateAutoMLJobV2:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html

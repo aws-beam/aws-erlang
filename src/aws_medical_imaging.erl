@@ -194,6 +194,13 @@
 
 
 %% Example:
+%% metadata_copies() :: #{
+%%   <<"copiableAttributes">> => string()
+%% }
+-type metadata_copies() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -222,6 +229,13 @@
 
 
 %% Example:
+%% overrides() :: #{
+%%   <<"forced">> => [boolean()]
+%% }
+-type overrides() :: #{binary() => any()}.
+
+
+%% Example:
 %% image_sets_metadata_summary() :: #{
 %%   <<"DICOMTags">> => d_i_c_o_m_tags(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -238,13 +252,15 @@
 
 %% Example:
 %% copy_image_set_request() :: #{
-%%   <<"copyImageSetInformation">> := copy_image_set_information()
+%%   <<"copyImageSetInformation">> := copy_image_set_information(),
+%%   <<"force">> => [boolean()]
 %% }
 -type copy_image_set_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% copy_source_image_set_information() :: #{
+%%   <<"DICOMCopies">> => metadata_copies(),
 %%   <<"latestVersionId">> => string()
 %% }
 -type copy_source_image_set_information() :: #{binary() => any()}.
@@ -304,6 +320,7 @@
 %%   <<"imageSetId">> => string(),
 %%   <<"imageSetState">> => list(any()),
 %%   <<"message">> => string(),
+%%   <<"overrides">> => overrides(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"versionId">> => string()
 %% }
@@ -339,6 +356,7 @@
 %%   <<"imageSetState">> => list(any()),
 %%   <<"imageSetWorkflowStatus">> => list(any()),
 %%   <<"message">> => string(),
+%%   <<"overrides">> => overrides(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"versionId">> => string()
 %% }
@@ -385,6 +403,7 @@
 
 %% Example:
 %% update_image_set_metadata_request() :: #{
+%%   <<"force">> => [boolean()],
 %%   <<"latestVersionId">> := string(),
 %%   <<"updateImageSetMetadataUpdates">> := list()
 %% }
@@ -887,9 +906,10 @@ copy_image_set(Client, DatastoreId, SourceImageSetId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"force">>, <<"force">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a data store.
@@ -1561,6 +1581,7 @@ update_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"force">>, <<"force">>},
                      {<<"latestVersion">>, <<"latestVersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),

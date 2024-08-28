@@ -2568,7 +2568,10 @@
 %% Each read statement in a `BatchExecuteStatement' must specify
 %% an equality condition on all key attributes. This enforces that each
 %% `SELECT'
-%% statement in a batch returns at most a single item.
+%% statement in a batch returns at most a single item. For more information,
+%% see Running batch operations with PartiQL for DynamoDB
+%% :
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.multiplestatements.batching.html.
 %%
 %% The entire batch must consist of either read statements or write
 %% statements, you
@@ -2608,12 +2611,12 @@ batch_execute_statement(Client, Input, Options)
 %% items. `BatchGetItem' returns a partial result if the response size
 %% limit is
 %% exceeded, the table's provisioned throughput is exceeded, more than
-%% 1MB per partition is requested,
-%% or an internal processing failure occurs. If a partial result is returned,
-%% the operation returns a value for
-%% `UnprocessedKeys'. You can use this value to retry the operation
-%% starting
-%% with the next item to get.
+%% 1MB per partition is
+%% requested, or an internal processing failure occurs. If a partial result
+%% is returned,
+%% the operation returns a value for `UnprocessedKeys'. You can use this
+%% value
+%% to retry the operation starting with the next item to get.
 %%
 %% If you request more than 100 items, `BatchGetItem' returns a
 %% `ValidationException' with the message &quot;Too many items requested
@@ -2708,12 +2711,10 @@ batch_get_item(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html.
 %%
 %% `BatchWriteItem' cannot update items. If you perform a
-%% `BatchWriteItem'
-%% operation on an existing item, that item's values will be overwritten
-%% by the
-%% operation and it will appear like it was updated. To update items, we
-%% recommend you
-%% use the `UpdateItem' action.
+%% `BatchWriteItem' operation on an existing item, that item's values
+%% will be overwritten by the operation and it will appear like it was
+%% updated. To
+%% update items, we recommend you use the `UpdateItem' action.
 %%
 %% The individual `PutItem' and `DeleteItem' operations specified
 %% in `BatchWriteItem' are atomic; however `BatchWriteItem' as a
@@ -2728,10 +2729,17 @@ batch_get_item(Client, Input, Options)
 %% items
 %% until all items have been processed.
 %%
-%% If none of the items can be processed due to insufficient
-%% provisioned throughput on all of the tables in the request, then
-%% `BatchWriteItem' returns a
-%% `ProvisionedThroughputExceededException'.
+%% For tables and indexes with provisioned capacity, if none of the items can
+%% be
+%% processed due to insufficient provisioned throughput on all of the tables
+%% in the
+%% request, then `BatchWriteItem' returns a
+%% `ProvisionedThroughputExceededException'. For all tables and indexes,
+%% if
+%% none of the items can be processed due to other throttling scenarios (such
+%% as exceeding
+%% partition level limits), then `BatchWriteItem' returns a
+%% `ThrottlingException'.
 %%
 %% If DynamoDB returns any unprocessed items, you should retry the batch
 %% operation on
@@ -3055,24 +3063,28 @@ delete_item(Client, Input, Options)
     request(Client, <<"DeleteItem">>, Input, Options).
 
 %% @doc Deletes the resource-based policy attached to the resource, which can
-%% be a table or stream.
+%% be a table or
+%% stream.
 %%
 %% `DeleteResourcePolicy' is an idempotent operation; running it multiple
-%% times on the same resource doesn't result in an error response, unless
-%% you specify an `ExpectedRevisionId', which will then return a
+%% times on the same resource doesn't result in an error response,
+%% unless you specify an `ExpectedRevisionId', which will then return a
 %% `PolicyNotFoundException'.
 %%
 %% To make sure that you don't inadvertently lock yourself out of your
-%% own resources, the root principal in your Amazon Web Services account can
-%% perform `DeleteResourcePolicy' requests, even if your resource-based
-%% policy explicitly denies the root principal's access.
+%% own resources,
+%% the root principal in your Amazon Web Services account can perform
+%% `DeleteResourcePolicy' requests, even if your resource-based policy
+%% explicitly denies the root principal's access.
 %%
 %% `DeleteResourcePolicy' is an asynchronous operation. If you issue a
 %% `GetResourcePolicy' request immediately after running the
-%% `DeleteResourcePolicy' request, DynamoDB might still return the
-%% deleted policy. This is because the policy for your resource might not
-%% have been deleted yet. Wait for a few seconds, and then try the
-%% `GetResourcePolicy' request again.
+%% `DeleteResourcePolicy' request, DynamoDB might still return
+%% the deleted policy. This is because the policy for your resource might not
+%% have been
+%% deleted yet. Wait for a few seconds, and then try the
+%% `GetResourcePolicy'
+%% request again.
 -spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
@@ -3102,12 +3114,14 @@ delete_resource_policy(Client, Input, Options)
 %% returns a `ResourceNotFoundException'. If table is already in the
 %% `DELETING' state, no error is returned.
 %%
-%% For global tables, this operation only applies to global tables using
-%% Version 2019.11.21 (Current version).
+%% For global tables, this operation only applies to
+%% global tables using Version 2019.11.21 (Current version).
 %%
 %% DynamoDB might continue to accept data read and write operations, such as
 %% `GetItem' and `PutItem', on a table in the
-%% `DELETING' state until the table deletion is complete.
+%% `DELETING' state until the table deletion is complete. For the full
+%% list of table states, see TableStatus:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TableDescription.html#DDB-Type-TableDescription-TableStatus.
 %%
 %% When you delete a table, any indexes on that table are also deleted.
 %%
@@ -3212,8 +3226,8 @@ describe_contributor_insights(Client, Input, Options)
 
 %% @doc Returns the regional endpoint information.
 %%
-%% For more information
-%% on policy permissions, please see Internetwork traffic privacy:
+%% For more information on policy permissions,
+%% please see Internetwork traffic privacy:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints.
 -spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
@@ -3445,7 +3459,8 @@ describe_limits(Client, Input, Options)
 %% it was created, the primary key schema, and any indexes on the table.
 %%
 %% For global tables, this operation only applies to global tables using
-%% Version 2019.11.21 (Current version).
+%% Version
+%% 2019.11.21 (Current version).
 %%
 %% If you issue a `DescribeTable' request immediately after a
 %% `CreateTable' request, DynamoDB might return a
@@ -3474,7 +3489,8 @@ describe_table(Client, Input, Options)
 %% at once.
 %%
 %% For global tables, this operation only applies to global tables using
-%% Version 2019.11.21 (Current version).
+%% Version
+%% 2019.11.21 (Current version).
 -spec describe_table_replica_auto_scaling(aws_client:aws_client(), describe_table_replica_auto_scaling_input()) ->
     {ok, describe_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
@@ -3511,8 +3527,8 @@ describe_time_to_live(Client, Input, Options)
 
 %% @doc Stops replication from the DynamoDB table to the Kinesis data stream.
 %%
-%% This is done
-%% without deleting either of the resources.
+%% This
+%% is done without deleting either of the resources.
 -spec disable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
@@ -3575,8 +3591,8 @@ enable_kinesis_streaming_destination(Client, Input, Options)
 %% `LastEvaluatedKey' is present in the response, you need to paginate
 %% the
 %% result set. If `NextToken' is present, you need to paginate the result
-%% set and include
-%% `NextToken'.
+%% set
+%% and include `NextToken'.
 -spec execute_statement(aws_client:aws_client(), execute_statement_input()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
@@ -3674,40 +3690,44 @@ get_item(Client, Input, Options)
     request(Client, <<"GetItem">>, Input, Options).
 
 %% @doc Returns the resource-based policy document attached to the resource,
-%% which can be a table or stream, in JSON format.
+%% which can be a
+%% table or stream, in JSON format.
 %%
 %% `GetResourcePolicy' follows an
 %% eventually consistent
 %% :
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html
-%% model. The following list describes the outcomes when you issue the
-%% `GetResourcePolicy' request immediately after issuing another request:
+%% model. The following list
+%% describes the outcomes when you issue the `GetResourcePolicy' request
+%% immediately after issuing another request:
 %%
 %% If you issue a `GetResourcePolicy' request immediately after a
 %% `PutResourcePolicy' request, DynamoDB might return a
 %% `PolicyNotFoundException'.
 %%
 %% If you issue a `GetResourcePolicy'request immediately after a
-%% `DeleteResourcePolicy' request, DynamoDB might return the policy that
-%% was present before the deletion request.
+%% `DeleteResourcePolicy' request, DynamoDB might return
+%% the policy that was present before the deletion request.
 %%
 %% If you issue a `GetResourcePolicy' request immediately after a
 %% `CreateTable' request, which includes a resource-based policy,
-%% DynamoDB might return a `ResourceNotFoundException' or a
-%% `PolicyNotFoundException'.
+%% DynamoDB might return a `ResourceNotFoundException' or
+%% a `PolicyNotFoundException'.
 %%
-%% Because `GetResourcePolicy' uses an eventually consistent query, the
-%% metadata for your policy or table might not be available at that moment.
-%% Wait for a few seconds, and then retry the `GetResourcePolicy'
-%% request.
+%% Because `GetResourcePolicy' uses an eventually
+%% consistent query, the metadata for your policy or table might not be
+%% available at that moment. Wait for a few seconds, and then retry the
+%% `GetResourcePolicy' request.
 %%
 %% After a `GetResourcePolicy' request returns a policy created using the
 %% `PutResourcePolicy' request, the policy will be applied in the
 %% authorization of requests to the resource. Because this process is
-%% eventually consistent, it will take some time to apply the policy to all
-%% requests to a resource. Policies that you attach while creating a table
-%% using the `CreateTable' request will always be applied to all requests
-%% for that table.
+%% eventually
+%% consistent, it will take some time to apply the policy to all requests to
+%% a resource.
+%% Policies that you attach while creating a table using the
+%% `CreateTable'
+%% request will always be applied to all requests for that table.
 -spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
@@ -3742,13 +3762,14 @@ import_table(Client, Input, Options)
     request(Client, <<"ImportTable">>, Input, Options).
 
 %% @doc List DynamoDB backups that are associated with an Amazon Web Services
-%% account and weren't made with Amazon Web Services Backup.
+%% account and
+%% weren't made with Amazon Web Services Backup.
 %%
-%% To list these backups for a given table, specify `TableName'.
-%% `ListBackups' returns a
-%% paginated list of results with at most 1 MB worth of items in a page. You
-%% can also
-%% specify a maximum number of entries to be returned in a page.
+%% To list these backups for a given table,
+%% specify `TableName'. `ListBackups' returns a paginated list of
+%% results with at most 1 MB worth of items in a page. You can also specify a
+%% maximum
+%% number of entries to be returned in a page.
 %%
 %% In the request, start time is inclusive, but end time is exclusive. Note
 %% that these
@@ -3757,8 +3778,9 @@ import_table(Client, Input, Options)
 %% You can call `ListBackups' a maximum of five times per second.
 %%
 %% If you want to retrieve the complete list of backups made with Amazon Web
-%% Services Backup, use the
-%% Amazon Web Services Backup list API.:
+%% Services
+%% Backup, use the Amazon Web Services Backup
+%% list API.:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/API_ListBackupJobs.html
 -spec list_backups(aws_client:aws_client(), list_backups_input()) ->
     {ok, list_backups_output(), tuple()} |
@@ -3961,28 +3983,34 @@ put_item(Client, Input, Options)
     request(Client, <<"PutItem">>, Input, Options).
 
 %% @doc Attaches a resource-based policy document to the resource, which can
-%% be a table or stream.
+%% be a table or
+%% stream.
 %%
 %% When you attach a resource-based policy using this API, the policy
-%% application is
+%% application
+%% is
 %% eventually consistent
 %% :
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html.
 %%
 %% `PutResourcePolicy' is an idempotent operation; running it multiple
-%% times on the same resource using the same policy document will return the
-%% same revision ID. If you specify an `ExpectedRevisionId' that
-%% doesn't match the current policy's `RevisionId', the
-%% `PolicyNotFoundException' will be returned.
+%% times
+%% on the same resource using the same policy document will return the same
+%% revision ID. If
+%% you specify an `ExpectedRevisionId' that doesn't match the current
+%% policy's
+%% `RevisionId', the `PolicyNotFoundException' will be
+%% returned.
 %%
 %% `PutResourcePolicy' is an asynchronous operation. If you issue a
 %% `GetResourcePolicy' request immediately after a
-%% `PutResourcePolicy' request, DynamoDB might return your previous
-%% policy, if there was one, or return the `PolicyNotFoundException'.
-%% This is because `GetResourcePolicy' uses an eventually consistent
-%% query, and the metadata for your policy or table might not be available at
-%% that moment. Wait for a few seconds, and then try the
-%% `GetResourcePolicy' request again.
+%% `PutResourcePolicy' request, DynamoDB might return your
+%% previous policy, if there was one, or return the
+%% `PolicyNotFoundException'. This is because
+%% `GetResourcePolicy' uses an eventually consistent query, and the
+%% metadata for your policy or table might not be available at that moment.
+%% Wait for a
+%% few seconds, and then try the `GetResourcePolicy' request again.
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
@@ -4145,8 +4173,8 @@ restore_table_from_backup(Client, Input, Options)
 %% a new table.
 %%
 %% Along with data, the following are also included on the new restored table
-%% using
-%% point in time recovery:
+%% using point
+%% in time recovery:
 %%
 %% Global secondary indexes (GSIs)
 %%
@@ -4198,35 +4226,32 @@ restore_table_to_point_in_time(Client, Input, Options)
 %% items, you can provide a `FilterExpression' operation.
 %%
 %% If the total size of scanned items exceeds the maximum dataset size limit
-%% of 1 MB,
-%% the scan completes and results are returned to the user. The
+%% of 1 MB, the
+%% scan completes and results are returned to the user. The
 %% `LastEvaluatedKey'
 %% value is also returned and the requestor can use the
-%% `LastEvaluatedKey' to continue
-%% the scan in a subsequent operation. Each scan response also includes
-%% number of items that were
-%% scanned (ScannedCount) as part of the request. If using a
-%% `FilterExpression', a scan result
-%% can result in no items meeting the criteria and the `Count' will
-%% result in zero. If
-%% you did not use a `FilterExpression' in the scan request, then
-%% `Count' is
-%% the same as `ScannedCount'.
+%% `LastEvaluatedKey' to
+%% continue the scan in a subsequent operation. Each scan response also
+%% includes number of
+%% items that were scanned (ScannedCount) as part of the request. If using a
+%% `FilterExpression', a scan result can result in no items meeting the
+%% criteria and the `Count' will result in zero. If you did not use a
+%% `FilterExpression' in the scan request, then `Count' is the
+%% same as `ScannedCount'.
 %%
-%% `Count' and `ScannedCount' only return the count of items specific
-%% to a
-%% single scan request and, unless the table is less than 1MB, do not
-%% represent the total number
-%% of items in the table.
+%% `Count' and `ScannedCount' only return the count of items
+%% specific to a single scan request and, unless the table is less than 1MB,
+%% do not
+%% represent the total number of items in the table.
 %%
 %% A single `Scan' operation first reads up to the maximum number of
-%% items set (if
-%% using the `Limit' parameter) or a maximum of 1 MB of data and then
-%% applies any
-%% filtering to the results if a `FilterExpression' is provided. If
+%% items set
+%% (if using the `Limit' parameter) or a maximum of 1 MB of data and then
+%% applies any filtering to the results if a `FilterExpression' is
+%% provided. If
 %% `LastEvaluatedKey' is present in the response, pagination is required
-%% to complete the
-%% full table scan. For more information, see Paginating the
+%% to
+%% complete the full table scan. For more information, see Paginating the
 %% Results:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination
 %% in the Amazon DynamoDB Developer Guide.
@@ -4242,22 +4267,24 @@ restore_table_to_point_in_time(Client, Input, Options)
 %% in the Amazon DynamoDB Developer Guide.
 %%
 %% By default, a `Scan' uses eventually consistent reads when accessing
-%% the items in a table.
-%% Therefore, the results from an eventually consistent `Scan' may not
-%% include the latest item
-%% changes at the time the scan iterates through each item in the table. If
-%% you require a strongly consistent
-%% read of each item as the scan iterates through the items in the table, you
-%% can set the `ConsistentRead'
+%% the
+%% items in a table. Therefore, the results from an eventually consistent
+%% `Scan'
+%% may not include the latest item changes at the time the scan iterates
+%% through each item
+%% in the table. If you require a strongly consistent read of each item as
+%% the scan
+%% iterates through the items in the table, you can set the
+%% `ConsistentRead'
 %% parameter to true. Strong consistency only relates to the consistency of
-%% the read at the item level.
+%% the read at the
+%% item level.
 %%
 %% DynamoDB does not provide snapshot isolation for a scan operation when the
-%% `ConsistentRead'
-%% parameter is set to true. Thus, a DynamoDB scan operation does not
-%% guarantee that all reads in a scan
-%% see a consistent snapshot of the table when the scan operation was
-%% requested.
+%% `ConsistentRead' parameter is set to true. Thus, a DynamoDB scan
+%% operation does not guarantee that all reads in a scan see a consistent
+%% snapshot of
+%% the table when the scan operation was requested.
 -spec scan(aws_client:aws_client(), scan_input()) ->
     {ok, scan_output(), tuple()} |
     {error, any()} |
@@ -4557,8 +4584,8 @@ update_contributor_insights(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 %%
 %% For global tables, this operation only applies to global tables using
-%% Version 2019.11.21 (Current version). If you are using global tables
 %% Version
+%% 2019.11.21 (Current version). If you are using global tables Version
 %% 2019.11.21:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html
 %% you can use UpdateTable:
@@ -4681,7 +4708,8 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% Streams settings for a given table.
 %%
 %% For global tables, this operation only applies to global tables using
-%% Version 2019.11.21 (Current version).
+%% Version
+%% 2019.11.21 (Current version).
 %%
 %% You can only perform one of the following operations at once:
 %%
@@ -4718,7 +4746,8 @@ update_table(Client, Input, Options)
 %% @doc Updates auto scaling settings on your global tables at once.
 %%
 %% For global tables, this operation only applies to global tables using
-%% Version 2019.11.21 (Current version).
+%% Version
+%% 2019.11.21 (Current version).
 -spec update_table_replica_auto_scaling(aws_client:aws_client(), update_table_replica_auto_scaling_input()) ->
     {ok, update_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |

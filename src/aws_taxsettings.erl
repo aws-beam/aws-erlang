@@ -1107,7 +1107,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"tax">>},
+    Client1 = Client#{service => <<"tax">>,
+                      region => <<"us-east-1">>},
     Host = build_host(<<"tax">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
@@ -1192,8 +1193,8 @@ build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
     Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
+build_host(EndpointPrefix, #{endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
 
 build_url(Host, Path0, Client) ->
     Proto = aws_client:proto(Client),

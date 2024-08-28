@@ -1038,6 +1038,7 @@
 %%   <<"computeType">> => list(any()),
 %%   <<"environmentType">> => list(any()),
 %%   <<"fleetServiceRole">> => string(),
+%%   <<"imageId">> => string(),
 %%   <<"overflowBehavior">> => list(any()),
 %%   <<"scalingConfiguration">> => scaling_configuration_input(),
 %%   <<"tags">> => list(tag()()),
@@ -1051,6 +1052,7 @@
 %%   <<"computeType">> := list(any()),
 %%   <<"environmentType">> := list(any()),
 %%   <<"fleetServiceRole">> => string(),
+%%   <<"imageId">> => string(),
 %%   <<"name">> := string(),
 %%   <<"overflowBehavior">> => list(any()),
 %%   <<"scalingConfiguration">> => scaling_configuration_input(),
@@ -1503,6 +1505,7 @@
 %%   <<"environmentType">> => list(any()),
 %%   <<"fleetServiceRole">> => string(),
 %%   <<"id">> => string(),
+%%   <<"imageId">> => string(),
 %%   <<"lastModified">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"overflowBehavior">> => list(any()),
@@ -2213,8 +2216,8 @@ get_resource_policy(Client, Input, Options)
 
 %% @doc Imports the source repository credentials for an CodeBuild project
 %% that has its
-%% source code stored in a GitHub, GitHub Enterprise, or Bitbucket
-%% repository.
+%% source code stored in a GitHub, GitHub Enterprise, GitLab, GitLab Self
+%% Managed, or Bitbucket repository.
 -spec import_source_credentials(aws_client:aws_client(), import_source_credentials_input()) ->
     {ok, import_source_credentials_output(), tuple()} |
     {error, any()} |

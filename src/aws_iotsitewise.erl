@@ -235,6 +235,13 @@
 
 
 %% Example:
+%% siemens_i_e() :: #{
+%%   <<"iotCoreThingName">> => string()
+%% }
+-type siemens_i_e() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_gateway_request() :: #{
 %%   <<"gatewayName">> := string()
 %% }
@@ -399,9 +406,12 @@
 %% }
 -type conflicting_operation_exception() :: #{binary() => any()}.
 
+
 %% Example:
-%% describe_asset_model_composite_model_request() :: #{}
--type describe_asset_model_composite_model_request() :: #{}.
+%% describe_asset_model_composite_model_request() :: #{
+%%   <<"assetModelVersion">> => string()
+%% }
+-type describe_asset_model_composite_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -790,7 +800,10 @@
 
 %% Example:
 %% delete_asset_model_request() :: #{
-%%   <<"clientToken">> => string()
+%%   <<"clientToken">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any())
 %% }
 -type delete_asset_model_request() :: #{binary() => any()}.
 
@@ -935,7 +948,8 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdateDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"status">> => asset_model_status()
+%%   <<"status">> => asset_model_status(),
+%%   <<"version">> => string()
 %% }
 -type asset_model_summary() :: #{binary() => any()}.
 
@@ -1286,7 +1300,10 @@
 %%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()()),
 %%   <<"assetModelName">> := string(),
 %%   <<"assetModelProperties">> => list(asset_model_property()()),
-%%   <<"clientToken">> => string()
+%%   <<"clientToken">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any())
 %% }
 -type update_asset_model_request() :: #{binary() => any()}.
 
@@ -1590,6 +1607,9 @@
 %%   <<"assetModelCompositeModelType">> := string(),
 %%   <<"clientToken">> => string(),
 %%   <<"composedAssetModelId">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any()),
 %%   <<"parentAssetModelCompositeModelId">> => string()
 %% }
 -type create_asset_model_composite_model_request() :: #{binary() => any()}.
@@ -1605,6 +1625,7 @@
 
 %% Example:
 %% describe_asset_model_request() :: #{
+%%   <<"assetModelVersion">> => string(),
 %%   <<"excludeProperties">> => boolean()
 %% }
 -type describe_asset_model_request() :: #{binary() => any()}.
@@ -1670,7 +1691,10 @@
 
 %% Example:
 %% delete_asset_model_composite_model_request() :: #{
-%%   <<"clientToken">> => string()
+%%   <<"clientToken">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any())
 %% }
 -type delete_asset_model_composite_model_request() :: #{binary() => any()}.
 
@@ -1701,6 +1725,7 @@
 
 %% Example:
 %% list_asset_model_composite_models_request() :: #{
+%%   <<"assetModelVersion">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1746,7 +1771,9 @@
 %%   <<"assetModelName">> => string(),
 %%   <<"assetModelProperties">> => list(asset_model_property()()),
 %%   <<"assetModelStatus">> => asset_model_status(),
-%%   <<"assetModelType">> => list(any())
+%%   <<"assetModelType">> => list(any()),
+%%   <<"assetModelVersion">> => string(),
+%%   <<"eTag">> => string()
 %% }
 -type describe_asset_model_response() :: #{binary() => any()}.
 
@@ -1797,7 +1824,8 @@
 %% Example:
 %% gateway_platform() :: #{
 %%   <<"greengrass">> => greengrass(),
-%%   <<"greengrassV2">> => greengrass_v2()
+%%   <<"greengrassV2">> => greengrass_v2(),
+%%   <<"siemensIE">> => siemens_i_e()
 %% }
 -type gateway_platform() :: #{binary() => any()}.
 
@@ -1839,6 +1867,7 @@
 
 %% Example:
 %% list_asset_model_properties_request() :: #{
+%%   <<"assetModelVersion">> => string(),
 %%   <<"filter">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -2326,7 +2355,10 @@
 %%   <<"assetModelCompositeModelExternalId">> => string(),
 %%   <<"assetModelCompositeModelName">> := string(),
 %%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()()),
-%%   <<"clientToken">> => string()
+%%   <<"clientToken">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any())
 %% }
 -type update_asset_model_composite_model_request() :: #{binary() => any()}.
 
@@ -2637,6 +2669,15 @@
 
 
 %% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string()
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_asset_property_aggregates_error_info() :: #{
 %%   <<"errorCode">> => list(any()),
 %%   <<"errorTimestamp">> => non_neg_integer()
@@ -2714,6 +2755,7 @@
 %% Example:
 %% list_asset_models_request() :: #{
 %%   <<"assetModelTypes">> => list(list(any())()),
+%%   <<"assetModelVersion">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -2886,6 +2928,7 @@
     internal_failure_exception().
 
 -type create_asset_model_composite_model_errors() ::
+    precondition_failed_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -2945,6 +2988,7 @@
     internal_failure_exception().
 
 -type delete_asset_model_errors() ::
+    precondition_failed_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -2952,6 +2996,7 @@
     internal_failure_exception().
 
 -type delete_asset_model_composite_model_errors() ::
+    precondition_failed_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -2968,6 +3013,7 @@
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    conflicting_operation_exception() | 
     internal_failure_exception().
 
 -type delete_portal_errors() ::
@@ -3313,6 +3359,7 @@
     internal_failure_exception().
 
 -type update_asset_model_errors() ::
+    precondition_failed_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -3322,6 +3369,7 @@
     internal_failure_exception().
 
 -type update_asset_model_composite_model_errors() ::
+    precondition_failed_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -3804,13 +3852,15 @@ create_asset(Client, Input0, Options0) ->
 %% You can create two types of asset models, `ASSET_MODEL' or
 %% `COMPONENT_MODEL'.
 %%
-%% ASSET_MODEL – (default) An asset model that you can use to create assets.
-%% Can't be included as a component in another asset model.
+%% ASSET_MODEL – (default) An asset model that
+%% you can use to create assets. Can't be included as a component in
+%% another asset
+%% model.
 %%
-%% COMPONENT_MODEL – A reusable component that you can include in the
-%% composite
-%% models of other asset models. You can't create assets directly from
-%% this type of asset model.
+%% COMPONENT_MODEL – A reusable component that
+%% you can include in the composite models of other asset models. You
+%% can't create
+%% assets directly from this type of asset model.
 -spec create_asset_model(aws_client:aws_client(), create_asset_model_request()) ->
     {ok, create_asset_model_response(), tuple()} |
     {error, any()} |
@@ -3847,34 +3897,37 @@ create_asset_model(Client, Input0, Options0) ->
 %% @doc Creates a custom composite model from specified property and
 %% hierarchy definitions.
 %%
-%% There are two types of custom composite models,
-%% `inline' and `component-model-based'.
+%% There
+%% are two types of custom composite models, `inline' and
+%% `component-model-based'.
 %%
 %% Use component-model-based custom composite models to define standard,
-%% reusable components. A component-model-based custom composite model
-%% consists of a name,
-%% a description, and the ID of the component model it references. A
-%% component-model-based custom composite model has no properties of its own;
-%% its referenced
-%% component model provides its associated properties to any created assets.
-%% For more information, see
-%% Custom composite models (Components):
+%% reusable components.
+%% A component-model-based custom composite model consists of a name, a
+%% description, and the ID
+%% of the component model it references. A component-model-based custom
+%% composite model has no
+%% properties of its own; its referenced component model provides its
+%% associated properties to
+%% any created assets. For more information, see Custom composite models
+%% (Components):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/custom-composite-models.html
-%% in the
-%% IoT SiteWise User Guide.
+%% in the IoT SiteWise User Guide.
 %%
 %% Use inline custom composite models to organize the properties of an asset
-%% model. The properties of inline custom composite models are local to the
-%% asset model where they are
+%% model. The
+%% properties of inline custom composite models are local to the asset model
+%% where they are
 %% included and can't be used to create multiple assets.
 %%
 %% To create a component-model-based model, specify the
-%% `composedAssetModelId' of an existing asset model with
-%% `assetModelType' of `COMPONENT_MODEL'.
+%% `composedAssetModelId' of
+%% an existing asset model with `assetModelType' of
+%% `COMPONENT_MODEL'.
 %%
 %% To create an inline model, specify the
-%% `assetModelCompositeModelProperties' and don't include an
-%% `composedAssetModelId'.
+%% `assetModelCompositeModelProperties' and
+%% don't include an `composedAssetModelId'.
 -spec create_asset_model_composite_model(aws_client:aws_client(), binary() | list(), create_asset_model_composite_model_request()) ->
     {ok, create_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
@@ -3897,8 +3950,12 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"ifMatch">>},
+                       {<<"If-None-Match">>, <<"ifNoneMatch">>},
+                       {<<"Match-For-Version-Type">>, <<"matchForVersionType">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -3922,8 +3979,8 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_PutStorageConfiguration.html.
 %%
 %% Bulk import is designed to store historical data to IoT SiteWise. It does
-%% not trigger computations or notifications on
-%% IoT SiteWise warm or cold tier storage.
+%% not trigger
+%% computations or notifications on IoT SiteWise warm or cold tier storage.
 -spec create_bulk_import_job(aws_client:aws_client(), create_bulk_import_job_request()) ->
     {ok, create_bulk_import_job_response(), tuple()} |
     {error, any()} |
@@ -4234,8 +4291,12 @@ delete_asset_model(Client, AssetModelId, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"ifMatch">>},
+                       {<<"If-None-Match">>, <<"ifNoneMatch">>},
+                       {<<"Match-For-Version-Type">>, <<"matchForVersionType">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -4250,14 +4311,14 @@ delete_asset_model(Client, AssetModelId, Input0, Options0) ->
 %%
 %% This action can't be undone. You must delete all assets created
 %% from a composite model before you can delete the model. Also, you
-%% can't delete a composite model if
-%% a parent asset model exists that contains a property formula expression
-%% that depends on the
-%% asset model that you want to delete. For more information, see Deleting
-%% assets and models:
+%% can't delete a composite
+%% model if a parent asset model exists that contains a property formula
+%% expression that depends
+%% on the asset model that you want to delete. For more information, see
+%% Deleting assets and
+%% models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
-%% in the
-%% IoT SiteWise User Guide.
+%% in the IoT SiteWise User Guide.
 -spec delete_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request()) ->
     {ok, delete_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
@@ -4280,8 +4341,12 @@ delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"ifMatch">>},
+                       {<<"If-None-Match">>, <<"ifNoneMatch">>},
+                       {<<"Match-For-Version-Type">>, <<"matchForVersionType">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -4610,8 +4675,8 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
 %%
 %% An `AssetCompositeModel' is an instance of an
 %% `AssetModelCompositeModel'. If you want to see information about the
-%% model this is based on, call
-%% DescribeAssetModelCompositeModel:
+%% model this is
+%% based on, call DescribeAssetModelCompositeModel:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModelCompositeModel.html.
 -spec describe_asset_composite_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_composite_model_response(), tuple()} |
@@ -4684,16 +4749,35 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"assetModelVersion">>, maps:get(<<"assetModelVersion">>, QueryMap, undefined)},
         {<<"excludeProperties">>, maps:get(<<"excludeProperties">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"eTag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Retrieves information about an asset model composite model (also
-%% known as an asset model component).
+%% known as an asset model
+%% component).
 %%
-%% For more information, see Custom composite models (Components):
+%% For more information, see Custom composite models
+%% (Components):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/custom-composite-models.html
 %% in the IoT SiteWise User Guide.
 -spec describe_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -4728,7 +4812,11 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"assetModelVersion">>, maps:get(<<"assetModelVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5299,7 +5387,8 @@ execute_action(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Run SQL queries to retrieve metadata and time-series data from asset
-%% models, assets, measurements, metrics, transforms, and aggregates.
+%% models, assets,
+%% measurements, metrics, transforms, and aggregates.
 -spec execute_query(aws_client:aws_client(), execute_query_request()) ->
     {ok, execute_query_response(), tuple()} |
     {error, any()} |
@@ -5720,6 +5809,7 @@ list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Op
 
     Query0_ =
       [
+        {<<"assetModelVersion">>, maps:get(<<"assetModelVersion">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -5767,6 +5857,7 @@ list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, Options0
 
     Query0_ =
       [
+        {<<"assetModelVersion">>, maps:get(<<"assetModelVersion">>, QueryMap, undefined)},
         {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
@@ -5811,6 +5902,7 @@ list_asset_models(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"assetModelTypes">>, maps:get(<<"assetModelTypes">>, QueryMap, undefined)},
+        {<<"assetModelVersion">>, maps:get(<<"assetModelVersion">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -5974,10 +6066,9 @@ list_assets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can use this operation to do the following:
 %%
-%% List child assets associated to a parent asset by a hierarchy that you
-%% specify.
+%% `CHILD' - List all child assets associated to the asset.
 %%
-%% List an asset's parent asset.
+%% `PARENT' - List the asset's parent asset.
 -spec list_associated_assets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_associated_assets_response(), tuple()} |
     {error, any()} |
@@ -6070,7 +6161,8 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of composition relationships for an asset
-%% model of type `COMPONENT_MODEL'.
+%% model of type
+%% `COMPONENT_MODEL'.
 -spec list_composition_relationships(aws_client:aws_client(), binary() | list()) ->
     {ok, list_composition_relationships_response(), tuple()} |
     {error, any()} |
@@ -6682,21 +6774,20 @@ update_asset(Client, AssetId, Input0, Options0) ->
 %% in the
 %% IoT SiteWise User Guide.
 %%
-%% This operation overwrites the existing model with the provided model. To
-%% avoid deleting
-%% your asset model's properties or hierarchies, you must include their
-%% IDs and definitions in
-%% the updated asset model payload. For more information, see
-%% DescribeAssetModel:
-%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html.
-%%
 %% If you remove a property from an asset model, IoT SiteWise deletes all
 %% previous data for that
-%% property. If you remove a hierarchy definition from an asset model, IoT
-%% SiteWise disassociates every
-%% asset associated with that hierarchy. You can't change the type or
-%% data type of an existing
-%% property.
+%% property. You can’t change the type or data type of an existing property.
+%%
+%% To replace an existing asset model property with a new one with the same
+%% `name', do the following:
+%%
+%% Submit an `UpdateAssetModel' request with the entire existing property
+%% removed.
+%%
+%% Submit a second `UpdateAssetModel' request that includes the new
+%% property. The new asset property will have the same `name' as the
+%% previous
+%% one and IoT SiteWise will generate a new unique `id'.
 -spec update_asset_model(aws_client:aws_client(), binary() | list(), update_asset_model_request()) ->
     {ok, update_asset_model_response(), tuple()} |
     {error, any()} |
@@ -6719,8 +6810,12 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"ifMatch">>},
+                       {<<"If-None-Match">>, <<"ifNoneMatch">>},
+                       {<<"Match-For-Version-Type">>, <<"matchForVersionType">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -6733,28 +6828,30 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
 %% @doc Updates a composite model and all of the assets that were created
 %% from the model.
 %%
-%% Each asset
-%% created from the model inherits the updated asset model's property and
-%% hierarchy definitions.
-%% For more information, see Updating assets and models:
+%% Each
+%% asset created from the model inherits the updated asset model's
+%% property and hierarchy
+%% definitions. For more information, see Updating assets and models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
 %% in the
 %% IoT SiteWise User Guide.
 %%
 %% If you remove a property from a composite asset model, IoT SiteWise
-%% deletes all previous data for that property. You can’t change the type or
-%% data type of an existing property.
+%% deletes all previous data
+%% for that property. You can’t change the type or data type of an existing
+%% property.
 %%
 %% To replace an existing composite asset model property with a new one with
-%% the same `name', do the following:
+%% the same
+%% `name', do the following:
 %%
 %% Submit an `UpdateAssetModelCompositeModel' request with the entire
 %% existing property removed.
 %%
 %% Submit a second `UpdateAssetModelCompositeModel' request that includes
-%% the new property. The new asset property will have the same
-%% `name' as the previous one and IoT SiteWise will generate a new unique
-%% `id'.
+%% the new property. The new asset property will have the same `name' as
+%% the
+%% previous one and IoT SiteWise will generate a new unique `id'.
 -spec update_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_model_composite_model_request()) ->
     {ok, update_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
@@ -6777,8 +6874,12 @@ update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"ifMatch">>},
+                       {<<"If-None-Match">>, <<"ifNoneMatch">>},
+                       {<<"Match-For-Version-Type">>, <<"matchForVersionType">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

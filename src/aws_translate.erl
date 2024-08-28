@@ -55,6 +55,13 @@
 -type terminology_data_location() :: #{binary() => any()}.
 
 %% Example:
+%% translate_term() :: #{
+%%   <<"SourceText">> => string(),
+%%   <<"TargetText">> => string()
+%% }
+-type translate_term() :: #{binary() => any()}.
+
+%% Example:
 %% list_languages_request() :: #{
 %%   <<"DisplayLanguageCode">> => list(any()),
 %%   <<"MaxResults">> => integer(),
@@ -584,13 +591,6 @@
 %%   <<"TerminologyDataFormat">> => list(any())
 %% }
 -type get_terminology_request() :: #{binary() => any()}.
-
-%% Example:
-%% aws_translate_term() :: #{
-%%   <<"SourceText">> => string(),
-%%   <<"TargetText">> => string()
-%% }
--type aws_translate_term() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_tags_exception() :: #{

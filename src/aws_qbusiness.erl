@@ -708,6 +708,7 @@
 %% Example:
 %% create_web_experience_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"identityProviderConfiguration">> => list(),
 %%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"subtitle">> => string(),
@@ -790,6 +791,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"defaultEndpoint">> => string(),
 %%   <<"error">> => error_detail(),
+%%   <<"identityProviderConfiguration">> => list(),
 %%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"status">> => list(any()),
@@ -908,6 +910,7 @@
 %% Example:
 %% update_web_experience_request() :: #{
 %%   <<"authenticationConfiguration">> => list(),
+%%   <<"identityProviderConfiguration">> => list(),
 %%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"subtitle">> => string(),
@@ -922,6 +925,7 @@
 %%   <<"applicationId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"displayName">> => string(),
+%%   <<"identityType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -1001,13 +1005,24 @@
 
 
 %% Example:
+%% auto_subscription_configuration() :: #{
+%%   <<"autoSubscribe">> => list(any()),
+%%   <<"defaultSubscriptionType">> => list(any())
+%% }
+-type auto_subscription_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_application_request() :: #{
 %%   <<"attachmentsConfiguration">> => attachments_configuration(),
+%%   <<"clientIdsForOIDC">> => list(string()()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"iamIdentityProviderArn">> => string(),
 %%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"identityType">> => list(any()),
 %%   <<"personalizationConfiguration">> => personalization_configuration(),
 %%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"roleArn">> => string(),
@@ -1200,6 +1215,7 @@
 %% Example:
 %% update_application_request() :: #{
 %%   <<"attachmentsConfiguration">> => attachments_configuration(),
+%%   <<"autoSubscriptionConfiguration">> => auto_subscription_configuration(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"identityCenterInstanceArn">> => string(),
@@ -1253,12 +1269,16 @@
 %%   <<"applicationArn">> => string(),
 %%   <<"applicationId">> => string(),
 %%   <<"attachmentsConfiguration">> => applied_attachments_configuration(),
+%%   <<"autoSubscriptionConfiguration">> => auto_subscription_configuration(),
+%%   <<"clientIdsForOIDC">> => list(string()()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"error">> => error_detail(),
+%%   <<"iamIdentityProviderArn">> => string(),
 %%   <<"identityCenterApplicationArn">> => string(),
+%%   <<"identityType">> => list(any()),
 %%   <<"personalizationConfiguration">> => personalization_configuration(),
 %%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"roleArn">> => string(),
@@ -1299,6 +1319,13 @@
 %%   <<"failedDocuments">> => list(failed_document()())
 %% }
 -type batch_put_document_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_provider_configuration() :: #{
+%%   <<"authenticationUrl">> => string()
+%% }
+-type saml_provider_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1550,6 +1577,14 @@
 %%   <<"eligibleDataSources">> => list(eligible_data_source()())
 %% }
 -type content_retrieval_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_id_connect_provider_configuration() :: #{
+%%   <<"secretsArn">> => string(),
+%%   <<"secretsRole">> => string()
+%% }
+-type open_id_connect_provider_configuration() :: #{binary() => any()}.
 
 
 %% Example:

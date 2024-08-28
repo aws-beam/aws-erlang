@@ -783,15 +783,6 @@
 
 
 %% Example:
-%% aws_bedrock_agent_function() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"parameters">> => map()
-%% }
--type aws_bedrock_agent_function() :: #{binary() => any()}.
-
-
-%% Example:
 %% action_group_summary() :: #{
 %%   <<"actionGroupId">> => string(),
 %%   <<"actionGroupName">> => string(),
@@ -1261,6 +1252,16 @@
 %%   <<"id">> => string()
 %% }
 -type delete_flow_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_agent_function() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"requireConfirmation">> => list(any())
+%% }
+-type bedrock_agent_function() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3608,7 +3609,8 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a prompt or a prompt version from the Prompt management tool.
+%% @doc Deletes a prompt or a version of it, depending on whether you include
+%% the `promptVersion' field or not.
 %%
 %% For more information, see Delete prompts from the Prompt management tool:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-manage.html#prompt-management-delete.html
@@ -4103,7 +4105,9 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a prompt or a version of it.
+%% @doc Retrieves information about the working draft (`DRAFT' version)
+%% of a prompt or a version of it, depending on whether you include the
+%% `promptVersion' field or not.
 %%
 %% For more information, see View information about prompts using Prompt
 %% management:
@@ -4562,8 +4566,10 @@ list_knowledge_bases(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of prompts from the Prompt management tool and
-%% information about each prompt.
+%% @doc Returns either information about the working draft (`DRAFT'
+%% version) of each prompt in an account, or information about of all
+%% versions of a prompt, depending on whether you include the
+%% `promptIdentifier' field or not.
 %%
 %% For more information, see View information about prompts using Prompt
 %% management:

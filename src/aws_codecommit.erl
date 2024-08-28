@@ -2913,6 +2913,12 @@
 -type branch_info() :: #{binary() => any()}.
 
 %% Example:
+%% operation_not_allowed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_allowed_exception() :: #{binary() => any()}.
+
+%% Example:
 %% list_branches_input() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"repositoryName">> := string()
@@ -3491,6 +3497,7 @@
     too_many_tags_exception() | 
     invalid_tags_map_exception() | 
     repository_limit_exceeded_exception() | 
+    operation_not_allowed_exception() | 
     invalid_system_tag_usage_exception() | 
     encryption_key_disabled_exception() | 
     encryption_key_invalid_id_exception() | 

@@ -1234,6 +1234,7 @@
 %%   <<"GrantReadACP">> => string(),
 %%   <<"ServerSideEncryption">> => list(any()),
 %%   <<"RequestPayer">> => list(any()),
+%%   <<"IfNoneMatch">> => string(),
 %%   <<"SSECustomerAlgorithm">> => string()
 %% }
 -type put_object_request() :: #{binary() => any()}.
@@ -1658,6 +1659,7 @@
 %% Example:
 %% list_buckets_output() :: #{
 %%   <<"Buckets">> => list(bucket()()),
+%%   <<"ContinuationToken">> => string(),
 %%   <<"Owner">> => owner()
 %% }
 -type list_buckets_output() :: #{binary() => any()}.
@@ -2409,6 +2411,14 @@
 
 
 %% Example:
+%% list_buckets_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"MaxBuckets">> => integer()
+%% }
+-type list_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% part() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
@@ -2976,6 +2986,7 @@
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"IfNoneMatch">> => string(),
 %%   <<"MultipartUpload">> => completed_multipart_upload(),
 %%   <<"RequestPayer">> => list(any()),
 %%   <<"SSECustomerAlgorithm">> => string(),
@@ -3204,6 +3215,15 @@
 %% operation and ensure that
 %% the parts list is empty.
 %%
+%% Directory buckets -
+%% If multipart uploads in a directory bucket are in progress, you can't
+%% delete the bucket until all the in-progress multipart uploads are aborted
+%% or completed.
+%% To delete these in-progress multipart uploads, use the
+%% `ListMultipartUploads' operation to list the in-progress multipart
+%% uploads in the bucket and use the `AbortMultupartUpload' operation to
+%% abort all the in-progress multipart uploads.
+%%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
@@ -3396,12 +3416,13 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% Permissions
 %%
-%% General purpose bucket permissions - For information about permissions
-%% required to use the multipart upload API, see Multipart Upload
-%% and Permissions:
+%% General purpose bucket permissions - For
+%% information about permissions required to use the multipart upload API,
+%% see
+%% Multipart Upload and
+%% Permissions:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
-%% the Amazon S3
-%% User Guide.
+%% the Amazon S3 User Guide.
 %%
 %% Directory bucket permissions - To grant access to this API operation on a
 %% directory bucket, we recommend that you use the
@@ -3419,6 +3440,14 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% For more information about authorization, see
 %% `CreateSession'
 %% : https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
+%%
+%% If you provide an additional checksum
+%% value: https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html
+%% in your `MultipartUpload' requests and the
+%% object is encrypted with Key Management Service, you must have permission
+%% to use the
+%% `kms:Decrypt' action for the
+%% `CompleteMultipartUpload' request to succeed.
 %%
 %% Special errors
 %%
@@ -3503,6 +3532,7 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"If-None-Match">>, <<"IfNoneMatch">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
                        {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
@@ -3556,6 +3586,9 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% directory buckets, and
 %% between general purpose buckets and directory buckets.
 %%
+%% Amazon S3 supports copy operations using Multi-Region Access Points only
+%% as a destination when using the Multi-Region Access Point ARN.
+%%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
@@ -3566,6 +3599,10 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide.
+%%
+%% VPC endpoints don't support cross-Region requests (including copies).
+%% If you're using VPC endpoints, your source and destination buckets
+%% should be in the same Amazon Web Services Region as your VPC endpoint.
 %%
 %% Both the
 %% Region that you want to copy the object from and the Region that you want
@@ -4101,26 +4138,23 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% Permissions
 %%
-%% General purpose bucket permissions - For information about the permissions
-%% required to use the multipart upload API, see
-%% Multipart
-%% upload and permissions:
-%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
-%% the Amazon S3 User Guide.
-%%
-%% To perform a multipart upload with encryption by using an Amazon Web
-%% Services KMS key, the requester
-%% must have permission to the `kms:Decrypt' and
-%% `kms:GenerateDataKey*'
-%% actions on the key. These permissions are required because Amazon S3 must
-%% decrypt and read data
-%% from the encrypted file parts before it completes the multipart upload.
-%% For more
-%% information, see Multipart upload API
-%% and permissions:
+%% General purpose bucket permissions - To
+%% perform a multipart upload with encryption using an Key Management Service
+%% (KMS)
+%% KMS key, the requester must have permission to the
+%% `kms:Decrypt' and `kms:GenerateDataKey' actions on
+%% the key. The requester must also have permissions for the
+%% `kms:GenerateDataKey' action for the
+%% `CreateMultipartUpload' API. Then, the requester needs
+%% permissions for the `kms:Decrypt' action on the
+%% `UploadPart' and `UploadPartCopy' APIs. These
+%% permissions are required because Amazon S3 must decrypt and read data from
+%% the
+%% encrypted file parts before it completes the multipart upload. For more
+%% information, see Multipart upload API and permissions:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions
-%% and Protecting data using
-%% server-side encryption with Amazon Web Services KMS:
+%% and Protecting data
+%% using server-side encryption with Amazon Web Services KMS:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
 %% in the
 %% Amazon S3 User Guide.
@@ -8463,25 +8497,18 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% is not included, so
 %% you cannot determine the exception beyond these HTTP response codes.
 %%
-%% Directory buckets - You must make requests for this API operation to the
-%% Zonal endpoint. These endpoints support virtual-hosted-style requests in
-%% the format `https://bucket_name.s3express-az_id.region.amazonaws.com'.
-%% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
-%% in the
-%% Amazon S3 User Guide.
-%%
 %% Authentication and authorization
 %%
-%% All `HeadBucket' requests must be authenticated and signed by using
-%% IAM credentials (access key ID and secret access key for the IAM
-%% identities). All headers with the `x-amz-' prefix, including
+%% General purpose buckets - Request to public buckets that grant the
+%% s3:ListBucket permission publicly do not need to be signed. All other
+%% `HeadBucket' requests must be authenticated and signed by using IAM
+%% credentials (access key ID and secret access key for the IAM identities).
+%% All headers with the `x-amz-' prefix, including
 %% `x-amz-copy-source', must be signed. For more information, see REST
 %% Authentication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html.
 %%
-%% Directory bucket - You must use IAM credentials to authenticate and
+%% Directory buckets - You must use IAM credentials to authenticate and
 %% authorize your access to the `HeadBucket' API operation, instead of
 %% using the
 %% temporary security credentials through the `CreateSession' API
@@ -8524,6 +8551,15 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket_name.s3express-az_id.region.amazonaws.com'''.
+%%
+%% You must make requests for this API operation to the Zonal endpoint. These
+%% endpoints support virtual-hosted-style requests in the format
+%% `https://bucket_name.s3express-az_id.region.amazonaws.com'. Path-style
+%% requests are not supported. For more information, see Regional and Zonal
+%% endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the
+%% Amazon S3 User Guide.
 -spec head_bucket(aws_client:aws_client(), binary() | list(), head_bucket_request()) ->
     {ok, head_bucket_output(), tuple()} |
     {error, any()} |
@@ -8604,17 +8640,6 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% Common
 %% Request Headers:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html.
-%%
-%% Directory buckets - For directory buckets, you must make requests for this
-%% API operation to the Zonal endpoint. These endpoints support
-%% virtual-hosted-style requests in the format
-%% ```
-%% https://bucket_name.s3express-az_id.region.amazonaws.com/key-name
-%% '''. Path-style requests are not supported. For more
-%% information, see Regional and Zonal endpoints:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
-%% in the
-%% Amazon S3 User Guide.
 %%
 %% Permissions
 %%
@@ -8717,6 +8742,17 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket_name.s3express-az_id.region.amazonaws.com'''.
+%%
+%% For directory buckets, you must make requests for this API operation to
+%% the Zonal endpoint. These endpoints support virtual-hosted-style requests
+%% in the format
+%% ```
+%% https://bucket_name.s3express-az_id.region.amazonaws.com/key-name
+%% '''. Path-style requests are not supported. For more
+%% information, see Regional and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the
+%% Amazon S3 User Guide.
 %%
 %% The following actions are related to `HeadObject':
 %%
@@ -9212,7 +9248,12 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"continuation-token">>, maps:get(<<"continuation-token">>, QueryMap, undefined)},
+        {<<"max-buckets">>, maps:get(<<"max-buckets">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
@@ -9300,6 +9341,10 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %% If multipart uploads in a directory bucket are in progress, you can't
 %% delete the bucket until all the in-progress multipart uploads are aborted
 %% or completed.
+%% To delete these in-progress multipart uploads, use the
+%% `ListMultipartUploads' operation to list the in-progress multipart
+%% uploads in the bucket and use the `AbortMultupartUpload' operation to
+%% abort all the in-progress multipart uploads.
 %%
 %% The `ListMultipartUploads' operation returns a maximum of 1,000
 %% multipart uploads in the response. The limit of 1,000 multipart
@@ -9689,6 +9734,14 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% in the Amazon S3 User Guide. To get a list of your buckets, see
 %% ListBuckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html.
+%%
+%% General purpose bucket - For general purpose buckets, `ListObjectsV2'
+%% doesn't return prefixes that are related only to in-progress multipart
+%% uploads.
+%%
+%% Directory buckets -
+%% For directory buckets, `ListObjectsV2' response includes the prefixes
+%% that are related only to in-progress multipart uploads.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
@@ -10534,8 +10587,16 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %% SSE-KMS, you should verify that your KMS key ID is correct. Amazon S3 does
 %% not validate the KMS key ID provided in PutBucketEncryption requests.
 %%
-%% This action requires Amazon Web Services Signature Version 4. For more
-%% information, see
+%% If you're specifying a customer managed KMS key, we recommend using a
+%% fully qualified
+%% KMS key ARN. If you use a KMS key alias instead, then KMS resolves the key
+%% within the
+%% requester’s account. This behavior can result in data that's encrypted
+%% with a KMS key
+%% that belongs to the requester, and not the bucket owner.
+%%
+%% Also, this action requires Amazon Web Services Signature Version 4. For
+%% more information, see
 %% Authenticating Requests (Amazon Web Services Signature Version 4):
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html.
 %%
@@ -11764,6 +11825,16 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% @doc
 %% This operation is not supported by directory buckets.
 %%
+%% When you enable versioning on a bucket for the first time, it might take a
+%% short
+%% amount of time for the change to be fully propagated. We recommend that
+%% you wait for 15
+%% minutes after enabling versioning before issuing write operations
+%% (`PUT'
+%% or
+%% `DELETE')
+%% on objects in the bucket.
+%%
 %% Sets the versioning state of an existing bucket.
 %%
 %% You can set the versioning state with one of the following values:
@@ -12134,6 +12205,7 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"Expires">>, <<"Expires">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
+                       {<<"If-None-Match">>, <<"IfNoneMatch">>},
                        {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
                        {<<"x-amz-server-side-encryption-context">>, <<"SSEKMSEncryptionContext">>},
                        {<<"Cache-Control">>, <<"CacheControl">>},
@@ -12826,6 +12898,11 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% @doc
 %% This operation is not supported by directory buckets.
 %%
+%% The `SELECT' job type for the RestoreObject operation is no longer
+%% available to new customers. Existing customers of Amazon S3 Select can
+%% continue to use the feature as usual. Learn more:
+%% http://aws.amazon.com/blogs/storage/how-to-optimize-querying-your-data-in-amazon-s3/
+%%
 %% Restores an archived copy of an object back into Amazon S3
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
@@ -13084,6 +13161,11 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %% @doc
 %% This operation is not supported by directory buckets.
 %%
+%% The SelectObjectContent operation is no longer available to new customers.
+%% Existing customers of Amazon S3 Select can continue to use the operation
+%% as usual. Learn more:
+%% http://aws.amazon.com/blogs/storage/how-to-optimize-querying-your-data-in-amazon-s3/
+%%
 %% This action filters the contents of an Amazon S3 object based on a simple
 %% structured query
 %% language (SQL) statement. In the request, along with the SQL expression,
@@ -13308,12 +13390,32 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% Permissions
 %%
-%% General purpose bucket permissions - For information on the permissions
-%% required to use the multipart upload API, see
-%% Multipart
-%% Upload and Permissions:
-%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
-%% the Amazon S3 User Guide.
+%% General purpose bucket permissions - To
+%% perform a multipart upload with encryption using an Key Management Service
+%% key, the
+%% requester must have permission to the `kms:Decrypt' and
+%% `kms:GenerateDataKey' actions on the key. The requester must
+%% also have permissions for the `kms:GenerateDataKey' action for
+%% the `CreateMultipartUpload' API. Then, the requester needs
+%% permissions for the `kms:Decrypt' action on the
+%% `UploadPart' and `UploadPartCopy' APIs.
+%%
+%% These permissions are required because Amazon S3 must decrypt and read
+%% data
+%% from the encrypted file parts before it completes the multipart upload.
+%% For
+%% more information about KMS permissions, see Protecting data
+%% using server-side encryption with KMS:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
+%% in the
+%% Amazon S3 User Guide. For information about the
+%% permissions required to use the multipart upload API, see Multipart upload
+%% and permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html and
+%% Multipart upload API and permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions
+%% in the
+%% Amazon S3 User Guide.
 %%
 %% Directory bucket permissions - To grant access to this API operation on a
 %% directory bucket, we recommend that you use the
@@ -13578,20 +13680,42 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% You must have `READ' access to the source object and `WRITE'
 %% access to the destination bucket.
 %%
-%% General purpose bucket permissions - You must have the permissions in a
-%% policy based on the bucket types of your source bucket and destination
-%% bucket in an `UploadPartCopy' operation.
+%% General purpose bucket permissions - You
+%% must have the permissions in a policy based on the bucket types of your
+%% source bucket and destination bucket in an `UploadPartCopy'
+%% operation.
 %%
 %% If the source object is in a general purpose bucket, you must have the
+%%
 %% `s3:GetObject'
+%%
 %% permission to read the source object that is being copied.
 %%
 %% If the destination bucket is a general purpose bucket, you must have the
+%%
 %% `s3:PutObject'
+%%
 %% permission to write the object copy to the destination bucket.
 %%
-%% For information about permissions required to use the multipart upload
-%% API, see
+%% To perform a multipart upload with encryption using an Key Management
+%% Service
+%% key, the requester must have permission to the
+%% `kms:Decrypt' and `kms:GenerateDataKey'
+%% actions on the key. The requester must also have permissions for the
+%% `kms:GenerateDataKey' action for the
+%% `CreateMultipartUpload' API. Then, the requester needs
+%% permissions for the `kms:Decrypt' action on the
+%% `UploadPart' and `UploadPartCopy' APIs. These
+%% permissions are required because Amazon S3 must decrypt and read data from
+%% the encrypted file parts before it completes the multipart upload. For
+%% more information about KMS permissions, see Protecting
+%% data using server-side encryption with KMS:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
+%% in the
+%% Amazon S3 User Guide. For information about the
+%% permissions required to use the multipart upload API, see Multipart upload
+%% and permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html and
 %% Multipart upload API and permissions:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions
 %% in the

@@ -108,6 +108,7 @@
 %%   <<"ApplicationId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"ComponentId">> => string(),
+%%   <<"ConnectedComponentArns">> => list(string()()),
 %%   <<"Credentials">> => list(application_credential()()),
 %%   <<"DatabaseId">> => string(),
 %%   <<"DatabaseName">> => [string()],
@@ -392,6 +393,7 @@
 %% application() :: #{
 %%   <<"AppRegistryArn">> => string(),
 %%   <<"Arn">> => string(),
+%%   <<"AssociatedApplicationArns">> => list(string()()),
 %%   <<"Components">> => list(string()()),
 %%   <<"DiscoveryStatus">> => list(any()),
 %%   <<"Id">> => string(),
@@ -1094,8 +1096,7 @@ list_databases(Client, Input0, Options0) ->
 %%
 %% Available parameters include `OperationID', as well as optional
 %% parameters
-%% `MaxResults', `NextToken', and
-%% `Filters'.
+%% `MaxResults', `NextToken', and `Filters'.
 -spec list_operation_events(aws_client:aws_client(), list_operation_events_input()) ->
     {ok, list_operation_events_output(), tuple()} |
     {error, any()} |
@@ -1357,9 +1358,9 @@ start_application_refresh(Client, Input0, Options0) ->
 
 %% @doc Request is an operation to stop an application.
 %%
-%% Parameter `ApplicationId' is required.
-%% Parameters `StopConnectedEntity' and
-%% `IncludeEc2InstanceShutdown' are optional.
+%% Parameter `ApplicationId' is required. Parameters
+%% `StopConnectedEntity' and `IncludeEc2InstanceShutdown' are
+%% optional.
 -spec stop_application(aws_client:aws_client(), stop_application_input()) ->
     {ok, stop_application_output(), tuple()} |
     {error, any()} |

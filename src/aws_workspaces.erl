@@ -367,6 +367,13 @@
 -type describe_connection_alias_permissions_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_workspace_directories_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type describe_workspace_directories_filter() :: #{binary() => any()}.
+
+%% Example:
 %% workspace_image() :: #{
 %%   <<"Created">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -1115,6 +1122,13 @@
 -type describe_workspace_associations_result() :: #{binary() => any()}.
 
 %% Example:
+%% microsoft_entra_config() :: #{
+%%   <<"ApplicationConfigSecretArn">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type microsoft_entra_config() :: #{binary() => any()}.
+
+%% Example:
 %% modify_workspace_creation_properties_request() :: #{
 %%   <<"ResourceId">> := string(),
 %%   <<"WorkspaceCreationProperties">> := workspace_creation_properties()
@@ -1241,6 +1255,7 @@
 %% Example:
 %% describe_workspace_directories_request() :: #{
 %%   <<"DirectoryIds">> => list(string()()),
+%%   <<"Filters">> => list(describe_workspace_directories_filter()()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"WorkspaceDirectoryNames">> => list(string()())
@@ -1619,6 +1634,8 @@
 %%   <<"DirectoryId">> => string(),
 %%   <<"EnableSelfService">> => boolean(),
 %%   <<"EnableWorkDocs">> => boolean(),
+%%   <<"IdcInstanceArn">> => string(),
+%%   <<"MicrosoftEntraConfig">> => microsoft_entra_config(),
 %%   <<"SubnetIds">> => list(string()()),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Tenancy">> => list(any()),
@@ -1759,7 +1776,9 @@
 %%   <<"DirectoryType">> => list(any()),
 %%   <<"DnsIpAddresses">> => list(string()()),
 %%   <<"ErrorMessage">> => string(),
+%%   <<"IDCConfig">> => id_c_config(),
 %%   <<"IamRoleId">> => string(),
+%%   <<"MicrosoftEntraConfig">> => microsoft_entra_config(),
 %%   <<"RegistrationCode">> => string(),
 %%   <<"SamlProperties">> => saml_properties(),
 %%   <<"SelfservicePermissions">> => selfservice_permissions(),
@@ -1777,6 +1796,13 @@
 %%   <<"ipGroupIds">> => list(string()())
 %% }
 -type workspace_directory() :: #{binary() => any()}.
+
+%% Example:
+%% id_c_config() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"InstanceArn">> => string()
+%% }
+-type id_c_config() :: #{binary() => any()}.
 
 %% Example:
 %% stop_workspaces_result() :: #{
@@ -3168,6 +3194,13 @@ create_workspace_image(Client, Input, Options)
 %%
 %% User-decoupled WorkSpaces are only supported by Amazon WorkSpaces
 %% Core.
+%%
+%% Review your running mode to ensure you are using one that is optimal for
+%% your needs and budget.
+%% For more information on switching running modes, see
+%%
+%% Can I switch between hourly and monthly billing?:
+%% http://aws.amazon.com/workspaces-family/workspaces/faqs/#:~:text=Can%20I%20switch%20between%20hourly%20and%20monthly%20billing%20on%20WorkSpaces%20Personal%3F
 -spec create_workspaces(aws_client:aws_client(), create_workspaces_request()) ->
     {ok, create_workspaces_result(), tuple()} |
     {error, any()} |

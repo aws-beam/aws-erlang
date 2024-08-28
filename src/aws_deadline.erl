@@ -10,12 +10,13 @@
 %% specific to their job function.
 %%
 %% With Deadline Cloud, content production teams can deploy resources for
-%% their workforce securely
-%% in the cloud, reducing the costs of added physical infrastructure. Keep
-%% your content
-%% production operations secure, while allowing your contributors to access
-%% the tools they
-%% need, such as scalable high-speed storage, licenses, and cost management
+%% their workforce
+%% securely in the cloud, reducing the costs of added physical
+%% infrastructure. Keep your
+%% content production operations secure, while allowing your contributors to
+%% access the tools
+%% they need, such as scalable high-speed storage, licenses, and cost
+%% management
 %% services.
 -module(aws_deadline).
 
@@ -4278,8 +4279,11 @@ create_fleet(Client, FarmId, Input0, Options0) ->
 
 %% @doc Creates a job.
 %%
-%% A job is a render submission submitted by a user. It contains specific
-%% job properties outlined as steps and tasks.
+%% A job is a set of instructions that AWS Deadline Cloud uses to schedule
+%% and run work on available workers. For more information, see Deadline
+%% Cloud
+%% jobs:
+%% https://docs.aws.amazon.com/deadline-cloud/latest/userguide/deadline-cloud-jobs.html.
 -spec create_job(aws_client:aws_client(), binary() | list(), binary() | list(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
@@ -4797,6 +4801,10 @@ delete_monitor(Client, MonitorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a queue.
+%%
+%% You can't recover the jobs in a queue if you delete the queue.
+%% Deleting the queue
+%% also deletes the jobs in that queue.
 -spec delete_queue(aws_client:aws_client(), binary() | list(), binary() | list(), delete_queue_request()) ->
     {ok, delete_queue_response(), tuple()} |
     {error, any()} |
@@ -7017,9 +7025,14 @@ search_workers(Client, FarmId, Input0, Options0) ->
 %% about queues and farms.
 %%
 %% Get the statistics using the `GetSessionsStatisticsAggregation'
+%% operation. You
+%% can only have one running aggregation for your Deadline Cloud farm. Call
+%% the
+%% `GetSessionsStatisticsAggregation' operation and check the
+%% `status' field to see if an aggregation is running. Statistics are
+%% available
+%% for 1 hour after you call the `StartSessionsStatisticsAggregation'
 %% operation.
-%% Statistics are available for 1 hour after you call the
-%% `StartSessionsStatisticsAggregation' operation.
 -spec start_sessions_statistics_aggregation(aws_client:aws_client(), binary() | list(), start_sessions_statistics_aggregation_request()) ->
     {ok, start_sessions_statistics_aggregation_response(), tuple()} |
     {error, any()} |
@@ -7231,6 +7244,14 @@ update_fleet(Client, FarmId, FleetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a job.
+%%
+%% When you change the status of the job to `ARCHIVED', the job can't
+%% be
+%% scheduled or archived.
+%%
+%% An archived jobs and its steps and tasks are deleted after 120 days. The
+%% job can't be
+%% recovered.
 -spec update_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_job_request()) ->
     {ok, update_job_response(), tuple()} |
     {error, any()} |

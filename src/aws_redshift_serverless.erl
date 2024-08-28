@@ -260,6 +260,12 @@
 -type delete_usage_limit_request() :: #{binary() => any()}.
 
 %% Example:
+%% ipv6_cidr_block_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type ipv6_cidr_block_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
 %% create_snapshot_request() :: #{
 %%   <<"namespaceName">> := [string()],
 %%   <<"retentionPeriod">> => [integer()],
@@ -308,6 +314,7 @@
 %% Example:
 %% network_interface() :: #{
 %%   <<"availabilityZone">> => [string()],
+%%   <<"ipv6Address">> => [string()],
 %%   <<"networkInterfaceId">> => [string()],
 %%   <<"privateIpAddress">> => [string()],
 %%   <<"subnetId">> => [string()]
@@ -574,6 +581,7 @@
 %%   <<"customDomainName">> => string(),
 %%   <<"endpoint">> => endpoint(),
 %%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"namespaceName">> => [string()],
 %%   <<"patchVersion">> => [string()],
@@ -776,6 +784,7 @@
 %%   <<"baseCapacity">> => [integer()],
 %%   <<"configParameters">> => list(config_parameter()()),
 %%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"namespaceName">> := string(),
 %%   <<"port">> => [integer()],
@@ -1130,6 +1139,7 @@
 %%   <<"baseCapacity">> => [integer()],
 %%   <<"configParameters">> => list(config_parameter()()),
 %%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"port">> => [integer()],
 %%   <<"publiclyAccessible">> => [boolean()],
@@ -1330,7 +1340,8 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    insufficient_capacity_exception().
+    insufficient_capacity_exception() | 
+    ipv6_cidr_block_not_found_exception().
 
 -type delete_custom_domain_association_errors() ::
     throttling_exception() | 
@@ -1604,7 +1615,8 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    insufficient_capacity_exception().
+    insufficient_capacity_exception() | 
+    ipv6_cidr_block_not_found_exception().
 
 %%====================================================================
 %% API

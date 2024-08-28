@@ -432,6 +432,23 @@
 
 
 %% Example:
+%% panorama_node() :: #{
+%%   <<"Category">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"PackageArn">> => string(),
+%%   <<"PackageId">> => string(),
+%%   <<"PackageName">> => string(),
+%%   <<"PackageVersion">> => string(),
+%%   <<"PatchVersion">> => string()
+%% }
+-type panorama_node() :: #{binary() => any()}.
+
+
+%% Example:
 %% package_list_item() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -782,23 +799,6 @@
 %%   <<"JobId">> := string()
 %% }
 -type create_package_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_panorama_node() :: #{
-%%   <<"Category">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NodeId">> => string(),
-%%   <<"OwnerAccount">> => string(),
-%%   <<"PackageArn">> => string(),
-%%   <<"PackageId">> => string(),
-%%   <<"PackageName">> => string(),
-%%   <<"PackageVersion">> => string(),
-%%   <<"PatchVersion">> => string()
-%% }
--type aws_panorama_node() :: #{binary() => any()}.
 
 
 %% Example:

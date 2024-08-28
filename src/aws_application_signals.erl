@@ -1,15 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% This is a Preview release of the Application Signals API Reference.
+%% @doc Use CloudWatch Application Signals for comprehensive observability of
+%% your cloud-based applications.
 %%
-%% Operations and parameters are subject to change before the general
-%% availability
-%% release.
-%%
-%% Use CloudWatch Application Signals for comprehensive observability of your
-%% cloud-based applications.
 %% It enables real-time service health dashboards and helps you track
 %% long-term performance trends against your business goals.
 %% The application-centric view provides you with unified visibility across
@@ -29,6 +23,11 @@
 %% See a map of your application topology that Application Signals
 %% automatically discovers, that gives you a visual representation of your
 %% applications, dependencies, and their connectivity.
+%%
+%% Application Signals works with CloudWatch RUM, CloudWatch Synthetics
+%% canaries, and Amazon Web Services Service Catalog AppRegistry, to display
+%% your client pages, Synthetics canaries,
+%% and application names within dashboards and maps.
 -module(aws_application_signals).
 
 -export([batch_get_service_level_objective_budget_report/2,
@@ -219,6 +218,7 @@
 %% service() :: #{
 %%   <<"AttributeMaps">> => list(map()()),
 %%   <<"KeyAttributes">> => map(),
+%%   <<"LogGroupReferences">> => list(map()()),
 %%   <<"MetricReferences">> => list(metric_reference()())
 %% }
 -type service() :: #{binary() => any()}.
@@ -315,6 +315,7 @@
 %% Example:
 %% get_service_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"LogGroupReferences">> => list(map()()),
 %%   <<"Service">> => service(),
 %%   <<"StartTime">> => [non_neg_integer()]
 %% }

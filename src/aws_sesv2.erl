@@ -679,7 +679,7 @@
 %%   <<"ContactLanguage">> => list(any()),
 %%   <<"MailType">> := list(any()),
 %%   <<"ProductionAccessEnabled">> => boolean(),
-%%   <<"UseCaseDescription">> := string(),
+%%   <<"UseCaseDescription">> => string(),
 %%   <<"WebsiteURL">> := string()
 %% }
 -type put_account_details_request() :: #{binary() => any()}.

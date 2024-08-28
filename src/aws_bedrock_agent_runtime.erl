@@ -26,6 +26,7 @@
 %% Example:
 %% function_invocation_input() :: #{
 %%   <<"actionGroup">> => [string()],
+%%   <<"actionInvocationType">> => list(any()),
 %%   <<"function">> => [string()],
 %%   <<"parameters">> => list(function_parameter()())
 %% }
@@ -173,6 +174,13 @@
 
 
 %% Example:
+%% metadata() :: #{
+%%   <<"usage">> => usage()
+%% }
+-type metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_query() :: #{
 %%   <<"text">> => [string()]
 %% }
@@ -289,6 +297,14 @@
 
 
 %% Example:
+%% usage() :: #{
+%%   <<"inputTokens">> => [integer()],
+%%   <<"outputTokens">> => [integer()]
+%% }
+-type usage() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieval_result_content() :: #{
 %%   <<"text">> => [string()]
 %% }
@@ -361,6 +377,7 @@
 %% Example:
 %% function_result() :: #{
 %%   <<"actionGroup">> => [string()],
+%%   <<"confirmationState">> => list(any()),
 %%   <<"function">> => [string()],
 %%   <<"responseBody">> => map(),
 %%   <<"responseState">> => list(any())
@@ -501,6 +518,7 @@
 %% Example:
 %% api_invocation_input() :: #{
 %%   <<"actionGroup">> => [string()],
+%%   <<"actionInvocationType">> => list(any()),
 %%   <<"apiPath">> => string(),
 %%   <<"httpMethod">> => [string()],
 %%   <<"parameters">> => list(api_parameter()()),
@@ -542,6 +560,7 @@
 %% api_result() :: #{
 %%   <<"actionGroup">> => [string()],
 %%   <<"apiPath">> => string(),
+%%   <<"confirmationState">> => list(any()),
 %%   <<"httpMethod">> => [string()],
 %%   <<"httpStatusCode">> => [integer()],
 %%   <<"responseBody">> => map(),
@@ -792,6 +811,13 @@
 
 
 %% Example:
+%% raw_response() :: #{
+%%   <<"content">> => [string()]
+%% }
+-type raw_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_configuration() :: #{
 %%   <<"guardrailId">> => [string()],
 %%   <<"guardrailVersion">> => [string()]
@@ -908,6 +934,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_pii_entity_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% orchestration_model_invocation_output() :: #{
+%%   <<"metadata">> => metadata(),
+%%   <<"rawResponse">> => raw_response(),
+%%   <<"traceId">> => string()
+%% }
+-type orchestration_model_invocation_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1210,6 +1245,9 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
 %% Test a flow in Amazon Bedrock:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html in
 %% the Amazon Bedrock User Guide.
+%%
+%% The CLI doesn't support streaming operations in Amazon Bedrock,
+%% including `InvokeFlow'.
 -spec invoke_flow(aws_client:aws_client(), binary() | list(), binary() | list(), invoke_flow_request()) ->
     {ok, invoke_flow_response(), tuple()} |
     {error, any()} |

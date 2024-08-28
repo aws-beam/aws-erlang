@@ -1,12 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Web Services Telco Network Builder (TNB) is a network
-%% automation service that helps you deploy and manage telecom networks.
+%% @doc
+%% Amazon Web Services Telco Network Builder (TNB) is a network automation
+%% service that helps
+%% you deploy and manage telecom networks.
 %%
-%% AWS TNB helps you with the lifecycle management of your telecommunication
-%% network functions throughout planning, deployment, and post-deployment
-%% activities.
+%% AWS TNB helps you with the lifecycle management of
+%% your telecommunication network functions throughout planning, deployment,
+%% and
+%% post-deployment activities.
 -module(aws_tnb).
 
 -export([cancel_sol_network_operation/3,
@@ -166,7 +169,8 @@
 %% Example:
 %% list_sol_network_operations_input() :: #{
 %%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"nsInstanceId">> => string()
 %% }
 -type list_sol_network_operations_input() :: #{binary() => any()}.
 
@@ -296,7 +300,7 @@
 %% Example:
 %% validate_sol_network_package_content_input() :: #{
 %%   <<"contentType">> => list(any()),
-%%   <<"file">> := [binary()]
+%%   <<"file">> := binary()
 %% }
 -type validate_sol_network_package_content_input() :: #{binary() => any()}.
 
@@ -304,7 +308,7 @@
 %% Example:
 %% put_sol_network_package_content_input() :: #{
 %%   <<"contentType">> => list(any()),
-%%   <<"file">> := [binary()]
+%%   <<"file">> := binary()
 %% }
 -type put_sol_network_package_content_input() :: #{binary() => any()}.
 
@@ -317,7 +321,8 @@
 %%   <<"lcmOperationType">> => list(any()),
 %%   <<"metadata">> => list_sol_network_operations_metadata(),
 %%   <<"nsInstanceId">> => string(),
-%%   <<"operationState">> => list(any())
+%%   <<"operationState">> => list(any()),
+%%   <<"updateType">> => list(any())
 %% }
 -type list_sol_network_operations_info() :: #{binary() => any()}.
 
@@ -359,6 +364,14 @@
 
 
 %% Example:
+%% update_ns_metadata() :: #{
+%%   <<"additionalParamsForNs">> => [any()],
+%%   <<"nsdInfoId">> => string()
+%% }
+-type update_ns_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_sol_network_package_content_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
@@ -396,7 +409,9 @@
 %% Example:
 %% list_sol_network_operations_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()]
+%%   <<"lastModified">> => [non_neg_integer()],
+%%   <<"nsdInfoId">> => string(),
+%%   <<"vnfInstanceId">> => string()
 %% }
 -type list_sol_network_operations_metadata() :: #{binary() => any()}.
 
@@ -447,7 +462,7 @@
 %% Example:
 %% put_sol_function_package_content_input() :: #{
 %%   <<"contentType">> => list(any()),
-%%   <<"file">> := [binary()]
+%%   <<"file">> := binary()
 %% }
 -type put_sol_function_package_content_input() :: #{binary() => any()}.
 
@@ -501,6 +516,14 @@
 
 
 %% Example:
+%% update_sol_network_service_data() :: #{
+%%   <<"additionalParamsForNs">> => [any()],
+%%   <<"nsdInfoId">> => string()
+%% }
+-type update_sol_network_service_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_sol_network_instance_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"lastModified">> => [non_neg_integer()]
@@ -526,6 +549,14 @@
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% modify_vnf_info_metadata() :: #{
+%%   <<"vnfConfigurableProperties">> => [any()],
+%%   <<"vnfInstanceId">> => string()
+%% }
+-type modify_vnf_info_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -674,6 +705,7 @@
 %% update_sol_network_instance_input() :: #{
 %%   <<"modifyVnfInfoData">> => update_sol_network_modify(),
 %%   <<"tags">> => map(),
+%%   <<"updateNs">> => update_sol_network_service_data(),
 %%   <<"updateType">> := list(any())
 %% }
 -type update_sol_network_instance_input() :: #{binary() => any()}.
@@ -705,7 +737,10 @@
 %% Example:
 %% get_sol_network_operation_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()]
+%%   <<"instantiateMetadata">> => instantiate_metadata(),
+%%   <<"lastModified">> => [non_neg_integer()],
+%%   <<"modifyVnfInfoMetadata">> => modify_vnf_info_metadata(),
+%%   <<"updateNsMetadata">> => update_ns_metadata()
 %% }
 -type get_sol_network_operation_metadata() :: #{binary() => any()}.
 
@@ -741,6 +776,14 @@
 %% Example:
 %% get_sol_network_instance_input() :: #{}
 -type get_sol_network_instance_input() :: #{}.
+
+
+%% Example:
+%% instantiate_metadata() :: #{
+%%   <<"additionalParamsForNs">> => [any()],
+%%   <<"nsdInfoId">> => string()
+%% }
+-type instantiate_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -801,7 +844,7 @@
 %% Example:
 %% validate_sol_function_package_content_input() :: #{
 %%   <<"contentType">> => list(any()),
-%%   <<"file">> := [binary()]
+%%   <<"file">> := binary()
 %% }
 -type validate_sol_function_package_content_input() :: #{binary() => any()}.
 
@@ -851,7 +894,8 @@
 %%   <<"nsInstanceId">> => string(),
 %%   <<"operationState">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"tasks">> => list(get_sol_network_operation_task_details()())
+%%   <<"tasks">> => list(get_sol_network_operation_task_details()()),
+%%   <<"updateType">> => list(any())
 %% }
 -type get_sol_network_operation_output() :: #{binary() => any()}.
 
@@ -1206,9 +1250,11 @@ cancel_sol_network_operation(Client, NsLcmOpOccId, Input0, Options0) ->
 %% Amazon Web Services Telco Network Builder User Guide.
 %%
 %% Creating a function package is the first step for creating a network in
-%% AWS TNB. This request creates an empty container with an ID. The next step
-%% is to upload the actual CSAR zip file into that empty container. To upload
-%% function package content, see PutSolFunctionPackageContent:
+%% AWS TNB. This
+%% request creates an empty container with an ID. The next step is to upload
+%% the actual CSAR
+%% zip file into that empty container. To upload function package content,
+%% see PutSolFunctionPackageContent:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolFunctionPackageContent.html.
 -spec create_sol_function_package(aws_client:aws_client(), create_sol_function_package_input()) ->
     {ok, create_sol_function_package_output(), tuple()} |
@@ -1248,13 +1294,14 @@ create_sol_function_package(Client, Input0, Options0) ->
 %% A network instance is a single network created in Amazon Web Services TNB
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed. Creating a network instance is the
-%% third step after creating a network package. For more information about
-%% network instances, Network instances:
+%% third step after creating a network
+%% package. For more information about network instances, Network instances:
 %% https://docs.aws.amazon.com/tnb/latest/ug/network-instances.html in the
 %% Amazon Web Services Telco Network Builder User Guide.
 %%
 %% Once you create a network instance, you can instantiate it. To instantiate
-%% a network, see InstantiateSolNetworkInstance:
+%% a network,
+%% see InstantiateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_InstantiateSolNetworkInstance.html.
 -spec create_sol_network_instance(aws_client:aws_client(), create_sol_network_instance_input()) ->
     {ok, create_sol_network_instance_output(), tuple()} |
@@ -1299,14 +1346,18 @@ create_sol_network_instance(Client, Input0, Options0) ->
 %% Amazon Web Services Telco Network Builder User Guide.
 %%
 %% A network package consists of a network service descriptor (NSD) file
-%% (required) and any additional files (optional), such as scripts specific
-%% to your needs. For example, if you have multiple function packages in your
-%% network package, you can use the NSD to define which network functions
-%% should run in certain VPCs, subnets, or EKS clusters.
+%% (required) and any
+%% additional files (optional), such as scripts specific to your needs. For
+%% example, if you
+%% have multiple function packages in your network package, you can use the
+%% NSD to define
+%% which network functions should run in certain VPCs, subnets, or EKS
+%% clusters.
 %%
 %% This request creates an empty network package container with an ID. Once
-%% you create a network package, you can upload the network package content
-%% using PutSolNetworkPackageContent:
+%% you create a
+%% network package, you can upload the network package content using
+%% PutSolNetworkPackageContent:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolNetworkPackageContent.html.
 -spec create_sol_network_package(aws_client:aws_client(), create_sol_network_package_input()) ->
     {ok, create_sol_network_package_output(), tuple()} |
@@ -1349,7 +1400,8 @@ create_sol_network_package(Client, Input0, Options0) ->
 %% to describe how the network functions should run on your network.
 %%
 %% To delete a function package, the package must be in a disabled state. To
-%% disable a function package, see UpdateSolFunctionPackage:
+%% disable a
+%% function package, see UpdateSolFunctionPackage:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_UpdateSolFunctionPackage.html.
 -spec delete_sol_function_package(aws_client:aws_client(), binary() | list(), delete_sol_function_package_input()) ->
     {ok, undefined, tuple()} |
@@ -1391,8 +1443,8 @@ delete_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 %% update, and delete) can be performed.
 %%
 %% To delete a network instance, the instance must be in a stopped or
-%% terminated state. To terminate a network instance, see
-%% TerminateSolNetworkInstance:
+%% terminated state. To
+%% terminate a network instance, see TerminateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_TerminateSolNetworkInstance.html.
 -spec delete_sol_network_instance(aws_client:aws_client(), binary() | list(), delete_sol_network_instance_input()) ->
     {ok, undefined, tuple()} |
@@ -1434,7 +1486,8 @@ delete_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% Services infrastructure you want to deploy them on.
 %%
 %% To delete a network package, the package must be in a disable state. To
-%% disable a network package, see UpdateSolNetworkPackage:
+%% disable a
+%% network package, see UpdateSolNetworkPackage:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_UpdateSolNetworkPackage.html.
 -spec delete_sol_network_package(aws_client:aws_client(), binary() | list(), delete_sol_network_package_input()) ->
     {ok, undefined, tuple()} |
@@ -1470,8 +1523,9 @@ delete_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the details of a network function instance, including the
-%% instantation state and metadata from the function package descriptor in
-%% the network function package.
+%% instantiation state and
+%% metadata from the function package descriptor in the network function
+%% package.
 %%
 %% A network function instance is a function in a function package .
 -spec get_sol_function_instance(aws_client:aws_client(), binary() | list()) ->
@@ -1511,7 +1565,8 @@ get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the details of an individual function package, such as the
-%% operational state and whether the package is in use.
+%% operational state and
+%% whether the package is in use.
 %%
 %% A function package is a .zip file in CSAR (Cloud Service Archive) format
 %% that contains a network function (an ETSI standard telecommunication
@@ -1723,7 +1778,8 @@ get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the details of a network operation, including the tasks involved
-%% in the network operation and the status of the tasks.
+%% in the network
+%% operation and the status of the tasks.
 %%
 %% A network operation is any operation that is done to your network, such as
 %% network instance instantiation or termination.
@@ -1930,7 +1986,8 @@ get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, Opti
 %% update, and delete) can be performed.
 %%
 %% Before you can instantiate a network instance, you have to create a
-%% network instance. For more information, see CreateSolNetworkInstance:
+%% network instance.
+%% For more information, see CreateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_CreateSolNetworkInstance.html.
 -spec instantiate_sol_network_instance(aws_client:aws_client(), binary() | list(), instantiate_sol_network_instance_input()) ->
     {ok, instantiate_sol_network_instance_output(), tuple()} |
@@ -2104,7 +2161,8 @@ list_sol_network_instances(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists details for a network operation, including when the operation
-%% started and the status of the operation.
+%% started and the
+%% status of the operation.
 %%
 %% A network operation is any operation that is done to your network, such as
 %% network instance instantiation or termination.
@@ -2143,7 +2201,8 @@ list_sol_network_operations(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
-        {<<"nextpage_opaque_marker">>, maps:get(<<"nextpage_opaque_marker">>, QueryMap, undefined)}
+        {<<"nextpage_opaque_marker">>, maps:get(<<"nextpage_opaque_marker">>, QueryMap, undefined)},
+        {<<"nsInstanceId">>, maps:get(<<"nsInstanceId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2474,6 +2533,9 @@ update_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 %% A network instance is a single network created in Amazon Web Services TNB
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed.
+%%
+%% Choose the updateType parameter to target the necessary update of the
+%% network instance.
 -spec update_sol_network_instance(aws_client:aws_client(), binary() | list(), update_sol_network_instance_input()) ->
     {ok, update_sol_network_instance_output(), tuple()} |
     {error, any()} |
@@ -2552,8 +2614,8 @@ update_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
 
 %% @doc Validates function package content.
 %%
-%% This can be used as a dry run before uploading function package content
-%% with PutSolFunctionPackageContent:
+%% This can be used as a dry run before uploading
+%% function package content with PutSolFunctionPackageContent:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolFunctionPackageContent.html.
 %%
 %% A function package is a .zip file in CSAR (Cloud Service Archive) format
@@ -2597,8 +2659,8 @@ validate_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
 
 %% @doc Validates network package content.
 %%
-%% This can be used as a dry run before uploading network package content
-%% with PutSolNetworkPackageContent:
+%% This can be used as a dry run before uploading
+%% network package content with PutSolNetworkPackageContent:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolNetworkPackageContent.html.
 %%
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format

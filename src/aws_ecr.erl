@@ -37,6 +37,8 @@
          create_pull_through_cache_rule/3,
          create_repository/2,
          create_repository/3,
+         create_repository_creation_template/2,
+         create_repository_creation_template/3,
          delete_lifecycle_policy/2,
          delete_lifecycle_policy/3,
          delete_pull_through_cache_rule/2,
@@ -45,6 +47,8 @@
          delete_registry_policy/3,
          delete_repository/2,
          delete_repository/3,
+         delete_repository_creation_template/2,
+         delete_repository_creation_template/3,
          delete_repository_policy/2,
          delete_repository_policy/3,
          describe_image_replication_status/2,
@@ -59,6 +63,10 @@
          describe_registry/3,
          describe_repositories/2,
          describe_repositories/3,
+         describe_repository_creation_templates/2,
+         describe_repository_creation_templates/3,
+         get_account_setting/2,
+         get_account_setting/3,
          get_authorization_token/2,
          get_authorization_token/3,
          get_download_url_for_layer/2,
@@ -79,6 +87,8 @@
          list_images/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_account_setting/2,
+         put_account_setting/3,
          put_image/2,
          put_image/3,
          put_image_scanning_configuration/2,
@@ -105,6 +115,8 @@
          untag_resource/3,
          update_pull_through_cache_rule/2,
          update_pull_through_cache_rule/3,
+         update_repository_creation_template/2,
+         update_repository_creation_template/3,
          upload_layer_part/2,
          upload_layer_part/3,
          validate_pull_through_cache_rule/2,
@@ -175,6 +187,12 @@
 -type encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% template_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type template_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
 %% image_digest_does_not_match_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -234,6 +252,19 @@
 -type image_scanning_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% update_repository_creation_template_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryCreationTemplate">> => repository_creation_template()
+%% }
+-type update_repository_creation_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_setting_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_account_setting_request() :: #{binary() => any()}.
+
+%% Example:
 %% layer_failure() :: #{
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
@@ -254,6 +285,20 @@
 -type image_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% create_repository_creation_template_request() :: #{
+%%   <<"appliedFor">> := list(list(any())()),
+%%   <<"customRoleArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration_for_repository_creation_template(),
+%%   <<"imageTagMutability">> => list(any()),
+%%   <<"lifecyclePolicy">> => string(),
+%%   <<"prefix">> := string(),
+%%   <<"repositoryPolicy">> => string(),
+%%   <<"resourceTags">> => list(tag()())
+%% }
+-type create_repository_creation_template_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_images_request() :: #{
 %%   <<"filter">> => describe_images_filter(),
 %%   <<"imageIds">> => list(image_identifier()()),
@@ -263,6 +308,13 @@
 %%   <<"repositoryName">> := string()
 %% }
 -type describe_images_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_response() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type put_account_setting_response() :: #{binary() => any()}.
 
 %% Example:
 %% scan_not_found_exception() :: #{
@@ -320,6 +372,13 @@
 -type layers_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% encryption_configuration_for_repository_creation_template() :: #{
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKey">> => string()
+%% }
+-type encryption_configuration_for_repository_creation_template() :: #{binary() => any()}.
+
+%% Example:
 %% delete_repository_policy_request() :: #{
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
@@ -349,6 +408,12 @@
 %%   <<"message">> => string()
 %% }
 -type repository_not_empty_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_creation_template_request() :: #{
+%%   <<"prefix">> := string()
+%% }
+-type delete_repository_creation_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_registry_policy_request() :: #{
@@ -507,6 +572,13 @@
 -type lifecycle_policy_preview_filter() :: #{binary() => any()}.
 
 %% Example:
+%% put_account_setting_request() :: #{
+%%   <<"name">> := string(),
+%%   <<"value">> := string()
+%% }
+-type put_account_setting_request() :: #{binary() => any()}.
+
+%% Example:
 %% enhanced_image_scan_finding() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"description">> => string(),
@@ -537,6 +609,12 @@
 %%   <<"summary">> => lifecycle_policy_preview_summary()
 %% }
 -type get_lifecycle_policy_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% template_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type template_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% lifecycle_policy_rule_action() :: #{
@@ -577,6 +655,22 @@
 %%   <<"uploadId">> => string()
 %% }
 -type complete_layer_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% repository_creation_template() :: #{
+%%   <<"appliedFor">> => list(list(any())()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customRoleArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration_for_repository_creation_template(),
+%%   <<"imageTagMutability">> => list(any()),
+%%   <<"lifecyclePolicy">> => string(),
+%%   <<"prefix">> => string(),
+%%   <<"repositoryPolicy">> => string(),
+%%   <<"resourceTags">> => list(tag()()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type repository_creation_template() :: #{binary() => any()}.
 
 %% Example:
 %% replication_configuration() :: #{
@@ -877,6 +971,13 @@
 -type batch_get_image_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_account_setting_response() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type get_account_setting_response() :: #{binary() => any()}.
+
+%% Example:
 %% upload_layer_part_response() :: #{
 %%   <<"lastByteReceived">> => float(),
 %%   <<"registryId">> => string(),
@@ -937,6 +1038,13 @@
 -type put_replication_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_repository_creation_template_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryCreationTemplate">> => repository_creation_template()
+%% }
+-type create_repository_creation_template_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_image_scan_findings_request() :: #{
 %%   <<"imageId">> := image_identifier(),
 %%   <<"maxResults">> => integer(),
@@ -973,6 +1081,14 @@
 -type delete_repository_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_repository_creation_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryCreationTemplates">> => list(repository_creation_template()())
+%% }
+-type describe_repository_creation_templates_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_pull_through_cache_rules_request() :: #{
 %%   <<"ecrRepositoryPrefixes">> => list(string()()),
 %%   <<"maxResults">> => integer(),
@@ -980,6 +1096,13 @@
 %%   <<"registryId">> => string()
 %% }
 -type describe_pull_through_cache_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_creation_template_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryCreationTemplate">> => repository_creation_template()
+%% }
+-type delete_repository_creation_template_response() :: #{binary() => any()}.
 
 %% Example:
 %% package_vulnerability_details() :: #{
@@ -1284,6 +1407,14 @@
 -type authorization_data() :: #{binary() => any()}.
 
 %% Example:
+%% describe_repository_creation_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"prefixes">> => list(string()())
+%% }
+-type describe_repository_creation_templates_request() :: #{binary() => any()}.
+
+%% Example:
 %% image_detail() :: #{
 %%   <<"artifactMediaType">> => string(),
 %%   <<"imageDigest">> => string(),
@@ -1324,6 +1455,20 @@
 %%   <<"images">> => list(image()())
 %% }
 -type batch_get_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_creation_template_request() :: #{
+%%   <<"appliedFor">> => list(list(any())()),
+%%   <<"customRoleArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration_for_repository_creation_template(),
+%%   <<"imageTagMutability">> => list(any()),
+%%   <<"lifecyclePolicy">> => string(),
+%%   <<"prefix">> := string(),
+%%   <<"repositoryPolicy">> => string(),
+%%   <<"resourceTags">> => list(tag()())
+%% }
+-type update_repository_creation_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_download_url_for_layer_request() :: #{
@@ -1464,6 +1609,13 @@
     repository_already_exists_exception() | 
     invalid_tag_parameter_exception().
 
+-type create_repository_creation_template_errors() ::
+    limit_exceeded_exception() | 
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    template_already_exists_exception().
+
 -type delete_lifecycle_policy_errors() ::
     repository_not_found_exception() | 
     server_exception() | 
@@ -1489,6 +1641,12 @@
     kms_exception() | 
     invalid_parameter_exception() | 
     repository_not_empty_exception().
+
+-type delete_repository_creation_template_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    template_not_found_exception().
 
 -type delete_repository_policy_errors() ::
     repository_not_found_exception() | 
@@ -1531,6 +1689,16 @@
 -type describe_repositories_errors() ::
     repository_not_found_exception() | 
     server_exception() | 
+    invalid_parameter_exception().
+
+-type describe_repository_creation_templates_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception().
+
+-type get_account_setting_errors() ::
+    server_exception() | 
+    validation_exception() | 
     invalid_parameter_exception().
 
 -type get_authorization_token_errors() ::
@@ -1590,6 +1758,12 @@
 -type list_tags_for_resource_errors() ::
     repository_not_found_exception() | 
     server_exception() | 
+    invalid_parameter_exception().
+
+-type put_account_setting_errors() ::
+    limit_exceeded_exception() | 
+    server_exception() | 
+    validation_exception() | 
     invalid_parameter_exception().
 
 -type put_image_errors() ::
@@ -1680,6 +1854,12 @@
     secret_not_found_exception() | 
     pull_through_cache_rule_not_found_exception() | 
     unable_to_decrypt_secret_value_exception().
+
+-type update_repository_creation_template_errors() ::
+    server_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    template_not_found_exception().
 
 -type upload_layer_part_errors() ::
     limit_exceeded_exception() | 
@@ -1875,6 +2055,32 @@ create_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepository">>, Input, Options).
 
+%% @doc Creates a repository creation template.
+%%
+%% This template is used to define the settings
+%% for repositories created by Amazon ECR on your behalf. For example,
+%% repositories created
+%% through pull through cache actions. For more information, see Private
+%% repository creation templates:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-creation-templates.html
+%% in the
+%% Amazon Elastic Container Registry User Guide.
+-spec create_repository_creation_template(aws_client:aws_client(), create_repository_creation_template_request()) ->
+    {ok, create_repository_creation_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_repository_creation_template_errors(), tuple()}.
+create_repository_creation_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_repository_creation_template(Client, Input, []).
+
+-spec create_repository_creation_template(aws_client:aws_client(), create_repository_creation_template_request(), proplists:proplist()) ->
+    {ok, create_repository_creation_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_repository_creation_template_errors(), tuple()}.
+create_repository_creation_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRepositoryCreationTemplate">>, Input, Options).
+
 %% @doc Deletes the lifecycle policy associated with the specified
 %% repository.
 -spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_request()) ->
@@ -1948,6 +2154,23 @@ delete_repository(Client, Input)
 delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
+
+%% @doc Deletes a repository creation template.
+-spec delete_repository_creation_template(aws_client:aws_client(), delete_repository_creation_template_request()) ->
+    {ok, delete_repository_creation_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_repository_creation_template_errors(), tuple()}.
+delete_repository_creation_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_repository_creation_template(Client, Input, []).
+
+-spec delete_repository_creation_template(aws_client:aws_client(), delete_repository_creation_template_request(), proplists:proplist()) ->
+    {ok, delete_repository_creation_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_repository_creation_template_errors(), tuple()}.
+delete_repository_creation_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRepositoryCreationTemplate">>, Input, Options).
 
 %% @doc Deletes the repository policy associated with the specified
 %% repository.
@@ -2080,6 +2303,45 @@ describe_repositories(Client, Input)
 describe_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRepositories">>, Input, Options).
+
+%% @doc Returns details about the repository creation templates in a
+%% registry.
+%%
+%% The
+%% `prefixes' request parameter can be used to return the details for a
+%% specific repository creation template.
+-spec describe_repository_creation_templates(aws_client:aws_client(), describe_repository_creation_templates_request()) ->
+    {ok, describe_repository_creation_templates_response(), tuple()} |
+    {error, any()} |
+    {error, describe_repository_creation_templates_errors(), tuple()}.
+describe_repository_creation_templates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_repository_creation_templates(Client, Input, []).
+
+-spec describe_repository_creation_templates(aws_client:aws_client(), describe_repository_creation_templates_request(), proplists:proplist()) ->
+    {ok, describe_repository_creation_templates_response(), tuple()} |
+    {error, any()} |
+    {error, describe_repository_creation_templates_errors(), tuple()}.
+describe_repository_creation_templates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRepositoryCreationTemplates">>, Input, Options).
+
+%% @doc Retrieves the basic scan type version name.
+-spec get_account_setting(aws_client:aws_client(), get_account_setting_request()) ->
+    {ok, get_account_setting_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_setting_errors(), tuple()}.
+get_account_setting(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_account_setting(Client, Input, []).
+
+-spec get_account_setting(aws_client:aws_client(), get_account_setting_request(), proplists:proplist()) ->
+    {ok, get_account_setting_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_setting_errors(), tuple()}.
+get_account_setting(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAccountSetting">>, Input, Options).
 
 %% @doc Retrieves an authorization token.
 %%
@@ -2301,6 +2563,25 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Allows you to change the basic scan type version by setting the
+%% `name'
+%% parameter to either `CLAIR' to `AWS_NATIVE'.
+-spec put_account_setting(aws_client:aws_client(), put_account_setting_request()) ->
+    {ok, put_account_setting_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_setting_errors(), tuple()}.
+put_account_setting(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_account_setting(Client, Input, []).
+
+-spec put_account_setting(aws_client:aws_client(), put_account_setting_request(), proplists:proplist()) ->
+    {ok, put_account_setting_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_setting_errors(), tuple()}.
+put_account_setting(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAccountSetting">>, Input, Options).
+
 %% @doc Creates or updates the image manifest and tags associated with an
 %% image.
 %%
@@ -2452,8 +2733,10 @@ put_registry_scanning_configuration(Client, Input, Options)
 %% your account for the replication process. For more information, see Using
 %% service-linked roles for Amazon ECR:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html
-%% in the
-%% Amazon Elastic Container Registry User Guide.
+%% in the Amazon Elastic Container Registry User Guide.
+%% For more information on the custom role for replication, see Creating an
+%% IAM role for replication:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/replication-creation-templates.html#roles-creatingrole-user-console.
 %%
 %% When configuring cross-account replication, the destination account must
 %% grant the
@@ -2599,6 +2882,23 @@ update_pull_through_cache_rule(Client, Input)
 update_pull_through_cache_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullThroughCacheRule">>, Input, Options).
+
+%% @doc Updates an existing repository creation template.
+-spec update_repository_creation_template(aws_client:aws_client(), update_repository_creation_template_request()) ->
+    {ok, update_repository_creation_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_repository_creation_template_errors(), tuple()}.
+update_repository_creation_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_repository_creation_template(Client, Input, []).
+
+-spec update_repository_creation_template(aws_client:aws_client(), update_repository_creation_template_request(), proplists:proplist()) ->
+    {ok, update_repository_creation_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_repository_creation_template_errors(), tuple()}.
+update_repository_creation_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRepositoryCreationTemplate">>, Input, Options).
 
 %% @doc Uploads an image layer part to Amazon ECR.
 %%

@@ -1,42 +1,40 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the Amazon Pinpoint SMS and Voice, version 2 API
+%% @doc Welcome to the AWS End User Messaging SMS and Voice, version 2 API
 %% Reference.
 %%
-%% This guide provides information about Amazon Pinpoint SMS and Voice,
-%% version 2 API
+%% This guide provides information about AWS End User Messaging SMS and
+%% Voice, version 2 API
 %% resources, including supported HTTP methods, parameters, and schemas.
 %%
 %% Amazon Pinpoint is an Amazon Web Services service that you can use to
 %% engage with
-%% your recipients across multiple messaging channels. The Amazon Pinpoint
-%% SMS and
-%% Voice, version 2 API provides programmatic access to options that are
-%% unique to the SMS
-%% and voice channels. Amazon Pinpoint SMS and Voice, version 2 resources
-%% such as phone numbers, sender IDs, and opt-out lists can be used by the
-%% Amazon Pinpoint API.
+%% your recipients across multiple messaging channels. The AWS End User
+%% Messaging SMS and Voice, version 2 API provides programmatic access to
+%% options that are unique to the SMS
+%% and voice channels. AWS End User Messaging SMS and Voice, version 2
+%% resources such as phone numbers, sender IDs, and opt-out lists can be used
+%% by the Amazon Pinpoint API.
 %%
-%% If you're new to Amazon Pinpoint SMS, it's also helpful to review
-%% the
-%% Amazon Pinpoint SMS User Guide:
+%% If you're new to AWS End User Messaging SMS and Voice, it's also
+%% helpful to review the
+%% AWS End User Messaging SMS User Guide:
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-service.html.
-%% The Amazon Pinpoint
-%% Developer Guide provides tutorials, code samples, and procedures that
-%% demonstrate how to use Amazon Pinpoint SMS features programmatically and
-%% how to integrate
-%% Amazon Pinpoint functionality into mobile apps and other types of
-%% applications.
-%% The guide also provides key information, such as Amazon Pinpoint
-%% integration with
+%% The AWS End User Messaging SMS User Guide
+%% provides tutorials, code samples, and procedures that
+%% demonstrate how to use AWS End User Messaging SMS and Voice features
+%% programmatically and how to integrate
+%% functionality into mobile apps and other types of applications.
+%% The guide also provides key information, such as AWS End User Messaging
+%% SMS and Voice integration with
 %% other Amazon Web Services services, and the quotas that apply to use of
 %% the
 %% service.
 %%
 %% Regional availability
 %%
-%% The Amazon Pinpoint SMS and Voice, version 2 API Reference is
+%% The AWS End User Messaging SMS and Voice version 2 API Reference is
 %% available in several Amazon Web Services Regions and it provides an
 %% endpoint for each of
 %% these Regions. For a list of all the Regions and endpoints where the API
@@ -2909,8 +2907,7 @@ create_configuration_set(Client, Input, Options)
 %%
 %% An event destination is a location where you send message events. The
 %% event options
-%% are Amazon CloudWatch, Amazon Kinesis Data Firehose, or Amazon SNS. For
-%% example,
+%% are Amazon CloudWatch, Amazon Data Firehose, or Amazon SNS. For example,
 %% when a message is delivered successfully, you can send information about
 %% that event to
 %% an event destination, or send notifications to endpoints that are
@@ -2921,7 +2918,7 @@ create_configuration_set(Client, Input, Options)
 %% Each event
 %% destination can contain a reference to a single destination, such as a
 %% CloudWatch
-%% or Kinesis Data Firehose destination.
+%% or Firehose destination.
 -spec create_event_destination(aws_client:aws_client(), create_event_destination_request()) ->
     {ok, create_event_destination_result(), tuple()} |
     {error, any()} |
@@ -2953,8 +2950,7 @@ create_event_destination(Client, Input, Options)
 %% opt-out keywords, see
 %% SMS opt out :
 %% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-manage.html#channels-sms-manage-optout
-%% in the Amazon Pinpoint User
-%% Guide.
+%% in the AWS End User Messaging SMS User Guide.
 -spec create_opt_out_list(aws_client:aws_client(), create_opt_out_list_request()) ->
     {ok, create_opt_out_list_result(), tuple()} |
     {error, any()} |
@@ -3249,8 +3245,8 @@ delete_event_destination(Client, Input, Options)
 %% to elicit a
 %% response, such as an informational message or a special offer. When your
 %% number receives
-%% a message that begins with a keyword, Amazon Pinpoint responds with a
-%% customizable
+%% a message that begins with a keyword, AWS End User Messaging SMS and Voice
+%% responds with a customizable
 %% message.
 %%
 %% Keywords &quot;HELP&quot; and &quot;STOP&quot; can't be deleted or
@@ -3454,9 +3450,9 @@ delete_registration_field_value(Client, Input, Options)
 %% Deleting a spend limit override will set the `EnforcedLimit' to equal
 %% the
 %% `MaxLimit', which is controlled by Amazon Web Services. For more
-%% information on spend limits (quotas) see Amazon Pinpoint quotas :
-%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
-%% in the Amazon Pinpoint Developer Guide.
+%% information on spend limits (quotas) see Quotas :
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html
+%% in the AWS End User Messaging SMS User Guide.
 -spec delete_text_message_spend_limit_override(aws_client:aws_client(), delete_text_message_spend_limit_override_request()) ->
     {ok, delete_text_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -3495,9 +3491,9 @@ delete_verified_destination_number(Client, Input, Options)
 %%
 %% Deleting a spend limit override sets the `EnforcedLimit' equal to the
 %% `MaxLimit', which is controlled by Amazon Web Services. For more
-%% information on spending limits (quotas) see Amazon Pinpoint quotas:
-%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
-%% in the Amazon Pinpoint Developer Guide.
+%% information on spending limits (quotas) see Quotas :
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html
+%% in the AWS End User Messaging SMS User Guide.
 -spec delete_voice_message_spend_limit_override(aws_client:aws_client(), delete_voice_message_spend_limit_override_request()) ->
     {ok, delete_voice_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -3524,8 +3520,7 @@ delete_voice_message_spend_limit_override(Client, Input, Options)
 %% create an Amazon Web Services Support case for a service limit increase
 %% request.
 %%
-%% New Amazon Pinpoint accounts are placed into an SMS or voice sandbox. The
-%% sandbox
+%% New accounts are placed into an SMS or voice sandbox. The sandbox
 %% protects both Amazon Web Services end recipients and SMS or voice
 %% recipients from fraud
 %% and abuse.
@@ -3545,8 +3540,8 @@ describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
-%% @doc Describes the current Amazon Pinpoint SMS Voice V2 resource quotas
-%% for your
+%% @doc Describes the current AWS End User Messaging SMS and Voice SMS Voice
+%% V2 resource quotas for your
 %% account.
 %%
 %% The description for a quota includes the quota name, current usage toward
@@ -3557,11 +3552,9 @@ describe_account_attributes(Client, Input, Options)
 %% quotas on
 %% the maximum number of configuration sets, opt-out lists, phone numbers,
 %% and pools that
-%% you can create in a given Region. For more information see
-%% Amazon Pinpoint quotas :
-%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html in
-%% the Amazon Pinpoint Developer
-%% Guide.
+%% you can create in a given Region. For more information see Quotas :
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html
+%% in the AWS End User Messaging SMS User Guide.
 -spec describe_account_limits(aws_client:aws_client(), describe_account_limits_request()) ->
     {ok, describe_account_limits_result(), tuple()} |
     {error, any()} |
@@ -3618,8 +3611,8 @@ describe_configuration_sets(Client, Input, Options)
 %% to elicit a
 %% response, such as an informational message or a special offer. When your
 %% number receives
-%% a message that begins with a keyword, Amazon Pinpoint responds with a
-%% customizable
+%% a message that begins with a keyword, AWS End User Messaging SMS and Voice
+%% responds with a customizable
 %% message.
 %%
 %% If you specify a keyword that isn't valid, an error is returned.
@@ -3943,8 +3936,7 @@ describe_sender_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSenderIds">>, Input, Options).
 
-%% @doc Describes the current Amazon Pinpoint monthly spend limits for
-%% sending voice and
+%% @doc Describes the current monthly spend limits for sending voice and
 %% text messages.
 %%
 %% When you establish an Amazon Web Services account, the account has initial
@@ -3952,11 +3944,10 @@ describe_sender_ids(Client, Input, Options)
 %% spend limit in a given Region. For more information on increasing your
 %% monthly spend
 %% limit, see
-%% Requesting increases to your monthly SMS spending quota for Amazon
-%% Pinpoint
+%% Requesting increases to your monthly SMS, MMS, or Voice spending quota
 %% :
-%% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-spend-threshold.html
-%% in the Amazon Pinpoint User Guide.
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/awssupport-spend-threshold.html
+%% in the AWS End User Messaging SMS User Guide.
 -spec describe_spend_limits(aws_client:aws_client(), describe_spend_limits_request()) ->
     {ok, describe_spend_limits_result(), tuple()} |
     {error, any()} |
@@ -4129,8 +4120,8 @@ list_tags_for_resource(Client, Input, Options)
 %% to elicit a
 %% response, such as an informational message or a special offer. When your
 %% number receives
-%% a message that begins with a keyword, Amazon Pinpoint responds with a
-%% customizable
+%% a message that begins with a keyword, AWS End User Messaging SMS and Voice
+%% responds with a customizable
 %% message.
 %%
 %% If you specify a keyword that isn't valid, an error is returned.
@@ -4232,10 +4223,9 @@ release_sender_id(Client, Input, Options)
 %% @doc Request an origination phone number for use in your account.
 %%
 %% For more information on
-%% phone number request see Requesting a
-%% number :
-%% https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-sms-request-number.html
-%% in the Amazon Pinpoint User Guide.
+%% phone number request see Request a phone number:
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html
+%% in the AWS End User Messaging SMS User Guide.
 -spec request_phone_number(aws_client:aws_client(), request_phone_number_request()) ->
     {ok, request_phone_number_result(), tuple()} |
     {error, any()} |
@@ -4314,16 +4304,18 @@ send_media_message(Client, Input, Options)
 %% @doc Creates a new text message and sends it to a recipient's phone
 %% number.
 %%
+%% SendTextMessage only sends an SMS message to one recipient each time it is
+%% invoked.
+%%
 %% SMS throughput limits are measured in Message Parts per Second (MPS). Your
 %% MPS limit
 %% depends on the destination country of your messages, as well as the type
 %% of phone number
 %% (origination number) that you use to send the message. For more
-%% information, see Message Parts per
+%% information about MPS, see Message Parts per
 %% Second (MPS) limits:
-%% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-limitations-mps.html
-%% in the Amazon Pinpoint User
-%% Guide.
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/sms-limitations-mps.html
+%% in the AWS End User Messaging SMS User Guide.
 -spec send_text_message(aws_client:aws_client(), send_text_message_request()) ->
     {ok, send_text_message_result(), tuple()} |
     {error, any()} |
@@ -4340,8 +4332,7 @@ send_text_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTextMessage">>, Input, Options).
 
-%% @doc Allows you to send a request that sends a voice message through
-%% Amazon Pinpoint.
+%% @doc Allows you to send a request that sends a voice message.
 %%
 %% This operation uses Amazon Polly: http://aws.amazon.com/polly/ to
 %% convert a text script into a voice message.
@@ -4518,19 +4509,17 @@ submit_registration_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitRegistrationVersion">>, Input, Options).
 
-%% @doc Adds or overwrites only the specified tags for the specified Amazon
-%% Pinpoint SMS
-%% Voice, version 2 resource.
+%% @doc Adds or overwrites only the specified tags for the specified
+%% resource.
 %%
 %% When you specify an existing tag key, the value is
 %% overwritten with the new value. Each resource can have a maximum of 50
 %% tags. Each tag
 %% consists of a key and an optional value. Tag keys must be unique per
 %% resource. For more
-%% information about tags, see Tagging Amazon Pinpoint resources:
-%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html
-%% in the Amazon Pinpoint Developer
-%% Guide.
+%% information about tags, see Tags :
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html
+%% in the AWS End User Messaging SMS User Guide.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
@@ -4547,14 +4536,12 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes the association of the specified tags from an Amazon Pinpoint
-%% SMS Voice V2
+%% @doc Removes the association of the specified tags from a
 %% resource.
 %%
-%% For more information on tags see Tagging Amazon Pinpoint resources:
-%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html
-%% in the Amazon Pinpoint Developer
-%% Guide.
+%% For more information on tags see Tags :
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html
+%% in the AWS End User Messaging SMS User Guide.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
@@ -4574,14 +4561,14 @@ untag_resource(Client, Input, Options)
 %% @doc Updates an existing event destination in a configuration set.
 %%
 %% You can update the
-%% IAM role ARN for CloudWatch Logs and Kinesis Data Firehose. You can
+%% IAM role ARN for CloudWatch Logs and Firehose. You can
 %% also enable or disable the event destination.
 %%
 %% You may want to update an event destination to change its matching event
 %% types or
 %% updating the destination resource ARN. You can't change an event
 %% destination's type
-%% between CloudWatch Logs, Kinesis Data Firehose, and Amazon SNS.
+%% between CloudWatch Logs, Firehose, and Amazon SNS.
 -spec update_event_destination(aws_client:aws_client(), update_event_destination_request()) ->
     {ok, update_event_destination_result(), tuple()} |
     {error, any()} |

@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Fault Injection Service is a managed service that enables you to
-%% perform fault injection
+%% @doc Amazon Web Services Fault Injection Service is a managed service that
+%% enables you to perform fault injection
 %% experiments on your Amazon Web Services workloads.
 %%
 %% For more information, see the Fault Injection Service User Guide:
@@ -388,6 +388,7 @@
 
 %% Example:
 %% experiment_state() :: #{
+%%   <<"error">> => experiment_error(),
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
@@ -566,6 +567,15 @@
 %%   <<"targetAccountConfigurations">> => list(target_account_configuration_summary()())
 %% }
 -type list_target_account_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_error() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"code">> => string(),
+%%   <<"location">> => string()
+%% }
+-type experiment_error() :: #{binary() => any()}.
 
 %% Example:
 %% stop_experiment_request() :: #{}

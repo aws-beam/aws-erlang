@@ -39,6 +39,12 @@
 -type ebs_volume_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% summary_metrics_result() :: #{
+%%   <<"savingsPercentage">> => [string()]
+%% }
+-type summary_metrics_result() :: #{binary() => any()}.
+
+%% Example:
 %% ec2_instance_savings_plans() :: #{
 %%   <<"configuration">> => ec2_instance_savings_plans_configuration(),
 %%   <<"costCalculation">> => savings_plans_cost_calculation()
@@ -270,6 +276,7 @@
 %%   <<"estimatedTotalDedupedSavings">> => [float()],
 %%   <<"groupBy">> => [string()],
 %%   <<"items">> => list(recommendation_summary()()),
+%%   <<"metrics">> => summary_metrics_result(),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_recommendation_summaries_response() :: #{binary() => any()}.
@@ -556,6 +563,7 @@
 %%   <<"filter">> => filter(),
 %%   <<"groupBy">> := [string()],
 %%   <<"maxResults">> => integer(),
+%%   <<"metrics">> => list(list(any())()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_recommendation_summaries_request() :: #{binary() => any()}.
@@ -808,9 +816,9 @@ list_recommendations(Client, Input, Options)
 %% the Cost Optimization
 %% Hub service.
 %%
-%% If the account is a management account of an organization, this action can
-%% also be used to
-%% enroll member accounts of the organization.
+%% If the account is a management account or delegated administrator of an
+%% organization, this
+%% action can also be used to enroll member accounts of the organization.
 %%
 %% You must have the appropriate permissions to opt in to Cost Optimization
 %% Hub and to view

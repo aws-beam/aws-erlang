@@ -447,6 +447,12 @@
 -type event_context_data_type() :: #{binary() => any()}.
 
 %% Example:
+%% s3_configuration_type() :: #{
+%%   <<"BucketArn">> => string()
+%% }
+-type s3_configuration_type() :: #{binary() => any()}.
+
+%% Example:
 %% user_not_confirmed_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -473,6 +479,12 @@
 %%   <<"message">> => string()
 %% }
 -type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% advanced_security_additional_flows_type() :: #{
+%%   <<"CustomAuthMode">> => list(any())
+%% }
+-type advanced_security_additional_flows_type() :: #{binary() => any()}.
 
 %% Example:
 %% resource_server_scope_type() :: #{
@@ -525,6 +537,12 @@
 %%   <<"message">> => string()
 %% }
 -type unsupported_user_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% password_history_policy_violation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type password_history_policy_violation_exception() :: #{binary() => any()}.
 
 %% Example:
 %% confirm_sign_up_response() :: #{
@@ -1503,6 +1521,7 @@
 %% Example:
 %% password_policy_type() :: #{
 %%   <<"MinimumLength">> => integer(),
+%%   <<"PasswordHistorySize">> => integer(),
 %%   <<"RequireLowercase">> => boolean(),
 %%   <<"RequireNumbers">> => boolean(),
 %%   <<"RequireSymbols">> => boolean(),
@@ -1833,6 +1852,7 @@
 
 %% Example:
 %% user_pool_add_ons_type() :: #{
+%%   <<"AdvancedSecurityAdditionalFlows">> => advanced_security_additional_flows_type(),
 %%   <<"AdvancedSecurityMode">> => list(any())
 %% }
 -type user_pool_add_ons_type() :: #{binary() => any()}.
@@ -1986,7 +2006,9 @@
 %% log_configuration_type() :: #{
 %%   <<"CloudWatchLogsConfiguration">> => cloud_watch_logs_configuration_type(),
 %%   <<"EventSource">> => list(any()),
-%%   <<"LogLevel">> => list(any())
+%%   <<"FirehoseConfiguration">> => firehose_configuration_type(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"S3Configuration">> => s3_configuration_type()
 %% }
 -type log_configuration_type() :: #{binary() => any()}.
 
@@ -2023,6 +2045,12 @@
 %%   <<"UserPoolId">> := string()
 %% }
 -type describe_user_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% firehose_configuration_type() :: #{
+%%   <<"StreamArn">> => string()
+%% }
+-type firehose_configuration_type() :: #{binary() => any()}.
 
 %% Example:
 %% admin_disable_provider_for_user_request() :: #{
@@ -2915,6 +2943,7 @@
     invalid_sms_role_access_policy_exception() | 
     too_many_requests_exception() | 
     alias_exists_exception() | 
+    password_history_policy_violation_exception() | 
     user_not_confirmed_exception().
 
 -type admin_set_user_mfa_preference_errors() ::
@@ -2933,7 +2962,8 @@
     not_authorized_exception() | 
     user_not_found_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    password_history_policy_violation_exception().
 
 -type admin_set_user_settings_errors() ::
     internal_error_exception() | 
@@ -3003,6 +3033,7 @@
     resource_not_found_exception() | 
     too_many_requests_exception() | 
     forbidden_exception() | 
+    password_history_policy_violation_exception() | 
     user_not_confirmed_exception().
 
 -type confirm_device_errors() ::
@@ -3035,6 +3066,7 @@
     code_mismatch_exception() | 
     too_many_requests_exception() | 
     forbidden_exception() | 
+    password_history_policy_violation_exception() | 
     user_not_confirmed_exception() | 
     too_many_failed_attempts_exception().
 
@@ -3492,6 +3524,7 @@
     too_many_requests_exception() | 
     alias_exists_exception() | 
     forbidden_exception() | 
+    password_history_policy_violation_exception() | 
     user_not_confirmed_exception().
 
 -type revoke_token_errors() ::
@@ -3801,24 +3834,21 @@ admin_add_user_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminAddUserToGroup">>, Input, Options).
 
-%% @doc This IAM-authenticated API operation provides a code that Amazon
-%% Cognito sent to your user
-%% when they signed up in your user pool.
+%% @doc This IAM-authenticated API operation confirms user sign-up as an
+%% administrator.
 %%
-%% After your user enters their code, they confirm
-%% ownership of the email address or phone number that they provided, and
-%% their user
-%% account becomes active. Depending on your user pool configuration, your
-%% users will
-%% receive their confirmation code in an email or SMS message.
+%% Unlike ConfirmSignUp:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmSignUp.html,
+%% your IAM credentials authorize user account confirmation.
+%% No confirmation code is required.
 %%
-%% Local users who signed up in your user pool are the only type of user who
-%% can confirm
-%% sign-up with a code. Users who federate through an external identity
-%% provider (IdP) have
-%% already been confirmed by their IdP. Administrator-created users confirm
-%% their accounts
-%% when they respond to their invitation email message and choose a password.
+%% This request sets a user account active in a user pool that requires
+%% confirmation of new user accounts:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#signing-up-users-in-your-app-and-confirming-them-as-admin
+%% before they can sign in. You can
+%% configure your user pool to not send confirmation codes to new users and
+%% instead confirm
+%% them with this API operation on the back end.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -3870,7 +3900,7 @@ admin_confirm_sign_up(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4251,7 +4281,7 @@ admin_get_user(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4504,7 +4534,7 @@ admin_remove_user_from_group(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4591,7 +4621,7 @@ admin_reset_user_password(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4866,7 +4896,7 @@ admin_update_device_status(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -5007,9 +5037,8 @@ admin_user_global_sign_out(Client, Input, Options)
 %% user name and password credentials alone. If your user pool requires TOTP
 %% MFA, Amazon Cognito
 %% generates an `MFA_SETUP' or `SOFTWARE_TOKEN_SETUP' challenge
-%% each time your user signs. Complete setup with
-%% `AssociateSoftwareToken'
-%% and `VerifySoftwareToken'.
+%% each time your user signs in. Complete setup with
+%% `AssociateSoftwareToken' and `VerifySoftwareToken'.
 %%
 %% After you set up software token MFA for your user, Amazon Cognito
 %% generates a
@@ -5329,7 +5358,7 @@ create_user_import_job(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -5851,7 +5880,7 @@ forget_device(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -5969,7 +5998,7 @@ get_identity_provider_by_identifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityProviderByIdentifier">>, Input, Options).
 
-%% @doc Gets the detailed activity logging configuration for a user pool.
+%% @doc Gets the logging configuration of a user pool.
 -spec get_log_delivery_configuration(aws_client:aws_client(), get_log_delivery_configuration_request()) ->
     {ok, get_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
@@ -6104,7 +6133,7 @@ get_user(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6245,7 +6274,7 @@ global_sign_out(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6610,7 +6639,7 @@ list_users_in_group(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6679,7 +6708,7 @@ resend_confirmation_code(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6741,8 +6770,10 @@ revoke_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeToken">>, Input, Options).
 
-%% @doc Sets up or modifies the detailed activity logging configuration of a
-%% user pool.
+%% @doc Sets up or modifies the logging configuration of a user pool.
+%%
+%% User pools can export
+%% user notification logs and advanced security features user activity logs.
 -spec set_log_delivery_configuration(aws_client:aws_client(), set_log_delivery_configuration_request()) ->
     {ok, set_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
@@ -6883,7 +6914,7 @@ set_user_mfa_preference(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6979,7 +7010,7 @@ set_user_settings(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -7311,7 +7342,7 @@ update_resource_server(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -7357,7 +7388,7 @@ update_user_attributes(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Service,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox

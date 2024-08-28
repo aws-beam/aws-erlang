@@ -314,6 +314,13 @@
 
 
 %% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_contextual_grounding_policy_assessment() :: #{
 %%   <<"filters">> => list(guardrail_contextual_grounding_filter()())
 %% }
@@ -577,6 +584,7 @@
     access_denied_exception() | 
     model_error_exception() | 
     internal_server_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     model_not_ready_exception().
 
@@ -587,6 +595,7 @@
     access_denied_exception() | 
     model_error_exception() | 
     internal_server_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     model_not_ready_exception().
 
@@ -597,6 +606,7 @@
     access_denied_exception() | 
     model_error_exception() | 
     internal_server_exception() | 
+    service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     model_not_ready_exception().
@@ -609,6 +619,7 @@
     access_denied_exception() | 
     model_error_exception() | 
     internal_server_exception() | 
+    service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     model_not_ready_exception().
@@ -657,9 +668,12 @@ apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0)
 %% a consistent interface that works with all models that
 %% support messages. This allows you to write code once and use it with
 %% different models.
-%% Should a model have unique inference parameters, you can also pass those
-%% unique parameters
+%% If a model has unique inference parameters, you can also pass those unique
+%% parameters
 %% to the model.
+%%
+%% Amazon Bedrock doesn't store any text, images, or documents that you
+%% provide as content. The data is only used to generate the response.
 %%
 %% For information about the Converse API, see Use the Converse API in the
 %% Amazon Bedrock User Guide.
@@ -720,6 +734,12 @@ converse(Client, ModelId, Input0, Options0) ->
 %% To find out if a model supports streaming, call GetFoundationModel:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html
 %% and check the `responseStreamingSupported' field in the response.
+%%
+%% The CLI doesn't support streaming operations in Amazon Bedrock,
+%% including `ConverseStream'.
+%%
+%% Amazon Bedrock doesn't store any text, images, or documents that you
+%% provide as content. The data is only used to generate the response.
 %%
 %% For information about the Converse API, see Use the Converse API in the
 %% Amazon Bedrock User Guide.
@@ -840,7 +860,8 @@ invoke_model(Client, ModelId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html
 %% and check the `responseStreamingSupported' field in the response.
 %%
-%% The CLI doesn't support `InvokeModelWithResponseStream'.
+%% The CLI doesn't support streaming operations in Amazon Bedrock,
+%% including `InvokeModelWithResponseStream'.
 %%
 %% For example code, see Invoke model with streaming code
 %% example in the Amazon Bedrock User Guide.

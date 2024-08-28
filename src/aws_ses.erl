@@ -347,6 +347,7 @@
 %% Example:
 %% s3_action() :: #{
 %%   <<"BucketName">> => string(),
+%%   <<"IamRoleArn">> => string(),
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"ObjectKeyPrefix">> => string(),
 %%   <<"TopicArn">> => string()
@@ -1058,7 +1059,7 @@
 %% send_bulk_templated_email_request() :: #{
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"DefaultTags">> => list(message_tag()()),
-%%   <<"DefaultTemplateData">> => string(),
+%%   <<"DefaultTemplateData">> := string(),
 %%   <<"Destinations">> := list(bulk_email_destination()()),
 %%   <<"ReplyToAddresses">> => list(string()()),
 %%   <<"ReturnPath">> => string(),

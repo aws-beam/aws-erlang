@@ -111,25 +111,6 @@
 %% }
 -type create_proposal_output() :: #{binary() => any()}.
 
-
-%% Example:
-%% aws_managedblockchain_node() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"FrameworkAttributes">> => node_framework_attributes(),
-%%   <<"Id">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"LogPublishingConfiguration">> => node_log_publishing_configuration(),
-%%   <<"MemberId">> => string(),
-%%   <<"NetworkId">> => string(),
-%%   <<"StateDB">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type aws_managedblockchain_node() :: #{binary() => any()}.
-
 %% Example:
 %% update_node_output() :: #{}
 -type update_node_output() :: #{}.
@@ -443,6 +424,25 @@
 %%   <<"LogPublishingConfiguration">> => member_log_publishing_configuration()
 %% }
 -type update_member_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% managedblockchain_node() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"FrameworkAttributes">> => node_framework_attributes(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LogPublishingConfiguration">> => node_log_publishing_configuration(),
+%%   <<"MemberId">> => string(),
+%%   <<"NetworkId">> => string(),
+%%   <<"StateDB">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type managedblockchain_node() :: #{binary() => any()}.
 
 
 %% Example:

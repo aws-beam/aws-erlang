@@ -25,10 +25,16 @@
          cancel_subscription/5,
          create_asset/3,
          create_asset/4,
+         create_asset_filter/4,
+         create_asset_filter/5,
          create_asset_revision/4,
          create_asset_revision/5,
          create_asset_type/3,
          create_asset_type/4,
+         create_data_product/3,
+         create_data_product/4,
+         create_data_product_revision/4,
+         create_data_product_revision/5,
          create_data_source/3,
          create_data_source/4,
          create_domain/2,
@@ -63,8 +69,12 @@
          create_user_profile/4,
          delete_asset/4,
          delete_asset/5,
+         delete_asset_filter/5,
+         delete_asset_filter/6,
          delete_asset_type/4,
          delete_asset_type/5,
+         delete_data_product/4,
+         delete_data_product/5,
          delete_data_source/4,
          delete_data_source/5,
          delete_domain/3,
@@ -102,9 +112,15 @@
          get_asset/3,
          get_asset/5,
          get_asset/6,
+         get_asset_filter/4,
+         get_asset_filter/6,
+         get_asset_filter/7,
          get_asset_type/3,
          get_asset_type/5,
          get_asset_type/6,
+         get_data_product/3,
+         get_data_product/5,
+         get_data_product/6,
          get_data_source/3,
          get_data_source/5,
          get_data_source/6,
@@ -126,6 +142,9 @@
          get_environment_blueprint_configuration/3,
          get_environment_blueprint_configuration/5,
          get_environment_blueprint_configuration/6,
+         get_environment_credentials/3,
+         get_environment_credentials/5,
+         get_environment_credentials/6,
          get_environment_profile/3,
          get_environment_profile/5,
          get_environment_profile/6,
@@ -173,9 +192,15 @@
          get_user_profile/3,
          get_user_profile/5,
          get_user_profile/6,
+         list_asset_filters/3,
+         list_asset_filters/5,
+         list_asset_filters/6,
          list_asset_revisions/3,
          list_asset_revisions/5,
          list_asset_revisions/6,
+         list_data_product_revisions/3,
+         list_data_product_revisions/5,
+         list_data_product_revisions/6,
          list_data_source_run_activities/3,
          list_data_source_run_activities/5,
          list_data_source_run_activities/6,
@@ -266,6 +291,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_asset_filter/5,
+         update_asset_filter/6,
          update_data_source/4,
          update_data_source/5,
          update_domain/3,
@@ -389,6 +416,19 @@
 
 
 %% Example:
+%% data_product_listing() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataProductId">> => string(),
+%%   <<"dataProductRevision">> => string(),
+%%   <<"forms">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"items">> => list(listing_summary()()),
+%%   <<"owningProjectId">> => string()
+%% }
+-type data_product_listing() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_environment_action_input() :: #{
 %%   <<"description">> => [string()],
 %%   <<"name">> := [string()],
@@ -403,6 +443,31 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_actions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_summary_item() :: #{
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string()
+%% }
+-type listing_summary_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_filter_summary() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"effectiveColumnNames">> => list([string()]()),
+%%   <<"effectiveRowFilter">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type asset_filter_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -461,6 +526,14 @@
 %%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
 %% }
 -type redshift_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_filters_output() :: #{
+%%   <<"items">> => list(asset_filter_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_filters_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -582,6 +655,23 @@
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_filter_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"effectiveColumnNames">> => list([string()]()),
+%%   <<"effectiveRowFilter">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_asset_filter_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_form_type_output() :: #{}
@@ -775,6 +865,19 @@
 
 
 %% Example:
+%% create_data_product_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"formsInput">> => list(form_input()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"items">> => list(data_product_item()()),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string()
+%% }
+-type create_data_product_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_summary() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
@@ -787,6 +890,17 @@
 %%   <<"status">> => list(any())
 %% }
 -type domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_product_revision() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type data_product_revision() :: #{binary() => any()}.
 
 
 %% Example:
@@ -821,6 +935,26 @@
 
 
 %% Example:
+%% create_data_product_revision_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"items">> => list(data_product_item()()),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_data_product_revision_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_source_input() :: #{
 %%   <<"assetFormsInput">> => list(form_input()()),
 %%   <<"clientToken">> => [string()],
@@ -847,23 +981,6 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_form_type_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_product_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"dataProductItems">> => list(data_product_item()()),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"glossaryTerms">> => list(string()()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type data_product_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -971,6 +1088,14 @@
 
 
 %% Example:
+%% less_than_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type less_than_expression() :: #{binary() => any()}.
+
+
+%% Example:
 %% revoke_subscription_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -1006,6 +1131,26 @@
 
 
 %% Example:
+%% get_data_product_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"items">> => list(data_product_item()()),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_data_product_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_time_series_data_points_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"formName">> := string()
@@ -1034,6 +1179,13 @@
 %%   <<"typeRevision">> => string()
 %% }
 -type create_asset_revision_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% is_not_null_expression() :: #{
+%%   <<"columnName">> => [string()]
+%% }
+-type is_not_null_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1136,6 +1288,24 @@
 
 
 %% Example:
+%% greater_than_or_equal_to_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type greater_than_or_equal_to_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_filter_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"configuration">> := list(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
+%% }
+-type create_asset_filter_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% post_time_series_data_points_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"forms">> := list(time_series_data_point_form_input()())
@@ -1193,6 +1363,18 @@
 
 
 %% Example:
+%% create_data_product_revision_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"formsInput">> => list(form_input()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"items">> => list(data_product_item()()),
+%%   <<"name">> := string()
+%% }
+-type create_data_product_revision_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_notifications_input() :: #{
 %%   <<"afterTimestamp">> => [non_neg_integer()],
 %%   <<"beforeTimestamp">> => [non_neg_integer()],
@@ -1225,6 +1407,10 @@
 %%   <<"subscriptionRequestIdentifier">> => string()
 %% }
 -type list_subscriptions_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_filter_input() :: #{}
+-type delete_asset_filter_input() :: #{}.
 
 
 %% Example:
@@ -1319,6 +1505,7 @@
 %%   <<"enabledRegions">> => list(string()()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningConfigurations">> => list(list()()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -1340,6 +1527,10 @@
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_product_input() :: #{}
+-type delete_data_product_input() :: #{}.
 
 
 %% Example:
@@ -1514,6 +1705,7 @@
 %%   <<"enabledRegions">> => list(string()()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningConfigurations">> => list(list()()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -1703,6 +1895,15 @@
 
 
 %% Example:
+%% asset_in_data_product_listing_item() :: #{
+%%   <<"entityId">> => [string()],
+%%   <<"entityRevision">> => [string()],
+%%   <<"entityType">> => [string()]
+%% }
+-type asset_in_data_product_listing_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% form_entry_input() :: #{
 %%   <<"required">> => [boolean()],
 %%   <<"typeIdentifier">> => string(),
@@ -1765,6 +1966,13 @@
 %% Example:
 %% create_project_membership_output() :: #{}
 -type create_project_membership_output() :: #{}.
+
+
+%% Example:
+%% is_null_expression() :: #{
+%%   <<"columnName">> => [string()]
+%% }
+-type is_null_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1839,6 +2047,14 @@
 
 
 %% Example:
+%% like_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type like_expression() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_source_output() :: #{
 %%   <<"assetFormsOutput">> => list(form_output()()),
 %%   <<"configuration">> => list(),
@@ -1865,11 +2081,31 @@
 
 
 %% Example:
+%% equal_to_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type equal_to_expression() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_iam_portal_login_url_output() :: #{
 %%   <<"authCodeUrl">> => [string()],
 %%   <<"userProfileId">> => [string()]
 %% }
 -type get_iam_portal_login_url_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_product_listing() :: #{
+%%   <<"assetListings">> => list(asset_in_data_product_listing_item()()),
+%%   <<"description">> => [string()],
+%%   <<"entityId">> => string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"name">> => [string()]
+%% }
+-type subscribed_product_listing() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2184,8 +2420,20 @@
 -type list_subscription_targets_input() :: #{binary() => any()}.
 
 %% Example:
+%% get_asset_filter_input() :: #{}
+-type get_asset_filter_input() :: #{}.
+
+%% Example:
 %% post_lineage_event_output() :: #{}
 -type post_lineage_event_output() :: #{}.
+
+
+%% Example:
+%% not_equal_to_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type not_equal_to_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2198,6 +2446,14 @@
 %%   <<"typeRevision">> => string()
 %% }
 -type time_series_data_point_form_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_like_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type not_like_expression() :: #{binary() => any()}.
 
 %% Example:
 %% delete_subscription_request_input() :: #{}
@@ -2229,6 +2485,14 @@
 %%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
 %% }
 -type glue_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_product_revisions_output() :: #{
+%%   <<"items">> => list(data_product_revision()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_product_revisions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2367,6 +2631,26 @@
 
 
 %% Example:
+%% create_data_product_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"items">> => list(data_product_item()()),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_data_product_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_environment_profile_output() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"awsAccountRegion">> => string(),
@@ -2406,6 +2690,15 @@
 
 
 %% Example:
+%% list_asset_filters_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_asset_filters_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% glossary_item() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -2426,6 +2719,7 @@
 %%   <<"environmentId">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"owningProjectId">> => string(),
 %%   <<"sortBy">> => list(any()),
 %%   <<"sortOrder">> => list(any()),
 %%   <<"subscribedListingId">> => string(),
@@ -2526,6 +2820,22 @@
 %%   <<"member">> := list()
 %% }
 -type delete_project_membership_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_product_result_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string()
+%% }
+-type data_product_result_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2635,6 +2945,23 @@
 
 
 %% Example:
+%% create_asset_filter_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"effectiveColumnNames">> => list([string()]()),
+%%   <<"effectiveRowFilter">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_asset_filter_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% notification_output() :: #{
 %%   <<"actionLink">> => string(),
 %%   <<"creationTimestamp">> => [non_neg_integer()],
@@ -2649,6 +2976,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type notification_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% row_filter_configuration() :: #{
+%%   <<"rowFilter">> => list(),
+%%   <<"sensitive">> => [boolean()]
+%% }
+-type row_filter_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2676,12 +3011,27 @@
 
 
 %% Example:
+%% data_product_listing_item_additional_attributes() :: #{
+%%   <<"forms">> => string()
+%% }
+-type data_product_listing_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_filter_configuration() :: #{
+%%   <<"includedColumnNames">> => list([string()]())
+%% }
+-type column_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_environment_blueprint_configuration_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
 %%   <<"enabledRegions">> => list(string()()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningConfigurations">> => list(list()()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -2703,6 +3053,15 @@
 %%   <<"tags">> => map()
 %% }
 -type create_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_summary() :: #{
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string()
+%% }
+-type listing_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2811,6 +3170,10 @@
 -type asset_listing_item() :: #{binary() => any()}.
 
 %% Example:
+%% get_environment_credentials_input() :: #{}
+-type get_environment_credentials_input() :: #{}.
+
+%% Example:
 %% delete_environment_blueprint_configuration_output() :: #{}
 -type delete_environment_blueprint_configuration_output() :: #{}.
 
@@ -2850,6 +3213,23 @@
 
 
 %% Example:
+%% update_asset_filter_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"effectiveColumnNames">> => list([string()]()),
+%%   <<"effectiveRowFilter">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_asset_filter_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_project_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
@@ -2867,8 +3247,10 @@
 
 %% Example:
 %% data_product_item() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"itemId">> => string()
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"identifier">> => string(),
+%%   <<"itemType">> => list(any()),
+%%   <<"revision">> => string()
 %% }
 -type data_product_item() :: #{binary() => any()}.
 
@@ -2883,6 +3265,14 @@
 %% Example:
 %% delete_glossary_term_input() :: #{}
 -type delete_glossary_term_input() :: #{}.
+
+
+%% Example:
+%% in_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"values">> => list([string()]())
+%% }
+-type in_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2902,6 +3292,14 @@
 
 
 %% Example:
+%% list_data_product_revisions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_product_revisions_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2917,6 +3315,10 @@
 %%   <<"type">> => list(any())
 %% }
 -type user_profile_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_product_output() :: #{}
+-type delete_data_product_output() :: #{}.
 
 
 %% Example:
@@ -2938,6 +3340,13 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% get_data_product_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_data_product_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3048,6 +3457,14 @@
 %% Example:
 %% delete_form_type_input() :: #{}
 -type delete_form_type_input() :: #{}.
+
+
+%% Example:
+%% less_than_or_equal_to_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type less_than_or_equal_to_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3170,6 +3587,14 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% not_in_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"values">> => list([string()]())
+%% }
+-type not_in_expression() :: #{binary() => any()}.
+
 %% Example:
 %% get_group_profile_input() :: #{}
 -type get_group_profile_input() :: #{}.
@@ -3181,6 +3606,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_filter_input() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => [string()]
+%% }
+-type update_asset_filter_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3485,6 +3919,14 @@
 
 
 %% Example:
+%% greater_than_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type greater_than_expression() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_subscription_request_details_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -3606,6 +4048,16 @@
 %%   <<"retainPermissionsOnRevokeFailure">> => [boolean()]
 %% }
 -type delete_data_source_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_environment_credentials_output() :: #{
+%%   <<"accessKeyId">> => [string()],
+%%   <<"expiration">> => [non_neg_integer()],
+%%   <<"secretAccessKey">> => [string()],
+%%   <<"sessionToken">> => [string()]
+%% }
+-type get_environment_credentials_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3756,6 +4208,14 @@
 %% }
 -type delete_subscription_grant_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% lake_formation_configuration() :: #{
+%%   <<"locationRegistrationExcludeS3Locations">> => list(string()()),
+%%   <<"locationRegistrationRole">> => string()
+%% }
+-type lake_formation_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_listing_output() :: #{}
 -type delete_listing_output() :: #{}.
@@ -3817,10 +4277,30 @@
 %% put_environment_blueprint_configuration_input() :: #{
 %%   <<"enabledRegions">> := list(string()()),
 %%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningConfigurations">> => list(list()()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map()
 %% }
 -type put_environment_blueprint_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_product_listing_item() :: #{
+%%   <<"additionalAttributes">> => data_product_listing_item_additional_attributes(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"items">> => list(listing_summary_item()()),
+%%   <<"listingCreatedBy">> => string(),
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string(),
+%%   <<"listingUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string()
+%% }
+-type data_product_listing_item() :: #{binary() => any()}.
 
 -type accept_predictions_errors() ::
     throttling_exception() | 
@@ -3871,6 +4351,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_asset_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_asset_revision_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3885,6 +4374,23 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_data_product_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_product_revision_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_data_source_errors() ::
@@ -4020,9 +4526,26 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_asset_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_asset_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_product_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4167,7 +4690,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_asset_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_asset_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_product_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4222,6 +4759,13 @@
     resource_not_found_exception().
 
 -type get_environment_blueprint_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_credentials_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -4338,7 +4882,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_asset_filters_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_asset_revisions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_product_revisions_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4590,6 +5148,14 @@
 -type untag_resource_errors() ::
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_asset_filter_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_data_source_errors() ::
     throttling_exception() | 
@@ -4906,6 +5472,40 @@ create_asset(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a data asset filter.
+-spec create_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), create_asset_filter_input()) ->
+    {ok, create_asset_filter_output(), tuple()} |
+    {error, any()} |
+    {error, create_asset_filter_errors(), tuple()}.
+create_asset_filter(Client, AssetIdentifier, DomainIdentifier, Input) ->
+    create_asset_filter(Client, AssetIdentifier, DomainIdentifier, Input, []).
+
+-spec create_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), create_asset_filter_input(), proplists:proplist()) ->
+    {ok, create_asset_filter_output(), tuple()} |
+    {error, any()} |
+    {error, create_asset_filter_errors(), tuple()}.
+create_asset_filter(Client, AssetIdentifier, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(AssetIdentifier), "/filters"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a revision of the asset.
 -spec create_asset_revision(aws_client:aws_client(), binary() | list(), binary() | list(), create_asset_revision_input()) ->
     {ok, create_asset_revision_output(), tuple()} |
@@ -4955,6 +5555,74 @@ create_asset_type(Client, DomainIdentifier, Input) ->
 create_asset_type(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/asset-types"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a data product.
+-spec create_data_product(aws_client:aws_client(), binary() | list(), create_data_product_input()) ->
+    {ok, create_data_product_output(), tuple()} |
+    {error, any()} |
+    {error, create_data_product_errors(), tuple()}.
+create_data_product(Client, DomainIdentifier, Input) ->
+    create_data_product(Client, DomainIdentifier, Input, []).
+
+-spec create_data_product(aws_client:aws_client(), binary() | list(), create_data_product_input(), proplists:proplist()) ->
+    {ok, create_data_product_output(), tuple()} |
+    {error, any()} |
+    {error, create_data_product_errors(), tuple()}.
+create_data_product(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-products"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a data product revision.
+-spec create_data_product_revision(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_product_revision_input()) ->
+    {ok, create_data_product_revision_output(), tuple()} |
+    {error, any()} |
+    {error, create_data_product_revision_errors(), tuple()}.
+create_data_product_revision(Client, DomainIdentifier, Identifier, Input) ->
+    create_data_product_revision(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec create_data_product_revision(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_product_revision_input(), proplists:proplist()) ->
+    {ok, create_data_product_revision_output(), tuple()} |
+    {error, any()} |
+    {error, create_data_product_revision_errors(), tuple()}.
+create_data_product_revision(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-products/", aws_util:encode_uri(Identifier), "/revisions"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5522,7 +6190,7 @@ create_user_profile(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delets an asset in Amazon DataZone.
+%% @doc Deletes an asset in Amazon DataZone.
 -spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_input()) ->
     {ok, delete_asset_output(), tuple()} |
     {error, any()} |
@@ -5537,6 +6205,40 @@ delete_asset(Client, DomainIdentifier, Identifier, Input) ->
 delete_asset(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an asset filter.
+-spec delete_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_asset_filter_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_asset_filter_errors(), tuple()}.
+delete_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input) ->
+    delete_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_asset_filter_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_asset_filter_errors(), tuple()}.
+delete_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(AssetIdentifier), "/filters/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5571,6 +6273,40 @@ delete_asset_type(Client, DomainIdentifier, Identifier, Input) ->
 delete_asset_type(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/asset-types/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an data product in Amazon DataZone.
+-spec delete_data_product(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_product_input()) ->
+    {ok, delete_data_product_output(), tuple()} |
+    {error, any()} |
+    {error, delete_data_product_errors(), tuple()}.
+delete_data_product(Client, DomainIdentifier, Identifier, Input) ->
+    delete_data_product(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_data_product(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_product_input(), proplists:proplist()) ->
+    {ok, delete_data_product_output(), tuple()} |
+    {error, any()} |
+    {error, delete_data_product_errors(), tuple()}.
+delete_data_product(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-products/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6218,6 +6954,43 @@ get_asset(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets an asset filter.
+-spec get_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_asset_filter_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_filter_errors(), tuple()}.
+get_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_asset_filter_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_filter_errors(), tuple()}.
+get_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_filter_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_filter_errors(), tuple()}.
+get_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(AssetIdentifier), "/filters/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets an Amazon DataZone asset type.
 -spec get_asset_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_asset_type_output(), tuple()} |
@@ -6242,6 +7015,47 @@ get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
 get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/asset-types/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"revision">>, maps:get(<<"revision">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the data product.
+-spec get_data_product(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_product_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_product_errors(), tuple()}.
+get_data_product(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_data_product(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_data_product(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_product_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_product_errors(), tuple()}.
+get_data_product(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_product(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_data_product(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_product_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_product_errors(), tuple()}.
+get_data_product(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-products/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6505,6 +7319,43 @@ get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
 get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-blueprint-configurations/", aws_util:encode_uri(EnvironmentBlueprintIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the credentials of an environment in Amazon DataZone.
+-spec get_environment_credentials(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_environment_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_credentials_errors(), tuple()}.
+get_environment_credentials(Client, DomainIdentifier, EnvironmentIdentifier)
+  when is_map(Client) ->
+    get_environment_credentials(Client, DomainIdentifier, EnvironmentIdentifier, #{}, #{}).
+
+-spec get_environment_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_environment_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_credentials_errors(), tuple()}.
+get_environment_credentials(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_environment_credentials(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_environment_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_credentials_errors(), tuple()}.
+get_environment_credentials(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/credentials"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6783,6 +7634,9 @@ get_lineage_node(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a listing (a record of an asset at a given time).
+%%
+%% If you specify a listing version,
+%% only details that are specific to that version are returned.
 -spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_listing_output(), tuple()} |
     {error, any()} |
@@ -7127,6 +7981,49 @@ get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists asset filters.
+-spec list_asset_filters(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_asset_filters_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_filters_errors(), tuple()}.
+list_asset_filters(Client, AssetIdentifier, DomainIdentifier)
+  when is_map(Client) ->
+    list_asset_filters(Client, AssetIdentifier, DomainIdentifier, #{}, #{}).
+
+-spec list_asset_filters(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_asset_filters_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_filters_errors(), tuple()}.
+list_asset_filters(Client, AssetIdentifier, DomainIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_filters(Client, AssetIdentifier, DomainIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_asset_filters(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_filters_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_filters_errors(), tuple()}.
+list_asset_filters(Client, AssetIdentifier, DomainIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(AssetIdentifier), "/filters"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the revisions for the asset.
 -spec list_asset_revisions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_asset_revisions_output(), tuple()} |
@@ -7151,6 +8048,48 @@ list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
 list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), "/revisions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists data product revisions.
+-spec list_data_product_revisions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_data_product_revisions_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_product_revisions_errors(), tuple()}.
+list_data_product_revisions(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    list_data_product_revisions(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec list_data_product_revisions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_data_product_revisions_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_product_revisions_errors(), tuple()}.
+list_data_product_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_product_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec list_data_product_revisions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_product_revisions_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_product_revisions_errors(), tuple()}.
+list_data_product_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-products/", aws_util:encode_uri(Identifier), "/revisions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7834,6 +8773,7 @@ list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap, Options
         {<<"environmentId">>, maps:get(<<"environmentId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"owningProjectId">>, maps:get(<<"owningProjectId">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
         {<<"subscribedListingId">>, maps:get(<<"subscribedListingId">>, QueryMap, undefined)},
@@ -8583,6 +9523,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an asset filter.
+-spec update_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_asset_filter_input()) ->
+    {ok, update_asset_filter_output(), tuple()} |
+    {error, any()} |
+    {error, update_asset_filter_errors(), tuple()}.
+update_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input) ->
+    update_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input, []).
+
+-spec update_asset_filter(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_asset_filter_input(), proplists:proplist()) ->
+    {ok, update_asset_filter_output(), tuple()} |
+    {error, any()} |
+    {error, update_asset_filter_errors(), tuple()}.
+update_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(AssetIdentifier), "/filters/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified data source in Amazon DataZone.

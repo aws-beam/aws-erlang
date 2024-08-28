@@ -14,7 +14,9 @@
 %% production.
 -module(aws_resiliencehub).
 
--export([add_draft_app_version_resource_mappings/2,
+-export([accept_resource_grouping_recommendations/2,
+         accept_resource_grouping_recommendations/3,
+         add_draft_app_version_resource_mappings/2,
          add_draft_app_version_resource_mappings/3,
          batch_update_recommendation_status/2,
          batch_update_recommendation_status/3,
@@ -60,6 +62,8 @@
          describe_draft_app_version_resources_import_status/3,
          describe_resiliency_policy/2,
          describe_resiliency_policy/3,
+         describe_resource_grouping_recommendation_task/2,
+         describe_resource_grouping_recommendation_task/3,
          import_resources_to_draft_app_version/2,
          import_resources_to_draft_app_version/3,
          list_alarm_recommendations/2,
@@ -94,6 +98,9 @@
          list_resiliency_policies/1,
          list_resiliency_policies/3,
          list_resiliency_policies/4,
+         list_resource_grouping_recommendations/1,
+         list_resource_grouping_recommendations/3,
+         list_resource_grouping_recommendations/4,
          list_sop_recommendations/2,
          list_sop_recommendations/3,
          list_suggested_resiliency_policies/1,
@@ -110,12 +117,16 @@
          publish_app_version/3,
          put_draft_app_version_template/2,
          put_draft_app_version_template/3,
+         reject_resource_grouping_recommendations/2,
+         reject_resource_grouping_recommendations/3,
          remove_draft_app_version_resource_mappings/2,
          remove_draft_app_version_resource_mappings/3,
          resolve_app_version_resources/2,
          resolve_app_version_resources/3,
          start_app_assessment/2,
          start_app_assessment/3,
+         start_resource_grouping_recommendation_task/2,
+         start_resource_grouping_recommendation_task/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -190,6 +201,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_apps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resource_grouping_recommendation_task_response() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"groupingId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type describe_resource_grouping_recommendation_task_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -397,6 +417,14 @@
 
 
 %% Example:
+%% describe_resource_grouping_recommendation_task_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"groupingId">> => string()
+%% }
+-type describe_resource_grouping_recommendation_task_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% config_recommendation() :: #{
 %%   <<"appComponentName">> => string(),
 %%   <<"compliance">> => map(),
@@ -427,6 +455,16 @@
 %%   <<"appVersion">> := string()
 %% }
 -type describe_app_version_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_resource_grouping_recommendation_task_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"groupingId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type start_resource_grouping_recommendation_task_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -609,6 +647,15 @@
 
 
 %% Example:
+%% assessment_risk_recommendation() :: #{
+%%   <<"appComponents">> => list(string()()),
+%%   <<"recommendation">> => string(),
+%%   <<"risk">> => string()
+%% }
+-type assessment_risk_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_app_version_resource_response() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string(),
@@ -778,6 +825,14 @@
 
 
 %% Example:
+%% accept_resource_grouping_recommendations_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"failedEntries">> => list(failed_grouping_recommendation_entry()())
+%% }
+-type accept_resource_grouping_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_resiliency_policy_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"dataLocationConstraint">> => string(),
@@ -812,6 +867,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_sop_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_resource_grouping_recommendations_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"entries">> := list(accept_grouping_recommendation_entry()())
+%% }
+-type accept_resource_grouping_recommendations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -892,6 +955,14 @@
 %%   <<"appVersion">> := string()
 %% }
 -type update_app_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_grouping_recommendation_entry() :: #{
+%%   <<"groupingRecommendationId">> => string(),
+%%   <<"rejectionReason">> => string()
+%% }
+-type reject_grouping_recommendation_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -979,6 +1050,13 @@
 
 
 %% Example:
+%% accept_grouping_recommendation_entry() :: #{
+%%   <<"groupingRecommendationId">> => string()
+%% }
+-type accept_grouping_recommendation_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_location() :: #{
 %%   <<"bucket">> => string(),
 %%   <<"prefix">> => string()
@@ -1047,6 +1125,14 @@
 %%   <<"status">> => string()
 %% }
 -type app_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_resource_grouping_recommendations_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"entries">> := list(reject_grouping_recommendation_entry()())
+%% }
+-type reject_resource_grouping_recommendations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1156,6 +1242,14 @@
 %%   <<"appArn">> := string()
 %% }
 -type describe_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_grouping_recommendations_response() :: #{
+%%   <<"groupingRecommendations">> => list(grouping_recommendation()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_grouping_recommendations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1321,6 +1415,7 @@
 %%   <<"resiliencyScore">> => resiliency_score(),
 %%   <<"resourceErrorsDetails">> => resource_errors_details(),
 %%   <<"startTime">> => non_neg_integer(),
+%%   <<"summary">> => assessment_summary(),
 %%   <<"tags">> => map(),
 %%   <<"versionName">> => string()
 %% }
@@ -1389,6 +1484,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_alarm_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_resource_grouping_recommendation_task_request() :: #{
+%%   <<"appArn">> := string()
+%% }
+-type start_resource_grouping_recommendation_task_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1566,6 +1668,15 @@
 
 
 %% Example:
+%% grouping_app_component() :: #{
+%%   <<"appComponentId">> => string(),
+%%   <<"appComponentName">> => string(),
+%%   <<"appComponentType">> => string()
+%% }
+-type grouping_app_component() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_recommendation_template_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"recommendationTemplateArn">> := string()
@@ -1580,6 +1691,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_assessment_resource_drifts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_grouping_recommendations_request() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_grouping_recommendations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1611,6 +1731,22 @@
 
 
 %% Example:
+%% assessment_summary() :: #{
+%%   <<"riskRecommendations">> => list(assessment_risk_recommendation()()),
+%%   <<"summary">> => string()
+%% }
+-type assessment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_resource_grouping_recommendations_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"failedEntries">> => list(failed_grouping_recommendation_entry()())
+%% }
+-type reject_resource_grouping_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_draft_app_version_resource_mappings_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appRegistryAppNames">> => list(string()()),
@@ -1621,6 +1757,25 @@
 %%   <<"terraformSourceNames">> => list(string()())
 %% }
 -type remove_draft_app_version_resource_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% grouping_resource() :: #{
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => physical_resource_id(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"sourceAppComponentIds">> => list(string()())
+%% }
+-type grouping_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_grouping_recommendation_entry() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"groupingRecommendationId">> => string()
+%% }
+-type failed_grouping_recommendation_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1681,6 +1836,21 @@
 
 
 %% Example:
+%% grouping_recommendation() :: #{
+%%   <<"confidenceLevel">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"groupingAppComponent">> => grouping_app_component(),
+%%   <<"groupingRecommendationId">> => string(),
+%%   <<"recommendationReasons">> => list(string()()),
+%%   <<"rejectionReason">> => string(),
+%%   <<"resources">> => list(grouping_resource()()),
+%%   <<"score">> => float(),
+%%   <<"status">> => string()
+%% }
+-type grouping_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_draft_app_version_resources_import_status_response() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string(),
@@ -1699,11 +1869,19 @@
 %% }
 -type describe_app_version_response() :: #{binary() => any()}.
 
+-type accept_resource_grouping_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type add_draft_app_version_resource_mappings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1877,6 +2055,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type describe_resource_grouping_recommendation_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type import_resources_to_draft_app_version_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1981,6 +2166,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_resource_grouping_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_sop_recommendations_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2035,6 +2227,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type reject_resource_grouping_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type remove_draft_app_version_resource_mappings_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2057,6 +2256,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_resource_grouping_recommendation_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2119,14 +2326,53 @@
 %% API
 %%====================================================================
 
+%% @doc Accepts the resource grouping recommendations suggested by Resilience
+%% Hub for your application.
+-spec accept_resource_grouping_recommendations(aws_client:aws_client(), accept_resource_grouping_recommendations_request()) ->
+    {ok, accept_resource_grouping_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, accept_resource_grouping_recommendations_errors(), tuple()}.
+accept_resource_grouping_recommendations(Client, Input) ->
+    accept_resource_grouping_recommendations(Client, Input, []).
+
+-spec accept_resource_grouping_recommendations(aws_client:aws_client(), accept_resource_grouping_recommendations_request(), proplists:proplist()) ->
+    {ok, accept_resource_grouping_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, accept_resource_grouping_recommendations_errors(), tuple()}.
+accept_resource_grouping_recommendations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/accept-resource-grouping-recommendations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds the source of resource-maps to the draft version of an
 %% application.
 %%
-%% During assessment, Resilience Hub will use these resource-maps to resolve
-%% the latest physical ID for each resource in the application template. For
-%% more information about different types of resources suported by Resilience
-%% Hub and how to add them in your application, see Step 2: How is your
-%% application managed?:
+%% During
+%% assessment, Resilience Hub will use these resource-maps to resolve the
+%% latest physical
+%% ID for each resource in the application template. For more information
+%% about different types
+%% of resources supported by Resilience Hub and how to add them in your
+%% application, see
+%% Step
+%% 2: How is your application managed?:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/how-app-manage.html
 %% in the Resilience Hub User Guide.
 -spec add_draft_app_version_resource_mappings(aws_client:aws_client(), add_draft_app_version_resource_mappings_request()) ->
@@ -2202,25 +2448,25 @@ batch_update_recommendation_status(Client, Input0, Options0) ->
 %% An Resilience Hub application is a
 %% collection of Amazon Web Services resources structured to prevent and
 %% recover Amazon Web Services application disruptions. To describe a
-%% Resilience Hub application,
-%% you provide an application name, resources from one or more CloudFormation
-%% stacks, Resource Groups, Terraform state files, AppRegistry applications,
-%% and an appropriate
+%% Resilience Hub application, you provide an
+%% application name, resources from one or more CloudFormation stacks,
+%% Resource Groups, Terraform state files, AppRegistry applications, and an
+%% appropriate
 %% resiliency policy. In addition, you can also add resources that are
 %% located on Amazon Elastic Kubernetes Service (Amazon EKS) clusters as
-%% optional resources. For more information about the number of resources
-%% supported per application, see Service
+%% optional resources. For more information
+%% about the number of resources supported per application, see Service
 %% quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/resiliencehub.html#limits_resiliencehub.
 %%
 %% After you create an Resilience Hub application, you publish it so that you
-%% can run a resiliency
-%% assessment on it. You can then use recommendations from the assessment to
-%% improve resiliency
-%% by running another assessment, comparing results, and then iterating the
-%% process until you
-%% achieve your goals for recovery time objective (RTO) and recovery point
-%% objective
+%% can run
+%% a resiliency assessment on it. You can then use recommendations from the
+%% assessment to improve
+%% resiliency by running another assessment, comparing results, and then
+%% iterating the process
+%% until you achieve your goals for recovery time objective (RTO) and
+%% recovery point objective
 %% (RPO).
 -spec create_app(aws_client:aws_client(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
@@ -2260,7 +2506,8 @@ create_app(Client, Input0, Options0) ->
 %%
 %% This API updates the Resilience Hub application draft version. To use this
 %% Application Component for running assessments, you must publish the
-%% Resilience Hub application using the `PublishAppVersion' API.
+%% Resilience Hub
+%% application using the `PublishAppVersion' API.
 -spec create_app_version_app_component(aws_client:aws_client(), create_app_version_app_component_request()) ->
     {ok, create_app_version_app_component_response(), tuple()} |
     {error, any()} |
@@ -2299,16 +2546,14 @@ create_app_version_app_component(Client, Input0, Options0) ->
 %% Application Components.
 %%
 %% If you specify a new Application Component, Resilience Hub will
-%% automatically
-%% create the Application Component.
+%% automatically create the Application Component.
 %%
 %% This action has no effect outside Resilience Hub.
 %%
 %% This API updates the Resilience Hub application draft version. To use this
-%% resource
-%% for running resiliency assessments, you must publish the Resilience Hub
-%% application using
-%% the `PublishAppVersion' API.
+%% resource for running resiliency assessments, you must publish the
+%% Resilience Hub
+%% application using the `PublishAppVersion' API.
 %%
 %% To update application version with new `physicalResourceID', you must
 %% call `ResolveAppVersionResources' API.
@@ -2383,12 +2628,12 @@ create_recommendation_template(Client, Input0, Options0) ->
 %% @doc Creates a resiliency policy for an application.
 %%
 %% Resilience Hub allows you to provide a value of zero for `rtoInSecs'
-%% and
-%% `rpoInSecs' of your resiliency policy. But, while assessing your
-%% application, the lowest possible assessment result is near zero. Hence, if
-%% you provide value
-%% zero for `rtoInSecs' and `rpoInSecs', the estimated workload RTO
-%% and estimated workload RPO result will be near zero and the Compliance
+%% and `rpoInSecs' of your resiliency policy. But, while assessing your
+%% application,
+%% the lowest possible assessment result is near zero. Hence, if you provide
+%% value zero for
+%% `rtoInSecs' and `rpoInSecs', the estimated workload RTO and
+%% estimated workload RPO result will be near zero and the Compliance
 %% status for your application will be set to Policy
 %% breached.
 -spec create_resiliency_policy(aws_client:aws_client(), create_resiliency_policy_request()) ->
@@ -2463,8 +2708,8 @@ delete_app(Client, Input0, Options0) ->
 
 %% @doc Deletes an Resilience Hub application assessment.
 %%
-%% This is a destructive action that can't
-%% be undone.
+%% This is a destructive action
+%% that can't be undone.
 -spec delete_app_assessment(aws_client:aws_client(), delete_app_assessment_request()) ->
     {ok, delete_app_assessment_response(), tuple()} |
     {error, any()} |
@@ -2499,7 +2744,8 @@ delete_app_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the input source and all of its imported resources from the
-%% Resilience Hub application.
+%% Resilience Hub
+%% application.
 -spec delete_app_input_source(aws_client:aws_client(), delete_app_input_source_request()) ->
     {ok, delete_app_input_source_response(), tuple()} |
     {error, any()} |
@@ -2537,10 +2783,12 @@ delete_app_input_source(Client, Input0, Options0) ->
 %%
 %% This API updates the Resilience Hub application draft version. To use this
 %% Application Component for running assessments, you must publish the
-%% Resilience Hub application using the `PublishAppVersion' API.
+%% Resilience Hub
+%% application using the `PublishAppVersion' API.
 %%
 %% You will not be able to delete an Application Component if it has
-%% resources associated with it.
+%% resources associated
+%% with it.
 -spec delete_app_version_app_component(aws_client:aws_client(), delete_app_version_app_component_request()) ->
     {ok, delete_app_version_app_component_response(), tuple()} |
     {error, any()} |
@@ -2577,13 +2825,15 @@ delete_app_version_app_component(Client, Input0, Options0) ->
 %% @doc Deletes a resource from the Resilience Hub application.
 %%
 %% You can only delete a manually added resource. To exclude non-manually
-%% added resources, use the `UpdateAppVersionResource' API.
+%% added
+%% resources, use the `UpdateAppVersionResource' API.
 %%
 %% This action has no effect outside Resilience Hub.
 %%
 %% This API updates the Resilience Hub application draft version. To use this
 %% resource for running resiliency assessments, you must publish the
-%% Resilience Hub application using the `PublishAppVersion' API.
+%% Resilience Hub
+%% application using the `PublishAppVersion' API.
 -spec delete_app_version_resource(aws_client:aws_client(), delete_app_version_resource_request()) ->
     {ok, delete_app_version_resource_response(), tuple()} |
     {error, any()} |
@@ -2828,7 +3078,7 @@ describe_app_version_app_component(Client, Input0, Options0) ->
 
 %% @doc Describes a resource of the Resilience Hub application.
 %%
-%% This API accepts only one of the following parameters to descibe the
+%% This API accepts only one of the following parameters to describe the
 %% resource:
 %%
 %% `resourceName'
@@ -2836,8 +3086,7 @@ describe_app_version_app_component(Client, Input0, Options0) ->
 %% `logicalResourceId'
 %%
 %% `physicalResourceId' (Along with `physicalResourceId', you can
-%% also
-%% provide `awsAccountId', and `awsRegion')
+%% also provide `awsAccountId', and `awsRegion')
 -spec describe_app_version_resource(aws_client:aws_client(), describe_app_version_resource_request()) ->
     {ok, describe_app_version_resource_response(), tuple()} |
     {error, any()} |
@@ -3026,12 +3275,48 @@ describe_resiliency_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes the resource grouping recommendation tasks run by
+%% Resilience Hub for your application.
+-spec describe_resource_grouping_recommendation_task(aws_client:aws_client(), describe_resource_grouping_recommendation_task_request()) ->
+    {ok, describe_resource_grouping_recommendation_task_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_grouping_recommendation_task_errors(), tuple()}.
+describe_resource_grouping_recommendation_task(Client, Input) ->
+    describe_resource_grouping_recommendation_task(Client, Input, []).
+
+-spec describe_resource_grouping_recommendation_task(aws_client:aws_client(), describe_resource_grouping_recommendation_task_request(), proplists:proplist()) ->
+    {ok, describe_resource_grouping_recommendation_task_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_grouping_recommendation_task_errors(), tuple()}.
+describe_resource_grouping_recommendation_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describe-resource-grouping-recommendation-task"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Imports resources to Resilience Hub application draft version from
-%% different input sources.
+%% different input
+%% sources.
 %%
 %% For more information about the input sources supported by Resilience Hub,
-%% see Discover
-%% the structure and describe your Resilience Hub application:
+%% see
+%% Discover the structure and describe your Resilience Hub application:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
 -spec import_resources_to_draft_app_version(aws_client:aws_client(), import_resources_to_draft_app_version_request()) ->
     {ok, import_resources_to_draft_app_version_response(), tuple()} |
@@ -3136,7 +3421,8 @@ list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Indicates the list of resource drifts that were detected while
-%% running an assessment.
+%% running an
+%% assessment.
 -spec list_app_assessment_resource_drifts(aws_client:aws_client(), list_app_assessment_resource_drifts_request()) ->
     {ok, list_app_assessment_resource_drifts_response(), tuple()} |
     {error, any()} |
@@ -3172,8 +3458,8 @@ list_app_assessment_resource_drifts(Client, Input0, Options0) ->
 
 %% @doc Lists the assessments for an Resilience Hub application.
 %%
-%% You can use request parameters to
-%% refine the results for the response object.
+%% You can use request
+%% parameters to refine the results for the response object.
 -spec list_app_assessments(aws_client:aws_client()) ->
     {ok, list_app_assessments_response(), tuple()} |
     {error, any()} |
@@ -3292,8 +3578,9 @@ list_app_component_recommendations(Client, Input0, Options0) ->
 
 %% @doc Lists all the input sources of the Resilience Hub application.
 %%
-%% For more information about the
-%% input sources supported by Resilience Hub, see Discover
+%% For more
+%% information about the input sources supported by Resilience Hub, see
+%% Discover
 %% the structure and describe your Resilience Hub application:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
 -spec list_app_input_sources(aws_client:aws_client(), list_app_input_sources_request()) ->
@@ -3620,9 +3907,52 @@ list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the resource grouping recommendations suggested by Resilience
+%% Hub for your application.
+-spec list_resource_grouping_recommendations(aws_client:aws_client()) ->
+    {ok, list_resource_grouping_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_grouping_recommendations_errors(), tuple()}.
+list_resource_grouping_recommendations(Client)
+  when is_map(Client) ->
+    list_resource_grouping_recommendations(Client, #{}, #{}).
+
+-spec list_resource_grouping_recommendations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_resource_grouping_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_grouping_recommendations_errors(), tuple()}.
+list_resource_grouping_recommendations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_grouping_recommendations(Client, QueryMap, HeadersMap, []).
+
+-spec list_resource_grouping_recommendations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_resource_grouping_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_grouping_recommendations_errors(), tuple()}.
+list_resource_grouping_recommendations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/list-resource-grouping-recommendations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"appArn">>, maps:get(<<"appArn">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the standard operating procedure (SOP) recommendations for the
-%% Resilience Hub
-%% applications.
+%% Resilience Hub applications.
 -spec list_sop_recommendations(aws_client:aws_client(), list_sop_recommendations_request()) ->
     {ok, list_sop_recommendations_response(), tuple()} |
     {error, any()} |
@@ -3774,10 +4104,10 @@ list_test_recommendations(Client, Input0, Options0) ->
 %% @doc Lists the resources that are not currently supported in Resilience
 %% Hub.
 %%
-%% An unsupported
-%% resource is a resource that exists in the object that was used to create
-%% an app, but is not
-%% supported by Resilience Hub.
+%% An
+%% unsupported resource is a resource that exists in the object that was used
+%% to create an app,
+%% but is not supported by Resilience Hub.
 -spec list_unsupported_app_version_resources(aws_client:aws_client(), list_unsupported_app_version_resources_request()) ->
     {ok, list_unsupported_app_version_resources_response(), tuple()} |
     {error, any()} |
@@ -3846,7 +4176,8 @@ publish_app_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates the app template for an Resilience Hub application
-%% draft version.
+%% draft
+%% version.
 -spec put_draft_app_version_template(aws_client:aws_client(), put_draft_app_version_template_request()) ->
     {ok, put_draft_app_version_template_response(), tuple()} |
     {error, any()} |
@@ -3861,6 +4192,40 @@ put_draft_app_version_template(Client, Input) ->
 put_draft_app_version_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-draft-app-version-template"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Rejects resource grouping recommendations.
+-spec reject_resource_grouping_recommendations(aws_client:aws_client(), reject_resource_grouping_recommendations_request()) ->
+    {ok, reject_resource_grouping_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, reject_resource_grouping_recommendations_errors(), tuple()}.
+reject_resource_grouping_recommendations(Client, Input) ->
+    reject_resource_grouping_recommendations(Client, Input, []).
+
+-spec reject_resource_grouping_recommendations(aws_client:aws_client(), reject_resource_grouping_recommendations_request(), proplists:proplist()) ->
+    {ok, reject_resource_grouping_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, reject_resource_grouping_recommendations_errors(), tuple()}.
+reject_resource_grouping_recommendations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/reject-resource-grouping-recommendations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3963,6 +4328,40 @@ start_app_assessment(Client, Input) ->
 start_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-app-assessment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts grouping recommendation task.
+-spec start_resource_grouping_recommendation_task(aws_client:aws_client(), start_resource_grouping_recommendation_task_request()) ->
+    {ok, start_resource_grouping_recommendation_task_response(), tuple()} |
+    {error, any()} |
+    {error, start_resource_grouping_recommendation_task_errors(), tuple()}.
+start_resource_grouping_recommendation_task(Client, Input) ->
+    start_resource_grouping_recommendation_task(Client, Input, []).
+
+-spec start_resource_grouping_recommendation_task(aws_client:aws_client(), start_resource_grouping_recommendation_task_request(), proplists:proplist()) ->
+    {ok, start_resource_grouping_recommendation_task_response(), tuple()} |
+    {error, any()} |
+    {error, start_resource_grouping_recommendation_task_errors(), tuple()}.
+start_resource_grouping_recommendation_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/start-resource-grouping-recommendation-task"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4088,10 +4487,9 @@ update_app(Client, Input0, Options0) ->
 %% @doc Updates the Resilience Hub application version.
 %%
 %% This API updates the Resilience Hub application draft version. To use this
-%% information
-%% for running resiliency assessments, you must publish the Resilience Hub
-%% application using the
-%% `PublishAppVersion' API.
+%% information for running resiliency assessments, you must publish the
+%% Resilience Hub
+%% application using the `PublishAppVersion' API.
 -spec update_app_version(aws_client:aws_client(), update_app_version_request()) ->
     {ok, update_app_version_response(), tuple()} |
     {error, any()} |
@@ -4130,7 +4528,8 @@ update_app_version(Client, Input0, Options0) ->
 %%
 %% This API updates the Resilience Hub application draft version. To use this
 %% Application Component for running assessments, you must publish the
-%% Resilience Hub application using the `PublishAppVersion' API.
+%% Resilience Hub
+%% application using the `PublishAppVersion' API.
 -spec update_app_version_app_component(aws_client:aws_client(), update_app_version_app_component_request()) ->
     {ok, update_app_version_app_component_response(), tuple()} |
     {error, any()} |
@@ -4170,11 +4569,11 @@ update_app_version_app_component(Client, Input0, Options0) ->
 %%
 %% This API updates the Resilience Hub application draft version. To use this
 %% resource for running resiliency assessments, you must publish the
-%% Resilience Hub application using the `PublishAppVersion' API.
+%% Resilience Hub
+%% application using the `PublishAppVersion' API.
 %%
 %% To update application version with new `physicalResourceID', you must
-%% call
-%% `ResolveAppVersionResources' API.
+%% call `ResolveAppVersionResources' API.
 -spec update_app_version_resource(aws_client:aws_client(), update_app_version_resource_request()) ->
     {ok, update_app_version_resource_response(), tuple()} |
     {error, any()} |
@@ -4211,13 +4610,11 @@ update_app_version_resource(Client, Input0, Options0) ->
 %% @doc Updates a resiliency policy.
 %%
 %% Resilience Hub allows you to provide a value of zero for `rtoInSecs'
-%% and
-%% `rpoInSecs' of your resiliency policy. But, while assessing your
+%% and `rpoInSecs' of your resiliency policy. But, while assessing your
 %% application,
 %% the lowest possible assessment result is near zero. Hence, if you provide
-%% value
-%% zero for `rtoInSecs' and `rpoInSecs', the estimated workload RTO
-%% and
+%% value zero for
+%% `rtoInSecs' and `rpoInSecs', the estimated workload RTO and
 %% estimated workload RPO result will be near zero and the Compliance
 %% status for your application will be set to Policy
 %% breached.

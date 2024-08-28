@@ -392,7 +392,9 @@
 %% Example:
 %% get_reference_metadata_response() :: #{
 %%   <<"arn">> => string(),
+%%   <<"creationJobId">> => string(),
 %%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"creationType">> => string(),
 %%   <<"description">> => string(),
 %%   <<"files">> => reference_files(),
 %%   <<"id">> => string(),
@@ -954,6 +956,7 @@
 %% Example:
 %% get_read_set_metadata_response() :: #{
 %%   <<"arn">> => string(),
+%%   <<"creationJobId">> => string(),
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"creationType">> => string(),
 %%   <<"description">> => string(),
@@ -1238,6 +1241,7 @@
 %%   <<"description">> => string(),
 %%   <<"generatedFrom">> => string(),
 %%   <<"name">> => string(),
+%%   <<"readSetId">> => string(),
 %%   <<"referenceArn">> => string(),
 %%   <<"sampleId">> => string(),
 %%   <<"sourceFileType">> => string(),
@@ -1958,6 +1962,7 @@
 %% import_reference_source_item() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"referenceId">> => string(),
 %%   <<"sourceFile">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string(),
@@ -3510,7 +3515,8 @@ create_reference_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a run group.
+%% @doc You can optionally create a run group to limit the compute resources
+%% for the runs that you add to the group.
 -spec create_run_group(aws_client:aws_client(), create_run_group_request()) ->
     {ok, create_run_group_response(), tuple()} |
     {error, any()} |
@@ -3586,9 +3592,9 @@ create_sequence_store(Client, Input0, Options0) ->
 %%
 %% The following resources support cross-account sharing:
 %%
-%% Healthomics variant stores
+%% HealthOmics variant stores
 %%
-%% Healthomics annotation stores
+%% HealthOmics annotation stores
 %%
 %% Private workflows
 -spec create_share(aws_client:aws_client(), create_share_request()) ->

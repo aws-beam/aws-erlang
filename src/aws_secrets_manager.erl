@@ -975,6 +975,13 @@ cancel_rotate_secret(Client, Input, Options)
 %% To encrypt the secret with a KMS key other than `aws/secretsmanager',
 %% you need `kms:GenerateDataKey' and `kms:Decrypt' permission to the
 %% key.
+%%
+%% When you enter commands in a command shell, there is a risk of the command
+%% history being accessed or utilities having access to your command
+%% parameters. This is a concern if the command includes the value of a
+%% secret. Learn how to Mitigate the risks of using command-line tools to
+%% store Secrets Manager secrets:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/security_cli-exposure-risks.html.
 -spec create_secret(aws_client:aws_client(), create_secret_request()) ->
     {ok, create_secret_response(), tuple()} |
     {error, any()} |
@@ -1454,6 +1461,13 @@ put_resource_policy(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+%%
+%% When you enter commands in a command shell, there is a risk of the command
+%% history being accessed or utilities having access to your command
+%% parameters. This is a concern if the command includes the value of a
+%% secret. Learn how to Mitigate the risks of using command-line tools to
+%% store Secrets Manager secrets:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/security_cli-exposure-risks.html.
 -spec put_secret_value(aws_client:aws_client(), put_secret_value_request()) ->
     {ok, put_secret_value_response(), tuple()} |
     {error, any()} |
@@ -1826,10 +1840,17 @@ untag_resource(Client, Input, Options)
 %% `kms:GenerateDataKey', `kms:Encrypt', and
 %% `kms:Decrypt' permissions on the key. If you change the KMS key and
 %% you don't have `kms:Encrypt' permission to the new key, Secrets
-%% Manager does not re-ecrypt existing secret versions with the new key. For
+%% Manager does not re-encrypt existing secret versions with the new key. For
 %% more information, see
 %% Secret encryption and decryption:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/security-encryption.html.
+%%
+%% When you enter commands in a command shell, there is a risk of the command
+%% history being accessed or utilities having access to your command
+%% parameters. This is a concern if the command includes the value of a
+%% secret. Learn how to Mitigate the risks of using command-line tools to
+%% store Secrets Manager secrets:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/security_cli-exposure-risks.html.
 -spec update_secret(aws_client:aws_client(), update_secret_request()) ->
     {ok, update_secret_response(), tuple()} |
     {error, any()} |

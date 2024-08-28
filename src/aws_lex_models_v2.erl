@@ -315,6 +315,14 @@
 
 
 %% Example:
+%% bedrock_guardrail_configuration() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"version">> => string()
+%% }
+-type bedrock_guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% test_execution_target() :: #{
 %%   <<"botAliasTarget">> => bot_alias_test_execution_target()
 %% }
@@ -2700,7 +2708,10 @@
 
 %% Example:
 %% bedrock_model_specification() :: #{
-%%   <<"modelArn">> => string()
+%%   <<"customPrompt">> => string(),
+%%   <<"guardrail">> => bedrock_guardrail_configuration(),
+%%   <<"modelArn">> => string(),
+%%   <<"traceStatus">> => list(any())
 %% }
 -type bedrock_model_specification() :: #{binary() => any()}.
 
@@ -2710,6 +2721,13 @@
 %%   <<"expressionString">> => string()
 %% }
 -type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_knowledge_store_exact_response_fields() :: #{
+%%   <<"answerField">> => string()
+%% }
+-type bedrock_knowledge_store_exact_response_fields() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2810,7 +2828,9 @@
 
 %% Example:
 %% bedrock_knowledge_store_configuration() :: #{
-%%   <<"bedrockKnowledgeBaseArn">> => string()
+%%   <<"bedrockKnowledgeBaseArn">> => string(),
+%%   <<"exactResponse">> => boolean(),
+%%   <<"exactResponseFields">> => bedrock_knowledge_store_exact_response_fields()
 %% }
 -type bedrock_knowledge_store_configuration() :: #{binary() => any()}.
 
@@ -5786,6 +5806,10 @@ create_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can't create a resource policy statement that allows
 %% cross-account access.
+%%
+%% You need to add the `CreateResourcePolicy' or
+%% `UpdateResourcePolicy'
+%% action to the bot role in order to call the API.
 -spec create_resource_policy_statement(aws_client:aws_client(), binary() | list(), create_resource_policy_statement_request()) ->
     {ok, create_resource_policy_statement_response(), tuple()} |
     {error, any()} |
@@ -6349,6 +6373,10 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %% statement ID that doesn't exist in the policy, or if the bot or bot
 %% alias doesn't have a policy attached, Amazon Lex returns an
 %% exception.
+%%
+%% You need to add the `DeleteResourcePolicy' or
+%% `UpdateResourcePolicy'
+%% action to the bot role in order to call the API.
 -spec delete_resource_policy_statement(aws_client:aws_client(), binary() | list(), binary() | list(), delete_resource_policy_statement_request()) ->
     {ok, delete_resource_policy_statement_response(), tuple()} |
     {error, any()} |

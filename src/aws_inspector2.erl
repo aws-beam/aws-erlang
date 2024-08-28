@@ -799,6 +799,8 @@
 %% Example:
 %% finding_type_aggregation_response() :: #{
 %%   <<"accountId">> => string(),
+%%   <<"exploitAvailableCount">> => [float()],
+%%   <<"fixAvailableCount">> => [float()],
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type finding_type_aggregation_response() :: #{binary() => any()}.
@@ -1582,6 +1584,8 @@
 %% Example:
 %% account_aggregation_response() :: #{
 %%   <<"accountId">> => string(),
+%%   <<"exploitAvailableCount">> => [float()],
+%%   <<"fixAvailableCount">> => [float()],
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type account_aggregation_response() :: #{binary() => any()}.

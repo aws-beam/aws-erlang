@@ -154,6 +154,9 @@
          get_function_event_invoke_config/2,
          get_function_event_invoke_config/4,
          get_function_event_invoke_config/5,
+         get_function_recursion_config/2,
+         get_function_recursion_config/4,
+         get_function_recursion_config/5,
          get_function_url_config/2,
          get_function_url_config/4,
          get_function_url_config/5,
@@ -227,6 +230,8 @@
          put_function_concurrency/4,
          put_function_event_invoke_config/3,
          put_function_event_invoke_config/4,
+         put_function_recursion_config/3,
+         put_function_recursion_config/4,
          put_provisioned_concurrency_config/3,
          put_provisioned_concurrency_config/4,
          put_runtime_management_config/3,
@@ -347,6 +352,7 @@
 %%   <<"FilterCriteria">> => filter_criteria(),
 %%   <<"FunctionName">> => string(),
 %%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"KMSKeyArn">> => string(),
 %%   <<"MaximumBatchingWindowInSeconds">> => integer(),
 %%   <<"MaximumRecordAgeInSeconds">> => integer(),
 %%   <<"MaximumRetryAttempts">> => integer(),
@@ -560,6 +566,13 @@
 
 
 %% Example:
+%% put_function_recursion_config_response() :: #{
+%%   <<"RecursiveLoop">> => list(any())
+%% }
+-type put_function_recursion_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_function_event_invoke_config_request() :: #{
 %%   <<"DestinationConfig">> => destination_config(),
 %%   <<"MaximumEventAgeInSeconds">> => integer(),
@@ -638,6 +651,10 @@
 %%   <<"Qualifier">> => string()
 %% }
 -type delete_function_url_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_function_recursion_config_request() :: #{}
+-type get_function_recursion_config_request() :: #{}.
 
 
 %% Example:
@@ -745,6 +762,13 @@
 %% Example:
 %% get_function_code_signing_config_request() :: #{}
 -type get_function_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% put_function_recursion_config_request() :: #{
+%%   <<"RecursiveLoop">> := list(any())
+%% }
+-type put_function_recursion_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1018,8 +1042,10 @@
 %%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
 %%   <<"EventSourceArn">> => string(),
 %%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"FilterCriteriaError">> => filter_criteria_error(),
 %%   <<"FunctionArn">> => string(),
 %%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"KMSKeyArn">> => string(),
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"LastProcessingResult">> => string(),
 %%   <<"MaximumBatchingWindowInSeconds">> => integer(),
@@ -1054,6 +1080,7 @@
 %%   <<"FilterCriteria">> => filter_criteria(),
 %%   <<"FunctionName">> := string(),
 %%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"KMSKeyArn">> => string(),
 %%   <<"MaximumBatchingWindowInSeconds">> => integer(),
 %%   <<"MaximumRecordAgeInSeconds">> => integer(),
 %%   <<"MaximumRetryAttempts">> => integer(),
@@ -1946,6 +1973,14 @@
 
 
 %% Example:
+%% filter_criteria_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type filter_criteria_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% tracing_config_response() :: #{
 %%   <<"Mode">> => list(any())
 %% }
@@ -1958,6 +1993,13 @@
 %%   <<"Type">> => string()
 %% }
 -type snap_start_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_recursion_config_response() :: #{
+%%   <<"RecursiveLoop">> => list(any())
+%% }
+-type get_function_recursion_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2144,6 +2186,12 @@
     too_many_requests_exception().
 
 -type get_function_event_invoke_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_recursion_config_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2368,6 +2416,13 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type put_function_recursion_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type put_provisioned_concurrency_config_errors() ::
     resource_conflict_exception() | 
     service_exception() | 
@@ -2519,8 +2574,8 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants an Amazon Web Service, Amazon Web Services account, or Amazon
-%% Web Services organization
+%% @doc Grants an Amazon Web Servicesservice, Amazon Web Services account, or
+%% Amazon Web Services organization
 %% permission to use a function.
 %%
 %% You can apply the policy at the function level, or specify a qualifier to
@@ -2535,11 +2590,11 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
 %% `Principal'. To grant
 %% permission to an organization defined in Organizations, specify the
 %% organization ID as the
-%% `PrincipalOrgID'. For Amazon Web Services, the principal is a
+%% `PrincipalOrgID'. For Amazon Web Servicesservices, the principal is a
 %% domain-style identifier that
 %% the service defines, such as `s3.amazonaws.com' or
-%% `sns.amazonaws.com'. For Amazon Web Services, you can also specify the
-%% ARN of the associated resource as the `SourceArn'. If
+%% `sns.amazonaws.com'. For Amazon Web Servicesservices, you can also
+%% specify the ARN of the associated resource as the `SourceArn'. If
 %% you grant permission to a service principal without specifying the source,
 %% other accounts could potentially
 %% configure resources in their account to invoke your Lambda function.
@@ -2781,8 +2836,8 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% The
 %% deployment package is a .zip file archive or container image that contains
 %% your function code. The execution role
-%% grants the function permission to use Amazon Web Services, such as Amazon
-%% CloudWatch Logs for log
+%% grants the function permission to use Amazon Web Servicesservices, such as
+%% Amazon CloudWatch Logs for log
 %% streaming and X-Ray for request tracing.
 %%
 %% If the deployment package is a container
@@ -2845,14 +2900,14 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% signing profiles, which define the trusted
 %% publishers for this function.
 %%
-%% If another Amazon Web Services account or an Amazon Web Service invokes
-%% your function, use `AddPermission' to grant permission by creating a
-%% resource-based Identity and Access Management (IAM) policy. You can grant
-%% permissions at the function level, on a version, or on an alias.
+%% If another Amazon Web Services account or an Amazon Web Servicesservice
+%% invokes your function, use `AddPermission' to grant permission by
+%% creating a resource-based Identity and Access Management (IAM) policy. You
+%% can grant permissions at the function level, on a version, or on an alias.
 %%
 %% To invoke your function directly, use `Invoke'. To invoke your
 %% function in response to events
-%% in other Amazon Web Services, create an event source mapping
+%% in other Amazon Web Servicesservices, create an event source mapping
 %% (`CreateEventSourceMapping'),
 %% or configure a function trigger in the other service. For more
 %% information, see Invoking Lambda
@@ -3053,8 +3108,8 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% permissions for `DeleteAlias'.
 %%
 %% To delete Lambda event source mappings that invoke a function, use
-%% `DeleteEventSourceMapping'. For Amazon Web Services and resources that
-%% invoke your function
+%% `DeleteEventSourceMapping'. For Amazon Web Servicesservices and
+%% resources that invoke your function
 %% directly, delete the trigger in the service where you originally
 %% configured it.
 -spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
@@ -3682,6 +3737,45 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Opt
         {<<"Qualifier">>, maps:get(<<"Qualifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns your function's recursive loop detection:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-recursion.html
+%% configuration.
+-spec get_function_recursion_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_function_recursion_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_recursion_config_errors(), tuple()}.
+get_function_recursion_config(Client, FunctionName)
+  when is_map(Client) ->
+    get_function_recursion_config(Client, FunctionName, #{}, #{}).
+
+-spec get_function_recursion_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_function_recursion_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_recursion_config_errors(), tuple()}.
+get_function_recursion_config(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_recursion_config(Client, FunctionName, QueryMap, HeadersMap, []).
+
+-spec get_function_recursion_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_recursion_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_recursion_config_errors(), tuple()}.
+get_function_recursion_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2024-08-31/functions/", aws_util:encode_uri(FunctionName), "/recursion-config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5029,6 +5123,56 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sets your function's recursive loop detection:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-recursion.html
+%% configuration.
+%%
+%% When you configure a Lambda function to output to the same service or
+%% resource that invokes the function, it's possible to create
+%% an infinite recursive loop. For example, a Lambda function might write a
+%% message to an Amazon Simple Queue Service (Amazon SQS) queue, which then
+%% invokes the same
+%% function. This invocation causes the function to write another message to
+%% the queue, which in turn invokes the function again.
+%%
+%% Lambda can detect certain types of recursive loops shortly after they
+%% occur. When Lambda detects a recursive loop and your
+%% function's recursive loop detection configuration is set to
+%% `Terminate', it stops your function being invoked and notifies
+%% you.
+-spec put_function_recursion_config(aws_client:aws_client(), binary() | list(), put_function_recursion_config_request()) ->
+    {ok, put_function_recursion_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_function_recursion_config_errors(), tuple()}.
+put_function_recursion_config(Client, FunctionName, Input) ->
+    put_function_recursion_config(Client, FunctionName, Input, []).
+
+-spec put_function_recursion_config(aws_client:aws_client(), binary() | list(), put_function_recursion_config_request(), proplists:proplist()) ->
+    {ok, put_function_recursion_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_function_recursion_config_errors(), tuple()}.
+put_function_recursion_config(Client, FunctionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2024-08-31/functions/", aws_util:encode_uri(FunctionName), "/recursion-config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds a provisioned concurrency configuration to a function's
 %% alias or version.
 -spec put_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), put_provisioned_concurrency_config_request()) ->
@@ -5146,8 +5290,8 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Revokes function-use permission from an Amazon Web Service or another
-%% Amazon Web Services account.
+%% @doc Revokes function-use permission from an Amazon Web Servicesservice or
+%% another Amazon Web Services account.
 %%
 %% You
 %% can get the ID of the statement from the output of `GetPolicy'.
@@ -5522,7 +5666,7 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 %%
 %% To configure function concurrency, use `PutFunctionConcurrency'. To
 %% grant invoke permissions
-%% to an Amazon Web Services account or Amazon Web Service, use
+%% to an Amazon Web Services account or Amazon Web Servicesservice, use
 %% `AddPermission'.
 -spec update_function_configuration(aws_client:aws_client(), binary() | list(), update_function_configuration_request()) ->
     {ok, function_configuration(), tuple()} |

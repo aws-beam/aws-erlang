@@ -66,6 +66,8 @@
          delete_load_balancer/3,
          delete_rule/2,
          delete_rule/3,
+         delete_shared_trust_store_association/2,
+         delete_shared_trust_store_association/3,
          delete_target_group/2,
          delete_target_group/3,
          delete_trust_store/2,
@@ -100,6 +102,8 @@
          describe_trust_store_revocations/3,
          describe_trust_stores/2,
          describe_trust_stores/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          get_trust_store_ca_certificates_bundle/2,
          get_trust_store_ca_certificates_bundle/3,
          get_trust_store_revocation_content/2,
@@ -182,6 +186,12 @@
 %%   <<"ZoneName">> => string()
 %% }
 -type availability_zone() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_output() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_resource_policy_output() :: #{binary() => any()}.
 
 %% Example:
 %% revocation_content() :: #{
@@ -370,7 +380,8 @@
 %% mutual_authentication_attributes() :: #{
 %%   <<"IgnoreClientCertificateExpiry">> => boolean(),
 %%   <<"Mode">> => string(),
-%%   <<"TrustStoreArn">> => string()
+%%   <<"TrustStoreArn">> => string(),
+%%   <<"TrustStoreAssociationStatus">> => list(any())
 %% }
 -type mutual_authentication_attributes() :: #{binary() => any()}.
 
@@ -489,6 +500,12 @@
 -type create_trust_store_input() :: #{binary() => any()}.
 
 %% Example:
+%% delete_association_same_account_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_association_same_account_exception() :: #{binary() => any()}.
+
+%% Example:
 %% query_string_condition_config() :: #{
 %%   <<"Values">> => list(query_string_key_value_pair()())
 %% }
@@ -562,6 +579,12 @@
 %%   <<"StatusCode">> => list(any())
 %% }
 -type redirect_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% describe_tags_input() :: #{
@@ -712,6 +735,13 @@
 -type too_many_target_groups_exception() :: #{binary() => any()}.
 
 %% Example:
+%% delete_shared_trust_store_association_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type delete_shared_trust_store_association_input() :: #{binary() => any()}.
+
+%% Example:
 %% delete_listener_input() :: #{
 %%   <<"ListenerArn">> := string()
 %% }
@@ -767,6 +797,12 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_actions_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_association_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trust_store_association_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% describe_trust_stores_input() :: #{
@@ -1020,6 +1056,12 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type http_request_method_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_trust_store_revocations_input() :: #{
@@ -1451,6 +1493,12 @@
 -type modify_rule_output() :: #{binary() => any()}.
 
 %% Example:
+%% delete_shared_trust_store_association_output() :: #{
+
+%% }
+-type delete_shared_trust_store_association_output() :: #{binary() => any()}.
+
+%% Example:
 %% trust_store() :: #{
 %%   <<"Name">> => string(),
 %%   <<"NumberOfCaCertificates">> => integer(),
@@ -1567,6 +1615,11 @@
     rule_not_found_exception() | 
     operation_not_permitted_exception().
 
+-type delete_shared_trust_store_association_errors() ::
+    trust_store_association_not_found_exception() | 
+    trust_store_not_found_exception() | 
+    delete_association_same_account_exception().
+
 -type delete_target_group_errors() ::
     resource_in_use_exception().
 
@@ -1628,6 +1681,9 @@
 
 -type describe_trust_stores_errors() ::
     trust_store_not_found_exception().
+
+-type get_resource_policy_errors() ::
+    resource_not_found_exception().
 
 -type get_trust_store_ca_certificates_bundle_errors() ::
     trust_store_not_found_exception().
@@ -2041,6 +2097,23 @@ delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
 
+%% @doc Deletes a shared trust store association.
+-spec delete_shared_trust_store_association(aws_client:aws_client(), delete_shared_trust_store_association_input()) ->
+    {ok, delete_shared_trust_store_association_output(), tuple()} |
+    {error, any()} |
+    {error, delete_shared_trust_store_association_errors(), tuple()}.
+delete_shared_trust_store_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_shared_trust_store_association(Client, Input, []).
+
+-spec delete_shared_trust_store_association(aws_client:aws_client(), delete_shared_trust_store_association_input(), proplists:proplist()) ->
+    {ok, delete_shared_trust_store_association_output(), tuple()} |
+    {error, any()} |
+    {error, delete_shared_trust_store_association_errors(), tuple()}.
+delete_shared_trust_store_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSharedTrustStoreAssociation">>, Input, Options).
+
 %% @doc Deletes the specified target group.
 %%
 %% You can delete a target group if it is not referenced by any actions.
@@ -2427,8 +2500,9 @@ describe_trust_store_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStoreAssociations">>, Input, Options).
 
-%% @doc Describes the revocation files in use by the specified
-%% trust store arn, or revocation ID.
+%% @doc Describes the revocation files in use by the specified trust store or
+%% revocation
+%% files.
 -spec describe_trust_store_revocations(aws_client:aws_client(), describe_trust_store_revocations_input()) ->
     {ok, describe_trust_store_revocations_output(), tuple()} |
     {error, any()} |
@@ -2445,8 +2519,7 @@ describe_trust_store_revocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStoreRevocations">>, Input, Options).
 
-%% @doc Describes all trust stores for a given account
-%% by trust store arn’s or name.
+%% @doc Describes all trust stores for the specified account.
 -spec describe_trust_stores(aws_client:aws_client(), describe_trust_stores_input()) ->
     {ok, describe_trust_stores_output(), tuple()} |
     {error, any()} |
@@ -2462,6 +2535,23 @@ describe_trust_stores(Client, Input)
 describe_trust_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStores">>, Input, Options).
+
+%% @doc Retrieves the resource policy for a specified resource.
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
+    {ok, get_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input(), proplists:proplist()) ->
+    {ok, get_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicy">>, Input, Options).
 
 %% @doc Retrieves the ca certificate bundle.
 %%
@@ -2621,7 +2711,7 @@ modify_target_group_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTargetGroupAttributes">>, Input, Options).
 
-%% @doc Update the ca certificate bundle for a given trust store.
+%% @doc Update the ca certificate bundle for the specified trust store.
 -spec modify_trust_store(aws_client:aws_client(), modify_trust_store_input()) ->
     {ok, modify_trust_store_output(), tuple()} |
     {error, any()} |

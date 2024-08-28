@@ -123,6 +123,8 @@
          copy_snapshot/3,
          create_capacity_reservation/2,
          create_capacity_reservation/3,
+         create_capacity_reservation_by_splitting/2,
+         create_capacity_reservation_by_splitting/3,
          create_capacity_reservation_fleet/2,
          create_capacity_reservation_fleet/3,
          create_carrier_gateway/2,
@@ -163,6 +165,8 @@
          create_internet_gateway/3,
          create_ipam/2,
          create_ipam/3,
+         create_ipam_external_resource_verification_token/2,
+         create_ipam_external_resource_verification_token/3,
          create_ipam_pool/2,
          create_ipam_pool/3,
          create_ipam_resource_discovery/2,
@@ -315,6 +319,8 @@
          delete_internet_gateway/3,
          delete_ipam/2,
          delete_ipam/3,
+         delete_ipam_external_resource_verification_token/2,
+         delete_ipam_external_resource_verification_token/3,
          delete_ipam_pool/2,
          delete_ipam_pool/3,
          delete_ipam_resource_discovery/2,
@@ -563,6 +569,8 @@
          describe_internet_gateways/3,
          describe_ipam_byoasn/2,
          describe_ipam_byoasn/3,
+         describe_ipam_external_resource_verification_tokens/2,
+         describe_ipam_external_resource_verification_tokens/3,
          describe_ipam_pools/2,
          describe_ipam_pools/3,
          describe_ipam_resource_discoveries/2,
@@ -1121,6 +1129,8 @@
          move_address_to_vpc/3,
          move_byoip_cidr_to_ipam/2,
          move_byoip_cidr_to_ipam/3,
+         move_capacity_reservation_instances/2,
+         move_capacity_reservation_instances/3,
          provision_byoip_cidr/2,
          provision_byoip_cidr/3,
          provision_ipam_byoasn/2,
@@ -2105,6 +2115,7 @@
 %% Example:
 %% ipam_discovered_resource_cidr() :: #{
 %%   <<"AvailabilityZoneId">> => string(),
+%%   <<"IpSource">> => list(any()),
 %%   <<"IpUsage">> => float(),
 %%   <<"IpamResourceDiscoveryId">> => string(),
 %%   <<"NetworkInterfaceAttachmentStatus">> => list(any()),
@@ -3415,6 +3426,12 @@
 -type added_principal() :: #{binary() => any()}.
 
 %% Example:
+%% create_ipam_external_resource_verification_token_result() :: #{
+%%   <<"IpamExternalResourceVerificationToken">> => ipam_external_resource_verification_token()
+%% }
+-type create_ipam_external_resource_verification_token_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_vpc_endpoint_service_configuration_request() :: #{
 %%   <<"AcceptanceRequired">> => boolean(),
 %%   <<"ClientToken">> => string(),
@@ -3575,8 +3592,10 @@
 %%   <<"CidrAuthorizationContext">> => ipam_cidr_authorization_context(),
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"IpamExternalResourceVerificationTokenId">> => string(),
 %%   <<"IpamPoolId">> := string(),
-%%   <<"NetmaskLength">> => integer()
+%%   <<"NetmaskLength">> => integer(),
+%%   <<"VerificationMethod">> => list(any())
 %% }
 -type provision_ipam_pool_cidr_request() :: #{binary() => any()}.
 
@@ -3726,6 +3745,22 @@
 %%   <<"SpotInstanceRequestId">> => string()
 %% }
 -type active_instance() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_external_resource_verification_token() :: #{
+%%   <<"IpamArn">> => string(),
+%%   <<"IpamExternalResourceVerificationTokenArn">> => string(),
+%%   <<"IpamExternalResourceVerificationTokenId">> => string(),
+%%   <<"IpamId">> => string(),
+%%   <<"IpamRegion">> => string(),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TokenName">> => string(),
+%%   <<"TokenValue">> => string()
+%% }
+-type ipam_external_resource_verification_token() :: #{binary() => any()}.
 
 %% Example:
 %% import_image_license_configuration_request() :: #{
@@ -4721,6 +4756,8 @@
 %% Example:
 %% subnet_ipv6_cidr_block_association() :: #{
 %%   <<"AssociationId">> => string(),
+%%   <<"IpSource">> => list(any()),
+%%   <<"Ipv6AddressAttribute">> => list(any()),
 %%   <<"Ipv6CidrBlock">> => string(),
 %%   <<"Ipv6CidrBlockState">> => subnet_cidr_block_state()
 %% }
@@ -4921,6 +4958,13 @@
 -type disable_image_deregistration_protection_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ipam_external_resource_verification_token_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamExternalResourceVerificationTokenId">> := string()
+%% }
+-type delete_ipam_external_resource_verification_token_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_spot_datafeed_subscription_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
@@ -4942,12 +4986,26 @@
 -type create_ipam_scope_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ipam_external_resource_verification_token_result() :: #{
+%%   <<"IpamExternalResourceVerificationToken">> => ipam_external_resource_verification_token()
+%% }
+-type delete_ipam_external_resource_verification_token_result() :: #{binary() => any()}.
+
+%% Example:
 %% deprovision_ipam_byoasn_request() :: #{
 %%   <<"Asn">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamId">> := string()
 %% }
 -type deprovision_ipam_byoasn_request() :: #{binary() => any()}.
+
+%% Example:
+%% move_capacity_reservation_instances_result() :: #{
+%%   <<"DestinationCapacityReservation">> => capacity_reservation(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"SourceCapacityReservation">> => capacity_reservation()
+%% }
+-type move_capacity_reservation_instances_result() :: #{binary() => any()}.
 
 %% Example:
 %% start_network_insights_access_scope_analysis_request() :: #{
@@ -6274,6 +6332,7 @@
 %%   <<"DefaultResourceDiscoveryAssociationId">> => string(),
 %%   <<"DefaultResourceDiscoveryId">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"EnablePrivateGua">> => boolean(),
 %%   <<"IpamArn">> => string(),
 %%   <<"IpamId">> => string(),
 %%   <<"IpamRegion">> => string(),
@@ -6625,6 +6684,16 @@
 %%   <<"RemoveEntries">> => list(remove_prefix_list_entry()())
 %% }
 -type modify_managed_prefix_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% move_capacity_reservation_instances_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationCapacityReservationId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceCount">> := integer(),
+%%   <<"SourceCapacityReservationId">> := string()
+%% }
+-type move_capacity_reservation_instances_request() :: #{binary() => any()}.
 
 %% Example:
 %% launch_template_cpu_options() :: #{
@@ -7800,6 +7869,8 @@
 %% Example:
 %% vpc_ipv6_cidr_block_association() :: #{
 %%   <<"AssociationId">> => string(),
+%%   <<"IpSource">> => list(any()),
+%%   <<"Ipv6AddressAttribute">> => list(any()),
 %%   <<"Ipv6CidrBlock">> => string(),
 %%   <<"Ipv6CidrBlockState">> => vpc_cidr_block_state(),
 %%   <<"Ipv6Pool">> => string(),
@@ -7853,6 +7924,15 @@
 %%   <<"Return">> => boolean()
 %% }
 -type modify_client_vpn_endpoint_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_ipam_external_resource_verification_token_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamId">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()())
+%% }
+-type create_ipam_external_resource_verification_token_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_transit_gateway_multicast_domain_result() :: #{
@@ -9817,7 +9897,8 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"EndDateType">> => list(any()),
-%%   <<"InstanceCount">> => integer()
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceMatchCriteria">> => list(any())
 %% }
 -type modify_capacity_reservation_request() :: #{binary() => any()}.
 
@@ -10785,6 +10866,16 @@
 -type key_pair() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ipam_external_resource_verification_tokens_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IpamExternalResourceVerificationTokenIds">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_external_resource_verification_tokens_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_vpc_peering_connections_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()()),
@@ -11537,6 +11628,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"EnablePrivateGua">> => boolean(),
 %%   <<"OperatingRegions">> => list(add_ipam_operating_region()()),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
 %%   <<"Tier">> => list(any())
@@ -11971,6 +12063,16 @@
 %%   <<"UserId">> => string()
 %% }
 -type load_permission() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_reservation_by_splitting_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceCount">> := integer(),
+%%   <<"SourceCapacityReservationId">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()())
+%% }
+-type create_capacity_reservation_by_splitting_request() :: #{binary() => any()}.
 
 %% Example:
 %% port_range() :: #{
@@ -14058,6 +14160,14 @@
 -type modify_traffic_mirror_filter_network_services_result() :: #{binary() => any()}.
 
 %% Example:
+%% ebs_status_details() :: #{
+%%   <<"ImpairedSince">> => non_neg_integer(),
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type ebs_status_details() :: #{binary() => any()}.
+
+%% Example:
 %% fleet_launch_template_config_request() :: #{
 %%   <<"LaunchTemplateSpecification">> => fleet_launch_template_specification_request(),
 %%   <<"Overrides">> => list(fleet_launch_template_overrides_request()())
@@ -15361,6 +15471,7 @@
 %%   <<"AddOperatingRegions">> => list(add_ipam_operating_region()()),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"EnablePrivateGua">> => boolean(),
 %%   <<"IpamId">> := string(),
 %%   <<"RemoveOperatingRegions">> => list(remove_ipam_operating_region()()),
 %%   <<"Tier">> => list(any())
@@ -15934,6 +16045,7 @@
 
 %% Example:
 %% instance_status() :: #{
+%%   <<"AttachedEbsStatus">> => ebs_status_summary(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"Events">> => list(instance_status_event()()),
 %%   <<"InstanceId">> => string(),
@@ -16865,6 +16977,13 @@
 -type instance_block_device_mapping_specification() :: #{binary() => any()}.
 
 %% Example:
+%% ebs_status_summary() :: #{
+%%   <<"Details">> => list(ebs_status_details()()),
+%%   <<"Status">> => list(any())
+%% }
+-type ebs_status_summary() :: #{binary() => any()}.
+
+%% Example:
 %% launch_template_block_device_mapping_request() :: #{
 %%   <<"DeviceName">> => string(),
 %%   <<"Ebs">> => launch_template_ebs_block_device_request(),
@@ -17480,6 +17599,14 @@
 -type delete_fpga_image_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_capacity_reservation_by_splitting_result() :: #{
+%%   <<"DestinationCapacityReservation">> => capacity_reservation(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"SourceCapacityReservation">> => capacity_reservation()
+%% }
+-type create_capacity_reservation_by_splitting_result() :: #{binary() => any()}.
+
+%% Example:
 %% cloud_watch_log_options() :: #{
 %%   <<"LogEnabled">> => boolean(),
 %%   <<"LogGroupArn">> => string(),
@@ -17801,6 +17928,13 @@
 %%   <<"PurchaseRequests">> := list(purchase_request()())
 %% }
 -type purchase_scheduled_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ipam_external_resource_verification_tokens_result() :: #{
+%%   <<"IpamExternalResourceVerificationTokens">> => list(ipam_external_resource_verification_token()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_external_resource_verification_tokens_result() :: #{binary() => any()}.
 
 %% Example:
 %% fleet_spot_capacity_rebalance() :: #{
@@ -19752,44 +19886,30 @@ copy_fpga_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyFpgaImage">>, Input, Options).
 
-%% @doc Initiates the copy of an AMI.
+%% @doc Initiates an AMI copy operation.
 %%
 %% You can copy an AMI from one Region to another, or from a
 %% Region to an Outpost. You can't copy an AMI from an Outpost to a
-%% Region, from one Outpost
-%% to another, or within the same Outpost. To copy an AMI to another
-%% partition, see CreateStoreImageTask:
+%% Region, from one Outpost to
+%% another, or within the same Outpost. To copy an AMI to another partition,
+%% see CreateStoreImageTask:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html.
 %%
-%% To copy an AMI from one Region to another, specify the source Region using
+%% When you copy an AMI from one Region to another, the destination Region is
 %% the
-%% SourceRegion parameter, and specify the
-%% destination Region using its endpoint. Copies of encrypted backing
-%% snapshots for
-%% the AMI are encrypted. Copies of unencrypted backing snapshots remain
-%% unencrypted,
-%% unless you set `Encrypted' during the copy operation. You cannot
-%% create an unencrypted copy of an encrypted backing snapshot.
+%% current Region.
 %%
-%% To copy an AMI from a Region to an Outpost, specify the source Region
-%% using the
-%% SourceRegion parameter, and specify the
-%% ARN of the destination Outpost using DestinationOutpostArn.
-%% Backing snapshots copied to an Outpost are encrypted by default using the
-%% default
-%% encryption key for the Region, or a different key that you specify in the
-%% request using
-%% KmsKeyId. Outposts do not support unencrypted
-%% snapshots. For more information,
-%% Amazon EBS local snapshots on Outposts:
-%% https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami
-%% in the Amazon EBS User Guide.
+%% When you copy an AMI from a Region to an Outpost, specify the ARN of the
+%% Outpost as
+%% the destination. Backing snapshots copied to an Outpost are encrypted by
+%% default using
+%% the default encryption key for the Region or the key that you specify.
+%% Outposts do not
+%% support unencrypted snapshots.
 %%
-%% For more information about the prerequisites and limits when copying an
-%% AMI, see Copy an AMI:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html in
-%% the
-%% Amazon EC2 User Guide.
+%% For information about the prerequisites when copying an AMI, see Copy an
+%% AMI: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html
+%% in the Amazon EC2 User Guide.
 -spec copy_image(aws_client:aws_client(), copy_image_request()) ->
     {ok, copy_image_result(), tuple()} |
     {error, any()}.
@@ -19905,6 +20025,27 @@ create_capacity_reservation(Client, Input)
 create_capacity_reservation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCapacityReservation">>, Input, Options).
+
+%% @doc
+%% Create a new Capacity Reservation by splitting the available capacity of
+%% the source Capacity Reservation.
+%%
+%% The new Capacity Reservation will have the same attributes as the source
+%% Capacity Reservation except for tags. The source Capacity Reservation must
+%% be `active' and owned by your Amazon Web Services account.
+-spec create_capacity_reservation_by_splitting(aws_client:aws_client(), create_capacity_reservation_by_splitting_request()) ->
+    {ok, create_capacity_reservation_by_splitting_result(), tuple()} |
+    {error, any()}.
+create_capacity_reservation_by_splitting(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_capacity_reservation_by_splitting(Client, Input, []).
+
+-spec create_capacity_reservation_by_splitting(aws_client:aws_client(), create_capacity_reservation_by_splitting_request(), proplists:proplist()) ->
+    {ok, create_capacity_reservation_by_splitting_result(), tuple()} |
+    {error, any()}.
+create_capacity_reservation_by_splitting(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCapacityReservationBySplitting">>, Input, Options).
 
 %% @doc Creates a Capacity Reservation Fleet.
 %%
@@ -20459,6 +20600,27 @@ create_ipam(Client, Input)
 create_ipam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIpam">>, Input, Options).
+
+%% @doc Create a verification token.
+%%
+%% A verification token is an Amazon Web Services-generated random value that
+%% you can use to prove ownership of an external resource. For example, you
+%% can use a verification token to validate that you control a public IP
+%% address range when you bring an IP address range to Amazon Web Services
+%% (BYOIP).
+-spec create_ipam_external_resource_verification_token(aws_client:aws_client(), create_ipam_external_resource_verification_token_request()) ->
+    {ok, create_ipam_external_resource_verification_token_result(), tuple()} |
+    {error, any()}.
+create_ipam_external_resource_verification_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ipam_external_resource_verification_token(Client, Input, []).
+
+-spec create_ipam_external_resource_verification_token(aws_client:aws_client(), create_ipam_external_resource_verification_token_request(), proplists:proplist()) ->
+    {ok, create_ipam_external_resource_verification_token_result(), tuple()} |
+    {error, any()}.
+create_ipam_external_resource_verification_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIpamExternalResourceVerificationToken">>, Input, Options).
 
 %% @doc Create an IP address pool for Amazon VPC IP Address Manager (IPAM).
 %%
@@ -22472,6 +22634,27 @@ delete_ipam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIpam">>, Input, Options).
 
+%% @doc Delete a verification token.
+%%
+%% A verification token is an Amazon Web Services-generated random value that
+%% you can use to prove ownership of an external resource. For example, you
+%% can use a verification token to validate that you control a public IP
+%% address range when you bring an IP address range to Amazon Web Services
+%% (BYOIP).
+-spec delete_ipam_external_resource_verification_token(aws_client:aws_client(), delete_ipam_external_resource_verification_token_request()) ->
+    {ok, delete_ipam_external_resource_verification_token_result(), tuple()} |
+    {error, any()}.
+delete_ipam_external_resource_verification_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ipam_external_resource_verification_token(Client, Input, []).
+
+-spec delete_ipam_external_resource_verification_token(aws_client:aws_client(), delete_ipam_external_resource_verification_token_request(), proplists:proplist()) ->
+    {ok, delete_ipam_external_resource_verification_token_result(), tuple()} |
+    {error, any()}.
+delete_ipam_external_resource_verification_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIpamExternalResourceVerificationToken">>, Input, Options).
+
 %% @doc Delete an IPAM pool.
 %%
 %% You cannot delete an IPAM pool if there are allocations in it or CIDRs
@@ -22933,7 +23116,8 @@ delete_route_table(Client, Input, Options)
 %%
 %% If you attempt to delete a security group that is associated with an
 %% instance or network interface or is
-%% referenced by another security group, the operation fails with
+%% referenced by another security group in the same VPC, the operation fails
+%% with
 %% `DependencyViolation'.
 -spec delete_security_group(aws_client:aws_client(), delete_security_group_request()) ->
     {ok, undefined, tuple()} |
@@ -23799,8 +23983,7 @@ describe_account_attributes(Client, Input, Options)
 %% pending transfer by using this action. After seven days, the
 %% transfer expires and ownership of the Elastic IP
 %% address returns to the source
-%% account. Accepted transfers are visible to the source account for three
-%% days
+%% account. Accepted transfers are visible to the source account for 14 days
 %% after the transfers have been accepted.
 -spec describe_address_transfers(aws_client:aws_client(), describe_address_transfers_request()) ->
     {ok, describe_address_transfers_result(), tuple()} |
@@ -25106,6 +25289,27 @@ describe_ipam_byoasn(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIpamByoasn">>, Input, Options).
 
+%% @doc Describe verification tokens.
+%%
+%% A verification token is an Amazon Web Services-generated random value that
+%% you can use to prove ownership of an external resource. For example, you
+%% can use a verification token to validate that you control a public IP
+%% address range when you bring an IP address range to Amazon Web Services
+%% (BYOIP).
+-spec describe_ipam_external_resource_verification_tokens(aws_client:aws_client(), describe_ipam_external_resource_verification_tokens_request()) ->
+    {ok, describe_ipam_external_resource_verification_tokens_result(), tuple()} |
+    {error, any()}.
+describe_ipam_external_resource_verification_tokens(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ipam_external_resource_verification_tokens(Client, Input, []).
+
+-spec describe_ipam_external_resource_verification_tokens(aws_client:aws_client(), describe_ipam_external_resource_verification_tokens_request(), proplists:proplist()) ->
+    {ok, describe_ipam_external_resource_verification_tokens_result(), tuple()} |
+    {error, any()}.
+describe_ipam_external_resource_verification_tokens(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIpamExternalResourceVerificationTokens">>, Input, Options).
+
 %% @doc Get information about your IPAM pools.
 -spec describe_ipam_pools(aws_client:aws_client(), describe_ipam_pools_request()) ->
     {ok, describe_ipam_pools_result(), tuple()} |
@@ -25596,8 +25800,13 @@ describe_network_interfaces(Client, Input, Options)
 %% @doc Describes the specified placement groups or all of your placement
 %% groups.
 %%
-%% For more
-%% information, see Placement groups:
+%% To describe a specific placement group that is shared with
+%% your account, you must specify the ID of the placement group using the
+%% `GroupId' parameter. Specifying the name of a
+%% shared placement group using the `GroupNames'
+%% parameter will result in an error.
+%%
+%% For more information, see Placement groups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
 %% in the
 %% Amazon EC2 User Guide.
@@ -26262,9 +26471,9 @@ describe_spot_price_history(Client, Input, Options)
 %% @doc Describes the stale security group rules for security groups in a
 %% specified VPC.
 %%
-%% Rules are stale when they reference a deleted security group in the same
-%% VPC or peered VPC. Rules can also be stale if they reference a security
-%% group in a peer VPC for which the VPC peering connection has
+%% Rules are stale when they reference a deleted security group in a peered
+%% VPC. Rules can also be stale if they reference a security group in a peer
+%% VPC for which the VPC peering connection has
 %% been deleted.
 -spec describe_stale_security_groups(aws_client:aws_client(), describe_stale_security_groups_request()) ->
     {ok, describe_stale_security_groups_result(), tuple()} |
@@ -26827,12 +27036,6 @@ describe_volumes(Client, Input, Options)
 
 %% @doc Describes the most recent volume modification request for the
 %% specified EBS volumes.
-%%
-%% If a volume has never been modified, some information in the output will
-%% be null.
-%% If a volume has been modified more than once, the output includes only the
-%% most
-%% recent modification request.
 %%
 %% For more information, see
 %% Monitor the progress of volume modifications:
@@ -27527,10 +27730,17 @@ disable_serial_console_access(Client, Input, Options)
 %% access for snapshots in a Region, users can publicly share snapshots in
 %% that Region.
 %%
-%% If block public access is enabled in `block-all-sharing' mode, and
-%% you disable block public access, all snapshots that were previously
-%% publicly shared
-%% are no longer treated as private and they become publicly accessible
+%% Enabling block public access for snapshots in block-all-sharing
+%% mode does not change the permissions for snapshots that are already
+%% publicly shared.
+%% Instead, it prevents these snapshots from be publicly visible and publicly
+%% accessible.
+%% Therefore, the attributes for these snapshots still indicate that they are
+%% publicly
+%% shared, even though they are not publicly available.
+%%
+%% If you disable block public access , these snapshots will become publicly
+%% available
 %% again.
 %%
 %% For more information, see
@@ -28262,11 +28472,17 @@ enable_serial_console_access(Client, Input, Options)
 %% treated as private or they remain publicly shared, depending on the
 %% State that you specify.
 %%
-%% If block public access is enabled in `block-all-sharing' mode, and
-%% you change the mode to `block-new-sharing', all snapshots that were
-%% previously publicly shared are no longer treated as private and they
-%% become publicly
-%% accessible again.
+%% Enabling block public access for snapshots in block all sharing
+%% mode does not change the permissions for snapshots that are already
+%% publicly shared.
+%% Instead, it prevents these snapshots from be publicly visible and publicly
+%% accessible.
+%% Therefore, the attributes for these snapshots still indicate that they are
+%% publicly
+%% shared, even though they are not publicly available.
+%%
+%% If you later disable block public access or change the mode to block new
+%% sharing, these snapshots will become publicly available again.
 %%
 %% For more information, see
 %% Block public access for snapshots:
@@ -28573,20 +28789,6 @@ get_coip_pool_usage(Client, Input, Options)
 %% physical monitor attached to a computer. For Windows instances, the
 %% instance console
 %% output includes the last three system event log errors.
-%%
-%% By default, the console output returns buffered information that was
-%% posted shortly
-%% after an instance transition state (start, stop, reboot, or terminate).
-%% This information
-%% is available for at least one hour after the most recent post. Only the
-%% most recent 64
-%% KB of console output is available.
-%%
-%% You can optionally retrieve the latest serial console output at any time
-%% during the
-%% instance lifecycle. This option is supported on instance types that use
-%% the Nitro
-%% hypervisor.
 %%
 %% For more information, see Instance
 %% console output:
@@ -29792,17 +29994,17 @@ modify_availability_zone_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyAvailabilityZoneGroup">>, Input, Options).
 
-%% @doc Modifies a Capacity Reservation's capacity and the conditions
-%% under which it is to be released.
+%% @doc Modifies a Capacity Reservation's capacity, instance eligibility,
+%% and the conditions under which it is to be released.
 %%
 %% You
-%% cannot change a Capacity Reservation's instance type, EBS
-%% optimization, instance store settings,
-%% platform, Availability Zone, or instance eligibility. If you need to
-%% modify any of these
-%% attributes, we recommend that you cancel the Capacity Reservation, and
-%% then create a new one with
-%% the required attributes.
+%% can't modify a Capacity Reservation's instance type, EBS
+%% optimization, platform, instance store settings, Availability Zone, or
+%% tenancy. If you need to modify any of these attributes, we recommend that
+%% you cancel the Capacity Reservation, and then create a new one with
+%% the required attributes. For more information, see Modify an active
+%% Capacity Reservation:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html.
 -spec modify_capacity_reservation(aws_client:aws_client(), modify_capacity_reservation_request()) ->
     {ok, modify_capacity_reservation_result(), tuple()} |
     {error, any()}.
@@ -31493,6 +31695,38 @@ move_byoip_cidr_to_ipam(Client, Input)
 move_byoip_cidr_to_ipam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MoveByoipCidrToIpam">>, Input, Options).
+
+%% @doc Move available capacity from a source Capacity Reservation to a
+%% destination Capacity Reservation.
+%%
+%% The source Capacity Reservation and the destination Capacity Reservation
+%% must be `active', owned by your Amazon Web Services account, and share
+%% the following:
+%%
+%% Instance type
+%%
+%% Platform
+%%
+%% Availability Zone
+%%
+%% Tenancy
+%%
+%% Placement group
+%%
+%% Capacity Reservation end time - `At specific time' or `Manually'.
+-spec move_capacity_reservation_instances(aws_client:aws_client(), move_capacity_reservation_instances_request()) ->
+    {ok, move_capacity_reservation_instances_result(), tuple()} |
+    {error, any()}.
+move_capacity_reservation_instances(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    move_capacity_reservation_instances(Client, Input, []).
+
+-spec move_capacity_reservation_instances(aws_client:aws_client(), move_capacity_reservation_instances_request(), proplists:proplist()) ->
+    {ok, move_capacity_reservation_instances_result(), tuple()} |
+    {error, any()}.
+move_capacity_reservation_instances(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MoveCapacityReservationInstances">>, Input, Options).
 
 %% @doc Provisions an IPv4 or IPv6 address range for use with your Amazon Web
 %% Services resources through bring your own IP

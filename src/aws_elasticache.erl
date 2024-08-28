@@ -3264,7 +3264,7 @@ complete_migration(Client, Input, Options)
 
 %% @doc Creates a copy of an existing serverless cache’s snapshot.
 %%
-%% Available for Redis only.
+%% Available for Redis OSS and Serverless Memcached only.
 -spec copy_serverless_cache_snapshot(aws_client:aws_client(), copy_serverless_cache_snapshot_request()) ->
     {ok, copy_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
@@ -3283,7 +3283,7 @@ copy_serverless_cache_snapshot(Client, Input, Options)
 
 %% @doc Makes a copy of an existing snapshot.
 %%
-%% This operation is valid for Redis only.
+%% This operation is valid for Redis OSS only.
 %%
 %% Users or groups that have permissions to use the `CopySnapshot'
 %% operation can create their own Amazon S3 buckets and copy snapshots to it.
@@ -3396,9 +3396,10 @@ copy_snapshot(Client, Input, Options)
 %% @doc Creates a cluster.
 %%
 %% All nodes in the cluster run the same protocol-compliant cache
-%% engine software, either Memcached or Redis.
+%% engine software, either Memcached or Redis OSS.
 %%
-%% This operation is not supported for Redis (cluster mode enabled) clusters.
+%% This operation is not supported for Redis OSS (cluster mode enabled)
+%% clusters.
 -spec create_cache_cluster(aws_client:aws_client(), create_cache_cluster_message()) ->
     {ok, create_cache_cluster_result(), tuple()} |
     {error, any()} |
@@ -3502,12 +3503,12 @@ create_cache_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCacheSubnetGroup">>, Input, Options).
 
-%% @doc Global Datastore for Redis offers fully managed, fast, reliable and
-%% secure
+%% @doc Global Datastore for Redis OSS offers fully managed, fast, reliable
+%% and secure
 %% cross-region replication.
 %%
-%% Using Global Datastore for Redis, you can create cross-region
-%% read replica clusters for ElastiCache for Redis to enable low-latency
+%% Using Global Datastore for Redis OSS, you can create cross-region
+%% read replica clusters for ElastiCache (Redis OSS) to enable low-latency
 %% reads and disaster
 %% recovery across regions. For more information, see Replication
 %% Across Regions Using Global Datastore:
@@ -3536,22 +3537,22 @@ create_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGlobalReplicationGroup">>, Input, Options).
 
-%% @doc Creates a Redis (cluster mode disabled) or a Redis (cluster mode
-%% enabled) replication
+%% @doc Creates a Redis OSS (cluster mode disabled) or a Redis OSS (cluster
+%% mode enabled) replication
 %% group.
 %%
 %% This API can be used to create a standalone regional replication group or
 %% a secondary
 %% replication group associated with a Global datastore.
 %%
-%% A Redis (cluster mode disabled) replication group is a collection of
+%% A Redis OSS (cluster mode disabled) replication group is a collection of
 %% nodes, where
 %% one of the nodes is a read/write primary and the others are read-only
 %% replicas.
 %% Writes to the primary are asynchronously propagated to the replicas.
 %%
-%% A Redis cluster-mode enabled cluster is comprised of from 1 to 90 shards
-%% (API/CLI:
+%% A Redis OSS cluster-mode enabled cluster is comprised of from 1 to 90
+%% shards (API/CLI:
 %% node groups). Each shard has a primary node and up to 5 read-only replica
 %% nodes. The
 %% configuration can range from 90 shards and 0 replicas to 15 shards and 5
@@ -3559,7 +3560,7 @@ create_global_replication_group(Client, Input, Options)
 %% is the maximum number or replicas allowed.
 %%
 %% The node or shard limit can be increased to a maximum of 500 per cluster
-%% if the Redis
+%% if the Redis OSS
 %% engine version is 5.0.6 or higher. For example, you can choose to
 %% configure a 500 node
 %% cluster that ranges between 83 shards (one primary and 5 replicas per
@@ -3580,20 +3581,19 @@ create_global_replication_group(Client, Input, Options)
 %% choose the limit type Nodes per cluster per instance
 %% type.
 %%
-%% When a Redis (cluster mode disabled) replication group has been
+%% When a Redis OSS (cluster mode disabled) replication group has been
 %% successfully created,
 %% you can add one or more read replicas to it, up to a total of 5 read
 %% replicas. If you
 %% need to increase or decrease the number of node groups (console: shards),
-%% you can avail
-%% yourself of ElastiCache for Redis' scaling. For more information, see
-%% Scaling
-%% ElastiCache for Redis Clusters:
+%% you can use ElastiCache (Redis OSS) scaling.
+%% For more information, see Scaling
+%% ElastiCache (Redis OSS) Clusters:
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html
 %% in the ElastiCache User
 %% Guide.
 %%
-%% This operation is valid for Redis only.
+%% This operation is valid for Redis OSS only.
 -spec create_replication_group(aws_client:aws_client(), create_replication_group_message()) ->
     {ok, create_replication_group_result(), tuple()} |
     {error, any()} |
@@ -3630,7 +3630,7 @@ create_serverless_cache(Client, Input, Options)
 %% @doc This API creates a copy of an entire ServerlessCache at a specific
 %% moment in time.
 %%
-%% Available for Redis only.
+%% Available for Redis OSS and Serverless Memcached only.
 -spec create_serverless_cache_snapshot(aws_client:aws_client(), create_serverless_cache_snapshot_request()) ->
     {ok, create_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
@@ -3651,7 +3651,7 @@ create_serverless_cache_snapshot(Client, Input, Options)
 %% specific moment in
 %% time.
 %%
-%% This operation is valid for Redis only.
+%% This operation is valid for Redis OSS only.
 -spec create_snapshot(aws_client:aws_client(), create_snapshot_message()) ->
     {ok, create_snapshot_result(), tuple()} |
     {error, any()} |
@@ -3668,7 +3668,7 @@ create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
-%% @doc For Redis engine version 6.0 onwards: Creates a Redis user.
+%% @doc For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user.
 %%
 %% For more information, see
 %% Using Role Based Access Control (RBAC):
@@ -3689,7 +3689,8 @@ create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
 
-%% @doc For Redis engine version 6.0 onwards: Creates a Redis user group.
+%% @doc For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user
+%% group.
 %%
 %% For more
 %% information, see Using Role Based Access Control (RBAC):
@@ -3727,11 +3728,11 @@ decrease_node_groups_in_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecreaseNodeGroupsInGlobalReplicationGroup">>, Input, Options).
 
-%% @doc Dynamically decreases the number of replicas in a Redis (cluster mode
-%% disabled)
+%% @doc Dynamically decreases the number of replicas in a Redis OSS (cluster
+%% mode disabled)
 %% replication group or the number of replica nodes in one or more node
 %% groups (shards) of
-%% a Redis (cluster mode enabled) replication group.
+%% a Redis OSS (cluster mode enabled) replication group.
 %%
 %% This operation is performed with no
 %% cluster down time.
@@ -3762,9 +3763,9 @@ decrease_replica_count(Client, Input, Options)
 %%
 %% This operation is not valid for:
 %%
-%% Redis (cluster mode enabled) clusters
+%% Redis OSS (cluster mode enabled) clusters
 %%
-%% Redis (cluster mode disabled) clusters
+%% Redis OSS (cluster mode disabled) clusters
 %%
 %% A cluster that is the last read replica of a replication group
 %%
@@ -3772,7 +3773,7 @@ decrease_replica_count(Client, Input, Options)
 %%
 %% A node group (shard) that has Multi-AZ mode enabled
 %%
-%% A cluster from a Redis (cluster mode enabled) replication group
+%% A cluster from a Redis OSS (cluster mode enabled) replication group
 %%
 %% A cluster that is not in the `available' state
 -spec delete_cache_cluster(aws_client:aws_client(), delete_cache_cluster_message()) ->
@@ -3910,7 +3911,11 @@ delete_global_replication_group(Client, Input, Options)
 %% revert this
 %% operation.
 %%
-%% This operation is valid for Redis only.
+%% `CreateSnapshot' permission is required to create a final snapshot.
+%% Without this permission, the API call will fail with an `Access
+%% Denied' exception.
+%%
+%% This operation is valid for Redis OSS only.
 -spec delete_replication_group(aws_client:aws_client(), delete_replication_group_message()) ->
     {ok, delete_replication_group_result(), tuple()} |
     {error, any()} |
@@ -3928,6 +3933,11 @@ delete_replication_group(Client, Input, Options)
     request(Client, <<"DeleteReplicationGroup">>, Input, Options).
 
 %% @doc Deletes a specified existing serverless cache.
+%%
+%% `CreateServerlessCacheSnapshot' permission is required to create a
+%% final snapshot.
+%% Without this permission, the API call will fail with an `Access
+%% Denied' exception.
 -spec delete_serverless_cache(aws_client:aws_client(), delete_serverless_cache_request()) ->
     {ok, delete_serverless_cache_response(), tuple()} |
     {error, any()} |
@@ -3946,7 +3956,7 @@ delete_serverless_cache(Client, Input, Options)
 
 %% @doc Deletes an existing serverless cache snapshot.
 %%
-%% Available for Redis only.
+%% Available for Redis OSS and Serverless Memcached only.
 -spec delete_serverless_cache_snapshot(aws_client:aws_client(), delete_serverless_cache_snapshot_request()) ->
     {ok, delete_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
@@ -3970,7 +3980,7 @@ delete_serverless_cache_snapshot(Client, Input, Options)
 %% cannot cancel or
 %% revert this operation.
 %%
-%% This operation is valid for Redis only.
+%% This operation is valid for Redis OSS only.
 -spec delete_snapshot(aws_client:aws_client(), delete_snapshot_message()) ->
     {ok, delete_snapshot_result(), tuple()} |
     {error, any()} |
@@ -3987,7 +3997,7 @@ delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
 
-%% @doc For Redis engine version 6.0 onwards: Deletes a user.
+%% @doc For Redis OSS engine version 6.0 onwards: Deletes a user.
 %%
 %% The user will be removed from
 %% all user groups and in turn removed from all replication groups. For more
@@ -4010,7 +4020,7 @@ delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
-%% @doc For Redis engine version 6.0 onwards: Deletes a user group.
+%% @doc For Redis OSS engine version 6.0 onwards: Deletes a user group.
 %%
 %% The user group must first
 %% be disassociated from the replication group before it can be deleted. For
@@ -4248,7 +4258,7 @@ describe_global_replication_groups(Client, Input, Options)
 %% specified, `DescribeReplicationGroups' returns information about all
 %% replication groups.
 %%
-%% This operation is valid for Redis only.
+%% This operation is valid for Redis OSS only.
 -spec describe_replication_groups(aws_client:aws_client(), describe_replication_groups_message()) ->
     {ok, replication_group_message(), tuple()} |
     {error, any()} |
@@ -4307,7 +4317,8 @@ describe_reserved_cache_nodes_offerings(Client, Input, Options)
 %% snapshots.
 %% It can also describe a single serverless cache snapshot, or the snapshots
 %% associated with
-%% a particular serverless cache. Available for Redis only.
+%% a particular serverless cache. Available for Redis OSS and Serverless
+%% Memcached only.
 -spec describe_serverless_cache_snapshots(aws_client:aws_client(), describe_serverless_cache_snapshots_request()) ->
     {ok, describe_serverless_cache_snapshots_response(), tuple()} |
     {error, any()} |
@@ -4370,7 +4381,7 @@ describe_service_updates(Client, Input, Options)
 %% particular cache
 %% cluster.
 %%
-%% This operation is valid for Redis only.
+%% This operation is valid for Redis OSS only.
 -spec describe_snapshots(aws_client:aws_client(), describe_snapshots_message()) ->
     {ok, describe_snapshots_list_message(), tuple()} |
     {error, any()} |
@@ -4463,7 +4474,7 @@ disassociate_global_replication_group(Client, Input, Options)
 %% @doc Provides the functionality to export the serverless cache snapshot
 %% data to Amazon S3.
 %%
-%% Available for Redis only.
+%% Available for Redis OSS only.
 -spec export_serverless_cache_snapshot(aws_client:aws_client(), export_serverless_cache_snapshot_request()) ->
     {ok, export_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
@@ -4517,11 +4528,11 @@ increase_node_groups_in_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IncreaseNodeGroupsInGlobalReplicationGroup">>, Input, Options).
 
-%% @doc Dynamically increases the number of replicas in a Redis (cluster mode
-%% disabled)
+%% @doc Dynamically increases the number of replicas in a Redis OSS (cluster
+%% mode disabled)
 %% replication group or the number of replica nodes in one or more node
 %% groups (shards) of
-%% a Redis (cluster mode enabled) replication group.
+%% a Redis OSS (cluster mode enabled) replication group.
 %%
 %% This operation is performed with no
 %% cluster down time.
@@ -4541,7 +4552,7 @@ increase_replica_count(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IncreaseReplicaCount">>, Input, Options).
 
-%% @doc Lists all available node types that you can scale your Redis
+%% @doc Lists all available node types that you can scale your Redis OSS
 %% cluster's or replication
 %% group's current node type.
 %%
@@ -4675,9 +4686,9 @@ modify_global_replication_group(Client, Input, Options)
 
 %% @doc Modifies the settings for a replication group.
 %%
-%% This is limited to Redis 7 and newer.
+%% This is limited to Redis OSS 7 and newer.
 %%
-%% Scaling for Amazon ElastiCache for Redis (cluster mode enabled):
+%% Scaling for Amazon ElastiCache (Redis OSS) (cluster mode enabled):
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html
 %% in
 %% the ElastiCache User Guide
@@ -4687,7 +4698,7 @@ modify_global_replication_group(Client, Input, Options)
 %% in the ElastiCache API
 %% Reference
 %%
-%% This operation is valid for Redis only.
+%% This operation is valid for Redis OSS only.
 -spec modify_replication_group(aws_client:aws_client(), modify_replication_group_message()) ->
     {ok, modify_replication_group_result(), tuple()} |
     {error, any()} |
@@ -4780,7 +4791,7 @@ modify_user_group(Client, Input, Options)
 %% for cancellation and are non-refundable. For more information, see
 %% Managing Costs with Reserved Nodes:
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/reserved-nodes.html
-%% for Redis or Managing Costs with
+%% for Redis OSS or Managing Costs with
 %% Reserved Nodes:
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/reserved-nodes.html
 %% for Memcached.
@@ -4835,13 +4846,13 @@ rebalance_slots_in_global_replication_group(Client, Input, Options)
 %%
 %% When the reboot is complete, a cluster event is created.
 %%
-%% Rebooting a cluster is currently supported on Memcached and Redis (cluster
-%% mode
-%% disabled) clusters. Rebooting is not supported on Redis (cluster mode
+%% Rebooting a cluster is currently supported on Memcached and Redis OSS
+%% (cluster mode
+%% disabled) clusters. Rebooting is not supported on Redis OSS (cluster mode
 %% enabled)
 %% clusters.
 %%
-%% If you make changes to parameters that require a Redis (cluster mode
+%% If you make changes to parameters that require a Redis OSS (cluster mode
 %% enabled) cluster
 %% reboot for the changes to be applied, see Rebooting a Cluster:
 %% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes.rebooting.html
@@ -4979,8 +4990,8 @@ start_migration(Client, Input, Options)
 %% groups in the API and CLI), the calls can be made concurrently.
 %%
 %% If calling this operation multiple times on different shards in the same
-%% Redis
-%% (cluster mode enabled) replication group, the first node replacement must
+%% Redis OSS (cluster mode enabled) replication group, the first node
+%% replacement must
 %% complete before a subsequent call can be made.
 %%
 %% To determine whether the node replacement is complete you can check Events

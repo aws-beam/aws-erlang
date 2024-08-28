@@ -2349,6 +2349,7 @@
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBShardGroupIdentifier">> := string(),
 %%   <<"MaxACU">> := float(),
+%%   <<"MinACU">> => float(),
 %%   <<"PubliclyAccessible">> => boolean()
 %% }
 -type create_db_shard_group_message() :: #{binary() => any()}.
@@ -3019,6 +3020,7 @@
 %%   <<"DBShardGroupResourceId">> => string(),
 %%   <<"Endpoint">> => string(),
 %%   <<"MaxACU">> => float(),
+%%   <<"MinACU">> => float(),
 %%   <<"PubliclyAccessible">> => boolean(),
 %%   <<"Status">> => string()
 %% }
@@ -3876,7 +3878,8 @@
 %% Example:
 %% modify_db_shard_group_message() :: #{
 %%   <<"DBShardGroupIdentifier">> := string(),
-%%   <<"MaxACU">> => float()
+%%   <<"MaxACU">> => float(),
+%%   <<"MinACU">> => float()
 %% }
 -type modify_db_shard_group_message() :: #{binary() => any()}.
 
@@ -8971,6 +8974,13 @@ describe_orderable_db_instance_options(Client, Input, Options)
 
 %% @doc Returns a list of resources (for example, DB instances) that have at
 %% least one pending maintenance action.
+%%
+%% This API follows an eventual consistency model. This means that the result
+%% of the
+%% `DescribePendingMaintenanceActions' command might not be immediately
+%% visible to all subsequent RDS commands. Keep this in mind when you use
+%% `DescribePendingMaintenanceActions' immediately after using a previous
+%% API command such as `ApplyPendingMaintenanceActions'.
 -spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |

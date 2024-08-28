@@ -92,6 +92,7 @@
 
 %% Example:
 %% create_graph_using_import_task_input() :: #{
+%%   <<"blankNodeHandling">> => list(any()),
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"failOnError">> => [boolean()],
 %%   <<"format">> => list(any()),
@@ -177,6 +178,7 @@
 
 %% Example:
 %% start_import_task_input() :: #{
+%%   <<"blankNodeHandling">> => list(any()),
 %%   <<"failOnError">> => [boolean()],
 %%   <<"format">> => list(any()),
 %%   <<"importOptions">> => list(),

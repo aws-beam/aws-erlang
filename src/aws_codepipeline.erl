@@ -206,10 +206,16 @@
          list_pipeline_executions/3,
          list_pipelines/2,
          list_pipelines/3,
+         list_rule_executions/2,
+         list_rule_executions/3,
+         list_rule_types/2,
+         list_rule_types/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_webhooks/2,
          list_webhooks/3,
+         override_stage_condition/2,
+         override_stage_condition/3,
          poll_for_jobs/2,
          poll_for_jobs/3,
          poll_for_third_party_jobs/2,
@@ -288,6 +294,15 @@
 %%   <<"includes">> => list(string()())
 %% }
 -type git_branch_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% override_stage_condition_input() :: #{
+%%   <<"conditionType">> := list(any()),
+%%   <<"pipelineExecutionId">> := string(),
+%%   <<"pipelineName">> := string(),
+%%   <<"stageName">> := string()
+%% }
+-type override_stage_condition_input() :: #{binary() => any()}.
 
 %% Example:
 %% request_failed_exception() :: #{
@@ -436,6 +451,16 @@
 -type pipeline_trigger_declaration() :: #{binary() => any()}.
 
 %% Example:
+%% rule_state() :: #{
+%%   <<"currentRevision">> => rule_revision(),
+%%   <<"entityUrl">> => string(),
+%%   <<"latestExecution">> => rule_execution(),
+%%   <<"revisionUrl">> => string(),
+%%   <<"ruleName">> => string()
+%% }
+-type rule_state() :: #{binary() => any()}.
+
+%% Example:
 %% execution_details() :: #{
 %%   <<"externalExecutionId">> => string(),
 %%   <<"percentComplete">> => integer(),
@@ -444,10 +469,35 @@
 -type execution_details() :: #{binary() => any()}.
 
 %% Example:
+%% rule_type_settings() :: #{
+%%   <<"entityUrlTemplate">> => string(),
+%%   <<"executionUrlTemplate">> => string(),
+%%   <<"revisionUrlTemplate">> => string(),
+%%   <<"thirdPartyConfigurationUrl">> => string()
+%% }
+-type rule_type_settings() :: #{binary() => any()}.
+
+%% Example:
 %% not_latest_pipeline_execution_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_latest_pipeline_execution_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule_execution_detail() :: #{
+%%   <<"input">> => rule_execution_input(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"output">> => rule_execution_output(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineVersion">> => integer(),
+%%   <<"ruleExecutionId">> => string(),
+%%   <<"ruleName">> => string(),
+%%   <<"stageName">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type rule_execution_detail() :: #{binary() => any()}.
 
 %% Example:
 %% executor_configuration() :: #{
@@ -536,6 +586,19 @@
 -type acknowledge_third_party_job_input() :: #{binary() => any()}.
 
 %% Example:
+%% rule_execution_filter() :: #{
+%%   <<"latestInPipelineExecution">> => latest_in_pipeline_execution_filter(),
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type rule_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_types_output() :: #{
+%%   <<"ruleTypes">> => list(rule_type()())
+%% }
+-type list_rule_types_output() :: #{binary() => any()}.
+
+%% Example:
 %% pipeline_variable_declaration() :: #{
 %%   <<"defaultValue">> => string(),
 %%   <<"description">> => string(),
@@ -558,6 +621,7 @@
 
 %% Example:
 %% failure_conditions() :: #{
+%%   <<"conditions">> => list(condition()()),
 %%   <<"result">> => list(any())
 %% }
 -type failure_conditions() :: #{binary() => any()}.
@@ -569,6 +633,15 @@
 %%   <<"revisionId">> => string()
 %% }
 -type action_revision() :: #{binary() => any()}.
+
+%% Example:
+%% rule_execution_result() :: #{
+%%   <<"errorDetails">> => error_details(),
+%%   <<"externalExecutionId">> => string(),
+%%   <<"externalExecutionSummary">> => string(),
+%%   <<"externalExecutionUrl">> => string()
+%% }
+-type rule_execution_result() :: #{binary() => any()}.
 
 %% Example:
 %% stage_context() :: #{
@@ -668,6 +741,15 @@
 -type update_pipeline_input() :: #{binary() => any()}.
 
 %% Example:
+%% rule_type() :: #{
+%%   <<"id">> => rule_type_id(),
+%%   <<"inputArtifactDetails">> => artifact_details(),
+%%   <<"ruleConfigurationProperties">> => list(rule_configuration_property()()),
+%%   <<"settings">> => rule_type_settings()
+%% }
+-type rule_type() :: #{binary() => any()}.
+
+%% Example:
 %% pipeline_execution_filter() :: #{
 %%   <<"succeededInStage">> => succeeded_in_stage_filter()
 %% }
@@ -679,6 +761,13 @@
 %%   <<"triggerType">> => list(any())
 %% }
 -type execution_trigger() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_types_input() :: #{
+%%   <<"regionFilter">> => string(),
+%%   <<"ruleOwnerFilter">> => list(any())
+%% }
+-type list_rule_types_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_pipeline_input() :: #{
@@ -715,6 +804,13 @@
 -type job_data() :: #{binary() => any()}.
 
 %% Example:
+%% condition_state() :: #{
+%%   <<"latestExecution">> => condition_execution(),
+%%   <<"ruleStates">> => list(rule_state()())
+%% }
+-type condition_state() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_tags_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -725,6 +821,12 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_webhook_filter_pattern_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule_execution_output() :: #{
+%%   <<"executionResult">> => rule_execution_result()
+%% }
+-type rule_execution_output() :: #{binary() => any()}.
 
 %% Example:
 %% git_file_path_filter_criteria() :: #{
@@ -815,6 +917,13 @@
 %%   <<"value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+%% Example:
+%% stage_conditions_execution() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string()
+%% }
+-type stage_conditions_execution() :: #{binary() => any()}.
 
 %% Example:
 %% action_execution() :: #{
@@ -1013,6 +1122,13 @@
 -type webhook_definition() :: #{binary() => any()}.
 
 %% Example:
+%% condition() :: #{
+%%   <<"result">> => list(any()),
+%%   <<"rules">> => list(rule_declaration()())
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
 %% s3_location() :: #{
 %%   <<"bucket">> => string(),
 %%   <<"key">> => string()
@@ -1024,6 +1140,12 @@
 %%   <<"jobId">> := string()
 %% }
 -type get_job_details_input() :: #{binary() => any()}.
+
+%% Example:
+%% condition_not_overridable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type condition_not_overridable_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_pipeline_state_output() :: #{
@@ -1088,16 +1210,43 @@
 -type git_tag_filter_criteria() :: #{binary() => any()}.
 
 %% Example:
+%% condition_execution() :: #{
+%%   <<"lastStatusChange">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string()
+%% }
+-type condition_execution() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_output() :: #{
 
 %% }
 -type tag_resource_output() :: #{binary() => any()}.
 
 %% Example:
+%% rule_declaration() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"inputArtifacts">> => list(input_artifact()()),
+%%   <<"name">> => string(),
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"ruleTypeId">> => rule_type_id(),
+%%   <<"timeoutInMinutes">> => integer()
+%% }
+-type rule_declaration() :: #{binary() => any()}.
+
+%% Example:
 %% poll_for_jobs_output() :: #{
 %%   <<"jobs">> => list(job()())
 %% }
 -type poll_for_jobs_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_executions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"ruleExecutionDetails">> => list(rule_execution_detail()())
+%% }
+-type list_rule_executions_output() :: #{binary() => any()}.
 
 %% Example:
 %% output_variables_size_exceeded_exception() :: #{
@@ -1161,6 +1310,15 @@
 %%   <<"stageName">> := string()
 %% }
 -type put_action_revision_input() :: #{binary() => any()}.
+
+%% Example:
+%% rule_type_id() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"owner">> => list(any()),
+%%   <<"provider">> => string(),
+%%   <<"version">> => string()
+%% }
+-type rule_type_id() :: #{binary() => any()}.
 
 %% Example:
 %% start_pipeline_execution_input() :: #{
@@ -1290,6 +1448,15 @@
 -type poll_for_third_party_jobs_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_rule_executions_input() :: #{
+%%   <<"filter">> => rule_execution_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineName">> := string()
+%% }
+-type list_rule_executions_input() :: #{binary() => any()}.
+
+%% Example:
 %% action_execution_input() :: #{
 %%   <<"actionTypeId">> => action_type_id(),
 %%   <<"configuration">> => map(),
@@ -1401,6 +1568,14 @@
 -type list_action_types_input() :: #{binary() => any()}.
 
 %% Example:
+%% rule_revision() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"revisionChangeId">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type rule_revision() :: #{binary() => any()}.
+
+%% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1409,9 +1584,11 @@
 %% Example:
 %% stage_declaration() :: #{
 %%   <<"actions">> => list(action_declaration()()),
+%%   <<"beforeEntry">> => before_entry_conditions(),
 %%   <<"blockers">> => list(blocker_declaration()()),
 %%   <<"name">> => string(),
-%%   <<"onFailure">> => failure_conditions()
+%%   <<"onFailure">> => failure_conditions(),
+%%   <<"onSuccess">> => success_conditions()
 %% }
 -type stage_declaration() :: #{binary() => any()}.
 
@@ -1435,6 +1612,13 @@
 -type action_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% stage_condition_state() :: #{
+%%   <<"conditionStates">> => list(condition_state()()),
+%%   <<"latestExecution">> => stage_conditions_execution()
+%% }
+-type stage_condition_state() :: #{binary() => any()}.
+
+%% Example:
 %% stage_execution() :: #{
 %%   <<"pipelineExecutionId">> => string(),
 %%   <<"status">> => list(any()),
@@ -1452,6 +1636,24 @@
 -type action_execution_result() :: #{binary() => any()}.
 
 %% Example:
+%% rule_configuration_property() :: #{
+%%   <<"description">> => string(),
+%%   <<"key">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"queryable">> => boolean(),
+%%   <<"required">> => boolean(),
+%%   <<"secret">> => boolean(),
+%%   <<"type">> => list(any())
+%% }
+-type rule_configuration_property() :: #{binary() => any()}.
+
+%% Example:
+%% before_entry_conditions() :: #{
+%%   <<"conditions">> => list(condition()())
+%% }
+-type before_entry_conditions() :: #{binary() => any()}.
+
+%% Example:
 %% get_pipeline_input() :: #{
 %%   <<"name">> := string(),
 %%   <<"version">> => integer()
@@ -1461,10 +1663,13 @@
 %% Example:
 %% stage_state() :: #{
 %%   <<"actionStates">> => list(action_state()()),
+%%   <<"beforeEntryConditionState">> => stage_condition_state(),
 %%   <<"inboundExecution">> => stage_execution(),
 %%   <<"inboundExecutions">> => list(stage_execution()()),
 %%   <<"inboundTransitionState">> => transition_state(),
 %%   <<"latestExecution">> => stage_execution(),
+%%   <<"onFailureConditionState">> => stage_condition_state(),
+%%   <<"onSuccessConditionState">> => stage_condition_state(),
 %%   <<"stageName">> => string()
 %% }
 -type stage_state() :: #{binary() => any()}.
@@ -1606,6 +1811,20 @@
 -type encryption_key() :: #{binary() => any()}.
 
 %% Example:
+%% rule_execution() :: #{
+%%   <<"errorDetails">> => error_details(),
+%%   <<"externalExecutionId">> => string(),
+%%   <<"externalExecutionUrl">> => string(),
+%%   <<"lastStatusChange">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"ruleExecutionId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string(),
+%%   <<"token">> => string()
+%% }
+-type rule_execution() :: #{binary() => any()}.
+
+%% Example:
 %% put_approval_result_input() :: #{
 %%   <<"actionName">> := string(),
 %%   <<"pipelineName">> := string(),
@@ -1620,6 +1839,17 @@
 %%   <<"lambdaFunctionArn">> => string()
 %% }
 -type lambda_executor_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% rule_execution_input() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"inputArtifacts">> => list(artifact_detail()()),
+%%   <<"region">> => string(),
+%%   <<"resolvedConfiguration">> => map(),
+%%   <<"roleArn">> => string(),
+%%   <<"ruleTypeId">> => rule_type_id()
+%% }
+-type rule_execution_input() :: #{binary() => any()}.
 
 %% Example:
 %% git_push_filter() :: #{
@@ -1693,6 +1923,12 @@
 %%   <<"type">> => list(any())
 %% }
 -type action_configuration_property() :: #{binary() => any()}.
+
+%% Example:
+%% success_conditions() :: #{
+%%   <<"conditions">> => list(condition()())
+%% }
+-type success_conditions() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_webhook_authentication_parameters_exception() :: #{
@@ -1827,6 +2063,16 @@
     validation_exception() | 
     invalid_next_token_exception().
 
+-type list_rule_executions_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    pipeline_execution_not_found_exception() | 
+    invalid_next_token_exception().
+
+-type list_rule_types_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     invalid_next_token_exception() | 
@@ -1836,6 +2082,15 @@
 -type list_webhooks_errors() ::
     validation_exception() | 
     invalid_next_token_exception().
+
+-type override_stage_condition_errors() ::
+    pipeline_not_found_exception() | 
+    concurrent_pipeline_executions_limit_exceeded_exception() | 
+    validation_exception() | 
+    condition_not_overridable_exception() | 
+    conflict_exception() | 
+    not_latest_pipeline_execution_exception() | 
+    stage_not_found_exception().
 
 -type poll_for_jobs_errors() ::
     validation_exception() | 
@@ -1847,6 +2102,7 @@
 
 -type put_action_revision_errors() ::
     pipeline_not_found_exception() | 
+    concurrent_pipeline_executions_limit_exceeded_exception() | 
     action_not_found_exception() | 
     validation_exception() | 
     stage_not_found_exception().
@@ -1898,6 +2154,7 @@
 
 -type retry_stage_execution_errors() ::
     pipeline_not_found_exception() | 
+    concurrent_pipeline_executions_limit_exceeded_exception() | 
     validation_exception() | 
     stage_not_retryable_exception() | 
     conflict_exception() | 
@@ -2391,6 +2648,41 @@ list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
 
+%% @doc Lists the rule executions that have occurred in a pipeline configured
+%% for conditions with rules.
+-spec list_rule_executions(aws_client:aws_client(), list_rule_executions_input()) ->
+    {ok, list_rule_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_rule_executions_errors(), tuple()}.
+list_rule_executions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_rule_executions(Client, Input, []).
+
+-spec list_rule_executions(aws_client:aws_client(), list_rule_executions_input(), proplists:proplist()) ->
+    {ok, list_rule_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_rule_executions_errors(), tuple()}.
+list_rule_executions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRuleExecutions">>, Input, Options).
+
+%% @doc Lists the rules for the condition.
+-spec list_rule_types(aws_client:aws_client(), list_rule_types_input()) ->
+    {ok, list_rule_types_output(), tuple()} |
+    {error, any()} |
+    {error, list_rule_types_errors(), tuple()}.
+list_rule_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_rule_types(Client, Input, []).
+
+-spec list_rule_types(aws_client:aws_client(), list_rule_types_input(), proplists:proplist()) ->
+    {ok, list_rule_types_output(), tuple()} |
+    {error, any()} |
+    {error, list_rule_types_errors(), tuple()}.
+list_rule_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRuleTypes">>, Input, Options).
+
 %% @doc Gets the set of key-value pairs (metadata) that are used to manage
 %% the
 %% resource.
@@ -2431,6 +2723,23 @@ list_webhooks(Client, Input)
 list_webhooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebhooks">>, Input, Options).
+
+%% @doc Used to override a stage condition.
+-spec override_stage_condition(aws_client:aws_client(), override_stage_condition_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, override_stage_condition_errors(), tuple()}.
+override_stage_condition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    override_stage_condition(Client, Input, []).
+
+-spec override_stage_condition(aws_client:aws_client(), override_stage_condition_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, override_stage_condition_errors(), tuple()}.
+override_stage_condition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"OverrideStageCondition">>, Input, Options).
 
 %% @doc Returns information about any jobs for CodePipeline to act on.
 %%

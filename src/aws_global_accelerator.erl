@@ -1328,7 +1328,9 @@
 
 -type create_accelerator_errors() ::
     limit_exceeded_exception() | 
+    transaction_in_progress_exception() | 
     invalid_argument_exception() | 
+    access_denied_exception() | 
     internal_service_error_exception().
 
 -type create_cross_account_attachment_errors() ::
@@ -1340,6 +1342,7 @@
 
 -type create_custom_routing_accelerator_errors() ::
     limit_exceeded_exception() | 
+    transaction_in_progress_exception() | 
     invalid_argument_exception() | 
     access_denied_exception() | 
     internal_service_error_exception().
@@ -1378,6 +1381,7 @@
     internal_service_error_exception().
 
 -type delete_accelerator_errors() ::
+    transaction_in_progress_exception() | 
     invalid_argument_exception() | 
     associated_listener_found_exception() | 
     accelerator_not_found_exception() | 
@@ -1392,6 +1396,7 @@
     attachment_not_found_exception().
 
 -type delete_custom_routing_accelerator_errors() ::
+    transaction_in_progress_exception() | 
     invalid_argument_exception() | 
     associated_listener_found_exception() | 
     accelerator_not_found_exception() | 
@@ -1549,9 +1554,12 @@
     internal_service_error_exception().
 
 -type list_tags_for_resource_errors() ::
+    endpoint_group_not_found_exception() | 
+    listener_not_found_exception() | 
     invalid_argument_exception() | 
     accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    attachment_not_found_exception().
 
 -type provision_byoip_cidr_errors() ::
     limit_exceeded_exception() | 
@@ -1586,12 +1594,15 @@
     internal_service_error_exception().
 
 -type update_accelerator_errors() ::
+    transaction_in_progress_exception() | 
     invalid_argument_exception() | 
     access_denied_exception() | 
     accelerator_not_found_exception() | 
+    conflict_exception() | 
     internal_service_error_exception().
 
 -type update_accelerator_attributes_errors() ::
+    transaction_in_progress_exception() | 
     invalid_argument_exception() | 
     access_denied_exception() | 
     accelerator_not_found_exception() | 
@@ -1606,11 +1617,14 @@
     attachment_not_found_exception().
 
 -type update_custom_routing_accelerator_errors() ::
+    transaction_in_progress_exception() | 
     invalid_argument_exception() | 
     accelerator_not_found_exception() | 
+    conflict_exception() | 
     internal_service_error_exception().
 
 -type update_custom_routing_accelerator_attributes_errors() ::
+    transaction_in_progress_exception() | 
     invalid_argument_exception() | 
     access_denied_exception() | 
     accelerator_not_found_exception() | 
