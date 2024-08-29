@@ -205,6 +205,9 @@
          delete_extension_association/4,
          delete_hosted_configuration_version/5,
          delete_hosted_configuration_version/6,
+         get_account_settings/1,
+         get_account_settings/3,
+         get_account_settings/4,
          get_application/2,
          get_application/4,
          get_application/5,
@@ -267,6 +270,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_account_settings/2,
+         update_account_settings/3,
          update_application/3,
          update_application/4,
          update_configuration_profile/4,
@@ -478,6 +483,14 @@
 
 
 %% Example:
+%% deletion_protection_settings() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"ProtectionPeriodInMinutes">> => integer()
+%% }
+-type deletion_protection_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% configuration() :: #{
 %%   <<"ConfigurationVersion">> => string(),
 %%   <<"Content">> => binary(),
@@ -590,9 +603,12 @@
 %% get_deployment_request() :: #{}
 -type get_deployment_request() :: #{}.
 
+
 %% Example:
-%% delete_configuration_profile_request() :: #{}
--type delete_configuration_profile_request() :: #{}.
+%% delete_configuration_profile_request() :: #{
+%%   <<"DeletionProtectionCheck">> => list(any())
+%% }
+-type delete_configuration_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -692,6 +708,13 @@
 
 
 %% Example:
+%% update_account_settings_request() :: #{
+%%   <<"DeletionProtection">> => deletion_protection_settings()
+%% }
+-type update_account_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% environments() :: #{
 %%   <<"Items">> => list(environment()()),
 %%   <<"NextToken">> => string()
@@ -751,9 +774,12 @@
 %% }
 -type list_configuration_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_environment_request() :: #{}
--type delete_environment_request() :: #{}.
+%% delete_environment_request() :: #{
+%%   <<"DeletionProtectionCheck">> => list(any())
+%% }
+-type delete_environment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -799,6 +825,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type extensions() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_settings() :: #{
+%%   <<"DeletionProtection">> => deletion_protection_settings()
+%% }
+-type account_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1076,6 +1109,10 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_account_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
 -type get_application_errors() ::
     bad_request_exception() | 
     internal_server_exception() | 
@@ -1182,6 +1219,10 @@
     bad_request_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_account_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
 
 -type update_application_errors() ::
     bad_request_exception() | 
@@ -1550,6 +1591,15 @@ create_extension_association(Client, Input0, Options0) ->
 
 %% @doc Creates a new configuration in the AppConfig hosted configuration
 %% store.
+%%
+%% If
+%% you're creating a feature flag, we recommend you familiarize yourself
+%% with the JSON schema
+%% for feature flag data. For more information, see Type reference for
+%% AWS.AppConfig.FeatureFlags:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile-feature-flags.html#appconfig-type-reference-feature-flags
+%% in the
+%% AppConfig User Guide.
 -spec create_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_hosted_configuration_version_request()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
@@ -1611,9 +1661,6 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     end.
 
 %% @doc Deletes an application.
-%%
-%% Deleting an application does not delete a configuration from a
-%% host.
 -spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1649,8 +1696,11 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Deletes a configuration profile.
 %%
-%% Deleting a configuration profile does not delete a
-%% configuration from a host.
+%% To prevent users from unintentionally deleting actively-used configuration
+%% profiles,
+%% enable deletion
+%% protection:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/deletion-protection.html.
 -spec delete_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1673,8 +1723,10 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amzn-deletion-protection-check">>, <<"DeletionProtectionCheck">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -1685,9 +1737,6 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a deployment strategy.
-%%
-%% Deleting a deployment strategy does not delete a
-%% configuration from a host.
 -spec delete_deployment_strategy(aws_client:aws_client(), binary() | list(), delete_deployment_strategy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1723,8 +1772,10 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
 
 %% @doc Deletes an environment.
 %%
-%% Deleting an environment does not delete a configuration from a
-%% host.
+%% To prevent users from unintentionally deleting actively-used environments,
+%% enable deletion
+%% protection:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/deletion-protection.html.
 -spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1747,8 +1798,10 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amzn-deletion-protection-check">>, <<"DeletionProtectionCheck">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -1868,6 +1921,44 @@ delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns information about the status of the `DeletionProtection'
+%% parameter.
+-spec get_account_settings(aws_client:aws_client()) ->
+    {ok, account_settings(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
+get_account_settings(Client)
+  when is_map(Client) ->
+    get_account_settings(Client, #{}, #{}).
+
+-spec get_account_settings(aws_client:aws_client(), map(), map()) ->
+    {ok, account_settings(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
+get_account_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account_settings(Client, QueryMap, HeadersMap, []).
+
+-spec get_account_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, account_settings(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
+get_account_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/settings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an application.
 -spec get_application(aws_client:aws_client(), binary() | list()) ->
@@ -2826,6 +2917,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the value of the `DeletionProtection' parameter.
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_request()) ->
+    {ok, account_settings(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
+update_account_settings(Client, Input) ->
+    update_account_settings(Client, Input, []).
+
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_request(), proplists:proplist()) ->
+    {ok, account_settings(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
+update_account_settings(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/settings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an application.

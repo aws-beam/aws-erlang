@@ -4507,8 +4507,8 @@ revoke_ip_rules(Client, Input, Options)
 %% @doc Starts the specified WorkSpaces.
 %%
 %% You cannot start a WorkSpace unless it has a running mode of
-%% `AutoStop' and a
-%% state of `STOPPED'.
+%% `AutoStop' or
+%% `Manual' and a state of `STOPPED'.
 -spec start_workspaces(aws_client:aws_client(), start_workspaces_request()) ->
     {ok, start_workspaces_result(), tuple()} |
     {error, any()}.
@@ -4546,9 +4546,9 @@ start_workspaces_pool(Client, Input, Options)
 %% @doc Stops the specified WorkSpaces.
 %%
 %% You cannot stop a WorkSpace unless it has a running mode of `AutoStop'
-%% and a
-%% state of `AVAILABLE', `IMPAIRED', `UNHEALTHY', or
-%% `ERROR'.
+%% or
+%% `Manual' and a state of `AVAILABLE', `IMPAIRED',
+%% `UNHEALTHY', or `ERROR'.
 -spec stop_workspaces(aws_client:aws_client(), stop_workspaces_request()) ->
     {ok, stop_workspaces_result(), tuple()} |
     {error, any()}.

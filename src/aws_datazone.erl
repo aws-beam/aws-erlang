@@ -6292,7 +6292,7 @@ delete_asset_type(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an data product in Amazon DataZone.
+%% @doc Deletes a data product in Amazon DataZone.
 -spec delete_data_product(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_product_input()) ->
     {ok, delete_data_product_output(), tuple()} |
     {error, any()} |
