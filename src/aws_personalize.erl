@@ -145,7 +145,9 @@
          update_metric_attribution/2,
          update_metric_attribution/3,
          update_recommender/2,
-         update_recommender/3]).
+         update_recommender/3,
+         update_solution/2,
+         update_solution/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -204,6 +206,14 @@
 %%   <<"metricAttributionArn">> := string()
 %% }
 -type describe_metric_attribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_solution_request() :: #{
+%%   <<"performAutoTraining">> => boolean(),
+%%   <<"solutionArn">> := string(),
+%%   <<"solutionUpdateConfig">> => solution_update_config()
+%% }
+-type update_solution_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_batch_segment_jobs_request() :: #{
@@ -467,6 +477,7 @@
 %%   <<"datasetGroupArn">> => string(),
 %%   <<"eventType">> => string(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestSolutionUpdate">> => solution_update_summary(),
 %%   <<"latestSolutionVersion">> => solution_version_summary(),
 %%   <<"name">> => string(),
 %%   <<"performAutoML">> => boolean(),
@@ -1363,6 +1374,12 @@
 -type delete_dataset_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% solution_update_config() :: #{
+%%   <<"autoTrainingConfig">> => auto_training_config()
+%% }
+-type solution_update_config() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_response() :: #{
 
 %% }
@@ -1629,6 +1646,17 @@
 -type get_solution_metrics_response() :: #{binary() => any()}.
 
 %% Example:
+%% solution_update_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"performAutoTraining">> => boolean(),
+%%   <<"solutionUpdateConfig">> => solution_update_config(),
+%%   <<"status">> => string()
+%% }
+-type solution_update_summary() :: #{binary() => any()}.
+
+%% Example:
 %% update_campaign_request() :: #{
 %%   <<"campaignArn">> := string(),
 %%   <<"campaignConfig">> => campaign_config(),
@@ -1690,6 +1718,12 @@
 %%   <<"dataLocation">> => string()
 %% }
 -type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% update_solution_response() :: #{
+%%   <<"solutionArn">> => string()
+%% }
+-type update_solution_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_data_deletion_job_request() :: #{
@@ -2198,6 +2232,12 @@
     resource_in_use_exception().
 
 -type update_recommender_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_solution_errors() ::
+    limit_exceeded_exception() | 
     invalid_input_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception().
@@ -2932,13 +2972,15 @@ create_schema(Client, Input, Options)
     request(Client, <<"CreateSchema">>, Input, Options).
 
 %% @doc
-%% After you create a solution, you can’t change its configuration.
+%% By default, all new solutions use automatic training.
 %%
-%% By default, all new solutions use automatic training. With automatic
-%% training, you incur training costs while
-%% your solution is active. You can't stop automatic training for a
-%% solution. To avoid unnecessary costs, make sure to delete the solution
-%% when you are finished. For information about training
+%% With automatic training, you incur training costs while
+%% your solution is active. To avoid unnecessary costs, when you are finished
+%% you can
+%% update the solution:
+%% https://docs.aws.amazon.com/personalize/latest/dg/API_UpdateSolution.html
+%% to turn off automatic training.
+%% For information about training
 %% costs, see Amazon Personalize pricing:
 %% https://aws.amazon.com/personalize/pricing/.
 %%
@@ -2952,8 +2994,8 @@ create_schema(Client, Input, Options)
 %%
 %% By default, new solutions use automatic training to create solution
 %% versions every 7 days. You can change the training frequency.
-%% Automatic solution version creation starts one hour after the solution is
-%% ACTIVE. If you manually create a solution version within
+%% Automatic solution version creation starts within one hour after the
+%% solution is ACTIVE. If you manually create a solution version within
 %% the hour, the solution skips the first automatic training. For more
 %% information,
 %% see Configuring automatic training:
@@ -3004,6 +3046,9 @@ create_schema(Client, Input, Options)
 %% `CreateSolutionVersion'.
 %%
 %% == Related APIs ==
+%%
+%% UpdateSolution:
+%% https://docs.aws.amazon.com/personalize/latest/dg/API_UpdateSolution.html
 %%
 %% ListSolutions:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListSolutions.html
@@ -4338,6 +4383,42 @@ update_recommender(Client, Input)
 update_recommender(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRecommender">>, Input, Options).
+
+%% @doc Updates an Amazon Personalize solution to use a different automatic
+%% training configuration.
+%%
+%% When you update a solution,
+%% you can change whether the solution uses
+%% automatic training, and you can change the training frequency. For more
+%% information about updating a solution, see
+%% Updating a solution:
+%% https://docs.aws.amazon.com/personalize/latest/dg/updating-solution.html.
+%%
+%% A solution update can be in one of the
+%% following states:
+%%
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED
+%%
+%% To get the status of a solution update, call the
+%% DescribeSolution:
+%% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolution.html
+%% API operation and find the status
+%% in the `latestSolutionUpdate'.
+-spec update_solution(aws_client:aws_client(), update_solution_request()) ->
+    {ok, update_solution_response(), tuple()} |
+    {error, any()} |
+    {error, update_solution_errors(), tuple()}.
+update_solution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_solution(Client, Input, []).
+
+-spec update_solution(aws_client:aws_client(), update_solution_request(), proplists:proplist()) ->
+    {ok, update_solution_response(), tuple()} |
+    {error, any()} |
+    {error, update_solution_errors(), tuple()}.
+update_solution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSolution">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

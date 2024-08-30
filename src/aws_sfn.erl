@@ -968,7 +968,8 @@
 %% Example:
 %% validate_state_machine_definition_output() :: #{
 %%   <<"diagnostics">> => list(validate_state_machine_definition_diagnostic()()),
-%%   <<"result">> => list(any())
+%%   <<"result">> => list(any()),
+%%   <<"truncated">> => boolean()
 %% }
 -type validate_state_machine_definition_output() :: #{binary() => any()}.
 
@@ -1147,6 +1148,8 @@
 %% Example:
 %% validate_state_machine_definition_input() :: #{
 %%   <<"definition">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"severity">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
 -type validate_state_machine_definition_input() :: #{binary() => any()}.

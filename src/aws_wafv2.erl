@@ -3751,12 +3751,10 @@ put_managed_rule_set_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutManagedRuleSetVersions">>, Input, Options).
 
-%% @doc Attaches an IAM policy to the specified resource.
+%% @doc Use this to share a rule group with other accounts.
 %%
-%% Use this to share a rule group across
-%% accounts.
-%%
-%% You must be the owner of the rule group to perform this operation.
+%% This action attaches an IAM policy to the specified resource. You must be
+%% the owner of the rule group to perform this operation.
 %%
 %% This action is subject to the following restrictions:
 %%
@@ -3767,6 +3765,12 @@ put_managed_rule_set_versions(Client, Input, Options)
 %% rule group must exist in the same Region.
 %%
 %% The user making the request must be the owner of the rule group.
+%%
+%% If a rule group has been shared with your account, you can access it
+%% through the call `GetRuleGroup',
+%% and you can reference it in `CreateWebACL' and `UpdateWebACL'.
+%% Rule groups that are shared with you don't appear in your WAF console
+%% rule groups listing.
 -spec put_permission_policy(aws_client:aws_client(), put_permission_policy_request()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
