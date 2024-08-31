@@ -39,55 +39,48 @@
 
 
 %% Example:
-%% active_statements_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% cancel_statement_response() :: #{
+%%   <<"Status">> => [boolean()]
 %% }
--type active_statements_exceeded_exception() :: #{binary() => any()}.
+-type cancel_statement_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_execute_statement_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatementId">> => string()
+%% table_member() :: #{
+%%   <<"name">> => string(),
+%%   <<"schema">> => string(),
+%%   <<"type">> => string()
 %% }
--type batch_execute_statement_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_execute_statement_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Database">> := string(),
-%%   <<"DbUser">> => string(),
-%%   <<"SecretArn">> => string(),
-%%   <<"Sqls">> := list(string()()),
-%%   <<"StatementName">> => string(),
-%%   <<"WithEvent">> => [boolean()],
-%%   <<"WorkgroupName">> => string()
-%% }
--type batch_execute_statement_input() :: #{binary() => any()}.
+-type table_member() :: #{binary() => any()}.
 
 %% Example:
 %% batch_execute_statement_output() :: #{
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Database">> => string(),
+%%   <<"DbGroups">> => list(string()()),
 %%   <<"DbUser">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"SecretArn">> => string(),
+%%   <<"SessionId">> => string(),
 %%   <<"WorkgroupName">> => string()
 %% }
 -type batch_execute_statement_output() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_statement_request() :: #{
-%%   <<"Id">> := string()
+%% statement_data() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => string(),
+%%   <<"IsBatchStatement">> => [boolean()],
+%%   <<"QueryParameters">> => list(sql_parameter()()),
+%%   <<"QueryString">> => string(),
+%%   <<"QueryStrings">> => list(string()()),
+%%   <<"SecretArn">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"StatementName">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type cancel_statement_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_statement_response() :: #{
-%%   <<"Status">> => [boolean()]
-%% }
--type cancel_statement_response() :: #{binary() => any()}.
+-type statement_data() :: #{binary() => any()}.
 
 %% Example:
 %% column_metadata() :: #{
@@ -108,55 +101,31 @@
 -type column_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% database_connection_exception() :: #{
-%%   <<"Message">> => string()
+%% sql_parameter() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
 %% }
--type database_connection_exception() :: #{binary() => any()}.
+-type sql_parameter() :: #{binary() => any()}.
 
 %% Example:
-%% describe_statement_request() :: #{
+%% cancel_statement_request() :: #{
 %%   <<"Id">> := string()
 %% }
--type describe_statement_request() :: #{binary() => any()}.
+-type cancel_statement_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_statement_response() :: #{
+%% execute_statement_output() :: #{
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Database">> => string(),
+%%   <<"DbGroups">> => list(string()()),
 %%   <<"DbUser">> => string(),
-%%   <<"Duration">> => float(),
-%%   <<"Error">> => string(),
-%%   <<"HasResultSet">> => [boolean()],
-%%   <<"Id">> := string(),
-%%   <<"QueryParameters">> => list(sql_parameter()()),
-%%   <<"QueryString">> => string(),
-%%   <<"RedshiftPid">> => float(),
-%%   <<"RedshiftQueryId">> => float(),
-%%   <<"ResultRows">> => float(),
-%%   <<"ResultSize">> => float(),
+%%   <<"Id">> => string(),
 %%   <<"SecretArn">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"SubStatements">> => list(sub_statement_data()()),
-%%   <<"UpdatedAt">> => [non_neg_integer()],
+%%   <<"SessionId">> => string(),
 %%   <<"WorkgroupName">> => string()
 %% }
--type describe_statement_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_table_request() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"ConnectedDatabase">> => string(),
-%%   <<"Database">> := string(),
-%%   <<"DbUser">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Schema">> => string(),
-%%   <<"SecretArn">> => string(),
-%%   <<"Table">> => string(),
-%%   <<"WorkgroupName">> => string()
-%% }
--type describe_table_request() :: #{binary() => any()}.
+-type execute_statement_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_table_response() :: #{
@@ -167,79 +136,27 @@
 -type describe_table_response() :: #{binary() => any()}.
 
 %% Example:
-%% execute_statement_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatementId">> => string()
+%% active_statements_exceeded_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type execute_statement_exception() :: #{binary() => any()}.
+-type active_statements_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% execute_statement_input() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ClusterIdentifier">> => string(),
-%%   <<"Database">> := string(),
+%%   <<"Database">> => string(),
 %%   <<"DbUser">> => string(),
 %%   <<"Parameters">> => list(sql_parameter()()),
 %%   <<"SecretArn">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"SessionKeepAliveSeconds">> => integer(),
 %%   <<"Sql">> := string(),
 %%   <<"StatementName">> => string(),
 %%   <<"WithEvent">> => [boolean()],
 %%   <<"WorkgroupName">> => string()
 %% }
 -type execute_statement_input() :: #{binary() => any()}.
-
-%% Example:
-%% execute_statement_output() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Database">> => string(),
-%%   <<"DbUser">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"SecretArn">> => string(),
-%%   <<"WorkgroupName">> => string()
-%% }
--type execute_statement_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_statement_result_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_statement_result_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_statement_result_response() :: #{
-%%   <<"ColumnMetadata">> => list(column_metadata()()),
-%%   <<"NextToken">> => string(),
-%%   <<"Records">> := list(list(list()())()),
-%%   <<"TotalNumRows">> => float()
-%% }
--type get_statement_result_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_databases_request() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Database">> := string(),
-%%   <<"DbUser">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SecretArn">> => string(),
-%%   <<"WorkgroupName">> => string()
-%% }
--type list_databases_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_databases_response() :: #{
-%%   <<"Databases">> => list(string()()),
-%%   <<"NextToken">> => string()
-%% }
--type list_databases_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_schemas_request() :: #{
@@ -256,79 +173,20 @@
 -type list_schemas_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_schemas_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(string()())
-%% }
--type list_schemas_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_statements_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RoleLevel">> => [boolean()],
-%%   <<"StatementName">> => string(),
-%%   <<"Status">> => string()
-%% }
--type list_statements_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_statements_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Statements">> := list(statement_data()())
-%% }
--type list_statements_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tables_request() :: #{
+%% batch_execute_statement_input() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"ClusterIdentifier">> => string(),
-%%   <<"ConnectedDatabase">> => string(),
-%%   <<"Database">> := string(),
+%%   <<"Database">> => string(),
 %%   <<"DbUser">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaPattern">> => string(),
 %%   <<"SecretArn">> => string(),
-%%   <<"TablePattern">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"SessionKeepAliveSeconds">> => integer(),
+%%   <<"Sqls">> := list(string()()),
+%%   <<"StatementName">> => string(),
+%%   <<"WithEvent">> => [boolean()],
 %%   <<"WorkgroupName">> => string()
 %% }
--type list_tables_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tables_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tables">> => list(table_member()())
-%% }
--type list_tables_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% sql_parameter() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type sql_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% statement_data() :: #{
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Id">> => string(),
-%%   <<"IsBatchStatement">> => [boolean()],
-%%   <<"QueryParameters">> => list(sql_parameter()()),
-%%   <<"QueryString">> => string(),
-%%   <<"QueryStrings">> => list(string()()),
-%%   <<"SecretArn">> => string(),
-%%   <<"StatementName">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type statement_data() :: #{binary() => any()}.
+-type batch_execute_statement_input() :: #{binary() => any()}.
 
 %% Example:
 %% sub_statement_data() :: #{
@@ -347,12 +205,97 @@
 -type sub_statement_data() :: #{binary() => any()}.
 
 %% Example:
-%% table_member() :: #{
-%%   <<"name">> => string(),
-%%   <<"schema">> => string(),
-%%   <<"type">> => string()
+%% describe_statement_request() :: #{
+%%   <<"Id">> := string()
 %% }
--type table_member() :: #{binary() => any()}.
+-type describe_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_statements_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Statements">> => list(statement_data()())
+%% }
+-type list_statements_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_databases_request() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type list_databases_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tables">> => list(table_member()())
+%% }
+-type list_tables_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_statement_result_response() :: #{
+%%   <<"ColumnMetadata">> => list(column_metadata()()),
+%%   <<"NextToken">> => string(),
+%%   <<"Records">> => list(list(list()())()),
+%%   <<"TotalNumRows">> => float()
+%% }
+-type get_statement_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_execute_statement_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatementId">> => string()
+%% }
+-type batch_execute_statement_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_request() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ConnectedDatabase">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Schema">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"Table">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type describe_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_statement_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatementId">> => string()
+%% }
+-type execute_statement_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_statements_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RoleLevel">> => [boolean()],
+%%   <<"StatementName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type list_statements_request() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -360,55 +303,142 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+%% Example:
+%% query_timeout_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type query_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% active_sessions_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type active_sessions_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_statement_result_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_statement_result_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_statement_response() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"Duration">> => float(),
+%%   <<"Error">> => string(),
+%%   <<"HasResultSet">> => [boolean()],
+%%   <<"Id">> => string(),
+%%   <<"QueryParameters">> => list(sql_parameter()()),
+%%   <<"QueryString">> => string(),
+%%   <<"RedshiftPid">> => float(),
+%%   <<"RedshiftQueryId">> => float(),
+%%   <<"ResultRows">> => float(),
+%%   <<"ResultSize">> => float(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SubStatements">> => list(sub_statement_data()()),
+%%   <<"UpdatedAt">> => [non_neg_integer()],
+%%   <<"WorkgroupName">> => string()
+%% }
+-type describe_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schemas">> => list(string()())
+%% }
+-type list_schemas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_databases_response() :: #{
+%%   <<"Databases">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_response() :: #{binary() => any()}.
+
+%% Example:
+%% database_connection_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type database_connection_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_request() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ConnectedDatabase">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaPattern">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"TablePattern">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type list_tables_request() :: #{binary() => any()}.
+
 -type batch_execute_statement_errors() ::
+    active_sessions_exceeded_exception() | 
     validation_exception() | 
+    internal_server_exception() | 
     batch_execute_statement_exception() | 
     active_statements_exceeded_exception().
 
 -type cancel_statement_errors() ::
+    database_connection_exception() | 
     validation_exception() | 
-    resource_not_found_exception() | 
     internal_server_exception() | 
-    database_connection_exception().
+    resource_not_found_exception().
 
 -type describe_statement_errors() ::
     validation_exception() | 
-    resource_not_found_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type describe_table_errors() ::
+    database_connection_exception() | 
+    query_timeout_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    database_connection_exception().
+    internal_server_exception().
 
 -type execute_statement_errors() ::
+    active_sessions_exceeded_exception() | 
     validation_exception() | 
+    internal_server_exception() | 
     execute_statement_exception() | 
     active_statements_exceeded_exception().
 
 -type get_statement_result_errors() ::
     validation_exception() | 
-    resource_not_found_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_databases_errors() ::
+    database_connection_exception() | 
+    query_timeout_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    database_connection_exception().
+    internal_server_exception().
 
 -type list_schemas_errors() ::
+    database_connection_exception() | 
+    query_timeout_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    database_connection_exception().
+    internal_server_exception().
 
 -type list_statements_errors() ::
     validation_exception() | 
     internal_server_exception().
 
 -type list_tables_errors() ::
+    database_connection_exception() | 
+    query_timeout_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    database_connection_exception().
+    internal_server_exception().
 
 %%====================================================================
 %% API

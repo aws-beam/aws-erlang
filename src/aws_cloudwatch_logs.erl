@@ -235,6 +235,12 @@
 -type delivery() :: #{binary() => any()}.
 
 %% Example:
+%% rejected_entity_info() :: #{
+%%   <<"errorType">> => list(any())
+%% }
+-type rejected_entity_info() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tags">> := map()
@@ -365,6 +371,13 @@
 -type put_account_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% entity() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"keyAttributes">> => map()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
 %% describe_queries_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"queries">> => list(query_info()())
@@ -373,6 +386,7 @@
 
 %% Example:
 %% put_log_events_request() :: #{
+%%   <<"entity">> => entity(),
 %%   <<"logEvents">> := list(input_log_event()()),
 %%   <<"logGroupName">> := string(),
 %%   <<"logStreamName">> := string(),
@@ -1292,6 +1306,7 @@
 %% Example:
 %% put_log_events_response() :: #{
 %%   <<"nextSequenceToken">> => string(),
+%%   <<"rejectedEntityInfo">> => rejected_entity_info(),
 %%   <<"rejectedLogEventsInfo">> => rejected_log_events_info()
 %% }
 -type put_log_events_response() :: #{binary() => any()}.
@@ -3569,7 +3584,8 @@ list_tags_log_group(Client, Input, Options)
 %% delivery. Kinesis Data Streams and Firehose are supported as logical
 %% destinations.
 %%
-%% Each account can have one account-level subscription filter policy.
+%% Each account can have one account-level subscription filter policy per
+%% Region.
 %% If you are updating an existing filter, you must specify the correct name
 %% in `PolicyName'.
 %% To perform a `PutAccountPolicy' subscription filter operation for any
@@ -3978,6 +3994,17 @@ put_log_events(Client, Input, Options)
 %% group is
 %% 100.
 %%
+%% Using regular expressions to create metric filters is supported. For these
+%% filters,
+%% there is a quotas of quota of two regular expression patterns within a
+%% single filter pattern. There
+%% is also a quota of five regular expression patterns per log group.
+%% For more information about using regular expressions in metric filters,
+%% see
+%% Filter pattern syntax for metric filters, subscription filters, filter log
+%% events, and Live Tail:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html.
+%%
 %% When you create a metric filter, you can also optionally assign a unit and
 %% dimensions
 %% to the metric that is created.
@@ -4164,6 +4191,18 @@ put_retention_policy(Client, Input, Options)
 %% updating an existing filter, you must specify the correct name in
 %% `filterName'.
 %%
+%% Using regular expressions to create subscription filters is supported. For
+%% these filters,
+%% there is a quotas of quota of two regular expression patterns within a
+%% single filter pattern. There
+%% is also a quota of five regular expression patterns per log group.
+%% For more information about using regular expressions in subscription
+%% filters,
+%% see
+%% Filter pattern syntax for metric filters, subscription filters, filter log
+%% events, and Live Tail:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html.
+%%
 %% To perform a `PutSubscriptionFilter' operation for any destination
 %% except a Lambda function,
 %% you must also have the
@@ -4223,11 +4262,11 @@ put_subscription_filter(Client, Input, Options)
 %% which it starts dropping the oldest events.
 %%
 %% A SessionStreamingException:
-%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_SessionStreamingException.html
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartLiveTailResponseStream.html#CWL-Type-StartLiveTailResponseStream-SessionStreamingException
 %% object is returned if an unknown error occurs on the server side.
 %%
 %% A SessionTimeoutException:
-%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_SessionTimeoutException.html
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartLiveTailResponseStream.html#CWL-Type-StartLiveTailResponseStream-SessionTimeoutException
 %% object is returned when the session times out, after it has been kept open
 %% for three hours.
 %%

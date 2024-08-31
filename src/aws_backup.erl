@@ -796,6 +796,7 @@
 %%   <<"MaxRetentionDays">> => float(),
 %%   <<"MinRetentionDays">> => float(),
 %%   <<"NumberOfRecoveryPoints">> => float(),
+%%   <<"VaultState">> => list(any()),
 %%   <<"VaultType">> => list(any())
 %% }
 -type describe_backup_vault_output() :: #{binary() => any()}.
@@ -1592,7 +1593,9 @@
 %%   <<"Locked">> => boolean(),
 %%   <<"MaxRetentionDays">> => float(),
 %%   <<"MinRetentionDays">> => float(),
-%%   <<"NumberOfRecoveryPoints">> => float()
+%%   <<"NumberOfRecoveryPoints">> => float(),
+%%   <<"VaultState">> => list(any()),
+%%   <<"VaultType">> => list(any())
 %% }
 -type backup_vault_list_member() :: #{binary() => any()}.
 
@@ -2901,9 +2904,10 @@
 %% API
 %%====================================================================
 
-%% @doc This action removes the specified legal hold on a recovery point.
+%% @doc Removes the specified legal hold on a recovery point.
 %%
-%% This action can only be performed by a user with sufficient permissions.
+%% This action can only be performed
+%% by a user with sufficient permissions.
 -spec cancel_legal_hold(aws_client:aws_client(), binary() | list(), cancel_legal_hold_input()) ->
     {ok, cancel_legal_hold_output(), tuple()} |
     {error, any()} |
@@ -3103,14 +3107,14 @@ create_framework(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action creates a legal hold on a recovery point (backup).
+%% @doc Creates a legal hold on a recovery point (backup).
 %%
-%% A legal hold
-%% is a restraint on altering or deleting a backup until an authorized user
-%% cancels the
-%% legal hold. Any actions to delete or disassociate a recovery point will
-%% fail with
-%% an error if one or more active legal holds are on the recovery point.
+%% A legal hold is a restraint on
+%% altering or deleting a backup until an authorized user cancels the legal
+%% hold. Any actions
+%% to delete or disassociate a recovery point will fail with an error if one
+%% or more active
+%% legal holds are on the recovery point.
 -spec create_legal_hold(aws_client:aws_client(), create_legal_hold_input()) ->
     {ok, create_legal_hold_output(), tuple()} |
     {error, any()} |
@@ -3144,8 +3148,7 @@ create_legal_hold(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This request creates a logical container to where backups may be
-%% copied.
+%% @doc Creates a logical container to where backups may be copied.
 %%
 %% This request includes a name, the Region, the maximum number of retention
 %% days, the
@@ -3230,12 +3233,11 @@ create_report_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This is the first of two steps to create a restore testing
-%% plan; once this request is successful, finish the procedure with
-%% request CreateRestoreTestingSelection.
+%% @doc Creates a restore testing plan.
 %%
-%% You must include the parameter RestoreTestingPlan. You may
-%% optionally include CreatorRequestId and Tags.
+%% The first of two steps to create a restore testing
+%% plan. After this request is successful, finish the procedure using
+%% CreateRestoreTestingSelection.
 -spec create_restore_testing_plan(aws_client:aws_client(), create_restore_testing_plan_input()) ->
     {ok, create_restore_testing_plan_output(), tuple()} |
     {error, any()} |
@@ -4938,9 +4940,7 @@ list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns metadata of your saved backup plan templates, including the
-%% template ID, name,
-%% and the creation and deletion dates.
+%% @doc Lists the backup plan templates.
 -spec list_backup_plan_templates(aws_client:aws_client()) ->
     {ok, list_backup_plan_templates_output(), tuple()} |
     {error, any()} |
@@ -5026,13 +5026,7 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all active backup plans for an authenticated
-%% account.
-%%
-%% The list
-%% contains information such as Amazon Resource Names (ARNs), plan IDs,
-%% creation and deletion
-%% dates, version IDs, plan names, and creator request IDs.
+%% @doc Lists the active backup plans for the account.
 -spec list_backup_plans(aws_client:aws_client()) ->
     {ok, list_backup_plans_output(), tuple()} |
     {error, any()} |
@@ -5544,8 +5538,7 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns detailed information about all the recovery points of the
-%% type specified by a
+%% @doc The information about the recovery points of the type specified by a
 %% resource Amazon Resource Name (ARN).
 %%
 %% For Amazon EFS and Amazon EC2, this action only lists recovery points
@@ -5929,16 +5922,9 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of key-value pairs assigned to a target recovery
+%% @doc Returns the tags assigned to the resource, such as a target recovery
 %% point, backup plan, or
 %% backup vault.
-%%
-%% `ListTags' only works for resource types that support full Backup
-%% management of their backups. Those resource types are listed in the
-%% &quot;Full Backup management&quot; section of the Feature
-%% availability by resource:
-%% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource
-%% table.
 -spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()} |
@@ -6037,7 +6023,11 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% information about
 %% how Backup Vault Lock relates to these regulations, see the
 %% Cohasset Associates
-%% Compliance Assessment.: samples/cohassetreport.zip
+%% Compliance Assessment.:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/samples/cohassetreport.zip
+%%
+%% For more information, see Backup Vault Lock:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html.
 -spec put_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), put_backup_vault_lock_configuration_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6288,8 +6278,8 @@ start_restore_job(Client, Input0, Options0) ->
 %%
 %% This action is not supported for the following services:
 %% Amazon FSx for Windows File Server, Amazon FSx for Lustre, Amazon FSx for
-%% NetApp ONTAP
-%% , Amazon FSx for OpenZFS, Amazon DocumentDB (with MongoDB compatibility),
+%% NetApp ONTAP,
+%% Amazon FSx for OpenZFS, Amazon DocumentDB (with MongoDB compatibility),
 %% Amazon RDS, Amazon Aurora,
 %% and Amazon Neptune.
 -spec stop_backup_job(aws_client:aws_client(), binary() | list(), stop_backup_job_input()) ->
@@ -6328,6 +6318,10 @@ stop_backup_job(Client, BackupJobId, Input0, Options0) ->
 %% @doc Assigns a set of key-value pairs to a recovery point, backup plan, or
 %% backup vault
 %% identified by an Amazon Resource Name (ARN).
+%%
+%% This API is supported for recovery points for resource types
+%% including Aurora, Amazon DocumentDB. Amazon EBS,
+%% Amazon FSx, Neptune, and Amazon RDS.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6364,6 +6358,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes a set of key-value pairs from a recovery point, backup plan,
 %% or backup vault
 %% identified by an Amazon Resource Name (ARN)
+%%
+%% This API is not supported for recovery points for resource types
+%% including Aurora, Amazon DocumentDB.
+%%
+%% Amazon EBS,
+%% Amazon FSx, Neptune, and Amazon RDS.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6397,12 +6397,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing backup plan identified by its `backupPlanId'
-%% with the
-%% input document in JSON format.
+%% @doc Updates the specified backup plan.
 %%
-%% The new version is uniquely identified by a
-%% `VersionId'.
+%% The new version is uniquely identified by its ID.
 -spec update_backup_plan(aws_client:aws_client(), binary() | list(), update_backup_plan_input()) ->
     {ok, update_backup_plan_output(), tuple()} |
     {error, any()} |
@@ -6436,9 +6433,7 @@ update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing framework identified by its `FrameworkName'
-%% with the
-%% input document in JSON format.
+%% @doc Updates the specified framework.
 -spec update_framework(aws_client:aws_client(), binary() | list(), update_framework_input()) ->
     {ok, update_framework_output(), tuple()} |
     {error, any()} |
@@ -6519,6 +6514,12 @@ update_global_settings(Client, Input0, Options0) ->
 %% to
 %% the lifecycle that you define.
 %%
+%% Resource types that can transition to cold storage are listed in the
+%% Feature availability by resource:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-resource
+%% table. Backup ignores this expression for
+%% other resource types.
+%%
 %% Backups transitioned to cold storage must be stored in cold storage for a
 %% minimum of 90
 %% days. Therefore, the “retention” setting must be 90 days greater than the
@@ -6527,13 +6528,11 @@ update_global_settings(Client, Input0, Options0) ->
 %% cannot be changed
 %% after a backup has been transitioned to cold.
 %%
-%% Resource types that are able to be transitioned to cold storage are listed
-%% in the &quot;Lifecycle to cold storage&quot;
-%% section of the
-%% Feature availability by resource:
-%% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource
-%% table. Backup ignores this expression for
-%% other resource types.
+%% If your lifecycle currently uses the parameters `DeleteAfterDays' and
+%% `MoveToColdStorageAfterDays', include these parameters and their
+%% values when you call
+%% this operation. Not including them may result in your plan updating with
+%% null values.
 %%
 %% This operation does not support continuous backups.
 -spec update_recovery_point_lifecycle(aws_client:aws_client(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input()) ->
@@ -6608,9 +6607,7 @@ update_region_settings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing report plan identified by its
-%% `ReportPlanName' with the
-%% input document in JSON format.
+%% @doc Updates the specified report plan.
 -spec update_report_plan(aws_client:aws_client(), binary() | list(), update_report_plan_input()) ->
     {ok, update_report_plan_output(), tuple()} |
     {error, any()} |
@@ -6694,14 +6691,12 @@ update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Most elements except the `RestoreTestingSelectionName'
+%% @doc Updates the specified restore testing selection.
+%%
+%% Most elements except the `RestoreTestingSelectionName'
 %% can be updated with this request.
 %%
-%% `RestoreTestingSelection' can use either protected
-%% resource ARNs or conditions, but not both. That is, if your selection
-%% has `ProtectedResourceArns', requesting an update with the
-%% parameter `ProtectedResourceConditions' will be
-%% unsuccessful.
+%% You can use either protected resource ARNs or conditions, but not both.
 -spec update_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), update_restore_testing_selection_input()) ->
     {ok, update_restore_testing_selection_output(), tuple()} |
     {error, any()} |

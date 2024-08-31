@@ -17,6 +17,10 @@
          accept_predictions/5,
          accept_subscription_request/4,
          accept_subscription_request/5,
+         add_entity_owner/5,
+         add_entity_owner/6,
+         add_policy_grant/5,
+         add_policy_grant/6,
          associate_environment_role/5,
          associate_environment_role/6,
          cancel_metadata_generation_run/4,
@@ -39,6 +43,8 @@
          create_data_source/4,
          create_domain/2,
          create_domain/3,
+         create_domain_unit/3,
+         create_domain_unit/4,
          create_environment/3,
          create_environment/4,
          create_environment_action/4,
@@ -79,6 +85,8 @@
          delete_data_source/5,
          delete_domain/3,
          delete_domain/4,
+         delete_domain_unit/4,
+         delete_domain_unit/5,
          delete_environment/4,
          delete_environment/5,
          delete_environment_action/5,
@@ -130,6 +138,9 @@
          get_domain/2,
          get_domain/4,
          get_domain/5,
+         get_domain_unit/3,
+         get_domain_unit/5,
+         get_domain_unit/6,
          get_environment/3,
          get_environment/5,
          get_environment/6,
@@ -210,9 +221,15 @@
          list_data_sources/3,
          list_data_sources/5,
          list_data_sources/6,
+         list_domain_units_for_parent/3,
+         list_domain_units_for_parent/5,
+         list_domain_units_for_parent/6,
          list_domains/1,
          list_domains/3,
          list_domains/4,
+         list_entity_owners/4,
+         list_entity_owners/6,
+         list_entity_owners/7,
          list_environment_actions/3,
          list_environment_actions/5,
          list_environment_actions/6,
@@ -237,6 +254,9 @@
          list_notifications/3,
          list_notifications/5,
          list_notifications/6,
+         list_policy_grants/5,
+         list_policy_grants/7,
+         list_policy_grants/8,
          list_project_memberships/3,
          list_project_memberships/5,
          list_project_memberships/6,
@@ -271,6 +291,10 @@
          reject_predictions/5,
          reject_subscription_request/4,
          reject_subscription_request/5,
+         remove_entity_owner/5,
+         remove_entity_owner/6,
+         remove_policy_grant/5,
+         remove_policy_grant/6,
          revoke_subscription/4,
          revoke_subscription/5,
          search/3,
@@ -297,6 +321,8 @@
          update_data_source/5,
          update_domain/3,
          update_domain/4,
+         update_domain_unit/4,
+         update_domain_unit/5,
          update_environment/4,
          update_environment/5,
          update_environment_action/5,
@@ -325,6 +351,16 @@
 
 
 %% Example:
+%% policy_grant_member() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"principal">> => list()
+%% }
+-type policy_grant_member() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_revision() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -349,6 +385,7 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => [string()],
+%%   <<"rootDomainUnitId">> => string(),
 %%   <<"singleSignOn">> => single_sign_on()
 %% }
 -type update_domain_output() :: #{binary() => any()}.
@@ -413,6 +450,13 @@
 %%   <<"enabled">> => [boolean()]
 %% }
 -type business_name_generation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_form_type_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type create_form_type_policy_grant_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -651,6 +695,14 @@
 
 
 %% Example:
+%% list_policy_grants_output() :: #{
+%%   <<"grantList">> => list(policy_grant_member()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_grants_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -677,6 +729,10 @@
 %% delete_form_type_output() :: #{}
 -type delete_form_type_output() :: #{}.
 
+%% Example:
+%% remove_entity_owner_output() :: #{}
+-type remove_entity_owner_output() :: #{}.
+
 
 %% Example:
 %% asset_listing_details() :: #{
@@ -684,6 +740,10 @@
 %%   <<"listingStatus">> => list(any())
 %% }
 -type asset_listing_details() :: #{binary() => any()}.
+
+%% Example:
+%% all_users_grant_filter() :: #{}
+-type all_users_grant_filter() :: #{}.
 
 
 %% Example:
@@ -759,6 +819,7 @@
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
 %%   <<"failureReasons">> => list(project_deletion_error()()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -770,6 +831,13 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% create_asset_type_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type create_asset_type_policy_grant_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -893,6 +961,13 @@
 
 
 %% Example:
+%% create_project_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type create_project_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_product_revision() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -932,6 +1007,13 @@
 %%   <<"subscribedPrincipals">> := list(list()())
 %% }
 -type create_subscription_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_group_properties_output() :: #{
+%%   <<"groupId">> => [string()]
+%% }
+-type owner_group_properties_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -981,6 +1063,10 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_form_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_policy_grant_output() :: #{}
+-type add_policy_grant_output() :: #{}.
 
 
 %% Example:
@@ -1122,12 +1208,20 @@
 %% }
 -type get_user_profile_output() :: #{binary() => any()}.
 
+%% Example:
+%% add_entity_owner_output() :: #{}
+-type add_entity_owner_output() :: #{}.
+
 
 %% Example:
 %% user_details() :: #{
 %%   <<"userId">> => [string()]
 %% }
 -type user_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_unit_input() :: #{}
+-type delete_domain_unit_input() :: #{}.
 
 
 %% Example:
@@ -1148,6 +1242,13 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_data_product_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_profile_policy_grant_detail() :: #{
+%%   <<"domainUnitId">> => string()
+%% }
+-type create_environment_profile_policy_grant_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1194,6 +1295,26 @@
 %% }
 -type update_subscription_request_input() :: #{binary() => any()}.
 
+%% Example:
+%% unit() :: #{}
+-type unit() :: #{}.
+
+
+%% Example:
+%% update_domain_unit_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owners">> => list(list()()),
+%%   <<"parentDomainUnitId">> => string()
+%% }
+-type update_domain_unit_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_listing_input() :: #{
@@ -1215,6 +1336,7 @@
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
 %%   <<"failureReasons">> => list(project_deletion_error()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
@@ -1282,6 +1404,13 @@
 %% }
 -type search_types_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% override_project_owners_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type override_project_owners_policy_grant_detail() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_environment_role_input() :: #{}
 -type disassociate_environment_role_input() :: #{}.
@@ -1293,6 +1422,23 @@
 %%   <<"value">> => [string()]
 %% }
 -type greater_than_or_equal_to_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_grants_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyType">> := list(any())
+%% }
+-type list_policy_grants_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_filter_for_project() :: #{
+%%   <<"domainUnit">> => string(),
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type domain_unit_filter_for_project() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1311,6 +1457,10 @@
 %%   <<"forms">> := list(time_series_data_point_form_input()())
 %% }
 -type post_time_series_data_points_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_unit_input() :: #{}
+-type get_domain_unit_input() :: #{}.
 
 %% Example:
 %% get_data_source_run_input() :: #{}
@@ -1528,6 +1678,14 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% remove_entity_owner_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"owner">> := list()
+%% }
+-type remove_entity_owner_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_product_input() :: #{}
 -type delete_data_product_input() :: #{}.
@@ -1566,6 +1724,22 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_source_run_activities_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_unit_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owners">> => list(list()()),
+%%   <<"parentDomainUnitId">> => string()
+%% }
+-type get_domain_unit_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1688,6 +1862,13 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type glossary_term_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% override_domain_unit_owners_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type override_domain_unit_owners_policy_grant_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1853,6 +2034,14 @@
 
 
 %% Example:
+%% list_entity_owners_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_entity_owners_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_metadata_generation_run_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -1927,11 +2116,27 @@
 
 
 %% Example:
+%% domain_unit_user_properties() :: #{
+%%   <<"userId">> => [string()]
+%% }
+-type domain_unit_user_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_domain_input() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"skipDeletionCheck">> => [boolean()]
 %% }
 -type delete_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_units_for_parent_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"parentDomainUnitIdentifier">> := string()
+%% }
+-type list_domain_units_for_parent_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1973,6 +2178,16 @@
 %%   <<"columnName">> => [string()]
 %% }
 -type is_null_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_policy_grant_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"detail">> := list(),
+%%   <<"policyType">> := list(any()),
+%%   <<"principal">> := list()
+%% }
+-type add_policy_grant_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2294,6 +2509,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => [string()],
 %%   <<"portalUrl">> => [string()],
+%%   <<"rootDomainUnitId">> => string(),
 %%   <<"singleSignOn">> => single_sign_on(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
@@ -2461,6 +2677,13 @@
 
 
 %% Example:
+%% owner_group_properties() :: #{
+%%   <<"groupIdentifier">> => string()
+%% }
+-type owner_group_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_type_item() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -2516,6 +2739,13 @@
 
 
 %% Example:
+%% owner_user_properties() :: #{
+%%   <<"userIdentifier">> => string()
+%% }
+-type owner_user_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% lineage_node_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -2548,6 +2778,13 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type create_subscription_grant_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_glossary_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type create_glossary_policy_grant_detail() :: #{binary() => any()}.
 
 %% Example:
 %% delete_glossary_term_output() :: #{}
@@ -2823,6 +3060,35 @@
 
 
 %% Example:
+%% add_to_project_member_pool_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type add_to_project_member_pool_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_user_properties_output() :: #{
+%%   <<"userId">> => [string()]
+%% }
+-type owner_user_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_unit_output() :: #{
+%%   <<"ancestorDomainUnitIds">> => list(string()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owners">> => list(list()()),
+%%   <<"parentDomainUnitId">> => string()
+%% }
+-type create_domain_unit_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_product_result_item() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -2893,6 +3159,7 @@
 %% Example:
 %% create_project_input() :: #{
 %%   <<"description">> => string(),
+%%   <<"domainUnitId">> => string(),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"name">> := string()
 %% }
@@ -3048,6 +3315,7 @@
 %%   <<"kmsKeyIdentifier">> => string(),
 %%   <<"name">> => [string()],
 %%   <<"portalUrl">> => [string()],
+%%   <<"rootDomainUnitId">> => string(),
 %%   <<"singleSignOn">> => single_sign_on(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
@@ -3125,6 +3393,10 @@
 %% Example:
 %% delete_asset_input() :: #{}
 -type delete_asset_input() :: #{}.
+
+%% Example:
+%% remove_policy_grant_output() :: #{}
+-type remove_policy_grant_output() :: #{}.
 
 %% Example:
 %% delete_project_membership_output() :: #{}
@@ -3235,6 +3507,7 @@
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
 %%   <<"failureReasons">> => list(project_deletion_error()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
@@ -3343,6 +3616,16 @@
 
 
 %% Example:
+%% create_domain_unit_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"parentDomainUnitIdentifier">> := string()
+%% }
+-type create_domain_unit_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_data_product_input() :: #{
 %%   <<"revision">> => string()
 %% }
@@ -3357,6 +3640,14 @@
 %%   <<"revision">> => string()
 %% }
 -type accept_predictions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_owners_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"owners">> => list(list()())
+%% }
+-type list_entity_owners_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3436,6 +3727,15 @@
 
 
 %% Example:
+%% remove_policy_grant_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"policyType">> := list(any()),
+%%   <<"principal">> := list()
+%% }
+-type remove_policy_grant_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_listing_change_set_input() :: #{
 %%   <<"action">> := list(any()),
 %%   <<"clientToken">> => string(),
@@ -3444,6 +3744,15 @@
 %%   <<"entityType">> := list(any())
 %% }
 -type create_listing_change_set_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_policy_grant_principal() :: #{
+%%   <<"domainUnitDesignation">> => list(any()),
+%%   <<"domainUnitGrantFilter">> => list(),
+%%   <<"domainUnitIdentifier">> => string()
+%% }
+-type domain_unit_policy_grant_principal() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3465,6 +3774,13 @@
 %%   <<"value">> => [string()]
 %% }
 -type less_than_or_equal_to_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_unit_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type create_domain_unit_policy_grant_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3515,6 +3831,14 @@
 
 
 %% Example:
+%% list_domain_units_for_parent_output() :: #{
+%%   <<"items">> => list(domain_unit_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domain_units_for_parent_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% cloud_formation_properties() :: #{
 %%   <<"templateUrl">> => [string()]
 %% }
@@ -3554,6 +3878,7 @@
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
 %%   <<"failureReasons">> => list(project_deletion_error()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
@@ -3618,6 +3943,14 @@
 
 
 %% Example:
+%% domain_unit_summary() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()]
+%% }
+-type domain_unit_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_data_source_run_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dataSourceConfigurationSnapshot">> => [string()],
@@ -3638,6 +3971,14 @@
 %% Example:
 %% get_glossary_term_input() :: #{}
 -type get_glossary_term_input() :: #{}.
+
+
+%% Example:
+%% update_domain_unit_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_domain_unit_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_project_input() :: #{}
@@ -3854,6 +4195,10 @@
 %% delete_environment_action_input() :: #{}
 -type delete_environment_action_input() :: #{}.
 
+%% Example:
+%% all_domain_units_grant_filter() :: #{}
+-type all_domain_units_grant_filter() :: #{}.
+
 
 %% Example:
 %% environment_error() :: #{
@@ -3884,6 +4229,10 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_domain_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_unit_output() :: #{}
+-type delete_domain_unit_output() :: #{}.
 
 %% Example:
 %% delete_listing_input() :: #{}
@@ -3972,6 +4321,23 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_domains_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_policy_grant_principal() :: #{
+%%   <<"projectDesignation">> => list(any()),
+%%   <<"projectGrantFilter">> => list(),
+%%   <<"projectIdentifier">> => string()
+%% }
+-type project_policy_grant_principal() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_entity_owner_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"owner">> := list()
+%% }
+-type add_entity_owner_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4083,6 +4449,13 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type create_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_group_properties() :: #{
+%%   <<"groupId">> => [string()]
+%% }
+-type domain_unit_group_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4318,6 +4691,23 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type add_entity_owner_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type add_policy_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type associate_environment_role_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4409,6 +4799,14 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_domain_unit_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type create_environment_errors() ::
@@ -4563,6 +4961,14 @@
     conflict_exception().
 
 -type delete_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_domain_unit_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4735,6 +5141,13 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_domain_unit_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception().
 
 -type get_environment_errors() ::
@@ -4930,6 +5343,12 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type list_domain_units_for_parent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_domains_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4938,6 +5357,12 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type list_entity_owners_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_environment_actions_errors() ::
     throttling_exception() | 
@@ -4989,6 +5414,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_policy_grants_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_project_memberships_errors() ::
     throttling_exception() | 
@@ -5084,6 +5515,19 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type remove_entity_owner_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type remove_policy_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type revoke_subscription_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5172,6 +5616,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_domain_unit_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -5318,6 +5770,76 @@ accept_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests/", aws_util:encode_uri(Identifier), "/accept"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds the owner of an entity (a domain unit).
+-spec add_entity_owner(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), add_entity_owner_input()) ->
+    {ok, add_entity_owner_output(), tuple()} |
+    {error, any()} |
+    {error, add_entity_owner_errors(), tuple()}.
+add_entity_owner(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    add_entity_owner(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec add_entity_owner(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), add_entity_owner_input(), proplists:proplist()) ->
+    {ok, add_entity_owner_output(), tuple()} |
+    {error, any()} |
+    {error, add_entity_owner_errors(), tuple()}.
+add_entity_owner(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/addOwner"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds a policy grant (an authorization policy) to a specified entity,
+%% including domain
+%% units, environment blueprint configurations, or environment profiles.
+-spec add_policy_grant(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), add_policy_grant_input()) ->
+    {ok, add_policy_grant_output(), tuple()} |
+    {error, any()} |
+    {error, add_policy_grant_errors(), tuple()}.
+add_policy_grant(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    add_policy_grant(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec add_policy_grant(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), add_policy_grant_input(), proplists:proplist()) ->
+    {ok, add_policy_grant_output(), tuple()} |
+    {error, any()} |
+    {error, add_policy_grant_errors(), tuple()}.
+add_policy_grant(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/policies/managed/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/addGrant"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5691,6 +6213,40 @@ create_domain(Client, Input) ->
 create_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a domain unit in Amazon DataZone.
+-spec create_domain_unit(aws_client:aws_client(), binary() | list(), create_domain_unit_input()) ->
+    {ok, create_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, create_domain_unit_errors(), tuple()}.
+create_domain_unit(Client, DomainIdentifier, Input) ->
+    create_domain_unit(Client, DomainIdentifier, Input, []).
+
+-spec create_domain_unit(aws_client:aws_client(), binary() | list(), create_domain_unit_input(), proplists:proplist()) ->
+    {ok, create_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, create_domain_unit_errors(), tuple()}.
+create_domain_unit(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/domain-units"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6396,6 +6952,40 @@ delete_domain(Client, Identifier, Input0, Options0) ->
                      {<<"skipDeletionCheck">>, <<"skipDeletionCheck">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a domain unit.
+-spec delete_domain_unit(aws_client:aws_client(), binary() | list(), binary() | list(), delete_domain_unit_input()) ->
+    {ok, delete_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_unit_errors(), tuple()}.
+delete_domain_unit(Client, DomainIdentifier, Identifier, Input) ->
+    delete_domain_unit(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_domain_unit(aws_client:aws_client(), binary() | list(), binary() | list(), delete_domain_unit_input(), proplists:proplist()) ->
+    {ok, delete_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_unit_errors(), tuple()}.
+delete_domain_unit(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/domain-units/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an environment in Amazon DataZone.
@@ -7171,6 +7761,43 @@ get_domain(Client, Identifier, QueryMap, HeadersMap)
 get_domain(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the details of the specified domain unit.
+-spec get_domain_unit(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, get_domain_unit_errors(), tuple()}.
+get_domain_unit(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_domain_unit(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_domain_unit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, get_domain_unit_errors(), tuple()}.
+get_domain_unit(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_unit(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_domain_unit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, get_domain_unit_errors(), tuple()}.
+get_domain_unit(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/domain-units/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8241,6 +8868,49 @@ list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists child domain units for the specified parent domain unit.
+-spec list_domain_units_for_parent(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_domain_units_for_parent_output(), tuple()} |
+    {error, any()} |
+    {error, list_domain_units_for_parent_errors(), tuple()}.
+list_domain_units_for_parent(Client, DomainIdentifier, ParentDomainUnitIdentifier)
+  when is_map(Client) ->
+    list_domain_units_for_parent(Client, DomainIdentifier, ParentDomainUnitIdentifier, #{}, #{}).
+
+-spec list_domain_units_for_parent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_domain_units_for_parent_output(), tuple()} |
+    {error, any()} |
+    {error, list_domain_units_for_parent_errors(), tuple()}.
+list_domain_units_for_parent(Client, DomainIdentifier, ParentDomainUnitIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_units_for_parent(Client, DomainIdentifier, ParentDomainUnitIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_domain_units_for_parent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_domain_units_for_parent_output(), tuple()} |
+    {error, any()} |
+    {error, list_domain_units_for_parent_errors(), tuple()}.
+list_domain_units_for_parent(Client, DomainIdentifier, ParentDomainUnitIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/domain-units"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"parentDomainUnitIdentifier">>, ParentDomainUnitIdentifier}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists Amazon DataZone domains.
 -spec list_domains(aws_client:aws_client()) ->
     {ok, list_domains_output(), tuple()} |
@@ -8279,6 +8949,48 @@ list_domains(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the entity (domain units) owners.
+-spec list_entity_owners(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_entity_owners_output(), tuple()} |
+    {error, any()} |
+    {error, list_entity_owners_errors(), tuple()}.
+list_entity_owners(Client, DomainIdentifier, EntityIdentifier, EntityType)
+  when is_map(Client) ->
+    list_entity_owners(Client, DomainIdentifier, EntityIdentifier, EntityType, #{}, #{}).
+
+-spec list_entity_owners(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_entity_owners_output(), tuple()} |
+    {error, any()} |
+    {error, list_entity_owners_errors(), tuple()}.
+list_entity_owners(Client, DomainIdentifier, EntityIdentifier, EntityType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_entity_owners(Client, DomainIdentifier, EntityIdentifier, EntityType, QueryMap, HeadersMap, []).
+
+-spec list_entity_owners(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_entity_owners_output(), tuple()} |
+    {error, any()} |
+    {error, list_entity_owners_errors(), tuple()}.
+list_entity_owners(Client, DomainIdentifier, EntityIdentifier, EntityType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/owners"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -8641,6 +9353,49 @@ list_notifications(Client, DomainIdentifier, Type, QueryMap, HeadersMap, Options
         {<<"subjects">>, maps:get(<<"subjects">>, QueryMap, undefined)},
         {<<"taskStatus">>, maps:get(<<"taskStatus">>, QueryMap, undefined)},
         {<<"type">>, Type}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists policy grants.
+-spec list_policy_grants(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_policy_grants_output(), tuple()} |
+    {error, any()} |
+    {error, list_policy_grants_errors(), tuple()}.
+list_policy_grants(Client, DomainIdentifier, EntityIdentifier, EntityType, PolicyType)
+  when is_map(Client) ->
+    list_policy_grants(Client, DomainIdentifier, EntityIdentifier, EntityType, PolicyType, #{}, #{}).
+
+-spec list_policy_grants(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_policy_grants_output(), tuple()} |
+    {error, any()} |
+    {error, list_policy_grants_errors(), tuple()}.
+list_policy_grants(Client, DomainIdentifier, EntityIdentifier, EntityType, PolicyType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_grants(Client, DomainIdentifier, EntityIdentifier, EntityType, PolicyType, QueryMap, HeadersMap, []).
+
+-spec list_policy_grants(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_grants_output(), tuple()} |
+    {error, any()} |
+    {error, list_policy_grants_errors(), tuple()}.
+list_policy_grants(Client, DomainIdentifier, EntityIdentifier, EntityType, PolicyType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/policies/managed/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/grants"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"policyType">>, PolicyType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -9183,6 +9938,74 @@ reject_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes an owner from an entity.
+-spec remove_entity_owner(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), remove_entity_owner_input()) ->
+    {ok, remove_entity_owner_output(), tuple()} |
+    {error, any()} |
+    {error, remove_entity_owner_errors(), tuple()}.
+remove_entity_owner(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    remove_entity_owner(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec remove_entity_owner(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), remove_entity_owner_input(), proplists:proplist()) ->
+    {ok, remove_entity_owner_output(), tuple()} |
+    {error, any()} |
+    {error, remove_entity_owner_errors(), tuple()}.
+remove_entity_owner(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/removeOwner"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a policy grant.
+-spec remove_policy_grant(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), remove_policy_grant_input()) ->
+    {ok, remove_policy_grant_output(), tuple()} |
+    {error, any()} |
+    {error, remove_policy_grant_errors(), tuple()}.
+remove_policy_grant(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    remove_policy_grant(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec remove_policy_grant(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), remove_policy_grant_input(), proplists:proplist()) ->
+    {ok, remove_policy_grant_output(), tuple()} |
+    {error, any()} |
+    {error, remove_policy_grant_errors(), tuple()}.
+remove_policy_grant(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/policies/managed/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/removeGrant"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Revokes a specified subscription in Amazon DataZone.
 -spec revoke_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_subscription_input()) ->
     {ok, revoke_subscription_output(), tuple()} |
@@ -9626,6 +10449,40 @@ update_domain(Client, Identifier, Input0, Options0) ->
                      {<<"clientToken">>, <<"clientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the domain unit.
+-spec update_domain_unit(aws_client:aws_client(), binary() | list(), binary() | list(), update_domain_unit_input()) ->
+    {ok, update_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, update_domain_unit_errors(), tuple()}.
+update_domain_unit(Client, DomainIdentifier, Identifier, Input) ->
+    update_domain_unit(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_domain_unit(aws_client:aws_client(), binary() | list(), binary() | list(), update_domain_unit_input(), proplists:proplist()) ->
+    {ok, update_domain_unit_output(), tuple()} |
+    {error, any()} |
+    {error, update_domain_unit_errors(), tuple()}.
+update_domain_unit(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/domain-units/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified environment in Amazon DataZone.
