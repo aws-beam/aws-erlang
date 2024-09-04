@@ -2203,6 +2203,15 @@
 
 
 %% Example:
+%% replication_status_summary() :: #{
+%%   <<"Region">> => string(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"ReplicationStatusReason">> => string()
+%% }
+-type replication_status_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_proficiency_disassociate() :: #{
 %%   <<"AttributeName">> => string(),
 %%   <<"AttributeValue">> => string()
@@ -2952,6 +2961,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_configuration() :: #{
+%%   <<"GlobalSignInEndpoint">> => string(),
+%%   <<"ReplicationStatusSummaryList">> => list(replication_status_summary()()),
+%%   <<"SourceRegion">> => string()
+%% }
+-type replication_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4935,7 +4953,8 @@
 
 %% Example:
 %% describe_instance_response() :: #{
-%%   <<"Instance">> => instance()
+%%   <<"Instance">> => instance(),
+%%   <<"ReplicationConfiguration">> => replication_configuration()
 %% }
 -type describe_instance_response() :: #{binary() => any()}.
 

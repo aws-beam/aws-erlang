@@ -76,6 +76,8 @@
          deregister_targets/3,
          describe_account_limits/2,
          describe_account_limits/3,
+         describe_listener_attributes/2,
+         describe_listener_attributes/3,
          describe_listener_certificates/2,
          describe_listener_certificates/3,
          describe_listeners/2,
@@ -110,6 +112,8 @@
          get_trust_store_revocation_content/3,
          modify_listener/2,
          modify_listener/3,
+         modify_listener_attributes/2,
+         modify_listener_attributes/3,
          modify_load_balancer_attributes/2,
          modify_load_balancer_attributes/3,
          modify_rule/2,
@@ -139,6 +143,12 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% describe_listener_attributes_input() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type describe_listener_attributes_input() :: #{binary() => any()}.
 
 %% Example:
 %% target_health() :: #{
@@ -748,6 +758,12 @@
 -type delete_listener_input() :: #{binary() => any()}.
 
 %% Example:
+%% describe_listener_attributes_output() :: #{
+%%   <<"Attributes">> => list(listener_attribute()())
+%% }
+-type describe_listener_attributes_output() :: #{binary() => any()}.
+
+%% Example:
 %% load_balancer_state() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Reason">> => string()
@@ -1004,6 +1020,12 @@
 %%   <<"Type">> => list(any())
 %% }
 -type action() :: #{binary() => any()}.
+
+%% Example:
+%% modify_listener_attributes_output() :: #{
+%%   <<"Attributes">> => list(listener_attribute()())
+%% }
+-type modify_listener_attributes_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_trust_store_associations_output() :: #{
@@ -1460,6 +1482,13 @@
 -type modify_trust_store_output() :: #{binary() => any()}.
 
 %% Example:
+%% listener_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type listener_attribute() :: #{binary() => any()}.
+
+%% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1470,6 +1499,13 @@
 %%   <<"Message">> => string()
 %% }
 -type unsupported_protocol_exception() :: #{binary() => any()}.
+
+%% Example:
+%% modify_listener_attributes_input() :: #{
+%%   <<"Attributes">> := list(listener_attribute()()),
+%%   <<"ListenerArn">> := string()
+%% }
+-type modify_listener_attributes_input() :: #{binary() => any()}.
 
 %% Example:
 %% modify_target_group_input() :: #{
@@ -1631,6 +1667,9 @@
     target_group_not_found_exception() | 
     invalid_target_exception().
 
+-type describe_listener_attributes_errors() ::
+    listener_not_found_exception().
+
 -type describe_listener_certificates_errors() ::
     listener_not_found_exception().
 
@@ -1711,6 +1750,10 @@
     too_many_unique_target_groups_per_load_balancer_exception() | 
     certificate_not_found_exception() | 
     duplicate_listener_exception() | 
+    invalid_configuration_request_exception().
+
+-type modify_listener_attributes_errors() ::
+    listener_not_found_exception() | 
     invalid_configuration_request_exception().
 
 -type modify_load_balancer_attributes_errors() ::
@@ -2231,6 +2274,23 @@ describe_account_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountLimits">>, Input, Options).
 
+%% @doc Describes the attributes for the specified listener.
+-spec describe_listener_attributes(aws_client:aws_client(), describe_listener_attributes_input()) ->
+    {ok, describe_listener_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_listener_attributes_errors(), tuple()}.
+describe_listener_attributes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_listener_attributes(Client, Input, []).
+
+-spec describe_listener_attributes(aws_client:aws_client(), describe_listener_attributes_input(), proplists:proplist()) ->
+    {ok, describe_listener_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_listener_attributes_errors(), tuple()}.
+describe_listener_attributes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeListenerAttributes">>, Input, Options).
+
 %% @doc Describes the default certificate and the certificate list for the
 %% specified HTTPS or TLS
 %% listener.
@@ -2625,6 +2685,23 @@ modify_listener(Client, Input)
 modify_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyListener">>, Input, Options).
+
+%% @doc Modifies the specified attributes of the specified listener.
+-spec modify_listener_attributes(aws_client:aws_client(), modify_listener_attributes_input()) ->
+    {ok, modify_listener_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, modify_listener_attributes_errors(), tuple()}.
+modify_listener_attributes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_listener_attributes(Client, Input, []).
+
+-spec modify_listener_attributes(aws_client:aws_client(), modify_listener_attributes_input(), proplists:proplist()) ->
+    {ok, modify_listener_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, modify_listener_attributes_errors(), tuple()}.
+modify_listener_attributes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyListenerAttributes">>, Input, Options).
 
 %% @doc Modifies the specified attributes of the specified Application Load
 %% Balancer, Network Load

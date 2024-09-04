@@ -39,6 +39,9 @@
          describe_flow_source_metadata/2,
          describe_flow_source_metadata/4,
          describe_flow_source_metadata/5,
+         describe_flow_source_thumbnail/2,
+         describe_flow_source_thumbnail/4,
+         describe_flow_source_thumbnail/5,
          describe_gateway/2,
          describe_gateway/4,
          describe_gateway/5,
@@ -137,9 +140,17 @@
 %% Example:
 %% update_flow_request() :: #{
 %%   <<"Maintenance">> => update_maintenance(),
-%%   <<"SourceFailoverConfig">> => update_failover_config()
+%%   <<"SourceFailoverConfig">> => update_failover_config(),
+%%   <<"SourceMonitoringConfig">> => monitoring_config()
 %% }
 -type update_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_flow_source_thumbnail_response() :: #{
+%%   <<"ThumbnailDetails">> => thumbnail_details()
+%% }
+-type describe_flow_source_thumbnail_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -244,6 +255,7 @@
 %%   <<"Outputs">> => list(add_output_request()()),
 %%   <<"Source">> => set_source_request(),
 %%   <<"SourceFailoverConfig">> => failover_config(),
+%%   <<"SourceMonitoringConfig">> => monitoring_config(),
 %%   <<"Sources">> => list(set_source_request()()),
 %%   <<"VpcInterfaces">> => list(vpc_interface_request()())
 %% }
@@ -457,6 +469,17 @@
 %%   <<"Status">> => list(any())
 %% }
 -type listed_flow() :: #{binary() => any()}.
+
+
+%% Example:
+%% thumbnail_details() :: #{
+%%   <<"FlowArn">> => string(),
+%%   <<"Thumbnail">> => string(),
+%%   <<"ThumbnailMessages">> => list(message_detail()()),
+%%   <<"Timecode">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type thumbnail_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -798,6 +821,10 @@
 %%   <<"SubnetId">> => string()
 %% }
 -type vpc_interface() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flow_source_thumbnail_request() :: #{}
+-type describe_flow_source_thumbnail_request() :: #{}.
 
 
 %% Example:
@@ -1345,6 +1372,13 @@
 
 
 %% Example:
+%% monitoring_config() :: #{
+%%   <<"ThumbnailState">> => list(any())
+%% }
+-type monitoring_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_gateway_response() :: #{
 %%   <<"Gateway">> => gateway()
 %% }
@@ -1571,6 +1605,7 @@
 %%   <<"Outputs">> => list(output()()),
 %%   <<"Source">> => source(),
 %%   <<"SourceFailoverConfig">> => failover_config(),
+%%   <<"SourceMonitoringConfig">> => monitoring_config(),
 %%   <<"Sources">> => list(source()()),
 %%   <<"Status">> => list(any()),
 %%   <<"VpcInterfaces">> => list(vpc_interface()())
@@ -1932,6 +1967,14 @@
     forbidden_exception().
 
 -type describe_flow_source_metadata_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_flow_source_thumbnail_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     service_unavailable_exception() | 
@@ -2781,6 +2824,43 @@ describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap)
 describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source-metadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays the thumbnail details of a flow's source stream.
+-spec describe_flow_source_thumbnail(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_flow_source_thumbnail_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_source_thumbnail_errors(), tuple()}.
+describe_flow_source_thumbnail(Client, FlowArn)
+  when is_map(Client) ->
+    describe_flow_source_thumbnail(Client, FlowArn, #{}, #{}).
+
+-spec describe_flow_source_thumbnail(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_flow_source_thumbnail_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_source_thumbnail_errors(), tuple()}.
+describe_flow_source_thumbnail(Client, FlowArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_flow_source_thumbnail(Client, FlowArn, QueryMap, HeadersMap, []).
+
+-spec describe_flow_source_thumbnail(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_flow_source_thumbnail_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_source_thumbnail_errors(), tuple()}.
+describe_flow_source_thumbnail(Client, FlowArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source-thumbnail"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

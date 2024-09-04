@@ -10230,6 +10230,7 @@
 
 %% Example:
 %% user_settings() :: #{
+%%   <<"AutoMountHomeEFS">> => list(any()),
 %%   <<"CanvasAppSettings">> => canvas_app_settings(),
 %%   <<"CodeEditorAppSettings">> => code_editor_app_settings(),
 %%   <<"CustomFileSystemConfigs">> => list(list()()),

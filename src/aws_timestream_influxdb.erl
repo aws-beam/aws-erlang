@@ -314,7 +314,9 @@
 
 %% Example:
 %% update_db_instance_input() :: #{
+%%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"deploymentType">> => list(any()),
 %%   <<"identifier">> := string(),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration()
 %% }

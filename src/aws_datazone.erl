@@ -3354,6 +3354,14 @@
 
 
 %% Example:
+%% accepted_asset_scope() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"filterIds">> => list(string()())
+%% }
+-type accepted_asset_scope() :: #{binary() => any()}.
+
+
+%% Example:
 %% cancel_subscription_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -3707,6 +3715,7 @@
 
 %% Example:
 %% subscribed_asset_listing() :: #{
+%%   <<"assetScope">> => asset_scope(),
 %%   <<"entityId">> => string(),
 %%   <<"entityRevision">> => string(),
 %%   <<"entityType">> => string(),
@@ -4039,6 +4048,7 @@
 %% subscribed_asset() :: #{
 %%   <<"assetId">> => string(),
 %%   <<"assetRevision">> => string(),
+%%   <<"assetScope">> => asset_scope(),
 %%   <<"failureCause">> => failure_cause(),
 %%   <<"failureTimestamp">> => [non_neg_integer()],
 %%   <<"grantedTimestamp">> => [non_neg_integer()],
@@ -4175,6 +4185,16 @@
 %%   <<"message">> => [string()]
 %% }
 -type failure_cause() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_scope() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"errorMessage">> => [string()],
+%%   <<"filterIds">> => list(string()()),
+%%   <<"status">> => [string()]
+%% }
+-type asset_scope() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4460,6 +4480,7 @@
 
 %% Example:
 %% accept_subscription_request_input() :: #{
+%%   <<"assetScopes">> => list(accepted_asset_scope()()),
 %%   <<"decisionComment">> => string()
 %% }
 -type accept_subscription_request_input() :: #{binary() => any()}.

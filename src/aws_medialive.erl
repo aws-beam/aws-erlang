@@ -2400,6 +2400,7 @@
 %%   <<"TileWidth">> => integer(),
 %%   <<"AfdSignaling">> => list(any()),
 %%   <<"FramerateDenominator">> => integer(),
+%%   <<"MinQp">> => integer(),
 %%   <<"MvTemporalPredictor">> => list(any()),
 %%   <<"FilterSettings">> => h265_filter_settings()
 %% }
@@ -4664,6 +4665,7 @@
 %%   <<"MaxBitrate">> => integer(),
 %%   <<"AfdSignaling">> => list(any()),
 %%   <<"FramerateDenominator">> => integer(),
+%%   <<"MinQp">> => integer(),
 %%   <<"FilterSettings">> => h264_filter_settings()
 %% }
 -type h264_settings() :: #{binary() => any()}.
