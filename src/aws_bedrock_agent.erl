@@ -680,6 +680,14 @@
 
 
 %% Example:
+%% prompt_metadata_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type prompt_metadata_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_input_variable() :: #{
 %%   <<"name">> => string()
 %% }
@@ -2304,6 +2312,7 @@
 %% Example:
 %% prompt_variant() :: #{
 %%   <<"inferenceConfiguration">> => list(),
+%%   <<"metadata">> => list(prompt_metadata_entry()()),
 %%   <<"modelId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"templateConfiguration">> => list(),
@@ -2853,9 +2862,13 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
 %% For more information, see Advanced prompts:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html.
 %%
-%% If you agent fails to be created, the response returns a list of
+%% If your agent fails to be created, the response returns a list of
 %% `failureReasons' alongside a list of `recommendedActions' for you
 %% to troubleshoot.
+%%
+%% The agent instructions will not be honored if your agent has only one
+%% knowledge base, uses default prompts, has no action group, and user input
+%% is disabled.
 -spec create_agent(aws_client:aws_client(), create_agent_request()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |

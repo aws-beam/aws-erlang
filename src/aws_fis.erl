@@ -29,6 +29,9 @@
          get_experiment_template/2,
          get_experiment_template/4,
          get_experiment_template/5,
+         get_safety_lever/2,
+         get_safety_lever/4,
+         get_safety_lever/5,
          get_target_account_configuration/3,
          get_target_account_configuration/5,
          get_target_account_configuration/6,
@@ -69,6 +72,8 @@
          untag_resource/4,
          update_experiment_template/3,
          update_experiment_template/4,
+         update_safety_lever_state/3,
+         update_safety_lever_state/4,
          update_target_account_configuration/4,
          update_target_account_configuration/5]).
 
@@ -164,6 +169,10 @@
 %%   <<"selectionMode">> => string()
 %% }
 -type experiment_template_target() :: #{binary() => any()}.
+
+%% Example:
+%% get_safety_lever_request() :: #{}
+-type get_safety_lever_request() :: #{}.
 
 
 %% Example:
@@ -272,6 +281,13 @@
 %%   <<"roleArn">> => string()
 %% }
 -type update_target_account_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_safety_lever_state_response() :: #{
+%%   <<"safetyLever">> => safety_lever()
+%% }
+-type update_safety_lever_state_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -555,6 +571,13 @@
 
 
 %% Example:
+%% update_safety_lever_state_request() :: #{
+%%   <<"state">> := update_safety_lever_state_input()
+%% }
+-type update_safety_lever_state_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% action_target() :: #{
 %%   <<"resourceType">> => string()
 %% }
@@ -651,6 +674,13 @@
 
 
 %% Example:
+%% get_safety_lever_response() :: #{
+%%   <<"safetyLever">> => safety_lever()
+%% }
+-type get_safety_lever_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_experiment_template_response() :: #{
 %%   <<"experimentTemplate">> => experiment_template()
 %% }
@@ -732,6 +762,14 @@
 %%   <<"roleArn">> => string()
 %% }
 -type experiment_target_account_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_safety_lever_state_input() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_safety_lever_state_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -888,6 +926,15 @@
 
 
 %% Example:
+%% safety_lever() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"state">> => safety_lever_state()
+%% }
+-type safety_lever() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_experiment_template_stop_condition_input() :: #{
 %%   <<"source">> => string(),
 %%   <<"value">> => string()
@@ -907,6 +954,14 @@
 %%   <<"logGroupArn">> => string()
 %% }
 -type experiment_template_cloud_watch_logs_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% safety_lever_state() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type safety_lever_state() :: #{binary() => any()}.
 
 -type create_experiment_template_errors() ::
     validation_exception() | 
@@ -942,6 +997,9 @@
 
 -type get_experiment_template_errors() ::
     validation_exception() | 
+    resource_not_found_exception().
+
+-type get_safety_lever_errors() ::
     resource_not_found_exception().
 
 -type get_target_account_configuration_errors() ::
@@ -990,6 +1048,11 @@
     validation_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
+
+-type update_safety_lever_state_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_target_account_configuration_errors() ::
     validation_exception() | 
@@ -1298,6 +1361,44 @@ get_experiment_template(Client, Id, QueryMap, HeadersMap)
 get_experiment_template(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experimentTemplates/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc
+%% Gets information about the specified safety lever.
+-spec get_safety_lever(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_safety_lever_response(), tuple()} |
+    {error, any()} |
+    {error, get_safety_lever_errors(), tuple()}.
+get_safety_lever(Client, Id)
+  when is_map(Client) ->
+    get_safety_lever(Client, Id, #{}, #{}).
+
+-spec get_safety_lever(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_safety_lever_response(), tuple()} |
+    {error, any()} |
+    {error, get_safety_lever_errors(), tuple()}.
+get_safety_lever(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_safety_lever(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_safety_lever(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_safety_lever_response(), tuple()} |
+    {error, any()} |
+    {error, get_safety_lever_errors(), tuple()}.
+get_safety_lever(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/safetyLevers/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1864,6 +1965,41 @@ update_experiment_template(Client, Id, Input) ->
 update_experiment_template(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/experimentTemplates/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Updates the specified safety lever state.
+-spec update_safety_lever_state(aws_client:aws_client(), binary() | list(), update_safety_lever_state_request()) ->
+    {ok, update_safety_lever_state_response(), tuple()} |
+    {error, any()} |
+    {error, update_safety_lever_state_errors(), tuple()}.
+update_safety_lever_state(Client, Id, Input) ->
+    update_safety_lever_state(Client, Id, Input, []).
+
+-spec update_safety_lever_state(aws_client:aws_client(), binary() | list(), update_safety_lever_state_request(), proplists:proplist()) ->
+    {ok, update_safety_lever_state_response(), tuple()} |
+    {error, any()} |
+    {error, update_safety_lever_state_errors(), tuple()}.
+update_safety_lever_state(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/safetyLevers/", aws_util:encode_uri(Id), "/state"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

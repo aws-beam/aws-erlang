@@ -170,6 +170,9 @@
          list_access_points_for_object_lambda/2,
          list_access_points_for_object_lambda/4,
          list_access_points_for_object_lambda/5,
+         list_caller_access_grants/2,
+         list_caller_access_grants/4,
+         list_caller_access_grants/5,
          list_jobs/2,
          list_jobs/4,
          list_jobs/5,
@@ -385,7 +388,9 @@
 %%   <<"AccessGrantsInstanceArn">> => string(),
 %%   <<"AccessGrantsInstanceId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IdentityCenterArn">> => string()
+%%   <<"IdentityCenterApplicationArn">> => string(),
+%%   <<"IdentityCenterArn">> => string(),
+%%   <<"IdentityCenterInstanceArn">> => string()
 %% }
 -type create_access_grants_instance_result() :: #{binary() => any()}.
 
@@ -799,6 +804,14 @@
 
 
 %% Example:
+%% list_caller_access_grants_result() :: #{
+%%   <<"CallerAccessGrantsList">> => list(list_caller_access_grants_entry()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_caller_access_grants_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_access_grants_instance_resource_policy_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
@@ -946,7 +959,9 @@
 %%   <<"AccessGrantsInstanceArn">> => string(),
 %%   <<"AccessGrantsInstanceId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IdentityCenterArn">> => string()
+%%   <<"IdentityCenterApplicationArn">> => string(),
+%%   <<"IdentityCenterArn">> => string(),
+%%   <<"IdentityCenterInstanceArn">> => string()
 %% }
 -type get_access_grants_instance_result() :: #{binary() => any()}.
 
@@ -1473,7 +1488,9 @@
 %%   <<"AccessGrantsInstanceArn">> => string(),
 %%   <<"AccessGrantsInstanceId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IdentityCenterArn">> => string()
+%%   <<"IdentityCenterApplicationArn">> => string(),
+%%   <<"IdentityCenterArn">> => string(),
+%%   <<"IdentityCenterInstanceArn">> => string()
 %% }
 -type list_access_grants_instance_entry() :: #{binary() => any()}.
 
@@ -2280,6 +2297,17 @@
 
 
 %% Example:
+%% list_caller_access_grants_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"AllowedByApplication">> => boolean(),
+%%   <<"GrantScope">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_caller_access_grants_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_job_priority_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"Priority">> := integer()
@@ -2639,6 +2667,15 @@
 %%   <<"TotalNumberOfTasks">> => float()
 %% }
 -type job_progress_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_caller_access_grants_entry() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"GrantScope">> => string(),
+%%   <<"Permission">> => list(any())
+%% }
+-type list_caller_access_grants_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4735,6 +4772,10 @@ get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options
 %%
 %% You must have the `s3:GetAccessGrantsInstance' permission to use this
 %% operation.
+%%
+%% `GetAccessGrantsInstance' is not supported for cross-account access.
+%% You can only call the API from the account that owns the S3 Access Grants
+%% instance.
 -spec get_access_grants_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, get_access_grants_instance_result(), tuple()} |
     {error, any()}.
@@ -6682,6 +6723,58 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
 
     Query0_ =
       [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of the access grants that were given to the caller
+%% using S3 Access Grants and that allow the caller to access the S3 data of
+%% the Amazon Web Services account specified in the request.
+%%
+%% Permissions
+%%
+%% You must have the `s3:ListCallerAccessGrants' permission to use this
+%% operation.
+-spec list_caller_access_grants(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_caller_access_grants_result(), tuple()} |
+    {error, any()}.
+list_caller_access_grants(Client, AccountId)
+  when is_map(Client) ->
+    list_caller_access_grants(Client, AccountId, #{}, #{}).
+
+-spec list_caller_access_grants(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_caller_access_grants_result(), tuple()} |
+    {error, any()}.
+list_caller_access_grants(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_caller_access_grants(Client, AccountId, QueryMap, HeadersMap, []).
+
+-spec list_caller_access_grants(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_caller_access_grants_result(), tuple()} |
+    {error, any()}.
+list_caller_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance/caller/grants"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"allowedByApplication">>, maps:get(<<"allowedByApplication">>, QueryMap, undefined)},
+        {<<"grantscope">>, maps:get(<<"grantscope">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],

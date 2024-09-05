@@ -96,6 +96,8 @@
          delete_subscription_filter/3,
          describe_account_policies/2,
          describe_account_policies/3,
+         describe_configuration_templates/2,
+         describe_configuration_templates/3,
          describe_deliveries/2,
          describe_deliveries/3,
          describe_delivery_destinations/2,
@@ -196,6 +198,8 @@
          untag_resource/3,
          update_anomaly/2,
          update_anomaly/3,
+         update_delivery_configuration/2,
+         update_delivery_configuration/3,
          update_log_anomaly_detector/2,
          update_log_anomaly_detector/3]).
 
@@ -229,7 +233,10 @@
 %%   <<"deliveryDestinationArn">> => string(),
 %%   <<"deliveryDestinationType">> => list(any()),
 %%   <<"deliverySourceName">> => string(),
+%%   <<"fieldDelimiter">> => string(),
 %%   <<"id">> => string(),
+%%   <<"recordFields">> => list(string()()),
+%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration(),
 %%   <<"tags">> => map()
 %% }
 -type delivery() :: #{binary() => any()}.
@@ -529,6 +536,12 @@
 -type describe_account_policies_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_delivery_configuration_response() :: #{
+
+%% }
+-type update_delivery_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_anomaly_request() :: #{
 %%   <<"anomalyDetectorArn">> := string(),
 %%   <<"anomalyId">> => string(),
@@ -619,6 +632,21 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% configuration_template() :: #{
+%%   <<"allowedActionForAllowVendedLogsDeliveryForResource">> => string(),
+%%   <<"allowedFieldDelimiters">> => list(string()()),
+%%   <<"allowedFields">> => list(record_field()()),
+%%   <<"allowedOutputFormats">> => list(list(any())()),
+%%   <<"allowedSuffixPathFields">> => list(string()()),
+%%   <<"defaultDeliveryConfigValues">> => configuration_template_delivery_config_values(),
+%%   <<"deliveryDestinationType">> => list(any()),
+%%   <<"logType">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"service">> => string()
+%% }
+-type configuration_template() :: #{binary() => any()}.
+
+%% Example:
 %% describe_destinations_response() :: #{
 %%   <<"destinations">> => list(destination()()),
 %%   <<"nextToken">> => string()
@@ -704,6 +732,13 @@
 %%   <<"timestamp">> => float()
 %% }
 -type live_tail_session_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% s3_delivery_configuration() :: #{
+%%   <<"enableHiveCompatiblePath">> => boolean(),
+%%   <<"suffixPath">> => string()
+%% }
+-type s3_delivery_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_delivery_destination_request() :: #{
@@ -1045,6 +1080,15 @@
 %%   <<"policy">> => policy()
 %% }
 -type get_delivery_destination_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_delivery_configuration_request() :: #{
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"id">> := string(),
+%%   <<"recordFields">> => list(string()()),
+%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
+%% }
+-type update_delivery_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_log_group_fields_request() :: #{
@@ -1485,6 +1529,13 @@
 -type resource_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
+%% describe_configuration_templates_response() :: #{
+%%   <<"configurationTemplates">> => list(configuration_template()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_configuration_templates_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_subscription_filter_request() :: #{
 %%   <<"filterName">> := string(),
 %%   <<"logGroupName">> := string()
@@ -1532,9 +1583,19 @@
 %% create_delivery_request() :: #{
 %%   <<"deliveryDestinationArn">> := string(),
 %%   <<"deliverySourceName">> := string(),
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"recordFields">> => list(string()()),
+%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration(),
 %%   <<"tags">> => map()
 %% }
 -type create_delivery_request() :: #{binary() => any()}.
+
+%% Example:
+%% record_field() :: #{
+%%   <<"mandatory">> => boolean(),
+%%   <<"name">> => string()
+%% }
+-type record_field() :: #{binary() => any()}.
 
 %% Example:
 %% delete_log_group_request() :: #{
@@ -1560,6 +1621,14 @@
 -type query_info() :: #{binary() => any()}.
 
 %% Example:
+%% configuration_template_delivery_config_values() :: #{
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"recordFields">> => list(string()()),
+%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
+%% }
+-type configuration_template_delivery_config_values() :: #{binary() => any()}.
+
+%% Example:
 %% unrecognized_client_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1571,6 +1640,17 @@
 %%   <<"resourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_templates_request() :: #{
+%%   <<"deliveryDestinationTypes">> => list(list(any())()),
+%%   <<"limit">> => integer(),
+%%   <<"logTypes">> => list(string()()),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceTypes">> => list(string()()),
+%%   <<"service">> => string()
+%% }
+-type describe_configuration_templates_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_metric_filters_response() :: #{
@@ -1740,6 +1820,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type describe_configuration_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type describe_deliveries_errors() ::
     throttling_exception() | 
@@ -2021,6 +2107,14 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type update_delivery_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_log_anomaly_detector_errors() ::
     invalid_parameter_exception() | 
@@ -2742,6 +2836,28 @@ describe_account_policies(Client, Input)
 describe_account_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountPolicies">>, Input, Options).
+
+%% @doc Use this operation to return the valid and default values that are
+%% used when creating delivery sources, delivery destinations, and
+%% deliveries.
+%%
+%% For more information about deliveries, see CreateDelivery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CreateDelivery.html.
+-spec describe_configuration_templates(aws_client:aws_client(), describe_configuration_templates_request()) ->
+    {ok, describe_configuration_templates_response(), tuple()} |
+    {error, any()} |
+    {error, describe_configuration_templates_errors(), tuple()}.
+describe_configuration_templates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_configuration_templates(Client, Input, []).
+
+-spec describe_configuration_templates(aws_client:aws_client(), describe_configuration_templates_request(), proplists:proplist()) ->
+    {ok, describe_configuration_templates_response(), tuple()} |
+    {error, any()} |
+    {error, describe_configuration_templates_errors(), tuple()}.
+describe_configuration_templates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConfigurationTemplates">>, Input, Options).
 
 %% @doc Retrieves a list of the deliveries that have been created in the
 %% account.
@@ -4566,6 +4682,29 @@ update_anomaly(Client, Input)
 update_anomaly(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAnomaly">>, Input, Options).
+
+%% @doc Use this operation to update the configuration of a delivery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_Delivery.html
+%% to change either the
+%% S3 path pattern or the format of the delivered logs.
+%%
+%% You can't use this operation to change the
+%% source or destination of the delivery.
+-spec update_delivery_configuration(aws_client:aws_client(), update_delivery_configuration_request()) ->
+    {ok, update_delivery_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_delivery_configuration_errors(), tuple()}.
+update_delivery_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_delivery_configuration(Client, Input, []).
+
+-spec update_delivery_configuration(aws_client:aws_client(), update_delivery_configuration_request(), proplists:proplist()) ->
+    {ok, update_delivery_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_delivery_configuration_errors(), tuple()}.
+update_delivery_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDeliveryConfiguration">>, Input, Options).
 
 %% @doc Updates an existing log anomaly detector.
 -spec update_log_anomaly_detector(aws_client:aws_client(), update_log_anomaly_detector_request()) ->
