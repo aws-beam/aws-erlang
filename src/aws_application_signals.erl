@@ -229,7 +229,8 @@
 %%   <<"Description">> => string(),
 %%   <<"Goal">> => goal(),
 %%   <<"Name">> := string(),
-%%   <<"SliConfig">> := service_level_indicator_config(),
+%%   <<"RequestBasedSliConfig">> => request_based_service_level_indicator_config(),
+%%   <<"SliConfig">> => service_level_indicator_config(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_service_level_objective_input() :: #{binary() => any()}.
@@ -240,9 +241,11 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
+%%   <<"EvaluationType">> => list(any()),
 %%   <<"Goal">> => goal(),
 %%   <<"LastUpdatedTime">> => [non_neg_integer()],
 %%   <<"Name">> => string(),
+%%   <<"RequestBasedSli">> => request_based_service_level_indicator(),
 %%   <<"Sli">> => service_level_indicator()
 %% }
 -type service_level_objective() :: #{binary() => any()}.
@@ -282,6 +285,17 @@
 %%   <<"OperationName">> => string()
 %% }
 -type service_level_indicator_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_based_service_level_indicator_metric_config() :: #{
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricType">> => list(any()),
+%%   <<"MonitoredRequestCountMetric">> => list(),
+%%   <<"OperationName">> => string(),
+%%   <<"TotalRequestCountMetric">> => list(metric_data_query()())
+%% }
+-type request_based_service_level_indicator_metric_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -396,11 +410,15 @@
 %% service_level_objective_budget_report() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Attainment">> => float(),
+%%   <<"BudgetRequestsRemaining">> => integer(),
 %%   <<"BudgetSecondsRemaining">> => integer(),
 %%   <<"BudgetStatus">> => list(any()),
+%%   <<"EvaluationType">> => list(any()),
 %%   <<"Goal">> => goal(),
 %%   <<"Name">> => string(),
+%%   <<"RequestBasedSli">> => request_based_service_level_indicator(),
 %%   <<"Sli">> => service_level_indicator(),
+%%   <<"TotalBudgetRequests">> => integer(),
 %%   <<"TotalBudgetSeconds">> => integer()
 %% }
 -type service_level_objective_budget_report() :: #{binary() => any()}.
@@ -433,6 +451,15 @@
 
 
 %% Example:
+%% request_based_service_level_indicator() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"MetricThreshold">> => float(),
+%%   <<"RequestBasedSliMetric">> => request_based_service_level_indicator_metric()
+%% }
+-type request_based_service_level_indicator() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -462,6 +489,17 @@
 
 
 %% Example:
+%% request_based_service_level_indicator_metric() :: #{
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricType">> => list(any()),
+%%   <<"MonitoredRequestCountMetric">> => list(),
+%%   <<"OperationName">> => string(),
+%%   <<"TotalRequestCountMetric">> => list(metric_data_query()())
+%% }
+-type request_based_service_level_indicator_metric() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_service_operations_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"NextToken">> => string(),
@@ -475,6 +513,7 @@
 %% update_service_level_objective_input() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Goal">> => goal(),
+%%   <<"RequestBasedSliConfig">> => request_based_service_level_indicator_config(),
 %%   <<"SliConfig">> => service_level_indicator_config()
 %% }
 -type update_service_level_objective_input() :: #{binary() => any()}.
@@ -566,6 +605,15 @@
 %% }
 -type list_services_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% request_based_service_level_indicator_config() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"MetricThreshold">> => float(),
+%%   <<"RequestBasedSliMetricConfig">> => request_based_service_level_indicator_metric_config()
+%% }
+-type request_based_service_level_indicator_config() :: #{binary() => any()}.
+
 -type batch_get_service_level_objective_budget_report_errors() ::
     throttling_exception() | 
     validation_exception().
@@ -641,8 +689,8 @@
 %% @doc Use this operation to retrieve one or more service level objective
 %% (SLO) budget reports.
 %%
-%% An error budget is the amount of time in unhealthy periods that your
-%% service can
+%% An error budget is the amount of time or requests in an unhealthy state
+%% that your service can
 %% accumulate during an interval before your overall SLO budget health is
 %% breached and the SLO is considered to be
 %% unmet. For example, an SLO with a threshold of 99.95% and a monthly
@@ -704,25 +752,62 @@ batch_get_service_level_objective_budget_report(Client, Input0, Options0) ->
 %% latency. CloudWatch
 %% measures this target frequently you can find whether it has been breached.
 %%
-%% When you create an SLO, you set an attainment goal for it. An
-%% attainment goal is the
-%% ratio of good periods that meet the threshold requirements to the total
-%% periods within the interval.
-%% For example, an attainment goal of 99.9% means that within your interval,
-%% you are targeting 99.9% of the
-%% periods to be in healthy state.
+%% The target performance quality that is defined for an SLO is the
+%% attainment goal.
+%%
+%% You can set SLO targets for your applications that are discovered by
+%% Application Signals, using critical metrics such as latency and
+%% availability.
+%% You can also set SLOs against any CloudWatch metric or math expression
+%% that produces a time series.
+%%
+%% When you create an SLO, you specify whether it is a period-based SLO
+%% or a request-based SLO. Each type of SLO has a different way of evaluating
+%% your application's performance against its attainment goal.
+%%
+%% A period-based SLO uses defined periods of time within
+%% a specified total time interval. For each period of time, Application
+%% Signals determines whether the
+%% application met its goal. The attainment rate is calculated as the `number
+%% of good periods/number of total periods'.
+%%
+%% For example, for a period-based SLO, meeting an attainment goal of 99.9%
+%% means that within your interval, your application must meet its
+%% performance goal during at least 99.9% of the
+%% time periods.
+%%
+%% A request-based SLO doesn't use pre-defined periods of time. Instead,
+%% the SLO measures `number of good requests/number of total requests'
+%% during the interval. At any time, you can find the ratio of
+%% good requests to total requests for the interval up to the time stamp that
+%% you specify, and measure that ratio against the goal set in your SLO.
 %%
 %% After you have created an SLO, you can retrieve error budget reports for
 %% it.
-%% An error budget is the number of periods or amount of time that your
-%% service can
-%% accumulate during an interval before your overall SLO budget health is
-%% breached and the SLO is considered to be
-%% unmet. for example, an SLO with a threshold that 99.95% of requests must
-%% be completed under 2000ms every month
+%% An error budget is the amount of time or amount of requests that your
+%% application can be non-compliant
+%% with the SLO's goal, and still have your application meet the goal.
+%%
+%% For a period-based SLO, the error budget starts at a number defined by the
+%% highest number of periods that can fail to meet the threshold,
+%% while still meeting the overall goal. The remaining error budget decreases
+%% with every failed period
+%% that is recorded. The error budget within one interval can never increase.
+%%
+%% For example, an SLO with a threshold that 99.95% of requests must be
+%% completed under 2000ms every month
 %% translates to an error budget of 21.9 minutes of downtime per month.
 %%
-%% When you call this operation, Application Signals creates the
+%% For a request-based SLO, the remaining error budget is dynamic and can
+%% increase or decrease, depending on
+%% the ratio of good requests to total requests.
+%%
+%% For more information about SLOs, see
+%% Service level objectives (SLOs):
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-ServiceLevelObjectives.html.
+%%
+%% When you perform a `CreateServiceLevelObjective' operation,
+%% Application Signals creates the
 %% AWSServiceRoleForCloudWatchApplicationSignals service-linked role,
 %% if it doesn't already exist in your account. This service-
 %% linked role has the following permissions:
@@ -740,16 +825,6 @@ batch_get_service_level_objective_budget_report(Client, Input0, Options0) ->
 %% `tag:GetResources'
 %%
 %% `autoscaling:DescribeAutoScalingGroups'
-%%
-%% You can easily set SLO targets for your applications that are discovered
-%% by Application Signals, using critical metrics such as latency and
-%% availability.
-%% You can also set SLOs against any CloudWatch metric or math expression
-%% that produces a time series.
-%%
-%% For more information about SLOs, see
-%% Service level objectives (SLOs):
-%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-ServiceLevelObjectives.html.
 -spec create_service_level_objective(aws_client:aws_client(), create_service_level_objective_input()) ->
     {ok, create_service_level_objective_output(), tuple()} |
     {error, any()} |
@@ -1300,6 +1375,9 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% If you omit parameters, the previous values
 %% of those parameters are retained.
+%%
+%% You cannot change from a period-based SLO to a request-based SLO,
+%% or change from a request-based SLO to a period-based SLO.
 -spec update_service_level_objective(aws_client:aws_client(), binary() | list(), update_service_level_objective_input()) ->
     {ok, update_service_level_objective_output(), tuple()} |
     {error, any()} |

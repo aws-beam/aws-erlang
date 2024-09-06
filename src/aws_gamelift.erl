@@ -4008,8 +4008,12 @@ create_fleet(Client, Input, Options)
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% Multi-location fleets:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+%% Update fleet locations:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-editing.html#fleets-update-locations
+%%
+%% Amazon GameLift service locations:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
+%% for managed hosting.
 -spec create_fleet_locations(aws_client:aws_client(), create_fleet_locations_input()) ->
     {ok, create_fleet_locations_output(), tuple()} |
     {error, any()} |
@@ -5589,6 +5593,10 @@ describe_fleet_events(Client, Input, Options)
 %% Setting
 %% up Amazon GameLift fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+%%
+%% Amazon GameLift service locations:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
+%% for managed hosting
 -spec describe_fleet_location_attributes(aws_client:aws_client(), describe_fleet_location_attributes_input()) ->
     {ok, describe_fleet_location_attributes_output(), tuple()} |
     {error, any()} |
@@ -5631,6 +5639,10 @@ describe_fleet_location_attributes(Client, Input, Options)
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
+%% Amazon GameLift service locations:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
+%% for managed hosting
+%%
 %% GameLift metrics for fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
 -spec describe_fleet_location_capacity(aws_client:aws_client(), describe_fleet_location_capacity_input()) ->
@@ -5670,6 +5682,10 @@ describe_fleet_location_capacity(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+%%
+%% Amazon GameLift service locations:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
+%% for managed hosting
 %%
 %% GameLift metrics for fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
@@ -6538,9 +6554,6 @@ describe_vpc_peering_connections(Client, Input, Options)
 %% Debug fleet
 %% issues:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html
-%%
-%% Remotely connect to a container fleet:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-remote-access.html
 -spec get_compute_access(aws_client:aws_client(), get_compute_access_input()) ->
     {ok, get_compute_access_output(), tuple()} |
     {error, any()} |

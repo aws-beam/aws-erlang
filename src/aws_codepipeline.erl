@@ -2708,6 +2708,8 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% The output lists all webhooks and includes the webhook URL and ARN and the
 %% configuration for each webhook.
+%%
+%% If a secret token was provided, it will be redacted in the response.
 -spec list_webhooks(aws_client:aws_client(), list_webhooks_input()) ->
     {ok, list_webhooks_output(), tuple()} |
     {error, any()} |
@@ -2934,6 +2936,20 @@ put_third_party_job_success_result(Client, Input, Options)
 %% automatically configure supported third parties to call the generated
 %% webhook
 %% URL.
+%%
+%% When creating CodePipeline webhooks, do not use your own credentials or
+%% reuse the same secret token across multiple webhooks. For optimal
+%% security, generate
+%% a unique secret token for each webhook you create. The secret token is an
+%% arbitrary
+%% string that you provide, which GitHub uses to compute and sign the webhook
+%% payloads
+%% sent to CodePipeline, for protecting the integrity and authenticity of the
+%% webhook payloads. Using your own credentials or reusing the same token
+%% across
+%% multiple webhooks can lead to security vulnerabilities.
+%%
+%% If a secret token was provided, it will be redacted in the response.
 -spec put_webhook(aws_client:aws_client(), put_webhook_input()) ->
     {ok, put_webhook_output(), tuple()} |
     {error, any()} |
