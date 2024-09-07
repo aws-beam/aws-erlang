@@ -7,14 +7,25 @@
 %% tasks from
 %% within their web experience.
 %%
-%% For example, users can create an Q Appthat exclusively
+%% For example, users can create a Q App that exclusively
 %% generates marketing-related content to improve your marketing team's
 %% productivity or a
-%% Q App for marketing content-generation like writing customer emails and
-%% creating
-%% promotional content using a certain style of voice, tone, and branding.
-%% For more information, see Amazon Q App:
-%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/purpose-built-qapps.html
+%% Q App for writing customer emails and creating promotional content using a
+%% certain
+%% style of voice, tone, and branding. For more information on the
+%% capabilities, see
+%% Amazon Q Apps capabilities:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/deploy-experience-iam-role.html#q-apps-actions
+%% in the Amazon Q Business User Guide.
+%%
+%% For an overview of the Amazon Q App APIs, see Overview of
+%% Amazon Q Apps API operations:
+%% https://docs.aws.amazon.com/amazonq/latest/api-reference/API_Operations_QApps.html.
+%%
+%% For information about the IAM access control permissions you need to
+%% use the Amazon Q Apps API, see
+%% IAM role for the Amazon Q Business web experience including Amazon Q Apps:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/deploy-experience-iam-role.html
 %% in the
 %% Amazon Q Business User Guide.
 -module(aws_qapps).
@@ -67,6 +78,8 @@
          untag_resource/4,
          update_library_item/2,
          update_library_item/3,
+         update_library_item_metadata/2,
+         update_library_item_metadata/3,
          update_q_app/2,
          update_q_app/3,
          update_q_app_session/2,
@@ -87,12 +100,22 @@
 
 
 %% Example:
+%% update_library_item_metadata_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"isVerified">> => [boolean()],
+%%   <<"libraryItemId">> := string()
+%% }
+-type update_library_item_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_app_item() :: #{
 %%   <<"appArn">> => string(),
 %%   <<"appId">> => string(),
 %%   <<"canEdit">> => [boolean()],
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"isVerified">> => [boolean()],
 %%   <<"status">> => [string()],
 %%   <<"title">> => string()
 %% }
@@ -103,6 +126,7 @@
 %% create_library_item_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => [string()],
+%%   <<"isVerified">> => [boolean()],
 %%   <<"libraryItemId">> => string(),
 %%   <<"ratingCount">> => [integer()],
 %%   <<"status">> => [string()],
@@ -189,6 +213,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => [string()],
 %%   <<"isRatedByUser">> => [boolean()],
+%%   <<"isVerified">> => [boolean()],
 %%   <<"libraryItemId">> => string(),
 %%   <<"ratingCount">> => [integer()],
 %%   <<"status">> => [string()],
@@ -271,6 +296,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => [string()],
 %%   <<"isRatedByUser">> => [boolean()],
+%%   <<"isVerified">> => [boolean()],
 %%   <<"libraryItemId">> => string(),
 %%   <<"ratingCount">> => [integer()],
 %%   <<"status">> => [string()],
@@ -336,6 +362,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => [string()],
 %%   <<"isRatedByUser">> => [boolean()],
+%%   <<"isVerified">> => [boolean()],
 %%   <<"libraryItemId">> => string(),
 %%   <<"ratingCount">> => [integer()],
 %%   <<"status">> => [string()],
@@ -746,6 +773,7 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     unauthorized_exception().
 
 -type associate_q_app_with_user_errors() ::
@@ -800,6 +828,7 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     unauthorized_exception().
 
 -type disassociate_q_app_from_user_errors() ::
@@ -913,6 +942,16 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
+-type update_library_item_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     unauthorized_exception().
 
 -type update_q_app_errors() ::
@@ -1761,8 +1800,7 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the metadata and status of a library item for an Amazon Q
-%% App.
+%% @doc Updates the library item for an Amazon Q App.
 -spec update_library_item(aws_client:aws_client(), update_library_item_input()) ->
     {ok, update_library_item_output(), tuple()} |
     {error, any()} |
@@ -1777,6 +1815,43 @@ update_library_item(Client, Input) ->
 update_library_item(Client, Input0, Options0) ->
     Method = post,
     Path = ["/catalog.updateItem"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"instance-id">>, <<"instanceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the verification status of a library item for an Amazon Q
+%% App.
+-spec update_library_item_metadata(aws_client:aws_client(), update_library_item_metadata_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_library_item_metadata_errors(), tuple()}.
+update_library_item_metadata(Client, Input) ->
+    update_library_item_metadata(Client, Input, []).
+
+-spec update_library_item_metadata(aws_client:aws_client(), update_library_item_metadata_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_library_item_metadata_errors(), tuple()}.
+update_library_item_metadata(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/catalog.updateItemMetadata"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
