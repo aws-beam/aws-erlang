@@ -67,6 +67,7 @@
 %%   <<"EnableExplanations">> => string(),
 %%   <<"InferenceComponentName">> => string(),
 %%   <<"InferenceId">> => string(),
+%%   <<"SessionId">> => string(),
 %%   <<"TargetContainerHostname">> => string(),
 %%   <<"TargetModel">> => string(),
 %%   <<"TargetVariant">> => string()
@@ -77,9 +78,11 @@
 %% Example:
 %% invoke_endpoint_output() :: #{
 %%   <<"Body">> => binary(),
+%%   <<"ClosedSessionId">> => string(),
 %%   <<"ContentType">> => string(),
 %%   <<"CustomAttributes">> => string(),
-%%   <<"InvokedProductionVariant">> => string()
+%%   <<"InvokedProductionVariant">> => string(),
+%%   <<"NewSessionId">> => string()
 %% }
 -type invoke_endpoint_output() :: #{binary() => any()}.
 
@@ -92,6 +95,7 @@
 %%   <<"CustomAttributes">> => string(),
 %%   <<"InferenceComponentName">> => string(),
 %%   <<"InferenceId">> => string(),
+%%   <<"SessionId">> => string(),
 %%   <<"TargetContainerHostname">> => string(),
 %%   <<"TargetVariant">> => string()
 %% }
@@ -242,6 +246,7 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
                        {<<"X-Amzn-SageMaker-Enable-Explanations">>, <<"EnableExplanations">>},
                        {<<"X-Amzn-SageMaker-Inference-Component">>, <<"InferenceComponentName">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
+                       {<<"X-Amzn-SageMaker-Session-Id">>, <<"SessionId">>},
                        {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
                        {<<"X-Amzn-SageMaker-Target-Model">>, <<"TargetModel">>},
                        {<<"X-Amzn-SageMaker-Target-Variant">>, <<"TargetVariant">>}
@@ -258,9 +263,11 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"X-Amzn-SageMaker-Closed-Session-Id">>, <<"ClosedSessionId">>},
             {<<"Content-Type">>, <<"ContentType">>},
             {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
-            {<<"x-Amzn-Invoked-Production-Variant">>, <<"InvokedProductionVariant">>}
+            {<<"x-Amzn-Invoked-Production-Variant">>, <<"InvokedProductionVariant">>},
+            {<<"X-Amzn-SageMaker-New-Session-Id">>, <<"NewSessionId">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -429,6 +436,7 @@ invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
                        {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
                        {<<"X-Amzn-SageMaker-Inference-Component">>, <<"InferenceComponentName">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
+                       {<<"X-Amzn-SageMaker-Session-Id">>, <<"SessionId">>},
                        {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
                        {<<"X-Amzn-SageMaker-Target-Variant">>, <<"TargetVariant">>}
                      ],

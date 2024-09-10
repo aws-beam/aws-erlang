@@ -29,7 +29,7 @@
 %% Composition process — Composites participants
 %% of a stage into a single video and forwards it to a set of outputs (e.g.,
 %% IVS channels).
-%% Composition endpoints support this process.
+%% Composition operations support this process.
 %%
 %% Composition — Controls the look of the outputs,
 %% including how participants are positioned in the video.
@@ -44,11 +44,11 @@
 %% comprises a key and a value, both set by you. For
 %% example, you might set a tag as `topic:nature' to label a particular
 %% video
-%% category. See Tagging AWS Resources:
-%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for more
-%% information, including restrictions that apply to
-%% tags and &quot;Tag naming limits and requirements&quot;; Amazon IVS stages
-%% has no service-specific
+%% category. See Best practices and strategies:
+%% https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html
+%% in Tagging AWS Resources and Tag Editor for details, including
+%% restrictions that apply to tags and &quot;Tag naming
+%% limits and requirements&quot;; Amazon IVS stages has no service-specific
 %% constraints beyond what is documented there.
 %%
 %% Tags can help you identify and organize your AWS resources. For example,
@@ -58,7 +58,7 @@
 %% manage access (see Access Tags:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 %%
-%% The Amazon IVS real-time API has these tag-related endpoints:
+%% The Amazon IVS real-time API has these tag-related operations:
 %% `TagResource', `UntagResource', and
 %% `ListTagsForResource'. The following resource supports tagging: Stage.
 %%
@@ -67,6 +67,8 @@
 
 -export([create_encoder_configuration/2,
          create_encoder_configuration/3,
+         create_ingest_configuration/2,
+         create_ingest_configuration/3,
          create_participant_token/2,
          create_participant_token/3,
          create_stage/2,
@@ -75,6 +77,8 @@
          create_storage_configuration/3,
          delete_encoder_configuration/2,
          delete_encoder_configuration/3,
+         delete_ingest_configuration/2,
+         delete_ingest_configuration/3,
          delete_public_key/2,
          delete_public_key/3,
          delete_stage/2,
@@ -87,6 +91,8 @@
          get_composition/3,
          get_encoder_configuration/2,
          get_encoder_configuration/3,
+         get_ingest_configuration/2,
+         get_ingest_configuration/3,
          get_participant/2,
          get_participant/3,
          get_public_key/2,
@@ -103,6 +109,8 @@
          list_compositions/3,
          list_encoder_configurations/2,
          list_encoder_configurations/3,
+         list_ingest_configurations/2,
+         list_ingest_configurations/3,
          list_participant_events/2,
          list_participant_events/3,
          list_participants/2,
@@ -126,6 +134,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_ingest_configuration/2,
+         update_ingest_configuration/3,
          update_stage/2,
          update_stage/3]).
 
@@ -150,6 +160,22 @@
 %%   <<"name">> => string()
 %% }
 -type update_stage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"attributes">> => map(),
+%%   <<"ingestProtocol">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"participantId">> => string(),
+%%   <<"stageArn">> => string(),
+%%   <<"state">> => string(),
+%%   <<"streamKey">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"userId">> => string()
+%% }
+-type ingest_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -232,6 +258,7 @@
 %%   <<"osName">> => string(),
 %%   <<"osVersion">> => string(),
 %%   <<"participantId">> => string(),
+%%   <<"protocol">> => list(any()),
 %%   <<"published">> => boolean(),
 %%   <<"recordingS3BucketName">> => string(),
 %%   <<"recordingS3Prefix">> => string(),
@@ -241,6 +268,13 @@
 %%   <<"userId">> => string()
 %% }
 -type participant() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingest_configuration_response() :: #{
+%%   <<"ingestConfiguration">> => ingest_configuration()
+%% }
+-type create_ingest_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -255,6 +289,19 @@
 %%   <<"arn">> := string()
 %% }
 -type stop_composition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingest_configuration_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"ingestProtocol">> := list(any()),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"stageArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"userId">> => string()
+%% }
+-type create_ingest_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -308,6 +355,13 @@
 
 
 %% Example:
+%% get_ingest_configuration_response() :: #{
+%%   <<"ingestConfiguration">> => ingest_configuration()
+%% }
+-type get_ingest_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_compositions_request() :: #{
 %%   <<"filterByEncoderConfigurationArn">> => string(),
 %%   <<"filterByStageArn">> => string(),
@@ -328,6 +382,14 @@
 %% }
 -type participant_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_ingest_configurations_response() :: #{
+%%   <<"ingestConfigurations">> => list(ingest_configuration_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ingest_configurations_response() :: #{binary() => any()}.
+
 %% Example:
 %% disconnect_participant_response() :: #{}
 -type disconnect_participant_response() :: #{}.
@@ -336,6 +398,8 @@
 %% Example:
 %% stage_endpoints() :: #{
 %%   <<"events">> => string(),
+%%   <<"rtmp">> => string(),
+%%   <<"rtmps">> => string(),
 %%   <<"whip">> => string()
 %% }
 -type stage_endpoints() :: #{binary() => any()}.
@@ -371,6 +435,14 @@
 %%   <<"userId">> => string()
 %% }
 -type participant_token_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ingest_configuration_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"stageArn">> => string()
+%% }
+-type update_ingest_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -506,11 +578,29 @@
 
 
 %% Example:
+%% delete_ingest_configuration_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"force">> => boolean()
+%% }
+-type delete_ingest_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_participants_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"participants">> => list(participant_summary()())
 %% }
 -type list_participants_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingest_configurations_request() :: #{
+%%   <<"filterByStageArn">> => string(),
+%%   <<"filterByState">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ingest_configurations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -655,6 +745,13 @@
 
 
 %% Example:
+%% update_ingest_configuration_response() :: #{
+%%   <<"ingestConfiguration">> => ingest_configuration()
+%% }
+-type update_ingest_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% stage_session_summary() :: #{
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"sessionId">> => string(),
@@ -710,6 +807,19 @@
 %% }
 -type import_public_key_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% ingest_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"ingestProtocol">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"participantId">> => string(),
+%%   <<"stageArn">> => string(),
+%%   <<"state">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type ingest_configuration_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_public_key_response() :: #{}
 -type delete_public_key_response() :: #{}.
@@ -725,7 +835,7 @@
 
 %% Example:
 %% event() :: #{
-%%   <<"errorCode">> => string(),
+%%   <<"errorCode">> => list(any()),
 %%   <<"eventTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"participantId">> => string(),
@@ -800,6 +910,13 @@
 %%   <<"videoFillMode">> => list(any())
 %% }
 -type grid_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ingest_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_ingest_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -971,6 +1088,10 @@
 %% }
 -type list_participant_events_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_ingest_configuration_response() :: #{}
+-type delete_ingest_configuration_response() :: #{}.
+
 -type create_encoder_configuration_errors() ::
     pending_verification() | 
     validation_exception() | 
@@ -979,6 +1100,12 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type create_ingest_configuration_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception().
 
 -type create_participant_token_errors() ::
     pending_verification() | 
@@ -1007,6 +1134,13 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_ingest_configuration_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1053,6 +1187,11 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type get_ingest_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type get_participant_errors() ::
     validation_exception() | 
@@ -1102,6 +1241,10 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception().
+
+-type list_ingest_configurations_errors() ::
+    validation_exception() | 
+    access_denied_exception().
 
 -type list_participant_events_errors() ::
     validation_exception() | 
@@ -1163,6 +1306,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type update_ingest_configuration_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_stage_errors() ::
     pending_verification() | 
     validation_exception() | 
@@ -1190,6 +1340,41 @@ create_encoder_configuration(Client, Input) ->
 create_encoder_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateEncoderConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new IngestConfiguration resource, used to specify the
+%% ingest protocol for a stage.
+-spec create_ingest_configuration(aws_client:aws_client(), create_ingest_configuration_request()) ->
+    {ok, create_ingest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_ingest_configuration_errors(), tuple()}.
+create_ingest_configuration(Client, Input) ->
+    create_ingest_configuration(Client, Input, []).
+
+-spec create_ingest_configuration(aws_client:aws_client(), create_ingest_configuration_request(), proplists:proplist()) ->
+    {ok, create_ingest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_ingest_configuration_errors(), tuple()}.
+create_ingest_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateIngestConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1362,6 +1547,44 @@ delete_encoder_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a specified IngestConfiguration, so it can no longer be used
+%% to broadcast.
+%%
+%% An IngestConfiguration cannot be deleted if the publisher is actively
+%% streaming to a stage, unless `force' is set to `true'.
+-spec delete_ingest_configuration(aws_client:aws_client(), delete_ingest_configuration_request()) ->
+    {ok, delete_ingest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_ingest_configuration_errors(), tuple()}.
+delete_ingest_configuration(Client, Input) ->
+    delete_ingest_configuration(Client, Input, []).
+
+-spec delete_ingest_configuration(aws_client:aws_client(), delete_ingest_configuration_request(), proplists:proplist()) ->
+    {ok, delete_ingest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_ingest_configuration_errors(), tuple()}.
+delete_ingest_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteIngestConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified public key used to sign stage participant
 %% tokens.
 %%
@@ -1402,6 +1625,11 @@ delete_public_key(Client, Input0, Options0) ->
 
 %% @doc Shuts down and deletes the specified stage (disconnecting all
 %% participants).
+%%
+%% This operation also
+%% removes the `stageArn' from the associated `IngestConfiguration',
+%% if there are participants
+%% using the IngestConfiguration to publish to the stage.
 -spec delete_stage(aws_client:aws_client(), delete_stage_request()) ->
     {ok, delete_stage_response(), tuple()} |
     {error, any()} |
@@ -1476,9 +1704,12 @@ delete_storage_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disconnects a specified participant and revokes the participant
-%% permanently from a
-%% specified stage.
+%% @doc Disconnects a specified participant from a specified stage.
+%%
+%% If the participant is publishing using
+%% an `IngestConfiguration', DisconnectParticipant also updates the
+%% `stageArn'
+%% in the IngestConfiguration to be an empty string.
 -spec disconnect_participant(aws_client:aws_client(), disconnect_participant_request()) ->
     {ok, disconnect_participant_response(), tuple()} |
     {error, any()} |
@@ -1561,6 +1792,40 @@ get_encoder_configuration(Client, Input) ->
 get_encoder_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetEncoderConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets information about the specified IngestConfiguration.
+-spec get_ingest_configuration(aws_client:aws_client(), get_ingest_configuration_request()) ->
+    {ok, get_ingest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_ingest_configuration_errors(), tuple()}.
+get_ingest_configuration(Client, Input) ->
+    get_ingest_configuration(Client, Input, []).
+
+-spec get_ingest_configuration(aws_client:aws_client(), get_ingest_configuration_request(), proplists:proplist()) ->
+    {ok, get_ingest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_ingest_configuration_errors(), tuple()}.
+get_ingest_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetIngestConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1856,6 +2121,41 @@ list_encoder_configurations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all IngestConfigurations in your account, in the AWS region
+%% where the API request is processed.
+-spec list_ingest_configurations(aws_client:aws_client(), list_ingest_configurations_request()) ->
+    {ok, list_ingest_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingest_configurations_errors(), tuple()}.
+list_ingest_configurations(Client, Input) ->
+    list_ingest_configurations(Client, Input, []).
+
+-spec list_ingest_configurations(aws_client:aws_client(), list_ingest_configurations_request(), proplists:proplist()) ->
+    {ok, list_ingest_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingest_configurations_errors(), tuple()}.
+list_ingest_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListIngestConfigurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists events for a specified participant that occurred during a
 %% specified stage
 %% session.
@@ -2108,7 +2408,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% in the
 %% request.
 %%
-%% A Composition is an ephemeral resource that exists after this endpoint
+%% A Composition is an ephemeral resource that exists after this operation
 %% returns
 %% successfully. Composition stops and the resource is deleted:
 %%
@@ -2261,6 +2561,43 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a specified IngestConfiguration.
+%%
+%% Only the stage ARN attached to the IngestConfiguration can be updated. An
+%% IngestConfiguration that is active cannot be updated.
+-spec update_ingest_configuration(aws_client:aws_client(), update_ingest_configuration_request()) ->
+    {ok, update_ingest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_ingest_configuration_errors(), tuple()}.
+update_ingest_configuration(Client, Input) ->
+    update_ingest_configuration(Client, Input, []).
+
+-spec update_ingest_configuration(aws_client:aws_client(), update_ingest_configuration_request(), proplists:proplist()) ->
+    {ok, update_ingest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_ingest_configuration_errors(), tuple()}.
+update_ingest_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateIngestConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a stage’s configuration.

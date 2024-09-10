@@ -761,6 +761,7 @@
 %%   <<"CopyTopicConfigurations">> => boolean(),
 %%   <<"DetectAndCopyNewTopics">> => boolean(),
 %%   <<"StartingPosition">> => replication_starting_position(),
+%%   <<"TopicNameConfiguration">> => replication_topic_name_configuration(),
 %%   <<"TopicsToExclude">> => list(string()()),
 %%   <<"TopicsToReplicate">> => list(string()())
 %% }
@@ -1091,6 +1092,13 @@
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_topic_name_configuration() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type replication_topic_name_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2936,6 +2944,12 @@ describe_vpc_connection(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of brokers that a client application can use to bootstrap.
+%%
+%% This list doesn't necessarily include all of the brokers in the
+%% cluster. The following Python 3.6 example shows how you can use the Amazon
+%% Resource Name (ARN) of a cluster to get its bootstrap brokers. If you
+%% don't know the ARN of your cluster, you can use the `ListClusters'
+%% operation to get the ARNs of all the clusters in this account and Region.
 -spec get_bootstrap_brokers(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bootstrap_brokers_response(), tuple()} |
     {error, any()} |

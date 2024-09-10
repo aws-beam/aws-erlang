@@ -1667,6 +1667,8 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"FailureMessage">> => string(),
 %%   <<"InstanceGroups">> => list(cluster_instance_group_details()()),
+%%   <<"NodeRecovery">> => list(any()),
+%%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type describe_cluster_response() :: #{binary() => any()}.
@@ -3481,6 +3483,12 @@
 -type space_details() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_orchestrator() :: #{
+%%   <<"Eks">> => cluster_orchestrator_eks_config()
+%% }
+-type cluster_orchestrator() :: #{binary() => any()}.
+
+%% Example:
 %% describe_feature_metadata_request() :: #{
 %%   <<"FeatureGroupName">> := string(),
 %%   <<"FeatureName">> := string()
@@ -3808,7 +3816,8 @@
 %% Example:
 %% update_cluster_request() :: #{
 %%   <<"ClusterName">> := string(),
-%%   <<"InstanceGroups">> := list(cluster_instance_group_specification()())
+%%   <<"InstanceGroups">> := list(cluster_instance_group_specification()()),
+%%   <<"NodeRecovery">> => list(any())
 %% }
 -type update_cluster_request() :: #{binary() => any()}.
 
@@ -4843,6 +4852,8 @@
 %% create_cluster_request() :: #{
 %%   <<"ClusterName">> := string(),
 %%   <<"InstanceGroups">> := list(cluster_instance_group_specification()()),
+%%   <<"NodeRecovery">> => list(any()),
+%%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -5657,6 +5668,12 @@
 %%   <<"SortOrder">> => list(any())
 %% }
 -type list_code_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_orchestrator_eks_config() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type cluster_orchestrator_eks_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_images_request() :: #{
@@ -9881,6 +9898,7 @@
 %%   <<"InstanceStorageConfigs">> => list(list()()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type cluster_instance_group_specification() :: #{binary() => any()}.
@@ -11282,6 +11300,7 @@
 %%   <<"InstanceStorageConfigs">> => list(list()()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"TargetCount">> => integer(),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
