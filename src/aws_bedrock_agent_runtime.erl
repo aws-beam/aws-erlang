@@ -1316,7 +1316,9 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Queries a knowledge base and generates responses based on the
-%% retrieved results.
+%% retrieved results and using the specified foundation model or inference
+%% profile:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html.
 %%
 %% The response only cites sources that are relevant to the query.
 -spec retrieve_and_generate(aws_client:aws_client(), retrieve_and_generate_request()) ->

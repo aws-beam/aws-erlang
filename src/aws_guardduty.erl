@@ -466,7 +466,10 @@
 %% Example:
 %% get_findings_statistics_request() :: #{
 %%   <<"FindingCriteria">> => finding_criteria(),
-%%   <<"FindingStatisticTypes">> := list(list(any())())
+%%   <<"FindingStatisticTypes">> => list(list(any())()),
+%%   <<"GroupBy">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"OrderBy">> => list(any())
 %% }
 -type get_findings_statistics_request() :: #{binary() => any()}.
 
@@ -854,7 +857,8 @@
 
 %% Example:
 %% get_findings_statistics_response() :: #{
-%%   <<"FindingStatistics">> => finding_statistics()
+%%   <<"FindingStatistics">> => finding_statistics(),
+%%   <<"NextToken">> => string()
 %% }
 -type get_findings_statistics_response() :: #{binary() => any()}.
 
@@ -1037,6 +1041,15 @@
 %%   <<"Status">> => list(any())
 %% }
 -type detector_feature_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_statistics() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type account_statistics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1820,6 +1833,17 @@
 
 
 %% Example:
+%% resource_statistics() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type resource_statistics() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_sample_findings_request() :: #{
 %%   <<"FindingTypes">> => list(string()())
 %% }
@@ -1869,6 +1893,15 @@
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type get_member_detectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_type_statistics() :: #{
+%%   <<"FindingType">> => string(),
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type finding_type_statistics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2259,6 +2292,15 @@
 
 
 %% Example:
+%% severity_statistics() :: #{
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"Severity">> => float(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type severity_statistics() :: #{binary() => any()}.
+
+
+%% Example:
 %% anomaly_unusual() :: #{
 %%   <<"Behavior">> => map()
 %% }
@@ -2606,7 +2648,12 @@
 
 %% Example:
 %% finding_statistics() :: #{
-%%   <<"CountBySeverity">> => map()
+%%   <<"CountBySeverity">> => map(),
+%%   <<"GroupedByAccount">> => list(account_statistics()()),
+%%   <<"GroupedByDate">> => list(date_statistics()()),
+%%   <<"GroupedByFindingType">> => list(finding_type_statistics()()),
+%%   <<"GroupedByResource">> => list(resource_statistics()()),
+%%   <<"GroupedBySeverity">> => list(severity_statistics()())
 %% }
 -type finding_statistics() :: #{binary() => any()}.
 
@@ -2891,6 +2938,16 @@
 %%   <<"KmsMasterKeyArn">> => string()
 %% }
 -type default_server_side_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_statistics() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"Severity">> => float(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type date_statistics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3766,10 +3823,11 @@ create_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a publishing destination to export findings to.
+%% @doc Creates a publishing destination where you can export your GuardDuty
+%% findings.
 %%
-%% The resource to export findings to
-%% must exist before you use this operation.
+%% Before you start exporting the
+%% findings, the destination resource must exist.
 -spec create_publishing_destination(aws_client:aws_client(), binary() | list(), create_publishing_destination_request()) ->
     {ok, create_publishing_destination_response(), tuple()} |
     {error, any()} |
@@ -4687,7 +4745,7 @@ get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves an Amazon GuardDuty detector specified by the detectorId.
+%% @doc Retrieves a GuardDuty detector specified by the detectorId.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
@@ -4801,8 +4859,12 @@ get_findings(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists Amazon GuardDuty findings statistics for the specified detector
-%% ID.
+%% @doc Lists GuardDuty findings statistics for the specified detector ID.
+%%
+%% You must provide either `findingStatisticTypes' or
+%% `groupBy' parameter, and not both. You can use the `maxResults'
+%% and `orderBy'
+%% parameters only when using `groupBy'.
 %%
 %% There might be regional differences because some flags might not be
 %% available in all the Regions where GuardDuty

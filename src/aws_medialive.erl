@@ -20,10 +20,14 @@
          claim_device/3,
          create_channel/2,
          create_channel/3,
+         create_channel_placement_group/3,
+         create_channel_placement_group/4,
          create_cloud_watch_alarm_template/2,
          create_cloud_watch_alarm_template/3,
          create_cloud_watch_alarm_template_group/2,
          create_cloud_watch_alarm_template_group/3,
+         create_cluster/2,
+         create_cluster/3,
          create_event_bridge_rule_template/2,
          create_event_bridge_rule_template/3,
          create_event_bridge_rule_template_group/2,
@@ -36,6 +40,12 @@
          create_multiplex/3,
          create_multiplex_program/3,
          create_multiplex_program/4,
+         create_network/2,
+         create_network/3,
+         create_node/3,
+         create_node/4,
+         create_node_registration_script/3,
+         create_node_registration_script/4,
          create_partner_input/3,
          create_partner_input/4,
          create_signal_map/2,
@@ -44,10 +54,14 @@
          create_tags/4,
          delete_channel/3,
          delete_channel/4,
+         delete_channel_placement_group/4,
+         delete_channel_placement_group/5,
          delete_cloud_watch_alarm_template/3,
          delete_cloud_watch_alarm_template/4,
          delete_cloud_watch_alarm_template_group/3,
          delete_cloud_watch_alarm_template_group/4,
+         delete_cluster/3,
+         delete_cluster/4,
          delete_event_bridge_rule_template/3,
          delete_event_bridge_rule_template/4,
          delete_event_bridge_rule_template_group/3,
@@ -60,6 +74,10 @@
          delete_multiplex/4,
          delete_multiplex_program/4,
          delete_multiplex_program/5,
+         delete_network/3,
+         delete_network/4,
+         delete_node/4,
+         delete_node/5,
          delete_reservation/3,
          delete_reservation/4,
          delete_schedule/3,
@@ -74,6 +92,12 @@
          describe_channel/2,
          describe_channel/4,
          describe_channel/5,
+         describe_channel_placement_group/3,
+         describe_channel_placement_group/5,
+         describe_channel_placement_group/6,
+         describe_cluster/2,
+         describe_cluster/4,
+         describe_cluster/5,
          describe_input/2,
          describe_input/4,
          describe_input/5,
@@ -92,6 +116,12 @@
          describe_multiplex_program/3,
          describe_multiplex_program/5,
          describe_multiplex_program/6,
+         describe_network/2,
+         describe_network/4,
+         describe_network/5,
+         describe_node/3,
+         describe_node/5,
+         describe_node/6,
          describe_offering/2,
          describe_offering/4,
          describe_offering/5,
@@ -119,6 +149,9 @@
          get_signal_map/2,
          get_signal_map/4,
          get_signal_map/5,
+         list_channel_placement_groups/2,
+         list_channel_placement_groups/4,
+         list_channel_placement_groups/5,
          list_channels/1,
          list_channels/3,
          list_channels/4,
@@ -128,6 +161,9 @@
          list_cloud_watch_alarm_templates/1,
          list_cloud_watch_alarm_templates/3,
          list_cloud_watch_alarm_templates/4,
+         list_clusters/1,
+         list_clusters/3,
+         list_clusters/4,
          list_event_bridge_rule_template_groups/1,
          list_event_bridge_rule_template_groups/3,
          list_event_bridge_rule_template_groups/4,
@@ -152,6 +188,12 @@
          list_multiplexes/1,
          list_multiplexes/3,
          list_multiplexes/4,
+         list_networks/1,
+         list_networks/3,
+         list_networks/4,
+         list_nodes/2,
+         list_nodes/4,
+         list_nodes/5,
          list_offerings/1,
          list_offerings/3,
          list_offerings/4,
@@ -200,10 +242,14 @@
          update_channel/4,
          update_channel_class/3,
          update_channel_class/4,
+         update_channel_placement_group/4,
+         update_channel_placement_group/5,
          update_cloud_watch_alarm_template/3,
          update_cloud_watch_alarm_template/4,
          update_cloud_watch_alarm_template_group/3,
          update_cloud_watch_alarm_template_group/4,
+         update_cluster/3,
+         update_cluster/4,
          update_event_bridge_rule_template/3,
          update_event_bridge_rule_template/4,
          update_event_bridge_rule_template_group/3,
@@ -218,6 +264,12 @@
          update_multiplex/4,
          update_multiplex_program/4,
          update_multiplex_program/5,
+         update_network/3,
+         update_network/4,
+         update_node/4,
+         update_node/5,
+         update_node_state/4,
+         update_node_state/5,
          update_reservation/3,
          update_reservation/4]).
 
@@ -240,6 +292,19 @@
 %% Example:
 %% delete_cloud_watch_alarm_template_group_request() :: #{}
 -type delete_cloud_watch_alarm_template_group_request() :: #{}.
+
+
+%% Example:
+%% create_network_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()()),
+%%   <<"State">> => list(any())
+%% }
+-type create_network_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -279,6 +344,29 @@
 %%   <<"Tags">> => map()
 %% }
 -type update_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_output_settings() :: #{
+%%   <<"BufferMsec">> => integer(),
+%%   <<"ContainerSettings">> => udp_container_settings(),
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"Latency">> => integer()
+%% }
+-type srt_output_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_request() :: #{}
+-type describe_cluster_request() :: #{}.
+
+
+%% Example:
+%% list_networks_response() :: #{
+%%   <<"Networks">> => list(describe_network_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_networks_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_channel_request() :: #{}
@@ -343,8 +431,23 @@
 
 
 %% Example:
+%% describe_channel_placement_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_channel_placement_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_destination() :: #{
 %%   <<"Ip">> => string(),
+%%   <<"Network">> => string(),
+%%   <<"NetworkRoutes">> => list(input_destination_route()()),
 %%   <<"Port">> => string(),
 %%   <<"Url">> => string(),
 %%   <<"Vpc">> => input_destination_vpc()
@@ -433,7 +536,8 @@
 %%   <<"Id">> => string(),
 %%   <<"MediaPackageSettings">> => list(media_package_output_destination_settings()()),
 %%   <<"MultiplexSettings">> => multiplex_program_channel_destination_settings(),
-%%   <<"Settings">> => list(output_destination_settings()())
+%%   <<"Settings">> => list(output_destination_settings()()),
+%%   <<"SrtSettings">> => list(srt_output_destination_settings()())
 %% }
 -type output_destination() :: #{binary() => any()}.
 
@@ -444,6 +548,13 @@
 %%   <<"VideoSelectorProgramId">> => video_selector_program_id()
 %% }
 -type video_selector_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_group_settings() :: #{
+%%   <<"InputLossAction">> => list(any())
+%% }
+-type srt_group_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -512,6 +623,7 @@
 
 %% Example:
 %% restart_channel_pipelines_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
@@ -630,10 +742,30 @@
 
 
 %% Example:
+%% describe_channel_placement_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_channel_placement_group_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% scte35_return_to_network_schedule_action_settings() :: #{
 %%   <<"SpliceEventId">> => float()
 %% }
 -type scte35_return_to_network_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_pool_update_request() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type ip_pool_update_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_input_device_request() :: #{}
@@ -648,6 +780,33 @@
 
 
 %% Example:
+%% describe_cluster_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_placement_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()()),
+%%   <<"State">> => list(any())
+%% }
+-type update_channel_placement_group_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% srt_caller_decryption() :: #{
 %%   <<"Algorithm">> => list(any()),
 %%   <<"PassphraseSecretArn">> => string()
@@ -656,8 +815,22 @@
 
 
 %% Example:
+%% describe_network_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_network_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_input_settings() :: #{
 %%   <<"HlsInputSettings">> => hls_input_settings(),
+%%   <<"MulticastInputSettings">> => multicast_input_settings(),
 %%   <<"ServerValidation">> => list(any())
 %% }
 -type network_input_settings() :: #{binary() => any()}.
@@ -703,7 +876,15 @@
 
 
 %% Example:
+%% multicast_settings() :: #{
+%%   <<"Sources">> => list(multicast_source()())
+%% }
+-type multicast_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_channel_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
@@ -731,6 +912,14 @@
 %%   <<"KmsKeyId">> => string()
 %% }
 -type account_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_placement_group_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()())
+%% }
+-type update_channel_placement_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -789,6 +978,31 @@
 %%   <<"SelectorSettings">> => caption_selector_settings()
 %% }
 -type caption_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping_create_request()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_node_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -998,6 +1212,19 @@
 
 
 %% Example:
+%% create_channel_placement_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()()),
+%%   <<"State">> => list(any())
+%% }
+-type create_channel_placement_group_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_account_configuration_response() :: #{
 %%   <<"AccountConfiguration">> => account_configuration()
 %% }
@@ -1108,11 +1335,53 @@
 
 
 %% Example:
+%% describe_node_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"ManagedInstanceId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"Role">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_node_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_node_state_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"Role">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type update_node_state_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiplex_program_channel_destination_settings() :: #{
 %%   <<"MultiplexId">> => string(),
 %%   <<"ProgramName">> => string()
 %% }
 -type multiplex_program_channel_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_interface_mapping_create_request() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkInterfaceMode">> => list(any()),
+%%   <<"PhysicalInterfaceName">> => string()
+%% }
+-type node_interface_mapping_create_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1129,6 +1398,14 @@
 %% }
 -type batch_delete_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% route_update_request() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type route_update_request() :: #{binary() => any()}.
+
 %% Example:
 %% rec709_settings() :: #{}
 -type rec709_settings() :: #{}.
@@ -1139,6 +1416,23 @@
 %%   <<"Pid">> => integer()
 %% }
 -type video_selector_pid() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_settings_update_request() :: #{
+%%   <<"Sources">> => list(multicast_source_update_request()())
+%% }
+-type multicast_settings_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% av1_color_space_settings() :: #{
+%%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
+%%   <<"Hdr10Settings">> => hdr10_settings(),
+%%   <<"Rec601Settings">> => rec601_settings(),
+%%   <<"Rec709Settings">> => rec709_settings()
+%% }
+-type av1_color_space_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1179,6 +1473,10 @@
 %%   <<"FlowArn">> => string()
 %% }
 -type media_connect_flow() :: #{binary() => any()}.
+
+%% Example:
+%% describe_network_request() :: #{}
+-type describe_network_request() :: #{}.
 
 
 %% Example:
@@ -1326,6 +1624,10 @@
 %% }
 -type input_whitelist_rule_cidr() :: #{binary() => any()}.
 
+%% Example:
+%% describe_channel_placement_group_request() :: #{}
+-type describe_channel_placement_group_request() :: #{}.
+
 
 %% Example:
 %% input_device_configurable_settings() :: #{
@@ -1344,6 +1646,22 @@
 %%   <<"Arn">> => string()
 %% }
 -type event_bridge_rule_template_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_node_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"Role">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type update_node_response() :: #{binary() => any()}.
 
 %% Example:
 %% smpte_tt_destination_settings() :: #{}
@@ -1383,6 +1701,37 @@
 
 
 %% Example:
+%% describe_node_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"Role">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_node_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_registration_script_response() :: #{
+%%   <<"NodeRegistrationScript">> => string()
+%% }
+-type create_node_registration_script_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings_update_request()
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% reservation_resource_specification() :: #{
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"Codec">> => list(any()),
@@ -1412,6 +1761,19 @@
 
 
 %% Example:
+%% delete_network_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()()),
+%%   <<"State">> => list(any())
+%% }
+-type delete_network_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_delete_request() :: #{
 %%   <<"ChannelIds">> => list(string()()),
 %%   <<"InputIds">> => list(string()()),
@@ -1419,6 +1781,25 @@
 %%   <<"MultiplexIds">> => list(string()())
 %% }
 -type batch_delete_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_registration_script_request() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Role">> => list(any())
+%% }
+-type create_node_registration_script_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_source_update_request() :: #{
+%%   <<"SourceIp">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type multicast_source_update_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1458,7 +1839,8 @@
 %%   <<"AutomaticInputFailoverSettings">> => automatic_input_failover_settings(),
 %%   <<"InputAttachmentName">> => string(),
 %%   <<"InputId">> => string(),
-%%   <<"InputSettings">> => input_settings()
+%%   <<"InputSettings">> => input_settings(),
+%%   <<"LogicalInterfaceNames">> => list(string()())
 %% }
 -type input_attachment() :: #{binary() => any()}.
 
@@ -1509,6 +1891,13 @@
 %% }
 -type input_specification() :: #{binary() => any()}.
 
+
+%% Example:
+%% multicast_input_settings() :: #{
+%%   <<"SourceIpAddress">> => string()
+%% }
+-type multicast_input_settings() :: #{binary() => any()}.
+
 %% Example:
 %% pipeline_locking_settings() :: #{}
 -type pipeline_locking_settings() :: #{}.
@@ -1530,6 +1919,13 @@
 
 
 %% Example:
+%% multicast_settings_create_request() :: #{
+%%   <<"Sources">> => list(multicast_source_create_request()())
+%% }
+-type multicast_settings_create_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% output_group_settings() :: #{
 %%   <<"ArchiveGroupSettings">> => archive_group_settings(),
 %%   <<"CmafIngestGroupSettings">> => cmaf_ingest_group_settings(),
@@ -1539,6 +1935,7 @@
 %%   <<"MsSmoothGroupSettings">> => ms_smooth_group_settings(),
 %%   <<"MultiplexGroupSettings">> => multiplex_group_settings(),
 %%   <<"RtmpGroupSettings">> => rtmp_group_settings(),
+%%   <<"SrtGroupSettings">> => srt_group_settings(),
 %%   <<"UdpGroupSettings">> => udp_group_settings()
 %% }
 -type output_group_settings() :: #{binary() => any()}.
@@ -1550,6 +1947,14 @@
 %%   <<"ScheduleActions">> => list(schedule_action()())
 %% }
 -type describe_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_mapping() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkId">> => string()
+%% }
+-type interface_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1600,11 +2005,35 @@
 
 
 %% Example:
+%% route_create_request() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type route_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_source_create_request() :: #{
+%%   <<"SourceIp">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type multicast_source_create_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_device_uhd_audio_channel_pair_config() :: #{
 %%   <<"Id">> => integer(),
 %%   <<"Profile">> => list(any())
 %% }
 -type input_device_uhd_audio_channel_pair_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_placement_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_placement_groups_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1656,8 +2085,10 @@
 %% create_input_request() :: #{
 %%   <<"Destinations">> => list(input_destination_request()()),
 %%   <<"InputDevices">> => list(input_device_settings()()),
+%%   <<"InputNetworkLocation">> => list(any()),
 %%   <<"InputSecurityGroups">> => list(string()()),
 %%   <<"MediaConnectFlows">> => list(media_connect_flow_request()()),
+%%   <<"MulticastSettings">> => multicast_settings_create_request(),
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"RoleArn">> => string(),
@@ -1691,6 +2122,7 @@
 
 %% Example:
 %% channel_summary() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
@@ -1731,6 +2163,7 @@
 
 %% Example:
 %% stop_channel_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
@@ -1763,6 +2196,18 @@
 %%   <<"Scte35SegmentationScope">> => list(any())
 %% }
 -type avail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"ClusterType">> => list(any()),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings_create_request(),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1801,9 +2246,11 @@
 %%   <<"Id">> => string(),
 %%   <<"InputClass">> => list(any()),
 %%   <<"InputDevices">> => list(input_device_settings()()),
+%%   <<"InputNetworkLocation">> => list(any()),
 %%   <<"InputPartnerIds">> => list(string()()),
 %%   <<"InputSourceType">> => list(any()),
 %%   <<"MediaConnectFlows">> => list(media_connect_flow()()),
+%%   <<"MulticastSettings">> => multicast_settings(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"SecurityGroups">> => list(string()()),
@@ -1847,6 +2294,7 @@
 %%   <<"InputDevices">> => list(input_device_request()()),
 %%   <<"InputSecurityGroups">> => list(string()()),
 %%   <<"MediaConnectFlows">> => list(media_connect_flow_request()()),
+%%   <<"MulticastSettings">> => multicast_settings_update_request(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"Sources">> => list(input_source_request()()),
@@ -1874,6 +2322,19 @@
 %%   <<"StaticImageOutputDeactivateSettings">> => static_image_output_deactivate_schedule_action_settings()
 %% }
 -type schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_network_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_network_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1933,12 +2394,30 @@
 -type batch_stop_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_network_request() :: #{}
+-type delete_network_request() :: #{}.
+
+%% Example:
 %% get_event_bridge_rule_template_group_request() :: #{}
 -type get_event_bridge_rule_template_group_request() :: #{}.
 
 %% Example:
 %% cancel_input_device_transfer_request() :: #{}
 -type cancel_input_device_transfer_request() :: #{}.
+
+
+%% Example:
+%% describe_cluster_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_cluster_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1982,6 +2461,15 @@
 %% Example:
 %% delete_input_security_group_request() :: #{}
 -type delete_input_security_group_request() :: #{}.
+
+
+%% Example:
+%% node_interface_mapping() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkInterfaceMode">> => list(any()),
+%%   <<"PhysicalInterfaceName">> => string()
+%% }
+-type node_interface_mapping() :: #{binary() => any()}.
 
 %% Example:
 %% multiplex_group_settings() :: #{}
@@ -2033,6 +2521,7 @@
 
 %% Example:
 %% video_codec_settings() :: #{
+%%   <<"Av1Settings">> => av1_settings(),
 %%   <<"FrameCaptureSettings">> => frame_capture_settings(),
 %%   <<"H264Settings">> => h264_settings(),
 %%   <<"H265Settings">> => h265_settings(),
@@ -2066,6 +2555,7 @@
 
 %% Example:
 %% describe_channel_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
@@ -2157,6 +2647,22 @@
 
 
 %% Example:
+%% cluster_network_settings() :: #{
+%%   <<"DefaultRoute">> => string(),
+%%   <<"InterfaceMappings">> => list(interface_mapping()())
+%% }
+-type cluster_network_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_mapping_create_request() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkId">> => string()
+%% }
+-type interface_mapping_create_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% eac3_settings() :: #{
 %%   <<"AttenuationControl">> => list(any()),
 %%   <<"Bitrate">> => float(),
@@ -2244,6 +2750,13 @@
 
 
 %% Example:
+%% ip_pool() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type ip_pool() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_update_schedule_response() :: #{
 %%   <<"Creates">> => batch_schedule_action_create_result(),
 %%   <<"Deletes">> => batch_schedule_action_delete_result()
@@ -2257,6 +2770,14 @@
 %%   <<"Mode">> => list(any())
 %% }
 -type scte35_input_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_networks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_networks_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2279,6 +2800,14 @@
 
 
 %% Example:
+%% route() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type route() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_input_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AttachedChannels">> => list(string()()),
@@ -2286,9 +2815,11 @@
 %%   <<"Id">> => string(),
 %%   <<"InputClass">> => list(any()),
 %%   <<"InputDevices">> => list(input_device_settings()()),
+%%   <<"InputNetworkLocation">> => list(any()),
 %%   <<"InputPartnerIds">> => list(string()()),
 %%   <<"InputSourceType">> => list(any()),
 %%   <<"MediaConnectFlows">> => list(media_connect_flow()()),
+%%   <<"MulticastSettings">> => multicast_settings(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"SecurityGroups">> => list(string()()),
@@ -2311,6 +2842,7 @@
 
 %% Example:
 %% create_channel_request() :: #{
+%%   <<"AnywhereSettings">> => anywhere_settings(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"Destinations">> => list(output_destination()()),
@@ -2327,6 +2859,14 @@
 %%   <<"Vpc">> => vpc_output_settings()
 %% }
 -type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_nodes_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2471,6 +3011,14 @@
 
 
 %% Example:
+%% input_request_destination_route() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type input_request_destination_route() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiplex_program_packet_identifiers_map() :: #{
 %%   <<"AribCaptionsPid">> => integer(),
 %%   <<"AudioPids">> => list(integer()()),
@@ -2552,6 +3100,23 @@
 
 
 %% Example:
+%% srt_output_destination_settings() :: #{
+%%   <<"EncryptionPassphraseSecretArn">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type srt_output_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_source() :: #{
+%%   <<"SourceIp">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type multicast_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% archive_cdn_settings() :: #{
 %%   <<"ArchiveS3Settings">> => archive_s3_settings()
 %% }
@@ -2563,6 +3128,19 @@
 %%   <<"Accept">> := list(any())
 %% }
 -type describe_input_device_thumbnail_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_placement_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()()),
+%%   <<"State">> => list(any())
+%% }
+-type delete_channel_placement_group_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2586,6 +3164,14 @@
 %% Example:
 %% html_motion_graphics_settings() :: #{}
 -type html_motion_graphics_settings() :: #{}.
+
+
+%% Example:
+%% list_clusters_response() :: #{
+%%   <<"Clusters">> => list(describe_cluster_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_clusters_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2626,6 +3212,20 @@
 %%   <<"UrlPath">> => list(string()())
 %% }
 -type input_switch_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2754,6 +3354,7 @@
 %%   <<"MsSmoothOutputSettings">> => ms_smooth_output_settings(),
 %%   <<"MultiplexOutputSettings">> => multiplex_output_settings(),
 %%   <<"RtmpOutputSettings">> => rtmp_output_settings(),
+%%   <<"SrtOutputSettings">> => srt_output_settings(),
 %%   <<"UdpOutputSettings">> => udp_output_settings()
 %% }
 -type output_settings() :: #{binary() => any()}.
@@ -2810,6 +3411,29 @@
 
 
 %% Example:
+%% av1_settings() :: #{
+%%   <<"AfdSignaling">> => list(any()),
+%%   <<"BufSize">> => integer(),
+%%   <<"ColorSpaceSettings">> => av1_color_space_settings(),
+%%   <<"FixedAfd">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"GopSize">> => float(),
+%%   <<"GopSizeUnits">> => list(any()),
+%%   <<"Level">> => list(any()),
+%%   <<"LookAheadRateControl">> => list(any()),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"MinIInterval">> => integer(),
+%%   <<"ParDenominator">> => integer(),
+%%   <<"ParNumerator">> => integer(),
+%%   <<"QvbrQualityLevel">> => integer(),
+%%   <<"SceneChangeDetect">> => list(any()),
+%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings()
+%% }
+-type av1_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiplex_program_service_descriptor() :: #{
 %%   <<"ProviderName">> => string(),
 %%   <<"ServiceName">> => string()
@@ -2838,6 +3462,13 @@
 %%   <<"Tags">> => map()
 %% }
 -type describe_multiplex_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_pool_create_request() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type ip_pool_create_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2914,6 +3545,14 @@
 
 
 %% Example:
+%% list_clusters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_clusters_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% output_location_ref() :: #{
 %%   <<"DestinationRefId">> => string()
 %% }
@@ -2962,6 +3601,14 @@
 %%   <<"NameModifier">> => string()
 %% }
 -type cmaf_ingest_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_placement_groups_response() :: #{
+%%   <<"ChannelPlacementGroups">> => list(describe_channel_placement_group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_placement_groups_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3032,6 +3679,17 @@
 
 
 %% Example:
+%% create_network_request() :: #{
+%%   <<"IpPools">> => list(ip_pool_create_request()()),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Routes">> => list(route_create_request()()),
+%%   <<"Tags">> => map()
+%% }
+-type create_network_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% maintenance_status() :: #{
 %%   <<"MaintenanceDay">> => list(any()),
 %%   <<"MaintenanceDeadline">> => string(),
@@ -3040,9 +3698,23 @@
 %% }
 -type maintenance_status() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_channel_placement_group_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_placement_group_request() :: #{binary() => any()}.
+
 %% Example:
 %% frame_capture_hls_settings() :: #{}
 -type frame_capture_hls_settings() :: #{}.
+
+%% Example:
+%% delete_cluster_request() :: #{}
+-type delete_cluster_request() :: #{}.
 
 
 %% Example:
@@ -3205,6 +3877,10 @@
 %% }
 -type encoder_settings() :: #{binary() => any()}.
 
+%% Example:
+%% delete_channel_placement_group_request() :: #{}
+-type delete_channel_placement_group_request() :: #{}.
+
 
 %% Example:
 %% webvtt_destination_settings() :: #{
@@ -3262,6 +3938,19 @@
 %% Example:
 %% immediate_mode_schedule_action_start_settings() :: #{}
 -type immediate_mode_schedule_action_start_settings() :: #{}.
+
+
+%% Example:
+%% update_network_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()()),
+%%   <<"State">> => list(any())
+%% }
+-type update_network_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3376,6 +4065,22 @@
 
 
 %% Example:
+%% create_node_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"Role">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type create_node_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_event_bridge_rule_template_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -3462,6 +4167,22 @@
 
 
 %% Example:
+%% delete_node_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"Role">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type delete_node_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_device_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityZone">> => string(),
@@ -3540,6 +4261,10 @@
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
 
+%% Example:
+%% delete_node_request() :: #{}
+-type delete_node_request() :: #{}.
+
 
 %% Example:
 %% list_cloud_watch_alarm_templates_response() :: #{
@@ -3617,6 +4342,7 @@
 
 %% Example:
 %% channel() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
@@ -3665,6 +4391,7 @@
 
 %% Example:
 %% start_channel_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
@@ -3860,6 +4587,9 @@
 
 %% Example:
 %% input_destination_request() :: #{
+%%   <<"Network">> => string(),
+%%   <<"NetworkRoutes">> => list(input_request_destination_route()()),
+%%   <<"StaticIpAddress">> => string(),
 %%   <<"StreamName">> => string()
 %% }
 -type input_destination_request() :: #{binary() => any()}.
@@ -3974,6 +4704,10 @@
 %%   <<"ScheduleActions">> => list(schedule_action()())
 %% }
 -type batch_schedule_action_delete_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_node_request() :: #{}
+-type describe_node_request() :: #{}.
 
 %% Example:
 %% reject_input_device_transfer_request() :: #{}
@@ -4119,6 +4853,15 @@
 
 
 %% Example:
+%% update_network_request() :: #{
+%%   <<"IpPools">> => list(ip_pool_update_request()()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route_update_request()())
+%% }
+-type update_network_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% audio_pid_selection() :: #{
 %%   <<"Pid">> => integer()
 %% }
@@ -4135,10 +4878,33 @@
 
 
 %% Example:
+%% cluster_network_settings_update_request() :: #{
+%%   <<"DefaultRoute">> => string(),
+%%   <<"InterfaceMappings">> => list(interface_mapping_update_request()())
+%% }
+-type cluster_network_settings_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_anywhere_settings() :: #{
+%%   <<"ChannelPlacementGroupId">> => string(),
+%%   <<"ClusterId">> => string()
+%% }
+-type describe_anywhere_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% mpeg2_filter_settings() :: #{
 %%   <<"TemporalFilterSettings">> => temporal_filter_settings()
 %% }
 -type mpeg2_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_node_state_request() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type update_node_state_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4182,6 +4948,14 @@
 %%   <<"SubSegmentsExpected">> => integer()
 %% }
 -type scte35_segmentation_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% anywhere_settings() :: #{
+%%   <<"ChannelPlacementGroupId">> => string(),
+%%   <<"ClusterId">> => string()
+%% }
+-type anywhere_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4452,10 +5226,42 @@
 
 
 %% Example:
+%% update_node_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Role">> => list(any())
+%% }
+-type update_node_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% fixed_mode_schedule_action_start_settings() :: #{
 %%   <<"Time">> => string()
 %% }
 -type fixed_mode_schedule_action_start_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_network_settings_create_request() :: #{
+%%   <<"DefaultRoute">> => string(),
+%%   <<"InterfaceMappings">> => list(interface_mapping_create_request()())
+%% }
+-type cluster_network_settings_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_destination_route() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type input_destination_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Nodes">> => list(describe_node_summary()())
+%% }
+-type list_nodes_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4547,6 +5353,14 @@
 %%   <<"Priority">> => integer()
 %% }
 -type multiplex_statmux_video_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_mapping_update_request() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkId">> => string()
+%% }
+-type interface_mapping_update_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4689,6 +5503,19 @@
 
 
 %% Example:
+%% update_cluster_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_update_signal_map_request() :: #{
 %%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()()),
 %%   <<"Description">> => string(),
@@ -4803,6 +5630,15 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type create_channel_placement_group_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type create_cloud_watch_alarm_template_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -4818,6 +5654,15 @@
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
+
+-type create_cluster_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
 
 -type create_event_bridge_rule_template_errors() ::
     bad_request_exception() | 
@@ -4871,6 +5716,33 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type create_network_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_node_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type create_node_registration_script_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type create_partner_input_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
@@ -4903,6 +5775,16 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type delete_channel_placement_group_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type delete_cloud_watch_alarm_template_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -4918,6 +5800,16 @@
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
+
+-type delete_cluster_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
 
 -type delete_event_bridge_rule_template_errors() ::
     bad_request_exception() | 
@@ -4965,6 +5857,26 @@
     bad_gateway_exception().
 
 -type delete_multiplex_program_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_network_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type delete_node_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
     internal_server_error_exception() | 
@@ -5024,6 +5936,24 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type describe_channel_placement_group_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_cluster_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type describe_input_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
@@ -5070,6 +6000,24 @@
     bad_gateway_exception().
 
 -type describe_multiplex_program_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_network_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_node_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
     internal_server_error_exception() | 
@@ -5150,6 +6098,14 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type list_channel_placement_groups_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type list_channels_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
@@ -5171,6 +6127,14 @@
     not_found_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
+
+-type list_clusters_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
 
 -type list_event_bridge_rule_template_groups_errors() ::
     bad_request_exception() | 
@@ -5229,6 +6193,22 @@
     bad_gateway_exception().
 
 -type list_multiplexes_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_networks_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_nodes_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
     internal_server_error_exception() | 
@@ -5440,6 +6420,16 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type update_channel_placement_group_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type update_cloud_watch_alarm_template_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -5455,6 +6445,15 @@
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
+
+-type update_cluster_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
 
 -type update_event_bridge_rule_template_errors() ::
     bad_request_exception() | 
@@ -5517,6 +6516,34 @@
     unprocessable_entity_exception() | 
     not_found_exception() | 
     conflict_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_network_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_node_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_node_state_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
     forbidden_exception() | 
     bad_gateway_exception().
 
@@ -5811,6 +6838,48 @@ create_channel(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a ChannelPlacementGroup in the specified Cluster.
+%%
+%% As part of the create operation, you specify the Nodes to attach the group
+%% to.After you create a ChannelPlacementGroup, you add Channels to the group
+%% (you do this by modifying the Channels to add them to a specific group).
+%% You now have an association of Channels to ChannelPlacementGroup, and
+%% ChannelPlacementGroup to Nodes. This association means that all the
+%% Channels in the group are able to run on any of the Nodes associated with
+%% the group.
+-spec create_channel_placement_group(aws_client:aws_client(), binary() | list(), create_channel_placement_group_request()) ->
+    {ok, create_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_placement_group_errors(), tuple()}.
+create_channel_placement_group(Client, ClusterId, Input) ->
+    create_channel_placement_group(Client, ClusterId, Input, []).
+
+-spec create_channel_placement_group(aws_client:aws_client(), binary() | list(), create_channel_placement_group_request(), proplists:proplist()) ->
+    {ok, create_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_placement_group_errors(), tuple()}.
+create_channel_placement_group(Client, ClusterId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/channelplacementgroups"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a cloudwatch alarm template to dynamically generate
 %% cloudwatch metric alarms on targeted resource types.
 -spec create_cloud_watch_alarm_template(aws_client:aws_client(), create_cloud_watch_alarm_template_request()) ->
@@ -5863,6 +6932,40 @@ create_cloud_watch_alarm_template_group(Client, Input) ->
 create_cloud_watch_alarm_template_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/cloudwatch-alarm-template-groups"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a new Cluster.
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_errors(), tuple()}.
+create_cluster(Client, Input) ->
+    create_cluster(Client, Input, []).
+
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_errors(), tuple()}.
+create_cluster(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/clusters"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6089,6 +7192,121 @@ create_multiplex_program(Client, MultiplexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create as many Networks as you need.
+%%
+%% You will associate one or more Clusters with each Network.Each Network
+%% provides MediaLive Anywhere with required information about the network in
+%% your organization that you are using for video encoding using MediaLive.
+-spec create_network(aws_client:aws_client(), create_network_request()) ->
+    {ok, create_network_response(), tuple()} |
+    {error, any()} |
+    {error, create_network_errors(), tuple()}.
+create_network(Client, Input) ->
+    create_network(Client, Input, []).
+
+-spec create_network(aws_client:aws_client(), create_network_request(), proplists:proplist()) ->
+    {ok, create_network_response(), tuple()} |
+    {error, any()} |
+    {error, create_network_errors(), tuple()}.
+create_network(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/networks"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a Node in the specified Cluster.
+%%
+%% You can also create Nodes using the CreateNodeRegistrationScript. Note
+%% that you can't move a Node to another Cluster.
+-spec create_node(aws_client:aws_client(), binary() | list(), create_node_request()) ->
+    {ok, create_node_response(), tuple()} |
+    {error, any()} |
+    {error, create_node_errors(), tuple()}.
+create_node(Client, ClusterId, Input) ->
+    create_node(Client, ClusterId, Input, []).
+
+-spec create_node(aws_client:aws_client(), binary() | list(), create_node_request(), proplists:proplist()) ->
+    {ok, create_node_response(), tuple()} |
+    {error, any()} |
+    {error, create_node_errors(), tuple()}.
+create_node(Client, ClusterId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/nodes"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create the Register Node script for all the nodes intended for a
+%% specific Cluster.
+%%
+%% You will then run the script on each hardware unit that is intended for
+%% that Cluster. The script creates a Node in the specified Cluster. It then
+%% binds the Node to this hardware unit, and activates the node hardware for
+%% use with MediaLive Anywhere.
+-spec create_node_registration_script(aws_client:aws_client(), binary() | list(), create_node_registration_script_request()) ->
+    {ok, create_node_registration_script_response(), tuple()} |
+    {error, any()} |
+    {error, create_node_registration_script_errors(), tuple()}.
+create_node_registration_script(Client, ClusterId, Input) ->
+    create_node_registration_script(Client, ClusterId, Input, []).
+
+-spec create_node_registration_script(aws_client:aws_client(), binary() | list(), create_node_registration_script_request(), proplists:proplist()) ->
+    {ok, create_node_registration_script_response(), tuple()} |
+    {error, any()} |
+    {error, create_node_registration_script_errors(), tuple()}.
+create_node_registration_script(Client, ClusterId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/nodeRegistrationScript"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Create a partner input
 -spec create_partner_input(aws_client:aws_client(), binary() | list(), create_partner_input_request()) ->
     {ok, create_partner_input_response(), tuple()} |
@@ -6230,6 +7448,41 @@ delete_channel(Client, ChannelId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete the specified ChannelPlacementGroup that exists in the
+%% specified Cluster.
+-spec delete_channel_placement_group(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_placement_group_request()) ->
+    {ok, delete_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_placement_group_errors(), tuple()}.
+delete_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, Input) ->
+    delete_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, Input, []).
+
+-spec delete_channel_placement_group(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_placement_group_request(), proplists:proplist()) ->
+    {ok, delete_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_placement_group_errors(), tuple()}.
+delete_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/channelplacementgroups/", aws_util:encode_uri(ChannelPlacementGroupId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a cloudwatch alarm template.
 -spec delete_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list(), delete_cloud_watch_alarm_template_request()) ->
     {ok, undefined, tuple()} |
@@ -6283,6 +7536,42 @@ delete_cloud_watch_alarm_template_group(Client, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/cloudwatch-alarm-template-groups/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a Cluster.
+%%
+%% The Cluster must be idle.
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_errors(), tuple()}.
+delete_cluster(Client, ClusterId, Input) ->
+    delete_cluster(Client, ClusterId, Input, []).
+
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request(), proplists:proplist()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_errors(), tuple()}.
+delete_cluster(Client, ClusterId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -6510,6 +7799,78 @@ delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete a Network.
+%%
+%% The Network must have no resources associated with it.
+-spec delete_network(aws_client:aws_client(), binary() | list(), delete_network_request()) ->
+    {ok, delete_network_response(), tuple()} |
+    {error, any()} |
+    {error, delete_network_errors(), tuple()}.
+delete_network(Client, NetworkId, Input) ->
+    delete_network(Client, NetworkId, Input, []).
+
+-spec delete_network(aws_client:aws_client(), binary() | list(), delete_network_request(), proplists:proplist()) ->
+    {ok, delete_network_response(), tuple()} |
+    {error, any()} |
+    {error, delete_network_errors(), tuple()}.
+delete_network(Client, NetworkId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/networks/", aws_util:encode_uri(NetworkId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a Node.
+%%
+%% The Node must be IDLE.
+-spec delete_node(aws_client:aws_client(), binary() | list(), binary() | list(), delete_node_request()) ->
+    {ok, delete_node_response(), tuple()} |
+    {error, any()} |
+    {error, delete_node_errors(), tuple()}.
+delete_node(Client, ClusterId, NodeId, Input) ->
+    delete_node(Client, ClusterId, NodeId, Input, []).
+
+-spec delete_node(aws_client:aws_client(), binary() | list(), binary() | list(), delete_node_request(), proplists:proplist()) ->
+    {ok, delete_node_response(), tuple()} |
+    {error, any()} |
+    {error, delete_node_errors(), tuple()}.
+delete_node(Client, ClusterId, NodeId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/nodes/", aws_util:encode_uri(NodeId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete an expired reservation.
 -spec delete_reservation(aws_client:aws_client(), binary() | list(), delete_reservation_request()) ->
     {ok, delete_reservation_response(), tuple()} |
@@ -6708,6 +8069,80 @@ describe_channel(Client, ChannelId, QueryMap, HeadersMap)
 describe_channel(Client, ChannelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get details about a ChannelPlacementGroup.
+-spec describe_channel_placement_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_placement_group_errors(), tuple()}.
+describe_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId)
+  when is_map(Client) ->
+    describe_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, #{}, #{}).
+
+-spec describe_channel_placement_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_placement_group_errors(), tuple()}.
+describe_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, QueryMap, HeadersMap, []).
+
+-spec describe_channel_placement_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_placement_group_errors(), tuple()}.
+describe_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/channelplacementgroups/", aws_util:encode_uri(ChannelPlacementGroupId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get details about a Cluster.
+-spec describe_cluster(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_errors(), tuple()}.
+describe_cluster(Client, ClusterId)
+  when is_map(Client) ->
+    describe_cluster(Client, ClusterId, #{}, #{}).
+
+-spec describe_cluster(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_errors(), tuple()}.
+describe_cluster(Client, ClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_cluster(Client, ClusterId, QueryMap, HeadersMap, []).
+
+-spec describe_cluster(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_errors(), tuple()}.
+describe_cluster(Client, ClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6953,6 +8388,80 @@ describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMa
 describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get details about a Network.
+-spec describe_network(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_network_response(), tuple()} |
+    {error, any()} |
+    {error, describe_network_errors(), tuple()}.
+describe_network(Client, NetworkId)
+  when is_map(Client) ->
+    describe_network(Client, NetworkId, #{}, #{}).
+
+-spec describe_network(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_network_response(), tuple()} |
+    {error, any()} |
+    {error, describe_network_errors(), tuple()}.
+describe_network(Client, NetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_network(Client, NetworkId, QueryMap, HeadersMap, []).
+
+-spec describe_network(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_network_response(), tuple()} |
+    {error, any()} |
+    {error, describe_network_errors(), tuple()}.
+describe_network(Client, NetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/networks/", aws_util:encode_uri(NetworkId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get details about a Node in the specified Cluster.
+-spec describe_node(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_node_response(), tuple()} |
+    {error, any()} |
+    {error, describe_node_errors(), tuple()}.
+describe_node(Client, ClusterId, NodeId)
+  when is_map(Client) ->
+    describe_node(Client, ClusterId, NodeId, #{}, #{}).
+
+-spec describe_node(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_node_response(), tuple()} |
+    {error, any()} |
+    {error, describe_node_errors(), tuple()}.
+describe_node(Client, ClusterId, NodeId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_node(Client, ClusterId, NodeId, QueryMap, HeadersMap, []).
+
+-spec describe_node(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_node_response(), tuple()} |
+    {error, any()} |
+    {error, describe_node_errors(), tuple()}.
+describe_node(Client, ClusterId, NodeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7309,6 +8818,48 @@ get_signal_map(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieve the list of ChannelPlacementGroups in the specified Cluster.
+-spec list_channel_placement_groups(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channel_placement_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_placement_groups_errors(), tuple()}.
+list_channel_placement_groups(Client, ClusterId)
+  when is_map(Client) ->
+    list_channel_placement_groups(Client, ClusterId, #{}, #{}).
+
+-spec list_channel_placement_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channel_placement_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_placement_groups_errors(), tuple()}.
+list_channel_placement_groups(Client, ClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channel_placement_groups(Client, ClusterId, QueryMap, HeadersMap, []).
+
+-spec list_channel_placement_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channel_placement_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_placement_groups_errors(), tuple()}.
+list_channel_placement_groups(Client, ClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/channelplacementgroups"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Produces list of channels that have been created
 -spec list_channels(aws_client:aws_client()) ->
     {ok, list_channels_response(), tuple()} |
@@ -7435,6 +8986,48 @@ list_cloud_watch_alarm_templates(Client, QueryMap, HeadersMap, Options0)
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"scope">>, maps:get(<<"scope">>, QueryMap, undefined)},
         {<<"signalMapIdentifier">>, maps:get(<<"signalMapIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve the list of Clusters.
+-spec list_clusters(aws_client:aws_client()) ->
+    {ok, list_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, list_clusters_errors(), tuple()}.
+list_clusters(Client)
+  when is_map(Client) ->
+    list_clusters(Client, #{}, #{}).
+
+-spec list_clusters(aws_client:aws_client(), map(), map()) ->
+    {ok, list_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, list_clusters_errors(), tuple()}.
+list_clusters(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_clusters(Client, QueryMap, HeadersMap, []).
+
+-spec list_clusters(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, list_clusters_errors(), tuple()}.
+list_clusters(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/clusters"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7765,6 +9358,90 @@ list_multiplexes(Client, QueryMap, HeadersMap)
 list_multiplexes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve the list of Networks.
+-spec list_networks(aws_client:aws_client()) ->
+    {ok, list_networks_response(), tuple()} |
+    {error, any()} |
+    {error, list_networks_errors(), tuple()}.
+list_networks(Client)
+  when is_map(Client) ->
+    list_networks(Client, #{}, #{}).
+
+-spec list_networks(aws_client:aws_client(), map(), map()) ->
+    {ok, list_networks_response(), tuple()} |
+    {error, any()} |
+    {error, list_networks_errors(), tuple()}.
+list_networks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_networks(Client, QueryMap, HeadersMap, []).
+
+-spec list_networks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_networks_response(), tuple()} |
+    {error, any()} |
+    {error, list_networks_errors(), tuple()}.
+list_networks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/networks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve the list of Nodes.
+-spec list_nodes(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, list_nodes_errors(), tuple()}.
+list_nodes(Client, ClusterId)
+  when is_map(Client) ->
+    list_nodes(Client, ClusterId, #{}, #{}).
+
+-spec list_nodes(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, list_nodes_errors(), tuple()}.
+list_nodes(Client, ClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_nodes(Client, ClusterId, QueryMap, HeadersMap, []).
+
+-spec list_nodes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, list_nodes_errors(), tuple()}.
+list_nodes(Client, ClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/nodes"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8611,6 +10288,40 @@ update_channel_class(Client, ChannelId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Change the settings for a ChannelPlacementGroup.
+-spec update_channel_placement_group(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_placement_group_request()) ->
+    {ok, update_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_placement_group_errors(), tuple()}.
+update_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, Input) ->
+    update_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, Input, []).
+
+-spec update_channel_placement_group(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_placement_group_request(), proplists:proplist()) ->
+    {ok, update_channel_placement_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_placement_group_errors(), tuple()}.
+update_channel_placement_group(Client, ChannelPlacementGroupId, ClusterId, Input0, Options0) ->
+    Method = put,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/channelplacementgroups/", aws_util:encode_uri(ChannelPlacementGroupId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the specified cloudwatch alarm template.
 -spec update_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list(), update_cloud_watch_alarm_template_request()) ->
     {ok, update_cloud_watch_alarm_template_response(), tuple()} |
@@ -8660,6 +10371,40 @@ update_cloud_watch_alarm_template_group(Client, Identifier, Input) ->
 update_cloud_watch_alarm_template_group(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/prod/cloudwatch-alarm-template-groups/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Change the settings for a Cluster.
+-spec update_cluster(aws_client:aws_client(), binary() | list(), update_cluster_request()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_errors(), tuple()}.
+update_cluster(Client, ClusterId, Input) ->
+    update_cluster(Client, ClusterId, Input, []).
+
+-spec update_cluster(aws_client:aws_client(), binary() | list(), update_cluster_request(), proplists:proplist()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_errors(), tuple()}.
+update_cluster(Client, ClusterId, Input0, Options0) ->
+    Method = put,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8899,6 +10644,108 @@ update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     Method = put,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Change the settings for a Network.
+-spec update_network(aws_client:aws_client(), binary() | list(), update_network_request()) ->
+    {ok, update_network_response(), tuple()} |
+    {error, any()} |
+    {error, update_network_errors(), tuple()}.
+update_network(Client, NetworkId, Input) ->
+    update_network(Client, NetworkId, Input, []).
+
+-spec update_network(aws_client:aws_client(), binary() | list(), update_network_request(), proplists:proplist()) ->
+    {ok, update_network_response(), tuple()} |
+    {error, any()} |
+    {error, update_network_errors(), tuple()}.
+update_network(Client, NetworkId, Input0, Options0) ->
+    Method = put,
+    Path = ["/prod/networks/", aws_util:encode_uri(NetworkId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Change the settings for a Node.
+-spec update_node(aws_client:aws_client(), binary() | list(), binary() | list(), update_node_request()) ->
+    {ok, update_node_response(), tuple()} |
+    {error, any()} |
+    {error, update_node_errors(), tuple()}.
+update_node(Client, ClusterId, NodeId, Input) ->
+    update_node(Client, ClusterId, NodeId, Input, []).
+
+-spec update_node(aws_client:aws_client(), binary() | list(), binary() | list(), update_node_request(), proplists:proplist()) ->
+    {ok, update_node_response(), tuple()} |
+    {error, any()} |
+    {error, update_node_errors(), tuple()}.
+update_node(Client, ClusterId, NodeId, Input0, Options0) ->
+    Method = put,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/nodes/", aws_util:encode_uri(NodeId), ""],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the state of a node.
+-spec update_node_state(aws_client:aws_client(), binary() | list(), binary() | list(), update_node_state_request()) ->
+    {ok, update_node_state_response(), tuple()} |
+    {error, any()} |
+    {error, update_node_state_errors(), tuple()}.
+update_node_state(Client, ClusterId, NodeId, Input) ->
+    update_node_state(Client, ClusterId, NodeId, Input, []).
+
+-spec update_node_state(aws_client:aws_client(), binary() | list(), binary() | list(), update_node_state_request(), proplists:proplist()) ->
+    {ok, update_node_state_response(), tuple()} |
+    {error, any()} |
+    {error, update_node_state_errors(), tuple()}.
+update_node_state(Client, ClusterId, NodeId, Input0, Options0) ->
+    Method = put,
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/nodes/", aws_util:encode_uri(NodeId), "/state"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
