@@ -140,6 +140,7 @@
 %%   <<"ExecutionRoleArn">> := string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
 %%   <<"Name">> := string(),
+%%   <<"ResourcesToReplicateTags">> => list(list(any())()),
 %%   <<"RunConfig">> => canary_run_config_input(),
 %%   <<"RuntimeVersion">> := string(),
 %%   <<"Schedule">> := canary_schedule_input(),
@@ -963,7 +964,8 @@ create_group(Client, Input0, Options0) ->
 %% The CloudWatch alarms created for this canary. These alarms have a name of
 %%
 %% ```
-%% Synthetics-SharpDrop-Alarm-MyCanaryName '''.
+%% Synthetics-Alarm-first-198-characters-of-canary-name-canaryId-alarm number
+%% '''
 %%
 %% Amazon S3 objects and buckets, such as the canary's artifact location.
 %%
@@ -971,13 +973,14 @@ create_group(Client, Input0, Options0) ->
 %% these roles
 %% have the name
 %% ```
-%% role/service-role/CloudWatchSyntheticsRole-MyCanaryName '''.
+%% role/service-role/CloudWatchSyntheticsRole-First-21-Characters-of-CanaryName
+%% '''
 %%
 %% CloudWatch Logs log groups created for the canary. These logs groups have
 %% the name
 %%
 %% ```
-%% /aws/lambda/cwsyn-MyCanaryName '''.
+%% /aws/lambda/cwsyn-First-21-Characters-of-CanaryName '''
 %%
 %% Before you delete a canary, you might want to use `GetCanary' to
 %% display

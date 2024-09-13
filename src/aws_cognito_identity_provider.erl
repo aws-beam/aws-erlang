@@ -981,6 +981,7 @@
 
 %% Example:
 %% set_user_pool_mfa_config_response() :: #{
+%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
 %%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type()
@@ -1212,6 +1213,7 @@
 
 %% Example:
 %% get_user_pool_mfa_config_response() :: #{
+%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
 %%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type()
@@ -1922,6 +1924,13 @@
 -type admin_respond_to_auth_challenge_request() :: #{binary() => any()}.
 
 %% Example:
+%% email_mfa_settings_type() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"PreferredMfa">> => boolean()
+%% }
+-type email_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
 %% not_authorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2032,6 +2041,7 @@
 
 %% Example:
 %% set_user_pool_mfa_config_request() :: #{
+%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
 %%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
@@ -2196,6 +2206,13 @@
 %%   <<"ResourceArn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% email_mfa_config_type() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Subject">> => string()
+%% }
+-type email_mfa_config_type() :: #{binary() => any()}.
 
 %% Example:
 %% admin_update_user_attributes_response() :: #{
@@ -2569,6 +2586,7 @@
 
 %% Example:
 %% admin_set_user_mfa_preference_request() :: #{
+%%   <<"EmailMfaSettings">> => email_mfa_settings_type(),
 %%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
 %%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type(),
 %%   <<"UserPoolId">> := string(),
@@ -2685,6 +2703,7 @@
 %% Example:
 %% set_user_mfa_preference_request() :: #{
 %%   <<"AccessToken">> := string(),
+%%   <<"EmailMfaSettings">> => email_mfa_settings_type(),
 %%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
 %%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type()
 %% }
@@ -2863,6 +2882,7 @@
     resource_not_found_exception() | 
     invalid_sms_role_access_policy_exception() | 
     too_many_requests_exception() | 
+    invalid_email_role_access_policy_exception() | 
     user_not_confirmed_exception().
 
 -type admin_link_provider_for_user_errors() ::
@@ -2944,6 +2964,7 @@
     too_many_requests_exception() | 
     alias_exists_exception() | 
     password_history_policy_violation_exception() | 
+    invalid_email_role_access_policy_exception() | 
     user_not_confirmed_exception().
 
 -type admin_set_user_mfa_preference_errors() ::
@@ -3410,6 +3431,7 @@
     invalid_sms_role_access_policy_exception() | 
     too_many_requests_exception() | 
     forbidden_exception() | 
+    invalid_email_role_access_policy_exception() | 
     user_not_confirmed_exception().
 
 -type list_devices_errors() ::
@@ -3525,6 +3547,7 @@
     alias_exists_exception() | 
     forbidden_exception() | 
     password_history_policy_violation_exception() | 
+    invalid_email_role_access_policy_exception() | 
     user_not_confirmed_exception().
 
 -type revoke_token_errors() ::
@@ -3900,7 +3923,7 @@ admin_confirm_sign_up(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4281,7 +4304,7 @@ admin_get_user(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4534,7 +4557,7 @@ admin_remove_user_from_group(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4621,7 +4644,7 @@ admin_reset_user_password(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4664,16 +4687,16 @@ admin_respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRespondToAuthChallenge">>, Input, Options).
 
-%% @doc The user's multi-factor authentication (MFA) preference,
-%% including which MFA options
-%% are activated, and if any are preferred.
+%% @doc Sets the user's multi-factor authentication (MFA) preference,
+%% including which MFA
+%% options are activated, and if any are preferred.
 %%
-%% Only one factor can be set as preferred. The
-%% preferred MFA factor will be used to authenticate a user if multiple
-%% factors are
-%% activated. If multiple options are activated and no preference is set, a
-%% challenge to
-%% choose an MFA option will be returned during sign-in.
+%% Only one factor can be set as
+%% preferred. The preferred MFA factor will be used to authenticate a user if
+%% multiple
+%% factors are activated. If multiple options are activated and no preference
+%% is set, a
+%% challenge to choose an MFA option will be returned during sign-in.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4896,7 +4919,7 @@ admin_update_device_status(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -5358,7 +5381,7 @@ create_user_import_job(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -5880,7 +5903,7 @@ forget_device(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6133,7 +6156,7 @@ get_user(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6274,7 +6297,7 @@ global_sign_out(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6639,7 +6662,7 @@ list_users_in_group(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6708,7 +6731,7 @@ resend_confirmation_code(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6914,7 +6937,7 @@ set_user_mfa_preference(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -7010,7 +7033,7 @@ set_user_settings(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -7342,7 +7365,7 @@ update_resource_server(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -7388,7 +7411,7 @@ update_user_attributes(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Services service,
+%% Amazon Web Servicesservice,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox

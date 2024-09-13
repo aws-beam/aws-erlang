@@ -655,6 +655,12 @@
 -type glue_policy() :: #{binary() => any()}.
 
 %% Example:
+%% retention_metrics() :: #{
+%%   <<"IcebergMetrics">> => iceberg_retention_metrics()
+%% }
+-type retention_metrics() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_statement_response() :: #{
 
 %% }
@@ -1281,6 +1287,8 @@
 %% Example:
 %% table_optimizer_configuration() :: #{
 %%   <<"enabled">> => boolean(),
+%%   <<"orphanFileDeletionConfiguration">> => orphan_file_deletion_configuration(),
+%%   <<"retentionConfiguration">> => retention_configuration(),
 %%   <<"roleArn">> => string()
 %% }
 -type table_optimizer_configuration() :: #{binary() => any()}.
@@ -1425,6 +1433,13 @@
 
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_orphan_file_deletion_configuration() :: #{
+%%   <<"location">> => string(),
+%%   <<"orphanFileRetentionPeriodInDays">> => integer()
+%% }
+-type iceberg_orphan_file_deletion_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_data_quality_result_response() :: #{
@@ -1646,10 +1661,13 @@
 
 %% Example:
 %% table_optimizer_run() :: #{
+%%   <<"compactionMetrics">> => compaction_metrics(),
 %%   <<"endTimestamp">> => non_neg_integer(),
 %%   <<"error">> => string(),
 %%   <<"eventType">> => list(any()),
 %%   <<"metrics">> => run_metrics(),
+%%   <<"orphanFileDeletionMetrics">> => orphan_file_deletion_metrics(),
+%%   <<"retentionMetrics">> => retention_metrics(),
 %%   <<"startTimestamp">> => non_neg_integer()
 %% }
 -type table_optimizer_run() :: #{binary() => any()}.
@@ -3436,6 +3454,12 @@
 -type get_triggers_request() :: #{binary() => any()}.
 
 %% Example:
+%% retention_configuration() :: #{
+%%   <<"icebergConfiguration">> => iceberg_retention_configuration()
+%% }
+-type retention_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% workflow_run() :: #{
 %%   <<"CompletedOn">> => non_neg_integer(),
 %%   <<"ErrorMessage">> => string(),
@@ -3644,10 +3668,24 @@
 -type create_x_ml_classifier_request() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_orphan_file_deletion_metrics() :: #{
+%%   <<"JobDurationInHour">> => float(),
+%%   <<"NumberOfDpus">> => integer(),
+%%   <<"NumberOfOrphanFilesDeleted">> => float()
+%% }
+-type iceberg_orphan_file_deletion_metrics() :: #{binary() => any()}.
+
+%% Example:
 %% get_workflow_run_properties_response() :: #{
 %%   <<"RunProperties">> => map()
 %% }
 -type get_workflow_run_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% orphan_file_deletion_metrics() :: #{
+%%   <<"IcebergMetrics">> => iceberg_orphan_file_deletion_metrics()
+%% }
+-type orphan_file_deletion_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% statistic_model_result() :: #{
@@ -3695,6 +3733,16 @@
 
 %% }
 -type start_crawler_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_retention_metrics() :: #{
+%%   <<"JobDurationInHour">> => float(),
+%%   <<"NumberOfDataFilesDeleted">> => float(),
+%%   <<"NumberOfDpus">> => integer(),
+%%   <<"NumberOfManifestFilesDeleted">> => float(),
+%%   <<"NumberOfManifestListsDeleted">> => float()
+%% }
+-type iceberg_retention_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% get_mapping_response() :: #{
@@ -4334,6 +4382,12 @@
 %%   <<"StoredAsSubDirectories">> => boolean()
 %% }
 -type storage_descriptor() :: #{binary() => any()}.
+
+%% Example:
+%% compaction_metrics() :: #{
+%%   <<"IcebergMetrics">> => iceberg_compaction_metrics()
+%% }
+-type compaction_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% error_details() :: #{
@@ -6102,6 +6156,12 @@
 -type create_dev_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
 %% federation_source_retryable_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -6119,6 +6179,15 @@
 %%   <<"TableVersions">> => list(table_version()())
 %% }
 -type get_table_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_compaction_metrics() :: #{
+%%   <<"JobDurationInHour">> => float(),
+%%   <<"NumberOfBytesCompacted">> => float(),
+%%   <<"NumberOfDpus">> => integer(),
+%%   <<"NumberOfFilesCompacted">> => float()
+%% }
+-type iceberg_compaction_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% delete_partition_index_response() :: #{
@@ -6939,6 +7008,12 @@
 -type update_table_response() :: #{binary() => any()}.
 
 %% Example:
+%% orphan_file_deletion_configuration() :: #{
+%%   <<"icebergConfiguration">> => iceberg_orphan_file_deletion_configuration()
+%% }
+-type orphan_file_deletion_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% glue_schema() :: #{
 %%   <<"Columns">> => list(glue_studio_schema_column()())
 %% }
@@ -7510,6 +7585,14 @@
 -type string_column_statistics_data() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_retention_configuration() :: #{
+%%   <<"cleanExpiredFiles">> => boolean(),
+%%   <<"numberOfSnapshotsToRetain">> => integer(),
+%%   <<"snapshotRetentionPeriodInDays">> => integer()
+%% }
+-type iceberg_retention_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% update_column_statistics_for_table_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"ColumnStatisticsList">> := list(column_statistics()()),
@@ -7628,7 +7711,11 @@
     entity_not_found_exception().
 
 -type batch_get_table_optimizer_errors() ::
-    internal_service_exception().
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
 
 -type batch_get_triggers_errors() ::
     invalid_input_exception() | 
@@ -7837,6 +7924,8 @@
     entity_not_found_exception().
 
 -type create_table_optimizer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -8010,6 +8099,7 @@
     entity_not_found_exception().
 
 -type delete_table_optimizer_errors() ::
+    throttling_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -8369,6 +8459,7 @@
     entity_not_found_exception().
 
 -type get_table_optimizer_errors() ::
+    throttling_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -8595,6 +8686,8 @@
     entity_not_found_exception().
 
 -type list_table_optimizer_runs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -8978,6 +9071,9 @@
     entity_not_found_exception().
 
 -type update_table_optimizer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 

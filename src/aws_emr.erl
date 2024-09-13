@@ -360,6 +360,7 @@
 
 %% Example:
 %% spot_resizing_specification() :: #{
+%%   <<"AllocationStrategy">> => list(any()),
 %%   <<"TimeoutDurationMinutes">> => integer()
 %% }
 -type spot_resizing_specification() :: #{binary() => any()}.
@@ -1490,6 +1491,8 @@
 
 %% Example:
 %% on_demand_resizing_specification() :: #{
+%%   <<"AllocationStrategy">> => list(any()),
+%%   <<"CapacityReservationOptions">> => on_demand_capacity_reservation_options(),
 %%   <<"TimeoutDurationMinutes">> => integer()
 %% }
 -type on_demand_resizing_specification() :: #{binary() => any()}.
@@ -1679,6 +1682,7 @@
 %% Example:
 %% instance_fleet_modify_config() :: #{
 %%   <<"InstanceFleetId">> => string(),
+%%   <<"InstanceTypeConfigs">> => list(instance_type_config()()),
 %%   <<"ResizeSpecifications">> => instance_fleet_resizing_specifications(),
 %%   <<"TargetOnDemandCapacity">> => integer(),
 %%   <<"TargetSpotCapacity">> => integer()

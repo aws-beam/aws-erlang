@@ -58,6 +58,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_versions/1,
+         list_versions/3,
+         list_versions/4,
          put_policy/2,
          put_policy/3,
          search_jobs/1,
@@ -85,8 +88,11 @@
 %% Example:
 %% video_overlay() :: #{
 %%   <<"EndTimecode">> => string(),
+%%   <<"InitialPosition">> => video_overlay_position(),
 %%   <<"Input">> => video_overlay_input(),
-%%   <<"StartTimecode">> => string()
+%%   <<"Playback">> => list(any()),
+%%   <<"StartTimecode">> => string(),
+%%   <<"Transitions">> => list(video_overlay_transition()())
 %% }
 -type video_overlay() :: #{binary() => any()}.
 
@@ -566,6 +572,17 @@
 
 
 %% Example:
+%% video_overlay_position() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Unit">> => list(any()),
+%%   <<"Width">> => integer(),
+%%   <<"XPosition">> => integer(),
+%%   <<"YPosition">> => integer()
+%% }
+-type video_overlay_position() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_template() :: #{
 %%   <<"AccelerationSettings">> => acceleration_settings(),
 %%   <<"Arn">> => string(),
@@ -636,6 +653,7 @@
 %%   <<"BillingTagsSource">> => list(any()),
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"HopDestinations">> => list(hop_destination()()),
+%%   <<"JobEngineVersion">> => string(),
 %%   <<"JobTemplate">> => string(),
 %%   <<"Priority">> => integer(),
 %%   <<"Queue">> => string(),
@@ -884,6 +902,15 @@
 %%   <<"AudioSelectorNames">> => list(string()())
 %% }
 -type audio_selector_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_overlay_transition() :: #{
+%%   <<"EndPosition">> => video_overlay_position(),
+%%   <<"EndTimecode">> => string(),
+%%   <<"StartTimecode">> => string()
+%% }
+-type video_overlay_transition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1212,6 +1239,14 @@
 
 
 %% Example:
+%% job_engine_version() :: #{
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"Version">> => string()
+%% }
+-type job_engine_version() :: #{binary() => any()}.
+
+
+%% Example:
 %% avc_intra_settings() :: #{
 %%   <<"AvcIntraClass">> => list(any()),
 %%   <<"AvcIntraUhdSettings">> => avc_intra_uhd_settings(),
@@ -1389,6 +1424,7 @@
 
 %% Example:
 %% file_source_settings() :: #{
+%%   <<"ByteRateLimit">> => list(any()),
 %%   <<"Convert608To708">> => list(any()),
 %%   <<"ConvertPaintToPop">> => list(any()),
 %%   <<"Framerate">> => caption_source_framerate(),
@@ -1475,6 +1511,14 @@
 %%   <<"Strength">> => integer()
 %% }
 -type noise_reducer_temporal_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(job_engine_version()())
+%% }
+-type list_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2114,6 +2158,8 @@
 %%   <<"ErrorMessage">> => string(),
 %%   <<"HopDestinations">> => list(hop_destination()()),
 %%   <<"Id">> => string(),
+%%   <<"JobEngineVersionRequested">> => string(),
+%%   <<"JobEngineVersionUsed">> => string(),
 %%   <<"JobPercentComplete">> => integer(),
 %%   <<"JobTemplate">> => string(),
 %%   <<"Messages">> => job_messages(),
@@ -2209,6 +2255,14 @@
 %%   <<"Preset">> => preset()
 %% }
 -type get_preset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2748,6 +2802,7 @@
 %% h264_settings() :: #{
 %%   <<"FlickerAdaptiveQuantization">> => list(any()),
 %%   <<"QvbrSettings">> => h264_qvbr_settings(),
+%%   <<"SaliencyAwareEncoding">> => list(any()),
 %%   <<"EndOfStreamMarkers">> => list(any()),
 %%   <<"AdaptiveQuantization">> => list(any()),
 %%   <<"Slices">> => integer(),
@@ -2993,6 +3048,14 @@
     forbidden_exception().
 
 -type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_versions_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
@@ -3905,6 +3968,49 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve a JSON array of all available Job engine versions and the
+%% date they expire.
+-spec list_versions(aws_client:aws_client()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
+list_versions(Client)
+  when is_map(Client) ->
+    list_versions(Client, #{}, #{}).
+
+-spec list_versions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
+list_versions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_versions(Client, QueryMap, HeadersMap, []).
+
+-spec list_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
+list_versions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2017-08-29/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
