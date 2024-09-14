@@ -53,11 +53,11 @@
 %% comprises a key and a value, both set by you. For
 %% example, you might set a tag as `topic:nature' to label a particular
 %% video
-%% category. See Tagging AWS Resources:
-%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for more
-%% information, including restrictions that apply to
-%% tags and &quot;Tag naming limits and requirements&quot;; Amazon IVS Chat
-%% has no service-specific
+%% category. See Best practices and strategies:
+%% https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html
+%% in Tagging Amazon Web Services Resources and Tag Editor for details,
+%% including restrictions that apply to tags and &quot;Tag naming limits and
+%% requirements&quot;; Amazon IVS Chat has no service-specific
 %% constraints beyond what is documented there.
 %%
 %% Tags can help you identify and organize your AWS resources. For example,
@@ -67,7 +67,7 @@
 %% manage access (see Access Tags:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 %%
-%% The Amazon IVS Chat API has these tag-related endpoints:
+%% The Amazon IVS Chat API has these tag-related operations:
 %% `TagResource', `UntagResource', and
 %% `ListTagsForResource'. The following resource supports tagging: Room.
 %%
@@ -89,7 +89,7 @@
 %%
 %% Users (viewers) connect to a room using secure access tokens that you
 %% create using the
-%% `CreateChatToken' endpoint through the AWS SDK. You call
+%% `CreateChatToken' operation through the AWS SDK. You call
 %% CreateChatToken for
 %% every user’s chat session, passing identity and authorization information
 %% about the
