@@ -44,6 +44,8 @@
          add_thing_to_billing_group/3,
          add_thing_to_thing_group/2,
          add_thing_to_thing_group/3,
+         associate_sbom_with_package_version/4,
+         associate_sbom_with_package_version/5,
          associate_targets_with_job/3,
          associate_targets_with_job/4,
          attach_policy/3,
@@ -314,6 +316,8 @@
          detach_thing_principal/4,
          disable_topic_rule/3,
          disable_topic_rule/4,
+         disassociate_sbom_from_package_version/4,
+         disassociate_sbom_from_package_version/5,
          enable_topic_rule/3,
          enable_topic_rule/4,
          get_behavior_model_training_summaries/1,
@@ -485,6 +489,9 @@
          list_role_aliases/1,
          list_role_aliases/3,
          list_role_aliases/4,
+         list_sbom_validation_results/3,
+         list_sbom_validation_results/5,
+         list_sbom_validation_results/6,
          list_scheduled_audits/1,
          list_scheduled_audits/3,
          list_scheduled_audits/4,
@@ -678,6 +685,14 @@
 %%   <<"resourceIdentifier">> := resource_identifier()
 %% }
 -type describe_audit_suppression_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sbom_validation_results_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"validationResultSummaries">> => list(sbom_validation_result_summary()())
+%% }
+-type list_sbom_validation_results_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1666,9 +1681,12 @@
 %% }
 -type update_custom_metric_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_job_document_request() :: #{}
--type get_job_document_request() :: #{}.
+%% get_job_document_request() :: #{
+%%   <<"beforeSubstitution">> => boolean()
+%% }
+-type get_job_document_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2026,6 +2044,14 @@
 %%   <<"userProperties">> => list(user_property()())
 %% }
 -type mqtt_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_sbom_with_package_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"sbom">> := sbom()
+%% }
+-type associate_sbom_with_package_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2557,9 +2583,11 @@
 %% Example:
 %% update_package_version_request() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"artifact">> => package_version_artifact(),
 %%   <<"attributes">> => map(),
 %%   <<"clientToken">> => string(),
-%%   <<"description">> => string()
+%%   <<"description">> => string(),
+%%   <<"recipe">> => string()
 %% }
 -type update_package_version_request() :: #{binary() => any()}.
 
@@ -2723,6 +2751,13 @@
 %%   <<"targetCheckNames">> := list(string()())
 %% }
 -type create_scheduled_audit_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sbom() :: #{
+%%   <<"s3Location">> => s3_location()
+%% }
+-type sbom() :: #{binary() => any()}.
 
 %% Example:
 %% describe_audit_finding_request() :: #{}
@@ -3046,9 +3081,11 @@
 
 %% Example:
 %% create_package_version_request() :: #{
+%%   <<"artifact">> => package_version_artifact(),
 %%   <<"attributes">> => map(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"recipe">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_package_version_request() :: #{binary() => any()}.
@@ -3545,9 +3582,12 @@
 %% }
 -type aws_job_abort_config() :: #{binary() => any()}.
 
+
 %% Example:
-%% describe_job_request() :: #{}
--type describe_job_request() :: #{}.
+%% describe_job_request() :: #{
+%%   <<"beforeSubstitution">> => boolean()
+%% }
+-type describe_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3926,6 +3966,7 @@
 
 %% Example:
 %% get_package_version_response() :: #{
+%%   <<"artifact">> => package_version_artifact(),
 %%   <<"attributes">> => map(),
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -3933,6 +3974,9 @@
 %%   <<"lastModifiedDate">> => non_neg_integer(),
 %%   <<"packageName">> => string(),
 %%   <<"packageVersionArn">> => string(),
+%%   <<"recipe">> => string(),
+%%   <<"sbom">> => sbom(),
+%%   <<"sbomValidationStatus">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"versionName">> => string()
 %% }
@@ -3965,6 +4009,13 @@
 %%   <<"scheduledAuditName">> => string()
 %% }
 -type scheduled_audit_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_sbom_from_package_version_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type disassociate_sbom_from_package_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5057,6 +5108,16 @@
 
 
 %% Example:
+%% sbom_validation_result_summary() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"fileName">> => string(),
+%%   <<"validationResult">> => list(any())
+%% }
+-type sbom_validation_result_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% statistics() :: #{
 %%   <<"average">> => float(),
 %%   <<"count">> => integer(),
@@ -5456,6 +5517,16 @@
 
 
 %% Example:
+%% associate_sbom_with_package_version_response() :: #{
+%%   <<"packageName">> => string(),
+%%   <<"sbom">> => sbom(),
+%%   <<"sbomValidationStatus">> => list(any()),
+%%   <<"versionName">> => string()
+%% }
+-type associate_sbom_with_package_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_package_response() :: #{
 %%   <<"description">> => string(),
 %%   <<"packageArn">> => string(),
@@ -5496,6 +5567,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type provisioning_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sbom_validation_results_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"validationResult">> => list(any())
+%% }
+-type list_sbom_validation_results_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5637,6 +5717,10 @@
 %%   <<"metricName">> => string()
 %% }
 -type fleet_metric_name_and_arn() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_sbom_from_package_version_response() :: #{}
+-type disassociate_sbom_from_package_version_response() :: #{}.
 
 
 %% Example:
@@ -6127,6 +6211,13 @@
 %%   <<"findingIds">> => list(string()())
 %% }
 -type audit_mitigation_actions_task_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_version_artifact() :: #{
+%%   <<"s3Location">> => s3_location()
+%% }
+-type package_version_artifact() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6734,6 +6825,14 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_failure_exception().
+
+-type associate_sbom_with_package_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type associate_targets_with_job_errors() ::
     limit_exceeded_exception() | 
@@ -7603,6 +7702,13 @@
     invalid_request_exception() | 
     unauthorized_exception().
 
+-type disassociate_sbom_from_package_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type enable_topic_rule_errors() ::
     conflicting_resource_update_exception() | 
     internal_exception() | 
@@ -8001,6 +8107,12 @@
     invalid_request_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
+
+-type list_sbom_validation_results_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_scheduled_audits_errors() ::
     throttling_exception() | 
@@ -8487,6 +8599,7 @@
     internal_failure_exception().
 
 -type update_stream_errors() ::
+    limit_exceeded_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
@@ -8651,6 +8764,46 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a software bill of materials (SBOM) with a specific
+%% software package version.
+%%
+%% Requires permission to access the AssociateSbomWithPackageVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
+-spec associate_sbom_with_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), associate_sbom_with_package_version_request()) ->
+    {ok, associate_sbom_with_package_version_response(), tuple()} |
+    {error, any()} |
+    {error, associate_sbom_with_package_version_errors(), tuple()}.
+associate_sbom_with_package_version(Client, PackageName, VersionName, Input) ->
+    associate_sbom_with_package_version(Client, PackageName, VersionName, Input, []).
+
+-spec associate_sbom_with_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), associate_sbom_with_package_version_request(), proplists:proplist()) ->
+    {ok, associate_sbom_with_package_version_response(), tuple()} |
+    {error, any()} |
+    {error, associate_sbom_with_package_version_errors(), tuple()}.
+associate_sbom_with_package_version(Client, PackageName, VersionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), "/sbom"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a group with a continuous job.
@@ -12813,7 +12966,11 @@ describe_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"beforeSubstitution">>, maps:get(<<"beforeSubstitution">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -13604,6 +13761,46 @@ disable_topic_rule(Client, RuleName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates a software bill of materials (SBOM) from a specific
+%% software package version.
+%%
+%% Requires permission to access the DisassociateSbomWithPackageVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
+-spec disassociate_sbom_from_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_sbom_from_package_version_request()) ->
+    {ok, disassociate_sbom_from_package_version_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_sbom_from_package_version_errors(), tuple()}.
+disassociate_sbom_from_package_version(Client, PackageName, VersionName, Input) ->
+    disassociate_sbom_from_package_version(Client, PackageName, VersionName, Input, []).
+
+-spec disassociate_sbom_from_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_sbom_from_package_version_request(), proplists:proplist()) ->
+    {ok, disassociate_sbom_from_package_version_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_sbom_from_package_version_errors(), tuple()}.
+disassociate_sbom_from_package_version(Client, PackageName, VersionName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), "/sbom"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Enables the rule.
 %%
 %% Requires permission to access the EnableTopicRule:
@@ -13887,7 +14084,11 @@ get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"beforeSubstitution">>, maps:get(<<"beforeSubstitution">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -16399,6 +16600,54 @@ list_role_aliases(Client, QueryMap, HeadersMap, Options0)
         {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
         {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
         {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The validation results for all software bill of materials (SBOM)
+%% attached to a specific software package version.
+%%
+%% Requires permission to access the ListSbomValidationResults:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
+-spec list_sbom_validation_results(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_sbom_validation_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_sbom_validation_results_errors(), tuple()}.
+list_sbom_validation_results(Client, PackageName, VersionName)
+  when is_map(Client) ->
+    list_sbom_validation_results(Client, PackageName, VersionName, #{}, #{}).
+
+-spec list_sbom_validation_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_sbom_validation_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_sbom_validation_results_errors(), tuple()}.
+list_sbom_validation_results(Client, PackageName, VersionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sbom_validation_results(Client, PackageName, VersionName, QueryMap, HeadersMap, []).
+
+-spec list_sbom_validation_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_sbom_validation_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_sbom_validation_results_errors(), tuple()}.
+list_sbom_validation_results(Client, PackageName, VersionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), "/sbom-validation-results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"validationResult">>, maps:get(<<"validationResult">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

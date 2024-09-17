@@ -632,7 +632,8 @@
 %%   <<"outputDataConfig">> := list(),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => list(tag()()),
-%%   <<"timeoutDurationInHours">> => integer()
+%%   <<"timeoutDurationInHours">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
 -type create_model_invocation_job_request() :: #{binary() => any()}.
 
@@ -658,6 +659,7 @@
 
 %% Example:
 %% model_invocation_job_s3_output_data_config() :: #{
+%%   <<"s3BucketOwner">> => string(),
 %%   <<"s3EncryptionKeyId">> => string(),
 %%   <<"s3Uri">> => string()
 %% }
@@ -966,6 +968,7 @@
 
 %% Example:
 %% model_invocation_job_s3_input_data_config() :: #{
+%%   <<"s3BucketOwner">> => string(),
 %%   <<"s3InputFormat">> => list(any()),
 %%   <<"s3Uri">> => string()
 %% }
@@ -1458,7 +1461,8 @@
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"submitTime">> => non_neg_integer(),
-%%   <<"timeoutDurationInHours">> => integer()
+%%   <<"timeoutDurationInHours">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
 -type model_invocation_job_summary() :: #{binary() => any()}.
 
@@ -1571,7 +1575,8 @@
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"submitTime">> => non_neg_integer(),
-%%   <<"timeoutDurationInHours">> => integer()
+%%   <<"timeoutDurationInHours">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
 -type get_model_invocation_job_response() :: #{binary() => any()}.
 

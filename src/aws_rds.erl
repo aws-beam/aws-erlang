@@ -2651,7 +2651,8 @@
 %%   <<"GlobalClusterMembers">> => list(global_cluster_member()()),
 %%   <<"GlobalClusterResourceId">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"StorageEncrypted">> => boolean()
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"TagList">> => list(tag()())
 %% }
 -type global_cluster() :: #{binary() => any()}.
 
@@ -3501,7 +3502,8 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"GlobalClusterIdentifier">> => string(),
 %%   <<"SourceDBClusterIdentifier">> => string(),
-%%   <<"StorageEncrypted">> => boolean()
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type create_global_cluster_message() :: #{binary() => any()}.
 
@@ -9318,8 +9320,11 @@ failover_global_cluster(Client, Input, Options)
 %%
 %% For an overview on tagging an Amazon RDS resource,
 %% see Tagging Amazon RDS Resources:
-%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html
-%% in the Amazon RDS User Guide.
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html
+%% in the Amazon RDS User Guide
+%% or Tagging Amazon Aurora and Amazon RDS Resources:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.html
+%% in the Amazon Aurora User Guide.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
@@ -10294,8 +10299,11 @@ remove_source_identifier_from_subscription(Client, Input, Options)
 %%
 %% For an overview on tagging an Amazon RDS resource,
 %% see Tagging Amazon RDS Resources:
-%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html
-%% in the Amazon RDS User Guide.
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html
+%% in the Amazon RDS User Guide
+%% or Tagging Amazon Aurora and Amazon RDS Resources:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.html
+%% in the Amazon Aurora User Guide.
 -spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

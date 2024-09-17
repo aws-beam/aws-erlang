@@ -2012,15 +2012,15 @@ cancel_handshake(Client, Input, Options)
 %%
 %% You can close only 10% of member accounts, between 10 and 1000, within a
 %% rolling 30 day period. This quota is not bound by a calendar month, but
-%% starts when you close an account. After you reach this limit, you can
-%% close
+%% starts when you close an account. After you reach this limit, you
+%% can't close
 %% additional accounts. For more information, see Closing a member
 %% account in your organization:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html
 %% and Quotas for
 %% Organizations:
-%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.htmlin
-%% the Organizations User Guide.
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html
+%% in the Organizations User Guide.
 %%
 %% To reinstate a closed account, contact Amazon Web Services Support within
 %% the 90-day
@@ -2126,11 +2126,10 @@ close_account(Client, Input, Options)
 %% If the error persists, contact Amazon Web Services Support:
 %% https://console.aws.amazon.com/support/home#/.
 %%
-%% Using `CreateAccount' to create multiple temporary accounts
-%% isn't recommended. You can only close an account from the Billing and
-%% Cost Management console, and
-%% you must be signed in as the root user. For information on the
-%% requirements
+%% It isn't recommended to use `CreateAccount' to create multiple
+%% temporary accounts, and using
+%% the `CreateAccount' API to close accounts is subject to a 30-day usage
+%% quota. For information on the requirements
 %% and process for closing an account, see Closing a member
 %% account in your organization:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html
@@ -3062,17 +3061,19 @@ enable_all_features(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAllFeatures">>, Input, Options).
 
-%% @doc Enables the integration of an Amazon Web Services service (the
-%% service that is specified by
-%% `ServicePrincipal') with Organizations.
-%%
-%% When you enable integration, you allow
-%% the specified service to create a service-linked role:
+%% @doc Provides an Amazon Web Services service (the service that is
+%% specified by
+%% `ServicePrincipal') with permissions to view the structure of an
+%% organization,
+%% create a service-linked role:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html
-%% in
-%% all the accounts in your organization. This allows the service to perform
-%% operations on
-%% your behalf in your organization and its accounts.
+%% in all the accounts in the organization,
+%% and allow the service to perform operations
+%% on behalf of the organization and its accounts.
+%%
+%% Establishing these permissions can be a first step
+%% in enabling the integration of an Amazon Web Services service with
+%% Organizations.
 %%
 %% We recommend that you enable integration between Organizations and the
 %% specified Amazon Web Services
@@ -3267,8 +3268,9 @@ invite_account_to_organization(Client, Input, Options)
 %% of an organization do not support tags.
 %%
 %% A newly created account has a waiting period before it can be removed from
-%% its organization. If you get an error that indicates that a wait period is
-%% required, then try again in a few days.
+%% its organization.
+%% You must wait until at least seven days after the account was created.
+%% Invited accounts aren't subject to this waiting period.
 %%
 %% If you are using an organization principal to call
 %% `LeaveOrganization' across multiple accounts, you can only do
