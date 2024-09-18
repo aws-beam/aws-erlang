@@ -1864,6 +1864,7 @@
 %%   <<"Parameters">> => map(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"TargetLocations">> => list(target_location()()),
+%%   <<"TargetLocationsURL">> => string(),
 %%   <<"TargetMaps">> => list(map()()),
 %%   <<"TargetParameterName">> => string(),
 %%   <<"Targets">> => list(target()())
@@ -2000,6 +2001,7 @@
 %%   <<"ExecutedBy">> => string(),
 %%   <<"MaxConcurrency">> => string(),
 %%   <<"CurrentAction">> => string(),
+%%   <<"TargetLocationsURL">> => string(),
 %%   <<"CurrentStepName">> => string(),
 %%   <<"Outputs">> => map(),
 %%   <<"ResolvedTargets">> => resolved_targets(),
@@ -3731,11 +3733,16 @@
 %% Example:
 %% target_location() :: #{
 %%   <<"Accounts">> => list(string()()),
+%%   <<"ExcludeAccounts">> => list(string()()),
 %%   <<"ExecutionRoleName">> => string(),
+%%   <<"IncludeChildOrganizationUnits">> => boolean(),
 %%   <<"Regions">> => list(string()()),
 %%   <<"TargetLocationAlarmConfiguration">> => alarm_configuration(),
 %%   <<"TargetLocationMaxConcurrency">> => string(),
-%%   <<"TargetLocationMaxErrors">> => string()
+%%   <<"TargetLocationMaxErrors">> => string(),
+%%   <<"Targets">> => list(target()()),
+%%   <<"TargetsMaxConcurrency">> => string(),
+%%   <<"TargetsMaxErrors">> => string()
 %% }
 -type target_location() :: #{binary() => any()}.
 
@@ -4055,6 +4062,7 @@
 %%   <<"Runbooks">> => list(runbook()()),
 %%   <<"ScheduledTime">> => non_neg_integer(),
 %%   <<"Target">> => string(),
+%%   <<"TargetLocationsURL">> => string(),
 %%   <<"TargetMaps">> => list(map()()),
 %%   <<"TargetParameterName">> => string(),
 %%   <<"Targets">> => list(target()()),
@@ -6230,12 +6238,10 @@ cancel_maintenance_window_execution(Client, Input, Options)
 %% ID when installing SSM Agent on machines in your hybrid environment. For
 %% more information about
 %% requirements for managing on-premises machines using Systems Manager, see
-%% Setting up
-%% Amazon Web Services Systems Manager for hybrid and multicloud
-%% environments:
-%% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html
-%% in the
-%% Amazon Web Services Systems Manager User Guide.
+%% Using Amazon Web Services Systems Manager in
+%% hybrid and multicloud environments:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-hybrid-multicloud.html
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% Amazon Elastic Compute Cloud (Amazon EC2) instances, edge devices, and
 %% on-premises servers and VMs that are
@@ -6329,7 +6335,7 @@ create_association_batch(Client, Input, Options)
 %% information about
 %% supported schemas, features, and syntax, see Amazon Web Services Systems
 %% Manager Documents:
-%% https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/documents.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.
 -spec create_document(aws_client:aws_client(), create_document_request()) ->
@@ -6460,9 +6466,9 @@ create_patch_baseline(Client, Input, Options)
 %% `SyncToDestination' type to
 %% synchronize Inventory data from multiple Amazon Web Services Regions to a
 %% single Amazon Simple Storage Service (Amazon S3) bucket. For more
-%% information, see Configuring resource data
-%% sync for Inventory:
-%% https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html
+%% information, see Creatinga a
+%% resource data sync for Inventory:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/inventory-create-resource-data-sync.html
 %% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% You can configure Systems Manager Explorer to use the `SyncFromSource'
