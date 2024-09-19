@@ -1,11 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS SES Mail Manager API
+%% @doc Amazon SES Mail Manager API
 %%
-%% AWS SES Mail Manager API: http://aws.amazon.com/ses contains operations
-%% and data types
-%% that comprise the Mail Manager feature of Amazon Simple Email Service.
+%% The Amazon SES Mail Manager API contains operations and data types
+%% that comprise the Mail Manager feature of Amazon Simple Email Service
+%% (SES): http://aws.amazon.com/ses.
 %%
 %% Mail Manager is a set of Amazon SES email gateway features designed to
 %% help you strengthen
@@ -600,7 +600,7 @@
 %% archive_string_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list([string()]())
+%%   <<"Values">> => list(string()())
 %% }
 -type archive_string_expression() :: #{binary() => any()}.
 
@@ -2216,7 +2216,7 @@ update_relay(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRelay">>, Input, Options).
 
-%% @doc &gt;Update attributes of an already provisioned rule set.
+%% @doc Update attributes of an already provisioned rule set.
 -spec update_rule_set(aws_client:aws_client(), update_rule_set_request()) ->
     {ok, update_rule_set_response(), tuple()} |
     {error, any()} |

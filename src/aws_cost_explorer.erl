@@ -1112,6 +1112,7 @@
 %% reservation_purchase_recommendation_detail() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"AverageNormalizedUnitsUsedPerHour">> => string(),
+%%   <<"AverageNumberOfCapacityUnitsUsedPerHour">> => string(),
 %%   <<"AverageNumberOfInstancesUsedPerHour">> => string(),
 %%   <<"AverageUtilization">> => string(),
 %%   <<"CurrencyCode">> => string(),
@@ -1122,12 +1123,16 @@
 %%   <<"EstimatedReservationCostForLookbackPeriod">> => string(),
 %%   <<"InstanceDetails">> => instance_details(),
 %%   <<"MaximumNormalizedUnitsUsedPerHour">> => string(),
+%%   <<"MaximumNumberOfCapacityUnitsUsedPerHour">> => string(),
 %%   <<"MaximumNumberOfInstancesUsedPerHour">> => string(),
 %%   <<"MinimumNormalizedUnitsUsedPerHour">> => string(),
+%%   <<"MinimumNumberOfCapacityUnitsUsedPerHour">> => string(),
 %%   <<"MinimumNumberOfInstancesUsedPerHour">> => string(),
 %%   <<"RecommendedNormalizedUnitsToPurchase">> => string(),
+%%   <<"RecommendedNumberOfCapacityUnitsToPurchase">> => string(),
 %%   <<"RecommendedNumberOfInstancesToPurchase">> => string(),
 %%   <<"RecurringStandardMonthlyCost">> => string(),
+%%   <<"ReservedCapacityDetails">> => reserved_capacity_details(),
 %%   <<"UpfrontCost">> => string()
 %% }
 -type reservation_purchase_recommendation_detail() :: #{binary() => any()}.
@@ -1642,6 +1647,13 @@
 -type elasti_cache_instance_details() :: #{binary() => any()}.
 
 %% Example:
+%% dynamo_db_capacity_details() :: #{
+%%   <<"CapacityUnits">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type dynamo_db_capacity_details() :: #{binary() => any()}.
+
+%% Example:
 %% list_savings_plans_purchase_recommendation_generation_response() :: #{
 %%   <<"GenerationSummaryList">> => list(generation_summary()()),
 %%   <<"NextPageToken">> => string()
@@ -1659,6 +1671,12 @@
 %%   <<"TimePeriod">> := date_interval()
 %% }
 -type get_cost_categories_request() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_capacity_details() :: #{
+%%   <<"DynamoDBCapacityDetails">> => dynamo_db_capacity_details()
+%% }
+-type reserved_capacity_details() :: #{binary() => any()}.
 
 %% Example:
 %% reservation_purchase_recommendation_metadata() :: #{

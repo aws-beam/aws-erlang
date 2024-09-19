@@ -1536,6 +1536,7 @@
 %%   <<"Containers">> => list(container()()),
 %%   <<"DefinitionArn">> => string(),
 %%   <<"Group">> => string(),
+%%   <<"LaunchType">> => string(),
 %%   <<"StartedAt">> => non_neg_integer(),
 %%   <<"StartedBy">> => string(),
 %%   <<"Tags">> => list(tag()()),

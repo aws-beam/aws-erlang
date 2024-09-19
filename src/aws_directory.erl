@@ -79,6 +79,8 @@
          describe_conditional_forwarders/3,
          describe_directories/2,
          describe_directories/3,
+         describe_directory_data_access/2,
+         describe_directory_data_access/3,
          describe_domain_controllers/2,
          describe_domain_controllers/3,
          describe_event_topics/2,
@@ -99,6 +101,8 @@
          describe_update_directory/3,
          disable_client_authentication/2,
          disable_client_authentication/3,
+         disable_directory_data_access/2,
+         disable_directory_data_access/3,
          disable_ldaps/2,
          disable_ldaps/3,
          disable_radius/2,
@@ -107,6 +111,8 @@
          disable_sso/3,
          enable_client_authentication/2,
          enable_client_authentication/3,
+         enable_directory_data_access/2,
+         enable_directory_data_access/3,
          enable_ldaps/2,
          enable_ldaps/3,
          enable_radius/2,
@@ -526,6 +532,12 @@
 -type update_trust_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_directory_data_access_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type describe_directory_data_access_request() :: #{binary() => any()}.
+
+%% Example:
 %% enable_radius_request() :: #{
 %%   <<"DirectoryId">> := string(),
 %%   <<"RadiusSettings">> := radius_settings()
@@ -578,6 +590,12 @@
 %%   <<"SchemaExtensionsInfo">> => list(schema_extension_info()())
 %% }
 -type list_schema_extensions_result() :: #{binary() => any()}.
+
+%% Example:
+%% enable_directory_data_access_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type enable_directory_data_access_request() :: #{binary() => any()}.
 
 %% Example:
 %% add_tags_to_resource_request() :: #{
@@ -851,6 +869,12 @@
 %%   <<"RequestId">> => string()
 %% }
 -type incompatible_settings_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_directory_data_access_result() :: #{
+
+%% }
+-type enable_directory_data_access_result() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -1204,6 +1228,12 @@
 -type reset_user_password_request() :: #{binary() => any()}.
 
 %% Example:
+%% disable_directory_data_access_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type disable_directory_data_access_request() :: #{binary() => any()}.
+
+%% Example:
 %% trust() :: #{
 %%   <<"CreatedDateTime">> => non_neg_integer(),
 %%   <<"DirectoryId">> => string(),
@@ -1479,6 +1509,12 @@
 -type create_log_subscription_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_directory_data_access_result() :: #{
+%%   <<"DataAccessStatus">> => list(any())
+%% }
+-type describe_directory_data_access_result() :: #{binary() => any()}.
+
+%% Example:
 %% directory_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -1591,6 +1627,12 @@
 
 %% }
 -type add_tags_to_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_directory_data_access_result() :: #{
+
+%% }
+-type disable_directory_data_access_result() :: #{binary() => any()}.
 
 %% Example:
 %% ip_route_info() :: #{
@@ -1926,6 +1968,13 @@
     invalid_next_token_exception() | 
     client_exception().
 
+-type describe_directory_data_access_errors() ::
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
 -type describe_domain_controllers_errors() ::
     entity_does_not_exist_exception() | 
     invalid_parameter_exception() | 
@@ -2004,6 +2053,15 @@
     client_exception() | 
     unsupported_operation_exception().
 
+-type disable_directory_data_access_errors() ::
+    directory_unavailable_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    directory_in_desired_state_exception() | 
+    unsupported_operation_exception().
+
 -type disable_ldaps_errors() ::
     directory_unavailable_exception() | 
     invalid_parameter_exception() | 
@@ -2032,6 +2090,15 @@
     directory_does_not_exist_exception() | 
     client_exception() | 
     no_available_certificate_exception() | 
+    unsupported_operation_exception().
+
+-type enable_directory_data_access_errors() ::
+    directory_unavailable_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    directory_in_desired_state_exception() | 
     unsupported_operation_exception().
 
 -type enable_ldaps_errors() ::
@@ -2819,6 +2886,24 @@ describe_directories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDirectories">>, Input, Options).
 
+%% @doc Obtains status of directory data access enablement through the
+%% Directory Service Data API for the specified directory.
+-spec describe_directory_data_access(aws_client:aws_client(), describe_directory_data_access_request()) ->
+    {ok, describe_directory_data_access_result(), tuple()} |
+    {error, any()} |
+    {error, describe_directory_data_access_errors(), tuple()}.
+describe_directory_data_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_directory_data_access(Client, Input, []).
+
+-spec describe_directory_data_access(aws_client:aws_client(), describe_directory_data_access_request(), proplists:proplist()) ->
+    {ok, describe_directory_data_access_result(), tuple()} |
+    {error, any()} |
+    {error, describe_directory_data_access_errors(), tuple()}.
+describe_directory_data_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDirectoryDataAccess">>, Input, Options).
+
 %% @doc Provides information about any domain controllers in your directory.
 -spec describe_domain_controllers(aws_client:aws_client(), describe_domain_controllers_request()) ->
     {ok, describe_domain_controllers_result(), tuple()} |
@@ -3016,6 +3101,24 @@ disable_client_authentication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableClientAuthentication">>, Input, Options).
 
+%% @doc Deactivates access to directory data via the Directory Service Data
+%% API for the specified directory.
+-spec disable_directory_data_access(aws_client:aws_client(), disable_directory_data_access_request()) ->
+    {ok, disable_directory_data_access_result(), tuple()} |
+    {error, any()} |
+    {error, disable_directory_data_access_errors(), tuple()}.
+disable_directory_data_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_directory_data_access(Client, Input, []).
+
+-spec disable_directory_data_access(aws_client:aws_client(), disable_directory_data_access_request(), proplists:proplist()) ->
+    {ok, disable_directory_data_access_result(), tuple()} |
+    {error, any()} |
+    {error, disable_directory_data_access_errors(), tuple()}.
+disable_directory_data_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableDirectoryDataAccess">>, Input, Options).
+
 %% @doc Deactivates LDAP secure calls for the specified directory.
 -spec disable_ldaps(aws_client:aws_client(), disable_ldaps_request()) ->
     {ok, disable_ldaps_result(), tuple()} |
@@ -3087,6 +3190,24 @@ enable_client_authentication(Client, Input)
 enable_client_authentication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableClientAuthentication">>, Input, Options).
+
+%% @doc Enables access to directory data via the Directory Service Data API
+%% for the specified directory.
+-spec enable_directory_data_access(aws_client:aws_client(), enable_directory_data_access_request()) ->
+    {ok, enable_directory_data_access_result(), tuple()} |
+    {error, any()} |
+    {error, enable_directory_data_access_errors(), tuple()}.
+enable_directory_data_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_directory_data_access(Client, Input, []).
+
+-spec enable_directory_data_access(aws_client:aws_client(), enable_directory_data_access_request(), proplists:proplist()) ->
+    {ok, enable_directory_data_access_result(), tuple()} |
+    {error, any()} |
+    {error, enable_directory_data_access_errors(), tuple()}.
+enable_directory_data_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableDirectoryDataAccess">>, Input, Options).
 
 %% @doc Activates the switch for the specific directory to always use LDAP
 %% secure calls.
@@ -3389,6 +3510,9 @@ remove_tags_from_resource(Client, Input, Options)
 %% @doc Resets the password for any user in your Managed Microsoft AD or
 %% Simple AD
 %% directory.
+%%
+%% Disabled users will become enabled and can be authenticated following the
+%% API call.
 %%
 %% You can reset the password for any user in your directory with the
 %% following
