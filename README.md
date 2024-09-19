@@ -53,6 +53,18 @@ through the `aws_s3_presigned_url` module.
 #{<<"HasMoreStreams">> => false,<<"StreamNames">> => []}
 ```
 
+### AWS RDS IAM Token Creation
+Support for creating IAM Tokens (more info [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Connecting.html)) has been added as part of the `aws_rds_iam_token` module.
+This allows for easy creation of RDS/Aurora tokens to be used for IAM based authentication instead of username/password combination.
+```erlang
+> Client = aws_client:make_temporary_client(<<"AccessKeyID">>, <<"SecretAccessKey">>, <<"Token">>, <<"eu-west-1">>).
+[...]
+> {ok, Url} = create(Client, <<"db_endpoint">>, 5432, <<"db_user">>).
+[...]
+```
+
+This token can subsequently be used to connect to the database over IAM.
+
 ### retry options
 
 Each API which takes `Options` allows a `retry_options` key and can allow for automatic retries.
