@@ -3062,6 +3062,7 @@
 
 %% Example:
 %% multiplex_output_settings() :: #{
+%%   <<"ContainerSettings">> => multiplex_container_settings(),
 %%   <<"Destination">> => output_location_ref()
 %% }
 -type multiplex_output_settings() :: #{binary() => any()}.
@@ -3172,6 +3173,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_clusters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bandwidth_reduction_filter_settings() :: #{
+%%   <<"PostFilterSharpening">> => list(any()),
+%%   <<"Strength">> => list(any())
+%% }
+-type bandwidth_reduction_filter_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3339,6 +3348,7 @@
 
 %% Example:
 %% h264_filter_settings() :: #{
+%%   <<"BandwidthReductionFilterSettings">> => bandwidth_reduction_filter_settings(),
 %%   <<"TemporalFilterSettings">> => temporal_filter_settings()
 %% }
 -type h264_filter_settings() :: #{binary() => any()}.
@@ -3576,6 +3586,13 @@
 %% Example:
 %% delete_input_response() :: #{}
 -type delete_input_response() :: #{}.
+
+
+%% Example:
+%% multiplex_container_settings() :: #{
+%%   <<"MultiplexM2tsSettings">> => multiplex_m2ts_settings()
+%% }
+-type multiplex_container_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3916,6 +3933,7 @@
 
 %% Example:
 %% h265_filter_settings() :: #{
+%%   <<"BandwidthReductionFilterSettings">> => bandwidth_reduction_filter_settings(),
 %%   <<"TemporalFilterSettings">> => temporal_filter_settings()
 %% }
 -type h265_filter_settings() :: #{binary() => any()}.
@@ -4602,6 +4620,26 @@
 %%   <<"ImmediateModeScheduleActionStartSettings">> => immediate_mode_schedule_action_start_settings()
 %% }
 -type schedule_action_start_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_m2ts_settings() :: #{
+%%   <<"AbsentInputAudioBehavior">> => list(any()),
+%%   <<"Arib">> => list(any()),
+%%   <<"AudioBufferModel">> => list(any()),
+%%   <<"AudioFramesPerPes">> => integer(),
+%%   <<"AudioStreamType">> => list(any()),
+%%   <<"CcDescriptor">> => list(any()),
+%%   <<"Ebif">> => list(any()),
+%%   <<"EsRateInPes">> => list(any()),
+%%   <<"Klv">> => list(any()),
+%%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"PcrControl">> => list(any()),
+%%   <<"PcrPeriod">> => integer(),
+%%   <<"Scte35Control">> => list(any()),
+%%   <<"Scte35PrerollPullupMilliseconds">> => float()
+%% }
+-type multiplex_m2ts_settings() :: #{binary() => any()}.
 
 
 %% Example:

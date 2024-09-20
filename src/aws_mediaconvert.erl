@@ -794,6 +794,7 @@
 %% speke_key_provider_cmaf() :: #{
 %%   <<"CertificateArn">> => string(),
 %%   <<"DashSignaledSystemIds">> => list(string()()),
+%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
 %%   <<"HlsSignaledSystemIds">> => list(string()()),
 %%   <<"ResourceId">> => string(),
 %%   <<"Url">> => string()
@@ -1341,6 +1342,7 @@
 %% Example:
 %% speke_key_provider() :: #{
 %%   <<"CertificateArn">> => string(),
+%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
 %%   <<"ResourceId">> => string(),
 %%   <<"SystemIds">> => list(string()()),
 %%   <<"Url">> => string()
@@ -1806,6 +1808,14 @@
 %% Example:
 %% get_job_template_request() :: #{}
 -type get_job_template_request() :: #{}.
+
+
+%% Example:
+%% encryption_contract_configuration() :: #{
+%%   <<"SpekeAudioPreset">> => list(any()),
+%%   <<"SpekeVideoPreset">> => list(any())
+%% }
+-type encryption_contract_configuration() :: #{binary() => any()}.
 
 
 %% Example:

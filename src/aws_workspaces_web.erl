@@ -2,17 +2,19 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon WorkSpaces Secure Browser is a low cost, fully managed
-%% WorkSpace built specifically to facilitate
-%% secure, web-based workloads.
+%% WorkSpace built
+%% specifically to facilitate secure, web-based workloads.
 %%
-%% WorkSpaces Secure Browser makes it easy for customers to safely provide
-%% their employees with access to internal websites and SaaS web applications
-%% without the
-%% administrative burden of appliances or specialized client software.
-%% WorkSpaces Secure Browser provides
-%% simple policy tools tailored for user interactions, while offloading
-%% common tasks like
-%% capacity management, scaling, and maintaining browser images.
+%% WorkSpaces Secure Browser makes it
+%% easy for customers to safely provide their employees with access to
+%% internal websites and
+%% SaaS web applications without the administrative burden of appliances or
+%% specialized client
+%% software. WorkSpaces Secure Browser provides simple policy tools tailored
+%% for user
+%% interactions, while offloading common tasks like capacity management,
+%% scaling, and
+%% maintaining browser images.
 -module(aws_workspaces_web).
 
 -export([associate_browser_settings/3,
@@ -71,6 +73,8 @@
          disassociate_user_access_logging_settings/4,
          disassociate_user_settings/3,
          disassociate_user_settings/4,
+         expire_session/4,
+         expire_session/5,
          get_browser_settings/2,
          get_browser_settings/4,
          get_browser_settings/5,
@@ -89,6 +93,9 @@
          get_portal_service_provider_metadata/2,
          get_portal_service_provider_metadata/4,
          get_portal_service_provider_metadata/5,
+         get_session/3,
+         get_session/5,
+         get_session/6,
          get_trust_store/2,
          get_trust_store/4,
          get_trust_store/5,
@@ -116,6 +123,9 @@
          list_portals/1,
          list_portals/3,
          list_portals/4,
+         list_sessions/2,
+         list_sessions/4,
+         list_sessions/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -182,6 +192,10 @@
 %%   <<"browserSettingsArn">> => string()
 %% }
 -type create_browser_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% expire_session_response() :: #{}
+-type expire_session_response() :: #{}.
 
 
 %% Example:
@@ -263,11 +277,30 @@
 
 
 %% Example:
+%% session_summary() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"portalArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"username">> => string()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_identity_providers_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_identity_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"session">> => session()
+%% }
+-type get_session_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_portal_service_provider_metadata_request() :: #{}
@@ -439,6 +472,10 @@
 -type delete_identity_provider_request() :: #{}.
 
 %% Example:
+%% expire_session_request() :: #{}
+-type expire_session_request() :: #{}.
+
+%% Example:
 %% disassociate_browser_settings_response() :: #{}
 -type disassociate_browser_settings_response() :: #{}.
 
@@ -523,6 +560,10 @@
 %% }
 -type associate_network_settings_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
+
 
 %% Example:
 %% associate_browser_settings_request() :: #{
@@ -586,6 +627,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_portals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessions">> => list(session_summary()())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_ip_access_settings_request() :: #{}
@@ -799,6 +848,18 @@
 
 
 %% Example:
+%% list_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"username">> => string()
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
 %%   <<"name">> => string()
@@ -816,6 +877,19 @@
 %% Example:
 %% disassociate_user_access_logging_settings_response() :: #{}
 -type disassociate_user_access_logging_settings_response() :: #{}.
+
+
+%% Example:
+%% session() :: #{
+%%   <<"clientIpAddresses">> => list(string()()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"portalArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"username">> => string()
+%% }
+-type session() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1491,6 +1565,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type expire_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_browser_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1527,6 +1608,13 @@
     resource_not_found_exception().
 
 -type get_portal_service_provider_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_session_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1590,6 +1678,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_sessions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
@@ -2140,7 +2235,8 @@ create_trust_store(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a user access logging settings resource that can be
-%% associated with a web portal.
+%% associated with a web
+%% portal.
 -spec create_user_access_logging_settings(aws_client:aws_client(), create_user_access_logging_settings_request()) ->
     {ok, create_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
@@ -2690,6 +2786,40 @@ disassociate_user_settings(Client, PortalArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Expires an active secure browser session.
+-spec expire_session(aws_client:aws_client(), binary() | list(), binary() | list(), expire_session_request()) ->
+    {ok, expire_session_response(), tuple()} |
+    {error, any()} |
+    {error, expire_session_errors(), tuple()}.
+expire_session(Client, PortalId, SessionId, Input) ->
+    expire_session(Client, PortalId, SessionId, Input, []).
+
+-spec expire_session(aws_client:aws_client(), binary() | list(), binary() | list(), expire_session_request(), proplists:proplist()) ->
+    {ok, expire_session_response(), tuple()} |
+    {error, any()} |
+    {error, expire_session_errors(), tuple()}.
+expire_session(Client, PortalId, SessionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/portals/", aws_util:encode_uri(PortalId), "/sessions/", aws_util:encode_uri(SessionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets browser settings.
 -spec get_browser_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_browser_settings_response(), tuple()} |
@@ -2899,6 +3029,43 @@ get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap)
 get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portalIdp/", aws_util:encode_multi_segment_uri(PortalArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information for a secure browser session.
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, PortalId, SessionId)
+  when is_map(Client) ->
+    get_session(Client, PortalId, SessionId, #{}, #{}).
+
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, PortalId, SessionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_session(Client, PortalId, SessionId, QueryMap, HeadersMap, []).
+
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, PortalId, SessionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/portals/", aws_util:encode_uri(PortalId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3269,6 +3436,53 @@ list_portals(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists information for multiple secure browser sessions from a
+%% specific portal.
+-spec list_sessions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, PortalId)
+  when is_map(Client) ->
+    list_sessions(Client, PortalId, #{}, #{}).
+
+-spec list_sessions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, PortalId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sessions(Client, PortalId, QueryMap, HeadersMap, []).
+
+-spec list_sessions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, PortalId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/portals/", aws_util:encode_uri(PortalId), "/sessions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sessionId">>, maps:get(<<"sessionId">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"username">>, maps:get(<<"username">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

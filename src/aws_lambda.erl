@@ -1065,7 +1065,8 @@
 %% create_code_signing_config_request() :: #{
 %%   <<"AllowedPublishers">> := allowed_publishers(),
 %%   <<"CodeSigningPolicies">> => code_signing_policies(),
-%%   <<"Description">> => string()
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => map()
 %% }
 -type create_code_signing_config_request() :: #{binary() => any()}.
 
@@ -1086,6 +1087,7 @@
 %%   <<"DestinationConfig">> => destination_config(),
 %%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
 %%   <<"EventSourceArn">> => string(),
+%%   <<"EventSourceMappingArn">> => string(),
 %%   <<"FilterCriteria">> => filter_criteria(),
 %%   <<"FilterCriteriaError">> => filter_criteria_error(),
 %%   <<"FunctionArn">> => string(),
@@ -1137,6 +1139,7 @@
 %%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
 %%   <<"StartingPosition">> => list(any()),
 %%   <<"StartingPositionTimestamp">> => non_neg_integer(),
+%%   <<"Tags">> => map(),
 %%   <<"Topics">> => list(string()()),
 %%   <<"TumblingWindowInSeconds">> => integer()
 %% }
@@ -2120,6 +2123,7 @@
 -type add_permission_errors() ::
     resource_conflict_exception() | 
     precondition_failed_exception() | 
+    public_policy_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2571,6 +2575,7 @@
 
 -type remove_permission_errors() ::
     precondition_failed_exception() | 
+    public_policy_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2699,8 +2704,8 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants an Amazon Web Servicesservice, Amazon Web Services account, or
-%% Amazon Web Services organization
+%% @doc Grants a principal:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying
 %% permission to use a function.
 %%
 %% You can apply the policy at the function level, or specify a qualifier to
@@ -3492,7 +3497,13 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a resource-based policy:
+%% @doc
+%% The option to create and modify full JSON resource-based policies, and to
+%% use the PutResourcePolicy, GetResourcePolicy, and DeleteResourcePolicy
+%% APIs, won't be
+%% available in all Amazon Web Services Regions until September 30, 2024.
+%%
+%% Deletes a resource-based policy:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
 %% from a function.
 -spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
@@ -4194,7 +4205,12 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve the public-access settings for a function.
+%% @doc
+%% The option to configure public-access settings, and to use the
+%% PutPublicAccessBlock and GetPublicAccessBlock APIs, won't be
+%% available in all Amazon Web Services Regions until September 30, 2024.
+%%
+%% Retrieve the public-access settings for a function.
 -spec get_public_access_block_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_public_access_block_config_response(), tuple()} |
     {error, any()} |
@@ -4231,7 +4247,13 @@ get_public_access_block_config(Client, ResourceArn, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the resource-based policy:
+%% @doc
+%% The option to create and modify full JSON resource-based policies, and to
+%% use the PutResourcePolicy, GetResourcePolicy, and DeleteResourcePolicy
+%% APIs, won't be
+%% available in all Amazon Web Services Regions until September 30, 2024.
+%%
+%% Retrieves the resource-based policy:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
 %% attached to a function.
 -spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
@@ -5032,11 +5054,12 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a function's tags:
+%% @doc Returns a function, event source mapping, or code signing
+%% configuration's tags:
 %% https://docs.aws.amazon.com/lambda/latest/dg/tagging.html.
 %%
 %% You can
-%% also view tags with `GetFunction'.
+%% also view funciton tags with `GetFunction'.
 -spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
@@ -5447,7 +5470,12 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Configure your function's public-access settings.
+%% @doc
+%% The option to configure public-access settings, and to use the
+%% PutPublicAccessBlock and GetPublicAccessBlock APIs, won't be
+%% available in all Amazon Web Services Regions until September 30, 2024.
+%%
+%% Configure your function's public-access settings.
 %%
 %% To control public access to a Lambda function, you can choose whether to
 %% allow the creation of
@@ -5490,11 +5518,16 @@ put_public_access_block_config(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a resource-based policy:
-%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
-%% to a function.
+%% @doc
+%% The option to create and modify full JSON resource-based policies, and to
+%% use the PutResourcePolicy, GetResourcePolicy, and DeleteResourcePolicy
+%% APIs, won't be
+%% available in all Amazon Web Services Regions until September 30, 2024.
 %%
-%% You can use resource-based policies to grant access to other
+%% Adds a resource-based policy:
+%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
+%% to a function. You can use resource-based policies to grant access to
+%% other
 %% Amazon Web Services accounts:
 %% https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-cross-account.html,
 %% organizations:
@@ -5665,7 +5698,7 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags: https://docs.aws.amazon.com/lambda/latest/dg/tagging.html
-%% to a function.
+%% to a function, event source mapping, or code signing configuration.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5700,7 +5733,8 @@ tag_resource(Client, Resource, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags:
-%% https://docs.aws.amazon.com/lambda/latest/dg/tagging.html from a function.
+%% https://docs.aws.amazon.com/lambda/latest/dg/tagging.html from a function,
+%% event source mapping, or code signing configuration.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

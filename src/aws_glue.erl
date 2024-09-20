@@ -406,6 +406,8 @@
          stop_workflow_run/3,
          tag_resource/2,
          tag_resource/3,
+         test_connection/2,
+         test_connection/3,
          untag_resource/2,
          untag_resource/3,
          update_blueprint/2,
@@ -5162,6 +5164,12 @@
 -type update_ml_transform_request() :: #{binary() => any()}.
 
 %% Example:
+%% test_connection_response() :: #{
+
+%% }
+-type test_connection_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_ml_transform_response() :: #{
 %%   <<"CreatedOn">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -5325,6 +5333,14 @@
 %%   <<"Table">> => string()
 %% }
 -type s3_delta_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% test_connection_input() :: #{
+%%   <<"AuthenticationConfiguration">> => authentication_configuration_input(),
+%%   <<"ConnectionProperties">> => map(),
+%%   <<"ConnectionType">> => list(any())
+%% }
+-type test_connection_input() :: #{binary() => any()}.
 
 %% Example:
 %% s3_source_additional_options() :: #{
@@ -7483,6 +7499,13 @@
 -type create_registry_input() :: #{binary() => any()}.
 
 %% Example:
+%% test_connection_request() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"TestConnectionInput">> => test_connection_input()
+%% }
+-type test_connection_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_partition_response() :: #{
 
 %% }
@@ -8925,6 +8948,17 @@
 
 -type tag_resource_errors() ::
     invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type test_connection_errors() ::
+    glue_encryption_exception() | 
+    access_denied_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    conflict_exception() | 
+    resource_number_limit_exceeded_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
@@ -13090,6 +13124,30 @@ tag_resource(Client, Input)
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Tests a connection to a service to validate the service credentials
+%% that you provide.
+%%
+%% You can either provide an existing connection name or a
+%% `TestConnectionInput' for testing a non-existing connection input.
+%% Providing both at the same time will cause an error.
+%%
+%% If the action is successful, the service sends back an HTTP 200 response.
+-spec test_connection(aws_client:aws_client(), test_connection_request()) ->
+    {ok, test_connection_response(), tuple()} |
+    {error, any()} |
+    {error, test_connection_errors(), tuple()}.
+test_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    test_connection(Client, Input, []).
+
+-spec test_connection(aws_client:aws_client(), test_connection_request(), proplists:proplist()) ->
+    {ok, test_connection_response(), tuple()} |
+    {error, any()} |
+    {error, test_connection_errors(), tuple()}.
+test_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TestConnection">>, Input, Options).
 
 %% @doc Removes tags from a resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->

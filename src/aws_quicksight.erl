@@ -281,6 +281,9 @@
          list_folders/2,
          list_folders/4,
          list_folders/5,
+         list_folders_for_resource/3,
+         list_folders_for_resource/5,
+         list_folders_for_resource/6,
          list_group_memberships/4,
          list_group_memberships/6,
          list_group_memberships/7,
@@ -684,6 +687,7 @@
 
 %% Example:
 %% filter_date_time_picker_control() :: #{
+%%   <<"CommitMode">> => list(any()),
 %%   <<"DisplayOptions">> => date_time_picker_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SourceFilterId">> => string(),
@@ -3513,6 +3517,7 @@
 
 %% Example:
 %% default_relative_date_time_control_options() :: #{
+%%   <<"CommitMode">> => list(any()),
 %%   <<"DisplayOptions">> => relative_date_time_control_display_options()
 %% }
 -type default_relative_date_time_control_options() :: #{binary() => any()}.
@@ -3656,6 +3661,16 @@
 %%   <<"TopicId">> => string()
 %% }
 -type create_topic_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_folders_for_resource_response() :: #{
+%%   <<"Folders">> => list(string()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_folders_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4452,6 +4467,7 @@
 
 %% Example:
 %% filter_relative_date_time_control() :: #{
+%%   <<"CommitMode">> => list(any()),
 %%   <<"DisplayOptions">> => relative_date_time_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SourceFilterId">> => string(),
@@ -5650,6 +5666,7 @@
 %% Example:
 %% parameter_drop_down_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"CommitMode">> => list(any()),
 %%   <<"DisplayOptions">> => drop_down_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
 %%   <<"SelectableValues">> => parameter_selectable_values(),
@@ -6598,6 +6615,7 @@
 
 %% Example:
 %% default_filter_drop_down_control_options() :: #{
+%%   <<"CommitMode">> => list(any()),
 %%   <<"DisplayOptions">> => drop_down_control_display_options(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
 %%   <<"Type">> => list(any())
@@ -6719,6 +6737,7 @@
 %% Example:
 %% filter_drop_down_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"CommitMode">> => list(any()),
 %%   <<"DisplayOptions">> => drop_down_control_display_options(),
 %%   <<"FilterControlId">> => string(),
 %%   <<"SelectableValues">> => filter_selectable_values(),
@@ -7770,6 +7789,7 @@
 
 %% Example:
 %% default_date_time_picker_control_options() :: #{
+%%   <<"CommitMode">> => list(any()),
 %%   <<"DisplayOptions">> => date_time_picker_control_display_options(),
 %%   <<"Type">> => list(any())
 %% }
@@ -8431,6 +8451,14 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_folders_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_folders_for_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12189,6 +12217,15 @@
     internal_failure_exception().
 
 -type list_folders_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_folders_for_resource_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
@@ -17259,6 +17296,48 @@ list_folders(Client, AwsAccountId, QueryMap, HeadersMap)
 list_folders(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all folders that a resource is a member of.
+-spec list_folders_for_resource(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_folders_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_folders_for_resource_errors(), tuple()}.
+list_folders_for_resource(Client, AwsAccountId, ResourceArn)
+  when is_map(Client) ->
+    list_folders_for_resource(Client, AwsAccountId, ResourceArn, #{}, #{}).
+
+-spec list_folders_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_folders_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_folders_for_resource_errors(), tuple()}.
+list_folders_for_resource(Client, AwsAccountId, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_folders_for_resource(Client, AwsAccountId, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_folders_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_folders_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_folders_for_resource_errors(), tuple()}.
+list_folders_for_resource(Client, AwsAccountId, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/resource/", aws_util:encode_uri(ResourceArn), "/folders"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
