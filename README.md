@@ -59,7 +59,7 @@ This allows for easy creation of RDS/Aurora tokens to be used for IAM based auth
 ```erlang
 > Client = aws_client:make_temporary_client(<<"AccessKeyID">>, <<"SecretAccessKey">>, <<"Token">>, <<"eu-west-1">>).
 [...]
-> {ok, Url} = create(Client, <<"db_endpoint">>, 5432, <<"db_user">>).
+> {ok, Url} = aws_rds_iam_token:rds_token_create(Client, <<"db_endpoint">>, 5432, <<"db_user">>).
 [...]
 ```
 
