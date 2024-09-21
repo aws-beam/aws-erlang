@@ -11,11 +11,27 @@
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_metrics_BatchPutMetrics.html
 -module(aws_sagemaker_metrics).
 
--export([batch_put_metrics/2,
+-export([batch_get_metrics/2,
+         batch_get_metrics/3,
+         batch_put_metrics/2,
          batch_put_metrics/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% batch_get_metrics_request() :: #{
+%%   <<"MetricQueries">> := list(metric_query()())
+%% }
+-type batch_get_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_metrics_response() :: #{
+%%   <<"MetricQueryResults">> => list(metric_query_result()())
+%% }
+-type batch_get_metrics_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -42,6 +58,29 @@
 
 
 %% Example:
+%% metric_query() :: #{
+%%   <<"End">> => float(),
+%%   <<"MetricName">> => string(),
+%%   <<"MetricStat">> => list(any()),
+%%   <<"Period">> => list(any()),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Start">> => float(),
+%%   <<"XAxisType">> => list(any())
+%% }
+-type metric_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_query_result() :: #{
+%%   <<"Message">> => string(),
+%%   <<"MetricValues">> => list(float()()),
+%%   <<"Status">> => list(any()),
+%%   <<"XAxisValues">> => list(float()())
+%% }
+-type metric_query_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% raw_metric_data() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"Step">> => integer(),
@@ -56,10 +95,41 @@
 %% API
 %%====================================================================
 
+%% @doc Used to retrieve training metrics from SageMaker.
+-spec batch_get_metrics(aws_client:aws_client(), batch_get_metrics_request()) ->
+    {ok, batch_get_metrics_response(), tuple()} |
+    {error, any()}.
+batch_get_metrics(Client, Input) ->
+    batch_get_metrics(Client, Input, []).
+
+-spec batch_get_metrics(aws_client:aws_client(), batch_get_metrics_request(), proplists:proplist()) ->
+    {ok, batch_get_metrics_response(), tuple()} |
+    {error, any()}.
+batch_get_metrics(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetMetrics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Used to ingest training metrics into SageMaker.
 %%
-%% These metrics can be visualized in SageMaker Studio and
-%% retrieved with the `GetMetrics' API.
+%% These metrics can be visualized in SageMaker Studio.
 -spec batch_put_metrics(aws_client:aws_client(), batch_put_metrics_request()) ->
     {ok, batch_put_metrics_response(), tuple()} |
     {error, any()}.
