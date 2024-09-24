@@ -14921,8 +14921,8 @@
 %%   <<"CapacityDurationHours">> := integer(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndDateRange">> => non_neg_integer(),
-%%   <<"InstanceCount">> := integer(),
-%%   <<"InstanceType">> := string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StartDateRange">> => non_neg_integer()
@@ -19702,10 +19702,6 @@ cancel_capacity_reservation_fleets(Client, Input, Options)
 %% instance. If the conversion is complete or is
 %% in the process of transferring the final disk image, the command fails and
 %% returns an exception.
-%%
-%% For more information, see Importing a Virtual Machine Using the Amazon
-%% EC2 CLI:
-%% https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html.
 -spec cancel_conversion_task(aws_client:aws_client(), cancel_conversion_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -29774,7 +29770,7 @@ import_image(Client, Input, Options)
 %% `ImportImage'
 %% :
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html
-%% API.
+%% API instead.
 %%
 %% For more information, see Importing a VM as an image using VM
 %% Import/Export:
@@ -29784,13 +29780,6 @@ import_image(Client, Input, Options)
 %% Creates an import instance task using metadata from the specified disk
 %% image.
 %%
-%% This API action is not supported by the Command Line Interface (CLI). For
-%% information about using the Amazon EC2 CLI, which is deprecated, see
-%% Importing
-%% a VM to Amazon EC2:
-%% https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#UsingVirtualMachinesinAmazonEC2
-%% in the Amazon EC2 CLI Reference PDF file.
-%%
 %% This API action supports only single-volume VMs. To import multi-volume
 %% VMs, use `ImportImage'
 %% instead.
@@ -29798,6 +29787,8 @@ import_image(Client, Input, Options)
 %% For information about the import manifest referenced by this API action,
 %% see VM Import Manifest:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html.
+%%
+%% This API action is not supported by the Command Line Interface (CLI).
 -spec import_instance(aws_client:aws_client(), import_instance_request()) ->
     {ok, import_instance_result(), tuple()} |
     {error, any()}.
@@ -29859,23 +29850,21 @@ import_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportSnapshot">>, Input, Options).
 
-%% @doc Creates an import volume task using metadata from the specified disk
-%% image.
+%% @doc
+%% This API action supports only single-volume VMs.
 %%
-%% This API action supports only single-volume VMs. To import multi-volume
-%% VMs, use
+%% To import multi-volume VMs, use
 %% `ImportImage' instead. To import a disk to a snapshot, use
 %% `ImportSnapshot' instead.
 %%
-%% This API action is not supported by the Command Line Interface (CLI). For
-%% information about using the Amazon EC2 CLI, which is deprecated, see
-%% Importing Disks to Amazon EBS:
-%% https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#importing-your-volumes-into-amazon-ebs
-%% in the Amazon EC2 CLI Reference PDF file.
+%% Creates an import volume task using metadata from the specified disk
+%% image.
 %%
 %% For information about the import manifest referenced by this API action,
 %% see VM Import Manifest:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html.
+%%
+%% This API action is not supported by the Command Line Interface (CLI).
 -spec import_volume(aws_client:aws_client(), import_volume_request()) ->
     {ok, import_volume_result(), tuple()} |
     {error, any()}.

@@ -75,6 +75,8 @@
          list_indexes/3,
          list_indexes_for_members/2,
          list_indexes_for_members/3,
+         list_resources/2,
+         list_resources/3,
          list_supported_resource_types/2,
          list_supported_resource_types/3,
          list_tags_for_resource/2,
@@ -272,6 +274,16 @@
 %%   <<"Type">> => string()
 %% }
 -type index() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_input() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"ViewArn">> => [string()]
+%% }
+-type list_resources_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -543,6 +555,15 @@
 
 
 %% Example:
+%% list_resources_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Resources">> => list(resource()()),
+%%   <<"ViewArn">> => [string()]
+%% }
+-type list_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"LastReportedAt">> => [non_neg_integer()],
@@ -645,6 +666,14 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_supported_resource_types_errors() ::
     throttling_exception() | 
@@ -1088,9 +1117,7 @@ disassociate_default_view(Client, Input0, Options0) ->
 %% linked role required to access the multi-account search feature.
 %%
 %% Only the management
-%% account or a delegated administrator with service access enabled can
-%% invoke this API
-%% call.
+%% account can invoke this API call.
 -spec get_account_level_service_configuration(aws_client:aws_client(), #{}) ->
     {ok, get_account_level_service_configuration_output(), tuple()} |
     {error, any()} |
@@ -1289,6 +1316,46 @@ list_indexes_for_members(Client, Input) ->
 list_indexes_for_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListIndexesForMembers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of resources and their details that match the
+%% specified criteria.
+%%
+%% This query must
+%% use a view. If you don’t explicitly specify a view, then Resource Explorer
+%% uses the default view for the Amazon Web Services Region
+%% in which you call this operation.
+-spec list_resources(aws_client:aws_client(), list_resources_input()) ->
+    {ok, list_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_resources_errors(), tuple()}.
+list_resources(Client, Input) ->
+    list_resources(Client, Input, []).
+
+-spec list_resources(aws_client:aws_client(), list_resources_input(), proplists:proplist()) ->
+    {ok, list_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_resources_errors(), tuple()}.
+list_resources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListResources"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

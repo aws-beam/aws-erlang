@@ -195,6 +195,9 @@
 %% Example:
 %% data_catalog_summary() :: #{
 %%   <<"CatalogName">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"Error">> => string(),
+%%   <<"Status">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
 -type data_catalog_summary() :: #{binary() => any()}.
@@ -654,9 +657,12 @@
 
 %% Example:
 %% data_catalog() :: #{
+%%   <<"ConnectionType">> => list(any()),
 %%   <<"Description">> => string(),
+%%   <<"Error">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Parameters">> => map(),
+%%   <<"Status">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
 -type data_catalog() :: #{binary() => any()}.
@@ -978,7 +984,7 @@
 
 %% Example:
 %% delete_data_catalog_output() :: #{
-
+%%   <<"DataCatalog">> => data_catalog()
 %% }
 -type delete_data_catalog_output() :: #{binary() => any()}.
 
@@ -1081,7 +1087,7 @@
 
 %% Example:
 %% create_data_catalog_output() :: #{
-
+%%   <<"DataCatalog">> => data_catalog()
 %% }
 -type create_data_catalog_output() :: #{binary() => any()}.
 

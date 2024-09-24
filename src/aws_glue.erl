@@ -3791,6 +3791,7 @@
 
 %% Example:
 %% connection() :: #{
+%%   <<"AthenaProperties">> => map(),
 %%   <<"AuthenticationConfiguration">> => authentication_configuration(),
 %%   <<"ConnectionProperties">> => map(),
 %%   <<"ConnectionType">> => list(any()),
@@ -5099,6 +5100,7 @@
 
 %% Example:
 %% connection_input() :: #{
+%%   <<"AthenaProperties">> => map(),
 %%   <<"AuthenticationConfiguration">> => authentication_configuration_input(),
 %%   <<"ConnectionProperties">> => map(),
 %%   <<"ConnectionType">> => list(any()),

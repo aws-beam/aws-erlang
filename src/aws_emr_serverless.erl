@@ -161,6 +161,7 @@
 %%   <<"configurationOverrides">> => configuration_overrides(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
 %%   <<"executionRole">> => string(),
 %%   <<"executionTimeoutMinutes">> => float(),
 %%   <<"jobDriver">> => list(),
@@ -168,8 +169,10 @@
 %%   <<"mode">> => string(),
 %%   <<"name">> => string(),
 %%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"queuedDurationMilliseconds">> => [float()],
 %%   <<"releaseLabel">> => string(),
 %%   <<"retryPolicy">> => retry_policy(),
+%%   <<"startedAt">> => non_neg_integer(),
 %%   <<"state">> => string(),
 %%   <<"stateDetails">> => string(),
 %%   <<"tags">> => map(),
@@ -386,6 +389,7 @@
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"releaseLabel">> => string(),
 %%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"schedulerConfiguration">> => scheduler_configuration(),
 %%   <<"state">> => string(),
 %%   <<"stateDetails">> => string(),
 %%   <<"tags">> => map(),
@@ -418,6 +422,7 @@
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"releaseLabel">> := string(),
 %%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"schedulerConfiguration">> => scheduler_configuration(),
 %%   <<"tags">> => map(),
 %%   <<"type">> := string(),
 %%   <<"workerTypeSpecifications">> => map()
@@ -480,6 +485,7 @@
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"releaseLabel">> => string(),
 %%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"schedulerConfiguration">> => scheduler_configuration(),
 %%   <<"workerTypeSpecifications">> => map()
 %% }
 -type update_application_request() :: #{binary() => any()}.
@@ -497,6 +503,14 @@
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduler_configuration() :: #{
+%%   <<"maxConcurrentRuns">> => [integer()],
+%%   <<"queueTimeoutMinutes">> => [integer()]
+%% }
+-type scheduler_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% start_application_request() :: #{}

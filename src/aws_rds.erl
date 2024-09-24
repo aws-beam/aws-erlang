@@ -3017,6 +3017,7 @@
 %% db_shard_group() :: #{
 %%   <<"ComputeRedundancy">> => integer(),
 %%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBShardGroupArn">> => string(),
 %%   <<"DBShardGroupIdentifier">> => string(),
 %%   <<"DBShardGroupResourceId">> => string(),
 %%   <<"Endpoint">> => string(),
@@ -3879,6 +3880,7 @@
 
 %% Example:
 %% modify_db_shard_group_message() :: #{
+%%   <<"ComputeRedundancy">> => integer(),
 %%   <<"DBShardGroupIdentifier">> := string(),
 %%   <<"MaxACU">> => float(),
 %%   <<"MinACU">> => float()
@@ -4151,12 +4153,6 @@
 %%   <<"Status">> => list(any())
 %% }
 -type stop_activity_stream_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_max_acu_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_max_acu_fault() :: #{binary() => any()}.
 
 %% Example:
 %% modify_db_proxy_target_group_response() :: #{
@@ -5763,7 +5759,6 @@
 
 -type create_db_shard_group_errors() ::
     db_cluster_not_found_fault() | 
-    invalid_max_acu_fault() | 
     unsupported_db_engine_version_fault() | 
     invalid_db_cluster_state_fault() | 
     invalid_vpc_network_state_fault() | 
@@ -6161,7 +6156,6 @@
     db_proxy_target_group_not_found_fault().
 
 -type modify_db_shard_group_errors() ::
-    invalid_max_acu_fault() | 
     invalid_db_cluster_state_fault() | 
     db_shard_group_not_found_fault() | 
     db_shard_group_already_exists_fault().
@@ -10564,7 +10558,7 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql-upgrade-snapshot.html.
 %% For more information about upgrading a RDS for PostgreSQL DB snapshot
 %% engine version, Upgrading a PostgreSQL DB snapshot engine version:
-%% https://docs.aws.amazon.com/USER_UpgradeDBSnapshot.PostgreSQL.html.
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBSnapshot.PostgreSQL.html.
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 %% Aurora, use `RestoreDBClusterFromSnapshot'.
