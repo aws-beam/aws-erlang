@@ -613,7 +613,8 @@
 %% create_stream_input() :: #{
 %%   <<"ShardCount">> => integer(),
 %%   <<"StreamModeDetails">> => stream_mode_details(),
-%%   <<"StreamName">> := string()
+%%   <<"StreamName">> := string(),
+%%   <<"Tags">> => map()
 %% }
 -type create_stream_input() :: #{binary() => any()}.
 
@@ -813,7 +814,8 @@
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception().
 
 -type get_shard_iterator_errors() ::
     invalid_argument_exception() | 
@@ -1055,6 +1057,14 @@ add_tags_to_stream(Client, Input, Options)
 %%
 %% `CreateStream' has a limit of five transactions per second per
 %% account.
+%%
+%% You can add tags to the stream when making a `CreateStream' request by
+%% setting the `Tags' parameter. If you pass `Tags' parameter, in
+%% addition to having `kinesis:createStream' permission, you must also
+%% have
+%% `kinesis:addTagsToStream' permission for the stream that will be
+%% created.
+%% Tags will take effect from the `CREATING' status of the stream.
 -spec create_stream(aws_client:aws_client(), create_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2108,9 +2118,9 @@ put_resource_policy(Client, Input, Options)
 %% be
 %% registered with one stream at a time.
 %%
-%% For an example of how to use this operations, see Enhanced Fan-Out
+%% For an example of how to use this operation, see Enhanced Fan-Out
 %% Using the Kinesis Data Streams API:
-%% /streams/latest/dev/building-enhanced-consumers-api.html.
+%% https://docs.aws.amazon.com/streams/latest/dev/building-enhanced-consumers-api.html.
 %%
 %% The use of this operation has a limit of five transactions per second per
 %% account.
@@ -2390,9 +2400,9 @@ stop_stream_encryption(Client, Input, Options)
 %% the previous connection expires or fails with a
 %% `ResourceInUseException'.
 %%
-%% For an example of how to use this operations, see Enhanced Fan-Out
+%% For an example of how to use this operation, see Enhanced Fan-Out
 %% Using the Kinesis Data Streams API:
-%% /streams/latest/dev/building-enhanced-consumers-api.html.
+%% https://docs.aws.amazon.com/streams/latest/dev/building-enhanced-consumers-api.html.
 -spec subscribe_to_shard(aws_client:aws_client(), subscribe_to_shard_input()) ->
     {ok, subscribe_to_shard_output(), tuple()} |
     {error, any()} |

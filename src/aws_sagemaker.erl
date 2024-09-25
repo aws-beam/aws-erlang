@@ -9750,6 +9750,13 @@
 -type model_deploy_result() :: #{binary() => any()}.
 
 %% Example:
+%% hidden_sage_maker_image() :: #{
+%%   <<"SageMakerImageName">> => list(any()),
+%%   <<"VersionAliases">> => list(string()())
+%% }
+-type hidden_sage_maker_image() :: #{binary() => any()}.
+
+%% Example:
 %% update_inference_component_input() :: #{
 %%   <<"InferenceComponentName">> := string(),
 %%   <<"RuntimeConfig">> => inference_component_runtime_config(),
@@ -10294,7 +10301,9 @@
 %% Example:
 %% studio_web_portal_settings() :: #{
 %%   <<"HiddenAppTypes">> => list(list(any())()),
-%%   <<"HiddenMlTools">> => list(list(any())())
+%%   <<"HiddenInstanceTypes">> => list(list(any())()),
+%%   <<"HiddenMlTools">> => list(list(any())()),
+%%   <<"HiddenSageMakerImageVersionAliases">> => list(hidden_sage_maker_image()())
 %% }
 -type studio_web_portal_settings() :: #{binary() => any()}.
 

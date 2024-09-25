@@ -118,6 +118,8 @@
          delete_registration_attachment/3,
          delete_registration_field_value/2,
          delete_registration_field_value/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          delete_text_message_spend_limit_override/2,
          delete_text_message_spend_limit_override/3,
          delete_verified_destination_number/2,
@@ -170,6 +172,8 @@
          discard_registration_version/3,
          get_protect_configuration_country_rule_set/2,
          get_protect_configuration_country_rule_set/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          list_pool_origination_identities/2,
          list_pool_origination_identities/3,
          list_registration_associations/2,
@@ -182,6 +186,8 @@
          put_opted_out_number/3,
          put_registration_field_value/2,
          put_registration_field_value/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          release_phone_number/2,
          release_phone_number/3,
          release_sender_id/2,
@@ -479,6 +485,7 @@
 %%   <<"Filters">> => list(pool_filter()()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"Owner">> => string(),
 %%   <<"PoolIds">> => list(string()())
 %% }
 -type describe_pools_request() :: #{binary() => any()}.
@@ -545,6 +552,14 @@
 %%   <<"Title">> => [string()]
 %% }
 -type registration_type_display_hints() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_protect_configuration_request() :: #{
@@ -1223,6 +1238,14 @@
 -type select_option_description() :: #{binary() => any()}.
 
 %% Example:
+%% get_resource_policy_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% keyword_filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string()())
@@ -1324,9 +1347,16 @@
 %% describe_opt_out_lists_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OptOutListNames">> => list(string()())
+%%   <<"OptOutListNames">> => list(string()()),
+%%   <<"Owner">> => string()
 %% }
 -type describe_opt_out_lists_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_registration_result() :: #{
@@ -1384,6 +1414,7 @@
 %%   <<"Filters">> => list(sender_id_filter()()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"Owner">> => string(),
 %%   <<"SenderIds">> => list(sender_id_and_country()())
 %% }
 -type describe_sender_ids_request() :: #{binary() => any()}.
@@ -1578,6 +1609,13 @@
 %%   <<"ProtectConfigurationId">> := string()
 %% }
 -type associate_protect_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% sender_id_and_country() :: #{
@@ -1811,6 +1849,7 @@
 %%   <<"Filters">> => list(phone_number_filter()()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"Owner">> => string(),
 %%   <<"PhoneNumberIds">> => list(string()())
 %% }
 -type describe_phone_numbers_request() :: #{binary() => any()}.
@@ -1893,6 +1932,12 @@
 
 %% }
 -type delete_account_default_protect_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_configuration_sets_result() :: #{
@@ -2001,6 +2046,14 @@
 %%   <<"ProtectConfigurationId">> := string()
 %% }
 -type get_protect_configuration_country_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_result() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type delete_resource_policy_result() :: #{binary() => any()}.
 
 %% Example:
 %% registration_version_information() :: #{
@@ -2416,6 +2469,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_text_message_spend_limit_override_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2594,6 +2654,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_pool_origination_identities_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2638,6 +2705,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type release_phone_number_errors() ::
     throttling_exception() | 
@@ -3444,6 +3518,26 @@ delete_registration_field_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegistrationFieldValue">>, Input, Options).
 
+%% @doc Deletes the resource-based policy document attached to the AWS End
+%% User Messaging SMS and Voice resource.
+%%
+%% A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
 %% @doc Deletes an account-level monthly spending limit override for sending
 %% text messages.
 %%
@@ -4054,6 +4148,26 @@ get_protect_configuration_country_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProtectConfigurationCountryRuleSet">>, Input, Options).
 
+%% @doc Retrieves the JSON text of the resource-based policy document
+%% attached to the AWS End User Messaging SMS and Voice resource.
+%%
+%% A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
+    {ok, get_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request(), proplists:proplist()) ->
+    {ok, get_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicy">>, Input, Options).
+
 %% @doc Lists all associated origination identities in your pool.
 %%
 %% If you specify filters, the output includes information for only those
@@ -4178,6 +4292,32 @@ put_registration_field_value(Client, Input)
 put_registration_field_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRegistrationFieldValue">>, Input, Options).
+
+%% @doc Attaches a resource-based policy to a AWS End User Messaging SMS and
+%% Voice resource(phone number, sender Id, phone poll, or opt-out list) that
+%% is used for
+%% sharing the resource.
+%%
+%% A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
+%% For more information about
+%% resource-based policies, see Working with shared resources:
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/shared-resources.html
+%% in the AWS End User Messaging SMS User Guide.
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Releases an existing origination phone number in your account.
 %%
