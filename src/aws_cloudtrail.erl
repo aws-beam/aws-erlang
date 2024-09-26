@@ -2712,16 +2712,20 @@ get_event_data_store(Client, Input, Options)
 %%
 %% If your event selector includes read-only events, write-only events, or
 %% all
-%% events. This applies to both management events and data events.
+%% events. This applies to management events, data events, and network
+%% activity events.
 %%
 %% If your event selector includes management events.
+%%
+%% If your event selector includes network activity events, the event sources
+%% for which you are logging network activity events.
 %%
 %% If your event selector includes data events, the resources on which you
 %% are
 %% logging data events.
 %%
-%% For more information about logging management and data events, see the
-%% following topics
+%% For more information about logging management, data, and network activity
+%% events, see the following topics
 %% in the CloudTrail User Guide:
 %%
 %% Logging management events:
@@ -2729,6 +2733,9 @@ get_event_data_store(Client, Input, Options)
 %%
 %% Logging data events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html
+%%
+%% Logging network activity events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html
 -spec get_event_selectors(aws_client:aws_client(), get_event_selectors_request()) ->
     {ok, get_event_selectors_response(), tuple()} |
     {error, any()} |
@@ -3147,22 +3154,41 @@ lookup_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LookupEvents">>, Input, Options).
 
-%% @doc Configures an event selector or advanced event selectors for your
-%% trail.
+%% @doc Configures event selectors (also referred to as basic event
+%% selectors) or advanced event selectors for your trail.
 %%
-%% Use event
-%% selectors or advanced event selectors to specify management and data event
-%% settings for
-%% your trail. If you want your trail to log Insights events, be sure the
-%% event selector
-%% enables logging of the Insights event types you want configured for your
-%% trail. For more information about logging Insights events, see Logging
-%% Insights events:
+%% You can use
+%% either `AdvancedEventSelectors' or `EventSelectors', but not both.
+%% If
+%% you apply `AdvancedEventSelectors' to a trail, any existing
+%% `EventSelectors' are overwritten.
+%%
+%% You can use `AdvancedEventSelectors' to
+%% log management events, data events for all resource types, and network
+%% activity events.
+%%
+%% You can use `EventSelectors' to log management events and data events
+%% for the following resource types:
+%%
+%% `AWS::DynamoDB::Table'
+%%
+%% `AWS::Lambda::Function'
+%%
+%% `AWS::S3::Object'
+%%
+%% You can't use `EventSelectors' to log network activity events.
+%%
+%% If you want your trail to log Insights events, be sure the event selector
+%% or advanced event selector enables
+%% logging of the Insights event types you want configured for your trail.
+%% For more information about logging Insights events, see Logging Insights
+%% events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
 %% in the CloudTrail User Guide.
 %% By default, trails created without specific event selectors are configured
 %% to
-%% log all read and write management events, and no data events.
+%% log all read and write management events, and no data events or network
+%% activity events.
 %%
 %% When an event occurs in your account, CloudTrail evaluates the event
 %% selectors or
@@ -3174,7 +3200,7 @@ lookup_events(Client, Input, Options)
 %%
 %% Example
 %%
-%% You create an event selector for a trail and specify that you want
+%% You create an event selector for a trail and specify that you want to log
 %% write-only
 %% events.
 %%
@@ -3196,30 +3222,24 @@ lookup_events(Client, Input, Options)
 %% exception is
 %% thrown.
 %%
-%% You can configure up to five event selectors for each trail. For more
-%% information, see
+%% You can configure up to five event selectors for each trail.
+%%
+%% You can add advanced event selectors, and conditions for your advanced
+%% event selectors,
+%% up to a maximum of 500 values for all conditions and selectors on a trail.
+%% For more information, see
 %% Logging management events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html,
 %% Logging
 %% data events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html,
+%% Logging
+%% network activity events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html,
 %% and Quotas in CloudTrail:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html
 %% in the CloudTrail User
 %% Guide.
-%%
-%% You can add advanced event selectors, and conditions for your advanced
-%% event selectors,
-%% up to a maximum of 500 values for all conditions and selectors on a trail.
-%% You can use
-%% either `AdvancedEventSelectors' or `EventSelectors', but not both.
-%% If
-%% you apply `AdvancedEventSelectors' to a trail, any existing
-%% `EventSelectors' are overwritten. For more information about advanced
-%% event
-%% selectors, see Logging data events:
-%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html
-%% in the CloudTrail User Guide.
 -spec put_event_selectors(aws_client:aws_client(), put_event_selectors_request()) ->
     {ok, put_event_selectors_response(), tuple()} |
     {error, any()} |
@@ -3383,8 +3403,8 @@ restore_event_data_store(Client, Input, Options)
 %%
 %% To start ingestion, the event data store `Status' must be
 %% `STOPPED_INGESTION'
-%% and the `eventCategory' must be `Management', `Data', or
-%% `ConfigurationItem'.
+%% and the `eventCategory' must be `Management', `Data',
+%% `NetworkActivity', or `ConfigurationItem'.
 -spec start_event_data_store_ingestion(aws_client:aws_client(), start_event_data_store_ingestion_request()) ->
     {ok, start_event_data_store_ingestion_response(), tuple()} |
     {error, any()} |
@@ -3507,8 +3527,8 @@ start_query(Client, Input, Options)
 %% as either an ARN or the ID portion of the ARN.
 %%
 %% To stop ingestion, the event data store `Status' must be `ENABLED'
-%% and the `eventCategory' must be `Management', `Data', or
-%% `ConfigurationItem'.
+%% and the `eventCategory' must be `Management', `Data',
+%% `NetworkActivity', or `ConfigurationItem'.
 -spec stop_event_data_store_ingestion(aws_client:aws_client(), stop_event_data_store_ingestion_request()) ->
     {ok, stop_event_data_store_ingestion_response(), tuple()} |
     {error, any()} |
@@ -3603,8 +3623,8 @@ update_channel(Client, Input, Options)
 %% `TerminationProtection' is enabled.
 %%
 %% For event data stores for CloudTrail events, `AdvancedEventSelectors'
-%% includes or excludes management or data events in your event data store.
-%% For more
+%% includes or excludes management, data, or network activity events in your
+%% event data store. For more
 %% information about `AdvancedEventSelectors', see
 %% AdvancedEventSelectors:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html.
