@@ -127,8 +127,6 @@
          delete_layer_version/5,
          delete_provisioned_concurrency_config/3,
          delete_provisioned_concurrency_config/4,
-         delete_resource_policy/3,
-         delete_resource_policy/4,
          get_account_settings/1,
          get_account_settings/3,
          get_account_settings/4,
@@ -177,12 +175,6 @@
          get_provisioned_concurrency_config/3,
          get_provisioned_concurrency_config/5,
          get_provisioned_concurrency_config/6,
-         get_public_access_block_config/2,
-         get_public_access_block_config/4,
-         get_public_access_block_config/5,
-         get_resource_policy/2,
-         get_resource_policy/4,
-         get_resource_policy/5,
          get_runtime_management_config/2,
          get_runtime_management_config/4,
          get_runtime_management_config/5,
@@ -242,10 +234,6 @@
          put_function_recursion_config/4,
          put_provisioned_concurrency_config/3,
          put_provisioned_concurrency_config/4,
-         put_public_access_block_config/3,
-         put_public_access_block_config/4,
-         put_resource_policy/3,
-         put_resource_policy/4,
          put_runtime_management_config/3,
          put_runtime_management_config/4,
          remove_layer_version_permission/5,
@@ -408,13 +396,6 @@
 %% }
 -type remove_layer_version_permission_request() :: #{binary() => any()}.
 
-
-%% Example:
-%% get_public_access_block_config_response() :: #{
-%%   <<"PublicAccessBlockConfig">> => public_access_block_config()
-%% }
--type get_public_access_block_config_response() :: #{binary() => any()}.
-
 %% Example:
 %% delete_function_code_signing_config_request() :: #{}
 -type delete_function_code_signing_config_request() :: #{}.
@@ -472,10 +453,6 @@
 %%   <<"message">> => string()
 %% }
 -type policy_length_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_public_access_block_config_request() :: #{}
--type get_public_access_block_config_request() :: #{}.
 
 
 %% Example:
@@ -540,13 +517,6 @@
 %%   <<"RoutingConfig">> => alias_routing_configuration()
 %% }
 -type create_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_public_access_block_config_request() :: #{
-%%   <<"PublicAccessBlockConfig">> := public_access_block_config()
-%% }
--type put_public_access_block_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -681,14 +651,6 @@
 %%   <<"Qualifier">> => string()
 %% }
 -type delete_function_url_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_function_recursion_config_request() :: #{}
@@ -977,13 +939,6 @@
 
 
 %% Example:
-%% put_public_access_block_config_response() :: #{
-%%   <<"PublicAccessBlockConfig">> => public_access_block_config()
-%% }
--type put_public_access_block_config_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_function_url_config_response() :: #{
 %%   <<"AuthType">> => list(any()),
 %%   <<"Cors">> => cors(),
@@ -1234,14 +1189,6 @@
 
 
 %% Example:
-%% public_access_block_config() :: #{
-%%   <<"BlockPublicPolicy">> => boolean(),
-%%   <<"RestrictPublicResource">> => boolean()
-%% }
--type public_access_block_config() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_function_event_invoke_config_request() :: #{
 %%   <<"DestinationConfig">> => destination_config(),
 %%   <<"MaximumEventAgeInSeconds">> => integer(),
@@ -1302,10 +1249,6 @@
 %%   <<"StatusReason">> => string()
 %% }
 -type put_provisioned_concurrency_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
 
 
 %% Example:
@@ -1482,14 +1425,6 @@
 %%   <<"LogResult">> => string()
 %% }
 -type invoke_with_response_stream_complete_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"RevisionId">> => string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1765,14 +1700,6 @@
 
 
 %% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_function_code_signing_config_response() :: #{
 %%   <<"CodeSigningConfigArn">> => string(),
 %%   <<"FunctionName">> => string()
@@ -1819,21 +1746,6 @@
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_policy_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type public_policy_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"RevisionId">> => string()
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2123,7 +2035,6 @@
 -type add_permission_errors() ::
     resource_conflict_exception() | 
     precondition_failed_exception() | 
-    public_policy_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2232,14 +2143,6 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
--type delete_resource_policy_errors() ::
-    resource_conflict_exception() | 
-    precondition_failed_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
-
 -type get_account_settings_errors() ::
     service_exception() | 
     too_many_requests_exception().
@@ -2329,18 +2232,6 @@
 
 -type get_provisioned_concurrency_config_errors() ::
     provisioned_concurrency_config_not_found_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
-
--type get_public_access_block_config_errors() ::
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
-
--type get_resource_policy_errors() ::
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2542,23 +2433,6 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
--type put_public_access_block_config_errors() ::
-    resource_conflict_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
-
--type put_resource_policy_errors() ::
-    resource_conflict_exception() | 
-    precondition_failed_exception() | 
-    public_policy_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    policy_length_exceeded_exception().
-
 -type put_runtime_management_config_errors() ::
     resource_conflict_exception() | 
     service_exception() | 
@@ -2575,7 +2449,6 @@
 
 -type remove_permission_errors() ::
     precondition_failed_exception() | 
-    public_policy_exception() | 
     service_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -2720,10 +2593,10 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
 %% `Principal'. To grant
 %% permission to an organization defined in Organizations, specify the
 %% organization ID as the
-%% `PrincipalOrgID'. For Amazon Web Servicesservices, the principal is a
+%% `PrincipalOrgID'. For Amazon Web Services services, the principal is a
 %% domain-style identifier that
 %% the service defines, such as `s3.amazonaws.com' or
-%% `sns.amazonaws.com'. For Amazon Web Servicesservices, you can also
+%% `sns.amazonaws.com'. For Amazon Web Services services, you can also
 %% specify the ARN of the associated resource as the `SourceArn'. If
 %% you grant permission to a service principal without specifying the source,
 %% other accounts could potentially
@@ -2966,8 +2839,8 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% The
 %% deployment package is a .zip file archive or container image that contains
 %% your function code. The execution role
-%% grants the function permission to use Amazon Web Servicesservices, such as
-%% Amazon CloudWatch Logs for log
+%% grants the function permission to use Amazon Web Services services, such
+%% as Amazon CloudWatch Logs for log
 %% streaming and X-Ray for request tracing.
 %%
 %% If the deployment package is a container
@@ -3030,14 +2903,14 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% signing profiles, which define the trusted
 %% publishers for this function.
 %%
-%% If another Amazon Web Services account or an Amazon Web Servicesservice
+%% If another Amazon Web Services account or an Amazon Web Services service
 %% invokes your function, use `AddPermission' to grant permission by
 %% creating a resource-based Identity and Access Management (IAM) policy. You
 %% can grant permissions at the function level, on a version, or on an alias.
 %%
 %% To invoke your function directly, use `Invoke'. To invoke your
 %% function in response to events
-%% in other Amazon Web Servicesservices, create an event source mapping
+%% in other Amazon Web Services services, create an event source mapping
 %% (`CreateEventSourceMapping'),
 %% or configure a function trigger in the other service. For more
 %% information, see Invoking Lambda
@@ -3238,7 +3111,7 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% permissions for `DeleteAlias'.
 %%
 %% To delete Lambda event source mappings that invoke a function, use
-%% `DeleteEventSourceMapping'. For Amazon Web Servicesservices and
+%% `DeleteEventSourceMapping'. For Amazon Web Services services and
 %% resources that invoke your function
 %% directly, delete the trigger in the service where you originally
 %% configured it.
@@ -3493,49 +3366,6 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"Qualifier">>, <<"Qualifier">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc
-%% The option to create and modify full JSON resource-based policies, and to
-%% use the PutResourcePolicy, GetResourcePolicy, and DeleteResourcePolicy
-%% APIs, won't be
-%% available in all Amazon Web Services Regions until September 30, 2024.
-%%
-%% Deletes a resource-based policy:
-%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
-%% from a function.
--spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
-    {ok, undefined, tuple()} |
-    {error, any()} |
-    {error, delete_resource_policy_errors(), tuple()}.
-delete_resource_policy(Client, ResourceArn, Input) ->
-    delete_resource_policy(Client, ResourceArn, Input, []).
-
--spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
-    {error, any()} |
-    {error, delete_resource_policy_errors(), tuple()}.
-delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
-    Method = delete,
-    Path = ["/2024-09-16/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = 204,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    QueryMapping = [
-                     {<<"RevisionId">>, <<"RevisionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -4202,93 +4032,6 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
         {<<"Qualifier">>, Qualifier}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc
-%% The option to configure public-access settings, and to use the
-%% PutPublicAccessBlock and GetPublicAccessBlock APIs, won't be
-%% available in all Amazon Web Services Regions until September 30, 2024.
-%%
-%% Retrieve the public-access settings for a function.
--spec get_public_access_block_config(aws_client:aws_client(), binary() | list()) ->
-    {ok, get_public_access_block_config_response(), tuple()} |
-    {error, any()} |
-    {error, get_public_access_block_config_errors(), tuple()}.
-get_public_access_block_config(Client, ResourceArn)
-  when is_map(Client) ->
-    get_public_access_block_config(Client, ResourceArn, #{}, #{}).
-
--spec get_public_access_block_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
-    {ok, get_public_access_block_config_response(), tuple()} |
-    {error, any()} |
-    {error, get_public_access_block_config_errors(), tuple()}.
-get_public_access_block_config(Client, ResourceArn, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_public_access_block_config(Client, ResourceArn, QueryMap, HeadersMap, []).
-
--spec get_public_access_block_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
-    {ok, get_public_access_block_config_response(), tuple()} |
-    {error, any()} |
-    {error, get_public_access_block_config_errors(), tuple()}.
-get_public_access_block_config(Client, ResourceArn, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/2024-09-16/public-access-block/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc
-%% The option to create and modify full JSON resource-based policies, and to
-%% use the PutResourcePolicy, GetResourcePolicy, and DeleteResourcePolicy
-%% APIs, won't be
-%% available in all Amazon Web Services Regions until September 30, 2024.
-%%
-%% Retrieves the resource-based policy:
-%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
-%% attached to a function.
--spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
-    {ok, get_resource_policy_response(), tuple()} |
-    {error, any()} |
-    {error, get_resource_policy_errors(), tuple()}.
-get_resource_policy(Client, ResourceArn)
-  when is_map(Client) ->
-    get_resource_policy(Client, ResourceArn, #{}, #{}).
-
--spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
-    {ok, get_resource_policy_response(), tuple()} |
-    {error, any()} |
-    {error, get_resource_policy_errors(), tuple()}.
-get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
-
--spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
-    {ok, get_resource_policy_response(), tuple()} |
-    {error, any()} |
-    {error, get_resource_policy_errors(), tuple()}.
-get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/2024-09-16/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5059,7 +4802,7 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap,
 %% https://docs.aws.amazon.com/lambda/latest/dg/tagging.html.
 %%
 %% You can
-%% also view funciton tags with `GetFunction'.
+%% also view function tags with `GetFunction'.
 -spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
@@ -5470,112 +5213,6 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% The option to configure public-access settings, and to use the
-%% PutPublicAccessBlock and GetPublicAccessBlock APIs, won't be
-%% available in all Amazon Web Services Regions until September 30, 2024.
-%%
-%% Configure your function's public-access settings.
-%%
-%% To control public access to a Lambda function, you can choose whether to
-%% allow the creation of
-%% resource-based policies:
-%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
-%% that
-%% allow public access to that function. You can also block public access to
-%% a function, even if it has an existing resource-based
-%% policy that allows it.
--spec put_public_access_block_config(aws_client:aws_client(), binary() | list(), put_public_access_block_config_request()) ->
-    {ok, put_public_access_block_config_response(), tuple()} |
-    {error, any()} |
-    {error, put_public_access_block_config_errors(), tuple()}.
-put_public_access_block_config(Client, ResourceArn, Input) ->
-    put_public_access_block_config(Client, ResourceArn, Input, []).
-
--spec put_public_access_block_config(aws_client:aws_client(), binary() | list(), put_public_access_block_config_request(), proplists:proplist()) ->
-    {ok, put_public_access_block_config_response(), tuple()} |
-    {error, any()} |
-    {error, put_public_access_block_config_errors(), tuple()}.
-put_public_access_block_config(Client, ResourceArn, Input0, Options0) ->
-    Method = put,
-    Path = ["/2024-09-16/public-access-block/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc
-%% The option to create and modify full JSON resource-based policies, and to
-%% use the PutResourcePolicy, GetResourcePolicy, and DeleteResourcePolicy
-%% APIs, won't be
-%% available in all Amazon Web Services Regions until September 30, 2024.
-%%
-%% Adds a resource-based policy:
-%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
-%% to a function. You can use resource-based policies to grant access to
-%% other
-%% Amazon Web Services accounts:
-%% https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-cross-account.html,
-%% organizations:
-%% https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-organization.html,
-%% or
-%% services:
-%% https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-services.html.
-%% Resource-based policies
-%% apply to a single function, version, or alias.
-%%
-%% Adding a resource-based policy using this API action replaces any existing
-%% policy you've previously created. This means that if
-%% you've previously added resource-based permissions to a function using
-%% the `AddPermission' action, those
-%% permissions will be overwritten by your new policy.
--spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
-    {ok, put_resource_policy_response(), tuple()} |
-    {error, any()} |
-    {error, put_resource_policy_errors(), tuple()}.
-put_resource_policy(Client, ResourceArn, Input) ->
-    put_resource_policy(Client, ResourceArn, Input, []).
-
--spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
-    {ok, put_resource_policy_response(), tuple()} |
-    {error, any()} |
-    {error, put_resource_policy_errors(), tuple()}.
-put_resource_policy(Client, ResourceArn, Input0, Options0) ->
-    Method = put,
-    Path = ["/2024-09-16/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
 %% @doc Sets the runtime management configuration for a function's
 %% version.
 %%
@@ -5657,8 +5294,8 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Revokes function-use permission from an Amazon Web Servicesservice or
-%% another Amazon Web Services account.
+%% @doc Revokes function-use permission from an Amazon Web Services service
+%% or another Amazon Web Services account.
 %%
 %% You
 %% can get the ID of the statement from the output of `GetPolicy'.
@@ -6034,7 +5671,7 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 %%
 %% To configure function concurrency, use `PutFunctionConcurrency'. To
 %% grant invoke permissions
-%% to an Amazon Web Services account or Amazon Web Servicesservice, use
+%% to an Amazon Web Services account or Amazon Web Services service, use
 %% `AddPermission'.
 -spec update_function_configuration(aws_client:aws_client(), binary() | list(), update_function_configuration_request()) ->
     {ok, function_configuration(), tuple()} |

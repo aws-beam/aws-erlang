@@ -1112,7 +1112,8 @@
 %%   <<"DefaultUserSettings">> => user_settings(),
 %%   <<"DomainId">> := string(),
 %%   <<"DomainSettingsForUpdate">> => domain_settings_for_update(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"TagPropagation">> => list(any())
 %% }
 -type update_domain_request() :: #{binary() => any()}.
 
@@ -5157,6 +5158,7 @@
 %%   <<"HomeEfsFileSystemKmsKeyId">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SubnetIds">> := list(string()()),
+%%   <<"TagPropagation">> => list(any()),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"VpcId">> := string()
 %% }
@@ -6513,6 +6515,7 @@
 %%   <<"SingleSignOnManagedApplicationInstanceId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"SubnetIds">> => list(string()()),
+%%   <<"TagPropagation">> => list(any()),
 %%   <<"Url">> => string(),
 %%   <<"VpcId">> => string()
 %% }

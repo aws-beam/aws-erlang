@@ -473,7 +473,9 @@
 %% Example:
 %% slack_workspace() :: #{
 %%   <<"SlackTeamId">> => string(),
-%%   <<"SlackTeamName">> => string()
+%%   <<"SlackTeamName">> => string(),
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string()
 %% }
 -type slack_workspace() :: #{binary() => any()}.
 
@@ -536,6 +538,8 @@
 
 %% Example:
 %% configured_team() :: #{
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string(),
 %%   <<"TeamId">> => string(),
 %%   <<"TeamName">> => string(),
 %%   <<"TenantId">> => string()
@@ -631,6 +635,8 @@
 %%   <<"SlackTeamId">> => string(),
 %%   <<"SlackTeamName">> => string(),
 %%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"UserAuthorizationRequired">> => boolean()
 %% }
@@ -666,6 +672,8 @@
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"WebhookDescription">> => string()
 %% }
@@ -738,6 +746,8 @@
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"TeamId">> => string(),
 %%   <<"TeamName">> => string(),
