@@ -199,6 +199,9 @@
          describe_namespace/3,
          describe_namespace/5,
          describe_namespace/6,
+         describe_q_personalization_configuration/2,
+         describe_q_personalization_configuration/4,
+         describe_q_personalization_configuration/5,
          describe_refresh_schedule/4,
          describe_refresh_schedule/6,
          describe_refresh_schedule/7,
@@ -418,6 +421,8 @@
          update_key_registration/4,
          update_public_sharing_settings/3,
          update_public_sharing_settings/4,
+         update_q_personalization_configuration/3,
+         update_q_personalization_configuration/4,
          update_refresh_schedule/4,
          update_refresh_schedule/5,
          update_role_custom_permission/5,
@@ -880,6 +885,13 @@
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type line_chart_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_q_personalization_configuration_request() :: #{
+%%   <<"PersonalizationMode">> := list(any())
+%% }
+-type update_q_personalization_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1397,6 +1409,15 @@
 %%   <<"Type">> => string()
 %% }
 -type asset_bundle_import_job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_q_personalization_configuration_response() :: #{
+%%   <<"PersonalizationMode">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_q_personalization_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3463,6 +3484,10 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type filter_selectable_values() :: #{binary() => any()}.
+
+%% Example:
+%% describe_q_personalization_configuration_request() :: #{}
+-type describe_q_personalization_configuration_request() :: #{}.
 
 
 %% Example:
@@ -7251,6 +7276,15 @@
 %%   <<"UsePrimaryBackgroundColor">> => list(any())
 %% }
 -type row_alternate_color_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_q_personalization_configuration_response() :: #{
+%%   <<"PersonalizationMode">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_q_personalization_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11989,6 +12023,14 @@
     resource_unavailable_exception() | 
     internal_failure_exception().
 
+-type describe_q_personalization_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type describe_refresh_schedule_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -12718,6 +12760,15 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     unsupported_pricing_plan_exception() | 
+    internal_failure_exception().
+
+-type update_q_personalization_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
     internal_failure_exception().
 
 -type update_refresh_schedule_errors() ::
@@ -16032,6 +16083,43 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
 describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes a personalization configuration.
+-spec describe_q_personalization_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_q_personalization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_q_personalization_configuration_errors(), tuple()}.
+describe_q_personalization_configuration(Client, AwsAccountId)
+  when is_map(Client) ->
+    describe_q_personalization_configuration(Client, AwsAccountId, #{}, #{}).
+
+-spec describe_q_personalization_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_q_personalization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_q_personalization_configuration_errors(), tuple()}.
+describe_q_personalization_configuration(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_q_personalization_configuration(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_q_personalization_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_q_personalization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_q_personalization_configuration_errors(), tuple()}.
+describe_q_personalization_configuration(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/q-personalization-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -19642,6 +19730,40 @@ update_public_sharing_settings(Client, AwsAccountId, Input) ->
 update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/public-sharing-settings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a personalization configuration.
+-spec update_q_personalization_configuration(aws_client:aws_client(), binary() | list(), update_q_personalization_configuration_request()) ->
+    {ok, update_q_personalization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_q_personalization_configuration_errors(), tuple()}.
+update_q_personalization_configuration(Client, AwsAccountId, Input) ->
+    update_q_personalization_configuration(Client, AwsAccountId, Input, []).
+
+-spec update_q_personalization_configuration(aws_client:aws_client(), binary() | list(), update_q_personalization_configuration_request(), proplists:proplist()) ->
+    {ok, update_q_personalization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_q_personalization_configuration_errors(), tuple()}.
+update_q_personalization_configuration(Client, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/q-personalization-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

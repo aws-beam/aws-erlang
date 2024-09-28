@@ -245,7 +245,8 @@
 
 %% Example:
 %% tracking_options() :: #{
-%%   <<"CustomRedirectDomain">> => string()
+%%   <<"CustomRedirectDomain">> => string(),
+%%   <<"HttpsPolicy">> => list(any())
 %% }
 -type tracking_options() :: #{binary() => any()}.
 
@@ -1575,7 +1576,8 @@
 
 %% Example:
 %% put_configuration_set_tracking_options_request() :: #{
-%%   <<"CustomRedirectDomain">> => string()
+%%   <<"CustomRedirectDomain">> => string(),
+%%   <<"HttpsPolicy">> => list(any())
 %% }
 -type put_configuration_set_tracking_options_request() :: #{binary() => any()}.
 

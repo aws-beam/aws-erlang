@@ -3,6 +3,12 @@
 
 %% @doc Amazon Connect Customer Profiles
 %%
+%% Customer Profiles actions:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Customer_Profiles.html
+%%
+%% Customer Profiles data types:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Customer_Profiles.html
+%%
 %% Amazon Connect Customer Profiles is a unified customer profile for your
 %% contact
 %% center that has pre-built connectors powered by AppFlow that make it easy
@@ -559,6 +565,7 @@
 %%   <<"FlowDefinition">> => flow_definition(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
+%%   <<"RoleArn">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> => string()
 %% }
@@ -632,6 +639,7 @@
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
+%%   <<"RoleArn">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> => string(),
 %%   <<"WorkflowId">> => string()
@@ -787,6 +795,7 @@
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
+%%   <<"RoleArn">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> => string(),
 %%   <<"WorkflowId">> => string()
@@ -1688,6 +1697,7 @@
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
+%%   <<"RoleArn">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> => string(),
 %%   <<"WorkflowId">> => string()
