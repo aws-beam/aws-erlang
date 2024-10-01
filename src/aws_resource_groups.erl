@@ -41,7 +41,8 @@
 %%
 %% Applying, editing, and removing tags from resource groups
 %%
-%% Resolving resource group member ARNs so they can be returned as search
+%% Resolving resource group member Amazon resource names (ARN)s so they can
+%% be returned as search
 %% results
 %%
 %% Getting data about resources that are members of a group
@@ -49,7 +50,9 @@
 %% Searching Amazon Web Services resources based on a resource query
 -module(aws_resource_groups).
 
--export([create_group/2,
+-export([cancel_tag_sync_task/2,
+         cancel_tag_sync_task/3,
+         create_group/2,
          create_group/3,
          delete_group/2,
          delete_group/3,
@@ -61,6 +64,8 @@
          get_group_configuration/3,
          get_group_query/2,
          get_group_query/3,
+         get_tag_sync_task/2,
+         get_tag_sync_task/3,
          get_tags/2,
          get_tags/4,
          get_tags/5,
@@ -68,12 +73,18 @@
          group_resources/3,
          list_group_resources/2,
          list_group_resources/3,
+         list_grouping_statuses/2,
+         list_grouping_statuses/3,
          list_groups/2,
          list_groups/3,
+         list_tag_sync_tasks/2,
+         list_tag_sync_tasks/3,
          put_group_configuration/2,
          put_group_configuration/3,
          search_resources/2,
          search_resources/3,
+         start_tag_sync_task/2,
+         start_tag_sync_task/3,
          tag/3,
          tag/4,
          ungroup_resources/2,
@@ -100,6 +111,15 @@
 
 
 %% Example:
+%% list_tag_sync_tasks_input() :: #{
+%%   <<"Filters">> => list(list_tag_sync_tasks_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tag_sync_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% unauthorized_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -107,10 +127,25 @@
 
 
 %% Example:
+%% start_tag_sync_task_output() :: #{
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string(),
+%%   <<"TaskArn">> => string()
+%% }
+-type start_tag_sync_task_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_group_input() :: #{
 %%   <<"Configuration">> => list(group_configuration_item()()),
+%%   <<"Criticality">> => integer(),
 %%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"Owner">> => string(),
 %%   <<"ResourceQuery">> => resource_query(),
 %%   <<"Tags">> => map()
 %% }
@@ -122,6 +157,22 @@
 %%   <<"GroupQuery">> => group_query()
 %% }
 -type update_group_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_tag_sync_task_input() :: #{
+%%   <<"TaskArn">> := string()
+%% }
+-type cancel_tag_sync_task_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_grouping_statuses_output() :: #{
+%%   <<"Group">> => string(),
+%%   <<"GroupingStatuses">> => list(grouping_statuses_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_grouping_statuses_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -164,6 +215,14 @@
 
 
 %% Example:
+%% list_tag_sync_tasks_filter() :: #{
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type list_tag_sync_tasks_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_group_configuration_input() :: #{
 %%   <<"Group">> => string()
 %% }
@@ -193,9 +252,23 @@
 
 
 %% Example:
+%% start_tag_sync_task_input() :: #{
+%%   <<"Group">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"TagKey">> := string(),
+%%   <<"TagValue">> := string()
+%% }
+-type start_tag_sync_task_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% group_identifier() :: #{
+%%   <<"Criticality">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
 %%   <<"GroupArn">> => string(),
-%%   <<"GroupName">> => string()
+%%   <<"GroupName">> => string(),
+%%   <<"Owner">> => string()
 %% }
 -type group_identifier() :: #{binary() => any()}.
 
@@ -286,6 +359,16 @@
 
 
 %% Example:
+%% list_grouping_statuses_input() :: #{
+%%   <<"Filters">> => list(list_grouping_statuses_filter()()),
+%%   <<"Group">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_grouping_statuses_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% group_configuration_parameter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string()())
@@ -319,6 +402,21 @@
 %%   <<"ResourceQuery">> := resource_query()
 %% }
 -type search_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tag_sync_task_output() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string(),
+%%   <<"TaskArn">> => string()
+%% }
+-type get_tag_sync_task_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -361,6 +459,21 @@
 %%   <<"Resources">> => list(list_group_resources_item()())
 %% }
 -type list_group_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_sync_task_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string(),
+%%   <<"TaskArn">> => string()
+%% }
+-type tag_sync_task_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -429,10 +542,20 @@
 
 
 %% Example:
+%% get_tag_sync_task_input() :: #{
+%%   <<"TaskArn">> := string()
+%% }
+-type get_tag_sync_task_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_group_input() :: #{
+%%   <<"Criticality">> => integer(),
 %%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
 %%   <<"Group">> => string(),
-%%   <<"GroupName">> => string()
+%%   <<"GroupName">> => string(),
+%%   <<"Owner">> => string()
 %% }
 -type update_group_input() :: #{binary() => any()}.
 
@@ -449,10 +572,26 @@
 
 
 %% Example:
+%% grouping_statuses_item() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type grouping_statuses_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% group() :: #{
+%%   <<"ApplicationTag">> => map(),
+%%   <<"Criticality">> => integer(),
 %%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
 %%   <<"GroupArn">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string()
 %% }
 -type group() :: #{binary() => any()}.
 
@@ -479,6 +618,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_grouping_statuses_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type list_grouping_statuses_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -529,6 +676,14 @@
 %% }
 -type query_error() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_tag_sync_tasks_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TagSyncTasks">> => list(tag_sync_task_item()())
+%% }
+-type list_tag_sync_tasks_output() :: #{binary() => any()}.
+
 %% Example:
 %% put_group_configuration_output() :: #{}
 -type put_group_configuration_output() :: #{}.
@@ -547,6 +702,14 @@
 %%   <<"Tags">> := map()
 %% }
 -type tag_input() :: #{binary() => any()}.
+
+-type cancel_tag_sync_task_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
 
 -type create_group_errors() ::
     bad_request_exception() | 
@@ -594,6 +757,15 @@
     method_not_allowed_exception() | 
     forbidden_exception().
 
+-type get_tag_sync_task_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
 -type get_tags_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -619,12 +791,27 @@
     forbidden_exception() | 
     unauthorized_exception().
 
+-type list_grouping_statuses_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
 -type list_groups_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
     forbidden_exception().
+
+-type list_tag_sync_tasks_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
 
 -type put_group_configuration_errors() ::
     bad_request_exception() | 
@@ -637,6 +824,15 @@
 -type search_resources_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type start_tag_sync_task_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
     forbidden_exception() | 
@@ -692,6 +888,48 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Cancels the specified tag-sync task.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% `resource-groups:CancelTagSyncTask' on the application group
+%%
+%% `resource-groups:DeleteGroup'
+-spec cancel_tag_sync_task(aws_client:aws_client(), cancel_tag_sync_task_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_tag_sync_task_errors(), tuple()}.
+cancel_tag_sync_task(Client, Input) ->
+    cancel_tag_sync_task(Client, Input, []).
+
+-spec cancel_tag_sync_task(aws_client:aws_client(), cancel_tag_sync_task_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_tag_sync_task_errors(), tuple()}.
+cancel_tag_sync_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cancel-tag-sync-task"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a resource group with the specified name and description.
 %%
@@ -954,9 +1192,49 @@ get_group_query(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns information about a specified tag-sync task.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% `resource-groups:GetTagSyncTask' on the application group
+-spec get_tag_sync_task(aws_client:aws_client(), get_tag_sync_task_input()) ->
+    {ok, get_tag_sync_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_tag_sync_task_errors(), tuple()}.
+get_tag_sync_task(Client, Input) ->
+    get_tag_sync_task(Client, Input, []).
+
+-spec get_tag_sync_task(aws_client:aws_client(), get_tag_sync_task_input(), proplists:proplist()) ->
+    {ok, get_tag_sync_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_tag_sync_task_errors(), tuple()}.
+get_tag_sync_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-tag-sync-task"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of tags that are associated with a resource group,
 %% specified by an
-%% ARN.
+%% Amazon resource name (ARN).
 %%
 %% Minimum permissions
 %%
@@ -1001,16 +1279,16 @@ get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Adds the specified resources to the specified group.
 %%
-%% You can use this operation with only resource groups that are configured
-%% with the
-%% following types:
+%% You can only use this operation with the following groups:
 %%
 %% `AWS::EC2::HostManagement'
 %%
 %% `AWS::EC2::CapacityReservationPool'
 %%
-%% Other resource group type and resource types aren't currently
-%% supported by this
+%% `AWS::ResourceGroups::ApplicationGroup'
+%%
+%% Other resource group types and resource types are not currently supported
+%% by this
 %% operation.
 %%
 %% Minimum permissions
@@ -1051,8 +1329,8 @@ group_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of ARNs of the resources that are members of a
-%% specified resource
+%% @doc Returns a list of Amazon resource names (ARNs) of the resources that
+%% are members of a specified resource
 %% group.
 %%
 %% Minimum permissions
@@ -1080,6 +1358,41 @@ list_group_resources(Client, Input) ->
 list_group_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-group-resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the status of the last grouping or ungrouping action for
+%% each resource in the specified application group.
+-spec list_grouping_statuses(aws_client:aws_client(), list_grouping_statuses_input()) ->
+    {ok, list_grouping_statuses_output(), tuple()} |
+    {error, any()} |
+    {error, list_grouping_statuses_errors(), tuple()}.
+list_grouping_statuses(Client, Input) ->
+    list_grouping_statuses(Client, Input, []).
+
+-spec list_grouping_statuses(aws_client:aws_client(), list_grouping_statuses_input(), proplists:proplist()) ->
+    {ok, list_grouping_statuses_output(), tuple()} |
+    {error, any()} |
+    {error, list_grouping_statuses_errors(), tuple()}.
+list_grouping_statuses(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-grouping-statuses"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1139,6 +1452,48 @@ list_groups(Client, Input0, Options0) ->
                      {<<"nextToken">>, <<"NextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of tag-sync tasks.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% `resource-groups:ListTagSyncTasks' with the group passed in the
+%% filters as the resource
+%% or * if using no filters
+-spec list_tag_sync_tasks(aws_client:aws_client(), list_tag_sync_tasks_input()) ->
+    {ok, list_tag_sync_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_tag_sync_tasks_errors(), tuple()}.
+list_tag_sync_tasks(Client, Input) ->
+    list_tag_sync_tasks(Client, Input, []).
+
+-spec list_tag_sync_tasks(aws_client:aws_client(), list_tag_sync_tasks_input(), proplists:proplist()) ->
+    {ok, list_tag_sync_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_tag_sync_tasks_errors(), tuple()}.
+list_tag_sync_tasks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-tag-sync-tasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches a service configuration to the specified group.
@@ -1236,7 +1591,54 @@ search_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to a resource group with the specified ARN.
+%% @doc Creates a new tag-sync task to onboard and sync resources tagged with
+%% a specific tag key-value pair to an
+%% application.
+%%
+%% Minimum permissions
+%%
+%% To run this command, you must have the following permissions:
+%%
+%% `resource-groups:StartTagSyncTask' on the application group
+%%
+%% `resource-groups:CreateGroup'
+%%
+%% `iam:PassRole' on the role provided in the request
+-spec start_tag_sync_task(aws_client:aws_client(), start_tag_sync_task_input()) ->
+    {ok, start_tag_sync_task_output(), tuple()} |
+    {error, any()} |
+    {error, start_tag_sync_task_errors(), tuple()}.
+start_tag_sync_task(Client, Input) ->
+    start_tag_sync_task(Client, Input, []).
+
+-spec start_tag_sync_task(aws_client:aws_client(), start_tag_sync_task_input(), proplists:proplist()) ->
+    {ok, start_tag_sync_task_output(), tuple()} |
+    {error, any()} |
+    {error, start_tag_sync_task_errors(), tuple()}.
+start_tag_sync_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/start-tag-sync-task"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds tags to a resource group with the specified Amazon resource name
+%% (ARN).
 %%
 %% Existing tags on a resource
 %% group are not changed if they are not specified in the request parameters.

@@ -1257,7 +1257,7 @@ batch_is_authorized_with_token(Client, Input, Options)
 %%
 %% OpenID Connect (OIDC) provider:
 %% ```
-%% Namespace::[Entity type]::[principalIdClaim]|[user principal
+%% Namespace::[Entity type]::[entityIdPrefix]|[user principal
 %% attribute]''', for example
 %% `MyCorp::User::MyOIDCProvider|a1b2c3d4-5678-90ab-cdef-EXAMPLE22222'.
 %%
@@ -1613,9 +1613,6 @@ is_authorized(Client, Input, Options)
 %% decision is either
 %% `Allow' or `Deny', along with a list of the policies that
 %% resulted in the decision.
-%%
-%% At this time, Verified Permissions accepts tokens from only Amazon
-%% Cognito.
 %%
 %% Verified Permissions validates each token that is specified in a request
 %% by checking its expiration

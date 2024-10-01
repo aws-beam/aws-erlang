@@ -500,6 +500,8 @@
          start_contact_recording/3,
          start_contact_streaming/2,
          start_contact_streaming/3,
+         start_outbound_chat_contact/2,
+         start_outbound_chat_contact/3,
          start_outbound_voice_contact/2,
          start_outbound_voice_contact/3,
          start_task_contact/2,
@@ -989,6 +991,24 @@
 %%   <<"Users">> => list(user_search_summary()())
 %% }
 -type search_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_outbound_chat_contact_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ChatDurationInMinutes">> => integer(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactFlowId">> := string(),
+%%   <<"DestinationEndpoint">> := endpoint(),
+%%   <<"InitialSystemMessage">> => chat_message(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ParticipantDetails">> => participant_details(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"SegmentAttributes">> := map(),
+%%   <<"SourceEndpoint">> := endpoint(),
+%%   <<"SupportedMessagingContentTypes">> => list(string()())
+%% }
+-type start_outbound_chat_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5504,6 +5524,13 @@
 
 
 %% Example:
+%% start_outbound_chat_contact_response() :: #{
+%%   <<"ContactId">> => string()
+%% }
+-type start_outbound_chat_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_integration_associations_response() :: #{
 %%   <<"IntegrationAssociationSummaryList">> => list(integration_association_summary()()),
 %%   <<"NextToken">> => string()
@@ -8553,6 +8580,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type start_outbound_chat_contact_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
 -type start_outbound_voice_contact_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
@@ -9045,11 +9081,9 @@ activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
+%% @doc Associates the specified dataset for a Amazon Connect instance with
+%% the target account.
 %%
-%% Associates the specified dataset for a Amazon Connect instance with the
-%% target account.
 %% You can associate only one dataset in a single call.
 -spec associate_analytics_data_set(aws_client:aws_client(), binary() | list(), associate_analytics_data_set_request()) ->
     {ok, associate_analytics_data_set_response(), tuple()} |
@@ -9582,12 +9616,11 @@ associate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Associates a list of analytics datasets for a given Amazon Connect
+%% @doc Associates a list of analytics datasets for a given Amazon Connect
 %% instance to a target
-%% account. You can associate multiple datasets in a single call.
+%% account.
+%%
+%% You can associate multiple datasets in a single call.
 -spec batch_associate_analytics_data_set(aws_client:aws_client(), binary() | list(), batch_associate_analytics_data_set_request()) ->
     {ok, batch_associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
@@ -9621,11 +9654,9 @@ batch_associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Removes a list of analytics datasets associated with a given Amazon
+%% @doc Removes a list of analytics datasets associated with a given Amazon
 %% Connect instance.
+%%
 %% You can disassociate multiple datasets in a single call.
 -spec batch_disassociate_analytics_data_set(aws_client:aws_client(), binary() | list(), batch_disassociate_analytics_data_set_request()) ->
     {ok, batch_disassociate_analytics_data_set_response(), tuple()} |
@@ -11891,12 +11922,11 @@ describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, Que
 %%
 %% Describes the specified contact.
 %%
-%% Contact information remains available in Amazon Connect for 24 months, and
-%% then it is
-%% deleted.
-%%
-%% Only data from November 12, 2021, and later is returned by this
-%% API.
+%% Contact information remains available in Amazon Connect for 24 months from
+%% the
+%% InitiationTimestamp, and then it is deleted. Only contact information that
+%% is available in
+%% Amazon Connect is returned by this API
 -spec describe_contact(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
@@ -12866,10 +12896,8 @@ describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Removes the dataset ID associated with a given Amazon Connect instance.
+%% @doc Removes the dataset ID associated with a given Amazon Connect
+%% instance.
 -spec disassociate_analytics_data_set(aws_client:aws_client(), binary() | list(), disassociate_analytics_data_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -13995,11 +14023,8 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Lists the association status of requested dataset ID for a given Amazon
-%% Connect
+%% @doc Lists the association status of requested dataset ID for a given
+%% Amazon Connect
 %% instance.
 -spec list_analytics_data_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
@@ -17250,6 +17275,68 @@ start_contact_streaming(Client, Input) ->
 start_contact_streaming(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/start-streaming"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates a new outbound SMS contact to a customer.
+%%
+%% Response of this API provides the
+%% ContactId of the outbound SMS contact created.
+%%
+%% SourceEndpoint only supports Endpoints with
+%% `CONNECT_PHONENUMBER_ARN' as Type and DestinationEndpoint only
+%% supports Endpoints with `TELEPHONE_NUMBER' as
+%% Type. ContactFlowId initiates the flow to manage the new SMS
+%% contact created.
+%%
+%% This API can be used to initiate outbound SMS contacts for an agent or it
+%% can also deflect
+%% an ongoing contact to an outbound SMS contact by using the
+%% StartOutboundChatContact:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartOutboundChatContact.html
+%% Flow Action.
+%%
+%% For more information about using SMS in Amazon Connect, see the following
+%% topics in the
+%% Amazon Connect Administrator Guide:
+%%
+%% Set
+%% up SMS messaging:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/setup-sms-messaging.html
+%%
+%% Request an
+%% SMS-enabled phone number through AWS End User Messaging SMS:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/sms-number.html
+-spec start_outbound_chat_contact(aws_client:aws_client(), start_outbound_chat_contact_request()) ->
+    {ok, start_outbound_chat_contact_response(), tuple()} |
+    {error, any()} |
+    {error, start_outbound_chat_contact_errors(), tuple()}.
+start_outbound_chat_contact(Client, Input) ->
+    start_outbound_chat_contact(Client, Input, []).
+
+-spec start_outbound_chat_contact(aws_client:aws_client(), start_outbound_chat_contact_request(), proplists:proplist()) ->
+    {ok, start_outbound_chat_contact_response(), tuple()} |
+    {error, any()} |
+    {error, start_outbound_chat_contact_errors(), tuple()}.
+start_outbound_chat_contact(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/outbound-chat"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

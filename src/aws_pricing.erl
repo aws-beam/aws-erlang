@@ -22,7 +22,8 @@
 %%
 %% Use `GetServices' without a service code to retrieve the service codes
 %% for
-%% all Amazon Web Services, then `GetServices' with a service code to
+%% all Amazon Web Services services, then `GetServices' with a service
+%% code to
 %% retrieve the attribute names for that service. After you have the service
 %% code and
 %% attribute names, you can use `GetAttributeValues' to see what values
