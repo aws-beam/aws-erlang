@@ -2350,7 +2350,8 @@
 %%   <<"DBShardGroupIdentifier">> := string(),
 %%   <<"MaxACU">> := float(),
 %%   <<"MinACU">> => float(),
-%%   <<"PubliclyAccessible">> => boolean()
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type create_db_shard_group_message() :: #{binary() => any()}.
 
@@ -3024,7 +3025,8 @@
 %%   <<"MaxACU">> => float(),
 %%   <<"MinACU">> => float(),
 %%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"Status">> => string()
+%%   <<"Status">> => string(),
+%%   <<"TagList">> => list(tag()())
 %% }
 -type db_shard_group() :: #{binary() => any()}.
 
@@ -3408,7 +3410,8 @@
 %%   <<"StorageEncrypted">> => boolean(),
 %%   <<"EnableGlobalWriteForwarding">> => boolean(),
 %%   <<"DBSystemId">> => string(),
-%%   <<"DeletionProtection">> => boolean()
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"ClusterScalabilityType">> => list(any())
 %% }
 -type create_db_cluster_message() :: #{binary() => any()}.
 
@@ -4057,7 +4060,8 @@
 %%   <<"ReadReplicaIdentifiers">> => list(string()()),
 %%   <<"DBSystemId">> => string(),
 %%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"ClusterScalabilityType">> => list(any())
 %% }
 -type db_cluster() :: #{binary() => any()}.
 
@@ -5761,6 +5765,7 @@
     db_cluster_not_found_fault() | 
     unsupported_db_engine_version_fault() | 
     invalid_db_cluster_state_fault() | 
+    network_type_not_supported() | 
     invalid_vpc_network_state_fault() | 
     db_shard_group_already_exists_fault() | 
     max_db_shard_group_limit_reached().

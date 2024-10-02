@@ -122,6 +122,8 @@
          prepare_flow/4,
          start_ingestion_job/4,
          start_ingestion_job/5,
+         stop_ingestion_job/5,
+         stop_ingestion_job/6,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -561,6 +563,10 @@
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
 -type delete_flow_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_ingestion_job_request() :: #{}
+-type stop_ingestion_job_request() :: #{}.
 
 
 %% Example:
@@ -1982,6 +1988,13 @@
 
 
 %% Example:
+%% stop_ingestion_job_response() :: #{
+%%   <<"ingestionJob">> => ingestion_job()
+%% }
+-type stop_ingestion_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_agent_response() :: #{
 %%   <<"agent">> => agent()
 %% }
@@ -2701,6 +2714,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type stop_ingestion_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type tag_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3149,13 +3170,13 @@ create_flow_version(Client, FlowIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a knowledge base that contains data sources from which
-%% information can be queried and used by LLMs.
+%% @doc Creates a knowledge base.
 %%
-%% To create a knowledge base, you must first set up your data sources and
-%% configure a supported vector store. For more information, see Set up your
-%% data for ingestion:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html.
+%% A knowledge base contains your data sources so that Large Language Models
+%% (LLMs) can use your data. To create a knowledge base, you must first set
+%% up your data sources and configure a supported vector store. For more
+%% information, see Set up a knowledge base:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowlege-base-prereq.html.
 %%
 %% If you prefer to let Amazon Bedrock create and manage a vector store for
 %% you in Amazon OpenSearch Service, use the console. For more information,
@@ -4043,8 +4064,10 @@ get_flow_version(Client, FlowIdentifier, FlowVersion, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a ingestion job, in which a data source is
-%% added to a knowledge base.
+%% @doc Gets information about a data ingestion job.
+%%
+%% Data sources are ingested into your knowledge base so that Large Lanaguage
+%% Models (LLMs) can use your data.
 -spec get_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_ingestion_job_response(), tuple()} |
     {error, any()} |
@@ -4509,8 +4532,9 @@ list_flows(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the ingestion jobs for a data source and information about each
-%% of them.
+%% @doc Lists the data ingestion jobs for a data source.
+%%
+%% The list also includes information about each job.
 -spec list_ingestion_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), list_ingestion_jobs_request()) ->
     {ok, list_ingestion_jobs_response(), tuple()} |
     {error, any()} |
@@ -4544,8 +4568,9 @@ list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the knowledge bases in an account and information about each of
-%% them.
+%% @doc Lists the knowledge bases in an account.
+%%
+%% The list also includesinformation about each knowledge base.
 -spec list_knowledge_bases(aws_client:aws_client(), list_knowledge_bases_request()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
@@ -4740,8 +4765,10 @@ prepare_flow(Client, FlowIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Begins an ingestion job, in which a data source is added to a
-%% knowledge base.
+%% @doc Begins a data ingestion job.
+%%
+%% Data sources are ingested into your knowledge base so that Large Language
+%% Models (LLMs) can use your data.
 -spec start_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_ingestion_job_request()) ->
     {ok, start_ingestion_job_response(), tuple()} |
     {error, any()} |
@@ -4756,6 +4783,43 @@ start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input) ->
 start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a currently running data ingestion job.
+%%
+%% You can send a `StartIngestionJob' request again to ingest the rest of
+%% your data when you are ready.
+-spec stop_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_ingestion_job_request()) ->
+    {ok, stop_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_ingestion_job_errors(), tuple()}.
+stop_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, Input) ->
+    stop_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, Input, []).
+
+-spec stop_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_ingestion_job_request(), proplists:proplist()) ->
+    {ok, stop_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_ingestion_job_errors(), tuple()}.
+stop_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/", aws_util:encode_uri(IngestionJobId), "/stop"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

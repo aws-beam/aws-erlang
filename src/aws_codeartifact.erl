@@ -1278,6 +1278,7 @@
 %% get_repository_endpoint_request() :: #{
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
+%%   <<"endpointType">> => list(any()),
 %%   <<"format">> := list(any()),
 %%   <<"repository">> := string()
 %% }
@@ -3241,6 +3242,7 @@ get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap
       [
         {<<"domain">>, Domain},
         {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
+        {<<"endpointType">>, maps:get(<<"endpointType">>, QueryMap, undefined)},
         {<<"format">>, Format},
         {<<"repository">>, Repository}
       ],
