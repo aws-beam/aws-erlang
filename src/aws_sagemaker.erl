@@ -3340,6 +3340,7 @@
 %%   <<"AppArn">> => string(),
 %%   <<"AppName">> => string(),
 %%   <<"AppType">> => list(any()),
+%%   <<"BuiltInLifecycleConfigArn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DomainId">> => string(),
 %%   <<"FailureReason">> => string(),
@@ -11022,6 +11023,7 @@
 %% Example:
 %% jupyter_lab_app_settings() :: #{
 %%   <<"AppLifecycleManagement">> => app_lifecycle_management(),
+%%   <<"BuiltInLifecycleConfigArn">> => string(),
 %%   <<"CodeRepositories">> => list(code_repository()()),
 %%   <<"CustomImages">> => list(custom_image()()),
 %%   <<"DefaultResourceSpec">> => resource_spec(),
@@ -11341,6 +11343,7 @@
 %% Example:
 %% code_editor_app_settings() :: #{
 %%   <<"AppLifecycleManagement">> => app_lifecycle_management(),
+%%   <<"BuiltInLifecycleConfigArn">> => string(),
 %%   <<"CustomImages">> => list(custom_image()()),
 %%   <<"DefaultResourceSpec">> => resource_spec(),
 %%   <<"LifecycleConfigArns">> => list(string()())

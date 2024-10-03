@@ -1059,7 +1059,8 @@
 
 %% Example:
 %% get_bucket_lifecycle_configuration_output() :: #{
-%%   <<"Rules">> => list(lifecycle_rule()())
+%%   <<"Rules">> => list(lifecycle_rule()()),
+%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
 %% }
 -type get_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
 
@@ -1606,6 +1607,13 @@
 %%   <<"Id">> := string()
 %% }
 -type delete_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_lifecycle_configuration_output() :: #{
+%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
+%% }
+-type put_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2900,7 +2908,8 @@
 %% put_bucket_lifecycle_configuration_request() :: #{
 %%   <<"ChecksumAlgorithm">> => list(any()),
 %%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"LifecycleConfiguration">> => bucket_lifecycle_configuration()
+%%   <<"LifecycleConfiguration">> => bucket_lifecycle_configuration(),
+%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
 %% }
 -type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
 
@@ -6798,7 +6807,23 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-transition-default-minimum-object-size">>, <<"TransitionDefaultMinimumObjectSize">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc
 %% This operation is not supported by directory buckets.
@@ -8895,7 +8920,11 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% keys for Amazon S3:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/list_amazons3.html in the
 %% Amazon S3
-%% User Guide.
+%% User Guide. For more information about the permissions to S3 API
+%% operations by S3 resource types, see Required permissions for Amazon S3
+%% API operations:
+%% /AmazonS3/latest/userguide/using-with-s3-policy-actions.html in the Amazon
+%% S3 User Guide.
 %%
 %% If the object you request doesn't exist, the error that
 %% Amazon S3 returns depends on whether you also have the `s3:ListBucket'
@@ -11250,14 +11279,6 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% your storage lifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html.
 %%
-%% Bucket lifecycle configuration now supports specifying a lifecycle rule
-%% using an object key name prefix, one or more object tags, object size, or
-%% any combination of these. Accordingly, this section describes the latest
-%% API. The previous version of the API supported filtering based only on an
-%% object key name prefix, which is supported for backward compatibility.
-%% For the related API description, see PutBucketLifecycle:
-%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html.
-%%
 %% Rules
 %%
 %% You specify the lifecycle configuration in your request body. The
@@ -11266,7 +11287,16 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% Amazon S3
 %% Lifecycle configuration can have up to 1,000 rules. This limit is not
 %% adjustable.
-%% Each rule consists of the following:
+%%
+%% Bucket lifecycle configuration supports specifying a lifecycle rule using
+%% an object key name prefix, one or more object tags, object size, or any
+%% combination of these. Accordingly, this section describes the latest API.
+%% The previous version of the API supported filtering based only on an
+%% object key name prefix, which is supported for backward compatibility.
+%% For the related API description, see PutBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html.
+%%
+%% A lifecycle rule consists of the following:
 %%
 %% A filter identifying a subset of objects to which the rule applies. The
 %% filter can be based on a key name prefix, object tags, object size, or any
@@ -11334,13 +11364,13 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% DeleteBucketLifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
 -spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request()) ->
-    {ok, undefined, tuple()} |
+    {ok, put_bucket_lifecycle_configuration_output(), tuple()} |
     {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 
 -spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, put_bucket_lifecycle_configuration_output(), tuple()} |
     {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
@@ -11356,7 +11386,8 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
-                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"x-amz-transition-default-minimum-object-size">>, <<"TransitionDefaultMinimumObjectSize">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -11366,7 +11397,23 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-transition-default-minimum-object-size">>, <<"TransitionDefaultMinimumObjectSize">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc
 %% This operation is not supported by directory buckets.

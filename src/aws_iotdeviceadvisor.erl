@@ -235,6 +235,7 @@
 
 %% Example:
 %% create_suite_definition_request() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"suiteDefinitionConfiguration">> := suite_definition_configuration(),
 %%   <<"tags">> => map()
 %% }

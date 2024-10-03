@@ -491,7 +491,9 @@
 
 %% Example:
 %% pre_processing_model_invocation_output() :: #{
+%%   <<"metadata">> => metadata(),
 %%   <<"parsedResponse">> => pre_processing_parsed_response(),
+%%   <<"rawResponse">> => raw_response(),
 %%   <<"traceId">> => string()
 %% }
 -type pre_processing_model_invocation_output() :: #{binary() => any()}.
@@ -921,7 +923,9 @@
 
 %% Example:
 %% post_processing_model_invocation_output() :: #{
+%%   <<"metadata">> => metadata(),
 %%   <<"parsedResponse">> => post_processing_parsed_response(),
+%%   <<"rawResponse">> => raw_response(),
 %%   <<"traceId">> => string()
 %% }
 -type post_processing_model_invocation_output() :: #{binary() => any()}.

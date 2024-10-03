@@ -30,6 +30,8 @@
          create_partnership/3,
          create_profile/2,
          create_profile/3,
+         create_starter_mapping_template/2,
+         create_starter_mapping_template/3,
          create_transformer/2,
          create_transformer/3,
          delete_capability/2,
@@ -64,6 +66,8 @@
          start_transformer_job/3,
          tag_resource/2,
          tag_resource/3,
+         test_conversion/2,
+         test_conversion/3,
          test_mapping/2,
          test_mapping/3,
          test_parsing/2,
@@ -83,6 +87,14 @@
 
 
 %% Example:
+%% x12_delimiters() :: #{
+%%   <<"componentSeparator">> => string(),
+%%   <<"dataElementSeparator">> => string(),
+%%   <<"segmentTerminator">> => string()
+%% }
+-type x12_delimiters() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"Tags">> := list(tag()())
 %% }
@@ -94,6 +106,13 @@
 %%   <<"version">> => list(any())
 %% }
 -type x12_details() :: #{binary() => any()}.
+
+%% Example:
+%% test_conversion_response() :: #{
+%%   <<"convertedFileContent">> => [string()],
+%%   <<"validationMessages">> => list([string()]())
+%% }
+-type test_conversion_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_capability_request() :: #{
@@ -115,6 +134,7 @@
 %% Example:
 %% create_partnership_request() :: #{
 %%   <<"capabilities">> := list(string()()),
+%%   <<"capabilityOptions">> => capability_options(),
 %%   <<"clientToken">> => [string()],
 %%   <<"email">> := string(),
 %%   <<"name">> := string(),
@@ -140,6 +160,7 @@
 %% Example:
 %% partnership_summary() :: #{
 %%   <<"capabilities">> => list(string()()),
+%%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
@@ -160,6 +181,7 @@
 %% Example:
 %% get_partnership_response() :: #{
 %%   <<"capabilities">> => list(string()()),
+%%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"email">> => string(),
 %%   <<"modifiedAt">> => non_neg_integer(),
@@ -186,15 +208,33 @@
 -type get_capability_response() :: #{binary() => any()}.
 
 %% Example:
+%% test_conversion_request() :: #{
+%%   <<"source">> := conversion_source(),
+%%   <<"target">> := conversion_target()
+%% }
+-type test_conversion_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_transformer_request() :: #{
 %%   <<"ediType">> => list(),
 %%   <<"fileFormat">> => list(any()),
+%%   <<"inputConversion">> => input_conversion(),
+%%   <<"mapping">> => mapping(),
 %%   <<"mappingTemplate">> => string(),
 %%   <<"name">> => string(),
+%%   <<"outputConversion">> => output_conversion(),
 %%   <<"sampleDocument">> => string(),
+%%   <<"sampleDocuments">> => sample_documents(),
 %%   <<"status">> => list(any())
 %% }
 -type update_transformer_request() :: #{binary() => any()}.
+
+%% Example:
+%% input_conversion() :: #{
+%%   <<"formatOptions">> => list(),
+%%   <<"fromFormat">> => list(any())
+%% }
+-type input_conversion() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -212,11 +252,15 @@
 %% Example:
 %% create_transformer_request() :: #{
 %%   <<"clientToken">> => [string()],
-%%   <<"ediType">> := list(),
-%%   <<"fileFormat">> := list(any()),
-%%   <<"mappingTemplate">> := string(),
+%%   <<"ediType">> => list(),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"inputConversion">> => input_conversion(),
+%%   <<"mapping">> => mapping(),
+%%   <<"mappingTemplate">> => string(),
 %%   <<"name">> := string(),
+%%   <<"outputConversion">> => output_conversion(),
 %%   <<"sampleDocument">> => string(),
+%%   <<"sampleDocuments">> => sample_documents(),
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_transformer_request() :: #{binary() => any()}.
@@ -226,10 +270,14 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"ediType">> => list(),
 %%   <<"fileFormat">> => list(any()),
+%%   <<"inputConversion">> => input_conversion(),
+%%   <<"mapping">> => mapping(),
 %%   <<"mappingTemplate">> => string(),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"outputConversion">> => output_conversion(),
 %%   <<"sampleDocument">> => string(),
+%%   <<"sampleDocuments">> => sample_documents(),
 %%   <<"status">> => list(any()),
 %%   <<"transformerArn">> => string(),
 %%   <<"transformerId">> => string()
@@ -280,6 +328,7 @@
 %% Example:
 %% update_partnership_request() :: #{
 %%   <<"capabilities">> => list(string()()),
+%%   <<"capabilityOptions">> => capability_options(),
 %%   <<"name">> => string()
 %% }
 -type update_partnership_request() :: #{binary() => any()}.
@@ -295,14 +344,31 @@
 -type capability_summary() :: #{binary() => any()}.
 
 %% Example:
+%% create_starter_mapping_template_response() :: #{
+%%   <<"mappingTemplate">> => [string()]
+%% }
+-type create_starter_mapping_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% output_conversion() :: #{
+%%   <<"formatOptions">> => list(),
+%%   <<"toFormat">> => list(any())
+%% }
+-type output_conversion() :: #{binary() => any()}.
+
+%% Example:
 %% transformer_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"ediType">> => list(),
 %%   <<"fileFormat">> => list(any()),
+%%   <<"inputConversion">> => input_conversion(),
+%%   <<"mapping">> => mapping(),
 %%   <<"mappingTemplate">> => string(),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"outputConversion">> => output_conversion(),
 %%   <<"sampleDocument">> => string(),
+%%   <<"sampleDocuments">> => sample_documents(),
 %%   <<"status">> => list(any()),
 %%   <<"transformerId">> => string()
 %% }
@@ -361,6 +427,12 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
+%% x12_envelope() :: #{
+%%   <<"common">> => x12_outbound_edi_headers()
+%% }
+-type x12_envelope() :: #{binary() => any()}.
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"quotaCode">> => [string()],
@@ -407,6 +479,14 @@
 -type create_profile_response() :: #{binary() => any()}.
 
 %% Example:
+%% x12_functional_group_headers() :: #{
+%%   <<"applicationReceiverCode">> => string(),
+%%   <<"applicationSenderCode">> => string(),
+%%   <<"responsibleAgencyCode">> => string()
+%% }
+-type x12_functional_group_headers() :: #{binary() => any()}.
+
+%% Example:
 %% get_transformer_job_response() :: #{
 %%   <<"message">> => [string()],
 %%   <<"outputFiles">> => list(s3_location()()),
@@ -422,6 +502,7 @@
 
 %% Example:
 %% edi_configuration() :: #{
+%%   <<"capabilityDirection">> => list(any()),
 %%   <<"inputLocation">> => s3_location(),
 %%   <<"outputLocation">> => s3_location(),
 %%   <<"transformerId">> => string(),
@@ -456,14 +537,30 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"ediType">> => list(),
 %%   <<"fileFormat">> => list(any()),
+%%   <<"inputConversion">> => input_conversion(),
+%%   <<"mapping">> => mapping(),
 %%   <<"mappingTemplate">> => string(),
 %%   <<"name">> => string(),
+%%   <<"outputConversion">> => output_conversion(),
 %%   <<"sampleDocument">> => string(),
+%%   <<"sampleDocuments">> => sample_documents(),
 %%   <<"status">> => list(any()),
 %%   <<"transformerArn">> => string(),
 %%   <<"transformerId">> => string()
 %% }
 -type create_transformer_response() :: #{binary() => any()}.
+
+%% Example:
+%% x12_interchange_control_headers() :: #{
+%%   <<"acknowledgmentRequestedCode">> => string(),
+%%   <<"receiverId">> => string(),
+%%   <<"receiverIdQualifier">> => string(),
+%%   <<"repetitionSeparator">> => string(),
+%%   <<"senderId">> => string(),
+%%   <<"senderIdQualifier">> => string(),
+%%   <<"usageIndicatorCode">> => string()
+%% }
+-type x12_interchange_control_headers() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -477,15 +574,26 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"ediType">> => list(),
 %%   <<"fileFormat">> => list(any()),
+%%   <<"inputConversion">> => input_conversion(),
+%%   <<"mapping">> => mapping(),
 %%   <<"mappingTemplate">> => string(),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"outputConversion">> => output_conversion(),
 %%   <<"sampleDocument">> => string(),
+%%   <<"sampleDocuments">> => sample_documents(),
 %%   <<"status">> => list(any()),
 %%   <<"transformerArn">> => string(),
 %%   <<"transformerId">> => string()
 %% }
 -type update_transformer_response() :: #{binary() => any()}.
+
+%% Example:
+%% sample_document_keys() :: #{
+%%   <<"input">> => string(),
+%%   <<"output">> => string()
+%% }
+-type sample_document_keys() :: #{binary() => any()}.
 
 %% Example:
 %% test_parsing_response() :: #{
@@ -559,8 +667,23 @@
 -type delete_capability_request() :: #{binary() => any()}.
 
 %% Example:
+%% sample_documents() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"keys">> => list(sample_document_keys()())
+%% }
+-type sample_documents() :: #{binary() => any()}.
+
+%% Example:
+%% conversion_source() :: #{
+%%   <<"fileFormat">> => list(any()),
+%%   <<"inputFile">> => list()
+%% }
+-type conversion_source() :: #{binary() => any()}.
+
+%% Example:
 %% update_partnership_response() :: #{
 %%   <<"capabilities">> => list(string()()),
+%%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"email">> => string(),
 %%   <<"modifiedAt">> => non_neg_integer(),
@@ -572,6 +695,15 @@
 %%   <<"tradingPartnerId">> => string()
 %% }
 -type update_partnership_response() :: #{binary() => any()}.
+
+%% Example:
+%% x12_outbound_edi_headers() :: #{
+%%   <<"delimiters">> => x12_delimiters(),
+%%   <<"functionalGroupHeaders">> => x12_functional_group_headers(),
+%%   <<"interchangeControlHeaders">> => x12_interchange_control_headers(),
+%%   <<"validateEdi">> => boolean()
+%% }
+-type x12_outbound_edi_headers() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -589,14 +721,36 @@
 -type test_mapping_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_starter_mapping_template_request() :: #{
+%%   <<"mappingType">> := list(any()),
+%%   <<"outputSampleLocation">> => s3_location(),
+%%   <<"templateDetails">> := list()
+%% }
+-type create_starter_mapping_template_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_partnership_request() :: #{
 
 %% }
 -type get_partnership_request() :: #{binary() => any()}.
 
 %% Example:
+%% capability_options() :: #{
+%%   <<"outboundEdi">> => list()
+%% }
+-type capability_options() :: #{binary() => any()}.
+
+%% Example:
+%% mapping() :: #{
+%%   <<"template">> => string(),
+%%   <<"templateLanguage">> => list(any())
+%% }
+-type mapping() :: #{binary() => any()}.
+
+%% Example:
 %% create_partnership_response() :: #{
 %%   <<"capabilities">> => list(string()()),
+%%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"email">> => string(),
 %%   <<"name">> => string(),
@@ -621,6 +775,14 @@
 
 %% }
 -type get_capability_request() :: #{binary() => any()}.
+
+%% Example:
+%% conversion_target() :: #{
+%%   <<"fileFormat">> => list(any()),
+%%   <<"formatDetails">> => list(),
+%%   <<"outputSampleFile">> => list()
+%% }
+-type conversion_target() :: #{binary() => any()}.
 
 %% Example:
 %% test_mapping_response() :: #{
@@ -672,6 +834,12 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type create_starter_mapping_template_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type create_transformer_errors() ::
     throttling_exception() | 
@@ -790,6 +958,13 @@
 -type tag_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type test_conversion_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
 
@@ -915,12 +1090,69 @@ create_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProfile">>, Input, Options).
 
+%% @doc Amazon Web Services B2B Data Interchange uses a mapping template in
+%% JSONata or XSLT format to transform a customer input file into a JSON or
+%% XML file that can be converted to EDI.
+%%
+%% If you provide a sample EDI file with the same structure as the EDI files
+%% that you wish to generate, then the service can generate a mapping
+%% template.
+%% The starter template contains placeholder values which you can replace
+%% with JSONata or XSLT expressions to take data from your input file and
+%% insert it
+%% into the JSON or XML file that is used to generate the EDI.
+%%
+%% If you do not provide a sample EDI file, then the service can generate a
+%% mapping template based on the EDI settings in the `templateDetails'
+%% parameter.
+%%
+%% Currently, we only support generating a template that can generate the
+%% input to produce an Outbound X12 EDI file.
+-spec create_starter_mapping_template(aws_client:aws_client(), create_starter_mapping_template_request()) ->
+    {ok, create_starter_mapping_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_starter_mapping_template_errors(), tuple()}.
+create_starter_mapping_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_starter_mapping_template(Client, Input, []).
+
+-spec create_starter_mapping_template(aws_client:aws_client(), create_starter_mapping_template_request(), proplists:proplist()) ->
+    {ok, create_starter_mapping_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_starter_mapping_template_errors(), tuple()}.
+create_starter_mapping_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStarterMappingTemplate">>, Input, Options).
+
 %% @doc Creates a transformer.
 %%
-%% A transformer
-%% describes how to process the incoming EDI documents and extract the
-%% necessary
-%% information to the output file.
+%% Amazon Web Services B2B Data Interchange currently supports two scenarios:
+%%
+%% Inbound EDI: the Amazon Web Services customer receives an EDI file from
+%% their trading partner. Amazon Web Services B2B Data Interchange
+%% converts this EDI file into a JSON or XML file with a service-defined
+%% structure. A mapping template provided by the customer,
+%% in JSONata or XSLT format, is optionally applied to this file to produce a
+%% JSON or XML file with the structure the customer requires.
+%%
+%% Outbound EDI: the Amazon Web Services customer has a JSON or XML file
+%% containing data that they wish to use
+%% in an EDI file. A mapping template, provided by the customer (in either
+%% JSONata or XSLT format) is applied to this file to generate
+%% a JSON or XML file in the service-defined structure. This file is then
+%% converted to an EDI file.
+%%
+%% The following fields are provided for backwards compatibility only:
+%% `fileFormat',
+%% `mappingTemplate', `ediType', and `sampleDocument'.
+%%
+%% Use the `mapping' data type in place of `mappingTemplate' and
+%% `fileFormat'
+%%
+%% Use the `sampleDocuments' data type in place of `sampleDocument'
+%%
+%% Use either the `inputConversion' or `outputConversion' in place of
+%% `ediType'
 -spec create_transformer(aws_client:aws_client(), create_transformer_request()) ->
     {ok, create_transformer_response(), tuple()} |
     {error, any()} |
@@ -1000,10 +1232,10 @@ delete_profile(Client, Input, Options)
 
 %% @doc Deletes the specified transformer.
 %%
-%% A transformer
-%% describes how to process the incoming EDI documents and extract the
-%% necessary
-%% information to the output file.
+%% A transformer can take an EDI file as input and transform it into a
+%% JSON-or XML-formatted document. Alternatively,
+%% a transformer can take a JSON-or XML-formatted document as input and
+%% transform it into an EDI file.
 -spec delete_transformer(aws_client:aws_client(), delete_transformer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1085,10 +1317,10 @@ get_profile(Client, Input, Options)
 %% @doc Retrieves the details for the transformer specified by the
 %% transformer ID.
 %%
-%% A transformer
-%% describes how to process the incoming EDI documents and extract the
-%% necessary
-%% information to the output file.
+%% A transformer can take an EDI file as input and transform it into a
+%% JSON-or XML-formatted document. Alternatively,
+%% a transformer can take a JSON-or XML-formatted document as input and
+%% transform it into an EDI file.
 -spec get_transformer(aws_client:aws_client(), get_transformer_request()) ->
     {ok, get_transformer_response(), tuple()} |
     {error, any()} |
@@ -1209,10 +1441,10 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Lists the available transformers.
 %%
-%% A transformer
-%% describes how to process the incoming EDI documents and extract the
-%% necessary
-%% information to the output file.
+%% A transformer can take an EDI file as input and transform it into a
+%% JSON-or XML-formatted document. Alternatively,
+%% a transformer can take a JSON-or XML-formatted document as input and
+%% transform it into an EDI file.
 -spec list_transformers(aws_client:aws_client(), list_transformers_request()) ->
     {ok, list_transformers_response(), tuple()} |
     {error, any()} |
@@ -1231,7 +1463,7 @@ list_transformers(Client, Input, Options)
 
 %% @doc Runs a job, using a transformer, to parse input EDI (electronic data
 %% interchange) file into the output structures used by Amazon Web Services
-%% B2BI Data Interchange.
+%% B2B Data Interchange.
 %%
 %% If you only want to transform EDI (electronic data interchange) documents,
 %% you don't need to create profiles, partnerships or capabilities. Just
@@ -1275,6 +1507,27 @@ tag_resource(Client, Input)
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc This operation mimics the latter half of a typical Outbound EDI
+%% request.
+%%
+%% It takes an input JSON/XML in the B2Bi shape as input, converts it to an
+%% X12 EDI string, and return that string.
+-spec test_conversion(aws_client:aws_client(), test_conversion_request()) ->
+    {ok, test_conversion_response(), tuple()} |
+    {error, any()} |
+    {error, test_conversion_errors(), tuple()}.
+test_conversion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    test_conversion(Client, Input, []).
+
+-spec test_conversion(aws_client:aws_client(), test_conversion_request(), proplists:proplist()) ->
+    {ok, test_conversion_response(), tuple()} |
+    {error, any()} |
+    {error, test_conversion_errors(), tuple()}.
+test_conversion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TestConversion">>, Input, Options).
 
 %% @doc Maps the input file according to the provided template file.
 %%
@@ -1402,10 +1655,10 @@ update_profile(Client, Input, Options)
 
 %% @doc Updates the specified parameters for a transformer.
 %%
-%% A transformer
-%% describes how to process the incoming EDI documents and extract the
-%% necessary
-%% information to the output file.
+%% A transformer can take an EDI file as input and transform it into a
+%% JSON-or XML-formatted document. Alternatively,
+%% a transformer can take a JSON-or XML-formatted document as input and
+%% transform it into an EDI file.
 -spec update_transformer(aws_client:aws_client(), update_transformer_request()) ->
     {ok, update_transformer_response(), tuple()} |
     {error, any()} |
