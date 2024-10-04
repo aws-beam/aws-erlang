@@ -1023,6 +1023,8 @@
          modify_instance_attribute/3,
          modify_instance_capacity_reservation_attributes/2,
          modify_instance_capacity_reservation_attributes/3,
+         modify_instance_cpu_options/2,
+         modify_instance_cpu_options/3,
          modify_instance_credit_specification/2,
          modify_instance_credit_specification/3,
          modify_instance_event_start_time/2,
@@ -3131,6 +3133,15 @@
 %%   <<"CustomerGateways">> => list(customer_gateway()())
 %% }
 -type describe_customer_gateways_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_instance_cpu_options_request() :: #{
+%%   <<"CoreCount">> := integer(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ThreadsPerCore">> := integer()
+%% }
+-type modify_instance_cpu_options_request() :: #{binary() => any()}.
 
 %% Example:
 %% verified_access_log_kinesis_data_firehose_destination_options() :: #{
@@ -9694,6 +9705,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_host_reservations_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_instance_cpu_options_result() :: #{
+%%   <<"CoreCount">> => integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"ThreadsPerCore">> => integer()
+%% }
+-type modify_instance_cpu_options_result() :: #{binary() => any()}.
 
 %% Example:
 %% rule_group_rule_options_pair() :: #{
@@ -30417,6 +30436,38 @@ modify_instance_capacity_reservation_attributes(Client, Input)
 modify_instance_capacity_reservation_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyInstanceCapacityReservationAttributes">>, Input, Options).
+
+%% @doc By default, all vCPUs for the instance type are active when you
+%% launch an instance.
+%%
+%% When you
+%% configure the number of active vCPUs for the instance, it can help you
+%% save on licensing costs and
+%% optimize performance. The base cost of the instance remains unchanged.
+%%
+%% The number of active vCPUs equals the number of threads per CPU core
+%% multiplied by the number
+%% of cores.
+%%
+%% Some instance type options do not support this capability. For more
+%% information, see
+%% Supported CPU
+%% options:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cpu-options-supported-instances-values.html
+%% in the Amazon EC2 User Guide.
+-spec modify_instance_cpu_options(aws_client:aws_client(), modify_instance_cpu_options_request()) ->
+    {ok, modify_instance_cpu_options_result(), tuple()} |
+    {error, any()}.
+modify_instance_cpu_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_instance_cpu_options(Client, Input, []).
+
+-spec modify_instance_cpu_options(aws_client:aws_client(), modify_instance_cpu_options_request(), proplists:proplist()) ->
+    {ok, modify_instance_cpu_options_result(), tuple()} |
+    {error, any()}.
+modify_instance_cpu_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyInstanceCpuOptions">>, Input, Options).
 
 %% @doc Modifies the credit option for CPU usage on a running or stopped
 %% burstable performance

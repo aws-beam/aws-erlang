@@ -227,7 +227,8 @@
 %%   <<"ManifestName">> => string(),
 %%   <<"ManifestWindowSeconds">> => [integer()],
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
-%%   <<"ScteHls">> => scte_hls()
+%%   <<"ScteHls">> => scte_hls(),
+%%   <<"StartTag">> => start_tag()
 %% }
 -type create_hls_manifest_configuration() :: #{binary() => any()}.
 
@@ -299,6 +300,7 @@
 %%   <<"ManifestWindowSeconds">> => [integer()],
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
+%%   <<"StartTag">> => start_tag(),
 %%   <<"Url">> => [string()]
 %% }
 -type get_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
@@ -312,6 +314,7 @@
 %%   <<"ManifestWindowSeconds">> => [integer()],
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
+%%   <<"StartTag">> => start_tag(),
 %%   <<"Url">> => [string()]
 %% }
 -type get_hls_manifest_configuration() :: #{binary() => any()}.
@@ -355,6 +358,14 @@
 %% Example:
 %% delete_channel_group_request() :: #{}
 -type delete_channel_group_request() :: #{}.
+
+
+%% Example:
+%% start_tag() :: #{
+%%   <<"Precise">> => [boolean()],
+%%   <<"TimeOffset">> => [float()]
+%% }
+-type start_tag() :: #{binary() => any()}.
 
 
 %% Example:
@@ -467,6 +478,7 @@
 
 %% Example:
 %% filter_configuration() :: #{
+%%   <<"ClipStartTime">> => [non_neg_integer()],
 %%   <<"End">> => [non_neg_integer()],
 %%   <<"ManifestFilter">> => [string()],
 %%   <<"Start">> => [non_neg_integer()],
@@ -713,7 +725,8 @@
 %%   <<"ManifestName">> => string(),
 %%   <<"ManifestWindowSeconds">> => [integer()],
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
-%%   <<"ScteHls">> => scte_hls()
+%%   <<"ScteHls">> => scte_hls(),
+%%   <<"StartTag">> => start_tag()
 %% }
 -type create_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
 

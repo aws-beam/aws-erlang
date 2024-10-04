@@ -380,6 +380,7 @@
 
 %% Example:
 %% output_artifact() :: #{
+%%   <<"files">> => list(string()()),
 %%   <<"name">> => string()
 %% }
 -type output_artifact() :: #{binary() => any()}.
@@ -874,11 +875,13 @@
 %% Example:
 %% action_declaration() :: #{
 %%   <<"actionTypeId">> => action_type_id(),
+%%   <<"commands">> => list(string()()),
 %%   <<"configuration">> => map(),
 %%   <<"inputArtifacts">> => list(input_artifact()()),
 %%   <<"name">> => string(),
 %%   <<"namespace">> => string(),
 %%   <<"outputArtifacts">> => list(output_artifact()()),
+%%   <<"outputVariables">> => list(string()()),
 %%   <<"region">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"runOrder">> => integer(),

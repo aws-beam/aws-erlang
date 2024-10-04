@@ -1049,7 +1049,10 @@
 
 %% Example:
 %% describe_domain_configuration_response() :: #{
+%%   <<"applicationProtocol">> => list(any()),
+%%   <<"authenticationType">> => list(any()),
 %%   <<"authorizerConfig">> => authorizer_config(),
+%%   <<"clientCertificateConfig">> => client_certificate_config(),
 %%   <<"domainConfigurationArn">> => string(),
 %%   <<"domainConfigurationName">> => string(),
 %%   <<"domainConfigurationStatus">> => list(any()),
@@ -1181,7 +1184,10 @@
 
 %% Example:
 %% update_domain_configuration_request() :: #{
+%%   <<"applicationProtocol">> => list(any()),
+%%   <<"authenticationType">> => list(any()),
 %%   <<"authorizerConfig">> => authorizer_config(),
+%%   <<"clientCertificateConfig">> => client_certificate_config(),
 %%   <<"domainConfigurationStatus">> => list(any()),
 %%   <<"removeAuthorizerConfig">> => boolean(),
 %%   <<"serverCertificateConfig">> => server_certificate_config(),
@@ -3390,6 +3396,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_metric_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_certificate_config() :: #{
+%%   <<"clientCertificateCallbackArn">> => string()
+%% }
+-type client_certificate_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6304,7 +6317,10 @@
 
 %% Example:
 %% create_domain_configuration_request() :: #{
+%%   <<"applicationProtocol">> => list(any()),
+%%   <<"authenticationType">> => list(any()),
 %%   <<"authorizerConfig">> => authorizer_config(),
+%%   <<"clientCertificateConfig">> => client_certificate_config(),
 %%   <<"domainName">> => string(),
 %%   <<"serverCertificateArns">> => list(string()()),
 %%   <<"serverCertificateConfig">> => server_certificate_config(),
@@ -8766,8 +8782,8 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a software bill of materials (SBOM) with a specific
-%% software package version.
+%% @doc Associates the selected software bill of materials (SBOM) with a
+%% specific software package version.
 %%
 %% Requires permission to access the AssociateSbomWithPackageVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -9440,6 +9456,12 @@ create_authorizer(Client, AuthorizerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a billing group.
+%%
+%% If this call is made multiple times using
+%% the same billing group name and configuration, the call will succeed. If
+%% this call is made with
+%% the same billing group name but different configuration a
+%% `ResourceAlreadyExistsException' is thrown.
 %%
 %% Requires permission to access the CreateBillingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -10331,6 +10353,18 @@ create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
 %% Requires permission to access the CreateRoleAlias:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+%%
+%% The value of
+%% `credentialDurationSeconds'
+%% :
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_CreateRoleAlias.html#iot-CreateRoleAlias-request-credentialDurationSeconds
+%% must be less than or equal to the maximum session
+%% duration of the IAM role that the role alias references. For more
+%% information, see
+%%
+%% Modifying a role maximum session duration (Amazon Web Services API):
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-api.html#roles-modify_max-session-duration-api
+%% from the Amazon Web Services Identity and Access Management User Guide.
 -spec create_role_alias(aws_client:aws_client(), binary() | list(), create_role_alias_request()) ->
     {ok, create_role_alias_response(), tuple()} |
     {error, any()} |
@@ -10582,6 +10616,12 @@ create_thing_group(Client, ThingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new thing type.
+%%
+%% If this call is made multiple times using
+%% the same thing type name and configuration, the call will succeed. If this
+%% call is made with
+%% the same thing type name but different configuration a
+%% `ResourceAlreadyExistsException' is thrown.
 %%
 %% Requires permission to access the CreateThingType:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -13761,8 +13801,8 @@ disable_topic_rule(Client, RuleName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates a software bill of materials (SBOM) from a specific
-%% software package version.
+%% @doc Disassociates the selected software bill of materials (SBOM) from a
+%% specific software package version.
 %%
 %% Requires permission to access the DisassociateSbomWithPackageVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -19471,6 +19511,19 @@ update_provisioning_template(Client, TemplateName, Input0, Options0) ->
 %% Requires permission to access the UpdateRoleAlias:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+%%
+%% The value of
+%% `credentialDurationSeconds'
+%% :
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_UpdateRoleAlias.html#iot-UpdateRoleAlias-request-credentialDurationSeconds
+%% must be less than or equal to the
+%% maximum session duration of the IAM role that the role alias references.
+%% For more
+%% information, see Modifying a role maximum session duration (Amazon Web
+%% Services API):
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-api.html#roles-modify_max-session-duration-api
+%% from the Amazon Web Services
+%% Identity and Access Management User Guide.
 -spec update_role_alias(aws_client:aws_client(), binary() | list(), update_role_alias_request()) ->
     {ok, update_role_alias_response(), tuple()} |
     {error, any()} |

@@ -2270,6 +2270,8 @@
 %%   <<"Errors">> => list(asset_bundle_export_job_error()()),
 %%   <<"ExportFormat">> => list(any()),
 %%   <<"IncludeAllDependencies">> => boolean(),
+%%   <<"IncludeFolderMembers">> => list(any()),
+%%   <<"IncludeFolderMemberships">> => boolean(),
 %%   <<"IncludePermissions">> => boolean(),
 %%   <<"IncludeTags">> => boolean(),
 %%   <<"JobStatus">> => list(any()),
@@ -2599,6 +2601,14 @@
 
 
 %% Example:
+%% asset_bundle_import_job_folder_override_permissions() :: #{
+%%   <<"FolderIds">> => list(string()()),
+%%   <<"Permissions">> => asset_bundle_resource_permissions()
+%% }
+-type asset_bundle_import_job_folder_override_permissions() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_template_request() :: #{
 %%   <<"Definition">> => template_version_definition(),
 %%   <<"Name">> => string(),
@@ -2775,6 +2785,14 @@
 %%   <<"TopicId">> := string()
 %% }
 -type create_topic_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_folder_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_folder_override_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3077,6 +3095,15 @@
 %%   <<"FieldSort">> => field_sort()
 %% }
 -type field_sort_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_folder_override_parameters() :: #{
+%%   <<"FolderId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentFolderArn">> => string()
+%% }
+-type asset_bundle_import_job_folder_override_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5663,6 +5690,8 @@
 %%   <<"CloudFormationOverridePropertyConfiguration">> => asset_bundle_cloud_formation_override_property_configuration(),
 %%   <<"ExportFormat">> := list(any()),
 %%   <<"IncludeAllDependencies">> => boolean(),
+%%   <<"IncludeFolderMembers">> => list(any()),
+%%   <<"IncludeFolderMemberships">> => boolean(),
 %%   <<"IncludePermissions">> => boolean(),
 %%   <<"IncludeTags">> => boolean(),
 %%   <<"ResourceArns">> := list(string()()),
@@ -6678,6 +6707,7 @@
 
 %% Example:
 %% topic_details() :: #{
+%%   <<"ConfigOptions">> => topic_config_options(),
 %%   <<"DataSets">> => list(dataset_metadata()()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
@@ -7460,6 +7490,13 @@
 %%   <<"S3Uri">> => string()
 %% }
 -type asset_bundle_import_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_config_options() :: #{
+%%   <<"QBusinessInsightsEnabled">> => boolean()
+%% }
+-type topic_config_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8779,6 +8816,14 @@
 
 
 %% Example:
+%% asset_bundle_import_job_folder_override_tags() :: #{
+%%   <<"FolderIds">> => list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type asset_bundle_import_job_folder_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
 %% table_cell_style() :: #{
 %%   <<"BackgroundColor">> => string(),
 %%   <<"Border">> => global_table_border_options(),
@@ -9905,6 +9950,7 @@
 %%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_permissions()()),
 %%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_permissions()()),
 %%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_permissions()()),
+%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_permissions()()),
 %%   <<"Themes">> => list(asset_bundle_import_job_theme_override_permissions()())
 %% }
 -type asset_bundle_import_job_override_permissions() :: #{binary() => any()}.
@@ -10638,6 +10684,7 @@
 %%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_parameters()()),
 %%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_parameters()()),
 %%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_parameters()()),
+%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_parameters()()),
 %%   <<"RefreshSchedules">> => list(asset_bundle_import_job_refresh_schedule_override_parameters()()),
 %%   <<"ResourceIdOverrideConfiguration">> => asset_bundle_import_job_resource_id_override_configuration(),
 %%   <<"Themes">> => list(asset_bundle_import_job_theme_override_parameters()()),
@@ -10823,6 +10870,7 @@
 %%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_tags()()),
 %%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_tags()()),
 %%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_tags()()),
+%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_tags()()),
 %%   <<"Themes">> => list(asset_bundle_import_job_theme_override_tags()()),
 %%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_tags()())
 %% }
@@ -11061,6 +11109,7 @@
 %%   <<"Dashboards">> => list(asset_bundle_export_job_dashboard_override_properties()()),
 %%   <<"DataSets">> => list(asset_bundle_export_job_data_set_override_properties()()),
 %%   <<"DataSources">> => list(asset_bundle_export_job_data_source_override_properties()()),
+%%   <<"Folders">> => list(asset_bundle_export_job_folder_override_properties()()),
 %%   <<"RefreshSchedules">> => list(asset_bundle_export_job_refresh_schedule_override_properties()()),
 %%   <<"ResourceIdOverrideConfiguration">> => asset_bundle_export_job_resource_id_override_configuration(),
 %%   <<"Themes">> => list(asset_bundle_export_job_theme_override_properties()()),
