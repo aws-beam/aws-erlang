@@ -3,6 +3,14 @@
 
 %% @doc
 %%
+%% Amazon Q
+%% actions:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Q_Connect.html
+%%
+%% Amazon Q data
+%% types:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Q_Connect.html
+%%
 %% Powered by Amazon Bedrock: Amazon Web Services implements automated abuse
 %% detection:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/abuse-detection.html.
@@ -40,7 +48,15 @@
 %% Administrator Guide.
 -module(aws_qconnect).
 
--export([create_assistant/2,
+-export([create_a_i_agent/3,
+         create_a_i_agent/4,
+         create_a_i_agent_version/4,
+         create_a_i_agent_version/5,
+         create_a_iprompt/3,
+         create_a_iprompt/4,
+         create_a_iprompt_version/4,
+         create_a_iprompt_version/5,
+         create_assistant/2,
          create_assistant/3,
          create_assistant_association/3,
          create_assistant_association/4,
@@ -54,6 +70,14 @@
          create_quick_response/4,
          create_session/3,
          create_session/4,
+         delete_a_i_agent/4,
+         delete_a_i_agent/5,
+         delete_a_i_agent_version/5,
+         delete_a_i_agent_version/6,
+         delete_a_iprompt/4,
+         delete_a_iprompt/5,
+         delete_a_iprompt_version/5,
+         delete_a_iprompt_version/6,
          delete_assistant/3,
          delete_assistant/4,
          delete_assistant_association/4,
@@ -68,6 +92,12 @@
          delete_knowledge_base/4,
          delete_quick_response/4,
          delete_quick_response/5,
+         get_a_i_agent/3,
+         get_a_i_agent/5,
+         get_a_i_agent/6,
+         get_a_iprompt/3,
+         get_a_iprompt/5,
+         get_a_iprompt/6,
          get_assistant/2,
          get_assistant/4,
          get_assistant/5,
@@ -98,6 +128,18 @@
          get_session/3,
          get_session/5,
          get_session/6,
+         list_a_i_agent_versions/3,
+         list_a_i_agent_versions/5,
+         list_a_i_agent_versions/6,
+         list_a_i_agents/2,
+         list_a_i_agents/4,
+         list_a_i_agents/5,
+         list_a_iprompt_versions/3,
+         list_a_iprompt_versions/5,
+         list_a_iprompt_versions/6,
+         list_a_iprompts/2,
+         list_a_iprompts/4,
+         list_a_iprompts/5,
          list_assistant_associations/2,
          list_assistant_associations/4,
          list_assistant_associations/5,
@@ -128,6 +170,8 @@
          put_feedback/4,
          query_assistant/3,
          query_assistant/4,
+         remove_assistant_a_i_agent/3,
+         remove_assistant_a_i_agent/4,
          remove_knowledge_base_template_uri/3,
          remove_knowledge_base_template_uri/4,
          search_content/3,
@@ -144,6 +188,12 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_a_i_agent/4,
+         update_a_i_agent/5,
+         update_a_iprompt/4,
+         update_a_iprompt/5,
+         update_assistant_a_i_agent/3,
+         update_assistant_a_i_agent/4,
          update_content/4,
          update_content/5,
          update_knowledge_base_template_uri/3,
@@ -151,7 +201,9 @@
          update_quick_response/4,
          update_quick_response/5,
          update_session/4,
-         update_session/5]).
+         update_session/5,
+         update_session_data/4,
+         update_session_data/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -182,6 +234,10 @@
 %% }
 -type put_feedback_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_a_i_agent_version_response() :: #{}
+-type delete_a_i_agent_version_response() :: #{}.
+
 
 %% Example:
 %% query_assistant_response() :: #{
@@ -189,6 +245,15 @@
 %%   <<"results">> := list(result_data()())
 %% }
 -type query_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_agents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"origin">> => string()
+%% }
+-type list_a_i_agents_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -216,10 +281,34 @@
 
 
 %% Example:
+%% a_i_agent_version_summary() :: #{
+%%   <<"aiAgentSummary">> => a_i_agent_summary(),
+%%   <<"versionNumber">> => float()
+%% }
+-type a_i_agent_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_session_response() :: #{
 %%   <<"session">> => session_data()
 %% }
 -type get_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_agent_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"origin">> => string()
+%% }
+-type list_a_i_agent_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_assistant_a_i_agent_request() :: #{
+%%   <<"aiAgentType">> := string()
+%% }
+-type remove_assistant_a_i_agent_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -258,6 +347,14 @@
 
 
 %% Example:
+%% fixed_size_chunking_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"overlapPercentage">> => [integer()]
+%% }
+-type fixed_size_chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% highlight() :: #{
 %%   <<"beginOffsetInclusive">> => integer(),
 %%   <<"endOffsetExclusive">> => integer()
@@ -274,11 +371,62 @@
 
 
 %% Example:
+%% create_a_i_agent_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string(),
+%%   <<"visibilityStatus">> := string()
+%% }
+-type create_a_i_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_agent_versions_response() :: #{
+%%   <<"aiAgentVersionSummaries">> => list(a_i_agent_version_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_agent_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_agent_response() :: #{
+%%   <<"aiAgent">> => a_i_agent_data()
+%% }
+-type create_a_i_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_iprompt_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()]
+%% }
+-type create_a_iprompt_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_a_i_agent_response() :: #{
+%%   <<"aiAgent">> => a_i_agent_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type get_a_i_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_contents_response() :: #{
 %%   <<"contentSummaries">> := list(content_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_contents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_text_input_data() :: #{
+%%   <<"text">> => string()
+%% }
+-type query_text_input_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -330,6 +478,14 @@
 
 
 %% Example:
+%% a_iprompt_version_summary() :: #{
+%%   <<"aiPromptSummary">> => a_iprompt_summary(),
+%%   <<"versionNumber">> => float()
+%% }
+-type a_iprompt_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% recommendation_data() :: #{
 %%   <<"data">> => data_summary(),
 %%   <<"document">> => document(),
@@ -353,6 +509,10 @@
 -type remove_knowledge_base_template_uri_response() :: #{}.
 
 %% Example:
+%% delete_a_i_agent_version_request() :: #{}
+-type delete_a_i_agent_version_request() :: #{}.
+
+%% Example:
 %% delete_assistant_association_request() :: #{}
 -type delete_assistant_association_request() :: #{}.
 
@@ -369,6 +529,14 @@
 %%   <<"topicIntegrationArn">> => string()
 %% }
 -type assistant_integration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_detected_data_details() :: #{
+%%   <<"intent">> => string(),
+%%   <<"intentId">> => string()
+%% }
+-type intent_detected_data_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -391,6 +559,14 @@
 
 
 %% Example:
+%% list_a_iprompts_response() :: #{
+%%   <<"aiPromptSummaries">> => list(a_iprompt_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_iprompts_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_assistant_response() :: #{
 %%   <<"assistant">> => assistant_data()
 %% }
@@ -410,6 +586,25 @@
 %%   <<"message">> => [string()]
 %% }
 -type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_iprompts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"origin">> => string()
+%% }
+-type list_a_iprompts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_iprompt_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"templateConfiguration">> => list(),
+%%   <<"visibilityStatus">> := string()
+%% }
+-type update_a_iprompt_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -449,6 +644,14 @@
 
 
 %% Example:
+%% parsing_configuration() :: #{
+%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration_for_parsing(),
+%%   <<"parsingStrategy">> => string()
+%% }
+-type parsing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_assistant_association_response() :: #{
 %%   <<"assistantAssociation">> => assistant_association_data()
 %% }
@@ -473,6 +676,14 @@
 
 
 %% Example:
+%% create_a_i_agent_version_response() :: #{
+%%   <<"aiAgent">> => a_i_agent_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type create_a_i_agent_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_association_summary() :: #{
 %%   <<"associationData">> => list(),
 %%   <<"associationType">> => string(),
@@ -493,6 +704,10 @@
 %% }
 -type connect_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% delete_a_iprompt_response() :: #{}
+-type delete_a_iprompt_response() :: #{}.
+
 
 %% Example:
 %% search_content_response() :: #{
@@ -505,12 +720,31 @@
 %% get_session_request() :: #{}
 -type get_session_request() :: #{}.
 
+%% Example:
+%% delete_a_i_agent_request() :: #{}
+-type delete_a_i_agent_request() :: #{}.
+
 
 %% Example:
 %% assistant_capability_configuration() :: #{
 %%   <<"type">> => string()
 %% }
 -type assistant_capability_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_agent_configuration_data() :: #{
+%%   <<"aiAgentId">> => string()
+%% }
+-type a_i_agent_configuration_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_agents_response() :: #{
+%%   <<"aiAgentSummaries">> => list(a_i_agent_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_agents_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -542,6 +776,15 @@
 
 
 %% Example:
+%% list_a_iprompt_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"origin">> => string()
+%% }
+-type list_a_iprompt_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_content_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -550,7 +793,25 @@
 
 
 %% Example:
+%% association_configuration() :: #{
+%%   <<"associationConfigurationData">> => list(),
+%%   <<"associationId">> => string(),
+%%   <<"associationType">> => string()
+%% }
+-type association_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchical_chunking_configuration() :: #{
+%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()()),
+%%   <<"overlapTokens">> => [integer()]
+%% }
+-type hierarchical_chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_session_request() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
@@ -568,6 +829,36 @@
 
 
 %% Example:
+%% a_iprompt_data() :: #{
+%%   <<"aiPromptArn">> => string(),
+%%   <<"aiPromptId">> => string(),
+%%   <<"apiFormat">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"origin">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"templateConfiguration">> => list(),
+%%   <<"templateType">> => string(),
+%%   <<"type">> => string(),
+%%   <<"visibilityStatus">> => string()
+%% }
+-type a_iprompt_data() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_iprompt_version_response() :: #{}
+-type delete_a_iprompt_version_response() :: #{}.
+
+%% Example:
+%% get_a_i_agent_request() :: #{}
+-type get_a_i_agent_request() :: #{}.
+
+
+%% Example:
 %% create_knowledge_base_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -576,7 +867,8 @@
 %%   <<"renderingConfiguration">> => rendering_configuration(),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
 %%   <<"sourceConfiguration">> => list(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
 %% }
 -type create_knowledge_base_request() :: #{binary() => any()}.
 
@@ -600,9 +892,17 @@
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
 %%   <<"sourceConfiguration">> => list(),
 %%   <<"status">> => string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
 %% }
 -type knowledge_base_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_iprompt_response() :: #{
+%%   <<"aiPrompt">> => a_iprompt_data()
+%% }
+-type create_a_iprompt_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -645,6 +945,10 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+%% Example:
+%% remove_assistant_a_i_agent_response() :: #{}
+-type remove_assistant_a_i_agent_response() :: #{}.
+
 
 %% Example:
 %% import_job_data() :: #{
@@ -668,6 +972,8 @@
 %% Example:
 %% knowledge_base_data() :: #{
 %%   <<"description">> => string(),
+%%   <<"ingestionFailureReasons">> => list(string()()),
+%%   <<"ingestionStatus">> => string(),
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"knowledgeBaseType">> => string(),
@@ -677,7 +983,8 @@
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
 %%   <<"sourceConfiguration">> => list(),
 %%   <<"status">> => string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
 %% }
 -type knowledge_base_data() :: #{binary() => any()}.
 
@@ -720,6 +1027,13 @@
 
 
 %% Example:
+%% seed_url() :: #{
+%%   <<"url">> => string()
+%% }
+-type seed_url() :: #{binary() => any()}.
+
+
+%% Example:
 %% amazon_connect_guide_association_data() :: #{
 %%   <<"flowId">> => string()
 %% }
@@ -731,7 +1045,15 @@
 
 
 %% Example:
+%% url_configuration() :: #{
+%%   <<"seedUrls">> => list(seed_url()())
+%% }
+-type url_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% assistant_data() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
 %%   <<"assistantArn">> => string(),
 %%   <<"assistantId">> => string(),
 %%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
@@ -751,6 +1073,13 @@
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_crawler_limits() :: #{
+%%   <<"rateLimit">> => [integer()]
+%% }
+-type web_crawler_limits() :: #{binary() => any()}.
 
 
 %% Example:
@@ -819,7 +1148,27 @@
 
 
 %% Example:
+%% a_i_agent_summary() :: #{
+%%   <<"aiAgentArn">> => string(),
+%%   <<"aiAgentId">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"origin">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"visibilityStatus">> => string()
+%% }
+-type a_i_agent_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_session_request() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
 %%   <<"description">> => string(),
 %%   <<"tagFilter">> => list()
 %% }
@@ -832,6 +1181,20 @@
 %%   <<"sessionSummaries">> := list(session_summary()())
 %% }
 -type search_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% chunking_configuration() :: #{
+%%   <<"chunkingStrategy">> => string(),
+%%   <<"fixedSizeChunkingConfiguration">> => fixed_size_chunking_configuration(),
+%%   <<"hierarchicalChunkingConfiguration">> => hierarchical_chunking_configuration(),
+%%   <<"semanticChunkingConfiguration">> => semantic_chunking_configuration()
+%% }
+-type chunking_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_iprompt_version_request() :: #{}
+-type delete_a_iprompt_version_request() :: #{}.
 
 
 %% Example:
@@ -885,6 +1248,13 @@
 
 
 %% Example:
+%% intent_input_data() :: #{
+%%   <<"intentId">> => string()
+%% }
+-type intent_input_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_association_data() :: #{
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string()
@@ -909,6 +1279,20 @@
 
 
 %% Example:
+%% update_a_i_agent_response() :: #{
+%%   <<"aiAgent">> => a_i_agent_data()
+%% }
+-type update_a_i_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsing_prompt() :: #{
+%%   <<"parsingPromptText">> => string()
+%% }
+-type parsing_prompt() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_assistant_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -929,6 +1313,7 @@
 
 %% Example:
 %% assistant_summary() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
 %%   <<"assistantArn">> => string(),
 %%   <<"assistantId">> => string(),
 %%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
@@ -967,7 +1352,27 @@
 
 
 %% Example:
+%% a_i_agent_data() :: #{
+%%   <<"aiAgentArn">> => string(),
+%%   <<"aiAgentId">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"origin">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"visibilityStatus">> => string()
+%% }
+-type a_i_agent_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% source_content_data_details() :: #{
+%%   <<"citationSpan">> => citation_span(),
 %%   <<"id">> => string(),
 %%   <<"rankingData">> => ranking_data(),
 %%   <<"textData">> => text_data(),
@@ -985,6 +1390,7 @@
 
 %% Example:
 %% session_data() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
 %%   <<"description">> => string(),
 %%   <<"integrationConfiguration">> => session_integration_configuration(),
 %%   <<"name">> => string(),
@@ -1006,15 +1412,64 @@
 
 
 %% Example:
+%% semantic_chunking_configuration() :: #{
+%%   <<"breakpointPercentileThreshold">> => [integer()],
+%%   <<"bufferSize">> => [integer()],
+%%   <<"maxTokens">> => [integer()]
+%% }
+-type semantic_chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_crawler_configuration() :: #{
+%%   <<"crawlerLimits">> => web_crawler_limits(),
+%%   <<"exclusionFilters">> => list(string()()),
+%%   <<"inclusionFilters">> => list(string()()),
+%%   <<"scope">> => string(),
+%%   <<"urlConfiguration">> => url_configuration()
+%% }
+-type web_crawler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_import_jobs_response() :: #{
 %%   <<"importJobSummaries">> => list(import_job_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_jobs_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% bedrock_foundation_model_configuration_for_parsing() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"parsingPrompt">> => parsing_prompt()
+%% }
+-type bedrock_foundation_model_configuration_for_parsing() :: #{binary() => any()}.
+
 %% Example:
 %% delete_content_association_response() :: #{}
 -type delete_content_association_response() :: #{}.
+
+
+%% Example:
+%% a_iprompt_summary() :: #{
+%%   <<"aiPromptArn">> => string(),
+%%   <<"aiPromptId">> => string(),
+%%   <<"apiFormat">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"origin">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"templateType">> => string(),
+%%   <<"type">> => string(),
+%%   <<"visibilityStatus">> => string()
+%% }
+-type a_iprompt_summary() :: #{binary() => any()}.
 
 %% Example:
 %% remove_knowledge_base_template_uri_request() :: #{}
@@ -1037,6 +1492,34 @@
 %% }
 -type search_quick_responses_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_a_iprompt_request() :: #{}
+-type get_a_iprompt_request() :: #{}.
+
+
+%% Example:
+%% get_a_iprompt_response() :: #{
+%%   <<"aiPrompt">> => a_iprompt_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type get_a_iprompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_iprompt_request() :: #{
+%%   <<"apiFormat">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"modelId">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"templateConfiguration">> := list(),
+%%   <<"templateType">> := string(),
+%%   <<"type">> := string(),
+%%   <<"visibilityStatus">> := string()
+%% }
+-type create_a_iprompt_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% notify_recommendations_received_error() :: #{
@@ -1051,6 +1534,14 @@
 %%   <<"importJob">> => import_job_data()
 %% }
 -type get_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% manual_search_a_i_agent_configuration() :: #{
+%%   <<"answerGenerationAIPromptId">> => string(),
+%%   <<"associationConfigurations">> => list(association_configuration()())
+%% }
+-type manual_search_a_i_agent_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1115,8 +1606,10 @@
 %% query_assistant_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"overrideKnowledgeBaseSearchType">> => string(),
 %%   <<"queryCondition">> => list(list()()),
-%%   <<"queryText">> := string(),
+%%   <<"queryInputData">> => list(),
+%%   <<"queryText">> => string(),
 %%   <<"sessionId">> => string()
 %% }
 -type query_assistant_request() :: #{binary() => any()}.
@@ -1186,13 +1679,31 @@
 
 
 %% Example:
+%% runtime_session_data() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => list()
+%% }
+-type runtime_session_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_reference() :: #{
 %%   <<"contentArn">> => string(),
 %%   <<"contentId">> => string(),
 %%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string()
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"referenceType">> => string(),
+%%   <<"sourceURL">> => [string()]
 %% }
 -type content_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation_span() :: #{
+%%   <<"beginOffsetInclusive">> => integer(),
+%%   <<"endOffsetExclusive">> => integer()
+%% }
+-type citation_span() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1240,10 +1751,40 @@
 
 
 %% Example:
+%% update_session_data_response() :: #{
+%%   <<"data">> => list(runtime_session_data()()),
+%%   <<"namespace">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type update_session_data_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_association_configuration_data() :: #{
+%%   <<"contentTagFilter">> => list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"overrideKnowledgeBaseSearchType">> => string()
+%% }
+-type knowledge_base_association_configuration_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchical_chunking_level_configuration() :: #{
+%%   <<"maxTokens">> => [integer()]
+%% }
+-type hierarchical_chunking_level_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_content_response() :: #{
 %%   <<"content">> => content_data()
 %% }
 -type get_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_iprompt_request() :: #{}
+-type delete_a_iprompt_request() :: #{}.
 
 
 %% Example:
@@ -1278,6 +1819,10 @@
 %% }
 -type notify_recommendations_received_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_a_i_agent_response() :: #{}
+-type delete_a_i_agent_response() :: #{}.
+
 
 %% Example:
 %% list_knowledge_bases_response() :: #{
@@ -1311,6 +1856,16 @@
 %%   <<"type">> => string()
 %% }
 -type result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_i_agent_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"visibilityStatus">> := string()
+%% }
+-type update_a_i_agent_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1359,6 +1914,13 @@
 %% }
 -type quick_response_query_field() :: #{binary() => any()}.
 
+
+%% Example:
+%% text_full_a_iprompt_edit_template_configuration() :: #{
+%%   <<"text">> => string()
+%% }
+-type text_full_a_iprompt_edit_template_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_assistant_association_request() :: #{}
 -type get_assistant_association_request() :: #{}.
@@ -1370,6 +1932,14 @@
 %% Example:
 %% get_knowledge_base_request() :: #{}
 -type get_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% list_a_iprompt_versions_response() :: #{
+%%   <<"aiPromptVersionSummaries">> => list(a_iprompt_version_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_iprompt_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1386,6 +1956,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_assistants_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assistant_a_i_agent_request() :: #{
+%%   <<"aiAgentType">> := string(),
+%%   <<"configuration">> := a_i_agent_configuration_data()
+%% }
+-type update_assistant_a_i_agent_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_quick_response_response() :: #{}
@@ -1410,6 +1988,14 @@
 
 
 %% Example:
+%% vector_ingestion_configuration() :: #{
+%%   <<"chunkingConfiguration">> => chunking_configuration(),
+%%   <<"parsingConfiguration">> => parsing_configuration()
+%% }
+-type vector_ingestion_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% grouping_configuration() :: #{
 %%   <<"criteria">> => string(),
 %%   <<"values">> => list(string()())
@@ -1428,6 +2014,16 @@
 
 
 %% Example:
+%% answer_recommendation_a_i_agent_configuration() :: #{
+%%   <<"answerGenerationAIPromptId">> => string(),
+%%   <<"associationConfigurations">> => list(association_configuration()()),
+%%   <<"intentLabelingGenerationAIPromptId">> => string(),
+%%   <<"queryReformulationAIPromptId">> => string()
+%% }
+-type answer_recommendation_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_session_response() :: #{
 %%   <<"session">> => session_data()
 %% }
@@ -1442,11 +2038,26 @@
 
 
 %% Example:
+%% update_a_iprompt_response() :: #{
+%%   <<"aiPrompt">> => a_iprompt_data()
+%% }
+-type update_a_iprompt_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_content_associations_response() :: #{
 %%   <<"contentAssociationSummaries">> => list(content_association_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_content_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_agent_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()]
+%% }
+-type create_a_i_agent_version_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_assistant_association_response() :: #{}
@@ -1469,6 +2080,14 @@
 %% }
 -type list_assistants_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_session_data_request() :: #{
+%%   <<"data">> := list(runtime_session_data()()),
+%%   <<"namespace">> => string()
+%% }
+-type update_session_data_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_content_association_request() :: #{}
 -type delete_content_association_request() :: #{}.
@@ -1479,6 +2098,13 @@
 %%   <<"topicIntegrationArn">> => string()
 %% }
 -type session_integration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assistant_a_i_agent_response() :: #{
+%%   <<"assistant">> => assistant_data()
+%% }
+-type update_assistant_a_i_agent_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_import_job_response() :: #{}
@@ -1491,6 +2117,46 @@
 %%   <<"resourceName">> => [string()]
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_iprompt_version_response() :: #{
+%%   <<"aiPrompt">> => a_iprompt_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type create_a_iprompt_version_response() :: #{binary() => any()}.
+
+-type create_a_i_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_a_i_agent_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_a_iprompt_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_a_iprompt_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type create_assistant_errors() ::
     validation_exception() | 
@@ -1539,6 +2205,32 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_a_i_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_a_i_agent_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_a_iprompt_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_a_iprompt_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_assistant_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1572,6 +2264,18 @@
     conflict_exception().
 
 -type delete_quick_response_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_a_i_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_a_iprompt_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -1622,6 +2326,30 @@
     resource_not_found_exception().
 
 -type get_session_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_a_i_agent_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_a_i_agents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_a_iprompt_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_a_iprompts_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -1677,6 +2405,12 @@
     resource_not_found_exception() | 
     request_timeout_exception().
 
+-type remove_assistant_a_i_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type remove_knowledge_base_template_uri_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1717,6 +2451,26 @@
 -type untag_resource_errors() ::
     resource_not_found_exception().
 
+-type update_a_i_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_a_iprompt_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_assistant_a_i_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type update_content_errors() ::
     precondition_failed_exception() | 
     validation_exception() | 
@@ -1740,9 +2494,150 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type update_session_data_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates an Amazon Q in Connect AI Agent.
+-spec create_a_i_agent(aws_client:aws_client(), binary() | list(), create_a_i_agent_request()) ->
+    {ok, create_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_agent_errors(), tuple()}.
+create_a_i_agent(Client, AssistantId, Input) ->
+    create_a_i_agent(Client, AssistantId, Input, []).
+
+-spec create_a_i_agent(aws_client:aws_client(), binary() | list(), create_a_i_agent_request(), proplists:proplist()) ->
+    {ok, create_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_agent_errors(), tuple()}.
+create_a_i_agent(Client, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates and Amazon Q in Connect AI Agent version.
+-spec create_a_i_agent_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_a_i_agent_version_request()) ->
+    {ok, create_a_i_agent_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_agent_version_errors(), tuple()}.
+create_a_i_agent_version(Client, AiAgentId, AssistantId, Input) ->
+    create_a_i_agent_version(Client, AiAgentId, AssistantId, Input, []).
+
+-spec create_a_i_agent_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_a_i_agent_version_request(), proplists:proplist()) ->
+    {ok, create_a_i_agent_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_agent_version_errors(), tuple()}.
+create_a_i_agent_version(Client, AiAgentId, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents/", aws_util:encode_uri(AiAgentId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon Q in Connect AI Prompt.
+-spec create_a_iprompt(aws_client:aws_client(), binary() | list(), create_a_iprompt_request()) ->
+    {ok, create_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_iprompt_errors(), tuple()}.
+create_a_iprompt(Client, AssistantId, Input) ->
+    create_a_iprompt(Client, AssistantId, Input, []).
+
+-spec create_a_iprompt(aws_client:aws_client(), binary() | list(), create_a_iprompt_request(), proplists:proplist()) ->
+    {ok, create_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_iprompt_errors(), tuple()}.
+create_a_iprompt(Client, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiprompts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon Q in Connect AI Prompt version.
+-spec create_a_iprompt_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_a_iprompt_version_request()) ->
+    {ok, create_a_iprompt_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_iprompt_version_errors(), tuple()}.
+create_a_iprompt_version(Client, AiPromptId, AssistantId, Input) ->
+    create_a_iprompt_version(Client, AiPromptId, AssistantId, Input, []).
+
+-spec create_a_iprompt_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_a_iprompt_version_request(), proplists:proplist()) ->
+    {ok, create_a_iprompt_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_iprompt_version_errors(), tuple()}.
+create_a_iprompt_version(Client, AiPromptId, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiprompts/", aws_util:encode_uri(AiPromptId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q in Connect assistant.
 -spec create_assistant(aws_client:aws_client(), create_assistant_request()) ->
@@ -1857,14 +2752,13 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an association between a content resource in a knowledge base
-%% and step-by-step
-%% guides:
+%% and step-by-step guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/step-by-step-guided-experiences.html.
 %%
-%% Step-by-step guides offer instructions to agents for resolving common
-%% customer issues. You create a content association to integrate Amazon Q in
-%% Connect and step-by-step
-%% guides.
+%% Step-by-step guides offer instructions to agents for resolving
+%% common customer issues. You create a content association to integrate
+%% Amazon Q in Connect and
+%% step-by-step guides.
 %%
 %% After you integrate Amazon Q and step-by-step guides, when Amazon Q
 %% provides a
@@ -1875,8 +2769,9 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% Note the following limitations:
 %%
-%% You can create only one content association for each
-%% content resource in a knowledge base.
+%% You can create only one content association for each content resource in a
+%% knowledge
+%% base.
 %%
 %% You can associate a step-by-step guide with multiple content resources.
 %%
@@ -2032,6 +2927,142 @@ create_session(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Amazon Q in Connect AI Agent.
+-spec delete_a_i_agent(aws_client:aws_client(), binary() | list(), binary() | list(), delete_a_i_agent_request()) ->
+    {ok, delete_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_agent_errors(), tuple()}.
+delete_a_i_agent(Client, AiAgentId, AssistantId, Input) ->
+    delete_a_i_agent(Client, AiAgentId, AssistantId, Input, []).
+
+-spec delete_a_i_agent(aws_client:aws_client(), binary() | list(), binary() | list(), delete_a_i_agent_request(), proplists:proplist()) ->
+    {ok, delete_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_agent_errors(), tuple()}.
+delete_a_i_agent(Client, AiAgentId, AssistantId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents/", aws_util:encode_uri(AiAgentId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Amazon Q in Connect AI Agent Version.
+-spec delete_a_i_agent_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_a_i_agent_version_request()) ->
+    {ok, delete_a_i_agent_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_agent_version_errors(), tuple()}.
+delete_a_i_agent_version(Client, AiAgentId, AssistantId, VersionNumber, Input) ->
+    delete_a_i_agent_version(Client, AiAgentId, AssistantId, VersionNumber, Input, []).
+
+-spec delete_a_i_agent_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_a_i_agent_version_request(), proplists:proplist()) ->
+    {ok, delete_a_i_agent_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_agent_version_errors(), tuple()}.
+delete_a_i_agent_version(Client, AiAgentId, AssistantId, VersionNumber, Input0, Options0) ->
+    Method = delete,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents/", aws_util:encode_uri(AiAgentId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Amazon Q in Connect AI Prompt.
+-spec delete_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list(), delete_a_iprompt_request()) ->
+    {ok, delete_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_iprompt_errors(), tuple()}.
+delete_a_iprompt(Client, AiPromptId, AssistantId, Input) ->
+    delete_a_iprompt(Client, AiPromptId, AssistantId, Input, []).
+
+-spec delete_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list(), delete_a_iprompt_request(), proplists:proplist()) ->
+    {ok, delete_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_iprompt_errors(), tuple()}.
+delete_a_iprompt(Client, AiPromptId, AssistantId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiprompts/", aws_util:encode_uri(AiPromptId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete and Amazon Q in Connect AI Prompt version.
+-spec delete_a_iprompt_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_a_iprompt_version_request()) ->
+    {ok, delete_a_iprompt_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_iprompt_version_errors(), tuple()}.
+delete_a_iprompt_version(Client, AiPromptId, AssistantId, VersionNumber, Input) ->
+    delete_a_iprompt_version(Client, AiPromptId, AssistantId, VersionNumber, Input, []).
+
+-spec delete_a_iprompt_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_a_iprompt_version_request(), proplists:proplist()) ->
+    {ok, delete_a_iprompt_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_iprompt_version_errors(), tuple()}.
+delete_a_iprompt_version(Client, AiPromptId, AssistantId, VersionNumber, Input0, Options0) ->
+    Method = delete,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiprompts/", aws_util:encode_uri(AiPromptId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2309,6 +3340,80 @@ delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets an Amazon Q in Connect AI Agent.
+-spec get_a_i_agent(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_i_agent_errors(), tuple()}.
+get_a_i_agent(Client, AiAgentId, AssistantId)
+  when is_map(Client) ->
+    get_a_i_agent(Client, AiAgentId, AssistantId, #{}, #{}).
+
+-spec get_a_i_agent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_i_agent_errors(), tuple()}.
+get_a_i_agent(Client, AiAgentId, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_a_i_agent(Client, AiAgentId, AssistantId, QueryMap, HeadersMap, []).
+
+-spec get_a_i_agent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_i_agent_errors(), tuple()}.
+get_a_i_agent(Client, AiAgentId, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents/", aws_util:encode_uri(AiAgentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets and Amazon Q in Connect AI Prompt.
+-spec get_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_iprompt_errors(), tuple()}.
+get_a_iprompt(Client, AiPromptId, AssistantId)
+  when is_map(Client) ->
+    get_a_iprompt(Client, AiPromptId, AssistantId, #{}, #{}).
+
+-spec get_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_iprompt_errors(), tuple()}.
+get_a_iprompt(Client, AiPromptId, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_a_iprompt(Client, AiPromptId, AssistantId, QueryMap, HeadersMap, []).
+
+-spec get_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_iprompt_errors(), tuple()}.
+get_a_iprompt(Client, AiPromptId, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiprompts/", aws_util:encode_uri(AiPromptId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an assistant.
 -spec get_assistant(aws_client:aws_client(), binary() | list()) ->
@@ -2709,6 +3814,178 @@ get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List AI Agent versions.
+-spec list_a_i_agent_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_a_i_agent_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_agent_versions_errors(), tuple()}.
+list_a_i_agent_versions(Client, AiAgentId, AssistantId)
+  when is_map(Client) ->
+    list_a_i_agent_versions(Client, AiAgentId, AssistantId, #{}, #{}).
+
+-spec list_a_i_agent_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_a_i_agent_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_agent_versions_errors(), tuple()}.
+list_a_i_agent_versions(Client, AiAgentId, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_a_i_agent_versions(Client, AiAgentId, AssistantId, QueryMap, HeadersMap, []).
+
+-spec list_a_i_agent_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_a_i_agent_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_agent_versions_errors(), tuple()}.
+list_a_i_agent_versions(Client, AiAgentId, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents/", aws_util:encode_uri(AiAgentId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"origin">>, maps:get(<<"origin">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists AI Agents.
+-spec list_a_i_agents(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_a_i_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_agents_errors(), tuple()}.
+list_a_i_agents(Client, AssistantId)
+  when is_map(Client) ->
+    list_a_i_agents(Client, AssistantId, #{}, #{}).
+
+-spec list_a_i_agents(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_a_i_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_agents_errors(), tuple()}.
+list_a_i_agents(Client, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_a_i_agents(Client, AssistantId, QueryMap, HeadersMap, []).
+
+-spec list_a_i_agents(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_a_i_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_agents_errors(), tuple()}.
+list_a_i_agents(Client, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"origin">>, maps:get(<<"origin">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists AI Prompt versions.
+-spec list_a_iprompt_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_a_iprompt_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_iprompt_versions_errors(), tuple()}.
+list_a_iprompt_versions(Client, AiPromptId, AssistantId)
+  when is_map(Client) ->
+    list_a_iprompt_versions(Client, AiPromptId, AssistantId, #{}, #{}).
+
+-spec list_a_iprompt_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_a_iprompt_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_iprompt_versions_errors(), tuple()}.
+list_a_iprompt_versions(Client, AiPromptId, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_a_iprompt_versions(Client, AiPromptId, AssistantId, QueryMap, HeadersMap, []).
+
+-spec list_a_iprompt_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_a_iprompt_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_iprompt_versions_errors(), tuple()}.
+list_a_iprompt_versions(Client, AiPromptId, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiprompts/", aws_util:encode_uri(AiPromptId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"origin">>, maps:get(<<"origin">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the AI Prompts available on the Amazon Q in Connect assistant.
+-spec list_a_iprompts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_a_iprompts_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_iprompts_errors(), tuple()}.
+list_a_iprompts(Client, AssistantId)
+  when is_map(Client) ->
+    list_a_iprompts(Client, AssistantId, #{}, #{}).
+
+-spec list_a_iprompts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_a_iprompts_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_iprompts_errors(), tuple()}.
+list_a_iprompts(Client, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_a_iprompts(Client, AssistantId, QueryMap, HeadersMap, []).
+
+-spec list_a_iprompts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_a_iprompts_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_iprompts_errors(), tuple()}.
+list_a_iprompts(Client, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiprompts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"origin">>, maps:get(<<"origin">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3176,6 +4453,43 @@ query_assistant(Client, AssistantId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes the AI Agent that is set for use by defafult on an Amazon Q
+%% in Connect
+%% Assistant.
+-spec remove_assistant_a_i_agent(aws_client:aws_client(), binary() | list(), remove_assistant_a_i_agent_request()) ->
+    {ok, remove_assistant_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, remove_assistant_a_i_agent_errors(), tuple()}.
+remove_assistant_a_i_agent(Client, AssistantId, Input) ->
+    remove_assistant_a_i_agent(Client, AssistantId, Input, []).
+
+-spec remove_assistant_a_i_agent(aws_client:aws_client(), binary() | list(), remove_assistant_a_i_agent_request(), proplists:proplist()) ->
+    {ok, remove_assistant_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, remove_assistant_a_i_agent_errors(), tuple()}.
+remove_assistant_a_i_agent(Client, AssistantId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagentConfiguration"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"aiAgentType">>, <<"aiAgentType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes a URI template from a knowledge base.
 -spec remove_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), remove_knowledge_base_template_uri_request()) ->
     {ok, remove_knowledge_base_template_uri_response(), tuple()} |
@@ -3485,6 +4799,110 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an AI Agent.
+-spec update_a_i_agent(aws_client:aws_client(), binary() | list(), binary() | list(), update_a_i_agent_request()) ->
+    {ok, update_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, update_a_i_agent_errors(), tuple()}.
+update_a_i_agent(Client, AiAgentId, AssistantId, Input) ->
+    update_a_i_agent(Client, AiAgentId, AssistantId, Input, []).
+
+-spec update_a_i_agent(aws_client:aws_client(), binary() | list(), binary() | list(), update_a_i_agent_request(), proplists:proplist()) ->
+    {ok, update_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, update_a_i_agent_errors(), tuple()}.
+update_a_i_agent(Client, AiAgentId, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents/", aws_util:encode_uri(AiAgentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an AI Prompt.
+-spec update_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list(), update_a_iprompt_request()) ->
+    {ok, update_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, update_a_iprompt_errors(), tuple()}.
+update_a_iprompt(Client, AiPromptId, AssistantId, Input) ->
+    update_a_iprompt(Client, AiPromptId, AssistantId, Input, []).
+
+-spec update_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list(), update_a_iprompt_request(), proplists:proplist()) ->
+    {ok, update_a_iprompt_response(), tuple()} |
+    {error, any()} |
+    {error, update_a_iprompt_errors(), tuple()}.
+update_a_iprompt(Client, AiPromptId, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiprompts/", aws_util:encode_uri(AiPromptId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the AI Agent that is set for use by defafult on an Amazon Q
+%% in Connect
+%% Assistant.
+-spec update_assistant_a_i_agent(aws_client:aws_client(), binary() | list(), update_assistant_a_i_agent_request()) ->
+    {ok, update_assistant_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, update_assistant_a_i_agent_errors(), tuple()}.
+update_assistant_a_i_agent(Client, AssistantId, Input) ->
+    update_assistant_a_i_agent(Client, AssistantId, Input, []).
+
+-spec update_assistant_a_i_agent(aws_client:aws_client(), binary() | list(), update_assistant_a_i_agent_request(), proplists:proplist()) ->
+    {ok, update_assistant_a_i_agent_response(), tuple()} |
+    {error, any()} |
+    {error, update_assistant_a_i_agent_errors(), tuple()}.
+update_assistant_a_i_agent(Client, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagentConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates information about the content.
 -spec update_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_content_request()) ->
     {ok, update_content_response(), tuple()} |
@@ -3615,6 +5033,40 @@ update_session(Client, AssistantId, SessionId, Input) ->
 update_session(Client, AssistantId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the data stored on an Amazon Q in Connect Session.
+-spec update_session_data(aws_client:aws_client(), binary() | list(), binary() | list(), update_session_data_request()) ->
+    {ok, update_session_data_response(), tuple()} |
+    {error, any()} |
+    {error, update_session_data_errors(), tuple()}.
+update_session_data(Client, AssistantId, SessionId, Input) ->
+    update_session_data(Client, AssistantId, SessionId, Input, []).
+
+-spec update_session_data(aws_client:aws_client(), binary() | list(), binary() | list(), update_session_data_request(), proplists:proplist()) ->
+    {ok, update_session_data_response(), tuple()} |
+    {error, any()} |
+    {error, update_session_data_errors(), tuple()}.
+update_session_data(Client, AssistantId, SessionId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/data"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

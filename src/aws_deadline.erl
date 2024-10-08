@@ -171,6 +171,9 @@
          list_job_members/4,
          list_job_members/6,
          list_job_members/7,
+         list_job_parameter_definitions/4,
+         list_job_parameter_definitions/6,
+         list_job_parameter_definitions/7,
          list_jobs/3,
          list_jobs/5,
          list_jobs/6,
@@ -975,10 +978,11 @@
 %%   <<"maxRetriesPerTask">> => integer(),
 %%   <<"parameters">> => map(),
 %%   <<"priority">> := integer(),
+%%   <<"sourceJobId">> => string(),
 %%   <<"storageProfileId">> => string(),
 %%   <<"targetTaskRunStatus">> => list(any()),
-%%   <<"template">> := string(),
-%%   <<"templateType">> := list(any())
+%%   <<"template">> => string(),
+%%   <<"templateType">> => list(any())
 %% }
 -type create_job_request() :: #{binary() => any()}.
 
@@ -1320,6 +1324,7 @@
 %%   <<"maxRetriesPerTask">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer(),
+%%   <<"sourceJobId">> => string(),
 %%   <<"startedAt">> => non_neg_integer(),
 %%   <<"targetTaskRunStatus">> => list(any()),
 %%   <<"taskRunStatus">> => list(any()),
@@ -1336,6 +1341,14 @@
 %%   <<"displayName">> => string()
 %% }
 -type update_farm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_parameter_definitions_response() :: #{
+%%   <<"jobParameterDefinitions">> => list(any()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_parameter_definitions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2305,6 +2318,7 @@
 %%   <<"name">> => string(),
 %%   <<"parameters">> => map(),
 %%   <<"priority">> => integer(),
+%%   <<"sourceJobId">> => string(),
 %%   <<"startedAt">> => non_neg_integer(),
 %%   <<"storageProfileId">> => string(),
 %%   <<"targetTaskRunStatus">> => list(any()),
@@ -2590,6 +2604,7 @@
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer(),
 %%   <<"queueId">> => string(),
+%%   <<"sourceJobId">> => string(),
 %%   <<"startedAt">> => non_neg_integer(),
 %%   <<"targetTaskRunStatus">> => list(any()),
 %%   <<"taskRunStatus">> => list(any()),
@@ -2794,6 +2809,14 @@
 %%   <<"targetLifecycleStatus">> => list(any())
 %% }
 -type worker_session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_parameter_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_parameter_definitions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3453,6 +3476,13 @@
     resource_not_found_exception().
 
 -type list_job_members_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_job_parameter_definitions_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
@@ -6033,6 +6063,48 @@ list_job_members(Client, FarmId, JobId, QueueId, QueryMap, HeadersMap)
 list_job_members(Client, FarmId, JobId, QueueId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queues/", aws_util:encode_uri(QueueId), "/jobs/", aws_util:encode_uri(JobId), "/members"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists parameter definitions of a job.
+-spec list_job_parameter_definitions(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_job_parameter_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_parameter_definitions_errors(), tuple()}.
+list_job_parameter_definitions(Client, FarmId, JobId, QueueId)
+  when is_map(Client) ->
+    list_job_parameter_definitions(Client, FarmId, JobId, QueueId, #{}, #{}).
+
+-spec list_job_parameter_definitions(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_job_parameter_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_parameter_definitions_errors(), tuple()}.
+list_job_parameter_definitions(Client, FarmId, JobId, QueueId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_parameter_definitions(Client, FarmId, JobId, QueueId, QueryMap, HeadersMap, []).
+
+-spec list_job_parameter_definitions(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_job_parameter_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_parameter_definitions_errors(), tuple()}.
+list_job_parameter_definitions(Client, FarmId, JobId, QueueId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queues/", aws_util:encode_uri(QueueId), "/jobs/", aws_util:encode_uri(JobId), "/parameter-definitions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
