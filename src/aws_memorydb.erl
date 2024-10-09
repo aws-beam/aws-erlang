@@ -1,14 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc MemoryDB is a fully managed, Redis OSS-compatible, in-memory database
-%% that delivers ultra-fast performance and Multi-AZ durability for modern
-%% applications built using microservices architectures.
+%% @doc MemoryDB for Redis is a fully managed, Redis-compatible, in-memory
+%% database that delivers ultra-fast performance and Multi-AZ durability for
+%% modern applications built using microservices architectures.
 %%
 %% MemoryDB stores the entire database in-memory, enabling low latency and
-%% high throughput data access. It is compatible with Redis OSS, a popular
-%% open source data store, enabling you to leverage Redis OSS’ flexible and
-%% friendly data structures, APIs, and commands.
+%% high throughput data access. It is compatible with Redis, a popular open
+%% source data store, enabling you to leverage Redis’ flexible and friendly
+%% data structures, APIs, and commands.
 -module(aws_memorydb).
 
 -export([batch_update_cluster/2,
@@ -158,6 +158,7 @@
 %% Example:
 %% describe_engine_versions_request() :: #{
 %%   <<"DefaultOnly">> => boolean(),
+%%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -506,6 +507,7 @@
 %%   <<"ACLName">> => string(),
 %%   <<"ClusterName">> := string(),
 %%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
 %%   <<"NodeType">> => string(),
@@ -529,6 +531,7 @@
 %% Example:
 %% cluster_configuration() :: #{
 %%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
 %%   <<"Name">> => string(),
@@ -592,6 +595,7 @@
 %%   <<"ClusterName">> := string(),
 %%   <<"DataTiering">> => boolean(),
 %%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
@@ -614,6 +618,7 @@
 
 %% Example:
 %% engine_version_info() :: #{
+%%   <<"Engine">> => string(),
 %%   <<"EnginePatchVersion">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"ParameterGroupFamily">> => string()
@@ -642,6 +647,7 @@
 %%   <<"ClusterEndpoint">> => endpoint(),
 %%   <<"DataTiering">> => list(any()),
 %%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
 %%   <<"EnginePatchVersion">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
@@ -1098,6 +1104,7 @@
 %%   <<"AutoUpdateStartDate">> => non_neg_integer(),
 %%   <<"ClusterName">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
 %%   <<"NodesUpdated">> => string(),
 %%   <<"ReleaseDate">> => non_neg_integer(),
 %%   <<"ServiceUpdateName">> => string(),
@@ -1822,10 +1829,6 @@ delete_acl(Client, Input, Options)
 %% @doc Deletes a cluster.
 %%
 %% It also deletes all associated nodes and node endpoints
-%%
-%% `CreateSnapshot' permission is required to create a final snapshot.
-%% Without this permission, the API call will fail with an `Access
-%% Denied' exception.
 -spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
@@ -1959,7 +1962,7 @@ describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
-%% @doc Returns a list of the available Redis OSS engine versions.
+%% @doc Returns a list of the available engine versions.
 -spec describe_engine_versions(aws_client:aws_client(), describe_engine_versions_request()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()} |
