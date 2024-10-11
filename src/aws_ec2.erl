@@ -13,6 +13,8 @@
 
 -export([accept_address_transfer/2,
          accept_address_transfer/3,
+         accept_capacity_reservation_billing_ownership/2,
+         accept_capacity_reservation_billing_ownership/3,
          accept_reserved_instances_exchange_quote/2,
          accept_reserved_instances_exchange_quote/3,
          accept_transit_gateway_multicast_domain_associations/2,
@@ -43,6 +45,8 @@
          assign_private_nat_gateway_address/3,
          associate_address/2,
          associate_address/3,
+         associate_capacity_reservation_billing_owner/2,
+         associate_capacity_reservation_billing_owner/3,
          associate_client_vpn_target_network/2,
          associate_client_vpn_target_network/3,
          associate_dhcp_options/2,
@@ -475,6 +479,8 @@
          describe_byoip_cidrs/3,
          describe_capacity_block_offerings/2,
          describe_capacity_block_offerings/3,
+         describe_capacity_reservation_billing_requests/2,
+         describe_capacity_reservation_billing_requests/3,
          describe_capacity_reservation_fleets/2,
          describe_capacity_reservation_fleets/3,
          describe_capacity_reservations/2,
@@ -805,6 +811,8 @@
          disable_vpc_classic_link_dns_support/3,
          disassociate_address/2,
          disassociate_address/3,
+         disassociate_capacity_reservation_billing_owner/2,
+         disassociate_capacity_reservation_billing_owner/3,
          disassociate_client_vpn_target_network/2,
          disassociate_client_vpn_target_network/3,
          disassociate_enclave_certificate_iam_role/2,
@@ -1159,6 +1167,8 @@
          register_transit_gateway_multicast_group_members/3,
          register_transit_gateway_multicast_group_sources/2,
          register_transit_gateway_multicast_group_sources/3,
+         reject_capacity_reservation_billing_ownership/2,
+         reject_capacity_reservation_billing_ownership/3,
          reject_transit_gateway_multicast_domain_associations/2,
          reject_transit_gateway_multicast_domain_associations/3,
          reject_transit_gateway_peering_attachment/2,
@@ -1979,7 +1989,8 @@
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Tenancy">> => list(any()),
-%%   <<"TotalInstanceCount">> => integer()
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UnusedReservationBillingOwnerId">> => string()
 %% }
 -type capacity_reservation() :: #{binary() => any()}.
 
@@ -2257,6 +2268,13 @@
 %%   <<"ValidUntil">> => non_neg_integer()
 %% }
 -type spot_market_options() :: #{binary() => any()}.
+
+%% Example:
+%% reject_capacity_reservation_billing_ownership_request() :: #{
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"DryRun">> => boolean()
+%% }
+-type reject_capacity_reservation_billing_ownership_request() :: #{binary() => any()}.
 
 %% Example:
 %% authorize_security_group_egress_result() :: #{
@@ -3743,6 +3761,12 @@
 -type cancel_bundle_task_request() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_capacity_reservation_billing_owner_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type disassociate_capacity_reservation_billing_owner_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_images_result() :: #{
 %%   <<"Images">> => list(image()()),
 %%   <<"NextToken">> => string()
@@ -4066,6 +4090,14 @@
 -type v_cpu_count_range() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_reservation_info() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Tenancy">> => list(any())
+%% }
+-type capacity_reservation_info() :: #{binary() => any()}.
+
+%% Example:
 %% describe_vpc_endpoints_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()()),
@@ -4321,6 +4353,14 @@
 %%   <<"AttributeValue">> => string()
 %% }
 -type account_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% associate_capacity_reservation_billing_owner_request() :: #{
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"UnusedReservationBillingOwnerId">> := string()
+%% }
+-type associate_capacity_reservation_billing_owner_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_internet_gateways_request() :: #{
@@ -5307,6 +5347,13 @@
 -type delete_flow_logs_request() :: #{binary() => any()}.
 
 %% Example:
+%% accept_capacity_reservation_billing_ownership_request() :: #{
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"DryRun">> => boolean()
+%% }
+-type accept_capacity_reservation_billing_ownership_request() :: #{binary() => any()}.
+
+%% Example:
 %% disable_aws_network_performance_metric_subscription_request() :: #{
 %%   <<"Destination">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -5412,6 +5459,13 @@
 -type describe_hosts_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_reservation_billing_requests_result() :: #{
+%%   <<"CapacityReservationBillingRequests">> => list(capacity_reservation_billing_request()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_reservation_billing_requests_result() :: #{binary() => any()}.
+
+%% Example:
 %% transit_gateway_multicast_registered_group_members() :: #{
 %%   <<"GroupIpAddress">> => string(),
 %%   <<"RegisteredNetworkInterfaceIds">> => list(string()()),
@@ -5459,6 +5513,17 @@
 %%   <<"VerifiedAccessTrustProviderId">> => string()
 %% }
 -type verified_access_trust_provider_condensed() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_reservation_billing_requests_request() :: #{
+%%   <<"CapacityReservationIds">> => list(string()()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Role">> := list(any())
+%% }
+-type describe_capacity_reservation_billing_requests_request() :: #{binary() => any()}.
 
 %% Example:
 %% rule_group_type_pair() :: #{
@@ -6806,6 +6871,12 @@
 -type describe_verified_access_instance_logging_configurations_request() :: #{binary() => any()}.
 
 %% Example:
+%% associate_capacity_reservation_billing_owner_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type associate_capacity_reservation_billing_owner_result() :: #{binary() => any()}.
+
+%% Example:
 %% ipv6_prefix_specification_request() :: #{
 %%   <<"Ipv6Prefix">> => string()
 %% }
@@ -7494,6 +7565,14 @@
 %%   <<"IpamId">> := string()
 %% }
 -type delete_ipam_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_capacity_reservation_billing_owner_request() :: #{
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"UnusedReservationBillingOwnerId">> := string()
+%% }
+-type disassociate_capacity_reservation_billing_owner_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_ipam_resource_discovery_result() :: #{
@@ -8986,6 +9065,12 @@
 %%   <<"VirtualName">> => string()
 %% }
 -type scheduled_instances_block_device_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% reject_capacity_reservation_billing_ownership_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type reject_capacity_reservation_billing_ownership_result() :: #{binary() => any()}.
 
 %% Example:
 %% confirm_product_instance_request() :: #{
@@ -12849,6 +12934,18 @@
 %%   <<"NetworkInsightsAnalysisId">> := string()
 %% }
 -type delete_network_insights_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_billing_request() :: #{
+%%   <<"CapacityReservationId">> => string(),
+%%   <<"CapacityReservationInfo">> => capacity_reservation_info(),
+%%   <<"LastUpdateTime">> => non_neg_integer(),
+%%   <<"RequestedBy">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"UnusedReservationBillingOwnerId">> => string()
+%% }
+-type capacity_reservation_billing_request() :: #{binary() => any()}.
 
 %% Example:
 %% send_diagnostic_interrupt_request() :: #{
@@ -17320,6 +17417,12 @@
 -type modify_verified_access_instance_result() :: #{binary() => any()}.
 
 %% Example:
+%% accept_capacity_reservation_billing_ownership_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type accept_capacity_reservation_billing_ownership_result() :: #{binary() => any()}.
+
+%% Example:
 %% gpu_device_memory_info() :: #{
 %%   <<"SizeInMiB">> => integer()
 %% }
@@ -18574,6 +18677,27 @@ accept_address_transfer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptAddressTransfer">>, Input, Options).
 
+%% @doc Accepts a request to assign billing of the available capacity of a
+%% shared Capacity Reservation to your
+%% account.
+%%
+%% For more information, see
+%% Billing assignment for shared Amazon EC2 Capacity Reservations:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html.
+-spec accept_capacity_reservation_billing_ownership(aws_client:aws_client(), accept_capacity_reservation_billing_ownership_request()) ->
+    {ok, accept_capacity_reservation_billing_ownership_result(), tuple()} |
+    {error, any()}.
+accept_capacity_reservation_billing_ownership(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    accept_capacity_reservation_billing_ownership(Client, Input, []).
+
+-spec accept_capacity_reservation_billing_ownership(aws_client:aws_client(), accept_capacity_reservation_billing_ownership_request(), proplists:proplist()) ->
+    {ok, accept_capacity_reservation_billing_ownership_result(), tuple()} |
+    {error, any()}.
+accept_capacity_reservation_billing_ownership(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcceptCapacityReservationBillingOwnership">>, Input, Options).
+
 %% @doc Accepts the Convertible Reserved Instance exchange quote described in
 %% the `GetReservedInstancesExchangeQuote' call.
 -spec accept_reserved_instances_exchange_quote(aws_client:aws_client(), accept_reserved_instances_exchange_quote_request()) ->
@@ -18921,7 +19045,7 @@ assign_private_ip_addresses(Client, Input, Options)
 %%
 %% For more information, see
 %% Work with NAT gateways:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with
 %% in the Amazon VPC User Guide.
 -spec assign_private_nat_gateway_address(aws_client:aws_client(), assign_private_nat_gateway_address_request()) ->
     {ok, assign_private_nat_gateway_address_result(), tuple()} |
@@ -18980,6 +19104,29 @@ associate_address(Client, Input)
 associate_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateAddress">>, Input, Options).
+
+%% @doc Initiates a request to assign billing of the unused capacity of a
+%% shared Capacity Reservation to a consumer
+%% account that is consolidated under the same Amazon Web Services
+%% organizations payer account.
+%%
+%% For more information, see
+%% Billing assignment for shared
+%% Amazon EC2 Capacity Reservations:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html.
+-spec associate_capacity_reservation_billing_owner(aws_client:aws_client(), associate_capacity_reservation_billing_owner_request()) ->
+    {ok, associate_capacity_reservation_billing_owner_result(), tuple()} |
+    {error, any()}.
+associate_capacity_reservation_billing_owner(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_capacity_reservation_billing_owner(Client, Input, []).
+
+-spec associate_capacity_reservation_billing_owner(aws_client:aws_client(), associate_capacity_reservation_billing_owner_request(), proplists:proplist()) ->
+    {ok, associate_capacity_reservation_billing_owner_result(), tuple()} |
+    {error, any()}.
+associate_capacity_reservation_billing_owner(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateCapacityReservationBillingOwner">>, Input, Options).
 
 %% @doc Associates a target network with a Client VPN endpoint.
 %%
@@ -19167,7 +19314,7 @@ associate_ipam_resource_discovery(Client, Input, Options)
 %%
 %% For more information,
 %% see Work with NAT gateways:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with
 %% in the Amazon VPC User Guide.
 %%
 %% By default, you can associate up to 2 Elastic IP addresses per public NAT
@@ -19177,16 +19324,15 @@ associate_ipam_resource_discovery(Client, Input, Options)
 %% in the Amazon VPC User Guide.
 %%
 %% When you associate an EIP or secondary EIPs with a public NAT gateway, the
-%% network border group of the EIPs
-%% must match the network border group of the Availability Zone (AZ) that the
-%% public NAT gateway is in. If it's not the same,
-%% the EIP will fail to associate. You can see the network border group for
-%% the subnet's AZ by viewing the details of the subnet.
+%% network border group of the EIPs must match the network border group of
+%% the Availability Zone (AZ) that the public NAT gateway is in. If it's
+%% not the same, the EIP will fail to associate. You can see the network
+%% border group for the subnet's AZ by viewing the details of the subnet.
 %% Similarly, you can view the network border group of an EIP by viewing the
-%% details of the EIP address. For more information
-%% about network border groups and EIPs, see Allocate an Elastic IP address:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithEIPs.html in the
-%% Amazon VPC User Guide.
+%% details of the EIP address. For more information about network border
+%% groups and EIPs, see Allocate an Elastic IP address:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#allocate-eip
+%% in the Amazon VPC User Guide.
 -spec associate_nat_gateway_address(aws_client:aws_client(), associate_nat_gateway_address_request()) ->
     {ok, associate_nat_gateway_address_result(), tuple()} |
     {error, any()}.
@@ -20224,7 +20370,7 @@ create_customer_gateway(Client, Input, Options)
 %% You can have only one default subnet
 %% per Availability Zone. For more information, see Create a default
 %% subnet:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/work-with-default-vpc.html#create-default-subnet
+%% https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet
 %% in the Amazon VPC User Guide.
 -spec create_default_subnet(aws_client:aws_client(), create_default_subnet_request()) ->
     {ok, create_default_subnet_result(), tuple()} |
@@ -20398,7 +20544,7 @@ create_fleet(Client, Input, Options)
 %% consisting of fields that describe the traffic flow. For more information,
 %% see
 %% Flow log records:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html
+%% https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records
 %% in the Amazon VPC User Guide.
 %%
 %% When publishing to CloudWatch Logs, flow log records are published to a
@@ -20934,18 +21080,14 @@ create_managed_prefix_list(Client, Input, Options)
 %% the Amazon VPC User Guide.
 %%
 %% When you create a public NAT gateway and assign it an EIP or secondary
-%% EIPs,
-%% the network border group of the EIPs must match the network border group
-%% of the Availability Zone (AZ)
-%% that the public NAT gateway is in. If it's not the same, the NAT
-%% gateway will fail to launch.
-%% You can see the network border group for the subnet's AZ by viewing
-%% the details of the subnet.
-%% Similarly, you can view the network border group of an EIP by viewing the
-%% details of the EIP address.
-%% For more information about network border groups and EIPs, see Allocate an
-%% Elastic IP address:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithEIPs.html
+%% EIPs, the network border group of the EIPs must match the network border
+%% group of the Availability Zone (AZ) that the public NAT gateway is in. If
+%% it's not the same, the NAT gateway will fail to launch. You can see
+%% the network border group for the subnet's AZ by viewing the details of
+%% the subnet. Similarly, you can view the network border group of an EIP by
+%% viewing the details of the EIP address. For more information about network
+%% border groups and EIPs, see Allocate an Elastic IP address:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#allocate-eip
 %% in the Amazon VPC User Guide.
 -spec create_nat_gateway(aws_client:aws_client(), create_nat_gateway_request()) ->
     {ok, create_nat_gateway_result(), tuple()} |
@@ -21589,10 +21731,10 @@ create_subnet(Client, Input, Options)
 %%
 %% For more information, see Subnet CIDR reservations:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html
-%% in the Amazon VPC User Guide and Manage prefixes
-%% for your network interfaces:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html
-%% in the Amazon EC2 User Guide.
+%% in the Amazon VPC User Guide and Assign prefixes
+%% to network interfaces:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
+%% the Amazon EC2 User Guide.
 -spec create_subnet_cidr_reservation(aws_client:aws_client(), create_subnet_cidr_reservation_request()) ->
     {ok, create_subnet_cidr_reservation_result(), tuple()} |
     {error, any()}.
@@ -23593,16 +23735,11 @@ delete_volume(Client, Input, Options)
 %%
 %% You must detach or delete all gateways and resources that are associated
 %% with the VPC before you can delete it. For example, you must terminate all
-%% instances running in the VPC,
-%% delete all security groups associated with the VPC (except the default
-%% one), delete all route tables
-%% associated with the VPC (except the default one), and so on. When you
-%% delete the VPC, it deletes the
-%% default security group, network ACL, and route table for the VPC.
-%%
-%% If you created a flow log for the VPC that you are deleting, note that
-%% flow logs for deleted
-%% VPCs are eventually automatically removed.
+%% instances running in the VPC, delete all security groups associated with
+%% the VPC (except the default one), delete all route tables associated with
+%% the VPC (except the default one), and so on. When you delete the VPC, it
+%% deletes the VPC's default security group, network ACL, and route
+%% table.
 -spec delete_vpc(aws_client:aws_client(), delete_vpc_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -24209,6 +24346,26 @@ describe_capacity_block_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCapacityBlockOfferings">>, Input, Options).
 
+%% @doc Describes a request to assign the billing of the unused capacity of a
+%% Capacity Reservation.
+%%
+%% For more information, see
+%% Billing assignment for shared Amazon EC2 Capacity Reservations:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/transfer-billing.html.
+-spec describe_capacity_reservation_billing_requests(aws_client:aws_client(), describe_capacity_reservation_billing_requests_request()) ->
+    {ok, describe_capacity_reservation_billing_requests_result(), tuple()} |
+    {error, any()}.
+describe_capacity_reservation_billing_requests(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_reservation_billing_requests(Client, Input, []).
+
+-spec describe_capacity_reservation_billing_requests(aws_client:aws_client(), describe_capacity_reservation_billing_requests_request(), proplists:proplist()) ->
+    {ok, describe_capacity_reservation_billing_requests_result(), tuple()} |
+    {error, any()}.
+describe_capacity_reservation_billing_requests(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityReservationBillingRequests">>, Input, Options).
+
 %% @doc Describes one or more Capacity Reservation Fleets.
 -spec describe_capacity_reservation_fleets(aws_client:aws_client(), describe_capacity_reservation_fleets_request()) ->
     {ok, describe_capacity_reservation_fleets_result(), tuple()} |
@@ -24465,9 +24622,6 @@ describe_egress_only_internet_gateways(Client, Input, Options)
 
 %% @doc
 %% Amazon Elastic Graphics reached end of life on January 8, 2024.
-%%
-%% For workloads that require graphics acceleration,
-%% we recommend that you use Amazon EC2 G4, G5, or G6 instances.
 %%
 %% Describes the Elastic Graphics accelerator associated with your instances.
 -spec describe_elastic_gpus(aws_client:aws_client(), describe_elastic_gpus_request()) ->
@@ -27886,6 +28040,28 @@ disassociate_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateAddress">>, Input, Options).
 
+%% @doc Cancels a pending request to assign billing of the unused capacity of
+%% a Capacity Reservation to a
+%% consumer account, or revokes a request that has already been accepted.
+%%
+%% For more information, see
+%% Billing assignment for
+%% shared Amazon EC2 Capacity Reservations:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html.
+-spec disassociate_capacity_reservation_billing_owner(aws_client:aws_client(), disassociate_capacity_reservation_billing_owner_request()) ->
+    {ok, disassociate_capacity_reservation_billing_owner_result(), tuple()} |
+    {error, any()}.
+disassociate_capacity_reservation_billing_owner(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_capacity_reservation_billing_owner(Client, Input, []).
+
+-spec disassociate_capacity_reservation_billing_owner(aws_client:aws_client(), disassociate_capacity_reservation_billing_owner_request(), proplists:proplist()) ->
+    {ok, disassociate_capacity_reservation_billing_owner_result(), tuple()} |
+    {error, any()}.
+disassociate_capacity_reservation_billing_owner(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateCapacityReservationBillingOwner">>, Input, Options).
+
 %% @doc Disassociates a target network from the specified Client VPN
 %% endpoint.
 %%
@@ -28022,7 +28198,7 @@ disassociate_ipam_resource_discovery(Client, Input, Options)
 %%
 %% You cannot disassociate your primary EIP. For more information, see Edit
 %% secondary IP address associations:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html#nat-gateway-edit-secondary
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary
 %% in the Amazon VPC User Guide.
 %%
 %% While disassociating is in progress, you cannot associate/disassociate
@@ -30459,7 +30635,8 @@ modify_instance_capacity_reservation_attributes(Client, Input, Options)
 %%
 %% The number of active vCPUs equals the number of threads per CPU core
 %% multiplied by the number
-%% of cores.
+%% of cores. The instance must be in a `Stopped' state before you make
+%% changes.
 %%
 %% Some instance type options do not support this capability. For more
 %% information, see
@@ -32201,6 +32378,27 @@ register_transit_gateway_multicast_group_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTransitGatewayMulticastGroupSources">>, Input, Options).
 
+%% @doc Rejects a request to assign billing of the available capacity of a
+%% shared Capacity Reservation
+%% to your account.
+%%
+%% For more information, see
+%% Billing assignment for shared Amazon EC2 Capacity Reservations:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html.
+-spec reject_capacity_reservation_billing_ownership(aws_client:aws_client(), reject_capacity_reservation_billing_ownership_request()) ->
+    {ok, reject_capacity_reservation_billing_ownership_result(), tuple()} |
+    {error, any()}.
+reject_capacity_reservation_billing_ownership(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reject_capacity_reservation_billing_ownership(Client, Input, []).
+
+-spec reject_capacity_reservation_billing_ownership(aws_client:aws_client(), reject_capacity_reservation_billing_ownership_request(), proplists:proplist()) ->
+    {ok, reject_capacity_reservation_billing_ownership_result(), tuple()} |
+    {error, any()}.
+reject_capacity_reservation_billing_ownership(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RejectCapacityReservationBillingOwnership">>, Input, Options).
+
 %% @doc Rejects a request to associate cross-account subnets with a transit
 %% gateway multicast domain.
 -spec reject_transit_gateway_multicast_domain_associations(aws_client:aws_client(), reject_transit_gateway_multicast_domain_associations_request()) ->
@@ -33547,9 +33745,9 @@ unassign_private_ip_addresses(Client, Input, Options)
 %% @doc Unassigns secondary private IPv4 addresses from a private NAT
 %% gateway.
 %%
-%% You cannot unassign your primary private IP. For more information,
-%% see Edit secondary IP address associations:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html#nat-gateway-edit-secondary
+%% You cannot unassign your primary private IP. For more information, see
+%% Edit secondary IP address associations:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary
 %% in the Amazon VPC User Guide.
 %%
 %% While unassigning is in progress, you cannot assign/unassign additional IP

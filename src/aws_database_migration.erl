@@ -30,6 +30,8 @@
          batch_start_recommendations/3,
          cancel_replication_task_assessment_run/2,
          cancel_replication_task_assessment_run/3,
+         create_data_migration/2,
+         create_data_migration/3,
          create_data_provider/2,
          create_data_provider/3,
          create_endpoint/2,
@@ -54,6 +56,8 @@
          delete_certificate/3,
          delete_connection/2,
          delete_connection/3,
+         delete_data_migration/2,
+         delete_data_migration/3,
          delete_data_provider/2,
          delete_data_provider/3,
          delete_endpoint/2,
@@ -88,6 +92,8 @@
          describe_connections/3,
          describe_conversion_configuration/2,
          describe_conversion_configuration/3,
+         describe_data_migrations/2,
+         describe_data_migrations/3,
          describe_data_providers/2,
          describe_data_providers/3,
          describe_endpoint_settings/2,
@@ -172,6 +178,8 @@
          list_tags_for_resource/3,
          modify_conversion_configuration/2,
          modify_conversion_configuration/3,
+         modify_data_migration/2,
+         modify_data_migration/3,
          modify_data_provider/2,
          modify_data_provider/3,
          modify_endpoint/2,
@@ -204,6 +212,8 @@
          remove_tags_from_resource/3,
          run_fleet_advisor_lsa_analysis/2,
          run_fleet_advisor_lsa_analysis/3,
+         start_data_migration/2,
+         start_data_migration/3,
          start_extension_pack_association/2,
          start_extension_pack_association/3,
          start_metadata_model_assessment/2,
@@ -226,6 +236,8 @@
          start_replication_task_assessment/3,
          start_replication_task_assessment_run/2,
          start_replication_task_assessment_run/3,
+         stop_data_migration/2,
+         stop_data_migration/3,
          stop_replication/2,
          stop_replication/3,
          stop_replication_task/2,
@@ -788,6 +800,12 @@
 -type describe_replication_instance_task_logs_message() :: #{binary() => any()}.
 
 %% Example:
+%% delete_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type delete_data_migration_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_metadata_model_exports_to_target_message() :: #{
 %%   <<"Filters">> => list(filter()()),
 %%   <<"Marker">> => string(),
@@ -1068,6 +1086,12 @@
 -type describe_applicable_individual_assessments_response() :: #{binary() => any()}.
 
 %% Example:
+%% stop_data_migration_message() :: #{
+%%   <<"DataMigrationIdentifier">> := string()
+%% }
+-type stop_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
 %% import_certificate_response() :: #{
 %%   <<"Certificate">> => certificate()
 %% }
@@ -1142,6 +1166,12 @@
 -type start_recommendations_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_data_migration_message() :: #{
+%%   <<"DataMigrationIdentifier">> := string()
+%% }
+-type delete_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
 %% modify_replication_task_message() :: #{
 %%   <<"CdcStartPosition">> => string(),
 %%   <<"CdcStartTime">> => non_neg_integer(),
@@ -1209,6 +1239,19 @@
 -type replication_task() :: #{binary() => any()}.
 
 %% Example:
+%% modify_data_migration_message() :: #{
+%%   <<"DataMigrationIdentifier">> := string(),
+%%   <<"DataMigrationName">> => string(),
+%%   <<"DataMigrationType">> => list(any()),
+%%   <<"EnableCloudwatchLogs">> => boolean(),
+%%   <<"NumberOfJobs">> => integer(),
+%%   <<"SelectionRules">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"SourceDataSettings">> => list(source_data_setting()())
+%% }
+-type modify_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
 %% table_statistics() :: #{
 %%   <<"AppliedDdls">> => float(),
 %%   <<"AppliedDeletes">> => float(),
@@ -1262,6 +1305,12 @@
 %%   <<"ReplicationSubnetGroups">> => list(replication_subnet_group()())
 %% }
 -type describe_replication_subnet_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type modify_data_migration_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_event_subscription_response() :: #{
@@ -1407,10 +1456,30 @@
 -type create_replication_task_message() :: #{binary() => any()}.
 
 %% Example:
+%% failed_dependency_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type failed_dependency_fault() :: #{binary() => any()}.
+
+%% Example:
 %% stop_replication_task_response() :: #{
 %%   <<"ReplicationTask">> => replication_task()
 %% }
 -type stop_replication_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_migration_statistics() :: #{
+%%   <<"CDCLatency">> => integer(),
+%%   <<"ElapsedTimeMillis">> => float(),
+%%   <<"FullLoadPercentage">> => integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StopTime">> => non_neg_integer(),
+%%   <<"TablesErrored">> => integer(),
+%%   <<"TablesLoaded">> => integer(),
+%%   <<"TablesLoading">> => integer(),
+%%   <<"TablesQueued">> => integer()
+%% }
+-type data_migration_statistics() :: #{binary() => any()}.
 
 %% Example:
 %% create_event_subscription_message() :: #{
@@ -1641,6 +1710,12 @@
 -type create_replication_config_message() :: #{binary() => any()}.
 
 %% Example:
+%% start_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type start_data_migration_response() :: #{binary() => any()}.
+
+%% Example:
 %% connection() :: #{
 %%   <<"EndpointArn">> => string(),
 %%   <<"EndpointIdentifier">> => string(),
@@ -1821,6 +1896,15 @@
 %%   <<"message">> => string()
 %% }
 -type kms_fault() :: #{binary() => any()}.
+
+%% Example:
+%% source_data_setting() :: #{
+%%   <<"CDCStartPosition">> => string(),
+%%   <<"CDCStartTime">> => non_neg_integer(),
+%%   <<"CDCStopTime">> => non_neg_integer(),
+%%   <<"SlotName">> => string()
+%% }
+-type source_data_setting() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -2058,6 +2142,32 @@
 -type describe_replication_task_individual_assessments_message() :: #{binary() => any()}.
 
 %% Example:
+%% data_migration() :: #{
+%%   <<"DataMigrationArn">> => string(),
+%%   <<"DataMigrationCreateTime">> => non_neg_integer(),
+%%   <<"DataMigrationEndTime">> => non_neg_integer(),
+%%   <<"DataMigrationName">> => string(),
+%%   <<"DataMigrationSettings">> => data_migration_settings(),
+%%   <<"DataMigrationStartTime">> => non_neg_integer(),
+%%   <<"DataMigrationStatistics">> => data_migration_statistics(),
+%%   <<"DataMigrationStatus">> => string(),
+%%   <<"DataMigrationType">> => list(any()),
+%%   <<"LastFailureMessage">> => string(),
+%%   <<"MigrationProjectArn">> => string(),
+%%   <<"PublicIpAddresses">> => list(string()()),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"SourceDataSettings">> => list(source_data_setting()()),
+%%   <<"StopReason">> => string()
+%% }
+-type data_migration() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type stop_data_migration_response() :: #{binary() => any()}.
+
+%% Example:
 %% redshift_data_provider_settings() :: #{
 %%   <<"DatabaseName">> => string(),
 %%   <<"Port">> => integer(),
@@ -2118,6 +2228,12 @@
 %%   <<"CertificateArn">> := string()
 %% }
 -type delete_certificate_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type create_data_migration_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_metadata_model_export_to_target_message() :: #{
@@ -2309,6 +2425,24 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_recommendation_limitations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_migrations_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"WithoutSettings">> => boolean(),
+%%   <<"WithoutStatistics">> => boolean()
+%% }
+-type describe_data_migrations_message() :: #{binary() => any()}.
+
+%% Example:
+%% data_migration_settings() :: #{
+%%   <<"CloudwatchLogsEnabled">> => boolean(),
+%%   <<"NumberOfJobs">> => integer(),
+%%   <<"SelectionRules">> => string()
+%% }
+-type data_migration_settings() :: #{binary() => any()}.
 
 %% Example:
 %% mongo_db_settings() :: #{
@@ -2602,6 +2736,20 @@
 -type maria_db_data_provider_settings() :: #{binary() => any()}.
 
 %% Example:
+%% create_data_migration_message() :: #{
+%%   <<"DataMigrationName">> => string(),
+%%   <<"DataMigrationType">> := list(any()),
+%%   <<"EnableCloudwatchLogs">> => boolean(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"NumberOfJobs">> => integer(),
+%%   <<"SelectionRules">> => string(),
+%%   <<"ServiceAccessRoleArn">> := string(),
+%%   <<"SourceDataSettings">> => list(source_data_setting()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
 %% replication_subnet_group() :: #{
 %%   <<"ReplicationSubnetGroupDescription">> => string(),
 %%   <<"ReplicationSubnetGroupIdentifier">> => string(),
@@ -2675,6 +2823,13 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_operation_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_migrations_response() :: #{
+%%   <<"DataMigrations">> => list(data_migration()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_data_migrations_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_replication_tasks_response() :: #{
@@ -2760,6 +2915,13 @@
 %%   <<"SslMode">> => list(any())
 %% }
 -type postgre_sql_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_migration_message() :: #{
+%%   <<"DataMigrationIdentifier">> := string(),
+%%   <<"StartType">> := list(any())
+%% }
+-type start_data_migration_message() :: #{binary() => any()}.
 
 %% Example:
 %% modify_instance_profile_message() :: #{
@@ -3283,6 +3445,7 @@
 -type replication_task_assessment_run() :: #{binary() => any()}.
 
 -type add_tags_to_resource_errors() ::
+    invalid_resource_state_fault() | 
     resource_not_found_fault().
 
 -type apply_pending_maintenance_action_errors() ::
@@ -3298,9 +3461,17 @@
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
+-type create_data_migration_errors() ::
+    resource_quota_exceeded_fault() | 
+    invalid_operation_fault() | 
+    resource_already_exists_fault() | 
+    failed_dependency_fault() | 
+    resource_not_found_fault().
+
 -type create_data_provider_errors() ::
     resource_quota_exceeded_fault() | 
     resource_already_exists_fault() | 
+    failed_dependency_fault() | 
     access_denied_fault().
 
 -type create_endpoint_errors() ::
@@ -3337,6 +3508,7 @@
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
     s3_access_denied_fault() | 
+    failed_dependency_fault() | 
     access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
@@ -3346,6 +3518,7 @@
     resource_quota_exceeded_fault() | 
     resource_already_exists_fault() | 
     s3_access_denied_fault() | 
+    failed_dependency_fault() | 
     access_denied_fault() | 
     resource_not_found_fault().
 
@@ -3396,7 +3569,13 @@
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
+-type delete_data_migration_errors() ::
+    failed_dependency_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
 -type delete_data_provider_errors() ::
+    failed_dependency_fault() | 
     access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
@@ -3411,18 +3590,22 @@
 
 -type delete_fleet_advisor_collector_errors() ::
     collector_not_found_fault() | 
+    access_denied_fault() | 
     invalid_resource_state_fault().
 
 -type delete_fleet_advisor_databases_errors() ::
     invalid_operation_fault() | 
+    access_denied_fault() | 
     resource_not_found_fault().
 
 -type delete_instance_profile_errors() ::
+    failed_dependency_fault() | 
     access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
 -type delete_migration_project_errors() ::
+    failed_dependency_fault() | 
     access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
@@ -3463,7 +3646,13 @@
 -type describe_conversion_configuration_errors() ::
     resource_not_found_fault().
 
+-type describe_data_migrations_errors() ::
+    failed_dependency_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
 -type describe_data_providers_errors() ::
+    failed_dependency_fault() | 
     access_denied_fault() | 
     resource_not_found_fault().
 
@@ -3489,6 +3678,7 @@
     invalid_resource_state_fault().
 
 -type describe_instance_profiles_errors() ::
+    failed_dependency_fault() | 
     access_denied_fault() | 
     resource_not_found_fault().
 
@@ -3508,6 +3698,7 @@
     resource_not_found_fault().
 
 -type describe_migration_projects_errors() ::
+    failed_dependency_fault() | 
     access_denied_fault() | 
     resource_not_found_fault().
 
@@ -3575,13 +3766,20 @@
     invalid_certificate_fault().
 
 -type list_tags_for_resource_errors() ::
+    invalid_resource_state_fault() | 
     resource_not_found_fault().
 
 -type modify_conversion_configuration_errors() ::
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
+-type modify_data_migration_errors() ::
+    failed_dependency_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
 -type modify_data_provider_errors() ::
+    failed_dependency_fault() | 
     access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
@@ -3608,6 +3806,7 @@
     s3_resource_not_found_fault() | 
     kms_key_not_accessible_fault() | 
     s3_access_denied_fault() | 
+    failed_dependency_fault() | 
     access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
@@ -3615,6 +3814,7 @@
 -type modify_migration_project_errors() ::
     s3_resource_not_found_fault() | 
     s3_access_denied_fault() | 
+    failed_dependency_fault() | 
     access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
@@ -3676,9 +3876,17 @@
     resource_not_found_fault().
 
 -type remove_tags_from_resource_errors() ::
+    invalid_resource_state_fault() | 
     resource_not_found_fault().
 
 -type run_fleet_advisor_lsa_analysis_errors() ::
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_data_migration_errors() ::
+    resource_quota_exceeded_fault() | 
+    invalid_operation_fault() | 
+    failed_dependency_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
@@ -3772,6 +3980,11 @@
     kms_access_denied_fault() | 
     kms_invalid_state_fault() | 
     access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type stop_data_migration_errors() ::
+    failed_dependency_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
@@ -3896,6 +4109,23 @@ cancel_replication_task_assessment_run(Client, Input)
 cancel_replication_task_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelReplicationTaskAssessmentRun">>, Input, Options).
+
+%% @doc Creates a data migration using the provided settings.
+-spec create_data_migration(aws_client:aws_client(), create_data_migration_message()) ->
+    {ok, create_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_migration_errors(), tuple()}.
+create_data_migration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_data_migration(Client, Input, []).
+
+-spec create_data_migration(aws_client:aws_client(), create_data_migration_message(), proplists:proplist()) ->
+    {ok, create_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_migration_errors(), tuple()}.
+create_data_migration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDataMigration">>, Input, Options).
 
 %% @doc Creates a data provider using the provided settings.
 %%
@@ -4187,6 +4417,23 @@ delete_connection(Client, Input)
 delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
+
+%% @doc Deletes the specified data migration.
+-spec delete_data_migration(aws_client:aws_client(), delete_data_migration_message()) ->
+    {ok, delete_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_migration_errors(), tuple()}.
+delete_data_migration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_data_migration(Client, Input, []).
+
+-spec delete_data_migration(aws_client:aws_client(), delete_data_migration_message(), proplists:proplist()) ->
+    {ok, delete_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_migration_errors(), tuple()}.
+delete_data_migration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDataMigration">>, Input, Options).
 
 %% @doc Deletes the specified data provider.
 %%
@@ -4550,6 +4797,23 @@ describe_conversion_configuration(Client, Input)
 describe_conversion_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConversionConfiguration">>, Input, Options).
+
+%% @doc Returns information about data migrations.
+-spec describe_data_migrations(aws_client:aws_client(), describe_data_migrations_message()) ->
+    {ok, describe_data_migrations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_migrations_errors(), tuple()}.
+describe_data_migrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_data_migrations(Client, Input, []).
+
+-spec describe_data_migrations(aws_client:aws_client(), describe_data_migrations_message(), proplists:proplist()) ->
+    {ok, describe_data_migrations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_migrations_errors(), tuple()}.
+describe_data_migrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataMigrations">>, Input, Options).
 
 %% @doc Returns a paginated list of data providers for your account in the
 %% current region.
@@ -5355,6 +5619,23 @@ modify_conversion_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyConversionConfiguration">>, Input, Options).
 
+%% @doc Modifies an existing DMS data migration.
+-spec modify_data_migration(aws_client:aws_client(), modify_data_migration_message()) ->
+    {ok, modify_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, modify_data_migration_errors(), tuple()}.
+modify_data_migration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_data_migration(Client, Input, []).
+
+-spec modify_data_migration(aws_client:aws_client(), modify_data_migration_message(), proplists:proplist()) ->
+    {ok, modify_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, modify_data_migration_errors(), tuple()}.
+modify_data_migration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyDataMigration">>, Input, Options).
+
 %% @doc Modifies the specified data provider using the provided settings.
 %%
 %% You must remove the data provider from all migration projects before you
@@ -5710,6 +5991,23 @@ run_fleet_advisor_lsa_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunFleetAdvisorLsaAnalysis">>, Input, Options).
 
+%% @doc Starts the specified data migration.
+-spec start_data_migration(aws_client:aws_client(), start_data_migration_message()) ->
+    {ok, start_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, start_data_migration_errors(), tuple()}.
+start_data_migration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_data_migration(Client, Input, []).
+
+-spec start_data_migration(aws_client:aws_client(), start_data_migration_message(), proplists:proplist()) ->
+    {ok, start_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, start_data_migration_errors(), tuple()}.
+start_data_migration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDataMigration">>, Input, Options).
+
 %% @doc Applies the extension pack to your target database.
 %%
 %% An extension pack is an add-on
@@ -5961,6 +6259,23 @@ start_replication_task_assessment_run(Client, Input)
 start_replication_task_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplicationTaskAssessmentRun">>, Input, Options).
+
+%% @doc Stops the specified data migration.
+-spec stop_data_migration(aws_client:aws_client(), stop_data_migration_message()) ->
+    {ok, stop_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, stop_data_migration_errors(), tuple()}.
+stop_data_migration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_data_migration(Client, Input, []).
+
+-spec stop_data_migration(aws_client:aws_client(), stop_data_migration_message(), proplists:proplist()) ->
+    {ok, stop_data_migration_response(), tuple()} |
+    {error, any()} |
+    {error, stop_data_migration_errors(), tuple()}.
+stop_data_migration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopDataMigration">>, Input, Options).
 
 %% @doc For a given DMS Serverless replication configuration, DMS stops any
 %% and all ongoing DMS Serverless replications.

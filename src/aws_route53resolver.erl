@@ -1311,7 +1311,8 @@
 %%   <<"Ip">> => string(),
 %%   <<"Ipv6">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"Protocol">> => list(any())
+%%   <<"Protocol">> => list(any()),
+%%   <<"ServerNameIndication">> => string()
 %% }
 -type target_address() :: #{binary() => any()}.
 
