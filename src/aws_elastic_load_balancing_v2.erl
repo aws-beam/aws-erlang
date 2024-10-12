@@ -219,6 +219,14 @@
 -type delete_listener_output() :: #{binary() => any()}.
 
 %% Example:
+%% administrative_override() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type administrative_override() :: #{binary() => any()}.
+
+%% Example:
 %% add_trust_store_revocations_output() :: #{
 %%   <<"TrustStoreRevocations">> => list(trust_store_revocation()())
 %% }
@@ -858,6 +866,7 @@
 
 %% Example:
 %% target_health_description() :: #{
+%%   <<"AdministrativeOverride">> => administrative_override(),
 %%   <<"AnomalyDetection">> => anomaly_detection(),
 %%   <<"HealthCheckPort">> => string(),
 %%   <<"Target">> => target_description(),

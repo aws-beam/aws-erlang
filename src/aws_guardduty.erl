@@ -615,6 +615,7 @@
 %%   <<"Blocked">> => boolean(),
 %%   <<"ConnectionDirection">> => string(),
 %%   <<"LocalIpDetails">> => local_ip_details(),
+%%   <<"LocalNetworkInterface">> => string(),
 %%   <<"LocalPortDetails">> => local_port_details(),
 %%   <<"Protocol">> => string(),
 %%   <<"RemoteIpDetails">> => remote_ip_details(),

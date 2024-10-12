@@ -403,6 +403,7 @@
 
 %% Example:
 %% instance_fleet() :: #{
+%%   <<"Context">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"InstanceFleetType">> => list(any()),
 %%   <<"InstanceTypeSpecifications">> => list(instance_type_specification()()),
@@ -1645,6 +1646,7 @@
 
 %% Example:
 %% instance_fleet_config() :: #{
+%%   <<"Context">> => string(),
 %%   <<"InstanceFleetType">> => list(any()),
 %%   <<"InstanceTypeConfigs">> => list(instance_type_config()()),
 %%   <<"LaunchSpecifications">> => instance_fleet_provisioning_specifications(),
@@ -1681,6 +1683,7 @@
 
 %% Example:
 %% instance_fleet_modify_config() :: #{
+%%   <<"Context">> => string(),
 %%   <<"InstanceFleetId">> => string(),
 %%   <<"InstanceTypeConfigs">> => list(instance_type_config()()),
 %%   <<"ResizeSpecifications">> => instance_fleet_resizing_specifications(),

@@ -2172,7 +2172,18 @@
 %% API
 %%====================================================================
 
-%% @doc Deletes one or more worlds in a batch operation.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Deletes one or more worlds in a batch operation.
 -spec batch_delete_worlds(aws_client:aws_client(), batch_delete_worlds_request()) ->
     {ok, batch_delete_worlds_response(), tuple()} |
     {error, any()} |
@@ -2206,7 +2217,18 @@ batch_delete_worlds(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes one or more simulation jobs.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes one or more simulation jobs.
 -spec batch_describe_simulation_job(aws_client:aws_client(), batch_describe_simulation_job_request()) ->
     {ok, batch_describe_simulation_job_response(), tuple()} |
     {error, any()} |
@@ -2240,10 +2262,14 @@ batch_describe_simulation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels the specified deployment job.
+%% @doc
+%% This API is no longer supported.
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% For more information, see the May 2, 2022 update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Cancels the specified deployment job.
 -spec cancel_deployment_job(aws_client:aws_client(), cancel_deployment_job_request()) ->
     {ok, cancel_deployment_job_response(), tuple()} |
     {error, any()} |
@@ -2277,7 +2303,18 @@ cancel_deployment_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels the specified simulation job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Cancels the specified simulation job.
 -spec cancel_simulation_job(aws_client:aws_client(), cancel_simulation_job_request()) ->
     {ok, cancel_simulation_job_response(), tuple()} |
     {error, any()} |
@@ -2311,9 +2348,19 @@ cancel_simulation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels a simulation job batch.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% When you cancel a simulation job batch, you are also
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Cancels a simulation job batch. When you cancel a simulation job batch,
+%% you are also
 %% cancelling all of the active simulation jobs created as part of the batch.
 -spec cancel_simulation_job_batch(aws_client:aws_client(), cancel_simulation_job_batch_request()) ->
     {ok, cancel_simulation_job_batch_response(), tuple()} |
@@ -2348,7 +2395,18 @@ cancel_simulation_job_batch(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels the specified export job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Cancels the specified export job.
 -spec cancel_world_export_job(aws_client:aws_client(), cancel_world_export_job_request()) ->
     {ok, cancel_world_export_job_response(), tuple()} |
     {error, any()} |
@@ -2382,7 +2440,18 @@ cancel_world_export_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels the specified world generator job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Cancels the specified world generator job.
 -spec cancel_world_generation_job(aws_client:aws_client(), cancel_world_generation_job_request()) ->
     {ok, cancel_world_generation_job_response(), tuple()} |
     {error, any()} |
@@ -2416,15 +2485,28 @@ cancel_world_generation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deploys a specific version of a robot application to robots in a
-%% fleet.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API is no longer supported and will throw an error if used.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported and will throw an error if used. For more
+%% information, see the January 31, 2022 update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-january2022
+%% page.
+%%
+%% Deploys a specific version of a robot application to robots in a fleet.
 %%
 %% The robot application must have a numbered `applicationVersion' for
 %% consistency reasons. To create a new version, use
-%% `CreateRobotApplicationVersion' or see Creating a Robot Application
-%% Version:
+%% `CreateRobotApplicationVersion' or see
+%% Creating a Robot Application Version:
 %% https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html.
 %%
 %% After 90 days, deployment jobs expire and will be deleted. They will no
@@ -2463,10 +2545,24 @@ create_deployment_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a fleet, a logical group of robots running the same robot
-%% application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API is no longer supported and will throw an error if used.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported and will throw an error if used. For more
+%% information, see the January 31, 2022 update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-january2022
+%% page.
+%%
+%% Creates a fleet, a logical group of robots running the same robot
+%% application.
 -spec create_fleet(aws_client:aws_client(), create_fleet_request()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
@@ -2500,9 +2596,23 @@ create_fleet(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a robot.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API is no longer supported and will throw an error if used.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported and will throw an error if used. For more
+%% information, see the January 31, 2022 update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-january2022
+%% page.
+%%
+%% Creates a robot.
 -spec create_robot(aws_client:aws_client(), create_robot_request()) ->
     {ok, create_robot_response(), tuple()} |
     {error, any()} |
@@ -2536,7 +2646,18 @@ create_robot(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a robot application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Creates a robot application.
 -spec create_robot_application(aws_client:aws_client(), create_robot_application_request()) ->
     {ok, create_robot_application_response(), tuple()} |
     {error, any()} |
@@ -2570,7 +2691,18 @@ create_robot_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a version of a robot application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Creates a version of a robot application.
 -spec create_robot_application_version(aws_client:aws_client(), create_robot_application_version_request()) ->
     {ok, create_robot_application_version_response(), tuple()} |
     {error, any()} |
@@ -2604,7 +2736,18 @@ create_robot_application_version(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a simulation application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Creates a simulation application.
 -spec create_simulation_application(aws_client:aws_client(), create_simulation_application_request()) ->
     {ok, create_simulation_application_response(), tuple()} |
     {error, any()} |
@@ -2638,7 +2781,18 @@ create_simulation_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a simulation application with a specific revision id.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Creates a simulation application with a specific revision id.
 -spec create_simulation_application_version(aws_client:aws_client(), create_simulation_application_version_request()) ->
     {ok, create_simulation_application_version_response(), tuple()} |
     {error, any()} |
@@ -2672,7 +2826,18 @@ create_simulation_application_version(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a simulation job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Creates a simulation job.
 %%
 %% After 90 days, simulation jobs expire and will be deleted. They will no
 %% longer be
@@ -2710,7 +2875,18 @@ create_simulation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a world export job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Creates a world export job.
 -spec create_world_export_job(aws_client:aws_client(), create_world_export_job_request()) ->
     {ok, create_world_export_job_response(), tuple()} |
     {error, any()} |
@@ -2744,7 +2920,18 @@ create_world_export_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates worlds using the specified template.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Creates worlds using the specified template.
 -spec create_world_generation_job(aws_client:aws_client(), create_world_generation_job_request()) ->
     {ok, create_world_generation_job_response(), tuple()} |
     {error, any()} |
@@ -2778,7 +2965,18 @@ create_world_generation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a world template.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Creates a world template.
 -spec create_world_template(aws_client:aws_client(), create_world_template_request()) ->
     {ok, create_world_template_response(), tuple()} |
     {error, any()} |
@@ -2812,10 +3010,23 @@ create_world_template(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a fleet.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Deletes a fleet.
 -spec delete_fleet(aws_client:aws_client(), delete_fleet_request()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
@@ -2849,10 +3060,23 @@ delete_fleet(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a robot.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Deletes a robot.
 -spec delete_robot(aws_client:aws_client(), delete_robot_request()) ->
     {ok, delete_robot_response(), tuple()} |
     {error, any()} |
@@ -2886,7 +3110,18 @@ delete_robot(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a robot application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Deletes a robot application.
 -spec delete_robot_application(aws_client:aws_client(), delete_robot_application_request()) ->
     {ok, delete_robot_application_response(), tuple()} |
     {error, any()} |
@@ -2920,7 +3155,18 @@ delete_robot_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a simulation application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Deletes a simulation application.
 -spec delete_simulation_application(aws_client:aws_client(), delete_simulation_application_request()) ->
     {ok, delete_simulation_application_response(), tuple()} |
     {error, any()} |
@@ -2954,7 +3200,18 @@ delete_simulation_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a world template.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Deletes a world template.
 -spec delete_world_template(aws_client:aws_client(), delete_world_template_request()) ->
     {ok, delete_world_template_response(), tuple()} |
     {error, any()} |
@@ -2988,10 +3245,23 @@ delete_world_template(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deregisters a robot.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Deregisters a robot.
 -spec deregister_robot(aws_client:aws_client(), deregister_robot_request()) ->
     {ok, deregister_robot_response(), tuple()} |
     {error, any()} |
@@ -3025,10 +3295,23 @@ deregister_robot(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a deployment job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Describes a deployment job.
 -spec describe_deployment_job(aws_client:aws_client(), describe_deployment_job_request()) ->
     {ok, describe_deployment_job_response(), tuple()} |
     {error, any()} |
@@ -3062,10 +3345,23 @@ describe_deployment_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a fleet.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Describes a fleet.
 -spec describe_fleet(aws_client:aws_client(), describe_fleet_request()) ->
     {ok, describe_fleet_response(), tuple()} |
     {error, any()} |
@@ -3099,10 +3395,23 @@ describe_fleet(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a robot.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Describes a robot.
 -spec describe_robot(aws_client:aws_client(), describe_robot_request()) ->
     {ok, describe_robot_response(), tuple()} |
     {error, any()} |
@@ -3136,7 +3445,18 @@ describe_robot(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a robot application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes a robot application.
 -spec describe_robot_application(aws_client:aws_client(), describe_robot_application_request()) ->
     {ok, describe_robot_application_response(), tuple()} |
     {error, any()} |
@@ -3170,7 +3490,18 @@ describe_robot_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a simulation application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes a simulation application.
 -spec describe_simulation_application(aws_client:aws_client(), describe_simulation_application_request()) ->
     {ok, describe_simulation_application_response(), tuple()} |
     {error, any()} |
@@ -3204,7 +3535,18 @@ describe_simulation_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a simulation job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes a simulation job.
 -spec describe_simulation_job(aws_client:aws_client(), describe_simulation_job_request()) ->
     {ok, describe_simulation_job_response(), tuple()} |
     {error, any()} |
@@ -3238,7 +3580,18 @@ describe_simulation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a simulation job batch.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes a simulation job batch.
 -spec describe_simulation_job_batch(aws_client:aws_client(), describe_simulation_job_batch_request()) ->
     {ok, describe_simulation_job_batch_response(), tuple()} |
     {error, any()} |
@@ -3272,7 +3625,18 @@ describe_simulation_job_batch(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a world.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes a world.
 -spec describe_world(aws_client:aws_client(), describe_world_request()) ->
     {ok, describe_world_response(), tuple()} |
     {error, any()} |
@@ -3306,7 +3670,18 @@ describe_world(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a world export job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes a world export job.
 -spec describe_world_export_job(aws_client:aws_client(), describe_world_export_job_request()) ->
     {ok, describe_world_export_job_response(), tuple()} |
     {error, any()} |
@@ -3340,7 +3715,18 @@ describe_world_export_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a world generation job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes a world generation job.
 -spec describe_world_generation_job(aws_client:aws_client(), describe_world_generation_job_request()) ->
     {ok, describe_world_generation_job_response(), tuple()} |
     {error, any()} |
@@ -3374,7 +3760,18 @@ describe_world_generation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a world template.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Describes a world template.
 -spec describe_world_template(aws_client:aws_client(), describe_world_template_request()) ->
     {ok, describe_world_template_response(), tuple()} |
     {error, any()} |
@@ -3408,7 +3805,18 @@ describe_world_template(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the world template body.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Gets the world template body.
 -spec get_world_template_body(aws_client:aws_client(), get_world_template_body_request()) ->
     {ok, get_world_template_body_response(), tuple()} |
     {error, any()} |
@@ -3442,12 +3850,24 @@ get_world_template_body(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of deployment jobs for a fleet.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% You can optionally provide filters to retrieve specific deployment jobs.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Returns a list of deployment jobs for a fleet. You can optionally provide
+%% filters to retrieve specific deployment jobs.
 -spec list_deployment_jobs(aws_client:aws_client(), list_deployment_jobs_request()) ->
     {ok, list_deployment_jobs_response(), tuple()} |
     {error, any()} |
@@ -3481,12 +3901,24 @@ list_deployment_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of fleets.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% You can optionally provide filters to retrieve specific fleets.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Returns a list of fleets. You can optionally provide filters to retrieve
+%% specific fleets.
 -spec list_fleets(aws_client:aws_client(), list_fleets_request()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
@@ -3520,9 +3952,19 @@ list_fleets(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of robot application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% You can optionally provide filters to retrieve
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Returns a list of robot application. You can optionally provide filters to
+%% retrieve
 %% specific robot applications.
 -spec list_robot_applications(aws_client:aws_client(), list_robot_applications_request()) ->
     {ok, list_robot_applications_response(), tuple()} |
@@ -3557,12 +3999,24 @@ list_robot_applications(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of robots.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% You can optionally provide filters to retrieve specific robots.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Returns a list of robots. You can optionally provide filters to retrieve
+%% specific robots.
 -spec list_robots(aws_client:aws_client(), list_robots_request()) ->
     {ok, list_robots_response(), tuple()} |
     {error, any()} |
@@ -3596,9 +4050,19 @@ list_robots(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of simulation applications.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% You can optionally provide filters to
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Returns a list of simulation applications. You can optionally provide
+%% filters to
 %% retrieve specific simulation applications.
 -spec list_simulation_applications(aws_client:aws_client(), list_simulation_applications_request()) ->
     {ok, list_simulation_applications_response(), tuple()} |
@@ -3633,9 +4097,19 @@ list_simulation_applications(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list simulation job batches.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% You can optionally provide filters to retrieve
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Returns a list simulation job batches. You can optionally provide filters
+%% to retrieve
 %% specific simulation batch jobs.
 -spec list_simulation_job_batches(aws_client:aws_client(), list_simulation_job_batches_request()) ->
     {ok, list_simulation_job_batches_response(), tuple()} |
@@ -3670,9 +4144,19 @@ list_simulation_job_batches(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of simulation jobs.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% You can optionally provide filters to retrieve
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Returns a list of simulation jobs. You can optionally provide filters to
+%% retrieve
 %% specific simulation jobs.
 -spec list_simulation_jobs(aws_client:aws_client(), list_simulation_jobs_request()) ->
     {ok, list_simulation_jobs_response(), tuple()} |
@@ -3707,7 +4191,18 @@ list_simulation_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all tags on a AWS RoboMaker resource.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Lists all tags on a AWS RoboMaker resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -3744,7 +4239,18 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists world export jobs.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Lists world export jobs.
 -spec list_world_export_jobs(aws_client:aws_client(), list_world_export_jobs_request()) ->
     {ok, list_world_export_jobs_response(), tuple()} |
     {error, any()} |
@@ -3778,7 +4284,18 @@ list_world_export_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists world generator jobs.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Lists world generator jobs.
 -spec list_world_generation_jobs(aws_client:aws_client(), list_world_generation_jobs_request()) ->
     {ok, list_world_generation_jobs_response(), tuple()} |
     {error, any()} |
@@ -3812,7 +4329,18 @@ list_world_generation_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists world templates.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Lists world templates.
 -spec list_world_templates(aws_client:aws_client(), list_world_templates_request()) ->
     {ok, list_world_templates_response(), tuple()} |
     {error, any()} |
@@ -3846,7 +4374,18 @@ list_world_templates(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists worlds.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Lists worlds.
 -spec list_worlds(aws_client:aws_client(), list_worlds_request()) ->
     {ok, list_worlds_response(), tuple()} |
     {error, any()} |
@@ -3880,9 +4419,23 @@ list_worlds(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Registers a robot with a fleet.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This API is no longer supported and will throw an error if used.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Registers a robot with a fleet.
+%%
+%% This API is no longer supported and will throw an error if used. For more
+%% information, see the January 31, 2022 update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-january2022
+%% page.
 -spec register_robot(aws_client:aws_client(), register_robot_request()) ->
     {ok, register_robot_response(), tuple()} |
     {error, any()} |
@@ -3916,7 +4469,18 @@ register_robot(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Restarts a running simulation job.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Restarts a running simulation job.
 -spec restart_simulation_job(aws_client:aws_client(), restart_simulation_job_request()) ->
     {ok, restart_simulation_job_response(), tuple()} |
     {error, any()} |
@@ -3950,9 +4514,18 @@ restart_simulation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a new simulation job batch.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% The batch is defined using one or more
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Starts a new simulation job batch. The batch is defined using one or more
 %% `SimulationJobRequest' objects.
 -spec start_simulation_job_batch(aws_client:aws_client(), start_simulation_job_batch_request()) ->
     {ok, start_simulation_job_batch_response(), tuple()} |
@@ -3987,12 +4560,24 @@ start_simulation_job_batch(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Syncrhonizes robots in a fleet to the latest deployment.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
 %%
-%% This is helpful if robots were added after a deployment.
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
 %%
-%% This API will no longer be supported as of May 2, 2022. Use it to remove
-%% resources that were created for Deployment Service.
+%% This API is no longer supported. For more information, see the May 2, 2022
+%% update in the Support policy:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/chapter-support-policy.html#software-support-policy-may2022
+%% page.
+%%
+%% Syncrhonizes robots in a fleet to the latest deployment. This is helpful
+%% if robots were added after a deployment.
 -spec sync_deployment_job(aws_client:aws_client(), sync_deployment_job_request()) ->
     {ok, sync_deployment_job_response(), tuple()} |
     {error, any()} |
@@ -4026,7 +4611,18 @@ sync_deployment_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds or edits tags for a AWS RoboMaker resource.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Adds or edits tags for a AWS RoboMaker resource.
 %%
 %% Each tag consists of a tag key and a tag value. Tag keys and tag values
 %% are both
@@ -4070,7 +4666,18 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified tags from the specified AWS RoboMaker resource.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Removes the specified tags from the specified AWS RoboMaker resource.
 %%
 %% To remove a tag, specify the tag key. To change the tag value of an
 %% existing tag key,
@@ -4111,7 +4718,18 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a robot application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Updates a robot application.
 -spec update_robot_application(aws_client:aws_client(), update_robot_application_request()) ->
     {ok, update_robot_application_response(), tuple()} |
     {error, any()} |
@@ -4145,7 +4763,18 @@ update_robot_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a simulation application.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Updates a simulation application.
 -spec update_simulation_application(aws_client:aws_client(), update_simulation_application_request()) ->
     {ok, update_simulation_application_response(), tuple()} |
     {error, any()} |
@@ -4179,7 +4808,18 @@ update_simulation_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a world template.
+%% @doc
+%% End of support notice: On September 10, 2025, Amazon Web Services
+%% will discontinue support for Amazon Web Services RoboMaker.
+%%
+%% After September 10, 2025, you will
+%% no longer be able to access the Amazon Web Services RoboMaker console or
+%% Amazon Web Services RoboMaker resources.
+%% For more information on transitioning to Batch to help run containerized
+%% simulations, visit
+%% [https://aws.amazon.com/blogs/hpc/run-simulations-using-multiple-containers-in-a-single-aws-batch-job/].
+%%
+%% Updates a world template.
 -spec update_world_template(aws_client:aws_client(), update_world_template_request()) ->
     {ok, update_world_template_response(), tuple()} |
     {error, any()} |

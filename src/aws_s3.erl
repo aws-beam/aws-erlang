@@ -547,7 +547,7 @@
 %% lifecycle_rule() :: #{
 %%   <<"AbortIncompleteMultipartUpload">> => abort_incomplete_multipart_upload(),
 %%   <<"Expiration">> => lifecycle_expiration(),
-%%   <<"Filter">> => list(),
+%%   <<"Filter">> => lifecycle_rule_filter(),
 %%   <<"ID">> => string(),
 %%   <<"NoncurrentVersionExpiration">> => noncurrent_version_expiration(),
 %%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()()),
@@ -1136,6 +1136,15 @@
 
 
 %% Example:
+%% replication_rule_filter() :: #{
+%%   <<"And">> => replication_rule_and_operator(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => tag()
+%% }
+-type replication_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_bucket_inventory_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
@@ -1600,6 +1609,17 @@
 %%   <<"Payload">> => list()
 %% }
 -type select_object_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule_filter() :: #{
+%%   <<"And">> => lifecycle_rule_and_operator(),
+%%   <<"ObjectSizeGreaterThan">> => float(),
+%%   <<"ObjectSizeLessThan">> => float(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => tag()
+%% }
+-type lifecycle_rule_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2504,7 +2524,7 @@
 %%   <<"DeleteMarkerReplication">> => delete_marker_replication(),
 %%   <<"Destination">> => destination(),
 %%   <<"ExistingObjectReplication">> => existing_object_replication(),
-%%   <<"Filter">> => list(),
+%%   <<"Filter">> => replication_rule_filter(),
 %%   <<"ID">> => string(),
 %%   <<"Prefix">> => string(),
 %%   <<"Priority">> => integer(),
