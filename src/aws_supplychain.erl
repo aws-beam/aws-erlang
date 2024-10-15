@@ -24,10 +24,14 @@
          create_data_integration_flow/5,
          create_data_lake_dataset/5,
          create_data_lake_dataset/6,
+         create_instance/2,
+         create_instance/3,
          delete_data_integration_flow/4,
          delete_data_integration_flow/5,
          delete_data_lake_dataset/5,
          delete_data_lake_dataset/6,
+         delete_instance/3,
+         delete_instance/4,
          get_bill_of_materials_import_job/3,
          get_bill_of_materials_import_job/5,
          get_bill_of_materials_import_job/6,
@@ -37,12 +41,18 @@
          get_data_lake_dataset/4,
          get_data_lake_dataset/6,
          get_data_lake_dataset/7,
+         get_instance/2,
+         get_instance/4,
+         get_instance/5,
          list_data_integration_flows/2,
          list_data_integration_flows/4,
          list_data_integration_flows/5,
          list_data_lake_datasets/3,
          list_data_lake_datasets/5,
          list_data_lake_datasets/6,
+         list_instances/1,
+         list_instances/3,
+         list_instances/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -55,7 +65,9 @@
          update_data_integration_flow/4,
          update_data_integration_flow/5,
          update_data_lake_dataset/5,
-         update_data_lake_dataset/6]).
+         update_data_lake_dataset/6,
+         update_instance/3,
+         update_instance/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -138,6 +150,13 @@
 
 
 %% Example:
+%% create_instance_response() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type create_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_data_integration_flow_response() :: #{
 %%   <<"instanceId">> => string(),
 %%   <<"name">> => string()
@@ -180,6 +199,10 @@
 %%   <<"flow">> => data_integration_flow()
 %% }
 -type update_data_integration_flow_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_request() :: #{}
+-type get_instance_request() :: #{}.
 
 
 %% Example:
@@ -266,6 +289,21 @@
 
 
 %% Example:
+%% update_instance_request() :: #{
+%%   <<"instanceDescription">> => string(),
+%%   <<"instanceName">> => string()
+%% }
+-type update_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_instance_response() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type get_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_lake_dataset_schema() :: #{
 %%   <<"fields">> => list(data_lake_dataset_schema_field()()),
 %%   <<"name">> => string()
@@ -297,10 +335,28 @@
 
 
 %% Example:
+%% list_instances_request() :: #{
+%%   <<"instanceNameFilter">> => list(string()()),
+%%   <<"instanceStateFilter">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_lake_dataset_response() :: #{
 %%   <<"dataset">> => data_lake_dataset()
 %% }
 -type create_data_lake_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instances_response() :: #{
+%%   <<"instances">> => list(instance()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_instances_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -326,6 +382,33 @@
 
 
 %% Example:
+%% create_instance_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"instanceDescription">> => string(),
+%%   <<"instanceName">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"instanceDescription">> => string(),
+%%   <<"instanceId">> => string(),
+%%   <<"instanceName">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"state">> => list(any()),
+%%   <<"versionNumber">> => [float()],
+%%   <<"webAppDnsDomain">> => string()
+%% }
+-type instance() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -334,6 +417,13 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% delete_instance_response() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type delete_instance_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -359,6 +449,10 @@
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_request() :: #{}
+-type delete_instance_request() :: #{}.
 
 
 %% Example:
@@ -408,6 +502,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_integration_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_instance_response() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type update_instance_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -491,6 +592,14 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type delete_data_integration_flow_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -498,6 +607,13 @@
     resource_not_found_exception().
 
 -type delete_data_lake_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_instance_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -525,6 +641,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_data_integration_flows_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -537,6 +660,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
@@ -576,6 +705,13 @@
     resource_not_found_exception().
 
 -type update_data_lake_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_instance_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -697,6 +833,46 @@ create_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a new instance for AWS Supply Chain.
+%%
+%% This is an asynchronous operation. Upon receiving a CreateInstance
+%% request, AWS Supply Chain immediately returns the instance resource, with
+%% instance ID, and the initializing state while simultaneously creating all
+%% required Amazon Web Services resources for an instance creation. You can
+%% use GetInstance to check the status of the instance.
+-spec create_instance(aws_client:aws_client(), create_instance_request()) ->
+    {ok, create_instance_response(), tuple()} |
+    {error, any()} |
+    {error, create_instance_errors(), tuple()}.
+create_instance(Client, Input) ->
+    create_instance(Client, Input, []).
+
+-spec create_instance(aws_client:aws_client(), create_instance_request(), proplists:proplist()) ->
+    {ok, create_instance_response(), tuple()} |
+    {error, any()} |
+    {error, create_instance_errors(), tuple()}.
+create_instance(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/instance"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete the DataIntegrationFlow.
 -spec delete_data_integration_flow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_integration_flow_request()) ->
     {ok, delete_data_integration_flow_response(), tuple()} |
@@ -746,6 +922,46 @@ delete_data_lake_dataset(Client, InstanceId, Name, Namespace, Input) ->
 delete_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Namespace), "/datasets/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete the instance.
+%%
+%% This is an asynchronous operation. Upon receiving a DeleteInstance
+%% request, AWS Supply Chain immediately returns a response with the instance
+%% resource, delete state while cleaning up all Amazon Web Services resources
+%% created during the instance creation process. You can use the GetInstance
+%% action to check the instance status.
+-spec delete_instance(aws_client:aws_client(), binary() | list(), delete_instance_request()) ->
+    {ok, delete_instance_response(), tuple()} |
+    {error, any()} |
+    {error, delete_instance_errors(), tuple()}.
+delete_instance(Client, InstanceId, Input) ->
+    delete_instance(Client, InstanceId, Input, []).
+
+-spec delete_instance(aws_client:aws_client(), binary() | list(), delete_instance_request(), proplists:proplist()) ->
+    {ok, delete_instance_response(), tuple()} |
+    {error, any()} |
+    {error, delete_instance_errors(), tuple()}.
+delete_instance(Client, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/instance/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -876,6 +1092,43 @@ get_data_lake_dataset(Client, InstanceId, Name, Namespace, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get the AWS Supply Chain instance details.
+-spec get_instance(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_instance_response(), tuple()} |
+    {error, any()} |
+    {error, get_instance_errors(), tuple()}.
+get_instance(Client, InstanceId)
+  when is_map(Client) ->
+    get_instance(Client, InstanceId, #{}, #{}).
+
+-spec get_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_instance_response(), tuple()} |
+    {error, any()} |
+    {error, get_instance_errors(), tuple()}.
+get_instance(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_instance(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec get_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_instance_response(), tuple()} |
+    {error, any()} |
+    {error, get_instance_errors(), tuple()}.
+get_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/instance/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all the DataIntegrationFlows in a paginated way.
 -spec list_data_integration_flows(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_integration_flows_response(), tuple()} |
@@ -953,6 +1206,50 @@ list_data_lake_datasets(Client, InstanceId, Namespace, QueryMap, HeadersMap, Opt
 
     Query0_ =
       [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all the AWS Supply Chain instances in a paginated way.
+-spec list_instances(aws_client:aws_client()) ->
+    {ok, list_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_instances_errors(), tuple()}.
+list_instances(Client)
+  when is_map(Client) ->
+    list_instances(Client, #{}, #{}).
+
+-spec list_instances(aws_client:aws_client(), map(), map()) ->
+    {ok, list_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_instances_errors(), tuple()}.
+list_instances(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_instances(Client, QueryMap, HeadersMap, []).
+
+-spec list_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_instances_errors(), tuple()}.
+list_instances(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/instance"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"instanceNameFilter">>, maps:get(<<"instanceNameFilter">>, QueryMap, undefined)},
+        {<<"instanceStateFilter">>, maps:get(<<"instanceStateFilter">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -1155,6 +1452,40 @@ update_data_lake_dataset(Client, InstanceId, Name, Namespace, Input) ->
 update_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) ->
     Method = patch,
     Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Namespace), "/datasets/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the instance.
+-spec update_instance(aws_client:aws_client(), binary() | list(), update_instance_request()) ->
+    {ok, update_instance_response(), tuple()} |
+    {error, any()} |
+    {error, update_instance_errors(), tuple()}.
+update_instance(Client, InstanceId, Input) ->
+    update_instance(Client, InstanceId, Input, []).
+
+-spec update_instance(aws_client:aws_client(), binary() | list(), update_instance_request(), proplists:proplist()) ->
+    {ok, update_instance_response(), tuple()} |
+    {error, any()} |
+    {error, update_instance_errors(), tuple()}.
+update_instance(Client, InstanceId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/api/instance/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -158,7 +158,9 @@
 
 %% Example:
 %% get_archive_message_response() :: #{
-%%   <<"MessageDownloadLink">> => string()
+%%   <<"Envelope">> => envelope(),
+%%   <<"MessageDownloadLink">> => string(),
+%%   <<"Metadata">> => metadata()
 %% }
 -type get_archive_message_response() :: #{binary() => any()}.
 
@@ -353,6 +355,7 @@
 %%   <<"ExportDestinationConfiguration">> := list(),
 %%   <<"Filters">> => archive_filters(),
 %%   <<"FromTimestamp">> := [non_neg_integer()],
+%%   <<"IncludeMetadata">> => [boolean()],
 %%   <<"MaxResults">> => integer(),
 %%   <<"ToTimestamp">> := [non_neg_integer()]
 %% }
@@ -372,6 +375,19 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_addon_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% metadata() :: #{
+%%   <<"IngressPointId">> => string(),
+%%   <<"RuleSetId">> => string(),
+%%   <<"SenderHostname">> => [string()],
+%%   <<"SenderIpAddress">> => string(),
+%%   <<"Timestamp">> => [non_neg_integer()],
+%%   <<"TlsCipherSuite">> => [string()],
+%%   <<"TlsProtocol">> => [string()],
+%%   <<"TrafficPolicyId">> => string()
+%% }
+-type metadata() :: #{binary() => any()}.
 
 %% Example:
 %% list_traffic_policies_response() :: #{
@@ -648,6 +664,14 @@
 -type list_addon_subscriptions_request() :: #{binary() => any()}.
 
 %% Example:
+%% envelope() :: #{
+%%   <<"From">> => [string()],
+%%   <<"Helo">> => [string()],
+%%   <<"To">> => list([string()]())
+%% }
+-type envelope() :: #{binary() => any()}.
+
+%% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -672,12 +696,16 @@
 %%   <<"ArchivedMessageId">> => string(),
 %%   <<"Cc">> => [string()],
 %%   <<"Date">> => [string()],
+%%   <<"Envelope">> => envelope(),
 %%   <<"From">> => [string()],
 %%   <<"HasAttachments">> => [boolean()],
 %%   <<"InReplyTo">> => [string()],
+%%   <<"IngressPointId">> => string(),
 %%   <<"MessageId">> => [string()],
 %%   <<"ReceivedHeaders">> => list([string()]()),
 %%   <<"ReceivedTimestamp">> => [non_neg_integer()],
+%%   <<"SenderHostname">> => [string()],
+%%   <<"SenderIpAddress">> => string(),
 %%   <<"Subject">> => [string()],
 %%   <<"To">> => [string()],
 %%   <<"XMailer">> => [string()],

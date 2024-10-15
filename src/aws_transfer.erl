@@ -16,8 +16,8 @@
 %% Amazon Route 53 so
 %% nothing changes for your customers and partners, or their applications.
 %% With your data in
-%% Amazon S3, you can use it with Amazon Web Services for processing,
-%% analytics, machine learning, and
+%% Amazon S3, you can use it with Amazon Web Services services for
+%% processing, analytics, machine learning, and
 %% archiving. Getting started with Transfer Family is easy since there is no
 %% infrastructure to buy and
 %% set up.
@@ -95,6 +95,8 @@
          list_connectors/3,
          list_executions/2,
          list_executions/3,
+         list_file_transfer_results/2,
+         list_file_transfer_results/3,
          list_host_keys/2,
          list_host_keys/3,
          list_profiles/2,
@@ -473,6 +475,15 @@
 -type user_details() :: #{binary() => any()}.
 
 %% Example:
+%% connector_file_transfer_result() :: #{
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"FilePath">> => string(),
+%%   <<"StatusCode">> => list(any())
+%% }
+-type connector_file_transfer_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_execution_response() :: #{
 %%   <<"Execution">> => described_execution(),
 %%   <<"WorkflowId">> => string()
@@ -644,6 +655,15 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_transfer_results_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TransferId">> := string()
+%% }
+-type list_file_transfer_results_request() :: #{binary() => any()}.
 
 %% Example:
 %% described_user() :: #{
@@ -890,6 +910,13 @@
 %%   <<"Message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_transfer_results_response() :: #{
+%%   <<"FileTransferResults">> => list(connector_file_transfer_result()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_file_transfer_results_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_step_details() :: #{
@@ -1784,6 +1811,12 @@
     internal_service_error() | 
     service_unavailable_exception() | 
     invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_file_transfer_results_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception().
 
@@ -2721,6 +2754,31 @@ list_executions(Client, Input)
 list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
+
+%% @doc
+%% Returns real-time updates and detailed information on the status of each
+%% individual file being transferred in a specific file transfer operation.
+%%
+%% You specify the file transfer by providing its `ConnectorId' and its
+%% `TransferId'.
+%%
+%% File transfer results are available up to 7 days after an operation has
+%% been requested.
+-spec list_file_transfer_results(aws_client:aws_client(), list_file_transfer_results_request()) ->
+    {ok, list_file_transfer_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_file_transfer_results_errors(), tuple()}.
+list_file_transfer_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_file_transfer_results(Client, Input, []).
+
+-spec list_file_transfer_results(aws_client:aws_client(), list_file_transfer_results_request(), proplists:proplist()) ->
+    {ok, list_file_transfer_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_file_transfer_results_errors(), tuple()}.
+list_file_transfer_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFileTransferResults">>, Input, Options).
 
 %% @doc Returns a list of host keys for the server that's specified by
 %% the `ServerId'

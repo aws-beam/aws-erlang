@@ -625,7 +625,8 @@
 %% Example:
 %% failure_conditions() :: #{
 %%   <<"conditions">> => list(condition()()),
-%%   <<"result">> => list(any())
+%%   <<"result">> => list(any()),
+%%   <<"retryConfiguration">> => retry_configuration()
 %% }
 -type failure_conditions() :: #{binary() => any()}.
 
@@ -651,6 +652,14 @@
 %%   <<"name">> => string()
 %% }
 -type stage_context() :: #{binary() => any()}.
+
+%% Example:
+%% retry_stage_metadata() :: #{
+%%   <<"autoStageRetryAttempt">> => integer(),
+%%   <<"latestRetryTrigger">> => list(any()),
+%%   <<"manualStageRetryAttempt">> => integer()
+%% }
+-type retry_stage_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% enable_stage_transition_input() :: #{
@@ -902,6 +911,12 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% retry_configuration() :: #{
+%%   <<"retryMode">> => list(any())
+%% }
+-type retry_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% input_artifact() :: #{
@@ -1675,6 +1690,7 @@
 %%   <<"latestExecution">> => stage_execution(),
 %%   <<"onFailureConditionState">> => stage_condition_state(),
 %%   <<"onSuccessConditionState">> => stage_condition_state(),
+%%   <<"retryStageMetadata">> => retry_stage_metadata(),
 %%   <<"stageName">> => string()
 %% }
 -type stage_state() :: #{binary() => any()}.
@@ -2654,7 +2670,8 @@ list_pipelines(Client, Input, Options)
     request(Client, <<"ListPipelines">>, Input, Options).
 
 %% @doc Lists the rule executions that have occurred in a pipeline configured
-%% for conditions with rules.
+%% for conditions
+%% with rules.
 -spec list_rule_executions(aws_client:aws_client(), list_rule_executions_input()) ->
     {ok, list_rule_executions_output(), tuple()} |
     {error, any()} |

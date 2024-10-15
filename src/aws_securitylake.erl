@@ -46,16 +46,16 @@
 %%
 %% Security Lake automates the collection of security-related log and event
 %% data from
-%% integrated Amazon Web Services and third-party services. It also helps you
-%% manage
+%% integrated Amazon Web Services services and third-party services. It also
+%% helps you manage
 %% the lifecycle of data with customizable retention and replication
 %% settings. Security Lake
 %% converts ingested data into Apache Parquet format and a standard
 %% open-source schema called
 %% the Open Cybersecurity Schema Framework (OCSF).
 %%
-%% Other Amazon Web Services and third-party services can subscribe to the
-%% data that's stored in Security Lake for
+%% Other Amazon Web Services services and third-party services can subscribe
+%% to the data that's stored in Security Lake for
 %% incident response and security data analytics.
 -module(aws_securitylake).
 
@@ -1074,8 +1074,8 @@
 %% API
 %%====================================================================
 
-%% @doc Adds a natively supported Amazon Web Service as an Amazon Security
-%% Lake source.
+%% @doc Adds a natively supported Amazon Web Services service as an Amazon
+%% Security Lake source.
 %%
 %% Enables
 %% source types for member accounts in required Amazon Web Services Regions,
@@ -1083,11 +1083,11 @@
 %% parameters you specify. You can choose any source type in any Region for
 %% either accounts
 %% that are part of a trusted organization or standalone accounts. Once you
-%% add an Amazon Web Service as a source, Security Lake starts collecting
-%% logs and events from it.
+%% add an Amazon Web Services service as a source, Security Lake starts
+%% collecting logs and events from it.
 %%
 %% You can use this API only to enable natively supported Amazon Web Services
-%% as a
+%% services as a
 %% source. Use `CreateCustomLogSource' to enable data collection from a
 %% custom
 %% source.
@@ -1189,7 +1189,8 @@ create_custom_log_source(Client, Input0, Options0) ->
 %% configurations.
 %%
 %% When you enable Security Lake, it starts ingesting security data after the
-%% `CreateAwsLogSource' call. This includes ingesting security data from
+%% `CreateAwsLogSource' call and after you create subscribers using the
+%% `CreateSubscriber' API. This includes ingesting security data from
 %% sources, storing data, and making data accessible to subscribers. Security
 %% Lake also enables
 %% all the existing settings and resources that it stores or maintains for
@@ -1234,6 +1235,9 @@ create_data_lake(Client, Input0, Options0) ->
 %% @doc Creates the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
+%%
+%% The notification subscription is created for exceptions that cannot be
+%% resolved by Security Lake automatically.
 -spec create_data_lake_exception_subscription(aws_client:aws_client(), create_data_lake_exception_subscription_request()) ->
     {ok, create_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
@@ -1306,12 +1310,12 @@ create_data_lake_organization_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a subscription permission for accounts that are already
-%% enabled in
-%% Amazon Security Lake.
+%% @doc Creates a subscriber for accounts that are already enabled in Amazon
+%% Security Lake.
 %%
-%% You can create a subscriber with access to data in the current Amazon Web
-%% Services Region.
+%% You can
+%% create a subscriber with access to data in the current Amazon Web Services
+%% Region.
 -spec create_subscriber(aws_client:aws_client(), create_subscriber_request()) ->
     {ok, create_subscriber_response(), tuple()} |
     {error, any()} |
@@ -1384,8 +1388,8 @@ create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a natively supported Amazon Web Service as an Amazon Security
-%% Lake source.
+%% @doc Removes a natively supported Amazon Web Services service as an Amazon
+%% Security Lake source.
 %%
 %% You
 %% can remove a source for one or more Regions. When you remove the source,
@@ -1639,7 +1643,7 @@ delete_subscriber(Client, SubscriberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified notification subscription in Amazon Security
+%% @doc Deletes the specified subscription notification in Amazon Security
 %% Lake for the organization
 %% you specify.
 -spec delete_subscriber_notification(aws_client:aws_client(), binary() | list(), delete_subscriber_notification_request()) ->
@@ -1715,8 +1719,8 @@ deregister_data_lake_delegated_administrator(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the details of exception notifications for the account in
-%% Amazon Security Lake.
+%% @doc Retrieves the protocol and endpoint that were provided when
+%% subscribing to Amazon SNS topics for exception notifications.
 -spec get_data_lake_exception_subscription(aws_client:aws_client()) ->
     {ok, get_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
@@ -1954,7 +1958,7 @@ list_data_lakes(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the log sources in the current Amazon Web Services Region.
+%% @doc Retrieves the log sources.
 -spec list_log_sources(aws_client:aws_client(), list_log_sources_request()) ->
     {ok, list_log_sources_response(), tuple()} |
     {error, any()} |
@@ -1988,7 +1992,7 @@ list_log_sources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List all subscribers for the specific Amazon Security Lake account
+%% @doc Lists all subscribers for the specific Amazon Security Lake account
 %% ID.
 %%
 %% You can retrieve a list
@@ -2204,10 +2208,39 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Specifies where to store your security data and for how long.
+%% @doc You can use `UpdateDataLake' to specify where to store your
+%% security data, how it should
+%% be encrypted at rest and for how long.
 %%
-%% You can add a rollup
-%% Region to consolidate data from multiple Amazon Web Services Regions.
+%% You can add a Rollup
+%% Region:
+%% https://docs.aws.amazon.com/security-lake/latest/userguide/manage-regions.html#add-rollup-region
+%% to consolidate data from multiple Amazon Web Services Regions, replace
+%% default encryption (SSE-S3) with Customer Manged Key:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk,
+%% or specify transition and expiration actions through storage Lifecycle
+%% management:
+%% https://docs.aws.amazon.com/security-lake/latest/userguide/lifecycle-management.html.
+%% The `UpdateDataLake' API works as an &quot;upsert&quot; operation that
+%% performs an insert if the specified item or record does not exist, or an
+%% update if it
+%% already exists. Security Lake securely stores your data at rest using
+%% Amazon Web Services encryption solutions. For more details, see Data
+%% protection in Amazon Security Lake:
+%% https://docs.aws.amazon.com/security-lake/latest/userguide/data-protection.html.
+%%
+%% For example, omitting the key `encryptionConfiguration' from a Region
+%% that is
+%% included in an update call that currently uses KMS will leave that
+%% Region's KMS key in
+%% place, but specifying `encryptionConfiguration: {kmsKeyId:
+%% 'S3_MANAGED_KEY'}'
+%% for that same Region will reset the key to `S3-managed'.
+%%
+%% For more details about lifecycle management and how to update retention
+%% settings for one or more Regions after enabling Security Lake, see the
+%% Amazon Security Lake User Guide:
+%% https://docs.aws.amazon.com/security-lake/latest/userguide/lifecycle-management.html.
 -spec update_data_lake(aws_client:aws_client(), update_data_lake_request()) ->
     {ok, update_data_lake_response(), tuple()} |
     {error, any()} |
