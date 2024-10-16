@@ -230,6 +230,13 @@
 -type list_build_batches_output() :: #{binary() => any()}.
 
 %% Example:
+%% proxy_configuration() :: #{
+%%   <<"defaultBehavior">> => list(any()),
+%%   <<"orderedProxyRules">> => list(fleet_proxy_rule()())
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% logs_config() :: #{
 %%   <<"cloudWatchLogs">> => cloud_watch_logs_config(),
 %%   <<"s3Logs">> => s3_logs_config()
@@ -1040,6 +1047,7 @@
 %%   <<"fleetServiceRole">> => string(),
 %%   <<"imageId">> => string(),
 %%   <<"overflowBehavior">> => list(any()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
 %%   <<"scalingConfiguration">> => scaling_configuration_input(),
 %%   <<"tags">> => list(tag()()),
 %%   <<"vpcConfig">> => vpc_config()
@@ -1055,6 +1063,7 @@
 %%   <<"imageId">> => string(),
 %%   <<"name">> := string(),
 %%   <<"overflowBehavior">> => list(any()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
 %%   <<"scalingConfiguration">> => scaling_configuration_input(),
 %%   <<"tags">> => list(tag()()),
 %%   <<"vpcConfig">> => vpc_config()
@@ -1092,6 +1101,14 @@
 %%   <<"streamName">> => string()
 %% }
 -type logs_location() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_proxy_rule() :: #{
+%%   <<"effect">> => list(any()),
+%%   <<"entities">> => list(string()()),
+%%   <<"type">> => list(any())
+%% }
+-type fleet_proxy_rule() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_output() :: #{
@@ -1509,6 +1526,7 @@
 %%   <<"lastModified">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"overflowBehavior">> => list(any()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
 %%   <<"scalingConfiguration">> => scaling_configuration_output(),
 %%   <<"status">> => fleet_status(),
 %%   <<"tags">> => list(tag()()),

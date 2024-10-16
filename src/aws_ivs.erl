@@ -652,6 +652,7 @@
 
 %% Example:
 %% stream_event() :: #{
+%%   <<"code">> => string(),
 %%   <<"eventTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"type">> => string()

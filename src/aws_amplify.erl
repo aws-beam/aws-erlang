@@ -441,6 +441,8 @@
 %%   <<"jobArn">> => string(),
 %%   <<"jobId">> => string(),
 %%   <<"jobType">> => list(any()),
+%%   <<"sourceUrl">> => string(),
+%%   <<"sourceUrlType">> => list(any()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any())
 %% }
@@ -953,7 +955,8 @@
 %% Example:
 %% start_deployment_request() :: #{
 %%   <<"jobId">> => string(),
-%%   <<"sourceUrl">> => string()
+%%   <<"sourceUrl">> => string(),
+%%   <<"sourceUrlType">> => list(any())
 %% }
 -type start_deployment_request() :: #{binary() => any()}.
 
@@ -1327,7 +1330,7 @@ create_branch(Client, AppId, Input0, Options0) ->
 %% @doc Creates a deployment for a manually deployed Amplify app.
 %%
 %% Manually deployed apps are
-%% not connected to a repository.
+%% not connected to a Git repository.
 %%
 %% The maximum duration between the `CreateDeployment' call and the
 %% `StartDeployment' call cannot exceed 8 hours. If the duration exceeds
@@ -2299,7 +2302,7 @@ list_webhooks(Client, AppId, QueryMap, HeadersMap, Options0)
 %% @doc Starts a deployment for a manually deployed app.
 %%
 %% Manually deployed apps are not
-%% connected to a repository.
+%% connected to a Git repository.
 %%
 %% The maximum duration between the `CreateDeployment' call and the
 %% `StartDeployment' call cannot exceed 8 hours. If the duration exceeds

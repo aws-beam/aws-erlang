@@ -1688,6 +1688,7 @@
 
 %% Example:
 %% put_configuration_set_delivery_options_request() :: #{
+%%   <<"MaxDeliverySeconds">> => float(),
 %%   <<"SendingPoolName">> => string(),
 %%   <<"TlsPolicy">> => list(any())
 %% }
@@ -1990,6 +1991,7 @@
 
 %% Example:
 %% delivery_options() :: #{
+%%   <<"MaxDeliverySeconds">> => float(),
 %%   <<"SendingPoolName">> => string(),
 %%   <<"TlsPolicy">> => list(any())
 %% }

@@ -87,6 +87,8 @@
          create_hsm_client_certificate/3,
          create_hsm_configuration/2,
          create_hsm_configuration/3,
+         create_integration/2,
+         create_integration/3,
          create_redshift_idc_application/2,
          create_redshift_idc_application/3,
          create_scheduled_action/2,
@@ -123,6 +125,8 @@
          delete_hsm_client_certificate/3,
          delete_hsm_configuration/2,
          delete_hsm_configuration/3,
+         delete_integration/2,
+         delete_integration/3,
          delete_partner/2,
          delete_partner/3,
          delete_redshift_idc_application/2,
@@ -187,6 +191,8 @@
          describe_hsm_configurations/3,
          describe_inbound_integrations/2,
          describe_inbound_integrations/3,
+         describe_integrations/2,
+         describe_integrations/3,
          describe_logging_status/2,
          describe_logging_status/3,
          describe_node_configuration_options/2,
@@ -269,6 +275,8 @@
          modify_endpoint_access/3,
          modify_event_subscription/2,
          modify_event_subscription/3,
+         modify_integration/2,
+         modify_integration/3,
          modify_redshift_idc_application/2,
          modify_redshift_idc_application/3,
          modify_scheduled_action/2,
@@ -318,6 +326,12 @@
 %%   <<"message">> => string()
 %% }
 -type endpoint_authorization_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_source_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_source_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
 %% describe_scheduled_actions_message() :: #{
@@ -384,6 +398,12 @@
 %%   <<"Status">> => list(any())
 %% }
 -type describe_data_shares_for_producer_message() :: #{binary() => any()}.
+
+%% Example:
+%% integration_target_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_target_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
 %% recommended_action() :: #{
@@ -560,6 +580,12 @@
 -type inbound_integration() :: #{binary() => any()}.
 
 %% Example:
+%% integration_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
 %% availability_zone() :: #{
 %%   <<"Name">> => string(),
 %%   <<"SupportedPlatforms">> => list(supported_platform()())
@@ -656,11 +682,34 @@
 -type describe_cluster_db_revisions_message() :: #{binary() => any()}.
 
 %% Example:
+%% integration() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(integration_error()()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetArn">> => string()
+%% }
+-type integration() :: #{binary() => any()}.
+
+%% Example:
 %% create_tags_message() :: #{
 %%   <<"ResourceName">> := string(),
 %%   <<"Tags">> := list(tag()())
 %% }
 -type create_tags_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type describe_integrations_filter() :: #{binary() => any()}.
 
 %% Example:
 %% modify_event_subscription_message() :: #{
@@ -1448,6 +1497,12 @@
 -type bucket_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
+%% integration_conflict_operation_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_conflict_operation_fault() :: #{binary() => any()}.
+
+%% Example:
 %% modify_cluster_result() :: #{
 %%   <<"Cluster">> => cluster()
 %% }
@@ -1489,6 +1544,12 @@
 %%   <<"HsmConfigurationIdentifier">> := string()
 %% }
 -type delete_hsm_configuration_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_message() :: #{
+%%   <<"IntegrationArn">> := string()
+%% }
+-type delete_integration_message() :: #{binary() => any()}.
 
 %% Example:
 %% list_recommendations_message() :: #{
@@ -1556,6 +1617,12 @@
 %%   <<"message">> => string()
 %% }
 -type authorization_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
 %% snapshot_copy_already_enabled_fault() :: #{
@@ -2326,6 +2393,14 @@
 -type endpoint() :: #{binary() => any()}.
 
 %% Example:
+%% modify_integration_message() :: #{
+%%   <<"Description">> => string(),
+%%   <<"IntegrationArn">> := string(),
+%%   <<"IntegrationName">> => string()
+%% }
+-type modify_integration_message() :: #{binary() => any()}.
+
+%% Example:
 %% events_message() :: #{
 %%   <<"Events">> => list(event()()),
 %%   <<"Marker">> => string()
@@ -2452,6 +2527,18 @@
 %%   <<"message">> => string()
 %% }
 -type s_n_s_invalid_topic_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_message() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationName">> := string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"SourceArn">> := string(),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"TargetArn">> := string()
+%% }
+-type create_integration_message() :: #{binary() => any()}.
 
 %% Example:
 %% update_partner_status_input_message() :: #{
@@ -3144,6 +3231,13 @@
 -type partner_integration_info() :: #{binary() => any()}.
 
 %% Example:
+%% integrations_message() :: #{
+%%   <<"Integrations">> => list(integration()()),
+%%   <<"Marker">> => string()
+%% }
+-type integrations_message() :: #{binary() => any()}.
+
+%% Example:
 %% copy_to_region_disabled_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -3206,6 +3300,15 @@
 %%   <<"ClusterSecurityGroupName">> := string()
 %% }
 -type delete_cluster_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_message() :: #{
+%%   <<"Filters">> => list(describe_integrations_filter()()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_integrations_message() :: #{binary() => any()}.
 
 %% Example:
 %% unsupported_option_fault() :: #{
@@ -3436,6 +3539,12 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_table_restore_argument_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_conflict_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_conflict_state_fault() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_already_exists_fault() :: #{
@@ -4025,6 +4134,17 @@
     hsm_configuration_quota_exceeded_fault() | 
     invalid_tag_fault().
 
+-type create_integration_errors() ::
+    tag_limit_exceeded_fault() | 
+    invalid_cluster_state_fault() | 
+    integration_quota_exceeded_fault() | 
+    integration_conflict_operation_fault() | 
+    invalid_tag_fault() | 
+    unsupported_operation_fault() | 
+    integration_already_exists_fault() | 
+    integration_target_not_found_fault() | 
+    integration_source_not_found_fault().
+
 -type create_redshift_idc_application_errors() ::
     dependent_service_unavailable_fault() | 
     redshift_idc_application_quota_exceeded_fault() | 
@@ -4128,6 +4248,12 @@
 -type delete_hsm_configuration_errors() ::
     invalid_hsm_configuration_state_fault() | 
     hsm_configuration_not_found_fault().
+
+-type delete_integration_errors() ::
+    integration_conflict_state_fault() | 
+    integration_not_found_fault() | 
+    integration_conflict_operation_fault() | 
+    unsupported_operation_fault().
 
 -type delete_partner_errors() ::
     partner_not_found_fault() | 
@@ -4239,6 +4365,10 @@
 -type describe_inbound_integrations_errors() ::
     integration_not_found_fault() | 
     invalid_namespace_fault() | 
+    unsupported_operation_fault().
+
+-type describe_integrations_errors() ::
+    integration_not_found_fault() | 
     unsupported_operation_fault().
 
 -type describe_logging_status_errors() ::
@@ -4475,6 +4605,13 @@
     source_not_found_fault() | 
     subscription_event_id_not_found_fault() | 
     subscription_severity_not_found_fault().
+
+-type modify_integration_errors() ::
+    integration_conflict_state_fault() | 
+    integration_not_found_fault() | 
+    integration_conflict_operation_fault() | 
+    unsupported_operation_fault() | 
+    integration_already_exists_fault().
 
 -type modify_redshift_idc_application_errors() ::
     dependent_service_unavailable_fault() | 
@@ -5203,6 +5340,23 @@ create_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsmConfiguration">>, Input, Options).
 
+%% @doc Creates a zero-ETL integration with Amazon Redshift.
+-spec create_integration(aws_client:aws_client(), create_integration_message()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, create_integration_errors(), tuple()}.
+create_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_integration(Client, Input, []).
+
+-spec create_integration(aws_client:aws_client(), create_integration_message(), proplists:proplist()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, create_integration_errors(), tuple()}.
+create_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIntegration">>, Input, Options).
+
 %% @doc Creates an Amazon Redshift application for use with IAM Identity
 %% Center.
 -spec create_redshift_idc_application(aws_client:aws_client(), create_redshift_idc_application_message()) ->
@@ -5587,6 +5741,23 @@ delete_hsm_configuration(Client, Input)
 delete_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsmConfiguration">>, Input, Options).
+
+%% @doc Deletes a zero-ETL integration with Amazon Redshift.
+-spec delete_integration(aws_client:aws_client(), delete_integration_message()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_errors(), tuple()}.
+delete_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_integration(Client, Input, []).
+
+-spec delete_integration(aws_client:aws_client(), delete_integration_message(), proplists:proplist()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_errors(), tuple()}.
+delete_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIntegration">>, Input, Options).
 
 %% @doc Deletes a partner integration from a cluster.
 %%
@@ -6354,6 +6525,23 @@ describe_inbound_integrations(Client, Input)
 describe_inbound_integrations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInboundIntegrations">>, Input, Options).
+
+%% @doc Describes one or more zero-ETL integrations with Amazon Redshift.
+-spec describe_integrations(aws_client:aws_client(), describe_integrations_message()) ->
+    {ok, integrations_message(), tuple()} |
+    {error, any()} |
+    {error, describe_integrations_errors(), tuple()}.
+describe_integrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_integrations(Client, Input, []).
+
+-spec describe_integrations(aws_client:aws_client(), describe_integrations_message(), proplists:proplist()) ->
+    {ok, integrations_message(), tuple()} |
+    {error, any()} |
+    {error, describe_integrations_errors(), tuple()}.
+describe_integrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIntegrations">>, Input, Options).
 
 %% @doc Describes whether information, such as queries and connection
 %% attempts, is being
@@ -7286,6 +7474,23 @@ modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
 
+%% @doc Modifies a zero-ETL integration with Amazon Redshift.
+-spec modify_integration(aws_client:aws_client(), modify_integration_message()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, modify_integration_errors(), tuple()}.
+modify_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_integration(Client, Input, []).
+
+-spec modify_integration(aws_client:aws_client(), modify_integration_message(), proplists:proplist()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, modify_integration_errors(), tuple()}.
+modify_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIntegration">>, Input, Options).
+
 %% @doc Changes an existing Amazon Redshift IAM Identity Center application.
 -spec modify_redshift_idc_application(aws_client:aws_client(), modify_redshift_idc_application_message()) ->
     {ok, modify_redshift_idc_application_result(), tuple()} |
@@ -7540,6 +7745,8 @@ reset_cluster_parameter_group(Client, Input, Options)
 %% dc2.large
 %%
 %% dc2.8xlarge
+%%
+%% ra3.large
 %%
 %% ra3.xlplus
 %%

@@ -149,11 +149,12 @@
 %% Example:
 %% app() :: #{
 %%   <<"appArn">> => string(),
-%%   <<"assessmentSchedule">> => string(),
-%%   <<"complianceStatus">> => string(),
+%%   <<"assessmentSchedule">> => list(any()),
+%%   <<"awsApplicationArn">> => string(),
+%%   <<"complianceStatus">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"driftStatus">> => string(),
+%%   <<"driftStatus">> => list(any()),
 %%   <<"eventSubscriptions">> => list(event_subscription()()),
 %%   <<"lastAppComplianceEvaluationTime">> => non_neg_integer(),
 %%   <<"lastDriftEvaluationTime">> => non_neg_integer(),
@@ -164,7 +165,7 @@
 %%   <<"resiliencyScore">> => float(),
 %%   <<"rpoInSecs">> => integer(),
 %%   <<"rtoInSecs">> => integer(),
-%%   <<"status">> => string(),
+%%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
 %% }
 -type app() :: #{binary() => any()}.
@@ -207,7 +208,7 @@
 %% describe_resource_grouping_recommendation_task_response() :: #{
 %%   <<"errorMessage">> => string(),
 %%   <<"groupingId">> => string(),
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type describe_resource_grouping_recommendation_task_response() :: #{binary() => any()}.
 
@@ -260,7 +261,8 @@
 
 %% Example:
 %% create_app_request() :: #{
-%%   <<"assessmentSchedule">> => string(),
+%%   <<"assessmentSchedule">> => list(any()),
+%%   <<"awsApplicationArn">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"eventSubscriptions">> => list(event_subscription()()),
@@ -301,9 +303,9 @@
 %% list_app_assessments_request() :: #{
 %%   <<"appArn">> => string(),
 %%   <<"assessmentName">> => string(),
-%%   <<"assessmentStatus">> => list(string()()),
-%%   <<"complianceStatus">> => string(),
-%%   <<"invoker">> => string(),
+%%   <<"assessmentStatus">> => list(list(any())()),
+%%   <<"complianceStatus">> => list(any()),
+%%   <<"invoker">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"reverseOrder">> => boolean()
@@ -363,7 +365,7 @@
 %%   <<"appRegistryAppName">> => string(),
 %%   <<"eksSourceName">> => string(),
 %%   <<"logicalStackName">> => string(),
-%%   <<"mappingType">> => string(),
+%%   <<"mappingType">> => list(any()),
 %%   <<"physicalResourceId">> => physical_resource_id(),
 %%   <<"resourceGroupName">> => string(),
 %%   <<"resourceName">> => string(),
@@ -430,9 +432,9 @@
 %%   <<"compliance">> => map(),
 %%   <<"cost">> => cost(),
 %%   <<"description">> => string(),
-%%   <<"haArchitecture">> => string(),
+%%   <<"haArchitecture">> => list(any()),
 %%   <<"name">> => string(),
-%%   <<"optimizationType">> => string(),
+%%   <<"optimizationType">> => list(any()),
 %%   <<"recommendationCompliance">> => map(),
 %%   <<"referenceId">> => string(),
 %%   <<"suggestedChanges">> => list(string()())
@@ -442,7 +444,7 @@
 
 %% Example:
 %% event_subscription() :: #{
-%%   <<"eventType">> => string(),
+%%   <<"eventType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"snsTopicArn">> => string()
 %% }
@@ -462,7 +464,7 @@
 %%   <<"appArn">> => string(),
 %%   <<"errorMessage">> => string(),
 %%   <<"groupingId">> => string(),
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type start_resource_grouping_recommendation_task_response() :: #{binary() => any()}.
 
@@ -471,7 +473,7 @@
 %% import_resources_to_draft_app_version_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"eksSources">> => list(eks_source()()),
-%%   <<"importStrategy">> => string(),
+%%   <<"importStrategy">> => list(any()),
 %%   <<"sourceArns">> => list(string()()),
 %%   <<"terraformSources">> => list(terraform_source()())
 %% }
@@ -572,7 +574,7 @@
 %% disruption_compliance() :: #{
 %%   <<"achievableRpoInSecs">> => integer(),
 %%   <<"achievableRtoInSecs">> => integer(),
-%%   <<"complianceStatus">> => string(),
+%%   <<"complianceStatus">> => list(any()),
 %%   <<"currentRpoInSecs">> => integer(),
 %%   <<"currentRtoInSecs">> => integer(),
 %%   <<"message">> => string(),
@@ -603,7 +605,7 @@
 %% Example:
 %% update_recommendation_status_request_entry() :: #{
 %%   <<"entryId">> => string(),
-%%   <<"excludeReason">> => string(),
+%%   <<"excludeReason">> => list(any()),
 %%   <<"excluded">> => boolean(),
 %%   <<"item">> => update_recommendation_status_item(),
 %%   <<"referenceId">> => string()
@@ -641,7 +643,7 @@
 %% component_recommendation() :: #{
 %%   <<"appComponentName">> => string(),
 %%   <<"configRecommendations">> => list(config_recommendation()()),
-%%   <<"recommendationStatus">> => string()
+%%   <<"recommendationStatus">> => list(any())
 %% }
 -type component_recommendation() :: #{binary() => any()}.
 
@@ -694,7 +696,7 @@
 %% Example:
 %% recommendation_item() :: #{
 %%   <<"alreadyImplemented">> => boolean(),
-%%   <<"excludeReason">> => string(),
+%%   <<"excludeReason">> => list(any()),
 %%   <<"excluded">> => boolean(),
 %%   <<"resourceId">> => string(),
 %%   <<"targetAccountId">> => string(),
@@ -791,9 +793,9 @@
 %%   <<"name">> => string(),
 %%   <<"prerequisite">> => string(),
 %%   <<"recommendationId">> => string(),
-%%   <<"recommendationStatus">> => string(),
+%%   <<"recommendationStatus">> => list(any()),
 %%   <<"referenceId">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => list(any())
 %% }
 -type alarm_recommendation() :: #{binary() => any()}.
 
@@ -835,12 +837,12 @@
 %% Example:
 %% create_resiliency_policy_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"dataLocationConstraint">> => string(),
+%%   <<"dataLocationConstraint">> => list(any()),
 %%   <<"policy">> := map(),
 %%   <<"policyDescription">> => string(),
 %%   <<"policyName">> := string(),
 %%   <<"tags">> => map(),
-%%   <<"tier">> := string()
+%%   <<"tier">> := list(any())
 %% }
 -type create_resiliency_policy_request() :: #{binary() => any()}.
 
@@ -933,7 +935,7 @@
 %% Example:
 %% batch_update_recommendation_status_successful_entry() :: #{
 %%   <<"entryId">> => string(),
-%%   <<"excludeReason">> => string(),
+%%   <<"excludeReason">> => list(any()),
 %%   <<"excluded">> => boolean(),
 %%   <<"item">> => update_recommendation_status_item(),
 %%   <<"referenceId">> => string()
@@ -960,7 +962,7 @@
 %% Example:
 %% reject_grouping_recommendation_entry() :: #{
 %%   <<"groupingRecommendationId">> => string(),
-%%   <<"rejectionReason">> => string()
+%%   <<"rejectionReason">> => list(any())
 %% }
 -type reject_grouping_recommendation_entry() :: #{binary() => any()}.
 
@@ -1023,7 +1025,7 @@
 
 %% Example:
 %% recommendation_disruption_compliance() :: #{
-%%   <<"expectedComplianceStatus">> => string(),
+%%   <<"expectedComplianceStatus">> => list(any()),
 %%   <<"expectedRpoDescription">> => string(),
 %%   <<"expectedRpoInSecs">> => integer(),
 %%   <<"expectedRtoDescription">> => string(),
@@ -1069,7 +1071,7 @@
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string(),
 %%   <<"resolutionId">> := string(),
-%%   <<"status">> := string()
+%%   <<"status">> := list(any())
 %% }
 -type resolve_app_version_resources_response() :: #{binary() => any()}.
 
@@ -1077,7 +1079,7 @@
 %% Example:
 %% app_input_source() :: #{
 %%   <<"eksSourceClusterNamespace">> => eks_source_cluster_namespace(),
-%%   <<"importType">> => string(),
+%%   <<"importType">> => list(any()),
 %%   <<"resourceCount">> => integer(),
 %%   <<"sourceArn">> => string(),
 %%   <<"sourceName">> => string(),
@@ -1089,7 +1091,7 @@
 %% Example:
 %% delete_recommendation_template_response() :: #{
 %%   <<"recommendationTemplateArn">> := string(),
-%%   <<"status">> := string()
+%%   <<"status">> := list(any())
 %% }
 -type delete_recommendation_template_response() :: #{binary() => any()}.
 
@@ -1104,7 +1106,7 @@
 %%   <<"physicalResourceId">> => physical_resource_id(),
 %%   <<"resourceName">> => string(),
 %%   <<"resourceType">> => string(),
-%%   <<"sourceType">> => string()
+%%   <<"sourceType">> => list(any())
 %% }
 -type physical_resource() :: #{binary() => any()}.
 
@@ -1112,17 +1114,18 @@
 %% Example:
 %% app_summary() :: #{
 %%   <<"appArn">> => string(),
-%%   <<"assessmentSchedule">> => string(),
-%%   <<"complianceStatus">> => string(),
+%%   <<"assessmentSchedule">> => list(any()),
+%%   <<"awsApplicationArn">> => string(),
+%%   <<"complianceStatus">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"driftStatus">> => string(),
+%%   <<"driftStatus">> => list(any()),
 %%   <<"lastAppComplianceEvaluationTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"resiliencyScore">> => float(),
 %%   <<"rpoInSecs">> => integer(),
 %%   <<"rtoInSecs">> => integer(),
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type app_summary() :: #{binary() => any()}.
 
@@ -1161,7 +1164,7 @@
 %% resource_drift() :: #{
 %%   <<"appArn">> => string(),
 %%   <<"appVersion">> => string(),
-%%   <<"diffType">> => string(),
+%%   <<"diffType">> => list(any()),
 %%   <<"referenceId">> => string(),
 %%   <<"resourceIdentifier">> => resource_identifier()
 %% }
@@ -1174,12 +1177,12 @@
 %%   <<"appVersion">> => string(),
 %%   <<"assessmentArn">> => string(),
 %%   <<"assessmentName">> => string(),
-%%   <<"assessmentStatus">> => string(),
-%%   <<"complianceStatus">> => string(),
+%%   <<"assessmentStatus">> => list(any()),
+%%   <<"complianceStatus">> => list(any()),
 %%   <<"cost">> => cost(),
-%%   <<"driftStatus">> => string(),
+%%   <<"driftStatus">> => list(any()),
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"invoker">> => string(),
+%%   <<"invoker">> => list(any()),
 %%   <<"message">> => string(),
 %%   <<"resiliencyScore">> => float(),
 %%   <<"startTime">> => non_neg_integer(),
@@ -1245,6 +1248,13 @@
 
 
 %% Example:
+%% error_detail() :: #{
+%%   <<"errorMessage">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_resource_grouping_recommendations_response() :: #{
 %%   <<"groupingRecommendations">> => list(grouping_recommendation()()),
 %%   <<"nextToken">> => string()
@@ -1303,7 +1313,7 @@
 %%   <<"appVersion">> := string(),
 %%   <<"eksSources">> => list(eks_source()()),
 %%   <<"sourceArns">> => list(string()()),
-%%   <<"status">> := string(),
+%%   <<"status">> := list(any()),
 %%   <<"terraformSources">> => list(terraform_source()())
 %% }
 -type import_resources_to_draft_app_version_response() :: #{binary() => any()}.
@@ -1333,19 +1343,19 @@
 %% permission_model() :: #{
 %%   <<"crossAccountRoleArns">> => list(string()()),
 %%   <<"invokerRoleName">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => list(any())
 %% }
 -type permission_model() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_resiliency_policy_request() :: #{
-%%   <<"dataLocationConstraint">> => string(),
+%%   <<"dataLocationConstraint">> => list(any()),
 %%   <<"policy">> => map(),
 %%   <<"policyArn">> := string(),
 %%   <<"policyDescription">> => string(),
 %%   <<"policyName">> => string(),
-%%   <<"tier">> => string()
+%%   <<"tier">> => list(any())
 %% }
 -type update_resiliency_policy_request() :: #{binary() => any()}.
 
@@ -1372,14 +1382,14 @@
 %% Example:
 %% resiliency_policy() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"dataLocationConstraint">> => string(),
-%%   <<"estimatedCostTier">> => string(),
+%%   <<"dataLocationConstraint">> => list(any()),
+%%   <<"estimatedCostTier">> => list(any()),
 %%   <<"policy">> => map(),
 %%   <<"policyArn">> => string(),
 %%   <<"policyDescription">> => string(),
 %%   <<"policyName">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"tier">> => string()
+%%   <<"tier">> => list(any())
 %% }
 -type resiliency_policy() :: #{binary() => any()}.
 
@@ -1387,7 +1397,7 @@
 %% Example:
 %% update_app_request() :: #{
 %%   <<"appArn">> := string(),
-%%   <<"assessmentSchedule">> => string(),
+%%   <<"assessmentSchedule">> => list(any()),
 %%   <<"clearResiliencyPolicyArn">> => boolean(),
 %%   <<"description">> => string(),
 %%   <<"eventSubscriptions">> => list(event_subscription()()),
@@ -1403,13 +1413,13 @@
 %%   <<"appVersion">> => string(),
 %%   <<"assessmentArn">> => string(),
 %%   <<"assessmentName">> => string(),
-%%   <<"assessmentStatus">> => string(),
+%%   <<"assessmentStatus">> => list(any()),
 %%   <<"compliance">> => map(),
-%%   <<"complianceStatus">> => string(),
+%%   <<"complianceStatus">> => list(any()),
 %%   <<"cost">> => cost(),
-%%   <<"driftStatus">> => string(),
+%%   <<"driftStatus">> => list(any()),
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"invoker">> => string(),
+%%   <<"invoker">> => list(any()),
 %%   <<"message">> => string(),
 %%   <<"policy">> => resiliency_policy(),
 %%   <<"resiliencyScore">> => resiliency_score(),
@@ -1432,10 +1442,10 @@
 %%   <<"name">> => string(),
 %%   <<"prerequisite">> => string(),
 %%   <<"recommendationId">> => string(),
-%%   <<"recommendationStatus">> => string(),
+%%   <<"recommendationStatus">> => list(any()),
 %%   <<"referenceId">> => string(),
-%%   <<"risk">> => string(),
-%%   <<"type">> => string()
+%%   <<"risk">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
 -type test_recommendation() :: #{binary() => any()}.
 
@@ -1448,7 +1458,7 @@
 %%   <<"nextToken">> => string(),
 %%   <<"recommendationTemplateArn">> => string(),
 %%   <<"reverseOrder">> => boolean(),
-%%   <<"status">> => list(string()())
+%%   <<"status">> => list(list(any())())
 %% }
 -type list_recommendation_templates_request() :: #{binary() => any()}.
 
@@ -1527,6 +1537,7 @@
 %% Example:
 %% list_apps_request() :: #{
 %%   <<"appArn">> => string(),
+%%   <<"awsApplicationArn">> => string(),
 %%   <<"fromLastAssessmentTime">> => non_neg_integer(),
 %%   <<"maxResults">> => integer(),
 %%   <<"name">> => string(),
@@ -1551,15 +1562,15 @@
 %%   <<"appArn">> => string(),
 %%   <<"assessmentArn">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"format">> => string(),
+%%   <<"format">> => list(any()),
 %%   <<"message">> => string(),
 %%   <<"name">> => string(),
 %%   <<"needsReplacements">> => boolean(),
 %%   <<"recommendationIds">> => list(string()()),
 %%   <<"recommendationTemplateArn">> => string(),
-%%   <<"recommendationTypes">> => list(string()()),
+%%   <<"recommendationTypes">> => list(list(any())()),
 %%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
+%%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
 %%   <<"templatesLocation">> => s3_location()
 %% }
@@ -1597,7 +1608,7 @@
 %% Example:
 %% delete_app_assessment_response() :: #{
 %%   <<"assessmentArn">> := string(),
-%%   <<"assessmentStatus">> := string()
+%%   <<"assessmentStatus">> := list(any())
 %% }
 -type delete_app_assessment_response() :: #{binary() => any()}.
 
@@ -1607,7 +1618,7 @@
 %%   <<"awsAccountId">> => string(),
 %%   <<"awsRegion">> => string(),
 %%   <<"identifier">> => string(),
-%%   <<"type">> => string()
+%%   <<"type">> => list(any())
 %% }
 -type physical_resource_id() :: #{binary() => any()}.
 
@@ -1645,8 +1656,8 @@
 %%   <<"actualValue">> => map(),
 %%   <<"appId">> => string(),
 %%   <<"appVersion">> => string(),
-%%   <<"diffType">> => string(),
-%%   <<"driftType">> => string(),
+%%   <<"diffType">> => list(any()),
+%%   <<"driftType">> => list(any()),
 %%   <<"entityId">> => string(),
 %%   <<"entityType">> => string(),
 %%   <<"expectedReferenceId">> => string(),
@@ -1706,7 +1717,7 @@
 %% cost() :: #{
 %%   <<"amount">> => float(),
 %%   <<"currency">> => string(),
-%%   <<"frequency">> => string()
+%%   <<"frequency">> => list(any())
 %% }
 -type cost() :: #{binary() => any()}.
 
@@ -1717,7 +1728,7 @@
 %%   <<"appVersion">> := string(),
 %%   <<"errorMessage">> => string(),
 %%   <<"resolutionId">> := string(),
-%%   <<"status">> := string()
+%%   <<"status">> := list(any())
 %% }
 -type describe_app_version_resources_resolution_status_response() :: #{binary() => any()}.
 
@@ -1786,9 +1797,9 @@
 %%   <<"name">> => string(),
 %%   <<"prerequisite">> => string(),
 %%   <<"recommendationId">> => string(),
-%%   <<"recommendationStatus">> => string(),
+%%   <<"recommendationStatus">> => list(any()),
 %%   <<"referenceId">> => string(),
-%%   <<"serviceType">> => string()
+%%   <<"serviceType">> => list(any())
 %% }
 -type sop_recommendation() :: #{binary() => any()}.
 
@@ -1800,7 +1811,7 @@
 %%   <<"cost">> => cost(),
 %%   <<"message">> => string(),
 %%   <<"resiliencyScore">> => resiliency_score(),
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type app_component_compliance() :: #{binary() => any()}.
 
@@ -1818,10 +1829,10 @@
 %%   <<"assessmentArn">> := string(),
 %%   <<"bucketName">> => string(),
 %%   <<"clientToken">> => string(),
-%%   <<"format">> => string(),
+%%   <<"format">> => list(any()),
 %%   <<"name">> := string(),
 %%   <<"recommendationIds">> => list(string()()),
-%%   <<"recommendationTypes">> => list(string()()),
+%%   <<"recommendationTypes">> => list(list(any())()),
 %%   <<"tags">> => map()
 %% }
 -type create_recommendation_template_request() :: #{binary() => any()}.
@@ -1837,15 +1848,15 @@
 
 %% Example:
 %% grouping_recommendation() :: #{
-%%   <<"confidenceLevel">> => string(),
+%%   <<"confidenceLevel">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"groupingAppComponent">> => grouping_app_component(),
 %%   <<"groupingRecommendationId">> => string(),
 %%   <<"recommendationReasons">> => list(string()()),
-%%   <<"rejectionReason">> => string(),
+%%   <<"rejectionReason">> => list(any()),
 %%   <<"resources">> => list(grouping_resource()()),
 %%   <<"score">> => float(),
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type grouping_recommendation() :: #{binary() => any()}.
 
@@ -1854,8 +1865,9 @@
 %% describe_draft_app_version_resources_import_status_response() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string(),
+%%   <<"errorDetails">> => list(error_detail()()),
 %%   <<"errorMessage">> => string(),
-%%   <<"status">> := string(),
+%%   <<"status">> := list(any()),
 %%   <<"statusChangeTime">> := non_neg_integer()
 %% }
 -type describe_draft_app_version_resources_import_status_response() :: #{binary() => any()}.
@@ -3385,7 +3397,8 @@ list_alarm_recommendations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List of compliance drifts that were detected while running an
+%% @doc Indicates the list of compliance drifts that were detected while
+%% running an
 %% assessment.
 -spec list_app_assessment_compliance_drifts(aws_client:aws_client(), list_app_assessment_compliance_drifts_request()) ->
     {ok, list_app_assessment_compliance_drifts_response(), tuple()} |
@@ -3805,6 +3818,7 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"appArn">>, maps:get(<<"appArn">>, QueryMap, undefined)},
+        {<<"awsApplicationArn">>, maps:get(<<"awsApplicationArn">>, QueryMap, undefined)},
         {<<"fromLastAssessmentTime">>, maps:get(<<"fromLastAssessmentTime">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
