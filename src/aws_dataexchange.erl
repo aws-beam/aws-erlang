@@ -2,44 +2,50 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS Data Exchange is a service that makes it easy for AWS customers
-%% to exchange data in the cloud.
+%% to exchange data in
+%% the cloud.
 %%
 %% You can use the AWS Data Exchange APIs to create, update, manage, and
-%% access file-based data set in the AWS Cloud.
+%% access
+%% file-based data set in the AWS Cloud.
 %%
 %% As a subscriber, you can view and access the data sets that you have an
-%% entitlement to through
-%% a subscription. You can use the APIs to download or copy your entitled
-%% data sets to Amazon
-%% Simple Storage Service (Amazon S3) for use across a variety of AWS
-%% analytics and machine
-%% learning services.
+%% entitlement to
+%% through a subscription. You can use the APIs to download or copy your
+%% entitled data sets to
+%% Amazon Simple Storage Service (Amazon S3) for use across a variety of AWS
+%% analytics and
+%% machine learning services.
 %%
 %% As a provider, you can create and manage your data sets that you would
-%% like to publish to a
-%% product. Being able to package and provide your data sets into products
-%% requires a few
+%% like to publish
+%% to a product. Being able to package and provide your data sets into
+%% products requires a few
 %% steps to determine eligibility. For more information, visit the AWS Data
 %% Exchange
 %% User Guide.
 %%
 %% A data set is a collection of data that can be changed or updated over
-%% time. Data sets can be
-%% updated using revisions, which represent a new version or incremental
-%% change to a data set.
-%% A revision contains one or more assets. An asset in AWS Data Exchange is a
-%% piece of data
-%% that can be stored as an Amazon S3 object, Redshift datashare, API Gateway
-%% API, AWS Lake
-%% Formation data permission, or Amazon S3 data access. The asset can be a
-%% structured data
-%% file, an image file, or some other data file. Jobs are asynchronous import
-%% or export
+%% time. Data sets
+%% can be updated using revisions, which represent a new version or
+%% incremental change to a
+%% data set. A revision contains one or more assets. An asset in AWS Data
+%% Exchange is a piece
+%% of data that can be stored as an Amazon S3 object, Redshift datashare, API
+%% Gateway API, AWS
+%% Lake Formation data permission, or Amazon S3 data access. The asset can be
+%% a structured
+%% data file, an image file, or some other data file. Jobs are asynchronous
+%% import or export
 %% operations used to create or copy assets.
 -module(aws_dataexchange).
 
--export([cancel_job/3,
+-export([accept_data_grant/3,
+         accept_data_grant/4,
+         cancel_job/3,
          cancel_job/4,
+         create_data_grant/2,
+         create_data_grant/3,
          create_data_set/2,
          create_data_set/3,
          create_event_action/2,
@@ -50,6 +56,8 @@
          create_revision/4,
          delete_asset/5,
          delete_asset/6,
+         delete_data_grant/3,
+         delete_data_grant/4,
          delete_data_set/3,
          delete_data_set/4,
          delete_event_action/3,
@@ -59,6 +67,9 @@
          get_asset/4,
          get_asset/6,
          get_asset/7,
+         get_data_grant/2,
+         get_data_grant/4,
+         get_data_grant/5,
          get_data_set/2,
          get_data_set/4,
          get_data_set/5,
@@ -68,9 +79,15 @@
          get_job/2,
          get_job/4,
          get_job/5,
+         get_received_data_grant/2,
+         get_received_data_grant/4,
+         get_received_data_grant/5,
          get_revision/3,
          get_revision/5,
          get_revision/6,
+         list_data_grants/1,
+         list_data_grants/3,
+         list_data_grants/4,
          list_data_set_revisions/2,
          list_data_set_revisions/4,
          list_data_set_revisions/5,
@@ -83,6 +100,9 @@
          list_jobs/1,
          list_jobs/3,
          list_jobs/4,
+         list_received_data_grants/1,
+         list_received_data_grants/3,
+         list_received_data_grants/4,
          list_revision_assets/3,
          list_revision_assets/5,
          list_revision_assets/6,
@@ -184,6 +204,10 @@
 %% }
 -type get_data_set_response() :: #{binary() => any()}.
 
+%% Example:
+%% accept_data_grant_request() :: #{}
+-type accept_data_grant_request() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -228,6 +252,15 @@
 
 
 %% Example:
+%% list_received_data_grants_request() :: #{
+%%   <<"AcceptanceState">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_data_grants_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_data_sets_response() :: #{
 %%   <<"DataSets">> => list(data_set_entry()()),
 %%   <<"NextToken">> => string()
@@ -260,11 +293,38 @@
 
 
 %% Example:
+%% get_received_data_grant_response() :: #{
+%%   <<"AcceptanceState">> => string(),
+%%   <<"AcceptedAt">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"GrantDistributionScope">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReceiverPrincipal">> => string(),
+%%   <<"SenderPrincipal">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_received_data_grant_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% l_f_tag() :: #{
 %%   <<"TagKey">> => [string()],
 %%   <<"TagValues">> => list([string()]())
 %% }
 -type l_f_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_received_data_grants_response() :: #{
+%%   <<"DataGrantSummaries">> => list(received_data_grant_summaries_entry()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_data_grants_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -312,6 +372,27 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_grant_response() :: #{
+%%   <<"AcceptanceState">> => string(),
+%%   <<"AcceptedAt">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"GrantDistributionScope">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReceiverPrincipal">> => string(),
+%%   <<"SenderPrincipal">> => string(),
+%%   <<"SourceDataSetId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type create_data_grant_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_job_response() :: #{}
@@ -495,6 +576,23 @@
 
 
 %% Example:
+%% create_data_grant_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"GrantDistributionScope">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"ReceiverPrincipal">> := string(),
+%%   <<"SourceDataSetId">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_data_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_received_data_grant_request() :: #{}
+-type get_received_data_grant_request() :: #{}.
+
+
+%% Example:
 %% list_data_set_revisions_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Revisions">> => list(revision_entry()())
@@ -576,6 +674,25 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type export_assets_to_s3_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_data_grant_response() :: #{
+%%   <<"AcceptanceState">> => string(),
+%%   <<"AcceptedAt">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"GrantDistributionScope">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReceiverPrincipal">> => string(),
+%%   <<"SenderPrincipal">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type accept_data_grant_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -801,6 +918,7 @@
 
 %% Example:
 %% origin_details() :: #{
+%%   <<"DataGrantId">> => string(),
 %%   <<"ProductId">> => string()
 %% }
 -type origin_details() :: #{binary() => any()}.
@@ -965,6 +1083,24 @@
 
 
 %% Example:
+%% data_grant_summary_entry() :: #{
+%%   <<"AcceptanceState">> => string(),
+%%   <<"AcceptedAt">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReceiverPrincipal">> => string(),
+%%   <<"SenderPrincipal">> => string(),
+%%   <<"SourceDataSetId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type data_grant_summary_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_job_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -976,6 +1112,10 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type get_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_grant_request() :: #{}
+-type get_data_grant_request() :: #{}.
 
 
 %% Example:
@@ -1026,6 +1166,14 @@
 %% get_asset_request() :: #{}
 -type get_asset_request() :: #{}.
 
+
+%% Example:
+%% list_data_grants_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_grants_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_job_request() :: #{}
 -type get_job_request() :: #{}.
@@ -1036,6 +1184,10 @@
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_grant_request() :: #{}
+-type delete_data_grant_request() :: #{}.
 
 
 %% Example:
@@ -1093,6 +1245,14 @@
 
 
 %% Example:
+%% list_data_grants_response() :: #{
+%%   <<"DataGrantSummaries">> => list(data_grant_summary_entry()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_grants_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_data_set_revisions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1107,6 +1267,27 @@
 %%   <<"Key">> => string()
 %% }
 -type asset_destination_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_grant_response() :: #{
+%%   <<"AcceptanceState">> => string(),
+%%   <<"AcceptedAt">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"GrantDistributionScope">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReceiverPrincipal">> => string(),
+%%   <<"SenderPrincipal">> => string(),
+%%   <<"SourceDataSetId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_data_grant_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1196,6 +1377,23 @@
 
 
 %% Example:
+%% received_data_grant_summaries_entry() :: #{
+%%   <<"AcceptanceState">> => string(),
+%%   <<"AcceptedAt">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReceiverPrincipal">> => string(),
+%%   <<"SenderPrincipal">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type received_data_grant_summaries_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_revision_request() :: #{
 %%   <<"Comment">> => string(),
 %%   <<"Finalized">> => boolean()
@@ -1277,12 +1475,28 @@
 %% }
 -type create_event_action_response() :: #{binary() => any()}.
 
+-type accept_data_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type cancel_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type create_data_grant_errors() ::
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type create_data_set_errors() ::
     throttling_exception() | 
@@ -1321,6 +1535,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_data_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_data_set_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1349,6 +1570,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_data_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_data_set_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1367,9 +1595,23 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_received_data_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_revision_errors() ::
     throttling_exception() | 
     validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_grants_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
 
@@ -1394,6 +1636,13 @@
 -type list_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_received_data_grants_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
 
@@ -1468,9 +1717,44 @@
 %% API
 %%====================================================================
 
+%% @doc This operation accepts a data grant.
+-spec accept_data_grant(aws_client:aws_client(), binary() | list(), accept_data_grant_request()) ->
+    {ok, accept_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, accept_data_grant_errors(), tuple()}.
+accept_data_grant(Client, DataGrantArn, Input) ->
+    accept_data_grant(Client, DataGrantArn, Input, []).
+
+-spec accept_data_grant(aws_client:aws_client(), binary() | list(), accept_data_grant_request(), proplists:proplist()) ->
+    {ok, accept_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, accept_data_grant_errors(), tuple()}.
+accept_data_grant(Client, DataGrantArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/data-grants/", aws_util:encode_uri(DataGrantArn), "/accept"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This operation cancels a job.
 %%
-%% Jobs can be cancelled only when they are in the WAITING state.
+%% Jobs can be cancelled only when they are in the WAITING
+%% state.
 -spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1486,6 +1770,40 @@ cancel_job(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This operation creates a data grant.
+-spec create_data_grant(aws_client:aws_client(), create_data_grant_request()) ->
+    {ok, create_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_grant_errors(), tuple()}.
+create_data_grant(Client, Input) ->
+    create_data_grant(Client, Input, []).
+
+-spec create_data_grant(aws_client:aws_client(), create_data_grant_request(), proplists:proplist()) ->
+    {ok, create_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_grant_errors(), tuple()}.
+create_data_grant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/data-grants"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1674,6 +1992,40 @@ delete_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This operation deletes a data grant.
+-spec delete_data_grant(aws_client:aws_client(), binary() | list(), delete_data_grant_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_data_grant_errors(), tuple()}.
+delete_data_grant(Client, DataGrantId, Input) ->
+    delete_data_grant(Client, DataGrantId, Input, []).
+
+-spec delete_data_grant(aws_client:aws_client(), binary() | list(), delete_data_grant_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_data_grant_errors(), tuple()}.
+delete_data_grant(Client, DataGrantId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/data-grants/", aws_util:encode_uri(DataGrantId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This operation deletes a data set.
 -spec delete_data_set(aws_client:aws_client(), binary() | list(), delete_data_set_request()) ->
     {ok, undefined, tuple()} |
@@ -1813,6 +2165,43 @@ get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This operation returns information about a data grant.
+-spec get_data_grant(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_grant_errors(), tuple()}.
+get_data_grant(Client, DataGrantId)
+  when is_map(Client) ->
+    get_data_grant(Client, DataGrantId, #{}, #{}).
+
+-spec get_data_grant(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_grant_errors(), tuple()}.
+get_data_grant(Client, DataGrantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_grant(Client, DataGrantId, QueryMap, HeadersMap, []).
+
+-spec get_data_grant(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_grant_errors(), tuple()}.
+get_data_grant(Client, DataGrantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/data-grants/", aws_util:encode_uri(DataGrantId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This operation returns information about a data set.
 -spec get_data_set(aws_client:aws_client(), binary() | list()) ->
     {ok, get_data_set_response(), tuple()} |
@@ -1924,6 +2313,43 @@ get_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This operation returns information about a received data grant.
+-spec get_received_data_grant(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_received_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, get_received_data_grant_errors(), tuple()}.
+get_received_data_grant(Client, DataGrantArn)
+  when is_map(Client) ->
+    get_received_data_grant(Client, DataGrantArn, #{}, #{}).
+
+-spec get_received_data_grant(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_received_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, get_received_data_grant_errors(), tuple()}.
+get_received_data_grant(Client, DataGrantArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_received_data_grant(Client, DataGrantArn, QueryMap, HeadersMap, []).
+
+-spec get_received_data_grant(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_received_data_grant_response(), tuple()} |
+    {error, any()} |
+    {error, get_received_data_grant_errors(), tuple()}.
+get_received_data_grant(Client, DataGrantArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/received-data-grants/", aws_util:encode_uri(DataGrantArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This operation returns information about a revision.
 -spec get_revision(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_revision_response(), tuple()} |
@@ -1961,8 +2387,51 @@ get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This operation returns information about all data grants.
+-spec list_data_grants(aws_client:aws_client()) ->
+    {ok, list_data_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_grants_errors(), tuple()}.
+list_data_grants(Client)
+  when is_map(Client) ->
+    list_data_grants(Client, #{}, #{}).
+
+-spec list_data_grants(aws_client:aws_client(), map(), map()) ->
+    {ok, list_data_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_grants_errors(), tuple()}.
+list_data_grants(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_grants(Client, QueryMap, HeadersMap, []).
+
+-spec list_data_grants(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_grants_errors(), tuple()}.
+list_data_grants(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/data-grants"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This operation lists a data set's revisions sorted by CreatedAt
-%% in descending order.
+%% in descending
+%% order.
 -spec list_data_set_revisions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_set_revisions_response(), tuple()} |
     {error, any()} |
@@ -2006,9 +2475,9 @@ list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, Options0)
 
 %% @doc This operation lists your data sets.
 %%
-%% When listing by origin OWNED, results are sorted by CreatedAt in
-%% descending order. When listing by origin ENTITLED, there is no order and
-%% the maxResults parameter is ignored.
+%% When listing by origin OWNED, results are sorted by
+%% CreatedAt in descending order. When listing by origin ENTITLED, there is
+%% no order.
 -spec list_data_sets(aws_client:aws_client()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
@@ -2139,8 +2608,52 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This operation returns information about all received data grants.
+-spec list_received_data_grants(aws_client:aws_client()) ->
+    {ok, list_received_data_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_received_data_grants_errors(), tuple()}.
+list_received_data_grants(Client)
+  when is_map(Client) ->
+    list_received_data_grants(Client, #{}, #{}).
+
+-spec list_received_data_grants(aws_client:aws_client(), map(), map()) ->
+    {ok, list_received_data_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_received_data_grants_errors(), tuple()}.
+list_received_data_grants(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_received_data_grants(Client, QueryMap, HeadersMap, []).
+
+-spec list_received_data_grants(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_received_data_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_received_data_grants_errors(), tuple()}.
+list_received_data_grants(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/received-data-grants"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"acceptanceState">>, maps:get(<<"acceptanceState">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This operation lists a revision's assets sorted alphabetically in
-%% descending order.
+%% descending
+%% order.
 -spec list_revision_assets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_revision_assets_response(), tuple()} |
     {error, any()} |
@@ -2252,7 +2765,8 @@ revoke_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
 
 %% @doc This operation invokes an API Gateway API asset.
 %%
-%% The request is proxied to the provider’s API Gateway API.
+%% The request is proxied to the
+%% provider’s API Gateway API.
 -spec send_api_asset(aws_client:aws_client(), send_api_asset_request()) ->
     {ok, send_api_asset_response(), tuple()} |
     {error, any()} |

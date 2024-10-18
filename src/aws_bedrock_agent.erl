@@ -1805,7 +1805,6 @@
 %%   <<"maxTokens">> => integer(),
 %%   <<"stopSequences">> => list([string()]()),
 %%   <<"temperature">> => float(),
-%%   <<"topK">> => integer(),
 %%   <<"topP">> => float()
 %% }
 -type prompt_model_inference_configuration() :: #{binary() => any()}.
@@ -4066,7 +4065,7 @@ get_flow_version(Client, FlowIdentifier, FlowVersion, QueryMap, HeadersMap, Opti
 
 %% @doc Gets information about a data ingestion job.
 %%
-%% Data sources are ingested into your knowledge base so that Large Lanaguage
+%% Data sources are ingested into your knowledge base so that Large Language
 %% Models (LLMs) can use your data.
 -spec get_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_ingestion_job_response(), tuple()} |

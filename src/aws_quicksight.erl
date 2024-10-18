@@ -377,6 +377,8 @@
          start_asset_bundle_import_job/4,
          start_dashboard_snapshot_job/4,
          start_dashboard_snapshot_job/5,
+         start_dashboard_snapshot_job_schedule/5,
+         start_dashboard_snapshot_job_schedule/6,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -1037,6 +1039,14 @@
 %%   <<"RadarChartAggregatedFieldWells">> => radar_chart_aggregated_field_wells()
 %% }
 -type radar_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_dashboard_snapshot_job_schedule_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type start_dashboard_snapshot_job_schedule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2283,9 +2293,12 @@
 %% }
 -type describe_asset_bundle_export_job_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% restore_analysis_request() :: #{}
--type restore_analysis_request() :: #{}.
+%% restore_analysis_request() :: #{
+%%   <<"RestoreToFolders">> => boolean()
+%% }
+-type restore_analysis_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5038,6 +5051,10 @@
 %%   <<"Error">> => list(any())
 %% }
 -type invalid_topic_reviewed_answer() :: #{binary() => any()}.
+
+%% Example:
+%% start_dashboard_snapshot_job_schedule_request() :: #{}
+-type start_dashboard_snapshot_job_schedule_request() :: #{}.
 
 
 %% Example:
@@ -9151,6 +9168,7 @@
 %%   <<"AnalysisId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"RequestId">> => string(),
+%%   <<"RestorationFailedFolderArns">> => list(string()()),
 %%   <<"Status">> => integer()
 %% }
 -type restore_analysis_response() :: #{binary() => any()}.
@@ -12537,6 +12555,8 @@
     internal_failure_exception().
 
 -type restore_analysis_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
     throttling_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -12623,6 +12643,15 @@
     resource_not_found_exception() | 
     unsupported_user_edition_exception() | 
     unsupported_pricing_plan_exception() | 
+    internal_failure_exception().
+
+-type start_dashboard_snapshot_job_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
     internal_failure_exception().
 
 -type tag_resource_errors() ::
@@ -18530,9 +18559,10 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"restore-to-folders">>, <<"RestoreToFolders">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for analyses that belong to the user specified in the
@@ -18940,6 +18970,51 @@ start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input) ->
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an asynchronous job that runs an existing dashboard schedule
+%% and sends the dashboard snapshot through email.
+%%
+%% Only one job can run simultaneously in a given schedule. Repeated requests
+%% are skipped with a `202' HTTP status code.
+%%
+%% For more information, see Scheduling and sending Amazon QuickSight reports
+%% by email:
+%% https://docs.aws.amazon.com/quicksight/latest/user/sending-reports.html
+%% and Configuring email report settings for a Amazon QuickSight dashboard:
+%% https://docs.aws.amazon.com/quicksight/latest/user/email-reports-from-dashboard.html
+%% in the Amazon QuickSight User Guide.
+-spec start_dashboard_snapshot_job_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_schedule_request()) ->
+    {ok, start_dashboard_snapshot_job_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, start_dashboard_snapshot_job_schedule_errors(), tuple()}.
+start_dashboard_snapshot_job_schedule(Client, AwsAccountId, DashboardId, ScheduleId, Input) ->
+    start_dashboard_snapshot_job_schedule(Client, AwsAccountId, DashboardId, ScheduleId, Input, []).
+
+-spec start_dashboard_snapshot_job_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_schedule_request(), proplists:proplist()) ->
+    {ok, start_dashboard_snapshot_job_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, start_dashboard_snapshot_job_schedule_errors(), tuple()}.
+start_dashboard_snapshot_job_schedule(Client, AwsAccountId, DashboardId, ScheduleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/schedules/", aws_util:encode_uri(ScheduleId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

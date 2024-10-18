@@ -3138,9 +3138,14 @@ create_registration_association(Client, Input, Options)
 %% @doc Create a new registration attachment to use for uploading a file or a
 %% URL to a file.
 %%
-%% The maximum file size is 1MiB and valid file extensions are PDF, JPEG and
-%% PNG. For example, many sender ID registrations require a signed “letter of
-%% authorization” (LOA) to be submitted.
+%% The maximum file size is 500KB and valid file extensions are PDF, JPEG and
+%% PNG. For
+%% example, many sender ID registrations require a signed “letter of
+%% authorization” (LOA)
+%% to be submitted.
+%%
+%% Use either `AttachmentUrl' or `AttachmentBody' to upload your
+%% attachment. If both are specified then an exception is returned.
 -spec create_registration_attachment(aws_client:aws_client(), create_registration_attachment_request()) ->
     {ok, create_registration_attachment_result(), tuple()} |
     {error, any()} |
@@ -3769,7 +3774,7 @@ describe_opt_out_lists(Client, Input, Options)
 %% destination
 %% numbers in your opt-out list.
 %%
-%% If you specify an opted out number that isn't valid, an error is
+%% If you specify an opted out number that isn't valid, an exception is
 %% returned.
 -spec describe_opted_out_numbers(aws_client:aws_client(), describe_opted_out_numbers_request()) ->
     {ok, describe_opted_out_numbers_result(), tuple()} |
