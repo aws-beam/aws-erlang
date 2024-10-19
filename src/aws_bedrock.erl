@@ -673,6 +673,8 @@
 %% Example:
 %% imported_model_summary() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
+%%   <<"instructSupported">> => boolean(),
+%%   <<"modelArchitecture">> => string(),
 %%   <<"modelArn">> => string(),
 %%   <<"modelName">> => string()
 %% }
@@ -1135,6 +1137,7 @@
 %% Example:
 %% get_imported_model_response() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
+%%   <<"instructSupported">> => boolean(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"modelArchitecture">> => [string()],
