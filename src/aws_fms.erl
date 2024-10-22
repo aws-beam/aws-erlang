@@ -717,7 +717,9 @@
 %%   <<"RouteHasOutOfScopeEndpointViolation">> => route_has_out_of_scope_endpoint_violation(),
 %%   <<"ThirdPartyFirewallMissingExpectedRouteTableViolation">> => third_party_firewall_missing_expected_route_table_violation(),
 %%   <<"ThirdPartyFirewallMissingFirewallViolation">> => third_party_firewall_missing_firewall_violation(),
-%%   <<"ThirdPartyFirewallMissingSubnetViolation">> => third_party_firewall_missing_subnet_violation()
+%%   <<"ThirdPartyFirewallMissingSubnetViolation">> => third_party_firewall_missing_subnet_violation(),
+%%   <<"WebACLHasIncompatibleConfigurationViolation">> => web_acl_has_incompatible_configuration_violation(),
+%%   <<"WebACLHasOutOfScopeResourcesViolation">> => web_acl_has_out_of_scope_resources_violation()
 %% }
 -type resource_violation() :: #{binary() => any()}.
 
@@ -804,6 +806,13 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+%% Example:
+%% web_acl_has_incompatible_configuration_violation() :: #{
+%%   <<"Description">> => string(),
+%%   <<"WebACLArn">> => string()
+%% }
+-type web_acl_has_incompatible_configuration_violation() :: #{binary() => any()}.
 
 %% Example:
 %% entry_violation() :: #{
@@ -1258,6 +1267,13 @@
 %%   <<"VpcId">> => string()
 %% }
 -type firewall_subnet_missing_vpcendpoint_violation() :: #{binary() => any()}.
+
+%% Example:
+%% web_acl_has_out_of_scope_resources_violation() :: #{
+%%   <<"OutOfScopeResourceList">> => list(string()()),
+%%   <<"WebACLArn">> => string()
+%% }
+-type web_acl_has_out_of_scope_resources_violation() :: #{binary() => any()}.
 
 %% Example:
 %% policy_compliance_detail() :: #{

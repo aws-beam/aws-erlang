@@ -26,6 +26,8 @@
          generate_card_validation_data/3,
          generate_mac/2,
          generate_mac/3,
+         generate_mac_emv_pin_change/2,
+         generate_mac_emv_pin_change/3,
          generate_pin_data/2,
          generate_pin_data/3,
          re_encrypt_data/3,
@@ -62,7 +64,7 @@
 
 %% Example:
 %% asymmetric_encryption_attributes() :: #{
-%%   <<"PaddingType">> => string()
+%%   <<"PaddingType">> => list(any())
 %% }
 -type asymmetric_encryption_attributes() :: #{binary() => any()}.
 
@@ -74,6 +76,14 @@
 %%   <<"UnpredictableNumber">> => string()
 %% }
 -type discover_dynamic_card_verification_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% current_pin_attributes() :: #{
+%%   <<"CurrentEncryptedPinBlock">> => string(),
+%%   <<"CurrentPinPekIdentifier">> => string()
+%% }
+-type current_pin_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -134,6 +144,18 @@
 
 
 %% Example:
+%% visa_attributes() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"AuthorizationRequestKeyIdentifier">> => string(),
+%%   <<"CurrentPinAttributes">> => current_pin_attributes(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type visa_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% cryptogram_verification_arpc_method1() :: #{
 %%   <<"AuthResponseCode">> => string()
 %% }
@@ -169,11 +191,23 @@
 
 %% Example:
 %% mac_algorithm_dukpt() :: #{
-%%   <<"DukptDerivationType">> => string(),
-%%   <<"DukptKeyVariant">> => string(),
+%%   <<"DukptDerivationType">> => list(any()),
+%%   <<"DukptKeyVariant">> => list(any()),
 %%   <<"KeySerialNumber">> => string()
 %% }
 -type mac_algorithm_dukpt() :: #{binary() => any()}.
+
+
+%% Example:
+%% amex_attributes() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"AuthorizationRequestKeyIdentifier">> => string(),
+%%   <<"CurrentPinAttributes">> => current_pin_attributes(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type amex_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -230,7 +264,7 @@
 
 %% Example:
 %% dukpt_attributes() :: #{
-%%   <<"DukptDerivationType">> => string(),
+%%   <<"DukptDerivationType">> => list(any()),
 %%   <<"KeySerialNumber">> => string()
 %% }
 -type dukpt_attributes() :: #{binary() => any()}.
@@ -239,8 +273,8 @@
 %% Example:
 %% emv_encryption_attributes() :: #{
 %%   <<"InitializationVector">> => string(),
-%%   <<"MajorKeyDerivationMode">> => string(),
-%%   <<"Mode">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"Mode">> => list(any()),
 %%   <<"PanSequenceNumber">> => string(),
 %%   <<"PrimaryAccountNumber">> => string(),
 %%   <<"SessionDerivationData">> => string()
@@ -264,7 +298,7 @@
 %%   <<"EncryptionKeyIdentifier">> := string(),
 %%   <<"GenerationAttributes">> := list(),
 %%   <<"GenerationKeyIdentifier">> := string(),
-%%   <<"PinBlockFormat">> := string(),
+%%   <<"PinBlockFormat">> := list(any()),
 %%   <<"PinDataLength">> => integer(),
 %%   <<"PrimaryAccountNumber">> := string()
 %% }
@@ -306,10 +340,10 @@
 
 %% Example:
 %% mac_algorithm_emv() :: #{
-%%   <<"MajorKeyDerivationMode">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
 %%   <<"PanSequenceNumber">> => string(),
 %%   <<"PrimaryAccountNumber">> => string(),
-%%   <<"SessionKeyDerivationMode">> => string(),
+%%   <<"SessionKeyDerivationMode">> => list(any()),
 %%   <<"SessionKeyDerivationValue">> => list()
 %% }
 -type mac_algorithm_emv() :: #{binary() => any()}.
@@ -321,6 +355,19 @@
 %%   <<"path">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_mac_emv_pin_change_input() :: #{
+%%   <<"DerivationMethodAttributes">> := list(),
+%%   <<"MessageData">> := string(),
+%%   <<"NewEncryptedPinBlock">> := string(),
+%%   <<"NewPinPekIdentifier">> := string(),
+%%   <<"PinBlockFormat">> := list(any()),
+%%   <<"SecureMessagingConfidentialityKeyIdentifier">> := string(),
+%%   <<"SecureMessagingIntegrityKeyIdentifier">> := string()
+%% }
+-type generate_mac_emv_pin_change_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -351,6 +398,41 @@
 
 
 %% Example:
+%% generate_mac_emv_pin_change_output() :: #{
+%%   <<"EncryptedPinBlock">> => string(),
+%%   <<"Mac">> => string(),
+%%   <<"NewPinPekArn">> => string(),
+%%   <<"NewPinPekKeyCheckValue">> => string(),
+%%   <<"SecureMessagingConfidentialityKeyArn">> => string(),
+%%   <<"SecureMessagingConfidentialityKeyCheckValue">> => string(),
+%%   <<"SecureMessagingIntegrityKeyArn">> => string(),
+%%   <<"SecureMessagingIntegrityKeyCheckValue">> => string(),
+%%   <<"VisaAmexDerivationOutputs">> => visa_amex_derivation_outputs()
+%% }
+-type generate_mac_emv_pin_change_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% master_card_attributes() :: #{
+%%   <<"ApplicationCryptogram">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type master_card_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% emv2000_attributes() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type emv2000_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% ibm3624_natural_pin() :: #{
 %%   <<"DecimalizationTable">> => string(),
 %%   <<"PinValidationData">> => string(),
@@ -378,8 +460,8 @@
 %% Example:
 %% symmetric_encryption_attributes() :: #{
 %%   <<"InitializationVector">> => string(),
-%%   <<"Mode">> => string(),
-%%   <<"PaddingType">> => string()
+%%   <<"Mode">> => list(any()),
+%%   <<"PaddingType">> => list(any())
 %% }
 -type symmetric_encryption_attributes() :: #{binary() => any()}.
 
@@ -390,6 +472,19 @@
 %%   <<"KeyCheckValue">> => string()
 %% }
 -type verify_card_validation_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% emv_common_attributes() :: #{
+%%   <<"ApplicationCryptogram">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PinBlockLengthPosition">> => list(any()),
+%%   <<"PinBlockPaddingType">> => list(any()),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type emv_common_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -412,7 +507,7 @@
 %%   <<"DukptAttributes">> => dukpt_attributes(),
 %%   <<"EncryptedPinBlock">> := string(),
 %%   <<"EncryptionKeyIdentifier">> := string(),
-%%   <<"PinBlockFormat">> := string(),
+%%   <<"PinBlockFormat">> := list(any()),
 %%   <<"PinDataLength">> => integer(),
 %%   <<"PrimaryAccountNumber">> := string(),
 %%   <<"VerificationAttributes">> := list(),
@@ -512,7 +607,7 @@
 %%   <<"AuthRequestCryptogram">> := string(),
 %%   <<"AuthResponseAttributes">> => list(),
 %%   <<"KeyIdentifier">> := string(),
-%%   <<"MajorKeyDerivationMode">> := string(),
+%%   <<"MajorKeyDerivationMode">> := list(any()),
 %%   <<"SessionKeyDerivationAttributes">> := list(),
 %%   <<"TransactionData">> := string()
 %% }
@@ -534,6 +629,16 @@
 %%   <<"ValidationDataLength">> => integer()
 %% }
 -type generate_card_validation_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_amex_derivation_outputs() :: #{
+%%   <<"AuthorizationRequestKeyArn">> => string(),
+%%   <<"AuthorizationRequestKeyCheckValue">> => string(),
+%%   <<"CurrentPinPekArn">> => string(),
+%%   <<"CurrentPinPekKeyCheckValue">> => string()
+%% }
+-type visa_amex_derivation_outputs() :: #{binary() => any()}.
 
 
 %% Example:
@@ -597,8 +702,8 @@
 
 %% Example:
 %% dukpt_derivation_attributes() :: #{
-%%   <<"DukptKeyDerivationType">> => string(),
-%%   <<"DukptKeyVariant">> => string(),
+%%   <<"DukptKeyDerivationType">> => list(any()),
+%%   <<"DukptKeyVariant">> => list(any()),
 %%   <<"KeySerialNumber">> => string()
 %% }
 -type dukpt_derivation_attributes() :: #{binary() => any()}.
@@ -606,11 +711,11 @@
 
 %% Example:
 %% dukpt_encryption_attributes() :: #{
-%%   <<"DukptKeyDerivationType">> => string(),
-%%   <<"DukptKeyVariant">> => string(),
+%%   <<"DukptKeyDerivationType">> => list(any()),
+%%   <<"DukptKeyVariant">> => list(any()),
 %%   <<"InitializationVector">> => string(),
 %%   <<"KeySerialNumber">> => string(),
-%%   <<"Mode">> => string()
+%%   <<"Mode">> => list(any())
 %% }
 -type dukpt_encryption_attributes() :: #{binary() => any()}.
 
@@ -636,6 +741,13 @@
     resource_not_found_exception().
 
 -type generate_mac_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type generate_mac_emv_pin_change_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -706,8 +818,8 @@
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/decrypt-data.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
-%% You can use an encryption key generated within Amazon Web Services Payment
-%% Cryptography, or you can import your own encryption key by calling
+%% You can use an decryption key generated within Amazon Web Services Payment
+%% Cryptography, or you can import your own decryption key by calling
 %% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
 %% For this operation, the key must have `KeyModesOfUse' set to
@@ -717,6 +829,17 @@
 %% Services Payment Cryptography, you can export the public component of the
 %% asymmetric key pair by calling GetPublicCertificate:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html.
+%%
+%% This operation also supports dynamic keys, allowing you to pass a dynamic
+%% decryption key as a TR-31 WrappedKeyBlock. This can be used when key
+%% material is frequently rotated, such as during every card transaction, and
+%% there is need to avoid importing short-lived keys into Amazon Web Services
+%% Payment Cryptography. To decrypt using dynamic keys, the `keyARN' is
+%% the Key Encryption Key (KEK) of the TR-31 wrapped decryption key material.
+%% The incoming wrapped key shall have a key purpose of D0 with a mode of use
+%% of B or D. For more information, see Using Dynamic Keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/use-cases-acquirers-dynamickeys.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% For symmetric and DUKPT decryption, Amazon Web Services Payment
 %% Cryptography supports `TDES' and `AES' algorithms. For EMV
@@ -793,12 +916,24 @@ decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html.
 %% You can import your own encryption key by calling ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
+%%
 %% For this operation, the key must have `KeyModesOfUse' set to
 %% `Encrypt'. In asymmetric encryption, plaintext is encrypted using
 %% public component. You can import the public component of an asymmetric key
 %% pair created outside Amazon Web Services Payment Cryptography by calling
 %% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
+%%
+%% This operation also supports dynamic keys, allowing you to pass a dynamic
+%% encryption key as a TR-31 WrappedKeyBlock. This can be used when key
+%% material is frequently rotated, such as during every card transaction, and
+%% there is need to avoid importing short-lived keys into Amazon Web Services
+%% Payment Cryptography. To encrypt using dynamic keys, the `keyARN' is
+%% the Key Encryption Key (KEK) of the TR-31 wrapped encryption key material.
+%% The incoming wrapped key shall have a key purpose of D0 with a mode of use
+%% of B or D. For more information, see Using Dynamic Keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/use-cases-acquirers-dynamickeys.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% For symmetric and DUKPT encryption, Amazon Web Services Payment
 %% Cryptography supports `TDES' and `AES' algorithms. For EMV
@@ -1004,6 +1139,77 @@ generate_mac(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Generates an issuer script mac for EMV payment cards that use offline
+%% PINs as the cardholder verification method (CVM).
+%%
+%% This operation generates an authenticated issuer script response by
+%% appending the incoming message data (APDU command) with the target
+%% encrypted PIN block in ISO2 format. The command structure and method to
+%% send the issuer script update to the card is not defined by this operation
+%% and is typically determined by the applicable payment card scheme.
+%%
+%% The primary inputs to this operation include the incoming new encrypted
+%% pinblock, PIN encryption key (PEK), issuer master key (IMK), primary
+%% account number (PAN), and the payment card derivation method.
+%%
+%% The operation uses two issuer master keys - secure messaging for
+%% confidentiality (IMK-SMC) and secure messaging for integrity (IMK-SMI).
+%% The SMC key is used to internally derive a key to secure the pin, while
+%% SMI key is used to internally derive a key to authenticate the script
+%% reponse as per the EMV 4.4 - Book 2 - Security and Key Management:
+%% https://www.emvco.com/specifications/ specification.
+%%
+%% This operation supports Amex, EMV2000, EMVCommon, Mastercard and Visa
+%% derivation methods, each requiring specific input parameters. Users must
+%% follow the specific derivation method and input parameters defined by the
+%% respective payment card scheme.
+%%
+%% Use `GenerateMac' operation when sending a script update to an EMV
+%% card that does not involve PIN change. When assigning IAM permissions, it
+%% is important to understand that `EncryptData' using EMV keys and
+%% `GenerateMac' perform similar functions to this command.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% `EncryptData'
+%%
+%% `GenerateMac'
+-spec generate_mac_emv_pin_change(aws_client:aws_client(), generate_mac_emv_pin_change_input()) ->
+    {ok, generate_mac_emv_pin_change_output(), tuple()} |
+    {error, any()} |
+    {error, generate_mac_emv_pin_change_errors(), tuple()}.
+generate_mac_emv_pin_change(Client, Input) ->
+    generate_mac_emv_pin_change(Client, Input, []).
+
+-spec generate_mac_emv_pin_change(aws_client:aws_client(), generate_mac_emv_pin_change_input(), proplists:proplist()) ->
+    {ok, generate_mac_emv_pin_change_output(), tuple()} |
+    {error, any()} |
+    {error, generate_mac_emv_pin_change_errors(), tuple()}.
+generate_mac_emv_pin_change(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/macemvpinchange/generate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Generates pin-related data such as PIN, PIN Verification Value (PVV),
 %% PIN Block, and PIN Offset during new card issuance or reissuance.
 %%
@@ -1077,6 +1283,17 @@ generate_pin_data(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
 %% The `KeyArn' for use with this operation must be in a compatible key
 %% state with `KeyModesOfUse' set to `Encrypt'.
+%%
+%% This operation also supports dynamic keys, allowing you to pass a dynamic
+%% encryption key as a TR-31 WrappedKeyBlock. This can be used when key
+%% material is frequently rotated, such as during every card transaction, and
+%% there is need to avoid importing short-lived keys into Amazon Web Services
+%% Payment Cryptography. To re-encrypt using dynamic keys, the `keyARN'
+%% is the Key Encryption Key (KEK) of the TR-31 wrapped encryption key
+%% material. The incoming wrapped key shall have a key purpose of D0 with a
+%% mode of use of B or D. For more information, see Using Dynamic Keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/use-cases-acquirers-dynamickeys.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% For symmetric and DUKPT encryption, Amazon Web Services Payment
 %% Cryptography supports `TDES' and `AES' algorithms. To encrypt
@@ -1152,6 +1369,17 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 %% (Pin Encryption Key) to BDK (Base Derivation Key) for DUKPT or from BDK
 %% for DUKPT to PEK. Amazon Web Services Payment Cryptography supports
 %% `TDES' and `AES' key derivation type for DUKPT translations.
+%%
+%% This operation also supports dynamic keys, allowing you to pass a dynamic
+%% PEK as a TR-31 WrappedKeyBlock. This can be used when key material is
+%% frequently rotated, such as during every card transaction, and there is
+%% need to avoid importing short-lived keys into Amazon Web Services Payment
+%% Cryptography. To translate PIN block using dynamic keys, the `keyARN'
+%% is the Key Encryption Key (KEK) of the TR-31 wrapped PEK. The incoming
+%% wrapped key shall have a key purpose of P0 with a mode of use of B or D.
+%% For more information, see Using Dynamic Keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/use-cases-acquirers-dynamickeys.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% The allowed combinations of PIN block format translations are guided by
 %% PCI. It is important to note that not all encrypted PIN block formats

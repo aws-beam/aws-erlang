@@ -2059,7 +2059,9 @@ attach_instances(Client, Input, Options)
     request(Client, <<"AttachInstances">>, Input, Options).
 
 %% @doc
-%% This API operation is superseded by `AttachTrafficSources', which
+%% This API operation is superseded by AttachTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html,
+%% which
 %% can attach multiple traffic sources types.
 %%
 %% We recommend using
@@ -2085,9 +2087,12 @@ attach_instances(Client, Input, Options)
 %% Gateway Load Balancer - Operates at the network layer (layer 3).
 %%
 %% To describe the target groups for an Auto Scaling group, call the
-%% `DescribeLoadBalancerTargetGroups' API. To detach the target group
-%% from
-%% the Auto Scaling group, call the `DetachLoadBalancerTargetGroups' API.
+%% DescribeLoadBalancerTargetGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLoadBalancerTargetGroups.html
+%% API. To detach the target group from
+%% the Auto Scaling group, call the DetachLoadBalancerTargetGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachLoadBalancerTargetGroups.html
+%% API.
 %%
 %% This operation is additive and does not detach existing target groups or
 %% Classic Load
@@ -2115,7 +2120,9 @@ attach_load_balancer_target_groups(Client, Input, Options)
     request(Client, <<"AttachLoadBalancerTargetGroups">>, Input, Options).
 
 %% @doc
-%% This API operation is superseded by `AttachTrafficSources', which
+%% This API operation is superseded by
+%% [https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html],
+%% which
 %% can attach multiple traffic sources types.
 %%
 %% We recommend using
@@ -2130,9 +2137,13 @@ attach_load_balancer_target_groups(Client, Input, Options)
 %% running instances with these Classic Load Balancers.
 %%
 %% To describe the load balancers for an Auto Scaling group, call the
-%% `DescribeLoadBalancers' API. To detach a load balancer from the Auto
-%% Scaling
-%% group, call the `DetachLoadBalancers' API.
+%% DescribeLoadBalancers:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLoadBalancers.html
+%% API.
+%% To detach a load balancer from the Auto Scaling group, call the
+%% DetachLoadBalancers:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachLoadBalancers.html
+%% API.
 %%
 %% This operation is additive and does not detach existing Classic Load
 %% Balancers or
@@ -2179,11 +2190,15 @@ attach_load_balancers(Client, Input, Options)
 %% from the Auto Scaling
 %% group.
 %%
-%% After the operation completes, use the `DescribeTrafficSources' API to
+%% After the operation completes, use the DescribeTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTrafficSources.html
+%% API to
 %% return details about the state of the attachments between traffic sources
 %% and your Auto Scaling
 %% group. To detach a traffic source from the Auto Scaling group, call the
-%% `DetachTrafficSources' API.
+%% DetachTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachTrafficSources.html
+%% API.
 -spec attach_traffic_sources(aws_client:aws_client(), attach_traffic_sources_type()) ->
     {ok, attach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
@@ -2251,7 +2266,9 @@ batch_put_scheduled_update_group_action(Client, Input, Options)
 %%
 %% When you cancel an instance refresh, this does not roll back any changes
 %% that it made.
-%% Use the `RollbackInstanceRefresh' API to roll back instead.
+%% Use the RollbackInstanceRefresh:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RollbackInstanceRefresh.html
+%% API to roll back instead.
 -spec cancel_instance_refresh(aws_client:aws_client(), cancel_instance_refresh_type()) ->
     {ok, cancel_instance_refresh_answer(), tuple()} |
     {error, any()} |
@@ -2299,7 +2316,9 @@ cancel_instance_refresh(Client, Input, Options)
 %% instance in a wait state.
 %%
 %% If you finish before the timeout period ends, send a
-%% callback by using the `CompleteLifecycleAction' API
+%% callback by using the CompleteLifecycleAction:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CompleteLifecycleAction.html
+%% API
 %% call.
 %%
 %% For more information, see Complete a lifecycle
@@ -2330,7 +2349,9 @@ complete_lifecycle_action(Client, Input, Options)
 %%
 %% If you exceed your maximum limit of Auto Scaling groups, the call fails.
 %% To query this limit,
-%% call the `DescribeAccountLimits' API. For information about updating
+%% call the DescribeAccountLimits:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAccountLimits.html
+%% API. For information about updating
 %% this limit, see Quotas for
 %% Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html
@@ -2369,9 +2390,10 @@ create_auto_scaling_group(Client, Input, Options)
 %%
 %% If you exceed your maximum limit of launch configurations, the call fails.
 %% To query
-%% this limit, call the `DescribeAccountLimits' API. For information
-%% about
-%% updating this limit, see Quotas for
+%% this limit, call the DescribeAccountLimits:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAccountLimits.html
+%% API.
+%% For information about updating this limit, see Quotas for
 %% Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html
 %% in the Amazon EC2 Auto Scaling User Guide.
@@ -2443,14 +2465,19 @@ create_or_update_tags(Client, Input, Options)
 %% also deletes the warm pool.
 %%
 %% To remove instances from the Auto Scaling group before deleting it, call
-%% the `DetachInstances' API with the list of instances and the option to
+%% the
+%% DetachInstances:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachInstances.html
+%% API with the list of instances and the option to
 %% decrement the desired capacity. This ensures that Amazon EC2 Auto Scaling
 %% does not launch replacement
 %% instances.
 %%
 %% To terminate all instances before deleting the Auto Scaling group, call
-%% the `UpdateAutoScalingGroup' API and set the minimum size and desired
-%% capacity
+%% the
+%% UpdateAutoScalingGroup:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_UpdateAutoScalingGroup.html
+%% API and set the minimum size and desired capacity
 %% of the Auto Scaling group to
 %% zero.
 %%
@@ -2690,7 +2717,9 @@ describe_adjustment_types(Client, Input, Options)
 %% This operation also returns information about instances in Auto Scaling
 %% groups. To retrieve
 %% information about the instances in a warm pool, you must call the
-%% `DescribeWarmPool' API.
+%% DescribeWarmPool:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeWarmPool.html
+%% API.
 -spec describe_auto_scaling_groups(aws_client:aws_client(), auto_scaling_group_names_type()) ->
     {ok, auto_scaling_groups_type(), tuple()} |
     {error, any()} |
@@ -2841,7 +2870,8 @@ describe_lifecycle_hooks(Client, Input, Options)
     request(Client, <<"DescribeLifecycleHooks">>, Input, Options).
 
 %% @doc
-%% This API operation is superseded by `DescribeTrafficSources',
+%% This API operation is superseded by DescribeTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTrafficSources.html,
 %% which can describe multiple traffic sources types.
 %%
 %% We recommend using
@@ -2873,10 +2903,14 @@ describe_lifecycle_hooks(Client, Input, Options)
 %% state.
 %%
 %% Target groups also have an `InService' state if you attach them in the
-%% `CreateAutoScalingGroup' API call. If your target group state is
+%% CreateAutoScalingGroup:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateAutoScalingGroup.html
+%% API call. If your target group state is
 %% `InService', but it is not working properly, check the scaling
 %% activities
-%% by calling `DescribeScalingActivities' and take any corrective actions
+%% by calling DescribeScalingActivities:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeScalingActivities.html
+%% and take any corrective actions
 %% necessary.
 %%
 %% For help with failed health checks, see Troubleshooting Amazon EC2 Auto
@@ -2892,8 +2926,11 @@ describe_lifecycle_hooks(Client, Input, Options)
 %%
 %% You can use this operation to describe target groups that were attached by
 %% using
-%% `AttachLoadBalancerTargetGroups', but not for target groups that
-%% were attached by using `AttachTrafficSources'.
+%% AttachLoadBalancerTargetGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachLoadBalancerTargetGroups.html,
+%% but not for target groups that
+%% were attached by using AttachTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html.
 -spec describe_load_balancer_target_groups(aws_client:aws_client(), describe_load_balancer_target_groups_request()) ->
     {ok, describe_load_balancer_target_groups_response(), tuple()} |
     {error, any()} |
@@ -2911,7 +2948,8 @@ describe_load_balancer_target_groups(Client, Input, Options)
     request(Client, <<"DescribeLoadBalancerTargetGroups">>, Input, Options).
 
 %% @doc
-%% This API operation is superseded by `DescribeTrafficSources',
+%% This API operation is superseded by DescribeTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTrafficSources.html,
 %% which can describe multiple traffic sources types.
 %%
 %% We recommend using
@@ -2927,7 +2965,9 @@ describe_load_balancer_target_groups(Client, Input, Options)
 %% This operation describes only Classic Load Balancers. If you have
 %% Application Load Balancers, Network Load Balancers, or Gateway Load
 %% Balancers, use the
-%% `DescribeLoadBalancerTargetGroups' API instead.
+%% DescribeLoadBalancerTargetGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLoadBalancerTargetGroups.html
+%% API instead.
 %%
 %% To determine the attachment status of the load balancer, use the
 %% `State'
@@ -2950,10 +2990,14 @@ describe_load_balancer_target_groups(Client, Input, Options)
 %%
 %% Load balancers also have an `InService' state if you attach them in
 %% the
-%% `CreateAutoScalingGroup' API call. If your load balancer state is
+%% CreateAutoScalingGroup:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateAutoScalingGroup.html
+%% API call. If your load balancer state is
 %% `InService', but it is not working properly, check the scaling
 %% activities
-%% by calling `DescribeScalingActivities' and take any corrective actions
+%% by calling DescribeScalingActivities:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeScalingActivities.html
+%% and take any corrective actions
 %% necessary.
 %%
 %% For help with failed health checks, see Troubleshooting Amazon EC2 Auto
@@ -3073,9 +3117,11 @@ describe_scaling_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingActivities">>, Input, Options).
 
-%% @doc Describes the scaling process types for use with the
-%% `ResumeProcesses'
-%% and `SuspendProcesses' APIs.
+%% @doc Describes the scaling process types for use with the ResumeProcesses:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ResumeProcesses.html
+%% and SuspendProcesses:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_SuspendProcesses.html
+%% APIs.
 -spec describe_scaling_process_types(aws_client:aws_client(), #{}) ->
     {ok, processes_type(), tuple()} |
     {error, any()} |
@@ -3098,7 +3144,9 @@ describe_scaling_process_types(Client, Input, Options)
 %%
 %% To describe the scaling activities for scheduled actions that have already
 %% run, call
-%% the `DescribeScalingActivities' API.
+%% the DescribeScalingActivities:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeScalingActivities.html
+%% API.
 -spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_type()) ->
     {ok, scheduled_actions_type(), tuple()} |
     {error, any()} |
@@ -3258,7 +3306,9 @@ detach_instances(Client, Input, Options)
     request(Client, <<"DetachInstances">>, Input, Options).
 
 %% @doc
-%% This API operation is superseded by `DetachTrafficSources', which
+%% This API operation is superseded by DetachTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTrafficSources.html,
+%% which
 %% can detach multiple traffic sources types.
 %%
 %% We recommend using
@@ -3275,13 +3325,17 @@ detach_instances(Client, Input, Options)
 %% deregistering the instances in the group. When all instances are
 %% deregistered, then you
 %% can no longer describe the target group using the
-%% `DescribeLoadBalancerTargetGroups' API call. The instances remain
-%% running.
+%% DescribeLoadBalancerTargetGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLoadBalancerTargetGroups.html
+%% API call. The instances remain running.
 %%
 %% You can use this operation to detach target groups that were attached by
 %% using
-%% `AttachLoadBalancerTargetGroups', but not for target groups that
-%% were attached by using `AttachTrafficSources'.
+%% AttachLoadBalancerTargetGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachLoadBalancerTargetGroups.html,
+%% but not for target groups that
+%% were attached by using AttachTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html.
 -spec detach_load_balancer_target_groups(aws_client:aws_client(), detach_load_balancer_target_groups_type()) ->
     {ok, detach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
@@ -3299,7 +3353,9 @@ detach_load_balancer_target_groups(Client, Input, Options)
     request(Client, <<"DetachLoadBalancerTargetGroups">>, Input, Options).
 
 %% @doc
-%% This API operation is superseded by `DetachTrafficSources', which
+%% This API operation is superseded by DetachTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachTrafficSources.html,
+%% which
 %% can detach multiple traffic sources types.
 %%
 %% We recommend using
@@ -3314,14 +3370,16 @@ detach_load_balancer_target_groups(Client, Input, Options)
 %%
 %% This operation detaches only Classic Load Balancers. If you have
 %% Application Load Balancers, Network Load Balancers, or
-%% Gateway Load Balancers, use the `DetachLoadBalancerTargetGroups' API
-%% instead.
+%% Gateway Load Balancers, use the DetachLoadBalancerTargetGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachLoadBalancerTargetGroups.html
+%% API instead.
 %%
 %% When you detach a load balancer, it enters the `Removing' state while
 %% deregistering the instances in the group. When all instances are
 %% deregistered, then you
-%% can no longer describe the load balancer using the
-%% `DescribeLoadBalancers' API call. The instances remain running.
+%% can no longer describe the load balancer using the DescribeLoadBalancers:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLoadBalancers.html
+%% API call. The instances remain running.
 -spec detach_load_balancers(aws_client:aws_client(), detach_load_balancers_type()) ->
     {ok, detach_load_balancers_result_type(), tuple()} |
     {error, any()} |
@@ -3345,7 +3403,9 @@ detach_load_balancers(Client, Input, Options)
 %% deregistering the instances in the group. When all instances are
 %% deregistered, then you
 %% can no longer describe the traffic source using the
-%% `DescribeTrafficSources' API call. The instances continue to run.
+%% DescribeTrafficSources:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTrafficSources.html
+%% API call. The instances continue to run.
 -spec detach_traffic_sources(aws_client:aws_client(), detach_traffic_sources_type()) ->
     {ok, detach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
@@ -3556,11 +3616,14 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% used when the instances launch or terminate.
 %%
 %% If you need more time, record the lifecycle action heartbeat to keep the
-%% instance in a wait state using the `RecordLifecycleActionHeartbeat'
+%% instance in a wait state using the RecordLifecycleActionHeartbeat:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RecordLifecycleActionHeartbeat.html
 %% API call.
 %%
 %% If you finish before the timeout period ends, send a callback by using the
-%% `CompleteLifecycleAction' API call.
+%% CompleteLifecycleAction:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CompleteLifecycleAction.html
+%% API call.
 %%
 %% For more information, see Amazon EC2 Auto Scaling lifecycle
 %% hooks:
@@ -3572,9 +3635,12 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% group, the call fails.
 %%
 %% You can view the lifecycle hooks for an Auto Scaling group using the
-%% `DescribeLifecycleHooks' API call. If you are no longer using a
-%% lifecycle
-%% hook, you can delete it by calling the `DeleteLifecycleHook' API.
+%% DescribeLifecycleHooks:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLifecycleHooks.html
+%% API call. If you are no longer using a lifecycle
+%% hook, you can delete it by calling the DeleteLifecycleHook:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteLifecycleHook.html
+%% API.
 -spec put_lifecycle_hook(aws_client:aws_client(), put_lifecycle_hook_type()) ->
     {ok, put_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
@@ -3646,9 +3712,12 @@ put_notification_configuration(Client, Input, Options)
 %% in the Amazon EC2 Auto Scaling User Guide.
 %%
 %% You can view the scaling policies for an Auto Scaling group using the
-%% `DescribePolicies' API call. If you are no longer using a scaling
-%% policy,
-%% you can delete it by calling the `DeletePolicy' API.
+%% DescribePolicies:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribePolicies.html
+%% API call. If you are no longer using a scaling policy,
+%% you can delete it by calling the DeletePolicy:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeletePolicy.html
+%% API.
 -spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_type()) ->
     {ok, policy_arn_type(), tuple()} |
     {error, any()} |
@@ -3674,9 +3743,13 @@ put_scaling_policy(Client, Input, Options)
 %% Amazon EC2 Auto Scaling User Guide.
 %%
 %% You can view the scheduled actions for an Auto Scaling group using the
-%% `DescribeScheduledActions' API call. If you are no longer using a
-%% scheduled action, you can delete it by calling the
-%% `DeleteScheduledAction' API.
+%% DescribeScheduledActions:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeScheduledActions.html
+%% API call. If you are no longer using a scheduled action, you can delete it
+%% by calling the
+%% DeleteScheduledAction:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteScheduledAction.html
+%% API.
 %%
 %% If you try to schedule your action in the past, Amazon EC2 Auto Scaling
 %% returns an error
@@ -3710,10 +3783,13 @@ put_scheduled_update_group_action(Client, Input, Options)
 %% group was
 %% created.
 %%
-%% You can view the instances in the warm pool using the
-%% `DescribeWarmPool' API call. If you are no longer using a warm pool,
-%% you can delete it by calling the
-%% `DeleteWarmPool' API.
+%% You can view the instances in the warm pool using the DescribeWarmPool:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeWarmPool.html
+%% API call.
+%% If you are no longer using a warm pool, you can delete it by calling the
+%% DeleteWarmPool:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteWarmPool.html
+%% API.
 %%
 %% For more information, see Warm pools for
 %% Amazon EC2 Auto Scaling:
@@ -3740,7 +3816,9 @@ put_warm_pool(Client, Input, Options)
 %% instance.
 %%
 %% This extends the timeout by the length of time defined using the
-%% `PutLifecycleHook' API call.
+%% PutLifecycleHook:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutLifecycleHook.html
+%% API call.
 %%
 %% This step is a part of the procedure for adding a lifecycle hook to an
 %% Auto Scaling
@@ -3769,7 +3847,9 @@ put_warm_pool(Client, Input, Options)
 %% heartbeat to keep the instance in a wait state.
 %%
 %% If you finish before the timeout period ends, send a callback by using the
-%% `CompleteLifecycleAction' API call.
+%% CompleteLifecycleAction:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CompleteLifecycleAction.html
+%% API call.
 %%
 %% For more information, see Amazon EC2 Auto Scaling lifecycle
 %% hooks:
@@ -3846,7 +3926,10 @@ resume_processes(Client, Input, Options)
 %% When you receive a successful response from this operation, Amazon EC2
 %% Auto Scaling immediately
 %% begins replacing instances. You can check the status of this operation
-%% through the `DescribeInstanceRefreshes' API operation.
+%% through the
+%% DescribeInstanceRefreshes:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeInstanceRefreshes.html
+%% API operation.
 -spec rollback_instance_refresh(aws_client:aws_client(), rollback_instance_refresh_type()) ->
     {ok, rollback_instance_refresh_answer(), tuple()} |
     {error, any()} |
@@ -3962,11 +4045,15 @@ set_instance_protection(Client, Input, Options)
 %% If successful, the request's response contains a unique ID that you
 %% can use to track
 %% the progress of the instance refresh. To query its status, call the
-%% `DescribeInstanceRefreshes' API. To describe the instance refreshes
-%% that
-%% have already run, call the `DescribeInstanceRefreshes' API. To cancel
-%% an
-%% instance refresh that is in progress, use the `CancelInstanceRefresh'
+%% DescribeInstanceRefreshes:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeInstanceRefreshes.html
+%% API.
+%% To describe the instance refreshes that
+%% have already run, call the DescribeInstanceRefreshes:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeInstanceRefreshes.html
+%% API. To cancel an
+%% instance refresh that is in progress, use the CancelInstanceRefresh:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CancelInstanceRefresh.html
 %% API.
 %%
 %% An instance refresh might fail for several reasons, such as EC2 launch
@@ -3977,7 +4064,9 @@ set_instance_protection(Client, Input, Options)
 %% monitor for
 %% failed EC2 launches using the scaling activities. To find the scaling
 %% activities, call
-%% the `DescribeScalingActivities' API.
+%% the DescribeScalingActivities:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeScalingActivities.html
+%% API.
 %%
 %% If you enable auto rollback, your Auto Scaling group will be rolled back
 %% automatically when
@@ -3987,7 +4076,9 @@ set_instance_protection(Client, Input, Options)
 %% refresh
 %% preferences. Otherwise, to roll back an instance refresh before it
 %% finishes, use the
-%% `RollbackInstanceRefresh' API.
+%% RollbackInstanceRefresh:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RollbackInstanceRefresh.html
+%% API.
 -spec start_instance_refresh(aws_client:aws_client(), start_instance_refresh_type()) ->
     {ok, start_instance_refresh_answer(), tuple()} |
     {error, any()} |
@@ -4016,8 +4107,9 @@ start_instance_refresh(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html
 %% in the Amazon EC2 Auto Scaling User Guide.
 %%
-%% To resume processes that have been suspended, call the
-%% `ResumeProcesses' API.
+%% To resume processes that have been suspended, call the ResumeProcesses:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ResumeProcesses.html
+%% API.
 -spec suspend_processes(aws_client:aws_client(), scaling_process_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4130,11 +4222,15 @@ terminate_instance_in_auto_scaling_group(Client, Input, Options)
 %% than the current size of the group, this sets the group's
 %% `DesiredCapacity' to the new `MaxSize' value.
 %%
-%% To see which properties have been set, call the
-%% `DescribeAutoScalingGroups' API. To view the scaling policies for an
-%% Auto Scaling
-%% group, call the `DescribePolicies' API. If the group has scaling
-%% policies, you can update them by calling the `PutScalingPolicy'
+%% To see which properties have been set, call the DescribeAutoScalingGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAutoScalingGroups.html
+%% API.
+%% To view the scaling policies for an Auto Scaling
+%% group, call the DescribePolicies:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribePolicies.html
+%% API. If the group has scaling
+%% policies, you can update them by calling the PutScalingPolicy:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutScalingPolicy.html
 %% API.
 -spec update_auto_scaling_group(aws_client:aws_client(), update_auto_scaling_group_type()) ->
     {ok, undefined, tuple()} |

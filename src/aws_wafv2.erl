@@ -15,14 +15,11 @@
 %%
 %% If you used WAF prior to this release, you can't use this WAFV2 API to
 %% access any
-%% WAF resources that you created before. You can access your old rules, web
-%% ACLs, and
-%% other WAF resources only through the WAF Classic APIs. The WAF Classic
-%% APIs
-%% have retained the prior names, endpoints, and namespaces.
+%% WAF resources that you created before. WAF Classic support will end on
+%% September 30, 2025.
 %%
-%% For information, including how to migrate your WAF resources to this
-%% version,
+%% For information about WAF, including how to migrate your WAF Classic
+%% resources to this version,
 %% see the WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html.
 %%
@@ -66,29 +63,6 @@
 %% programming language or platform that you're using. For more
 %% information, see Amazon Web Services SDKs:
 %% http://aws.amazon.com/tools/#SDKs.
-%%
-%% We currently provide two versions of the WAF API: this API and the prior
-%% versions,
-%% the classic WAF APIs. This new API provides the same functionality as the
-%% older versions,
-%% with the following major improvements:
-%%
-%% You use one API for both global and regional applications. Where you need
-%% to
-%% distinguish the scope, you specify a `Scope' parameter and set it to
-%% `CLOUDFRONT' or `REGIONAL'.
-%%
-%% You can define a web ACL or rule group with a single call, and update it
-%% with a
-%% single call. You define all rule specifications in JSON format, and pass
-%% them to your
-%% rule group or web ACL calls.
-%%
-%% The limits WAF places on the use of rules more closely reflects the cost
-%% of
-%% running each type of rule. Rule groups include capacity settings, so you
-%% know the
-%% maximum cost of a rule group when you use it.
 -module(aws_wafv2).
 
 -export([associate_web_acl/2,
@@ -867,6 +841,7 @@
 %%   <<"Name">> => string(),
 %%   <<"PostProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()()),
 %%   <<"PreProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()()),
+%%   <<"RetrofittedByFirewallManager">> => boolean(),
 %%   <<"Rules">> => list(rule()()),
 %%   <<"TokenDomains">> => list(string()()),
 %%   <<"VisibilityConfig">> => visibility_config()
@@ -2784,12 +2759,11 @@ delete_api_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAPIKey">>, Input, Options).
 
-%% @doc Deletes all rule groups that are managed by Firewall Manager for the
-%% specified web ACL.
+%% @doc Deletes all rule groups that are managed by Firewall Manager from the
+%% specified `WebACL'.
 %%
-%% You can only use this if `ManagedByFirewallManager' is false in the
-%% specified
-%% `WebACL'.
+%% You can only use this if `ManagedByFirewallManager' and
+%% `RetrofittedByFirewallManager' are both false in the web ACL.
 -spec delete_firewall_manager_rule_groups(aws_client:aws_client(), delete_firewall_manager_rule_groups_request()) ->
     {ok, delete_firewall_manager_rule_groups_response(), tuple()} |
     {error, any()} |
@@ -2896,8 +2870,7 @@ delete_rule_group(Client, Input, Options)
 %% @doc Deletes the specified `WebACL'.
 %%
 %% You can only use this if `ManagedByFirewallManager' is false in the
-%% specified
-%% `WebACL'.
+%% web ACL.
 %%
 %% Before deleting any web ACL, first disassociate it from all resources.
 %%

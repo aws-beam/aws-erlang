@@ -746,6 +746,13 @@
 
 
 %% Example:
+%% zonal_shift_config_request() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type zonal_shift_config_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_cluster_request() :: #{
 %%   <<"accessConfig">> => create_access_config_request(),
 %%   <<"bootstrapSelfManagedAddons">> => boolean(),
@@ -759,7 +766,8 @@
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => map(),
 %%   <<"upgradePolicy">> => upgrade_policy_request(),
-%%   <<"version">> => string()
+%%   <<"version">> => string(),
+%%   <<"zonalShiftConfig">> => zonal_shift_config_request()
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
 
@@ -873,6 +881,13 @@
 
 
 %% Example:
+%% zonal_shift_config_response() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type zonal_shift_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% upgrade_policy_response() :: #{
 %%   <<"supportType">> => list(any())
 %% }
@@ -926,7 +941,8 @@
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
 %%   <<"upgradePolicy">> => upgrade_policy_response(),
-%%   <<"version">> => string()
+%%   <<"version">> => string(),
+%%   <<"zonalShiftConfig">> => zonal_shift_config_response()
 %% }
 -type cluster() :: #{binary() => any()}.
 
@@ -1692,7 +1708,8 @@
 %%   <<"clientRequestToken">> => string(),
 %%   <<"logging">> => logging(),
 %%   <<"resourcesVpcConfig">> => vpc_config_request(),
-%%   <<"upgradePolicy">> => upgrade_policy_request()
+%%   <<"upgradePolicy">> => upgrade_policy_request(),
+%%   <<"zonalShiftConfig">> => zonal_shift_config_request()
 %% }
 -type update_cluster_config_request() :: #{binary() => any()}.
 
@@ -4515,6 +4532,10 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% the
 %% Amazon EKS User Guide
 %% .
+%%
+%% You can also use this API operation to enable or disable ARC zonal shift.
+%% If zonal shift is enabled, Amazon Web Services
+%% configures zonal autoshift for the cluster.
 %%
 %% Cluster updates are asynchronous, and they should finish within a few
 %% minutes. During

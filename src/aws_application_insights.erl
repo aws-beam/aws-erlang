@@ -320,7 +320,8 @@
 
 %% Example:
 %% describe_problem_response() :: #{
-%%   <<"Problem">> => problem()
+%%   <<"Problem">> => problem(),
+%%   <<"SNSNotificationArn">> => string()
 %% }
 -type describe_problem_response() :: #{binary() => any()}.
 
@@ -335,7 +336,8 @@
 %%   <<"OpsCenterEnabled">> => boolean(),
 %%   <<"OpsItemSNSTopicArn">> => string(),
 %%   <<"Remarks">> => string(),
-%%   <<"ResourceGroupName">> => string()
+%%   <<"ResourceGroupName">> => string(),
+%%   <<"SNSNotificationArn">> => string()
 %% }
 -type application_info() :: #{binary() => any()}.
 
@@ -351,6 +353,7 @@
 %% Example:
 %% workload() :: #{
 %%   <<"ComponentName">> => string(),
+%%   <<"MissingWorkloadConfig">> => boolean(),
 %%   <<"Tier">> => list(any()),
 %%   <<"WorkloadId">> => string(),
 %%   <<"WorkloadName">> => string(),
@@ -451,6 +454,7 @@
 %%   <<"OpsCenterEnabled">> => boolean(),
 %%   <<"OpsItemSNSTopicArn">> => string(),
 %%   <<"ResourceGroupName">> => string(),
+%%   <<"SNSNotificationArn">> => string(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_application_request() :: #{binary() => any()}.
@@ -514,7 +518,8 @@
 %%   <<"OpsCenterEnabled">> => boolean(),
 %%   <<"OpsItemSNSTopicArn">> => string(),
 %%   <<"RemoveSNSTopic">> => boolean(),
-%%   <<"ResourceGroupName">> := string()
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"SNSNotificationArn">> => string()
 %% }
 -type update_application_request() :: #{binary() => any()}.
 
@@ -584,6 +589,7 @@
 %%   <<"ResolutionMethod">> => list(any()),
 %%   <<"ResourceGroupName">> => string(),
 %%   <<"SeverityLevel">> => list(any()),
+%%   <<"ShortName">> => string(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"Title">> => string(),

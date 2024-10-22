@@ -2144,6 +2144,7 @@
 %% Example:
 %% data_migration() :: #{
 %%   <<"DataMigrationArn">> => string(),
+%%   <<"DataMigrationCidrBlocks">> => list(string()()),
 %%   <<"DataMigrationCreateTime">> => non_neg_integer(),
 %%   <<"DataMigrationEndTime">> => non_neg_integer(),
 %%   <<"DataMigrationName">> => string(),
@@ -2272,6 +2273,16 @@
 %%   <<"Connection">> => connection()
 %% }
 -type test_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% replication_task_assessment_run_result_statistic() :: #{
+%%   <<"Cancelled">> => integer(),
+%%   <<"Error">> => integer(),
+%%   <<"Failed">> => integer(),
+%%   <<"Passed">> => integer(),
+%%   <<"Warning">> => integer()
+%% }
+-type replication_task_assessment_run_result_statistic() :: #{binary() => any()}.
 
 %% Example:
 %% create_replication_instance_message() :: #{
@@ -2793,7 +2804,8 @@
 %%   <<"ResultKmsKeyArn">> => string(),
 %%   <<"ResultLocationBucket">> := string(),
 %%   <<"ResultLocationFolder">> => string(),
-%%   <<"ServiceAccessRoleArn">> := string()
+%%   <<"ServiceAccessRoleArn">> := string(),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type start_replication_task_assessment_run_message() :: #{binary() => any()}.
 
@@ -3431,6 +3443,7 @@
 %% replication_task_assessment_run() :: #{
 %%   <<"AssessmentProgress">> => replication_task_assessment_run_progress(),
 %%   <<"AssessmentRunName">> => string(),
+%%   <<"IsLatestTaskAssessmentRun">> => boolean(),
 %%   <<"LastFailureMessage">> => string(),
 %%   <<"ReplicationTaskArn">> => string(),
 %%   <<"ReplicationTaskAssessmentRunArn">> => string(),
@@ -3439,6 +3452,7 @@
 %%   <<"ResultKmsKeyArn">> => string(),
 %%   <<"ResultLocationBucket">> => string(),
 %%   <<"ResultLocationFolder">> => string(),
+%%   <<"ResultStatistic">> => replication_task_assessment_run_result_statistic(),
 %%   <<"ServiceAccessRoleArn">> => string(),
 %%   <<"Status">> => string()
 %% }
