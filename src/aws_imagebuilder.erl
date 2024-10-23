@@ -370,6 +370,7 @@
 %%   <<"instanceProfileName">> => string(),
 %%   <<"instanceTypes">> => list(string()()),
 %%   <<"name">> => string(),
+%%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
 %%   <<"tags">> => map()
 %% }
@@ -713,6 +714,7 @@
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> := string(),
+%%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"snsTopicArn">> => string(),
@@ -1176,6 +1178,7 @@
 %%   <<"instanceTypes">> => list(string()()),
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
+%%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"snsTopicArn">> => string(),
@@ -1725,6 +1728,16 @@
 %%   <<"values">> => list(string()())
 %% }
 -type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement() :: #{
+%%   <<"availabilityZone">> => string(),
+%%   <<"hostId">> => string(),
+%%   <<"hostResourceGroupArn">> => string(),
+%%   <<"tenancy">> => list(any())
+%% }
+-type placement() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2576,6 +2589,7 @@
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> => string(),
+%%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"snsTopicArn">> => string(),
@@ -4912,19 +4926,8 @@ import_vm_image(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of component build versions for the specified
-%% semantic
-%% version.
-%%
-%% The semantic version has four nodes: ../.
-%% You can assign values for the first three, and can filter on all of them.
-%%
-%% Filtering: With semantic versioning, you have the flexibility to use
-%% wildcards (x)
-%% to specify the most recent versions or nodes when selecting the base image
-%% or components for your
-%% recipe. When you use a wildcard in any node, all nodes to the right of the
-%% first wildcard must also be
-%% wildcards.
+%% component
+%% version Amazon Resource Name (ARN).
 -spec list_component_build_versions(aws_client:aws_client(), list_component_build_versions_request()) ->
     {ok, list_component_build_versions_response(), tuple()} |
     {error, any()} |

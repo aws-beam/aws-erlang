@@ -72,6 +72,12 @@
 -type scheduled_query_description() :: #{binary() => any()}.
 
 %% Example:
+%% query_insights() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type query_insights() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_response() :: #{
 
 %% }
@@ -163,6 +169,7 @@
 %%   <<"ExecutionStats">> => execution_stats(),
 %%   <<"FailureReason">> => string(),
 %%   <<"InvocationTime">> => non_neg_integer(),
+%%   <<"QueryInsightsResponse">> => scheduled_query_insights_response(),
 %%   <<"RunStatus">> => list(any()),
 %%   <<"TriggerTime">> => non_neg_integer()
 %% }
@@ -203,11 +210,28 @@
 -type cancel_query_response() :: #{binary() => any()}.
 
 %% Example:
+%% scheduled_query_insights_response() :: #{
+%%   <<"OutputBytes">> => float(),
+%%   <<"OutputRows">> => float(),
+%%   <<"QuerySpatialCoverage">> => query_spatial_coverage(),
+%%   <<"QueryTableCount">> => float(),
+%%   <<"QueryTemporalRange">> => query_temporal_range()
+%% }
+-type scheduled_query_insights_response() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% query_temporal_range_max() :: #{
+%%   <<"TableArn">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type query_temporal_range_max() :: #{binary() => any()}.
 
 %% Example:
 %% scheduled_query() :: #{
@@ -253,6 +277,7 @@
 %%   <<"ColumnInfo">> => list(column_info()()),
 %%   <<"NextToken">> => string(),
 %%   <<"QueryId">> => string(),
+%%   <<"QueryInsightsResponse">> => query_insights_response(),
 %%   <<"QueryStatus">> => query_status(),
 %%   <<"Rows">> => list(row()())
 %% }
@@ -285,6 +310,14 @@
 -type time_series_data_point() :: #{binary() => any()}.
 
 %% Example:
+%% query_spatial_coverage_max() :: #{
+%%   <<"PartitionKey">> => list(string()()),
+%%   <<"TableArn">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type query_spatial_coverage_max() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Tags">> => list(tag()())
@@ -309,6 +342,7 @@
 %% execute_scheduled_query_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"InvocationTime">> := non_neg_integer(),
+%%   <<"QueryInsights">> => scheduled_query_insights(),
 %%   <<"ScheduledQueryArn">> := string()
 %% }
 -type execute_scheduled_query_request() :: #{binary() => any()}.
@@ -355,6 +389,12 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% query_temporal_range() :: #{
+%%   <<"Max">> => query_temporal_range_max()
+%% }
+-type query_temporal_range() :: #{binary() => any()}.
 
 %% Example:
 %% update_scheduled_query_request() :: #{
@@ -423,6 +463,19 @@
 -type schedule_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% query_insights_response() :: #{
+%%   <<"OutputBytes">> => float(),
+%%   <<"OutputRows">> => float(),
+%%   <<"QuerySpatialCoverage">> => query_spatial_coverage(),
+%%   <<"QueryTableCount">> => float(),
+%%   <<"QueryTemporalRange">> => query_temporal_range(),
+%%   <<"UnloadPartitionCount">> => float(),
+%%   <<"UnloadWrittenBytes">> => float(),
+%%   <<"UnloadWrittenRows">> => float()
+%% }
+-type query_insights_response() :: #{binary() => any()}.
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -481,6 +534,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"MaxRows">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"QueryInsights">> => query_insights(),
 %%   <<"QueryString">> := string()
 %% }
 -type query_request() :: #{binary() => any()}.
@@ -497,6 +551,12 @@
 %%   <<"Type">> => type()
 %% }
 -type column_info() :: #{binary() => any()}.
+
+%% Example:
+%% query_spatial_coverage() :: #{
+%%   <<"Max">> => query_spatial_coverage_max()
+%% }
+-type query_spatial_coverage() :: #{binary() => any()}.
 
 %% Example:
 %% s3_report_location() :: #{
@@ -517,6 +577,12 @@
 %%   <<"Name">> => string()
 %% }
 -type dimension_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_query_insights() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type scheduled_query_insights() :: #{binary() => any()}.
 
 %% Example:
 %% execution_stats() :: #{
@@ -793,6 +859,11 @@ describe_scheduled_query(Client, Input, Options)
     request(Client, <<"DescribeScheduledQuery">>, Input, Options).
 
 %% @doc You can use this API to run a scheduled query manually.
+%%
+%% If you enabled `QueryInsights', this API also returns insights and
+%% metrics related to the query that you executed as part of an Amazon SNS
+%% notification. `QueryInsights' helps with performance tuning of your
+%% query.
 -spec execute_scheduled_query(aws_client:aws_client(), execute_scheduled_query_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -872,6 +943,14 @@ prepare_query(Client, Input, Options)
 %% `Query' is a synchronous operation that enables you to run a query
 %% against
 %% your Amazon Timestream data.
+%%
+%% If you enabled `QueryInsights', this API also returns insights and
+%% metrics related to the query that you executed. `QueryInsights' helps
+%% with performance tuning of your query.
+%%
+%% The maximum number of `Query' API requests you're allowed to make
+%% with `QueryInsights' enabled is 1 query per second (QPS). If you
+%% exceed this query rate, it might result in throttling.
 %%
 %% `Query' will time out after 60 seconds.
 %% You must update the default timeout in the SDK to support a timeout of 60

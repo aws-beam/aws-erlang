@@ -15,7 +15,11 @@
 %% the cloud.
 -module(aws_repostspace).
 
--export([create_space/2,
+-export([batch_add_role/3,
+         batch_add_role/4,
+         batch_remove_role/3,
+         batch_remove_role/4,
+         create_space/2,
          create_space/3,
          delete_space/3,
          delete_space/4,
@@ -50,6 +54,47 @@
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_add_role_input() :: #{
+%%   <<"accessorIds">> := list(string()()),
+%%   <<"role">> := list(any())
+%% }
+-type batch_add_role_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_add_role_output() :: #{
+%%   <<"addedAccessorIds">> => list(string()()),
+%%   <<"errors">> => list(batch_error()())
+%% }
+-type batch_add_role_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_error() :: #{
+%%   <<"accessorId">> => string(),
+%%   <<"error">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type batch_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_remove_role_input() :: #{
+%%   <<"accessorIds">> := list(string()()),
+%%   <<"role">> := list(any())
+%% }
+-type batch_remove_role_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_remove_role_output() :: #{
+%%   <<"errors">> => list(batch_error()()),
+%%   <<"removedAccessorIds">> => list(string()())
+%% }
+-type batch_remove_role_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -106,6 +151,7 @@
 %%   <<"groupAdmins">> => list(string()()),
 %%   <<"name">> => string(),
 %%   <<"randomDomain">> => string(),
+%%   <<"roles">> => map(),
 %%   <<"spaceId">> => string(),
 %%   <<"status">> => string(),
 %%   <<"storageLimit">> => float(),
@@ -266,6 +312,20 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+-type batch_add_role_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type batch_remove_role_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type create_space_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -348,6 +408,74 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Add role to multiple users or groups in a private re:Post.
+-spec batch_add_role(aws_client:aws_client(), binary() | list(), batch_add_role_input()) ->
+    {ok, batch_add_role_output(), tuple()} |
+    {error, any()} |
+    {error, batch_add_role_errors(), tuple()}.
+batch_add_role(Client, SpaceId, Input) ->
+    batch_add_role(Client, SpaceId, Input, []).
+
+-spec batch_add_role(aws_client:aws_client(), binary() | list(), batch_add_role_input(), proplists:proplist()) ->
+    {ok, batch_add_role_output(), tuple()} |
+    {error, any()} |
+    {error, batch_add_role_errors(), tuple()}.
+batch_add_role(Client, SpaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/roles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove role from multiple users or groups in a private re:Post.
+-spec batch_remove_role(aws_client:aws_client(), binary() | list(), batch_remove_role_input()) ->
+    {ok, batch_remove_role_output(), tuple()} |
+    {error, any()} |
+    {error, batch_remove_role_errors(), tuple()}.
+batch_remove_role(Client, SpaceId, Input) ->
+    batch_remove_role(Client, SpaceId, Input, []).
+
+-spec batch_remove_role(aws_client:aws_client(), binary() | list(), batch_remove_role_input(), proplists:proplist()) ->
+    {ok, batch_remove_role_output(), tuple()} |
+    {error, any()} |
+    {error, batch_remove_role_errors(), tuple()}.
+batch_remove_role(Client, SpaceId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/roles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an AWS re:Post Private private re:Post.
 -spec create_space(aws_client:aws_client(), create_space_input()) ->

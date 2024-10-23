@@ -2643,6 +2643,7 @@
 %% global_cluster() :: #{
 %%   <<"DatabaseName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
+%%   <<"Endpoint">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineLifecycleSupport">> => string(),
 %%   <<"EngineVersion">> => string(),
@@ -6190,6 +6191,7 @@
 
 -type modify_global_cluster_errors() ::
     invalid_db_instance_state_fault() | 
+    global_cluster_already_exists_fault() | 
     global_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
     invalid_global_cluster_state_fault().

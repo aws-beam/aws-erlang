@@ -297,7 +297,7 @@
 %% Example:
 %% create_deployment_request() :: #{
 %%   <<"applicationVersion">> => integer(),
-%%   <<"clientToken">> => [string()],
+%%   <<"clientToken">> => string(),
 %%   <<"environmentId">> => string()
 %% }
 -type create_deployment_request() :: #{binary() => any()}.
@@ -434,9 +434,12 @@
 %% }
 -type ps_attributes() :: #{binary() => any()}.
 
+
 %% Example:
-%% cancel_batch_job_execution_request() :: #{}
--type cancel_batch_job_execution_request() :: #{}.
+%% cancel_batch_job_execution_request() :: #{
+%%   <<"authSecretsManagerArn">> => string()
+%% }
+-type cancel_batch_job_execution_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -445,9 +448,12 @@
 %% }
 -type high_availability_config() :: #{binary() => any()}.
 
+
 %% Example:
-%% list_batch_job_restart_points_request() :: #{}
--type list_batch_job_restart_points_request() :: #{}.
+%% list_batch_job_restart_points_request() :: #{
+%%   <<"authSecretsManagerArn">> => string()
+%% }
+-type list_batch_job_restart_points_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -531,7 +537,7 @@
 
 %% Example:
 %% create_application_request() :: #{
-%%   <<"clientToken">> => [string()],
+%%   <<"clientToken">> => string(),
 %%   <<"definition">> := list(),
 %%   <<"description">> => string(),
 %%   <<"engineType">> := string(),
@@ -613,7 +619,7 @@
 
 %% Example:
 %% create_data_set_import_task_request() :: #{
-%%   <<"clientToken">> => [string()],
+%%   <<"clientToken">> => string(),
 %%   <<"importConfig">> := list()
 %% }
 -type create_data_set_import_task_request() :: #{binary() => any()}.
@@ -941,7 +947,7 @@
 
 %% Example:
 %% create_environment_request() :: #{
-%%   <<"clientToken">> => [string()],
+%%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"engineType">> := string(),
 %%   <<"engineVersion">> => string(),
@@ -996,6 +1002,7 @@
 
 %% Example:
 %% start_batch_job_request() :: #{
+%%   <<"authSecretsManagerArn">> => string(),
 %%   <<"batchJobIdentifier">> := list(),
 %%   <<"jobParams">> => map()
 %% }
@@ -2128,7 +2135,7 @@ list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the job steps for JCL files to restart a batch job.
+%% @doc Lists all the job steps for a JCL file to restart a batch job.
 %%
 %% This is only applicable for Micro Focus engine with versions 8.0.6 and
 %% above.
@@ -2164,7 +2171,11 @@ list_batch_job_restart_points(Client, ApplicationId, ExecutionId, QueryMap, Head
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"authSecretsManagerArn">>, maps:get(<<"authSecretsManagerArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
