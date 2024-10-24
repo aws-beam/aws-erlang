@@ -47,6 +47,9 @@
 %% CreateWebLoginToken:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_CreateWebLoginToken.html
 %%
+%% InvokeRestApi:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_InvokeRestApi.html
+%%
 %% Regions
 %%
 %% For a list of supported regions, see Amazon MWAA endpoints and quotas:
@@ -65,6 +68,8 @@
          get_environment/2,
          get_environment/4,
          get_environment/5,
+         invoke_rest_api/3,
+         invoke_rest_api/4,
          list_environments/1,
          list_environments/3,
          list_environments/4,
@@ -89,6 +94,14 @@
 %%   <<"Environment">> => environment()
 %% }
 -type get_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_rest_api_response() :: #{
+%%   <<"RestApiResponse">> => any(),
+%%   <<"RestApiStatusCode">> => [integer()]
+%% }
+-type invoke_rest_api_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -307,9 +320,27 @@
 %% }
 -type update_environment_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% rest_api_client_exception() :: #{
+%%   <<"RestApiResponse">> => any(),
+%%   <<"RestApiStatusCode">> => [integer()]
+%% }
+-type rest_api_client_exception() :: #{binary() => any()}.
+
 %% Example:
 %% create_web_login_token_request() :: #{}
 -type create_web_login_token_request() :: #{}.
+
+
+%% Example:
+%% invoke_rest_api_request() :: #{
+%%   <<"Body">> => any(),
+%%   <<"Method">> := string(),
+%%   <<"Path">> := string(),
+%%   <<"QueryParameters">> => [any()]
+%% }
+-type invoke_rest_api_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -366,6 +397,14 @@
 %% Example:
 %% create_cli_token_request() :: #{}
 -type create_cli_token_request() :: #{}.
+
+
+%% Example:
+%% rest_api_server_exception() :: #{
+%%   <<"RestApiResponse">> => any(),
+%%   <<"RestApiStatusCode">> => [integer()]
+%% }
+-type rest_api_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -452,6 +491,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type invoke_rest_api_errors() ::
+    validation_exception() | 
+    rest_api_server_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    rest_api_client_exception() | 
+    resource_not_found_exception().
+
 -type list_environments_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -521,7 +568,7 @@ create_cli_token(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
+%% @doc Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA)
 %% environment.
 -spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input()) ->
     {ok, create_environment_output(), tuple()} |
@@ -593,7 +640,7 @@ create_web_login_token(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
+%% @doc Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA)
 %% environment.
 -spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_input()) ->
     {ok, delete_environment_output(), tuple()} |
@@ -665,6 +712,45 @@ get_environment(Client, Name, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Invokes the Apache Airflow REST API on the webserver with the
+%% specified inputs.
+%%
+%% To
+%% learn more, see Using the Apache Airflow REST API:
+%% https://docs.aws.amazon.com/mwaa/latest/userguide/access-mwaa-apache-airflow-rest-api.html
+-spec invoke_rest_api(aws_client:aws_client(), binary() | list(), invoke_rest_api_request()) ->
+    {ok, invoke_rest_api_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_rest_api_errors(), tuple()}.
+invoke_rest_api(Client, Name, Input) ->
+    invoke_rest_api(Client, Name, Input, []).
+
+-spec invoke_rest_api(aws_client:aws_client(), binary() | list(), invoke_rest_api_request(), proplists:proplist()) ->
+    {ok, invoke_rest_api_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_rest_api_errors(), tuple()}.
+invoke_rest_api(Client, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/restapi/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environments.

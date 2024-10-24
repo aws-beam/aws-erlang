@@ -504,6 +504,8 @@
          start_outbound_chat_contact/3,
          start_outbound_voice_contact/2,
          start_outbound_voice_contact/3,
+         start_screen_sharing/2,
+         start_screen_sharing/3,
          start_task_contact/2,
          start_task_contact/3,
          start_web_r_t_c_contact/2,
@@ -778,6 +780,7 @@
 
 %% Example:
 %% participant_capabilities() :: #{
+%%   <<"ScreenShare">> => list(any()),
 %%   <<"Video">> => list(any())
 %% }
 -type participant_capabilities() :: #{binary() => any()}.
@@ -3894,6 +3897,15 @@
 
 
 %% Example:
+%% start_screen_sharing_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type start_screen_sharing_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_analytics_data_set_request() :: #{
 %%   <<"DataSetId">> := string(),
 %%   <<"TargetAccountId">> => string()
@@ -6180,6 +6192,10 @@
 %%   <<"Region">> => string()
 %% }
 -type sign_in_distribution() :: #{binary() => any()}.
+
+%% Example:
+%% start_screen_sharing_response() :: #{}
+-type start_screen_sharing_response() :: #{}.
 
 
 %% Example:
@@ -8598,6 +8614,14 @@
     internal_service_exception() | 
     outbound_contact_not_permitted_exception().
 
+-type start_screen_sharing_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type start_task_contact_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -9549,6 +9573,10 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates an agent with a traffic distribution group.
+%%
+%% This API can be called only in the Region where the traffic distribution
+%% group is
+%% created.
 -spec associate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), associate_traffic_distribution_group_user_request()) ->
     {ok, associate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
@@ -13322,6 +13350,10 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an agent from a traffic distribution group.
+%%
+%% This API can be called only in the Region where the traffic distribution
+%% group is
+%% created.
 -spec disassociate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), disassociate_traffic_distribution_group_user_request()) ->
     {ok, disassociate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
@@ -13750,7 +13782,8 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% ability to filter and group data by channels, queues, routing profiles,
 %% agents, and agent
 %% hierarchy levels. It can retrieve historical data for the last 3 months,
-%% at varying intervals.
+%% at varying intervals. It
+%% does not support agent queues.
 %%
 %% For a description of the historical metrics that are supported by
 %% `GetMetricDataV2' and `GetMetricData', see Historical metrics
@@ -17399,6 +17432,45 @@ start_outbound_voice_contact(Client, Input) ->
 start_outbound_voice_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/outbound-voice"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts screen sharing for a contact.
+%%
+%% For more information about screen sharing, see Set up in-app, web,
+%% video calling, and screen sharing capabilities:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html
+%% in the Amazon Connect Administrator Guide.
+-spec start_screen_sharing(aws_client:aws_client(), start_screen_sharing_request()) ->
+    {ok, start_screen_sharing_response(), tuple()} |
+    {error, any()} |
+    {error, start_screen_sharing_errors(), tuple()}.
+start_screen_sharing(Client, Input) ->
+    start_screen_sharing(Client, Input, []).
+
+-spec start_screen_sharing(aws_client:aws_client(), start_screen_sharing_request(), proplists:proplist()) ->
+    {ok, start_screen_sharing_response(), tuple()} |
+    {error, any()} |
+    {error, start_screen_sharing_errors(), tuple()}.
+start_screen_sharing(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/screen-sharing"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
