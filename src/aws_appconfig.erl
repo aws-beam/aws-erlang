@@ -307,9 +307,12 @@
 %% }
 -type applications() :: #{binary() => any()}.
 
+
 %% Example:
-%% stop_deployment_request() :: #{}
--type stop_deployment_request() :: #{}.
+%% stop_deployment_request() :: #{
+%%   <<"AllowRevert">> => boolean()
+%% }
+-type stop_deployment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2810,8 +2813,12 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %% @doc Stops a deployment.
 %%
 %% This API action works only on deployments that have a status of
-%% `DEPLOYING'. This action moves the deployment to a status of
-%% `ROLLED_BACK'.
+%% `DEPLOYING', unless an `AllowRevert' parameter is supplied. If the
+%% `AllowRevert' parameter is supplied, the status of an in-progress
+%% deployment
+%% will be `ROLLED_BACK'. The status of a completed deployment will be
+%% `REVERTED'. AppConfig only allows a revert within 72 hours of
+%% deployment completion.
 -spec stop_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
@@ -2834,8 +2841,10 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"Allow-Revert">>, <<"AllowRevert">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

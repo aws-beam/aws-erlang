@@ -1480,6 +1480,7 @@
 %% action_review_payload_field() :: #{
 %%   <<"allowedFormat">> => string(),
 %%   <<"allowedValues">> => list(action_review_payload_field_allowed_value()()),
+%%   <<"arrayItemJsonSchema">> => any(),
 %%   <<"displayDescription">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"displayOrder">> => integer(),

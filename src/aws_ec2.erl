@@ -561,6 +561,8 @@
          describe_instance_event_notification_attributes/3,
          describe_instance_event_windows/2,
          describe_instance_event_windows/3,
+         describe_instance_image_metadata/2,
+         describe_instance_image_metadata/3,
          describe_instance_status/2,
          describe_instance_status/3,
          describe_instance_topology/2,
@@ -10859,6 +10861,19 @@
 -type client_vpn_connection_status() :: #{binary() => any()}.
 
 %% Example:
+%% image_metadata() :: #{
+%%   <<"CreationDate">> => string(),
+%%   <<"DeprecationTime">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"ImageOwnerAlias">> => string(),
+%%   <<"IsPublic">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type image_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% get_transit_gateway_prefix_list_references_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayPrefixListReferences">> => list(transit_gateway_prefix_list_reference()())
@@ -11835,6 +11850,16 @@
 %%   <<"TransitGateway">> => transit_gateway()
 %% }
 -type modify_transit_gateway_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_image_metadata_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_image_metadata_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipams_result() :: #{
@@ -16828,6 +16853,20 @@
 -type report_instance_status_request() :: #{binary() => any()}.
 
 %% Example:
+%% instance_image_metadata() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ImageMetadata">> => image_metadata(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"OwnerId">> => string(),
+%%   <<"State">> => instance_state(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ZoneId">> => string()
+%% }
+-type instance_image_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% reset_fpga_image_attribute_request() :: #{
 %%   <<"Attribute">> => list(any()),
 %%   <<"DryRun">> => boolean(),
@@ -17246,6 +17285,13 @@
 %%   <<"VirtualNetworkId">> => integer()
 %% }
 -type traffic_mirror_session() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_image_metadata_result() :: #{
+%%   <<"InstanceImageMetadata">> => list(instance_image_metadata()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_image_metadata_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_fleets_request() :: #{
@@ -25243,6 +25289,55 @@ describe_instance_event_windows(Client, Input)
 describe_instance_event_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceEventWindows">>, Input, Options).
+
+%% @doc Describes the AMI that was used to launch an instance, even if the
+%% AMI is deprecated,
+%% deregistered, or made private (no longer public or shared with your
+%% account).
+%%
+%% If you specify instance IDs, the output includes information for only the
+%% specified
+%% instances. If you specify filters, the output includes information for
+%% only those instances
+%% that meet the filter criteria. If you do not specify instance IDs or
+%% filters, the output
+%% includes information for all instances, which can affect performance.
+%%
+%% If you specify an instance ID that is not valid, an instance that
+%% doesn't exist, or an
+%% instance that you do not own, an error (`InvalidInstanceID.NotFound')
+%% is
+%% returned.
+%%
+%% Recently terminated instances might appear in the returned results. This
+%% interval is
+%% usually less than one hour.
+%%
+%% In the rare case where an Availability Zone is experiencing a service
+%% disruption and you
+%% specify instance IDs that are in the affected Availability Zone, or do not
+%% specify any
+%% instance IDs at all, the call fails. If you specify only instance IDs that
+%% are in an
+%% unaffected Availability Zone, the call works normally.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
+%% particular order.
+-spec describe_instance_image_metadata(aws_client:aws_client(), describe_instance_image_metadata_request()) ->
+    {ok, describe_instance_image_metadata_result(), tuple()} |
+    {error, any()}.
+describe_instance_image_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_instance_image_metadata(Client, Input, []).
+
+-spec describe_instance_image_metadata(aws_client:aws_client(), describe_instance_image_metadata_request(), proplists:proplist()) ->
+    {ok, describe_instance_image_metadata_result(), tuple()} |
+    {error, any()}.
+describe_instance_image_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInstanceImageMetadata">>, Input, Options).
 
 %% @doc Describes the status of the specified instances or all of your
 %% instances.
