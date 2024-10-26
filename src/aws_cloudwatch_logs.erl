@@ -843,6 +843,7 @@
 %% pattern_token() :: #{
 %%   <<"dynamicTokenPosition">> => integer(),
 %%   <<"enumerations">> => map(),
+%%   <<"inferredTokenName">> => string(),
 %%   <<"isDynamic">> => boolean(),
 %%   <<"tokenString">> => string()
 %% }
@@ -2272,8 +2273,9 @@ cancel_export_task(Client, Input, Options)
 %% can also create multiple deliveries to configure multiple delivery sources
 %% to send logs to the same delivery destination.
 %%
-%% You can't update an existing delivery. You can only create and delete
-%% deliveries.
+%% To update an existing delivery configuration, use
+%% UpdateDeliveryConfiguration:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UpdateDeliveryConfiguration.html.
 -spec create_delivery(aws_client:aws_client(), create_delivery_request()) ->
     {ok, create_delivery_response(), tuple()} |
     {error, any()} |
@@ -2977,8 +2979,8 @@ describe_export_tasks(Client, Input, Options)
 %% You can list all your log groups or filter the results by prefix.
 %% The results are ASCII-sorted by log group name.
 %%
-%% CloudWatch Logs doesn’t support IAM policies that control access to the
-%% `DescribeLogGroups' action by using the
+%% CloudWatch Logs doesn't support IAM policies that control access to
+%% the `DescribeLogGroups' action by using the
 %%
 %% ```
 %% aws:ResourceTag/key-name ''' condition key. Other CloudWatch
@@ -4227,7 +4229,7 @@ put_resource_policy(Client, Input, Options)
 %% specified log
 %% group.
 %%
-%% CloudWatch Logs doesn’t immediately delete log events when they reach
+%% CloudWatch Logs doesn't immediately delete log events when they reach
 %% their retention
 %% setting. It typically takes up to 72 hours after that before log events
 %% are deleted, but in
@@ -4235,8 +4237,8 @@ put_resource_policy(Client, Input, Options)
 %%
 %% To illustrate, imagine that you change a log group to have a longer
 %% retention setting
-%% when it contains log events that are past the expiration date, but haven’t
-%% been deleted.
+%% when it contains log events that are past the expiration date, but
+%% haven't been deleted.
 %% Those log events will take up to 72 hours to be deleted after the new
 %% retention date is
 %% reached. To make sure that log data is deleted permanently, keep a log
@@ -4510,7 +4512,7 @@ stop_query(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#log-group-tagging
 %% in the Amazon CloudWatch Logs User Guide.
 %%
-%% CloudWatch Logs doesn’t support IAM policies that prevent users from
+%% CloudWatch Logs doesn't support IAM policies that prevent users from
 %% assigning specified tags to
 %% log groups using the
 %% ```
@@ -4609,7 +4611,7 @@ test_metric_filter(Client, Input, Options)
 %% To add tags, use TagResource:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_TagResource.html.
 %%
-%% CloudWatch Logs doesn’t support IAM policies that prevent users from
+%% CloudWatch Logs doesn't support IAM policies that prevent users from
 %% assigning specified tags to
 %% log groups using the
 %% ```
@@ -4651,11 +4653,11 @@ untag_resource(Client, Input, Options)
 %% anomaly or pattern.
 %%
 %% If you suppress
-%% an anomaly, CloudWatch Logs won’t report new occurrences of that anomaly
-%% and won't
+%% an anomaly, CloudWatch Logs won't report new occurrences of that
+%% anomaly and won't
 %% update that anomaly
-%% with new data. If you suppress a pattern, CloudWatch Logs won’t report any
-%% anomalies related to that pattern.
+%% with new data. If you suppress a pattern, CloudWatch Logs won't report
+%% any anomalies related to that pattern.
 %%
 %% You must specify either `anomalyId' or `patternId', but you
 %% can't specify both parameters in the

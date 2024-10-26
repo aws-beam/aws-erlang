@@ -258,44 +258,46 @@
 
 %% Example:
 %% build() :: #{
-%%   <<"arn">> => string(),
-%%   <<"artifacts">> => build_artifacts(),
-%%   <<"buildBatchArn">> => string(),
-%%   <<"buildComplete">> => boolean(),
-%%   <<"buildNumber">> => float(),
 %%   <<"buildStatus">> => list(any()),
-%%   <<"cache">> => project_cache(),
-%%   <<"currentPhase">> => string(),
-%%   <<"debugSession">> => debug_session(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"environment">> => project_environment(),
+%%   <<"buildNumber">> => float(),
+%%   <<"buildBatchArn">> => string(),
 %%   <<"exportedEnvironmentVariables">> => list(exported_environment_variable()()),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
-%%   <<"id">> => string(),
-%%   <<"initiator">> => string(),
-%%   <<"logs">> => logs_location(),
-%%   <<"networkInterface">> => network_interface(),
-%%   <<"phases">> => list(build_phase()()),
+%%   <<"environment">> => project_environment(),
 %%   <<"projectName">> => string(),
-%%   <<"queuedTimeoutInMinutes">> => integer(),
 %%   <<"reportArns">> => list(string()()),
-%%   <<"resolvedSourceVersion">> => string(),
-%%   <<"secondaryArtifacts">> => list(build_artifacts()()),
+%%   <<"sourceVersion">> => string(),
+%%   <<"id">> => string(),
+%%   <<"debugSession">> => debug_session(),
+%%   <<"networkInterface">> => network_interface(),
+%%   <<"vpcConfig">> => vpc_config(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
 %%   <<"secondarySourceVersions">> => list(project_source_version()()),
+%%   <<"queuedTimeoutInMinutes">> => integer(),
+%%   <<"initiator">> => string(),
+%%   <<"buildComplete">> => boolean(),
+%%   <<"currentPhase">> => string(),
+%%   <<"secondaryArtifacts">> => list(build_artifacts()()),
+%%   <<"phases">> => list(build_phase()()),
+%%   <<"arn">> => string(),
+%%   <<"resolvedSourceVersion">> => string(),
+%%   <<"autoRetryConfig">> => auto_retry_config(),
+%%   <<"timeoutInMinutes">> => integer(),
 %%   <<"secondarySources">> => list(project_source()()),
+%%   <<"endTime">> => non_neg_integer(),
 %%   <<"serviceRole">> => string(),
 %%   <<"source">> => project_source(),
-%%   <<"sourceVersion">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
-%%   <<"timeoutInMinutes">> => integer(),
-%%   <<"vpcConfig">> => vpc_config()
+%%   <<"artifacts">> => build_artifacts(),
+%%   <<"logs">> => logs_location(),
+%%   <<"cache">> => project_cache()
 %% }
 -type build() :: #{binary() => any()}.
 
 %% Example:
 %% update_project_input() :: #{
 %%   <<"artifacts">> => project_artifacts(),
+%%   <<"autoRetryLimit">> => integer(),
 %%   <<"badgeEnabled">> => boolean(),
 %%   <<"buildBatchConfig">> => project_build_batch_config(),
 %%   <<"cache">> => project_cache(),
@@ -668,38 +670,39 @@
 
 %% Example:
 %% start_build_input() :: #{
-%%   <<"artifactsOverride">> => project_artifacts(),
-%%   <<"buildStatusConfigOverride">> => build_status_config(),
-%%   <<"buildspecOverride">> => string(),
 %%   <<"cacheOverride">> => project_cache(),
-%%   <<"certificateOverride">> => string(),
-%%   <<"computeTypeOverride">> => list(any()),
-%%   <<"debugSessionEnabled">> => boolean(),
-%%   <<"encryptionKeyOverride">> => string(),
-%%   <<"environmentTypeOverride">> => list(any()),
-%%   <<"environmentVariablesOverride">> => list(environment_variable()()),
-%%   <<"fleetOverride">> => project_fleet(),
-%%   <<"gitCloneDepthOverride">> => integer(),
-%%   <<"gitSubmodulesConfigOverride">> => git_submodules_config(),
-%%   <<"idempotencyToken">> => string(),
-%%   <<"imageOverride">> => string(),
 %%   <<"imagePullCredentialsTypeOverride">> => list(any()),
-%%   <<"insecureSslOverride">> => boolean(),
-%%   <<"logsConfigOverride">> => logs_config(),
-%%   <<"privilegedModeOverride">> => boolean(),
+%%   <<"idempotencyToken">> => string(),
+%%   <<"sourceAuthOverride">> => source_auth(),
 %%   <<"projectName">> := string(),
+%%   <<"encryptionKeyOverride">> => string(),
+%%   <<"logsConfigOverride">> => logs_config(),
+%%   <<"timeoutInMinutesOverride">> => integer(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"secondarySourcesOverride">> => list(project_source()()),
+%%   <<"reportBuildStatusOverride">> => boolean(),
+%%   <<"fleetOverride">> => project_fleet(),
+%%   <<"secondarySourcesVersionOverride">> => list(project_source_version()()),
+%%   <<"sourceLocationOverride">> => string(),
+%%   <<"autoRetryLimitOverride">> => integer(),
+%%   <<"gitCloneDepthOverride">> => integer(),
+%%   <<"buildspecOverride">> => string(),
+%%   <<"privilegedModeOverride">> => boolean(),
+%%   <<"debugSessionEnabled">> => boolean(),
+%%   <<"imageOverride">> => string(),
+%%   <<"certificateOverride">> => string(),
+%%   <<"artifactsOverride">> => project_artifacts(),
+%%   <<"environmentTypeOverride">> => list(any()),
+%%   <<"sourceTypeOverride">> => list(any()),
+%%   <<"secondaryArtifactsOverride">> => list(project_artifacts()()),
+%%   <<"gitSubmodulesConfigOverride">> => git_submodules_config(),
+%%   <<"computeTypeOverride">> => list(any()),
+%%   <<"serviceRoleOverride">> => string(),
+%%   <<"buildStatusConfigOverride">> => build_status_config(),
+%%   <<"insecureSslOverride">> => boolean(),
 %%   <<"queuedTimeoutInMinutesOverride">> => integer(),
 %%   <<"registryCredentialOverride">> => registry_credential(),
-%%   <<"reportBuildStatusOverride">> => boolean(),
-%%   <<"secondaryArtifactsOverride">> => list(project_artifacts()()),
-%%   <<"secondarySourcesOverride">> => list(project_source()()),
-%%   <<"secondarySourcesVersionOverride">> => list(project_source_version()()),
-%%   <<"serviceRoleOverride">> => string(),
-%%   <<"sourceAuthOverride">> => source_auth(),
-%%   <<"sourceLocationOverride">> => string(),
-%%   <<"sourceTypeOverride">> => list(any()),
-%%   <<"sourceVersion">> => string(),
-%%   <<"timeoutInMinutesOverride">> => integer()
+%%   <<"environmentVariablesOverride">> => list(environment_variable()())
 %% }
 -type start_build_input() :: #{binary() => any()}.
 
@@ -783,6 +786,7 @@
 %% project() :: #{
 %%   <<"arn">> => string(),
 %%   <<"artifacts">> => project_artifacts(),
+%%   <<"autoRetryLimit">> => integer(),
 %%   <<"badge">> => project_badge(),
 %%   <<"buildBatchConfig">> => project_build_batch_config(),
 %%   <<"cache">> => project_cache(),
@@ -883,6 +887,15 @@
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_retry_config() :: #{
+%%   <<"autoRetryLimit">> => integer(),
+%%   <<"autoRetryNumber">> => integer(),
+%%   <<"nextAutoRetry">> => string(),
+%%   <<"previousAutoRetry">> => string()
+%% }
+-type auto_retry_config() :: #{binary() => any()}.
 
 %% Example:
 %% s3_logs_config() :: #{
@@ -997,6 +1010,7 @@
 %% Example:
 %% create_project_input() :: #{
 %%   <<"artifacts">> := project_artifacts(),
+%%   <<"autoRetryLimit">> => integer(),
 %%   <<"badgeEnabled">> => boolean(),
 %%   <<"buildBatchConfig">> => project_build_batch_config(),
 %%   <<"cache">> => project_cache(),

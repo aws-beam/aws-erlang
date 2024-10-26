@@ -702,7 +702,8 @@
 %%   <<"Code">> => function_code_location(),
 %%   <<"Concurrency">> => concurrency(),
 %%   <<"Configuration">> => function_configuration(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"TagsError">> => tags_error()
 %% }
 -type get_function_response() :: #{binary() => any()}.
 
@@ -1813,6 +1814,14 @@
 %%   <<"Message">> => string()
 %% }
 -type environment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% tags_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type tags_error() :: #{binary() => any()}.
 
 
 %% Example:

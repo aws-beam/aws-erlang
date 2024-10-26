@@ -396,6 +396,7 @@
 %% instance() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"errorMessage">> => [string()],
 %%   <<"instanceDescription">> => string(),
 %%   <<"instanceId">> => string(),
 %%   <<"instanceName">> => string(),
@@ -764,8 +765,10 @@ create_bill_of_materials_import_job(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create DataIntegrationFlow to map one or more different sources to
-%% one target using the SQL transformation query.
+%% @doc Enables you to programmatically create a data pipeline to ingest data
+%% from source systems such as Amazon S3 buckets, to a predefined Amazon Web
+%% Services Supply Chain dataset (product, inbound_order) or a temporary
+%% dataset along with the data transformation query provided with the API.
 -spec create_data_integration_flow(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_integration_flow_request()) ->
     {ok, create_data_integration_flow_response(), tuple()} |
     {error, any()} |
@@ -799,7 +802,11 @@ create_data_integration_flow(Client, InstanceId, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a data lake dataset.
+%% @doc Enables you to programmatically create an Amazon Web Services Supply
+%% Chain data lake dataset.
+%%
+%% Developers can create the datasets using their pre-defined or custom
+%% schema for a given instance ID, namespace, and dataset name.
 -spec create_data_lake_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_data_lake_dataset_request()) ->
     {ok, create_data_lake_dataset_response(), tuple()} |
     {error, any()} |
@@ -833,13 +840,18 @@ create_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new instance for AWS Supply Chain.
+%% @doc Enables you to programmatically create an Amazon Web Services Supply
+%% Chain instance by applying KMS keys and relevant information associated
+%% with the API without using the Amazon Web Services console.
 %%
 %% This is an asynchronous operation. Upon receiving a CreateInstance
-%% request, AWS Supply Chain immediately returns the instance resource, with
-%% instance ID, and the initializing state while simultaneously creating all
-%% required Amazon Web Services resources for an instance creation. You can
-%% use GetInstance to check the status of the instance.
+%% request, Amazon Web Services Supply Chain immediately returns the instance
+%% resource, instance ID, and the initializing state while simultaneously
+%% creating all required Amazon Web Services resources for an instance
+%% creation. You can use GetInstance to check the status of the instance. If
+%% the instance results in an unhealthy state, you need to check the error
+%% message, delete the current instance, and recreate a new one based on the
+%% mitigation from the error message.
 -spec create_instance(aws_client:aws_client(), create_instance_request()) ->
     {ok, create_instance_response(), tuple()} |
     {error, any()} |
@@ -873,7 +885,9 @@ create_instance(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete the DataIntegrationFlow.
+%% @doc Enable you to programmatically delete an existing data pipeline for
+%% the provided Amazon Web Services Supply Chain instance and
+%% DataIntegrationFlow name.
 -spec delete_data_integration_flow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_integration_flow_request()) ->
     {ok, delete_data_integration_flow_response(), tuple()} |
     {error, any()} |
@@ -907,7 +921,11 @@ delete_data_integration_flow(Client, InstanceId, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a data lake dataset.
+%% @doc Enables you to programmatically delete an Amazon Web Services Supply
+%% Chain data lake dataset.
+%%
+%% Developers can delete the existing datasets for a given instance ID,
+%% namespace, and instance name.
 -spec delete_data_lake_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_data_lake_dataset_request()) ->
     {ok, delete_data_lake_dataset_response(), tuple()} |
     {error, any()} |
@@ -941,13 +959,16 @@ delete_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete the instance.
+%% @doc Enables you to programmatically delete an Amazon Web Services Supply
+%% Chain instance by deleting the KMS keys and relevant information
+%% associated with the API without using the Amazon Web Services console.
 %%
 %% This is an asynchronous operation. Upon receiving a DeleteInstance
-%% request, AWS Supply Chain immediately returns a response with the instance
-%% resource, delete state while cleaning up all Amazon Web Services resources
-%% created during the instance creation process. You can use the GetInstance
-%% action to check the instance status.
+%% request, Amazon Web Services Supply Chain immediately returns a response
+%% with the instance resource, delete state while cleaning up all Amazon Web
+%% Services resources created during
+%% the instance creation process. You can use the GetInstance action to check
+%% the instance status.
 -spec delete_instance(aws_client:aws_client(), binary() | list(), delete_instance_request()) ->
     {ok, delete_instance_response(), tuple()} |
     {error, any()} |
@@ -1018,7 +1039,9 @@ get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc View the DataIntegrationFlow details.
+%% @doc Enables you to programmatically view a specific data pipeline for the
+%% provided Amazon Web Services Supply Chain instance and DataIntegrationFlow
+%% name.
 -spec get_data_integration_flow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_integration_flow_response(), tuple()} |
     {error, any()} |
@@ -1055,7 +1078,11 @@ get_data_integration_flow(Client, InstanceId, Name, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a data lake dataset.
+%% @doc Enables you to programmatically view an Amazon Web Services Supply
+%% Chain data lake dataset.
+%%
+%% Developers can view the data lake dataset information such as namespace,
+%% schema, and so on for a given instance ID, namespace, and dataset name.
 -spec get_data_lake_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_data_lake_dataset_response(), tuple()} |
     {error, any()} |
@@ -1092,7 +1119,8 @@ get_data_lake_dataset(Client, InstanceId, Name, Namespace, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the AWS Supply Chain instance details.
+%% @doc Enables you to programmatically retrieve the information related to
+%% an Amazon Web Services Supply Chain instance ID.
 -spec get_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, get_instance_response(), tuple()} |
     {error, any()} |
@@ -1129,7 +1157,8 @@ get_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the DataIntegrationFlows in a paginated way.
+%% @doc Enables you to programmatically list all data pipelines for the
+%% provided Amazon Web Services Supply Chain instance.
 -spec list_data_integration_flows(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_integration_flows_response(), tuple()} |
     {error, any()} |
@@ -1171,7 +1200,11 @@ list_data_integration_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the data lake datasets for a specific instance and name space.
+%% @doc Enables you to programmatically view the list of Amazon Web Services
+%% Supply Chain data lake datasets.
+%%
+%% Developers can view the datasets and the corresponding information such as
+%% namespace, schema, and so on for a given instance ID and namespace.
 -spec list_data_lake_datasets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_data_lake_datasets_response(), tuple()} |
     {error, any()} |
@@ -1213,7 +1246,12 @@ list_data_lake_datasets(Client, InstanceId, Namespace, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all the AWS Supply Chain instances in a paginated way.
+%% @doc List all Amazon Web Services Supply Chain instances for a specific
+%% account.
+%%
+%% Enables you to programmatically list all Amazon Web Services Supply Chain
+%% instances based on their account ID, instance name, and state of the
+%% instance (active or delete).
 -spec list_instances(aws_client:aws_client()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
@@ -1258,6 +1296,10 @@ list_instances(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all the tags for an Amazon Web ServicesSupply Chain resource.
+%%
+%% You can list all the tags added to a resource. By listing the tags,
+%% developers can view the tag level information on a resource and perform
+%% actions such as, deleting a resource associated with a particular tag.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1334,7 +1376,14 @@ send_data_integration_event(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create tags for an Amazon Web Services Supply chain resource.
+%% @doc You can create tags during or after creating a resource such as
+%% instance, data flow, or dataset in AWS Supply chain.
+%%
+%% During the data ingestion process, you can add tags such as dev, test, or
+%% prod to data flows
+%% created during the data ingestion process in the AWS Supply Chain
+%% datasets. You can use these tags to identify a group of resources or a
+%% single resource used by the developer.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1368,7 +1417,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete tags for an Amazon Web Services Supply chain resource.
+%% @doc You can delete tags for an Amazon Web Services Supply chain resource
+%% such as instance, data flow, or dataset in AWS Supply Chain.
+%%
+%% During the data ingestion process, you can delete tags such as dev, test,
+%% or prod to data flows
+%% created during the data ingestion process in the AWS Supply Chain
+%% datasets.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -1403,7 +1458,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the DataIntegrationFlow.
+%% @doc Enables you to programmatically update an existing data pipeline to
+%% ingest data from the source systems such as, Amazon S3 buckets, to a
+%% predefined Amazon Web Services Supply Chain dataset (product,
+%% inbound_order) or a temporary dataset along with the data transformation
+%% query provided with the API.
 -spec update_data_integration_flow(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_integration_flow_request()) ->
     {ok, update_data_integration_flow_response(), tuple()} |
     {error, any()} |
@@ -1437,7 +1496,11 @@ update_data_integration_flow(Client, InstanceId, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update a data lake dataset.
+%% @doc Enables you to programmatically update an Amazon Web Services Supply
+%% Chain data lake dataset.
+%%
+%% Developers can update the description of a data lake dataset for a given
+%% instance ID, namespace, and dataset name.
 -spec update_data_lake_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_data_lake_dataset_request()) ->
     {ok, update_data_lake_dataset_response(), tuple()} |
     {error, any()} |
@@ -1471,7 +1534,9 @@ update_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the instance.
+%% @doc Enables you to programmatically update an Amazon Web Services Supply
+%% Chain instance description by providing all the relevant information such
+%% as account ID, instance ID and so on without using the AWS console.
 -spec update_instance(aws_client:aws_client(), binary() | list(), update_instance_request()) ->
     {ok, update_instance_response(), tuple()} |
     {error, any()} |
