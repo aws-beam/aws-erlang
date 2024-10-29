@@ -32,10 +32,14 @@
 %% Elemental MediaPackage User Guide.
 -module(aws_mediapackagev2).
 
--export([create_channel/3,
+-export([cancel_harvest_job/6,
+         cancel_harvest_job/7,
+         create_channel/3,
          create_channel/4,
          create_channel_group/2,
          create_channel_group/3,
+         create_harvest_job/5,
+         create_harvest_job/6,
          create_origin_endpoint/4,
          create_origin_endpoint/5,
          delete_channel/4,
@@ -57,6 +61,9 @@
          get_channel_policy/3,
          get_channel_policy/5,
          get_channel_policy/6,
+         get_harvest_job/5,
+         get_harvest_job/7,
+         get_harvest_job/8,
          get_origin_endpoint/4,
          get_origin_endpoint/6,
          get_origin_endpoint/7,
@@ -69,6 +76,9 @@
          list_channels/2,
          list_channels/4,
          list_channels/5,
+         list_harvest_jobs/2,
+         list_harvest_jobs/4,
+         list_harvest_jobs/5,
          list_origin_endpoints/3,
          list_origin_endpoints/5,
          list_origin_endpoints/6,
@@ -103,6 +113,10 @@
 %% Example:
 %% delete_channel_request() :: #{}
 -type delete_channel_request() :: #{}.
+
+%% Example:
+%% cancel_harvest_job_response() :: #{}
+-type cancel_harvest_job_response() :: #{}.
 
 %% Example:
 %% get_channel_request() :: #{}
@@ -148,6 +162,14 @@
 %%   <<"ModifiedAt">> => [non_neg_integer()]
 %% }
 -type channel_list_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvester_schedule_configuration() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type harvester_schedule_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -270,6 +292,13 @@
 
 
 %% Example:
+%% harvested_dash_manifest() :: #{
+%%   <<"ManifestName">> => string()
+%% }
+-type harvested_dash_manifest() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_origin_endpoint_policy_request() :: #{
 %%   <<"Policy">> := string()
 %% }
@@ -282,6 +311,17 @@
 %%   <<"TimingSource">> => [string()]
 %% }
 -type dash_utc_timing() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harvest_jobs_request() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_harvest_jobs_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_origin_endpoint_response() :: #{}
@@ -358,6 +398,26 @@
 %% Example:
 %% delete_channel_group_request() :: #{}
 -type delete_channel_group_request() :: #{}.
+
+
+%% Example:
+%% create_harvest_job_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Destination">> := destination(),
+%%   <<"HarvestJobName">> => string(),
+%%   <<"HarvestedManifests">> := harvested_manifests(),
+%%   <<"ScheduleConfiguration">> := harvester_schedule_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type create_harvest_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvested_low_latency_hls_manifest() :: #{
+%%   <<"ManifestName">> => string()
+%% }
+-type harvested_low_latency_hls_manifest() :: #{binary() => any()}.
 
 
 %% Example:
@@ -571,6 +631,13 @@
 
 
 %% Example:
+%% harvested_hls_manifest() :: #{
+%%   <<"ManifestName">> => string()
+%% }
+-type harvested_hls_manifest() :: #{binary() => any()}.
+
+
+%% Example:
 %% scte_dash() :: #{
 %%   <<"AdMarkerDash">> => list(any())
 %% }
@@ -583,6 +650,13 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_channel_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_harvest_job_request() :: #{
+%%   <<"ETag">> => string()
+%% }
+-type cancel_harvest_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -606,6 +680,10 @@
 %% }
 -type scte_hls() :: #{binary() => any()}.
 
+%% Example:
+%% get_harvest_job_request() :: #{}
+-type get_harvest_job_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -617,6 +695,13 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"S3Destination">> => s3_destination_config()
+%% }
+-type destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -633,6 +718,47 @@
 %%   <<"Url">> => [string()]
 %% }
 -type list_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_harvest_job_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"Destination">> => destination(),
+%%   <<"ETag">> => string(),
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"HarvestJobName">> => string(),
+%%   <<"HarvestedManifests">> => harvested_manifests(),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_harvest_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvest_job() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"Destination">> => destination(),
+%%   <<"ETag">> => string(),
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"HarvestJobName">> => string(),
+%%   <<"HarvestedManifests">> => harvested_manifests(),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type harvest_job() :: #{binary() => any()}.
 
 %% Example:
 %% get_channel_group_request() :: #{}
@@ -660,6 +786,35 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_harvest_job_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"Destination">> => destination(),
+%%   <<"ETag">> => string(),
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"HarvestJobName">> => string(),
+%%   <<"HarvestedManifests">> => harvested_manifests(),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_harvest_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harvest_jobs_response() :: #{
+%%   <<"Items">> => list(harvest_job()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_harvest_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_origin_endpoint_request() :: #{}
@@ -746,6 +901,15 @@
 
 
 %% Example:
+%% harvested_manifests() :: #{
+%%   <<"DashManifests">> => list(harvested_dash_manifest()()),
+%%   <<"HlsManifests">> => list(harvested_hls_manifest()()),
+%%   <<"LowLatencyHlsManifests">> => list(harvested_low_latency_hls_manifest()())
+%% }
+-type harvested_manifests() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_origin_endpoint_response() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"ChannelGroupName">> => string(),
@@ -784,6 +948,14 @@
 
 
 %% Example:
+%% s3_destination_config() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"DestinationPath">> => string()
+%% }
+-type s3_destination_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_origin_endpoint_policy_response() :: #{
 %%   <<"ChannelGroupName">> => string(),
 %%   <<"ChannelName">> => string(),
@@ -814,6 +986,14 @@
 %% }
 -type get_origin_endpoint_response() :: #{binary() => any()}.
 
+-type cancel_harvest_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_channel_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -824,6 +1004,15 @@
     conflict_exception().
 
 -type create_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_harvest_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -896,6 +1085,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_harvest_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_origin_endpoint_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -917,6 +1113,13 @@
     internal_server_exception().
 
 -type list_channels_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_harvest_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -984,6 +1187,42 @@
 %% API
 %%====================================================================
 
+%% @doc Cancels an in-progress harvest job.
+-spec cancel_harvest_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), cancel_harvest_job_request()) ->
+    {ok, cancel_harvest_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_harvest_job_errors(), tuple()}.
+cancel_harvest_job(Client, ChannelGroupName, ChannelName, HarvestJobName, OriginEndpointName, Input) ->
+    cancel_harvest_job(Client, ChannelGroupName, ChannelName, HarvestJobName, OriginEndpointName, Input, []).
+
+-spec cancel_harvest_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), cancel_harvest_job_request(), proplists:proplist()) ->
+    {ok, cancel_harvest_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_harvest_job_errors(), tuple()}.
+cancel_harvest_job(Client, ChannelGroupName, ChannelName, HarvestJobName, OriginEndpointName, Input0, Options0) ->
+    Method = put,
+    Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/harvestJob/", aws_util:encode_uri(HarvestJobName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amzn-update-if-match">>, <<"ETag">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Create a channel to start receiving content streams.
 %%
 %% The channel represents the input to MediaPackage for incoming live content
@@ -1049,6 +1288,43 @@ create_channel_group(Client, Input) ->
 create_channel_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amzn-client-token">>, <<"ClientToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new harvest job to export content from a MediaPackage v2
+%% channel to an S3 bucket.
+-spec create_harvest_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_harvest_job_request()) ->
+    {ok, create_harvest_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_harvest_job_errors(), tuple()}.
+create_harvest_job(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
+    create_harvest_job(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
+
+-spec create_harvest_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_harvest_job_request(), proplists:proplist()) ->
+    {ok, create_harvest_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_harvest_job_errors(), tuple()}.
+create_harvest_job(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
+    Method = post,
+    Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/harvestJob"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1414,6 +1690,43 @@ get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the details of a specific harvest job.
+-spec get_harvest_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_harvest_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_harvest_job_errors(), tuple()}.
+get_harvest_job(Client, ChannelGroupName, ChannelName, HarvestJobName, OriginEndpointName)
+  when is_map(Client) ->
+    get_harvest_job(Client, ChannelGroupName, ChannelName, HarvestJobName, OriginEndpointName, #{}, #{}).
+
+-spec get_harvest_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_harvest_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_harvest_job_errors(), tuple()}.
+get_harvest_job(Client, ChannelGroupName, ChannelName, HarvestJobName, OriginEndpointName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_harvest_job(Client, ChannelGroupName, ChannelName, HarvestJobName, OriginEndpointName, QueryMap, HeadersMap, []).
+
+-spec get_harvest_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_harvest_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_harvest_job_errors(), tuple()}.
+get_harvest_job(Client, ChannelGroupName, ChannelName, HarvestJobName, OriginEndpointName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/harvestJob/", aws_util:encode_uri(HarvestJobName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the specified origin endpoint that's configured in AWS
 %% Elemental MediaPackage to obtain its playback URL and to view the
 %% packaging settings that it's currently using.
@@ -1574,6 +1887,51 @@ list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of harvest jobs that match the specified criteria.
+-spec list_harvest_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_harvest_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_harvest_jobs_errors(), tuple()}.
+list_harvest_jobs(Client, ChannelGroupName)
+  when is_map(Client) ->
+    list_harvest_jobs(Client, ChannelGroupName, #{}, #{}).
+
+-spec list_harvest_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_harvest_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_harvest_jobs_errors(), tuple()}.
+list_harvest_jobs(Client, ChannelGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_harvest_jobs(Client, ChannelGroupName, QueryMap, HeadersMap, []).
+
+-spec list_harvest_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_harvest_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_harvest_jobs_errors(), tuple()}.
+list_harvest_jobs(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/harvestJob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"channelName">>, maps:get(<<"channelName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"originEndpointName">>, maps:get(<<"originEndpointName">>, QueryMap, undefined)},
+        {<<"includeStatus">>, maps:get(<<"includeStatus">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -913,6 +913,15 @@
 
 
 %% Example:
+%% node_config() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Type">> => list(any())
+%% }
+-type node_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1712,6 +1721,14 @@
 
 
 %% Example:
+%% node_option() :: #{
+%%   <<"NodeConfig">> => node_config(),
+%%   <<"NodeType">> => list(any())
+%% }
+-type node_option() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_domains_for_package_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1976,6 +1993,7 @@
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"MultiAZWithStandbyEnabled">> => boolean(),
+%%   <<"NodeOptions">> => list(node_option()()),
 %%   <<"WarmCount">> => integer(),
 %%   <<"WarmEnabled">> => boolean(),
 %%   <<"WarmType">> => list(any()),
