@@ -1462,6 +1462,7 @@
     internal_server_exception().
 
 -type batch_update_vehicle_errors() ::
+    limit_exceeded_exception() | 
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1816,6 +1817,7 @@
     conflict_exception().
 
 -type update_vehicle_errors() ::
+    limit_exceeded_exception() | 
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 

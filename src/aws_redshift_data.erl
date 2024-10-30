@@ -26,6 +26,8 @@
          execute_statement/3,
          get_statement_result/2,
          get_statement_result/3,
+         get_statement_result_v2/2,
+         get_statement_result_v2/3,
          list_databases/2,
          list_databases/3,
          list_schemas/2,
@@ -74,6 +76,7 @@
 %%   <<"QueryParameters">> => list(sql_parameter()()),
 %%   <<"QueryString">> => string(),
 %%   <<"QueryStrings">> => list(string()()),
+%%   <<"ResultFormat">> => string(),
 %%   <<"SecretArn">> => string(),
 %%   <<"SessionId">> => string(),
 %%   <<"StatementName">> => string(),
@@ -148,6 +151,7 @@
 %%   <<"Database">> => string(),
 %%   <<"DbUser">> => string(),
 %%   <<"Parameters">> => list(sql_parameter()()),
+%%   <<"ResultFormat">> => string(),
 %%   <<"SecretArn">> => string(),
 %%   <<"SessionId">> => string(),
 %%   <<"SessionKeepAliveSeconds">> => integer(),
@@ -178,6 +182,7 @@
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"Database">> => string(),
 %%   <<"DbUser">> => string(),
+%%   <<"ResultFormat">> => string(),
 %%   <<"SecretArn">> => string(),
 %%   <<"SessionId">> => string(),
 %%   <<"SessionKeepAliveSeconds">> => integer(),
@@ -323,6 +328,13 @@
 -type get_statement_result_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_statement_result_v2_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_statement_result_v2_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_statement_response() :: #{
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
@@ -336,6 +348,7 @@
 %%   <<"QueryString">> => string(),
 %%   <<"RedshiftPid">> => float(),
 %%   <<"RedshiftQueryId">> => float(),
+%%   <<"ResultFormat">> => string(),
 %%   <<"ResultRows">> => float(),
 %%   <<"ResultSize">> => float(),
 %%   <<"SecretArn">> => string(),
@@ -366,6 +379,16 @@
 %%   <<"Message">> => string()
 %% }
 -type database_connection_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_statement_result_v2_response() :: #{
+%%   <<"ColumnMetadata">> => list(column_metadata()()),
+%%   <<"NextToken">> => string(),
+%%   <<"Records">> => list(list()()),
+%%   <<"ResultFormat">> => string(),
+%%   <<"TotalNumRows">> => float()
+%% }
+-type get_statement_result_v2_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tables_request() :: #{
@@ -414,6 +437,11 @@
     active_statements_exceeded_exception().
 
 -type get_statement_result_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_statement_result_v2_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
@@ -690,8 +718,12 @@ execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteStatement">>, Input, Options).
 
-%% @doc Fetches the temporarily cached result of an SQL statement.
+%% @doc Fetches the temporarily cached result of an SQL statement in JSON
+%% format.
 %%
+%% The `ExecuteStatement' or `BatchExecuteStatement' operation that
+%% ran the SQL statement must have specified `ResultFormat' as `JSON'
+%% , or let the format default to JSON.
 %% A token is returned to page through the statement results.
 %%
 %% For more information about the Amazon Redshift Data API and CLI usage
@@ -714,6 +746,34 @@ get_statement_result(Client, Input)
 get_statement_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStatementResult">>, Input, Options).
+
+%% @doc Fetches the temporarily cached result of an SQL statement in CSV
+%% format.
+%%
+%% The `ExecuteStatement' or `BatchExecuteStatement' operation that
+%% ran the SQL statement must have specified `ResultFormat' as `CSV'.
+%% A token is returned to page through the statement results.
+%%
+%% For more information about the Amazon Redshift Data API and CLI usage
+%% examples, see
+%% Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
+-spec get_statement_result_v2(aws_client:aws_client(), get_statement_result_v2_request()) ->
+    {ok, get_statement_result_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_statement_result_v2_errors(), tuple()}.
+get_statement_result_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_statement_result_v2(Client, Input, []).
+
+-spec get_statement_result_v2(aws_client:aws_client(), get_statement_result_v2_request(), proplists:proplist()) ->
+    {ok, get_statement_result_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_statement_result_v2_errors(), tuple()}.
+get_statement_result_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetStatementResultV2">>, Input, Options).
 
 %% @doc List the databases in a cluster.
 %%

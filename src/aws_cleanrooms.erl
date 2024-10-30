@@ -226,7 +226,7 @@
 
 %% Example:
 %% configured_table_summary() :: #{
-%%   <<"analysisMethod">> => string(),
+%%   <<"analysisMethod">> => list(any()),
 %%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -364,7 +364,7 @@
 %% Example:
 %% create_configured_table_input() :: #{
 %%   <<"allowedColumns">> := list(string()()),
-%%   <<"analysisMethod">> := string(),
+%%   <<"analysisMethod">> := list(any()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"tableReference">> := list(),
@@ -409,7 +409,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"format">> => string(),
+%%   <<"format">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"schema">> => analysis_schema(),
@@ -691,6 +691,7 @@
 
 %% Example:
 %% collaboration() :: #{
+%%   <<"analyticsEngine">> => list(any()),
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
@@ -702,7 +703,7 @@
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"queryLogStatus">> => string(),
+%%   <<"queryLogStatus">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type collaboration() :: #{binary() => any()}.
@@ -1067,6 +1068,7 @@
 
 %% Example:
 %% protected_query() :: #{
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"differentialPrivacy">> => differential_privacy_parameters(),
 %%   <<"error">> => protected_query_error(),
@@ -1179,7 +1181,7 @@
 
 %% Example:
 %% schema_summary() :: #{
-%%   <<"analysisMethod">> => string(),
+%%   <<"analysisMethod">> => list(any()),
 %%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"collaborationArn">> => string(),
 %%   <<"collaborationId">> => string(),
@@ -1269,6 +1271,7 @@
 
 %% Example:
 %% collaboration_summary() :: #{
+%%   <<"analyticsEngine">> => list(any()),
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
@@ -1285,7 +1288,7 @@
 
 %% Example:
 %% schema() :: #{
-%%   <<"analysisMethod">> => string(),
+%%   <<"analysisMethod">> => list(any()),
 %%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"collaborationArn">> => string(),
 %%   <<"collaborationId">> => string(),
@@ -1385,7 +1388,7 @@
 %%   <<"collaborationName">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
-%%   <<"memberAbilities">> => list(string()()),
+%%   <<"memberAbilities">> => list(list(any())()),
 %%   <<"paymentConfiguration">> => membership_payment_configuration(),
 %%   <<"status">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
@@ -1551,14 +1554,15 @@
 
 %% Example:
 %% create_collaboration_input() :: #{
+%%   <<"analyticsEngine">> => list(any()),
 %%   <<"creatorDisplayName">> := string(),
-%%   <<"creatorMemberAbilities">> := list(string()()),
+%%   <<"creatorMemberAbilities">> := list(list(any())()),
 %%   <<"creatorPaymentConfiguration">> => payment_configuration(),
 %%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
 %%   <<"description">> := string(),
 %%   <<"members">> := list(member_specification()()),
 %%   <<"name">> := string(),
-%%   <<"queryLogStatus">> := string(),
+%%   <<"queryLogStatus">> := list(any()),
 %%   <<"tags">> => map()
 %% }
 -type create_collaboration_input() :: #{binary() => any()}.
@@ -1671,6 +1675,13 @@
 %% }
 -type list_id_namespace_associations_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% billed_resource_utilization() :: #{
+%%   <<"units">> => [float()]
+%% }
+-type billed_resource_utilization() :: #{binary() => any()}.
+
 %% Example:
 %% get_schema_analysis_rule_input() :: #{}
 -type get_schema_analysis_rule_input() :: #{}.
@@ -1781,7 +1792,7 @@
 %%   <<"collaborationId">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"format">> => string(),
+%%   <<"format">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
@@ -1792,6 +1803,14 @@
 %%   <<"validations">> => list(analysis_template_validation_status_detail()())
 %% }
 -type analysis_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_compute_configuration() :: #{
+%%   <<"number">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type worker_compute_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2000,6 +2019,7 @@
 
 %% Example:
 %% protected_query_statistics() :: #{
+%%   <<"billedResourceUtilization">> => billed_resource_utilization(),
 %%   <<"totalDurationInMillis">> => [float()]
 %% }
 -type protected_query_statistics() :: #{binary() => any()}.
@@ -2045,7 +2065,7 @@
 
 %% Example:
 %% member_summary() :: #{
-%%   <<"abilities">> => list(string()()),
+%%   <<"abilities">> => list(list(any())()),
 %%   <<"accountId">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"displayName">> => string(),
@@ -2139,6 +2159,7 @@
 
 %% Example:
 %% start_protected_query_input() :: #{
+%%   <<"computeConfiguration">> => list(),
 %%   <<"resultConfiguration">> => protected_query_result_configuration(),
 %%   <<"sqlParameters">> := protected_query_s_q_l_parameters(),
 %%   <<"type">> := string()
@@ -2170,7 +2191,7 @@
 %% Example:
 %% configured_table() :: #{
 %%   <<"allowedColumns">> => list(string()()),
-%%   <<"analysisMethod">> => string(),
+%%   <<"analysisMethod">> => list(any()),
 %%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -2217,7 +2238,7 @@
 %% create_analysis_template_input() :: #{
 %%   <<"analysisParameters">> => list(analysis_parameter()()),
 %%   <<"description">> => string(),
-%%   <<"format">> := string(),
+%%   <<"format">> := list(any()),
 %%   <<"name">> := string(),
 %%   <<"source">> := list(),
 %%   <<"tags">> => map()
@@ -2277,7 +2298,8 @@
 %% protected_query_s3_output_configuration() :: #{
 %%   <<"bucket">> => [string()],
 %%   <<"keyPrefix">> => string(),
-%%   <<"resultFormat">> => string()
+%%   <<"resultFormat">> => string(),
+%%   <<"singleFileOutput">> => [boolean()]
 %% }
 -type protected_query_s3_output_configuration() :: #{binary() => any()}.
 
@@ -2319,7 +2341,7 @@
 %% member_specification() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"memberAbilities">> => list(string()()),
+%%   <<"memberAbilities">> => list(list(any())()),
 %%   <<"paymentConfiguration">> => payment_configuration()
 %% }
 -type member_specification() :: #{binary() => any()}.
@@ -2347,7 +2369,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
 %%   <<"id">> => string(),
-%%   <<"memberAbilities">> => list(string()()),
+%%   <<"memberAbilities">> => list(list(any())()),
 %%   <<"paymentConfiguration">> => membership_payment_configuration(),
 %%   <<"queryLogStatus">> => string(),
 %%   <<"status">> => string(),
@@ -2913,6 +2935,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -3731,8 +3754,7 @@ delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes
-%% an analysis rule for a configured table association.
+%% @doc Deletes an analysis rule for a configured table association.
 -spec delete_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_configured_table_association_analysis_rule_input()) ->
     {ok, delete_configured_table_association_analysis_rule_output(), tuple()} |
     {error, any()} |
@@ -4314,9 +4336,7 @@ get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, M
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Retrieves
-%% the analysis rule for a configured table association.
+%% @doc Retrieves the analysis rule for a configured table association.
 -spec get_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_configured_table_association_analysis_rule_output(), tuple()} |
     {error, any()} |
@@ -5799,9 +5819,7 @@ update_configured_table_association(Client, ConfiguredTableAssociationIdentifier
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Updates
-%% the analysis rule for a configured table association.
+%% @doc Updates the analysis rule for a configured table association.
 -spec update_configured_table_association_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_configured_table_association_analysis_rule_input()) ->
     {ok, update_configured_table_association_analysis_rule_output(), tuple()} |
     {error, any()} |

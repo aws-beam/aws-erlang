@@ -13,6 +13,8 @@
          create_guardrail/3,
          create_guardrail_version/3,
          create_guardrail_version/4,
+         create_inference_profile/2,
+         create_inference_profile/3,
          create_model_copy_job/2,
          create_model_copy_job/3,
          create_model_customization_job/2,
@@ -29,6 +31,8 @@
          delete_guardrail/4,
          delete_imported_model/3,
          delete_imported_model/4,
+         delete_inference_profile/3,
+         delete_inference_profile/4,
          delete_model_invocation_logging_configuration/2,
          delete_model_invocation_logging_configuration/3,
          delete_provisioned_model_throughput/3,
@@ -236,7 +240,8 @@
 %% Example:
 %% list_inference_profiles_request() :: #{
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"typeEquals">> => list(any())
 %% }
 -type list_inference_profiles_request() :: #{binary() => any()}.
 
@@ -389,6 +394,14 @@
 
 
 %% Example:
+%% create_inference_profile_response() :: #{
+%%   <<"inferenceProfileArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_inference_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% automated_evaluation_config() :: #{
 %%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()())
 %% }
@@ -516,6 +529,10 @@
 %% }
 -type cloud_watch_config() :: #{binary() => any()}.
 
+%% Example:
+%% delete_inference_profile_request() :: #{}
+-type delete_inference_profile_request() :: #{}.
+
 
 %% Example:
 %% logging_config() :: #{
@@ -534,6 +551,17 @@
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_inference_profile_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"inferenceProfileName">> := string(),
+%%   <<"modelSource">> := list(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_inference_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -880,6 +908,10 @@
 %%   <<"subnetIds">> => list(string()())
 %% }
 -type vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_profile_response() :: #{}
+-type delete_inference_profile_response() :: #{}.
 
 
 %% Example:
@@ -1634,6 +1666,16 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_inference_profile_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_model_copy_job_errors() ::
     too_many_tags_exception() | 
     access_denied_exception() | 
@@ -1695,6 +1737,14 @@
     conflict_exception().
 
 -type delete_imported_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_inference_profile_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2119,6 +2169,51 @@ create_guardrail_version(Client, GuardrailIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an application inference profile to track metrics and costs
+%% when invoking a model.
+%%
+%% To create an application inference profile for a foundation model in one
+%% region, specify the ARN of the model in that region. To create an
+%% application inference profile for a foundation model across multiple
+%% regions, specify the ARN of the system-defined inference profile that
+%% contains the regions that you want to route requests to. For more
+%% information, see Increase throughput and resilience with cross-region
+%% inference in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html.
+%% in the Amazon Bedrock User Guide.
+-spec create_inference_profile(aws_client:aws_client(), create_inference_profile_request()) ->
+    {ok, create_inference_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_inference_profile_errors(), tuple()}.
+create_inference_profile(Client, Input) ->
+    create_inference_profile(Client, Input, []).
+
+-spec create_inference_profile(aws_client:aws_client(), create_inference_profile_request(), proplists:proplist()) ->
+    {ok, create_inference_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_inference_profile_errors(), tuple()}.
+create_inference_profile(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/inference-profiles"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Copies a model to another region so that it can be used there.
 %%
 %% For more information, see Copy models to be used in other regions:
@@ -2458,6 +2553,45 @@ delete_imported_model(Client, ModelIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an application inference profile.
+%%
+%% For more information, see Increase throughput and resilience with
+%% cross-region inference in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html.
+%% in the Amazon Bedrock User Guide.
+-spec delete_inference_profile(aws_client:aws_client(), binary() | list(), delete_inference_profile_request()) ->
+    {ok, delete_inference_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_inference_profile_errors(), tuple()}.
+delete_inference_profile(Client, InferenceProfileIdentifier, Input) ->
+    delete_inference_profile(Client, InferenceProfileIdentifier, Input, []).
+
+-spec delete_inference_profile(aws_client:aws_client(), binary() | list(), delete_inference_profile_request(), proplists:proplist()) ->
+    {ok, delete_inference_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_inference_profile_errors(), tuple()}.
+delete_inference_profile(Client, InferenceProfileIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/inference-profiles/", aws_util:encode_uri(InferenceProfileIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete the invocation logging.
 -spec delete_model_invocation_logging_configuration(aws_client:aws_client(), delete_model_invocation_logging_configuration_request()) ->
     {ok, delete_model_invocation_logging_configuration_response(), tuple()} |
@@ -2735,7 +2869,10 @@ get_imported_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about an inference profile.
 %%
-%% For more information, see the Amazon Bedrock User Guide.
+%% For more information, see Increase throughput and resilience with
+%% cross-region inference in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html.
+%% in the Amazon Bedrock User Guide.
 -spec get_inference_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_inference_profile_response(), tuple()} |
     {error, any()} |
@@ -3282,6 +3419,11 @@ list_imported_models(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of inference profiles that you can use.
+%%
+%% For more information, see Increase throughput and resilience with
+%% cross-region inference in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html.
+%% in the Amazon Bedrock User Guide.
 -spec list_inference_profiles(aws_client:aws_client()) ->
     {ok, list_inference_profiles_response(), tuple()} |
     {error, any()} |
@@ -3317,7 +3459,8 @@ list_inference_profiles(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3599,8 +3742,8 @@ list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, Options0)
 %% @doc List the tags associated with the specified resource.
 %%
 %% For more information, see Tagging resources:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
-%% Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Amazon Bedrock User Guide:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -3783,8 +3926,8 @@ stop_model_invocation_job(Client, JobIdentifier, Input0, Options0) ->
 %% @doc Associate tags with a resource.
 %%
 %% For more information, see Tagging resources:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
-%% Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Amazon Bedrock User Guide:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
@@ -3822,8 +3965,8 @@ tag_resource(Client, Input0, Options0) ->
 %% @doc Remove one or more tags from a resource.
 %%
 %% For more information, see Tagging resources:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
-%% Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Amazon Bedrock User Guide:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |

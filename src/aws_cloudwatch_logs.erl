@@ -545,6 +545,7 @@
 %% update_anomaly_request() :: #{
 %%   <<"anomalyDetectorArn">> := string(),
 %%   <<"anomalyId">> => string(),
+%%   <<"baseline">> => boolean(),
 %%   <<"patternId">> => string(),
 %%   <<"suppressionPeriod">> => suppression_period(),
 %%   <<"suppressionType">> => list(any())
