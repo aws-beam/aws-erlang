@@ -5340,7 +5340,8 @@ create_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsmConfiguration">>, Input, Options).
 
-%% @doc Creates a zero-ETL integration with Amazon Redshift.
+%% @doc Creates a zero-ETL integration or S3 event integration with Amazon
+%% Redshift.
 -spec create_integration(aws_client:aws_client(), create_integration_message()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
@@ -5742,7 +5743,8 @@ delete_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsmConfiguration">>, Input, Options).
 
-%% @doc Deletes a zero-ETL integration with Amazon Redshift.
+%% @doc Deletes a zero-ETL integration or S3 event integration with Amazon
+%% Redshift.
 -spec delete_integration(aws_client:aws_client(), delete_integration_message()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
@@ -6526,7 +6528,8 @@ describe_inbound_integrations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInboundIntegrations">>, Input, Options).
 
-%% @doc Describes one or more zero-ETL integrations with Amazon Redshift.
+%% @doc Describes one or more zero-ETL or S3 event integrations with Amazon
+%% Redshift.
 -spec describe_integrations(aws_client:aws_client(), describe_integrations_message()) ->
     {ok, integrations_message(), tuple()} |
     {error, any()} |
@@ -7474,7 +7477,8 @@ modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
 
-%% @doc Modifies a zero-ETL integration with Amazon Redshift.
+%% @doc Modifies a zero-ETL integration or S3 event integration with Amazon
+%% Redshift.
 -spec modify_integration(aws_client:aws_client(), modify_integration_message()) ->
     {ok, integration(), tuple()} |
     {error, any()} |

@@ -39,9 +39,6 @@
 %% rules that are compatible
 %% with Suricata, a free, open source network analysis and threat detection
 %% engine.
-%% Network Firewall supports Suricata version 6.0.9. For information about
-%% Suricata,
-%% see the Suricata website: https://suricata.io/.
 %%
 %% You can use Network Firewall to monitor and protect your VPC traffic in a
 %% number of ways.
@@ -293,6 +290,7 @@
 
 %% Example:
 %% stateful_engine_options() :: #{
+%%   <<"FlowTimeouts">> => flow_timeouts(),
 %%   <<"RuleOrder">> => list(any()),
 %%   <<"StreamExceptionPolicy">> => list(any())
 %% }
@@ -812,6 +810,12 @@
 %%   <<"UpdateToken">> => string()
 %% }
 -type describe_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% flow_timeouts() :: #{
+%%   <<"TcpIdleTimeoutSeconds">> => integer()
+%% }
+-type flow_timeouts() :: #{binary() => any()}.
 
 %% Example:
 %% custom_action() :: #{

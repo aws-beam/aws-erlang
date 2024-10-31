@@ -134,6 +134,17 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% iam_identity_center_config_options() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationDescription">> => [string()],
+%%   <<"applicationName">> => [string()],
+%%   <<"groupAttribute">> => string(),
+%%   <<"instanceArn">> => string(),
+%%   <<"userAttribute">> => string()
+%% }
+-type iam_identity_center_config_options() :: #{binary() => any()}.
+
+%% Example:
 %% collection_error_detail() :: #{
 %%   <<"errorCode">> => [string()],
 %%   <<"errorMessage">> => [string()],
@@ -399,6 +410,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"configVersion">> := string(),
 %%   <<"description">> => string(),
+%%   <<"iamIdentityCenterOptionsUpdates">> => update_iam_identity_center_config_options(),
 %%   <<"id">> := string(),
 %%   <<"samlOptions">> => saml_config_options()
 %% }
@@ -576,6 +588,13 @@
 -type delete_security_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_iam_identity_center_config_options() :: #{
+%%   <<"groupAttribute">> => string(),
+%%   <<"userAttribute">> => string()
+%% }
+-type update_iam_identity_center_config_options() :: #{binary() => any()}.
+
+%% Example:
 %% security_policy_stats() :: #{
 %%   <<"EncryptionPolicyCount">> => [float()],
 %%   <<"NetworkPolicyCount">> => [float()]
@@ -642,6 +661,7 @@
 %%   <<"configVersion">> => string(),
 %%   <<"createdDate">> => [float()],
 %%   <<"description">> => string(),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_config_options(),
 %%   <<"id">> => string(),
 %%   <<"lastModifiedDate">> => [float()],
 %%   <<"samlOptions">> => saml_config_options(),
@@ -919,9 +939,18 @@
 -type update_vpc_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_iam_identity_center_config_options() :: #{
+%%   <<"groupAttribute">> => string(),
+%%   <<"instanceArn">> => string(),
+%%   <<"userAttribute">> => string()
+%% }
+-type create_iam_identity_center_config_options() :: #{binary() => any()}.
+
+%% Example:
 %% create_security_config_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"iamIdentityCenterOptions">> => create_iam_identity_center_config_options(),
 %%   <<"name">> := string(),
 %%   <<"samlOptions">> => saml_config_options(),
 %%   <<"type">> := string()

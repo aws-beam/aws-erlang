@@ -586,6 +586,7 @@
 %%   <<"namespaceName">> => [string()],
 %%   <<"patchVersion">> => [string()],
 %%   <<"port">> => [integer()],
+%%   <<"pricePerformanceTarget">> => performance_target(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"status">> => string(),
@@ -788,6 +789,7 @@
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"namespaceName">> := string(),
 %%   <<"port">> => [integer()],
+%%   <<"pricePerformanceTarget">> => performance_target(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"subnetIds">> => list(string()()),
@@ -1142,6 +1144,7 @@
 %%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"port">> => [integer()],
+%%   <<"pricePerformanceTarget">> => performance_target(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"subnetIds">> => list(string()()),
@@ -1181,6 +1184,13 @@
 %%   <<"usageLimit">> => usage_limit()
 %% }
 -type create_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% performance_target() :: #{
+%%   <<"level">> => [integer()],
+%%   <<"status">> => string()
+%% }
+-type performance_target() :: #{binary() => any()}.
 
 %% Example:
 %% namespace() :: #{

@@ -4230,6 +4230,7 @@
 %%   <<"MetadataProperties">> => metadata_properties(),
 %%   <<"ModelApprovalStatus">> => list(any()),
 %%   <<"ModelCard">> => model_package_model_card(),
+%%   <<"ModelLifeCycle">> => model_life_cycle(),
 %%   <<"ModelMetrics">> => model_metrics(),
 %%   <<"ModelPackageArn">> => string(),
 %%   <<"ModelPackageDescription">> => string(),
@@ -6917,11 +6918,13 @@
 %% update_model_package_input() :: #{
 %%   <<"AdditionalInferenceSpecificationsToAdd">> => list(additional_inference_specification_definition()()),
 %%   <<"ApprovalDescription">> => string(),
+%%   <<"ClientToken">> => string(),
 %%   <<"CustomerMetadataProperties">> => map(),
 %%   <<"CustomerMetadataPropertiesToRemove">> => list(string()()),
 %%   <<"InferenceSpecification">> => inference_specification(),
 %%   <<"ModelApprovalStatus">> => list(any()),
 %%   <<"ModelCard">> => model_package_model_card(),
+%%   <<"ModelLifeCycle">> => model_life_cycle(),
 %%   <<"ModelPackageArn">> := string(),
 %%   <<"SourceUri">> => string()
 %% }
@@ -7246,6 +7249,7 @@
 %%   <<"MetadataProperties">> => metadata_properties(),
 %%   <<"ModelApprovalStatus">> => list(any()),
 %%   <<"ModelCard">> => model_package_model_card(),
+%%   <<"ModelLifeCycle">> => model_life_cycle(),
 %%   <<"ModelMetrics">> => model_metrics(),
 %%   <<"ModelPackageDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
@@ -11129,6 +11133,7 @@
 %%   <<"MetadataProperties">> => metadata_properties(),
 %%   <<"ModelApprovalStatus">> => list(any()),
 %%   <<"ModelCard">> => model_package_model_card(),
+%%   <<"ModelLifeCycle">> => model_life_cycle(),
 %%   <<"ModelMetrics">> => model_metrics(),
 %%   <<"ModelPackageArn">> => string(),
 %%   <<"ModelPackageDescription">> => string(),
@@ -11394,6 +11399,14 @@
 %%   <<"TrialName">> := string()
 %% }
 -type associate_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_life_cycle() :: #{
+%%   <<"Stage">> => string(),
+%%   <<"StageDescription">> => string(),
+%%   <<"StageStatus">> => string()
+%% }
+-type model_life_cycle() :: #{binary() => any()}.
 
 %% Example:
 %% delete_human_task_ui_response() :: #{
@@ -14305,11 +14318,13 @@ create_pipeline(Client, Input, Options)
 %% .
 %%
 %% The URL that you get from a call to `CreatePresignedDomainUrl' has a
-%% default
-%% timeout of 5 minutes. You can configure this value using
-%% `ExpiresInSeconds'. If
-%% you try to use the URL after the timeout limit expires, you are directed
-%% to the Amazon Web Services console sign-in page.
+%% default timeout of 5 minutes. You can configure this value using
+%% `ExpiresInSeconds'. If you try to use the URL after the timeout limit
+%% expires, you are directed to the Amazon Web Services console sign-in page.
+%%
+%% The JupyterLab session default expiration time is 12 hours. You can
+%% configure this
+%% value using SessionExpirationDurationInSeconds.
 -spec create_presigned_domain_url(aws_client:aws_client(), create_presigned_domain_url_request()) ->
     {ok, create_presigned_domain_url_response(), tuple()} |
     {error, any()} |

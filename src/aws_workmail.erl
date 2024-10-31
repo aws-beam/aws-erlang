@@ -57,6 +57,8 @@
          create_availability_configuration/3,
          create_group/2,
          create_group/3,
+         create_identity_center_application/2,
+         create_identity_center_application/3,
          create_impersonation_role/2,
          create_impersonation_role/3,
          create_mobile_device_access_rule/2,
@@ -77,6 +79,10 @@
          delete_email_monitoring_configuration/3,
          delete_group/2,
          delete_group/3,
+         delete_identity_center_application/2,
+         delete_identity_center_application/3,
+         delete_identity_provider_configuration/2,
+         delete_identity_provider_configuration/3,
          delete_impersonation_role/2,
          delete_impersonation_role/3,
          delete_mailbox_permissions/2,
@@ -87,6 +93,8 @@
          delete_mobile_device_access_rule/3,
          delete_organization/2,
          delete_organization/3,
+         delete_personal_access_token/2,
+         delete_personal_access_token/3,
          delete_resource/2,
          delete_resource/3,
          delete_retention_policy/2,
@@ -103,6 +111,8 @@
          describe_entity/3,
          describe_group/2,
          describe_group/3,
+         describe_identity_provider_configuration/2,
+         describe_identity_provider_configuration/3,
          describe_inbound_dmarc_settings/2,
          describe_inbound_dmarc_settings/3,
          describe_mailbox_export_job/2,
@@ -133,6 +143,8 @@
          get_mobile_device_access_effect/3,
          get_mobile_device_access_override/2,
          get_mobile_device_access_override/3,
+         get_personal_access_token_metadata/2,
+         get_personal_access_token_metadata/3,
          list_access_control_rules/2,
          list_access_control_rules/3,
          list_aliases/2,
@@ -159,6 +171,8 @@
          list_mobile_device_access_rules/3,
          list_organizations/2,
          list_organizations/3,
+         list_personal_access_tokens/2,
+         list_personal_access_tokens/3,
          list_resource_delegates/2,
          list_resource_delegates/3,
          list_resources/2,
@@ -171,6 +185,8 @@
          put_access_control_rule/3,
          put_email_monitoring_configuration/2,
          put_email_monitoring_configuration/3,
+         put_identity_provider_configuration/2,
+         put_identity_provider_configuration/3,
          put_inbound_dmarc_settings/2,
          put_inbound_dmarc_settings/3,
          put_mailbox_permissions/2,
@@ -481,6 +497,12 @@
 -type get_access_control_effect_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_identity_center_application_request() :: #{
+%%   <<"ApplicationArn">> := string()
+%% }
+-type delete_identity_center_application_request() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_response() :: #{
 
 %% }
@@ -509,12 +531,33 @@
 -type deregister_from_work_mail_response() :: #{binary() => any()}.
 
 %% Example:
+%% personal_access_token_summary() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateLastUsed">> => non_neg_integer(),
+%%   <<"ExpiresTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PersonalAccessTokenId">> => string(),
+%%   <<"Scopes">> => list(string()()),
+%%   <<"UserId">> => string()
+%% }
+-type personal_access_token_summary() :: #{binary() => any()}.
+
+%% Example:
 %% update_primary_email_address_request() :: #{
 %%   <<"Email">> := string(),
 %%   <<"EntityId">> := string(),
 %%   <<"OrganizationId">> := string()
 %% }
 -type update_primary_email_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_personal_access_tokens_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type list_personal_access_tokens_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_mobile_device_access_overrides_request() :: #{
@@ -580,6 +623,7 @@
 %% Example:
 %% list_users_filters() :: #{
 %%   <<"DisplayNamePrefix">> => string(),
+%%   <<"IdentityProviderUserIdPrefix">> => string(),
 %%   <<"PrimaryEmailPrefix">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"UsernamePrefix">> => string()
@@ -610,6 +654,14 @@
 %%   <<"HostedZoneId">> => string()
 %% }
 -type domain() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_provider_configuration_response() :: #{
+%%   <<"AuthenticationMode">> => list(any()),
+%%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
+%%   <<"PersonalAccessTokenConfiguration">> => personal_access_token_configuration()
+%% }
+-type describe_identity_provider_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_primary_email_address_response() :: #{
@@ -672,6 +724,18 @@
 -type list_mobile_device_access_rules_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_personal_access_token_metadata_response() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateLastUsed">> => non_neg_integer(),
+%%   <<"ExpiresTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PersonalAccessTokenId">> => string(),
+%%   <<"Scopes">> => list(string()()),
+%%   <<"UserId">> => string()
+%% }
+-type get_personal_access_token_metadata_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_resource_delegates_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -687,6 +751,13 @@
 %%   <<"EwsUsername">> => string()
 %% }
 -type ews_availability_provider() :: #{binary() => any()}.
+
+%% Example:
+%% delete_personal_access_token_request() :: #{
+%%   <<"OrganizationId">> := string(),
+%%   <<"PersonalAccessTokenId">> := string()
+%% }
+-type delete_personal_access_token_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_alias_response() :: #{
@@ -820,11 +891,24 @@
 -type delete_impersonation_role_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_identity_center_application_response() :: #{
+%%   <<"ApplicationArn">> => string()
+%% }
+-type create_identity_center_application_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_mailbox_details_request() :: #{
 %%   <<"OrganizationId">> := string(),
 %%   <<"UserId">> := string()
 %% }
 -type get_mailbox_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% personal_access_token_configuration() :: #{
+%%   <<"LifetimeInDays">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type personal_access_token_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_retention_policy_request() :: #{
@@ -884,6 +968,12 @@
 -type describe_inbound_dmarc_settings_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_identity_provider_configuration_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_identity_provider_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_mailbox_export_job_response() :: #{
 
 %% }
@@ -907,6 +997,12 @@
 %%   <<"OrganizationId">> := string()
 %% }
 -type get_mail_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_personal_access_token_response() :: #{
+
+%% }
+-type delete_personal_access_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -1010,6 +1106,12 @@
 -type get_impersonation_role_effect_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_identity_provider_configuration_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type describe_identity_provider_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_organization_response() :: #{
 %%   <<"OrganizationId">> => string(),
 %%   <<"State">> => string()
@@ -1056,6 +1158,12 @@
 
 %% }
 -type update_availability_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_identity_provider_configuration_response() :: #{
+
+%% }
+-type put_identity_provider_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -1238,6 +1346,8 @@
 %%   <<"EnabledDate">> => non_neg_integer(),
 %%   <<"FirstName">> => string(),
 %%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"IdentityProviderIdentityStoreId">> => string(),
+%%   <<"IdentityProviderUserId">> => string(),
 %%   <<"Initials">> => string(),
 %%   <<"JobTitle">> => string(),
 %%   <<"LastName">> => string(),
@@ -1350,6 +1460,13 @@
 -type update_mailbox_quota_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_personal_access_token_metadata_request() :: #{
+%%   <<"OrganizationId">> := string(),
+%%   <<"PersonalAccessTokenId">> := string()
+%% }
+-type get_personal_access_token_metadata_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_mobile_device_access_rules_request() :: #{
 %%   <<"OrganizationId">> := string()
 %% }
@@ -1457,6 +1574,7 @@
 %%   <<"DisplayName">> => string(),
 %%   <<"FirstName">> => string(),
 %%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"IdentityProviderUserId">> => string(),
 %%   <<"Initials">> => string(),
 %%   <<"JobTitle">> => string(),
 %%   <<"LastName">> => string(),
@@ -1528,6 +1646,13 @@
 -type create_organization_response() :: #{binary() => any()}.
 
 %% Example:
+%% identity_center_configuration() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"InstanceArn">> => string()
+%% }
+-type identity_center_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% delete_mailbox_permissions_request() :: #{
 %%   <<"EntityId">> := string(),
 %%   <<"GranteeId">> := string(),
@@ -1578,6 +1703,8 @@
 %%   <<"Email">> => string(),
 %%   <<"EnabledDate">> => non_neg_integer(),
 %%   <<"Id">> => string(),
+%%   <<"IdentityProviderIdentityStoreId">> => string(),
+%%   <<"IdentityProviderUserId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"UserRole">> => list(any())
@@ -1695,6 +1822,7 @@
 %% delete_organization_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DeleteDirectory">> := boolean(),
+%%   <<"DeleteIdentityCenterApplication">> => boolean(),
 %%   <<"ForceDelete">> => boolean(),
 %%   <<"OrganizationId">> := string()
 %% }
@@ -1732,6 +1860,13 @@
 %%   <<"OrganizationId">> := string()
 %% }
 -type delete_access_control_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_personal_access_tokens_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PersonalAccessTokenSummaries">> => list(personal_access_token_summary()())
+%% }
+-type list_personal_access_tokens_response() :: #{binary() => any()}.
 
 %% Example:
 %% associate_member_to_group_request() :: #{
@@ -1772,6 +1907,12 @@
 -type list_groups_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_identity_provider_configuration_response() :: #{
+
+%% }
+-type delete_identity_provider_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_mail_domains_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1803,6 +1944,15 @@
 %%   <<"Message">> => string()
 %% }
 -type reserved_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_identity_provider_configuration_request() :: #{
+%%   <<"AuthenticationMode">> := list(any()),
+%%   <<"IdentityCenterConfiguration">> := identity_center_configuration(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"PersonalAccessTokenConfiguration">> := personal_access_token_configuration()
+%% }
+-type put_identity_provider_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_groups_request() :: #{
@@ -1858,6 +2008,12 @@
 
 %% }
 -type update_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_center_application_response() :: #{
+
+%% }
+-type delete_identity_center_application_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_mobile_device_access_rule_request() :: #{
@@ -1930,6 +2086,7 @@
 %%   <<"DisplayName">> := string(),
 %%   <<"FirstName">> => string(),
 %%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"IdentityProviderUserId">> => string(),
 %%   <<"LastName">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"OrganizationId">> := string(),
@@ -1961,6 +2118,14 @@
 %%   <<"Type">> => list(any())
 %% }
 -type resource() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_center_application_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_identity_center_application_request() :: #{binary() => any()}.
 
 -type associate_delegate_to_resource_errors() ::
     invalid_parameter_exception() | 
@@ -2019,6 +2184,9 @@
     name_availability_exception() | 
     organization_state_exception() | 
     unsupported_operation_exception().
+
+-type create_identity_center_application_errors() ::
+    invalid_parameter_exception().
 
 -type create_impersonation_role_errors() ::
     limit_exceeded_exception() | 
@@ -2091,6 +2259,15 @@
     entity_state_exception() | 
     unsupported_operation_exception().
 
+-type delete_identity_center_application_errors() ::
+    invalid_parameter_exception() | 
+    organization_state_exception().
+
+-type delete_identity_provider_configuration_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
 -type delete_impersonation_role_errors() ::
     invalid_parameter_exception() | 
     organization_not_found_exception() | 
@@ -2115,6 +2292,11 @@
     organization_state_exception().
 
 -type delete_organization_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception().
+
+-type delete_personal_access_token_errors() ::
     invalid_parameter_exception() | 
     organization_not_found_exception() | 
     organization_state_exception().
@@ -2172,6 +2354,12 @@
     organization_state_exception() | 
     entity_not_found_exception().
 
+-type describe_identity_provider_configuration_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
 -type describe_inbound_dmarc_settings_errors() ::
     organization_not_found_exception() | 
     organization_state_exception().
@@ -2194,6 +2382,8 @@
     entity_not_found_exception().
 
 -type describe_user_errors() ::
+    directory_service_authentication_failed_exception() | 
+    directory_unavailable_exception() | 
     invalid_parameter_exception() | 
     organization_not_found_exception() | 
     organization_state_exception() | 
@@ -2268,6 +2458,12 @@
     organization_state_exception() | 
     entity_not_found_exception().
 
+-type get_personal_access_token_metadata_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
 -type list_access_control_rules_errors() ::
     organization_not_found_exception() | 
     organization_state_exception().
@@ -2280,6 +2476,7 @@
     entity_not_found_exception().
 
 -type list_availability_configurations_errors() ::
+    invalid_parameter_exception() | 
     organization_not_found_exception() | 
     organization_state_exception().
 
@@ -2338,6 +2535,13 @@
 -type list_organizations_errors() ::
     invalid_parameter_exception().
 
+-type list_personal_access_tokens_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    organization_state_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception().
+
 -type list_resource_delegates_errors() ::
     invalid_parameter_exception() | 
     organization_not_found_exception() | 
@@ -2369,6 +2573,12 @@
     entity_not_found_exception().
 
 -type put_email_monitoring_configuration_errors() ::
+    invalid_parameter_exception() | 
+    organization_not_found_exception() | 
+    resource_not_found_exception() | 
+    organization_state_exception().
+
+-type put_identity_provider_configuration_errors() ::
     invalid_parameter_exception() | 
     organization_not_found_exception() | 
     resource_not_found_exception() | 
@@ -2664,6 +2874,29 @@ create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
 
+%% @doc
+%% Creates the WorkMail application in IAM Identity Center that can be used
+%% later in the WorkMail - IdC integration.
+%%
+%% For more information, see PutIdentityProviderConfiguration. This action
+%% does not affect the authentication settings for any WorkMail
+%% organizations.
+-spec create_identity_center_application(aws_client:aws_client(), create_identity_center_application_request()) ->
+    {ok, create_identity_center_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_identity_center_application_errors(), tuple()}.
+create_identity_center_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_identity_center_application(Client, Input, []).
+
+-spec create_identity_center_application(aws_client:aws_client(), create_identity_center_application_request(), proplists:proplist()) ->
+    {ok, create_identity_center_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_identity_center_application_errors(), tuple()}.
+create_identity_center_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIdentityCenterApplication">>, Input, Options).
+
 %% @doc Creates an impersonation role for the given WorkMail organization.
 %%
 %% Idempotency ensures that an API request completes no more than one
@@ -2879,6 +3112,49 @@ delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
 
+%% @doc
+%% Deletes the IAM Identity Center application from WorkMail.
+%%
+%% This action does not affect the authentication settings for any WorkMail
+%% organizations.
+-spec delete_identity_center_application(aws_client:aws_client(), delete_identity_center_application_request()) ->
+    {ok, delete_identity_center_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_identity_center_application_errors(), tuple()}.
+delete_identity_center_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_identity_center_application(Client, Input, []).
+
+-spec delete_identity_center_application(aws_client:aws_client(), delete_identity_center_application_request(), proplists:proplist()) ->
+    {ok, delete_identity_center_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_identity_center_application_errors(), tuple()}.
+delete_identity_center_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIdentityCenterApplication">>, Input, Options).
+
+%% @doc
+%% Disables the integration between IdC and WorkMail.
+%%
+%% Authentication will continue with the directory as it was before the IdC
+%% integration. You might have to reset your directory passwords and
+%% reconfigure your desktop and mobile email clients.
+-spec delete_identity_provider_configuration(aws_client:aws_client(), delete_identity_provider_configuration_request()) ->
+    {ok, delete_identity_provider_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_identity_provider_configuration_errors(), tuple()}.
+delete_identity_provider_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_identity_provider_configuration(Client, Input, []).
+
+-spec delete_identity_provider_configuration(aws_client:aws_client(), delete_identity_provider_configuration_request(), proplists:proplist()) ->
+    {ok, delete_identity_provider_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_identity_provider_configuration_errors(), tuple()}.
+delete_identity_provider_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIdentityProviderConfiguration">>, Input, Options).
+
 %% @doc Deletes an impersonation role for the given WorkMail organization.
 -spec delete_impersonation_role(aws_client:aws_client(), delete_impersonation_role_request()) ->
     {ok, delete_impersonation_role_response(), tuple()} |
@@ -2979,6 +3255,24 @@ delete_organization(Client, Input)
 delete_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganization">>, Input, Options).
+
+%% @doc
+%% Deletes the Personal Access Token from the provided WorkMail Organization.
+-spec delete_personal_access_token(aws_client:aws_client(), delete_personal_access_token_request()) ->
+    {ok, delete_personal_access_token_response(), tuple()} |
+    {error, any()} |
+    {error, delete_personal_access_token_errors(), tuple()}.
+delete_personal_access_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_personal_access_token(Client, Input, []).
+
+-spec delete_personal_access_token(aws_client:aws_client(), delete_personal_access_token_request(), proplists:proplist()) ->
+    {ok, delete_personal_access_token_response(), tuple()} |
+    {error, any()} |
+    {error, delete_personal_access_token_errors(), tuple()}.
+delete_personal_access_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePersonalAccessToken">>, Input, Options).
 
 %% @doc Deletes the specified resource.
 -spec delete_resource(aws_client:aws_client(), delete_resource_request()) ->
@@ -3136,6 +3430,25 @@ describe_group(Client, Input)
 describe_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroup">>, Input, Options).
+
+%% @doc
+%% Returns detailed information on the current IdC setup for the WorkMail
+%% organization.
+-spec describe_identity_provider_configuration(aws_client:aws_client(), describe_identity_provider_configuration_request()) ->
+    {ok, describe_identity_provider_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_provider_configuration_errors(), tuple()}.
+describe_identity_provider_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_identity_provider_configuration(Client, Input, []).
+
+-spec describe_identity_provider_configuration(aws_client:aws_client(), describe_identity_provider_configuration_request(), proplists:proplist()) ->
+    {ok, describe_identity_provider_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_provider_configuration_errors(), tuple()}.
+describe_identity_provider_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIdentityProviderConfiguration">>, Input, Options).
 
 %% @doc Lists the settings in a DMARC policy for a specified organization.
 -spec describe_inbound_dmarc_settings(aws_client:aws_client(), describe_inbound_dmarc_settings_request()) ->
@@ -3411,6 +3724,25 @@ get_mobile_device_access_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMobileDeviceAccessOverride">>, Input, Options).
 
+%% @doc
+%% Requests details of a specific Personal Access Token within the WorkMail
+%% organization.
+-spec get_personal_access_token_metadata(aws_client:aws_client(), get_personal_access_token_metadata_request()) ->
+    {ok, get_personal_access_token_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, get_personal_access_token_metadata_errors(), tuple()}.
+get_personal_access_token_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_personal_access_token_metadata(Client, Input, []).
+
+-spec get_personal_access_token_metadata(aws_client:aws_client(), get_personal_access_token_metadata_request(), proplists:proplist()) ->
+    {ok, get_personal_access_token_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, get_personal_access_token_metadata_errors(), tuple()}.
+get_personal_access_token_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPersonalAccessTokenMetadata">>, Input, Options).
+
 %% @doc Lists the access control rules for the specified organization.
 -spec list_access_control_rules(aws_client:aws_client(), list_access_control_rules_request()) ->
     {ok, list_access_control_rules_response(), tuple()} |
@@ -3644,6 +3976,24 @@ list_organizations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOrganizations">>, Input, Options).
 
+%% @doc
+%% Returns a summary of your Personal Access Tokens.
+-spec list_personal_access_tokens(aws_client:aws_client(), list_personal_access_tokens_request()) ->
+    {ok, list_personal_access_tokens_response(), tuple()} |
+    {error, any()} |
+    {error, list_personal_access_tokens_errors(), tuple()}.
+list_personal_access_tokens(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_personal_access_tokens(Client, Input, []).
+
+-spec list_personal_access_tokens(aws_client:aws_client(), list_personal_access_tokens_request(), proplists:proplist()) ->
+    {ok, list_personal_access_tokens_response(), tuple()} |
+    {error, any()} |
+    {error, list_personal_access_tokens_errors(), tuple()}.
+list_personal_access_tokens(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPersonalAccessTokens">>, Input, Options).
+
 %% @doc Lists the delegates associated with a resource.
 %%
 %% Users and groups can be resource
@@ -3756,6 +4106,31 @@ put_email_monitoring_configuration(Client, Input)
 put_email_monitoring_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEmailMonitoringConfiguration">>, Input, Options).
+
+%% @doc
+%% Enables integration between IAM Identity Center (IdC) and WorkMail to
+%% proxy authentication requests for mailbox users.
+%%
+%% You can connect your IdC directory or your external directory to WorkMail
+%% through
+%% IdC and manage access to WorkMail mailboxes in a single place. For
+%% enhanced protection, you could enable Multifactor Authentication (MFA) and
+%% Personal Access Tokens.
+-spec put_identity_provider_configuration(aws_client:aws_client(), put_identity_provider_configuration_request()) ->
+    {ok, put_identity_provider_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_identity_provider_configuration_errors(), tuple()}.
+put_identity_provider_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_identity_provider_configuration(Client, Input, []).
+
+-spec put_identity_provider_configuration(aws_client:aws_client(), put_identity_provider_configuration_request(), proplists:proplist()) ->
+    {ok, put_identity_provider_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_identity_provider_configuration_errors(), tuple()}.
+put_identity_provider_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutIdentityProviderConfiguration">>, Input, Options).
 
 %% @doc Enables or disables a DMARC policy for a given organization.
 -spec put_inbound_dmarc_settings(aws_client:aws_client(), put_inbound_dmarc_settings_request()) ->
@@ -4031,7 +4406,7 @@ update_default_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDefaultMailDomain">>, Input, Options).
 
-%% @doc Updates attibutes in a group.
+%% @doc Updates attributes in a group.
 -spec update_group(aws_client:aws_client(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |

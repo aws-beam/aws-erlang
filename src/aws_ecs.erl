@@ -63,6 +63,10 @@
          describe_clusters/3,
          describe_container_instances/2,
          describe_container_instances/3,
+         describe_service_deployments/2,
+         describe_service_deployments/3,
+         describe_service_revisions/2,
+         describe_service_revisions/3,
          describe_services/2,
          describe_services/3,
          describe_task_definition/2,
@@ -85,6 +89,8 @@
          list_clusters/3,
          list_container_instances/2,
          list_container_instances/3,
+         list_service_deployments/2,
+         list_service_deployments/3,
          list_services/2,
          list_services/3,
          list_services_by_namespace/2,
@@ -182,6 +188,17 @@
 %%   <<"failures">> => list(failure()())
 %% }
 -type update_container_instances_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_deployments_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"createdAt">> => created_at(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"service">> := string(),
+%%   <<"status">> => list(list(any())())
+%% }
+-type list_service_deployments_request() :: #{binary() => any()}.
 
 %% Example:
 %% task_set() :: #{
@@ -320,6 +337,14 @@
 -type container() :: #{binary() => any()}.
 
 %% Example:
+%% service_deployment_circuit_breaker() :: #{
+%%   <<"failureCount">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"threshold">> => integer()
+%% }
+-type service_deployment_circuit_breaker() :: #{binary() => any()}.
+
+%% Example:
 %% inference_accelerator() :: #{
 %%   <<"deviceName">> => string(),
 %%   <<"deviceType">> => string()
@@ -414,6 +439,13 @@
 %%   <<"taskRoleArn">> => string()
 %% }
 -type task_override() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_deployments_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"serviceDeployments">> => list(service_deployment()())
+%% }
+-type describe_service_deployments_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_cluster_response() :: #{
@@ -564,6 +596,15 @@
 -type attachment() :: #{binary() => any()}.
 
 %% Example:
+%% service_revision_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"pendingTaskCount">> => integer(),
+%%   <<"requestedTaskCount">> => integer(),
+%%   <<"runningTaskCount">> => integer()
+%% }
+-type service_revision_summary() :: #{binary() => any()}.
+
+%% Example:
 %% target_not_connected_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -627,6 +668,20 @@
 %%   <<"status">> => list(any())
 %% }
 -type list_task_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment_brief() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceDeploymentArn">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"targetServiceRevisionArn">> => string()
+%% }
+-type service_deployment_brief() :: #{binary() => any()}.
 
 %% Example:
 %% task_volume_configuration() :: #{
@@ -834,6 +889,14 @@
 -type list_account_settings_response() :: #{binary() => any()}.
 
 %% Example:
+%% rollback() :: #{
+%%   <<"reason">> => string(),
+%%   <<"serviceRevisionArn">> => string(),
+%%   <<"startedAt">> => non_neg_integer()
+%% }
+-type rollback() :: #{binary() => any()}.
+
+%% Example:
 %% create_cluster_request() :: #{
 %%   <<"capacityProviders">> => list(string()()),
 %%   <<"clusterName">> => string(),
@@ -852,6 +915,13 @@
 %%   <<"restartAttemptPeriod">> => integer()
 %% }
 -type container_restart_policy() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_deployments_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceDeployments">> => list(service_deployment_brief()())
+%% }
+-type list_service_deployments_response() :: #{binary() => any()}.
 
 %% Example:
 %% service_connect_configuration() :: #{
@@ -1037,6 +1107,21 @@
 -type list_services_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_service_revisions_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"serviceRevisions">> => list(service_revision()())
+%% }
+-type describe_service_revisions_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment_alarms() :: #{
+%%   <<"alarmNames">> => list(string()()),
+%%   <<"status">> => list(any()),
+%%   <<"triggeredAlarmNames">> => list(string()())
+%% }
+-type service_deployment_alarms() :: #{binary() => any()}.
+
+%% Example:
 %% service_not_active_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1119,6 +1204,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_task_definition_families_response() :: #{binary() => any()}.
+
+%% Example:
+%% container_image() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"image">> => string(),
+%%   <<"imageDigest">> => string()
+%% }
+-type container_image() :: #{binary() => any()}.
 
 %% Example:
 %% update_task_set_response() :: #{
@@ -1213,6 +1306,27 @@
 %%   <<"protocol">> => list(any())
 %% }
 -type network_binding() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment() :: #{
+%%   <<"alarms">> => service_deployment_alarms(),
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deploymentCircuitBreaker">> => service_deployment_circuit_breaker(),
+%%   <<"deploymentConfiguration">> => deployment_configuration(),
+%%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"rollback">> => rollback(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceDeploymentArn">> => string(),
+%%   <<"sourceServiceRevisions">> => list(service_revision_summary()()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"targetServiceRevision">> => service_revision_summary(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type service_deployment() :: #{binary() => any()}.
 
 %% Example:
 %% describe_task_sets_response() :: #{
@@ -1574,6 +1688,13 @@
 -type managed_scaling() :: #{binary() => any()}.
 
 %% Example:
+%% created_at() :: #{
+%%   <<"after">> => non_neg_integer(),
+%%   <<"before">> => non_neg_integer()
+%% }
+-type created_at() :: #{binary() => any()}.
+
+%% Example:
 %% volume() :: #{
 %%   <<"configuredAtLaunch">> => boolean(),
 %%   <<"dockerVolumeConfiguration">> => docker_volume_configuration(),
@@ -1816,6 +1937,12 @@
 -type discover_poll_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_service_deployments_request() :: #{
+%%   <<"serviceDeploymentArns">> := list(string()())
+%% }
+-type describe_service_deployments_request() :: #{binary() => any()}.
+
+%% Example:
 %% cluster_contains_services_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1957,6 +2084,28 @@
 -type service_connect_tls_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% service_revision() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"clusterArn">> => string(),
+%%   <<"containerImages">> => list(container_image()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
+%%   <<"guardDutyEnabled">> => boolean(),
+%%   <<"launchType">> => list(any()),
+%%   <<"loadBalancers">> => list(load_balancer()()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
+%%   <<"serviceRegistries">> => list(service_registry()()),
+%%   <<"serviceRevisionArn">> => string(),
+%%   <<"taskDefinition">> => string(),
+%%   <<"volumeConfigurations">> => list(service_volume_configuration()())
+%% }
+-type service_revision() :: #{binary() => any()}.
+
+%% Example:
 %% list_attributes_request() :: #{
 %%   <<"attributeName">> => string(),
 %%   <<"attributeValue">> => string(),
@@ -2020,6 +2169,12 @@
 %%   <<"name">> => string()
 %% }
 -type service_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_revisions_request() :: #{
+%%   <<"serviceRevisionArns">> := list(string()())
+%% }
+-type describe_service_revisions_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tasks_response() :: #{
@@ -2372,6 +2527,24 @@
     client_exception() | 
     cluster_not_found_exception().
 
+-type describe_service_deployments_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
+-type describe_service_revisions_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception() | 
+    cluster_not_found_exception().
+
 -type describe_services_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
@@ -2439,6 +2612,14 @@
     invalid_parameter_exception() | 
     client_exception() | 
     cluster_not_found_exception().
+
+-type list_service_deployments_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_not_found_exception().
 
 -type list_services_errors() ::
     server_exception() | 
@@ -2682,9 +2863,8 @@ create_capacity_provider(Client, Input, Options)
 %% create your own
 %% cluster with a unique name.
 %%
-%% When you call the CreateCluster:
-%% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html
-%% API operation, Amazon ECS attempts to
+%% When you call the `CreateCluster' API operation, Amazon ECS attempts
+%% to
 %% create the Amazon ECS service-linked role for your account. This is so
 %% that it can manage
 %% required resources in other Amazon Web Services services on your behalf.
@@ -2719,8 +2899,7 @@ create_cluster(Client, Input, Options)
 %% `desiredCount',
 %% Amazon ECS runs another copy of the task in the specified cluster. To
 %% update an existing
-%% service, use UpdateService:
-%% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateService.html.
+%% service, see the `UpdateService' action.
 %%
 %% On March 21, 2024, a change was made to resolve the task definition
 %% revision before authorization. When a task definition revision is not
@@ -3302,6 +3481,55 @@ describe_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContainerInstances">>, Input, Options).
 
+%% @doc Describes one or more of your service deployments.
+%%
+%% A service deployment happens when you release a software update for the
+%% service. For more information, see Amazon ECS service deployments:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-deployments.html.
+-spec describe_service_deployments(aws_client:aws_client(), describe_service_deployments_request()) ->
+    {ok, describe_service_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_deployments_errors(), tuple()}.
+describe_service_deployments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_service_deployments(Client, Input, []).
+
+-spec describe_service_deployments(aws_client:aws_client(), describe_service_deployments_request(), proplists:proplist()) ->
+    {ok, describe_service_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_deployments_errors(), tuple()}.
+describe_service_deployments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServiceDeployments">>, Input, Options).
+
+%% @doc Describes one or more service revisions.
+%%
+%% A service revision is a version of the service that includes the values
+%% for the Amazon ECS
+%% resources (for example, task definition) and the environment resources
+%% (for example,
+%% load balancers, subnets, and security groups). For more information, see
+%% Amazon ECS service revisions:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-revision.html.
+%%
+%% You can't describe a service revision that was created before October
+%% 25, 2024.
+-spec describe_service_revisions(aws_client:aws_client(), describe_service_revisions_request()) ->
+    {ok, describe_service_revisions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_revisions_errors(), tuple()}.
+describe_service_revisions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_service_revisions(Client, Input, []).
+
+-spec describe_service_revisions(aws_client:aws_client(), describe_service_revisions_request(), proplists:proplist()) ->
+    {ok, describe_service_revisions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_revisions_errors(), tuple()}.
+describe_service_revisions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServiceRevisions">>, Input, Options).
+
 %% @doc Describes the specified services running in your cluster.
 -spec describe_services(aws_client:aws_client(), describe_services_request()) ->
     {ok, describe_services_response(), tuple()} |
@@ -3552,6 +3780,34 @@ list_container_instances(Client, Input)
 list_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainerInstances">>, Input, Options).
+
+%% @doc This operation lists all the service deployments that meet the
+%% specified filter criteria.
+%%
+%% A service deployment happens when you release a softwre update for the
+%% service. You
+%% route traffic from the running service revisions to the new service
+%% revison and control
+%% the number of running tasks.
+%%
+%% This API returns the values that you use for the request parameters in
+%% DescribeServiceRevisions:
+%% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServiceRevisions.html.
+-spec list_service_deployments(aws_client:aws_client(), list_service_deployments_request()) ->
+    {ok, list_service_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_deployments_errors(), tuple()}.
+list_service_deployments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_service_deployments(Client, Input, []).
+
+-spec list_service_deployments(aws_client:aws_client(), list_service_deployments_request(), proplists:proplist()) ->
+    {ok, list_service_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_deployments_errors(), tuple()}.
+list_service_deployments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServiceDeployments">>, Input, Options).
 
 %% @doc Returns a list of services.
 %%

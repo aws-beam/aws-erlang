@@ -45,22 +45,30 @@
          create_keyspace/3,
          create_table/2,
          create_table/3,
+         create_type/2,
+         create_type/3,
          delete_keyspace/2,
          delete_keyspace/3,
          delete_table/2,
          delete_table/3,
+         delete_type/2,
+         delete_type/3,
          get_keyspace/2,
          get_keyspace/3,
          get_table/2,
          get_table/3,
          get_table_auto_scaling_settings/2,
          get_table_auto_scaling_settings/3,
+         get_type/2,
+         get_type/3,
          list_keyspaces/2,
          list_keyspaces/3,
          list_tables/2,
          list_tables/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_types/2,
+         list_types/3,
          restore_table/2,
          restore_table/3,
          tag_resource/2,
@@ -80,11 +88,32 @@
 -type partition_key() :: #{binary() => any()}.
 
 %% Example:
+%% get_type_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"typeName">> := string()
+%% }
+-type get_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_type_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"typeName">> := string()
+%% }
+-type delete_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_type_response() :: #{
+%%   <<"keyspaceArn">> => string(),
+%%   <<"typeName">> => string()
+%% }
+-type delete_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_table_request() :: #{
@@ -101,6 +130,13 @@
 %%   <<"ttl">> => time_to_live()
 %% }
 -type update_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_types_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"types">> => list(string()())
+%% }
+-type list_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% keyspace_summary() :: #{
@@ -236,6 +272,14 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_type_request() :: #{
+%%   <<"fieldDefinitions">> := list(field_definition()()),
+%%   <<"keyspaceName">> := string(),
+%%   <<"typeName">> := string()
+%% }
+-type create_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_specification() :: #{
 %%   <<"readCapacityUnits">> => float(),
 %%   <<"throughputMode">> => string(),
@@ -265,6 +309,20 @@
 %%   <<"scalingPolicy">> => auto_scaling_policy()
 %% }
 -type auto_scaling_settings() :: #{binary() => any()}.
+
+%% Example:
+%% get_type_response() :: #{
+%%   <<"directParentTypes">> => list(string()()),
+%%   <<"directReferringTables">> => list(string()()),
+%%   <<"fieldDefinitions">> => list(field_definition()()),
+%%   <<"keyspaceArn">> => string(),
+%%   <<"keyspaceName">> => string(),
+%%   <<"lastModifiedTimestamp">> => non_neg_integer(),
+%%   <<"maxNestingDepth">> => integer(),
+%%   <<"status">> => string(),
+%%   <<"typeName">> => string()
+%% }
+-type get_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% conflict_exception() :: #{
@@ -323,6 +381,20 @@
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% field_definition() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type field_definition() :: #{binary() => any()}.
+
+%% Example:
+%% create_type_response() :: #{
+%%   <<"keyspaceArn">> => string(),
+%%   <<"typeName">> => string()
+%% }
+-type create_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -494,6 +566,14 @@
 -type update_table_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_types_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_types_request() :: #{binary() => any()}.
+
+%% Example:
 %% static_column() :: #{
 %%   <<"name">> => string()
 %% }
@@ -535,6 +615,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_type_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_keyspace_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -544,6 +632,14 @@
     conflict_exception().
 
 -type delete_table_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_type_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -572,6 +668,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type get_type_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type list_keyspaces_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -593,6 +696,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type list_types_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type restore_table_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -606,7 +716,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
@@ -638,8 +749,8 @@
 %% creation status of the new keyspace
 %% by using the `GetKeyspace' operation.
 %%
-%% For more information, see Creating keyspaces:
-%% https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-keyspaces.html#keyspaces-create
+%% For more information, see Create a keyspace:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/getting-started.keyspaces.html
 %% in the Amazon Keyspaces Developer
 %% Guide.
 -spec create_keyspace(aws_client:aws_client(), create_keyspace_request()) ->
@@ -671,8 +782,8 @@ create_keyspace(Client, Input, Options)
 %% operation, which returns the current `status' of the table. You can
 %% start using a table when the status is `ACTIVE'.
 %%
-%% For more information, see Creating tables:
-%% https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-tables.html#tables-create
+%% For more information, see Create a table:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/getting-started.tables.html
 %% in the Amazon Keyspaces Developer
 %% Guide.
 -spec create_table(aws_client:aws_client(), create_table_request()) ->
@@ -690,6 +801,30 @@ create_table(Client, Input)
 create_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTable">>, Input, Options).
+
+%% @doc
+%% The `CreateType' operation creates a new user-defined type in the
+%% specified keyspace.
+%%
+%% For more information, see User-defined types (UDTs):
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/udts.html in the
+%% Amazon Keyspaces Developer
+%% Guide.
+-spec create_type(aws_client:aws_client(), create_type_request()) ->
+    {ok, create_type_response(), tuple()} |
+    {error, any()} |
+    {error, create_type_errors(), tuple()}.
+create_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_type(Client, Input, []).
+
+-spec create_type(aws_client:aws_client(), create_type_request(), proplists:proplist()) ->
+    {ok, create_type_response(), tuple()} |
+    {error, any()} |
+    {error, create_type_errors(), tuple()}.
+create_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateType">>, Input, Options).
 
 %% @doc The `DeleteKeyspace' operation deletes a keyspace and all of its
 %% tables.
@@ -736,6 +871,27 @@ delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTable">>, Input, Options).
 
+%% @doc
+%% The `DeleteType' operation deletes a user-defined type (UDT).
+%%
+%% You can only delete a type that is not used in a table
+%% or another UDT.
+-spec delete_type(aws_client:aws_client(), delete_type_request()) ->
+    {ok, delete_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_type_errors(), tuple()}.
+delete_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_type(Client, Input, []).
+
+-spec delete_type(aws_client:aws_client(), delete_type_request(), proplists:proplist()) ->
+    {ok, delete_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_type_errors(), tuple()}.
+delete_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteType">>, Input, Options).
+
 %% @doc Returns the name and the Amazon Resource Name (ARN) of the specified
 %% table.
 -spec get_keyspace(aws_client:aws_client(), get_keyspace_request()) ->
@@ -758,9 +914,9 @@ get_keyspace(Client, Input, Options)
 %% and current status, the keyspace name,
 %% configuration settings, and metadata.
 %%
-%% To read table metadata using `GetTable', `Select' action
-%% permissions for the table and system tables are required to complete the
-%% operation.
+%% To read table metadata using `GetTable', the
+%% IAM principal needs `Select' action
+%% permissions for the table and the system keyspace.
 -spec get_table(aws_client:aws_client(), get_table_request()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
@@ -819,7 +975,32 @@ get_table_auto_scaling_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTableAutoScalingSettings">>, Input, Options).
 
-%% @doc Returns a list of keyspaces.
+%% @doc
+%% The `GetType' operation returns information about the type, for
+%% example the field definitions, the timestamp when the type
+%% was last modified, the level of nesting, the status, and details about if
+%% the type is used in other types and tables.
+%%
+%% To read keyspace metadata using `GetType', the
+%% IAM principal needs `Select' action
+%% permissions for the system keyspace.
+-spec get_type(aws_client:aws_client(), get_type_request()) ->
+    {ok, get_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_type_errors(), tuple()}.
+get_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_type(Client, Input, []).
+
+-spec get_type(aws_client:aws_client(), get_type_request(), proplists:proplist()) ->
+    {ok, get_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_type_errors(), tuple()}.
+get_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetType">>, Input, Options).
+
+%% @doc The `ListKeyspaces' operation returns a list of keyspaces.
 -spec list_keyspaces(aws_client:aws_client(), list_keyspaces_request()) ->
     {ok, list_keyspaces_response(), tuple()} |
     {error, any()} |
@@ -836,7 +1017,12 @@ list_keyspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeyspaces">>, Input, Options).
 
-%% @doc Returns a list of tables for a specified keyspace.
+%% @doc The `ListTables' operation returns a list of tables for a
+%% specified keyspace.
+%%
+%% To read keyspace metadata using `ListTables', the
+%% IAM principal needs `Select' action
+%% permissions for the system keyspace.
 -spec list_tables(aws_client:aws_client(), list_tables_request()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
@@ -855,6 +1041,10 @@ list_tables(Client, Input, Options)
 
 %% @doc Returns a list of all tags associated with the specified Amazon
 %% Keyspaces resource.
+%%
+%% To read keyspace metadata using `ListTagsForResource', the
+%% IAM principal needs `Select' action
+%% permissions for the specified resource and the system keyspace.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -870,6 +1060,29 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc
+%% The `ListTypes' operation returns a list of types for a specified
+%% keyspace.
+%%
+%% To read keyspace metadata using `ListTypes', the
+%% IAM principal needs `Select' action
+%% permissions for the system keyspace.
+-spec list_types(aws_client:aws_client(), list_types_request()) ->
+    {ok, list_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_types_errors(), tuple()}.
+list_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_types(Client, Input, []).
+
+-spec list_types(aws_client:aws_client(), list_types_request(), proplists:proplist()) ->
+    {ok, list_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_types_errors(), tuple()}.
+list_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTypes">>, Input, Options).
 
 %% @doc Restores the table to the specified point in time within the
 %% `earliest_restorable_timestamp' and the current time.

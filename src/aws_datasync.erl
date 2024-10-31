@@ -197,6 +197,15 @@
 -type add_storage_system_request() :: #{binary() => any()}.
 
 %% Example:
+%% task_execution_files_failed_detail() :: #{
+%%   <<"Delete">> => float(),
+%%   <<"Prepare">> => float(),
+%%   <<"Transfer">> => float(),
+%%   <<"Verify">> => float()
+%% }
+-type task_execution_files_failed_detail() :: #{binary() => any()}.
+
+%% Example:
 %% fsx_protocol_nfs() :: #{
 %%   <<"MountOptions">> => nfs_mount_options()
 %% }
@@ -430,6 +439,7 @@
 %%   <<"Schedule">> => task_schedule(),
 %%   <<"SourceLocationArn">> := string(),
 %%   <<"Tags">> => list(tag_list_entry()()),
+%%   <<"TaskMode">> => list(any()),
 %%   <<"TaskReportConfig">> => task_report_config()
 %% }
 -type create_task_request() :: #{binary() => any()}.
@@ -453,7 +463,8 @@
 %% task_list_entry() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"TaskArn">> => string()
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskMode">> => list(any())
 %% }
 -type task_list_entry() :: #{binary() => any()}.
 
@@ -861,6 +872,7 @@
 %%   <<"SourceNetworkInterfaceArns">> => list(string()()),
 %%   <<"Status">> => list(any()),
 %%   <<"TaskArn">> => string(),
+%%   <<"TaskMode">> => list(any()),
 %%   <<"TaskReportConfig">> => task_report_config()
 %% }
 -type describe_task_response() :: #{binary() => any()}.
@@ -886,7 +898,8 @@
 %% Example:
 %% task_execution_list_entry() :: #{
 %%   <<"Status">> => list(any()),
-%%   <<"TaskExecutionArn">> => string()
+%%   <<"TaskExecutionArn">> => string(),
+%%   <<"TaskMode">> => list(any())
 %% }
 -type task_execution_list_entry() :: #{binary() => any()}.
 
@@ -1047,6 +1060,13 @@
 -type source_manifest_config() :: #{binary() => any()}.
 
 %% Example:
+%% task_execution_files_listed_detail() :: #{
+%%   <<"AtDestinationForDelete">> => float(),
+%%   <<"AtSource">> => float()
+%% }
+-type task_execution_files_listed_detail() :: #{binary() => any()}.
+
+%% Example:
 %% describe_location_smb_request() :: #{
 %%   <<"LocationArn">> := string()
 %% }
@@ -1072,6 +1092,9 @@
 %%   <<"EstimatedFilesToTransfer">> => float(),
 %%   <<"Excludes">> => list(filter_rule()()),
 %%   <<"FilesDeleted">> => float(),
+%%   <<"FilesFailed">> => task_execution_files_failed_detail(),
+%%   <<"FilesListed">> => task_execution_files_listed_detail(),
+%%   <<"FilesPrepared">> => float(),
 %%   <<"FilesSkipped">> => float(),
 %%   <<"FilesTransferred">> => float(),
 %%   <<"FilesVerified">> => float(),
@@ -1083,6 +1106,7 @@
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"TaskExecutionArn">> => string(),
+%%   <<"TaskMode">> => list(any()),
 %%   <<"TaskReportConfig">> => task_report_config()
 %% }
 -type describe_task_execution_response() :: #{binary() => any()}.
@@ -1912,24 +1936,14 @@ cancel_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelTaskExecution">>, Input, Options).
 
-%% @doc Activates an DataSync agent that you've deployed in your storage
+%% @doc Activates an DataSync agent that you deploy in your storage
 %% environment.
 %%
 %% The activation process associates the agent with your Amazon Web Services
 %% account.
 %%
-%% If you haven't deployed an agent yet, see the following topics to
-%% learn more:
-%%
-%% Agent requirements:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/agent-requirements.html
-%%
-%% Create an agent:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/configure-agent.html
-%%
-%% If you're transferring between Amazon Web Services storage services,
-%% you don't need a
-%% DataSync agent.
+%% If you haven't deployed an agent yet, see Do I need a DataSync agent?:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/do-i-need-datasync-agent.html
 -spec create_agent(aws_client:aws_client(), create_agent_request()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
@@ -2662,9 +2676,17 @@ describe_task(Client, Input, Options)
 %% @doc Provides information about an execution of your DataSync task.
 %%
 %% You can
-%% use this operation to help monitor the progress of an ongoing transfer or
-%% check the results of
-%% the transfer.
+%% use this operation to help monitor the progress of an ongoing data
+%% transfer or check the
+%% results of the transfer.
+%%
+%% Some `DescribeTaskExecution' response elements are only relevant to a
+%% specific task mode. For information, see Understanding task mode
+%% differences:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/choosing-task-mode.html#task-mode-differences
+%% and Understanding data
+%% transfer performance metrics:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/transfer-performance-metrics.html.
 -spec describe_task_execution(aws_client:aws_client(), describe_task_execution_request()) ->
     {ok, describe_task_execution_response(), tuple()} |
     {error, any()} |
@@ -2908,7 +2930,7 @@ start_discovery_job(Client, Input, Options)
 %% For each task, you can only run one task
 %% execution at a time.
 %%
-%% There are several phases to a task execution. For more information, see
+%% There are several steps to a task execution. For more information, see
 %% Task execution statuses:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/working-with-task-executions.html#understand-task-execution-statuses.
 %%

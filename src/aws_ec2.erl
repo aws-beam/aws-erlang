@@ -65,6 +65,8 @@
          associate_nat_gateway_address/3,
          associate_route_table/2,
          associate_route_table/3,
+         associate_security_group_vpc/2,
+         associate_security_group_vpc/3,
          associate_subnet_cidr_block/2,
          associate_subnet_cidr_block/3,
          associate_transit_gateway_multicast_domain/2,
@@ -665,6 +667,8 @@
          describe_security_group_references/3,
          describe_security_group_rules/2,
          describe_security_group_rules/3,
+         describe_security_group_vpc_associations/2,
+         describe_security_group_vpc_associations/3,
          describe_security_groups/2,
          describe_security_groups/3,
          describe_snapshot_attribute/2,
@@ -831,6 +835,8 @@
          disassociate_nat_gateway_address/3,
          disassociate_route_table/2,
          disassociate_route_table/3,
+         disassociate_security_group_vpc/2,
+         disassociate_security_group_vpc/3,
          disassociate_subnet_cidr_block/2,
          disassociate_subnet_cidr_block/3,
          disassociate_transit_gateway_multicast_domain/2,
@@ -1923,6 +1929,22 @@
 -type create_route_table_result() :: #{binary() => any()}.
 
 %% Example:
+%% revoked_security_group_rule() :: #{
+%%   <<"CidrIpv4">> => string(),
+%%   <<"CidrIpv6">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FromPort">> => integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"IpProtocol">> => string(),
+%%   <<"IsEgress">> => boolean(),
+%%   <<"PrefixListId">> => string(),
+%%   <<"ReferencedGroupId">> => string(),
+%%   <<"SecurityGroupRuleId">> => string(),
+%%   <<"ToPort">> => integer()
+%% }
+-type revoked_security_group_rule() :: #{binary() => any()}.
+
+%% Example:
 %% delete_snapshot_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"SnapshotId">> := string()
@@ -2612,6 +2634,16 @@
 -type launch_template_spot_market_options_request() :: #{binary() => any()}.
 
 %% Example:
+%% security_group_vpc_association() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcOwnerId">> => string()
+%% }
+-type security_group_vpc_association() :: #{binary() => any()}.
+
+%% Example:
 %% verified_access_log_s3_destination_options() :: #{
 %%   <<"BucketName">> => string(),
 %%   <<"BucketOwner">> => string(),
@@ -2996,6 +3028,14 @@
 -type ipam_resource_discovery_association() :: #{binary() => any()}.
 
 %% Example:
+%% associate_security_group_vpc_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GroupId">> := string(),
+%%   <<"VpcId">> := string()
+%% }
+-type associate_security_group_vpc_request() :: #{binary() => any()}.
+
+%% Example:
 %% reset_instance_attribute_request() :: #{
 %%   <<"Attribute">> := list(any()),
 %%   <<"DryRun">> => boolean(),
@@ -3221,6 +3261,7 @@
 %% Example:
 %% revoke_security_group_egress_result() :: #{
 %%   <<"Return">> => boolean(),
+%%   <<"RevokedSecurityGroupRules">> => list(revoked_security_group_rule()()),
 %%   <<"UnknownIpPermissions">> => list(ip_permission()())
 %% }
 -type revoke_security_group_egress_result() :: #{binary() => any()}.
@@ -4268,6 +4309,15 @@
 -type describe_security_group_references_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_security_group_vpc_associations_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_security_group_vpc_associations_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_security_groups_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SecurityGroups">> => list(security_group()())
@@ -4645,6 +4695,12 @@
 %%   <<"UserId">> => string()
 %% }
 -type load_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_security_group_vpc_result() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type disassociate_security_group_vpc_result() :: #{binary() => any()}.
 
 %% Example:
 %% nat_gateway_address() :: #{
@@ -7350,6 +7406,14 @@
 %%   <<"VerifiedAccessTrustProviderId">> := string()
 %% }
 -type attach_verified_access_trust_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_security_group_vpc_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GroupId">> := string(),
+%%   <<"VpcId">> := string()
+%% }
+-type disassociate_security_group_vpc_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_transit_gateway_connect_peer_result() :: #{
@@ -10497,6 +10561,7 @@
 %%   <<"IpPermissions">> => list(ip_permission()()),
 %%   <<"IpPermissionsEgress">> => list(ip_permission()()),
 %%   <<"OwnerId">> => string(),
+%%   <<"SecurityGroupArn">> => string(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"VpcId">> => string()
 %% }
@@ -11823,6 +11888,7 @@
 %% Example:
 %% create_security_group_result() :: #{
 %%   <<"GroupId">> => string(),
+%%   <<"SecurityGroupArn">> => string(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_security_group_result() :: #{binary() => any()}.
@@ -12334,6 +12400,13 @@
 %%   <<"Tenancy">> => list(any())
 %% }
 -type modify_instance_placement_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_security_group_vpc_associations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecurityGroupVpcAssociations">> => list(security_group_vpc_association()())
+%% }
+-type describe_security_group_vpc_associations_result() :: #{binary() => any()}.
 
 %% Example:
 %% media_device_memory_info() :: #{
@@ -16406,6 +16479,7 @@
 %% Example:
 %% revoke_security_group_ingress_result() :: #{
 %%   <<"Return">> => boolean(),
+%%   <<"RevokedSecurityGroupRules">> => list(revoked_security_group_rule()()),
 %%   <<"UnknownIpPermissions">> => list(ip_permission()())
 %% }
 -type revoke_security_group_ingress_result() :: #{binary() => any()}.
@@ -16457,6 +16531,12 @@
 %%   <<"CapacityRebalance">> => fleet_spot_capacity_rebalance_request()
 %% }
 -type fleet_spot_maintenance_strategies_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_security_group_vpc_result() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type associate_security_group_vpc_result() :: #{binary() => any()}.
 
 %% Example:
 %% associate_client_vpn_target_network_result() :: #{
@@ -17834,6 +17914,7 @@
 %%   <<"IsEgress">> => boolean(),
 %%   <<"PrefixListId">> => string(),
 %%   <<"ReferencedGroupInfo">> => referenced_security_group(),
+%%   <<"SecurityGroupRuleArn">> => string(),
 %%   <<"SecurityGroupRuleId">> => string(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"ToPort">> => integer()
@@ -19422,6 +19503,36 @@ associate_route_table(Client, Input)
 associate_route_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateRouteTable">>, Input, Options).
+
+%% @doc Associates a security group with another VPC in the same Region.
+%%
+%% This enables you to use the same security group with network interfaces
+%% and instances in the specified VPC.
+%%
+%% The VPC you want to associate the security group with must be in the same
+%% Region.
+%%
+%% You can associate the security group with another VPC if your account owns
+%% the VPC or if the VPC was shared with you.
+%%
+%% You must own the security group and the VPC that it was created in.
+%%
+%% You cannot use this feature with default security groups.
+%%
+%% You cannot use this feature with the default VPC.
+-spec associate_security_group_vpc(aws_client:aws_client(), associate_security_group_vpc_request()) ->
+    {ok, associate_security_group_vpc_result(), tuple()} |
+    {error, any()}.
+associate_security_group_vpc(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_security_group_vpc(Client, Input, []).
+
+-spec associate_security_group_vpc(aws_client:aws_client(), associate_security_group_vpc_request(), proplists:proplist()) ->
+    {ok, associate_security_group_vpc_result(), tuple()} |
+    {error, any()}.
+associate_security_group_vpc(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateSecurityGroupVpc">>, Input, Options).
 
 %% @doc Associates a CIDR block with your subnet.
 %%
@@ -21891,7 +22002,7 @@ create_traffic_mirror_filter_rule(Client, Input, Options)
 %% VPC peering or a transit gateway.
 %%
 %% By default, no traffic is mirrored. Use CreateTrafficMirrorFilter:
-%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.html
 %% to
 %% create filter rules that specify the traffic to mirror.
 -spec create_traffic_mirror_session(aws_client:aws_client(), create_traffic_mirror_session_request()) ->
@@ -23330,9 +23441,9 @@ delete_route_table(Client, Input, Options)
 %% @doc Deletes a security group.
 %%
 %% If you attempt to delete a security group that is associated with an
-%% instance or network interface or is
-%% referenced by another security group in the same VPC, the operation fails
-%% with
+%% instance or network interface, is
+%% referenced by another security group in the same VPC, or has a VPC
+%% association, the operation fails with
 %% `DependencyViolation'.
 -spec delete_security_group(aws_client:aws_client(), delete_security_group_request()) ->
     {ok, undefined, tuple()} |
@@ -26437,8 +26548,9 @@ describe_scheduled_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledInstances">>, Input, Options).
 
-%% @doc Describes the VPCs on the other side of a VPC peering connection that
-%% are referencing the security groups you've specified in this request.
+%% @doc Describes the VPCs on the other side of a VPC peering or Transit
+%% Gateway connection that are referencing the security groups you've
+%% specified in this request.
 -spec describe_security_group_references(aws_client:aws_client(), describe_security_group_references_request()) ->
     {ok, describe_security_group_references_result(), tuple()} |
     {error, any()}.
@@ -26467,6 +26579,23 @@ describe_security_group_rules(Client, Input)
 describe_security_group_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSecurityGroupRules">>, Input, Options).
+
+%% @doc Describes security group VPC associations made with
+%% AssociateSecurityGroupVpc:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateSecurityGroupVpc.html.
+-spec describe_security_group_vpc_associations(aws_client:aws_client(), describe_security_group_vpc_associations_request()) ->
+    {ok, describe_security_group_vpc_associations_result(), tuple()} |
+    {error, any()}.
+describe_security_group_vpc_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_security_group_vpc_associations(Client, Input, []).
+
+-spec describe_security_group_vpc_associations(aws_client:aws_client(), describe_security_group_vpc_associations_request(), proplists:proplist()) ->
+    {ok, describe_security_group_vpc_associations_result(), tuple()} |
+    {error, any()}.
+describe_security_group_vpc_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSecurityGroupVpcAssociations">>, Input, Options).
 
 %% @doc Describes the specified security groups or all of your security
 %% groups.
@@ -26755,13 +26884,22 @@ describe_spot_price_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpotPriceHistory">>, Input, Options).
 
-%% @doc Describes the stale security group rules for security groups in a
-%% specified VPC.
+%% @doc Describes the stale security group rules for security groups
+%% referenced across a VPC
+%% peering connection, transit gateway connection, or with a security group
+%% VPC
+%% association.
 %%
-%% Rules are stale when they reference a deleted security group in a peered
-%% VPC. Rules can also be stale if they reference a security group in a peer
-%% VPC for which the VPC peering connection has
-%% been deleted.
+%% Rules are stale when they reference a deleted security group. Rules can
+%% also be stale if they reference a security group in a peer VPC for which
+%% the VPC peering
+%% connection has been deleted, across a transit gateway where the transit
+%% gateway has been
+%% deleted (or the transit
+%% gateway security group referencing feature:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html#vpc-attachment-security
+%% has been disabled), or if a
+%% security group VPC association has been disassociated.
 -spec describe_stale_security_groups(aws_client:aws_client(), describe_stale_security_groups_request()) ->
     {ok, describe_stale_security_groups_result(), tuple()} |
     {error, any()}.
@@ -28355,6 +28493,29 @@ disassociate_route_table(Client, Input)
 disassociate_route_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateRouteTable">>, Input, Options).
+
+%% @doc Disassociates a security group from a VPC.
+%%
+%% You cannot disassociate the security group if any Elastic network
+%% interfaces in the associated VPC are still associated with the security
+%% group.
+%%
+%% Note that the disassociation is asynchronous and you can check the status
+%% of the request with DescribeSecurityGroupVpcAssociations:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroupVpcAssociations.html.
+-spec disassociate_security_group_vpc(aws_client:aws_client(), disassociate_security_group_vpc_request()) ->
+    {ok, disassociate_security_group_vpc_result(), tuple()} |
+    {error, any()}.
+disassociate_security_group_vpc(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_security_group_vpc(Client, Input, []).
+
+-spec disassociate_security_group_vpc(aws_client:aws_client(), disassociate_security_group_vpc_request(), proplists:proplist()) ->
+    {ok, disassociate_security_group_vpc_result(), tuple()} |
+    {error, any()}.
+disassociate_security_group_vpc(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateSecurityGroupVpc">>, Input, Options).
 
 %% @doc Disassociates a CIDR block from a subnet.
 %%

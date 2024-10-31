@@ -3256,7 +3256,9 @@ create_key_signing_key(Client, Input0, Options0) ->
 %%
 %% Create a CloudWatch Logs resource policy, and give it the
 %% permissions that Route 53 needs to create log streams and to send
-%% query logs to log streams. For the value of `Resource',
+%% query logs to log streams. You must create the CloudWatch Logs resource
+%% policy in the us-east-1
+%% region. For the value of `Resource',
 %% specify the ARN for the log group that you created in the previous
 %% step. To use the same resource policy for all the CloudWatch Logs
 %% log groups that you created for query logging configurations,
@@ -4822,6 +4824,13 @@ get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about a specified hosted zone including the four
 %% name servers
 %% assigned to the hosted zone.
+%%
+%% `' returns the VPCs associated with the specified hosted zone and does
+%% not reflect the VPC
+%% associations by Route 53 Profiles. To get the associations to a Profile,
+%% call the ListProfileAssociations:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_ListProfileAssociations.html
+%% API.
 -spec get_hosted_zone(aws_client:aws_client(), binary() | list()) ->
     {ok, get_hosted_zone_response(), tuple()} |
     {error, any()} |
@@ -5615,6 +5624,13 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
 %% zone was
 %% created by Amazon Elastic File System (Amazon EFS), the value of
 %% `Owner' is `efs.amazonaws.com'.
+%%
+%% `ListHostedZonesByVPC' returns the hosted zones associated with the
+%% specified VPC and does not reflect the hosted zone
+%% associations to VPCs via Route 53 Profiles. To get the associations to a
+%% Profile, call the ListProfileResourceAssociations:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_ListProfileResourceAssociations.html
+%% API.
 %%
 %% When listing private hosted zones, the hosted zone and the Amazon VPC must
 %% belong to the same partition where the hosted zones were created. A

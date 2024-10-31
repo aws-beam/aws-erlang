@@ -27,6 +27,8 @@
          cancel_domain_config_change/4,
          cancel_service_software_update/2,
          cancel_service_software_update/3,
+         create_application/2,
+         create_application/3,
          create_domain/2,
          create_domain/3,
          create_outbound_connection/2,
@@ -35,6 +37,8 @@
          create_package/3,
          create_vpc_endpoint/2,
          create_vpc_endpoint/3,
+         delete_application/3,
+         delete_application/4,
          delete_data_source/4,
          delete_data_source/5,
          delete_domain/3,
@@ -89,6 +93,9 @@
          describe_vpc_endpoints/3,
          dissociate_package/4,
          dissociate_package/5,
+         get_application/2,
+         get_application/4,
+         get_application/5,
          get_compatible_versions/1,
          get_compatible_versions/3,
          get_compatible_versions/4,
@@ -107,6 +114,9 @@
          get_upgrade_status/2,
          get_upgrade_status/4,
          get_upgrade_status/5,
+         list_applications/1,
+         list_applications/3,
+         list_applications/4,
          list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
@@ -155,6 +165,8 @@
          start_domain_maintenance/4,
          start_service_software_update/2,
          start_service_software_update/3,
+         update_application/3,
+         update_application/4,
          update_data_source/4,
          update_data_source/5,
          update_domain_config/3,
@@ -541,6 +553,7 @@
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options_status(),
 %%   <<"EngineVersion">> => version_status(),
 %%   <<"IPAddressType">> => ip_address_type_status(),
+%%   <<"IdentityCenterOptions">> => identity_center_options_status(),
 %%   <<"LogPublishingOptions">> => log_publishing_options_status(),
 %%   <<"ModifyingProperties">> => list(modifying_properties()()),
 %%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options_status(),
@@ -685,6 +698,16 @@
 %%   <<"Connection">> => inbound_connection()
 %% }
 -type reject_inbound_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_options_input() :: #{
+%%   <<"EnabledAPIAccess">> => boolean(),
+%%   <<"IdentityCenterInstanceARN">> => string(),
+%%   <<"RolesKey">> => list(any()),
+%%   <<"SubjectKey">> => list(any())
+%% }
+-type identity_center_options_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -957,6 +980,7 @@
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"IPAddressType">> => list(any()),
+%%   <<"IdentityCenterOptions">> => identity_center_options_input(),
 %%   <<"LogPublishingOptions">> => map(),
 %%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
 %%   <<"OffPeakWindowOptions">> => off_peak_window_options(),
@@ -1105,6 +1129,7 @@
 %%   <<"EBSOptions">> => ebs_options(),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
 %%   <<"IPAddressType">> => list(any()),
+%%   <<"IdentityCenterOptions">> => identity_center_options_input(),
 %%   <<"LogPublishingOptions">> => map(),
 %%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
 %%   <<"OffPeakWindowOptions">> => off_peak_window_options(),
@@ -1264,6 +1289,18 @@
 
 
 %% Example:
+%% create_application_request() :: #{
+%%   <<"appConfigs">> => list(app_config()()),
+%%   <<"clientToken">> => string(),
+%%   <<"dataSources">> => list(data_source()()),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options_input(),
+%%   <<"name">> := string(),
+%%   <<"tagList">> => list(tag()())
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% version_status() :: #{
 %%   <<"Options">> => string(),
 %%   <<"Status">> => option_status()
@@ -1331,6 +1368,20 @@
 %%   <<"Severity">> => list(any())
 %% }
 -type scheduled_auto_tune_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"appConfigs">> => list(app_config()()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSources">> => list(data_source()()),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tagList">> => list(tag()())
+%% }
+-type create_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1414,12 +1465,26 @@
 %% }
 -type inbound_connection() :: #{binary() => any()}.
 
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
 
 %% Example:
 %% s3_glue_data_catalog() :: #{
 %%   <<"RoleArn">> => string()
 %% }
 -type s3_glue_data_catalog() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_identity_center_options() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"iamIdentityCenterApplicationArn">> => string(),
+%%   <<"iamIdentityCenterInstanceArn">> => string(),
+%%   <<"iamRoleForIdentityCenterApplicationArn">> => string()
+%% }
+-type iam_identity_center_options() :: #{binary() => any()}.
 
 %% Example:
 %% dissociate_package_request() :: #{}
@@ -1449,7 +1514,42 @@
 
 
 %% Example:
+%% update_application_request() :: #{
+%%   <<"appConfigs">> => list(app_config()()),
+%%   <<"dataSources">> => list(data_source()())
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_response() :: #{
+%%   <<"appConfigs">> => list(app_config()()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSources">> => list(data_source()()),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type update_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_options() :: #{
+%%   <<"EnabledAPIAccess">> => boolean(),
+%%   <<"IdentityCenterApplicationARN">> => string(),
+%%   <<"IdentityCenterInstanceARN">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"RolesKey">> => list(any()),
+%%   <<"SubjectKey">> => list(any())
+%% }
+-type identity_center_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_status() :: #{
+%%   <<"IdentityCenterOptions">> => identity_center_options(),
 %%   <<"DomainName">> => string(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_output(),
 %%   <<"CognitoOptions">> => cognito_options(),
@@ -1537,6 +1637,22 @@
 %%   <<"PropertyName">> => string()
 %% }
 -type cancelled_change_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_response() :: #{
+%%   <<"appConfigs">> => list(app_config()()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSources">> => list(data_source()()),
+%%   <<"endpoint">> => string(),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1637,6 +1753,15 @@
 
 
 %% Example:
+%% list_applications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"statuses">> => list(list(any())())
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% dissociate_package_response() :: #{
 %%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
@@ -1662,6 +1787,23 @@
 %%   <<"message">> => string()
 %% }
 -type internal_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_identity_center_options_input() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"iamIdentityCenterInstanceArn">> => string(),
+%%   <<"iamRoleForIdentityCenterApplicationArn">> => string()
+%% }
+-type iam_identity_center_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_config() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type app_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1754,7 +1896,8 @@
 
 %% Example:
 %% authorize_vpc_endpoint_access_request() :: #{
-%%   <<"Account">> := string()
+%%   <<"Account">> => string(),
+%%   <<"Service">> => list(any())
 %% }
 -type authorize_vpc_endpoint_access_request() :: #{binary() => any()}.
 
@@ -1942,8 +2085,22 @@
 
 
 %% Example:
+%% application_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpoint">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% revoke_vpc_endpoint_access_request() :: #{
-%%   <<"Account">> := string()
+%%   <<"Account">> => string(),
+%%   <<"Service">> => list(any())
 %% }
 -type revoke_vpc_endpoint_access_request() :: #{binary() => any()}.
 
@@ -2008,6 +2165,22 @@
 %%   <<"VpcEndpoint">> => vpc_endpoint()
 %% }
 -type create_vpc_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"ApplicationSummaries">> => list(application_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_options_status() :: #{
+%%   <<"Options">> => identity_center_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type identity_center_options_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2093,6 +2266,14 @@
 %%   <<"message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"dataSourceArn">> => string(),
+%%   <<"dataSourceDescription">> => string()
+%% }
+-type data_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2209,6 +2390,10 @@
 %% }
 -type list_instance_type_details_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
 
 %% Example:
 %% vpc_endpoint_error() :: #{
@@ -2294,6 +2479,10 @@
 %% }
 -type off_peak_window() :: #{binary() => any()}.
 
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
 
 %% Example:
 %% list_domains_for_package_response() :: #{
@@ -2374,6 +2563,14 @@
     internal_exception() | 
     resource_not_found_exception().
 
+-type create_application_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
 -type create_domain_errors() ::
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
@@ -2403,6 +2600,15 @@
     base_exception() | 
     validation_exception() | 
     internal_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
+-type delete_application_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
     conflict_exception() | 
     disabled_operation_exception().
 
@@ -2542,6 +2748,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_application_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type get_compatible_versions_errors() ::
     base_exception() | 
     validation_exception() | 
@@ -2581,6 +2795,14 @@
 -type get_upgrade_status_errors() ::
     base_exception() | 
     validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_applications_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception() | 
     disabled_operation_exception().
@@ -2696,6 +2918,15 @@
     validation_exception() | 
     internal_exception() | 
     resource_not_found_exception().
+
+-type update_application_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
 
 -type update_data_source_errors() ::
     base_exception() | 
@@ -3021,6 +3252,40 @@ cancel_service_software_update(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an OpenSearch Application.
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
+create_application(Client, Input) ->
+    create_application(Client, Input, []).
+
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
+create_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/application"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Amazon OpenSearch Service domain.
 %%
 %% For more information, see Creating and managing Amazon OpenSearch Service
@@ -3152,6 +3417,40 @@ create_vpc_endpoint(Client, Input) ->
 create_vpc_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/vpcEndpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing OpenSearch Application.
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
+delete_application(Client, Id, Input) ->
+    delete_application(Client, Id, Input, []).
+
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
+delete_application(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4062,6 +4361,44 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Check the configuration and status of an existing OpenSearch
+%% Application.
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
+get_application(Client, Id)
+  when is_map(Client) ->
+    get_application(Client, Id, #{}, #{}).
+
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
+get_application(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_application(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
+get_application(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a map of OpenSearch or Elasticsearch versions and the
 %% versions you can upgrade them
 %% to.
@@ -4311,6 +4648,49 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all OpenSearch Applications under your account.
+-spec list_applications(aws_client:aws_client()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
+list_applications(Client)
+  when is_map(Client) ->
+    list_applications(Client, #{}, #{}).
+
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
+list_applications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_applications(Client, QueryMap, HeadersMap, []).
+
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
+list_applications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/list-applications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"statuses">>, maps:get(<<"statuses">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5059,6 +5439,40 @@ start_service_software_update(Client, Input) ->
 start_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the OpenSearch Application.
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
+update_application(Client, Id, Input) ->
+    update_application(Client, Id, Input, []).
+
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
+update_application(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2021-01-01/opensearch/application/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -2,8 +2,7 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AppSync provides API actions for creating and interacting with data
-%% sources using GraphQL
-%% from your application.
+%% sources using GraphQL from your application.
 -module(aws_appsync).
 
 -export([associate_api/3,
@@ -12,10 +11,14 @@
          associate_merged_graphql_api/4,
          associate_source_graphql_api/3,
          associate_source_graphql_api/4,
+         create_api/2,
+         create_api/3,
          create_api_cache/3,
          create_api_cache/4,
          create_api_key/3,
          create_api_key/4,
+         create_channel_namespace/3,
+         create_channel_namespace/4,
          create_data_source/3,
          create_data_source/4,
          create_domain_name/2,
@@ -28,10 +31,14 @@
          create_resolver/5,
          create_type/3,
          create_type/4,
+         delete_api/3,
+         delete_api/4,
          delete_api_cache/3,
          delete_api_cache/4,
          delete_api_key/4,
          delete_api_key/5,
+         delete_channel_namespace/4,
+         delete_channel_namespace/5,
          delete_data_source/4,
          delete_data_source/5,
          delete_domain_name/3,
@@ -56,12 +63,18 @@
          evaluate_mapping_template/3,
          flush_api_cache/3,
          flush_api_cache/4,
+         get_api/2,
+         get_api/4,
+         get_api/5,
          get_api_association/2,
          get_api_association/4,
          get_api_association/5,
          get_api_cache/2,
          get_api_cache/4,
          get_api_cache/5,
+         get_channel_namespace/3,
+         get_channel_namespace/5,
+         get_channel_namespace/6,
          get_data_source/3,
          get_data_source/5,
          get_data_source/6,
@@ -98,6 +111,12 @@
          list_api_keys/2,
          list_api_keys/4,
          list_api_keys/5,
+         list_apis/1,
+         list_apis/3,
+         list_apis/4,
+         list_channel_namespaces/2,
+         list_channel_namespaces/4,
+         list_channel_namespaces/5,
          list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
@@ -140,10 +159,14 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_api/3,
+         update_api/4,
          update_api_cache/3,
          update_api_cache/4,
          update_api_key/4,
          update_api_key/5,
+         update_channel_namespace/4,
+         update_channel_namespace/5,
          update_data_source/4,
          update_data_source/5,
          update_domain_name/3,
@@ -169,6 +192,10 @@
 %%   <<"name">> => string()
 %% }
 -type data_source_introspection_model_index() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_namespace_request() :: #{}
+-type get_channel_namespace_request() :: #{}.
 
 
 %% Example:
@@ -419,6 +446,21 @@
 
 
 %% Example:
+%% create_api_response() :: #{
+%%   <<"api">> => api()
+%% }
+-type create_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_namespaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channel_namespaces_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_schema_creation_status_response() :: #{
 %%   <<"details">> => string(),
 %%   <<"status">> => list(any())
@@ -440,6 +482,15 @@
 %%   <<"message">> => string()
 %% }
 -type api_key_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_config() :: #{
+%%   <<"appIdClientRegex">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"userPoolId">> => string()
+%% }
+-type cognito_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -506,6 +557,15 @@
 
 
 %% Example:
+%% update_channel_namespace_request() :: #{
+%%   <<"codeHandlers">> => string(),
+%%   <<"publishAuthModes">> => list(auth_mode()()),
+%%   <<"subscribeAuthModes">> => list(auth_mode()())
+%% }
+-type update_channel_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
@@ -521,6 +581,14 @@
 
 
 %% Example:
+%% event_log_config() :: #{
+%%   <<"cloudWatchLogsRoleArn">> => string(),
+%%   <<"logLevel">> => list(any())
+%% }
+-type event_log_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% rds_http_endpoint_config() :: #{
 %%   <<"awsRegion">> => string(),
 %%   <<"awsSecretStoreArn">> => string(),
@@ -529,6 +597,14 @@
 %%   <<"schema">> => string()
 %% }
 -type rds_http_endpoint_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_apis_response() :: #{
+%%   <<"apis">> => list(api()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_apis_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -571,6 +647,17 @@
 %%   <<"functionConfiguration">> => function_configuration()
 %% }
 -type update_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_namespace_request() :: #{}
+-type delete_channel_namespace_request() :: #{}.
+
+
+%% Example:
+%% auth_mode() :: #{
+%%   <<"authType">> => list(any())
+%% }
+-type auth_mode() :: #{binary() => any()}.
 
 
 %% Example:
@@ -677,6 +764,17 @@
 %% }
 -type get_introspection_schema_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_channel_namespace_request() :: #{
+%%   <<"codeHandlers">> => string(),
+%%   <<"name">> := string(),
+%%   <<"publishAuthModes">> => list(auth_mode()()),
+%%   <<"subscribeAuthModes">> => list(auth_mode()()),
+%%   <<"tags">> => map()
+%% }
+-type create_channel_namespace_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_source_response() :: #{}
 -type delete_data_source_response() :: #{}.
@@ -711,6 +809,13 @@
 
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_resolver_request() :: #{
 %%   <<"cachingConfig">> => caching_config(),
 %%   <<"code">> => string(),
@@ -735,6 +840,20 @@
 %%   <<"userPoolId">> => string()
 %% }
 -type user_pool_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_api_response() :: #{
+%%   <<"api">> => api()
+%% }
+-type get_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_namespace_response() :: #{
+%%   <<"channelNamespace">> => channel_namespace()
+%% }
+-type get_channel_namespace_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -794,6 +913,20 @@
 %%   <<"resolvers">> => list(resolver()())
 %% }
 -type list_resolvers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_api_response() :: #{
+%%   <<"api">> => api()
+%% }
+-type update_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1008,6 +1141,17 @@
 
 
 %% Example:
+%% event_config() :: #{
+%%   <<"authProviders">> => list(auth_provider()()),
+%%   <<"connectionAuthModes">> => list(auth_mode()()),
+%%   <<"defaultPublishAuthModes">> => list(auth_mode()()),
+%%   <<"defaultSubscribeAuthModes">> => list(auth_mode()()),
+%%   <<"logConfig">> => event_log_config()
+%% }
+-type event_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_functions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1050,6 +1194,13 @@
 %% delete_api_cache_request() :: #{}
 -type delete_api_cache_request() :: #{}.
 
+
+%% Example:
+%% create_channel_namespace_response() :: #{
+%%   <<"channelNamespace">> => channel_namespace()
+%% }
+-type create_channel_namespace_response() :: #{binary() => any()}.
+
 %% Example:
 %% start_schema_merge_request() :: #{}
 -type start_schema_merge_request() :: #{}.
@@ -1062,6 +1213,28 @@
 %%   <<"secretArn">> => string()
 %% }
 -type rds_data_api_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_namespace_response() :: #{}
+-type delete_channel_namespace_response() :: #{}.
+
+
+%% Example:
+%% list_apis_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_apis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_provider() :: #{
+%%   <<"authType">> => list(any()),
+%%   <<"cognitoConfig">> => cognito_config(),
+%%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),
+%%   <<"openIDConnectConfig">> => open_id_connect_config()
+%% }
+-type auth_provider() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1081,6 +1254,21 @@
 %%   <<"message">> => string()
 %% }
 -type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_namespace() :: #{
+%%   <<"apiId">> => string(),
+%%   <<"channelNamespaceArn">> => string(),
+%%   <<"codeHandlers">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"lastModified">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"publishAuthModes">> => list(auth_mode()()),
+%%   <<"subscribeAuthModes">> => list(auth_mode()()),
+%%   <<"tags">> => map()
+%% }
+-type channel_namespace() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1165,6 +1353,15 @@
 
 
 %% Example:
+%% update_api_request() :: #{
+%%   <<"eventConfig">> => event_config(),
+%%   <<"name">> := string(),
+%%   <<"ownerContact">> => string()
+%% }
+-type update_api_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_name_config() :: #{
 %%   <<"appsyncDomainName">> => string(),
 %%   <<"certificateArn">> => string(),
@@ -1206,6 +1403,14 @@
 %%   <<"definition">> := binary()
 %% }
 -type start_schema_creation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_namespaces_response() :: #{
+%%   <<"channelNamespaces">> => list(channel_namespace()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channel_namespaces_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -1289,6 +1494,16 @@
 %% flush_api_cache_response() :: #{}
 -type flush_api_cache_response() :: #{}.
 
+
+%% Example:
+%% create_api_request() :: #{
+%%   <<"eventConfig">> => event_config(),
+%%   <<"name">> := string(),
+%%   <<"ownerContact">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_api_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_api_cache_response() :: #{}
 -type delete_api_cache_response() :: #{}.
@@ -1323,6 +1538,29 @@
 %%   <<"sdl">> => string()
 %% }
 -type data_source_introspection_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% api() :: #{
+%%   <<"apiArn">> => string(),
+%%   <<"apiId">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"dns">> => map(),
+%%   <<"eventConfig">> => event_config(),
+%%   <<"name">> => string(),
+%%   <<"ownerContact">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"wafWebAclArn">> => string(),
+%%   <<"xrayEnabled">> => boolean()
+%% }
+-type api() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_namespace_response() :: #{
+%%   <<"channelNamespace">> => channel_namespace()
+%% }
+-type update_channel_namespace_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1431,7 +1669,7 @@
 %% Example:
 %% update_graphql_api_request() :: #{
 %%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()()),
-%%   <<"authenticationType">> := list(any()),
+%%   <<"authenticationType">> => list(any()),
 %%   <<"enhancedMetricsConfig">> => enhanced_metrics_config(),
 %%   <<"introspectionConfig">> => list(any()),
 %%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),
@@ -1617,6 +1855,10 @@
 %% }
 -type list_types_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_api_request() :: #{}
+-type get_api_request() :: #{}.
+
 
 %% Example:
 %% graph_q_l_schema_exception() :: #{
@@ -1649,6 +1891,14 @@
 %% }
 -type associate_merged_graphql_api_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_api_request() :: #{}
+-type delete_api_request() :: #{}.
+
+%% Example:
+%% delete_api_response() :: #{}
+-type delete_api_response() :: #{}.
+
 -type associate_api_errors() ::
     bad_request_exception() | 
     access_denied_exception() | 
@@ -1671,6 +1921,13 @@
     unauthorized_exception() | 
     internal_failure_exception().
 
+-type create_api_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    service_quota_exceeded_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
 -type create_api_cache_errors() ::
     bad_request_exception() | 
     concurrent_modification_exception() | 
@@ -1684,6 +1941,15 @@
     api_key_validity_out_of_bounds_exception() | 
     not_found_exception() | 
     api_key_limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type create_channel_namespace_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
 
@@ -1728,6 +1994,14 @@
     unauthorized_exception() | 
     internal_failure_exception().
 
+-type delete_api_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
 -type delete_api_cache_errors() ::
     bad_request_exception() | 
     concurrent_modification_exception() | 
@@ -1737,6 +2011,14 @@
 
 -type delete_api_key_errors() ::
     bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type delete_channel_namespace_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
     not_found_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
@@ -1822,6 +2104,13 @@
     unauthorized_exception() | 
     internal_failure_exception().
 
+-type get_api_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
 -type get_api_association_errors() ::
     bad_request_exception() | 
     access_denied_exception() | 
@@ -1831,6 +2120,13 @@
 -type get_api_cache_errors() ::
     bad_request_exception() | 
     concurrent_modification_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_channel_namespace_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
     not_found_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
@@ -1903,6 +2199,17 @@
     internal_failure_exception().
 
 -type list_api_keys_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_apis_errors() ::
+    bad_request_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_channel_namespaces_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
     unauthorized_exception() | 
@@ -2014,6 +2321,14 @@
     unauthorized_exception() | 
     internal_failure_exception().
 
+-type update_api_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
 -type update_api_cache_errors() ::
     bad_request_exception() | 
     concurrent_modification_exception() | 
@@ -2025,6 +2340,14 @@
     bad_request_exception() | 
     limit_exceeded_exception() | 
     api_key_validity_out_of_bounds_exception() | 
+    not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type update_channel_namespace_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
     not_found_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
@@ -2118,7 +2441,8 @@ associate_api(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an association between a Merged API and source API using the
-%% source API's identifier.
+%% source API's
+%% identifier.
 -spec associate_merged_graphql_api(aws_client:aws_client(), binary() | list(), associate_merged_graphql_api_request()) ->
     {ok, associate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
@@ -2153,7 +2477,8 @@ associate_merged_graphql_api(Client, SourceApiIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an association between a Merged API and source API using the
-%% Merged API's identifier.
+%% Merged API's
+%% identifier.
 -spec associate_source_graphql_api(aws_client:aws_client(), binary() | list(), associate_source_graphql_api_request()) ->
     {ok, associate_source_graphql_api_response(), tuple()} |
     {error, any()} |
@@ -2168,6 +2493,45 @@ associate_source_graphql_api(Client, MergedApiIdentifier, Input) ->
 associate_source_graphql_api(Client, MergedApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an `Api' object.
+%%
+%% Use this operation to create an AppSync
+%% API with your preferred configuration, such as an Event API that provides
+%% real-time message
+%% publishing and message subscriptions over WebSockets.
+-spec create_api(aws_client:aws_client(), create_api_request()) ->
+    {ok, create_api_response(), tuple()} |
+    {error, any()} |
+    {error, create_api_errors(), tuple()}.
+create_api(Client, Input) ->
+    create_api(Client, Input, []).
+
+-spec create_api(aws_client:aws_client(), create_api_request(), proplists:proplist()) ->
+    {ok, create_api_response(), tuple()} |
+    {error, any()} |
+    {error, create_api_errors(), tuple()}.
+create_api(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/apis"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2237,6 +2601,40 @@ create_api_key(Client, ApiId, Input) ->
 create_api_key(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a `ChannelNamespace' for an `Api'.
+-spec create_channel_namespace(aws_client:aws_client(), binary() | list(), create_channel_namespace_request()) ->
+    {ok, create_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_namespace_errors(), tuple()}.
+create_channel_namespace(Client, ApiId, Input) ->
+    create_channel_namespace(Client, ApiId, Input, []).
+
+-spec create_channel_namespace(aws_client:aws_client(), binary() | list(), create_channel_namespace_request(), proplists:proplist()) ->
+    {ok, create_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_namespace_errors(), tuple()}.
+create_channel_namespace(Client, ApiId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/channelNamespaces"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2327,7 +2725,8 @@ create_domain_name(Client, Input0, Options0) ->
 %% @doc Creates a `Function' object.
 %%
 %% A function is a reusable entity. You can use multiple functions to compose
-%% the resolver logic.
+%% the resolver
+%% logic.
 -spec create_function(aws_client:aws_client(), binary() | list(), create_function_request()) ->
     {ok, create_function_response(), tuple()} |
     {error, any()} |
@@ -2398,8 +2797,8 @@ create_graphql_api(Client, Input0, Options0) ->
 %% @doc Creates a `Resolver' object.
 %%
 %% A resolver converts incoming requests into a format that a data source can
-%% understand, and converts the data
-%% source's responses into GraphQL.
+%% understand,
+%% and converts the data source's responses into GraphQL.
 -spec create_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), create_resolver_request()) ->
     {ok, create_resolver_response(), tuple()} |
     {error, any()} |
@@ -2448,6 +2847,40 @@ create_type(Client, ApiId, Input) ->
 create_type(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an `Api' object
+-spec delete_api(aws_client:aws_client(), binary() | list(), delete_api_request()) ->
+    {ok, delete_api_response(), tuple()} |
+    {error, any()} |
+    {error, delete_api_errors(), tuple()}.
+delete_api(Client, ApiId, Input) ->
+    delete_api(Client, ApiId, Input, []).
+
+-spec delete_api(aws_client:aws_client(), binary() | list(), delete_api_request(), proplists:proplist()) ->
+    {ok, delete_api_response(), tuple()} |
+    {error, any()} |
+    {error, delete_api_errors(), tuple()}.
+delete_api(Client, ApiId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2516,6 +2949,40 @@ delete_api_key(Client, ApiId, Id, Input) ->
 delete_api_key(Client, ApiId, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a `ChannelNamespace'.
+-spec delete_channel_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_namespace_request()) ->
+    {ok, delete_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_namespace_errors(), tuple()}.
+delete_channel_namespace(Client, ApiId, Name, Input) ->
+    delete_channel_namespace(Client, ApiId, Name, Input, []).
+
+-spec delete_channel_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_namespace_request(), proplists:proplist()) ->
+    {ok, delete_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_namespace_errors(), tuple()}.
+delete_channel_namespace(Client, ApiId, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/channelNamespaces/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2774,8 +3241,8 @@ disassociate_api(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an association between a Merged API and source API using the
-%% source API's identifier and the
-%% association ID.
+%% source API's
+%% identifier and the association ID.
 -spec disassociate_merged_graphql_api(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_merged_graphql_api_request()) ->
     {ok, disassociate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
@@ -2810,8 +3277,8 @@ disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an association between a Merged API and source API using the
-%% Merged API's identifier and the
-%% association ID.
+%% Merged API's
+%% identifier and the association ID.
 -spec disassociate_source_graphql_api(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_source_graphql_api_request()) ->
     {ok, disassociate_source_graphql_api_response(), tuple()} |
     {error, any()} |
@@ -2847,14 +3314,16 @@ disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Inpu
 
 %% @doc Evaluates the given code and returns the response.
 %%
-%% The code definition requirements depend on the specified
-%% runtime. For `APPSYNC_JS' runtimes, the code defines the request and
-%% response functions. The request
-%% function takes the incoming request after a GraphQL operation is parsed
-%% and converts it into a request
-%% configuration for the selected data source operation. The response
-%% function interprets responses from the data
-%% source and maps it to the shape of the GraphQL field output type.
+%% The code definition requirements
+%% depend on the specified runtime. For `APPSYNC_JS' runtimes, the code
+%% defines the
+%% request and response functions. The request function takes the incoming
+%% request after a
+%% GraphQL operation is parsed and converts it into a request configuration
+%% for the selected
+%% data source operation. The response function interprets responses from the
+%% data source and
+%% maps it to the shape of the GraphQL field output type.
 -spec evaluate_code(aws_client:aws_client(), evaluate_code_request()) ->
     {ok, evaluate_code_response(), tuple()} |
     {error, any()} |
@@ -2890,14 +3359,16 @@ evaluate_code(Client, Input0, Options0) ->
 
 %% @doc Evaluates a given template and returns the response.
 %%
-%% The mapping template can be a request or response
-%% template.
+%% The mapping template can be a
+%% request or response template.
 %%
 %% Request templates take the incoming request after a GraphQL operation is
-%% parsed and convert it into a
-%% request configuration for the selected data source operation. Response
-%% templates interpret responses from the
-%% data source and map it to the shape of the GraphQL field output type.
+%% parsed and
+%% convert it into a request configuration for the selected data source
+%% operation. Response
+%% templates interpret responses from the data source and map it to the shape
+%% of the GraphQL
+%% field output type.
 %%
 %% Mapping templates are written in the Apache Velocity Template Language
 %% (VTL).
@@ -2967,6 +3438,43 @@ flush_api_cache(Client, ApiId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves an `Api' object.
+-spec get_api(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_api_response(), tuple()} |
+    {error, any()} |
+    {error, get_api_errors(), tuple()}.
+get_api(Client, ApiId)
+  when is_map(Client) ->
+    get_api(Client, ApiId, #{}, #{}).
+
+-spec get_api(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_api_response(), tuple()} |
+    {error, any()} |
+    {error, get_api_errors(), tuple()}.
+get_api(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_api(Client, ApiId, QueryMap, HeadersMap, []).
+
+-spec get_api(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_api_response(), tuple()} |
+    {error, any()} |
+    {error, get_api_errors(), tuple()}.
+get_api(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves an `ApiAssociation' object.
 -spec get_api_association(aws_client:aws_client(), binary() | list()) ->
@@ -3042,6 +3550,43 @@ get_api_cache(Client, ApiId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the channel namespace for a specified `Api'.
+-spec get_channel_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_namespace_errors(), tuple()}.
+get_channel_namespace(Client, ApiId, Name)
+  when is_map(Client) ->
+    get_channel_namespace(Client, ApiId, Name, #{}, #{}).
+
+-spec get_channel_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_namespace_errors(), tuple()}.
+get_channel_namespace(Client, ApiId, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_channel_namespace(Client, ApiId, Name, QueryMap, HeadersMap, []).
+
+-spec get_channel_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_namespace_errors(), tuple()}.
+get_channel_namespace(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/channelNamespaces/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a `DataSource' object.
 -spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
@@ -3081,10 +3626,10 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the record of an existing introspection.
 %%
-%% If the retrieval is successful, the result of the
-%% instrospection will also be returned. If the retrieval fails the
-%% operation, an error message will be returned
-%% instead.
+%% If the retrieval is successful, the
+%% result of the instrospection will also be returned. If the retrieval fails
+%% the operation,
+%% an error message will be returned instead.
 -spec get_data_source_introspection(aws_client:aws_client(), binary() | list()) ->
     {ok, get_data_source_introspection_response(), tuple()} |
     {error, any()} |
@@ -3239,7 +3784,8 @@ get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the list of environmental variable key-value pairs
-%% associated with an API by its ID value.
+%% associated with an API by
+%% its ID value.
 -spec get_graphql_api_environment_variables(aws_client:aws_client(), binary() | list()) ->
     {ok, get_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
@@ -3473,10 +4019,11 @@ get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options0)
 %% @doc Lists the API keys for a given API.
 %%
 %% API keys are deleted automatically 60 days after they expire. However,
-%% they may still be included in the
-%% response until they have actually been deleted. You can safely call
-%% `DeleteApiKey' to manually
-%% delete a key before it's automatically deleted.
+%% they may still
+%% be included in the response until they have actually been deleted. You can
+%% safely call
+%% `DeleteApiKey' to manually delete a key before it's automatically
+%% deleted.
 -spec list_api_keys(aws_client:aws_client(), binary() | list()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
@@ -3500,6 +4047,98 @@ list_api_keys(Client, ApiId, QueryMap, HeadersMap)
 list_api_keys(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the APIs in your AppSync account.
+%%
+%% `ListApis' returns only the high level API details. For more detailed
+%% information about an API, use `GetApi'.
+-spec list_apis(aws_client:aws_client()) ->
+    {ok, list_apis_response(), tuple()} |
+    {error, any()} |
+    {error, list_apis_errors(), tuple()}.
+list_apis(Client)
+  when is_map(Client) ->
+    list_apis(Client, #{}, #{}).
+
+-spec list_apis(aws_client:aws_client(), map(), map()) ->
+    {ok, list_apis_response(), tuple()} |
+    {error, any()} |
+    {error, list_apis_errors(), tuple()}.
+list_apis(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_apis(Client, QueryMap, HeadersMap, []).
+
+-spec list_apis(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_apis_response(), tuple()} |
+    {error, any()} |
+    {error, list_apis_errors(), tuple()}.
+list_apis(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/apis"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the channel namespaces for a specified `Api'.
+%%
+%% `ListChannelNamespaces' returns only high level details for the
+%% channel
+%% namespace. To retrieve code handlers, use
+%% `GetChannelNamespace'.
+-spec list_channel_namespaces(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channel_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_namespaces_errors(), tuple()}.
+list_channel_namespaces(Client, ApiId)
+  when is_map(Client) ->
+    list_channel_namespaces(Client, ApiId, #{}, #{}).
+
+-spec list_channel_namespaces(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channel_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_namespaces_errors(), tuple()}.
+list_channel_namespaces(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channel_namespaces(Client, ApiId, QueryMap, HeadersMap, []).
+
+-spec list_channel_namespaces(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channel_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_namespaces_errors(), tuple()}.
+list_channel_namespaces(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/channelNamespaces"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3949,37 +4588,38 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
 %% Environmental variables only support string values.
 %%
 %% Any defined value in an environmental variable is considered a string
-%% literal and not
-%% expanded.
+%% literal
+%% and not expanded.
 %%
-%% Variable evaluations should ideally be performed in the function code.
+%% Variable evaluations should ideally be performed in the function
+%% code.
 %%
 %% When creating an environmental variable key-value pair, it must follow the
-%% additional constraints
-%% below:
+%% additional
+%% constraints below:
 %%
 %% Keys must begin with a letter.
 %%
 %% Keys must be at least two characters long.
 %%
-%% Keys can only contain letters, numbers, and the underscore character (_).
+%% Keys can only contain letters, numbers, and the underscore character
+%% (_).
 %%
 %% Values can be up to 512 characters long.
 %%
 %% You can configure up to 50 key-value pairs in a GraphQL API.
 %%
 %% You can create a list of environmental variables by adding it to the
-%% `environmentVariables'
-%% payload as a list in the format
+%% `environmentVariables' payload as a list in the format
 %% `{&quot;key1&quot;:&quot;value1&quot;,&quot;key2&quot;:&quot;value2&quot;,
 %% …}'. Note that each call of the
 %% `PutGraphqlApiEnvironmentVariables' action will result in the
-%% overwriting of the existing
-%% environmental variable list of that API. This means the existing
-%% environmental variables will be lost. To avoid
-%% this, you must include all existing and new environmental variables in the
-%% list each time you call this
-%% action.
+%% overwriting of
+%% the existing environmental variable list of that API. This means the
+%% existing environmental
+%% variables will be lost. To avoid this, you must include all existing and
+%% new environmental
+%% variables in the list each time you call this action.
 -spec put_graphql_api_environment_variables(aws_client:aws_client(), binary() | list(), put_graphql_api_environment_variables_request()) ->
     {ok, put_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
@@ -4015,8 +4655,8 @@ put_graphql_api_environment_variables(Client, ApiId, Input0, Options0) ->
 
 %% @doc Creates a new introspection.
 %%
-%% Returns the `introspectionId' of the new introspection after its
-%% creation.
+%% Returns the `introspectionId' of the new
+%% introspection after its creation.
 -spec start_data_source_introspection(aws_client:aws_client(), start_data_source_introspection_request()) ->
     {ok, start_data_source_introspection_response(), tuple()} |
     {error, any()} |
@@ -4052,8 +4692,8 @@ start_data_source_introspection(Client, Input0, Options0) ->
 
 %% @doc Adds a new schema to your GraphQL API.
 %%
-%% This operation is asynchronous. Use to determine when it has
-%% completed.
+%% This operation is asynchronous. Use to
+%% determine when it has completed.
 -spec start_schema_creation(aws_client:aws_client(), binary() | list(), start_schema_creation_request()) ->
     {ok, start_schema_creation_response(), tuple()} |
     {error, any()} |
@@ -4089,7 +4729,8 @@ start_schema_creation(Client, ApiId, Input0, Options0) ->
 
 %% @doc Initiates a merge operation.
 %%
-%% Returns a status that shows the result of the merge operation.
+%% Returns a status that shows the result of the merge
+%% operation.
 -spec start_schema_merge(aws_client:aws_client(), binary() | list(), binary() | list(), start_schema_merge_request()) ->
     {ok, start_schema_merge_response(), tuple()} |
     {error, any()} |
@@ -4192,6 +4833,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an `Api'.
+-spec update_api(aws_client:aws_client(), binary() | list(), update_api_request()) ->
+    {ok, update_api_response(), tuple()} |
+    {error, any()} |
+    {error, update_api_errors(), tuple()}.
+update_api(Client, ApiId, Input) ->
+    update_api(Client, ApiId, Input, []).
+
+-spec update_api(aws_client:aws_client(), binary() | list(), update_api_request(), proplists:proplist()) ->
+    {ok, update_api_response(), tuple()} |
+    {error, any()} |
+    {error, update_api_errors(), tuple()}.
+update_api(Client, ApiId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the cache for the GraphQL API.
 -spec update_api_cache(aws_client:aws_client(), binary() | list(), update_api_cache_request()) ->
     {ok, update_api_cache_response(), tuple()} |
@@ -4243,6 +4918,40 @@ update_api_key(Client, ApiId, Id, Input) ->
 update_api_key(Client, ApiId, Id, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a `ChannelNamespace' associated with an `Api'.
+-spec update_channel_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_namespace_request()) ->
+    {ok, update_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_namespace_errors(), tuple()}.
+update_channel_namespace(Client, ApiId, Name, Input) ->
+    update_channel_namespace(Client, ApiId, Name, Input, []).
+
+-spec update_channel_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_namespace_request(), proplists:proplist()) ->
+    {ok, update_channel_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_namespace_errors(), tuple()}.
+update_channel_namespace(Client, ApiId, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/channelNamespaces/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
