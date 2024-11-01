@@ -93,6 +93,8 @@
          untag_resource/4,
          update_logging_configuration/3,
          update_logging_configuration/4,
+         update_scraper/3,
+         update_scraper/4,
          update_workspace_alias/3,
          update_workspace_alias/4]).
 
@@ -113,6 +115,16 @@
 %%   <<"data">> => binary()
 %% }
 -type put_alert_manager_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scraper_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"destination">> => list(),
+%%   <<"scrapeConfiguration">> => list()
+%% }
+-type update_scraper_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -260,6 +272,16 @@
 %%   <<"tags">> => map()
 %% }
 -type put_rule_groups_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scraper_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"scraperId">> => string(),
+%%   <<"status">> => scraper_status(),
+%%   <<"tags">> => map()
+%% }
+-type update_scraper_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -858,6 +880,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_scraper_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_workspace_alias_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1000,32 +1031,29 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 %% scraper pulls metrics from Prometheus-compatible sources within an Amazon
 %% EKS
 %% cluster, and sends them to your Amazon Managed Service for Prometheus
-%% workspace. You can configure the
-%% scraper to control what metrics are collected, and what transformations
-%% are applied
-%% prior to sending them to your workspace.
+%% workspace. Scrapers are
+%% flexible, and can be configured to control what metrics are collected, the
+%% frequency of collection, what transformations are applied to the metrics,
+%% and more.
 %%
-%% If needed, an IAM role will be created for you that gives Amazon Managed
-%% Service for Prometheus access to the metrics in your cluster. For more
-%% information, see
-%% Using roles for scraping metrics from EKS:
-%% https://docs.aws.amazon.com/prometheus/latest/userguide/using-service-linked-roles.html#using-service-linked-roles-prom-scraper
-%% in the Amazon Managed Service for Prometheus User
-%% Guide.
+%% An IAM role will be created for you that Amazon Managed Service for
+%% Prometheus uses
+%% to access the metrics in your cluster. You must configure this role with a
+%% policy that
+%% allows it to scrape metrics from your cluster. For more information, see
+%% Configuring your Amazon EKS cluster:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-eks-setup
+%% in the Amazon Managed Service for Prometheus User Guide.
 %%
-%% You cannot update a scraper. If you want to change the configuration of
-%% the scraper,
-%% create a new scraper and delete the old one.
-%%
-%% The `scrapeConfiguration' parameter contains the base64-encoded
-%% version of
-%% the YAML configuration file.
+%% The `scrapeConfiguration' parameter contains the base-64 encoded YAML
+%% configuration for the scraper.
 %%
 %% For more information about collectors, including what metrics are
 %% collected, and
-%% how to configure the scraper, see Amazon Web Services managed
-%% collectors:
-%% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector.html
+%% how to configure the scraper, see Using an
+%% Amazon Web Services managed
+%% collector:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html
 %% in the Amazon Managed Service for Prometheus User
 %% Guide.
 -spec create_scraper(aws_client:aws_client(), create_scraper_request()) ->
@@ -1610,7 +1638,7 @@ list_scrapers(Client, QueryMap, HeadersMap, Options0)
 %% with an Amazon Managed Service for Prometheus resource.
 %%
 %% Currently, the only resources that can be
-%% tagged are workspaces and rule groups namespaces.
+%% tagged are scrapers, workspaces, and rule groups namespaces.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1784,8 +1812,9 @@ put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 %% Managed Service for Prometheus
 %% resource.
 %%
-%% The only resources that can be tagged are workspaces and rule groups
-%% namespaces.
+%% The only resources that can be tagged are rule groups namespaces,
+%% scrapers,
+%% and workspaces.
 %%
 %% If you specify a new tag key for the resource, this tag is appended to the
 %% list of
@@ -1793,7 +1822,7 @@ put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 %% already associated
 %% with the resource, the new tag value that you specify replaces the
 %% previous value for
-%% that tag.
+%% that tag. To remove a tag, use `UntagResource'.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1831,7 +1860,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Prometheus resource.
 %%
 %% The only resources
-%% that can be tagged are workspaces and rule groups namespaces.
+%% that can be tagged are rule groups namespaces, scrapers, and workspaces.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -1882,6 +1911,46 @@ update_logging_configuration(Client, WorkspaceId, Input) ->
 update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing scraper.
+%%
+%% You can't use this function to update the source from which the
+%% scraper is
+%% collecting metrics. To change the source, delete the scraper and create a
+%% new
+%% one.
+-spec update_scraper(aws_client:aws_client(), binary() | list(), update_scraper_request()) ->
+    {ok, update_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, update_scraper_errors(), tuple()}.
+update_scraper(Client, ScraperId, Input) ->
+    update_scraper(Client, ScraperId, Input, []).
+
+-spec update_scraper(aws_client:aws_client(), binary() | list(), update_scraper_request(), proplists:proplist()) ->
+    {ok, update_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, update_scraper_errors(), tuple()}.
+update_scraper(Client, ScraperId, Input0, Options0) ->
+    Method = put,
+    Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

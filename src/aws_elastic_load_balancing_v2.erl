@@ -192,6 +192,7 @@
 %% availability_zone() :: #{
 %%   <<"LoadBalancerAddresses">> => list(load_balancer_address()()),
 %%   <<"OutpostId">> => string(),
+%%   <<"SourceNatIpv6Prefixes">> => list(string()()),
 %%   <<"SubnetId">> => string(),
 %%   <<"ZoneName">> => string()
 %% }
@@ -335,6 +336,7 @@
 
 %% Example:
 %% set_subnets_input() :: #{
+%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"LoadBalancerArn">> := string(),
 %%   <<"SubnetMappings">> => list(subnet_mapping()()),
@@ -347,6 +349,7 @@
 %%   <<"AllocationId">> => string(),
 %%   <<"IPv6Address">> => string(),
 %%   <<"PrivateIPv4Address">> => string(),
+%%   <<"SourceNatIpv6Prefix">> => string(),
 %%   <<"SubnetId">> => string()
 %% }
 -type subnet_mapping() :: #{binary() => any()}.
@@ -711,6 +714,7 @@
 %% Example:
 %% set_subnets_output() :: #{
 %%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
 %%   <<"IpAddressType">> => list(any())
 %% }
 -type set_subnets_output() :: #{binary() => any()}.
@@ -1138,6 +1142,7 @@
 %% Example:
 %% create_load_balancer_input() :: #{
 %%   <<"CustomerOwnedIpv4Pool">> => string(),
+%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"Name">> := string(),
 %%   <<"Scheme">> => list(any()),
@@ -1197,6 +1202,7 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"CustomerOwnedIpv4Pool">> => string(),
 %%   <<"DNSName">> => string(),
+%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
 %%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => string(),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"LoadBalancerArn">> => string(),
@@ -2828,8 +2834,8 @@ modify_trust_store(Client, Input, Options)
 %% same target group
 %% multiple times using different ports.
 %%
-%% With a Network Load Balancer, you cannot register instances by instance ID
-%% if they have
+%% With a Network Load Balancer, you can't register instances by instance
+%% ID if they have
 %% the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2,
 %% HI1, HS1, M1, M2, M3,
 %% and T1. You can register instances of these types by IP address.

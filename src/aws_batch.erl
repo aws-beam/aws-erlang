@@ -834,6 +834,7 @@
 %%   <<"initContainers">> => list(eks_attempt_container_detail()()),
 %%   <<"nodeName">> => string(),
 %%   <<"podName">> => string(),
+%%   <<"podNamespace">> => string(),
 %%   <<"startedAt">> => float(),
 %%   <<"statusReason">> => string(),
 %%   <<"stoppedAt">> => float()
@@ -1069,6 +1070,7 @@
 
 %% Example:
 %% eks_attempt_container_detail() :: #{
+%%   <<"containerID">> => string(),
 %%   <<"exitCode">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"reason">> => string()

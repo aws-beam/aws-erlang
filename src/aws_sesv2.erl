@@ -2077,6 +2077,7 @@
 %% template() :: #{
 %%   <<"Headers">> => list(message_header()()),
 %%   <<"TemplateArn">> => string(),
+%%   <<"TemplateContent">> => email_template_content(),
 %%   <<"TemplateData">> => string(),
 %%   <<"TemplateName">> => string()
 %% }

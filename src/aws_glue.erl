@@ -56,6 +56,8 @@
          create_blueprint/3,
          create_classifier/2,
          create_classifier/3,
+         create_column_statistics_task_settings/2,
+         create_column_statistics_task_settings/3,
          create_connection/2,
          create_connection/3,
          create_crawler/2,
@@ -106,6 +108,8 @@
          delete_column_statistics_for_partition/3,
          delete_column_statistics_for_table/2,
          delete_column_statistics_for_table/3,
+         delete_column_statistics_task_settings/2,
+         delete_column_statistics_task_settings/3,
          delete_connection/2,
          delete_connection/3,
          delete_crawler/2,
@@ -172,6 +176,8 @@
          get_column_statistics_task_run/3,
          get_column_statistics_task_runs/2,
          get_column_statistics_task_runs/3,
+         get_column_statistics_task_settings/2,
+         get_column_statistics_task_settings/3,
          get_connection/2,
          get_connection/3,
          get_connections/2,
@@ -370,6 +376,8 @@
          start_blueprint_run/3,
          start_column_statistics_task_run/2,
          start_column_statistics_task_run/3,
+         start_column_statistics_task_run_schedule/2,
+         start_column_statistics_task_run_schedule/3,
          start_crawler/2,
          start_crawler/3,
          start_crawler_schedule/2,
@@ -394,6 +402,8 @@
          start_workflow_run/3,
          stop_column_statistics_task_run/2,
          stop_column_statistics_task_run/3,
+         stop_column_statistics_task_run_schedule/2,
+         stop_column_statistics_task_run_schedule/3,
          stop_crawler/2,
          stop_crawler/3,
          stop_crawler_schedule/2,
@@ -418,6 +428,8 @@
          update_column_statistics_for_partition/3,
          update_column_statistics_for_table/2,
          update_column_statistics_for_table/3,
+         update_column_statistics_task_settings/2,
+         update_column_statistics_task_settings/3,
          update_connection/2,
          update_connection/3,
          update_crawler/2,
@@ -709,6 +721,12 @@
 %%   <<"Table">> => string()
 %% }
 -type basic_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% delete_column_statistics_task_settings_response() :: #{
+
+%% }
+-type delete_column_statistics_task_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% job_bookmarks_encryption() :: #{
@@ -2264,6 +2282,13 @@
 -type get_job_bookmark_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_column_statistics_task_settings_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type delete_column_statistics_task_settings_request() :: #{binary() => any()}.
+
+%% Example:
 %% batch_get_jobs_request() :: #{
 %%   <<"JobNames">> := list(string()())
 %% }
@@ -2789,6 +2814,12 @@
 -type get_workflow_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_column_statistics_task_settings_response() :: #{
+
+%% }
+-type update_column_statistics_task_settings_response() :: #{binary() => any()}.
+
+%% Example:
 %% resource_number_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3245,6 +3276,13 @@
 %%   <<"Paths">> => list(string()())
 %% }
 -type s3_hudi_source() :: #{binary() => any()}.
+
+%% Example:
+%% stop_column_statistics_task_run_schedule_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type stop_column_statistics_task_run_schedule_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_workflow_run_properties_response() :: #{
@@ -4975,6 +5013,7 @@
 %%   <<"CatalogID">> => string(),
 %%   <<"ColumnNameList">> => list(string()()),
 %%   <<"ColumnStatisticsTaskRunId">> => string(),
+%%   <<"ComputationType">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CustomerId">> => string(),
 %%   <<"DPUSeconds">> => float(),
@@ -5337,6 +5376,12 @@
 -type s3_delta_catalog_target() :: #{binary() => any()}.
 
 %% Example:
+%% create_column_statistics_task_settings_response() :: #{
+
+%% }
+-type create_column_statistics_task_settings_response() :: #{binary() => any()}.
+
+%% Example:
 %% test_connection_input() :: #{
 %%   <<"AuthenticationConfiguration">> => authentication_configuration_input(),
 %%   <<"ConnectionProperties">> => map(),
@@ -5365,6 +5410,13 @@
 %%   <<"VersionId">> => string()
 %% }
 -type table_version() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_task_settings_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_column_statistics_task_settings_request() :: #{binary() => any()}.
 
 %% Example:
 %% action() :: #{
@@ -5666,6 +5718,20 @@
 %%   <<"Importance">> => float()
 %% }
 -type column_importance() :: #{binary() => any()}.
+
+%% Example:
+%% create_column_statistics_task_settings_request() :: #{
+%%   <<"CatalogID">> => string(),
+%%   <<"ColumnNameList">> => list(string()()),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Role">> := string(),
+%%   <<"SampleSize">> => float(),
+%%   <<"Schedule">> => string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"TableName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_column_statistics_task_settings_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_ml_task_runs_response() :: #{
@@ -6082,6 +6148,13 @@
 -type delete_usage_profile_request() :: #{binary() => any()}.
 
 %% Example:
+%% start_column_statistics_task_run_schedule_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type start_column_statistics_task_run_schedule_request() :: #{binary() => any()}.
+
+%% Example:
 %% s3_catalog_source() :: #{
 %%   <<"AdditionalOptions">> => s3_source_additional_options(),
 %%   <<"Database">> => string(),
@@ -6146,6 +6219,12 @@
 %%   <<"StopJobOnFailureOptions">> => d_q_stop_job_on_failure_options()
 %% }
 -type evaluate_data_quality() :: #{binary() => any()}.
+
+%% Example:
+%% start_column_statistics_task_run_schedule_response() :: #{
+
+%% }
+-type start_column_statistics_task_run_schedule_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_job_request() :: #{
@@ -6279,6 +6358,12 @@
 %%   <<"UnfilteredPartitions">> => list(unfiltered_partition()())
 %% }
 -type get_unfiltered_partitions_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_column_statistics_task_run_schedule_response() :: #{
+
+%% }
+-type stop_column_statistics_task_run_schedule_response() :: #{binary() => any()}.
 
 %% Example:
 %% other_metadata_value_list_item() :: #{
@@ -7316,6 +7401,19 @@
 -type evaluation_metrics() :: #{binary() => any()}.
 
 %% Example:
+%% column_statistics_task_settings() :: #{
+%%   <<"CatalogID">> => string(),
+%%   <<"ColumnNameList">> => list(string()()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"SampleSize">> => float(),
+%%   <<"Schedule">> => schedule(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type column_statistics_task_settings() :: #{binary() => any()}.
+
+%% Example:
 %% create_database_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseInput">> := database_input(),
@@ -7543,6 +7641,19 @@
 -type list_table_optimizer_runs_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_column_statistics_task_settings_request() :: #{
+%%   <<"CatalogID">> => string(),
+%%   <<"ColumnNameList">> => list(string()()),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Role">> => string(),
+%%   <<"SampleSize">> => float(),
+%%   <<"Schedule">> => string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"TableName">> := string()
+%% }
+-type update_column_statistics_task_settings_request() :: #{binary() => any()}.
+
+%% Example:
 %% start_ml_labeling_set_generation_task_run_request() :: #{
 %%   <<"OutputS3Path">> := string(),
 %%   <<"TransformId">> := string()
@@ -7599,6 +7710,12 @@
 %%   <<"TransformId">> => string()
 %% }
 -type task_run() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_task_settings_response() :: #{
+%%   <<"ColumnStatisticsTaskSettings">> => column_statistics_task_settings()
+%% }
+-type get_column_statistics_task_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% string_column_statistics_data() :: #{
@@ -7813,6 +7930,15 @@
     already_exists_exception() | 
     operation_timeout_exception().
 
+-type create_column_statistics_task_settings_errors() ::
+    column_statistics_task_running_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type create_connection_errors() ::
     glue_encryption_exception() | 
     invalid_input_exception() | 
@@ -8015,6 +8141,11 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type delete_column_statistics_task_settings_errors() ::
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type delete_connection_errors() ::
     operation_timeout_exception() | 
     entity_not_found_exception().
@@ -8209,6 +8340,11 @@
 
 -type get_column_statistics_task_runs_errors() ::
     operation_timeout_exception().
+
+-type get_column_statistics_task_settings_errors() ::
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
 
 -type get_connection_errors() ::
     glue_encryption_exception() | 
@@ -8831,6 +8967,12 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type start_column_statistics_task_run_schedule_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type start_crawler_errors() ::
     crawler_running_exception() | 
     operation_timeout_exception() | 
@@ -8914,6 +9056,11 @@
     entity_not_found_exception() | 
     column_statistics_task_stopping_exception().
 
+-type stop_column_statistics_task_run_schedule_errors() ::
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type stop_crawler_errors() ::
     crawler_not_running_exception() | 
     crawler_stopping_exception() | 
@@ -8996,6 +9143,13 @@
     glue_encryption_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_column_statistics_task_settings_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    version_mismatch_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
 
@@ -9635,6 +9789,23 @@ create_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClassifier">>, Input, Options).
 
+%% @doc Creates settings for a column statistics task.
+-spec create_column_statistics_task_settings(aws_client:aws_client(), create_column_statistics_task_settings_request()) ->
+    {ok, create_column_statistics_task_settings_response(), tuple()} |
+    {error, any()} |
+    {error, create_column_statistics_task_settings_errors(), tuple()}.
+create_column_statistics_task_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_column_statistics_task_settings(Client, Input, []).
+
+-spec create_column_statistics_task_settings(aws_client:aws_client(), create_column_statistics_task_settings_request(), proplists:proplist()) ->
+    {ok, create_column_statistics_task_settings_response(), tuple()} |
+    {error, any()} |
+    {error, create_column_statistics_task_settings_errors(), tuple()}.
+create_column_statistics_task_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateColumnStatisticsTaskSettings">>, Input, Options).
+
 %% @doc Creates a connection definition in the Data Catalog.
 %%
 %% Connections used for creating federated resources require the IAM
@@ -10125,6 +10296,23 @@ delete_column_statistics_for_table(Client, Input)
 delete_column_statistics_for_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteColumnStatisticsForTable">>, Input, Options).
+
+%% @doc Deletes settings for a column statistics task.
+-spec delete_column_statistics_task_settings(aws_client:aws_client(), delete_column_statistics_task_settings_request()) ->
+    {ok, delete_column_statistics_task_settings_response(), tuple()} |
+    {error, any()} |
+    {error, delete_column_statistics_task_settings_errors(), tuple()}.
+delete_column_statistics_task_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_column_statistics_task_settings(Client, Input, []).
+
+-spec delete_column_statistics_task_settings(aws_client:aws_client(), delete_column_statistics_task_settings_request(), proplists:proplist()) ->
+    {ok, delete_column_statistics_task_settings_response(), tuple()} |
+    {error, any()} |
+    {error, delete_column_statistics_task_settings_errors(), tuple()}.
+delete_column_statistics_task_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteColumnStatisticsTaskSettings">>, Input, Options).
 
 %% @doc Deletes a connection from the Data Catalog.
 -spec delete_connection(aws_client:aws_client(), delete_connection_request()) ->
@@ -10772,6 +10960,23 @@ get_column_statistics_task_runs(Client, Input)
 get_column_statistics_task_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetColumnStatisticsTaskRuns">>, Input, Options).
+
+%% @doc Gets settings for a column statistics task.
+-spec get_column_statistics_task_settings(aws_client:aws_client(), get_column_statistics_task_settings_request()) ->
+    {ok, get_column_statistics_task_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_column_statistics_task_settings_errors(), tuple()}.
+get_column_statistics_task_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_column_statistics_task_settings(Client, Input, []).
+
+-spec get_column_statistics_task_settings(aws_client:aws_client(), get_column_statistics_task_settings_request(), proplists:proplist()) ->
+    {ok, get_column_statistics_task_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_column_statistics_task_settings_errors(), tuple()}.
+get_column_statistics_task_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetColumnStatisticsTaskSettings">>, Input, Options).
 
 %% @doc Retrieves a connection definition from the Data Catalog.
 -spec get_connection(aws_client:aws_client(), get_connection_request()) ->
@@ -12701,6 +12906,23 @@ start_column_statistics_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartColumnStatisticsTaskRun">>, Input, Options).
 
+%% @doc Starts a column statistics task run schedule.
+-spec start_column_statistics_task_run_schedule(aws_client:aws_client(), start_column_statistics_task_run_schedule_request()) ->
+    {ok, start_column_statistics_task_run_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, start_column_statistics_task_run_schedule_errors(), tuple()}.
+start_column_statistics_task_run_schedule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_column_statistics_task_run_schedule(Client, Input, []).
+
+-spec start_column_statistics_task_run_schedule(aws_client:aws_client(), start_column_statistics_task_run_schedule_request(), proplists:proplist()) ->
+    {ok, start_column_statistics_task_run_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, start_column_statistics_task_run_schedule_errors(), tuple()}.
+start_column_statistics_task_run_schedule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartColumnStatisticsTaskRunSchedule">>, Input, Options).
+
 %% @doc Starts a crawl using the specified crawler, regardless
 %% of what is scheduled.
 %%
@@ -13018,6 +13240,23 @@ stop_column_statistics_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopColumnStatisticsTaskRun">>, Input, Options).
 
+%% @doc Stops a column statistics task run schedule.
+-spec stop_column_statistics_task_run_schedule(aws_client:aws_client(), stop_column_statistics_task_run_schedule_request()) ->
+    {ok, stop_column_statistics_task_run_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, stop_column_statistics_task_run_schedule_errors(), tuple()}.
+stop_column_statistics_task_run_schedule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_column_statistics_task_run_schedule(Client, Input, []).
+
+-spec stop_column_statistics_task_run_schedule(aws_client:aws_client(), stop_column_statistics_task_run_schedule_request(), proplists:proplist()) ->
+    {ok, stop_column_statistics_task_run_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, stop_column_statistics_task_run_schedule_errors(), tuple()}.
+stop_column_statistics_task_run_schedule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopColumnStatisticsTaskRunSchedule">>, Input, Options).
+
 %% @doc If the specified crawler is running, stops the crawl.
 -spec stop_crawler(aws_client:aws_client(), stop_crawler_request()) ->
     {ok, stop_crawler_response(), tuple()} |
@@ -13244,6 +13483,23 @@ update_column_statistics_for_table(Client, Input)
 update_column_statistics_for_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateColumnStatisticsForTable">>, Input, Options).
+
+%% @doc Updates settings for a column statistics task.
+-spec update_column_statistics_task_settings(aws_client:aws_client(), update_column_statistics_task_settings_request()) ->
+    {ok, update_column_statistics_task_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_column_statistics_task_settings_errors(), tuple()}.
+update_column_statistics_task_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_column_statistics_task_settings(Client, Input, []).
+
+-spec update_column_statistics_task_settings(aws_client:aws_client(), update_column_statistics_task_settings_request(), proplists:proplist()) ->
+    {ok, update_column_statistics_task_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_column_statistics_task_settings_errors(), tuple()}.
+update_column_statistics_task_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateColumnStatisticsTaskSettings">>, Input, Options).
 
 %% @doc Updates a connection definition in the Data Catalog.
 -spec update_connection(aws_client:aws_client(), update_connection_request()) ->

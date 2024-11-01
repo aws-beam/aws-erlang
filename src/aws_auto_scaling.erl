@@ -1386,6 +1386,7 @@
 %% refresh_preferences() :: #{
 %%   <<"AlarmSpecification">> => alarm_specification(),
 %%   <<"AutoRollback">> => boolean(),
+%%   <<"BakeTime">> => integer(),
 %%   <<"CheckpointDelay">> => integer(),
 %%   <<"CheckpointPercentages">> => list(integer()()),
 %%   <<"InstanceWarmup">> => integer(),
