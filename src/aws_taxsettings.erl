@@ -23,14 +23,20 @@
          batch_delete_tax_registration/3,
          batch_put_tax_registration/2,
          batch_put_tax_registration/3,
+         delete_supplemental_tax_registration/2,
+         delete_supplemental_tax_registration/3,
          delete_tax_registration/2,
          delete_tax_registration/3,
          get_tax_registration/2,
          get_tax_registration/3,
          get_tax_registration_document/2,
          get_tax_registration_document/3,
+         list_supplemental_tax_registrations/2,
+         list_supplemental_tax_registrations/3,
          list_tax_registrations/2,
          list_tax_registrations/3,
+         put_supplemental_tax_registration/2,
+         put_supplemental_tax_registration/3,
          put_tax_registration/2,
          put_tax_registration/3]).
 
@@ -119,7 +125,9 @@
 
 %% Example:
 %% malaysia_additional_info() :: #{
-%%   <<"serviceTaxCodes">> => list(list(any())())
+%%   <<"businessRegistrationNumber">> => string(),
+%%   <<"serviceTaxCodes">> => list(list(any())()),
+%%   <<"taxInformationNumber">> => string()
 %% }
 -type malaysia_additional_info() :: #{binary() => any()}.
 
@@ -154,11 +162,25 @@
 
 
 %% Example:
+%% put_supplemental_tax_registration_request() :: #{
+%%   <<"taxRegistrationEntry">> := supplemental_tax_registration_entry()
+%% }
+-type put_supplemental_tax_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_put_tax_registration_request() :: #{
 %%   <<"accountIds">> := list(string()()),
 %%   <<"taxRegistrationEntry">> := tax_registration_entry()
 %% }
 -type batch_put_tax_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_supplemental_tax_registration_request() :: #{
+%%   <<"authorityId">> := string()
+%% }
+-type delete_supplemental_tax_registration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -201,6 +223,16 @@
 %%   <<"ukraineAdditionalInfo">> => ukraine_additional_info()
 %% }
 -type additional_info_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% supplemental_tax_registration_entry() :: #{
+%%   <<"address">> => address(),
+%%   <<"legalName">> => string(),
+%%   <<"registrationId">> => string(),
+%%   <<"registrationType">> => list(any())
+%% }
+-type supplemental_tax_registration_entry() :: #{binary() => any()}.
 
 %% Example:
 %% delete_tax_registration_response() :: #{}
@@ -267,6 +299,14 @@
 %%   <<"registrationType">> => list(any())
 %% }
 -type spain_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_supplemental_tax_registration_response() :: #{
+%%   <<"authorityId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type put_supplemental_tax_registration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -405,6 +445,14 @@
 
 
 %% Example:
+%% list_supplemental_tax_registrations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_supplemental_tax_registrations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% tax_registration_with_jurisdiction() :: #{
 %%   <<"additionalTaxInformation">> => additional_info_response(),
 %%   <<"certifiedEmailId">> => string(),
@@ -418,6 +466,10 @@
 %% }
 -type tax_registration_with_jurisdiction() :: #{binary() => any()}.
 
+%% Example:
+%% delete_supplemental_tax_registration_response() :: #{}
+-type delete_supplemental_tax_registration_response() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -426,6 +478,14 @@
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supplemental_tax_registrations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taxRegistrations">> => list(supplemental_tax_registration()())
+%% }
+-type list_supplemental_tax_registrations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -457,6 +517,18 @@
 %%   <<"dealerType">> => list(any())
 %% }
 -type israel_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% supplemental_tax_registration() :: #{
+%%   <<"address">> => address(),
+%%   <<"authorityId">> => string(),
+%%   <<"legalName">> => string(),
+%%   <<"registrationId">> => string(),
+%%   <<"registrationType">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type supplemental_tax_registration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -508,6 +580,12 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type delete_supplemental_tax_registration_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_tax_registration_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -523,10 +601,20 @@
     validation_exception() | 
     internal_server_exception().
 
+-type list_supplemental_tax_registrations_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_tax_registrations_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type put_supplemental_tax_registration_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 -type put_tax_registration_errors() ::
     validation_exception() | 
@@ -623,29 +711,35 @@ batch_delete_tax_registration(Client, Input0, Options0) ->
 %%
 %% Malaysia
 %%
-%% If you use this operation to set a tax registration number (TRN) in
-%% Malaysia, only
-%% resellers with a valid sales and service tax (SST) number are required to
-%% provide tax
-%% registration information.
+%% The sector valid values are `Business' and `Individual'.
 %%
-%% By using this API operation to set a TRN in Malaysia, Amazon Web Services
-%% will regard you as
-%% self-declaring that you're an authorized business reseller registered
-%% with the Royal
-%% Malaysia Customs Department (RMCD) and have a valid SST number.
+%% `RegistrationType' valid values are `NRIC' for individual, and TIN
+%% and sales and service tax (SST) for Business.
+%%
+%% For individual, you can specify the `taxInformationNumber' in
+%% `MalaysiaAdditionalInfo' with NRIC type, and a valid `MyKad' or
+%% NRIC number.
+%%
+%% For business, you must specify a `businessRegistrationNumber' in
+%% `MalaysiaAdditionalInfo' with a TIN type and tax identification
+%% number.
+%%
+%% For business resellers, you must specify a
+%% `businessRegistrationNumber' and `taxInformationNumber' in
+%% `MalaysiaAdditionalInfo' with a sales and service tax (SST) type and a
+%% valid SST number.
+%%
+%% For business resellers with service codes, you must specify
+%% `businessRegistrationNumber', `taxInformationNumber', and distinct
+%% `serviceTaxCodes' in `MalaysiaAdditionalInfo' with a SST type and
+%% valid sales and service tax (SST) number. By using this API operation,
+%% Amazon Web Services registers your self-declaration that you’re an
+%% authorized business reseller registered with the Royal Malaysia Customs
+%% Department (RMCD), and have a valid SST number.
 %%
 %% Amazon Web Services reserves the right to seek additional information
 %% and/or take other actions to
 %% support your self-declaration as appropriate.
-%%
-%% If you're not a reseller of Amazon Web Services, we don't
-%% recommend that you use
-%% this operation to set the TRN in Malaysia.
-%%
-%% Only use this API operation to upload the TRNs for accounts through which
-%% you're
-%% reselling Amazon Web Services.
 %%
 %% Amazon Web Services is currently registered under the following service
 %% tax codes. You must include
@@ -740,6 +834,41 @@ batch_put_tax_registration(Client, Input) ->
 batch_put_tax_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchPutTaxRegistration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Deletes a supplemental tax registration for a single account.
+-spec delete_supplemental_tax_registration(aws_client:aws_client(), delete_supplemental_tax_registration_request()) ->
+    {ok, delete_supplemental_tax_registration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_supplemental_tax_registration_errors(), tuple()}.
+delete_supplemental_tax_registration(Client, Input) ->
+    delete_supplemental_tax_registration(Client, Input, []).
+
+-spec delete_supplemental_tax_registration(aws_client:aws_client(), delete_supplemental_tax_registration_request(), proplists:proplist()) ->
+    {ok, delete_supplemental_tax_registration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_supplemental_tax_registration_errors(), tuple()}.
+delete_supplemental_tax_registration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteSupplementalTaxRegistration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -868,6 +997,41 @@ get_tax_registration_document(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+%% Retrieves supplemental tax registrations for a single account.
+-spec list_supplemental_tax_registrations(aws_client:aws_client(), list_supplemental_tax_registrations_request()) ->
+    {ok, list_supplemental_tax_registrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_supplemental_tax_registrations_errors(), tuple()}.
+list_supplemental_tax_registrations(Client, Input) ->
+    list_supplemental_tax_registrations(Client, Input, []).
+
+-spec list_supplemental_tax_registrations(aws_client:aws_client(), list_supplemental_tax_registrations_request(), proplists:proplist()) ->
+    {ok, list_supplemental_tax_registrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_supplemental_tax_registrations_errors(), tuple()}.
+list_supplemental_tax_registrations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListSupplementalTaxRegistrations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the tax registration of accounts listed in a consolidated
 %% billing family.
 %%
@@ -888,6 +1052,41 @@ list_tax_registrations(Client, Input) ->
 list_tax_registrations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTaxRegistrations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Stores supplemental tax registration for a single account.
+-spec put_supplemental_tax_registration(aws_client:aws_client(), put_supplemental_tax_registration_request()) ->
+    {ok, put_supplemental_tax_registration_response(), tuple()} |
+    {error, any()} |
+    {error, put_supplemental_tax_registration_errors(), tuple()}.
+put_supplemental_tax_registration(Client, Input) ->
+    put_supplemental_tax_registration(Client, Input, []).
+
+-spec put_supplemental_tax_registration(aws_client:aws_client(), put_supplemental_tax_registration_request(), proplists:proplist()) ->
+    {ok, put_supplemental_tax_registration_response(), tuple()} |
+    {error, any()} |
+    {error, put_supplemental_tax_registration_errors(), tuple()}.
+put_supplemental_tax_registration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutSupplementalTaxRegistration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -949,29 +1148,35 @@ list_tax_registrations(Client, Input0, Options0) ->
 %%
 %% Malaysia
 %%
-%% If you use this operation to set a tax registration number (TRN) in
-%% Malaysia, only
-%% resellers with a valid sales and service tax (SST) number are required to
-%% provide tax
-%% registration information.
+%% The sector valid values are `Business' and `Individual'.
 %%
-%% By using this API operation to set a TRN in Malaysia, Amazon Web Services
-%% will regard you as
-%% self-declaring that you're an authorized business reseller registered
-%% with the Royal
-%% Malaysia Customs Department (RMCD) and have a valid SST number.
+%% `RegistrationType' valid values are `NRIC' for individual, and TIN
+%% and sales and service tax (SST) for Business.
+%%
+%% For individual, you can specify the `taxInformationNumber' in
+%% `MalaysiaAdditionalInfo' with NRIC type, and a valid `MyKad' or
+%% NRIC number.
+%%
+%% For business, you must specify a `businessRegistrationNumber' in
+%% `MalaysiaAdditionalInfo' with a TIN type and tax identification
+%% number.
+%%
+%% For business resellers, you must specify a
+%% `businessRegistrationNumber' and `taxInformationNumber' in
+%% `MalaysiaAdditionalInfo' with a sales and service tax (SST) type and a
+%% valid SST number.
+%%
+%% For business resellers with service codes, you must specify
+%% `businessRegistrationNumber', `taxInformationNumber', and distinct
+%% `serviceTaxCodes' in `MalaysiaAdditionalInfo' with a SST type and
+%% valid sales and service tax (SST) number. By using this API operation,
+%% Amazon Web Services registers your self-declaration that you’re an
+%% authorized business reseller registered with the Royal Malaysia Customs
+%% Department (RMCD), and have a valid SST number.
 %%
 %% Amazon Web Services reserves the right to seek additional information
 %% and/or take other actions to
 %% support your self-declaration as appropriate.
-%%
-%% If you're not a reseller of Amazon Web Services, we don't
-%% recommend that you use
-%% this operation to set the TRN in Malaysia.
-%%
-%% Only use this API operation to upload the TRNs for accounts through which
-%% you're
-%% reselling Amazon Web Services.
 %%
 %% Amazon Web Services is currently registered under the following service
 %% tax codes. You must include

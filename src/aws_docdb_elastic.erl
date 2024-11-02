@@ -23,7 +23,9 @@
 %% architecture for JSON workloads.
 -module(aws_docdb_elastic).
 
--export([copy_cluster_snapshot/3,
+-export([apply_pending_maintenance_action/2,
+         apply_pending_maintenance_action/3,
+         copy_cluster_snapshot/3,
          copy_cluster_snapshot/4,
          create_cluster/2,
          create_cluster/3,
@@ -39,12 +41,18 @@
          get_cluster_snapshot/2,
          get_cluster_snapshot/4,
          get_cluster_snapshot/5,
+         get_pending_maintenance_action/2,
+         get_pending_maintenance_action/4,
+         get_pending_maintenance_action/5,
          list_cluster_snapshots/1,
          list_cluster_snapshots/3,
          list_cluster_snapshots/4,
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
+         list_pending_maintenance_actions/1,
+         list_pending_maintenance_actions/3,
+         list_pending_maintenance_actions/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -63,6 +71,16 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% apply_pending_maintenance_action_input() :: #{
+%%   <<"applyAction">> := string(),
+%%   <<"applyOn">> => string(),
+%%   <<"optInType">> := string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type apply_pending_maintenance_action_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -187,6 +205,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_clusters_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pending_maintenance_actions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourcePendingMaintenanceActions">> => list(resource_pending_maintenance_action()())
+%% }
+-type list_pending_maintenance_actions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -384,6 +410,21 @@
 
 
 %% Example:
+%% resource_pending_maintenance_action() :: #{
+%%   <<"pendingMaintenanceActionDetails">> => list(pending_maintenance_action_details()()),
+%%   <<"resourceArn">> => [string()]
+%% }
+-type resource_pending_maintenance_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% apply_pending_maintenance_action_output() :: #{
+%%   <<"resourcePendingMaintenanceAction">> => resource_pending_maintenance_action()
+%% }
+-type apply_pending_maintenance_action_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_cluster_snapshot_input() :: #{
 %%   <<"clusterArn">> := [string()],
 %%   <<"snapshotName">> := [string()],
@@ -410,6 +451,13 @@
 
 
 %% Example:
+%% get_pending_maintenance_action_output() :: #{
+%%   <<"resourcePendingMaintenanceAction">> => resource_pending_maintenance_action()
+%% }
+-type get_pending_maintenance_action_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% cluster_in_list() :: #{
 %%   <<"clusterArn">> => [string()],
 %%   <<"clusterName">> => [string()],
@@ -420,6 +468,10 @@
 %% Example:
 %% get_cluster_snapshot_input() :: #{}
 -type get_cluster_snapshot_input() :: #{}.
+
+%% Example:
+%% get_pending_maintenance_action_input() :: #{}
+-type get_pending_maintenance_action_input() :: #{}.
 
 
 %% Example:
@@ -434,6 +486,34 @@
 %%   <<"snapshot">> => cluster_snapshot()
 %% }
 -type copy_cluster_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pending_maintenance_actions_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_pending_maintenance_actions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% pending_maintenance_action_details() :: #{
+%%   <<"action">> => [string()],
+%%   <<"autoAppliedAfterDate">> => [string()],
+%%   <<"currentApplyDate">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"forcedApplyDate">> => [string()],
+%%   <<"optInStatus">> => [string()]
+%% }
+-type pending_maintenance_action_details() :: #{binary() => any()}.
+
+-type apply_pending_maintenance_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type copy_cluster_snapshot_errors() ::
     throttling_exception() | 
@@ -491,6 +571,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_pending_maintenance_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type list_cluster_snapshots_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -498,6 +586,12 @@
     internal_server_exception().
 
 -type list_clusters_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_pending_maintenance_actions_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -555,6 +649,40 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc The type of pending maintenance action to be applied to the resource.
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_input()) ->
+    {ok, apply_pending_maintenance_action_output(), tuple()} |
+    {error, any()} |
+    {error, apply_pending_maintenance_action_errors(), tuple()}.
+apply_pending_maintenance_action(Client, Input) ->
+    apply_pending_maintenance_action(Client, Input, []).
+
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_input(), proplists:proplist()) ->
+    {ok, apply_pending_maintenance_action_output(), tuple()} |
+    {error, any()} |
+    {error, apply_pending_maintenance_action_errors(), tuple()}.
+apply_pending_maintenance_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/pending-action"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Copies a snapshot of an elastic cluster.
 -spec copy_cluster_snapshot(aws_client:aws_client(), binary() | list(), copy_cluster_snapshot_input()) ->
@@ -801,6 +929,43 @@ get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves all maintenance actions that are pending.
+-spec get_pending_maintenance_action(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_pending_maintenance_action_output(), tuple()} |
+    {error, any()} |
+    {error, get_pending_maintenance_action_errors(), tuple()}.
+get_pending_maintenance_action(Client, ResourceArn)
+  when is_map(Client) ->
+    get_pending_maintenance_action(Client, ResourceArn, #{}, #{}).
+
+-spec get_pending_maintenance_action(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_pending_maintenance_action_output(), tuple()} |
+    {error, any()} |
+    {error, get_pending_maintenance_action_errors(), tuple()}.
+get_pending_maintenance_action(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_pending_maintenance_action(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec get_pending_maintenance_action(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_pending_maintenance_action_output(), tuple()} |
+    {error, any()} |
+    {error, get_pending_maintenance_action_errors(), tuple()}.
+get_pending_maintenance_action(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/pending-action/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about snapshots for a specified elastic cluster.
 -spec list_cluster_snapshots(aws_client:aws_client()) ->
     {ok, list_cluster_snapshots_output(), tuple()} |
@@ -870,6 +1035,48 @@ list_clusters(Client, QueryMap, HeadersMap)
 list_clusters(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of all maintenance actions that are pending.
+-spec list_pending_maintenance_actions(aws_client:aws_client()) ->
+    {ok, list_pending_maintenance_actions_output(), tuple()} |
+    {error, any()} |
+    {error, list_pending_maintenance_actions_errors(), tuple()}.
+list_pending_maintenance_actions(Client)
+  when is_map(Client) ->
+    list_pending_maintenance_actions(Client, #{}, #{}).
+
+-spec list_pending_maintenance_actions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_pending_maintenance_actions_output(), tuple()} |
+    {error, any()} |
+    {error, list_pending_maintenance_actions_errors(), tuple()}.
+list_pending_maintenance_actions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pending_maintenance_actions(Client, QueryMap, HeadersMap, []).
+
+-spec list_pending_maintenance_actions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_pending_maintenance_actions_output(), tuple()} |
+    {error, any()} |
+    {error, list_pending_maintenance_actions_errors(), tuple()}.
+list_pending_maintenance_actions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/pending-actions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
