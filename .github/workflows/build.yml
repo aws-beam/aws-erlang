@@ -65,12 +65,10 @@ jobs:
       with:
         name: edoc OTP${{ matrix.otp-version }}
         path: doc
-        overwrite: true
     - name: Upload Common Test result
       if: ${{ always() }}
       uses: actions/upload-artifact@v4
       with:
-        name: Common Test OTP${{ matrix.otp-version }} SHA${{ github.sha }}
+        name: Common Test OTP${{ matrix.otp-version }}
         path: _build/test/logs/**
-        overwrite: true
         retention-days: 3
