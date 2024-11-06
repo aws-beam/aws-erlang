@@ -61,14 +61,16 @@ jobs:
     - name: Produce Documentation
       run: rebar3 ex_doc || true
     - name: Publish Documentation
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: edoc
+        name: edoc OTP${{ matrix.otp-version }}
         path: doc
+        overwrite: true
     - name: Upload Common Test result
       if: ${{ always() }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: Common Test ${{ matrix.otp-version }}
+        name: Common Test OTP${{ matrix.otp-version }} SHA${{ github.sha }}
         path: _build/test/logs/**
+        overwrite: true
         retention-days: 3
