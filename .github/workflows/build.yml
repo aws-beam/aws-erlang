@@ -26,16 +26,16 @@ jobs:
           - 9090:9090
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Cache Hex packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.cache/rebar3/hex/hexpm/packages
         key: ${{ runner.os }}-hex-${{ hashFiles(format('{0}{1}', github.workspace, '/rebar.lock')) }}
         restore-keys: |
           ${{ runner.os }}-hex-
     - name: Cache Dialyzer PLTs
-      uses: actions/cache@v1
+      uses: actions/cache@v4
       with:
         path: ~/.cache/rebar3/rebar3_*.plt
         key: ${{ runner.os }}-dialyzer-${{ hashFiles(format('{0}{1}', github.workspace, '/rebar.config')) }}
@@ -65,12 +65,10 @@ jobs:
       with:
         name: edoc OTP${{ matrix.otp-version }}
         path: doc
-        overwrite: true
     - name: Upload Common Test result
       if: ${{ always() }}
       uses: actions/upload-artifact@v4
       with:
-        name: Common Test OTP${{ matrix.otp-version }} SHA${{ github.sha }}
+        name: Common Test OTP${{ matrix.otp-version }}
         path: _build/test/logs/**
-        overwrite: true
         retention-days: 3
