@@ -1056,6 +1056,7 @@
 %% update_fleet_input() :: #{
 %%   <<"arn">> := string(),
 %%   <<"baseCapacity">> => integer(),
+%%   <<"computeConfiguration">> => compute_configuration(),
 %%   <<"computeType">> => list(any()),
 %%   <<"environmentType">> => list(any()),
 %%   <<"fleetServiceRole">> => string(),
@@ -1071,6 +1072,7 @@
 %% Example:
 %% create_fleet_input() :: #{
 %%   <<"baseCapacity">> := integer(),
+%%   <<"computeConfiguration">> => compute_configuration(),
 %%   <<"computeType">> := list(any()),
 %%   <<"environmentType">> := list(any()),
 %%   <<"fleetServiceRole">> => string(),
@@ -1531,6 +1533,7 @@
 %% fleet() :: #{
 %%   <<"arn">> => string(),
 %%   <<"baseCapacity">> => integer(),
+%%   <<"computeConfiguration">> => compute_configuration(),
 %%   <<"computeType">> => list(any()),
 %%   <<"created">> => non_neg_integer(),
 %%   <<"environmentType">> => list(any()),
@@ -1572,6 +1575,7 @@
 %% Example:
 %% project_environment() :: #{
 %%   <<"certificate">> => string(),
+%%   <<"computeConfiguration">> => compute_configuration(),
 %%   <<"computeType">> => list(any()),
 %%   <<"environmentVariables">> => list(environment_variable()()),
 %%   <<"fleet">> => project_fleet(),
@@ -1595,6 +1599,15 @@
 %%   <<"reportGroupArns">> := list(string()())
 %% }
 -type batch_get_report_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% compute_configuration() :: #{
+%%   <<"disk">> => float(),
+%%   <<"machineType">> => list(any()),
+%%   <<"memory">> => float(),
+%%   <<"vCpu">> => float()
+%% }
+-type compute_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% report_group() :: #{

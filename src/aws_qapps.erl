@@ -34,6 +34,12 @@
          associate_library_item_review/3,
          associate_q_app_with_user/2,
          associate_q_app_with_user/3,
+         batch_create_category/2,
+         batch_create_category/3,
+         batch_delete_category/2,
+         batch_delete_category/3,
+         batch_update_category/2,
+         batch_update_category/3,
          create_library_item/2,
          create_library_item/3,
          create_q_app/2,
@@ -57,6 +63,9 @@
          get_q_app_session/6,
          import_document/2,
          import_document/3,
+         list_categories/2,
+         list_categories/4,
+         list_categories/5,
          list_library_items/2,
          list_library_items/4,
          list_library_items/5,
@@ -184,6 +193,30 @@
 %%   <<"instanceId">> := string()
 %% }
 -type disassociate_q_app_from_user_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_category_input() :: #{
+%%   <<"categories">> := list(batch_create_category_input_category()()),
+%%   <<"instanceId">> := string()
+%% }
+-type batch_create_category_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_categories_output() :: #{
+%%   <<"categories">> => list(category()())
+%% }
+-type list_categories_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% category_input() :: #{
+%%   <<"color">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"title">> => [string()]
+%% }
+-type category_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -439,6 +472,23 @@
 
 
 %% Example:
+%% batch_delete_category_input() :: #{
+%%   <<"categories">> := list(string()()),
+%%   <<"instanceId">> := string()
+%% }
+-type batch_delete_category_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_category_input_category() :: #{
+%%   <<"color">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"title">> => [string()]
+%% }
+-type batch_create_category_input_category() :: #{binary() => any()}.
+
+
+%% Example:
 %% q_plugin_card_input() :: #{
 %%   <<"id">> => string(),
 %%   <<"pluginId">> => string(),
@@ -538,6 +588,13 @@
 %%   <<"updatedBy">> => [string()]
 %% }
 -type create_q_app_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_categories_input() :: #{
+%%   <<"instanceId">> := string()
+%% }
+-type list_categories_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -668,6 +725,8 @@
 
 %% Example:
 %% category() :: #{
+%%   <<"appCount">> => [integer()],
+%%   <<"color">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"title">> => [string()]
 %% }
@@ -752,6 +811,14 @@
 
 
 %% Example:
+%% batch_update_category_input() :: #{
+%%   <<"categories">> := list(category_input()()),
+%%   <<"instanceId">> := string()
+%% }
+-type batch_update_category_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_q_app_session_output() :: #{
 %%   <<"sessionArn">> => [string()],
 %%   <<"sessionId">> => [string()]
@@ -783,6 +850,33 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type batch_create_category_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
+-type batch_delete_category_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
+-type batch_update_category_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     unauthorized_exception().
 
 -type create_library_item_errors() ::
@@ -871,6 +965,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type list_categories_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     unauthorized_exception().
 
@@ -1038,6 +1140,129 @@ associate_q_app_with_user(Client, Input) ->
 associate_q_app_with_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/apps.install"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"instance-id">>, <<"instanceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates Categories for the Amazon Q Business application environment
+%% instance.
+%%
+%% Web experience users use Categories to tag and filter library items. For
+%% more information, see Custom labels for Amazon Q Apps:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-custom-labels.html.
+-spec batch_create_category(aws_client:aws_client(), batch_create_category_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, batch_create_category_errors(), tuple()}.
+batch_create_category(Client, Input) ->
+    batch_create_category(Client, Input, []).
+
+-spec batch_create_category(aws_client:aws_client(), batch_create_category_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, batch_create_category_errors(), tuple()}.
+batch_create_category(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/catalog.createCategories"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"instance-id">>, <<"instanceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes Categories for the Amazon Q Business application environment
+%% instance.
+%%
+%% Web experience users use Categories to tag and filter library items. For
+%% more information, see Custom labels for Amazon Q Apps:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-custom-labels.html.
+-spec batch_delete_category(aws_client:aws_client(), batch_delete_category_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, batch_delete_category_errors(), tuple()}.
+batch_delete_category(Client, Input) ->
+    batch_delete_category(Client, Input, []).
+
+-spec batch_delete_category(aws_client:aws_client(), batch_delete_category_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, batch_delete_category_errors(), tuple()}.
+batch_delete_category(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/catalog.deleteCategories"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"instance-id">>, <<"instanceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates Categories for the Amazon Q Business application environment
+%% instance.
+%%
+%% Web experience users use Categories to tag and filter library items. For
+%% more information, see Custom labels for Amazon Q Apps:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-custom-labels.html.
+-spec batch_update_category(aws_client:aws_client(), batch_update_category_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, batch_update_category_errors(), tuple()}.
+batch_update_category(Client, Input) ->
+    batch_update_category(Client, Input, []).
+
+-spec batch_update_category(aws_client:aws_client(), batch_update_category_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, batch_update_category_errors(), tuple()}.
+batch_update_category(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/catalog.updateCategories"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1471,6 +1696,51 @@ import_document(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the categories of a Amazon Q Business application environment
+%% instance.
+%%
+%% For more information, see Custom labels for Amazon Q Apps:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-custom-labels.html.
+-spec list_categories(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_categories_output(), tuple()} |
+    {error, any()} |
+    {error, list_categories_errors(), tuple()}.
+list_categories(Client, InstanceId)
+  when is_map(Client) ->
+    list_categories(Client, InstanceId, #{}, #{}).
+
+-spec list_categories(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_categories_output(), tuple()} |
+    {error, any()} |
+    {error, list_categories_errors(), tuple()}.
+list_categories(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_categories(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_categories(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_categories_output(), tuple()} |
+    {error, any()} |
+    {error, list_categories_errors(), tuple()}.
+list_categories(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/catalog.listCategories"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"instance-id">>, InstanceId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the library items for Amazon Q Apps that are published and
 %% available for users in your Amazon Web Services account.

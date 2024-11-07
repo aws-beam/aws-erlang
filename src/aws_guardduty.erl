@@ -782,6 +782,19 @@
 
 
 %% Example:
+%% rds_limitless_db_details() :: #{
+%%   <<"DbClusterIdentifier">> => string(),
+%%   <<"DbShardGroupArn">> => string(),
+%%   <<"DbShardGroupIdentifier">> => string(),
+%%   <<"DbShardGroupResourceId">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type rds_limitless_db_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_publishing_destination_response() :: #{
 %%   <<"DestinationId">> => string(),
 %%   <<"DestinationProperties">> => destination_properties(),
@@ -3126,6 +3139,7 @@
 %%   <<"LambdaDetails">> => lambda_details(),
 %%   <<"RdsDbInstanceDetails">> => rds_db_instance_details(),
 %%   <<"RdsDbUserDetails">> => rds_db_user_details(),
+%%   <<"RdsLimitlessDbDetails">> => rds_limitless_db_details(),
 %%   <<"ResourceType">> => string(),
 %%   <<"S3BucketDetails">> => list(s3_bucket_detail()())
 %% }

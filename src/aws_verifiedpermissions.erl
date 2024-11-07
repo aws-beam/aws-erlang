@@ -84,7 +84,9 @@
 %% (create and update) operations.
 -module(aws_verifiedpermissions).
 
--export([batch_is_authorized/2,
+-export([batch_get_policy/2,
+         batch_get_policy/3,
+         batch_is_authorized/2,
          batch_is_authorized/3,
          batch_is_authorized_with_token/2,
          batch_is_authorized_with_token/3,
@@ -311,6 +313,12 @@
 -type update_policy_store_output() :: #{binary() => any()}.
 
 %% Example:
+%% batch_get_policy_input() :: #{
+%%   <<"requests">> := list(batch_get_policy_input_item()())
+%% }
+-type batch_get_policy_input() :: #{binary() => any()}.
+
+%% Example:
 %% batch_is_authorized_with_token_output_item() :: #{
 %%   <<"decision">> => list(any()),
 %%   <<"determiningPolicies">> => list(determining_policy_item()()),
@@ -363,6 +371,15 @@
 %%   <<"policyStoreId">> => string()
 %% }
 -type create_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_policy_error_item() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()],
+%%   <<"policyId">> => [string()],
+%%   <<"policyStoreId">> => [string()]
+%% }
+-type batch_get_policy_error_item() :: #{binary() => any()}.
 
 %% Example:
 %% batch_is_authorized_output() :: #{
@@ -840,6 +857,13 @@
 -type get_policy_template_output() :: #{binary() => any()}.
 
 %% Example:
+%% batch_get_policy_output() :: #{
+%%   <<"errors">> => list(batch_get_policy_error_item()()),
+%%   <<"results">> => list(batch_get_policy_output_item()())
+%% }
+-type batch_get_policy_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_policy_output() :: #{
 %%   <<"actions">> => list(action_identifier()()),
 %%   <<"createdDate">> => non_neg_integer(),
@@ -963,6 +987,13 @@
 -type update_policy_output() :: #{binary() => any()}.
 
 %% Example:
+%% batch_get_policy_input_item() :: #{
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type batch_get_policy_input_item() :: #{binary() => any()}.
+
+%% Example:
 %% static_policy_definition_detail() :: #{
 %%   <<"description">> => string(),
 %%   <<"statement">> => string()
@@ -982,6 +1013,17 @@
 %%   <<"parents">> => list(entity_identifier()())
 %% }
 -type entity_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_policy_output_item() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyType">> => list(any())
+%% }
+-type batch_get_policy_output_item() :: #{binary() => any()}.
 
 %% Example:
 %% list_policy_stores_output() :: #{
@@ -1123,6 +1165,26 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Retrieves information about a group (batch) of policies.
+%%
+%% The `BatchGetPolicy' operation doesn't have its own IAM
+%% permission. To authorize this operation for Amazon Web Services
+%% principals, include the permission
+%% `verifiedpermissions:GetPolicy' in their IAM policies.
+-spec batch_get_policy(aws_client:aws_client(), batch_get_policy_input()) ->
+    {ok, batch_get_policy_output(), tuple()} |
+    {error, any()}.
+batch_get_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_policy(Client, Input, []).
+
+-spec batch_get_policy(aws_client:aws_client(), batch_get_policy_input(), proplists:proplist()) ->
+    {ok, batch_get_policy_output(), tuple()} |
+    {error, any()}.
+batch_get_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetPolicy">>, Input, Options).
 
 %% @doc Makes a series of decisions about multiple authorization requests for
 %% one principal or

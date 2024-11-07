@@ -22,6 +22,8 @@
          create_data_cells_filter/3,
          create_l_f_tag/2,
          create_l_f_tag/3,
+         create_l_f_tag_expression/2,
+         create_l_f_tag_expression/3,
          create_lake_formation_identity_center_configuration/2,
          create_lake_formation_identity_center_configuration/3,
          create_lake_formation_opt_in/2,
@@ -30,6 +32,8 @@
          delete_data_cells_filter/3,
          delete_l_f_tag/2,
          delete_l_f_tag/3,
+         delete_l_f_tag_expression/2,
+         delete_l_f_tag_expression/3,
          delete_lake_formation_identity_center_configuration/2,
          delete_lake_formation_identity_center_configuration/3,
          delete_lake_formation_opt_in/2,
@@ -56,6 +60,8 @@
          get_effective_permissions_for_path/3,
          get_l_f_tag/2,
          get_l_f_tag/3,
+         get_l_f_tag_expression/2,
+         get_l_f_tag_expression/3,
          get_query_state/2,
          get_query_state/3,
          get_query_statistics/2,
@@ -76,6 +82,8 @@
          grant_permissions/3,
          list_data_cells_filter/2,
          list_data_cells_filter/3,
+         list_l_f_tag_expressions/2,
+         list_l_f_tag_expressions/3,
          list_l_f_tags/2,
          list_l_f_tags/3,
          list_lake_formation_opt_ins/2,
@@ -108,6 +116,8 @@
          update_data_cells_filter/3,
          update_l_f_tag/2,
          update_l_f_tag/3,
+         update_l_f_tag_expression/2,
+         update_l_f_tag_expression/3,
          update_lake_formation_identity_center_configuration/2,
          update_lake_formation_identity_center_configuration/3,
          update_resource/2,
@@ -207,6 +217,16 @@
 %%   <<"ResourceInfoList">> => list(resource_info()())
 %% }
 -type list_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag_expression() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> => list(l_f_tag()()),
+%%   <<"Name">> => string()
+%% }
+-type l_f_tag_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -323,6 +343,7 @@
 %% l_f_tag_policy_resource() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Expression">> => list(l_f_tag()()),
+%%   <<"ExpressionName">> => string(),
 %%   <<"ResourceType">> => list(any())
 %% }
 -type l_f_tag_policy_resource() :: #{binary() => any()}.
@@ -378,6 +399,15 @@
 
 
 %% Example:
+%% list_l_f_tag_expressions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_l_f_tag_expressions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_lake_formation_identity_center_configuration_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
@@ -426,6 +456,16 @@
 
 
 %% Example:
+%% create_l_f_tag_expression_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> := list(l_f_tag()()),
+%%   <<"Name">> := string()
+%% }
+-type create_l_f_tag_expression_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% tagged_table() :: #{
 %%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()()),
 %%   <<"LFTagsOnColumns">> => list(column_l_f_tag()()),
@@ -464,6 +504,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_tables_by_l_f_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_l_f_tag_expression_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> := list(l_f_tag()()),
+%%   <<"Name">> := string()
+%% }
+-type update_l_f_tag_expression_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -564,6 +614,14 @@
 
 
 %% Example:
+%% list_l_f_tag_expressions_response() :: #{
+%%   <<"LFTagExpressions">> => list(l_f_tag_expression()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_l_f_tag_expressions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_transactions_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -644,6 +702,14 @@
 %%   <<"VersionId">> => string()
 %% }
 -type data_cells_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_l_f_tag_expression_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type delete_l_f_tag_expression_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -851,6 +917,14 @@
 
 
 %% Example:
+%% l_f_tag_expression_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type l_f_tag_expression_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% transaction_description() :: #{
 %%   <<"TransactionEndTime">> => non_neg_integer(),
 %%   <<"TransactionId">> => string(),
@@ -867,6 +941,16 @@
 %%   <<"ShowAssignedLFTags">> => boolean()
 %% }
 -type get_resource_l_f_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_l_f_tag_expression_response() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> => list(l_f_tag()()),
+%%   <<"Name">> => string()
+%% }
+-type get_l_f_tag_expression_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1233,6 +1317,10 @@
 %% }
 -type put_data_lake_settings_request() :: #{binary() => any()}.
 
+%% Example:
+%% create_l_f_tag_expression_response() :: #{}
+-type create_l_f_tag_expression_response() :: #{}.
+
 
 %% Example:
 %% batch_revoke_permissions_request() :: #{
@@ -1398,6 +1486,14 @@
 
 
 %% Example:
+%% get_l_f_tag_expression_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type get_l_f_tag_expression_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_l_f_tags_from_resource_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"LFTags">> := list(l_f_tag_pair()()),
@@ -1462,6 +1558,10 @@
 %% }
 -type deregister_resource_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_l_f_tag_expression_response() :: #{}
+-type update_l_f_tag_expression_response() :: #{}.
+
 
 %% Example:
 %% list_table_storage_optimizers_request() :: #{
@@ -1488,6 +1588,10 @@
 %% Example:
 %% grant_permissions_response() :: #{}
 -type grant_permissions_response() :: #{}.
+
+%% Example:
+%% delete_l_f_tag_expression_response() :: #{}
+-type delete_l_f_tag_expression_response() :: #{}.
 
 
 %% Example:
@@ -1521,6 +1625,7 @@
 %%   <<"DataLocation">> => data_location_resource(),
 %%   <<"Database">> => database_resource(),
 %%   <<"LFTag">> => l_f_tag_key_resource(),
+%%   <<"LFTagExpression">> => l_f_tag_expression_resource(),
 %%   <<"LFTagPolicy">> => l_f_tag_policy_resource(),
 %%   <<"Table">> => table_resource(),
 %%   <<"TableWithColumns">> => table_with_columns_resource()
@@ -1584,6 +1689,14 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type create_l_f_tag_expression_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type create_lake_formation_identity_center_configuration_errors() ::
     concurrent_modification_exception() | 
     access_denied_exception() | 
@@ -1608,6 +1721,13 @@
     entity_not_found_exception().
 
 -type delete_l_f_tag_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_l_f_tag_expression_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -1704,6 +1824,13 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type get_l_f_tag_expression_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type get_query_state_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
@@ -1774,6 +1901,13 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception().
+
+-type list_l_f_tag_expressions_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
 
 -type list_l_f_tags_errors() ::
     access_denied_exception() | 
@@ -1874,6 +2008,14 @@
     concurrent_modification_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_l_f_tag_expression_errors() ::
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
@@ -2207,6 +2349,54 @@ create_l_f_tag(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new LF-Tag expression with the provided name, description,
+%% catalog ID, and
+%% expression body.
+%%
+%% This call fails if a LF-Tag expression with the same name already exists
+%% in
+%% the caller’s account or if the underlying LF-Tags don't exist. To call
+%% this API operation,
+%% caller needs the following Lake Formation permissions:
+%%
+%% `CREATE_LF_TAG_EXPRESSION' on the root catalog resource.
+%%
+%% `GRANT_WITH_LF_TAG_EXPRESSION' on all underlying LF-Tag key:value
+%% pairs
+%% included in the expression.
+-spec create_l_f_tag_expression(aws_client:aws_client(), create_l_f_tag_expression_request()) ->
+    {ok, create_l_f_tag_expression_response(), tuple()} |
+    {error, any()} |
+    {error, create_l_f_tag_expression_errors(), tuple()}.
+create_l_f_tag_expression(Client, Input) ->
+    create_l_f_tag_expression(Client, Input, []).
+
+-spec create_l_f_tag_expression(aws_client:aws_client(), create_l_f_tag_expression_request(), proplists:proplist()) ->
+    {ok, create_l_f_tag_expression_response(), tuple()} |
+    {error, any()} |
+    {error, create_l_f_tag_expression_errors(), tuple()}.
+create_l_f_tag_expression(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateLFTagExpression"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an IAM Identity Center connection with Lake Formation to
 %% allow IAM Identity Center users and groups to access Data Catalog
 %% resources.
@@ -2333,6 +2523,45 @@ delete_l_f_tag(Client, Input) ->
 delete_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLFTag"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the LF-Tag expression.
+%%
+%% The caller must be a data lake admin or have `DROP' permissions on the
+%% LF-Tag expression.
+%% Deleting a LF-Tag expression will also delete all `LFTagPolicy'
+%% permissions referencing the LF-Tag expression.
+-spec delete_l_f_tag_expression(aws_client:aws_client(), delete_l_f_tag_expression_request()) ->
+    {ok, delete_l_f_tag_expression_response(), tuple()} |
+    {error, any()} |
+    {error, delete_l_f_tag_expression_errors(), tuple()}.
+delete_l_f_tag_expression(Client, Input) ->
+    delete_l_f_tag_expression(Client, Input, []).
+
+-spec delete_l_f_tag_expression(aws_client:aws_client(), delete_l_f_tag_expression_request(), proplists:proplist()) ->
+    {ok, delete_l_f_tag_expression_response(), tuple()} |
+    {error, any()} |
+    {error, delete_l_f_tag_expression_errors(), tuple()}.
+delete_l_f_tag_expression(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteLFTagExpression"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2820,6 +3049,43 @@ get_l_f_tag(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the details about the LF-Tag expression.
+%%
+%% The caller must be a data lake admin or must have `DESCRIBE'
+%% permission on the LF-Tag expression resource.
+-spec get_l_f_tag_expression(aws_client:aws_client(), get_l_f_tag_expression_request()) ->
+    {ok, get_l_f_tag_expression_response(), tuple()} |
+    {error, any()} |
+    {error, get_l_f_tag_expression_errors(), tuple()}.
+get_l_f_tag_expression(Client, Input) ->
+    get_l_f_tag_expression(Client, Input, []).
+
+-spec get_l_f_tag_expression(aws_client:aws_client(), get_l_f_tag_expression_request(), proplists:proplist()) ->
+    {ok, get_l_f_tag_expression_response(), tuple()} |
+    {error, any()} |
+    {error, get_l_f_tag_expression_errors(), tuple()}.
+get_l_f_tag_expression(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetLFTagExpression"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the state of a query previously submitted.
 %%
 %% Clients are expected to poll `GetQueryState' to monitor the current
@@ -3010,6 +3276,9 @@ get_temporary_glue_partition_credentials(Client, Input0, Options0) ->
 %% In order to vend such credentials, Lake Formation assumes the role
 %% associated with a registered location, for example an Amazon S3 bucket,
 %% with a scope down policy which restricts the access to a single prefix.
+%%
+%% To call this API, the role that the service assumes must have
+%% `lakeformation:GetDataAccess' permission on the resource.
 -spec get_temporary_glue_table_credentials(aws_client:aws_client(), get_temporary_glue_table_credentials_request()) ->
     {ok, get_temporary_glue_table_credentials_response(), tuple()} |
     {error, any()} |
@@ -3168,6 +3437,44 @@ list_data_cells_filter(Client, Input) ->
 list_data_cells_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListDataCellsFilter"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the LF-Tag expressions in caller’s account filtered based on
+%% caller's permissions.
+%%
+%% Data Lake and read only admins implicitly can see all tag expressions in
+%% their account, else caller needs DESCRIBE permissions on tag expression.
+-spec list_l_f_tag_expressions(aws_client:aws_client(), list_l_f_tag_expressions_request()) ->
+    {ok, list_l_f_tag_expressions_response(), tuple()} |
+    {error, any()} |
+    {error, list_l_f_tag_expressions_errors(), tuple()}.
+list_l_f_tag_expressions(Client, Input) ->
+    list_l_f_tag_expressions(Client, Input, []).
+
+-spec list_l_f_tag_expressions(aws_client:aws_client(), list_l_f_tag_expressions_request(), proplists:proplist()) ->
+    {ok, list_l_f_tag_expressions_response(), tuple()} |
+    {error, any()} |
+    {error, list_l_f_tag_expressions_errors(), tuple()}.
+list_l_f_tag_expressions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListLFTagExpressions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3468,7 +3775,7 @@ put_data_lake_settings(Client, Input0, Options0) ->
 %% permission to use the service-linked role to access that location.
 %%
 %% ```
-%% ResourceArn = arn:aws:s3:::my-bucketUseServiceLinkedRole =
+%% ResourceArn = arn:aws:s3:::my-bucket/UseServiceLinkedRole =
 %% true'''
 %%
 %% If `UseServiceLinkedRole' is not set to true, you must provide or set
@@ -3794,6 +4101,45 @@ update_l_f_tag(Client, Input) ->
 update_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLFTag"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the name of the LF-Tag expression to the new description and
+%% expression body provided.
+%%
+%% Updating a LF-Tag expression immediately changes the permission boundaries
+%% of all existing `LFTagPolicy' permission grants that reference the
+%% given LF-Tag expression.
+-spec update_l_f_tag_expression(aws_client:aws_client(), update_l_f_tag_expression_request()) ->
+    {ok, update_l_f_tag_expression_response(), tuple()} |
+    {error, any()} |
+    {error, update_l_f_tag_expression_errors(), tuple()}.
+update_l_f_tag_expression(Client, Input) ->
+    update_l_f_tag_expression(Client, Input, []).
+
+-spec update_l_f_tag_expression(aws_client:aws_client(), update_l_f_tag_expression_request(), proplists:proplist()) ->
+    {ok, update_l_f_tag_expression_response(), tuple()} |
+    {error, any()} |
+    {error, update_l_f_tag_expression_errors(), tuple()}.
+update_l_f_tag_expression(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateLFTagExpression"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
