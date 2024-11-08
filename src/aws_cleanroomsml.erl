@@ -22,10 +22,22 @@
 %% https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html.
 -module(aws_cleanroomsml).
 
--export([create_audience_model/2,
+-export([cancel_trained_model/4,
+         cancel_trained_model/5,
+         cancel_trained_model_inference_job/4,
+         cancel_trained_model_inference_job/5,
+         create_audience_model/2,
          create_audience_model/3,
          create_configured_audience_model/2,
          create_configured_audience_model/3,
+         create_configured_model_algorithm/2,
+         create_configured_model_algorithm/3,
+         create_configured_model_algorithm_association/3,
+         create_configured_model_algorithm_association/4,
+         create_ml_input_channel/3,
+         create_ml_input_channel/4,
+         create_trained_model/3,
+         create_trained_model/4,
          create_training_dataset/2,
          create_training_dataset/3,
          delete_audience_generation_job/3,
@@ -36,6 +48,16 @@
          delete_configured_audience_model/4,
          delete_configured_audience_model_policy/3,
          delete_configured_audience_model_policy/4,
+         delete_configured_model_algorithm/3,
+         delete_configured_model_algorithm/4,
+         delete_configured_model_algorithm_association/4,
+         delete_configured_model_algorithm_association/5,
+         delete_ml_configuration/3,
+         delete_ml_configuration/4,
+         delete_ml_input_channel_data/4,
+         delete_ml_input_channel_data/5,
+         delete_trained_model_output/4,
+         delete_trained_model_output/5,
          delete_training_dataset/3,
          delete_training_dataset/4,
          get_audience_generation_job/2,
@@ -44,12 +66,39 @@
          get_audience_model/2,
          get_audience_model/4,
          get_audience_model/5,
+         get_collaboration_configured_model_algorithm_association/3,
+         get_collaboration_configured_model_algorithm_association/5,
+         get_collaboration_configured_model_algorithm_association/6,
+         get_collaboration_ml_input_channel/3,
+         get_collaboration_ml_input_channel/5,
+         get_collaboration_ml_input_channel/6,
+         get_collaboration_trained_model/3,
+         get_collaboration_trained_model/5,
+         get_collaboration_trained_model/6,
          get_configured_audience_model/2,
          get_configured_audience_model/4,
          get_configured_audience_model/5,
          get_configured_audience_model_policy/2,
          get_configured_audience_model_policy/4,
          get_configured_audience_model_policy/5,
+         get_configured_model_algorithm/2,
+         get_configured_model_algorithm/4,
+         get_configured_model_algorithm/5,
+         get_configured_model_algorithm_association/3,
+         get_configured_model_algorithm_association/5,
+         get_configured_model_algorithm_association/6,
+         get_ml_configuration/2,
+         get_ml_configuration/4,
+         get_ml_configuration/5,
+         get_ml_input_channel/3,
+         get_ml_input_channel/5,
+         get_ml_input_channel/6,
+         get_trained_model/3,
+         get_trained_model/5,
+         get_trained_model/6,
+         get_trained_model_inference_job/3,
+         get_trained_model_inference_job/5,
+         get_trained_model_inference_job/6,
          get_training_dataset/2,
          get_training_dataset/4,
          get_training_dataset/5,
@@ -62,21 +111,57 @@
          list_audience_models/1,
          list_audience_models/3,
          list_audience_models/4,
+         list_collaboration_configured_model_algorithm_associations/2,
+         list_collaboration_configured_model_algorithm_associations/4,
+         list_collaboration_configured_model_algorithm_associations/5,
+         list_collaboration_ml_input_channels/2,
+         list_collaboration_ml_input_channels/4,
+         list_collaboration_ml_input_channels/5,
+         list_collaboration_trained_model_export_jobs/3,
+         list_collaboration_trained_model_export_jobs/5,
+         list_collaboration_trained_model_export_jobs/6,
+         list_collaboration_trained_model_inference_jobs/2,
+         list_collaboration_trained_model_inference_jobs/4,
+         list_collaboration_trained_model_inference_jobs/5,
+         list_collaboration_trained_models/2,
+         list_collaboration_trained_models/4,
+         list_collaboration_trained_models/5,
          list_configured_audience_models/1,
          list_configured_audience_models/3,
          list_configured_audience_models/4,
+         list_configured_model_algorithm_associations/2,
+         list_configured_model_algorithm_associations/4,
+         list_configured_model_algorithm_associations/5,
+         list_configured_model_algorithms/1,
+         list_configured_model_algorithms/3,
+         list_configured_model_algorithms/4,
+         list_ml_input_channels/2,
+         list_ml_input_channels/4,
+         list_ml_input_channels/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_trained_model_inference_jobs/2,
+         list_trained_model_inference_jobs/4,
+         list_trained_model_inference_jobs/5,
+         list_trained_models/2,
+         list_trained_models/4,
+         list_trained_models/5,
          list_training_datasets/1,
          list_training_datasets/3,
          list_training_datasets/4,
          put_configured_audience_model_policy/3,
          put_configured_audience_model_policy/4,
+         put_ml_configuration/3,
+         put_ml_configuration/4,
          start_audience_export_job/2,
          start_audience_export_job/3,
          start_audience_generation_job/2,
          start_audience_generation_job/3,
+         start_trained_model_export_job/4,
+         start_trained_model_export_job/5,
+         start_trained_model_inference_job/3,
+         start_trained_model_inference_job/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -93,6 +178,45 @@
 %%   <<"configuredAudienceModelArn">> => string()
 %% }
 -type update_configured_audience_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trained_model_inference_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModelArn">> => string()
+%% }
+-type list_trained_model_inference_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type trained_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_trained_model_inference_job_response() :: #{
+%%   <<"trainedModelInferenceJobArn">> => string()
+%% }
+-type start_trained_model_inference_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_model_algorithm_associations_response() :: #{
+%%   <<"configuredModelAlgorithmAssociations">> => list(configured_model_algorithm_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_model_algorithm_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -125,6 +249,30 @@
 
 
 %% Example:
+%% trained_model_exports_max_size() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type trained_model_exports_max_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configured_model_algorithm_association_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"privacyConfiguration">> => privacy_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_configured_model_algorithm_association_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_audience_generation_job_response() :: #{
 %%   <<"audienceGenerationJobArn">> => string(),
 %%   <<"collaborationId">> => string(),
@@ -146,6 +294,31 @@
 
 
 %% Example:
+%% list_configured_model_algorithms_response() :: #{
+%%   <<"configuredModelAlgorithms">> => list(configured_model_algorithm_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_model_algorithms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ml_input_channel_request() :: #{
+%%   <<"configuredModelAlgorithmAssociations">> := list(string()()),
+%%   <<"description">> => string(),
+%%   <<"inputChannel">> := input_channel(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"retentionInDays">> := [integer()],
+%%   <<"tags">> => map()
+%% }
+-type create_ml_input_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_trained_model_request() :: #{}
+-type get_trained_model_request() :: #{}.
+
+
+%% Example:
 %% get_training_dataset_response() :: #{
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -161,6 +334,35 @@
 
 
 %% Example:
+%% trained_models_configuration_policy() :: #{
+%%   <<"containerLogs">> => list(logs_configuration_policy()()),
+%%   <<"containerMetrics">> => metrics_configuration_policy()
+%% }
+-type trained_models_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_inference_job_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"logsStatus">> => list(any()),
+%%   <<"logsStatusDetails">> => [string()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"metricsStatus">> => list(any()),
+%%   <<"metricsStatusDetails">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"outputConfiguration">> => inference_output_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelInferenceJobArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type trained_model_inference_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_configured_audience_model_response() :: #{
 %%   <<"configuredAudienceModelArn">> => string()
 %% }
@@ -169,6 +371,29 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% trained_model_export_receiver_member() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type trained_model_export_receiver_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_output_configuration() :: #{
+%%   <<"accept">> => [string()],
+%%   <<"members">> => list(inference_receiver_member()())
+%% }
+-type inference_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_input_parameters() :: #{
+%%   <<"computeConfiguration">> => list(),
+%%   <<"sqlParameters">> => protected_query_s_q_l_parameters()
+%% }
+-type protected_query_input_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -187,8 +412,66 @@
 -type list_training_datasets_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_configured_model_algorithm_association_request() :: #{}
+-type get_configured_model_algorithm_association_request() :: #{}.
+
+
+%% Example:
+%% create_configured_model_algorithm_association_request() :: #{
+%%   <<"configuredModelAlgorithmArn">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"privacyConfiguration">> => privacy_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_configured_model_algorithm_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_ml_configuration_request() :: #{
+%%   <<"defaultOutputLocation">> := ml_output_configuration()
+%% }
+-type put_ml_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_training_dataset_request() :: #{}
 -type get_training_dataset_request() :: #{}.
+
+
+%% Example:
+%% get_ml_input_channel_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"inputChannel">> => input_channel(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"mlInputChannelArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"numberOfFiles">> => [float()],
+%%   <<"numberOfRecords">> => [float()],
+%%   <<"protectedQueryIdentifier">> => string(),
+%%   <<"retentionInDays">> => [integer()],
+%%   <<"sizeInGb">> => [float()],
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_ml_input_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_configuration_request() :: #{}
+-type get_ml_configuration_request() :: #{}.
+
+
+%% Example:
+%% list_ml_input_channels_response() :: #{
+%%   <<"mlInputChannelsList">> => list(ml_input_channel_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ml_input_channels_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -197,6 +480,30 @@
 %%   <<"score">> => [float()]
 %% }
 -type relevance_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_collaboration_trained_model_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"logsStatus">> => list(any()),
+%%   <<"logsStatusDetails">> => [string()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"metricsStatus">> => list(any()),
+%%   <<"metricsStatusDetails">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"resourceConfig">> => resource_config(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"stoppingCondition">> => stopping_condition(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainingContainerImageDigest">> => [string()],
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_collaboration_trained_model_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -213,9 +520,104 @@
 %% }
 -type create_configured_audience_model_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% collaboration_ml_input_channel_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"mlInputChannelArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_ml_input_channel_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ml_input_channel_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"mlInputChannelArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"protectedQueryIdentifier">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type ml_input_channel_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_model_algorithm_association_response() :: #{
+%%   <<"configuredModelAlgorithmAssociationArn">> => string()
+%% }
+-type create_configured_model_algorithm_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_definition() :: #{
+%%   <<"name">> => string(),
+%%   <<"regex">> => string()
+%% }
+-type metric_definition() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_audience_model_request() :: #{}
 -type delete_configured_audience_model_request() :: #{}.
+
+%% Example:
+%% get_ml_input_channel_request() :: #{}
+-type get_ml_input_channel_request() :: #{}.
+
+
+%% Example:
+%% list_collaboration_trained_model_export_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_model_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_configured_model_algorithm_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_configured_model_algorithm_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trained_model_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"dataChannels">> => list(model_training_data_channel()()),
+%%   <<"description">> => string(),
+%%   <<"environment">> => map(),
+%%   <<"hyperparameters">> => map(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"logsStatus">> => list(any()),
+%%   <<"logsStatusDetails">> => [string()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"metricsStatus">> => list(any()),
+%%   <<"metricsStatusDetails">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"resourceConfig">> => resource_config(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"stoppingCondition">> => stopping_condition(),
+%%   <<"tags">> => map(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainingContainerImageDigest">> => [string()],
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_trained_model_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -223,6 +625,23 @@
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_trained_model_export_job_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputConfiguration">> => trained_model_export_output_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_trained_model_export_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -248,6 +667,27 @@
 
 
 %% Example:
+%% list_ml_input_channels_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ml_input_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_model_algorithm_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"inferenceContainerConfig">> => inference_container_config(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"trainingContainerConfig">> => container_config()
+%% }
+-type create_configured_model_algorithm_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_audience_models_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -256,11 +696,26 @@
 
 
 %% Example:
+%% list_collaboration_ml_input_channels_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_ml_input_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% dataset() :: #{
 %%   <<"inputConfig">> => dataset_input_config(),
 %%   <<"type">> => list(any())
 %% }
 -type dataset() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics_configuration_policy() :: #{
+%%   <<"noiseLevel">> => list(any())
+%% }
+-type metrics_configuration_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -285,6 +740,14 @@
 
 
 %% Example:
+%% model_training_data_channel() :: #{
+%%   <<"channelName">> => string(),
+%%   <<"mlInputChannelArn">> => string()
+%% }
+-type model_training_data_channel() :: #{binary() => any()}.
+
+
+%% Example:
 %% audience_generation_job_summary() :: #{
 %%   <<"audienceGenerationJobArn">> => string(),
 %%   <<"collaborationId">> => string(),
@@ -300,6 +763,14 @@
 
 
 %% Example:
+%% trained_model_inference_jobs_configuration_policy() :: #{
+%%   <<"containerLogs">> => list(logs_configuration_policy()()),
+%%   <<"maxOutputSize">> => trained_model_inference_max_output_size()
+%% }
+-type trained_model_inference_jobs_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -312,9 +783,27 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% container_config() :: #{
+%%   <<"arguments">> => list(string()()),
+%%   <<"entrypoint">> => list(string()()),
+%%   <<"imageUri">> => string(),
+%%   <<"metricDefinitions">> => list(metric_definition()())
+%% }
+-type container_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_audience_model_request() :: #{}
 -type get_audience_model_request() :: #{}.
+
+
+%% Example:
+%% list_trained_model_inference_jobs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModelInferenceJobs">> => list(trained_model_inference_job_summary()())
+%% }
+-type list_trained_model_inference_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -323,6 +812,41 @@
 %%   <<"roleArn">> => string()
 %% }
 -type configured_audience_model_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_configured_model_algorithm_association_request() :: #{}
+-type get_collaboration_configured_model_algorithm_association_request() :: #{}.
+
+
+%% Example:
+%% configured_model_algorithm_summary() :: #{
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_model_algorithm_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_inference_max_output_size() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type trained_model_inference_max_output_size() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_trained_model_request() :: #{}
+-type get_collaboration_trained_model_request() :: #{}.
+
+
+%% Example:
+%% inference_resource_config() :: #{
+%%   <<"instanceCount">> => [integer()],
+%%   <<"instanceType">> => list(any())
+%% }
+-type inference_resource_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -363,9 +887,58 @@
 %% }
 -type audience_model_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% ml_output_configuration() :: #{
+%%   <<"destination">> => destination(),
+%%   <<"roleArn">> => string()
+%% }
+-type ml_output_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_audience_generation_job_request() :: #{}
 -type delete_audience_generation_job_request() :: #{}.
+
+
+%% Example:
+%% get_ml_configuration_response() :: #{
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"defaultOutputLocation">> => ml_output_configuration(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_ml_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stopping_condition() :: #{
+%%   <<"maxRuntimeInSeconds">> => [integer()]
+%% }
+-type stopping_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_trained_model_export_jobs_response() :: #{
+%%   <<"collaborationTrainedModelExportJobs">> => list(collaboration_trained_model_export_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_model_export_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trained_model_request() :: #{
+%%   <<"configuredModelAlgorithmAssociationArn">> := string(),
+%%   <<"dataChannels">> := list(model_training_data_channel()()),
+%%   <<"description">> => string(),
+%%   <<"environment">> => map(),
+%%   <<"hyperparameters">> => map(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"resourceConfig">> := resource_config(),
+%%   <<"stoppingCondition">> => stopping_condition(),
+%%   <<"tags">> => map()
+%% }
+-type create_trained_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -377,10 +950,55 @@
 
 
 %% Example:
+%% collaboration_trained_model_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_trained_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_container_config() :: #{
+%%   <<"imageUri">> => string()
+%% }
+-type inference_container_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_model_algorithms_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_model_algorithms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_model_algorithm_association_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_model_algorithm_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -400,6 +1018,22 @@
 %% Example:
 %% delete_audience_model_request() :: #{}
 -type delete_audience_model_request() :: #{}.
+
+
+%% Example:
+%% trained_model_exports_configuration_policy() :: #{
+%%   <<"filesToExport">> => list(list(any())()),
+%%   <<"maxSize">> => trained_model_exports_max_size()
+%% }
+-type trained_model_exports_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_model_algorithm_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_model_algorithm_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -423,11 +1057,93 @@
 
 
 %% Example:
+%% privacy_configuration() :: #{
+%%   <<"policies">> => privacy_configuration_policies()
+%% }
+-type privacy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_trained_model_inference_job_request() :: #{
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"containerExecutionParameters">> => inference_container_execution_parameters(),
+%%   <<"dataSource">> := model_inference_data_source(),
+%%   <<"description">> => string(),
+%%   <<"environment">> => map(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"outputConfiguration">> := inference_output_configuration(),
+%%   <<"resourceConfig">> := inference_resource_config(),
+%%   <<"tags">> => map(),
+%%   <<"trainedModelArn">> := string()
+%% }
+-type start_trained_model_inference_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_receiver_member() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type inference_receiver_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_configured_model_algorithm_association_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_configured_model_algorithm_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ml_input_channel_response() :: #{
+%%   <<"mlInputChannelArn">> => string()
+%% }
+-type create_ml_input_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_trained_model_inference_job_request() :: #{}
+-type get_trained_model_inference_job_request() :: #{}.
+
+
+%% Example:
 %% list_configured_audience_models_response() :: #{
 %%   <<"configuredAudienceModels">> => list(configured_audience_model_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_audience_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_config() :: #{
+%%   <<"instanceCount">> => [integer()],
+%%   <<"instanceType">> => list(any()),
+%%   <<"volumeSizeInGB">> => [integer()]
+%% }
+-type resource_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_collaboration_configured_model_algorithm_association_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"privacyConfiguration">> => privacy_configuration(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_collaboration_configured_model_algorithm_association_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -452,12 +1168,80 @@
 -type list_audience_export_jobs_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ml_input_channel_data_request() :: #{}
+-type delete_ml_input_channel_data_request() :: #{}.
+
+
+%% Example:
+%% list_trained_models_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModels">> => list(trained_model_summary()())
+%% }
+-type list_trained_models_response() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% logs_configuration_policy() :: #{
+%%   <<"allowedAccountIds">> => list([string()]()),
+%%   <<"filterPattern">> => [string()]
+%% }
+-type logs_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trained_model_response() :: #{
+%%   <<"trainedModelArn">> => string()
+%% }
+-type create_trained_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_trained_model_export_job_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"outputConfiguration">> := trained_model_export_output_configuration()
+%% }
+-type start_trained_model_export_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_compute_configuration() :: #{
+%%   <<"number">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type worker_compute_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_configured_audience_model_request() :: #{}
 -type get_configured_audience_model_request() :: #{}.
+
+
+%% Example:
+%% input_channel() :: #{
+%%   <<"dataSource">> => list(),
+%%   <<"roleArn">> => string()
+%% }
+-type input_channel() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_trained_model_inference_job_request() :: #{}
+-type cancel_trained_model_inference_job_request() :: #{}.
+
+%% Example:
+%% cancel_trained_model_request() :: #{}
+-type cancel_trained_model_request() :: #{}.
+
+
+%% Example:
+%% list_collaboration_trained_models_response() :: #{
+%%   <<"collaborationTrainedModels">> => list(collaboration_trained_model_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_models_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -486,12 +1270,44 @@
 
 
 %% Example:
+%% list_collaboration_trained_models_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"s3Destination">> => s3_config_map()
+%% }
+-type destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_configured_audience_model_policy_response() :: #{
 %%   <<"configuredAudienceModelArn">> => string(),
 %%   <<"configuredAudienceModelPolicy">> => string(),
 %%   <<"policyHash">> => string()
 %% }
 -type get_configured_audience_model_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_ml_input_channels_response() :: #{
+%%   <<"collaborationMLInputChannelsList">> => list(collaboration_ml_input_channel_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_ml_input_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% privacy_configuration_policies() :: #{
+%%   <<"trainedModelExports">> => trained_model_exports_configuration_policy(),
+%%   <<"trainedModelInferenceJobs">> => trained_model_inference_jobs_configuration_policy(),
+%%   <<"trainedModels">> => trained_models_configuration_policy()
+%% }
+-type privacy_configuration_policies() :: #{binary() => any()}.
 
 
 %% Example:
@@ -513,11 +1329,67 @@
 
 
 %% Example:
+%% collaboration_trained_model_inference_job_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"logsStatus">> => list(any()),
+%%   <<"logsStatusDetails">> => [string()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"metricsStatus">> => list(any()),
+%%   <<"metricsStatusDetails">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"outputConfiguration">> => inference_output_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelInferenceJobArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_trained_model_inference_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ml_configuration_request() :: #{}
+-type delete_ml_configuration_request() :: #{}.
+
+
+%% Example:
 %% put_configured_audience_model_policy_response() :: #{
 %%   <<"configuredAudienceModelPolicy">> => string(),
 %%   <<"policyHash">> => string()
 %% }
 -type put_configured_audience_model_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_collaboration_ml_input_channel_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"mlInputChannelArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"numberOfRecords">> => [float()],
+%%   <<"retentionInDays">> => [integer()],
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_collaboration_ml_input_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_configured_model_algorithm_request() :: #{}
+-type get_configured_model_algorithm_request() :: #{}.
+
+
+%% Example:
+%% model_inference_data_source() :: #{
+%%   <<"mlInputChannelArn">> => string()
+%% }
+-type model_inference_data_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -529,6 +1401,10 @@
 %%   <<"trainingData">> := list(dataset()())
 %% }
 -type create_training_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configured_model_algorithm_association_request() :: #{}
+-type delete_configured_model_algorithm_association_request() :: #{}.
 
 
 %% Example:
@@ -552,6 +1428,14 @@
 
 
 %% Example:
+%% list_collaboration_trained_model_inference_jobs_response() :: #{
+%%   <<"collaborationTrainedModelInferenceJobs">> => list(collaboration_trained_model_inference_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_model_inference_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_audience_model_response() :: #{
 %%   <<"audienceModelArn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -568,6 +1452,10 @@
 %% }
 -type get_audience_model_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_configured_model_algorithm_request() :: #{}
+-type delete_configured_model_algorithm_request() :: #{}.
+
 
 %% Example:
 %% dataset_input_config() :: #{
@@ -575,6 +1463,13 @@
 %%   <<"schema">> => list(column_schema()())
 %% }
 -type dataset_input_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_model_algorithm_response() :: #{
+%%   <<"configuredModelAlgorithmArn">> => string()
+%% }
+-type create_configured_model_algorithm_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -609,6 +1504,41 @@
 
 
 %% Example:
+%% get_trained_model_inference_job_response() :: #{
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"containerExecutionParameters">> => inference_container_execution_parameters(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"dataSource">> => model_inference_data_source(),
+%%   <<"description">> => string(),
+%%   <<"environment">> => map(),
+%%   <<"inferenceContainerImageDigest">> => [string()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"logsStatus">> => list(any()),
+%%   <<"logsStatusDetails">> => [string()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"metricsStatus">> => list(any()),
+%%   <<"metricsStatusDetails">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"outputConfiguration">> => inference_output_configuration(),
+%%   <<"resourceConfig">> => inference_resource_config(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"tags">> => map(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelInferenceJobArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_trained_model_inference_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_container_execution_parameters() :: #{
+%%   <<"maxPayloadInMB">> => [integer()]
+%% }
+-type inference_container_execution_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% audience_generation_job_data_source() :: #{
 %%   <<"dataSource">> => s3_config_map(),
 %%   <<"roleArn">> => string(),
@@ -625,6 +1555,37 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_audience_generation_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_configured_model_algorithm_associations_response() :: #{
+%%   <<"collaborationConfiguredModelAlgorithmAssociations">> => list(collaboration_configured_model_algorithm_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_configured_model_algorithm_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configured_model_algorithm_response() :: #{
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"inferenceContainerConfig">> => inference_container_config(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"trainingContainerConfig">> => container_config(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_configured_model_algorithm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_export_output_configuration() :: #{
+%%   <<"members">> => list(trained_model_export_receiver_member()())
+%% }
+-type trained_model_export_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -656,6 +1617,18 @@
 -type delete_configured_audience_model_policy_request() :: #{}.
 
 %% Example:
+%% get_collaboration_ml_input_channel_request() :: #{}
+-type get_collaboration_ml_input_channel_request() :: #{}.
+
+
+%% Example:
+%% list_trained_models_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_trained_models_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_configured_audience_model_policy_request() :: #{}
 -type get_configured_audience_model_policy_request() :: #{}.
 
@@ -672,8 +1645,33 @@
 -type update_configured_audience_model_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_trained_model_output_request() :: #{}
+-type delete_trained_model_output_request() :: #{}.
+
+%% Example:
 %% get_audience_generation_job_request() :: #{}
 -type get_audience_generation_job_request() :: #{}.
+
+
+%% Example:
+%% list_collaboration_trained_model_inference_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModelArn">> => string()
+%% }
+-type list_collaboration_trained_model_inference_jobs_request() :: #{binary() => any()}.
+
+-type cancel_trained_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_trained_model_inference_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type create_audience_model_errors() ::
     validation_exception() | 
@@ -683,6 +1681,33 @@
     conflict_exception().
 
 -type create_configured_audience_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_configured_model_algorithm_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_configured_model_algorithm_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_ml_input_channel_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_trained_model_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
@@ -717,6 +1742,35 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type delete_configured_model_algorithm_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_configured_model_algorithm_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_ml_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_ml_input_channel_data_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_trained_model_output_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_training_dataset_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -733,12 +1787,57 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type get_collaboration_configured_model_algorithm_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_collaboration_ml_input_channel_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_collaboration_trained_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_configured_audience_model_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
 
 -type get_configured_audience_model_policy_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_model_algorithm_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_configured_model_algorithm_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_ml_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_ml_input_channel_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_trained_model_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_trained_model_inference_job_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -760,7 +1859,39 @@
     validation_exception() | 
     access_denied_exception().
 
+-type list_collaboration_configured_model_algorithm_associations_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_collaboration_ml_input_channels_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_collaboration_trained_model_export_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_collaboration_trained_model_inference_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_collaboration_trained_models_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
 -type list_configured_audience_models_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_configured_model_algorithm_associations_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_configured_model_algorithms_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_ml_input_channels_errors() ::
     validation_exception() | 
     access_denied_exception().
 
@@ -768,6 +1899,14 @@
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
+
+-type list_trained_model_inference_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_trained_models_errors() ::
+    validation_exception() | 
+    access_denied_exception().
 
 -type list_training_datasets_errors() ::
     validation_exception() | 
@@ -778,6 +1917,10 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type put_ml_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
 -type start_audience_export_job_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -786,6 +1929,19 @@
     conflict_exception().
 
 -type start_audience_generation_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_trained_model_export_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_trained_model_inference_job_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
@@ -811,6 +1967,74 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Submits a request to cancel the trained model job.
+-spec cancel_trained_model(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_trained_model_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_trained_model_errors(), tuple()}.
+cancel_trained_model(Client, MembershipIdentifier, TrainedModelArn, Input) ->
+    cancel_trained_model(Client, MembershipIdentifier, TrainedModelArn, Input, []).
+
+-spec cancel_trained_model(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_trained_model_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_trained_model_errors(), tuple()}.
+cancel_trained_model(Client, MembershipIdentifier, TrainedModelArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-models/", aws_util:encode_uri(TrainedModelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Submits a request to cancel a trained model inference job.
+-spec cancel_trained_model_inference_job(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_trained_model_inference_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_trained_model_inference_job_errors(), tuple()}.
+cancel_trained_model_inference_job(Client, MembershipIdentifier, TrainedModelInferenceJobArn, Input) ->
+    cancel_trained_model_inference_job(Client, MembershipIdentifier, TrainedModelInferenceJobArn, Input, []).
+
+-spec cancel_trained_model_inference_job(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_trained_model_inference_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_trained_model_inference_job_errors(), tuple()}.
+cancel_trained_model_inference_job(Client, MembershipIdentifier, TrainedModelInferenceJobArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-model-inference-jobs/", aws_util:encode_uri(TrainedModelInferenceJobArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Defines the information necessary to create an audience model.
 %%
@@ -867,6 +2091,148 @@ create_configured_audience_model(Client, Input) ->
 create_configured_audience_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configured-audience-model"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a configured model algorithm using a container image stored
+%% in an ECR repository.
+-spec create_configured_model_algorithm(aws_client:aws_client(), create_configured_model_algorithm_request()) ->
+    {ok, create_configured_model_algorithm_response(), tuple()} |
+    {error, any()} |
+    {error, create_configured_model_algorithm_errors(), tuple()}.
+create_configured_model_algorithm(Client, Input) ->
+    create_configured_model_algorithm(Client, Input, []).
+
+-spec create_configured_model_algorithm(aws_client:aws_client(), create_configured_model_algorithm_request(), proplists:proplist()) ->
+    {ok, create_configured_model_algorithm_response(), tuple()} |
+    {error, any()} |
+    {error, create_configured_model_algorithm_errors(), tuple()}.
+create_configured_model_algorithm(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configured-model-algorithms"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a configured model algorithm to a collaboration for use by
+%% any member of the collaboration.
+-spec create_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), create_configured_model_algorithm_association_request()) ->
+    {ok, create_configured_model_algorithm_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_configured_model_algorithm_association_errors(), tuple()}.
+create_configured_model_algorithm_association(Client, MembershipIdentifier, Input) ->
+    create_configured_model_algorithm_association(Client, MembershipIdentifier, Input, []).
+
+-spec create_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), create_configured_model_algorithm_association_request(), proplists:proplist()) ->
+    {ok, create_configured_model_algorithm_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_configured_model_algorithm_association_errors(), tuple()}.
+create_configured_model_algorithm_association(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configured-model-algorithm-associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the information to create an ML input channel.
+%%
+%% An ML input channel is the result of a query that can be used for ML
+%% modeling.
+-spec create_ml_input_channel(aws_client:aws_client(), binary() | list(), create_ml_input_channel_request()) ->
+    {ok, create_ml_input_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_ml_input_channel_errors(), tuple()}.
+create_ml_input_channel(Client, MembershipIdentifier, Input) ->
+    create_ml_input_channel(Client, MembershipIdentifier, Input, []).
+
+-spec create_ml_input_channel(aws_client:aws_client(), binary() | list(), create_ml_input_channel_request(), proplists:proplist()) ->
+    {ok, create_ml_input_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_ml_input_channel_errors(), tuple()}.
+create_ml_input_channel(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/ml-input-channels"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a trained model from an associated configured model algorithm
+%% using data from any member of the collaboration.
+-spec create_trained_model(aws_client:aws_client(), binary() | list(), create_trained_model_request()) ->
+    {ok, create_trained_model_response(), tuple()} |
+    {error, any()} |
+    {error, create_trained_model_errors(), tuple()}.
+create_trained_model(Client, MembershipIdentifier, Input) ->
+    create_trained_model(Client, MembershipIdentifier, Input, []).
+
+-spec create_trained_model(aws_client:aws_client(), binary() | list(), create_trained_model_request(), proplists:proplist()) ->
+    {ok, create_trained_model_response(), tuple()} |
+    {error, any()} |
+    {error, create_trained_model_errors(), tuple()}.
+create_trained_model(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-models"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1068,6 +2434,176 @@ delete_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a configured model algorithm.
+-spec delete_configured_model_algorithm(aws_client:aws_client(), binary() | list(), delete_configured_model_algorithm_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_configured_model_algorithm_errors(), tuple()}.
+delete_configured_model_algorithm(Client, ConfiguredModelAlgorithmArn, Input) ->
+    delete_configured_model_algorithm(Client, ConfiguredModelAlgorithmArn, Input, []).
+
+-spec delete_configured_model_algorithm(aws_client:aws_client(), binary() | list(), delete_configured_model_algorithm_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_configured_model_algorithm_errors(), tuple()}.
+delete_configured_model_algorithm(Client, ConfiguredModelAlgorithmArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/configured-model-algorithms/", aws_util:encode_uri(ConfiguredModelAlgorithmArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a configured model algorithm association.
+-spec delete_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configured_model_algorithm_association_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_configured_model_algorithm_association_errors(), tuple()}.
+delete_configured_model_algorithm_association(Client, ConfiguredModelAlgorithmAssociationArn, MembershipIdentifier, Input) ->
+    delete_configured_model_algorithm_association(Client, ConfiguredModelAlgorithmAssociationArn, MembershipIdentifier, Input, []).
+
+-spec delete_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configured_model_algorithm_association_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_configured_model_algorithm_association_errors(), tuple()}.
+delete_configured_model_algorithm_association(Client, ConfiguredModelAlgorithmAssociationArn, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configured-model-algorithm-associations/", aws_util:encode_uri(ConfiguredModelAlgorithmAssociationArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a ML modeling configuration.
+-spec delete_ml_configuration(aws_client:aws_client(), binary() | list(), delete_ml_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_ml_configuration_errors(), tuple()}.
+delete_ml_configuration(Client, MembershipIdentifier, Input) ->
+    delete_ml_configuration(Client, MembershipIdentifier, Input, []).
+
+-spec delete_ml_configuration(aws_client:aws_client(), binary() | list(), delete_ml_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_ml_configuration_errors(), tuple()}.
+delete_ml_configuration(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/ml-configurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the information necessary to delete an ML input channel.
+-spec delete_ml_input_channel_data(aws_client:aws_client(), binary() | list(), binary() | list(), delete_ml_input_channel_data_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_ml_input_channel_data_errors(), tuple()}.
+delete_ml_input_channel_data(Client, MembershipIdentifier, MlInputChannelArn, Input) ->
+    delete_ml_input_channel_data(Client, MembershipIdentifier, MlInputChannelArn, Input, []).
+
+-spec delete_ml_input_channel_data(aws_client:aws_client(), binary() | list(), binary() | list(), delete_ml_input_channel_data_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_ml_input_channel_data_errors(), tuple()}.
+delete_ml_input_channel_data(Client, MembershipIdentifier, MlInputChannelArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/ml-input-channels/", aws_util:encode_uri(MlInputChannelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the output of a trained model.
+-spec delete_trained_model_output(aws_client:aws_client(), binary() | list(), binary() | list(), delete_trained_model_output_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_trained_model_output_errors(), tuple()}.
+delete_trained_model_output(Client, MembershipIdentifier, TrainedModelArn, Input) ->
+    delete_trained_model_output(Client, MembershipIdentifier, TrainedModelArn, Input, []).
+
+-spec delete_trained_model_output(aws_client:aws_client(), binary() | list(), binary() | list(), delete_trained_model_output_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_trained_model_output_errors(), tuple()}.
+delete_trained_model_output(Client, MembershipIdentifier, TrainedModelArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-models/", aws_util:encode_uri(TrainedModelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Specifies a training dataset that you want to delete.
 %%
 %% You can't delete a training dataset if there are any audience models
@@ -1182,6 +2718,119 @@ get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about the configured model algorithm association
+%% in a collaboration.
+-spec get_collaboration_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_collaboration_configured_model_algorithm_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_configured_model_algorithm_association_errors(), tuple()}.
+get_collaboration_configured_model_algorithm_association(Client, CollaborationIdentifier, ConfiguredModelAlgorithmAssociationArn)
+  when is_map(Client) ->
+    get_collaboration_configured_model_algorithm_association(Client, CollaborationIdentifier, ConfiguredModelAlgorithmAssociationArn, #{}, #{}).
+
+-spec get_collaboration_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_collaboration_configured_model_algorithm_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_configured_model_algorithm_association_errors(), tuple()}.
+get_collaboration_configured_model_algorithm_association(Client, CollaborationIdentifier, ConfiguredModelAlgorithmAssociationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_collaboration_configured_model_algorithm_association(Client, CollaborationIdentifier, ConfiguredModelAlgorithmAssociationArn, QueryMap, HeadersMap, []).
+
+-spec get_collaboration_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_collaboration_configured_model_algorithm_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_configured_model_algorithm_association_errors(), tuple()}.
+get_collaboration_configured_model_algorithm_association(Client, CollaborationIdentifier, ConfiguredModelAlgorithmAssociationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/configured-model-algorithm-associations/", aws_util:encode_uri(ConfiguredModelAlgorithmAssociationArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a specific ML input channel in a
+%% collaboration.
+-spec get_collaboration_ml_input_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_collaboration_ml_input_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_ml_input_channel_errors(), tuple()}.
+get_collaboration_ml_input_channel(Client, CollaborationIdentifier, MlInputChannelArn)
+  when is_map(Client) ->
+    get_collaboration_ml_input_channel(Client, CollaborationIdentifier, MlInputChannelArn, #{}, #{}).
+
+-spec get_collaboration_ml_input_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_collaboration_ml_input_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_ml_input_channel_errors(), tuple()}.
+get_collaboration_ml_input_channel(Client, CollaborationIdentifier, MlInputChannelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_collaboration_ml_input_channel(Client, CollaborationIdentifier, MlInputChannelArn, QueryMap, HeadersMap, []).
+
+-spec get_collaboration_ml_input_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_collaboration_ml_input_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_ml_input_channel_errors(), tuple()}.
+get_collaboration_ml_input_channel(Client, CollaborationIdentifier, MlInputChannelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/ml-input-channels/", aws_util:encode_uri(MlInputChannelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a trained model in a collaboration.
+-spec get_collaboration_trained_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_collaboration_trained_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_trained_model_errors(), tuple()}.
+get_collaboration_trained_model(Client, CollaborationIdentifier, TrainedModelArn)
+  when is_map(Client) ->
+    get_collaboration_trained_model(Client, CollaborationIdentifier, TrainedModelArn, #{}, #{}).
+
+-spec get_collaboration_trained_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_collaboration_trained_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_trained_model_errors(), tuple()}.
+get_collaboration_trained_model(Client, CollaborationIdentifier, TrainedModelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_collaboration_trained_model(Client, CollaborationIdentifier, TrainedModelArn, QueryMap, HeadersMap, []).
+
+-spec get_collaboration_trained_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_collaboration_trained_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_trained_model_errors(), tuple()}.
+get_collaboration_trained_model(Client, CollaborationIdentifier, TrainedModelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/trained-models/", aws_util:encode_uri(TrainedModelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about a specified configured audience model.
 -spec get_configured_audience_model(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configured_audience_model_response(), tuple()} |
@@ -1243,6 +2892,228 @@ get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMa
 get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configured-audience-model/", aws_util:encode_uri(ConfiguredAudienceModelArn), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a configured model algorithm.
+-spec get_configured_model_algorithm(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_configured_model_algorithm_response(), tuple()} |
+    {error, any()} |
+    {error, get_configured_model_algorithm_errors(), tuple()}.
+get_configured_model_algorithm(Client, ConfiguredModelAlgorithmArn)
+  when is_map(Client) ->
+    get_configured_model_algorithm(Client, ConfiguredModelAlgorithmArn, #{}, #{}).
+
+-spec get_configured_model_algorithm(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_configured_model_algorithm_response(), tuple()} |
+    {error, any()} |
+    {error, get_configured_model_algorithm_errors(), tuple()}.
+get_configured_model_algorithm(Client, ConfiguredModelAlgorithmArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configured_model_algorithm(Client, ConfiguredModelAlgorithmArn, QueryMap, HeadersMap, []).
+
+-spec get_configured_model_algorithm(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_configured_model_algorithm_response(), tuple()} |
+    {error, any()} |
+    {error, get_configured_model_algorithm_errors(), tuple()}.
+get_configured_model_algorithm(Client, ConfiguredModelAlgorithmArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configured-model-algorithms/", aws_util:encode_uri(ConfiguredModelAlgorithmArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a configured model algorithm association.
+-spec get_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_configured_model_algorithm_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_configured_model_algorithm_association_errors(), tuple()}.
+get_configured_model_algorithm_association(Client, ConfiguredModelAlgorithmAssociationArn, MembershipIdentifier)
+  when is_map(Client) ->
+    get_configured_model_algorithm_association(Client, ConfiguredModelAlgorithmAssociationArn, MembershipIdentifier, #{}, #{}).
+
+-spec get_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_configured_model_algorithm_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_configured_model_algorithm_association_errors(), tuple()}.
+get_configured_model_algorithm_association(Client, ConfiguredModelAlgorithmAssociationArn, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configured_model_algorithm_association(Client, ConfiguredModelAlgorithmAssociationArn, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_configured_model_algorithm_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_configured_model_algorithm_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_configured_model_algorithm_association_errors(), tuple()}.
+get_configured_model_algorithm_association(Client, ConfiguredModelAlgorithmAssociationArn, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configured-model-algorithm-associations/", aws_util:encode_uri(ConfiguredModelAlgorithmAssociationArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a specific ML configuration.
+-spec get_ml_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_ml_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_ml_configuration_errors(), tuple()}.
+get_ml_configuration(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    get_ml_configuration(Client, MembershipIdentifier, #{}, #{}).
+
+-spec get_ml_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_ml_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_ml_configuration_errors(), tuple()}.
+get_ml_configuration(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_ml_configuration(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_ml_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_ml_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_ml_configuration_errors(), tuple()}.
+get_ml_configuration(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/ml-configurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about an ML input channel.
+-spec get_ml_input_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_ml_input_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_ml_input_channel_errors(), tuple()}.
+get_ml_input_channel(Client, MembershipIdentifier, MlInputChannelArn)
+  when is_map(Client) ->
+    get_ml_input_channel(Client, MembershipIdentifier, MlInputChannelArn, #{}, #{}).
+
+-spec get_ml_input_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_ml_input_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_ml_input_channel_errors(), tuple()}.
+get_ml_input_channel(Client, MembershipIdentifier, MlInputChannelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_ml_input_channel(Client, MembershipIdentifier, MlInputChannelArn, QueryMap, HeadersMap, []).
+
+-spec get_ml_input_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_ml_input_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_ml_input_channel_errors(), tuple()}.
+get_ml_input_channel(Client, MembershipIdentifier, MlInputChannelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/ml-input-channels/", aws_util:encode_uri(MlInputChannelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a trained model.
+-spec get_trained_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_trained_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_trained_model_errors(), tuple()}.
+get_trained_model(Client, MembershipIdentifier, TrainedModelArn)
+  when is_map(Client) ->
+    get_trained_model(Client, MembershipIdentifier, TrainedModelArn, #{}, #{}).
+
+-spec get_trained_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_trained_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_trained_model_errors(), tuple()}.
+get_trained_model(Client, MembershipIdentifier, TrainedModelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trained_model(Client, MembershipIdentifier, TrainedModelArn, QueryMap, HeadersMap, []).
+
+-spec get_trained_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trained_model_response(), tuple()} |
+    {error, any()} |
+    {error, get_trained_model_errors(), tuple()}.
+get_trained_model(Client, MembershipIdentifier, TrainedModelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-models/", aws_util:encode_uri(TrainedModelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a trained model inference job.
+-spec get_trained_model_inference_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_trained_model_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_trained_model_inference_job_errors(), tuple()}.
+get_trained_model_inference_job(Client, MembershipIdentifier, TrainedModelInferenceJobArn)
+  when is_map(Client) ->
+    get_trained_model_inference_job(Client, MembershipIdentifier, TrainedModelInferenceJobArn, #{}, #{}).
+
+-spec get_trained_model_inference_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_trained_model_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_trained_model_inference_job_errors(), tuple()}.
+get_trained_model_inference_job(Client, MembershipIdentifier, TrainedModelInferenceJobArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trained_model_inference_job(Client, MembershipIdentifier, TrainedModelInferenceJobArn, QueryMap, HeadersMap, []).
+
+-spec get_trained_model_inference_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trained_model_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_trained_model_inference_job_errors(), tuple()}.
+get_trained_model_inference_job(Client, MembershipIdentifier, TrainedModelInferenceJobArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-model-inference-jobs/", aws_util:encode_uri(TrainedModelInferenceJobArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1422,6 +3293,220 @@ list_audience_models(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of the configured model algorithm associations in a
+%% collaboration.
+-spec list_collaboration_configured_model_algorithm_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_collaboration_configured_model_algorithm_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_configured_model_algorithm_associations_errors(), tuple()}.
+list_collaboration_configured_model_algorithm_associations(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_configured_model_algorithm_associations(Client, CollaborationIdentifier, #{}, #{}).
+
+-spec list_collaboration_configured_model_algorithm_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_collaboration_configured_model_algorithm_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_configured_model_algorithm_associations_errors(), tuple()}.
+list_collaboration_configured_model_algorithm_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_configured_model_algorithm_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_collaboration_configured_model_algorithm_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_collaboration_configured_model_algorithm_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_configured_model_algorithm_associations_errors(), tuple()}.
+list_collaboration_configured_model_algorithm_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/configured-model-algorithm-associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of the ML input channels in a collaboration.
+-spec list_collaboration_ml_input_channels(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_collaboration_ml_input_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_ml_input_channels_errors(), tuple()}.
+list_collaboration_ml_input_channels(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_ml_input_channels(Client, CollaborationIdentifier, #{}, #{}).
+
+-spec list_collaboration_ml_input_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_collaboration_ml_input_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_ml_input_channels_errors(), tuple()}.
+list_collaboration_ml_input_channels(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_ml_input_channels(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_collaboration_ml_input_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_collaboration_ml_input_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_ml_input_channels_errors(), tuple()}.
+list_collaboration_ml_input_channels(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/ml-input-channels"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of the export jobs for a trained model in a
+%% collaboration.
+-spec list_collaboration_trained_model_export_jobs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_collaboration_trained_model_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_model_export_jobs_errors(), tuple()}.
+list_collaboration_trained_model_export_jobs(Client, CollaborationIdentifier, TrainedModelArn)
+  when is_map(Client) ->
+    list_collaboration_trained_model_export_jobs(Client, CollaborationIdentifier, TrainedModelArn, #{}, #{}).
+
+-spec list_collaboration_trained_model_export_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_collaboration_trained_model_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_model_export_jobs_errors(), tuple()}.
+list_collaboration_trained_model_export_jobs(Client, CollaborationIdentifier, TrainedModelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_trained_model_export_jobs(Client, CollaborationIdentifier, TrainedModelArn, QueryMap, HeadersMap, []).
+
+-spec list_collaboration_trained_model_export_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_collaboration_trained_model_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_model_export_jobs_errors(), tuple()}.
+list_collaboration_trained_model_export_jobs(Client, CollaborationIdentifier, TrainedModelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/trained-models/", aws_util:encode_uri(TrainedModelArn), "/export-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of trained model inference jobs in a specified
+%% collaboration.
+-spec list_collaboration_trained_model_inference_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_collaboration_trained_model_inference_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_model_inference_jobs_errors(), tuple()}.
+list_collaboration_trained_model_inference_jobs(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_trained_model_inference_jobs(Client, CollaborationIdentifier, #{}, #{}).
+
+-spec list_collaboration_trained_model_inference_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_collaboration_trained_model_inference_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_model_inference_jobs_errors(), tuple()}.
+list_collaboration_trained_model_inference_jobs(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_trained_model_inference_jobs(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_collaboration_trained_model_inference_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_collaboration_trained_model_inference_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_model_inference_jobs_errors(), tuple()}.
+list_collaboration_trained_model_inference_jobs(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/trained-model-inference-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"trainedModelArn">>, maps:get(<<"trainedModelArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of the trained models in a collaboration.
+-spec list_collaboration_trained_models(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_collaboration_trained_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_models_errors(), tuple()}.
+list_collaboration_trained_models(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_trained_models(Client, CollaborationIdentifier, #{}, #{}).
+
+-spec list_collaboration_trained_models(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_collaboration_trained_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_models_errors(), tuple()}.
+list_collaboration_trained_models(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_trained_models(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_collaboration_trained_models(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_collaboration_trained_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_trained_models_errors(), tuple()}.
+list_collaboration_trained_models(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/trained-models"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of the configured audience models.
 -spec list_configured_audience_models(aws_client:aws_client()) ->
     {ok, list_configured_audience_models_response(), tuple()} |
@@ -1446,6 +3531,132 @@ list_configured_audience_models(Client, QueryMap, HeadersMap)
 list_configured_audience_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configured-audience-model"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of configured model algorithm associations.
+-spec list_configured_model_algorithm_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_configured_model_algorithm_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_configured_model_algorithm_associations_errors(), tuple()}.
+list_configured_model_algorithm_associations(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_configured_model_algorithm_associations(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_configured_model_algorithm_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_configured_model_algorithm_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_configured_model_algorithm_associations_errors(), tuple()}.
+list_configured_model_algorithm_associations(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configured_model_algorithm_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_configured_model_algorithm_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_configured_model_algorithm_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_configured_model_algorithm_associations_errors(), tuple()}.
+list_configured_model_algorithm_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configured-model-algorithm-associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of configured model algorithms.
+-spec list_configured_model_algorithms(aws_client:aws_client()) ->
+    {ok, list_configured_model_algorithms_response(), tuple()} |
+    {error, any()} |
+    {error, list_configured_model_algorithms_errors(), tuple()}.
+list_configured_model_algorithms(Client)
+  when is_map(Client) ->
+    list_configured_model_algorithms(Client, #{}, #{}).
+
+-spec list_configured_model_algorithms(aws_client:aws_client(), map(), map()) ->
+    {ok, list_configured_model_algorithms_response(), tuple()} |
+    {error, any()} |
+    {error, list_configured_model_algorithms_errors(), tuple()}.
+list_configured_model_algorithms(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configured_model_algorithms(Client, QueryMap, HeadersMap, []).
+
+-spec list_configured_model_algorithms(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_configured_model_algorithms_response(), tuple()} |
+    {error, any()} |
+    {error, list_configured_model_algorithms_errors(), tuple()}.
+list_configured_model_algorithms(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configured-model-algorithms"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of ML input channels.
+-spec list_ml_input_channels(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_ml_input_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_ml_input_channels_errors(), tuple()}.
+list_ml_input_channels(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_ml_input_channels(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_ml_input_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_ml_input_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_ml_input_channels_errors(), tuple()}.
+list_ml_input_channels(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ml_input_channels(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_ml_input_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_ml_input_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_ml_input_channels_errors(), tuple()}.
+list_ml_input_channels(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/ml-input-channels"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1498,6 +3709,92 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of trained model inference jobs that match the request
+%% parameters.
+-spec list_trained_model_inference_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_trained_model_inference_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_model_inference_jobs_errors(), tuple()}.
+list_trained_model_inference_jobs(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_trained_model_inference_jobs(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_trained_model_inference_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_trained_model_inference_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_model_inference_jobs_errors(), tuple()}.
+list_trained_model_inference_jobs(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_trained_model_inference_jobs(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_trained_model_inference_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_trained_model_inference_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_model_inference_jobs_errors(), tuple()}.
+list_trained_model_inference_jobs(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-model-inference-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"trainedModelArn">>, maps:get(<<"trainedModelArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of trained models.
+-spec list_trained_models(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_trained_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_models_errors(), tuple()}.
+list_trained_models(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_trained_models(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_trained_models(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_trained_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_models_errors(), tuple()}.
+list_trained_models(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_trained_models(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_trained_models(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_trained_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_models_errors(), tuple()}.
+list_trained_models(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-models"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1577,6 +3874,40 @@ put_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Assigns information about an ML configuration.
+-spec put_ml_configuration(aws_client:aws_client(), binary() | list(), put_ml_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_ml_configuration_errors(), tuple()}.
+put_ml_configuration(Client, MembershipIdentifier, Input) ->
+    put_ml_configuration(Client, MembershipIdentifier, Input, []).
+
+-spec put_ml_configuration(aws_client:aws_client(), binary() | list(), put_ml_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_ml_configuration_errors(), tuple()}.
+put_ml_configuration(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/ml-configurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Export an audience of a specified size after you have generated an
 %% audience.
 -spec start_audience_export_job(aws_client:aws_client(), start_audience_export_job_request()) ->
@@ -1627,6 +3958,76 @@ start_audience_generation_job(Client, Input) ->
 start_audience_generation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audience-generation-job"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the information necessary to start a trained model export
+%% job.
+-spec start_trained_model_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_trained_model_export_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_trained_model_export_job_errors(), tuple()}.
+start_trained_model_export_job(Client, MembershipIdentifier, TrainedModelArn, Input) ->
+    start_trained_model_export_job(Client, MembershipIdentifier, TrainedModelArn, Input, []).
+
+-spec start_trained_model_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_trained_model_export_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_trained_model_export_job_errors(), tuple()}.
+start_trained_model_export_job(Client, MembershipIdentifier, TrainedModelArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-models/", aws_util:encode_uri(TrainedModelArn), "/export-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Defines the information necessary to begin a trained model inference
+%% job.
+-spec start_trained_model_inference_job(aws_client:aws_client(), binary() | list(), start_trained_model_inference_job_request()) ->
+    {ok, start_trained_model_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_trained_model_inference_job_errors(), tuple()}.
+start_trained_model_inference_job(Client, MembershipIdentifier, Input) ->
+    start_trained_model_inference_job(Client, MembershipIdentifier, Input, []).
+
+-spec start_trained_model_inference_job(aws_client:aws_client(), binary() | list(), start_trained_model_inference_job_request(), proplists:proplist()) ->
+    {ok, start_trained_model_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_trained_model_inference_job_errors(), tuple()}.
+start_trained_model_inference_job(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-model-inference-jobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

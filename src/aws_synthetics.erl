@@ -140,6 +140,7 @@
 %%   <<"ExecutionRoleArn">> := string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
 %%   <<"Name">> := string(),
+%%   <<"ProvisionedResourceCleanup">> => list(any()),
 %%   <<"ResourcesToReplicateTags">> => list(list(any())()),
 %%   <<"RunConfig">> => canary_run_config_input(),
 %%   <<"RuntimeVersion">> := string(),
@@ -285,6 +286,7 @@
 %%   <<"Code">> => canary_code_input(),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
+%%   <<"ProvisionedResourceCleanup">> => list(any()),
 %%   <<"RunConfig">> => canary_run_config_input(),
 %%   <<"RuntimeVersion">> => string(),
 %%   <<"Schedule">> => canary_schedule_input(),
@@ -499,6 +501,7 @@
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"ProvisionedResourceCleanup">> => list(any()),
 %%   <<"RunConfig">> => canary_run_config_output(),
 %%   <<"RuntimeVersion">> => string(),
 %%   <<"Schedule">> => canary_schedule_output(),
@@ -951,14 +954,15 @@ create_group(Client, Input0, Options0) ->
 
 %% @doc Permanently deletes the specified canary.
 %%
-%% If you specify `DeleteLambda' to `true', CloudWatch Synthetics
-%% also deletes
+%% If the canary's `ProvisionedResourceCleanup' field is set to
+%% `AUTOMATIC'
+%% or you specify `DeleteLambda' in this operation as `true',
+%% CloudWatch Synthetics also deletes
 %% the Lambda functions and layers that are used by the canary.
 %%
 %% Other resources used and created by the canary are not automatically
 %% deleted.
-%% After you delete a canary that you do not intend to
-%% use again, you
+%% After you delete a canary, you
 %% should also delete the following:
 %%
 %% The CloudWatch alarms created for this canary. These alarms have a name of

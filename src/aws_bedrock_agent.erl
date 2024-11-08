@@ -145,10 +145,19 @@
          update_knowledge_base/3,
          update_knowledge_base/4,
          update_prompt/3,
-         update_prompt/4]).
+         update_prompt/4,
+         validate_flow_definition/2,
+         validate_flow_definition/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% validate_flow_definition_response() :: #{
+%%   <<"validations">> => list(flow_validation()())
+%% }
+-type validate_flow_definition_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -217,6 +226,14 @@
 
 
 %% Example:
+%% missing_node_input_flow_validation_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type missing_node_input_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -240,6 +257,20 @@
 
 
 %% Example:
+%% missing_default_condition_flow_validation_details() :: #{
+%%   <<"node">> => string()
+%% }
+-type missing_default_condition_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% specific_tool_choice() :: #{
+%%   <<"name">> => string()
+%% }
+-type specific_tool_choice() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_flow_alias_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -259,6 +290,20 @@
 %%   <<"storageDays">> => integer()
 %% }
 -type memory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% unreachable_node_flow_validation_details() :: #{
+%%   <<"node">> => string()
+%% }
+-type unreachable_node_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_connection_configuration_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type missing_connection_configuration_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -402,6 +447,10 @@
 %% }
 -type start_ingestion_job_request() :: #{binary() => any()}.
 
+%% Example:
+%% any_tool_choice() :: #{}
+-type any_tool_choice() :: #{}.
+
 
 %% Example:
 %% inference_configuration() :: #{
@@ -437,6 +486,19 @@
 %% }
 -type transformation() :: #{binary() => any()}.
 
+%% Example:
+%% auto_tool_choice() :: #{}
+-type auto_tool_choice() :: #{}.
+
+
+%% Example:
+%% mismatched_node_input_type_flow_validation_details() :: #{
+%%   <<"expectedType">> => list(any()),
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type mismatched_node_input_type_flow_validation_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_transformation_configuration() :: #{
@@ -462,6 +524,13 @@
 %%   <<"tags">> => map()
 %% }
 -type create_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_source_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_source_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -583,8 +652,10 @@
 
 %% Example:
 %% flow_validation() :: #{
+%%   <<"details">> => list(),
 %%   <<"message">> => string(),
-%%   <<"severity">> => list(any())
+%%   <<"severity">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
 -type flow_validation() :: #{binary() => any()}.
 
@@ -791,6 +862,15 @@
 
 
 %% Example:
+%% malformed_node_input_expression_flow_validation_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type malformed_node_input_expression_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% share_point_crawler_configuration() :: #{
 %%   <<"filterConfiguration">> => crawl_filter_configuration()
 %% }
@@ -810,6 +890,7 @@
 
 %% Example:
 %% knowledge_base_flow_node_configuration() :: #{
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"modelId">> => string()
 %% }
@@ -935,6 +1016,15 @@
 %% Example:
 %% delete_agent_action_group_response() :: #{}
 -type delete_agent_action_group_response() :: #{}.
+
+
+%% Example:
+%% mismatched_node_output_type_flow_validation_details() :: #{
+%%   <<"expectedType">> => list(any()),
+%%   <<"node">> => string(),
+%%   <<"output">> => string()
+%% }
+-type mismatched_node_output_type_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1084,6 +1174,14 @@
 
 
 %% Example:
+%% duplicate_condition_expression_flow_validation_details() :: #{
+%%   <<"expression">> => string(),
+%%   <<"node">> => string()
+%% }
+-type duplicate_condition_expression_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_knowledge_bases_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1230,6 +1328,20 @@
 
 
 %% Example:
+%% validate_flow_definition_request() :: #{
+%%   <<"definition">> := flow_definition()
+%% }
+-type validate_flow_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_source_output_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_source_output_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1285,6 +1397,15 @@
 %%   <<"parsingPrompt">> => parsing_prompt()
 %% }
 -type bedrock_foundation_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_specification() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => list(),
+%%   <<"name">> => string()
+%% }
+-type tool_specification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1542,6 +1663,21 @@
 
 
 %% Example:
+%% unknown_connection_target_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_target_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiple_node_input_connections_flow_validation_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type multiple_node_input_connections_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% confluence_source_configuration() :: #{
 %%   <<"authType">> => list(any()),
 %%   <<"credentialsSecretArn">> => string(),
@@ -1567,6 +1703,10 @@
 %%   <<"kmsKeyArn">> => string()
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% missing_ending_nodes_flow_validation_details() :: #{}
+-type missing_ending_nodes_flow_validation_details() :: #{}.
 
 
 %% Example:
@@ -1608,6 +1748,10 @@
 %%   <<"maxTokens">> => [integer()]
 %% }
 -type semantic_chunking_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% missing_starting_nodes_flow_validation_details() :: #{}
+-type missing_starting_nodes_flow_validation_details() :: #{}.
 
 
 %% Example:
@@ -1802,6 +1946,14 @@
 
 
 %% Example:
+%% tool_configuration() :: #{
+%%   <<"toolChoice">> => list(),
+%%   <<"tools">> => list(list()())
+%% }
+-type tool_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_model_inference_configuration() :: #{
 %%   <<"maxTokens">> => integer(),
 %%   <<"stopSequences">> => list([string()]()),
@@ -1870,6 +2022,13 @@
 
 
 %% Example:
+%% cyclic_connection_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type cyclic_connection_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_agent_request() :: #{
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
@@ -1881,6 +2040,25 @@
 %%   <<"conditions">> => list(flow_condition()())
 %% }
 -type condition_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_prompt_template_configuration() :: #{
+%%   <<"inputVariables">> => list(prompt_input_variable()()),
+%%   <<"messages">> => list(message()()),
+%%   <<"system">> => list(list()()),
+%%   <<"toolConfiguration">> => tool_configuration()
+%% }
+-type chat_prompt_template_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% malformed_condition_expression_flow_validation_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"condition">> => string(),
+%%   <<"node">> => string()
+%% }
+-type malformed_condition_expression_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1988,6 +2166,14 @@
 
 
 %% Example:
+%% duplicate_connections_flow_validation_details() :: #{
+%%   <<"source">> => string(),
+%%   <<"target">> => string()
+%% }
+-type duplicate_connections_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_ingestion_job_response() :: #{
 %%   <<"ingestionJob">> => ingestion_job()
 %% }
@@ -2006,6 +2192,13 @@
 %%   <<"maxTokens">> => [integer()]
 %% }
 -type hierarchical_chunking_level_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsatisfied_connection_conditions_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unsatisfied_connection_conditions_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2077,6 +2270,13 @@
 %% }
 -type flow_conditional_connection_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% incompatible_connection_data_type_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type incompatible_connection_data_type_flow_validation_details() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_agent_knowledge_base_response() :: #{}
 -type disassociate_agent_knowledge_base_response() :: #{}.
@@ -2114,6 +2314,14 @@
 
 
 %% Example:
+%% missing_node_output_flow_validation_details() :: #{
+%%   <<"node">> => string(),
+%%   <<"output">> => string()
+%% }
+-type missing_node_output_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_ingestion_job_response() :: #{
 %%   <<"ingestionJob">> => ingestion_job()
 %% }
@@ -2129,6 +2337,10 @@
 %%   <<"flowVersion">> => string()
 %% }
 -type flow_alias_routing_configuration_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% unspecified_flow_validation_details() :: #{}
+-type unspecified_flow_validation_details() :: #{}.
 
 
 %% Example:
@@ -2146,6 +2358,13 @@
 %%   <<"version">> => string()
 %% }
 -type update_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_agent_resource() :: #{
+%%   <<"agentIdentifier">> => string()
+%% }
+-type prompt_agent_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2190,12 +2409,27 @@
 
 
 %% Example:
+%% unfulfilled_node_input_flow_validation_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type unfulfilled_node_input_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_agent_knowledge_base_request() :: #{
 %%   <<"description">> := string(),
 %%   <<"knowledgeBaseId">> := string(),
 %%   <<"knowledgeBaseState">> => list(any())
 %% }
 -type associate_agent_knowledge_base_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_target_input_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_target_input_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2220,6 +2454,13 @@
 %%   <<"parsingConfiguration">> => parsing_configuration()
 %% }
 -type vector_ingestion_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_condition_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_condition_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2278,7 +2519,15 @@
 
 
 %% Example:
+%% missing_node_configuration_flow_validation_details() :: #{
+%%   <<"node">> => string()
+%% }
+-type missing_node_configuration_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_flow_node_configuration() :: #{
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"sourceConfiguration">> => list()
 %% }
 -type prompt_flow_node_configuration() :: #{binary() => any()}.
@@ -2323,8 +2572,17 @@
 
 
 %% Example:
+%% message() :: #{
+%%   <<"content">> => list(list()()),
+%%   <<"role">> => list(any())
+%% }
+-type message() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_variant() :: #{
 %%   <<"additionalModelRequestFields">> => [any()],
+%%   <<"genAiResource">> => list(),
 %%   <<"inferenceConfiguration">> => list(),
 %%   <<"metadata">> => list(prompt_metadata_entry()()),
 %%   <<"modelId">> => string(),
@@ -2815,6 +3073,12 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type validate_flow_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -5242,6 +5506,40 @@ update_prompt(Client, PromptIdentifier, Input) ->
 update_prompt(Client, PromptIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/prompts/", aws_util:encode_uri(PromptIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Validates the definition of a flow.
+-spec validate_flow_definition(aws_client:aws_client(), validate_flow_definition_request()) ->
+    {ok, validate_flow_definition_response(), tuple()} |
+    {error, any()} |
+    {error, validate_flow_definition_errors(), tuple()}.
+validate_flow_definition(Client, Input) ->
+    validate_flow_definition(Client, Input, []).
+
+-spec validate_flow_definition(aws_client:aws_client(), validate_flow_definition_request(), proplists:proplist()) ->
+    {ok, validate_flow_definition_response(), tuple()} |
+    {error, any()} |
+    {error, validate_flow_definition_errors(), tuple()}.
+validate_flow_definition(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/flows/validate-definition"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -69,12 +69,16 @@
          get_default_view/3,
          get_index/2,
          get_index/3,
+         get_managed_view/2,
+         get_managed_view/3,
          get_view/2,
          get_view/3,
          list_indexes/2,
          list_indexes/3,
          list_indexes_for_members/2,
          list_indexes_for_members/3,
+         list_managed_views/2,
+         list_managed_views/3,
          list_resources/2,
          list_resources/3,
          list_supported_resource_types/2,
@@ -229,6 +233,14 @@
 
 
 %% Example:
+%% list_managed_views_output() :: #{
+%%   <<"ManagedViews">> => list([string()]()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_managed_views_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_supported_resource_types_input() :: #{
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => [string()]
@@ -309,6 +321,15 @@
 
 
 %% Example:
+%% list_managed_views_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"ServicePrincipal">> => [string()]
+%% }
+-type list_managed_views_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_view_error() :: #{
 %%   <<"ErrorMessage">> => [string()],
 %%   <<"ViewArn">> => [string()]
@@ -373,6 +394,13 @@
 %%   <<"Tags">> => map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_view_input() :: #{
+%%   <<"ManagedViewArn">> := [string()]
+%% }
+-type get_managed_view_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -564,6 +592,22 @@
 
 
 %% Example:
+%% managed_view() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()()),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"ManagedViewArn">> => [string()],
+%%   <<"ManagedViewName">> => [string()],
+%%   <<"Owner">> => [string()],
+%%   <<"ResourcePolicy">> => [string()],
+%%   <<"Scope">> => [string()],
+%%   <<"TrustedService">> => [string()],
+%%   <<"Version">> => [string()]
+%% }
+-type managed_view() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"LastReportedAt">> => [non_neg_integer()],
@@ -574,6 +618,13 @@
 %%   <<"Service">> => [string()]
 %% }
 -type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_view_output() :: #{
+%%   <<"ManagedView">> => managed_view()
+%% }
+-type get_managed_view_output() :: #{binary() => any()}.
 
 -type associate_default_view_errors() ::
     throttling_exception() | 
@@ -647,6 +698,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_managed_view_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
 -type get_view_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -666,6 +725,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_managed_views_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    unauthorized_exception().
 
 -type list_resources_errors() ::
     throttling_exception() | 
@@ -1225,6 +1291,41 @@ get_index(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves details of the specified Amazon Web Services-managed view:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/aws-managed-views.html.
+-spec get_managed_view(aws_client:aws_client(), get_managed_view_input()) ->
+    {ok, get_managed_view_output(), tuple()} |
+    {error, any()} |
+    {error, get_managed_view_errors(), tuple()}.
+get_managed_view(Client, Input) ->
+    get_managed_view(Client, Input, []).
+
+-spec get_managed_view(aws_client:aws_client(), get_managed_view_input(), proplists:proplist()) ->
+    {ok, get_managed_view_output(), tuple()} |
+    {error, any()} |
+    {error, get_managed_view_errors(), tuple()}.
+get_managed_view(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetManagedView"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves details of the specified view.
 -spec get_view(aws_client:aws_client(), get_view_input()) ->
     {ok, get_view_output(), tuple()} |
@@ -1316,6 +1417,44 @@ list_indexes_for_members(Client, Input) ->
 list_indexes_for_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListIndexesForMembers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the Amazon resource names (ARNs) of the
+%% Amazon Web Services-managed views:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/aws-managed-views.html
+%% available
+%% in the Amazon Web Services Region in which you call this operation.
+-spec list_managed_views(aws_client:aws_client(), list_managed_views_input()) ->
+    {ok, list_managed_views_output(), tuple()} |
+    {error, any()} |
+    {error, list_managed_views_errors(), tuple()}.
+list_managed_views(Client, Input) ->
+    list_managed_views(Client, Input, []).
+
+-spec list_managed_views(aws_client:aws_client(), list_managed_views_input(), proplists:proplist()) ->
+    {ok, list_managed_views_output(), tuple()} |
+    {error, any()} |
+    {error, list_managed_views_errors(), tuple()}.
+list_managed_views(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListManagedViews"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -821,6 +821,20 @@
 
 
 %% Example:
+%% model_inference_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type model_inference_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ml_member_abilities() :: #{
+%%   <<"customMLMemberAbilities">> => list(list(any())())
+%% }
+-type ml_member_abilities() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"tags">> => map()
 %% }
@@ -936,6 +950,13 @@
 %% Example:
 %% get_protected_query_input() :: #{}
 -type get_protected_query_input() :: #{}.
+
+
+%% Example:
+%% membership_model_inference_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type membership_model_inference_payment_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1389,6 +1410,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
 %%   <<"memberAbilities">> => list(list(any())()),
+%%   <<"mlMemberAbilities">> => ml_member_abilities(),
 %%   <<"paymentConfiguration">> => membership_payment_configuration(),
 %%   <<"status">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
@@ -1556,6 +1578,7 @@
 %% create_collaboration_input() :: #{
 %%   <<"analyticsEngine">> => list(any()),
 %%   <<"creatorDisplayName">> := string(),
+%%   <<"creatorMLMemberAbilities">> => ml_member_abilities(),
 %%   <<"creatorMemberAbilities">> := list(list(any())()),
 %%   <<"creatorPaymentConfiguration">> => payment_configuration(),
 %%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
@@ -2071,6 +2094,7 @@
 %%   <<"displayName">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
+%%   <<"mlAbilities">> => ml_member_abilities(),
 %%   <<"paymentConfiguration">> => payment_configuration(),
 %%   <<"status">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
@@ -2129,6 +2153,7 @@
 
 %% Example:
 %% membership_payment_configuration() :: #{
+%%   <<"machineLearning">> => membership_ml_payment_config(),
 %%   <<"queryCompute">> => membership_query_compute_payment_config()
 %% }
 -type membership_payment_configuration() :: #{binary() => any()}.
@@ -2136,6 +2161,14 @@
 %% Example:
 %% get_membership_input() :: #{}
 -type get_membership_input() :: #{}.
+
+
+%% Example:
+%% membership_ml_payment_config() :: #{
+%%   <<"modelInference">> => membership_model_inference_payment_config(),
+%%   <<"modelTraining">> => membership_model_training_payment_config()
+%% }
+-type membership_ml_payment_config() :: #{binary() => any()}.
 
 %% Example:
 %% get_configured_audience_model_association_input() :: #{}
@@ -2183,6 +2216,7 @@
 
 %% Example:
 %% payment_configuration() :: #{
+%%   <<"machineLearning">> => ml_payment_config(),
 %%   <<"queryCompute">> => query_compute_payment_config()
 %% }
 -type payment_configuration() :: #{binary() => any()}.
@@ -2212,6 +2246,14 @@
 
 
 %% Example:
+%% ml_payment_config() :: #{
+%%   <<"modelInference">> => model_inference_payment_config(),
+%%   <<"modelTraining">> => model_training_payment_config()
+%% }
+-type ml_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% analysis_template_validation_status_reason() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -2220,6 +2262,13 @@
 %% Example:
 %% get_configured_table_input() :: #{}
 -type get_configured_table_input() :: #{}.
+
+
+%% Example:
+%% model_training_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type model_training_payment_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2315,6 +2364,13 @@
 
 
 %% Example:
+%% membership_model_training_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type membership_model_training_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% id_namespace_association_input_reference_properties_summary() :: #{
 %%   <<"idNamespaceType">> => list(any())
 %% }
@@ -2342,6 +2398,7 @@
 %%   <<"accountId">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"memberAbilities">> => list(list(any())()),
+%%   <<"mlMemberAbilities">> => ml_member_abilities(),
 %%   <<"paymentConfiguration">> => payment_configuration()
 %% }
 -type member_specification() :: #{binary() => any()}.
@@ -2370,6 +2427,7 @@
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
 %%   <<"id">> => string(),
 %%   <<"memberAbilities">> => list(list(any())()),
+%%   <<"mlMemberAbilities">> => ml_member_abilities(),
 %%   <<"paymentConfiguration">> => membership_payment_configuration(),
 %%   <<"queryLogStatus">> => string(),
 %%   <<"status">> => string(),

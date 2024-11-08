@@ -4121,8 +4121,11 @@
 
 %% Example:
 %% starburst_parameters() :: #{
+%%   <<"AuthenticationType">> => list(any()),
 %%   <<"Catalog">> => string(),
+%%   <<"DatabaseAccessControlRole">> => string(),
 %%   <<"Host">> => string(),
+%%   <<"OAuthParameters">> => o_auth_parameters(),
 %%   <<"Port">> => integer(),
 %%   <<"ProductType">> => list(any())
 %% }
@@ -4916,8 +4919,11 @@
 
 %% Example:
 %% snowflake_parameters() :: #{
+%%   <<"AuthenticationType">> => list(any()),
 %%   <<"Database">> => string(),
+%%   <<"DatabaseAccessControlRole">> => string(),
 %%   <<"Host">> => string(),
+%%   <<"OAuthParameters">> => o_auth_parameters(),
 %%   <<"Warehouse">> => string()
 %% }
 -type snowflake_parameters() :: #{binary() => any()}.
@@ -7554,6 +7560,16 @@
 %%   <<"S3Results">> => list(snapshot_job_s3_result()())
 %% }
 -type snapshot_job_result_file_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_parameters() :: #{
+%%   <<"IdentityProviderResourceUri">> => string(),
+%%   <<"IdentityProviderVpcConnectionProperties">> => vpc_connection_properties(),
+%%   <<"OAuthScope">> => string(),
+%%   <<"TokenProviderUrl">> => string()
+%% }
+-type o_auth_parameters() :: #{binary() => any()}.
 
 
 %% Example:

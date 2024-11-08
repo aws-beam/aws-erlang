@@ -1067,6 +1067,7 @@
 %% Example:
 %% create_auto_scaling_group_type() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
+%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
 %%   <<"AvailabilityZones">> => list(string()()),
 %%   <<"CapacityRebalance">> => boolean(),
 %%   <<"Context">> => string(),
@@ -1340,6 +1341,7 @@
 %%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
 %%   <<"TargetGroupARNs">> => list(string()()),
 %%   <<"TerminationPolicies">> => list(string()()),
+%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
 %%   <<"LaunchConfigurationName">> => string(),
 %%   <<"DesiredCapacityType">> => string(),
 %%   <<"AutoScalingGroupName">> => string(),
@@ -1428,6 +1430,7 @@
 %% Example:
 %% update_auto_scaling_group_type() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
+%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
 %%   <<"AvailabilityZones">> => list(string()()),
 %%   <<"CapacityRebalance">> => boolean(),
 %%   <<"Context">> => string(),
@@ -1597,6 +1600,12 @@
 %%   <<"AutoScalingGroupName">> := string()
 %% }
 -type rollback_instance_refresh_type() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone_distribution() :: #{
+%%   <<"CapacityDistributionStrategy">> => list(any())
+%% }
+-type availability_zone_distribution() :: #{binary() => any()}.
 
 %% Example:
 %% target_tracking_metric_data_query() :: #{
