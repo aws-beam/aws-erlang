@@ -1098,6 +1098,16 @@
 
 
 %% Example:
+%% launch_template_specification_override() :: #{
+%%   <<"launchTemplateId">> => string(),
+%%   <<"launchTemplateName">> => string(),
+%%   <<"targetInstanceTypes">> => list(string()()),
+%%   <<"version">> => string()
+%% }
+-type launch_template_specification_override() :: #{binary() => any()}.
+
+
+%% Example:
 %% runtime_platform() :: #{
 %%   <<"cpuArchitecture">> => string(),
 %%   <<"operatingSystemFamily">> => string()
@@ -1210,6 +1220,7 @@
 %% launch_template_specification() :: #{
 %%   <<"launchTemplateId">> => string(),
 %%   <<"launchTemplateName">> => string(),
+%%   <<"overrides">> => list(launch_template_specification_override()()),
 %%   <<"version">> => string()
 %% }
 -type launch_template_specification() :: #{binary() => any()}.

@@ -1187,6 +1187,7 @@
 %%   <<"DeniedTimestamp">> => [non_neg_integer()],
 %%   <<"DiscardedTimestamp">> => [non_neg_integer()],
 %%   <<"DraftTimestamp">> => [non_neg_integer()],
+%%   <<"RequiresAuthenticationTimestamp">> => [non_neg_integer()],
 %%   <<"ReviewingTimestamp">> => [non_neg_integer()],
 %%   <<"RevokedTimestamp">> => [non_neg_integer()],
 %%   <<"SubmittedTimestamp">> => [non_neg_integer()]

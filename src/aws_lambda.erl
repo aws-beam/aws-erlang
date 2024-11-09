@@ -329,6 +329,7 @@
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Key">> => string(),
 %%   <<"S3ObjectVersion">> => string(),
+%%   <<"SourceKMSKeyArn">> => string(),
 %%   <<"ZipFile">> => binary()
 %% }
 -type function_code() :: #{binary() => any()}.
@@ -500,7 +501,8 @@
 %%   <<"ImageUri">> => string(),
 %%   <<"Location">> => string(),
 %%   <<"RepositoryType">> => string(),
-%%   <<"ResolvedImageUri">> => string()
+%%   <<"ResolvedImageUri">> => string(),
+%%   <<"SourceKMSKeyArn">> => string()
 %% }
 -type function_code_location() :: #{binary() => any()}.
 
@@ -1012,6 +1014,7 @@
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Key">> => string(),
 %%   <<"S3ObjectVersion">> => string(),
+%%   <<"SourceKMSKeyArn">> => string(),
 %%   <<"ZipFile">> => binary()
 %% }
 -type update_function_code_request() :: #{binary() => any()}.

@@ -94,6 +94,13 @@
 
 
 %% Example:
+%% control_parameter() :: #{
+%%   <<"Name">> => [string()]
+%% }
+-type control_parameter() :: #{binary() => any()}.
+
+
+%% Example:
 %% control_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Description">> => [string()],
@@ -132,10 +139,19 @@
 %%   <<"Arn">> => string(),
 %%   <<"Behavior">> => list(any()),
 %%   <<"Description">> => [string()],
+%%   <<"Implementation">> => implementation_details(),
 %%   <<"Name">> => [string()],
+%%   <<"Parameters">> => list(control_parameter()()),
 %%   <<"RegionConfiguration">> => region_configuration()
 %% }
 -type get_control_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% implementation_details() :: #{
+%%   <<"Type">> => string()
+%% }
+-type implementation_details() :: #{binary() => any()}.
 
 
 %% Example:

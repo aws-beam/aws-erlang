@@ -312,6 +312,14 @@
 
 
 %% Example:
+%% flow_trace_node_input_field() :: #{
+%%   <<"content">> => list(),
+%%   <<"nodeInputName">> => string()
+%% }
+-type flow_trace_node_input_field() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_custom_word() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"match">> => [string()]
@@ -359,11 +367,27 @@
 
 
 %% Example:
+%% flow_trace_event() :: #{
+%%   <<"trace">> => list()
+%% }
+-type flow_trace_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% span() :: #{
 %%   <<"end">> => [integer()],
 %%   <<"start">> => [integer()]
 %% }
 -type span() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_trace_node_input_event() :: #{
+%%   <<"fields">> => list(flow_trace_node_input_field()()),
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type flow_trace_node_input_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -544,6 +568,13 @@
 
 
 %% Example:
+%% flow_trace_condition() :: #{
+%%   <<"conditionName">> => [string()]
+%% }
+-type flow_trace_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% reprompt_response() :: #{
 %%   <<"source">> => list(any()),
 %%   <<"text">> => [string()]
@@ -615,6 +646,23 @@
 %%   <<"value">> => any()
 %% }
 -type filter_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_trace_node_output_field() :: #{
+%%   <<"content">> => list(),
+%%   <<"nodeOutputName">> => string()
+%% }
+-type flow_trace_node_output_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_trace_node_output_event() :: #{
+%%   <<"fields">> => list(flow_trace_node_output_field()()),
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type flow_trace_node_output_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -750,6 +798,15 @@
 %%   <<"nodeOutputName">> => string()
 %% }
 -type flow_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_trace_condition_node_result_event() :: #{
+%%   <<"nodeName">> => string(),
+%%   <<"satisfiedConditions">> => list(flow_trace_condition()()),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type flow_trace_condition_node_result_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -954,6 +1011,7 @@
 
 %% Example:
 %% invoke_flow_request() :: #{
+%%   <<"enableTrace">> => [boolean()],
 %%   <<"inputs">> := list(flow_input()())
 %% }
 -type invoke_flow_request() :: #{binary() => any()}.

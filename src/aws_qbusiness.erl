@@ -1547,7 +1547,8 @@
 %% Example:
 %% group_members() :: #{
 %%   <<"memberGroups">> => list(member_group()()),
-%%   <<"memberUsers">> => list(member_user()())
+%%   <<"memberUsers">> => list(member_user()()),
+%%   <<"s3PathForGroupMembers">> => s3()
 %% }
 -type group_members() :: #{binary() => any()}.
 
@@ -1916,6 +1917,7 @@
 %%   <<"dataSourceId">> => string(),
 %%   <<"groupMembers">> := group_members(),
 %%   <<"groupName">> := string(),
+%%   <<"roleArn">> => string(),
 %%   <<"type">> := list(any())
 %% }
 -type put_group_request() :: #{binary() => any()}.
@@ -2584,6 +2586,16 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/tiers.html#user-sub-tiers.
 %% You must use the Amazon Q Business console to assign
 %% subscription tiers to users.
+%%
+%% A Amazon Q Apps service linked role will be created if it's absent in
+%% the
+%% Amazon Web Services account when the QAppsConfiguration is enabled in the
+%% request.
+%% For more information, see
+%%
+%% Using service-linked roles for Q Apps
+%% :
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/using-service-linked-roles-qapps.html
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
@@ -4299,6 +4311,14 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Q Business application.
+%%
+%% A Amazon Q Apps service-linked role will be created if it's absent in
+%% the Amazon Web Services account
+%% when the QAppsConfiguration is enabled in the request.
+%% For more information, see
+%% Using service-linked roles for Q Apps
+%% :
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/using-service-linked-roles-qapps.html
 -spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |

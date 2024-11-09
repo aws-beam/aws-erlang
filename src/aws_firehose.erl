@@ -49,6 +49,12 @@
 -type http_endpoint_request_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% database_source_authentication_configuration() :: #{
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
+%% }
+-type database_source_authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% record() :: #{
 %%   <<"Data">> => binary()
 %% }
@@ -96,6 +102,22 @@
 -type amazon_open_search_serverless_buffering_hints() :: #{binary() => any()}.
 
 %% Example:
+%% database_source_configuration() :: #{
+%%   <<"Columns">> => database_column_list(),
+%%   <<"DatabaseSourceAuthenticationConfiguration">> => database_source_authentication_configuration(),
+%%   <<"DatabaseSourceVPCConfiguration">> => database_source_vpc_configuration(),
+%%   <<"Databases">> => database_list(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SSLMode">> => list(any()),
+%%   <<"SnapshotWatermarkTable">> => string(),
+%%   <<"SurrogateKeys">> => list(string()()),
+%%   <<"Tables">> => database_table_list(),
+%%   <<"Type">> => list(any())
+%% }
+-type database_source_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% vpc_configuration() :: #{
 %%   <<"RoleARN">> => string(),
 %%   <<"SecurityGroupIds">> => list(string()()),
@@ -108,6 +130,12 @@
 %%   <<"PrivateLinkVpceId">> => string()
 %% }
 -type snowflake_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% database_source_vpc_configuration() :: #{
+%%   <<"VpcEndpointServiceName">> => string()
+%% }
+-type database_source_vpc_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_destination_output() :: #{
@@ -188,7 +216,9 @@
 %%   <<"RetryOptions">> => retry_options(),
 %%   <<"RoleARN">> => string(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3Configuration">> => s3_destination_configuration()
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"SchemaEvolutionConfiguration">> => schema_evolution_configuration(),
+%%   <<"TableCreationConfiguration">> => table_creation_configuration()
 %% }
 -type iceberg_destination_update() :: #{binary() => any()}.
 
@@ -231,6 +261,7 @@
 %% create_delivery_stream_input() :: #{
 %%   <<"AmazonOpenSearchServerlessDestinationConfiguration">> => amazon_open_search_serverless_destination_configuration(),
 %%   <<"AmazonopensearchserviceDestinationConfiguration">> => amazonopensearchservice_destination_configuration(),
+%%   <<"DatabaseSourceConfiguration">> => database_source_configuration(),
 %%   <<"DeliveryStreamEncryptionConfigurationInput">> => delivery_stream_encryption_configuration_input(),
 %%   <<"DeliveryStreamName">> := string(),
 %%   <<"DeliveryStreamType">> => list(any()),
@@ -259,6 +290,7 @@
 
 %% Example:
 %% source_description() :: #{
+%%   <<"DatabaseSourceDescription">> => database_source_description(),
 %%   <<"KinesisStreamSourceDescription">> => kinesis_stream_source_description(),
 %%   <<"MSKSourceDescription">> => m_s_k_source_description()
 %% }
@@ -461,6 +493,13 @@
 -type elasticsearch_retry_options() :: #{binary() => any()}.
 
 %% Example:
+%% database_column_list() :: #{
+%%   <<"Exclude">> => list(string()()),
+%%   <<"Include">> => list(string()())
+%% }
+-type database_column_list() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_source_exception() :: #{
 %%   <<"code">> => string(),
 %%   <<"message">> => string()
@@ -485,7 +524,9 @@
 %%   <<"RetryOptions">> => retry_options(),
 %%   <<"RoleARN">> => string(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3Configuration">> => s3_destination_configuration()
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"SchemaEvolutionConfiguration">> => schema_evolution_configuration(),
+%%   <<"TableCreationConfiguration">> => table_creation_configuration()
 %% }
 -type iceberg_destination_configuration() :: #{binary() => any()}.
 
@@ -505,6 +546,7 @@
 %% destination_table_configuration() :: #{
 %%   <<"DestinationDatabaseName">> => string(),
 %%   <<"DestinationTableName">> => string(),
+%%   <<"PartitionSpec">> => partition_spec(),
 %%   <<"S3ErrorOutputPrefix">> => string(),
 %%   <<"UniqueKeys">> => list(string()())
 %% }
@@ -530,6 +572,17 @@
 %%   <<"Limit">> => integer()
 %% }
 -type list_tags_for_delivery_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% database_snapshot_info() :: #{
+%%   <<"FailureDescription">> => failure_description(),
+%%   <<"Id">> => string(),
+%%   <<"RequestTimestamp">> => non_neg_integer(),
+%%   <<"RequestedBy">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Table">> => string()
+%% }
+-type database_snapshot_info() :: #{binary() => any()}.
 
 %% Example:
 %% snowflake_destination_configuration() :: #{
@@ -703,6 +756,23 @@
 -type kinesis_stream_source_description() :: #{binary() => any()}.
 
 %% Example:
+%% database_source_description() :: #{
+%%   <<"Columns">> => database_column_list(),
+%%   <<"DatabaseSourceAuthenticationConfiguration">> => database_source_authentication_configuration(),
+%%   <<"DatabaseSourceVPCConfiguration">> => database_source_vpc_configuration(),
+%%   <<"Databases">> => database_list(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SSLMode">> => list(any()),
+%%   <<"SnapshotInfo">> => list(database_snapshot_info()()),
+%%   <<"SnapshotWatermarkTable">> => string(),
+%%   <<"SurrogateKeys">> => list(string()()),
+%%   <<"Tables">> => database_table_list(),
+%%   <<"Type">> => list(any())
+%% }
+-type database_source_description() :: #{binary() => any()}.
+
+%% Example:
 %% http_endpoint_retry_options() :: #{
 %%   <<"DurationInSeconds">> => integer()
 %% }
@@ -759,6 +829,12 @@
 %%   <<"VpcConfiguration">> => vpc_configuration()
 %% }
 -type amazonopensearchservice_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% partition_spec() :: #{
+%%   <<"Identity">> => list(partition_field()())
+%% }
+-type partition_spec() :: #{binary() => any()}.
 
 %% Example:
 %% stop_delivery_stream_encryption_input() :: #{
@@ -830,7 +906,9 @@
 %%   <<"RetryOptions">> => retry_options(),
 %%   <<"RoleARN">> => string(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3DestinationDescription">> => s3_destination_description()
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"SchemaEvolutionConfiguration">> => schema_evolution_configuration(),
+%%   <<"TableCreationConfiguration">> => table_creation_configuration()
 %% }
 -type iceberg_destination_description() :: #{binary() => any()}.
 
@@ -957,7 +1035,8 @@
 
 %% Example:
 %% catalog_configuration() :: #{
-%%   <<"CatalogARN">> => string()
+%%   <<"CatalogARN">> => string(),
+%%   <<"WarehouseLocation">> => string()
 %% }
 -type catalog_configuration() :: #{binary() => any()}.
 
@@ -1065,6 +1144,13 @@
 -type data_format_conversion_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% database_list() :: #{
+%%   <<"Exclude">> => list(string()()),
+%%   <<"Include">> => list(string()())
+%% }
+-type database_list() :: #{binary() => any()}.
+
+%% Example:
 %% untag_delivery_stream_input() :: #{
 %%   <<"DeliveryStreamName">> := string(),
 %%   <<"TagKeys">> := list(string()())
@@ -1164,6 +1250,13 @@
 -type put_record_input() :: #{binary() => any()}.
 
 %% Example:
+%% database_table_list() :: #{
+%%   <<"Exclude">> => list(string()()),
+%%   <<"Include">> => list(string()())
+%% }
+-type database_table_list() :: #{binary() => any()}.
+
+%% Example:
 %% deserializer() :: #{
 %%   <<"HiveJsonSerDe">> => hive_json_ser_de(),
 %%   <<"OpenXJsonSerDe">> => open_x_json_ser_de()
@@ -1176,6 +1269,12 @@
 %%   <<"SizeInMBs">> => integer()
 %% }
 -type amazonopensearchservice_buffering_hints() :: #{binary() => any()}.
+
+%% Example:
+%% partition_field() :: #{
+%%   <<"SourceName">> => string()
+%% }
+-type partition_field() :: #{binary() => any()}.
 
 %% Example:
 %% splunk_retry_options() :: #{
@@ -1196,6 +1295,12 @@
 %%   <<"ParameterValue">> => string()
 %% }
 -type processor_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% schema_evolution_configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type schema_evolution_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_delivery_stream_output() :: #{
@@ -1240,6 +1345,12 @@
 %%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
 %% }
 -type http_endpoint_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% table_creation_configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type table_creation_configuration() :: #{binary() => any()}.
 
 -type create_delivery_stream_errors() ::
     limit_exceeded_exception() | 
@@ -1308,31 +1419,31 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a Firehose delivery stream.
+%% @doc Creates a Firehose stream.
 %%
-%% By default, you can create up to 50 delivery streams per Amazon Web
+%% By default, you can create up to 50 Firehose streams per Amazon Web
 %% Services
 %% Region.
 %%
 %% This is an asynchronous operation that immediately returns. The initial
 %% status of the
-%% delivery stream is `CREATING'. After the delivery stream is created,
+%% Firehose stream is `CREATING'. After the Firehose stream is created,
 %% its status
-%% is `ACTIVE' and it now accepts data. If the delivery stream creation
+%% is `ACTIVE' and it now accepts data. If the Firehose stream creation
 %% fails, the
 %% status transitions to `CREATING_FAILED'. Attempts to send data to a
 %% delivery
 %% stream that is not in the `ACTIVE' state cause an exception. To check
 %% the state
-%% of a delivery stream, use `DescribeDeliveryStream'.
+%% of a Firehose stream, use `DescribeDeliveryStream'.
 %%
-%% If the status of a delivery stream is `CREATING_FAILED', this status
+%% If the status of a Firehose stream is `CREATING_FAILED', this status
 %% doesn't change, and you can't invoke `CreateDeliveryStream'
 %% again on it.
 %% However, you can invoke the `DeleteDeliveryStream' operation to delete
 %% it.
 %%
-%% A Firehose delivery stream can be configured to receive records directly
+%% A Firehose stream can be configured to receive records directly
 %% from providers using `PutRecord' or `PutRecordBatch', or it
 %% can be configured to use an existing Kinesis stream as its source. To
 %% specify a Kinesis
@@ -1342,14 +1453,14 @@
 %% (ARN) and role ARN in the `KinesisStreamSourceConfiguration'
 %% parameter.
 %%
-%% To create a delivery stream with server-side encryption (SSE) enabled,
+%% To create a Firehose stream with server-side encryption (SSE) enabled,
 %% include `DeliveryStreamEncryptionConfigurationInput' in your request.
 %% This is
 %% optional. You can also invoke `StartDeliveryStreamEncryption' to turn
 %% on
-%% SSE for an existing delivery stream that doesn't have SSE enabled.
+%% SSE for an existing Firehose stream that doesn't have SSE enabled.
 %%
-%% A delivery stream is configured with a single destination, such as Amazon
+%% A Firehose stream is configured with a single destination, such as Amazon
 %% Simple
 %% Storage Service (Amazon S3), Amazon Redshift, Amazon OpenSearch Service,
 %% Amazon OpenSearch
@@ -1425,28 +1536,28 @@ create_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeliveryStream">>, Input, Options).
 
-%% @doc Deletes a delivery stream and its data.
+%% @doc Deletes a Firehose stream and its data.
 %%
-%% You can delete a delivery stream only if it is in one of the following
+%% You can delete a Firehose stream only if it is in one of the following
 %% states:
 %% `ACTIVE', `DELETING', `CREATING_FAILED', or
-%% `DELETING_FAILED'. You can't delete a delivery stream that is in
+%% `DELETING_FAILED'. You can't delete a Firehose stream that is in
 %% the
-%% `CREATING' state. To check the state of a delivery stream, use
+%% `CREATING' state. To check the state of a Firehose stream, use
 %% `DescribeDeliveryStream'.
 %%
 %% DeleteDeliveryStream is an asynchronous API. When an API request to
-%% DeleteDeliveryStream succeeds, the delivery stream is marked for deletion,
+%% DeleteDeliveryStream succeeds, the Firehose stream is marked for deletion,
 %% and it goes into the
-%% `DELETING' state.While the delivery stream is in the `DELETING'
+%% `DELETING' state.While the Firehose stream is in the `DELETING'
 %% state, the service might
 %% continue to accept records, but it doesn't make any guarantees with
 %% respect to delivering
 %% the data. Therefore, as a best practice, first stop any applications that
 %% are sending
-%% records before you delete a delivery stream.
+%% records before you delete a Firehose stream.
 %%
-%% Removal of a delivery stream that is in the `DELETING' state is a low
+%% Removal of a Firehose stream that is in the `DELETING' state is a low
 %% priority operation for the service. A stream may remain in the
 %% `DELETING' state for several minutes. Therefore, as a best practice,
 %% applications should not wait for streams in the `DELETING' state
@@ -1467,15 +1578,15 @@ delete_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryStream">>, Input, Options).
 
-%% @doc Describes the specified delivery stream and its status.
+%% @doc Describes the specified Firehose stream and its status.
 %%
 %% For example, after your
-%% delivery stream is created, call `DescribeDeliveryStream' to see
+%% Firehose stream is created, call `DescribeDeliveryStream' to see
 %% whether the
-%% delivery stream is `ACTIVE' and therefore ready for data to be sent to
+%% Firehose stream is `ACTIVE' and therefore ready for data to be sent to
 %% it.
 %%
-%% If the status of a delivery stream is `CREATING_FAILED', this status
+%% If the status of a Firehose stream is `CREATING_FAILED', this status
 %% doesn't change, and you can't invoke `CreateDeliveryStream'
 %% again on it.
 %% However, you can invoke the `DeleteDeliveryStream' operation to delete
@@ -1499,21 +1610,21 @@ describe_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryStream">>, Input, Options).
 
-%% @doc Lists your delivery streams in alphabetical order of their names.
+%% @doc Lists your Firehose streams in alphabetical order of their names.
 %%
-%% The number of delivery streams might be too large to return using a single
+%% The number of Firehose streams might be too large to return using a single
 %% call to
-%% `ListDeliveryStreams'. You can limit the number of delivery streams
+%% `ListDeliveryStreams'. You can limit the number of Firehose streams
 %% returned,
 %% using the `Limit' parameter. To determine whether there are more
 %% delivery
 %% streams to list, check the value of `HasMoreDeliveryStreams' in the
 %% output. If
-%% there are more delivery streams to list, you can request them by calling
+%% there are more Firehose streams to list, you can request them by calling
 %% this operation
 %% again and setting the `ExclusiveStartDeliveryStreamName' parameter to
 %% the name
-%% of the last delivery stream returned in the last call.
+%% of the last Firehose stream returned in the last call.
 -spec list_delivery_streams(aws_client:aws_client(), list_delivery_streams_input()) ->
     {ok, list_delivery_streams_output(), tuple()} |
     {error, any()}.
@@ -1528,7 +1639,7 @@ list_delivery_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeliveryStreams">>, Input, Options).
 
-%% @doc Lists the tags for the specified delivery stream.
+%% @doc Lists the tags for the specified Firehose stream.
 %%
 %% This operation has a limit of five
 %% transactions per second per account.
@@ -1548,19 +1659,19 @@ list_tags_for_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForDeliveryStream">>, Input, Options).
 
-%% @doc Writes a single data record into an Amazon Firehose delivery stream.
+%% @doc Writes a single data record into an Firehose stream.
 %%
 %% To
-%% write multiple data records into a delivery stream, use
+%% write multiple data records into a Firehose stream, use
 %% `PutRecordBatch'.
 %% Applications using these operations are referred to as producers.
 %%
-%% By default, each delivery stream can take in up to 2,000 transactions per
+%% By default, each Firehose stream can take in up to 2,000 transactions per
 %% second,
 %% 5,000 records per second, or 5 MB per second. If you use `PutRecord'
 %% and
 %% `PutRecordBatch', the limits are an aggregate across these two
-%% operations for each delivery stream. For more information about limits and
+%% operations for each Firehose stream. For more information about limits and
 %% how to request
 %% an increase, see Amazon
 %% Firehose Limits:
@@ -1568,16 +1679,26 @@ list_tags_for_delivery_stream(Client, Input, Options)
 %%
 %% Firehose accumulates and publishes a particular metric for a customer
 %% account in one minute intervals. It is possible that the bursts of
-%% incoming bytes/records ingested to a delivery stream last only for a few
+%% incoming bytes/records ingested to a Firehose stream last only for a few
 %% seconds. Due to this, the actual spikes in the traffic might not be fully
 %% visible in the customer's 1 minute CloudWatch metrics.
 %%
-%% You must specify the name of the delivery stream and the data record when
+%% You must specify the name of the Firehose stream and the data record when
 %% using `PutRecord'. The data record consists of a data blob that can be
 %% up to 1,000
 %% KiB in size, and any kind of data. For example, it can be a segment from a
 %% log file,
 %% geographic location data, website clickstream data, and so on.
+%%
+%% For multi record de-aggregation, you can not put more than 500 records
+%% even if the
+%% data blob length is less than 1000 KiB. If you include more than 500
+%% records, the request
+%% succeeds but the record de-aggregation doesn't work as expected and
+%% transformation lambda
+%% is invoked with the complete base64 encoded data blob instead of
+%% de-aggregated base64
+%% decoded records.
 %%
 %% Firehose buffers records before delivering them to the destination. To
 %% disambiguate the data blobs at the destination, a common solution is to
@@ -1598,7 +1719,7 @@ list_tags_for_delivery_stream(Client, Input, Options)
 %% (retried) 3
 %% times. If the exception persists, it is possible that the throughput
 %% limits have been
-%% exceeded for the delivery stream.
+%% exceeded for the Firehose stream.
 %%
 %% Re-invoking the Put API operations (for example, PutRecord and
 %% PutRecordBatch) can
@@ -1607,7 +1728,7 @@ list_tags_for_delivery_stream(Client, Input, Options)
 %% retrying Put API operations.
 %%
 %% Data records sent to Firehose are stored for 24 hours from the time they
-%% are added to a delivery stream as it tries to send the records to the
+%% are added to a Firehose stream as it tries to send the records to the
 %% destination. If the
 %% destination is unreachable for more than 24 hours, the data is no longer
 %% available.
@@ -1631,18 +1752,18 @@ put_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecord">>, Input, Options).
 
-%% @doc Writes multiple data records into a delivery stream in a single call,
+%% @doc Writes multiple data records into a Firehose stream in a single call,
 %% which can
 %% achieve higher throughput per producer than when writing single records.
 %%
 %% To write single
-%% data records into a delivery stream, use `PutRecord'. Applications
+%% data records into a Firehose stream, use `PutRecord'. Applications
 %% using
 %% these operations are referred to as producers.
 %%
 %% Firehose accumulates and publishes a particular metric for a customer
 %% account in one minute intervals. It is possible that the bursts of
-%% incoming bytes/records ingested to a delivery stream last only for a few
+%% incoming bytes/records ingested to a Firehose stream last only for a few
 %% seconds. Due to this, the actual spikes in the traffic might not be fully
 %% visible in the customer's 1 minute CloudWatch metrics.
 %%
@@ -1654,12 +1775,22 @@ put_record(Client, Input, Options)
 %% a limit of 4 MB
 %% for the entire request. These limits cannot be changed.
 %%
-%% You must specify the name of the delivery stream and the data record when
+%% You must specify the name of the Firehose stream and the data record when
 %% using `PutRecord'. The data record consists of a data blob that can be
 %% up to 1,000
 %% KB in size, and any kind of data. For example, it could be a segment from
 %% a log file,
 %% geographic location data, website clickstream data, and so on.
+%%
+%% For multi record de-aggregation, you can not put more than 500 records
+%% even if the
+%% data blob length is less than 1000 KiB. If you include more than 500
+%% records, the request
+%% succeeds but the record de-aggregation doesn't work as expected and
+%% transformation lambda
+%% is invoked with the complete base64 encoded data blob instead of
+%% de-aggregated base64
+%% decoded records.
 %%
 %% Firehose buffers records before delivering them to the destination. To
 %% disambiguate the data blobs at the destination, a common solution is to
@@ -1711,7 +1842,7 @@ put_record(Client, Input, Options)
 %% If `PutRecordBatch' throws `ServiceUnavailableException',
 %% the API is automatically reinvoked (retried) 3 times. If the exception
 %% persists, it is
-%% possible that the throughput limits have been exceeded for the delivery
+%% possible that the throughput limits have been exceeded for the Firehose
 %% stream.
 %%
 %% Re-invoking the Put API operations (for example, PutRecord and
@@ -1721,7 +1852,7 @@ put_record(Client, Input, Options)
 %% retrying Put API operations.
 %%
 %% Data records sent to Firehose are stored for 24 hours from the time they
-%% are added to a delivery stream as it attempts to send the records to the
+%% are added to a Firehose stream as it attempts to send the records to the
 %% destination. If
 %% the destination is unreachable for more than 24 hours, the data is no
 %% longer
@@ -1746,30 +1877,30 @@ put_record_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecordBatch">>, Input, Options).
 
-%% @doc Enables server-side encryption (SSE) for the delivery stream.
+%% @doc Enables server-side encryption (SSE) for the Firehose stream.
 %%
 %% This operation is asynchronous. It returns immediately. When you invoke
 %% it, Firehose first sets the encryption status of the stream to
 %% `ENABLING', and then
-%% to `ENABLED'. The encryption status of a delivery stream is the
+%% to `ENABLED'. The encryption status of a Firehose stream is the
 %% `Status' property in `DeliveryStreamEncryptionConfiguration'.
 %% If the operation fails, the encryption status changes to
 %% `ENABLING_FAILED'. You
-%% can continue to read and write data to your delivery stream while the
+%% can continue to read and write data to your Firehose stream while the
 %% encryption status is
 %% `ENABLING', but the data is not encrypted. It can take up to 5 seconds
 %% after
 %% the encryption status changes to `ENABLED' before all records written
 %% to the
-%% delivery stream are encrypted. To find out whether a record or a batch of
+%% Firehose stream are encrypted. To find out whether a record or a batch of
 %% records was
 %% encrypted, check the response elements `PutRecordOutput$Encrypted' and
 %% `PutRecordBatchOutput$Encrypted', respectively.
 %%
-%% To check the encryption status of a delivery stream, use
+%% To check the encryption status of a Firehose stream, use
 %% `DescribeDeliveryStream'.
 %%
-%% Even if encryption is currently enabled for a delivery stream, you can
+%% Even if encryption is currently enabled for a Firehose stream, you can
 %% still invoke this
 %% operation on it to change the ARN of the CMK or both its type and ARN. If
 %% you invoke this
@@ -1786,14 +1917,14 @@ put_record_batch(Client, Input, Options)
 %% `StartDeliveryStreamEncryption' and `CreateDeliveryStream' should
 %% not be called with session credentials that are more than 6 hours old.
 %%
-%% If a delivery stream already has encryption enabled and then you invoke
+%% If a Firehose stream already has encryption enabled and then you invoke
 %% this operation
 %% to change the ARN of the CMK or both its type and ARN and you get
 %% `ENABLING_FAILED', this only means that the attempt to change the CMK
 %% failed.
 %% In this case, encryption remains enabled with the old CMK.
 %%
-%% If the encryption status of your delivery stream is `ENABLING_FAILED',
+%% If the encryption status of your Firehose stream is `ENABLING_FAILED',
 %% you
 %% can invoke this operation again with a valid CMK. The CMK must be enabled
 %% and the key
@@ -1801,17 +1932,17 @@ put_record_batch(Client, Input, Options)
 %% KMS
 %% encrypt and decrypt operations.
 %%
-%% You can enable SSE for a delivery stream only if it's a delivery
+%% You can enable SSE for a Firehose stream only if it's a Firehose
 %% stream that uses
 %% `DirectPut' as its source.
 %%
 %% The `StartDeliveryStreamEncryption' and
 %% `StopDeliveryStreamEncryption' operations have a combined limit of 25
 %% calls
-%% per delivery stream per 24 hours. For example, you reach the limit if you
+%% per Firehose stream per 24 hours. For example, you reach the limit if you
 %% call
 %% `StartDeliveryStreamEncryption' 13 times and
-%% `StopDeliveryStreamEncryption' 12 times for the same delivery stream
+%% `StopDeliveryStreamEncryption' 12 times for the same Firehose stream
 %% in a
 %% 24-hour period.
 -spec start_delivery_stream_encryption(aws_client:aws_client(), start_delivery_stream_encryption_input()) ->
@@ -1830,7 +1961,7 @@ start_delivery_stream_encryption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDeliveryStreamEncryption">>, Input, Options).
 
-%% @doc Disables server-side encryption (SSE) for the delivery stream.
+%% @doc Disables server-side encryption (SSE) for the Firehose stream.
 %%
 %% This operation is asynchronous. It returns immediately. When you invoke
 %% it, Firehose first sets the encryption status of the stream to
@@ -1839,14 +1970,14 @@ start_delivery_stream_encryption(Client, Input, Options)
 %% while its
 %% status is `DISABLING'. It can take up to 5 seconds after the
 %% encryption status
-%% changes to `DISABLED' before all records written to the delivery
+%% changes to `DISABLED' before all records written to the Firehose
 %% stream are no
 %% longer subject to encryption. To find out whether a record or a batch of
 %% records was
 %% encrypted, check the response elements `PutRecordOutput$Encrypted' and
 %% `PutRecordBatchOutput$Encrypted', respectively.
 %%
-%% To check the encryption state of a delivery stream, use
+%% To check the encryption state of a Firehose stream, use
 %% `DescribeDeliveryStream'.
 %%
 %% If SSE is enabled using a customer managed CMK and then you invoke
@@ -1858,10 +1989,10 @@ start_delivery_stream_encryption(Client, Input, Options)
 %% The `StartDeliveryStreamEncryption' and
 %% `StopDeliveryStreamEncryption' operations have a combined limit of 25
 %% calls
-%% per delivery stream per 24 hours. For example, you reach the limit if you
+%% per Firehose stream per 24 hours. For example, you reach the limit if you
 %% call
 %% `StartDeliveryStreamEncryption' 13 times and
-%% `StopDeliveryStreamEncryption' 12 times for the same delivery stream
+%% `StopDeliveryStreamEncryption' 12 times for the same Firehose stream
 %% in a
 %% 24-hour period.
 -spec stop_delivery_stream_encryption(aws_client:aws_client(), stop_delivery_stream_encryption_input()) ->
@@ -1880,7 +2011,7 @@ stop_delivery_stream_encryption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDeliveryStreamEncryption">>, Input, Options).
 
-%% @doc Adds or updates tags for the specified delivery stream.
+%% @doc Adds or updates tags for the specified Firehose stream.
 %%
 %% A tag is a key-value pair
 %% that you can define and assign to Amazon Web Services resources. If you
@@ -1889,7 +2020,7 @@ stop_delivery_stream_encryption(Client, Input, Options)
 %% in the request.
 %% Tags are metadata. For example, you can add friendly names and
 %% descriptions or other types
-%% of information that can help you distinguish the delivery stream. For more
+%% of information that can help you distinguish the Firehose stream. For more
 %% information
 %% about tags, see Using Cost Allocation
 %% Tags:
@@ -1897,7 +2028,7 @@ stop_delivery_stream_encryption(Client, Input, Options)
 %% in the Amazon Web Services Billing and Cost Management User
 %% Guide.
 %%
-%% Each delivery stream can have up to 50 tags.
+%% Each Firehose stream can have up to 50 tags.
 %%
 %% This operation has a limit of five transactions per second per account.
 -spec tag_delivery_stream(aws_client:aws_client(), tag_delivery_stream_input()) ->
@@ -1916,7 +2047,7 @@ tag_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagDeliveryStream">>, Input, Options).
 
-%% @doc Removes tags from the specified delivery stream.
+%% @doc Removes tags from the specified Firehose stream.
 %%
 %% Removed tags are deleted, and you
 %% can't recover them after this operation successfully completes.
@@ -1940,7 +2071,7 @@ untag_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagDeliveryStream">>, Input, Options).
 
-%% @doc Updates the specified destination of the specified delivery stream.
+%% @doc Updates the specified destination of the specified Firehose stream.
 %%
 %% Use this operation to change the destination type (for example, to replace
 %% the Amazon
@@ -1948,9 +2079,9 @@ untag_delivery_stream(Client, Input, Options)
 %% with a destination
 %% (for example, to change the bucket name of the Amazon S3 destination). The
 %% update might not
-%% occur immediately. The target delivery stream remains active while the
+%% occur immediately. The target Firehose stream remains active while the
 %% configurations are
-%% updated, so data writes to the delivery stream can continue during this
+%% updated, so data writes to the Firehose stream can continue during this
 %% process. The
 %% updated configurations are usually effective within a few minutes.
 %%

@@ -542,15 +542,25 @@
 
 
 %% Example:
+%% sse_aws_key_management_params() :: #{
+%%   <<"AwsKmsEncryptionContext">> => string(),
+%%   <<"AwsKmsKeyId">> => string()
+%% }
+-type sse_aws_key_management_params() :: #{binary() => any()}.
+
+
+%% Example:
 %% media_capture_pipeline() :: #{
 %%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_configuration(),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"MediaPipelineArn">> => string(),
 %%   <<"MediaPipelineId">> => string(),
 %%   <<"SinkArn">> => string(),
+%%   <<"SinkIamRoleArn">> => string(),
 %%   <<"SinkType">> => list(any()),
 %%   <<"SourceArn">> => string(),
 %%   <<"SourceType">> => list(any()),
+%%   <<"SseAwsKeyManagementParams">> => sse_aws_key_management_params(),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
@@ -995,9 +1005,11 @@
 %%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_configuration(),
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"SinkArn">> := string(),
+%%   <<"SinkIamRoleArn">> => string(),
 %%   <<"SinkType">> := list(any()),
 %%   <<"SourceArn">> := string(),
 %%   <<"SourceType">> := list(any()),
+%%   <<"SseAwsKeyManagementParams">> => sse_aws_key_management_params(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_media_capture_pipeline_request() :: #{binary() => any()}.
