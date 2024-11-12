@@ -9888,8 +9888,8 @@ list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the list of CloudFront origin access controls in this Amazon Web
-%% Services account.
+%% @doc Gets the list of CloudFront origin access controls (OACs) in this
+%% Amazon Web Services account.
 %%
 %% You can optionally specify the maximum number of items to receive in the
 %% response. If
@@ -9900,6 +9900,11 @@ list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
 %% request that specifies the `NextMarker' value from the current
 %% response as
 %% the `Marker' value in the next request.
+%%
+%% If you're not using origin access controls for your Amazon Web
+%% Services account, the
+%% `ListOriginAccessControls' operation doesn't return the
+%% `Items' element in the response.
 -spec list_origin_access_controls(aws_client:aws_client()) ->
     {ok, list_origin_access_controls_result(), tuple()} |
     {error, any()} |
@@ -10638,14 +10643,15 @@ update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
 %% Note
 %% the following important requirements and restrictions:
 %%
-%% You must rename the `ETag' field to `IfMatch',
-%% leaving the value unchanged. (Set the value of `IfMatch' to
-%% the value of `ETag', then remove the `ETag'
-%% field.)
+%% You must copy the `ETag' field value from the response. (You'll
+%% use it for the `IfMatch' parameter in your request.) Then, remove the
+%% `ETag'
+%% field from the distribution configuration.
 %%
 %% You can't change the value of `CallerReference'.
 %%
-%% Submit an `UpdateDistribution' request, providing the distribution
+%% Submit an `UpdateDistribution' request, providing the updated
+%% distribution
 %% configuration. The new configuration replaces the existing configuration.
 %% The
 %% values that you specify in an `UpdateDistribution' request are not

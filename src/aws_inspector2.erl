@@ -2245,6 +2245,7 @@
 %% package_filter() :: #{
 %%   <<"architecture">> => string_filter(),
 %%   <<"epoch">> => number_filter(),
+%%   <<"filePath">> => string_filter(),
 %%   <<"name">> => string_filter(),
 %%   <<"release">> => string_filter(),
 %%   <<"sourceLambdaLayerArn">> => string_filter(),
@@ -4236,7 +4237,7 @@ list_cis_scans(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists coverage details for you environment.
+%% @doc Lists coverage details for your environment.
 -spec list_coverage(aws_client:aws_client(), list_coverage_request()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
@@ -4746,7 +4747,7 @@ start_cis_session(Client, Input0, Options0) ->
 %%
 %% This API is used by the Amazon Inspector SSM plugin to communicate with
 %% the Amazon Inspector service.
-%% The Amazon Inspector SSM plugin calls this API to start a CIS scan session
+%% The Amazon Inspector SSM plugin calls this API to stop a CIS scan session
 %% for the scan ID supplied by the service.
 -spec stop_cis_session(aws_client:aws_client(), stop_cis_session_request()) ->
     {ok, stop_cis_session_response(), tuple()} |

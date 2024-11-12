@@ -46,18 +46,24 @@
          get_outpost_instance_types/2,
          get_outpost_instance_types/4,
          get_outpost_instance_types/5,
-         get_outpost_supported_instance_types/3,
+         get_outpost_supported_instance_types/2,
+         get_outpost_supported_instance_types/4,
          get_outpost_supported_instance_types/5,
-         get_outpost_supported_instance_types/6,
          get_site/2,
          get_site/4,
          get_site/5,
          get_site_address/3,
          get_site_address/5,
          get_site_address/6,
+         list_asset_instances/2,
+         list_asset_instances/4,
+         list_asset_instances/5,
          list_assets/2,
          list_assets/4,
          list_assets/5,
+         list_blocking_instances_for_capacity_task/3,
+         list_blocking_instances_for_capacity_task/5,
+         list_blocking_instances_for_capacity_task/6,
          list_capacity_tasks/1,
          list_capacity_tasks/3,
          list_capacity_tasks/4,
@@ -105,7 +111,7 @@
 %% get_outpost_supported_instance_types_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OrderId">> := string()
+%%   <<"OrderId">> => string()
 %% }
 -type get_outpost_supported_instance_types_input() :: #{binary() => any()}.
 
@@ -124,6 +130,15 @@
 %%   <<"VCPUs">> => integer()
 %% }
 -type instance_type_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% blocking_instance() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AwsServiceName">> => list(any()),
+%%   <<"InstanceId">> => string()
+%% }
+-type blocking_instance() :: #{binary() => any()}.
 
 
 %% Example:
@@ -149,6 +164,18 @@
 %%   <<"StatusFilter">> => list(list(any())())
 %% }
 -type list_assets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_instances_input() :: #{
+%%   <<"AccountIdFilter">> => list(string()()),
+%%   <<"AssetIdFilter">> => list(string()()),
+%%   <<"AwsServiceFilter">> => list(list(any())()),
+%%   <<"InstanceTypeFilter">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_instances_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -350,12 +377,28 @@
 
 
 %% Example:
+%% list_asset_instances_output() :: #{
+%%   <<"AssetInstances">> => list(asset_instance()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_instances_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceType">> => list(any())
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_instance_type_capacity() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"InstanceType">> => string()
+%% }
+-type asset_instance_type_capacity() :: #{binary() => any()}.
 
 %% Example:
 %% get_catalog_item_input() :: #{}
@@ -420,6 +463,14 @@
 %%   <<"OperatingAddressStateOrRegionFilter">> => list(string()())
 %% }
 -type list_sites_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_blocking_instances_for_capacity_task_output() :: #{
+%%   <<"BlockingInstances">> => list(blocking_instance()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_blocking_instances_for_capacity_task_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -489,10 +540,12 @@
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"Failed">> => capacity_task_failure(),
+%%   <<"InstancesToExclude">> => instances_to_exclude(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"OrderId">> => string(),
 %%   <<"OutpostId">> => string(),
-%%   <<"RequestedInstancePools">> => list(instance_type_capacity()())
+%%   <<"RequestedInstancePools">> => list(instance_type_capacity()()),
+%%   <<"TaskActionOnBlockingInstances">> => list(any())
 %% }
 -type start_capacity_task_output() :: #{binary() => any()}.
 
@@ -509,7 +562,9 @@
 %% start_capacity_task_input() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstancePools">> := list(instance_type_capacity()()),
-%%   <<"OrderId">> := string()
+%%   <<"InstancesToExclude">> => instances_to_exclude(),
+%%   <<"OrderId">> => string(),
+%%   <<"TaskActionOnBlockingInstances">> => list(any())
 %% }
 -type start_capacity_task_input() :: #{binary() => any()}.
 
@@ -545,6 +600,8 @@
 %% compute_attributes() :: #{
 %%   <<"HostId">> => string(),
 %%   <<"InstanceFamilies">> => list(string()()),
+%%   <<"InstanceTypeCapacities">> => list(asset_instance_type_capacity()()),
+%%   <<"MaxVcpus">> => integer(),
 %%   <<"State">> => list(any())
 %% }
 -type compute_attributes() :: #{binary() => any()}.
@@ -592,6 +649,15 @@
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% instances_to_exclude() :: #{
+%%   <<"AccountIds">> => list(string()()),
+%%   <<"Instances">> => list(string()()),
+%%   <<"Services">> => list(list(any())())
+%% }
+-type instances_to_exclude() :: #{binary() => any()}.
 
 %% Example:
 %% delete_site_input() :: #{}
@@ -659,6 +725,14 @@
 %%   <<"OutpostIdentifierFilter">> => string()
 %% }
 -type list_capacity_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_blocking_instances_for_capacity_task_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_blocking_instances_for_capacity_task_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -783,6 +857,17 @@
 
 
 %% Example:
+%% asset_instance() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AssetId">> => string(),
+%%   <<"AwsServiceName">> => list(any()),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceType">> => string()
+%% }
+-type asset_instance() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_site_rack_physical_properties_output() :: #{
 %%   <<"Site">> => site()
 %% }
@@ -823,10 +908,12 @@
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"Failed">> => capacity_task_failure(),
+%%   <<"InstancesToExclude">> => instances_to_exclude(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"OrderId">> => string(),
 %%   <<"OutpostId">> => string(),
-%%   <<"RequestedInstancePools">> => list(instance_type_capacity()())
+%%   <<"RequestedInstancePools">> => list(instance_type_capacity()()),
+%%   <<"TaskActionOnBlockingInstances">> => list(any())
 %% }
 -type get_capacity_task_output() :: #{binary() => any()}.
 
@@ -946,7 +1033,19 @@
     internal_server_exception() | 
     not_found_exception().
 
+-type list_asset_instances_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
 -type list_assets_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type list_blocking_instances_for_capacity_task_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1521,34 +1620,33 @@ get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the instance types that an
-%% Outpost can support in `InstanceTypeCapacity'.
+%% @doc Gets the instance types that an Outpost can support in
+%% `InstanceTypeCapacity'.
 %%
-%% This will generally include instance types that
-%% are not currently configured and therefore cannot be launched with the
-%% current Outpost
-%% capacity configuration.
--spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+%% This will generally include instance types that are not currently
+%% configured and therefore
+%% cannot be launched with the current Outpost capacity configuration.
+-spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list()) ->
     {ok, get_outpost_supported_instance_types_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_supported_instance_types_errors(), tuple()}.
-get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId)
+get_outpost_supported_instance_types(Client, OutpostIdentifier)
   when is_map(Client) ->
-    get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, #{}, #{}).
+    get_outpost_supported_instance_types(Client, OutpostIdentifier, #{}, #{}).
 
--spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_outpost_supported_instance_types_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_supported_instance_types_errors(), tuple()}.
-get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, QueryMap, HeadersMap)
+get_outpost_supported_instance_types(Client, OutpostIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, QueryMap, HeadersMap, []).
+    get_outpost_supported_instance_types(Client, OutpostIdentifier, QueryMap, HeadersMap, []).
 
--spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_outpost_supported_instance_types_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_supported_instance_types_errors(), tuple()}.
-get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, QueryMap, HeadersMap, Options0)
+get_outpost_supported_instance_types(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/supportedInstanceTypes"],
     SuccessStatusCode = 200,
@@ -1564,7 +1662,7 @@ get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, QueryMa
       [
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"OrderId">>, OrderId}
+        {<<"OrderId">>, maps:get(<<"OrderId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1648,6 +1746,55 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc A list of Amazon EC2 instances, belonging to all accounts, running on
+%% the specified Outpost.
+%%
+%% Does not include Amazon EBS or Amazon S3 instances.
+-spec list_asset_instances(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_asset_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_instances_errors(), tuple()}.
+list_asset_instances(Client, OutpostIdentifier)
+  when is_map(Client) ->
+    list_asset_instances(Client, OutpostIdentifier, #{}, #{}).
+
+-spec list_asset_instances(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_asset_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_instances_errors(), tuple()}.
+list_asset_instances(Client, OutpostIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_instances(Client, OutpostIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_asset_instances(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_instances_errors(), tuple()}.
+list_asset_instances(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/assetInstances"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"AccountIdFilter">>, maps:get(<<"AccountIdFilter">>, QueryMap, undefined)},
+        {<<"AssetIdFilter">>, maps:get(<<"AssetIdFilter">>, QueryMap, undefined)},
+        {<<"AwsServiceFilter">>, maps:get(<<"AwsServiceFilter">>, QueryMap, undefined)},
+        {<<"InstanceTypeFilter">>, maps:get(<<"InstanceTypeFilter">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the hardware assets for the specified Outpost.
 %%
 %% Use filters to return specific results. If you specify multiple filters,
@@ -1693,6 +1840,53 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
         {<<"StatusFilter">>, maps:get(<<"StatusFilter">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc A list of Amazon EC2 instances running on the Outpost and belonging
+%% to the account that
+%% initiated the capacity task.
+%%
+%% Use this list to specify the instances you cannot stop to free up
+%% capacity to run the capacity task.
+-spec list_blocking_instances_for_capacity_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_blocking_instances_for_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, list_blocking_instances_for_capacity_task_errors(), tuple()}.
+list_blocking_instances_for_capacity_task(Client, CapacityTaskId, OutpostIdentifier)
+  when is_map(Client) ->
+    list_blocking_instances_for_capacity_task(Client, CapacityTaskId, OutpostIdentifier, #{}, #{}).
+
+-spec list_blocking_instances_for_capacity_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_blocking_instances_for_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, list_blocking_instances_for_capacity_task_errors(), tuple()}.
+list_blocking_instances_for_capacity_task(Client, CapacityTaskId, OutpostIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_blocking_instances_for_capacity_task(Client, CapacityTaskId, OutpostIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_blocking_instances_for_capacity_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_blocking_instances_for_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, list_blocking_instances_for_capacity_task_errors(), tuple()}.
+list_blocking_instances_for_capacity_task(Client, CapacityTaskId, OutpostIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/capacity/", aws_util:encode_uri(CapacityTaskId), "/blockingInstances"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1986,7 +2180,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts the specified capacity task.
 %%
-%% You can have one active capacity task for an order.
+%% You can have one active capacity task per order or Outpost.
 -spec start_capacity_task(aws_client:aws_client(), binary() | list(), start_capacity_task_input()) ->
     {ok, start_capacity_task_output(), tuple()} |
     {error, any()} |

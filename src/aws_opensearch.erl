@@ -21,6 +21,8 @@
          add_tags/3,
          associate_package/4,
          associate_package/5,
+         associate_packages/2,
+         associate_packages/3,
          authorize_vpc_endpoint_access/3,
          authorize_vpc_endpoint_access/4,
          cancel_domain_config_change/3,
@@ -93,6 +95,8 @@
          describe_vpc_endpoints/3,
          dissociate_package/4,
          dissociate_package/5,
+         dissociate_packages/2,
+         dissociate_packages/3,
          get_application/2,
          get_application/4,
          get_application/5,
@@ -173,6 +177,8 @@
          update_domain_config/4,
          update_package/2,
          update_package/3,
+         update_package_scope/2,
+         update_package_scope/3,
          update_scheduled_action/3,
          update_scheduled_action/4,
          update_vpc_endpoint/2,
@@ -258,6 +264,15 @@
 
 
 %% Example:
+%% update_package_scope_request() :: #{
+%%   <<"Operation">> := list(any()),
+%%   <<"PackageID">> := string(),
+%%   <<"PackageUserList">> := list(string()())
+%% }
+-type update_package_scope_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_domain_response() :: #{
 %%   <<"DomainStatus">> => domain_status()
 %% }
@@ -270,6 +285,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_domain_auto_tunes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_vending_options() :: #{
+%%   <<"VendingEnabled">> => boolean()
+%% }
+-type package_vending_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -314,6 +336,15 @@
 
 
 %% Example:
+%% update_package_scope_response() :: #{
+%%   <<"Operation">> => list(any()),
+%%   <<"PackageID">> => string(),
+%%   <<"PackageUserList">> => list(string()())
+%% }
+-type update_package_scope_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% snapshot_options() :: #{
 %%   <<"AutomatedSnapshotStartHour">> => integer()
 %% }
@@ -325,6 +356,13 @@
 %%   <<"ScheduledAutoTuneDetails">> => scheduled_auto_tune_details()
 %% }
 -type auto_tune_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% dissociate_packages_response() :: #{
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details()())
+%% }
+-type dissociate_packages_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -344,6 +382,8 @@
 
 %% Example:
 %% package_details() :: #{
+%%   <<"AllowListedUserList">> => list(string()()),
+%%   <<"AvailablePackageConfiguration">> => package_configuration(),
 %%   <<"AvailablePackageVersion">> => string(),
 %%   <<"AvailablePluginProperties">> => plugin_properties(),
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -351,10 +391,13 @@
 %%   <<"ErrorDetails">> => error_details(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"PackageDescription">> => string(),
+%%   <<"PackageEncryptionOptions">> => package_encryption_options(),
 %%   <<"PackageID">> => string(),
 %%   <<"PackageName">> => string(),
+%%   <<"PackageOwner">> => string(),
 %%   <<"PackageStatus">> => list(any()),
-%%   <<"PackageType">> => list(any())
+%%   <<"PackageType">> => list(any()),
+%%   <<"PackageVendingOptions">> => package_vending_options()
 %% }
 -type package_details() :: #{binary() => any()}.
 
@@ -387,10 +430,14 @@
 
 %% Example:
 %% create_package_request() :: #{
+%%   <<"EngineVersion">> => string(),
+%%   <<"PackageConfiguration">> => package_configuration(),
 %%   <<"PackageDescription">> => string(),
+%%   <<"PackageEncryptionOptions">> => package_encryption_options(),
 %%   <<"PackageName">> := string(),
 %%   <<"PackageSource">> := package_source(),
-%%   <<"PackageType">> := list(any())
+%%   <<"PackageType">> := list(any()),
+%%   <<"PackageVendingOptions">> => package_vending_options()
 %% }
 -type create_package_request() :: #{binary() => any()}.
 
@@ -405,6 +452,16 @@
 %%   <<"UpdateVersion">> => integer()
 %% }
 -type auto_tune_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_configuration() :: #{
+%%   <<"ConfigurationRequirement">> => list(any()),
+%%   <<"LicenseFilepath">> => string(),
+%%   <<"LicenseRequirement">> => list(any()),
+%%   <<"RequiresRestartForConfigurationUpdate">> => boolean()
+%% }
+-type package_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -507,6 +564,13 @@
 %%   <<"WarmEnabled">> => boolean()
 %% }
 -type instance_type_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_association_configuration() :: #{
+%%   <<"KeyStoreAccessOption">> => key_store_access_option()
+%% }
+-type package_association_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -683,6 +747,13 @@
 %%   <<"Message">> => string()
 %% }
 -type update_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_packages_response() :: #{
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details()())
+%% }
+-type associate_packages_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1414,7 +1485,9 @@
 %% Example:
 %% update_package_request() :: #{
 %%   <<"CommitMessage">> => string(),
+%%   <<"PackageConfiguration">> => package_configuration(),
 %%   <<"PackageDescription">> => string(),
+%%   <<"PackageEncryptionOptions">> => package_encryption_options(),
 %%   <<"PackageID">> := string(),
 %%   <<"PackageSource">> := package_source()
 %% }
@@ -1442,9 +1515,13 @@
 %% }
 -type plugin_properties() :: #{binary() => any()}.
 
+
 %% Example:
-%% associate_package_request() :: #{}
--type associate_package_request() :: #{}.
+%% associate_package_request() :: #{
+%%   <<"AssociationConfiguration">> => package_association_configuration(),
+%%   <<"PrerequisitePackageIDList">> => list(string()())
+%% }
+-type associate_package_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1762,6 +1839,14 @@
 
 
 %% Example:
+%% key_store_access_option() :: #{
+%%   <<"KeyAccessRoleArn">> => string(),
+%%   <<"KeyStoreAccessEnabled">> => boolean()
+%% }
+-type key_store_access_option() :: #{binary() => any()}.
+
+
+%% Example:
 %% dissociate_package_response() :: #{
 %%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
@@ -1796,6 +1881,15 @@
 %%   <<"iamRoleForIdentityCenterApplicationArn">> => string()
 %% }
 -type iam_identity_center_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_details_for_association() :: #{
+%%   <<"AssociationConfiguration">> => package_association_configuration(),
+%%   <<"PackageID">> => string(),
+%%   <<"PrerequisitePackageIDList">> => list(string()())
+%% }
+-type package_details_for_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1868,6 +1962,14 @@
 %%   <<"NodeType">> => list(any())
 %% }
 -type node_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_encryption_options() :: #{
+%%   <<"EncryptionEnabled">> => boolean(),
+%%   <<"KmsKeyIdentifier">> => string()
+%% }
+-type package_encryption_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2202,6 +2304,7 @@
 
 %% Example:
 %% domain_package_details() :: #{
+%%   <<"AssociationConfiguration">> => package_association_configuration(),
 %%   <<"DomainName">> => string(),
 %%   <<"DomainPackageStatus">> => list(any()),
 %%   <<"ErrorDetails">> => error_details(),
@@ -2210,6 +2313,7 @@
 %%   <<"PackageName">> => string(),
 %%   <<"PackageType">> => list(any()),
 %%   <<"PackageVersion">> => string(),
+%%   <<"PrerequisitePackageIDList">> => list(string()()),
 %%   <<"ReferencePath">> => string()
 %% }
 -type domain_package_details() :: #{binary() => any()}.
@@ -2255,6 +2359,7 @@
 %% package_version_history() :: #{
 %%   <<"CommitMessage">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"PackageConfiguration">> => package_configuration(),
 %%   <<"PackageVersion">> => string(),
 %%   <<"PluginProperties">> => plugin_properties()
 %% }
@@ -2290,6 +2395,14 @@
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type remove_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_packages_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"PackageList">> := list(package_details_for_association()())
+%% }
+-type associate_packages_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2507,6 +2620,14 @@
 
 
 %% Example:
+%% dissociate_packages_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"PackageList">> := list(string()())
+%% }
+-type dissociate_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% master_user_options() :: #{
 %%   <<"MasterUserARN">> => string(),
 %%   <<"MasterUserName">> => string(),
@@ -2541,6 +2662,14 @@
     internal_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type associate_packages_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
 
 -type authorize_vpc_endpoint_access_errors() ::
     limit_exceeded_exception() | 
@@ -2748,6 +2877,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type dissociate_packages_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    disabled_operation_exception().
+
 -type get_application_errors() ::
     base_exception() | 
     validation_exception() | 
@@ -2952,6 +3089,13 @@
     internal_exception() | 
     resource_not_found_exception().
 
+-type update_package_scope_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type update_scheduled_action_errors() ::
     limit_exceeded_exception() | 
     base_exception() | 
@@ -3120,6 +3264,41 @@ associate_package(Client, DomainName, PackageID, Input) ->
 associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/associate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Operation in the Amazon OpenSearch Service API for associating
+%% multiple packages with a domain simultaneously.
+-spec associate_packages(aws_client:aws_client(), associate_packages_request()) ->
+    {ok, associate_packages_response(), tuple()} |
+    {error, any()} |
+    {error, associate_packages_errors(), tuple()}.
+associate_packages(Client, Input) ->
+    associate_packages(Client, Input, []).
+
+-spec associate_packages(aws_client:aws_client(), associate_packages_request(), proplists:proplist()) ->
+    {ok, associate_packages_response(), tuple()} |
+    {error, any()} |
+    {error, associate_packages_errors(), tuple()}.
+associate_packages(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/packages/associateMultiple"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4342,6 +4521,40 @@ dissociate_package(Client, DomainName, PackageID, Input) ->
 dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/dissociate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Dissociates multiple packages from a domain simulatneously.
+-spec dissociate_packages(aws_client:aws_client(), dissociate_packages_request()) ->
+    {ok, dissociate_packages_response(), tuple()} |
+    {error, any()} |
+    {error, dissociate_packages_errors(), tuple()}.
+dissociate_packages(Client, Input) ->
+    dissociate_packages(Client, Input, []).
+
+-spec dissociate_packages(aws_client:aws_client(), dissociate_packages_request(), proplists:proplist()) ->
+    {ok, dissociate_packages_response(), tuple()} |
+    {error, any()} |
+    {error, dissociate_packages_errors(), tuple()}.
+dissociate_packages(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/packages/dissociateMultiple"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5586,6 +5799,42 @@ update_package(Client, Input) ->
 update_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the scope of a package.
+%%
+%% Scope of the package defines users who can view and associate a package.
+-spec update_package_scope(aws_client:aws_client(), update_package_scope_request()) ->
+    {ok, update_package_scope_response(), tuple()} |
+    {error, any()} |
+    {error, update_package_scope_errors(), tuple()}.
+update_package_scope(Client, Input) ->
+    update_package_scope(Client, Input, []).
+
+-spec update_package_scope(aws_client:aws_client(), update_package_scope_request(), proplists:proplist()) ->
+    {ok, update_package_scope_response(), tuple()} |
+    {error, any()} |
+    {error, update_package_scope_errors(), tuple()}.
+update_package_scope(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/packages/updateScope"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
