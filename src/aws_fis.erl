@@ -119,6 +119,13 @@
 
 
 %% Example:
+%% experiment_report_configuration_outputs() :: #{
+%%   <<"s3Configuration">> => experiment_report_configuration_outputs_s3_configuration()
+%% }
+-type experiment_report_configuration_outputs() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -143,6 +150,16 @@
 %%   <<"targetAccountConfiguration">> => experiment_target_account_configuration()
 %% }
 -type get_experiment_target_account_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_experiment_template_report_configuration_input() :: #{
+%%   <<"dataSources">> => experiment_template_report_configuration_data_sources_input(),
+%%   <<"outputs">> => experiment_template_report_configuration_outputs_input(),
+%%   <<"postExperimentDuration">> => string(),
+%%   <<"preExperimentDuration">> => string()
+%% }
+-type create_experiment_template_report_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -189,6 +206,13 @@
 
 
 %% Example:
+%% experiment_report_configuration_data_sources() :: #{
+%%   <<"cloudWatchDashboards">> => list(experiment_report_configuration_cloud_watch_dashboard()())
+%% }
+-type experiment_report_configuration_data_sources() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_experiment_templates_response() :: #{
 %%   <<"experimentTemplates">> => list(experiment_template_summary()()),
 %%   <<"nextToken">> => string()
@@ -201,6 +225,7 @@
 %%   <<"actions">> => map(),
 %%   <<"description">> => string(),
 %%   <<"experimentOptions">> => update_experiment_template_experiment_options_input(),
+%%   <<"experimentReportConfiguration">> => update_experiment_template_report_configuration_input(),
 %%   <<"logConfiguration">> => update_experiment_template_log_configuration_input(),
 %%   <<"roleArn">> => string(),
 %%   <<"stopConditions">> => list(update_experiment_template_stop_condition_input()()),
@@ -253,6 +278,14 @@
 %%   <<"roleArn">> => string()
 %% }
 -type target_account_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_s3_report() :: #{
+%%   <<"arn">> => string(),
+%%   <<"reportType">> => string()
+%% }
+-type experiment_report_s3_report() :: #{binary() => any()}.
 
 %% Example:
 %% get_experiment_template_request() :: #{}
@@ -311,10 +344,26 @@
 
 
 %% Example:
+%% report_configuration_s3_output_input() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type report_configuration_s3_output_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_target_account_configuration_response() :: #{
 %%   <<"targetAccountConfiguration">> => target_account_configuration()
 %% }
 -type create_target_account_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_configuration_outputs_s3_configuration() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type experiment_report_configuration_outputs_s3_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -323,6 +372,13 @@
 %%   <<"targetAccountConfigurations">> => list(experiment_target_account_configuration_summary()())
 %% }
 -type list_experiment_target_account_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_configuration_cloud_watch_dashboard() :: #{
+%%   <<"dashboardIdentifier">> => string()
+%% }
+-type experiment_report_configuration_cloud_watch_dashboard() :: #{binary() => any()}.
 
 %% Example:
 %% delete_target_account_configuration_request() :: #{}
@@ -383,6 +439,13 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_configuration_cloud_watch_dashboard_input() :: #{
+%%   <<"dashboardIdentifier">> => string()
+%% }
+-type report_configuration_cloud_watch_dashboard_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -470,6 +533,13 @@
 
 
 %% Example:
+%% experiment_template_report_configuration_data_sources_input() :: #{
+%%   <<"cloudWatchDashboards">> => list(report_configuration_cloud_watch_dashboard_input()())
+%% }
+-type experiment_template_report_configuration_data_sources_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% target_resource_type_parameter() :: #{
 %%   <<"description">> => string(),
 %%   <<"required">> => boolean()
@@ -483,6 +553,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"description">> := string(),
 %%   <<"experimentOptions">> => create_experiment_template_experiment_options_input(),
+%%   <<"experimentReportConfiguration">> => create_experiment_template_report_configuration_input(),
 %%   <<"logConfiguration">> => create_experiment_template_log_configuration_input(),
 %%   <<"roleArn">> := string(),
 %%   <<"stopConditions">> := list(create_experiment_template_stop_condition_input()()),
@@ -494,6 +565,23 @@
 %% Example:
 %% get_action_request() :: #{}
 -type get_action_request() :: #{}.
+
+
+%% Example:
+%% experiment_template_report_configuration_cloud_watch_dashboard() :: #{
+%%   <<"dashboardIdentifier">> => string()
+%% }
+-type experiment_template_report_configuration_cloud_watch_dashboard() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_configuration() :: #{
+%%   <<"dataSources">> => experiment_report_configuration_data_sources(),
+%%   <<"outputs">> => experiment_report_configuration_outputs(),
+%%   <<"postExperimentDuration">> => string(),
+%%   <<"preExperimentDuration">> => string()
+%% }
+-type experiment_report_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -543,6 +631,21 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report() :: #{
+%%   <<"s3Reports">> => list(experiment_report_s3_report()()),
+%%   <<"state">> => experiment_report_state()
+%% }
+-type experiment_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_report_configuration_outputs_input() :: #{
+%%   <<"s3Configuration">> => report_configuration_s3_output_input()
+%% }
+-type experiment_template_report_configuration_outputs_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -600,6 +703,22 @@
 %% }
 -type experiment_error() :: #{binary() => any()}.
 
+
+%% Example:
+%% experiment_report_state() :: #{
+%%   <<"error">> => experiment_report_error(),
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type experiment_report_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_report_configuration_outputs() :: #{
+%%   <<"s3Configuration">> => report_configuration_s3_output()
+%% }
+-type experiment_template_report_configuration_outputs() :: #{binary() => any()}.
+
 %% Example:
 %% stop_experiment_request() :: #{}
 -type stop_experiment_request() :: #{}.
@@ -632,6 +751,13 @@
 
 
 %% Example:
+%% experiment_template_report_configuration_data_sources() :: #{
+%%   <<"cloudWatchDashboards">> => list(experiment_template_report_configuration_cloud_watch_dashboard()())
+%% }
+-type experiment_template_report_configuration_data_sources() :: #{binary() => any()}.
+
+
+%% Example:
 %% action() :: #{
 %%   <<"arn">> => string(),
 %%   <<"description">> => string(),
@@ -650,6 +776,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"experimentOptions">> => experiment_template_experiment_options(),
+%%   <<"experimentReportConfiguration">> => experiment_template_report_configuration(),
 %%   <<"id">> => string(),
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"logConfiguration">> => experiment_template_log_configuration(),
@@ -730,6 +857,13 @@
 
 
 %% Example:
+%% experiment_report_error() :: #{
+%%   <<"code">> => string()
+%% }
+-type experiment_report_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -801,6 +935,16 @@
 
 
 %% Example:
+%% update_experiment_template_report_configuration_input() :: #{
+%%   <<"dataSources">> => experiment_template_report_configuration_data_sources_input(),
+%%   <<"outputs">> => experiment_template_report_configuration_outputs_input(),
+%%   <<"postExperimentDuration">> => string(),
+%%   <<"preExperimentDuration">> => string()
+%% }
+-type update_experiment_template_report_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_experiment_template_experiment_options_input() :: #{
 %%   <<"accountTargeting">> => list(any()),
 %%   <<"emptyTargetResolutionMode">> => list(any())
@@ -848,6 +992,14 @@
 
 
 %% Example:
+%% report_configuration_s3_output() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type report_configuration_s3_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% action_parameter() :: #{
 %%   <<"description">> => string(),
 %%   <<"required">> => boolean()
@@ -889,6 +1041,16 @@
 
 
 %% Example:
+%% experiment_template_report_configuration() :: #{
+%%   <<"dataSources">> => experiment_template_report_configuration_data_sources(),
+%%   <<"outputs">> => experiment_template_report_configuration_outputs(),
+%%   <<"postExperimentDuration">> => string(),
+%%   <<"preExperimentDuration">> => string()
+%% }
+-type experiment_template_report_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_experiment_template_experiment_options_input() :: #{
 %%   <<"emptyTargetResolutionMode">> => list(any())
 %% }
@@ -902,6 +1064,8 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"experimentOptions">> => experiment_options(),
+%%   <<"experimentReport">> => experiment_report(),
+%%   <<"experimentReportConfiguration">> => experiment_report_configuration(),
 %%   <<"experimentTemplateId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"logConfiguration">> => experiment_log_configuration(),

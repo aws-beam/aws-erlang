@@ -374,6 +374,8 @@
          list_tags_for_resource/5,
          reset_enabled_baseline/2,
          reset_enabled_baseline/3,
+         reset_enabled_control/2,
+         reset_enabled_control/3,
          reset_landing_zone/2,
          reset_landing_zone/3,
          tag_resource/3,
@@ -489,6 +491,13 @@
 %%   <<"targetIdentifier">> => string()
 %% }
 -type list_enabled_controls_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_enabled_control_input() :: #{
+%%   <<"enabledControlIdentifier">> := string()
+%% }
+-type reset_enabled_control_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1063,6 +1072,13 @@
 
 
 %% Example:
+%% reset_enabled_control_output() :: #{
+%%   <<"operationIdentifier">> => string()
+%% }
+-type reset_enabled_control_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% control_operation_summary() :: #{
 %%   <<"controlIdentifier">> => string(),
 %%   <<"enabledControlIdentifier">> => string(),
@@ -1226,6 +1242,15 @@
     resource_not_found_exception().
 
 -type reset_enabled_baseline_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type reset_enabled_control_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2115,6 +2140,40 @@ reset_enabled_baseline(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Resets an enabled control.
+-spec reset_enabled_control(aws_client:aws_client(), reset_enabled_control_input()) ->
+    {ok, reset_enabled_control_output(), tuple()} |
+    {error, any()} |
+    {error, reset_enabled_control_errors(), tuple()}.
+reset_enabled_control(Client, Input) ->
+    reset_enabled_control(Client, Input, []).
+
+-spec reset_enabled_control(aws_client:aws_client(), reset_enabled_control_input(), proplists:proplist()) ->
+    {ok, reset_enabled_control_output(), tuple()} |
+    {error, any()} |
+    {error, reset_enabled_control_errors(), tuple()}.
+reset_enabled_control(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/reset-enabled-control"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API call resets a landing zone.
 %%
 %% It starts an asynchronous operation that resets the
@@ -2289,10 +2348,12 @@ update_enabled_baseline(Client, Input0, Options0) ->
 %% Web Services Control Tower updates the control to match any valid
 %% parameters that you supply.
 %%
-%% If the `DriftSummary' status for the control shows as DRIFTED, you
-%% cannot call this API. Instead, you can update the control by calling
-%% `DisableControl' and again calling `EnableControl', or you can run
-%% an extending governance operation. For usage examples, see the
+%% If the `DriftSummary' status for the control shows as `DRIFTED',
+%% you cannot call this API. Instead, you can update the control by calling
+%% the `ResetEnabledControl' API. Alternatively, you can call
+%% `DisableControl' and then call `EnableControl' again. Also, you
+%% can run an extending governance operation to repair drift. For usage
+%% examples, see the
 %% Controls Reference Guide
 %% :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.

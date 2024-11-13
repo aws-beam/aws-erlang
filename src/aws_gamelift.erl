@@ -80,6 +80,8 @@
          create_alias/3,
          create_build/2,
          create_build/3,
+         create_container_fleet/2,
+         create_container_fleet/3,
          create_container_group_definition/2,
          create_container_group_definition/3,
          create_fleet/2,
@@ -112,6 +114,8 @@
          delete_alias/3,
          delete_build/2,
          delete_build/3,
+         delete_container_fleet/2,
+         delete_container_fleet/3,
          delete_container_group_definition/2,
          delete_container_group_definition/3,
          delete_fleet/2,
@@ -146,6 +150,8 @@
          describe_build/3,
          describe_compute/2,
          describe_compute/3,
+         describe_container_fleet/2,
+         describe_container_fleet/3,
          describe_container_group_definition/2,
          describe_container_group_definition/3,
          describe_ec2_instance_limits/2,
@@ -154,6 +160,8 @@
          describe_fleet_attributes/3,
          describe_fleet_capacity/2,
          describe_fleet_capacity/3,
+         describe_fleet_deployment/2,
+         describe_fleet_deployment/3,
          describe_fleet_events/2,
          describe_fleet_events/3,
          describe_fleet_location_attributes/2,
@@ -214,8 +222,14 @@
          list_builds/3,
          list_compute/2,
          list_compute/3,
+         list_container_fleets/2,
+         list_container_fleets/3,
+         list_container_group_definition_versions/2,
+         list_container_group_definition_versions/3,
          list_container_group_definitions/2,
          list_container_group_definitions/3,
+         list_fleet_deployments/2,
+         list_fleet_deployments/3,
          list_fleets/2,
          list_fleets/3,
          list_game_server_groups/2,
@@ -266,6 +280,10 @@
          update_alias/3,
          update_build/2,
          update_build/3,
+         update_container_fleet/2,
+         update_container_fleet/3,
+         update_container_group_definition/2,
+         update_container_group_definition/3,
          update_fleet_attributes/2,
          update_fleet_attributes/3,
          update_fleet_capacity/2,
@@ -320,6 +338,8 @@
 
 %% Example:
 %% list_compute_input() :: #{
+%%   <<"ComputeStatus">> => list(any()),
+%%   <<"ContainerGroupDefinitionName">> => string(),
 %%   <<"FleetId">> := string(),
 %%   <<"Limit">> => integer(),
 %%   <<"Location">> => string(),
@@ -393,6 +413,22 @@
 -type list_locations_output() :: #{binary() => any()}.
 
 %% Example:
+%% container_fleet_location_attributes() :: #{
+%%   <<"Location">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type container_fleet_location_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% game_server_container_group_counts() :: #{
+%%   <<"ACTIVE">> => integer(),
+%%   <<"IDLE">> => integer(),
+%%   <<"PENDING">> => integer(),
+%%   <<"TERMINATING">> => integer()
+%% }
+-type game_server_container_group_counts() :: #{binary() => any()}.
+
+%% Example:
 %% player_latency() :: #{
 %%   <<"LatencyInMilliseconds">> => float(),
 %%   <<"PlayerId">> => string(),
@@ -421,6 +457,25 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_compute_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_fleet_input() :: #{
+%%   <<"DeploymentConfiguration">> => deployment_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FleetId">> := string(),
+%%   <<"GameServerContainerGroupDefinitionName">> => string(),
+%%   <<"GameServerContainerGroupsPerInstance">> => integer(),
+%%   <<"GameSessionCreationLimitPolicy">> => game_session_creation_limit_policy(),
+%%   <<"InstanceConnectionPortRange">> => connection_port_range(),
+%%   <<"InstanceInboundPermissionAuthorizations">> => list(ip_permission()()),
+%%   <<"InstanceInboundPermissionRevocations">> => list(ip_permission()()),
+%%   <<"LogConfiguration">> => log_configuration(),
+%%   <<"MetricGroups">> => list(string()()),
+%%   <<"NewGameSessionProtectionPolicy">> => list(any()),
+%%   <<"PerInstanceContainerGroupDefinitionName">> => string(),
+%%   <<"RemoveAttributes">> => list(list(any())())
+%% }
+-type update_container_fleet_input() :: #{binary() => any()}.
 
 %% Example:
 %% priority_configuration() :: #{
@@ -549,6 +604,18 @@
 -type delete_matchmaking_rule_set_output() :: #{binary() => any()}.
 
 %% Example:
+%% game_server_container_definition_input() :: #{
+%%   <<"ContainerName">> => string(),
+%%   <<"DependsOn">> => list(container_dependency()()),
+%%   <<"EnvironmentOverride">> => list(container_environment()()),
+%%   <<"ImageUri">> => string(),
+%%   <<"MountPoints">> => list(container_mount_point()()),
+%%   <<"PortConfiguration">> => container_port_configuration(),
+%%   <<"ServerSdkVersion">> => string()
+%% }
+-type game_server_container_definition_input() :: #{binary() => any()}.
+
+%% Example:
 %% start_matchmaking_output() :: #{
 %%   <<"MatchmakingTicket">> => matchmaking_ticket()
 %% }
@@ -582,6 +649,22 @@
 %%   <<"SuspendedActions">> => list(list(any())())
 %% }
 -type game_server_group() :: #{binary() => any()}.
+
+%% Example:
+%% support_container_definition() :: #{
+%%   <<"ContainerName">> => string(),
+%%   <<"DependsOn">> => list(container_dependency()()),
+%%   <<"EnvironmentOverride">> => list(container_environment()()),
+%%   <<"Essential">> => boolean(),
+%%   <<"HealthCheck">> => container_health_check(),
+%%   <<"ImageUri">> => string(),
+%%   <<"MemoryHardLimitMebibytes">> => integer(),
+%%   <<"MountPoints">> => list(container_mount_point()()),
+%%   <<"PortConfiguration">> => container_port_configuration(),
+%%   <<"ResolvedImageDigest">> => string(),
+%%   <<"Vcpu">> => float()
+%% }
+-type support_container_definition() :: #{binary() => any()}.
 
 %% Example:
 %% resume_game_server_group_input() :: #{
@@ -622,6 +705,12 @@
 -type describe_game_session_queues_output() :: #{binary() => any()}.
 
 %% Example:
+%% delete_container_fleet_output() :: #{
+
+%% }
+-type delete_container_fleet_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_player_sessions_output() :: #{
 %%   <<"PlayerSessions">> => list(player_session()())
 %% }
@@ -640,6 +729,13 @@
 -type update_build_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_fleet_deployment_input() :: #{
+%%   <<"DeploymentId">> => string(),
+%%   <<"FleetId">> := string()
+%% }
+-type describe_fleet_deployment_input() :: #{binary() => any()}.
+
+%% Example:
 %% validate_matchmaking_rule_set_output() :: #{
 %%   <<"Valid">> => boolean()
 %% }
@@ -650,13 +746,14 @@
 %%   <<"ComputeArn">> => string(),
 %%   <<"ComputeName">> => string(),
 %%   <<"ComputeStatus">> => list(any()),
-%%   <<"ContainerAttributes">> => container_attributes(),
+%%   <<"ContainerAttributes">> => list(container_attribute()()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DnsName">> => string(),
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
 %%   <<"GameLiftAgentEndpoint">> => string(),
 %%   <<"GameLiftServiceSdkEndpoint">> => string(),
+%%   <<"GameServerContainerGroupDefinitionArn">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"IpAddress">> => string(),
 %%   <<"Location">> => string(),
@@ -728,6 +825,13 @@
 -type game_server_group_auto_scaling_policy() :: #{binary() => any()}.
 
 %% Example:
+%% game_session_creation_limit_policy() :: #{
+%%   <<"NewGameSessionsPerCreator">> => integer(),
+%%   <<"PolicyPeriodInMinutes">> => integer()
+%% }
+-type game_session_creation_limit_policy() :: #{binary() => any()}.
+
+%% Example:
 %% runtime_configuration() :: #{
 %%   <<"GameSessionActivationTimeoutSeconds">> => integer(),
 %%   <<"MaxConcurrentGameSessionActivations">> => integer(),
@@ -787,6 +891,13 @@
 -type update_fleet_attributes_input() :: #{binary() => any()}.
 
 %% Example:
+%% container_attribute() :: #{
+%%   <<"ContainerName">> => string(),
+%%   <<"ContainerRuntimeId">> => string()
+%% }
+-type container_attribute() :: #{binary() => any()}.
+
+%% Example:
 %% describe_runtime_configuration_output() :: #{
 %%   <<"RuntimeConfiguration">> => runtime_configuration()
 %% }
@@ -804,13 +915,6 @@
 %%   <<"Message">> => string()
 %% }
 -type out_of_capacity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% container_group_definition_property() :: #{
-%%   <<"ContainerGroupDefinitionName">> => string(),
-%%   <<"SchedulingStrategy">> => list(any())
-%% }
--type container_group_definition_property() :: #{binary() => any()}.
 
 %% Example:
 %% scaling_policy() :: #{
@@ -838,6 +942,13 @@
 -type describe_vpc_peering_connections_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_fleet_deployment_output() :: #{
+%%   <<"FleetDeployment">> => fleet_deployment(),
+%%   <<"LocationalDeployments">> => map()
+%% }
+-type describe_fleet_deployment_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_builds_input() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -856,23 +967,6 @@
 %%   <<"ContainerGroupDefinition">> => container_group_definition()
 %% }
 -type create_container_group_definition_output() :: #{binary() => any()}.
-
-%% Example:
-%% container_definition_input() :: #{
-%%   <<"Command">> => list(string()()),
-%%   <<"ContainerName">> => string(),
-%%   <<"Cpu">> => integer(),
-%%   <<"DependsOn">> => list(container_dependency()()),
-%%   <<"EntryPoint">> => list(string()()),
-%%   <<"Environment">> => list(container_environment()()),
-%%   <<"Essential">> => boolean(),
-%%   <<"HealthCheck">> => container_health_check(),
-%%   <<"ImageUri">> => string(),
-%%   <<"MemoryLimits">> => container_memory_limits(),
-%%   <<"PortConfiguration">> => container_port_configuration(),
-%%   <<"WorkingDirectory">> => string()
-%% }
--type container_definition_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_matchmaking_configuration_output() :: #{
@@ -974,10 +1068,10 @@
 %% fleet_capacity() :: #{
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
+%%   <<"GameServerContainerGroupCounts">> => game_server_container_group_counts(),
 %%   <<"InstanceCounts">> => ec2_instance_counts(),
 %%   <<"InstanceType">> => list(any()),
-%%   <<"Location">> => string(),
-%%   <<"ReplicaContainerGroupCounts">> => replica_container_group_counts()
+%%   <<"Location">> => string()
 %% }
 -type fleet_capacity() :: #{binary() => any()}.
 
@@ -1067,6 +1161,21 @@
 -type describe_fleet_location_utilization_input() :: #{binary() => any()}.
 
 %% Example:
+%% support_container_definition_input() :: #{
+%%   <<"ContainerName">> => string(),
+%%   <<"DependsOn">> => list(container_dependency()()),
+%%   <<"EnvironmentOverride">> => list(container_environment()()),
+%%   <<"Essential">> => boolean(),
+%%   <<"HealthCheck">> => container_health_check(),
+%%   <<"ImageUri">> => string(),
+%%   <<"MemoryHardLimitMebibytes">> => integer(),
+%%   <<"MountPoints">> => list(container_mount_point()()),
+%%   <<"PortConfiguration">> => container_port_configuration(),
+%%   <<"Vcpu">> => float()
+%% }
+-type support_container_definition_input() :: #{binary() => any()}.
+
+%% Example:
 %% request_upload_credentials_output() :: #{
 %%   <<"StorageLocation">> => s3_location(),
 %%   <<"UploadCredentials">> => aws_credentials()
@@ -1083,14 +1192,6 @@
 -type describe_matchmaking_configurations_input() :: #{binary() => any()}.
 
 %% Example:
-%% container_port_mapping() :: #{
-%%   <<"ConnectionPort">> => integer(),
-%%   <<"ContainerPort">> => integer(),
-%%   <<"Protocol">> => list(any())
-%% }
--type container_port_mapping() :: #{binary() => any()}.
-
-%% Example:
 %% register_game_server_output() :: #{
 %%   <<"GameServer">> => game_server()
 %% }
@@ -1104,7 +1205,9 @@
 
 %% Example:
 %% delete_container_group_definition_input() :: #{
-%%   <<"Name">> := string()
+%%   <<"Name">> := string(),
+%%   <<"VersionCountToRetain">> => integer(),
+%%   <<"VersionNumber">> => integer()
 %% }
 -type delete_container_group_definition_input() :: #{binary() => any()}.
 
@@ -1165,6 +1268,14 @@
 -type list_game_server_groups_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_container_group_definition_versions_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_container_group_definition_versions_input() :: #{binary() => any()}.
+
+%% Example:
 %% delete_vpc_peering_authorization_input() :: #{
 %%   <<"GameLiftAwsAccountId">> := string(),
 %%   <<"PeerVpcId">> := string()
@@ -1184,6 +1295,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_utilization_output() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_configuration() :: #{
+%%   <<"ImpairmentStrategy">> => list(any()),
+%%   <<"MinimumHealthyPercentage">> => integer(),
+%%   <<"ProtectionStrategy">> => list(any())
+%% }
+-type deployment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_script_input() :: #{
@@ -1217,16 +1336,19 @@
 
 %% Example:
 %% container_group_definition() :: #{
-%%   <<"ContainerDefinitions">> => list(container_definition()()),
 %%   <<"ContainerGroupDefinitionArn">> => string(),
+%%   <<"ContainerGroupType">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"GameServerContainerDefinition">> => game_server_container_definition(),
 %%   <<"Name">> => string(),
 %%   <<"OperatingSystem">> => list(any()),
-%%   <<"SchedulingStrategy">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string(),
-%%   <<"TotalCpuLimit">> => integer(),
-%%   <<"TotalMemoryLimit">> => integer()
+%%   <<"SupportContainerDefinitions">> => list(support_container_definition()()),
+%%   <<"TotalMemoryLimitMebibytes">> => integer(),
+%%   <<"TotalVcpuLimit">> => float(),
+%%   <<"VersionDescription">> => string(),
+%%   <<"VersionNumber">> => integer()
 %% }
 -type container_group_definition() :: #{binary() => any()}.
 
@@ -1242,24 +1364,6 @@
 %%   <<"TimeoutInSeconds">> => integer()
 %% }
 -type update_game_session_queue_input() :: #{binary() => any()}.
-
-%% Example:
-%% container_definition() :: #{
-%%   <<"Command">> => list(string()()),
-%%   <<"ContainerName">> => string(),
-%%   <<"Cpu">> => integer(),
-%%   <<"DependsOn">> => list(container_dependency()()),
-%%   <<"EntryPoint">> => list(string()()),
-%%   <<"Environment">> => list(container_environment()()),
-%%   <<"Essential">> => boolean(),
-%%   <<"HealthCheck">> => container_health_check(),
-%%   <<"ImageUri">> => string(),
-%%   <<"MemoryLimits">> => container_memory_limits(),
-%%   <<"PortConfiguration">> => container_port_configuration(),
-%%   <<"ResolvedImageDigest">> => string(),
-%%   <<"WorkingDirectory">> => string()
-%% }
--type container_definition() :: #{binary() => any()}.
 
 %% Example:
 %% delete_location_input() :: #{
@@ -1279,6 +1383,7 @@
 %% get_compute_access_output() :: #{
 %%   <<"ComputeArn">> => string(),
 %%   <<"ComputeName">> => string(),
+%%   <<"ContainerIdentifiers">> => list(container_identifier()()),
 %%   <<"Credentials">> => aws_credentials(),
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
@@ -1325,6 +1430,25 @@
 -type invalid_request_exception() :: #{binary() => any()}.
 
 %% Example:
+%% update_container_group_definition_input() :: #{
+%%   <<"GameServerContainerDefinition">> => game_server_container_definition_input(),
+%%   <<"Name">> := string(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"SourceVersionNumber">> => integer(),
+%%   <<"SupportContainerDefinitions">> => list(support_container_definition_input()()),
+%%   <<"TotalMemoryLimitMebibytes">> => integer(),
+%%   <<"TotalVcpuLimit">> => float(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type update_container_group_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_fleet_input() :: #{
+%%   <<"FleetId">> := string()
+%% }
+-type delete_container_fleet_input() :: #{binary() => any()}.
+
+%% Example:
 %% describe_matchmaking_output() :: #{
 %%   <<"TicketList">> => list(matchmaking_ticket()())
 %% }
@@ -1335,6 +1459,13 @@
 %%   <<"AliasId">> := string()
 %% }
 -type describe_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleet_deployments_output() :: #{
+%%   <<"FleetDeployments">> => list(fleet_deployment()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fleet_deployments_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_runtime_configuration_input() :: #{
@@ -1543,6 +1674,13 @@
 -type describe_game_session_placement_input() :: #{binary() => any()}.
 
 %% Example:
+%% list_container_group_definition_versions_output() :: #{
+%%   <<"ContainerGroupDefinitions">> => list(container_group_definition()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_container_group_definition_versions_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
@@ -1616,6 +1754,13 @@
 -type attribute_value() :: #{binary() => any()}.
 
 %% Example:
+%% container_identifier() :: #{
+%%   <<"ContainerName">> => string(),
+%%   <<"ContainerRuntimeId">> => string()
+%% }
+-type container_identifier() :: #{binary() => any()}.
+
+%% Example:
 %% create_matchmaking_configuration_output() :: #{
 %%   <<"Configuration">> => matchmaking_configuration()
 %% }
@@ -1674,6 +1819,12 @@
 -type describe_fleet_utilization_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_container_group_definition_output() :: #{
+%%   <<"ContainerGroupDefinition">> => container_group_definition()
+%% }
+-type update_container_group_definition_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_instance_access_input() :: #{
 %%   <<"FleetId">> := string(),
 %%   <<"InstanceId">> := string()
@@ -1694,7 +1845,6 @@
 %%   <<"BuildId">> => string(),
 %%   <<"CertificateConfiguration">> => certificate_configuration(),
 %%   <<"ComputeType">> => list(any()),
-%%   <<"ContainerGroupsAttributes">> => container_groups_attributes(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"FleetArn">> => string(),
@@ -1727,14 +1877,22 @@
 -type list_game_server_groups_input() :: #{binary() => any()}.
 
 %% Example:
+%% locational_deployment() :: #{
+%%   <<"DeploymentStatus">> => list(any())
+%% }
+-type locational_deployment() :: #{binary() => any()}.
+
+%% Example:
 %% create_container_group_definition_input() :: #{
-%%   <<"ContainerDefinitions">> := list(container_definition_input()()),
+%%   <<"ContainerGroupType">> => list(any()),
+%%   <<"GameServerContainerDefinition">> => game_server_container_definition_input(),
 %%   <<"Name">> := string(),
 %%   <<"OperatingSystem">> := list(any()),
-%%   <<"SchedulingStrategy">> => list(any()),
+%%   <<"SupportContainerDefinitions">> => list(support_container_definition_input()()),
 %%   <<"Tags">> => list(tag()()),
-%%   <<"TotalCpuLimit">> := integer(),
-%%   <<"TotalMemoryLimit">> := integer()
+%%   <<"TotalMemoryLimitMebibytes">> := integer(),
+%%   <<"TotalVcpuLimit">> := float(),
+%%   <<"VersionDescription">> => string()
 %% }
 -type create_container_group_definition_input() :: #{binary() => any()}.
 
@@ -1791,6 +1949,12 @@
 -type update_game_server_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_container_fleet_input() :: #{
+%%   <<"FleetId">> := string()
+%% }
+-type describe_container_fleet_input() :: #{binary() => any()}.
+
+%% Example:
 %% create_game_session_queue_input() :: #{
 %%   <<"CustomEventData">> => string(),
 %%   <<"Destinations">> => list(game_session_queue_destination()()),
@@ -1832,7 +1996,6 @@
 %% Example:
 %% list_fleets_input() :: #{
 %%   <<"BuildId">> => string(),
-%%   <<"ContainerGroupDefinitionName">> => string(),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ScriptId">> => string()
@@ -1854,7 +2017,6 @@
 %%   <<"BuildId">> => string(),
 %%   <<"CertificateConfiguration">> => certificate_configuration(),
 %%   <<"ComputeType">> => list(any()),
-%%   <<"ContainerGroupsConfiguration">> => container_groups_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"EC2InboundPermissions">> => list(ip_permission()()),
 %%   <<"EC2InstanceType">> => list(any()),
@@ -1900,13 +2062,12 @@
 -type container_environment() :: #{binary() => any()}.
 
 %% Example:
-%% replica_container_group_counts() :: #{
-%%   <<"ACTIVE">> => integer(),
-%%   <<"IDLE">> => integer(),
-%%   <<"PENDING">> => integer(),
-%%   <<"TERMINATING">> => integer()
+%% container_mount_point() :: #{
+%%   <<"AccessLevel">> => list(any()),
+%%   <<"ContainerPath">> => string(),
+%%   <<"InstancePath">> => string()
 %% }
--type replica_container_group_counts() :: #{binary() => any()}.
+-type container_mount_point() :: #{binary() => any()}.
 
 %% Example:
 %% stop_fleet_actions_output() :: #{
@@ -2029,17 +2190,18 @@
 -type alias() :: #{binary() => any()}.
 
 %% Example:
-%% container_memory_limits() :: #{
-%%   <<"HardLimit">> => integer(),
-%%   <<"SoftLimit">> => integer()
-%% }
--type container_memory_limits() :: #{binary() => any()}.
-
-%% Example:
 %% update_runtime_configuration_output() :: #{
 %%   <<"RuntimeConfiguration">> => runtime_configuration()
 %% }
 -type update_runtime_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleet_deployments_input() :: #{
+%%   <<"FleetId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fleet_deployments_input() :: #{binary() => any()}.
 
 %% Example:
 %% instance() :: #{
@@ -2115,6 +2277,12 @@
 -type list_scripts_output() :: #{binary() => any()}.
 
 %% Example:
+%% delete_container_group_definition_output() :: #{
+
+%% }
+-type delete_container_group_definition_output() :: #{binary() => any()}.
+
+%% Example:
 %% delete_game_server_group_input() :: #{
 %%   <<"DeleteOption">> => list(any()),
 %%   <<"GameServerGroupName">> := string()
@@ -2165,9 +2333,9 @@
 
 %% Example:
 %% list_container_group_definitions_input() :: #{
+%%   <<"ContainerGroupType">> => list(any()),
 %%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchedulingStrategy">> => list(any())
+%%   <<"NextToken">> => string()
 %% }
 -type list_container_group_definitions_input() :: #{binary() => any()}.
 
@@ -2221,6 +2389,20 @@
 -type routing_strategy() :: #{binary() => any()}.
 
 %% Example:
+%% fleet_deployment() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentConfiguration">> => deployment_configuration(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentStatus">> => list(any()),
+%%   <<"FleetId">> => string(),
+%%   <<"GameServerBinaryArn">> => string(),
+%%   <<"PerInstanceBinaryArn">> => string(),
+%%   <<"RollbackGameServerBinaryArn">> => string(),
+%%   <<"RollbackPerInstanceBinaryArn">> => string()
+%% }
+-type fleet_deployment() :: #{binary() => any()}.
+
+%% Example:
 %% game_session_queue_destination() :: #{
 %%   <<"DestinationArn">> => string()
 %% }
@@ -2263,12 +2445,6 @@
 -type describe_build_output() :: #{binary() => any()}.
 
 %% Example:
-%% container_attributes() :: #{
-%%   <<"ContainerPortMappings">> => list(container_port_mapping()())
-%% }
--type container_attributes() :: #{binary() => any()}.
-
-%% Example:
 %% delete_scaling_policy_input() :: #{
 %%   <<"FleetId">> := string(),
 %%   <<"Name">> := string()
@@ -2280,14 +2456,6 @@
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% container_groups_attributes() :: #{
-%%   <<"ConnectionPortRange">> => connection_port_range(),
-%%   <<"ContainerGroupDefinitionProperties">> => list(container_group_definition_property()()),
-%%   <<"ContainerGroupsPerInstance">> => container_groups_per_instance()
-%% }
--type container_groups_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleet_capacity_output() :: #{
@@ -2305,12 +2473,31 @@
 -type list_locations_input() :: #{binary() => any()}.
 
 %% Example:
-%% container_groups_configuration() :: #{
-%%   <<"ConnectionPortRange">> => connection_port_range(),
-%%   <<"ContainerGroupDefinitionNames">> => list(string()()),
-%%   <<"DesiredReplicaContainerGroupsPerInstance">> => integer()
+%% container_fleet() :: #{
+%%   <<"BillingType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentDetails">> => deployment_details(),
+%%   <<"Description">> => string(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"FleetRoleArn">> => string(),
+%%   <<"GameServerContainerGroupDefinitionArn">> => string(),
+%%   <<"GameServerContainerGroupDefinitionName">> => string(),
+%%   <<"GameServerContainerGroupsPerInstance">> => integer(),
+%%   <<"GameSessionCreationLimitPolicy">> => game_session_creation_limit_policy(),
+%%   <<"InstanceConnectionPortRange">> => connection_port_range(),
+%%   <<"InstanceInboundPermissions">> => list(ip_permission()()),
+%%   <<"InstanceType">> => string(),
+%%   <<"LocationAttributes">> => list(container_fleet_location_attributes()()),
+%%   <<"LogConfiguration">> => log_configuration(),
+%%   <<"MaximumGameServerContainerGroupsPerInstance">> => integer(),
+%%   <<"MetricGroups">> => list(string()()),
+%%   <<"NewGameSessionProtectionPolicy">> => list(any()),
+%%   <<"PerInstanceContainerGroupDefinitionArn">> => string(),
+%%   <<"PerInstanceContainerGroupDefinitionName">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type container_groups_configuration() :: #{binary() => any()}.
+-type container_fleet() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleet_attributes_output() :: #{
@@ -2365,13 +2552,6 @@
 %%   <<"Alias">> => alias()
 %% }
 -type describe_alias_output() :: #{binary() => any()}.
-
-%% Example:
-%% container_groups_per_instance() :: #{
-%%   <<"DesiredReplicaContainerGroupsPerInstance">> => integer(),
-%%   <<"MaxReplicaContainerGroupsPerInstance">> => integer()
-%% }
--type container_groups_per_instance() :: #{binary() => any()}.
 
 %% Example:
 %% describe_game_session_placement_output() :: #{
@@ -2455,6 +2635,13 @@
 -type get_compute_auth_token_input() :: #{binary() => any()}.
 
 %% Example:
+%% list_container_fleets_output() :: #{
+%%   <<"ContainerFleets">> => list(container_fleet()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_container_fleets_output() :: #{binary() => any()}.
+
+%% Example:
 %% target_configuration() :: #{
 %%   <<"TargetValue">> => float()
 %% }
@@ -2499,6 +2686,12 @@
 -type vpc_peering_connection_status() :: #{binary() => any()}.
 
 %% Example:
+%% describe_container_fleet_output() :: #{
+%%   <<"ContainerFleet">> => container_fleet()
+%% }
+-type describe_container_fleet_output() :: #{binary() => any()}.
+
+%% Example:
 %% describe_scaling_policies_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ScalingPolicies">> => list(scaling_policy()())
@@ -2521,6 +2714,19 @@
 %%   <<"Version">> => string()
 %% }
 -type create_build_input() :: #{binary() => any()}.
+
+%% Example:
+%% game_server_container_definition() :: #{
+%%   <<"ContainerName">> => string(),
+%%   <<"DependsOn">> => list(container_dependency()()),
+%%   <<"EnvironmentOverride">> => list(container_environment()()),
+%%   <<"ImageUri">> => string(),
+%%   <<"MountPoints">> => list(container_mount_point()()),
+%%   <<"PortConfiguration">> => container_port_configuration(),
+%%   <<"ResolvedImageDigest">> => string(),
+%%   <<"ServerSdkVersion">> => string()
+%% }
+-type game_server_container_definition() :: #{binary() => any()}.
 
 %% Example:
 %% vpc_peering_connection() :: #{
@@ -2550,6 +2756,12 @@
 -type create_build_output() :: #{binary() => any()}.
 
 %% Example:
+%% deployment_details() :: #{
+%%   <<"LatestDeploymentId">> => string()
+%% }
+-type deployment_details() :: #{binary() => any()}.
+
+%% Example:
 %% describe_game_session_details_output() :: #{
 %%   <<"GameSessionDetails">> => list(game_session_detail()()),
 %%   <<"NextToken">> => string()
@@ -2561,6 +2773,14 @@
 
 %% }
 -type create_vpc_peering_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"LogDestination">> => list(any()),
+%%   <<"LogGroupArn">> => string(),
+%%   <<"S3BucketName">> => string()
+%% }
+-type log_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% game_session_detail() :: #{
@@ -2634,6 +2854,26 @@
 -type describe_compute_input() :: #{binary() => any()}.
 
 %% Example:
+%% create_container_fleet_input() :: #{
+%%   <<"BillingType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"FleetRoleArn">> := string(),
+%%   <<"GameServerContainerGroupDefinitionName">> => string(),
+%%   <<"GameServerContainerGroupsPerInstance">> => integer(),
+%%   <<"GameSessionCreationLimitPolicy">> => game_session_creation_limit_policy(),
+%%   <<"InstanceConnectionPortRange">> => connection_port_range(),
+%%   <<"InstanceInboundPermissions">> => list(ip_permission()()),
+%%   <<"InstanceType">> => string(),
+%%   <<"Locations">> => list(location_configuration()()),
+%%   <<"LogConfiguration">> => log_configuration(),
+%%   <<"MetricGroups">> => list(string()()),
+%%   <<"NewGameSessionProtectionPolicy">> => list(any()),
+%%   <<"PerInstanceContainerGroupDefinitionName">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_container_fleet_input() :: #{binary() => any()}.
+
+%% Example:
 %% register_game_server_input() :: #{
 %%   <<"ConnectionInfo">> => string(),
 %%   <<"GameServerData">> => string(),
@@ -2705,6 +2945,12 @@
 -type update_game_session_output() :: #{binary() => any()}.
 
 %% Example:
+%% update_container_fleet_output() :: #{
+%%   <<"ContainerFleet">> => container_fleet()
+%% }
+-type update_container_fleet_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_builds_output() :: #{
 %%   <<"Builds">> => list(build()()),
 %%   <<"NextToken">> => string()
@@ -2722,6 +2968,12 @@
 -type create_script_input() :: #{binary() => any()}.
 
 %% Example:
+%% create_container_fleet_output() :: #{
+%%   <<"ContainerFleet">> => container_fleet()
+%% }
+-type create_container_fleet_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_script_output() :: #{
 %%   <<"Script">> => script()
 %% }
@@ -2735,7 +2987,8 @@
 
 %% Example:
 %% describe_container_group_definition_input() :: #{
-%%   <<"Name">> := string()
+%%   <<"Name">> := string(),
+%%   <<"VersionNumber">> => integer()
 %% }
 -type describe_container_group_definition_input() :: #{binary() => any()}.
 
@@ -2752,6 +3005,14 @@
 %%   <<"ContainerName">> => string()
 %% }
 -type container_dependency() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_fleets_input() :: #{
+%%   <<"ContainerGroupDefinitionName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_container_fleets_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_game_server_instances_input() :: #{
@@ -2791,6 +3052,15 @@
     tagging_failed_exception().
 
 -type create_build_errors() ::
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_container_fleet_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
     invalid_request_exception() | 
     conflict_exception() | 
     internal_service_exception() | 
@@ -2930,6 +3200,14 @@
     unauthorized_exception() | 
     tagging_failed_exception().
 
+-type delete_container_fleet_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
 -type delete_container_group_definition_errors() ::
     unsupported_region_exception() | 
     not_found_exception() | 
@@ -2987,6 +3265,7 @@
     tagging_failed_exception().
 
 -type delete_scaling_policy_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
@@ -3036,6 +3315,14 @@
     unauthorized_exception().
 
 -type describe_compute_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_container_fleet_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
@@ -3061,12 +3348,21 @@
     unauthorized_exception().
 
 -type describe_fleet_capacity_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_deployment_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
     unauthorized_exception().
 
 -type describe_fleet_events_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
@@ -3212,12 +3508,14 @@
     unauthorized_exception().
 
 -type get_compute_access_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
     unauthorized_exception().
 
 -type get_compute_auth_token_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
@@ -3246,12 +3544,33 @@
     unauthorized_exception().
 
 -type list_compute_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_container_fleets_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_container_group_definition_versions_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
     unauthorized_exception().
 
 -type list_container_group_definitions_errors() ::
     unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_fleet_deployments_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
     unauthorized_exception().
@@ -3283,12 +3602,14 @@
     unauthorized_exception().
 
 -type list_tags_for_resource_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
     tagging_failed_exception().
 
 -type put_scaling_policy_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
@@ -3387,12 +3708,14 @@
     unauthorized_exception().
 
 -type tag_resource_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
     tagging_failed_exception().
 
 -type untag_resource_errors() ::
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
@@ -3405,6 +3728,23 @@
     unauthorized_exception().
 
 -type update_build_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_container_fleet_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_ready_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_container_group_definition_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
     not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
@@ -3677,48 +4017,55 @@ create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
 
-%% @doc Creates a new Amazon GameLift build resource for your game server
-%% binary files.
+%% @doc Creates an Amazon GameLift build resource for your game server
+%% software and stores the software
+%% for deployment to hosting resources.
 %%
-%% Combine game
-%% server binaries into a zip file for use with Amazon GameLift.
+%% Combine game server binaries and dependencies into
+%% a single .zip file
 %%
-%% When setting up a new game build for Amazon GameLift, we recommend using
-%% the CLI command
+%% Use the CLI command
 %% upload-build:
 %% https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html
-%% . This helper command combines two tasks: (1) it
-%% uploads your build files from a file directory to an Amazon GameLift
-%% Amazon S3 location, and (2)
-%% it creates a new build resource.
+%% to quickly and simply create a new build
+%% and upload your game build .zip file to Amazon GameLift Amazon S3. This
+%% helper command eliminates
+%% the need to explicitly manage access permissions.
 %%
-%% You can use the `CreateBuild' operation in the following scenarios:
+%% Alternatively, use the `CreateBuild' action for the following
+%% scenarios:
 %%
-%% Create a new game build with build files that are in an Amazon S3 location
-%% under an
-%% Amazon Web Services account that you control. To use this option, you give
-%% Amazon GameLift access to
-%% the Amazon S3 bucket. With permissions in place, specify a build name,
-%% operating
-%% system, and the Amazon S3 storage location of your game build.
-%%
-%% Upload your build files to a Amazon GameLift Amazon S3 location. To use
-%% this option,
-%% specify a build name and operating system. This operation creates a new
-%% build
-%% resource and also returns an Amazon S3 location with temporary access
-%% credentials.
-%% Use the credentials to manually upload your build files to the specified
+%% You want to create a build and upload a game build zip file from in an
 %% Amazon S3
-%% location. For more information, see Uploading Objects:
-%% https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html in
-%% the Amazon S3 Developer Guide. After you upload build files to
-%% the Amazon GameLift Amazon S3 location, you can't update them.
+%% location that you control. In this scenario, you need to give Amazon
+%% GameLift permission
+%% to access to the Amazon S3 bucket. With permission in place, call
+%% `CreateBuild' and specify a build name, the build's runtime
+%% operating system, and the Amazon S3 storage location where the build file
+%% is
+%% stored.
 %%
-%% If successful, this operation creates a new build resource with a unique
+%% You want to create a build and upload a local game build zip file to an
+%% Amazon S3
+%% location that's controlled by Amazon GameLift. (See the
+%% `upload-build' CLI
+%% command for this scenario.) In this scenario, you need to request
+%% temporary
+%% access credentials to the Amazon GameLift Amazon S3 location. Specify a
+%% build name and the
+%% build's runtime operating system. The response provides an Amazon S3
+%% location and a
+%% set of temporary access credentials. Use the credentials to upload your
+%% build
+%% files to the specified Amazon S3 location (see Uploading Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html in
+%% the Amazon S3 Developer Guide). You can't update build files
+%% after uploading them to Amazon GameLift Amazon S3.
+%%
+%% If successful, this action creates a new build resource with a unique
 %% build ID and
-%% places it in `INITIALIZED' status. A build must be in `READY'
-%% status before you can create fleets with it.
+%% places it in `INITIALIZED' status. When the build reaches `READY'
+%% status, you can create fleets with it.
 %%
 %% Learn more
 %%
@@ -3747,46 +4094,165 @@ create_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBuild">>, Input, Options).
 
-%% @doc
-%% This operation is used with the Amazon GameLift containers feature, which
-%% is currently in public preview.
+%% @doc Creates a managed fleet of Amazon Elastic Compute Cloud (Amazon EC2)
+%% instances to host your containerized game
+%% servers.
 %%
-%% Creates a `ContainerGroupDefinition' resource that describes a set of
-%% containers for hosting your game server with Amazon GameLift managed EC2
-%% hosting. An Amazon GameLift container
-%% group is similar to a container &quot;task&quot; and &quot;pod&quot;. Each
-%% container group can have one or more
-%% containers.
+%% Use this operation to define how to deploy a container architecture onto
+%% each
+%% fleet instance and configure fleet settings. You can create a container
+%% fleet in any
+%% Amazon Web Services Regions that Amazon GameLift supports for
+%% multi-location fleets. A container fleet can be
+%% deployed to a single location or multiple locations. Container fleets are
+%% deployed with
+%% Amazon Linux 2023 as the instance operating system.
 %%
-%% Use container group definitions when you create a container fleet.
-%% Container group
-%% definitions determine how Amazon GameLift deploys your containers to each
-%% instance in a container
-%% fleet.
+%% Define the fleet's container architecture using container group
+%% definitions. Each
+%% fleet can have one of the following container group types:
 %%
-%% You can create two types of container groups, based on scheduling
-%% strategy:
+%% The game server container group runs your game server build and dependent
+%% software. Amazon GameLift
+%% deploys one or more replicas of this container group to each fleet
+%% instance. The
+%% number of replicas depends on the computing capabilities of the fleet
+%% instance
+%% in use.
 %%
-%% A replica container group manages the containers that run
-%% your game server application and supporting software. Replica container
-%% groups might be
-%% replicated multiple times on each fleet instance, depending on instance
-%% resources.
+%% An optional per-instance container group might be used to run other
+%% software that only needs
+%% to run once per instance, such as background services, logging, or test
+%% processes. One per-instance container group is deployed to each fleet
+%% instance.
 %%
-%% A daemon container group manages containers that run other
-%% software, such as background services, logging, or test processes. You
-%% might use a daemon
-%% container group for processes that need to run only once per fleet
-%% instance, or processes
-%% that need to persist independently of the replica container group.
+%% Each container group can include the definition for one or more
+%% containers. A
+%% container definition specifies a container image that is stored in an
+%% Amazon Elastic Container Registry (Amazon ECR)
+%% public or private repository.
 %%
-%% To create a container group definition, specify a group name, a list of
-%% container
-%% definitions, and maximum total CPU and memory requirements for the
-%% container group. Specify an
-%% operating system and scheduling strategy or use the default values. When
-%% using the Amazon Web Services CLI
-%% tool, you can pass in your container definitions as a JSON file.
+%% Request options
+%%
+%% Use this operation to make the following types of requests. Most fleet
+%% settings have
+%% default values, so you can create a working fleet with a minimal
+%% configuration and
+%% default values, which you can customize later.
+%%
+%% Create a fleet with no container groups. You can configure a container
+%% fleet and then add
+%% container group definitions later. In this scenario, no fleet instances
+%% are
+%% deployed, and the fleet can't host game sessions until you add a game
+%% server
+%% container group definition. Provide the following required parameter
+%% values:
+%%
+%% `FleetRoleArn'
+%%
+%% Create a fleet with a game server container group. Provide the following
+%% required parameter
+%% values:
+%%
+%% `FleetRoleArn'
+%%
+%% `GameServerContainerGroupDefinitionName'
+%%
+%% Create a fleet with a game server container group and a per-instance
+%% container group. Provide
+%% the following required parameter values:
+%%
+%% `FleetRoleArn'
+%%
+%% `GameServerContainerGroupDefinitionName'
+%%
+%% `PerInstanceContainerGroupDefinitionName'
+%%
+%% Results
+%%
+%% If successful, this operation creates a new container fleet resource,
+%% places it in
+%% `PENDING' status, and initiates the fleet creation workflow:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-all.html#fleets-creation-workflow.
+%% For fleets with container groups, this workflow
+%% starts a fleet deployment and transitions the status to `ACTIVE'.
+%% Fleets
+%% without a container group are placed in `CREATED' status.
+%%
+%% You can update most of the properties of a fleet, including container
+%% group
+%% definitions, and deploy the update across all fleet instances. Use a fleet
+%% update to
+%% deploy a new game server version update across the container fleet.
+-spec create_container_fleet(aws_client:aws_client(), create_container_fleet_input()) ->
+    {ok, create_container_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, create_container_fleet_errors(), tuple()}.
+create_container_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_container_fleet(Client, Input, []).
+
+-spec create_container_fleet(aws_client:aws_client(), create_container_fleet_input(), proplists:proplist()) ->
+    {ok, create_container_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, create_container_fleet_errors(), tuple()}.
+create_container_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateContainerFleet">>, Input, Options).
+
+%% @doc Creates a `ContainerGroupDefinition' that describes a set of
+%% containers for
+%% hosting your game server with Amazon GameLift managed containers hosting.
+%%
+%% An Amazon GameLift container group
+%% is similar to a container task or pod. Use container group definitions
+%% when you create a
+%% container fleet with `CreateContainerFleet'.
+%%
+%% A container group definition determines how Amazon GameLift deploys your
+%% containers to each
+%% instance in a container fleet. You can maintain multiple versions of a
+%% container group
+%% definition.
+%%
+%% There are two types of container groups:
+%%
+%% A game server container group has the containers that run
+%% your game server application and supporting software. A game server
+%% container group can
+%% have these container types:
+%%
+%% Game server container. This container runs your game server. You can
+%% define one
+%% game server container in a game server container group.
+%%
+%% Support container. This container runs software in parallel with your game
+%% server.
+%% You can define up to 8 support containers in a game server group.
+%%
+%% When building a game server container group definition, you can choose to
+%% bundle your
+%% game server executable and all dependent software into a single game
+%% server container.
+%% Alternatively, you can separate the software into one game server
+%% container and one or
+%% more support containers.
+%%
+%% On a container fleet instance, a game server container group can be
+%% deployed multiple
+%% times (depending on the compute resources of the instance). This means
+%% that all containers
+%% in the container group are replicated together.
+%%
+%% A per-instance container group has containers for processes
+%% that aren't replicated on a container fleet instance. This might
+%% include background
+%% services, logging, test processes, or processes that need to persist
+%% independently of the
+%% game server container group. When building a per-instance container group,
+%% you can define
+%% up to 10 support containers.
 %%
 %% This operation requires Identity and Access Management (IAM) permissions
 %% to access container images in
@@ -3795,22 +4261,63 @@ create_build(Client, Input, Options)
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-iam-policy-examples.html
 %% for help setting the appropriate permissions.
 %%
-%% If successful, this operation creates a new `ContainerGroupDefinition'
-%% resource
-%% with an ARN value assigned. You can't change the properties of a
-%% container group definition.
-%% Instead, create a new one.
+%% Request options
 %%
-%% Learn more
+%% Use this operation to make the following types of requests. You can
+%% specify values for the
+%% minimum required parameters and customize optional values later.
 %%
-%% Create a container group definition:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-create-groups.html
+%% Create a game server container group definition. Provide the following
+%% required parameter values:
 %%
-%% Container fleet design guide:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-design-fleet.html
+%% `Name'
 %%
-%% Create a container definition as a JSON file:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-definitions.html#containers-definitions-create
+%% `ContainerGroupType' (`GAME_SERVER')
+%%
+%% `OperatingSystem' (omit to use default value)
+%%
+%% `TotalMemoryLimitMebibytes' (omit to use default value)
+%%
+%% `TotalVcpuLimit '(omit to use default value)
+%%
+%% At least one `GameServerContainerDefinition'
+%%
+%% `ContainerName'
+%%
+%% `ImageUrl'
+%%
+%% `PortConfiguration'
+%%
+%% `ServerSdkVersion' (omit to use default value)
+%%
+%% Create a per-instance container group definition. Provide the following
+%% required parameter
+%% values:
+%%
+%% `Name'
+%%
+%% `ContainerGroupType' (`PER_INSTANCE')
+%%
+%% `OperatingSystem' (omit to use default value)
+%%
+%% `TotalMemoryLimitMebibytes' (omit to use default value)
+%%
+%% `TotalVcpuLimit '(omit to use default value)
+%%
+%% At least one `SupportContainerDefinition'
+%%
+%% `ContainerName'
+%%
+%% `ImageUrl'
+%%
+%% Results
+%%
+%% If successful, this request creates a `ContainerGroupDefinition'
+%% resource and
+%% assigns a unique ARN value. You can update most properties of a container
+%% group definition by
+%% calling `UpdateContainerGroupDefinition', and optionally save the
+%% update as a new version.
 -spec create_container_group_definition(aws_client:aws_client(), create_container_group_definition_input()) ->
     {ok, create_container_group_definition_output(), tuple()} |
     {error, any()} |
@@ -3827,12 +4334,9 @@ create_container_group_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContainerGroupDefinition">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Creates a fleet of compute resources to host your game servers.
 %%
-%% Creates a fleet of compute resources to host your game servers. Use this
-%% operation to
+%% Use this operation to
 %% set up the following types of fleets based on compute type:
 %%
 %% Managed EC2 fleet
@@ -3880,47 +4384,6 @@ create_container_group_definition(Client, Input, Options)
 %% autoscaling
 %% on/off for each location.
 %%
-%% Managed container fleet
-%%
-%% A container fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2)
-%% instances. Your container architecture
-%% is deployed to each fleet instance based on the fleet configuration.
-%% Amazon GameLift manages the
-%% containers on each fleet instance and controls the lifecycle of game
-%% server processes,
-%% which host game sessions for players. Container fleets can have instances
-%% in multiple
-%% locations. Each container on an instance that runs game server processes
-%% is registered
-%% as a `Compute'.
-%%
-%% To create a container fleet, provide these required parameters:
-%%
-%% `ComputeType' set to `CONTAINER'
-%%
-%% `ContainerGroupsConfiguration'
-%%
-%% `EC2InboundPermissions'
-%%
-%% `EC2InstanceType'
-%%
-%% `FleetType' set to `ON_DEMAND'
-%%
-%% `Name'
-%%
-%% `RuntimeConfiguration' with at least one `ServerProcesses'
-%% configuration
-%%
-%% If successful, this operation creates a new fleet resource and places it
-%% in
-%% `NEW' status while Amazon GameLift initiates the fleet creation
-%% workflow:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-all.html#fleets-creation-workflow.
-%%
-%% When the fleet status is ACTIVE, you can adjust capacity settings and turn
-%% autoscaling
-%% on/off for each location.
-%%
 %% Anywhere fleet
 %%
 %% An Anywhere fleet represents compute resources that are not owned or
@@ -3949,9 +4412,6 @@ create_container_group_definition(Client, Input, Options)
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% Setting up a container fleet:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-build-fleet.html
-%%
 %% Debug fleet creation issues:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html#fleets-creating-debug-creation
 %%
@@ -3973,14 +4433,11 @@ create_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleet">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Adds remote locations to a managed EC2 fleet or managed container
+%% fleet and begins populating the new
+%% locations with instances.
 %%
-%% Adds remote locations to an EC2 or container fleet and begins populating
-%% the new
-%% locations with instances. The new instances conform to the fleet's
-%% instance type,
+%% The new instances conform to the fleet's instance type,
 %% auto-scaling, and other configuration settings.
 %%
 %% You can't add remote locations to a fleet that resides in an Amazon
@@ -4493,20 +4950,20 @@ create_player_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlayerSessions">>, Input, Options).
 
-%% @doc Creates a new script record for your Realtime Servers script.
+%% @doc Creates a script resource for your Realtime Servers script.
 %%
-%% Realtime scripts are JavaScript that
-%% provide configuration settings and optional custom game logic for your
-%% game. The script
-%% is deployed when you create a Realtime Servers fleet to host your game
-%% sessions. Script logic is
-%% executed during an active game session.
+%% Realtime scripts are JavaScript files
+%% that provide configuration settings and optional custom game logic for
+%% your game. Script
+%% logic is executed during an active game session. To deploy Realtime
+%% Servers for hosting, create an
+%% Amazon GameLift managed fleet with the script.
 %%
-%% To create a new script record, specify a script name and provide the
-%% script file(s).
-%% The script files and all dependencies must be zipped into a single file.
-%% You can pull
-%% the zip file from either of these locations:
+%% To create a script resource, specify a script name and provide the script
+%% file(s). The
+%% script files and all dependencies must be combined into a single .zip
+%% file. You can
+%% upload the .zip file from either of these locations:
 %%
 %% A locally available directory. Use the ZipFile parameter
 %% for this option.
@@ -4518,15 +4975,10 @@ create_player_sessions(Client, Input, Options)
 %% GameLift service
 %% to access your S3 bucket.
 %%
-%% If the call is successful, a new script record is created with a unique
-%% script ID. If
-%% the script file is provided as a local file, the file is uploaded to an
-%% Amazon GameLift-owned S3
-%% bucket and the script record's storage location reflects this
-%% location. If the script
-%% file is provided as an S3 bucket, Amazon GameLift accesses the file at
-%% this storage location as
-%% needed for deployment.
+%% If the call is successful, Amazon GameLift creates a new script resource
+%% with a unique script
+%% ID. The script is uploaded to an Amazon S3 bucket that is owned by Amazon
+%% GameLift.
 %%
 %% Learn more
 %%
@@ -4745,22 +5197,66 @@ delete_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBuild">>, Input, Options).
 
-%% @doc
-%% This operation is used with the Amazon GameLift containers feature, which
-%% is currently in public preview.
+%% @doc Deletes all resources and information related to a container fleet
+%% and shuts down
+%% currently running fleet instances, including those in remote locations.
 %%
-%% Deletes a container group definition resource. You can delete a container
-%% group definition
-%% if there are no fleets using the definition.
+%% The container
+%% fleet must be in `ACTIVE' status to be deleted.
 %%
-%% To delete a container group definition, identify the resource to delete.
+%% To delete a fleet, specify the fleet ID to be terminated. During the
+%% deletion process,
+%% the fleet status is changed to `DELETING'.
+%%
+%% Learn more
+%%
+%% Setting up Amazon GameLift
+%% Fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec delete_container_fleet(aws_client:aws_client(), delete_container_fleet_input()) ->
+    {ok, delete_container_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, delete_container_fleet_errors(), tuple()}.
+delete_container_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_container_fleet(Client, Input, []).
+
+-spec delete_container_fleet(aws_client:aws_client(), delete_container_fleet_input(), proplists:proplist()) ->
+    {ok, delete_container_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, delete_container_fleet_errors(), tuple()}.
+delete_container_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteContainerFleet">>, Input, Options).
+
+%% @doc Deletes a container group definition.
+%%
+%% You can delete a container group definition if there
+%% are no fleets using the definition.
+%%
+%% Request options:
+%%
+%% Delete an entire container group definition, including all versions.
+%% Specify the
+%% container group definition name, or use an ARN value without the version
+%% number.
+%%
+%% Delete a particular version. Specify the container group definition name
+%% and a version
+%% number, or use an ARN value that includes the version number.
+%%
+%% Keep the newest versions and delete all older versions. Specify the
+%% container group
+%% definition name and the number of versions to retain. For example, set
+%% `VersionCountToRetain' to 5 to delete all but the five most recent
+%% versions.
 %%
 %% Learn more
 %%
 %% Manage a container group definition:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-create-groups.html
 -spec delete_container_group_definition(aws_client:aws_client(), delete_container_group_definition_input()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_container_group_definition_output(), tuple()} |
     {error, any()} |
     {error, delete_container_group_definition_errors(), tuple()}.
 delete_container_group_definition(Client, Input)
@@ -4768,7 +5264,7 @@ delete_container_group_definition(Client, Input)
     delete_container_group_definition(Client, Input, []).
 
 -spec delete_container_group_definition(aws_client:aws_client(), delete_container_group_definition_input(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_container_group_definition_output(), tuple()} |
     {error, any()} |
     {error, delete_container_group_definition_errors(), tuple()}.
 delete_container_group_definition(Client, Input, Options)
@@ -5128,17 +5624,13 @@ delete_vpc_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcPeeringConnection">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Removes a compute resource from an Amazon GameLift Anywhere fleet.
 %%
-%% Removes a compute resource from an Amazon GameLift Anywhere fleet or
-%% container fleet.
 %% Deregistered computes can no longer host game sessions through Amazon
 %% GameLift.
 %%
-%% For an Anywhere fleet or a container fleet that's running the Amazon
-%% GameLift Agent, the Agent
+%% For an Anywhere fleet that's running the Amazon GameLift Agent, the
+%% Agent
 %% handles all compute registry tasks for you. For an Anywhere fleet that
 %% doesn't use the
 %% Agent, call this operation to deregister fleet computes.
@@ -5259,11 +5751,9 @@ describe_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBuild">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Retrieves properties for a compute resource in an Amazon GameLift
+%% fleet.
 %%
-%% Retrieves properties for a compute resource in an Amazon GameLift fleet.
 %% To get a list of all
 %% computes in a fleet, call `ListCompute'.
 %%
@@ -5276,16 +5766,11 @@ describe_build(Client, Input, Options)
 %% Depending on the fleet's compute type, the result includes the
 %% following information:
 %%
-%% For `EC2' fleets, this operation returns information about the EC2
+%% For managed EC2 fleets, this operation returns information about the EC2
 %% instance.
 %%
-%% For `ANYWHERE' fleets, this operation returns information about the
+%% For Anywhere fleets, this operation returns information about the
 %% registered compute.
-%%
-%% For `CONTAINER' fleets, this operation returns information about
-%% the container that's registered as a compute, and the instance
-%% it's running on.
-%% The compute name is the container name.
 -spec describe_compute(aws_client:aws_client(), describe_compute_input()) ->
     {ok, describe_compute_output(), tuple()} |
     {error, any()} |
@@ -5302,18 +5787,65 @@ describe_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCompute">>, Input, Options).
 
-%% @doc
-%% This operation is used with the Amazon GameLift containers feature, which
-%% is currently in public preview.
+%% @doc Retrieves the properties for a container fleet.
 %%
-%% Retrieves the properties of a container group definition, including all
-%% container
+%% When requesting attributes for
+%% multiple fleets, use the pagination parameters to retrieve results as a
+%% set of
+%% sequential pages.
+%%
+%% Request options
+%%
+%% Get container fleet properties for a single fleet. Provide either the
+%% fleet ID or ARN value.
+%%
+%% Results
+%%
+%% If successful, a `ContainerFleet' object is returned. This object
+%% includes
+%% the fleet properties, including information about the most recent
+%% deployment.
+%%
+%% Some API operations limit the number of fleet IDs that allowed in one
+%% request. If
+%% a request exceeds this limit, the request fails and the error message
+%% contains the
+%% maximum allowed number.
+-spec describe_container_fleet(aws_client:aws_client(), describe_container_fleet_input()) ->
+    {ok, describe_container_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, describe_container_fleet_errors(), tuple()}.
+describe_container_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_container_fleet(Client, Input, []).
+
+-spec describe_container_fleet(aws_client:aws_client(), describe_container_fleet_input(), proplists:proplist()) ->
+    {ok, describe_container_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, describe_container_fleet_errors(), tuple()}.
+describe_container_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeContainerFleet">>, Input, Options).
+
+%% @doc Retrieves the properties of a container group definition, including
+%% all container
 %% definitions in the group.
 %%
-%% To retrieve a container group definition, provide a resource identifier.
-%% If successful,
-%% this operation returns the complete properties of the container group
-%% definition.
+%% Request options:
+%%
+%% Retrieve the latest version of a container group definition. Specify the
+%% container
+%% group definition name only, or use an ARN value without a version number.
+%%
+%% Retrieve a particular version. Specify the container group definition name
+%% and a
+%% version number, or use an ARN value that includes the version number.
+%%
+%% Results:
+%%
+%% If successful, this operation returns the complete properties of a
+%% container group
+%% definition version.
 %%
 %% Learn more
 %%
@@ -5415,12 +5947,10 @@ describe_ec2_instance_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEC2InstanceLimits">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Retrieves core fleet-wide properties for fleets in an Amazon Web
+%% Services Region.
 %%
-%% Retrieves core fleet-wide properties for fleets in an Amazon Web Services
-%% Region. Properties include the computing
+%% Properties include the computing
 %% hardware and deployment configuration for instances in the fleet.
 %%
 %% You can use this operation in the following ways:
@@ -5464,13 +5994,11 @@ describe_fleet_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAttributes">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Retrieves the resource capacity settings for one or more fleets.
 %%
-%% Retrieves the resource capacity settings for one or more fleets. For a
-%% container
-%% fleet, this operation also returns counts for replica container groups.
+%% For a container
+%% fleet, this operation also returns counts for game server container
+%% groups.
 %%
 %% With multi-location fleets, this operation retrieves data for the
 %% fleet's home Region
@@ -5524,6 +6052,37 @@ describe_fleet_capacity(Client, Input)
 describe_fleet_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetCapacity">>, Input, Options).
+
+%% @doc Retrieves information about a managed container fleet deployment.
+%%
+%% Request options
+%%
+%% Get information about the latest deployment for a specific fleet. Provide
+%% the
+%% fleet ID or ARN.
+%%
+%% Get information about a specific deployment. Provide the fleet ID or ARN
+%% and
+%% the deployment ID.
+%%
+%% Results
+%%
+%% If successful, a `FleetDeployment' object is returned.
+-spec describe_fleet_deployment(aws_client:aws_client(), describe_fleet_deployment_input()) ->
+    {ok, describe_fleet_deployment_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_deployment_errors(), tuple()}.
+describe_fleet_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_fleet_deployment(Client, Input, []).
+
+-spec describe_fleet_deployment(aws_client:aws_client(), describe_fleet_deployment_input(), proplists:proplist()) ->
+    {ok, describe_fleet_deployment_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_deployment_errors(), tuple()}.
+describe_fleet_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFleetDeployment">>, Input, Options).
 
 %% @doc Retrieves entries from a fleet's event log.
 %%
@@ -5618,9 +6177,9 @@ describe_fleet_location_attributes(Client, Input, Options)
 %% The data returned
 %% includes the current capacity (number of EC2 instances) and some scaling
 %% settings for
-%% the requested fleet location. For a container fleet, this operation also
-%% returns counts
-%% for replica container groups.
+%% the requested fleet location. For a managed container fleet, this
+%% operation also returns counts
+%% for game server container groups.
 %%
 %% Use this operation to retrieve capacity information for a fleet's
 %% remote location or
@@ -5707,15 +6266,15 @@ describe_fleet_location_utilization(Client, Input, Options)
 
 %% @doc Retrieves a fleet's inbound connection permissions.
 %%
-%% Connection permissions specify IP
+%% Inbound permissions specify IP
 %% addresses and port settings that incoming traffic can use to access server
 %% processes in
 %% the fleet. Game server processes that are running in the fleet must use a
 %% port that
-%% falls within this range. To connect to game server processes on a
+%% falls within this range. To connect to game server processes on a managed
 %% container fleet, the
-%% port settings should include one or more of the fleet's connection
-%% ports.
+%% port settings should include one or more of the container fleet's
+%% connection ports.
 %%
 %% Use this operation in the following ways:
 %%
@@ -6347,14 +6906,10 @@ describe_player_sessions(Client, Input, Options)
 %% @doc Retrieves a fleet's runtime configuration settings.
 %%
 %% The runtime configuration
-%% determines which server processes run, and how, on computes in the fleet.
-%% For managed
-%% EC2 fleets, the runtime configuration describes server processes that run
-%% on each fleet
-%% instance. For container fleets, the runtime configuration describes server
-%% processes
-%% that run in each replica container group. You can update a fleet's
-%% runtime configuration
+%% determines which server processes run, and how they run, and how many run
+%% concurrently
+%% on computes in managed EC2 and Anywhere fleets. You can update a
+%% fleet's runtime configuration
 %% at any time using `UpdateRuntimeConfiguration'.
 %%
 %% To get the current runtime configuration for a fleet, provide the fleet
@@ -6512,48 +7067,29 @@ describe_vpc_peering_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcPeeringConnections">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
-%%
-%% Requests authorization to remotely connect to a hosting resource in a
+%% @doc Requests authorization to remotely connect to a hosting resource in a
 %% Amazon GameLift managed
-%% fleet. This operation is not used with Amazon GameLift Anywhere fleets
+%% fleet.
 %%
-%% To request access, specify the compute name and the fleet ID. If
-%% successful, this
-%% operation returns a set of temporary Amazon Web Services credentials,
-%% including a two-part access key
-%% and a session token.
+%% This operation is not used with Amazon GameLift Anywhere fleets.
 %%
-%% EC2 fleets
+%% Request options
 %%
-%% With an EC2 fleet (where compute type is `EC2'), use these credentials
-%% with
-%% Amazon EC2 Systems Manager (SSM) to start a session with the compute. For
-%% more details, see Starting a session (CLI):
+%% To request access to a compute, specify the compute name and the fleet ID.
+%%
+%% Results
+%%
+%% If successful, this operation returns a set of temporary Amazon Web
+%% Services credentials, including
+%% a two-part access key and a session token.
+%%
+%% With a managed EC2 fleet (where compute type is `EC2'), use these
+%% credentials with Amazon EC2 Systems Manager (SSM) to start a session with
+%% the compute. For more
+%% details, see Starting a session (CLI):
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-cli
 %% in the Amazon EC2 Systems Manager User
 %% Guide.
-%%
-%% Container fleets
-%%
-%% With a container fleet (where compute type is `CONTAINER'), use
-%% these credentials and the target value with SSM to connect to the fleet
-%% instance where
-%% the container is running. After you're connected to the instance, use
-%% Docker commands to
-%% interact with the container.
-%%
-%% Learn more
-%%
-%% Remotely connect to fleet
-%% instances:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html
-%%
-%% Debug fleet
-%% issues:
-%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html
 -spec get_compute_access(aws_client:aws_client(), get_compute_access_input()) ->
     {ok, get_compute_access_output(), tuple()} |
     {error, any()} |
@@ -6572,30 +7108,28 @@ get_compute_access(Client, Input, Options)
 
 %% @doc Requests an authentication token from Amazon GameLift for a compute
 %% resource in an Amazon GameLift
-%% Anywhere fleet or container fleet.
+%% fleet.
 %%
-%% Game servers that are running on the compute use this
-%% token to communicate with the Amazon GameLift service, such as when
-%% calling the Amazon GameLift server
-%% SDK action . Authentication tokens are valid for a limited time
-%% span, so you need to request a fresh token before the current token
-%% expires.
+%% Game servers that are running on the compute use this token to communicate
+%% with the Amazon GameLift service, such as when calling the Amazon GameLift
+%% server SDK action
+%% . Authentication tokens are valid for a limited time span, so
+%% you need to request a fresh token before the current token expires.
 %%
-%% Use this operation based on the fleet compute type:
+%% Request options
 %%
-%% For `EC2' fleets, auth token retrieval and refresh is handled
-%% automatically. All game servers that are running on all fleet instances
-%% have
-%% access to a valid auth token.
+%% For managed EC2 fleets (compute type `EC2'), auth token retrieval
+%% and refresh is handled automatically. All game servers that are running on
+%% all
+%% fleet instances have access to a valid auth token.
 %%
-%% For `ANYWHERE' and `CONTAINER' fleets, if you're using
-%% the Amazon GameLift Agent, auth token retrieval and refresh is handled
-%% automatically for
-%% any container or Anywhere compute where the Agent is running. If
-%% you're not
-%% using the Agent, create a mechanism to retrieve and refresh auth tokens
-%% for
-%% computes that are running game server processes.
+%% For Anywhere fleets (compute type `ANYWHERE'), if you're using the
+%% Amazon GameLift Agent, auth token retrieval and refresh is handled
+%% automatically for any
+%% compute where the Agent is running. If you're not using
+%% the Agent, create a mechanism to retrieve and refresh auth tokens for
+%% computes
+%% that are running game server processes.
 %%
 %% Learn more
 %%
@@ -6786,37 +7320,35 @@ list_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuilds">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
-%%
-%% Retrieves information on the compute resources in an Amazon GameLift
+%% @doc Retrieves information on the compute resources in an Amazon GameLift
 %% fleet.
 %%
-%% To request a list of computes, specify the fleet ID. Use the pagination
-%% parameters to
-%% retrieve results in a set of sequential pages.
+%% Use the pagination
+%% parameters to retrieve results in a set of sequential pages.
 %%
-%% You can filter the result set by location.
+%% Request options:
 %%
-%% If successful, this operation returns information on all computes in the
-%% requested
-%% fleet. Depending on the fleet's compute type, the result includes the
-%% following
-%% information:
+%% Retrieve a list of all computes in a fleet. Specify a fleet ID.
 %%
-%% For `EC2' fleets, this operation returns information about the EC2
-%% instance. Compute names are instance IDs.
+%% Retrieve a list of all computes in a specific fleet location. Specify a
+%% fleet
+%% ID and location.
 %%
-%% For `ANYWHERE' fleets, this operation returns the compute names and
-%% details provided when the compute was registered with
-%% `RegisterCompute'. The `GameLiftServiceSdkEndpoint' or
-%% `GameLiftAgentEndpoint' is included.
+%% Results:
 %%
-%% For `CONTAINER' fleets, this operation returns information about
-%% containers that are registered as computes, and the instances they're
-%% running
-%% on. Compute names are container names.
+%% If successful, this operation returns information on a set of computes.
+%% Depending on
+%% the type of fleet, the result includes the following information:
+%%
+%% For managed EC2 fleets (compute type `EC2'), this operation returns
+%% information about the EC2 instance. Compute names are EC2 instance IDs.
+%%
+%% For Anywhere fleets (compute type `ANYWHERE'), this operation
+%% returns compute names and details as provided when the compute was
+%% registered
+%% with `RegisterCompute'. This includes
+%% `GameLiftServiceSdkEndpoint' or
+%% `GameLiftAgentEndpoint'.
 -spec list_compute(aws_client:aws_client(), list_compute_input()) ->
     {ok, list_compute_output(), tuple()} |
     {error, any()} |
@@ -6833,16 +7365,120 @@ list_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCompute">>, Input, Options).
 
-%% @doc
-%% This operation is used with the Amazon GameLift containers feature, which
-%% is currently in public preview.
+%% @doc Retrieves a collection of container fleet resources in an Amazon Web
+%% Services Region.
 %%
-%% Retrieves all container group definitions for the Amazon Web Services
-%% account and Amazon Web Services Region that are currently in use. You can
-%% filter the result set by the container
-%% groups' scheduling strategy. Use the pagination parameters to retrieve
-%% results in a set of
-%% sequential pages.
+%% For fleets
+%% that have multiple locations, this operation retrieves fleets based on
+%% their home Region
+%% only.
+%%
+%% Request options
+%%
+%% Get a list of all fleets. Call this operation without specifying a
+%% container
+%% group definition.
+%%
+%% Get a list of fleets filtered by container group definition. Provide the
+%% container group definition name or ARN value.
+%%
+%% To get a list of all Realtime Servers fleets with a specific configuration
+%% script,
+%% provide the script ID.
+%%
+%% Use the pagination parameters to retrieve results as a set of sequential
+%% pages.
+%%
+%% If successful, this operation returns a collection of container fleets
+%% that match the request
+%% parameters. A NextToken value is also returned if there are more result
+%% pages to
+%% retrieve.
+%%
+%% Fleet IDs are returned in no particular order.
+-spec list_container_fleets(aws_client:aws_client(), list_container_fleets_input()) ->
+    {ok, list_container_fleets_output(), tuple()} |
+    {error, any()} |
+    {error, list_container_fleets_errors(), tuple()}.
+list_container_fleets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_container_fleets(Client, Input, []).
+
+-spec list_container_fleets(aws_client:aws_client(), list_container_fleets_input(), proplists:proplist()) ->
+    {ok, list_container_fleets_output(), tuple()} |
+    {error, any()} |
+    {error, list_container_fleets_errors(), tuple()}.
+list_container_fleets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContainerFleets">>, Input, Options).
+
+%% @doc Retrieves all versions of a container group definition.
+%%
+%% Use the pagination parameters to
+%% retrieve results in a set of sequential pages.
+%%
+%% Request options:
+%%
+%% Get all versions of a specified container group definition. Specify the
+%% container
+%% group definition name or ARN value. (If the ARN value has a version
+%% number, it's
+%% ignored.)
+%%
+%% Results:
+%%
+%% If successful, this operation returns the complete properties of a set of
+%% container group
+%% definition versions that match the request.
+%%
+%% This operation returns the list of container group definitions in
+%% descending version
+%% order (latest first).
+%%
+%% Learn more
+%%
+%% Manage a container group definition:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/containers-create-groups.html
+-spec list_container_group_definition_versions(aws_client:aws_client(), list_container_group_definition_versions_input()) ->
+    {ok, list_container_group_definition_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_container_group_definition_versions_errors(), tuple()}.
+list_container_group_definition_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_container_group_definition_versions(Client, Input, []).
+
+-spec list_container_group_definition_versions(aws_client:aws_client(), list_container_group_definition_versions_input(), proplists:proplist()) ->
+    {ok, list_container_group_definition_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_container_group_definition_versions_errors(), tuple()}.
+list_container_group_definition_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContainerGroupDefinitionVersions">>, Input, Options).
+
+%% @doc Retrieves container group definitions for the Amazon Web Services
+%% account and Amazon Web Services Region.
+%%
+%% Use the pagination parameters to retrieve results in a set of sequential
+%% pages.
+%%
+%% This operation returns only the latest version of each definition. To
+%% retrieve all
+%% versions of a container group definition, use
+%% `ListContainerGroupDefinitionVersions'.
+%%
+%% Request options:
+%%
+%% Retrieve the most recent versions of all container group definitions.
+%%
+%% Retrieve the most recent versions of all container group definitions,
+%% filtered by
+%% type. Specify the container group type to filter on.
+%%
+%% Results:
+%%
+%% If successful, this operation returns the complete properties of a set of
+%% container group
+%% definition versions that match the request.
 %%
 %% This operation returns the list of container group definitions in no
 %% particular order.
@@ -6867,12 +7503,53 @@ list_container_group_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainerGroupDefinitions">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Retrieves a collection of container fleet deployments in an Amazon
+%% Web Services Region.
 %%
-%% Retrieves a collection of fleet resources in an Amazon Web Services
-%% Region. You can filter the
+%% Request options
+%%
+%% Get a list of all deployments. Call this operation without specifying a
+%% fleet ID.
+%%
+%% Get a list of all deployments for a fleet. Specify the container fleet ID
+%% or ARN value.
+%%
+%% To get a list of all Realtime Servers fleets with a specific configuration
+%% script,
+%% provide the script ID.
+%%
+%% Use the pagination parameters to retrieve results as a set of sequential
+%% pages.
+%%
+%% Results
+%%
+%% If successful, this operation returns a list of deployments that match the
+%% request
+%% parameters. A NextToken value is also returned if there are more result
+%% pages to
+%% retrieve.
+%%
+%% Fleet IDs are returned in no particular order.
+-spec list_fleet_deployments(aws_client:aws_client(), list_fleet_deployments_input()) ->
+    {ok, list_fleet_deployments_output(), tuple()} |
+    {error, any()} |
+    {error, list_fleet_deployments_errors(), tuple()}.
+list_fleet_deployments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_fleet_deployments(Client, Input, []).
+
+-spec list_fleet_deployments(aws_client:aws_client(), list_fleet_deployments_input(), proplists:proplist()) ->
+    {ok, list_fleet_deployments_output(), tuple()} |
+    {error, any()} |
+    {error, list_fleet_deployments_errors(), tuple()}.
+list_fleet_deployments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFleetDeployments">>, Input, Options).
+
+%% @doc Retrieves a collection of fleet resources in an Amazon Web Services
+%% Region.
+%%
+%% You can filter the
 %% result set to find only those fleets that are deployed with a specific
 %% build or script.
 %% For fleets that have multiple locations, this operation retrieves fleets
@@ -6892,10 +7569,6 @@ list_container_group_definitions(Client, Input, Options)
 %% To get a list of all Realtime Servers fleets with a specific configuration
 %% script,
 %% provide the script ID.
-%%
-%% To get a list of all fleets with a specific container group definition,
-%% provide
-%% the `ContainerGroupDefinition' ID.
 %%
 %% Use the pagination parameters to retrieve results as a set of sequential
 %% pages.
@@ -7178,16 +7851,10 @@ put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Registers a compute resource in an Amazon GameLift Anywhere fleet.
 %%
-%% Registers a compute resource in an Amazon GameLift fleet. Register
-%% computes with an Amazon GameLift
-%% Anywhere fleet or a container fleet.
-%%
-%% For an Anywhere fleet or a container fleet that's running the Amazon
-%% GameLift Agent, the Agent
+%% For an Anywhere fleet that's running the Amazon GameLift Agent, the
+%% Agent
 %% handles all compute registry tasks for you. For an Anywhere fleet that
 %% doesn't use the
 %% Agent, call this operation to register fleet computes.
@@ -7619,9 +8286,9 @@ start_fleet_actions(Client, Input, Options)
 %% and check the request's status. If the status
 %% is `FULFILLED', a new game session has been created and a game session
 %% ARN
-%% and Region are referenced. If the placement request times out, you can
-%% resubmit the
-%% request or retry it with a different queue.
+%% and Region are referenced. If the placement request times out, submit a
+%% new request to the same
+%% queue or a different queue.
 -spec start_game_session_placement(aws_client:aws_client(), start_game_session_placement_input()) ->
     {ok, start_game_session_placement_output(), tuple()} |
     {error, any()} |
@@ -8089,6 +8756,141 @@ update_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBuild">>, Input, Options).
 
+%% @doc Updates the properties of a managed container fleet.
+%%
+%% Depending on the properties being
+%% updated, this operation might initiate a fleet deployment. You can track
+%% deployments for
+%% a fleet using `DescribeFleetDeployment'.
+%%
+%% Request options
+%%
+%% As with CreateContainerFleet, many fleet properties use common defaults or
+%% are
+%% calculated based on the fleet's container group definitions.
+%%
+%% Update fleet properties that result in a fleet deployment. Include only
+%% those
+%% properties that you want to change. Specify deployment configuration
+%% settings.
+%%
+%% Update fleet properties that don't result in a fleet deployment.
+%% Include only
+%% those properties that you want to change.
+%%
+%% Changes to the following properties initiate a fleet deployment:
+%%
+%% `GameServerContainerGroupDefinition'
+%%
+%% `PerInstanceContainerGroupDefinition'
+%%
+%% `GameServerContainerGroupsPerInstance'
+%%
+%% `InstanceInboundPermissions'
+%%
+%% `InstanceConnectionPortRange'
+%%
+%% `LogConfiguration'
+%%
+%% Results
+%%
+%% If successful, this operation updates the container fleet resource, and
+%% might initiate
+%% a new deployment of fleet resources using the deployment configuration
+%% provided. A
+%% deployment replaces existing fleet instances with new instances that are
+%% deployed with
+%% the updated fleet properties. The fleet is placed in `UPDATING' status
+%% until
+%% the deployment is complete, then return to `ACTIVE'.
+%%
+%% You can have only one update deployment active at a time for a fleet. If a
+%% second
+%% update request initiates a deployment while another deployment is in
+%% progress, the first
+%% deployment is cancelled.
+-spec update_container_fleet(aws_client:aws_client(), update_container_fleet_input()) ->
+    {ok, update_container_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, update_container_fleet_errors(), tuple()}.
+update_container_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_container_fleet(Client, Input, []).
+
+-spec update_container_fleet(aws_client:aws_client(), update_container_fleet_input(), proplists:proplist()) ->
+    {ok, update_container_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, update_container_fleet_errors(), tuple()}.
+update_container_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateContainerFleet">>, Input, Options).
+
+%% @doc Updates properties in an existing container group definition.
+%%
+%% This operation doesn't
+%% replace the definition. Instead, it creates a new version of the
+%% definition and saves it
+%% separately. You can access all versions that you choose to retain.
+%%
+%% The only property you can't update is the container group type.
+%%
+%% Request options:
+%%
+%% Update based on the latest version of the container group definition.
+%% Specify the
+%% container group definition name only, or use an ARN value without a
+%% version number.
+%% Provide updated values for the properties that you want to change only.
+%% All other values
+%% remain the same as the latest version.
+%%
+%% Update based on a specific version of the container group definition.
+%% Specify the
+%% container group definition name and a source version number, or use an ARN
+%% value with a
+%% version number. Provide updated values for the properties that you want to
+%% change only.
+%% All other values remain the same as the source version.
+%%
+%% Change a game server container definition. Provide the updated container
+%% definition.
+%%
+%% Add or change a support container definition. Provide a complete set of
+%% container
+%% definitions, including the updated definition.
+%%
+%% Remove a support container definition. Provide a complete set of container
+%% definitions, excluding the definition to remove. If the container group
+%% has only one
+%% support container definition, provide an empty set.
+%%
+%% Results:
+%%
+%% If successful, this operation returns the complete properties of the new
+%% container group
+%% definition version.
+%%
+%% If the container group definition version is used in an active fleets, the
+%% update
+%% automatically initiates a new fleet deployment of the new version. You can
+%% track a fleet's
+%% deployments using `ListFleetDeployments'.
+-spec update_container_group_definition(aws_client:aws_client(), update_container_group_definition_input()) ->
+    {ok, update_container_group_definition_output(), tuple()} |
+    {error, any()} |
+    {error, update_container_group_definition_errors(), tuple()}.
+update_container_group_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_container_group_definition(Client, Input, []).
+
+-spec update_container_group_definition(aws_client:aws_client(), update_container_group_definition_input(), proplists:proplist()) ->
+    {ok, update_container_group_definition_output(), tuple()} |
+    {error, any()} |
+    {error, update_container_group_definition_errors(), tuple()}.
+update_container_group_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateContainerGroupDefinition">>, Input, Options).
+
 %% @doc Updates a fleet's mutable attributes, such as game session
 %% protection and resource
 %% creation limits.
@@ -8119,12 +8921,10 @@ update_fleet_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleetAttributes">>, Input, Options).
 
-%% @doc
-%% This operation has been expanded to use with the Amazon GameLift
-%% containers feature, which is currently in public preview.
+%% @doc Updates capacity settings for a managed EC2 fleet or managed
+%% container fleet.
 %%
-%% Updates capacity settings for a managed EC2 fleet or container fleet. For
-%% these
+%% For these
 %% fleets, you adjust capacity by changing the number of instances in the
 %% fleet. Fleet
 %% capacity determines the number of game sessions and players that the fleet
@@ -8427,12 +9227,8 @@ update_matchmaking_configuration(Client, Input, Options)
 %% @doc Updates the runtime configuration for the specified fleet.
 %%
 %% The runtime configuration
-%% tells Amazon GameLift how to launch server processes on computes in the
-%% fleet. For managed EC2
-%% fleets, it determines what server processes to run on each fleet instance.
-%% For container
-%% fleets, it describes what server processes to run in each replica
-%% container group. You
+%% tells Amazon GameLift how to launch server processes on computes in
+%% managed EC2 and Anywhere fleets. You
 %% can update a fleet's runtime configuration at any time after the fleet
 %% is created; it
 %% does not need to be in `ACTIVE' status.

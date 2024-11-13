@@ -342,6 +342,7 @@
 
 %% Example:
 %% list_aliases_input() :: #{
+%%   <<"KeyArn">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1507,8 +1508,8 @@ import_key(Client, Input, Options)
 %% @doc Lists the aliases for all keys in the caller's Amazon Web
 %% Services account and Amazon Web Services Region.
 %%
-%% You can filter the list of aliases. For more information, see Using
-%% aliases:
+%% You can filter the aliases by `keyARN'. For more information, see
+%% Using aliases:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-managealias.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
