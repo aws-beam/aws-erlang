@@ -226,6 +226,7 @@
 
 %% Example:
 %% create_service_level_objective_input() :: #{
+%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"Goal">> => goal(),
 %%   <<"Name">> := string(),
@@ -239,6 +240,7 @@
 %% Example:
 %% service_level_objective() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()()),
 %%   <<"CreatedTime">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"EvaluationType">> => list(any()),
@@ -390,6 +392,13 @@
 
 
 %% Example:
+%% burn_rate_configuration() :: #{
+%%   <<"LookBackWindowMinutes">> => integer()
+%% }
+-type burn_rate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
@@ -511,6 +520,7 @@
 
 %% Example:
 %% update_service_level_objective_input() :: #{
+%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"Goal">> => goal(),
 %%   <<"RequestBasedSliConfig">> => request_based_service_level_indicator_config(),

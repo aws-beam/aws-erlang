@@ -42,6 +42,8 @@
          delete_profile/3,
          delete_transformer/2,
          delete_transformer/3,
+         generate_mapping/2,
+         generate_mapping/3,
          get_capability/2,
          get_capability/3,
          get_partnership/2,
@@ -235,6 +237,13 @@
 %%   <<"fromFormat">> => list(any())
 %% }
 -type input_conversion() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mapping_response() :: #{
+%%   <<"mappingAccuracy">> => [float()],
+%%   <<"mappingTemplate">> => [string()]
+%% }
+-type generate_mapping_response() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -549,6 +558,14 @@
 %%   <<"transformerId">> => string()
 %% }
 -type create_transformer_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mapping_request() :: #{
+%%   <<"inputFileContent">> := string(),
+%%   <<"mappingType">> := list(any()),
+%%   <<"outputFileContent">> := string()
+%% }
+-type generate_mapping_request() :: #{binary() => any()}.
 
 %% Example:
 %% x12_interchange_control_headers() :: #{
@@ -881,6 +898,12 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type generate_mapping_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type get_capability_errors() ::
     throttling_exception() | 
@@ -1251,6 +1274,34 @@ delete_transformer(Client, Input)
 delete_transformer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTransformer">>, Input, Options).
+
+%% @doc Takes sample input and output documents and uses Amazon Bedrock to
+%% generate a mapping automatically.
+%%
+%% Depending on the accuracy and other factors, you can then edit the mapping
+%% for your needs.
+%%
+%% Before you can use the AI-assisted feature for Amazon Web Services B2B
+%% Data Interchange you must enable models in Amazon Bedrock. For details,
+%% see AI-assisted template mapping prerequisites:
+%% https://docs.aws.amazon.com/b2bi/latest/userguide/ai-assisted-mapping.html#ai-assist-prereq
+%% in
+%% the Amazon Web Services B2B Data Interchange User guide.
+-spec generate_mapping(aws_client:aws_client(), generate_mapping_request()) ->
+    {ok, generate_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, generate_mapping_errors(), tuple()}.
+generate_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    generate_mapping(Client, Input, []).
+
+-spec generate_mapping(aws_client:aws_client(), generate_mapping_request(), proplists:proplist()) ->
+    {ok, generate_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, generate_mapping_errors(), tuple()}.
+generate_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GenerateMapping">>, Input, Options).
 
 %% @doc Retrieves the details for the specified capability.
 %%

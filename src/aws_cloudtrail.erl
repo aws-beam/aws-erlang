@@ -64,6 +64,8 @@
          disable_federation/3,
          enable_federation/2,
          enable_federation/3,
+         generate_query/2,
+         generate_query/3,
          get_channel/2,
          get_channel/3,
          get_event_data_store/2,
@@ -192,6 +194,7 @@
 %%   <<"DeliveryS3Uri">> => string(),
 %%   <<"DeliveryStatus">> => list(any()),
 %%   <<"ErrorMessage">> => string(),
+%%   <<"Prompt">> => string(),
 %%   <<"QueryId">> => string(),
 %%   <<"QueryStatistics">> => query_statistics_for_describe_query(),
 %%   <<"QueryStatus">> => list(any()),
@@ -577,6 +580,13 @@
 -type import_statistics() :: #{binary() => any()}.
 
 %% Example:
+%% generate_query_response() :: #{
+%%   <<"QueryAlias">> => string(),
+%%   <<"QueryStatement">> => string()
+%% }
+-type generate_query_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_queries_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Queries">> => list(query()())
@@ -927,6 +937,13 @@
 %%   <<"TerminationProtectionEnabled">> => boolean()
 %% }
 -type create_event_data_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_query_request() :: #{
+%%   <<"EventDataStores">> := list(string()()),
+%%   <<"Prompt">> := string()
+%% }
+-type generate_query_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_channel_request() :: #{
@@ -1543,6 +1560,12 @@
 -type query() :: #{binary() => any()}.
 
 %% Example:
+%% generate_response_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type generate_response_exception() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_event_data_store_status_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1935,6 +1958,16 @@
     event_data_store_arn_invalid_exception() | 
     unsupported_operation_exception().
 
+-type generate_query_errors() ::
+    generate_response_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    operation_not_permitted_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
 -type get_channel_errors() ::
     channel_arn_invalid_exception() | 
     operation_not_permitted_exception() | 
@@ -2150,6 +2183,7 @@
     not_organization_master_account_exception() | 
     operation_not_permitted_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     no_management_account_s_l_r_exists_exception() | 
     invalid_tag_parameter_exception() | 
     channel_not_found_exception() | 
@@ -2667,6 +2701,47 @@ enable_federation(Client, Input)
 enable_federation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableFederation">>, Input, Options).
+
+%% @doc
+%% Generates a query from a natural language prompt.
+%%
+%% This operation uses generative artificial intelligence
+%% (generative AI) to produce a ready-to-use SQL query from the prompt.
+%%
+%% The prompt can be a question or a statement about the event data
+%% in your event data store. For example, you can enter prompts like
+%% &quot;What are my
+%% top errors in the past month?&quot; and “Give me a list of users that used
+%% SNS.”
+%%
+%% The prompt must be in English. For information about limitations,
+%% permissions, and supported Regions, see
+%% Create CloudTrail Lake queries from natural language prompts:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-query-generator.html
+%% in the CloudTrail user guide.
+%%
+%% Do not include any personally identifying, confidential, or sensitive
+%% information
+%% in your prompts.
+%%
+%% This feature uses generative AI large language models (LLMs); we recommend
+%% double-checking the
+%% LLM response.
+-spec generate_query(aws_client:aws_client(), generate_query_request()) ->
+    {ok, generate_query_response(), tuple()} |
+    {error, any()} |
+    {error, generate_query_errors(), tuple()}.
+generate_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    generate_query(Client, Input, []).
+
+-spec generate_query(aws_client:aws_client(), generate_query_request(), proplists:proplist()) ->
+    {ok, generate_query_response(), tuple()} |
+    {error, any()} |
+    {error, generate_query_errors(), tuple()}.
+generate_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GenerateQuery">>, Input, Options).
 
 %% @doc Returns information about a specific channel.
 -spec get_channel(aws_client:aws_client(), get_channel_request()) ->

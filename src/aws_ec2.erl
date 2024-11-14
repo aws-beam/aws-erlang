@@ -12923,11 +12923,13 @@
 %%   <<"BootMode">> => list(any()),
 %%   <<"ImageId">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"SourceImageId">> => string(),
 %%   <<"ImdsSupport">> => list(any()),
 %%   <<"ProductCodes">> => list(product_code()()),
 %%   <<"SourceInstanceId">> => string(),
 %%   <<"EnaSupport">> => boolean(),
-%%   <<"Description">> => string()
+%%   <<"Description">> => string(),
+%%   <<"SourceImageRegion">> => string()
 %% }
 -type image() :: #{binary() => any()}.
 
@@ -20349,8 +20351,8 @@ create_capacity_reservation(Client, Input, Options)
     request(Client, <<"CreateCapacityReservation">>, Input, Options).
 
 %% @doc
-%% Create a new Capacity Reservation by splitting the available capacity of
-%% the source Capacity Reservation.
+%% Create a new Capacity Reservation by splitting the capacity of the source
+%% Capacity Reservation.
 %%
 %% The new Capacity Reservation will have the same attributes as the source
 %% Capacity Reservation except for tags. The source Capacity Reservation must
@@ -21015,7 +21017,7 @@ create_ipam_scope(Client, Input, Options)
 
 %% @doc Creates an ED25519 or 2048-bit RSA key pair with the specified name
 %% and in the
-%% specified PEM or PPK format.
+%% specified format.
 %%
 %% Amazon EC2 stores the public key and displays the private
 %% key for you to save to a file. The private key is returned as an
@@ -21035,7 +21037,7 @@ create_ipam_scope(Client, Input, Options)
 %% For more information, see Amazon EC2 key pairs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html in
 %% the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EC2 User Guide.
 -spec create_key_pair(aws_client:aws_client(), create_key_pair_request()) ->
     {ok, key_pair(), tuple()} |
     {error, any()}.
@@ -21641,11 +21643,11 @@ create_route_table(Client, Input, Options)
 %% Amazon EC2 security groups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html
 %% in
-%% the Amazon Elastic Compute Cloud User Guide and
+%% the Amazon EC2 User Guide and
 %% Security groups for your VPC:
 %% https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html
 %% in the
-%% Amazon Virtual Private Cloud User Guide.
+%% Amazon VPC User Guide.
 %%
 %% When you create a security group, you specify a friendly name of your
 %% choice.
@@ -25812,7 +25814,7 @@ describe_ipv6_pools(Client, Input, Options)
 %%
 %% For more information about key pairs, see Amazon EC2 key pairs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% in the Amazon EC2 User Guide.
 -spec describe_key_pairs(aws_client:aws_client(), describe_key_pairs_request()) ->
     {ok, describe_key_pairs_result(), tuple()} |
     {error, any()}.
@@ -30276,17 +30278,15 @@ import_instance(Client, Input, Options)
     request(Client, <<"ImportInstance">>, Input, Options).
 
 %% @doc Imports the public key from an RSA or ED25519 key pair that you
-%% created with a third-party tool.
+%% created using a third-party tool.
 %%
-%% Compare this with `CreateKeyPair', in which Amazon Web Services
-%% creates the key pair and gives the keys to you
-%% (Amazon Web Services keeps a copy of the public key). With ImportKeyPair,
-%% you create the key pair and give Amazon Web Services just the public key.
-%% The private key is never transferred between you and Amazon Web Services.
+%% You give Amazon Web Services only the public key. The private key is never
+%% transferred between you and Amazon Web Services.
 %%
-%% For more information about key pairs, see Amazon EC2 key pairs:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% For more information about the requirements for importing a key pair, see
+%% Create a key pair and import the public key to Amazon EC2:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html#how-to-generate-your-own-key-and-import-it-to-aws
+%% in the Amazon EC2 User Guide.
 -spec import_key_pair(aws_client:aws_client(), import_key_pair_request()) ->
     {ok, import_key_pair_result(), tuple()} |
     {error, any()}.

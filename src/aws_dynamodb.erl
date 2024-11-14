@@ -177,7 +177,8 @@
 %%   <<"TableId">> => string(),
 %%   <<"TableName">> => string(),
 %%   <<"TableSizeBytes">> => float(),
-%%   <<"TableStatus">> => list(any())
+%%   <<"TableStatus">> => list(any()),
+%%   <<"WarmThroughput">> => table_warm_throughput_description()
 %% }
 -type table_description() :: #{binary() => any()}.
 
@@ -528,7 +529,8 @@
 %%   <<"StreamSpecification">> => stream_specification(),
 %%   <<"TableClass">> => list(any()),
 %%   <<"TableName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag()()),
+%%   <<"WarmThroughput">> => warm_throughput()
 %% }
 -type create_table_input() :: #{binary() => any()}.
 
@@ -812,6 +814,14 @@
 -type execute_statement_input() :: #{binary() => any()}.
 
 %% Example:
+%% table_warm_throughput_description() :: #{
+%%   <<"ReadUnitsPerSecond">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"WriteUnitsPerSecond">> => float()
+%% }
+-type table_warm_throughput_description() :: #{binary() => any()}.
+
+%% Example:
 %% list_tables_input() :: #{
 %%   <<"ExclusiveStartTableName">> => string(),
 %%   <<"Limit">> => integer()
@@ -1034,7 +1044,8 @@
 %%   <<"KeySchema">> => list(key_schema_element()()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput()
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"WarmThroughput">> => warm_throughput()
 %% }
 -type create_global_secondary_index_action() :: #{binary() => any()}.
 
@@ -1151,6 +1162,21 @@
 %%   <<"ExportType">> => list(any())
 %% }
 -type export_summary() :: #{binary() => any()}.
+
+%% Example:
+%% warm_throughput() :: #{
+%%   <<"ReadUnitsPerSecond">> => float(),
+%%   <<"WriteUnitsPerSecond">> => float()
+%% }
+-type warm_throughput() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_warm_throughput_description() :: #{
+%%   <<"ReadUnitsPerSecond">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"WriteUnitsPerSecond">> => float()
+%% }
+-type global_secondary_index_warm_throughput_description() :: #{binary() => any()}.
 
 %% Example:
 %% item_collection_metrics() :: #{
@@ -1538,7 +1564,8 @@
 %%   <<"KeySchema">> => list(key_schema_element()()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput_description()
+%%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
+%%   <<"WarmThroughput">> => global_secondary_index_warm_throughput_description()
 %% }
 -type global_secondary_index_description() :: #{binary() => any()}.
 
@@ -1578,7 +1605,8 @@
 %% replica_global_secondary_index_description() :: #{
 %%   <<"IndexName">> => string(),
 %%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
-%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override()
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
+%%   <<"WarmThroughput">> => global_secondary_index_warm_throughput_description()
 %% }
 -type replica_global_secondary_index_description() :: #{binary() => any()}.
 
@@ -1699,7 +1727,8 @@
 %%   <<"KeySchema">> => list(key_schema_element()()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput()
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"WarmThroughput">> => warm_throughput()
 %% }
 -type global_secondary_index() :: #{binary() => any()}.
 
@@ -1792,7 +1821,8 @@
 %%   <<"ReplicaStatus">> => list(any()),
 %%   <<"ReplicaStatusDescription">> => string(),
 %%   <<"ReplicaStatusPercentProgress">> => string(),
-%%   <<"ReplicaTableClassSummary">> => table_class_summary()
+%%   <<"ReplicaTableClassSummary">> => table_class_summary(),
+%%   <<"WarmThroughput">> => table_warm_throughput_description()
 %% }
 -type replica_description() :: #{binary() => any()}.
 
@@ -1863,7 +1893,8 @@
 %% update_global_secondary_index_action() :: #{
 %%   <<"IndexName">> => string(),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput()
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"WarmThroughput">> => warm_throughput()
 %% }
 -type update_global_secondary_index_action() :: #{binary() => any()}.
 
@@ -2032,7 +2063,8 @@
 %%   <<"SSESpecification">> => sse_specification(),
 %%   <<"StreamSpecification">> => stream_specification(),
 %%   <<"TableClass">> => list(any()),
-%%   <<"TableName">> := string()
+%%   <<"TableName">> := string(),
+%%   <<"WarmThroughput">> => warm_throughput()
 %% }
 -type update_table_input() :: #{binary() => any()}.
 

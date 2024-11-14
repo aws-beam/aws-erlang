@@ -1919,6 +1919,9 @@ accept_handshake(Client, Input, Options)
 %% SERVICE_CONTROL_POLICY:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html
 %%
+%% RESOURCE_CONTROL_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html
+%%
 %% BACKUP_POLICY:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html
 %%
