@@ -8,6 +8,10 @@
 
 -export([associate_user/2,
          associate_user/3,
+         create_license_server_endpoint/2,
+         create_license_server_endpoint/3,
+         delete_license_server_endpoint/2,
+         delete_license_server_endpoint/3,
          deregister_identity_provider/2,
          deregister_identity_provider/3,
          disassociate_user/2,
@@ -16,8 +20,13 @@
          list_identity_providers/3,
          list_instances/2,
          list_instances/3,
+         list_license_server_endpoints/2,
+         list_license_server_endpoints/3,
          list_product_subscriptions/2,
          list_product_subscriptions/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_user_associations/2,
          list_user_associations/3,
          register_identity_provider/2,
@@ -26,6 +35,10 @@
          start_product_subscription/3,
          stop_product_subscription/2,
          stop_product_subscription/3,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_identity_provider_settings/2,
          update_identity_provider_settings/3]).
 
@@ -36,29 +49,55 @@
 %% Example:
 %% stop_product_subscription_request() :: #{
 %%   <<"Domain">> => [string()],
-%%   <<"IdentityProvider">> := list(),
-%%   <<"Product">> := [string()],
-%%   <<"Username">> := [string()]
+%%   <<"IdentityProvider">> => list(),
+%%   <<"Product">> => [string()],
+%%   <<"ProductUserArn">> => string(),
+%%   <<"Username">> => [string()]
 %% }
 -type stop_product_subscription_request() :: #{binary() => any()}.
 
 
 %% Example:
+%% list_license_server_endpoints_response() :: #{
+%%   <<"LicenseServerEndpoints">> => list(license_server_endpoint()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_license_server_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% disassociate_user_request() :: #{
 %%   <<"Domain">> => [string()],
-%%   <<"IdentityProvider">> := list(),
-%%   <<"InstanceId">> := [string()],
-%%   <<"Username">> := [string()]
+%%   <<"IdentityProvider">> => list(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"InstanceUserArn">> => string(),
+%%   <<"Username">> => [string()]
 %% }
 -type disassociate_user_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_identity_providers_request() :: #{
+%%   <<"Filters">> => list(filter()()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_identity_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_license_server_endpoint_response() :: #{
+%%   <<"IdentityProviderArn">> => string(),
+%%   <<"LicenseServerEndpointArn">> => string()
+%% }
+-type create_license_server_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -67,9 +106,13 @@
 %%   <<"IdentityProvider">> := list(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()],
-%%   <<"Product">> := [string()]
+%%   <<"Product">> => [string()]
 %% }
 -type list_product_subscriptions_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -79,11 +122,29 @@
 %%   <<"Domain">> => [string()],
 %%   <<"IdentityProvider">> => list(),
 %%   <<"InstanceId">> => [string()],
+%%   <<"InstanceUserArn">> => string(),
 %%   <<"Status">> => [string()],
 %%   <<"StatusMessage">> => [string()],
 %%   <<"Username">> => [string()]
 %% }
 -type instance_user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_license_server_endpoint_request() :: #{
+%%   <<"IdentityProviderArn">> := string(),
+%%   <<"LicenseServerSettings">> := license_server_settings(),
+%%   <<"Tags">> => map()
+%% }
+-type create_license_server_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_license_server_endpoint_request() :: #{
+%%   <<"LicenseServerEndpointArn">> := string(),
+%%   <<"ServerType">> := string()
+%% }
+-type delete_license_server_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -96,9 +157,34 @@
 
 
 %% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_directory_settings() :: #{
+%%   <<"DomainCredentialsProvider">> => list(),
+%%   <<"DomainIpv4List">> => list(string()()),
+%%   <<"DomainName">> => [string()],
+%%   <<"DomainNetworkSettings">> => domain_network_settings()
+%% }
+-type active_directory_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_endpoint() :: #{
+%%   <<"Endpoint">> => [string()]
+%% }
+-type server_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
 %% deregister_identity_provider_request() :: #{
-%%   <<"IdentityProvider">> := list(),
-%%   <<"Product">> := [string()]
+%%   <<"IdentityProvider">> => list(),
+%%   <<"IdentityProviderArn">> => string(),
+%%   <<"Product">> => [string()]
 %% }
 -type deregister_identity_provider_request() :: #{binary() => any()}.
 
@@ -113,7 +199,7 @@
 
 %% Example:
 %% update_identity_provider_settings_response() :: #{
-%%   <<"IdentityProviderSummary">> := identity_provider_summary()
+%%   <<"IdentityProviderSummary">> => identity_provider_summary()
 %% }
 -type update_identity_provider_settings_response() :: #{binary() => any()}.
 
@@ -134,7 +220,7 @@
 
 %% Example:
 %% register_identity_provider_response() :: #{
-%%   <<"IdentityProviderSummary">> := identity_provider_summary()
+%%   <<"IdentityProviderSummary">> => identity_provider_summary()
 %% }
 -type register_identity_provider_response() :: #{binary() => any()}.
 
@@ -156,23 +242,37 @@
 
 %% Example:
 %% stop_product_subscription_response() :: #{
-%%   <<"ProductUserSummary">> := product_user_summary()
+%%   <<"ProductUserSummary">> => product_user_summary()
 %% }
 -type stop_product_subscription_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% disassociate_user_response() :: #{
-%%   <<"InstanceUserSummary">> := instance_user_summary()
+%%   <<"InstanceUserSummary">> => instance_user_summary()
 %% }
 -type disassociate_user_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% associate_user_response() :: #{
-%%   <<"InstanceUserSummary">> := instance_user_summary()
+%%   <<"InstanceUserSummary">> => instance_user_summary()
 %% }
 -type associate_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_credentials_provider() :: #{
+%%   <<"SecretId">> => [string()]
+%% }
+-type secrets_manager_credentials_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -180,6 +280,7 @@
 %%   <<"Domain">> => [string()],
 %%   <<"IdentityProvider">> => list(),
 %%   <<"Product">> => [string()],
+%%   <<"ProductUserArn">> => string(),
 %%   <<"Status">> => [string()],
 %%   <<"StatusMessage">> => [string()],
 %%   <<"SubscriptionEndDate">> => [string()],
@@ -193,11 +294,19 @@
 %% identity_provider_summary() :: #{
 %%   <<"FailureMessage">> => [string()],
 %%   <<"IdentityProvider">> => list(),
+%%   <<"IdentityProviderArn">> => string(),
 %%   <<"Product">> => [string()],
 %%   <<"Settings">> => settings(),
 %%   <<"Status">> => [string()]
 %% }
 -type identity_provider_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_network_settings() :: #{
+%%   <<"Subnets">> => list(string()())
+%% }
+-type domain_network_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -235,6 +344,13 @@
 
 
 %% Example:
+%% delete_license_server_endpoint_response() :: #{
+%%   <<"LicenseServerEndpoint">> => license_server_endpoint()
+%% }
+-type delete_license_server_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -242,9 +358,19 @@
 
 
 %% Example:
+%% list_license_server_endpoints_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_license_server_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_identity_provider_settings_request() :: #{
-%%   <<"IdentityProvider">> := list(),
-%%   <<"Product">> := [string()],
+%%   <<"IdentityProvider">> => list(),
+%%   <<"IdentityProviderArn">> => string(),
+%%   <<"Product">> => [string()],
 %%   <<"UpdateSettings">> := update_settings()
 %% }
 -type update_identity_provider_settings_request() :: #{binary() => any()}.
@@ -254,14 +380,15 @@
 %% register_identity_provider_request() :: #{
 %%   <<"IdentityProvider">> := list(),
 %%   <<"Product">> := [string()],
-%%   <<"Settings">> => settings()
+%%   <<"Settings">> => settings(),
+%%   <<"Tags">> => map()
 %% }
 -type register_identity_provider_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% deregister_identity_provider_response() :: #{
-%%   <<"IdentityProviderSummary">> := identity_provider_summary()
+%%   <<"IdentityProviderSummary">> => identity_provider_summary()
 %% }
 -type deregister_identity_provider_response() :: #{binary() => any()}.
 
@@ -274,15 +401,38 @@
 
 
 %% Example:
+%% license_server_endpoint() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"IdentityProviderArn">> => [string()],
+%%   <<"LicenseServerEndpointArn">> => string(),
+%%   <<"LicenseServerEndpointId">> => string(),
+%%   <<"LicenseServerEndpointProvisioningStatus">> => string(),
+%%   <<"LicenseServers">> => list(license_server()()),
+%%   <<"ServerEndpoint">> => server_endpoint(),
+%%   <<"ServerType">> => string(),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type license_server_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% list_identity_providers_response() :: #{
-%%   <<"IdentityProviderSummaries">> := list(identity_provider_summary()()),
+%%   <<"IdentityProviderSummaries">> => list(identity_provider_summary()()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_identity_providers_response() :: #{binary() => any()}.
@@ -307,10 +457,19 @@
 
 
 %% Example:
+%% license_server_settings() :: #{
+%%   <<"ServerSettings">> => list(),
+%%   <<"ServerType">> => string()
+%% }
+-type license_server_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_product_subscription_request() :: #{
 %%   <<"Domain">> => [string()],
 %%   <<"IdentityProvider">> := list(),
 %%   <<"Product">> := [string()],
+%%   <<"Tags">> => map(),
 %%   <<"Username">> := [string()]
 %% }
 -type start_product_subscription_request() :: #{binary() => any()}.
@@ -318,7 +477,7 @@
 
 %% Example:
 %% start_product_subscription_response() :: #{
-%%   <<"ProductUserSummary">> := product_user_summary()
+%%   <<"ProductUserSummary">> => product_user_summary()
 %% }
 -type start_product_subscription_response() :: #{binary() => any()}.
 
@@ -328,9 +487,19 @@
 %%   <<"Domain">> => [string()],
 %%   <<"IdentityProvider">> := list(),
 %%   <<"InstanceId">> := [string()],
+%%   <<"Tags">> => map(),
 %%   <<"Username">> := [string()]
 %% }
 -type associate_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% license_server() :: #{
+%%   <<"HealthStatus">> => string(),
+%%   <<"Ipv4Address">> => [string()],
+%%   <<"ProvisioningStatus">> => string()
+%% }
+-type license_server() :: #{binary() => any()}.
 
 
 %% Example:
@@ -346,11 +515,38 @@
 
 %% Example:
 %% active_directory_identity_provider() :: #{
-%%   <<"DirectoryId">> => [string()]
+%%   <<"ActiveDirectorySettings">> => active_directory_settings(),
+%%   <<"ActiveDirectoryType">> => string(),
+%%   <<"DirectoryId">> => string()
 %% }
 -type active_directory_identity_provider() :: #{binary() => any()}.
 
+
+%% Example:
+%% rds_sal_settings() :: #{
+%%   <<"RdsSalCredentialsProvider">> => list()
+%% }
+-type rds_sal_settings() :: #{binary() => any()}.
+
 -type associate_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_license_server_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_license_server_endpoint_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -395,6 +591,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type list_license_server_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type list_product_subscriptions_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -403,6 +607,11 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_user_associations_errors() ::
     throttling_exception() | 
@@ -439,6 +648,15 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_identity_provider_settings_errors() ::
     throttling_exception() | 
@@ -494,8 +712,77 @@ associate_user(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deregisters the identity provider from providing user-based
-%% subscriptions.
+%% @doc Creates a network endpoint for the Remote Desktop Services (RDS)
+%% license server.
+-spec create_license_server_endpoint(aws_client:aws_client(), create_license_server_endpoint_request()) ->
+    {ok, create_license_server_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_license_server_endpoint_errors(), tuple()}.
+create_license_server_endpoint(Client, Input) ->
+    create_license_server_endpoint(Client, Input, []).
+
+-spec create_license_server_endpoint(aws_client:aws_client(), create_license_server_endpoint_request(), proplists:proplist()) ->
+    {ok, create_license_server_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_license_server_endpoint_errors(), tuple()}.
+create_license_server_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/license-server/CreateLicenseServerEndpoint"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a `LicenseServerEndpoint' resource.
+-spec delete_license_server_endpoint(aws_client:aws_client(), delete_license_server_endpoint_request()) ->
+    {ok, delete_license_server_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_license_server_endpoint_errors(), tuple()}.
+delete_license_server_endpoint(Client, Input) ->
+    delete_license_server_endpoint(Client, Input, []).
+
+-spec delete_license_server_endpoint(aws_client:aws_client(), delete_license_server_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_license_server_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_license_server_endpoint_errors(), tuple()}.
+delete_license_server_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/license-server/DeleteLicenseServerEndpoint"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deregisters the Active Directory identity provider from License
+%% Manager user-based subscriptions.
 -spec deregister_identity_provider(aws_client:aws_client(), deregister_identity_provider_request()) ->
     {ok, deregister_identity_provider_response(), tuple()} |
     {error, any()} |
@@ -564,7 +851,8 @@ disassociate_user(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the identity providers for user-based subscriptions.
+%% @doc Lists the Active Directory identity providers for user-based
+%% subscriptions.
 -spec list_identity_providers(aws_client:aws_client(), list_identity_providers_request()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
@@ -632,6 +920,40 @@ list_instances(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc List the Remote Desktop Services (RDS) License Server endpoints
+-spec list_license_server_endpoints(aws_client:aws_client(), list_license_server_endpoints_request()) ->
+    {ok, list_license_server_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_license_server_endpoints_errors(), tuple()}.
+list_license_server_endpoints(Client, Input) ->
+    list_license_server_endpoints(Client, Input, []).
+
+-spec list_license_server_endpoints(aws_client:aws_client(), list_license_server_endpoints_request(), proplists:proplist()) ->
+    {ok, list_license_server_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_license_server_endpoints_errors(), tuple()}.
+list_license_server_endpoints(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/license-server/ListLicenseServerEndpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the user-based subscription products available from an identity
 %% provider.
 -spec list_product_subscriptions(aws_client:aws_client(), list_product_subscriptions_request()) ->
@@ -666,6 +988,43 @@ list_product_subscriptions(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the list of tags for the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists user associations for an identity provider.
 -spec list_user_associations(aws_client:aws_client(), list_user_associations_request()) ->
@@ -812,6 +1171,75 @@ stop_product_subscription(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds tags to a resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes tags from a resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates additional product configuration settings for the registered

@@ -882,6 +882,14 @@
 
 
 %% Example:
+%% participating_gateways_multicast() :: #{
+%%   <<"GatewayList">> => list(string()()),
+%%   <<"TransmissionInterval">> => integer()
+%% }
+-type participating_gateways_multicast() :: #{binary() => any()}.
+
+
+%% Example:
 %% trace_content() :: #{
 %%   <<"LogLevel">> => list(any()),
 %%   <<"MulticastFrameInfo">> => list(any()),
@@ -927,6 +935,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
+%%   <<"Descriptor">> => string(),
 %%   <<"FirmwareUpdateImage">> => string(),
 %%   <<"FirmwareUpdateRole">> => string(),
 %%   <<"FragmentIntervalMS">> => integer(),
@@ -1560,6 +1569,7 @@
 %% create_fuota_task_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"Descriptor">> => string(),
 %%   <<"FirmwareUpdateImage">> := string(),
 %%   <<"FirmwareUpdateRole">> := string(),
 %%   <<"FragmentIntervalMS">> => integer(),
@@ -1938,6 +1948,15 @@
 
 
 %% Example:
+%% fuota_task_log_option() :: #{
+%%   <<"Events">> => list(fuota_task_event_log_option()()),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type fuota_task_log_option() :: #{binary() => any()}.
+
+
+%% Example:
 %% wireless_gateway_log_option() :: #{
 %%   <<"Events">> => list(wireless_gateway_event_log_option()()),
 %%   <<"LogLevel">> => list(any()),
@@ -2097,6 +2116,7 @@
 %% Example:
 %% update_log_levels_by_resource_types_request() :: #{
 %%   <<"DefaultLogLevel">> => list(any()),
+%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()()),
 %%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()()),
 %%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option()())
 %% }
@@ -2457,6 +2477,14 @@
 
 
 %% Example:
+%% fuota_task_event_log_option() :: #{
+%%   <<"Event">> => list(any()),
+%%   <<"LogLevel">> => list(any())
+%% }
+-type fuota_task_event_log_option() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2513,6 +2541,7 @@
 %% Example:
 %% lo_ra_w_a_n_multicast() :: #{
 %%   <<"DlClass">> => list(any()),
+%%   <<"ParticipatingGateways">> => participating_gateways_multicast(),
 %%   <<"RfRegion">> => list(any())
 %% }
 -type lo_ra_w_a_n_multicast() :: #{binary() => any()}.
@@ -2547,6 +2576,7 @@
 %%   <<"DlClass">> => list(any()),
 %%   <<"NumberOfDevicesInGroup">> => integer(),
 %%   <<"NumberOfDevicesRequested">> => integer(),
+%%   <<"ParticipatingGateways">> => participating_gateways_multicast(),
 %%   <<"RfRegion">> => list(any())
 %% }
 -type lo_ra_w_a_n_multicast_get() :: #{binary() => any()}.
@@ -2577,6 +2607,7 @@
 %% Example:
 %% get_log_levels_by_resource_types_response() :: #{
 %%   <<"DefaultLogLevel">> => list(any()),
+%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()()),
 %%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()()),
 %%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option()())
 %% }
@@ -3019,6 +3050,7 @@
 %% Example:
 %% update_fuota_task_request() :: #{
 %%   <<"Description">> => string(),
+%%   <<"Descriptor">> => string(),
 %%   <<"FirmwareUpdateImage">> => string(),
 %%   <<"FirmwareUpdateRole">> => string(),
 %%   <<"FragmentIntervalMS">> => integer(),
@@ -5854,7 +5886,7 @@ get_resource_event_configuration(Client, Identifier, IdentifierType, QueryMap, H
 %% resource-type.
 %%
 %% It
-%% can be used for a wireless device or a wireless gateway.
+%% can be used for a wireless device, wireless gateway or fuota task.
 -spec get_resource_log_level(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_resource_log_level_response(), tuple()} |
     {error, any()} |
@@ -7184,9 +7216,9 @@ put_resource_log_level(Client, ResourceIdentifier, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the log-level overrides for all resources; both wireless
-%% devices and wireless
-%% gateways.
+%% @doc Removes the log-level overrides for all resources; wireless devices,
+%% wireless
+%% gateways, and fuota tasks.
 -spec reset_all_resource_log_levels(aws_client:aws_client(), reset_all_resource_log_levels_request()) ->
     {ok, reset_all_resource_log_levels_response(), tuple()} |
     {error, any()} |
@@ -7223,7 +7255,7 @@ reset_all_resource_log_levels(Client, Input0, Options0) ->
 %% @doc Removes the log-level override, if any, for a specific resource-ID
 %% and resource-type.
 %%
-%% It can be used for a wireless device or a wireless gateway.
+%% It can be used for a wireless device, a wireless gateway, or a fuota task.
 -spec reset_resource_log_level(aws_client:aws_client(), binary() | list(), reset_resource_log_level_request()) ->
     {ok, reset_resource_log_level_response(), tuple()} |
     {error, any()} |

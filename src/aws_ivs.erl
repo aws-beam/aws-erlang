@@ -599,6 +599,7 @@
 %%   <<"channel">> => channel(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"ingestConfiguration">> => ingest_configuration(),
+%%   <<"ingestConfigurations">> => ingest_configurations(),
 %%   <<"recordingConfiguration">> => recording_configuration(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"streamId">> => string(),
@@ -638,8 +639,10 @@
 %% Example:
 %% create_channel_request() :: #{
 %%   <<"authorized">> => boolean(),
+%%   <<"containerFormat">> => string(),
 %%   <<"insecureIngest">> => boolean(),
 %%   <<"latencyMode">> => string(),
+%%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
 %%   <<"name">> => string(),
 %%   <<"playbackRestrictionPolicyArn">> => string(),
 %%   <<"preset">> => list(any()),
@@ -679,8 +682,10 @@
 %% update_channel_request() :: #{
 %%   <<"arn">> := string(),
 %%   <<"authorized">> => boolean(),
+%%   <<"containerFormat">> => string(),
 %%   <<"insecureIngest">> => boolean(),
 %%   <<"latencyMode">> => string(),
+%%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
 %%   <<"name">> => string(),
 %%   <<"playbackRestrictionPolicyArn">> => string(),
 %%   <<"preset">> => list(any()),
@@ -781,7 +786,8 @@
 %%   <<"channels">> => float(),
 %%   <<"codec">> => string(),
 %%   <<"sampleRate">> => float(),
-%%   <<"targetBitrate">> => float()
+%%   <<"targetBitrate">> => float(),
+%%   <<"track">> => string()
 %% }
 -type audio_configuration() :: #{binary() => any()}.
 
@@ -837,6 +843,14 @@
 
 
 %% Example:
+%% ingest_configurations() :: #{
+%%   <<"audioConfigurations">> => list(audio_configuration()()),
+%%   <<"videoConfigurations">> => list(video_configuration()())
+%% }
+-type ingest_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_stream_key_response() :: #{
 %%   <<"streamKey">> => stream_key()
 %% }
@@ -862,9 +876,11 @@
 %% channel() :: #{
 %%   <<"arn">> => string(),
 %%   <<"authorized">> => boolean(),
+%%   <<"containerFormat">> => string(),
 %%   <<"ingestEndpoint">> => string(),
 %%   <<"insecureIngest">> => boolean(),
 %%   <<"latencyMode">> => string(),
+%%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
 %%   <<"name">> => string(),
 %%   <<"playbackRestrictionPolicyArn">> => string(),
 %%   <<"playbackUrl">> => string(),
@@ -975,8 +991,11 @@
 %%   <<"avcProfile">> => string(),
 %%   <<"codec">> => string(),
 %%   <<"encoder">> => string(),
+%%   <<"level">> => string(),
+%%   <<"profile">> => string(),
 %%   <<"targetBitrate">> => float(),
 %%   <<"targetFramerate">> => float(),
+%%   <<"track">> => string(),
 %%   <<"videoHeight">> => float(),
 %%   <<"videoWidth">> => float()
 %% }
@@ -1007,6 +1026,15 @@
 %%   <<"streamSession">> => stream_session()
 %% }
 -type get_stream_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% multitrack_input_configuration() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"maximumResolution">> => list(any()),
+%%   <<"policy">> => list(any())
+%% }
+-type multitrack_input_configuration() :: #{binary() => any()}.
 
 
 %% Example:

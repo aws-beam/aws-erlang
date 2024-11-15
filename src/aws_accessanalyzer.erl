@@ -125,6 +125,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_analyzer/3,
+         update_analyzer/4,
          update_archive_rule/4,
          update_archive_rule/5,
          update_findings/2,
@@ -146,6 +148,13 @@
 
 
 %% Example:
+%% update_analyzer_request() :: #{
+%%   <<"configuration">> => list()
+%% }
+-type update_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% cloud_trail_details() :: #{
 %%   <<"accessRole">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
@@ -153,6 +162,13 @@
 %%   <<"trails">> => list(trail()())
 %% }
 -type cloud_trail_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_analyzer_response() :: #{
+%%   <<"configuration">> => list()
+%% }
+-type update_analyzer_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -183,6 +199,13 @@
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_rule() :: #{
+%%   <<"exclusions">> => list(analysis_rule_criteria()())
+%% }
+-type analysis_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -277,6 +300,7 @@
 
 %% Example:
 %% unused_access_configuration() :: #{
+%%   <<"analysisRule">> => analysis_rule(),
 %%   <<"unusedAccessAge">> => [integer()]
 %% }
 -type unused_access_configuration() :: #{binary() => any()}.
@@ -425,6 +449,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_analyzers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_rule_criteria() :: #{
+%%   <<"accountIds">> => list([string()]()),
+%%   <<"resourceTags">> => list(map()())
+%% }
+-type analysis_rule_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1556,6 +1588,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type update_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_archive_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2412,10 +2452,7 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of resources of the specified type that have been
 %% analyzed by the
-%% specified external access analyzer.
-%%
-%% This action is not supported for unused access
-%% analyzers.
+%% specified analyzer.
 -spec list_analyzed_resources(aws_client:aws_client(), list_analyzed_resources_request()) ->
     {ok, list_analyzed_resources_response(), tuple()} |
     {error, any()} |
@@ -2840,6 +2877,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies the configuration of an existing analyzer.
+-spec update_analyzer(aws_client:aws_client(), binary() | list(), update_analyzer_request()) ->
+    {ok, update_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, update_analyzer_errors(), tuple()}.
+update_analyzer(Client, AnalyzerName, Input) ->
+    update_analyzer(Client, AnalyzerName, Input, []).
+
+-spec update_analyzer(aws_client:aws_client(), binary() | list(), update_analyzer_request(), proplists:proplist()) ->
+    {ok, update_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, update_analyzer_errors(), tuple()}.
+update_analyzer(Client, AnalyzerName, Input0, Options0) ->
+    Method = put,
+    Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the criteria and values for the specified archive rule.

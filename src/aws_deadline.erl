@@ -1118,6 +1118,7 @@
 
 %% Example:
 %% service_managed_ec2_instance_capabilities() :: #{
+%%   <<"acceleratorCapabilities">> => accelerator_capabilities(),
 %%   <<"allowedInstanceTypes">> => list(string()()),
 %%   <<"cpuArchitectureType">> => list(any()),
 %%   <<"customAmounts">> => list(fleet_amount_capability()()),
@@ -1440,6 +1441,14 @@
 %%   <<"resourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% accelerator_capabilities() :: #{
+%%   <<"count">> => accelerator_count_range(),
+%%   <<"selections">> => list(accelerator_selection()())
+%% }
+-type accelerator_capabilities() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2499,6 +2508,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% accelerator_selection() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"runtime">> => string()
+%% }
+-type accelerator_selection() :: #{binary() => any()}.
 
 
 %% Example:

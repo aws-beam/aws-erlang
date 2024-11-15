@@ -2063,6 +2063,12 @@
 -type scheduled_actions_message() :: #{binary() => any()}.
 
 %% Example:
+%% read_write_access() :: #{
+%%   <<"Authorization">> => list(any())
+%% }
+-type read_write_access() :: #{binary() => any()}.
+
+%% Example:
 %% modify_usage_limit_message() :: #{
 %%   <<"Amount">> => float(),
 %%   <<"BreachAction">> => list(any()),

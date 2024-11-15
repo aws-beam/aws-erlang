@@ -3262,7 +3262,7 @@
 %% or completed.
 %% To delete these in-progress multipart uploads, use the
 %% `ListMultipartUploads' operation to list the in-progress multipart
-%% uploads in the bucket and use the `AbortMultupartUpload' operation to
+%% uploads in the bucket and use the `AbortMultipartUpload' operation to
 %% abort all the in-progress multipart uploads.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
@@ -9494,6 +9494,16 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
 %% For information about Amazon S3 buckets, see Creating, configuring, and
 %% working with Amazon S3 buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html.
+%%
+%% We strongly recommend using only paginated requests. Unpaginated requests
+%% are only supported for
+%% Amazon Web Services accounts set to the default general purpose bucket
+%% quota of 10,000. If you have an approved
+%% general purpose bucket quota above 10,000, you must send paginated
+%% requests to list your account’s buckets.
+%% All unpaginated ListBuckets requests will be rejected for Amazon Web
+%% Services accounts with a general purpose bucket quota
+%% greater than 10,000.
 -spec list_buckets(aws_client:aws_client()) ->
     {ok, list_buckets_output(), tuple()} |
     {error, any()}.
@@ -9569,6 +9579,9 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Directory buckets - The HTTP Host header syntax is
 %% `s3express-control.region.amazonaws.com'.
+%%
+%% The `BucketRegion' response element is not part of the
+%% `ListDirectoryBuckets' Response Syntax.
 -spec list_directory_buckets(aws_client:aws_client()) ->
     {ok, list_directory_buckets_output(), tuple()} |
     {error, any()}.
@@ -9621,7 +9634,7 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %% or completed.
 %% To delete these in-progress multipart uploads, use the
 %% `ListMultipartUploads' operation to list the in-progress multipart
-%% uploads in the bucket and use the `AbortMultupartUpload' operation to
+%% uploads in the bucket and use the `AbortMultipartUpload' operation to
 %% abort all the in-progress multipart uploads.
 %%
 %% The `ListMultipartUploads' operation returns a maximum of 1,000

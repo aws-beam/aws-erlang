@@ -161,6 +161,7 @@
 %% progress_event() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"EventTime">> => non_neg_integer(),
+%%   <<"HooksRequestToken">> => string(),
 %%   <<"Identifier">> => string(),
 %%   <<"Operation">> => string(),
 %%   <<"OperationStatus">> => string(),
@@ -194,6 +195,7 @@
 
 %% Example:
 %% get_resource_request_status_output() :: #{
+%%   <<"HooksProgressEvent">> => list(hook_progress_event()()),
 %%   <<"ProgressEvent">> => progress_event()
 %% }
 -type get_resource_request_status_output() :: #{binary() => any()}.
@@ -204,6 +206,19 @@
 %%   <<"Properties">> => string()
 %% }
 -type resource_description() :: #{binary() => any()}.
+
+%% Example:
+%% hook_progress_event() :: #{
+%%   <<"FailureMode">> => string(),
+%%   <<"HookEventTime">> => non_neg_integer(),
+%%   <<"HookStatus">> => string(),
+%%   <<"HookStatusMessage">> => string(),
+%%   <<"HookTypeArn">> => string(),
+%%   <<"HookTypeName">> => string(),
+%%   <<"HookTypeVersionId">> => string(),
+%%   <<"InvocationPoint">> => string()
+%% }
+-type hook_progress_event() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_input() :: #{

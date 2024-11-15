@@ -25,6 +25,10 @@
          create_account_subscription/4,
          create_analysis/4,
          create_analysis/5,
+         create_brand/4,
+         create_brand/5,
+         create_custom_permissions/3,
+         create_custom_permissions/4,
          create_dashboard/4,
          create_dashboard/5,
          create_data_set/3,
@@ -69,6 +73,12 @@
          delete_account_subscription/4,
          delete_analysis/4,
          delete_analysis/5,
+         delete_brand/4,
+         delete_brand/5,
+         delete_brand_assignment/3,
+         delete_brand_assignment/4,
+         delete_custom_permissions/4,
+         delete_custom_permissions/5,
          delete_dashboard/4,
          delete_dashboard/5,
          delete_data_set/4,
@@ -113,6 +123,8 @@
          delete_user/6,
          delete_user_by_principal_id/5,
          delete_user_by_principal_id/6,
+         delete_user_custom_permission/5,
+         delete_user_custom_permission/6,
          delete_vpc_connection/4,
          delete_vpc_connection/5,
          describe_account_customization/2,
@@ -139,6 +151,18 @@
          describe_asset_bundle_import_job/3,
          describe_asset_bundle_import_job/5,
          describe_asset_bundle_import_job/6,
+         describe_brand/3,
+         describe_brand/5,
+         describe_brand/6,
+         describe_brand_assignment/2,
+         describe_brand_assignment/4,
+         describe_brand_assignment/5,
+         describe_brand_published_version/3,
+         describe_brand_published_version/5,
+         describe_brand_published_version/6,
+         describe_custom_permissions/3,
+         describe_custom_permissions/5,
+         describe_custom_permissions/6,
          describe_dashboard/3,
          describe_dashboard/5,
          describe_dashboard/6,
@@ -266,6 +290,12 @@
          list_asset_bundle_import_jobs/2,
          list_asset_bundle_import_jobs/4,
          list_asset_bundle_import_jobs/5,
+         list_brands/2,
+         list_brands/4,
+         list_brands/5,
+         list_custom_permissions/2,
+         list_custom_permissions/4,
+         list_custom_permissions/5,
          list_dashboard_versions/3,
          list_dashboard_versions/5,
          list_dashboard_versions/6,
@@ -391,6 +421,14 @@
          update_analysis/5,
          update_analysis_permissions/4,
          update_analysis_permissions/5,
+         update_brand/4,
+         update_brand/5,
+         update_brand_assignment/3,
+         update_brand_assignment/4,
+         update_brand_published_version/4,
+         update_brand_published_version/5,
+         update_custom_permissions/4,
+         update_custom_permissions/5,
          update_dashboard/4,
          update_dashboard/5,
          update_dashboard_links/4,
@@ -451,6 +489,8 @@
          update_topic_refresh_schedule/6,
          update_user/5,
          update_user/6,
+         update_user_custom_permission/5,
+         update_user_custom_permission/6,
          update_vpc_connection/4,
          update_vpc_connection/5]).
 
@@ -562,6 +602,13 @@
 %% Example:
 %% describe_dashboard_snapshot_job_request() :: #{}
 -type describe_dashboard_snapshot_job_request() :: #{}.
+
+
+%% Example:
+%% delete_brand_assignment_response() :: #{
+%%   <<"RequestId">> => string()
+%% }
+-type delete_brand_assignment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -690,6 +737,19 @@
 %%   <<"WindowOptions">> => geospatial_window_options()
 %% }
 -type filled_map_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% brand_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"BrandId">> => string(),
+%%   <<"BrandName">> => string(),
+%%   <<"BrandStatus">> => list(any()),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()]
+%% }
+-type brand_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -868,6 +928,15 @@
 %%   <<"RefreshConfiguration">> => refresh_configuration()
 %% }
 -type data_set_refresh_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_permissions_request() :: #{
+%%   <<"Capabilities">> => capabilities(),
+%%   <<"CustomPermissionsName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_custom_permissions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1385,6 +1454,16 @@
 %% Example:
 %% describe_refresh_schedule_request() :: #{}
 -type describe_refresh_schedule_request() :: #{}.
+
+
+%% Example:
+%% list_custom_permissions_response() :: #{
+%%   <<"CustomPermissionsList">> => list(custom_permissions()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_custom_permissions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2009,6 +2088,14 @@
 
 
 %% Example:
+%% update_user_custom_permission_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_user_custom_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_asset_bundle_import_jobs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -2104,6 +2191,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_folders_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_set_configuration() :: #{
+%%   <<"Original">> => image_configuration()
+%% }
+-type image_set_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2212,6 +2306,14 @@
 %%   <<"CategorySort">> => list(field_sort_options()())
 %% }
 -type funnel_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_permissions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_permissions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2347,6 +2449,13 @@
 
 
 %% Example:
+%% update_brand_request() :: #{
+%%   <<"BrandDefinition">> => brand_definition()
+%% }
+-type update_brand_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% parameter_text_field_control() :: #{
 %%   <<"DisplayOptions">> => text_field_control_display_options(),
 %%   <<"ParameterControlId">> => string(),
@@ -2373,6 +2482,14 @@
 
 
 %% Example:
+%% logo() :: #{
+%%   <<"AltText">> => string(),
+%%   <<"LogoSet">> => logo_set()
+%% }
+-type logo() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_job_theme_override_permissions() :: #{
 %%   <<"Permissions">> => asset_bundle_resource_permissions(),
 %%   <<"ThemeIds">> => list(string()())
@@ -2386,6 +2503,15 @@
 %%   <<"TextColor">> => conditional_formatting_color()
 %% }
 -type gauge_chart_primary_value_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_brand_published_version_response() :: #{
+%%   <<"BrandDefinition">> => brand_definition(),
+%%   <<"BrandDetail">> => brand_detail(),
+%%   <<"RequestId">> => string()
+%% }
+-type describe_brand_published_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2869,6 +2995,10 @@
 %% }
 -type scroll_bar_options() :: #{binary() => any()}.
 
+%% Example:
+%% delete_custom_permissions_request() :: #{}
+-type delete_custom_permissions_request() :: #{}.
+
 
 %% Example:
 %% search_data_sources_response() :: #{
@@ -2878,6 +3008,15 @@
 %%   <<"Status">> => integer()
 %% }
 -type search_data_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_permissions_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_custom_permissions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3012,6 +3151,21 @@
 
 
 %% Example:
+%% describe_brand_request() :: #{
+%%   <<"VersionId">> => string()
+%% }
+-type describe_brand_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_brands_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_brands_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% scatter_plot_categorically_aggregated_field_wells() :: #{
 %%   <<"Category">> => list(dimension_field()()),
 %%   <<"Label">> => list(dimension_field()()),
@@ -3081,6 +3235,10 @@
 %%   <<"Type">> => list(any())
 %% }
 -type error_info() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_custom_permission_request() :: #{}
+-type delete_user_custom_permission_request() :: #{}.
 
 
 %% Example:
@@ -3589,6 +3747,15 @@
 
 
 %% Example:
+%% update_brand_response() :: #{
+%%   <<"BrandDefinition">> => brand_definition(),
+%%   <<"BrandDetail">> => brand_detail(),
+%%   <<"RequestId">> => string()
+%% }
+-type update_brand_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_folder_permissions_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"FolderId">> => string(),
@@ -3697,6 +3864,13 @@
 
 
 %% Example:
+%% update_user_custom_permission_request() :: #{
+%%   <<"CustomPermissionsName">> := string()
+%% }
+-type update_user_custom_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% dashboard_version_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -3736,6 +3910,13 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_folders_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% brand_element_style() :: #{
+%%   <<"NavbarStyle">> => navbar_style()
+%% }
+-type brand_element_style() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4040,6 +4221,14 @@
 
 
 %% Example:
+%% logo_set() :: #{
+%%   <<"Favicon">> => image_set(),
+%%   <<"Primary">> => image_set()
+%% }
+-type logo_set() :: #{binary() => any()}.
+
+
+%% Example:
 %% unsupported_user_edition_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -4131,6 +4320,10 @@
 %% }
 -type starburst_parameters() :: #{binary() => any()}.
 
+%% Example:
+%% describe_brand_published_version_request() :: #{}
+-type describe_brand_published_version_request() :: #{}.
+
 
 %% Example:
 %% shape_conditional_format() :: #{
@@ -4145,6 +4338,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_custom_permissions_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_custom_permissions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4230,6 +4432,14 @@
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type heat_map_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_brand_published_version_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type update_brand_published_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5481,6 +5691,14 @@
 %% }
 -type k_p_i_visual_layout_options() :: #{binary() => any()}.
 
+
+%% Example:
+%% logo_configuration() :: #{
+%%   <<"AltText">> => string(),
+%%   <<"LogoSet">> => logo_set_configuration()
+%% }
+-type logo_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_topic_refresh_schedule_request() :: #{}
 -type delete_topic_refresh_schedule_request() :: #{}.
@@ -5560,6 +5778,14 @@
 %% }
 -type secondary_value_options() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_user_custom_permission_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_user_custom_permission_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_refresh_schedule_request() :: #{}
 -type delete_refresh_schedule_request() :: #{}.
@@ -5612,6 +5838,14 @@
 
 
 %% Example:
+%% describe_brand_assignment_response() :: #{
+%%   <<"BrandArn">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type describe_brand_assignment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% parameter_slider_control() :: #{
 %%   <<"DisplayOptions">> => slider_control_display_options(),
 %%   <<"MaximumValue">> => float(),
@@ -5641,6 +5875,14 @@
 %%   <<"SelectAllOptions">> => list(any())
 %% }
 -type custom_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_brand_request() :: #{
+%%   <<"BrandDefinition">> => brand_definition(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_brand_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_template_permissions_request() :: #{}
@@ -6019,6 +6261,13 @@
 %%   <<"StartAfterDateTime">> => non_neg_integer()
 %% }
 -type asset_bundle_import_job_refresh_schedule_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_brand_assignment_request() :: #{
+%%   <<"BrandArn">> := string()
+%% }
+-type update_brand_assignment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6588,10 +6837,25 @@
 
 
 %% Example:
+%% list_brands_response() :: #{
+%%   <<"Brands">> => list(brand_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_brands_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% range_ends_label_type() :: #{
 %%   <<"Visibility">> => list(any())
 %% }
 -type range_ends_label_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_permissions_request() :: #{
+%%   <<"Capabilities">> => capabilities()
+%% }
+-type update_custom_permissions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6801,6 +7065,15 @@
 
 
 %% Example:
+%% custom_permissions() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Capabilities">> => capabilities(),
+%%   <<"CustomPermissionsName">> => string()
+%% }
+-type custom_permissions() :: #{binary() => any()}.
+
+
+%% Example:
 %% bar_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
 %%   <<"CategorySort">> => list(field_sort_options()()),
@@ -6894,6 +7167,14 @@
 
 
 %% Example:
+%% logo_set_configuration() :: #{
+%%   <<"Favicon">> => image_set_configuration(),
+%%   <<"Primary">> => image_set_configuration()
+%% }
+-type logo_set_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% destination_parameter_value_configuration() :: #{
 %%   <<"CustomValuesConfiguration">> => custom_values_configuration(),
 %%   <<"SelectAllValueOptions">> => list(any()),
@@ -6938,6 +7219,14 @@
 
 
 %% Example:
+%% palette() :: #{
+%%   <<"Background">> => string(),
+%%   <<"Foreground">> => string()
+%% }
+-type palette() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_template_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationStatus">> => list(any()),
@@ -6973,6 +7262,13 @@
 %%   <<"SelectAllOptions">> => list(any())
 %% }
 -type filter_list_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7198,6 +7494,10 @@
 %% describe_asset_bundle_export_job_request() :: #{}
 -type describe_asset_bundle_export_job_request() :: #{}.
 
+%% Example:
+%% describe_brand_assignment_request() :: #{}
+-type describe_brand_assignment_request() :: #{}.
+
 
 %% Example:
 %% describe_user_response() :: #{
@@ -7266,6 +7566,10 @@
 %%   <<"FieldTooltipItem">> => field_tooltip_item()
 %% }
 -type tooltip_item() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_permissions_request() :: #{}
+-type describe_custom_permissions_request() :: #{}.
 
 
 %% Example:
@@ -7598,6 +7902,14 @@
 
 
 %% Example:
+%% image() :: #{
+%%   <<"GeneratedImageUrl">> => string(),
+%%   <<"Source">> => list()
+%% }
+-type image() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_account_subscription_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"SignupResponse">> => signup_response(),
@@ -7709,6 +8021,15 @@
 %%   <<"Value">> => float()
 %% }
 -type what_if_point_scenario() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_brand_response() :: #{
+%%   <<"BrandDefinition">> => brand_definition(),
+%%   <<"BrandDetail">> => brand_detail(),
+%%   <<"RequestId">> => string()
+%% }
+-type describe_brand_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7856,6 +8177,21 @@
 %%   <<"Properties">> => list(list(any())())
 %% }
 -type asset_bundle_export_job_analysis_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% brand_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"BrandId">> => string(),
+%%   <<"BrandStatus">> => list(any()),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Errors">> => list(string()()),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Logo">> => logo(),
+%%   <<"VersionId">> => string(),
+%%   <<"VersionStatus">> => list(any())
+%% }
+-type brand_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8075,6 +8411,14 @@
 %%   <<"Status">> => integer()
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_brand_assignment_response() :: #{
+%%   <<"BrandArn">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type update_brand_assignment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8551,6 +8895,15 @@
 %%   <<"Tooltip">> => tooltip_options()
 %% }
 -type heat_map_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_permissions_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_custom_permissions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -9101,6 +9454,10 @@
 %% }
 -type create_dashboard_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_brand_assignment_request() :: #{}
+-type delete_brand_assignment_request() :: #{}.
+
 
 %% Example:
 %% iam_policy_assignment_summary() :: #{
@@ -9493,6 +9850,13 @@
 
 
 %% Example:
+%% delete_brand_response() :: #{
+%%   <<"RequestId">> => string()
+%% }
+-type delete_brand_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% cascading_control_source() :: #{
 %%   <<"ColumnToMatch">> => column_identifier(),
 %%   <<"SourceSheetControlId">> => string()
@@ -9622,6 +9986,14 @@
 %%   <<"Name">> => string()
 %% }
 -type column_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_theme() :: #{
+%%   <<"BrandColorPalette">> => brand_color_palette(),
+%%   <<"BrandElementStyle">> => brand_element_style()
+%% }
+-type application_theme() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9758,6 +10130,14 @@
 %%   <<"RequestId">> => string()
 %% }
 -type identity_type_not_supported_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% navbar_style() :: #{
+%%   <<"ContextualNavbar">> => palette(),
+%%   <<"GlobalNavbar">> => palette()
+%% }
+-type navbar_style() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10245,11 +10625,29 @@
 
 
 %% Example:
+%% describe_custom_permissions_response() :: #{
+%%   <<"CustomPermissions">> => custom_permissions(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_custom_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% conditional_formatting_solid_color() :: #{
 %%   <<"Color">> => string(),
 %%   <<"Expression">> => string()
 %% }
 -type conditional_formatting_solid_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_set() :: #{
+%%   <<"Height32">> => image(),
+%%   <<"Height64">> => image(),
+%%   <<"Original">> => image()
+%% }
+-type image_set() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10371,6 +10769,13 @@
 %%   <<"ConditionalFormattingOptions">> => list(pivot_table_conditional_formatting_option()())
 %% }
 -type pivot_table_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_configuration() :: #{
+%%   <<"Source">> => list()
+%% }
+-type image_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10806,6 +11211,16 @@
 
 
 %% Example:
+%% brand_definition() :: #{
+%%   <<"ApplicationTheme">> => application_theme(),
+%%   <<"BrandName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LogoConfiguration">> => logo_configuration()
+%% }
+-type brand_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% oracle_parameters() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Host">> => string(),
@@ -10859,6 +11274,15 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_brand_response() :: #{
+%%   <<"BrandDefinition">> => brand_definition(),
+%%   <<"BrandDetail">> => brand_detail(),
+%%   <<"RequestId">> => string()
+%% }
+-type create_brand_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_iam_policy_assignment_request() :: #{}
@@ -11040,6 +11464,21 @@
 
 
 %% Example:
+%% brand_color_palette() :: #{
+%%   <<"Accent">> => palette(),
+%%   <<"Danger">> => palette(),
+%%   <<"Dimension">> => palette(),
+%%   <<"Info">> => palette(),
+%%   <<"Measure">> => palette(),
+%%   <<"Primary">> => palette(),
+%%   <<"Secondary">> => palette(),
+%%   <<"Success">> => palette(),
+%%   <<"Warning">> => palette()
+%% }
+-type brand_color_palette() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_asset_bundle_export_jobs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -11077,6 +11516,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_theme_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_brand_request() :: #{}
+-type delete_brand_request() :: #{}.
 
 
 %% Example:
@@ -11158,6 +11601,29 @@
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type box_plot_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% capabilities() :: #{
+%%   <<"AddOrRunAnomalyDetectionForAnalyses">> => list(any()),
+%%   <<"CreateAndUpdateDashboardEmailReports">> => list(any()),
+%%   <<"CreateAndUpdateDataSources">> => list(any()),
+%%   <<"CreateAndUpdateDatasets">> => list(any()),
+%%   <<"CreateAndUpdateThemes">> => list(any()),
+%%   <<"CreateAndUpdateThresholdAlerts">> => list(any()),
+%%   <<"CreateSPICEDataset">> => list(any()),
+%%   <<"CreateSharedFolders">> => list(any()),
+%%   <<"ExportToCsv">> => list(any()),
+%%   <<"ExportToExcel">> => list(any()),
+%%   <<"RenameSharedFolders">> => list(any()),
+%%   <<"ShareAnalyses">> => list(any()),
+%%   <<"ShareDashboards">> => list(any()),
+%%   <<"ShareDataSources">> => list(any()),
+%%   <<"ShareDatasets">> => list(any()),
+%%   <<"SubscribeDashboardEmailReports">> => list(any()),
+%%   <<"ViewAccountSPICECapacity">> => list(any())
+%% }
+-type capabilities() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11386,6 +11852,13 @@
 
 
 %% Example:
+%% update_brand_published_version_request() :: #{
+%%   <<"VersionId">> := string()
+%% }
+-type update_brand_published_version_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_dashboard_versions_response() :: #{
 %%   <<"DashboardVersionSummaryList">> => list(dashboard_version_summary()()),
 %%   <<"NextToken">> => string(),
@@ -11470,6 +11943,26 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_brand_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    conflict_exception().
+
+-type create_custom_permissions_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
     internal_failure_exception().
 
 -type create_dashboard_errors() ::
@@ -11692,6 +12185,33 @@
     unsupported_user_edition_exception() | 
     internal_failure_exception().
 
+-type delete_brand_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_brand_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_custom_permissions_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
 -type delete_dashboard_errors() ::
     throttling_exception() | 
     invalid_parameter_value_exception() | 
@@ -11879,6 +12399,16 @@
     resource_unavailable_exception() | 
     internal_failure_exception().
 
+-type delete_user_custom_permission_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
 -type delete_vpc_connection_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -11946,6 +12476,39 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     unsupported_user_edition_exception().
+
+-type describe_brand_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_brand_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_brand_published_version_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_custom_permissions_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
 
 -type describe_dashboard_errors() ::
     throttling_exception() | 
@@ -12303,6 +12866,21 @@
     invalid_next_token_exception() | 
     resource_not_found_exception() | 
     unsupported_user_edition_exception().
+
+-type list_brands_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type list_custom_permissions_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
 
 -type list_dashboard_versions_errors() ::
     throttling_exception() | 
@@ -12720,6 +13298,40 @@
     unsupported_user_edition_exception() | 
     internal_failure_exception().
 
+-type update_brand_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_brand_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_brand_published_version_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_custom_permissions_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
 -type update_dashboard_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -12980,6 +13592,16 @@
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_user_custom_permission_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     resource_unavailable_exception() | 
     internal_failure_exception().
 
@@ -13271,6 +13893,74 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
 create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon QuickSight brand.
+-spec create_brand(aws_client:aws_client(), binary() | list(), binary() | list(), create_brand_request()) ->
+    {ok, create_brand_response(), tuple()} |
+    {error, any()} |
+    {error, create_brand_errors(), tuple()}.
+create_brand(Client, AwsAccountId, BrandId, Input) ->
+    create_brand(Client, AwsAccountId, BrandId, Input, []).
+
+-spec create_brand(aws_client:aws_client(), binary() | list(), binary() | list(), create_brand_request(), proplists:proplist()) ->
+    {ok, create_brand_response(), tuple()} |
+    {error, any()} |
+    {error, create_brand_errors(), tuple()}.
+create_brand(Client, AwsAccountId, BrandId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brands/", aws_util:encode_uri(BrandId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a custom permissions profile.
+-spec create_custom_permissions(aws_client:aws_client(), binary() | list(), create_custom_permissions_request()) ->
+    {ok, create_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_permissions_errors(), tuple()}.
+create_custom_permissions(Client, AwsAccountId, Input) ->
+    create_custom_permissions(Client, AwsAccountId, Input, []).
+
+-spec create_custom_permissions(aws_client:aws_client(), binary() | list(), create_custom_permissions_request(), proplists:proplist()) ->
+    {ok, create_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_permissions_errors(), tuple()}.
+create_custom_permissions(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/custom-permissions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -14173,6 +14863,108 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an Amazon QuickSight brand.
+-spec delete_brand(aws_client:aws_client(), binary() | list(), binary() | list(), delete_brand_request()) ->
+    {ok, delete_brand_response(), tuple()} |
+    {error, any()} |
+    {error, delete_brand_errors(), tuple()}.
+delete_brand(Client, AwsAccountId, BrandId, Input) ->
+    delete_brand(Client, AwsAccountId, BrandId, Input, []).
+
+-spec delete_brand(aws_client:aws_client(), binary() | list(), binary() | list(), delete_brand_request(), proplists:proplist()) ->
+    {ok, delete_brand_response(), tuple()} |
+    {error, any()} |
+    {error, delete_brand_errors(), tuple()}.
+delete_brand(Client, AwsAccountId, BrandId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brands/", aws_util:encode_uri(BrandId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a brand assignment.
+-spec delete_brand_assignment(aws_client:aws_client(), binary() | list(), delete_brand_assignment_request()) ->
+    {ok, delete_brand_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_brand_assignment_errors(), tuple()}.
+delete_brand_assignment(Client, AwsAccountId, Input) ->
+    delete_brand_assignment(Client, AwsAccountId, Input, []).
+
+-spec delete_brand_assignment(aws_client:aws_client(), binary() | list(), delete_brand_assignment_request(), proplists:proplist()) ->
+    {ok, delete_brand_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_brand_assignment_errors(), tuple()}.
+delete_brand_assignment(Client, AwsAccountId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brandassignments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a custom permissions profile.
+-spec delete_custom_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), delete_custom_permissions_request()) ->
+    {ok, delete_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_permissions_errors(), tuple()}.
+delete_custom_permissions(Client, AwsAccountId, CustomPermissionsName, Input) ->
+    delete_custom_permissions(Client, AwsAccountId, CustomPermissionsName, Input, []).
+
+-spec delete_custom_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), delete_custom_permissions_request(), proplists:proplist()) ->
+    {ok, delete_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_permissions_errors(), tuple()}.
+delete_custom_permissions(Client, AwsAccountId, CustomPermissionsName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/custom-permissions/", aws_util:encode_uri(CustomPermissionsName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a dashboard.
 -spec delete_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dashboard_request()) ->
     {ok, delete_dashboard_response(), tuple()} |
@@ -14951,6 +15743,40 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a custom permissions profile from a user.
+-spec delete_user_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_custom_permission_request()) ->
+    {ok, delete_user_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_custom_permission_errors(), tuple()}.
+delete_user_custom_permission(Client, AwsAccountId, Namespace, UserName, Input) ->
+    delete_user_custom_permission(Client, AwsAccountId, Namespace, UserName, Input, []).
+
+-spec delete_user_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_custom_permission_request(), proplists:proplist()) ->
+    {ok, delete_user_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_custom_permission_errors(), tuple()}.
+delete_user_custom_permission(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/custom-permission"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a VPC connection.
 -spec delete_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vpc_connection_request()) ->
     {ok, delete_vpc_connection_response(), tuple()} |
@@ -15372,6 +16198,158 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, Q
 describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/", aws_util:encode_uri(AssetBundleImportJobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes a brand.
+-spec describe_brand(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_brand_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_errors(), tuple()}.
+describe_brand(Client, AwsAccountId, BrandId)
+  when is_map(Client) ->
+    describe_brand(Client, AwsAccountId, BrandId, #{}, #{}).
+
+-spec describe_brand(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_brand_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_errors(), tuple()}.
+describe_brand(Client, AwsAccountId, BrandId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_brand(Client, AwsAccountId, BrandId, QueryMap, HeadersMap, []).
+
+-spec describe_brand(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_brand_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_errors(), tuple()}.
+describe_brand(Client, AwsAccountId, BrandId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brands/", aws_util:encode_uri(BrandId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes a brand assignment.
+-spec describe_brand_assignment(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_brand_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_assignment_errors(), tuple()}.
+describe_brand_assignment(Client, AwsAccountId)
+  when is_map(Client) ->
+    describe_brand_assignment(Client, AwsAccountId, #{}, #{}).
+
+-spec describe_brand_assignment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_brand_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_assignment_errors(), tuple()}.
+describe_brand_assignment(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_brand_assignment(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_brand_assignment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_brand_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_assignment_errors(), tuple()}.
+describe_brand_assignment(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brandassignments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the published version of the brand.
+-spec describe_brand_published_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_brand_published_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_published_version_errors(), tuple()}.
+describe_brand_published_version(Client, AwsAccountId, BrandId)
+  when is_map(Client) ->
+    describe_brand_published_version(Client, AwsAccountId, BrandId, #{}, #{}).
+
+-spec describe_brand_published_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_brand_published_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_published_version_errors(), tuple()}.
+describe_brand_published_version(Client, AwsAccountId, BrandId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_brand_published_version(Client, AwsAccountId, BrandId, QueryMap, HeadersMap, []).
+
+-spec describe_brand_published_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_brand_published_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_brand_published_version_errors(), tuple()}.
+describe_brand_published_version(Client, AwsAccountId, BrandId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brands/", aws_util:encode_uri(BrandId), "/publishedversion"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes a custom permissions profile.
+-spec describe_custom_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_custom_permissions_errors(), tuple()}.
+describe_custom_permissions(Client, AwsAccountId, CustomPermissionsName)
+  when is_map(Client) ->
+    describe_custom_permissions(Client, AwsAccountId, CustomPermissionsName, #{}, #{}).
+
+-spec describe_custom_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_custom_permissions_errors(), tuple()}.
+describe_custom_permissions(Client, AwsAccountId, CustomPermissionsName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_custom_permissions(Client, AwsAccountId, CustomPermissionsName, QueryMap, HeadersMap, []).
+
+-spec describe_custom_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_custom_permissions_errors(), tuple()}.
+describe_custom_permissions(Client, AwsAccountId, CustomPermissionsName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/custom-permissions/", aws_util:encode_uri(CustomPermissionsName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -17219,6 +18197,90 @@ list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
 list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all brands in an Amazon QuickSight account.
+-spec list_brands(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_brands_response(), tuple()} |
+    {error, any()} |
+    {error, list_brands_errors(), tuple()}.
+list_brands(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_brands(Client, AwsAccountId, #{}, #{}).
+
+-spec list_brands(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_brands_response(), tuple()} |
+    {error, any()} |
+    {error, list_brands_errors(), tuple()}.
+list_brands(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_brands(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_brands(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_brands_response(), tuple()} |
+    {error, any()} |
+    {error, list_brands_errors(), tuple()}.
+list_brands(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brands"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the custom permissions profiles.
+-spec list_custom_permissions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_permissions_errors(), tuple()}.
+list_custom_permissions(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_custom_permissions(Client, AwsAccountId, #{}, #{}).
+
+-spec list_custom_permissions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_permissions_errors(), tuple()}.
+list_custom_permissions(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_custom_permissions(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_custom_permissions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_permissions_errors(), tuple()}.
+list_custom_permissions(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/custom-permissions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -19299,6 +20361,142 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a brand.
+-spec update_brand(aws_client:aws_client(), binary() | list(), binary() | list(), update_brand_request()) ->
+    {ok, update_brand_response(), tuple()} |
+    {error, any()} |
+    {error, update_brand_errors(), tuple()}.
+update_brand(Client, AwsAccountId, BrandId, Input) ->
+    update_brand(Client, AwsAccountId, BrandId, Input, []).
+
+-spec update_brand(aws_client:aws_client(), binary() | list(), binary() | list(), update_brand_request(), proplists:proplist()) ->
+    {ok, update_brand_response(), tuple()} |
+    {error, any()} |
+    {error, update_brand_errors(), tuple()}.
+update_brand(Client, AwsAccountId, BrandId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brands/", aws_util:encode_uri(BrandId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a brand assignment.
+-spec update_brand_assignment(aws_client:aws_client(), binary() | list(), update_brand_assignment_request()) ->
+    {ok, update_brand_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, update_brand_assignment_errors(), tuple()}.
+update_brand_assignment(Client, AwsAccountId, Input) ->
+    update_brand_assignment(Client, AwsAccountId, Input, []).
+
+-spec update_brand_assignment(aws_client:aws_client(), binary() | list(), update_brand_assignment_request(), proplists:proplist()) ->
+    {ok, update_brand_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, update_brand_assignment_errors(), tuple()}.
+update_brand_assignment(Client, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brandassignments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the published version of a brand.
+-spec update_brand_published_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_brand_published_version_request()) ->
+    {ok, update_brand_published_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_brand_published_version_errors(), tuple()}.
+update_brand_published_version(Client, AwsAccountId, BrandId, Input) ->
+    update_brand_published_version(Client, AwsAccountId, BrandId, Input, []).
+
+-spec update_brand_published_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_brand_published_version_request(), proplists:proplist()) ->
+    {ok, update_brand_published_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_brand_published_version_errors(), tuple()}.
+update_brand_published_version(Client, AwsAccountId, BrandId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/brands/", aws_util:encode_uri(BrandId), "/publishedversion"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a custom permissions profile.
+-spec update_custom_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_custom_permissions_request()) ->
+    {ok, update_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_permissions_errors(), tuple()}.
+update_custom_permissions(Client, AwsAccountId, CustomPermissionsName, Input) ->
+    update_custom_permissions(Client, AwsAccountId, CustomPermissionsName, Input, []).
+
+-spec update_custom_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_custom_permissions_request(), proplists:proplist()) ->
+    {ok, update_custom_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_permissions_errors(), tuple()}.
+update_custom_permissions(Client, AwsAccountId, CustomPermissionsName, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/custom-permissions/", aws_util:encode_uri(CustomPermissionsName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a dashboard in an Amazon Web Services account.
 %%
 %% Updating a Dashboard creates a new dashboard version but does not
@@ -20392,6 +21590,40 @@ update_user(Client, AwsAccountId, Namespace, UserName, Input) ->
 update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a custom permissions profile for a user.
+-spec update_user_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_custom_permission_request()) ->
+    {ok, update_user_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_custom_permission_errors(), tuple()}.
+update_user_custom_permission(Client, AwsAccountId, Namespace, UserName, Input) ->
+    update_user_custom_permission(Client, AwsAccountId, Namespace, UserName, Input, []).
+
+-spec update_user_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_custom_permission_request(), proplists:proplist()) ->
+    {ok, update_user_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_custom_permission_errors(), tuple()}.
+update_user_custom_permission(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/custom-permission"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

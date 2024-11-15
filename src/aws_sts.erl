@@ -19,6 +19,8 @@
          assume_role_with_saml/3,
          assume_role_with_web_identity/2,
          assume_role_with_web_identity/3,
+         assume_root/2,
+         assume_root/3,
          decode_authorization_message/2,
          decode_authorization_message/3,
          get_access_key_info/2,
@@ -107,6 +109,21 @@
 %%   <<"SubjectFromWebIdentityToken">> => string()
 %% }
 -type assume_role_with_web_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_root_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"TargetPrincipal">> := string(),
+%%   <<"TaskPolicyArn">> := policy_descriptor_type()
+%% }
+-type assume_root_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_root_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type assume_root_response() :: #{binary() => any()}.
 
 %% Example:
 %% assumed_role_user() :: #{
@@ -292,6 +309,10 @@
     id_p_communication_error_exception() | 
     expired_token_exception().
 
+-type assume_root_errors() ::
+    region_disabled_exception() | 
+    expired_token_exception().
+
 -type decode_authorization_message_errors() ::
     invalid_authorization_message_exception().
 
@@ -320,9 +341,9 @@
 %% that produce temporary credentials, see Requesting Temporary Security
 %% Credentials:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
-%% and Comparing the
-%% Amazon Web Services STS API operations:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% and Compare STS
+%% credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html
 %% in the IAM User Guide.
 %%
 %% Permissions
@@ -335,17 +356,15 @@
 %% API
 %% operations.
 %%
-%% (Optional) You can pass inline or managed session policies:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
-%% to
-%% this operation. You can pass a single JSON policy document to use as an
-%% inline session
-%% policy. You can also specify up to 10 managed policy Amazon Resource Names
-%% (ARNs) to use as
-%% managed session policies. The plaintext that you use for both inline and
-%% managed session
-%% policies can't exceed 2,048 characters. Passing policies to this
-%% operation returns new
+%% (Optional) You can pass inline or managed session policies to this
+%% operation. You can
+%% pass a single JSON policy document to use as an inline session policy. You
+%% can also specify
+%% up to 10 managed policy Amazon Resource Names (ARNs) to use as managed
+%% session policies.
+%% The plaintext that you use for both inline and managed session policies
+%% can't exceed 2,048
+%% characters. Passing policies to this operation returns new
 %% temporary credentials. The resulting session's permissions are the
 %% intersection of the
 %% role's identity-based policy and the session policies. You can use the
@@ -489,9 +508,9 @@ assume_role(Client, Input, Options)
 %% Temporary Security
 %% Credentials:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
-%% and Comparing the
-%% Amazon Web Services STS API operations:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% and Compare STS
+%% credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html
 %% in the IAM User Guide.
 %%
 %% The temporary security credentials returned by this operation consist of
@@ -734,9 +753,9 @@ assume_role_with_saml(Client, Input, Options)
 %% temporary credentials, see Requesting Temporary Security
 %% Credentials:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
-%% and Comparing the
-%% Amazon Web Services STS API operations:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% and Compare STS
+%% credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html
 %% in the IAM User Guide.
 %%
 %% The temporary security credentials returned by this API consist of an
@@ -756,9 +775,9 @@ assume_role_with_saml(Client, Input, Options)
 %% session duration
 %% setting for the role. This setting can have a value from 1 hour to 12
 %% hours. To learn how
-%% to view the maximum value for your role, see View the
-%% Maximum Session Duration Setting for a Role:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session
+%% to view the maximum value for your role, see Update the maximum session
+%% duration for a role :
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_update-role-settings.html#id_roles_update-session-duration
 %% in the
 %% IAM User Guide. The maximum session duration limit applies when
 %% you use the `AssumeRole*' API operations or the `assume-role*' CLI
@@ -877,21 +896,13 @@ assume_role_with_saml(Client, Input, Options)
 %% in the OIDC specification:
 %% http://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes.
 %%
-%% For more information about how to use web identity federation and the
+%% For more information about how to use OIDC federation and the
 %% `AssumeRoleWithWebIdentity' API, see the following resources:
 %%
 %% Using Web Identity Federation API Operations for Mobile Apps:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html
 %% and Federation Through a Web-based Identity Provider:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity.
-%%
-%% Web Identity Federation Playground:
-%% https://aws.amazon.com/blogs/aws/the-aws-web-identity-federation-playground/.
-%% Walk through the process of
-%% authenticating through Login with Amazon, Facebook, or Google, getting
-%% temporary
-%% security credentials, and then using those credentials to make a request
-%% to Amazon Web Services.
 %%
 %% Amazon Web Services SDK for iOS Developer Guide:
 %% http://aws.amazon.com/sdkforios/ and Amazon Web Services SDK for Android
@@ -901,14 +912,6 @@ assume_role_with_saml(Client, Input, Options)
 %% show how to use the information from these providers to get and use
 %% temporary
 %% security credentials.
-%%
-%% Web Identity
-%% Federation with Mobile Applications:
-%% http://aws.amazon.com/articles/web-identity-federation-with-mobile-applications.
-%% This article discusses web identity
-%% federation and shows an example of how to use web identity federation to
-%% get access
-%% to content in Amazon S3.
 -spec assume_role_with_web_identity(aws_client:aws_client(), assume_role_with_web_identity_request()) ->
     {ok, assume_role_with_web_identity_response(), tuple()} |
     {error, any()} |
@@ -924,6 +927,45 @@ assume_role_with_web_identity(Client, Input)
 assume_role_with_web_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeRoleWithWebIdentity">>, Input, Options).
+
+%% @doc Returns a set of short term credentials you can use to perform
+%% privileged tasks in a
+%% member account.
+%%
+%% Before you can launch a privileged session, you must have enabled
+%% centralized root
+%% access in your organization. For steps to enable this feature, see
+%% Centralize root access for member accounts:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-enable-root-access.html
+%% in the IAM User
+%% Guide.
+%%
+%% The global endpoint is not supported for AssumeRoot. You must send this
+%% request to a
+%% Regional STS endpoint. For more information, see Endpoints:
+%% https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html#sts-endpoints.
+%%
+%% You can track AssumeRoot in CloudTrail logs to determine what actions were
+%% performed in a
+%% session. For more information, see Track privileged tasks
+%% in CloudTrail:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-track-privileged-tasks.html
+%% in the IAM User Guide.
+-spec assume_root(aws_client:aws_client(), assume_root_request()) ->
+    {ok, assume_root_response(), tuple()} |
+    {error, any()} |
+    {error, assume_root_errors(), tuple()}.
+assume_root(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    assume_root(Client, Input, []).
+
+-spec assume_root(aws_client:aws_client(), assume_root_request(), proplists:proplist()) ->
+    {ok, assume_root_response(), tuple()} |
+    {error, any()} |
+    {error, assume_root_errors(), tuple()}.
+assume_root(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssumeRoot">>, Input, Options).
 
 %% @doc Decodes additional information about the authorization status of a
 %% request from an
@@ -1085,9 +1127,9 @@ get_caller_identity(Client, Input, Options)
 %% produce temporary credentials, see Requesting Temporary Security
 %% Credentials:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
-%% and Comparing the
-%% Amazon Web Services STS API operations:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% and Compare STS
+%% credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html
 %% in the IAM User Guide.
 %%
 %% Although it is possible to call `GetFederationToken' using the
@@ -1255,9 +1297,9 @@ get_federation_token(Client, Input, Options)
 %% Requesting
 %% Temporary Security Credentials:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
-%% and Comparing the
-%% Amazon Web Services STS API operations:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% and Compare STS
+%% credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html
 %% in the IAM User Guide.
 %%
 %% No permissions are required for users to perform this operation. The

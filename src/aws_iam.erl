@@ -112,8 +112,16 @@
          detach_role_policy/3,
          detach_user_policy/2,
          detach_user_policy/3,
+         disable_organizations_root_credentials_management/2,
+         disable_organizations_root_credentials_management/3,
+         disable_organizations_root_sessions/2,
+         disable_organizations_root_sessions/3,
          enable_mfa_device/2,
          enable_mfa_device/3,
+         enable_organizations_root_credentials_management/2,
+         enable_organizations_root_credentials_management/3,
+         enable_organizations_root_sessions/2,
+         enable_organizations_root_sessions/3,
          generate_credential_report/2,
          generate_credential_report/3,
          generate_organizations_access_report/2,
@@ -204,6 +212,8 @@
          list_open_id_connect_provider_tags/3,
          list_open_id_connect_providers/2,
          list_open_id_connect_providers/3,
+         list_organizations_features/2,
+         list_organizations_features/3,
          list_policies/2,
          list_policies/3,
          list_policies_granting_service_access/2,
@@ -357,6 +367,13 @@
 
 %% }
 -type list_saml_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organizations_root_credentials_management_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type enable_organizations_root_credentials_management_response() :: #{binary() => any()}.
 
 %% Example:
 %% virtual_mfa_device() :: #{
@@ -543,6 +560,12 @@
 -type list_policy_tags_response() :: #{binary() => any()}.
 
 %% Example:
+%% enable_organizations_root_credentials_management_request() :: #{
+
+%% }
+-type enable_organizations_root_credentials_management_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_attached_group_policies_request() :: #{
 %%   <<"GroupName">> := string(),
 %%   <<"Marker">> => string(),
@@ -564,6 +587,12 @@
 %%   <<"UserName">> := string()
 %% }
 -type delete_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_organizations_root_sessions_request() :: #{
+
+%% }
+-type disable_organizations_root_sessions_request() :: #{binary() => any()}.
 
 %% Example:
 %% context_entry() :: #{
@@ -640,6 +669,13 @@
 %%   <<"ServiceSpecificCredential">> => service_specific_credential()
 %% }
 -type create_service_specific_credential_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizations_features_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type list_organizations_features_response() :: #{binary() => any()}.
 
 %% Example:
 %% policy_granting_service_access() :: #{
@@ -1018,6 +1054,12 @@
 -type service_not_supported_exception() :: #{binary() => any()}.
 
 %% Example:
+%% account_not_management_or_delegated_administrator_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_not_management_or_delegated_administrator_exception() :: #{binary() => any()}.
+
+%% Example:
 %% update_ssh_public_key_request() :: #{
 %%   <<"SSHPublicKeyId">> := string(),
 %%   <<"Status">> := list(any()),
@@ -1059,6 +1101,13 @@
 %%   <<"Line">> => integer()
 %% }
 -type position() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organizations_root_sessions_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type enable_organizations_root_sessions_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_instance_profile_request() :: #{
@@ -1169,6 +1218,12 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type get_service_last_accessed_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_access_not_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_access_not_enabled_exception() :: #{binary() => any()}.
 
 %% Example:
 %% access_key_metadata() :: #{
@@ -1293,6 +1348,12 @@
 -type get_user_request() :: #{binary() => any()}.
 
 %% Example:
+%% organization_not_in_all_features_mode_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_in_all_features_mode_exception() :: #{binary() => any()}.
+
+%% Example:
 %% create_service_linked_role_request() :: #{
 %%   <<"AWSServiceName">> := string(),
 %%   <<"CustomSuffix">> => string(),
@@ -1330,7 +1391,7 @@
 %% Example:
 %% deactivate_mfa_device_request() :: #{
 %%   <<"SerialNumber">> := string(),
-%%   <<"UserName">> := string()
+%%   <<"UserName">> => string()
 %% }
 -type deactivate_mfa_device_request() :: #{binary() => any()}.
 
@@ -1386,6 +1447,12 @@
 %%   <<"ServerCertificateName">> := string()
 %% }
 -type update_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_access_keys_request() :: #{
@@ -1448,6 +1515,12 @@
 -type role_last_used() :: #{binary() => any()}.
 
 %% Example:
+%% disable_organizations_root_credentials_management_request() :: #{
+
+%% }
+-type disable_organizations_root_credentials_management_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_saml_provider_request() :: #{
 %%   <<"SAMLProviderArn">> := string()
 %% }
@@ -1496,6 +1569,13 @@
 -type password_policy_violation_exception() :: #{binary() => any()}.
 
 %% Example:
+%% disable_organizations_root_sessions_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type disable_organizations_root_sessions_response() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_certificate_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1542,9 +1622,15 @@
 
 %% Example:
 %% delete_login_profile_request() :: #{
-%%   <<"UserName">> := string()
+%%   <<"UserName">> => string()
 %% }
 -type delete_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organizations_root_sessions_request() :: #{
+
+%% }
+-type enable_organizations_root_sessions_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_virtual_mfa_device_response() :: #{
@@ -1756,6 +1842,12 @@
 -type credential_report_expired_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_organizations_features_request() :: #{
+
+%% }
+-type list_organizations_features_request() :: #{binary() => any()}.
+
+%% Example:
 %% mfa_device() :: #{
 %%   <<"EnableDate">> => non_neg_integer(),
 %%   <<"SerialNumber">> => string(),
@@ -1857,6 +1949,13 @@
 %%   <<"UserDetailList">> => list(user_detail()())
 %% }
 -type get_account_authorization_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_organizations_root_credentials_management_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type disable_organizations_root_credentials_management_response() :: #{binary() => any()}.
 
 %% Example:
 %% resync_mfa_device_request() :: #{
@@ -2054,7 +2153,7 @@
 
 %% Example:
 %% get_login_profile_request() :: #{
-%%   <<"UserName">> := string()
+%%   <<"UserName">> => string()
 %% }
 -type get_login_profile_request() :: #{binary() => any()}.
 
@@ -2384,6 +2483,12 @@
 -type credential_report_not_present_exception() :: #{binary() => any()}.
 
 %% Example:
+%% caller_is_not_management_account_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type caller_is_not_management_account_exception() :: #{binary() => any()}.
+
+%% Example:
 %% list_saml_provider_tags_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
@@ -2615,9 +2720,9 @@
 
 %% Example:
 %% create_login_profile_request() :: #{
-%%   <<"Password">> := string(),
+%%   <<"Password">> => string(),
 %%   <<"PasswordResetRequired">> => boolean(),
-%%   <<"UserName">> := string()
+%%   <<"UserName">> => string()
 %% }
 -type create_login_profile_request() :: #{binary() => any()}.
 
@@ -3084,6 +3189,18 @@
     service_failure_exception() | 
     no_such_entity_exception().
 
+-type disable_organizations_root_credentials_management_errors() ::
+    organization_not_found_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    service_access_not_enabled_exception() | 
+    account_not_management_or_delegated_administrator_exception().
+
+-type disable_organizations_root_sessions_errors() ::
+    organization_not_found_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    service_access_not_enabled_exception() | 
+    account_not_management_or_delegated_administrator_exception().
+
 -type enable_mfa_device_errors() ::
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
@@ -3092,6 +3209,20 @@
     service_failure_exception() | 
     no_such_entity_exception() | 
     entity_already_exists_exception().
+
+-type enable_organizations_root_credentials_management_errors() ::
+    caller_is_not_management_account_exception() | 
+    organization_not_found_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    service_access_not_enabled_exception() | 
+    account_not_management_or_delegated_administrator_exception().
+
+-type enable_organizations_root_sessions_errors() ::
+    caller_is_not_management_account_exception() | 
+    organization_not_found_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    service_access_not_enabled_exception() | 
+    account_not_management_or_delegated_administrator_exception().
 
 -type generate_credential_report_errors() ::
     limit_exceeded_exception() | 
@@ -3272,6 +3403,12 @@
 
 -type list_open_id_connect_providers_errors() ::
     service_failure_exception().
+
+-type list_organizations_features_errors() ::
+    organization_not_found_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    service_access_not_enabled_exception() | 
+    account_not_management_or_delegated_administrator_exception().
 
 -type list_policies_errors() ::
     service_failure_exception().
@@ -5146,6 +5283,54 @@ detach_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachUserPolicy">>, Input, Options).
 
+%% @doc Disables the management of privileged root user credentials across
+%% member accounts in
+%% your organization.
+%%
+%% When you disable this feature, the management account and the
+%% delegated admininstrator for IAM can no longer manage root user
+%% credentials for member
+%% accounts in your organization.
+-spec disable_organizations_root_credentials_management(aws_client:aws_client(), disable_organizations_root_credentials_management_request()) ->
+    {ok, disable_organizations_root_credentials_management_response(), tuple()} |
+    {error, any()} |
+    {error, disable_organizations_root_credentials_management_errors(), tuple()}.
+disable_organizations_root_credentials_management(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_organizations_root_credentials_management(Client, Input, []).
+
+-spec disable_organizations_root_credentials_management(aws_client:aws_client(), disable_organizations_root_credentials_management_request(), proplists:proplist()) ->
+    {ok, disable_organizations_root_credentials_management_response(), tuple()} |
+    {error, any()} |
+    {error, disable_organizations_root_credentials_management_errors(), tuple()}.
+disable_organizations_root_credentials_management(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableOrganizationsRootCredentialsManagement">>, Input, Options).
+
+%% @doc Disables root user sessions for privileged tasks across member
+%% accounts in your
+%% organization.
+%%
+%% When you disable this feature, the management account and the delegated
+%% admininstrator for IAM can no longer perform privileged tasks on member
+%% accounts in
+%% your organization.
+-spec disable_organizations_root_sessions(aws_client:aws_client(), disable_organizations_root_sessions_request()) ->
+    {ok, disable_organizations_root_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, disable_organizations_root_sessions_errors(), tuple()}.
+disable_organizations_root_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_organizations_root_sessions(Client, Input, []).
+
+-spec disable_organizations_root_sessions(aws_client:aws_client(), disable_organizations_root_sessions_request(), proplists:proplist()) ->
+    {ok, disable_organizations_root_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, disable_organizations_root_sessions_errors(), tuple()}.
+disable_organizations_root_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableOrganizationsRootSessions">>, Input, Options).
+
 %% @doc Enables the specified MFA device and associates it with the specified
 %% IAM user.
 %%
@@ -5168,6 +5353,85 @@ enable_mfa_device(Client, Input)
 enable_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableMFADevice">>, Input, Options).
+
+%% @doc Enables the management of privileged root user credentials across
+%% member accounts in your
+%% organization.
+%%
+%% When you enable root credentials management for centralized root access:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management,
+%% the management account and the delegated
+%% admininstrator for IAM can manage root user credentials for member
+%% accounts in your
+%% organization.
+%%
+%% Before you enable centralized root access, you must have an account
+%% configured with
+%% the following settings:
+%%
+%% You must manage your Amazon Web Services accounts in Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html.
+%%
+%% Enable trusted access for Identity and Access Management in Organizations.
+%% For details, see
+%% IAM and Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-ra.html
+%% in the Organizations User
+%% Guide.
+-spec enable_organizations_root_credentials_management(aws_client:aws_client(), enable_organizations_root_credentials_management_request()) ->
+    {ok, enable_organizations_root_credentials_management_response(), tuple()} |
+    {error, any()} |
+    {error, enable_organizations_root_credentials_management_errors(), tuple()}.
+enable_organizations_root_credentials_management(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_organizations_root_credentials_management(Client, Input, []).
+
+-spec enable_organizations_root_credentials_management(aws_client:aws_client(), enable_organizations_root_credentials_management_request(), proplists:proplist()) ->
+    {ok, enable_organizations_root_credentials_management_response(), tuple()} |
+    {error, any()} |
+    {error, enable_organizations_root_credentials_management_errors(), tuple()}.
+enable_organizations_root_credentials_management(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableOrganizationsRootCredentialsManagement">>, Input, Options).
+
+%% @doc Allows the management account or delegated administrator to perform
+%% privileged tasks
+%% on member accounts in your organization.
+%%
+%% For more information, see Centrally manage root access for member
+%% accounts:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management
+%% in the Identity and Access Management
+%% User Guide.
+%%
+%% Before you enable this feature, you must have an account configured with
+%% the following
+%% settings:
+%%
+%% You must manage your Amazon Web Services accounts in Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html.
+%%
+%% Enable trusted access for Identity and Access Management in Organizations.
+%% For details, see
+%% IAM and Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-ra.html
+%% in the Organizations User
+%% Guide.
+-spec enable_organizations_root_sessions(aws_client:aws_client(), enable_organizations_root_sessions_request()) ->
+    {ok, enable_organizations_root_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, enable_organizations_root_sessions_errors(), tuple()}.
+enable_organizations_root_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_organizations_root_sessions(Client, Input, []).
+
+-spec enable_organizations_root_sessions(aws_client:aws_client(), enable_organizations_root_sessions_request(), proplists:proplist()) ->
+    {ok, enable_organizations_root_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, enable_organizations_root_sessions_errors(), tuple()}.
+enable_organizations_root_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableOrganizationsRootSessions">>, Input, Options).
 
 %% @doc Generates a credential report for the Amazon Web Services account.
 %%
@@ -6419,9 +6683,9 @@ list_access_keys(Client, Input, Options)
 %% For information about using an Amazon Web Services account alias, see
 %% Creating,
 %% deleting, and listing an Amazon Web Services account alias:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#CreateAccountAlias
-%% in the
-%% IAM User Guide.
+%% https://docs.aws.amazon.com/signin/latest/userguide/CreateAccountAlias.html
+%% in the Amazon Web Services Sign-In
+%% User Guide.
 -spec list_account_aliases(aws_client:aws_client(), list_account_aliases_request()) ->
     {ok, list_account_aliases_response(), tuple()} |
     {error, any()} |
@@ -6834,6 +7098,28 @@ list_open_id_connect_providers(Client, Input)
 list_open_id_connect_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenIDConnectProviders">>, Input, Options).
+
+%% @doc Lists the centralized root access features enabled for your
+%% organization.
+%%
+%% For more
+%% information, see Centrally manage root access for member accounts:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management.
+-spec list_organizations_features(aws_client:aws_client(), list_organizations_features_request()) ->
+    {ok, list_organizations_features_response(), tuple()} |
+    {error, any()} |
+    {error, list_organizations_features_errors(), tuple()}.
+list_organizations_features(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_organizations_features(Client, Input, []).
+
+-spec list_organizations_features(aws_client:aws_client(), list_organizations_features_request(), proplists:proplist()) ->
+    {ok, list_organizations_features_response(), tuple()} |
+    {error, any()} |
+    {error, list_organizations_features_errors(), tuple()}.
+list_organizations_features(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOrganizationsFeatures">>, Input, Options).
 
 %% @doc Lists all the managed policies that are available in your Amazon Web
 %% Services account, including
