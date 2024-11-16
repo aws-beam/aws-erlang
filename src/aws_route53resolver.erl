@@ -272,9 +272,12 @@
 %%   <<"BlockOverrideDomain">> => string(),
 %%   <<"BlockOverrideTtl">> => integer(),
 %%   <<"BlockResponse">> => list(any()),
-%%   <<"FirewallDomainListId">> := string(),
+%%   <<"ConfidenceThreshold">> => list(any()),
+%%   <<"DnsThreatProtection">> => list(any()),
+%%   <<"FirewallDomainListId">> => string(),
 %%   <<"FirewallDomainRedirectionAction">> => list(any()),
 %%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"FirewallThreatProtectionId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Priority">> => integer(),
 %%   <<"Qtype">> => string()
@@ -412,8 +415,10 @@
 %%   <<"BlockOverrideDomain">> => string(),
 %%   <<"BlockOverrideTtl">> => integer(),
 %%   <<"BlockResponse">> => list(any()),
+%%   <<"ConfidenceThreshold">> => list(any()),
 %%   <<"CreatorRequestId">> := string(),
-%%   <<"FirewallDomainListId">> := string(),
+%%   <<"DnsThreatProtection">> => list(any()),
+%%   <<"FirewallDomainListId">> => string(),
 %%   <<"FirewallDomainRedirectionAction">> => list(any()),
 %%   <<"FirewallRuleGroupId">> := string(),
 %%   <<"Name">> := string(),
@@ -946,11 +951,14 @@
 %%   <<"BlockOverrideDomain">> => string(),
 %%   <<"BlockOverrideTtl">> => integer(),
 %%   <<"BlockResponse">> => list(any()),
+%%   <<"ConfidenceThreshold">> => list(any()),
 %%   <<"CreationTime">> => string(),
 %%   <<"CreatorRequestId">> => string(),
+%%   <<"DnsThreatProtection">> => list(any()),
 %%   <<"FirewallDomainListId">> => string(),
 %%   <<"FirewallDomainRedirectionAction">> => list(any()),
 %%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallThreatProtectionId">> => string(),
 %%   <<"ModificationTime">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Priority">> => integer(),
@@ -1061,8 +1069,9 @@
 
 %% Example:
 %% delete_firewall_rule_request() :: #{
-%%   <<"FirewallDomainListId">> := string(),
+%%   <<"FirewallDomainListId">> => string(),
 %%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"FirewallThreatProtectionId">> => string(),
 %%   <<"Qtype">> => string()
 %% }
 -type delete_firewall_rule_request() :: #{binary() => any()}.
@@ -1655,6 +1664,7 @@
 
 -type delete_firewall_rule_errors() ::
     throttling_exception() | 
+    validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
     internal_service_error_exception().

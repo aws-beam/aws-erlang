@@ -477,6 +477,9 @@
          list_principal_things/2,
          list_principal_things/4,
          list_principal_things/5,
+         list_principal_things_v2/2,
+         list_principal_things_v2/4,
+         list_principal_things_v2/5,
          list_provisioning_template_versions/2,
          list_provisioning_template_versions/4,
          list_provisioning_template_versions/5,
@@ -521,6 +524,9 @@
          list_thing_principals/2,
          list_thing_principals/4,
          list_thing_principals/5,
+         list_thing_principals_v2/2,
+         list_thing_principals_v2/4,
+         list_thing_principals_v2/5,
          list_thing_registration_task_reports/3,
          list_thing_registration_task_reports/5,
          list_thing_registration_task_reports/6,
@@ -655,6 +661,8 @@
          update_thing_group/4,
          update_thing_groups_for_thing/2,
          update_thing_groups_for_thing/3,
+         update_thing_type/3,
+         update_thing_type/4,
          update_topic_rule_destination/2,
          update_topic_rule_destination/3,
          validate_security_profile_behaviors/2,
@@ -1037,6 +1045,14 @@
 
 
 %% Example:
+%% list_principal_things_v2_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"principalThingObjects">> => list(principal_thing_object()())
+%% }
+-type list_principal_things_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_thing_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"namePrefixFilter">> => string(),
@@ -1069,7 +1085,8 @@
 
 %% Example:
 %% attach_thing_principal_request() :: #{
-%%   <<"principal">> := string()
+%%   <<"principal">> := string(),
+%%   <<"thingPrincipalType">> => list(any())
 %% }
 -type attach_thing_principal_request() :: #{binary() => any()}.
 
@@ -1355,6 +1372,13 @@
 %% detach_thing_principal_response() :: #{}
 -type detach_thing_principal_response() :: #{}.
 
+
+%% Example:
+%% update_thing_type_request() :: #{
+%%   <<"thingTypeProperties">> => thing_type_properties()
+%% }
+-type update_thing_type_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_thing_type_request() :: #{}
 -type delete_thing_type_request() :: #{}.
@@ -1466,6 +1490,13 @@
 %%   <<"pageSize">> => integer()
 %% }
 -type list_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% mqtt5_configuration() :: #{
+%%   <<"propagatingAttributes">> => list(propagating_attribute()())
+%% }
+-type mqtt5_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1835,6 +1866,10 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleet_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_thing_type_response() :: #{}
+-type update_thing_type_response() :: #{}.
 
 
 %% Example:
@@ -3369,6 +3404,14 @@
 
 
 %% Example:
+%% thing_principal_object() :: #{
+%%   <<"principal">> => string(),
+%%   <<"thingPrincipalType">> => list(any())
+%% }
+-type thing_principal_object() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_account_audit_configuration_request() :: #{
 %%   <<"deleteScheduledAudits">> => boolean()
 %% }
@@ -3548,6 +3591,14 @@
 
 
 %% Example:
+%% principal_thing_object() :: #{
+%%   <<"thingName">> => string(),
+%%   <<"thingPrincipalType">> => list(any())
+%% }
+-type principal_thing_object() :: #{binary() => any()}.
+
+
+%% Example:
 %% attribute_payload() :: #{
 %%   <<"attributes">> => map(),
 %%   <<"merge">> => boolean()
@@ -3587,6 +3638,15 @@
 %%   <<"roleArn">> => string()
 %% }
 -type presigned_url_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_principals_v2_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"thingPrincipalType">> => list(any())
+%% }
+-type list_thing_principals_v2_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4091,6 +4151,15 @@
 %% Example:
 %% delete_thing_group_response() :: #{}
 -type delete_thing_group_response() :: #{}.
+
+
+%% Example:
+%% propagating_attribute() :: #{
+%%   <<"connectionAttribute">> => string(),
+%%   <<"thingAttribute">> => string(),
+%%   <<"userPropertyKey">> => string()
+%% }
+-type propagating_attribute() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4614,7 +4683,9 @@
 
 %% Example:
 %% server_certificate_config() :: #{
-%%   <<"enableOCSPCheck">> => boolean()
+%%   <<"enableOCSPCheck">> => boolean(),
+%%   <<"ocspAuthorizedResponderArn">> => string(),
+%%   <<"ocspLambdaArn">> => string()
 %% }
 -type server_certificate_config() :: #{binary() => any()}.
 
@@ -5309,6 +5380,14 @@
 %% Example:
 %% delete_provisioning_template_version_request() :: #{}
 -type delete_provisioning_template_version_request() :: #{}.
+
+
+%% Example:
+%% list_thing_principals_v2_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"thingPrincipalObjects">> => list(thing_principal_object()())
+%% }
+-type list_thing_principals_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6568,6 +6647,7 @@
 
 %% Example:
 %% thing_type_properties() :: #{
+%%   <<"mqtt5Configuration">> => mqtt5_configuration(),
 %%   <<"searchableAttributes">> => list(string()()),
 %%   <<"thingTypeDescription">> => string()
 %% }
@@ -6623,6 +6703,16 @@
 %%   <<"nextMarker">> => string()
 %% }
 -type list_certificates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principal_things_v2_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principal">> := string(),
+%%   <<"thingPrincipalType">> => list(any())
+%% }
+-type list_principal_things_v2_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8098,6 +8188,14 @@
     unauthorized_exception() | 
     internal_failure_exception().
 
+-type list_principal_things_v2_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
 -type list_provisioning_template_versions_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
@@ -8188,6 +8286,14 @@
     internal_failure_exception().
 
 -type list_thing_principals_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type list_thing_principals_v2_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
@@ -8645,6 +8751,14 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type update_thing_type_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
 -type update_topic_rule_destination_errors() ::
     conflicting_resource_update_exception() | 
     internal_exception() | 
@@ -9038,9 +9152,10 @@ attach_thing_principal(Client, ThingName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"thingPrincipalType">>, <<"thingPrincipalType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a mitigation action task that is in progress.
@@ -16433,6 +16548,60 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the things associated with the specified principal.
+%%
+%% A principal can be an X.509
+%% certificate or an Amazon Cognito ID.
+%%
+%% Requires permission to access the ListPrincipalThings:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
+-spec list_principal_things_v2(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_principal_things_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_principal_things_v2_errors(), tuple()}.
+list_principal_things_v2(Client, Principal)
+  when is_map(Client) ->
+    list_principal_things_v2(Client, Principal, #{}, #{}).
+
+-spec list_principal_things_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_principal_things_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_principal_things_v2_errors(), tuple()}.
+list_principal_things_v2(Client, Principal, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_principal_things_v2(Client, Principal, QueryMap, HeadersMap, []).
+
+-spec list_principal_things_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_principal_things_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_principal_things_v2_errors(), tuple()}.
+list_principal_things_v2(Client, Principal, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/principals/things-v2"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"x-amzn-principal">>, Principal}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"thingPrincipalType">>, maps:get(<<"thingPrincipalType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc A list of provisioning template versions.
 %%
 %% Requires permission to access the ListProvisioningTemplateVersions:
@@ -17164,6 +17333,56 @@ list_thing_principals(Client, ThingName, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the principals associated with the specified thing.
+%%
+%% A principal can be an X.509
+%% certificate or an Amazon Cognito ID.
+%%
+%% Requires permission to access the ListThingPrincipals:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
+-spec list_thing_principals_v2(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_thing_principals_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_thing_principals_v2_errors(), tuple()}.
+list_thing_principals_v2(Client, ThingName)
+  when is_map(Client) ->
+    list_thing_principals_v2(Client, ThingName, #{}, #{}).
+
+-spec list_thing_principals_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_thing_principals_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_thing_principals_v2_errors(), tuple()}.
+list_thing_principals_v2(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_thing_principals_v2(Client, ThingName, QueryMap, HeadersMap, []).
+
+-spec list_thing_principals_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_thing_principals_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_thing_principals_v2_errors(), tuple()}.
+list_thing_principals_v2(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/principals-v2"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"thingPrincipalType">>, maps:get(<<"thingPrincipalType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -19770,6 +19989,40 @@ update_thing_groups_for_thing(Client, Input) ->
 update_thing_groups_for_thing(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/updateThingGroupsForThing"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a thing type.
+-spec update_thing_type(aws_client:aws_client(), binary() | list(), update_thing_type_request()) ->
+    {ok, update_thing_type_response(), tuple()} |
+    {error, any()} |
+    {error, update_thing_type_errors(), tuple()}.
+update_thing_type(Client, ThingTypeName, Input) ->
+    update_thing_type(Client, ThingTypeName, Input, []).
+
+-spec update_thing_type(aws_client:aws_client(), binary() | list(), update_thing_type_request(), proplists:proplist()) ->
+    {ok, update_thing_type_response(), tuple()} |
+    {error, any()} |
+    {error, update_thing_type_errors(), tuple()}.
+update_thing_type(Client, ThingTypeName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

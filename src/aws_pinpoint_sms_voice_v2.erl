@@ -112,6 +112,8 @@
          delete_pool/3,
          delete_protect_configuration/2,
          delete_protect_configuration/3,
+         delete_protect_configuration_rule_set_number_override/2,
+         delete_protect_configuration_rule_set_number_override/3,
          delete_registration/2,
          delete_registration/3,
          delete_registration_attachment/2,
@@ -176,14 +178,20 @@
          get_resource_policy/3,
          list_pool_origination_identities/2,
          list_pool_origination_identities/3,
+         list_protect_configuration_rule_set_number_overrides/2,
+         list_protect_configuration_rule_set_number_overrides/3,
          list_registration_associations/2,
          list_registration_associations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_keyword/2,
          put_keyword/3,
+         put_message_feedback/2,
+         put_message_feedback/3,
          put_opted_out_number/2,
          put_opted_out_number/3,
+         put_protect_configuration_rule_set_number_override/2,
+         put_protect_configuration_rule_set_number_override/3,
          put_registration_field_value/2,
          put_registration_field_value/3,
          put_resource_policy/2,
@@ -206,6 +214,8 @@
          send_voice_message/3,
          set_account_default_protect_configuration/2,
          set_account_default_protect_configuration/3,
+         set_default_message_feedback_enabled/2,
+         set_default_message_feedback_enabled/3,
          set_default_message_type/2,
          set_default_message_type/3,
          set_default_sender_id/2,
@@ -602,6 +612,18 @@
 -type registration_denied_reason_information() :: #{binary() => any()}.
 
 %% Example:
+%% put_protect_configuration_rule_set_number_override_result() :: #{
+%%   <<"Action">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DestinationPhoneNumber">> => string(),
+%%   <<"ExpirationTimestamp">> => [non_neg_integer()],
+%%   <<"IsoCountryCode">> => string(),
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type put_protect_configuration_rule_set_number_override_result() :: #{binary() => any()}.
+
+%% Example:
 %% protect_configuration_country_rule_set_information() :: #{
 %%   <<"ProtectStatus">> => string()
 %% }
@@ -724,6 +746,7 @@
 %%   <<"ConfigurationSetArn">> => [string()],
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DefaultMessageFeedbackEnabled">> => [boolean()],
 %%   <<"DefaultMessageType">> => string(),
 %%   <<"DefaultSenderId">> => string(),
 %%   <<"EventDestinations">> => list(event_destination()()),
@@ -955,6 +978,16 @@
 -type describe_protect_configurations_request() :: #{binary() => any()}.
 
 %% Example:
+%% put_protect_configuration_rule_set_number_override_request() :: #{
+%%   <<"Action">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"ExpirationTimestamp">> => [non_neg_integer()],
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type put_protect_configuration_rule_set_number_override_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_event_destination_request() :: #{
 %%   <<"CloudWatchLogsDestination">> => cloud_watch_logs_destination(),
 %%   <<"ConfigurationSetName">> := string(),
@@ -1043,6 +1076,13 @@
 -type delete_account_default_protect_configuration_result() :: #{binary() => any()}.
 
 %% Example:
+%% put_message_feedback_result() :: #{
+%%   <<"MessageFeedbackStatus">> => string(),
+%%   <<"MessageId">> => string()
+%% }
+-type put_message_feedback_result() :: #{binary() => any()}.
+
+%% Example:
 %% registration_type_definition() :: #{
 %%   <<"DisplayHints">> => registration_type_display_hints(),
 %%   <<"RegistrationType">> => string(),
@@ -1057,6 +1097,15 @@
 %%   <<"OptedOutTimestamp">> => [non_neg_integer()]
 %% }
 -type opted_out_number_information() :: #{binary() => any()}.
+
+%% Example:
+%% list_protect_configuration_rule_set_number_overrides_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string(),
+%%   <<"RuleSetNumberOverrides">> => list(protect_configuration_rule_set_number_override()())
+%% }
+-type list_protect_configuration_rule_set_number_overrides_result() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -1156,6 +1205,14 @@
 -type delete_default_sender_id_request() :: #{binary() => any()}.
 
 %% Example:
+%% set_default_message_feedback_enabled_result() :: #{
+%%   <<"ConfigurationSetArn">> => [string()],
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"MessageFeedbackEnabled">> => [boolean()]
+%% }
+-type set_default_message_feedback_enabled_result() :: #{binary() => any()}.
+
+%% Example:
 %% delete_voice_message_spend_limit_override_result() :: #{
 %%   <<"MonthlyLimit">> => float()
 %% }
@@ -1170,6 +1227,13 @@
 %%   <<"PoolId">> => [string()]
 %% }
 -type associate_origination_identity_result() :: #{binary() => any()}.
+
+%% Example:
+%% set_default_message_feedback_enabled_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"MessageFeedbackEnabled">> := [boolean()]
+%% }
+-type set_default_message_feedback_enabled_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_opted_out_numbers_result() :: #{
@@ -1421,6 +1485,13 @@
 -type describe_sender_ids_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_protect_configuration_rule_set_number_override_request() :: #{
+%%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type delete_protect_configuration_rule_set_number_override_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_registration_attachments_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationAttachments">> => list(registration_attachments_information()())
@@ -1493,12 +1564,20 @@
 %%   <<"MaxPricePerMinute">> => string(),
 %%   <<"MessageBody">> => string(),
 %%   <<"MessageBodyTextType">> => string(),
+%%   <<"MessageFeedbackEnabled">> => [boolean()],
 %%   <<"OriginationIdentity">> := string(),
 %%   <<"ProtectConfigurationId">> => string(),
 %%   <<"TimeToLive">> => integer(),
 %%   <<"VoiceId">> => string()
 %% }
 -type send_voice_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_message_feedback_request() :: #{
+%%   <<"MessageFeedbackStatus">> := string(),
+%%   <<"MessageId">> := string()
+%% }
+-type put_message_feedback_request() :: #{binary() => any()}.
 
 %% Example:
 %% set_account_default_protect_configuration_result() :: #{
@@ -1533,6 +1612,16 @@
 %%   <<"RegistrationType">> => string()
 %% }
 -type list_registration_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% protect_configuration_rule_set_number_override() :: #{
+%%   <<"Action">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DestinationPhoneNumber">> => string(),
+%%   <<"ExpirationTimestamp">> => [non_neg_integer()],
+%%   <<"IsoCountryCode">> => string()
+%% }
+-type protect_configuration_rule_set_number_override() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_result() :: #{
@@ -1656,6 +1745,7 @@
 %%   <<"Keyword">> => string(),
 %%   <<"MaxPrice">> => string(),
 %%   <<"MessageBody">> => string(),
+%%   <<"MessageFeedbackEnabled">> => [boolean()],
 %%   <<"MessageType">> => string(),
 %%   <<"OriginationIdentity">> => string(),
 %%   <<"ProtectConfigurationId">> => string(),
@@ -1815,6 +1905,13 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
+%% protect_configuration_rule_set_number_override_filter_item() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type protect_configuration_rule_set_number_override_filter_item() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_origination_identity_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"IsoCountryCode">> := string(),
@@ -1954,6 +2051,15 @@
 %%   <<"KeywordMessage">> => string()
 %% }
 -type keyword_information() :: #{binary() => any()}.
+
+%% Example:
+%% list_protect_configuration_rule_set_number_overrides_request() :: #{
+%%   <<"Filters">> => list(protect_configuration_rule_set_number_override_filter_item()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type list_protect_configuration_rule_set_number_overrides_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_registration_attachment_result() :: #{
@@ -2183,6 +2289,7 @@
 %%   <<"ConfigurationSetArn">> => [string()],
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DefaultMessageFeedbackEnabled">> => [boolean()],
 %%   <<"DefaultMessageType">> => string(),
 %%   <<"DefaultSenderId">> => string(),
 %%   <<"EventDestinations">> => list(event_destination()())
@@ -2223,6 +2330,18 @@
 -type delete_default_message_type_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_protect_configuration_rule_set_number_override_result() :: #{
+%%   <<"Action">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DestinationPhoneNumber">> => string(),
+%%   <<"ExpirationTimestamp">> => [non_neg_integer()],
+%%   <<"IsoCountryCode">> => string(),
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type delete_protect_configuration_rule_set_number_override_result() :: #{binary() => any()}.
+
+%% Example:
 %% opt_out_list_information() :: #{
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"OptOutListArn">> => [string()],
@@ -2239,6 +2358,7 @@
 %%   <<"MaxPrice">> => string(),
 %%   <<"MediaUrls">> => list(string()()),
 %%   <<"MessageBody">> => string(),
+%%   <<"MessageFeedbackEnabled">> => [boolean()],
 %%   <<"OriginationIdentity">> := string(),
 %%   <<"ProtectConfigurationId">> => string(),
 %%   <<"TimeToLive">> => integer()
@@ -2445,6 +2565,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type delete_protect_configuration_rule_set_number_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type delete_registration_errors() ::
     throttling_exception() | 
@@ -2669,6 +2796,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_protect_configuration_rule_set_number_overrides_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_registration_associations_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2692,12 +2826,27 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type put_message_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type put_opted_out_number_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type put_protect_configuration_rule_set_number_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
 
 -type put_registration_field_value_errors() ::
     throttling_exception() | 
@@ -2784,6 +2933,13 @@
     conflict_exception().
 
 -type set_account_default_protect_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type set_default_message_feedback_enabled_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3473,6 +3629,24 @@ delete_protect_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtectConfiguration">>, Input, Options).
 
+%% @doc Permanently delete the protect configuration rule set number
+%% override.
+-spec delete_protect_configuration_rule_set_number_override(aws_client:aws_client(), delete_protect_configuration_rule_set_number_override_request()) ->
+    {ok, delete_protect_configuration_rule_set_number_override_result(), tuple()} |
+    {error, any()} |
+    {error, delete_protect_configuration_rule_set_number_override_errors(), tuple()}.
+delete_protect_configuration_rule_set_number_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_protect_configuration_rule_set_number_override(Client, Input, []).
+
+-spec delete_protect_configuration_rule_set_number_override(aws_client:aws_client(), delete_protect_configuration_rule_set_number_override_request(), proplists:proplist()) ->
+    {ok, delete_protect_configuration_rule_set_number_override_result(), tuple()} |
+    {error, any()} |
+    {error, delete_protect_configuration_rule_set_number_override_errors(), tuple()}.
+delete_protect_configuration_rule_set_number_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProtectConfigurationRuleSetNumberOverride">>, Input, Options).
+
 %% @doc Permanently delete an existing registration from your account.
 -spec delete_registration(aws_client:aws_client(), delete_registration_request()) ->
     {ok, delete_registration_result(), tuple()} |
@@ -4064,7 +4238,7 @@ describe_spend_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpendLimits">>, Input, Options).
 
-%% @doc Retrieves the specified verified destiona numbers.
+%% @doc Retrieves the specified verified destination numbers.
 -spec describe_verified_destination_numbers(aws_client:aws_client(), describe_verified_destination_numbers_request()) ->
     {ok, describe_verified_destination_numbers_result(), tuple()} |
     {error, any()} |
@@ -4195,7 +4369,25 @@ list_pool_origination_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPoolOriginationIdentities">>, Input, Options).
 
-%% @doc Retreive all of the origination identies that are associated with a
+%% @doc Retrieve all of the protect configuration rule set number overrides
+%% that match the filters.
+-spec list_protect_configuration_rule_set_number_overrides(aws_client:aws_client(), list_protect_configuration_rule_set_number_overrides_request()) ->
+    {ok, list_protect_configuration_rule_set_number_overrides_result(), tuple()} |
+    {error, any()} |
+    {error, list_protect_configuration_rule_set_number_overrides_errors(), tuple()}.
+list_protect_configuration_rule_set_number_overrides(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_protect_configuration_rule_set_number_overrides(Client, Input, []).
+
+-spec list_protect_configuration_rule_set_number_overrides(aws_client:aws_client(), list_protect_configuration_rule_set_number_overrides_request(), proplists:proplist()) ->
+    {ok, list_protect_configuration_rule_set_number_overrides_result(), tuple()} |
+    {error, any()} |
+    {error, list_protect_configuration_rule_set_number_overrides_errors(), tuple()}.
+list_protect_configuration_rule_set_number_overrides(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProtectConfigurationRuleSetNumberOverrides">>, Input, Options).
+
+%% @doc Retrieve all of the origination identities that are associated with a
 %% registration.
 -spec list_registration_associations(aws_client:aws_client(), list_registration_associations_request()) ->
     {ok, list_registration_associations_result(), tuple()} |
@@ -4261,6 +4453,33 @@ put_keyword(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutKeyword">>, Input, Options).
 
+%% @doc Set the MessageFeedbackStatus as `RECEIVED' or `FAILED' for
+%% the
+%% passed in MessageId.
+%%
+%% If you use message feedback then you must update message feedback record.
+%% When you receive a signal that a user has received the message you must
+%% use
+%% `PutMessageFeedback' to set the message feedback record as
+%% `RECEIVED'; Otherwise, an hour after the message feedback record is
+%% set
+%% to `FAILED'.
+-spec put_message_feedback(aws_client:aws_client(), put_message_feedback_request()) ->
+    {ok, put_message_feedback_result(), tuple()} |
+    {error, any()} |
+    {error, put_message_feedback_errors(), tuple()}.
+put_message_feedback(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_message_feedback(Client, Input, []).
+
+-spec put_message_feedback(aws_client:aws_client(), put_message_feedback_request(), proplists:proplist()) ->
+    {ok, put_message_feedback_result(), tuple()} |
+    {error, any()} |
+    {error, put_message_feedback_errors(), tuple()}.
+put_message_feedback(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutMessageFeedback">>, Input, Options).
+
 %% @doc Creates an opted out destination phone number in the opt-out list.
 %%
 %% If the destination phone number isn't valid or if the specified
@@ -4281,6 +4500,24 @@ put_opted_out_number(Client, Input)
 put_opted_out_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutOptedOutNumber">>, Input, Options).
+
+%% @doc Create or update a RuleSetNumberOverride and associate it with a
+%% protect configuration.
+-spec put_protect_configuration_rule_set_number_override(aws_client:aws_client(), put_protect_configuration_rule_set_number_override_request()) ->
+    {ok, put_protect_configuration_rule_set_number_override_result(), tuple()} |
+    {error, any()} |
+    {error, put_protect_configuration_rule_set_number_override_errors(), tuple()}.
+put_protect_configuration_rule_set_number_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_protect_configuration_rule_set_number_override(Client, Input, []).
+
+-spec put_protect_configuration_rule_set_number_override(aws_client:aws_client(), put_protect_configuration_rule_set_number_override_request(), proplists:proplist()) ->
+    {ok, put_protect_configuration_rule_set_number_override_result(), tuple()} |
+    {error, any()} |
+    {error, put_protect_configuration_rule_set_number_override_errors(), tuple()}.
+put_protect_configuration_rule_set_number_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutProtectConfigurationRuleSetNumberOverride">>, Input, Options).
 
 %% @doc Creates or updates a field value for a registration.
 -spec put_registration_field_value(aws_client:aws_client(), put_registration_field_value_request()) ->
@@ -4518,6 +4755,23 @@ set_account_default_protect_configuration(Client, Input)
 set_account_default_protect_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetAccountDefaultProtectConfiguration">>, Input, Options).
+
+%% @doc Sets a configuration set's default for message feedback.
+-spec set_default_message_feedback_enabled(aws_client:aws_client(), set_default_message_feedback_enabled_request()) ->
+    {ok, set_default_message_feedback_enabled_result(), tuple()} |
+    {error, any()} |
+    {error, set_default_message_feedback_enabled_errors(), tuple()}.
+set_default_message_feedback_enabled(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_default_message_feedback_enabled(Client, Input, []).
+
+-spec set_default_message_feedback_enabled(aws_client:aws_client(), set_default_message_feedback_enabled_request(), proplists:proplist()) ->
+    {ok, set_default_message_feedback_enabled_result(), tuple()} |
+    {error, any()} |
+    {error, set_default_message_feedback_enabled_errors(), tuple()}.
+set_default_message_feedback_enabled(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetDefaultMessageFeedbackEnabled">>, Input, Options).
 
 %% @doc Sets the default message type on a configuration set.
 %%

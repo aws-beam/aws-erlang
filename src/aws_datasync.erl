@@ -2685,8 +2685,8 @@ describe_task(Client, Input, Options)
 %% differences:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/choosing-task-mode.html#task-mode-differences
 %% and Understanding data
-%% transfer performance metrics:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/transfer-performance-metrics.html.
+%% transfer performance counters:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/transfer-performance-counters.html.
 -spec describe_task_execution(aws_client:aws_client(), describe_task_execution_request()) ->
     {ok, describe_task_execution_response(), tuple()} |
     {error, any()} |

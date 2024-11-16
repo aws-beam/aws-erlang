@@ -5,53 +5,63 @@
 %%
 %% AWS Partner Central API for Selling Reference Guide
 %%
-%% Amazon Web Services (AWS) Partner Central API reference guide is designed
-%% to help
-%% AWS Partners: https://docs.aws.amazon.com/partners/programs/
-%% programmatically integrate their Customer Relationship Management (CRM)
+%% This Amazon Web Services (AWS) Partner Central API reference is
+%% designed to help AWS
+%% Partners: http://aws.amazon.com/partners/programs/ integrate Customer
+%% Relationship Management (CRM)
 %% systems with AWS Partner Central.
 %%
-%% Through the Partner Central APIs, partners can automate and streamline
-%% their interactions with AWS Partner Central, ensuring a more efficient and
-%% effective engagement in joint business activities.
+%% Partners can automate interactions with
+%% AWS Partner Central, which helps to ensure effective engagements in joint
+%% business activities.
 %%
-%% The AWS Partner Central API service provides standard AWS API
-%% functionality. You can directly use the API Actions:
-%% https://docs.aws.amazon.com/partner-central/latest/selling-api/API_Operations.html,
-%% or you can use an AWS SDK to access an API that's tailored to the
-%% programming language or platform that you're using. For more
-%% information about AWS application development, see Getting Started with
-%% AWS: https://docs.aws.amazon.com/getting-started. For more information
-%% about using AWS SDKs, see AWS SDKs: https://docs.aws.amazon.com/aws-sdk.
+%% The API provides standard AWS API functionality. Access it by
+%% either using API Actions:
+%% https://docs.aws.amazon.com/partner-central/latest/selling-api/API_Operations.html
+%% or by using an AWS SDK that's tailored to your
+%% programming language or platform. For more information, see Getting
+%% Started with
+%% AWS: http://aws.amazon.com/getting-started and Tools to Build on AWS:
+%% http://aws.amazon.com/developer/tools/.
 %%
 %% == Features offered by AWS Partner Central API ==
 %%
-%% Opportunity management: Facilitates the management of co-selling
-%% opportunities with AWS using API actions such as `CreateOpportunity',
-%% `UpdateOpportunity', `ListOpportunities', `GetOpportunity',
-%% and `AssignOpportunity'.
+%% Opportunity management:
+%% Manages coselling opportunities through API actions such as
+%% `CreateOpportunity', `UpdateOpportunity',
+%% `ListOpportunities', `GetOpportunity', and
+%% `AssignOpportunity'.
 %%
-%% AWS referral management: Facilitates receiving referrals shared by AWS
-%% using actions like `ListEngagementInvitations',
-%% `GetEngagementInvitation', `StartEngagementByAcceptingInvitation',
-%% and `RejectEngagementInvitation'.
+%% AWS referral management:
+%% Manages referrals shared by AWS using actions such as
+%% `ListEngagementInvitations',
+%% `GetEngagementInvitation',
+%% `StartEngagementByAcceptingInvitation', and
+%% `RejectEngagementInvitation'.
 %%
-%% Entity association: Associate related entities such as AWS Products,
-%% Partner Solutions, and AWS Marketplace Private Offers with opportunities
-%% using the actions `AssociateOpportunity' and
+%% Entity association:
+%% Associates related entities such as AWS Products,
+%% Partner Solutions, and AWS
+%% Marketplace Private Offers with opportunities using the
+%% actions `AssociateOpportunity', and
 %% `DisassociateOpportunity'.
 %%
-%% View AWS opportunity details: Use the `GetAWSOpportunitySummary'
-%% action to retrieve real-time summaries of AWS opportunities that are
-%% linked to your opportunities.
+%% View AWS opportunity
+%% details: Retrieves real-time summaries of AWS
+%% opportunities using the `GetAWSOpportunitySummary'
+%% action.
 %%
-%% List solutions: Provides list APIs for listing solutions partners offer
-%% using `ListSolutions'.
+%% List solutions: Provides
+%% list APIs for listing partner offers using
+%% `ListSolutions'.
 %%
-%% Event subscription: Partners can subscribe to real-time updates on
-%% opportunities by listening to events such as Opportunity Created,
-%% Opportunity Updated, Engagement Invitation Accepted, Engagement Invitation
-%% Rejected and Engagement Invitation Created using AWS EventBridge.
+%% Event subscription:
+%% Subscribe to real-time opportunity updates through AWS EventBridge by
+%% using actions such as Opportunity Created,
+%% Opportunity Updated, Engagement
+%% Invitation Accepted, Engagement Invitation
+%% Rejected, and Engagement Invitation
+%% Created.
 -module(aws_partnercentral_selling).
 
 -export([assign_opportunity/2,
@@ -593,7 +603,7 @@
 %% start_engagement_from_opportunity_task_request() :: #{
 %%   <<"AwsSubmission">> := aws_submission(),
 %%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := [string()],
+%%   <<"ClientToken">> := string(),
 %%   <<"Identifier">> := string()
 %% }
 -type start_engagement_from_opportunity_task_request() :: #{binary() => any()}.
@@ -737,7 +747,7 @@
 %% Example:
 %% start_engagement_by_accepting_invitation_task_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := [string()],
+%%   <<"ClientToken">> := string(),
 %%   <<"Identifier">> := string()
 %% }
 -type start_engagement_by_accepting_invitation_task_request() :: #{binary() => any()}.
@@ -885,20 +895,20 @@ assign_opportunity(Client, Input, Options)
 %% and various
 %% related entities, enriching the context and details of the opportunity for
 %% better collaboration and
-%% decision-making.
+%% decision making.
 %%
-%% You can associate an opportunity with the following types of entities:
+%% You can associate an opportunity with the following entity types:
 %%
 %% Partner Solution:
 %% A software product or consulting practice created and delivered by
-%% Partners. Partner Solutions help customers address specific business
-%% challenges or achieve particular goals using Amazon Web Services services.
+%% Partners. Partner Solutions help customers address business challenges
+%% using Amazon Web Services services.
 %%
-%% Amazon Web Services Product:
-%% Amazon Web Services offers a wide range of products and services designed
-%% to provide scalable, reliable, and cost-effective infrastructure
-%% solutions. For the latest list of Amazon Web Services products, refer to
-%% Amazon Web Services products:
+%% Amazon Web Services Products:
+%% Amazon Web Services offers many products and services that provide
+%% scalable, reliable, and cost-effective infrastructure solutions. For the
+%% latest list of Amazon Web Services products, see Amazon Web Services
+%% products:
 %% https://github.com/aws-samples/partner-crm-integration-samples/blob/main/resources/aws_products.json.
 %%
 %% Amazon Web Services Marketplace private offer:
@@ -907,24 +917,23 @@ assign_opportunity(Client, Input, Options)
 %% negotiate custom prices, payment schedules, and end user license terms
 %% through private offers, enabling Amazon Web Services customers to acquire
 %% software solutions tailored to their specific needs. For more information,
-%% refer to Private offers in Amazon Web Services Marketplace:
+%% see Private offers in Amazon Web Services Marketplace:
 %% https://docs.aws.amazon.com/marketplace/latest/buyerguide/buyer-private-offers.html.
 %%
 %% To obtain identifiers for these entities, use the following methods:
 %%
 %% Solution: Use the `ListSolutions' operation.
 %%
-%% AWS products: For the latest list of Amazon Web Services products, refer
-%% to
-%% the Amazon Web Services products list.
+%% AWS Products: For the latest list of Amazon Web Services products, see
+%% Amazon Web Services products:
+%% https://github.com/aws-samples/partner-crm-integration-samples/blob/main/resources/aws_products.json.
 %%
-%% Amazon Web Services Marketplace private offer: Use the AWS Marketplace
-%% Catalog API:
-%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html
+%% Amazon Web Services Marketplace private offer: Use the Using the Amazon
+%% Web Services Marketplace Catalog API:
+%% https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html
 %% to list entities. Specifically, use the `ListEntities' operation to
-%% retrieve a list of private offers. The request to the `ListEntities'
-%% API returns the details of the private offers available to you. For more
-%% information, refer to ListEntities:
+%% retrieve a list of private offers. The request returns the details of
+%% available private offers. For more information, see ListEntities:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_ListEntities.html.
 -spec associate_opportunity(aws_client:aws_client(), associate_opportunity_request()) ->
     {ok, undefined, tuple()} |
@@ -946,27 +955,26 @@ associate_opportunity(Client, Input, Options)
 %% Creates an `Opportunity' record in Partner Central.
 %%
 %% Use this operation to create
-%% a potential business opportunity intended to be submitted to Amazon Web
-%% Services. Creating an opportunity sets its `Lifecycle.ReviewStatus' to
+%% a potential business opportunity for submission to Amazon Web Services.
+%% Creating an opportunity sets `Lifecycle.ReviewStatus' to
 %% `Pending Submission'.
 %%
-%% To fully submit an opportunity, follow these steps:
+%% To submit an opportunity, follow these steps:
 %%
 %% To create the opportunity, use `CreateOpportunity'.
 %%
 %% To associate a solution with the opportunity, use
 %% `AssociateOpportunity'.
 %%
-%% To submit the opportunity, use `SubmitOpportunity'.
+%% To submit the opportunity, use `StartEngagementFromOpportunityTask'.
 %%
 %% After submission, you can't edit the opportunity until the review is
-%% complete. However, opportunities in the
-%% `Pending Submission' state still need all details completed. You can
-%% update
+%% complete. But opportunities in the
+%% `Pending Submission' state must have complete details. You can update
 %% the opportunity while it's in the `Pending Submission' state.
 %%
-%% There's a set of mandatory fields required to create opportunities,
-%% but consider providing optional fields to
+%% There's a set of mandatory fields to create opportunities, but
+%% consider providing optional fields to
 %% enrich the opportunity record.
 -spec create_opportunity(aws_client:aws_client(), create_opportunity_request()) ->
     {ok, create_opportunity_response(), tuple()} |
@@ -986,7 +994,7 @@ create_opportunity(Client, Input, Options)
 
 %% @doc
 %% Allows you to remove an existing association between an `Opportunity'
-%% and related entities such as a Partner Solution, Amazon Web Services
+%% and related entities, such as a Partner Solution, Amazon Web Services
 %% product, or an Amazon Web Services Marketplace offer.
 %%
 %% This operation is the counterpart to `AssociateOpportunity', and it
@@ -999,8 +1007,8 @@ create_opportunity(Client, Input, Options)
 %% helps maintain clarity and accuracy to track
 %% and manage business opportunities. When you replace an entity, first
 %% attach the new entity and then disassociate the
-%% one to be removed, especially if it's the last remaining related
-%% entity that's required.
+%% one to be removed, especially if it's the last remaining entity
+%% that's required.
 -spec disassociate_opportunity(aws_client:aws_client(), disassociate_opportunity_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1044,8 +1052,10 @@ get_aws_opportunity_summary(Client, Input, Options)
 %% @doc Retrieves the details of an engagement invitation shared by AWS with
 %% a partner.
 %%
-%% The information includes key aspects such as the customer, project
-%% details, and lifecycle information related to the engagement.
+%% The information includes aspects such as customer, project details, and
+%% lifecycle information. To connect an engagement invitation with an
+%% opportunity, match the invitation’s `Payload.Project.Title' with
+%% opportunity `Project.Title'.
 -spec get_engagement_invitation(aws_client:aws_client(), get_engagement_invitation_request()) ->
     {ok, get_engagement_invitation_response(), tuple()} |
     {error, any()} |
@@ -1104,8 +1114,8 @@ list_engagement_invitations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngagementInvitations">>, Input, Options).
 
-%% @doc This request accepts a list of filters to use to
-%% retrieve a specific subset of opportunities, as well as sort options.
+%% @doc This request accepts a list of filters that retrieve opportunity
+%% subsets as well as sort options.
 %%
 %% This feature is available to partners from
 %% Partner Central: https://partnercentral.awspartner.com/
@@ -1167,12 +1177,12 @@ list_solutions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSolutions">>, Input, Options).
 
-%% @doc Use this action to reject an `EngagementInvitation' that has been
-%% shared by AWS.
+%% @doc This action rejects an `EngagementInvitation' that AWS
+%% shared.
 %%
-%% Rejecting the engagement invitation indicates that the partner does not
-%% wish to pursue the opportunity, and all related data will be inaccessible
-%% after the rejection.
+%% Rejecting an invitation indicates that the partner doesn't want to
+%% pursue the opportunity, and all related data will become inaccessible
+%% thereafter.
 -spec reject_engagement_invitation(aws_client:aws_client(), reject_engagement_invitation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1192,9 +1202,9 @@ reject_engagement_invitation(Client, Input, Options)
 %% @doc This action starts the engagement by accepting an
 %% `EngagementInvitation'.
 %%
-%% The task is asynchronous and involves several steps: accepting the
+%% The task is asynchronous and involves the following steps: accepting the
 %% invitation, creating an opportunity in the partner’s account from the AWS
-%% Opportunity, and copying over key details for tracking. Once completed, an
+%% opportunity, and copying details for tracking. When completed, an
 %% `Opportunity Created' event is generated, indicating that the
 %% opportunity has been successfully created in the partner's account.
 -spec start_engagement_by_accepting_invitation_task(aws_client:aws_client(), start_engagement_by_accepting_invitation_task_request()) ->
