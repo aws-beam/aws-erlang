@@ -48,7 +48,9 @@
 %% Administrator Guide.
 -module(aws_qconnect).
 
--export([create_a_i_agent/3,
+-export([activate_message_template/4,
+         activate_message_template/5,
+         create_a_i_agent/3,
          create_a_i_agent/4,
          create_a_i_agent_version/4,
          create_a_i_agent_version/5,
@@ -66,10 +68,18 @@
          create_content_association/5,
          create_knowledge_base/2,
          create_knowledge_base/3,
+         create_message_template/3,
+         create_message_template/4,
+         create_message_template_attachment/4,
+         create_message_template_attachment/5,
+         create_message_template_version/4,
+         create_message_template_version/5,
          create_quick_response/3,
          create_quick_response/4,
          create_session/3,
          create_session/4,
+         deactivate_message_template/4,
+         deactivate_message_template/5,
          delete_a_i_agent/4,
          delete_a_i_agent/5,
          delete_a_i_agent_version/5,
@@ -90,6 +100,10 @@
          delete_import_job/5,
          delete_knowledge_base/3,
          delete_knowledge_base/4,
+         delete_message_template/4,
+         delete_message_template/5,
+         delete_message_template_attachment/5,
+         delete_message_template_attachment/6,
          delete_quick_response/4,
          delete_quick_response/5,
          get_a_i_agent/3,
@@ -119,6 +133,9 @@
          get_knowledge_base/2,
          get_knowledge_base/4,
          get_knowledge_base/5,
+         get_message_template/3,
+         get_message_template/5,
+         get_message_template/6,
          get_quick_response/3,
          get_quick_response/5,
          get_quick_response/6,
@@ -158,6 +175,12 @@
          list_knowledge_bases/1,
          list_knowledge_bases/3,
          list_knowledge_bases/4,
+         list_message_template_versions/3,
+         list_message_template_versions/5,
+         list_message_template_versions/6,
+         list_message_templates/2,
+         list_message_templates/4,
+         list_message_templates/5,
          list_quick_responses/2,
          list_quick_responses/4,
          list_quick_responses/5,
@@ -174,8 +197,12 @@
          remove_assistant_a_i_agent/4,
          remove_knowledge_base_template_uri/3,
          remove_knowledge_base_template_uri/4,
+         render_message_template/4,
+         render_message_template/5,
          search_content/3,
          search_content/4,
+         search_message_templates/3,
+         search_message_templates/4,
          search_quick_responses/3,
          search_quick_responses/4,
          search_sessions/3,
@@ -198,6 +225,10 @@
          update_content/5,
          update_knowledge_base_template_uri/3,
          update_knowledge_base_template_uri/4,
+         update_message_template/4,
+         update_message_template/5,
+         update_message_template_metadata/4,
+         update_message_template_metadata/5,
          update_quick_response/4,
          update_quick_response/5,
          update_session/4,
@@ -217,6 +248,14 @@
 %%   <<"urlExpiry">> := [non_neg_integer()]
 %% }
 -type start_content_upload_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_message_template_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_message_template_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -261,6 +300,18 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_order_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"order">> => string()
+%% }
+-type message_template_order_field() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_template_attachment_response() :: #{}
+-type delete_message_template_attachment_response() :: #{}.
 
 
 %% Example:
@@ -344,6 +395,15 @@
 %% Example:
 %% get_content_association_request() :: #{}
 -type get_content_association_request() :: #{}.
+
+
+%% Example:
+%% deactivate_message_template_response() :: #{
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"versionNumber">> => float()
+%% }
+-type deactivate_message_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -463,11 +523,26 @@
 
 
 %% Example:
+%% activate_message_template_request() :: #{
+%%   <<"versionNumber">> := float()
+%% }
+-type activate_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_source_configuration() :: #{
 %%   <<"configuration">> => list(),
 %%   <<"source">> => string()
 %% }
 -type external_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_attributes() :: #{
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string()
+%% }
+-type agent_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -608,6 +683,16 @@
 
 
 %% Example:
+%% message_template_attributes() :: #{
+%%   <<"agentAttributes">> => agent_attributes(),
+%%   <<"customAttributes">> => map(),
+%%   <<"customerProfileAttributes">> => customer_profile_attributes(),
+%%   <<"systemAttributes">> => system_attributes()
+%% }
+-type message_template_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_feedback_response() :: #{
 %%   <<"assistantArn">> => string(),
 %%   <<"assistantId">> => string(),
@@ -726,6 +811,26 @@
 
 
 %% Example:
+%% message_template_filter_field() :: #{
+%%   <<"includeNoExistence">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type message_template_filter_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_message_template_attachment_request() :: #{
+%%   <<"body">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"contentDisposition">> := string(),
+%%   <<"name">> := string()
+%% }
+-type create_message_template_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% assistant_capability_configuration() :: #{
 %%   <<"type">> => string()
 %% }
@@ -748,11 +853,27 @@
 
 
 %% Example:
+%% message_template_search_expression() :: #{
+%%   <<"filters">> => list(message_template_filter_field()()),
+%%   <<"orderOnField">> => message_template_order_field(),
+%%   <<"queries">> => list(message_template_query_field()())
+%% }
+-type message_template_search_expression() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_quick_responses_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_quick_responses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_endpoint_attributes() :: #{
+%%   <<"address">> => string()
+%% }
+-type system_endpoint_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -769,6 +890,25 @@
 %%   <<"presignedUrlTimeToLive">> => integer()
 %% }
 -type start_content_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_template_response() :: #{}
+-type delete_message_template_response() :: #{}.
+
+
+%% Example:
+%% create_message_template_request() :: #{
+%%   <<"channelSubtype">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"content">> := list(),
+%%   <<"defaultAttributes">> => message_template_attributes(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"language">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_message_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_assistant_request() :: #{}
@@ -822,6 +962,70 @@
 
 
 %% Example:
+%% customer_profile_attributes() :: #{
+%%   <<"shippingCounty">> => string(),
+%%   <<"accountNumber">> => string(),
+%%   <<"shippingCity">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"additionalInformation">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"businessEmailAddress">> => string(),
+%%   <<"billingState">> => string(),
+%%   <<"birthDate">> => string(),
+%%   <<"postalCode">> => string(),
+%%   <<"address3">> => string(),
+%%   <<"businessPhoneNumber">> => string(),
+%%   <<"mailingAddress1">> => string(),
+%%   <<"mailingCountry">> => string(),
+%%   <<"mailingAddress3">> => string(),
+%%   <<"shippingState">> => string(),
+%%   <<"billingCountry">> => string(),
+%%   <<"shippingAddress2">> => string(),
+%%   <<"billingPostalCode">> => string(),
+%%   <<"shippingAddress3">> => string(),
+%%   <<"state">> => string(),
+%%   <<"country">> => string(),
+%%   <<"homePhoneNumber">> => string(),
+%%   <<"address1">> => string(),
+%%   <<"mailingState">> => string(),
+%%   <<"city">> => string(),
+%%   <<"businessName">> => string(),
+%%   <<"county">> => string(),
+%%   <<"mailingPostalCode">> => string(),
+%%   <<"billingCounty">> => string(),
+%%   <<"partyType">> => string(),
+%%   <<"shippingPostalCode">> => string(),
+%%   <<"mailingCity">> => string(),
+%%   <<"custom">> => map(),
+%%   <<"shippingAddress4">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"gender">> => string(),
+%%   <<"mailingCounty">> => string(),
+%%   <<"billingProvince">> => string(),
+%%   <<"mailingAddress2">> => string(),
+%%   <<"shippingAddress1">> => string(),
+%%   <<"mailingAddress4">> => string(),
+%%   <<"mailingProvince">> => string(),
+%%   <<"shippingProvince">> => string(),
+%%   <<"phoneNumber">> => string(),
+%%   <<"billingAddress4">> => string(),
+%%   <<"mobilePhoneNumber">> => string(),
+%%   <<"address4">> => string(),
+%%   <<"address2">> => string(),
+%%   <<"billingAddress3">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"profileARN">> => string(),
+%%   <<"billingCity">> => string(),
+%%   <<"billingAddress2">> => string(),
+%%   <<"billingAddress1">> => string(),
+%%   <<"shippingCountry">> => string(),
+%%   <<"province">> => string(),
+%%   <<"middleName">> => string()
+%% }
+-type customer_profile_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_knowledge_base_template_uri_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base_data()
 %% }
@@ -859,6 +1063,13 @@
 
 
 %% Example:
+%% create_message_template_attachment_response() :: #{
+%%   <<"attachment">> => message_template_attachment()
+%% }
+-type create_message_template_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_knowledge_base_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -879,6 +1090,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_message_template_versions_response() :: #{
+%%   <<"messageTemplateVersionSummaries">> => list(message_template_version_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_message_template_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1019,6 +1238,68 @@
 
 
 %% Example:
+%% message_template_query_field() :: #{
+%%   <<"allowFuzziness">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"priority">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type message_template_query_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% deactivate_message_template_request() :: #{
+%%   <<"versionNumber">> := float()
+%% }
+-type deactivate_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_message_template_request() :: #{
+%%   <<"content">> => list(),
+%%   <<"defaultAttributes">> => message_template_attributes(),
+%%   <<"language">> => string()
+%% }
+-type update_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% extended_message_template_data() :: #{
+%%   <<"attachments">> => list(message_template_attachment()()),
+%%   <<"attributeTypes">> => list(string()()),
+%%   <<"channelSubtype">> => string(),
+%%   <<"content">> => list(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"defaultAttributes">> => message_template_attributes(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"language">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateContentSha256">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"versionNumber">> => float()
+%% }
+-type extended_message_template_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_message_template_metadata_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"name">> => string()
+%% }
+-type update_message_template_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% quick_response_contents() :: #{
 %%   <<"markdown">> => list(),
 %%   <<"plainText">> => list()
@@ -1038,6 +1319,13 @@
 %%   <<"flowId">> => string()
 %% }
 -type amazon_connect_guide_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_message_template_response() :: #{
+%%   <<"messageTemplate">> => message_template_data()
+%% }
+-type create_message_template_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_import_job_request() :: #{}
@@ -1145,6 +1433,22 @@
 %%   <<"text">> => string()
 %% }
 -type query_recommendation_trigger_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% sms_message_template_content_body() :: #{
+%%   <<"plainText">> => list()
+%% }
+-type sms_message_template_content_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_message_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := message_template_search_expression()
+%% }
+-type search_message_templates_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1421,6 +1725,42 @@
 
 
 %% Example:
+%% create_message_template_version_response() :: #{
+%%   <<"messageTemplate">> => extended_message_template_data()
+%% }
+-type create_message_template_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_search_result_data() :: #{
+%%   <<"channelSubtype">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"language">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"versionNumber">> => float()
+%% }
+-type message_template_search_result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_header() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type email_header() :: #{binary() => any()}.
+
+
+%% Example:
 %% web_crawler_configuration() :: #{
 %%   <<"crawlerLimits">> => web_crawler_limits(),
 %%   <<"exclusionFilters">> => list(string()()),
@@ -1437,6 +1777,10 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_template_request() :: #{}
+-type delete_message_template_request() :: #{}.
 
 
 %% Example:
@@ -1498,6 +1842,14 @@
 
 
 %% Example:
+%% list_message_templates_response() :: #{
+%%   <<"messageTemplateSummaries">> => list(message_template_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_message_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_a_iprompt_response() :: #{
 %%   <<"aiPrompt">> => a_iprompt_data(),
 %%   <<"versionNumber">> => float()
@@ -1551,6 +1903,17 @@
 -type update_content_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_message_template_attachment_request() :: #{}
+-type delete_message_template_attachment_request() :: #{}.
+
+
+%% Example:
+%% get_message_template_response() :: #{
+%%   <<"messageTemplate">> => extended_message_template_data()
+%% }
+-type get_message_template_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_quick_response_request() :: #{}
 -type get_quick_response_request() :: #{}.
 
@@ -1580,6 +1943,24 @@
 %%   <<"uploadId">> := string()
 %% }
 -type create_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_summary() :: #{
+%%   <<"activeVersionNumber">> => float(),
+%%   <<"channelSubtype">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type message_template_summary() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -1613,6 +1994,10 @@
 %%   <<"sessionId">> => string()
 %% }
 -type query_assistant_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_message_template_request() :: #{}
+-type get_message_template_request() :: #{}.
 
 
 %% Example:
@@ -1654,6 +2039,15 @@
 %% }
 -type get_content_association_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% system_attributes() :: #{
+%%   <<"customerEndpoint">> => system_endpoint_attributes(),
+%%   <<"name">> => string(),
+%%   <<"systemEndpoint">> => system_endpoint_attributes()
+%% }
+-type system_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% delete_content_request() :: #{}
 -type delete_content_request() :: #{}.
@@ -1665,6 +2059,13 @@
 %% Example:
 %% delete_quick_response_request() :: #{}
 -type delete_quick_response_request() :: #{}.
+
+
+%% Example:
+%% create_message_template_version_request() :: #{
+%%   <<"messageTemplateContentSha256">> => string()
+%% }
+-type create_message_template_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1696,6 +2097,14 @@
 %%   <<"sourceURL">> => [string()]
 %% }
 -type content_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_message_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(message_template_search_result_data()())
+%% }
+-type search_message_templates_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1825,6 +2234,29 @@
 
 
 %% Example:
+%% message_template_data() :: #{
+%%   <<"attributeTypes">> => list(string()()),
+%%   <<"channelSubtype">> => string(),
+%%   <<"content">> => list(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"defaultAttributes">> => message_template_attributes(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"language">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateContentSha256">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type message_template_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_knowledge_bases_response() :: #{
 %%   <<"knowledgeBaseSummaries">> := list(knowledge_base_summary()()),
 %%   <<"nextToken">> => string()
@@ -1837,6 +2269,13 @@
 %%   <<"knowledgeBase">> => knowledge_base_data()
 %% }
 -type get_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sms_message_template_content() :: #{
+%%   <<"body">> => sms_message_template_content_body()
+%% }
+-type sms_message_template_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1856,6 +2295,52 @@
 %%   <<"type">> => string()
 %% }
 -type result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_message_template_metadata_response() :: #{
+%%   <<"messageTemplate">> => message_template_data()
+%% }
+-type update_message_template_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% render_message_template_response() :: #{
+%%   <<"attachments">> => list(message_template_attachment()()),
+%%   <<"attributesNotInterpolated">> => list(string()()),
+%%   <<"content">> => list()
+%% }
+-type render_message_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_message_template_content_body() :: #{
+%%   <<"html">> => list(),
+%%   <<"plainText">> => list()
+%% }
+-type email_message_template_content_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_version_summary() :: #{
+%%   <<"channelSubtype">> => string(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"versionNumber">> => float()
+%% }
+-type message_template_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_message_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_message_templates_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1971,6 +2456,18 @@
 
 
 %% Example:
+%% message_template_attachment() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"contentDisposition">> => string(),
+%%   <<"name">> => string(),
+%%   <<"uploadedTime">> => [non_neg_integer()],
+%%   <<"url">> => string(),
+%%   <<"urlExpiry">> => [non_neg_integer()]
+%% }
+-type message_template_attachment() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_content_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -2024,6 +2521,15 @@
 
 
 %% Example:
+%% email_message_template_content() :: #{
+%%   <<"body">> => email_message_template_content_body(),
+%%   <<"headers">> => list(email_header()()),
+%%   <<"subject">> => string()
+%% }
+-type email_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_session_response() :: #{
 %%   <<"session">> => session_data()
 %% }
@@ -2074,6 +2580,13 @@
 
 
 %% Example:
+%% render_message_template_request() :: #{
+%%   <<"attributes">> := message_template_attributes()
+%% }
+-type render_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_assistants_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -2091,6 +2604,13 @@
 %% Example:
 %% delete_content_association_request() :: #{}
 -type delete_content_association_request() :: #{}.
+
+
+%% Example:
+%% update_message_template_response() :: #{
+%%   <<"messageTemplate">> => message_template_data()
+%% }
+-type update_message_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2125,6 +2645,22 @@
 %%   <<"versionNumber">> => float()
 %% }
 -type create_a_iprompt_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% activate_message_template_response() :: #{
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"versionNumber">> => float()
+%% }
+-type activate_message_template_response() :: #{binary() => any()}.
+
+-type activate_message_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type create_a_i_agent_errors() ::
     throttling_exception() | 
@@ -2192,6 +2728,30 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_message_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_message_template_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_message_template_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_quick_response_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -2200,6 +2760,13 @@
     conflict_exception().
 
 -type create_session_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type deactivate_message_template_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
@@ -2263,6 +2830,20 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_message_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_message_template_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_quick_response_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -2311,6 +2892,12 @@
     resource_not_found_exception().
 
 -type get_knowledge_base_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_message_template_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -2381,6 +2968,18 @@
     validation_exception() | 
     access_denied_exception().
 
+-type list_message_template_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_message_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type list_quick_responses_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -2416,7 +3015,19 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type render_message_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type search_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type search_message_templates_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -2482,6 +3093,20 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type update_message_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_message_template_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_quick_response_errors() ::
     precondition_failed_exception() | 
     validation_exception() | 
@@ -2502,6 +3127,48 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Activates a specific version of the Amazon Q in Connect message
+%% template.
+%%
+%% After the
+%% version is activated, the previous active version will be deactivated
+%% automatically. You can
+%% use the `$ACTIVE_VERSION' qualifier later to reference the version
+%% that is in
+%% active status.
+-spec activate_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), activate_message_template_request()) ->
+    {ok, activate_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, activate_message_template_errors(), tuple()}.
+activate_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
+    activate_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec activate_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), activate_message_template_request(), proplists:proplist()) ->
+    {ok, activate_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, activate_message_template_errors(), tuple()}.
+activate_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/activate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q in Connect AI Agent.
 -spec create_a_i_agent(aws_client:aws_client(), binary() | list(), create_a_i_agent_request()) ->
@@ -2872,6 +3539,143 @@ create_knowledge_base(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an Amazon Q in Connect message template.
+%%
+%% The name of the message template has to
+%% be unique for each knowledge base. The channel subtype of the message
+%% template is immutable
+%% and cannot be modified after creation. After the message template is
+%% created, you can use the
+%% `$LATEST' qualifier to reference the created message template.
+-spec create_message_template(aws_client:aws_client(), binary() | list(), create_message_template_request()) ->
+    {ok, create_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_message_template_errors(), tuple()}.
+create_message_template(Client, KnowledgeBaseId, Input) ->
+    create_message_template(Client, KnowledgeBaseId, Input, []).
+
+-spec create_message_template(aws_client:aws_client(), binary() | list(), create_message_template_request(), proplists:proplist()) ->
+    {ok, create_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_message_template_errors(), tuple()}.
+create_message_template(Client, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Uploads an attachment file to the specified Amazon Q in Connect
+%% message template.
+%%
+%% The name
+%% of the message template attachment has to be unique for each message
+%% template referenced by
+%% the `$LATEST' qualifier. The body of the attachment file should be
+%% encoded using
+%% base64 encoding. After the file is uploaded, you can use the pre-signed
+%% Amazon S3 URL returned
+%% in response to download the uploaded file.
+-spec create_message_template_attachment(aws_client:aws_client(), binary() | list(), binary() | list(), create_message_template_attachment_request()) ->
+    {ok, create_message_template_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, create_message_template_attachment_errors(), tuple()}.
+create_message_template_attachment(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
+    create_message_template_attachment(Client, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec create_message_template_attachment(aws_client:aws_client(), binary() | list(), binary() | list(), create_message_template_attachment_request(), proplists:proplist()) ->
+    {ok, create_message_template_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, create_message_template_attachment_errors(), tuple()}.
+create_message_template_attachment(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/attachments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Amazon Q in Connect message template version from the
+%% current content and
+%% configuration of a message template.
+%%
+%% Versions are immutable and monotonically increasing. Once
+%% a version is created, you can reference a specific version of the message
+%% template by passing
+%% in `&lt;message-template-id&gt;:&lt;versionNumber&gt;' as the message
+%% template
+%% identifier. An error is displayed if the supplied
+%% `messageTemplateContentSha256' is
+%% different from the `messageTemplateContentSha256' of the message
+%% template with
+%% `$LATEST' qualifier. If multiple `CreateMessageTemplateVersion'
+%% requests are made while the message template remains the same, only the
+%% first invocation
+%% creates a new version and the succeeding requests will return the same
+%% response as the first
+%% invocation.
+-spec create_message_template_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_message_template_version_request()) ->
+    {ok, create_message_template_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_message_template_version_errors(), tuple()}.
+create_message_template_version(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
+    create_message_template_version(Client, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec create_message_template_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_message_template_version_request(), proplists:proplist()) ->
+    {ok, create_message_template_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_message_template_version_errors(), tuple()}.
+create_message_template_version(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Amazon Q in Connect quick response.
 -spec create_quick_response(aws_client:aws_client(), binary() | list(), create_quick_response_request()) ->
     {ok, create_quick_response_response(), tuple()} |
@@ -2926,6 +3730,46 @@ create_session(Client, AssistantId, Input) ->
 create_session(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deactivates a specific version of the Amazon Q in Connect message
+%% template .
+%%
+%% After the
+%% version is deactivated, you can no longer use the `$ACTIVE_VERSION'
+%% qualifier to
+%% reference the version in active status.
+-spec deactivate_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), deactivate_message_template_request()) ->
+    {ok, deactivate_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, deactivate_message_template_errors(), tuple()}.
+deactivate_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
+    deactivate_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec deactivate_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), deactivate_message_template_request(), proplists:proplist()) ->
+    {ok, deactivate_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, deactivate_message_template_errors(), tuple()}.
+deactivate_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/deactivate"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3307,6 +4151,88 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an Amazon Q in Connect message template entirely or a
+%% specific version of the
+%% message template if version is supplied in the request.
+%%
+%% You can provide the message template
+%% identifier as `&lt;message-template-id&gt;:&lt;versionNumber&gt;' to
+%% delete a
+%% specific version of the message template. If it is not supplied, the
+%% message template and all
+%% available versions will be deleted.
+-spec delete_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_message_template_request()) ->
+    {ok, delete_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_message_template_errors(), tuple()}.
+delete_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
+    delete_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec delete_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_message_template_request(), proplists:proplist()) ->
+    {ok, delete_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_message_template_errors(), tuple()}.
+delete_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the attachment file from the Amazon Q in Connect message
+%% template that is
+%% referenced by `$LATEST' qualifier.
+%%
+%% Attachments on available message template
+%% versions will remain unchanged.
+-spec delete_message_template_attachment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_message_template_attachment_request()) ->
+    {ok, delete_message_template_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_message_template_attachment_errors(), tuple()}.
+delete_message_template_attachment(Client, AttachmentId, KnowledgeBaseId, MessageTemplateId, Input) ->
+    delete_message_template_attachment(Client, AttachmentId, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec delete_message_template_attachment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_message_template_attachment_request(), proplists:proplist()) ->
+    {ok, delete_message_template_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_message_template_attachment_errors(), tuple()}.
+delete_message_template_attachment(Client, AttachmentId, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/attachments/", aws_util:encode_uri(AttachmentId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a quick response.
 -spec delete_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_response_request()) ->
     {ok, delete_quick_response_response(), tuple()} |
@@ -3669,6 +4595,51 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the Amazon Q in Connect message template.
+%%
+%% The message template identifier can
+%% contain an optional qualifier, for example,
+%% `&lt;message-template-id&gt;:&lt;qualifier&gt;', which is either an
+%% actual
+%% version number or an Amazon Q Connect managed qualifier
+%% `$ACTIVE_VERSION' | `$LATEST'. If it is
+%% not supplied, then `$LATEST' is assumed implicitly.
+-spec get_message_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_message_template_errors(), tuple()}.
+get_message_template(Client, KnowledgeBaseId, MessageTemplateId)
+  when is_map(Client) ->
+    get_message_template(Client, KnowledgeBaseId, MessageTemplateId, #{}, #{}).
+
+-spec get_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_message_template_errors(), tuple()}.
+get_message_template(Client, KnowledgeBaseId, MessageTemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_message_template(Client, KnowledgeBaseId, MessageTemplateId, QueryMap, HeadersMap, []).
+
+-spec get_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_message_template_errors(), tuple()}.
+get_message_template(Client, KnowledgeBaseId, MessageTemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4248,6 +5219,94 @@ list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all the available versions for the specified Amazon Q in
+%% Connect message
+%% template.
+-spec list_message_template_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_message_template_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_message_template_versions_errors(), tuple()}.
+list_message_template_versions(Client, KnowledgeBaseId, MessageTemplateId)
+  when is_map(Client) ->
+    list_message_template_versions(Client, KnowledgeBaseId, MessageTemplateId, #{}, #{}).
+
+-spec list_message_template_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_message_template_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_message_template_versions_errors(), tuple()}.
+list_message_template_versions(Client, KnowledgeBaseId, MessageTemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_message_template_versions(Client, KnowledgeBaseId, MessageTemplateId, QueryMap, HeadersMap, []).
+
+-spec list_message_template_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_message_template_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_message_template_versions_errors(), tuple()}.
+list_message_template_versions(Client, KnowledgeBaseId, MessageTemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the available Amazon Q in Connect message templates for the
+%% specified knowledge
+%% base.
+-spec list_message_templates(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_message_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_message_templates_errors(), tuple()}.
+list_message_templates(Client, KnowledgeBaseId)
+  when is_map(Client) ->
+    list_message_templates(Client, KnowledgeBaseId, #{}, #{}).
+
+-spec list_message_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_message_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_message_templates_errors(), tuple()}.
+list_message_templates(Client, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_message_templates(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+-spec list_message_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_message_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_message_templates_errors(), tuple()}.
+list_message_templates(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists information about quick response.
 -spec list_quick_responses(aws_client:aws_client(), binary() | list()) ->
     {ok, list_quick_responses_response(), tuple()} |
@@ -4524,6 +5583,49 @@ remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Renders the Amazon Q in Connect message template based on the
+%% attribute values provided
+%% and generates the message content.
+%%
+%% For any variable present in the message template, if the
+%% attribute value is neither provided in the attribute request parameter nor
+%% the default
+%% attribute of the message template, the rendered message content will keep
+%% the variable
+%% placeholder as it is and return the attribute keys that are missing.
+-spec render_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), render_message_template_request()) ->
+    {ok, render_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, render_message_template_errors(), tuple()}.
+render_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
+    render_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec render_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), render_message_template_request(), proplists:proplist()) ->
+    {ok, render_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, render_message_template_errors(), tuple()}.
+render_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/render"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches for content in a specified knowledge base.
 %%
 %% Can be used to get a specific content
@@ -4542,6 +5644,43 @@ search_content(Client, KnowledgeBaseId, Input) ->
 search_content(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for Amazon Q in Connect message templates in the specified
+%% knowledge base.
+-spec search_message_templates(aws_client:aws_client(), binary() | list(), search_message_templates_request()) ->
+    {ok, search_message_templates_response(), tuple()} |
+    {error, any()} |
+    {error, search_message_templates_errors(), tuple()}.
+search_message_templates(Client, KnowledgeBaseId, Input) ->
+    search_message_templates(Client, KnowledgeBaseId, Input, []).
+
+-spec search_message_templates(aws_client:aws_client(), binary() | list(), search_message_templates_request(), proplists:proplist()) ->
+    {ok, search_message_templates_response(), tuple()} |
+    {error, any()} |
+    {error, search_message_templates_errors(), tuple()}.
+search_message_templates(Client, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search/messageTemplates"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4960,6 +6099,92 @@ update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/templateUri"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the Amazon Q in Connect message template.
+%%
+%% Partial update is supported. If any
+%% field is not supplied, it will remain unchanged for the message template
+%% that is referenced by
+%% the `$LATEST' qualifier. Any modification will only apply to the
+%% message template
+%% that is referenced by the `$LATEST' qualifier. The fields for all
+%% available
+%% versions will remain unchanged.
+-spec update_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_message_template_request()) ->
+    {ok, update_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_message_template_errors(), tuple()}.
+update_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
+    update_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec update_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_message_template_request(), proplists:proplist()) ->
+    {ok, update_message_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_message_template_errors(), tuple()}.
+update_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the Amazon Q in Connect message template metadata.
+%%
+%% Note that any modification to
+%% the message template’s name, description and grouping configuration will
+%% applied to the
+%% message template pointed by the `$LATEST' qualifier and all available
+%% versions.
+%% Partial update is supported. If any field is not supplied, it will remain
+%% unchanged for the
+%% message template.
+-spec update_message_template_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_message_template_metadata_request()) ->
+    {ok, update_message_template_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_message_template_metadata_errors(), tuple()}.
+update_message_template_metadata(Client, KnowledgeBaseId, MessageTemplateId, Input) ->
+    update_message_template_metadata(Client, KnowledgeBaseId, MessageTemplateId, Input, []).
+
+-spec update_message_template_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_message_template_metadata_request(), proplists:proplist()) ->
+    {ok, update_message_template_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_message_template_metadata_errors(), tuple()}.
+update_message_template_metadata(Client, KnowledgeBaseId, MessageTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates/", aws_util:encode_uri(MessageTemplateId), "/metadata"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

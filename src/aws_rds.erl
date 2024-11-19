@@ -2543,6 +2543,12 @@
 -type option_group_option_setting() :: #{binary() => any()}.
 
 %% Example:
+%% db_instance_not_ready_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_not_ready_fault() :: #{binary() => any()}.
+
+%% Example:
 %% db_cluster_parameter_groups_message() :: #{
 %%   <<"DBClusterParameterGroups">> => list(db_cluster_parameter_group()()),
 %%   <<"Marker">> => string()
@@ -2730,6 +2736,13 @@
 -type certificate_message() :: #{binary() => any()}.
 
 %% Example:
+%% serverless_v2_features_support() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float()
+%% }
+-type serverless_v2_features_support() :: #{binary() => any()}.
+
+%% Example:
 %% deregister_db_proxy_targets_request() :: #{
 %%   <<"DBClusterIdentifiers">> => list(string()()),
 %%   <<"DBInstanceIdentifiers">> => list(string()()),
@@ -2888,6 +2901,7 @@
 %%   <<"Engine">> => string(),
 %%   <<"SupportedCACertificateIdentifiers">> => list(string()()),
 %%   <<"SupportsLimitlessDatabase">> => boolean(),
+%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
 %%   <<"DatabaseInstallationFilesS3BucketName">> => string(),
 %%   <<"SupportsLogExportsToCloudwatchLogs">> => boolean(),
 %%   <<"CreateTime">> => non_neg_integer(),
@@ -4853,7 +4867,8 @@
 %% Example:
 %% serverless_v2_scaling_configuration_info() :: #{
 %%   <<"MaxCapacity">> => float(),
-%%   <<"MinCapacity">> => float()
+%%   <<"MinCapacity">> => float(),
+%%   <<"SecondsUntilAutoPause">> => integer()
 %% }
 -type serverless_v2_scaling_configuration_info() :: #{binary() => any()}.
 
@@ -5434,7 +5449,8 @@
 %% Example:
 %% serverless_v2_scaling_configuration() :: #{
 %%   <<"MaxCapacity">> => float(),
-%%   <<"MinCapacity">> => float()
+%%   <<"MinCapacity">> => float(),
+%%   <<"SecondsUntilAutoPause">> => integer()
 %% }
 -type serverless_v2_scaling_configuration() :: #{binary() => any()}.
 
@@ -5968,7 +5984,8 @@
     db_instance_not_found_fault().
 
 -type describe_db_log_files_errors() ::
-    db_instance_not_found_fault().
+    db_instance_not_found_fault() | 
+    db_instance_not_ready_fault().
 
 -type describe_db_parameter_groups_errors() ::
     db_parameter_group_not_found_fault().
@@ -6050,7 +6067,8 @@
 
 -type download_db_log_file_portion_errors() ::
     db_log_file_not_found_fault() | 
-    db_instance_not_found_fault().
+    db_instance_not_found_fault() | 
+    db_instance_not_ready_fault().
 
 -type enable_http_endpoint_errors() ::
     invalid_resource_state_fault() | 

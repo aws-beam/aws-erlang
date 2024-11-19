@@ -130,6 +130,8 @@
          list_exports/3,
          list_generated_templates/2,
          list_generated_templates/3,
+         list_hook_results/2,
+         list_hook_results/3,
          list_imports/2,
          list_imports/3,
          list_resource_scan_related_resources/2,
@@ -611,6 +613,15 @@
 -type describe_stack_instance_input() :: #{binary() => any()}.
 
 %% Example:
+%% list_hook_results_output() :: #{
+%%   <<"HookResults">> => list(hook_result_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => list(any())
+%% }
+-type list_hook_results_output() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_operation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -655,6 +666,12 @@
 %%   <<"StackSetName">> := string()
 %% }
 -type list_stack_set_operation_results_input() :: #{binary() => any()}.
+
+%% Example:
+%% hook_result_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type hook_result_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% detect_stack_resource_drift_input() :: #{
@@ -1095,6 +1112,14 @@
 %%   <<"TemplateDescription">> => string()
 %% }
 -type stack_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_hook_results_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TargetId">> := string(),
+%%   <<"TargetType">> := list(any())
+%% }
+-type list_hook_results_input() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -1931,6 +1956,18 @@
 -type describe_resource_scan_input() :: #{binary() => any()}.
 
 %% Example:
+%% hook_result_summary() :: #{
+%%   <<"FailureMode">> => list(any()),
+%%   <<"HookStatusReason">> => string(),
+%%   <<"InvocationPoint">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"TypeConfigurationVersionId">> => string(),
+%%   <<"TypeName">> => string(),
+%%   <<"TypeVersionId">> => string()
+%% }
+-type hook_result_summary() :: #{binary() => any()}.
+
+%% Example:
 %% resource_change_detail() :: #{
 %%   <<"CausingEntity">> => string(),
 %%   <<"ChangeSource">> => list(any()),
@@ -2631,6 +2668,9 @@
     operation_in_progress_exception() | 
     invalid_operation_exception() | 
     stale_request_exception().
+
+-type list_hook_results_errors() ::
+    hook_result_not_found_exception().
 
 -type list_resource_scan_related_resources_errors() ::
     resource_scan_in_progress_exception() | 
@@ -4077,6 +4117,24 @@ list_generated_templates(Client, Input)
 list_generated_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGeneratedTemplates">>, Input, Options).
+
+%% @doc Returns summaries of invoked Hooks when a change set or Cloud Control
+%% API operation target is provided.
+-spec list_hook_results(aws_client:aws_client(), list_hook_results_input()) ->
+    {ok, list_hook_results_output(), tuple()} |
+    {error, any()} |
+    {error, list_hook_results_errors(), tuple()}.
+list_hook_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_hook_results(Client, Input, []).
+
+-spec list_hook_results(aws_client:aws_client(), list_hook_results_input(), proplists:proplist()) ->
+    {ok, list_hook_results_output(), tuple()} |
+    {error, any()} |
+    {error, list_hook_results_errors(), tuple()}.
+list_hook_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListHookResults">>, Input, Options).
 
 %% @doc Lists all stacks that are importing an exported output value.
 %%

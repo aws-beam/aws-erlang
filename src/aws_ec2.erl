@@ -1802,6 +1802,7 @@
 %%   <<"Ipv6Prefixes">> => list(instance_ipv6_prefix()()),
 %%   <<"MacAddress">> => string(),
 %%   <<"NetworkInterfaceId">> => string(),
+%%   <<"Operator">> => operator_response(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateIpAddress">> => string(),
@@ -4624,6 +4625,7 @@
 %%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification()()),
 %%   <<"MacAddress">> => string(),
 %%   <<"NetworkInterfaceId">> => string(),
+%%   <<"Operator">> => operator_response(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PrivateDnsName">> => string(),
@@ -6076,6 +6078,7 @@
 %%   <<"DisableApiTermination">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"Ipv6AddressCount">> => integer(),
+%%   <<"Operator">> => operator_request(),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceMarketOptions">> => instance_market_options_request()
 %% }
@@ -10056,6 +10059,12 @@
 -type describe_client_vpn_routes_request() :: #{binary() => any()}.
 
 %% Example:
+%% operator_request() :: #{
+%%   <<"Principal">> => string()
+%% }
+-type operator_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_traffic_mirror_filter_rule_result() :: #{
 %%   <<"TrafficMirrorFilterRuleId">> => string()
 %% }
@@ -10082,6 +10091,7 @@
 %%   <<"LaunchTemplateData">> => response_launch_template_data(),
 %%   <<"LaunchTemplateId">> => string(),
 %%   <<"LaunchTemplateName">> => string(),
+%%   <<"Operator">> => operator_response(),
 %%   <<"VersionDescription">> => string(),
 %%   <<"VersionNumber">> => float()
 %% }
@@ -10369,6 +10379,7 @@
 %%   <<"MetadataOptions">> => launch_template_instance_metadata_options(),
 %%   <<"Monitoring">> => launch_templates_monitoring(),
 %%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification()()),
+%%   <<"Operator">> => operator_response(),
 %%   <<"Placement">> => launch_template_placement(),
 %%   <<"PrivateDnsNameOptions">> => launch_template_private_dns_name_options(),
 %%   <<"RamDiskId">> => string(),
@@ -12538,6 +12549,7 @@
 %%   <<"MetadataOptions">> => launch_template_instance_metadata_options_request(),
 %%   <<"Monitoring">> => launch_templates_monitoring_request(),
 %%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification_request()()),
+%%   <<"Operator">> => operator_request(),
 %%   <<"Placement">> => launch_template_placement_request(),
 %%   <<"PrivateDnsNameOptions">> => launch_template_private_dns_name_options_request(),
 %%   <<"RamDiskId">> => string(),
@@ -13327,6 +13339,7 @@
 %%   <<"PrivateIpAddress">> => string(),
 %%   <<"RootDeviceType">> => list(any()),
 %%   <<"BootMode">> => list(any()),
+%%   <<"Operator">> => operator_response(),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceLifecycle">> => list(any()),
 %%   <<"LaunchTime">> => non_neg_integer(),
@@ -13367,6 +13380,7 @@
 %%   <<"Iops">> => integer(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MultiAttachEnabled">> => boolean(),
+%%   <<"Operator">> => operator_response(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"Size">> => integer(),
 %%   <<"SnapshotId">> => string(),
@@ -13914,6 +13928,7 @@
 %%   <<"Iops">> => integer(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MultiAttachEnabled">> => boolean(),
+%%   <<"Operator">> => operator_request(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"Size">> => integer(),
 %%   <<"SnapshotId">> => string(),
@@ -14530,6 +14545,7 @@
 %%   <<"AssociatedResource">> => string(),
 %%   <<"AttachTime">> => non_neg_integer(),
 %%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"Operator">> => operator_response(),
 %%   <<"Status">> => list(any()),
 %%   <<"VolumeId">> => string(),
 %%   <<"VolumeOwnerId">> => string()
@@ -15032,6 +15048,7 @@
 %%   <<"LatestVersionNumber">> => float(),
 %%   <<"LaunchTemplateId">> => string(),
 %%   <<"LaunchTemplateName">> => string(),
+%%   <<"Operator">> => operator_response(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type launch_template() :: #{binary() => any()}.
@@ -15085,6 +15102,7 @@
 %%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
 %%   <<"Ipv6PrefixCount">> => integer(),
 %%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()()),
+%%   <<"Operator">> => operator_request(),
 %%   <<"PrivateIpAddress">> => string(),
 %%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
@@ -16269,6 +16287,7 @@
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceState">> => instance_state(),
 %%   <<"InstanceStatus">> => instance_status_summary(),
+%%   <<"Operator">> => operator_response(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"SystemStatus">> => instance_status_summary()
 %% }
@@ -16941,6 +16960,7 @@
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"Operator">> => operator_response(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => instance_state(),
 %%   <<"Tags">> => list(tag()()),
@@ -17562,6 +17582,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"LaunchTemplateData">> := request_launch_template_data(),
 %%   <<"LaunchTemplateName">> := string(),
+%%   <<"Operator">> => operator_request(),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
 %%   <<"VersionDescription">> => string()
 %% }
@@ -18529,6 +18550,13 @@
 %%   <<"VirtualNetworkId">> => integer()
 %% }
 -type modify_traffic_mirror_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% operator_response() :: #{
+%%   <<"Managed">> => boolean(),
+%%   <<"Principal">> => string()
+%% }
+-type operator_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_placement_group_request() :: #{

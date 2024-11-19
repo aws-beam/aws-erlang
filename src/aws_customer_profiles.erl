@@ -27,6 +27,10 @@
 
 -export([add_profile_key/3,
          add_profile_key/4,
+         batch_get_calculated_attribute_for_profile/4,
+         batch_get_calculated_attribute_for_profile/5,
+         batch_get_profile/3,
+         batch_get_profile/4,
          create_calculated_attribute_definition/4,
          create_calculated_attribute_definition/5,
          create_domain/3,
@@ -37,6 +41,12 @@
          create_integration_workflow/4,
          create_profile/3,
          create_profile/4,
+         create_segment_definition/4,
+         create_segment_definition/5,
+         create_segment_estimate/3,
+         create_segment_estimate/4,
+         create_segment_snapshot/4,
+         create_segment_snapshot/5,
          delete_calculated_attribute_definition/4,
          delete_calculated_attribute_definition/5,
          delete_domain/3,
@@ -53,6 +63,8 @@
          delete_profile_object/4,
          delete_profile_object_type/4,
          delete_profile_object_type/5,
+         delete_segment_definition/4,
+         delete_segment_definition/5,
          delete_workflow/4,
          delete_workflow/5,
          detect_profile_object_type/3,
@@ -85,6 +97,17 @@
          get_profile_object_type_template/2,
          get_profile_object_type_template/4,
          get_profile_object_type_template/5,
+         get_segment_definition/3,
+         get_segment_definition/5,
+         get_segment_definition/6,
+         get_segment_estimate/3,
+         get_segment_estimate/5,
+         get_segment_estimate/6,
+         get_segment_membership/4,
+         get_segment_membership/5,
+         get_segment_snapshot/4,
+         get_segment_snapshot/6,
+         get_segment_snapshot/7,
          get_similar_profiles/3,
          get_similar_profiles/4,
          get_workflow/3,
@@ -113,6 +136,12 @@
          list_integrations/2,
          list_integrations/4,
          list_integrations/5,
+         list_object_type_attributes/3,
+         list_object_type_attributes/5,
+         list_object_type_attributes/6,
+         list_profile_attribute_values/3,
+         list_profile_attribute_values/5,
+         list_profile_attribute_values/6,
          list_profile_object_type_templates/1,
          list_profile_object_type_templates/3,
          list_profile_object_type_templates/4,
@@ -124,6 +153,9 @@
          list_rule_based_matches/2,
          list_rule_based_matches/4,
          list_rule_based_matches/5,
+         list_segment_definitions/2,
+         list_segment_definitions/4,
+         list_segment_definitions/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -216,6 +248,13 @@
 
 
 %% Example:
+%% create_segment_estimate_request() :: #{
+%%   <<"SegmentQuery">> := segment_group_structure()
+%% }
+-type create_segment_estimate_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_calculated_attribute_definition_response() :: #{
 %%   <<"AttributeDetails">> => attribute_details(),
 %%   <<"CalculatedAttributeName">> => string(),
@@ -223,6 +262,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
+%%   <<"Filter">> => filter(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"Statistic">> => list(any()),
 %%   <<"Tags">> => map()
@@ -232,6 +272,16 @@
 %% Example:
 %% get_domain_request() :: #{}
 -type get_domain_request() :: #{}.
+
+
+%% Example:
+%% create_segment_snapshot_request() :: #{
+%%   <<"DataFormat">> := list(any()),
+%%   <<"DestinationUri">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type create_segment_snapshot_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -252,6 +302,14 @@
 %%   <<"TemplateId">> => string()
 %% }
 -type put_profile_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list([string()]())
+%% }
+-type date_dimension() :: #{binary() => any()}.
 
 
 %% Example:
@@ -332,6 +390,15 @@
 %%   <<"Value">> => integer()
 %% }
 -type range() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_query_result() :: #{
+%%   <<"Profile">> => profile(),
+%%   <<"ProfileId">> => string(),
+%%   <<"QueryResult">> => list(any())
+%% }
+-type profile_query_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -435,6 +502,10 @@
 -type delete_profile_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_segment_definition_request() :: #{}
+-type delete_segment_definition_request() :: #{}.
+
+%% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
 
@@ -480,6 +551,18 @@
 
 
 %% Example:
+%% segment_definition_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"SegmentDefinitionArn">> => string(),
+%%   <<"SegmentDefinitionName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type segment_definition_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% found_by_key_value() :: #{
 %%   <<"KeyName">> => string(),
 %%   <<"Values">> => list(string()())
@@ -515,6 +598,14 @@
 %% }
 -type delete_profile_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_segment_definitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_segment_definitions_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_identity_resolution_job_request() :: #{}
 -type get_identity_resolution_job_request() :: #{}.
@@ -539,6 +630,29 @@
 %%   <<"Objects">> := list(string()())
 %% }
 -type detect_profile_object_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_attribute_value() :: #{
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDataPartial">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type calculated_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% address_dimension() :: #{
+%%   <<"City">> => profile_dimension(),
+%%   <<"Country">> => profile_dimension(),
+%%   <<"County">> => profile_dimension(),
+%%   <<"PostalCode">> => profile_dimension(),
+%%   <<"Province">> => profile_dimension(),
+%%   <<"State">> => profile_dimension()
+%% }
+-type address_dimension() :: #{binary() => any()}.
 
 
 %% Example:
@@ -610,11 +724,35 @@
 
 
 %% Example:
+%% filter_group() :: #{
+%%   <<"Dimensions">> => list(filter_dimension()()),
+%%   <<"Type">> => list(any())
+%% }
+-type filter_group() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_identity_resolution_jobs_response() :: #{
 %%   <<"IdentityResolutionJobsList">> => list(identity_resolution_job()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_identity_resolution_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_calculated_attribute_for_profile_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ProfileId">> => string()
+%% }
+-type batch_get_calculated_attribute_for_profile_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition_overrides() :: #{
+%%   <<"Range">> => range_override()
+%% }
+-type condition_overrides() :: #{binary() => any()}.
 
 
 %% Example:
@@ -629,6 +767,13 @@
 %%   <<"Rule">> => list(string()())
 %% }
 -type matching_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_value_item() :: #{
+%%   <<"Value">> => string()
+%% }
+-type attribute_value_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -699,6 +844,15 @@
 %% }
 -type trigger_properties() :: #{binary() => any()}.
 
+
+%% Example:
+%% range_override() :: #{
+%%   <<"End">> => integer(),
+%%   <<"Start">> => integer(),
+%%   <<"Unit">> => list(any())
+%% }
+-type range_override() :: #{binary() => any()}.
+
 %% Example:
 %% get_calculated_attribute_definition_request() :: #{}
 -type get_calculated_attribute_definition_request() :: #{}.
@@ -714,6 +868,7 @@
 %%   <<"Conditions">> => conditions(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
+%%   <<"Filter">> => filter(),
 %%   <<"Statistic">> := list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -788,6 +943,22 @@
 
 
 %% Example:
+%% list_object_type_attributes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_type_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attribute_item() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer()
+%% }
+-type list_object_type_attribute_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_integration_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
@@ -821,6 +992,15 @@
 %%   <<"Values">> := list(string()())
 %% }
 -type delete_profile_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_attribute_dimension() :: #{
+%%   <<"ConditionOverrides">> => condition_overrides(),
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type calculated_attribute_dimension() :: #{binary() => any()}.
 
 
 %% Example:
@@ -873,6 +1053,19 @@
 
 
 %% Example:
+%% get_segment_definition_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"SegmentDefinitionArn">> => string(),
+%%   <<"SegmentDefinitionName">> => string(),
+%%   <<"SegmentGroups">> => segment_group(),
+%%   <<"Tags">> => map()
+%% }
+-type get_segment_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% rule_based_matching_response() :: #{
 %%   <<"AttributeTypesSelector">> => attribute_types_selector(),
 %%   <<"ConflictResolution">> => conflict_resolution(),
@@ -910,10 +1103,27 @@
 
 
 %% Example:
+%% profile_query_failures() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type profile_query_failures() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_group_structure() :: #{
+%%   <<"Groups">> => list(group()()),
+%%   <<"Include">> => list(any())
+%% }
+-type segment_group_structure() :: #{binary() => any()}.
 
 
 %% Example:
@@ -984,11 +1194,36 @@
 
 
 %% Example:
+%% profile_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type profile_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_calculated_attribute_for_profile_response() :: #{
+%%   <<"CalculatedAttributeValues">> => list(calculated_attribute_value()()),
+%%   <<"ConditionOverrides">> => condition_overrides(),
+%%   <<"Errors">> => list(batch_get_calculated_attribute_for_profile_error()())
+%% }
+-type batch_get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_event_streams_response() :: #{
 %%   <<"Items">> => list(event_stream_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_streams_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attributes_response() :: #{
+%%   <<"Items">> => list(list_object_type_attribute_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_type_attributes_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1086,6 +1321,14 @@
 
 
 %% Example:
+%% batch_get_profile_response() :: #{
+%%   <<"Errors">> => list(batch_get_profile_error()()),
+%%   <<"Profiles">> => list(profile()())
+%% }
+-type batch_get_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% exporting_config() :: #{
 %%   <<"S3Exporting">> => s3_exporting_config()
 %% }
@@ -1123,6 +1366,18 @@
 
 
 %% Example:
+%% create_segment_definition_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"SegmentDefinitionArn">> => string(),
+%%   <<"SegmentDefinitionName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_segment_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% matching_response() :: #{
 %%   <<"AutoMerging">> => auto_merging(),
 %%   <<"Enabled">> => boolean(),
@@ -1139,6 +1394,13 @@
 %%   <<"Threshold">> => threshold()
 %% }
 -type conditions() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_segment() :: #{
+%%   <<"SegmentDefinitionName">> => string()
+%% }
+-type source_segment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1222,6 +1484,34 @@
 
 
 %% Example:
+%% create_segment_snapshot_response() :: #{
+%%   <<"SnapshotId">> => string()
+%% }
+-type create_segment_snapshot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Groups">> => list(filter_group()()),
+%%   <<"Include">> => list(any())
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_snapshot_response() :: #{
+%%   <<"DataFormat">> => list(any()),
+%%   <<"DestinationUri">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type get_segment_snapshot_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_profile_objects_item() :: #{
 %%   <<"Object">> => string(),
 %%   <<"ObjectTypeName">> => string(),
@@ -1292,6 +1582,22 @@
 
 
 %% Example:
+%% filter_attribute_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type filter_attribute_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_group() :: #{
+%%   <<"Groups">> => list(group()()),
+%%   <<"Include">> => list(any())
+%% }
+-type segment_group() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_profiles_request() :: #{
 %%   <<"AdditionalSearchKeys">> => list(additional_search_key()()),
 %%   <<"KeyName">> := string(),
@@ -1301,6 +1607,26 @@
 %%   <<"Values">> := list(string()())
 %% }
 -type search_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_segment_definitions_response() :: #{
+%%   <<"Items">> => list(segment_definition_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_segment_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_estimate_response() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"Estimate">> => string(),
+%%   <<"EstimateId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusCode">> => integer()
+%% }
+-type get_segment_estimate_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_profile_object_type_request() :: #{}
@@ -1334,6 +1660,10 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_segment_snapshot_request() :: #{}
+-type get_segment_snapshot_request() :: #{}.
 
 
 %% Example:
@@ -1370,9 +1700,23 @@
 %% }
 -type get_workflow_steps_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_segment_membership_request() :: #{
+%%   <<"ProfileIds">> := list(string()())
+%% }
+-type get_segment_membership_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_calculated_attribute_definition_request() :: #{}
 -type delete_calculated_attribute_definition_request() :: #{}.
+
+
+%% Example:
+%% filter_dimension() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type filter_dimension() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1416,6 +1760,16 @@
 %% }
 -type update_calculated_attribute_definition_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_segment_definition_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> := string(),
+%%   <<"SegmentGroups">> := segment_group(),
+%%   <<"Tags">> => map()
+%% }
+-type create_segment_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -1433,6 +1787,14 @@
 %%   <<"Status">> => list(any())
 %% }
 -type identity_resolution_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_calculated_attribute_for_profile_request() :: #{
+%%   <<"ConditionOverrides">> => condition_overrides(),
+%%   <<"ProfileIds">> := list(string()())
+%% }
+-type batch_get_calculated_attribute_for_profile_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_event_stream_response() :: #{}
@@ -1485,6 +1847,15 @@
 
 
 %% Example:
+%% get_segment_membership_response() :: #{
+%%   <<"Failures">> => list(profile_query_failures()()),
+%%   <<"Profiles">> => list(profile_query_result()()),
+%%   <<"SegmentDefinitionName">> => string()
+%% }
+-type get_segment_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_exporting_config() :: #{
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3KeyName">> => string()
@@ -1497,6 +1868,24 @@
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type attribute_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"Dimensions">> => list(list()()),
+%%   <<"SourceSegments">> => list(source_segment()()),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1557,6 +1946,20 @@
 %% }
 -type detected_profile_object_type() :: #{binary() => any()}.
 
+
+%% Example:
+%% batch_get_profile_request() :: #{
+%%   <<"ProfileIds">> := list(string()())
+%% }
+-type batch_get_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_segment_definition_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_segment_definition_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_profile_object_type_request() :: #{}
 -type delete_profile_object_type_request() :: #{}.
@@ -1578,6 +1981,10 @@
 %%   <<"Zendesk">> => list(any())
 %% }
 -type connector_operator() :: #{binary() => any()}.
+
+%% Example:
+%% profile_attribute_values_request() :: #{}
+-type profile_attribute_values_request() :: #{}.
 
 
 %% Example:
@@ -1635,6 +2042,16 @@
 
 
 %% Example:
+%% profile_attribute_values_response() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"Items">> => list(attribute_value_item()()),
+%%   <<"StatusCode">> => integer()
+%% }
+-type profile_attribute_values_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_profile_object_request() :: #{
 %%   <<"ObjectTypeName">> := string(),
 %%   <<"ProfileId">> := string(),
@@ -1650,6 +2067,10 @@
 %% }
 -type list_calculated_attribute_definitions_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_segment_estimate_request() :: #{}
+-type get_segment_estimate_request() :: #{}.
+
 
 %% Example:
 %% list_workflows_response() :: #{
@@ -1657,6 +2078,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% extra_length_value_profile_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type extra_length_value_profile_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% get_segment_definition_request() :: #{}
+-type get_segment_definition_request() :: #{}.
 
 
 %% Example:
@@ -1724,6 +2157,15 @@
 
 
 %% Example:
+%% batch_get_profile_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ProfileId">> => string()
+%% }
+-type batch_get_profile_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_event_stream_response() :: #{
 %%   <<"EventStreamArn">> => string(),
 %%   <<"Tags">> => map()
@@ -1759,6 +2201,33 @@
 
 
 %% Example:
+%% profile_attributes() :: #{
+%%   <<"AccountNumber">> => profile_dimension(),
+%%   <<"AdditionalInformation">> => extra_length_value_profile_dimension(),
+%%   <<"Address">> => address_dimension(),
+%%   <<"Attributes">> => map(),
+%%   <<"BillingAddress">> => address_dimension(),
+%%   <<"BirthDate">> => date_dimension(),
+%%   <<"BusinessEmailAddress">> => profile_dimension(),
+%%   <<"BusinessName">> => profile_dimension(),
+%%   <<"BusinessPhoneNumber">> => profile_dimension(),
+%%   <<"EmailAddress">> => profile_dimension(),
+%%   <<"FirstName">> => profile_dimension(),
+%%   <<"GenderString">> => profile_dimension(),
+%%   <<"HomePhoneNumber">> => profile_dimension(),
+%%   <<"LastName">> => profile_dimension(),
+%%   <<"MailingAddress">> => address_dimension(),
+%%   <<"MiddleName">> => profile_dimension(),
+%%   <<"MobilePhoneNumber">> => profile_dimension(),
+%%   <<"PartyTypeString">> => profile_dimension(),
+%%   <<"PersonalEmailAddress">> => profile_dimension(),
+%%   <<"PhoneNumber">> => profile_dimension(),
+%%   <<"ShippingAddress">> => address_dimension()
+%% }
+-type profile_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_calculated_attribute_definition_response() :: #{
 %%   <<"AttributeDetails">> => attribute_details(),
 %%   <<"CalculatedAttributeName">> => string(),
@@ -1766,11 +2235,21 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
+%%   <<"Filter">> => filter(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"Statistic">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type get_calculated_attribute_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_estimate_response() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"EstimateId">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type create_segment_estimate_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1822,6 +2301,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type batch_get_calculated_attribute_for_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_get_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_calculated_attribute_definition_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -1851,6 +2344,27 @@
     resource_not_found_exception().
 
 -type create_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_segment_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_segment_estimate_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_segment_snapshot_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -1907,6 +2421,13 @@
     resource_not_found_exception().
 
 -type delete_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_segment_definition_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -1997,6 +2518,34 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_segment_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_segment_estimate_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_segment_membership_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_segment_snapshot_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_similar_profiles_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -2067,6 +2616,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_object_type_attributes_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_profile_attribute_values_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_profile_object_type_templates_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -2089,6 +2652,13 @@
     resource_not_found_exception().
 
 -type list_rule_based_matches_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_segment_definitions_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -2197,6 +2767,74 @@ add_profile_key(Client, DomainName, Input) ->
 add_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Fetch the possible attribute values given the attribute name.
+-spec batch_get_calculated_attribute_for_profile(aws_client:aws_client(), binary() | list(), binary() | list(), batch_get_calculated_attribute_for_profile_request()) ->
+    {ok, batch_get_calculated_attribute_for_profile_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_calculated_attribute_for_profile_errors(), tuple()}.
+batch_get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, Input) ->
+    batch_get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, Input, []).
+
+-spec batch_get_calculated_attribute_for_profile(aws_client:aws_client(), binary() | list(), binary() | list(), batch_get_calculated_attribute_for_profile_request(), proplists:proplist()) ->
+    {ok, batch_get_calculated_attribute_for_profile_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_calculated_attribute_for_profile_errors(), tuple()}.
+batch_get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), "/batch-get-for-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get a batch of profiles.
+-spec batch_get_profile(aws_client:aws_client(), binary() | list(), batch_get_profile_request()) ->
+    {ok, batch_get_profile_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_profile_errors(), tuple()}.
+batch_get_profile(Client, DomainName, Input) ->
+    batch_get_profile(Client, DomainName, Input, []).
+
+-spec batch_get_profile(aws_client:aws_client(), binary() | list(), batch_get_profile_request(), proplists:proplist()) ->
+    {ok, batch_get_profile_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_profile_errors(), tuple()}.
+batch_get_profile(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/batch-get-profiles"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2427,6 +3065,108 @@ create_profile(Client, DomainName, Input) ->
 create_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a segment definition associated to the given domain.
+-spec create_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), create_segment_definition_request()) ->
+    {ok, create_segment_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_segment_definition_errors(), tuple()}.
+create_segment_definition(Client, DomainName, SegmentDefinitionName, Input) ->
+    create_segment_definition(Client, DomainName, SegmentDefinitionName, Input, []).
+
+-spec create_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), create_segment_definition_request(), proplists:proplist()) ->
+    {ok, create_segment_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_segment_definition_errors(), tuple()}.
+create_segment_definition(Client, DomainName, SegmentDefinitionName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-definitions/", aws_util:encode_uri(SegmentDefinitionName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a segment estimate query.
+-spec create_segment_estimate(aws_client:aws_client(), binary() | list(), create_segment_estimate_request()) ->
+    {ok, create_segment_estimate_response(), tuple()} |
+    {error, any()} |
+    {error, create_segment_estimate_errors(), tuple()}.
+create_segment_estimate(Client, DomainName, Input) ->
+    create_segment_estimate(Client, DomainName, Input, []).
+
+-spec create_segment_estimate(aws_client:aws_client(), binary() | list(), create_segment_estimate_request(), proplists:proplist()) ->
+    {ok, create_segment_estimate_response(), tuple()} |
+    {error, any()} |
+    {error, create_segment_estimate_errors(), tuple()}.
+create_segment_estimate(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-estimates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Triggers a job to export a segment to a specified destination.
+-spec create_segment_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), create_segment_snapshot_request()) ->
+    {ok, create_segment_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, create_segment_snapshot_errors(), tuple()}.
+create_segment_snapshot(Client, DomainName, SegmentDefinitionName, Input) ->
+    create_segment_snapshot(Client, DomainName, SegmentDefinitionName, Input, []).
+
+-spec create_segment_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), create_segment_snapshot_request(), proplists:proplist()) ->
+    {ok, create_segment_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, create_segment_snapshot_errors(), tuple()}.
+create_segment_snapshot(Client, DomainName, SegmentDefinitionName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segments/", aws_util:encode_uri(SegmentDefinitionName), "/snapshots"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2716,6 +3456,40 @@ delete_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
 delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a segment definition from the domain.
+-spec delete_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_segment_definition_request()) ->
+    {ok, delete_segment_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_segment_definition_errors(), tuple()}.
+delete_segment_definition(Client, DomainName, SegmentDefinitionName, Input) ->
+    delete_segment_definition(Client, DomainName, SegmentDefinitionName, Input, []).
+
+-spec delete_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_segment_definition_request(), proplists:proplist()) ->
+    {ok, delete_segment_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_segment_definition_errors(), tuple()}.
+delete_segment_definition(Client, DomainName, SegmentDefinitionName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-definitions/", aws_util:encode_uri(SegmentDefinitionName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3263,6 +4037,151 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a segment definition from the domain.
+-spec get_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_segment_definition_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_definition_errors(), tuple()}.
+get_segment_definition(Client, DomainName, SegmentDefinitionName)
+  when is_map(Client) ->
+    get_segment_definition(Client, DomainName, SegmentDefinitionName, #{}, #{}).
+
+-spec get_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_segment_definition_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_definition_errors(), tuple()}.
+get_segment_definition(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment_definition(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap, []).
+
+-spec get_segment_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_segment_definition_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_definition_errors(), tuple()}.
+get_segment_definition(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-definitions/", aws_util:encode_uri(SegmentDefinitionName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the result of a segment estimate query.
+-spec get_segment_estimate(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_segment_estimate_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_estimate_errors(), tuple()}.
+get_segment_estimate(Client, DomainName, EstimateId)
+  when is_map(Client) ->
+    get_segment_estimate(Client, DomainName, EstimateId, #{}, #{}).
+
+-spec get_segment_estimate(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_segment_estimate_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_estimate_errors(), tuple()}.
+get_segment_estimate(Client, DomainName, EstimateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment_estimate(Client, DomainName, EstimateId, QueryMap, HeadersMap, []).
+
+-spec get_segment_estimate(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_segment_estimate_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_estimate_errors(), tuple()}.
+get_segment_estimate(Client, DomainName, EstimateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-estimates/", aws_util:encode_uri(EstimateId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Determines if the given profiles are within a segment.
+-spec get_segment_membership(aws_client:aws_client(), binary() | list(), binary() | list(), get_segment_membership_request()) ->
+    {ok, get_segment_membership_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_membership_errors(), tuple()}.
+get_segment_membership(Client, DomainName, SegmentDefinitionName, Input) ->
+    get_segment_membership(Client, DomainName, SegmentDefinitionName, Input, []).
+
+-spec get_segment_membership(aws_client:aws_client(), binary() | list(), binary() | list(), get_segment_membership_request(), proplists:proplist()) ->
+    {ok, get_segment_membership_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_membership_errors(), tuple()}.
+get_segment_membership(Client, DomainName, SegmentDefinitionName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segments/", aws_util:encode_uri(SegmentDefinitionName), "/membership"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieve the latest status of a segment snapshot.
+-spec get_segment_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_segment_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_snapshot_errors(), tuple()}.
+get_segment_snapshot(Client, DomainName, SegmentDefinitionName, SnapshotId)
+  when is_map(Client) ->
+    get_segment_snapshot(Client, DomainName, SegmentDefinitionName, SnapshotId, #{}, #{}).
+
+-spec get_segment_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_segment_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_snapshot_errors(), tuple()}.
+get_segment_snapshot(Client, DomainName, SegmentDefinitionName, SnapshotId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment_snapshot(Client, DomainName, SegmentDefinitionName, SnapshotId, QueryMap, HeadersMap, []).
+
+-spec get_segment_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_segment_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_snapshot_errors(), tuple()}.
+get_segment_snapshot(Client, DomainName, SegmentDefinitionName, SnapshotId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segments/", aws_util:encode_uri(SegmentDefinitionName), "/snapshots/", aws_util:encode_uri(SnapshotId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a set of profiles that belong to the same matching group
 %% using the
 %% `matchId' or `profileId'.
@@ -3679,6 +4598,85 @@ list_integrations(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Fetch the possible attribute values given the attribute name.
+-spec list_object_type_attributes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_object_type_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, list_object_type_attributes_errors(), tuple()}.
+list_object_type_attributes(Client, DomainName, ObjectTypeName)
+  when is_map(Client) ->
+    list_object_type_attributes(Client, DomainName, ObjectTypeName, #{}, #{}).
+
+-spec list_object_type_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_object_type_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, list_object_type_attributes_errors(), tuple()}.
+list_object_type_attributes(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_object_type_attributes(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, []).
+
+-spec list_object_type_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_object_type_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, list_object_type_attributes_errors(), tuple()}.
+list_object_type_attributes(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), "/attributes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Fetch the possible attribute values given the attribute name.
+-spec list_profile_attribute_values(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, profile_attribute_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_attribute_values_errors(), tuple()}.
+list_profile_attribute_values(Client, AttributeName, DomainName)
+  when is_map(Client) ->
+    list_profile_attribute_values(Client, AttributeName, DomainName, #{}, #{}).
+
+-spec list_profile_attribute_values(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, profile_attribute_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_attribute_values_errors(), tuple()}.
+list_profile_attribute_values(Client, AttributeName, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profile_attribute_values(Client, AttributeName, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_profile_attribute_values(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, profile_attribute_values_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_attribute_values_errors(), tuple()}.
+list_profile_attribute_values(Client, AttributeName, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile-attributes/", aws_util:encode_uri(AttributeName), "/values"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all of the template information for object types.
 -spec list_profile_object_type_templates(aws_client:aws_client()) ->
     {ok, list_profile_object_type_templates_response(), tuple()} |
@@ -3824,6 +4822,48 @@ list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap)
 list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/ruleBasedMatches"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all segment definitions under a domain.
+-spec list_segment_definitions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_segment_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_segment_definitions_errors(), tuple()}.
+list_segment_definitions(Client, DomainName)
+  when is_map(Client) ->
+    list_segment_definitions(Client, DomainName, #{}, #{}).
+
+-spec list_segment_definitions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_segment_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_segment_definitions_errors(), tuple()}.
+list_segment_definitions(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_segment_definitions(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_segment_definitions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_segment_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_segment_definitions_errors(), tuple()}.
+list_segment_definitions(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-definitions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

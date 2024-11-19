@@ -86,6 +86,8 @@
          create_contact_flow/4,
          create_contact_flow_module/3,
          create_contact_flow_module/4,
+         create_contact_flow_version/4,
+         create_contact_flow_version/5,
          create_evaluation_form/3,
          create_evaluation_form/4,
          create_hours_of_operation/3,
@@ -331,6 +333,9 @@
          list_contact_flow_modules/2,
          list_contact_flow_modules/4,
          list_contact_flow_modules/5,
+         list_contact_flow_versions/3,
+         list_contact_flow_versions/5,
+         list_contact_flow_versions/6,
          list_contact_flows/2,
          list_contact_flows/4,
          list_contact_flows/5,
@@ -1655,6 +1660,15 @@
 
 
 %% Example:
+%% contact_flow_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Version">> => float(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type contact_flow_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% view() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Content">> => view_content(),
@@ -1671,6 +1685,14 @@
 %%   <<"ViewContentSha256">> => string()
 %% }
 -type view() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3472,6 +3494,14 @@
 
 
 %% Example:
+%% create_contact_flow_version_response() :: #{
+%%   <<"ContactFlowArn">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type create_contact_flow_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_metric_data_request() :: #{
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"Filters">> := filters(),
@@ -4774,6 +4804,14 @@
 %% delete_traffic_distribution_group_request() :: #{}
 -type delete_traffic_distribution_group_request() :: #{}.
 
+
+%% Example:
+%% list_contact_flow_versions_response() :: #{
+%%   <<"ContactFlowVersionSummaryList">> => list(contact_flow_version_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_versions_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_rule_request() :: #{}
 -type describe_rule_request() :: #{}.
@@ -5464,12 +5502,18 @@
 %%   <<"Arn">> => string(),
 %%   <<"Content">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"FlowContentSha256">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any())
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => float(),
+%%   <<"VersionDescription">> => string()
 %% }
 -type contact_flow() :: #{binary() => any()}.
 
@@ -5877,6 +5921,16 @@
 %%   <<"ThresholdValue">> => float()
 %% }
 -type threshold() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_version_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlowContentSha256">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type create_contact_flow_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7007,7 +7061,8 @@
 %% Example:
 %% create_contact_flow_response() :: #{
 %%   <<"ContactFlowArn">> => string(),
-%%   <<"ContactFlowId">> => string()
+%%   <<"ContactFlowId">> => string(),
+%%   <<"FlowContentSha256">> => string()
 %% }
 -type create_contact_flow_response() :: #{binary() => any()}.
 
@@ -7350,6 +7405,15 @@
     throttling_exception() | 
     idempotency_exception() | 
     invalid_contact_flow_module_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_contact_flow_version_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
     invalid_request_exception() | 
@@ -8114,6 +8178,14 @@
     internal_service_exception().
 
 -type list_contact_flow_modules_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_contact_flow_versions_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
@@ -9574,9 +9646,8 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Associates an agent with a traffic distribution group.
 %%
-%% This API can be called only in the Region where the traffic distribution
-%% group is
-%% created.
+%% This API can be called only in the
+%% Region where the traffic distribution group is created.
 -spec associate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), associate_traffic_distribution_group_user_request()) ->
     {ok, associate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
@@ -10050,6 +10121,51 @@ create_contact_flow_module(Client, InstanceId, Input) ->
 create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Publishes a new version of the flow provided.
+%%
+%% Versions are immutable and monotonically
+%% increasing. If a version of the same flow content already exists, no new
+%% version is created and
+%% instead the existing version number is returned. If the
+%% `FlowContentSha256' provided
+%% is different from the `FlowContentSha256' of the `$LATEST'
+%% published flow
+%% content, then an error is returned. This API only supports creating
+%% versions for flows of type
+%% `Campaign'.
+-spec create_contact_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_version_request()) ->
+    {ok, create_contact_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_flow_version_errors(), tuple()}.
+create_contact_flow_version(Client, ContactFlowId, InstanceId, Input) ->
+    create_contact_flow_version(Client, ContactFlowId, InstanceId, Input, []).
+
+-spec create_contact_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_version_request(), proplists:proplist()) ->
+    {ok, create_contact_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_flow_version_errors(), tuple()}.
+create_contact_flow_version(Client, ContactFlowId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/version"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -13351,9 +13467,8 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) -
 
 %% @doc Disassociates an agent from a traffic distribution group.
 %%
-%% This API can be called only in the Region where the traffic distribution
-%% group is
-%% created.
+%% This API can be called only in the
+%% Region where the traffic distribution group is created.
 -spec disassociate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), disassociate_traffic_distribution_group_user_request()) ->
     {ok, disassociate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
@@ -14324,6 +14439,50 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns all the available versions for the specified Amazon Connect
+%% instance and flow
+%% identifier.
+-spec list_contact_flow_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_contact_flow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_versions_errors(), tuple()}.
+list_contact_flow_versions(Client, ContactFlowId, InstanceId)
+  when is_map(Client) ->
+    list_contact_flow_versions(Client, ContactFlowId, InstanceId, #{}, #{}).
+
+-spec list_contact_flow_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_contact_flow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_versions_errors(), tuple()}.
+list_contact_flow_versions(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_flow_versions(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_contact_flow_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_contact_flow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_versions_errors(), tuple()}.
+list_contact_flow_versions(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -17456,7 +17615,8 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 %% For more information about screen sharing, see Set up in-app, web,
 %% video calling, and screen sharing capabilities:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 -spec start_screen_sharing(aws_client:aws_client(), start_screen_sharing_request()) ->
     {ok, start_screen_sharing_response(), tuple()} |
     {error, any()} |

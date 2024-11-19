@@ -62,6 +62,13 @@
 
 
 %% Example:
+%% database_resuming_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type database_resuming_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% unsupported_result_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -344,6 +351,7 @@
     service_unavailable_error() | 
     forbidden_exception() | 
     transaction_not_found_exception() | 
+    database_resuming_exception() | 
     statement_timeout_exception().
 
 -type begin_transaction_errors() ::
@@ -359,6 +367,7 @@
     service_unavailable_error() | 
     forbidden_exception() | 
     transaction_not_found_exception() | 
+    database_resuming_exception() | 
     statement_timeout_exception().
 
 -type commit_transaction_errors() ::
@@ -398,6 +407,7 @@
     forbidden_exception() | 
     transaction_not_found_exception() | 
     unsupported_result_exception() | 
+    database_resuming_exception() | 
     statement_timeout_exception().
 
 -type rollback_transaction_errors() ::

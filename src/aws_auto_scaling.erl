@@ -392,6 +392,13 @@
 -type metric_granularity_type() :: #{binary() => any()}.
 
 %% Example:
+%% availability_zone_impairment_policy() :: #{
+%%   <<"ImpairedZoneHealthCheckBehavior">> => list(any()),
+%%   <<"ZonalShiftEnabled">> => boolean()
+%% }
+-type availability_zone_impairment_policy() :: #{binary() => any()}.
+
+%% Example:
 %% describe_warm_pool_type() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
 %%   <<"MaxRecords">> => integer(),
@@ -951,6 +958,7 @@
 %% Example:
 %% attach_traffic_sources_type() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
+%%   <<"SkipZonalShiftValidation">> => boolean(),
 %%   <<"TrafficSources">> := list(traffic_source_identifier()())
 %% }
 -type attach_traffic_sources_type() :: #{binary() => any()}.
@@ -1068,6 +1076,7 @@
 %% create_auto_scaling_group_type() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
 %%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
+%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
 %%   <<"AvailabilityZones">> => list(string()()),
 %%   <<"CapacityRebalance">> => boolean(),
 %%   <<"Context">> => string(),
@@ -1090,6 +1099,7 @@
 %%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
 %%   <<"PlacementGroup">> => string(),
 %%   <<"ServiceLinkedRoleARN">> => string(),
+%%   <<"SkipZonalShiftValidation">> => boolean(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"TargetGroupARNs">> => list(string()()),
 %%   <<"TerminationPolicies">> => list(string()()),
@@ -1359,6 +1369,7 @@
 %%   <<"Tags">> => list(tag_description()()),
 %%   <<"CapacityRebalance">> => boolean(),
 %%   <<"TrafficSources">> => list(traffic_source_identifier()()),
+%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
 %%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"DefaultCooldown">> => integer(),
@@ -1431,6 +1442,7 @@
 %% update_auto_scaling_group_type() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
 %%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
+%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
 %%   <<"AvailabilityZones">> => list(string()()),
 %%   <<"CapacityRebalance">> => boolean(),
 %%   <<"Context">> => string(),
@@ -1450,6 +1462,7 @@
 %%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
 %%   <<"PlacementGroup">> => string(),
 %%   <<"ServiceLinkedRoleARN">> => string(),
+%%   <<"SkipZonalShiftValidation">> => boolean(),
 %%   <<"TerminationPolicies">> => list(string()()),
 %%   <<"VPCZoneIdentifier">> => string()
 %% }

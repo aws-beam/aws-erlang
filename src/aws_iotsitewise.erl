@@ -43,6 +43,8 @@
          create_bulk_import_job/3,
          create_dashboard/2,
          create_dashboard/3,
+         create_dataset/2,
+         create_dataset/3,
          create_gateway/2,
          create_gateway/3,
          create_portal/2,
@@ -59,6 +61,8 @@
          delete_asset_model_composite_model/5,
          delete_dashboard/3,
          delete_dashboard/4,
+         delete_dataset/3,
+         delete_dataset/4,
          delete_gateway/3,
          delete_gateway/4,
          delete_portal/3,
@@ -94,6 +98,9 @@
          describe_dashboard/2,
          describe_dashboard/4,
          describe_dashboard/5,
+         describe_dataset/2,
+         describe_dataset/4,
+         describe_dataset/5,
          describe_default_encryption_configuration/1,
          describe_default_encryption_configuration/3,
          describe_default_encryption_configuration/4,
@@ -138,6 +145,8 @@
          get_interpolated_asset_property_values/6,
          get_interpolated_asset_property_values/8,
          get_interpolated_asset_property_values/9,
+         invoke_assistant/2,
+         invoke_assistant/3,
          list_access_policies/1,
          list_access_policies/3,
          list_access_policies/4,
@@ -174,6 +183,9 @@
          list_dashboards/2,
          list_dashboards/4,
          list_dashboards/5,
+         list_datasets/2,
+         list_datasets/4,
+         list_datasets/5,
          list_gateways/1,
          list_gateways/3,
          list_gateways/4,
@@ -214,6 +226,8 @@
          update_asset_property/5,
          update_dashboard/3,
          update_dashboard/4,
+         update_dataset/3,
+         update_dataset/4,
          update_gateway/3,
          update_gateway/4,
          update_gateway_capability_configuration/3,
@@ -250,6 +264,7 @@
 
 %% Example:
 %% execute_query_request() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"queryStatement">> := string()
@@ -423,6 +438,13 @@
 
 
 %% Example:
+%% delete_dataset_response() :: #{
+%%   <<"datasetStatus">> => dataset_status()
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -435,6 +457,24 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_project_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_source() :: #{
+%%   <<"sourceDetail">> => source_detail(),
+%%   <<"sourceFormat">> => list(any()),
+%%   <<"sourceType">> => list(any())
+%% }
+-type dataset_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetStatus">> => dataset_status()
+%% }
+-type update_dataset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -698,6 +738,14 @@
 
 
 %% Example:
+%% citation() :: #{
+%%   <<"content">> => content(),
+%%   <<"reference">> => iotsitewise_reference()
+%% }
+-type citation() :: #{binary() => any()}.
+
+
+%% Example:
 %% project_resource() :: #{
 %%   <<"id">> => string()
 %% }
@@ -734,6 +782,15 @@
 %%   <<"propertyId">> => string()
 %% }
 -type get_asset_property_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceType">> := list(any())
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -840,6 +897,22 @@
 %%   <<"id">> => string()
 %% }
 -type user_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% kendra_source_detail() :: #{
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type kendra_source_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_output() :: #{
+%%   <<"citations">> => list(citation()()),
+%%   <<"message">> => string()
+%% }
+-type invocation_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -961,6 +1034,13 @@
 %%   <<"propertyId">> => string()
 %% }
 -type describe_time_series_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% iotsitewise_reference() :: #{
+%%   <<"dataset">> => data_set_reference()
+%% }
+-type iotsitewise_reference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1115,6 +1195,15 @@
 
 
 %% Example:
+%% create_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetStatus">> => dataset_status()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_summary() :: #{
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -1229,6 +1318,15 @@
 
 
 %% Example:
+%% invoke_assistant_request() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"enableTrace">> => [boolean()],
+%%   <<"message">> := string()
+%% }
+-type invoke_assistant_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% warm_tier_retention_period() :: #{
 %%   <<"numberOfDays">> => integer(),
 %%   <<"unlimited">> => boolean()
@@ -1242,6 +1340,19 @@
 %%   <<"errorTimestamp">> => non_neg_integer()
 %% }
 -type batch_get_asset_property_value_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => dataset_status()
+%% }
+-type dataset_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1266,6 +1377,13 @@
 %%   <<"value">> => aggregates()
 %% }
 -type aggregated_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_detail() :: #{
+%%   <<"kendra">> => kendra_source_detail()
+%% }
+-type source_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1318,6 +1436,8 @@
 %%   <<"portalDescription">> => string(),
 %%   <<"portalLogoImageFile">> => image_file(),
 %%   <<"portalName">> := string(),
+%%   <<"portalType">> => list(any()),
+%%   <<"portalTypeConfiguration">> => map(),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -1448,6 +1568,8 @@
 %%   <<"portalName">> => string(),
 %%   <<"portalStartUrl">> => string(),
 %%   <<"portalStatus">> => portal_status(),
+%%   <<"portalType">> => list(any()),
+%%   <<"portalTypeConfiguration">> => map(),
 %%   <<"roleArn">> => string()
 %% }
 -type describe_portal_response() :: #{binary() => any()}.
@@ -1583,6 +1705,13 @@
 
 
 %% Example:
+%% location() :: #{
+%%   <<"uri">> => string()
+%% }
+-type location() :: #{binary() => any()}.
+
+
+%% Example:
 %% iam_role_identity() :: #{
 %%   <<"arn">> => string()
 %% }
@@ -1595,6 +1724,16 @@
 %%   <<"forwardingConfig">> => forwarding_config()
 %% }
 -type transform_processing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetName">> := string(),
+%%   <<"datasetSource">> := dataset_source()
+%% }
+-type update_dataset_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1758,6 +1897,13 @@
 
 
 %% Example:
+%% trace() :: #{
+%%   <<"text">> => string()
+%% }
+-type trace() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_asset_model_response() :: #{
 %%   <<"assetModelArn">> => string(),
 %%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()()),
@@ -1776,6 +1922,14 @@
 %%   <<"eTag">> => string()
 %% }
 -type describe_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% source() :: #{
+%%   <<"arn">> => string(),
+%%   <<"location">> => location()
+%% }
+-type source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2107,9 +2261,26 @@
 %%   <<"portalDescription">> => string(),
 %%   <<"portalLogoImage">> => image(),
 %%   <<"portalName">> := string(),
+%%   <<"portalType">> => list(any()),
+%%   <<"portalTypeConfiguration">> => map(),
 %%   <<"roleArn">> := string()
 %% }
 -type update_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetCreationDate">> => non_neg_integer(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetLastUpdateDate">> => non_neg_integer(),
+%%   <<"datasetName">> => string(),
+%%   <<"datasetSource">> => dataset_source(),
+%%   <<"datasetStatus">> => dataset_status(),
+%%   <<"datasetVersion">> => string()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2185,6 +2356,18 @@
 %%   <<"assetModelStatus">> => asset_model_status()
 %% }
 -type delete_asset_model_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetName">> := string(),
+%%   <<"datasetSource">> := dataset_source(),
+%%   <<"tags">> => map()
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2405,6 +2588,7 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdateDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"portalType">> => list(any()),
 %%   <<"roleArn">> => string(),
 %%   <<"startUrl">> => string(),
 %%   <<"status">> => portal_status()
@@ -2487,6 +2671,13 @@
 
 
 %% Example:
+%% content() :: #{
+%%   <<"text">> => string()
+%% }
+-type content() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_hierarchy() :: #{
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
@@ -2522,6 +2713,25 @@
 %%   <<"errors">> => list(batch_put_asset_property_error()())
 %% }
 -type batch_put_asset_property_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_request() :: #{}
+-type describe_dataset_request() :: #{}.
+
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"datasetSummaries">> => list(dataset_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2564,6 +2774,14 @@
 
 
 %% Example:
+%% data_set_reference() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"source">> => source()
+%% }
+-type data_set_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% time_series_summary() :: #{
 %%   <<"alias">> => string(),
 %%   <<"assetId">> => string(),
@@ -2576,6 +2794,13 @@
 %%   <<"timeSeriesLastUpdateDate">> => non_neg_integer()
 %% }
 -type time_series_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_type_entry() :: #{
+%%   <<"portalTools">> => list(string()())
+%% }
+-type portal_type_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2658,6 +2883,14 @@
 %%   <<"propertyId">> => string()
 %% }
 -type batch_get_asset_property_value_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type dataset_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2788,6 +3021,14 @@
 %%   <<"assetModelStatus">> => asset_model_status()
 %% }
 -type update_asset_model_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_assistant_response() :: #{
+%%   <<"body">> => list(),
+%%   <<"conversationId">> => string()
+%% }
+-type invoke_assistant_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2953,6 +3194,15 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type create_dataset_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
 -type create_gateway_errors() ::
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
@@ -3007,6 +3257,13 @@
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_dataset_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
     internal_failure_exception().
 
 -type delete_gateway_errors() ::
@@ -3085,6 +3342,12 @@
     internal_failure_exception().
 
 -type describe_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_dataset_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -3198,6 +3461,15 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type invoke_assistant_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
 -type list_access_policies_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
@@ -3263,6 +3535,11 @@
     internal_failure_exception().
 
 -type list_dashboards_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_datasets_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
@@ -3389,6 +3666,14 @@
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_dataset_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
     internal_failure_exception().
 
 -type update_gateway_errors() ::
@@ -4048,6 +4333,40 @@ create_dashboard(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a dataset to connect an external datasource.
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_errors(), tuple()}.
+create_dataset(Client, Input) ->
+    create_dataset(Client, Input, []).
+
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_errors(), tuple()}.
+create_dataset(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a gateway, which is a virtual or edge device that delivers
 %% industrial data streams
 %% from local servers to IoT SiteWise.
@@ -4373,6 +4692,43 @@ delete_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a dataset.
+%%
+%% This cannot be undone.
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request()) ->
+    {ok, delete_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
+delete_dataset(Client, DatasetId, Input) ->
+    delete_dataset(Client, DatasetId, Input, []).
+
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
+    {ok, delete_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
+delete_dataset(Client, DatasetId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4935,6 +5291,43 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap)
 describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a dataset.
+-spec describe_dataset(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_errors(), tuple()}.
+describe_dataset(Client, DatasetId)
+  when is_map(Client) ->
+    describe_dataset(Client, DatasetId, #{}, #{}).
+
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_errors(), tuple()}.
+describe_dataset(Client, DatasetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dataset(Client, DatasetId, QueryMap, HeadersMap, []).
+
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_errors(), tuple()}.
+describe_dataset(Client, DatasetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5679,6 +6072,56 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Invokes SiteWise Assistant to start or continue a conversation.
+-spec invoke_assistant(aws_client:aws_client(), invoke_assistant_request()) ->
+    {ok, invoke_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_assistant_errors(), tuple()}.
+invoke_assistant(Client, Input) ->
+    invoke_assistant(Client, Input, []).
+
+-spec invoke_assistant(aws_client:aws_client(), invoke_assistant_request(), proplists:proplist()) ->
+    {ok, invoke_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_assistant_errors(), tuple()}.
+invoke_assistant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistant/invocation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-iotsitewise-assistant-conversation-id">>, <<"conversationId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Retrieves a paginated list of access policies for an identity (an IAM
 %% Identity Center user, an IAM Identity Center
 %% group, or an IAM user) or an IoT SiteWise Monitor resource (a portal or
@@ -6243,6 +6686,50 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"projectId">>, ProjectId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of datasets for a specific target
+%% resource.
+-spec list_datasets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client, SourceType)
+  when is_map(Client) ->
+    list_datasets(Client, SourceType, #{}, #{}).
+
+-spec list_datasets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client, SourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_datasets(Client, SourceType, QueryMap, HeadersMap, []).
+
+-spec list_datasets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client, SourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sourceType">>, SourceType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -6947,6 +7434,40 @@ update_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a dataset.
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request()) ->
+    {ok, update_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_errors(), tuple()}.
+update_dataset(Client, DatasetId, Input) ->
+    update_dataset(Client, DatasetId, Input, []).
+
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request(), proplists:proplist()) ->
+    {ok, update_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_errors(), tuple()}.
+update_dataset(Client, DatasetId, Input0, Options0) ->
+    Method = put,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
