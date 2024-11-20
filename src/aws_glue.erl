@@ -1309,7 +1309,8 @@
 %%   <<"enabled">> => boolean(),
 %%   <<"orphanFileDeletionConfiguration">> => orphan_file_deletion_configuration(),
 %%   <<"retentionConfiguration">> => retention_configuration(),
-%%   <<"roleArn">> => string()
+%%   <<"roleArn">> => string(),
+%%   <<"vpcConfiguration">> => list()
 %% }
 -type table_optimizer_configuration() :: #{binary() => any()}.
 
@@ -10137,8 +10138,6 @@ create_table(Client, Input, Options)
     request(Client, <<"CreateTable">>, Input, Options).
 
 %% @doc Creates a new table optimizer for a specific function.
-%%
-%% `compaction' is the only currently supported optimizer type.
 -spec create_table_optimizer(aws_client:aws_client(), create_table_optimizer_request()) ->
     {ok, create_table_optimizer_response(), tuple()} |
     {error, any()} |

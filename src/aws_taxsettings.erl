@@ -21,22 +21,34 @@
 
 -export([batch_delete_tax_registration/2,
          batch_delete_tax_registration/3,
+         batch_get_tax_exemptions/2,
+         batch_get_tax_exemptions/3,
          batch_put_tax_registration/2,
          batch_put_tax_registration/3,
          delete_supplemental_tax_registration/2,
          delete_supplemental_tax_registration/3,
          delete_tax_registration/2,
          delete_tax_registration/3,
+         get_tax_exemption_types/2,
+         get_tax_exemption_types/3,
+         get_tax_inheritance/2,
+         get_tax_inheritance/3,
          get_tax_registration/2,
          get_tax_registration/3,
          get_tax_registration_document/2,
          get_tax_registration_document/3,
          list_supplemental_tax_registrations/2,
          list_supplemental_tax_registrations/3,
+         list_tax_exemptions/2,
+         list_tax_exemptions/3,
          list_tax_registrations/2,
          list_tax_registrations/3,
          put_supplemental_tax_registration/2,
          put_supplemental_tax_registration/3,
+         put_tax_exemption/2,
+         put_tax_exemption/3,
+         put_tax_inheritance/2,
+         put_tax_inheritance/3,
          put_tax_registration/2,
          put_tax_registration/3]).
 
@@ -46,7 +58,7 @@
 
 %% Example:
 %% get_tax_registration_document_request() :: #{
-%%   <<"destinationS3Location">> := destination_s3_location(),
+%%   <<"destinationS3Location">> => destination_s3_location(),
 %%   <<"taxDocumentMetadata">> := tax_document_metadata()
 %% }
 -type get_tax_registration_document_request() :: #{binary() => any()}.
@@ -74,6 +86,14 @@
 %%   <<"errors">> => list(batch_delete_tax_registration_error()())
 %% }
 -type batch_delete_tax_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tax_exemptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tax_exemptions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -116,11 +136,30 @@
 
 
 %% Example:
+%% attachment_upload_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_upload_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% tax_inheritance_details() :: #{
 %%   <<"inheritanceObtainedReason">> => string(),
 %%   <<"parentEntityId">> => string()
 %% }
 -type tax_inheritance_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% tax_exemption() :: #{
+%%   <<"authority">> => authority(),
+%%   <<"effectiveDate">> => [non_neg_integer()],
+%%   <<"expirationDate">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"systemEffectiveDate">> => [non_neg_integer()],
+%%   <<"taxExemptionType">> => tax_exemption_type()
+%% }
+-type tax_exemption() :: #{binary() => any()}.
 
 
 %% Example:
@@ -147,6 +186,14 @@
 
 
 %% Example:
+%% tax_registration_doc_file() :: #{
+%%   <<"fileContent">> => binary(),
+%%   <<"fileName">> => string()
+%% }
+-type tax_registration_doc_file() :: #{binary() => any()}.
+
+
+%% Example:
 %% india_additional_info() :: #{
 %%   <<"pan">> => string()
 %% }
@@ -159,6 +206,14 @@
 %%   <<"isGroupVatEnabled">> => boolean()
 %% }
 -type poland_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_tax_exemptions_response() :: #{
+%%   <<"failedAccounts">> => list(string()()),
+%%   <<"taxExemptionDetailsMap">> => map()
+%% }
+-type batch_get_tax_exemptions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -177,10 +232,21 @@
 
 
 %% Example:
+%% case_creation_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type case_creation_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_supplemental_tax_registration_request() :: #{
 %%   <<"authorityId">> := string()
 %% }
 -type delete_supplemental_tax_registration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_tax_exemption_types_request() :: #{}
+-type get_tax_exemption_types_request() :: #{}.
 
 
 %% Example:
@@ -188,6 +254,13 @@
 %%   <<"accountId">> => string()
 %% }
 -type get_tax_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tax_inheritance_response() :: #{
+%%   <<"heritageStatus">> => list(any())
+%% }
+-type get_tax_inheritance_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -237,6 +310,30 @@
 %% Example:
 %% delete_tax_registration_response() :: #{}
 -type delete_tax_registration_response() :: #{}.
+
+
+%% Example:
+%% tax_exemption_type() :: #{
+%%   <<"applicableJurisdictions">> => list(authority()()),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string()
+%% }
+-type tax_exemption_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% authority() :: #{
+%%   <<"country">> => string(),
+%%   <<"state">> => string()
+%% }
+-type authority() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tax_exemption_types_response() :: #{
+%%   <<"taxExemptionTypes">> => list(tax_exemption_type()())
+%% }
+-type get_tax_exemption_types_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -315,6 +412,18 @@
 %% }
 -type georgia_additional_info() :: #{binary() => any()}.
 
+%% Example:
+%% put_tax_inheritance_response() :: #{}
+-type put_tax_inheritance_response() :: #{}.
+
+
+%% Example:
+%% list_tax_exemptions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taxExemptionDetailsMap">> => map()
+%% }
+-type list_tax_exemptions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% account_details() :: #{
@@ -327,7 +436,15 @@
 
 
 %% Example:
+%% put_tax_exemption_response() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type put_tax_exemption_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% tax_registration_document() :: #{
+%%   <<"file">> => tax_registration_doc_file(),
 %%   <<"s3Location">> => source_s3_location()
 %% }
 -type tax_registration_document() :: #{binary() => any()}.
@@ -445,6 +562,23 @@
 
 
 %% Example:
+%% put_tax_exemption_request() :: #{
+%%   <<"accountIds">> := list(string()()),
+%%   <<"authority">> := authority(),
+%%   <<"exemptionCertificate">> := exemption_certificate(),
+%%   <<"exemptionType">> := string()
+%% }
+-type put_tax_exemption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_supplemental_tax_registrations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -472,6 +606,16 @@
 
 
 %% Example:
+%% tax_exemption_details() :: #{
+%%   <<"heritageObtainedDetails">> => boolean(),
+%%   <<"heritageObtainedParentEntity">> => string(),
+%%   <<"heritageObtainedReason">> => string(),
+%%   <<"taxExemptions">> => list(tax_exemption()())
+%% }
+-type tax_exemption_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"errorCode">> => list(any()),
 %%   <<"fieldList">> => list(validation_exception_field()()),
@@ -487,6 +631,10 @@
 %% }
 -type list_supplemental_tax_registrations_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_tax_inheritance_request() :: #{}
+-type get_tax_inheritance_request() :: #{}.
+
 
 %% Example:
 %% batch_put_tax_registration_error() :: #{
@@ -495,6 +643,21 @@
 %%   <<"message">> => string()
 %% }
 -type batch_put_tax_registration_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_tax_inheritance_request() :: #{
+%%   <<"heritageStatus">> => list(any())
+%% }
+-type put_tax_inheritance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% exemption_certificate() :: #{
+%%   <<"documentFile">> => binary(),
+%%   <<"documentName">> => string()
+%% }
+-type exemption_certificate() :: #{binary() => any()}.
 
 
 %% Example:
@@ -540,6 +703,13 @@
 
 
 %% Example:
+%% batch_get_tax_exemptions_request() :: #{
+%%   <<"accountIds">> := list(string()())
+%% }
+-type batch_get_tax_exemptions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% account_meta_data() :: #{
 %%   <<"accountName">> => string(),
 %%   <<"address">> => address(),
@@ -566,7 +736,8 @@
 
 %% Example:
 %% get_tax_registration_document_response() :: #{
-%%   <<"destinationFilePath">> => string()
+%%   <<"destinationFilePath">> => string(),
+%%   <<"presignedS3Url">> => string()
 %% }
 -type get_tax_registration_document_response() :: #{binary() => any()}.
 
@@ -574,6 +745,11 @@
     validation_exception() | 
     internal_server_exception() | 
     conflict_exception().
+
+-type batch_get_tax_exemptions_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type batch_put_tax_registration_errors() ::
     validation_exception() | 
@@ -592,6 +768,16 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_tax_exemption_types_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_tax_inheritance_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_tax_registration_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -606,6 +792,11 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_tax_exemptions_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_tax_registrations_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -614,6 +805,20 @@
 -type put_supplemental_tax_registration_errors() ::
     validation_exception() | 
     internal_server_exception() | 
+    conflict_exception().
+
+-type put_tax_exemption_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    case_creation_limit_exceeded_exception() | 
+    attachment_upload_exception().
+
+-type put_tax_inheritance_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type put_tax_registration_errors() ::
@@ -648,6 +853,40 @@ batch_delete_tax_registration(Client, Input) ->
 batch_delete_tax_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchDeleteTaxRegistration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get the active tax exemptions for a given list of accounts.
+-spec batch_get_tax_exemptions(aws_client:aws_client(), batch_get_tax_exemptions_request()) ->
+    {ok, batch_get_tax_exemptions_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_tax_exemptions_errors(), tuple()}.
+batch_get_tax_exemptions(Client, Input) ->
+    batch_get_tax_exemptions(Client, Input, []).
+
+-spec batch_get_tax_exemptions(aws_client:aws_client(), batch_get_tax_exemptions_request(), proplists:proplist()) ->
+    {ok, batch_get_tax_exemptions_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_tax_exemptions_errors(), tuple()}.
+batch_get_tax_exemptions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetTaxExemptions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -927,6 +1166,74 @@ delete_tax_registration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Get supported tax exemption types.
+-spec get_tax_exemption_types(aws_client:aws_client(), get_tax_exemption_types_request()) ->
+    {ok, get_tax_exemption_types_response(), tuple()} |
+    {error, any()} |
+    {error, get_tax_exemption_types_errors(), tuple()}.
+get_tax_exemption_types(Client, Input) ->
+    get_tax_exemption_types(Client, Input, []).
+
+-spec get_tax_exemption_types(aws_client:aws_client(), get_tax_exemption_types_request(), proplists:proplist()) ->
+    {ok, get_tax_exemption_types_response(), tuple()} |
+    {error, any()} |
+    {error, get_tax_exemption_types_errors(), tuple()}.
+get_tax_exemption_types(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetTaxExemptionTypes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The get account tax inheritance status.
+-spec get_tax_inheritance(aws_client:aws_client(), get_tax_inheritance_request()) ->
+    {ok, get_tax_inheritance_response(), tuple()} |
+    {error, any()} |
+    {error, get_tax_inheritance_errors(), tuple()}.
+get_tax_inheritance(Client, Input) ->
+    get_tax_inheritance(Client, Input, []).
+
+-spec get_tax_inheritance(aws_client:aws_client(), get_tax_inheritance_request(), proplists:proplist()) ->
+    {ok, get_tax_inheritance_response(), tuple()} |
+    {error, any()} |
+    {error, get_tax_inheritance_errors(), tuple()}.
+get_tax_inheritance(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetTaxInheritance"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves tax registration for a single account.
 -spec get_tax_registration(aws_client:aws_client(), get_tax_registration_request()) ->
     {ok, get_tax_registration_response(), tuple()} |
@@ -1032,6 +1339,41 @@ list_supplemental_tax_registrations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the tax exemption of accounts listed in a consolidated
+%% billing family.
+-spec list_tax_exemptions(aws_client:aws_client(), list_tax_exemptions_request()) ->
+    {ok, list_tax_exemptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_tax_exemptions_errors(), tuple()}.
+list_tax_exemptions(Client, Input) ->
+    list_tax_exemptions(Client, Input, []).
+
+-spec list_tax_exemptions(aws_client:aws_client(), list_tax_exemptions_request(), proplists:proplist()) ->
+    {ok, list_tax_exemptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_tax_exemptions_errors(), tuple()}.
+list_tax_exemptions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListTaxExemptions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the tax registration of accounts listed in a consolidated
 %% billing family.
 %%
@@ -1087,6 +1429,75 @@ put_supplemental_tax_registration(Client, Input) ->
 put_supplemental_tax_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutSupplementalTaxRegistration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds the tax exemption for a single account or all accounts listed in
+%% a consolidated billing family.
+-spec put_tax_exemption(aws_client:aws_client(), put_tax_exemption_request()) ->
+    {ok, put_tax_exemption_response(), tuple()} |
+    {error, any()} |
+    {error, put_tax_exemption_errors(), tuple()}.
+put_tax_exemption(Client, Input) ->
+    put_tax_exemption(Client, Input, []).
+
+-spec put_tax_exemption(aws_client:aws_client(), put_tax_exemption_request(), proplists:proplist()) ->
+    {ok, put_tax_exemption_response(), tuple()} |
+    {error, any()} |
+    {error, put_tax_exemption_errors(), tuple()}.
+put_tax_exemption(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutTaxExemption"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The updated tax inheritance status.
+-spec put_tax_inheritance(aws_client:aws_client(), put_tax_inheritance_request()) ->
+    {ok, put_tax_inheritance_response(), tuple()} |
+    {error, any()} |
+    {error, put_tax_inheritance_errors(), tuple()}.
+put_tax_inheritance(Client, Input) ->
+    put_tax_inheritance(Client, Input, []).
+
+-spec put_tax_inheritance(aws_client:aws_client(), put_tax_inheritance_request(), proplists:proplist()) ->
+    {ok, put_tax_inheritance_response(), tuple()} |
+    {error, any()} |
+    {error, put_tax_inheritance_errors(), tuple()}.
+put_tax_inheritance(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutTaxInheritance"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

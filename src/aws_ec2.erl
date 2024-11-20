@@ -281,6 +281,8 @@
          create_volume/3,
          create_vpc/2,
          create_vpc/3,
+         create_vpc_block_public_access_exclusion/2,
+         create_vpc_block_public_access_exclusion/3,
          create_vpc_endpoint/2,
          create_vpc_endpoint/3,
          create_vpc_endpoint_connection_notification/2,
@@ -431,6 +433,8 @@
          delete_volume/3,
          delete_vpc/2,
          delete_vpc/3,
+         delete_vpc_block_public_access_exclusion/2,
+         delete_vpc_block_public_access_exclusion/3,
          delete_vpc_endpoint_connection_notifications/2,
          delete_vpc_endpoint_connection_notifications/3,
          delete_vpc_endpoint_service_configurations/2,
@@ -747,6 +751,10 @@
          describe_volumes_modifications/3,
          describe_vpc_attribute/2,
          describe_vpc_attribute/3,
+         describe_vpc_block_public_access_exclusions/2,
+         describe_vpc_block_public_access_exclusions/3,
+         describe_vpc_block_public_access_options/2,
+         describe_vpc_block_public_access_options/3,
          describe_vpc_classic_link/2,
          describe_vpc_classic_link/3,
          describe_vpc_classic_link_dns_support/2,
@@ -1119,6 +1127,10 @@
          modify_volume_attribute/3,
          modify_vpc_attribute/2,
          modify_vpc_attribute/3,
+         modify_vpc_block_public_access_exclusion/2,
+         modify_vpc_block_public_access_exclusion/3,
+         modify_vpc_block_public_access_options/2,
+         modify_vpc_block_public_access_options/3,
          modify_vpc_endpoint/2,
          modify_vpc_endpoint/3,
          modify_vpc_endpoint_connection_notification/2,
@@ -2912,6 +2924,12 @@
 -type modify_vpc_peering_connection_options_result() :: #{binary() => any()}.
 
 %% Example:
+%% modify_vpc_block_public_access_options_result() :: #{
+%%   <<"VpcBlockPublicAccessOptions">> => vpc_block_public_access_options()
+%% }
+-type modify_vpc_block_public_access_options_result() :: #{binary() => any()}.
+
+%% Example:
 %% instance_network_interface_association() :: #{
 %%   <<"CarrierIp">> => string(),
 %%   <<"CustomerOwnedIp">> => string(),
@@ -3433,6 +3451,13 @@
 -type disable_vpc_classic_link_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_vpc_block_public_access_exclusion_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ExclusionId">> := string()
+%% }
+-type delete_vpc_block_public_access_exclusion_request() :: #{binary() => any()}.
+
+%% Example:
 %% vpc_attachment() :: #{
 %%   <<"State">> => list(any()),
 %%   <<"VpcId">> => string()
@@ -3784,6 +3809,7 @@
 
 %% Example:
 %% vpc() :: #{
+%%   <<"BlockPublicAccessStates">> => block_public_access_states(),
 %%   <<"CidrBlock">> => string(),
 %%   <<"CidrBlockAssociationSet">> => list(vpc_cidr_block_association()()),
 %%   <<"DhcpOptionsId">> => string(),
@@ -4744,6 +4770,7 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"AvailableIpAddressCount">> => integer(),
+%%   <<"BlockPublicAccessStates">> => block_public_access_states(),
 %%   <<"CidrBlock">> => string(),
 %%   <<"CustomerOwnedIpv4Pool">> => string(),
 %%   <<"DefaultForAz">> => boolean(),
@@ -5061,6 +5088,12 @@
 %%   <<"Route">> => local_gateway_route()
 %% }
 -type delete_local_gateway_route_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_block_public_access_options_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type describe_vpc_block_public_access_options_request() :: #{binary() => any()}.
 
 %% Example:
 %% disable_image_deregistration_protection_request() :: #{
@@ -5795,6 +5828,12 @@
 -type ipam_pool() :: #{binary() => any()}.
 
 %% Example:
+%% block_public_access_states() :: #{
+%%   <<"InternetGatewayBlockMode">> => list(any())
+%% }
+-type block_public_access_states() :: #{binary() => any()}.
+
+%% Example:
 %% modify_vpn_connection_options_result() :: #{
 %%   <<"VpnConnection">> => vpn_connection()
 %% }
@@ -5904,6 +5943,16 @@
 %%   <<"Version">> => string()
 %% }
 -type fast_launch_launch_template_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_block_public_access_exclusions_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ExclusionIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_vpc_block_public_access_exclusions_request() :: #{binary() => any()}.
 
 %% Example:
 %% modify_network_interface_attribute_request() :: #{
@@ -7520,6 +7569,12 @@
 -type accept_reserved_instances_exchange_quote_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_vpc_block_public_access_exclusion_result() :: #{
+%%   <<"VpcBlockPublicAccessExclusion">> => vpc_block_public_access_exclusion()
+%% }
+-type delete_vpc_block_public_access_exclusion_result() :: #{binary() => any()}.
+
+%% Example:
 %% spot_placement_score() :: #{
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"Region">> => string(),
@@ -7876,6 +7931,13 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type delete_launch_template_versions_response_success_item() :: #{binary() => any()}.
+
+%% Example:
+%% modify_vpc_block_public_access_options_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"InternetGatewayBlockMode">> := list(any())
+%% }
+-type modify_vpc_block_public_access_options_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_network_interface_attribute_result() :: #{
@@ -10516,6 +10578,20 @@
 -type disable_ipam_organization_admin_account_result() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_block_public_access_exclusion() :: #{
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"DeletionTimestamp">> => non_neg_integer(),
+%%   <<"ExclusionId">> => string(),
+%%   <<"InternetGatewayExclusionMode">> => list(any()),
+%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
+%%   <<"Reason">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type vpc_block_public_access_exclusion() :: #{binary() => any()}.
+
+%% Example:
 %% launch_template_config() :: #{
 %%   <<"LaunchTemplateSpecification">> => fleet_launch_template_specification(),
 %%   <<"Overrides">> => list(launch_template_overrides()())
@@ -11400,6 +11476,14 @@
 -type assign_ipv6_addresses_result() :: #{binary() => any()}.
 
 %% Example:
+%% modify_vpc_block_public_access_exclusion_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ExclusionId">> := string(),
+%%   <<"InternetGatewayExclusionMode">> := list(any())
+%% }
+-type modify_vpc_block_public_access_exclusion_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_coip_pool_usage_result() :: #{
 %%   <<"CoipAddressUsages">> => list(coip_address_usage()()),
 %%   <<"CoipPoolId">> => string(),
@@ -11441,6 +11525,12 @@
 %%   <<"LaunchTemplateData">> => response_launch_template_data()
 %% }
 -type get_launch_template_data_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_block_public_access_options_result() :: #{
+%%   <<"VpcBlockPublicAccessOptions">> => vpc_block_public_access_options()
+%% }
+-type describe_vpc_block_public_access_options_result() :: #{binary() => any()}.
 
 %% Example:
 %% image_recycle_bin_info() :: #{
@@ -11584,6 +11674,13 @@
 %%   <<"Association">> => transit_gateway_policy_table_association()
 %% }
 -type associate_transit_gateway_policy_table_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_block_public_access_exclusions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcBlockPublicAccessExclusions">> => list(vpc_block_public_access_exclusion()())
+%% }
+-type describe_vpc_block_public_access_exclusions_result() :: #{binary() => any()}.
 
 %% Example:
 %% allocate_hosts_result() :: #{
@@ -14434,6 +14531,17 @@
 -type target_group() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_block_public_access_options() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"AwsRegion">> => string(),
+%%   <<"InternetGatewayBlockMode">> => list(any()),
+%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
+%%   <<"Reason">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type vpc_block_public_access_options() :: #{binary() => any()}.
+
+%% Example:
 %% launch_template_hibernation_options_request() :: #{
 %%   <<"Configured">> => boolean()
 %% }
@@ -16206,6 +16314,12 @@
 %%   <<"WarningMessage">> => string()
 %% }
 -type network_insights_analysis() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_block_public_access_exclusion_result() :: #{
+%%   <<"VpcBlockPublicAccessExclusion">> => vpc_block_public_access_exclusion()
+%% }
+-type create_vpc_block_public_access_exclusion_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_import_snapshot_tasks_request() :: #{
@@ -18435,6 +18549,16 @@
 -type create_launch_template_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_vpc_block_public_access_exclusion_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"InternetGatewayExclusionMode">> := list(any()),
+%%   <<"SubnetId">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"VpcId">> => string()
+%% }
+-type create_vpc_block_public_access_exclusion_request() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_trunk_interface_result() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Return">> => boolean()
@@ -18762,6 +18886,12 @@
 %%   <<"IamInstanceProfileAssociation">> => iam_instance_profile_association()
 %% }
 -type associate_iam_instance_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_vpc_block_public_access_exclusion_result() :: #{
+%%   <<"VpcBlockPublicAccessExclusion">> => vpc_block_public_access_exclusion()
+%% }
+-type modify_vpc_block_public_access_exclusion_result() :: #{binary() => any()}.
 
 %% Example:
 %% purchase() :: #{
@@ -19962,10 +20092,12 @@ authorize_security_group_ingress(Client, Input, Options)
 %% @doc Bundles an Amazon instance store-backed Windows instance.
 %%
 %% During bundling, only the root device volume (C:\) is bundled. Data on
-%% other instance store volumes is not preserved.
+%% other instance
+%% store volumes is not preserved.
 %%
 %% This action is not applicable for Linux/Unix instances or Windows
-%% instances that are backed by Amazon EBS.
+%% instances that are
+%% backed by Amazon EBS.
 -spec bundle_instance(aws_client:aws_client(), bundle_instance_request()) ->
     {ok, bundle_instance_result(), tuple()} |
     {error, any()}.
@@ -20095,12 +20227,10 @@ cancel_export_task(Client, Input, Options)
 %% @doc Removes your Amazon Web Services account from the launch permissions
 %% for the specified AMI.
 %%
-%% For more
-%% information, see
-%% Cancel having an AMI shared with your Amazon Web Services account:
+%% For more information, see Cancel having an AMI shared with
+%% your Amazon Web Services account:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cancel-sharing-an-AMI.html
-%% in the
-%% Amazon EC2 User Guide.
+%% in the Amazon EC2 User Guide.
 -spec cancel_image_launch_permission(aws_client:aws_client(), cancel_image_launch_permission_request()) ->
     {ok, cancel_image_launch_permission_result(), tuple()} |
     {error, any()}.
@@ -20248,20 +20378,21 @@ copy_fpga_image(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html.
 %%
 %% When you copy an AMI from one Region to another, the destination Region is
-%% the
-%% current Region.
+%% the current
+%% Region.
 %%
 %% When you copy an AMI from a Region to an Outpost, specify the ARN of the
-%% Outpost as
-%% the destination. Backing snapshots copied to an Outpost are encrypted by
-%% default using
-%% the default encryption key for the Region or the key that you specify.
-%% Outposts do not
-%% support unencrypted snapshots.
+%% Outpost as the
+%% destination. Backing snapshots copied to an Outpost are encrypted by
+%% default using the default
+%% encryption key for the Region or the key that you specify. Outposts do not
+%% support unencrypted
+%% snapshots.
 %%
 %% For information about the prerequisites when copying an AMI, see Copy an
 %% AMI: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html
-%% in the Amazon EC2 User Guide.
+%% in the
+%% Amazon EC2 User Guide.
 -spec copy_image(aws_client:aws_client(), copy_image_request()) ->
     {ok, copy_image_result(), tuple()} |
     {error, any()}.
@@ -20786,13 +20917,16 @@ create_fpga_image(Client, Input, Options)
     request(Client, <<"CreateFpgaImage">>, Input, Options).
 
 %% @doc Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance
-%% that is either running or stopped.
+%% that is either running or
+%% stopped.
 %%
 %% If you customized your instance with instance store volumes or Amazon EBS
-%% volumes in addition to the root device volume, the
-%% new AMI contains block device mapping information for those volumes. When
-%% you launch an instance from this new AMI,
-%% the instance automatically launches with those additional volumes.
+%% volumes in addition
+%% to the root device volume, the new AMI contains block device mapping
+%% information for those
+%% volumes. When you launch an instance from this new AMI, the instance
+%% automatically launches
+%% with those additional volumes.
 %%
 %% For more information, see Create an Amazon EBS-backed Linux
 %% AMI:
@@ -21571,8 +21705,8 @@ create_reserved_instances_listing(Client, Input, Options)
     request(Client, <<"CreateReservedInstancesListing">>, Input, Options).
 
 %% @doc Starts a task that restores an AMI from an Amazon S3 object that was
-%% previously created by using
-%% CreateStoreImageTask:
+%% previously created by
+%% using CreateStoreImageTask:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html.
 %%
 %% To use this API, you must have the required permissions. For more
@@ -22470,6 +22604,31 @@ create_vpc(Client, Input)
 create_vpc(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpc">>, Input, Options).
+
+%% @doc Create a VPC Block Public Access (BPA) exclusion.
+%%
+%% A VPC BPA exclusion is a mode that can be applied to a single VPC or
+%% subnet that exempts it from the account’s BPA mode and will allow
+%% bidirectional or egress-only access. You can create BPA exclusions for
+%% VPCs and subnets even when BPA is not enabled on the account to ensure
+%% that there is no traffic disruption to the exclusions when VPC BPA is
+%% turned on. To learn more about VPC BPA, see Block public access to VPCs
+%% and subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
+-spec create_vpc_block_public_access_exclusion(aws_client:aws_client(), create_vpc_block_public_access_exclusion_request()) ->
+    {ok, create_vpc_block_public_access_exclusion_result(), tuple()} |
+    {error, any()}.
+create_vpc_block_public_access_exclusion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_vpc_block_public_access_exclusion(Client, Input, []).
+
+-spec create_vpc_block_public_access_exclusion(aws_client:aws_client(), create_vpc_block_public_access_exclusion_request(), proplists:proplist()) ->
+    {ok, create_vpc_block_public_access_exclusion_result(), tuple()} |
+    {error, any()}.
+create_vpc_block_public_access_exclusion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVpcBlockPublicAccessExclusion">>, Input, Options).
 
 %% @doc Creates a VPC endpoint.
 %%
@@ -23951,6 +24110,31 @@ delete_vpc(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpc">>, Input, Options).
 
+%% @doc Delete a VPC Block Public Access (BPA) exclusion.
+%%
+%% A VPC BPA exclusion is a mode that can be applied to a single VPC or
+%% subnet that exempts it from the account’s BPA mode and will allow
+%% bidirectional or egress-only access. You can create BPA exclusions for
+%% VPCs and subnets even when BPA is not enabled on the account to ensure
+%% that there is no traffic disruption to the exclusions when VPC BPA is
+%% turned on. To learn more about VPC BPA, see Block public access to VPCs
+%% and subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
+-spec delete_vpc_block_public_access_exclusion(aws_client:aws_client(), delete_vpc_block_public_access_exclusion_request()) ->
+    {ok, delete_vpc_block_public_access_exclusion_result(), tuple()} |
+    {error, any()}.
+delete_vpc_block_public_access_exclusion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_vpc_block_public_access_exclusion(Client, Input, []).
+
+-spec delete_vpc_block_public_access_exclusion(aws_client:aws_client(), delete_vpc_block_public_access_exclusion_request(), proplists:proplist()) ->
+    {ok, delete_vpc_block_public_access_exclusion_result(), tuple()} |
+    {error, any()}.
+delete_vpc_block_public_access_exclusion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVpcBlockPublicAccessExclusion">>, Input, Options).
+
 %% @doc Deletes the specified VPC endpoint connection notifications.
 -spec delete_vpc_endpoint_connection_notifications(aws_client:aws_client(), delete_vpc_endpoint_connection_notifications_request()) ->
     {ok, delete_vpc_endpoint_connection_notifications_result(), tuple()} |
@@ -24199,29 +24383,29 @@ deprovision_public_ipv4_pool_cidr(Client, Input, Options)
 
 %% @doc Deregisters the specified AMI.
 %%
-%% After you deregister an AMI, it can't be used to
-%% launch new instances.
+%% After you deregister an AMI, it can't be used to launch new
+%% instances.
 %%
 %% If you deregister an AMI that matches a Recycle Bin retention rule, the
-%% AMI is retained
-%% in the Recycle Bin for the specified retention period. For more
-%% information, see Recycle Bin:
+%% AMI is retained in
+%% the Recycle Bin for the specified retention period. For more information,
+%% see Recycle Bin:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
 %% the Amazon EC2 User Guide.
 %%
 %% When you deregister an AMI, it doesn't affect any instances that
-%% you've already
-%% launched from the AMI. You'll continue to incur usage costs for those
-%% instances until
-%% you terminate them.
+%% you've already launched
+%% from the AMI. You'll continue to incur usage costs for those instances
+%% until you terminate
+%% them.
 %%
 %% When you deregister an Amazon EBS-backed AMI, it doesn't affect the
-%% snapshot that was
-%% created for the root volume of the instance during the AMI creation
-%% process. When you
-%% deregister an instance store-backed AMI, it doesn't affect the files
-%% that you uploaded
-%% to Amazon S3 when you created the AMI.
+%% snapshot that was created
+%% for the root volume of the instance during the AMI creation process. When
+%% you deregister an
+%% instance store-backed AMI, it doesn't affect the files that you
+%% uploaded to Amazon S3 when you
+%% created the AMI.
 -spec deregister_image(aws_client:aws_client(), deregister_image_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -24482,13 +24666,15 @@ describe_aws_network_performance_metric_subscriptions(Client, Input, Options)
 %% @doc Describes the specified bundle tasks or all of your bundle tasks.
 %%
 %% Completed bundle tasks are listed for only a limited time. If your bundle
-%% task is no longer in the list, you can still register an AMI from it. Just
-%% use `RegisterImage' with the Amazon S3 bucket name and image manifest
-%% name you provided to the bundle task.
+%% task is no
+%% longer in the list, you can still register an AMI from it. Just use
+%% `RegisterImage' with the Amazon S3 bucket name and image manifest name
+%% you provided
+%% to the bundle task.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures, might vary. Applications should not assume the elements appear
-%% in a
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
 %% particular order.
 -spec describe_bundle_tasks(aws_client:aws_client(), describe_bundle_tasks_request()) ->
     {ok, describe_bundle_tasks_result(), tuple()} |
@@ -25201,11 +25387,12 @@ describe_identity_id_format(Client, Input, Options)
 
 %% @doc Describes the specified attribute of the specified AMI.
 %%
-%% You can specify only one attribute at a time.
+%% You can specify only one attribute
+%% at a time.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures, might vary. Applications should not assume the elements appear
-%% in a
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
 %% particular order.
 -spec describe_image_attribute(aws_client:aws_client(), describe_image_attribute_request()) ->
     {ok, image_attribute(), tuple()} |
@@ -25222,11 +25409,13 @@ describe_image_attribute(Client, Input, Options)
     request(Client, <<"DescribeImageAttribute">>, Input, Options).
 
 %% @doc Describes the specified images (AMIs, AKIs, and ARIs) available to
-%% you or all of the images available to you.
+%% you or all of the
+%% images available to you.
 %%
 %% The images available to you include public images, private images that you
-%% own, and private images owned by other
-%% Amazon Web Services accounts for which you have explicit launch
+%% own, and
+%% private images owned by other Amazon Web Services accounts for which you
+%% have explicit launch
 %% permissions.
 %%
 %% Recently deregistered images appear in the returned results for a short
@@ -25242,8 +25431,8 @@ describe_image_attribute(Client, Input, Options)
 %% susceptible to throttling and timeouts.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures, might vary. Applications should not assume the elements appear
-%% in a
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
 %% particular order.
 -spec describe_images(aws_client:aws_client(), describe_images_request()) ->
     {ok, describe_images_result(), tuple()} |
@@ -27527,6 +27716,53 @@ describe_vpc_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcAttribute">>, Input, Options).
 
+%% @doc Describe VPC Block Public Access (BPA) exclusions.
+%%
+%% A VPC BPA exclusion is a mode that can be applied to a single VPC or
+%% subnet that exempts it from the account’s BPA mode and will allow
+%% bidirectional or egress-only access. You can create BPA exclusions for
+%% VPCs and subnets even when BPA is not enabled on the account to ensure
+%% that there is no traffic disruption to the exclusions when VPC BPA is
+%% turned on. To learn more about VPC BPA, see Block public access to VPCs
+%% and subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
+-spec describe_vpc_block_public_access_exclusions(aws_client:aws_client(), describe_vpc_block_public_access_exclusions_request()) ->
+    {ok, describe_vpc_block_public_access_exclusions_result(), tuple()} |
+    {error, any()}.
+describe_vpc_block_public_access_exclusions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vpc_block_public_access_exclusions(Client, Input, []).
+
+-spec describe_vpc_block_public_access_exclusions(aws_client:aws_client(), describe_vpc_block_public_access_exclusions_request(), proplists:proplist()) ->
+    {ok, describe_vpc_block_public_access_exclusions_result(), tuple()} |
+    {error, any()}.
+describe_vpc_block_public_access_exclusions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVpcBlockPublicAccessExclusions">>, Input, Options).
+
+%% @doc Describe VPC Block Public Access (BPA) options.
+%%
+%% VPC Block public Access (BPA) enables you to block resources in VPCs and
+%% subnets that you own in a Region from reaching or being reached from the
+%% internet through internet gateways and egress-only internet gateways. To
+%% learn more about VPC BPA, see Block public access to VPCs and subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
+-spec describe_vpc_block_public_access_options(aws_client:aws_client(), describe_vpc_block_public_access_options_request()) ->
+    {ok, describe_vpc_block_public_access_options_result(), tuple()} |
+    {error, any()}.
+describe_vpc_block_public_access_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vpc_block_public_access_options(Client, Input, []).
+
+-spec describe_vpc_block_public_access_options(aws_client:aws_client(), describe_vpc_block_public_access_options_request(), proplists:proplist()) ->
+    {ok, describe_vpc_block_public_access_options_result(), tuple()} |
+    {error, any()}.
+describe_vpc_block_public_access_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVpcBlockPublicAccessOptions">>, Input, Options).
+
 %% @doc
 %% This action is deprecated.
 %%
@@ -27972,15 +28208,18 @@ disable_ebs_encryption_by_default(Client, Input, Options)
     request(Client, <<"DisableEbsEncryptionByDefault">>, Input, Options).
 
 %% @doc Discontinue Windows fast launch for a Windows AMI, and clean up
-%% existing pre-provisioned snapshots.
+%% existing pre-provisioned
+%% snapshots.
 %%
 %% After you disable Windows fast launch, the AMI uses the standard launch
-%% process for each
-%% new instance. Amazon EC2 must remove all pre-provisioned snapshots before
-%% you can enable Windows fast launch again.
+%% process for
+%% each new instance. Amazon EC2 must remove all pre-provisioned snapshots
+%% before you can enable
+%% Windows fast launch again.
 %%
 %% You can only change these settings for Windows AMIs that you own or that
-%% have been shared with you.
+%% have been
+%% shared with you.
 -spec disable_fast_launch(aws_client:aws_client(), disable_fast_launch_request()) ->
     {ok, disable_fast_launch_result(), tuple()} |
     {error, any()}.
@@ -28068,10 +28307,10 @@ disable_image(Client, Input, Options)
 %% response
 %% will be `unblocked'.
 %%
-%% For more information, see Block public access to your AMIs:
+%% For more information, see Block
+%% public access to your AMIs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
-%% in
-%% the Amazon EC2 User Guide.
+%% in the Amazon EC2 User Guide.
 -spec disable_image_block_public_access(aws_client:aws_client(), disable_image_block_public_access_request()) ->
     {ok, disable_image_block_public_access_result(), tuple()} |
     {error, any()}.
@@ -28729,20 +28968,21 @@ enable_ebs_encryption_by_default(Client, Input, Options)
     request(Client, <<"EnableEbsEncryptionByDefault">>, Input, Options).
 
 %% @doc When you enable Windows fast launch for a Windows AMI, images are
-%% pre-provisioned,
-%% using snapshots to launch instances up to 65% faster.
+%% pre-provisioned, using
+%% snapshots to launch instances up to 65% faster.
 %%
-%% To create the optimized Windows
-%% image, Amazon EC2 launches an instance and runs through Sysprep steps,
-%% rebooting as required.
-%% Then it creates a set of reserved snapshots that are used for subsequent
-%% launches. The
-%% reserved snapshots are automatically replenished as they are used,
-%% depending on your
-%% settings for launch frequency.
+%% To create the optimized Windows image, Amazon EC2
+%% launches an instance and runs through Sysprep steps, rebooting as
+%% required. Then it creates a
+%% set of reserved snapshots that are used for subsequent launches. The
+%% reserved snapshots are
+%% automatically replenished as they are used, depending on your settings for
+%% launch
+%% frequency.
 %%
 %% You can only change these settings for Windows AMIs that you own or that
-%% have been shared with you.
+%% have been
+%% shared with you.
 -spec enable_fast_launch(aws_client:aws_client(), enable_fast_launch_request()) ->
     {ok, enable_fast_launch_result(), tuple()} |
     {error, any()}.
@@ -28852,7 +29092,8 @@ enable_image_block_public_access(Client, Input, Options)
 %%
 %% For more information, see Deprecate an AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html in
-%% the Amazon EC2 User Guide.
+%% the
+%% Amazon EC2 User Guide.
 -spec enable_image_deprecation(aws_client:aws_client(), enable_image_deprecation_request()) ->
     {ok, enable_image_deprecation_result(), tuple()} |
     {error, any()}.
@@ -30381,8 +30622,8 @@ import_volume(Client, Input, Options)
 
 %% @doc Lists one or more AMIs that are currently in the Recycle Bin.
 %%
-%% For more information,
-%% see Recycle
+%% For more information, see
+%% Recycle
 %% Bin: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html
 %% in the Amazon EC2 User Guide.
 -spec list_images_in_recycle_bin(aws_client:aws_client(), list_images_in_recycle_bin_request()) ->
@@ -30838,18 +31079,20 @@ modify_identity_id_format(Client, Input, Options)
 
 %% @doc Modifies the specified attribute of the specified AMI.
 %%
-%% You can specify only one attribute at a time.
+%% You can specify only one attribute
+%% at a time.
 %%
 %% To specify the attribute, you can use the `Attribute' parameter, or
-%% one of the following parameters:
-%% `Description', `ImdsSupport', or `LaunchPermission'.
+%% one of the
+%% following parameters: `Description', `ImdsSupport', or
+%% `LaunchPermission'.
 %%
 %% Images with an Amazon Web Services Marketplace product code cannot be made
 %% public.
 %%
 %% To enable the SriovNetSupport enhanced networking attribute of an image,
-%% enable SriovNetSupport on an instance
-%% and create an AMI from the instance.
+%% enable
+%% SriovNetSupport on an instance and create an AMI from the instance.
 -spec modify_image_attribute(aws_client:aws_client(), modify_image_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -31839,6 +32082,50 @@ modify_vpc_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyVpcAttribute">>, Input, Options).
 
+%% @doc Modify VPC Block Public Access (BPA) exclusions.
+%%
+%% A VPC BPA exclusion is a mode that can be applied to a single VPC or
+%% subnet that exempts it from the account’s BPA mode and will allow
+%% bidirectional or egress-only access. You can create BPA exclusions for
+%% VPCs and subnets even when BPA is not enabled on the account to ensure
+%% that there is no traffic disruption to the exclusions when VPC BPA is
+%% turned on.
+-spec modify_vpc_block_public_access_exclusion(aws_client:aws_client(), modify_vpc_block_public_access_exclusion_request()) ->
+    {ok, modify_vpc_block_public_access_exclusion_result(), tuple()} |
+    {error, any()}.
+modify_vpc_block_public_access_exclusion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_vpc_block_public_access_exclusion(Client, Input, []).
+
+-spec modify_vpc_block_public_access_exclusion(aws_client:aws_client(), modify_vpc_block_public_access_exclusion_request(), proplists:proplist()) ->
+    {ok, modify_vpc_block_public_access_exclusion_result(), tuple()} |
+    {error, any()}.
+modify_vpc_block_public_access_exclusion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyVpcBlockPublicAccessExclusion">>, Input, Options).
+
+%% @doc Modify VPC Block Public Access (BPA) options.
+%%
+%% VPC Block public Access (BPA) enables you to block resources in VPCs and
+%% subnets that you own in a Region from reaching or being reached from the
+%% internet through internet gateways and egress-only internet gateways. To
+%% learn more about VPC BPA, see Block public access to VPCs and subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
+-spec modify_vpc_block_public_access_options(aws_client:aws_client(), modify_vpc_block_public_access_options_request()) ->
+    {ok, modify_vpc_block_public_access_options_result(), tuple()} |
+    {error, any()}.
+modify_vpc_block_public_access_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_vpc_block_public_access_options(Client, Input, []).
+
+-spec modify_vpc_block_public_access_options(aws_client:aws_client(), modify_vpc_block_public_access_options_request(), proplists:proplist()) ->
+    {ok, modify_vpc_block_public_access_options_result(), tuple()} |
+    {error, any()}.
+modify_vpc_block_public_access_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyVpcBlockPublicAccessOptions">>, Input, Options).
+
 %% @doc Modifies attributes of a specified VPC endpoint.
 %%
 %% The attributes that you can modify
@@ -32522,14 +32809,14 @@ reboot_instances(Client, Input, Options)
 %% Register a snapshot of a root device volume
 %%
 %% You can use `RegisterImage' to create an Amazon EBS-backed Linux AMI
-%% from
-%% a snapshot of a root device volume. You specify the snapshot using a block
-%% device mapping.
-%% You can't set the encryption state of the volume using the block
-%% device mapping. If the
-%% snapshot is encrypted, or encryption by default is enabled, the root
-%% volume of an instance
-%% launched from the AMI is encrypted.
+%% from a snapshot
+%% of a root device volume. You specify the snapshot using a block device
+%% mapping. You can't set
+%% the encryption state of the volume using the block device mapping. If the
+%% snapshot is
+%% encrypted, or encryption by default is enabled, the root volume of an
+%% instance launched from
+%% the AMI is encrypted.
 %%
 %% For more information, see Create an AMI from a snapshot:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot
@@ -32541,8 +32828,7 @@ reboot_instances(Client, Input, Options)
 %% Amazon Web Services Marketplace product codes
 %%
 %% If any snapshots have Amazon Web Services Marketplace product codes, they
-%% are copied to the new
-%% AMI.
+%% are copied to the new AMI.
 %%
 %% In most cases, AMIs for Windows, RedHat, SUSE, and SQL Server require
 %% correct licensing

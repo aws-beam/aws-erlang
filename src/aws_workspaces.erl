@@ -3190,8 +3190,7 @@ create_workspace_image(Client, Input, Options)
 %% Core: http://aws.amazon.com/workspaces/core/.
 %%
 %% You don't need to specify the `PCOIP' protocol for Linux bundles
-%% because `DCV' (formerly WSP) is the default protocol for those
-%% bundles.
+%% because `WSP' is the default protocol for those bundles.
 %%
 %% User-decoupled WorkSpaces are only supported by Amazon WorkSpaces
 %% Core.

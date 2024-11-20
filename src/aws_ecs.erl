@@ -994,6 +994,7 @@
 %%   <<"restartPolicy">> => container_restart_policy(),
 %%   <<"systemControls">> => list(system_control()()),
 %%   <<"workingDirectory">> => string(),
+%%   <<"versionConsistency">> => list(any()),
 %%   <<"startTimeout">> => integer(),
 %%   <<"credentialSpecs">> => list(string()()),
 %%   <<"repositoryCredentials">> => repository_credentials(),

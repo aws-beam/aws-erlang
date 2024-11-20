@@ -75,6 +75,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_keyspace/2,
+         update_keyspace/3,
          update_table/2,
          update_table/3]).
 
@@ -130,6 +132,12 @@
 %%   <<"ttl">> => time_to_live()
 %% }
 -type update_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_keyspace_response() :: #{
+%%   <<"resourceArn">> => string()
+%% }
+-type update_keyspace_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_types_response() :: #{
@@ -515,8 +523,17 @@
 -type get_keyspace_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_keyspace_request() :: #{
+%%   <<"clientSideTimestamps">> => client_side_timestamps(),
+%%   <<"keyspaceName">> := string(),
+%%   <<"replicationSpecification">> := replication_specification()
+%% }
+-type update_keyspace_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_keyspace_response() :: #{
 %%   <<"keyspaceName">> := string(),
+%%   <<"replicationGroupStatuses">> => list(replication_group_status()()),
 %%   <<"replicationRegions">> => list(string()()),
 %%   <<"replicationStrategy">> := string(),
 %%   <<"resourceArn">> := string()
@@ -529,6 +546,14 @@
 %%   <<"region">> => string()
 %% }
 -type replica_auto_scaling_specification() :: #{binary() => any()}.
+
+%% Example:
+%% replication_group_status() :: #{
+%%   <<"keyspaceStatus">> => string(),
+%%   <<"region">> => string(),
+%%   <<"tablesReplicationProgress">> => string()
+%% }
+-type replication_group_status() :: #{binary() => any()}.
 
 %% Example:
 %% restore_table_response() :: #{
@@ -727,6 +752,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_keyspace_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_table_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -806,6 +839,10 @@ create_table(Client, Input, Options)
 %% The `CreateType' operation creates a new user-defined type in the
 %% specified keyspace.
 %%
+%% To configure the required permissions, see Permissions to create a UDT:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/configure-udt-permissions.html#udt-permissions-create
+%% in the Amazon Keyspaces Developer Guide.
+%%
 %% For more information, see User-defined types (UDTs):
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/udts.html in the
 %% Amazon Keyspaces Developer
@@ -876,6 +913,10 @@ delete_table(Client, Input, Options)
 %%
 %% You can only delete a type that is not used in a table
 %% or another UDT.
+%%
+%% To configure the required permissions, see Permissions to delete a UDT:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/configure-udt-permissions.html#udt-permissions-drop
+%% in the Amazon Keyspaces Developer Guide.
 -spec delete_type(aws_client:aws_client(), delete_type_request()) ->
     {ok, delete_type_response(), tuple()} |
     {error, any()} |
@@ -892,8 +933,10 @@ delete_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteType">>, Input, Options).
 
-%% @doc Returns the name and the Amazon Resource Name (ARN) of the specified
-%% table.
+%% @doc Returns the name of the specified keyspace, the Amazon Resource Name
+%% (ARN), the replication strategy, the Amazon Web Services Regions of
+%% a multi-Region keyspace, and the status of newly added Regions after an
+%% `UpdateKeyspace' operation.
 -spec get_keyspace(aws_client:aws_client(), get_keyspace_request()) ->
     {ok, get_keyspace_response(), tuple()} |
     {error, any()} |
@@ -983,7 +1026,10 @@ get_table_auto_scaling_settings(Client, Input, Options)
 %%
 %% To read keyspace metadata using `GetType', the
 %% IAM principal needs `Select' action
-%% permissions for the system keyspace.
+%% permissions for the system keyspace. To configure the required
+%% permissions, see Permissions to view a UDT:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/configure-udt-permissions.html#udt-permissions-view
+%% in the Amazon Keyspaces Developer Guide.
 -spec get_type(aws_client:aws_client(), get_type_request()) ->
     {ok, get_type_response(), tuple()} |
     {error, any()} |
@@ -1067,7 +1113,10 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% To read keyspace metadata using `ListTypes', the
 %% IAM principal needs `Select' action
-%% permissions for the system keyspace.
+%% permissions for the system keyspace. To configure the required
+%% permissions, see Permissions to view a UDT:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/configure-udt-permissions.html#udt-permissions-view
+%% in the Amazon Keyspaces Developer Guide.
 -spec list_types(aws_client:aws_client(), list_types_request()) ->
     {ok, list_types_response(), tuple()} |
     {error, any()} |
@@ -1202,6 +1251,41 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc
+%% Adds a new Amazon Web Services Region to the keyspace.
+%%
+%% You can add a new Region to a keyspace that is either a single or a
+%% multi-Region keyspace.
+%% The new replica Region is applied to all tables in the keyspace. For more
+%% information, see Add an Amazon Web Services Region to a keyspace in Amazon
+%% Keyspaces:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/keyspaces-multi-region-add-replica.html
+%% in the Amazon Keyspaces Developer
+%% Guide.
+%%
+%% To change a single-Region to a multi-Region keyspace, you have to enable
+%% client-side timestamps
+%% for all tables in the keyspace. For more information, see
+%% Client-side timestamps in Amazon Keyspaces:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/client-side-timestamps.html
+%% in the Amazon Keyspaces Developer
+%% Guide.
+-spec update_keyspace(aws_client:aws_client(), update_keyspace_request()) ->
+    {ok, update_keyspace_response(), tuple()} |
+    {error, any()} |
+    {error, update_keyspace_errors(), tuple()}.
+update_keyspace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_keyspace(Client, Input, []).
+
+-spec update_keyspace(aws_client:aws_client(), update_keyspace_request(), proplists:proplist()) ->
+    {ok, update_keyspace_response(), tuple()} |
+    {error, any()} |
+    {error, update_keyspace_errors(), tuple()}.
+update_keyspace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateKeyspace">>, Input, Options).
 
 %% @doc Adds new columns to the table or updates one of the table's
 %% settings, for example

@@ -284,7 +284,8 @@
 %%   <<"AvailabilityZoneName">> => string(),
 %%   <<"FileSystemId">> => string(),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"Region">> => string()
+%%   <<"Region">> => string(),
+%%   <<"RoleArn">> => string()
 %% }
 -type destination_to_create() :: #{binary() => any()}.
 
@@ -316,9 +317,12 @@
 %% }
 -type create_access_point_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_replication_configuration_request() :: #{}
--type delete_replication_configuration_request() :: #{}.
+%% delete_replication_configuration_request() :: #{
+%%   <<"DeletionMode">> => list(any())
+%% }
+-type delete_replication_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -579,6 +583,7 @@
 %%   <<"OriginalSourceFileSystemArn">> => string(),
 %%   <<"SourceFileSystemArn">> => string(),
 %%   <<"SourceFileSystemId">> => string(),
+%%   <<"SourceFileSystemOwnerId">> => string(),
 %%   <<"SourceFileSystemRegion">> => string()
 %% }
 -type replication_configuration_description() :: #{binary() => any()}.
@@ -703,8 +708,11 @@
 %% destination() :: #{
 %%   <<"FileSystemId">> => string(),
 %%   <<"LastReplicatedTimestamp">> => non_neg_integer(),
+%%   <<"OwnerId">> => string(),
 %%   <<"Region">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
 %% }
 -type destination() :: #{binary() => any()}.
 
@@ -1174,26 +1182,24 @@ create_access_point(Client, Input0, Options0) ->
 %%
 %% This operation accepts an optional `PerformanceMode' parameter that
 %% you choose
-%% for your file system. We recommend `generalPurpose' performance mode
-%% for all file
-%% systems. File systems using the `maxIO' mode is a previous generation
-%% performance type that is designed for highly parallelized workloads that
-%% can tolerate higher latencies
-%% than the General Purpose mode. Max I/O mode is not supported for One Zone
-%% file systems or
+%% for your file system. We recommend `generalPurpose'
+%% `PerformanceMode' for all file
+%% systems. The `maxIO' mode is a previous generation performance type
+%% that is designed for highly parallelized workloads that can tolerate
+%% higher latencies
+%% than the `generalPurpose' mode. `MaxIO' mode is not supported for
+%% One Zone file systems or
 %% file systems that use Elastic throughput.
 %%
-%% Due to the higher per-operation latencies with Max I/O, we recommend using
-%% General Purpose performance mode for all file systems.
-%%
-%% The performance mode can't be changed after
-%% the file system has been created. For more information, see Amazon EFS
-%% performance
+%% The `PerformanceMode' can't be changed after the file system has
+%% been
+%% created. For more information, see Amazon EFS performance
 %% modes:
 %% https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html.
 %%
 %% You can set the throughput mode for the file system using the
-%% `ThroughputMode' parameter.
+%% `ThroughputMode'
+%% parameter.
 %%
 %% After the file system is fully created, Amazon EFS sets its lifecycle
 %% state to
@@ -1429,96 +1435,38 @@ create_mount_target(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a replication configuration that replicates an existing EFS
-%% file system
-%% to a new, read-only file system.
+%% @doc Creates a replication conﬁguration to either a new or existing EFS
+%% file system.
 %%
 %% For more information, see Amazon EFS replication:
 %% https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html in the
-%% Amazon EFS User Guide. The replication configuration
-%% specifies the following:
-%%
-%% Source file system – The EFS file system that
-%% you want replicated. The source file system cannot be a destination file
-%% system in an
-%% existing replication configuration.
-%%
-%% Amazon Web Services Region – The Amazon Web Services Region in which the
-%% destination file system is created. Amazon EFS
-%% replication is available in all Amazon Web Services Regions in which EFS
-%% is available. The
-%% Region must be enabled. For more information, see Managing Amazon Web
-%% Services Regions:
-%% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable
-%% in the Amazon Web Services General Reference
-%% Reference Guide.
-%%
-%% Destination file system configuration – The
-%% configuration of the destination file system to which the source file
-%% system will be
-%% replicated. There can only be one destination file system in a replication
-%% configuration.
-%%
-%% Parameters for the replication configuration include:
-%%
-%% File system ID – The ID of the destination
-%% file system for the replication. If no ID is provided, then EFS creates a
-%% new file
-%% system with the default settings. For existing file systems, the file
-%% system's
-%% replication overwrite protection must be disabled. For more information,
-%% see Replicating to
-%% an existing file system:
-%% https://docs.aws.amazon.com/efs/latest/ug/efs-replication#replicate-existing-destination.
-%%
-%% Availability Zone – If you want the destination file
-%% system to use One Zone storage, you must specify the Availability Zone to
-%% create the
-%% file system in. For more information, see
-%% EFS file system types:
-%% https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html in the
 %% Amazon EFS User
+%% Guide. The replication configuration specifies the following:
+%%
+%% Source file system – The EFS file
+%% system that you want to replicate.
+%%
+%% Destination file system – The destination file
+%% system to which the source file system is replicated. There can only be
+%% one destination
+%% file system in a replication configuration.
+%%
+%% A file system can be part of only one replication configuration.
+%%
+%% The destination parameters for the replication configuration depend on
+%% whether you are replicating to a new file system or to an existing file
+%% system, and if you
+%% are replicating across Amazon Web Services accounts. See
+%% `DestinationToCreate' for more information.
+%%
+%% This operation requires permissions for the
+%% `elasticfilesystem:CreateReplicationConfiguration'
+%% action. Additionally, other permissions are required depending on how you
+%% are replicating file systems.
+%% For more information, see Required permissions for replication:
+%% https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html#efs-replication-permissions
+%% in the Amazon EFS User
 %% Guide.
-%%
-%% Encryption – All destination file systems are created
-%% with encryption at rest enabled. You can specify the Key Management
-%% Service (KMS) key that is used to encrypt the destination file system. If
-%% you don't
-%% specify a KMS key, your service-managed KMS key for
-%% Amazon EFS is used.
-%%
-%% After the file system is created, you cannot change the KMS key.
-%%
-%% After the file system is created, you cannot change the KMS key.
-%%
-%% For new destination file systems, the following properties are set by
-%% default:
-%%
-%% Performance mode - The destination file system's
-%% performance mode matches that of the source file system, unless the
-%% destination file
-%% system uses EFS One Zone storage. In that case, the General Purpose
-%% performance mode is
-%% used. The performance mode cannot be changed.
-%%
-%% Throughput mode - The destination file system's
-%% throughput mode matches that of the source file system. After the file
-%% system is created,
-%% you can modify the throughput mode.
-%%
-%% Lifecycle management – Lifecycle management is not enabled
-%% on the destination file system. After the destination file system is
-%% created, you can
-%% enable lifecycle management.
-%%
-%% Automatic backups – Automatic daily backups are enabled on
-%% the destination file system. After the file system is created, you can
-%% change this
-%% setting.
-%%
-%% For more information, see Amazon EFS replication:
-%% https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html in the
-%% Amazon EFS User Guide.
 -spec create_replication_configuration(aws_client:aws_client(), binary() | list(), create_replication_configuration_request()) ->
     {ok, replication_configuration_description(), tuple()} |
     {error, any()} |
@@ -1658,7 +1606,7 @@ delete_access_point(Client, AccessPointId, Input0, Options0) ->
 %% Web Services console
 %% to delete a file system.
 %%
-%% You cannot delete a file system that is part of an EFS Replication
+%% You cannot delete a file system that is part of an EFS replication
 %% configuration.
 %% You need to delete the replication configuration first.
 %%
@@ -1860,9 +1808,10 @@ delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"deletionMode">>, <<"DeletionMode">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
@@ -2174,8 +2123,8 @@ describe_file_systems(Client, QueryMap, HeadersMap, Options0)
 %% specified Amazon
 %% EFS file system.
 %%
-%% Lifecycle management uses the `LifecycleConfiguration' object
-%% to identify when to move files between storage classes. For a file system
+%% Lifecycle management uses the `LifecycleConfiguration' object to
+%% identify when to move files between storage classes. For a file system
 %% without a
 %% `LifecycleConfiguration' object, the call returns an empty array in
 %% the
@@ -2637,8 +2586,8 @@ put_backup_policy(Client, FileSystemId, Input0, Options0) ->
 %% character
 %% limit. When an explicit policy is set, it overrides the default policy.
 %% For more information
-%% about the default file system policy, see Default EFS
-%% File System Policy:
+%% about the default file system policy, see
+%% Default EFS file system policy:
 %% https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy.
 %%
 %% EFS file system policies have a 20,000 character limit.
@@ -2702,8 +2651,8 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %% TransitionToIA.
 %%
 %% The Archive storage class is available only for file systems that use the
-%% Elastic Throughput mode
-%% and the General Purpose Performance mode.
+%% Elastic throughput mode
+%% and the General Purpose performance mode.
 %%
 %% `TransitionToPrimaryStorageClass'
 %% –
@@ -2728,7 +2677,7 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %%
 %% The ID for the file system for which you are enabling, disabling, or
 %% modifying
-%% Lifecycle management.
+%% lifecycle management.
 %%
 %% A `LifecyclePolicies' array of `LifecyclePolicy' objects that
 %% define when to move files to IA storage, to Archive storage,
