@@ -114,6 +114,13 @@
 %% delete_channel_request() :: #{}
 -type delete_channel_request() :: #{}.
 
+
+%% Example:
+%% input_switch_configuration() :: #{
+%%   <<"MQCSInputSwitching">> => [boolean()]
+%% }
+-type input_switch_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_harvest_job_response() :: #{}
 -type cancel_harvest_job_response() :: #{}.
@@ -181,8 +188,10 @@
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
 %%   <<"Tags">> => map()
 %% }
 -type create_channel_response() :: #{binary() => any()}.
@@ -434,6 +443,13 @@
 %% }
 -type force_endpoint_error_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% output_header_configuration() :: #{
+%%   <<"PublishMQCS">> => [boolean()]
+%% }
+-type output_header_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% put_origin_endpoint_policy_response() :: #{}
 -type put_origin_endpoint_policy_response() :: #{}.
@@ -530,7 +546,9 @@
 %%   <<"ChannelName">> := string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
+%%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
 %%   <<"Tags">> => map()
 %% }
 -type create_channel_request() :: #{binary() => any()}.
@@ -610,7 +628,9 @@
 %% Example:
 %% update_channel_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ETag">> => string()
+%%   <<"ETag">> => string(),
+%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
+%%   <<"OutputHeaderConfiguration">> => output_header_configuration()
 %% }
 -type update_channel_request() :: #{binary() => any()}.
 
@@ -781,8 +801,10 @@
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
 %%   <<"Tags">> => map()
 %% }
 -type get_channel_response() :: #{binary() => any()}.
@@ -830,8 +852,10 @@
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
 %%   <<"Tags">> => map()
 %% }
 -type update_channel_response() :: #{binary() => any()}.

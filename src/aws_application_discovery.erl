@@ -503,7 +503,8 @@
 %% Example:
 %% create_application_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"name">> := string()
+%%   <<"name">> := string(),
+%%   <<"wave">> => string()
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
@@ -556,6 +557,7 @@
 %%   <<"applicationImportSuccess">> => integer(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"errorsAndFailedEntriesZip">> => string(),
+%%   <<"fileClassification">> => list(any()),
 %%   <<"importCompletionTime">> => non_neg_integer(),
 %%   <<"importDeletedTime">> => non_neg_integer(),
 %%   <<"importRequestTime">> => non_neg_integer(),
@@ -610,7 +612,8 @@
 %% update_application_request() :: #{
 %%   <<"configurationId">> := string(),
 %%   <<"description">> => string(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"wave">> => string()
 %% }
 -type update_application_request() :: #{binary() => any()}.
 
@@ -1034,6 +1037,7 @@
     limit_exceeded_exception() | 
     authorization_error_exception() | 
     home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
     operation_not_permitted_exception() | 
     invalid_parameter_value_exception() | 
     server_internal_error_exception().

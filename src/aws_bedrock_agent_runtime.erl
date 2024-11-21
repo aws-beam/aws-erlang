@@ -14,6 +14,8 @@
          invoke_agent/6,
          invoke_flow/4,
          invoke_flow/5,
+         optimize_prompt/2,
+         optimize_prompt/3,
          retrieve/3,
          retrieve/4,
          retrieve_and_generate/2,
@@ -68,6 +70,13 @@
 %%   <<"filters">> => list(guardrail_content_filter()())
 %% }
 -type guardrail_content_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% optimize_prompt_response() :: #{
+%%   <<"optimizedPrompt">> => list()
+%% }
+-type optimize_prompt_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -141,6 +150,13 @@
 %%   <<"value">> => [string()]
 %% }
 -type function_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% optimized_prompt_event() :: #{
+%%   <<"optimizedPrompt">> => list()
+%% }
+-type optimized_prompt_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -843,6 +859,13 @@
 
 
 %% Example:
+%% text_prompt() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type text_prompt() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -919,11 +942,26 @@
 
 
 %% Example:
+%% analyze_prompt_event() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type analyze_prompt_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% byte_content_file() :: #{
 %%   <<"data">> => binary(),
 %%   <<"mediaType">> => string()
 %% }
 -type byte_content_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% optimize_prompt_request() :: #{
+%%   <<"input">> := list(),
+%%   <<"targetModelId">> := [string()]
+%% }
+-type optimize_prompt_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1109,6 +1147,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type optimize_prompt_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     dependency_failed_exception() | 
     bad_gateway_exception().
 
@@ -1309,7 +1355,8 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
 %% If there's an error, the error is returned. For more information, see
 %% Test a flow in Amazon Bedrock:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html in
-%% the Amazon Bedrock User Guide.
+%% the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
 %%
 %% The CLI doesn't support streaming operations in Amazon Bedrock,
 %% including `InvokeFlow'.
@@ -1327,6 +1374,45 @@ invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input) ->
 invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(FlowAliasIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Optimizes a prompt for the task that you specify.
+%%
+%% For more information, see Optimize a prompt:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html
+%% in the Amazon Bedrock User Guide:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html.
+-spec optimize_prompt(aws_client:aws_client(), optimize_prompt_request()) ->
+    {ok, optimize_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, optimize_prompt_errors(), tuple()}.
+optimize_prompt(Client, Input) ->
+    optimize_prompt(Client, Input, []).
+
+-spec optimize_prompt(aws_client:aws_client(), optimize_prompt_request(), proplists:proplist()) ->
+    {ok, optimize_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, optimize_prompt_errors(), tuple()}.
+optimize_prompt(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/optimize-prompt"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

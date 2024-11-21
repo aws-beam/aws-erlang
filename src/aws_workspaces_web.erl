@@ -19,6 +19,8 @@
 
 -export([associate_browser_settings/3,
          associate_browser_settings/4,
+         associate_data_protection_settings/3,
+         associate_data_protection_settings/4,
          associate_ip_access_settings/3,
          associate_ip_access_settings/4,
          associate_network_settings/3,
@@ -31,6 +33,8 @@
          associate_user_settings/4,
          create_browser_settings/2,
          create_browser_settings/3,
+         create_data_protection_settings/2,
+         create_data_protection_settings/3,
          create_identity_provider/2,
          create_identity_provider/3,
          create_ip_access_settings/2,
@@ -47,6 +51,8 @@
          create_user_settings/3,
          delete_browser_settings/3,
          delete_browser_settings/4,
+         delete_data_protection_settings/3,
+         delete_data_protection_settings/4,
          delete_identity_provider/3,
          delete_identity_provider/4,
          delete_ip_access_settings/3,
@@ -63,6 +69,8 @@
          delete_user_settings/4,
          disassociate_browser_settings/3,
          disassociate_browser_settings/4,
+         disassociate_data_protection_settings/3,
+         disassociate_data_protection_settings/4,
          disassociate_ip_access_settings/3,
          disassociate_ip_access_settings/4,
          disassociate_network_settings/3,
@@ -78,6 +86,9 @@
          get_browser_settings/2,
          get_browser_settings/4,
          get_browser_settings/5,
+         get_data_protection_settings/2,
+         get_data_protection_settings/4,
+         get_data_protection_settings/5,
          get_identity_provider/2,
          get_identity_provider/4,
          get_identity_provider/5,
@@ -111,6 +122,9 @@
          list_browser_settings/1,
          list_browser_settings/3,
          list_browser_settings/4,
+         list_data_protection_settings/1,
+         list_data_protection_settings/3,
+         list_data_protection_settings/4,
          list_identity_providers/2,
          list_identity_providers/4,
          list_identity_providers/5,
@@ -147,6 +161,8 @@
          untag_resource/4,
          update_browser_settings/3,
          update_browser_settings/4,
+         update_data_protection_settings/3,
+         update_data_protection_settings/4,
          update_identity_provider/3,
          update_identity_provider/4,
          update_ip_access_settings/3,
@@ -372,6 +388,16 @@
 
 
 %% Example:
+%% inline_redaction_configuration() :: #{
+%%   <<"globalConfidenceLevel">> => integer(),
+%%   <<"globalEnforcedUrls">> => list(string()()),
+%%   <<"globalExemptUrls">> => list(string()()),
+%%   <<"inlineRedactionPatterns">> => list(inline_redaction_pattern()())
+%% }
+-type inline_redaction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_trust_store_request() :: #{
 %%   <<"trustStoreArn">> := string()
 %% }
@@ -453,6 +479,13 @@
 %%   <<"trustStore">> => trust_store()
 %% }
 -type get_trust_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettingsArn">> => string()
+%% }
+-type create_data_protection_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -571,6 +604,10 @@
 %% }
 -type associate_browser_settings_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_data_protection_settings_response() :: #{}
+-type delete_data_protection_settings_response() :: #{}.
+
 
 %% Example:
 %% list_trust_stores_request() :: #{
@@ -627,6 +664,18 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_portals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_redaction_pattern() :: #{
+%%   <<"builtInPatternId">> => string(),
+%%   <<"confidenceLevel">> => integer(),
+%%   <<"customPattern">> => custom_pattern(),
+%%   <<"enforcedUrls">> => list(string()()),
+%%   <<"exemptUrls">> => list(string()()),
+%%   <<"redactionPlaceHolder">> => redaction_place_holder()
+%% }
+-type inline_redaction_pattern() :: #{binary() => any()}.
 
 
 %% Example:
@@ -734,6 +783,14 @@
 
 
 %% Example:
+%% associate_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettingsArn">> => string(),
+%%   <<"portalArn">> => string()
+%% }
+-type associate_data_protection_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_network_settings_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -789,9 +846,30 @@
 %% }
 -type get_network_settings_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% data_protection_settings() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"associatedPortalArns">> => list(string()()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"dataProtectionSettingsArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration()
+%% }
+-type data_protection_settings() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_user_settings_response() :: #{}
 -type disassociate_user_settings_response() :: #{}.
+
+
+%% Example:
+%% update_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettings">> => data_protection_settings()
+%% }
+-type update_data_protection_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -799,6 +877,16 @@
 %%   <<"browserSettingsArn">> => string()
 %% }
 -type browser_settings_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_protection_settings_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration()
+%% }
+-type update_data_protection_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -857,6 +945,14 @@
 %%   <<"username">> => string()
 %% }
 -type list_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettings">> => list(data_protection_settings_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_protection_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -973,6 +1069,10 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+%% Example:
+%% delete_data_protection_settings_request() :: #{}
+-type delete_data_protection_settings_request() :: #{}.
+
 
 %% Example:
 %% certificate() :: #{
@@ -1044,6 +1144,14 @@
 
 
 %% Example:
+%% redaction_place_holder() :: #{
+%%   <<"redactionPlaceHolderText">> => string(),
+%%   <<"redactionPlaceHolderType">> => string()
+%% }
+-type redaction_place_holder() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_user_settings_request() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
 %%   <<"clientToken">> => string(),
@@ -1067,6 +1175,16 @@
 
 
 %% Example:
+%% data_protection_settings_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"dataProtectionSettingsArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string()
+%% }
+-type data_protection_settings_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_portal_request() :: #{
 %%   <<"authenticationType">> => string(),
 %%   <<"displayName">> => string(),
@@ -1074,6 +1192,23 @@
 %%   <<"maxConcurrentSessions">> => integer()
 %% }
 -type update_portal_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_settings_request() :: #{}
+-type get_data_protection_settings_request() :: #{}.
+
+
+%% Example:
+%% create_data_protection_settings_request() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"clientToken">> => string(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_data_protection_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1088,6 +1223,10 @@
 %%   <<"ipRules">> => list(ip_rule()())
 %% }
 -type ip_access_settings() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_data_protection_settings_response() :: #{}
+-type disassociate_data_protection_settings_response() :: #{}.
 
 
 %% Example:
@@ -1130,11 +1269,26 @@
 
 
 %% Example:
+%% associate_data_protection_settings_request() :: #{
+%%   <<"dataProtectionSettingsArn">> := string()
+%% }
+-type associate_data_protection_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_browser_settings_response() :: #{
 %%   <<"browserSettings">> => list(browser_settings_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_browser_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_protection_settings_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_protection_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1151,6 +1305,7 @@
 %%   <<"browserSettingsArn">> => string(),
 %%   <<"browserType">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
+%%   <<"dataProtectionSettingsArn">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"instanceType">> => string(),
 %%   <<"ipAccessSettingsArn">> => string(),
@@ -1206,6 +1361,16 @@
 
 
 %% Example:
+%% custom_pattern() :: #{
+%%   <<"keywordRegex">> => string(),
+%%   <<"patternDescription">> => string(),
+%%   <<"patternName">> => string(),
+%%   <<"patternRegex">> => string()
+%% }
+-type custom_pattern() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_user_access_logging_settings_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"kinesisStreamArn">> := string(),
@@ -1231,9 +1396,20 @@
 %% }
 -type list_user_access_logging_settings_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettings">> => data_protection_settings()
+%% }
+-type get_data_protection_settings_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_user_settings_request() :: #{}
 -type disassociate_user_settings_request() :: #{}.
+
+%% Example:
+%% disassociate_data_protection_settings_request() :: #{}
+-type disassociate_data_protection_settings_request() :: #{}.
 
 
 %% Example:
@@ -1311,6 +1487,7 @@
 %%   <<"browserType">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"customerManagedKey">> => string(),
+%%   <<"dataProtectionSettingsArn">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"instanceType">> => string(),
 %%   <<"ipAccessSettingsArn">> => string(),
@@ -1347,6 +1524,14 @@
 -type disassociate_trust_store_request() :: #{}.
 
 -type associate_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_data_protection_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1395,6 +1580,15 @@
     conflict_exception().
 
 -type create_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_protection_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1468,6 +1662,13 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type delete_data_protection_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
 -type delete_identity_provider_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1525,6 +1726,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type disassociate_data_protection_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type disassociate_ip_access_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1573,6 +1782,13 @@
     resource_not_found_exception().
 
 -type get_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_protection_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1650,6 +1866,12 @@
     resource_not_found_exception().
 
 -type list_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_data_protection_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1734,6 +1956,13 @@
     resource_not_found_exception().
 
 -type update_browser_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_data_protection_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1827,6 +2056,41 @@ associate_browser_settings(Client, PortalArn, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"browserSettingsArn">>, <<"browserSettingsArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a data protection settings resource with a web portal.
+-spec associate_data_protection_settings(aws_client:aws_client(), binary() | list(), associate_data_protection_settings_request()) ->
+    {ok, associate_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, associate_data_protection_settings_errors(), tuple()}.
+associate_data_protection_settings(Client, PortalArn, Input) ->
+    associate_data_protection_settings(Client, PortalArn, Input, []).
+
+-spec associate_data_protection_settings(aws_client:aws_client(), binary() | list(), associate_data_protection_settings_request(), proplists:proplist()) ->
+    {ok, associate_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, associate_data_protection_settings_errors(), tuple()}.
+associate_data_protection_settings(Client, PortalArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/dataProtectionSettings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"dataProtectionSettingsArn">>, <<"dataProtectionSettingsArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -2027,6 +2291,41 @@ create_browser_settings(Client, Input) ->
 create_browser_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/browserSettings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a data protection settings resource that can be associated
+%% with a web portal.
+-spec create_data_protection_settings(aws_client:aws_client(), create_data_protection_settings_request()) ->
+    {ok, create_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_protection_settings_errors(), tuple()}.
+create_data_protection_settings(Client, Input) ->
+    create_data_protection_settings(Client, Input, []).
+
+-spec create_data_protection_settings(aws_client:aws_client(), create_data_protection_settings_request(), proplists:proplist()) ->
+    {ok, create_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_protection_settings_errors(), tuple()}.
+create_data_protection_settings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/dataProtectionSettings"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2344,6 +2643,40 @@ delete_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes data protection settings.
+-spec delete_data_protection_settings(aws_client:aws_client(), binary() | list(), delete_data_protection_settings_request()) ->
+    {ok, delete_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_protection_settings_errors(), tuple()}.
+delete_data_protection_settings(Client, DataProtectionSettingsArn, Input) ->
+    delete_data_protection_settings(Client, DataProtectionSettingsArn, Input, []).
+
+-spec delete_data_protection_settings(aws_client:aws_client(), binary() | list(), delete_data_protection_settings_request(), proplists:proplist()) ->
+    {ok, delete_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_protection_settings_errors(), tuple()}.
+delete_data_protection_settings(Client, DataProtectionSettingsArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/dataProtectionSettings/", aws_util:encode_multi_segment_uri(DataProtectionSettingsArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the identity provider.
 -spec delete_identity_provider(aws_client:aws_client(), binary() | list(), delete_identity_provider_request()) ->
     {ok, delete_identity_provider_response(), tuple()} |
@@ -2616,6 +2949,40 @@ disassociate_browser_settings(Client, PortalArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates data protection settings from a web portal.
+-spec disassociate_data_protection_settings(aws_client:aws_client(), binary() | list(), disassociate_data_protection_settings_request()) ->
+    {ok, disassociate_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_data_protection_settings_errors(), tuple()}.
+disassociate_data_protection_settings(Client, PortalArn, Input) ->
+    disassociate_data_protection_settings(Client, PortalArn, Input, []).
+
+-spec disassociate_data_protection_settings(aws_client:aws_client(), binary() | list(), disassociate_data_protection_settings_request(), proplists:proplist()) ->
+    {ok, disassociate_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_data_protection_settings_errors(), tuple()}.
+disassociate_data_protection_settings(Client, PortalArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/dataProtectionSettings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates IP access settings from a web portal.
 -spec disassociate_ip_access_settings(aws_client:aws_client(), binary() | list(), disassociate_ip_access_settings_request()) ->
     {ok, disassociate_ip_access_settings_response(), tuple()} |
@@ -2844,6 +3211,43 @@ get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap)
 get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/browserSettings/", aws_util:encode_multi_segment_uri(BrowserSettingsArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the data protection settings.
+-spec get_data_protection_settings(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_protection_settings_errors(), tuple()}.
+get_data_protection_settings(Client, DataProtectionSettingsArn)
+  when is_map(Client) ->
+    get_data_protection_settings(Client, DataProtectionSettingsArn, #{}, #{}).
+
+-spec get_data_protection_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_protection_settings_errors(), tuple()}.
+get_data_protection_settings(Client, DataProtectionSettingsArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_protection_settings(Client, DataProtectionSettingsArn, QueryMap, HeadersMap, []).
+
+-spec get_data_protection_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_protection_settings_errors(), tuple()}.
+get_data_protection_settings(Client, DataProtectionSettingsArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/dataProtectionSettings/", aws_util:encode_multi_segment_uri(DataProtectionSettingsArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3255,6 +3659,48 @@ list_browser_settings(Client, QueryMap, HeadersMap)
 list_browser_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/browserSettings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of data protection settings.
+-spec list_data_protection_settings(aws_client:aws_client()) ->
+    {ok, list_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_protection_settings_errors(), tuple()}.
+list_data_protection_settings(Client)
+  when is_map(Client) ->
+    list_data_protection_settings(Client, #{}, #{}).
+
+-spec list_data_protection_settings(aws_client:aws_client(), map(), map()) ->
+    {ok, list_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_protection_settings_errors(), tuple()}.
+list_data_protection_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_protection_settings(Client, QueryMap, HeadersMap, []).
+
+-spec list_data_protection_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_protection_settings_errors(), tuple()}.
+list_data_protection_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/dataProtectionSettings"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3777,6 +4223,40 @@ update_browser_settings(Client, BrowserSettingsArn, Input) ->
 update_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
     Method = patch,
     Path = ["/browserSettings/", aws_util:encode_multi_segment_uri(BrowserSettingsArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates data protection settings.
+-spec update_data_protection_settings(aws_client:aws_client(), binary() | list(), update_data_protection_settings_request()) ->
+    {ok, update_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_protection_settings_errors(), tuple()}.
+update_data_protection_settings(Client, DataProtectionSettingsArn, Input) ->
+    update_data_protection_settings(Client, DataProtectionSettingsArn, Input, []).
+
+-spec update_data_protection_settings(aws_client:aws_client(), binary() | list(), update_data_protection_settings_request(), proplists:proplist()) ->
+    {ok, update_data_protection_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_protection_settings_errors(), tuple()}.
+update_data_protection_settings(Client, DataProtectionSettingsArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/dataProtectionSettings/", aws_util:encode_multi_segment_uri(DataProtectionSettingsArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

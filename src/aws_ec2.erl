@@ -1422,6 +1422,7 @@
 %%   <<"AllowedInstanceTypes">> => list(string()()),
 %%   <<"BareMetal">> => list(any()),
 %%   <<"BaselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps_request(),
+%%   <<"BaselinePerformanceFactors">> => baseline_performance_factors_request(),
 %%   <<"BurstablePerformance">> => list(any()),
 %%   <<"CpuManufacturers">> => list(list(any())()),
 %%   <<"ExcludedInstanceTypes">> => list(string()()),
@@ -1956,6 +1957,12 @@
 %%   <<"ToPort">> => integer()
 %% }
 -type revoked_security_group_rule() :: #{binary() => any()}.
+
+%% Example:
+%% cpu_performance_factor() :: #{
+%%   <<"References">> => list(performance_factor_reference()())
+%% }
+-type cpu_performance_factor() :: #{binary() => any()}.
 
 %% Example:
 %% delete_snapshot_request() :: #{
@@ -4369,6 +4376,12 @@
 -type revoke_client_vpn_ingress_result() :: #{binary() => any()}.
 
 %% Example:
+%% baseline_performance_factors_request() :: #{
+%%   <<"Cpu">> => cpu_performance_factor_request()
+%% }
+-type baseline_performance_factors_request() :: #{binary() => any()}.
+
+%% Example:
 %% register_transit_gateway_multicast_group_members_result() :: #{
 %%   <<"RegisteredMulticastGroupMembers">> => transit_gateway_multicast_registered_group_members()
 %% }
@@ -6668,6 +6681,12 @@
 %%   <<"Return">> => string()
 %% }
 -type disable_image_deregistration_protection_result() :: #{binary() => any()}.
+
+%% Example:
+%% performance_factor_reference() :: #{
+%%   <<"InstanceFamily">> => string()
+%% }
+-type performance_factor_reference() :: #{binary() => any()}.
 
 %% Example:
 %% neuron_info() :: #{
@@ -9875,6 +9894,12 @@
 -type create_transit_gateway_route_table_result() :: #{binary() => any()}.
 
 %% Example:
+%% baseline_performance_factors() :: #{
+%%   <<"Cpu">> => cpu_performance_factor()
+%% }
+-type baseline_performance_factors() :: #{binary() => any()}.
+
+%% Example:
 %% modify_instance_metadata_defaults_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"HttpEndpoint">> => list(any()),
@@ -10022,6 +10047,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% performance_factor_reference_request() :: #{
+%%   <<"InstanceFamily">> => string()
+%% }
+-type performance_factor_reference_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_public_ipv4_pool_request() :: #{
@@ -14226,6 +14257,7 @@
 %%   <<"AllowedInstanceTypes">> => list(string()()),
 %%   <<"BareMetal">> => list(any()),
 %%   <<"BaselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps(),
+%%   <<"BaselinePerformanceFactors">> => baseline_performance_factors(),
 %%   <<"BurstablePerformance">> => list(any()),
 %%   <<"CpuManufacturers">> => list(list(any())()),
 %%   <<"ExcludedInstanceTypes">> => list(string()()),
@@ -15942,6 +15974,12 @@
 %%   <<"Return">> => boolean()
 %% }
 -type disable_image_deprecation_result() :: #{binary() => any()}.
+
+%% Example:
+%% cpu_performance_factor_request() :: #{
+%%   <<"References">> => list(performance_factor_reference_request()())
+%% }
+-type cpu_performance_factor_request() :: #{binary() => any()}.
 
 %% Example:
 %% availability_zone_message() :: #{
@@ -31146,7 +31184,8 @@ modify_instance_attribute(Client, Input, Options)
 %% Use this action to configure an
 %% instance to target a specific Capacity Reservation, run in any `open'
 %% Capacity Reservation with matching
-%% attributes, or run On-Demand Instance capacity.
+%% attributes, run in On-Demand Instance capacity, or only run in a Capacity
+%% Reservation.
 -spec modify_instance_capacity_reservation_attributes(aws_client:aws_client(), modify_instance_capacity_reservation_attributes_request()) ->
     {ok, modify_instance_capacity_reservation_attributes_result(), tuple()} |
     {error, any()}.

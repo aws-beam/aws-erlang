@@ -90,6 +90,13 @@
 -type delete_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
+%% query_compute_request() :: #{
+%%   <<"ComputeMode">> => list(any()),
+%%   <<"ProvisionedCapacity">> => provisioned_capacity_request()
+%% }
+-type query_compute_request() :: #{binary() => any()}.
+
+%% Example:
 %% query_status() :: #{
 %%   <<"CumulativeBytesMetered">> => float(),
 %%   <<"CumulativeBytesScanned">> => float(),
@@ -124,6 +131,7 @@
 %% Example:
 %% update_account_settings_response() :: #{
 %%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryCompute">> => query_compute_response(),
 %%   <<"QueryPricingModel">> => list(any())
 %% }
 -type update_account_settings_response() :: #{binary() => any()}.
@@ -248,6 +256,13 @@
 -type scheduled_query() :: #{binary() => any()}.
 
 %% Example:
+%% account_settings_notification_configuration() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"SnsConfiguration">> => sns_configuration()
+%% }
+-type account_settings_notification_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% describe_endpoints_request() :: #{
 
 %% }
@@ -271,6 +286,14 @@
 %%   <<"QueryId">> := string()
 %% }
 -type cancel_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% last_update() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TargetQueryTCU">> => integer()
+%% }
+-type last_update() :: #{binary() => any()}.
 
 %% Example:
 %% query_response() :: #{
@@ -334,6 +357,7 @@
 %% Example:
 %% update_account_settings_request() :: #{
 %%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryCompute">> => query_compute_request(),
 %%   <<"QueryPricingModel">> => list(any())
 %% }
 -type update_account_settings_request() :: #{binary() => any()}.
@@ -484,6 +508,7 @@
 %% Example:
 %% describe_account_settings_response() :: #{
 %%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryCompute">> => query_compute_response(),
 %%   <<"QueryPricingModel">> => list(any())
 %% }
 -type describe_account_settings_response() :: #{binary() => any()}.
@@ -540,6 +565,13 @@
 -type query_request() :: #{binary() => any()}.
 
 %% Example:
+%% query_compute_response() :: #{
+%%   <<"ComputeMode">> => list(any()),
+%%   <<"ProvisionedCapacity">> => provisioned_capacity_response()
+%% }
+-type query_compute_response() :: #{binary() => any()}.
+
+%% Example:
 %% query_execution_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -551,6 +583,13 @@
 %%   <<"Type">> => type()
 %% }
 -type column_info() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_capacity_request() :: #{
+%%   <<"NotificationConfiguration">> => account_settings_notification_configuration(),
+%%   <<"TargetQueryTCU">> => integer()
+%% }
+-type provisioned_capacity_request() :: #{binary() => any()}.
 
 %% Example:
 %% query_spatial_coverage() :: #{
@@ -594,6 +633,14 @@
 %%   <<"RecordsIngested">> => float()
 %% }
 -type execution_stats() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_capacity_response() :: #{
+%%   <<"ActiveQueryTCU">> => integer(),
+%%   <<"LastUpdate">> => last_update(),
+%%   <<"NotificationConfiguration">> => account_settings_notification_configuration()
+%% }
+-type provisioned_capacity_response() :: #{binary() => any()}.
 
 -type cancel_query_errors() ::
     throttling_exception() | 
@@ -863,7 +910,9 @@ describe_scheduled_query(Client, Input, Options)
 %% If you enabled `QueryInsights', this API also returns insights and
 %% metrics related to the query that you executed as part of an Amazon SNS
 %% notification. `QueryInsights' helps with performance tuning of your
-%% query.
+%% query. For more information about `QueryInsights', see Using query
+%% insights to optimize queries in Amazon Timestream:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/using-query-insights.html.
 -spec execute_scheduled_query(aws_client:aws_client(), execute_scheduled_query_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -946,7 +995,10 @@ prepare_query(Client, Input, Options)
 %%
 %% If you enabled `QueryInsights', this API also returns insights and
 %% metrics related to the query that you executed. `QueryInsights' helps
-%% with performance tuning of your query.
+%% with performance tuning of your query. For more information about
+%% `QueryInsights', see Using query insights to optimize queries in
+%% Amazon Timestream:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/using-query-insights.html.
 %%
 %% The maximum number of `Query' API requests you're allowed to make
 %% with `QueryInsights' enabled is 1 query per second (QPS). If you

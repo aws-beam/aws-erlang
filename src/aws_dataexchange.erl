@@ -2798,8 +2798,10 @@ send_api_asset(Client, Input0, Options0) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    CustomHeaders = [],
-    Input2 = Input1,
+    CustomHeadersMapping = [
+                             {<<"x-amzn-dataexchange-header-">>, <<"RequestHeaders">>}
+                          ],
+    {CustomHeaders, Input2} = aws_request:build_custom_headers(CustomHeadersMapping, Input1),
 
     QueryMapping = [
                      {<<"QueryStringParameters">>, <<"QueryStringParameters">>}

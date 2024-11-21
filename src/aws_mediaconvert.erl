@@ -703,6 +703,7 @@
 %% Example:
 %% queue() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"ConcurrentJobs">> => integer(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"LastUpdated">> => non_neg_integer(),
@@ -710,6 +711,7 @@
 %%   <<"PricingPlan">> => list(any()),
 %%   <<"ProgressingJobsCount">> => integer(),
 %%   <<"ReservationPlan">> => reservation_plan(),
+%%   <<"ServiceOverrides">> => list(service_override()()),
 %%   <<"Status">> => list(any()),
 %%   <<"SubmittedJobsCount">> => integer(),
 %%   <<"Type">> => list(any())
@@ -730,6 +732,7 @@
 
 %% Example:
 %% update_queue_request() :: #{
+%%   <<"ConcurrentJobs">> => integer(),
 %%   <<"Description">> => string(),
 %%   <<"ReservationPlanSettings">> => reservation_plan_settings(),
 %%   <<"Status">> => list(any())
@@ -1525,6 +1528,7 @@
 
 %% Example:
 %% create_queue_request() :: #{
+%%   <<"ConcurrentJobs">> => integer(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"PricingPlan">> => list(any()),
@@ -1731,6 +1735,16 @@
 %%   <<"SpatialAdaptiveQuantization">> => list(any())
 %% }
 -type av1_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_override() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OverrideValue">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type service_override() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2386,7 +2400,9 @@
 %% Example:
 %% list_queues_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Queues">> => list(queue()())
+%%   <<"Queues">> => list(queue()()),
+%%   <<"TotalConcurrentJobs">> => integer(),
+%%   <<"UnallocatedConcurrentJobs">> => integer()
 %% }
 -type list_queues_response() :: #{binary() => any()}.
 

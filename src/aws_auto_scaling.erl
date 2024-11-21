@@ -386,6 +386,12 @@
 -type traffic_source_state() :: #{binary() => any()}.
 
 %% Example:
+%% baseline_performance_factors_request() :: #{
+%%   <<"Cpu">> => cpu_performance_factor_request()
+%% }
+-type baseline_performance_factors_request() :: #{binary() => any()}.
+
+%% Example:
 %% metric_granularity_type() :: #{
 %%   <<"Granularity">> => string()
 %% }
@@ -441,6 +447,13 @@
 %%   <<"ForceDelete">> => boolean()
 %% }
 -type delete_auto_scaling_group_type() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_target() :: #{
+%%   <<"CapacityReservationIds">> => list(string()()),
+%%   <<"CapacityReservationResourceGroupArns">> => list(string()())
+%% }
+-type capacity_reservation_target() :: #{binary() => any()}.
 
 %% Example:
 %% record_lifecycle_action_heartbeat_answer() :: #{
@@ -977,6 +990,12 @@
 -type suspended_process() :: #{binary() => any()}.
 
 %% Example:
+%% performance_factor_reference_request() :: #{
+%%   <<"InstanceFamily">> => string()
+%% }
+-type performance_factor_reference_request() :: #{binary() => any()}.
+
+%% Example:
 %% scheduled_update_group_action_request() :: #{
 %%   <<"DesiredCapacity">> => integer(),
 %%   <<"EndTime">> => non_neg_integer(),
@@ -1030,6 +1049,13 @@
 -type put_lifecycle_hook_type() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_reservation_specification() :: #{
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"CapacityReservationTarget">> => capacity_reservation_target()
+%% }
+-type capacity_reservation_specification() :: #{binary() => any()}.
+
+%% Example:
 %% launch_template_overrides() :: #{
 %%   <<"InstanceRequirements">> => instance_requirements(),
 %%   <<"InstanceType">> => string(),
@@ -1079,6 +1105,7 @@
 %%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
 %%   <<"AvailabilityZones">> => list(string()()),
 %%   <<"CapacityRebalance">> => boolean(),
+%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
 %%   <<"Context">> => string(),
 %%   <<"DefaultCooldown">> => integer(),
 %%   <<"DefaultInstanceWarmup">> => integer(),
@@ -1308,6 +1335,7 @@
 %%   <<"AllowedInstanceTypes">> => list(string()()),
 %%   <<"BareMetal">> => list(any()),
 %%   <<"BaselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps_request(),
+%%   <<"BaselinePerformanceFactors">> => baseline_performance_factors_request(),
 %%   <<"BurstablePerformance">> => list(any()),
 %%   <<"CpuManufacturers">> => list(list(any())()),
 %%   <<"ExcludedInstanceTypes">> => list(string()()),
@@ -1352,6 +1380,7 @@
 %%   <<"TargetGroupARNs">> => list(string()()),
 %%   <<"TerminationPolicies">> => list(string()()),
 %%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
+%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
 %%   <<"LaunchConfigurationName">> => string(),
 %%   <<"DesiredCapacityType">> => string(),
 %%   <<"AutoScalingGroupName">> => string(),
@@ -1445,6 +1474,7 @@
 %%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
 %%   <<"AvailabilityZones">> => list(string()()),
 %%   <<"CapacityRebalance">> => boolean(),
+%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
 %%   <<"Context">> => string(),
 %%   <<"DefaultCooldown">> => integer(),
 %%   <<"DefaultInstanceWarmup">> => integer(),
@@ -1513,6 +1543,12 @@
 %%   <<"UserData">> => string()
 %% }
 -type launch_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cpu_performance_factor_request() :: #{
+%%   <<"References">> => list(performance_factor_reference_request()())
+%% }
+-type cpu_performance_factor_request() :: #{binary() => any()}.
 
 %% Example:
 %% attach_load_balancer_target_groups_type() :: #{

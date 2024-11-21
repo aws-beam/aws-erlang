@@ -2020,10 +2020,14 @@
 %%   <<"BlueGreenDeploymentName">> := string(),
 %%   <<"Source">> := string(),
 %%   <<"Tags">> => list(tag()()),
+%%   <<"TargetAllocatedStorage">> => integer(),
 %%   <<"TargetDBClusterParameterGroupName">> => string(),
 %%   <<"TargetDBInstanceClass">> => string(),
 %%   <<"TargetDBParameterGroupName">> => string(),
 %%   <<"TargetEngineVersion">> => string(),
+%%   <<"TargetIops">> => integer(),
+%%   <<"TargetStorageThroughput">> => integer(),
+%%   <<"TargetStorageType">> => string(),
 %%   <<"UpgradeTargetStorageConfig">> => boolean()
 %% }
 -type create_blue_green_deployment_request() :: #{binary() => any()}.
@@ -6909,9 +6913,8 @@ copy_option_group(Client, Input, Options)
 %% production environment.
 %% In a blue/green deployment, the blue environment is the current production
 %% environment.
-%% The green environment is the staging environment. The staging environment
-%% stays in sync
-%% with the current production environment using logical replication.
+%% The green environment is the staging environment, and it stays in sync
+%% with the current production environment.
 %%
 %% You can make changes to the databases in the green environment without
 %% affecting

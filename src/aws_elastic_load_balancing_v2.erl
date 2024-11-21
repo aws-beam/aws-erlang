@@ -76,6 +76,8 @@
          deregister_targets/3,
          describe_account_limits/2,
          describe_account_limits/3,
+         describe_capacity_reservation/2,
+         describe_capacity_reservation/3,
          describe_listener_attributes/2,
          describe_listener_attributes/3,
          describe_listener_certificates/2,
@@ -110,6 +112,8 @@
          get_trust_store_ca_certificates_bundle/3,
          get_trust_store_revocation_content/2,
          get_trust_store_revocation_content/3,
+         modify_capacity_reservation/2,
+         modify_capacity_reservation/3,
          modify_listener/2,
          modify_listener/3,
          modify_listener_attributes/2,
@@ -180,6 +184,15 @@
 -type get_trust_store_ca_certificates_bundle_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_reservation_output() :: #{
+%%   <<"CapacityReservationState">> => list(zonal_capacity_reservation_state()()),
+%%   <<"DecreaseRequestsRemaining">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity()
+%% }
+-type describe_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
 %% trust_store_revocation() :: #{
 %%   <<"NumberOfRevokedEntries">> => float(),
 %%   <<"RevocationId">> => float(),
@@ -187,6 +200,12 @@
 %%   <<"TrustStoreArn">> => string()
 %% }
 -type trust_store_revocation() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_load_balancer_capacity() :: #{
+%%   <<"CapacityUnits">> => integer()
+%% }
+-type minimum_load_balancer_capacity() :: #{binary() => any()}.
 
 %% Example:
 %% availability_zone() :: #{
@@ -505,6 +524,12 @@
 -type allocation_id_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
 %% delete_rule_output() :: #{
 
 %% }
@@ -672,6 +697,12 @@
 %%   <<"SslPolicy">> => string()
 %% }
 -type modify_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% prior_request_not_complete_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type prior_request_not_complete_exception() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_unique_target_groups_per_load_balancer_exception() :: #{
@@ -958,6 +989,12 @@
 -type duplicate_target_group_name_exception() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_reservation_pending_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type capacity_reservation_pending_exception() :: #{binary() => any()}.
+
+%% Example:
 %% describe_listeners_output() :: #{
 %%   <<"Listeners">> => list(listener()()),
 %%   <<"NextMarker">> => string()
@@ -1080,6 +1117,12 @@
 -type remove_trust_store_revocations_output() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_units_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type capacity_units_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% target_group_stickiness_config() :: #{
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"Enabled">> => boolean()
@@ -1125,6 +1168,21 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type rule_condition() :: #{binary() => any()}.
+
+%% Example:
+%% modify_capacity_reservation_output() :: #{
+%%   <<"CapacityReservationState">> => list(zonal_capacity_reservation_state()()),
+%%   <<"DecreaseRequestsRemaining">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity()
+%% }
+-type modify_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_decrease_requests_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type capacity_decrease_requests_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% target_group_association_limit_exception() :: #{
@@ -1354,6 +1412,12 @@
 -type delete_rule_input() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_reservation_input() :: #{
+%%   <<"LoadBalancerArn">> := string()
+%% }
+-type describe_capacity_reservation_input() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_ca_certificates_bundle_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1378,6 +1442,14 @@
 %%   <<"Value">> => string()
 %% }
 -type target_group_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% modify_capacity_reservation_input() :: #{
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity(),
+%%   <<"ResetCapacityReservation">> => boolean()
+%% }
+-type modify_capacity_reservation_input() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_subnet_exception() :: #{
@@ -1440,10 +1512,25 @@
 -type ca_certificates_bundle_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% zonal_capacity_reservation_state() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"EffectiveCapacityUnits">> => float(),
+%%   <<"State">> => capacity_reservation_status()
+%% }
+-type zonal_capacity_reservation_state() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_scheme_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_scheme_exception() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_status() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Reason">> => string()
+%% }
+-type capacity_reservation_status() :: #{binary() => any()}.
 
 %% Example:
 %% anomaly_detection() :: #{
@@ -1682,6 +1769,9 @@
     target_group_not_found_exception() | 
     invalid_target_exception().
 
+-type describe_capacity_reservation_errors() ::
+    load_balancer_not_found_exception().
+
 -type describe_listener_attributes_errors() ::
     listener_not_found_exception().
 
@@ -1745,6 +1835,16 @@
 -type get_trust_store_revocation_content_errors() ::
     trust_store_not_found_exception() | 
     revocation_id_not_found_exception().
+
+-type modify_capacity_reservation_errors() ::
+    capacity_decrease_requests_limit_exceeded_exception() | 
+    capacity_units_limit_exceeded_exception() | 
+    capacity_reservation_pending_exception() | 
+    operation_not_permitted_exception() | 
+    load_balancer_not_found_exception() | 
+    prior_request_not_complete_exception() | 
+    insufficient_capacity_exception() | 
+    invalid_configuration_request_exception().
 
 -type modify_listener_errors() ::
     unsupported_protocol_exception() | 
@@ -1840,6 +1940,7 @@
 
 -type set_subnets_errors() ::
     invalid_subnet_exception() | 
+    capacity_reservation_pending_exception() | 
     load_balancer_not_found_exception() | 
     allocation_id_not_found_exception() | 
     subnet_not_found_exception() | 
@@ -2289,6 +2390,24 @@ describe_account_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountLimits">>, Input, Options).
 
+%% @doc Describes the capacity reservation status for the specified load
+%% balancer.
+-spec describe_capacity_reservation(aws_client:aws_client(), describe_capacity_reservation_input()) ->
+    {ok, describe_capacity_reservation_output(), tuple()} |
+    {error, any()} |
+    {error, describe_capacity_reservation_errors(), tuple()}.
+describe_capacity_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_reservation(Client, Input, []).
+
+-spec describe_capacity_reservation(aws_client:aws_client(), describe_capacity_reservation_input(), proplists:proplist()) ->
+    {ok, describe_capacity_reservation_output(), tuple()} |
+    {error, any()} |
+    {error, describe_capacity_reservation_errors(), tuple()}.
+describe_capacity_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityReservation">>, Input, Options).
+
 %% @doc Describes the attributes for the specified listener.
 -spec describe_listener_attributes(aws_client:aws_client(), describe_listener_attributes_input()) ->
     {ok, describe_listener_attributes_output(), tuple()} |
@@ -2667,6 +2786,27 @@ get_trust_store_revocation_content(Client, Input)
 get_trust_store_revocation_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrustStoreRevocationContent">>, Input, Options).
+
+%% @doc Modifies the capacity reservation of the specified load balancer.
+%%
+%% When modifying capacity reservation, you must include at least one
+%% `MinimumLoadBalancerCapacity'
+%% or `ResetCapacityReservation'.
+-spec modify_capacity_reservation(aws_client:aws_client(), modify_capacity_reservation_input()) ->
+    {ok, modify_capacity_reservation_output(), tuple()} |
+    {error, any()} |
+    {error, modify_capacity_reservation_errors(), tuple()}.
+modify_capacity_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_capacity_reservation(Client, Input, []).
+
+-spec modify_capacity_reservation(aws_client:aws_client(), modify_capacity_reservation_input(), proplists:proplist()) ->
+    {ok, modify_capacity_reservation_output(), tuple()} |
+    {error, any()} |
+    {error, modify_capacity_reservation_errors(), tuple()}.
+modify_capacity_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyCapacityReservation">>, Input, Options).
 
 %% @doc Replaces the specified properties of the specified listener.
 %%

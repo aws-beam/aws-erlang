@@ -38,6 +38,8 @@
          export_ebs_volume_recommendations/3,
          export_ec2_instance_recommendations/2,
          export_ec2_instance_recommendations/3,
+         export_idle_recommendations/2,
+         export_idle_recommendations/3,
          export_lambda_function_recommendations/2,
          export_lambda_function_recommendations/3,
          export_license_recommendations/2,
@@ -62,6 +64,8 @@
          get_enrollment_status/3,
          get_enrollment_statuses_for_organization/2,
          get_enrollment_statuses_for_organization/3,
+         get_idle_recommendations/2,
+         get_idle_recommendations/3,
          get_lambda_function_recommendations/2,
          get_lambda_function_recommendations/3,
          get_license_recommendations/2,
@@ -125,7 +129,9 @@
 %% rds_db_recommendation() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"currentDBInstanceClass">> => string(),
+%%   <<"currentInstancePerformanceRisk">> => list(any()),
 %%   <<"currentStorageConfiguration">> => db_storage_configuration(),
+%%   <<"dbClusterIdentifier">> => string(),
 %%   <<"effectiveRecommendationPreferences">> => rds_effective_recommendation_preferences(),
 %%   <<"engine">> => string(),
 %%   <<"engineVersion">> => string(),
@@ -135,6 +141,7 @@
 %%   <<"instanceRecommendationOptions">> => list(rds_db_instance_recommendation_option()()),
 %%   <<"lastRefreshTimestamp">> => non_neg_integer(),
 %%   <<"lookbackPeriodInDays">> => float(),
+%%   <<"promotionTier">> => integer(),
 %%   <<"resourceArn">> => string(),
 %%   <<"storageFinding">> => list(any()),
 %%   <<"storageFindingReasonCodes">> => list(list(any())()),
@@ -171,6 +178,23 @@
 %%   <<"value">> => float()
 %% }
 -type lambda_function_memory_projected_metric() :: #{binary() => any()}.
+
+%% Example:
+%% idle_recommendation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"finding">> => list(any()),
+%%   <<"findingDescription">> => string(),
+%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
+%%   <<"lookBackPeriodInDays">> => float(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"savingsOpportunity">> => idle_savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => idle_savings_opportunity_after_discounts(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"utilizationMetrics">> => list(idle_utilization_metric()())
+%% }
+-type idle_recommendation() :: #{binary() => any()}.
 
 %% Example:
 %% get_e_c_s_service_recommendation_projected_metrics_request() :: #{
@@ -259,6 +283,14 @@
 -type lambda_function_recommendation() :: #{binary() => any()}.
 
 %% Example:
+%% idle_utilization_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type idle_utilization_metric() :: #{binary() => any()}.
+
+%% Example:
 %% db_storage_configuration() :: #{
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"iops">> => integer(),
@@ -267,6 +299,13 @@
 %%   <<"storageType">> => string()
 %% }
 -type db_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% idle_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type idle_estimated_monthly_savings() :: #{binary() => any()}.
 
 %% Example:
 %% get_enrollment_statuses_for_organization_request() :: #{
@@ -360,6 +399,13 @@
 -type e_c_s_estimated_monthly_savings() :: #{binary() => any()}.
 
 %% Example:
+%% idle_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => idle_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type idle_savings_opportunity_after_discounts() :: #{binary() => any()}.
+
+%% Example:
 %% rds_effective_recommendation_preferences() :: #{
 %%   <<"cpuVendorArchitectures">> => list(list(any())()),
 %%   <<"enhancedInfrastructureMetrics">> => list(any()),
@@ -388,6 +434,13 @@
 %%   <<"recommendationSummaries">> => list(recommendation_summary()())
 %% }
 -type get_recommendation_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% order_by() :: #{
+%%   <<"dimension">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type order_by() :: #{binary() => any()}.
 
 %% Example:
 %% instance_savings_estimation_mode() :: #{
@@ -512,12 +565,27 @@
 -type rds_instance_estimated_monthly_savings() :: #{binary() => any()}.
 
 %% Example:
+%% get_idle_recommendations_response() :: #{
+%%   <<"errors">> => list(idle_recommendation_error()()),
+%%   <<"idleRecommendations">> => list(idle_recommendation()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_idle_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_ec2_instance_recommendations_response() :: #{
 %%   <<"errors">> => list(get_recommendation_error()()),
 %%   <<"instanceRecommendations">> => list(instance_recommendation()()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_ec2_instance_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% idle_summary() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type idle_summary() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -530,6 +598,13 @@
 %%   <<"message">> => string()
 %% }
 -type opt_in_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% idle_recommendation_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string()())
+%% }
+-type idle_recommendation_filter() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -605,6 +680,17 @@
 -type invalid_parameter_value_exception() :: #{binary() => any()}.
 
 %% Example:
+%% export_idle_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(idle_recommendation_filter()()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_idle_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
 %% license_recommendation_option() :: #{
 %%   <<"licenseEdition">> => list(any()),
 %%   <<"licenseModel">> => list(any()),
@@ -613,6 +699,13 @@
 %%   <<"savingsOpportunity">> => savings_opportunity()
 %% }
 -type license_recommendation_option() :: #{binary() => any()}.
+
+%% Example:
+%% idle_savings_opportunity() :: #{
+%%   <<"estimatedMonthlySavings">> => idle_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type idle_savings_opportunity() :: #{binary() => any()}.
 
 %% Example:
 %% volume_recommendation() :: #{
@@ -906,6 +999,17 @@
 -type rds_db_storage_recommendation_option() :: #{binary() => any()}.
 
 %% Example:
+%% get_idle_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()()),
+%%   <<"filters">> => list(idle_recommendation_filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"orderBy">> => order_by(),
+%%   <<"resourceArns">> => list(string()())
+%% }
+-type get_idle_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_auto_scaling_group_recommendations_request() :: #{
 %%   <<"accountIds">> => list(string()()),
 %%   <<"autoScalingGroupArns">> => list(string()()),
@@ -1031,6 +1135,13 @@
 %%   <<"s3DestinationConfig">> := s3_destination_config()
 %% }
 -type export_ebs_volume_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_idle_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_idle_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_auto_scaling_group_recommendations_response() :: #{
@@ -1206,7 +1317,10 @@
 %% Example:
 %% recommendation_summary() :: #{
 %%   <<"accountId">> => string(),
+%%   <<"aggregatedSavingsOpportunity">> => savings_opportunity(),
 %%   <<"currentPerformanceRiskRatings">> => current_performance_risk_ratings(),
+%%   <<"idleSavingsOpportunity">> => savings_opportunity(),
+%%   <<"idleSummaries">> => list(idle_summary()()),
 %%   <<"inferredWorkloadSavings">> => list(inferred_workload_saving()()),
 %%   <<"recommendationResourceType">> => list(any()),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
@@ -1392,6 +1506,15 @@
 -type get_rds_database_recommendation_projected_metrics_request() :: #{binary() => any()}.
 
 %% Example:
+%% idle_recommendation_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"message">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type idle_recommendation_error() :: #{binary() => any()}.
+
+%% Example:
 %% preferred_resource() :: #{
 %%   <<"excludeList">> => list(string()()),
 %%   <<"includeList">> => list(string()()),
@@ -1474,6 +1597,16 @@
     missing_authentication_token().
 
 -type export_ec2_instance_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type export_idle_recommendations_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -1597,6 +1730,16 @@
     internal_server_exception() | 
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
+    missing_authentication_token().
+
+-type get_idle_recommendations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
     missing_authentication_token().
 
 -type get_lambda_function_recommendations_errors() ::
@@ -1846,6 +1989,37 @@ export_ec2_instance_recommendations(Client, Input)
 export_ec2_instance_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportEC2InstanceRecommendations">>, Input, Options).
+
+%% @doc
+%% Export optimization recommendations for your idle resources.
+%%
+%% Recommendations are exported in a comma-separated values (CSV) file, and
+%% its metadata
+%% in a JavaScript Object Notation (JSON) file, to an existing Amazon Simple
+%% Storage Service (Amazon S3) bucket that you specify. For more information,
+%% see Exporting
+%% Recommendations:
+%% https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html
+%% in the Compute Optimizer User
+%% Guide.
+%%
+%% You can have only one idle resource export job in progress per Amazon Web
+%% Services Region.
+-spec export_idle_recommendations(aws_client:aws_client(), export_idle_recommendations_request()) ->
+    {ok, export_idle_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, export_idle_recommendations_errors(), tuple()}.
+export_idle_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_idle_recommendations(Client, Input, []).
+
+-spec export_idle_recommendations(aws_client:aws_client(), export_idle_recommendations_request(), proplists:proplist()) ->
+    {ok, export_idle_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, export_idle_recommendations_errors(), tuple()}.
+export_idle_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportIdleRecommendations">>, Input, Options).
 
 %% @doc Exports optimization recommendations for Lambda functions.
 %%
@@ -2160,6 +2334,31 @@ get_enrollment_statuses_for_organization(Client, Input)
 get_enrollment_statuses_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnrollmentStatusesForOrganization">>, Input, Options).
+
+%% @doc Returns idle resource recommendations.
+%%
+%% Compute Optimizer generates recommendations for
+%% idle resources that meet a specific set of requirements. For more
+%% information, see
+%% Resource requirements:
+%% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
+%% in the
+%% Compute Optimizer User Guide
+-spec get_idle_recommendations(aws_client:aws_client(), get_idle_recommendations_request()) ->
+    {ok, get_idle_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_idle_recommendations_errors(), tuple()}.
+get_idle_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_idle_recommendations(Client, Input, []).
+
+-spec get_idle_recommendations(aws_client:aws_client(), get_idle_recommendations_request(), proplists:proplist()) ->
+    {ok, get_idle_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_idle_recommendations_errors(), tuple()}.
+get_idle_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIdleRecommendations">>, Input, Options).
 
 %% @doc Returns Lambda function recommendations.
 %%

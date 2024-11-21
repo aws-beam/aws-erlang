@@ -65,6 +65,8 @@
          create_project/4,
          create_project_membership/4,
          create_project_membership/5,
+         create_rule/3,
+         create_rule/4,
          create_subscription_grant/3,
          create_subscription_grant/4,
          create_subscription_request/3,
@@ -107,6 +109,8 @@
          delete_project/5,
          delete_project_membership/4,
          delete_project_membership/5,
+         delete_rule/4,
+         delete_rule/5,
          delete_subscription_grant/4,
          delete_subscription_grant/5,
          delete_subscription_request/4,
@@ -185,6 +189,9 @@
          get_project/3,
          get_project/5,
          get_project/6,
+         get_rule/3,
+         get_rule/5,
+         get_rule/6,
          get_subscription/3,
          get_subscription/5,
          get_subscription/6,
@@ -263,6 +270,9 @@
          list_projects/2,
          list_projects/4,
          list_projects/5,
+         list_rules/4,
+         list_rules/6,
+         list_rules/7,
          list_subscription_grants/2,
          list_subscription_grants/4,
          list_subscription_grants/5,
@@ -337,6 +347,8 @@
          update_group_profile/5,
          update_project/4,
          update_project/5,
+         update_rule/4,
+         update_rule/5,
          update_subscription_grant_status/5,
          update_subscription_grant_status/6,
          update_subscription_request/4,
@@ -369,6 +381,13 @@
 %%   <<"revision">> => string()
 %% }
 -type asset_revision() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_form_enforcement_detail() :: #{
+%%   <<"requiredMetadataForms">> => list(metadata_form_reference()())
+%% }
+-type metadata_form_enforcement_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -710,6 +729,14 @@
 
 
 %% Example:
+%% metadata_form_reference() :: #{
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type metadata_form_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_asset_filter_output() :: #{
 %%   <<"assetId">> => string(),
 %%   <<"configuration">> => list(),
@@ -1002,6 +1029,7 @@
 %% Example:
 %% create_subscription_request_input() :: #{
 %%   <<"clientToken">> => [string()],
+%%   <<"metadataForms">> => list(form_input()()),
 %%   <<"requestReason">> := string(),
 %%   <<"subscribedListings">> := list(subscribed_listing_input()()),
 %%   <<"subscribedPrincipals">> := list(list()())
@@ -1196,6 +1224,25 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type revoke_subscription_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rule_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"identifier">> => string(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"ruleType">> => list(any()),
+%%   <<"scope">> => rule_scope(),
+%%   <<"target">> => list(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_rule_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1686,6 +1733,23 @@
 %% }
 -type remove_entity_owner_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_rule_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"identifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ruleType">> => list(any()),
+%%   <<"scope">> => rule_scope(),
+%%   <<"target">> => list(),
+%%   <<"targetType">> => list(any())
+%% }
+-type create_rule_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_product_input() :: #{}
 -type delete_data_product_input() :: #{}.
@@ -1740,6 +1804,15 @@
 %%   <<"parentDomainUnitId">> => string()
 %% }
 -type get_domain_unit_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_form_summary() :: #{
+%%   <<"formName">> => string(),
+%%   <<"typeName">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type metadata_form_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1810,6 +1883,26 @@
 %%   <<"type">> => list(any())
 %% }
 -type get_metadata_generation_run_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_rule_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"identifier">> => string(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"ruleType">> => list(any()),
+%%   <<"scope">> => rule_scope(),
+%%   <<"target">> => list(),
+%%   <<"targetType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_rule_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1993,6 +2086,10 @@
 %% get_subscription_grant_input() :: #{}
 -type get_subscription_grant_input() :: #{}.
 
+%% Example:
+%% delete_rule_output() :: #{}
+-type delete_rule_output() :: #{}.
+
 
 %% Example:
 %% create_user_profile_input() :: #{
@@ -2131,6 +2228,13 @@
 
 
 %% Example:
+%% get_rule_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_domain_units_for_parent_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -2156,6 +2260,14 @@
 %%   <<"revision">> => string()
 %% }
 -type get_asset_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% projects_for_rule() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"specificProjects">> => list(string()())
+%% }
+-type projects_for_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2468,7 +2580,9 @@
 %%   <<"createdBy">> => string(),
 %%   <<"decisionComment">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"metadataForms">> => list(form_output()()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
@@ -2850,6 +2964,15 @@
 
 
 %% Example:
+%% rule_scope() :: #{
+%%   <<"assetType">> => asset_types_for_rule(),
+%%   <<"dataProduct">> => [boolean()],
+%%   <<"project">> => projects_for_rule()
+%% }
+-type rule_scope() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_glossary_term_output() :: #{
 %%   <<"domainId">> => string(),
 %%   <<"glossaryId">> => string(),
@@ -2997,6 +3120,19 @@
 %%   <<"clientToken">> => [string()]
 %% }
 -type start_data_source_run_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_input() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detail">> := list(),
+%%   <<"name">> := string(),
+%%   <<"scope">> := rule_scope(),
+%%   <<"target">> := list()
+%% }
+-type create_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3164,6 +3300,20 @@
 %%   <<"name">> := string()
 %% }
 -type create_project_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_input() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"assetTypes">> => list(string()()),
+%%   <<"dataProduct">> => [boolean()],
+%%   <<"includeCascaded">> => [boolean()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"projectIds">> => list(string()()),
+%%   <<"ruleType">> => list(any())
+%% }
+-type list_rules_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_subscription_grant_input() :: #{}
@@ -3340,6 +3490,22 @@
 %%   <<"owningProjectIdentifier">> := string()
 %% }
 -type create_asset_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_summary() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"identifier">> => string(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"ruleType">> => list(any()),
+%%   <<"scope">> => rule_scope(),
+%%   <<"target">> => list(),
+%%   <<"targetType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type rule_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3634,6 +3800,14 @@
 
 
 %% Example:
+%% domain_unit_target() :: #{
+%%   <<"domainUnitId">> => string(),
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type domain_unit_target() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_data_product_input() :: #{
 %%   <<"revision">> => string()
 %% }
@@ -3692,7 +3866,9 @@
 %%   <<"createdBy">> => string(),
 %%   <<"decisionComment">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"metadataFormsSummary">> => list(metadata_form_summary()()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
@@ -3798,7 +3974,9 @@
 %%   <<"createdBy">> => string(),
 %%   <<"decisionComment">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"metadataForms">> => list(form_output()()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
@@ -3816,7 +3994,9 @@
 %%   <<"createdBy">> => string(),
 %%   <<"decisionComment">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"metadataForms">> => list(form_output()()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
@@ -3826,6 +4006,14 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type update_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_output() :: #{
+%%   <<"items">> => list(rule_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rules_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4172,6 +4360,10 @@
 %% }
 -type get_subscription_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_rule_input() :: #{}
+-type delete_rule_input() :: #{}.
+
 
 %% Example:
 %% subscribed_listing_input() :: #{
@@ -4195,6 +4387,14 @@
 %%   <<"status">> => [string()]
 %% }
 -type asset_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_types_for_rule() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"specificAssetTypes">> => list(string()())
+%% }
+-type asset_types_for_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4301,7 +4501,9 @@
 %%   <<"createdBy">> => string(),
 %%   <<"decisionComment">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"metadataForms">> => list(form_output()()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
@@ -4377,6 +4579,17 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rule_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"includeChildDomainUnits">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"scope">> => rule_scope()
+%% }
+-type update_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4459,7 +4672,9 @@
 %%   <<"createdBy">> => string(),
 %%   <<"decisionComment">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"metadataForms">> => list(form_output()()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
@@ -4910,6 +5125,15 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_subscription_grant_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5070,6 +5294,14 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
+
+-type delete_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_subscription_grant_errors() ::
     throttling_exception() | 
@@ -5275,6 +5507,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_subscription_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5454,6 +5693,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_subscription_grants_errors() ::
     throttling_exception() | 
@@ -5696,6 +5942,15 @@
     resource_not_found_exception().
 
 -type update_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -6631,6 +6886,53 @@ create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, O
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a rule in Amazon DataZone.
+%%
+%% A rule is a formal agreement that enforces specific
+%% requirements across user workflows (e.g., publishing assets to the
+%% catalog, requesting
+%% subscriptions, creating projects) within the Amazon DataZone data portal.
+%% These rules help
+%% maintain consistency, ensure compliance, and uphold governance standards
+%% in data management
+%% processes. For instance, a metadata enforcement rule can specify the
+%% required information
+%% for creating a subscription request or publishing a data asset to the
+%% catalog, ensuring
+%% alignment with organizational standards.
+-spec create_rule(aws_client:aws_client(), binary() | list(), create_rule_input()) ->
+    {ok, create_rule_output(), tuple()} |
+    {error, any()} |
+    {error, create_rule_errors(), tuple()}.
+create_rule(Client, DomainIdentifier, Input) ->
+    create_rule(Client, DomainIdentifier, Input, []).
+
+-spec create_rule(aws_client:aws_client(), binary() | list(), create_rule_input(), proplists:proplist()) ->
+    {ok, create_rule_output(), tuple()} |
+    {error, any()} |
+    {error, create_rule_errors(), tuple()}.
+create_rule(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/rules"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a subsscription grant in Amazon DataZone.
 -spec create_subscription_grant(aws_client:aws_client(), binary() | list(), create_subscription_grant_input()) ->
     {ok, create_subscription_grant_output(), tuple()} |
@@ -7333,6 +7635,53 @@ delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input) ->
 delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(ProjectIdentifier), "/deleteMembership"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a rule in Amazon DataZone.
+%%
+%% A rule is a formal agreement that enforces specific
+%% requirements across user workflows (e.g., publishing assets to the
+%% catalog, requesting
+%% subscriptions, creating projects) within the Amazon DataZone data portal.
+%% These rules help
+%% maintain consistency, ensure compliance, and uphold governance standards
+%% in data management
+%% processes. For instance, a metadata enforcement rule can specify the
+%% required information
+%% for creating a subscription request or publishing a data asset to the
+%% catalog, ensuring
+%% alignment with organizational standards.
+-spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_input()) ->
+    {ok, delete_rule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_rule_errors(), tuple()}.
+delete_rule(Client, DomainIdentifier, Identifier, Input) ->
+    delete_rule(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_input(), proplists:proplist()) ->
+    {ok, delete_rule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_rule_errors(), tuple()}.
+delete_rule(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/rules/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8396,6 +8745,60 @@ get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the details of a rule in Amazon DataZone.
+%%
+%% A rule is a formal agreement that
+%% enforces specific requirements across user workflows (e.g., publishing
+%% assets to the
+%% catalog, requesting subscriptions, creating projects) within the Amazon
+%% DataZone data
+%% portal. These rules help maintain consistency, ensure compliance, and
+%% uphold governance
+%% standards in data management processes. For instance, a metadata
+%% enforcement rule can
+%% specify the required information for creating a subscription request or
+%% publishing a data
+%% asset to the catalog, ensuring alignment with organizational standards.
+-spec get_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_rule_errors(), tuple()}.
+get_rule(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_rule(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_rule_errors(), tuple()}.
+get_rule(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_rule(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_rule_output(), tuple()} |
+    {error, any()} |
+    {error, get_rule_errors(), tuple()}.
+get_rule(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/rules/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"revision">>, maps:get(<<"revision">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -9506,6 +9909,67 @@ list_projects(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"userIdentifier">>, maps:get(<<"userIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists existing rules.
+%%
+%% In Amazon DataZone, a rule is a formal agreement that enforces
+%% specific requirements across user workflows (e.g., publishing assets to
+%% the catalog,
+%% requesting subscriptions, creating projects) within the Amazon DataZone
+%% data portal. These
+%% rules help maintain consistency, ensure compliance, and uphold governance
+%% standards in data
+%% management processes. For instance, a metadata enforcement rule can
+%% specify the required
+%% information for creating a subscription request or publishing a data asset
+%% to the catalog,
+%% ensuring alignment with organizational standards.
+-spec list_rules(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_rules_output(), tuple()} |
+    {error, any()} |
+    {error, list_rules_errors(), tuple()}.
+list_rules(Client, DomainIdentifier, TargetIdentifier, TargetType)
+  when is_map(Client) ->
+    list_rules(Client, DomainIdentifier, TargetIdentifier, TargetType, #{}, #{}).
+
+-spec list_rules(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_rules_output(), tuple()} |
+    {error, any()} |
+    {error, list_rules_errors(), tuple()}.
+list_rules(Client, DomainIdentifier, TargetIdentifier, TargetType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_rules(Client, DomainIdentifier, TargetIdentifier, TargetType, QueryMap, HeadersMap, []).
+
+-spec list_rules(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_rules_output(), tuple()} |
+    {error, any()} |
+    {error, list_rules_errors(), tuple()}.
+list_rules(Client, DomainIdentifier, TargetIdentifier, TargetType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/list-rules/", aws_util:encode_uri(TargetType), "/", aws_util:encode_uri(TargetIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"ruleAction">>, maps:get(<<"ruleAction">>, QueryMap, undefined)},
+        {<<"assetTypes">>, maps:get(<<"assetTypes">>, QueryMap, undefined)},
+        {<<"dataProduct">>, maps:get(<<"dataProduct">>, QueryMap, undefined)},
+        {<<"includeCascaded">>, maps:get(<<"includeCascaded">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"projectIds">>, maps:get(<<"projectIds">>, QueryMap, undefined)},
+        {<<"ruleType">>, maps:get(<<"ruleType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -10725,6 +11189,53 @@ update_project(Client, DomainIdentifier, Identifier, Input) ->
 update_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a rule.
+%%
+%% In Amazon DataZone, a rule is a formal agreement that enforces specific
+%% requirements across user workflows (e.g., publishing assets to the
+%% catalog, requesting
+%% subscriptions, creating projects) within the Amazon DataZone data portal.
+%% These rules help
+%% maintain consistency, ensure compliance, and uphold governance standards
+%% in data management
+%% processes. For instance, a metadata enforcement rule can specify the
+%% required information
+%% for creating a subscription request or publishing a data asset to the
+%% catalog, ensuring
+%% alignment with organizational standards.
+-spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_rule_input()) ->
+    {ok, update_rule_output(), tuple()} |
+    {error, any()} |
+    {error, update_rule_errors(), tuple()}.
+update_rule(Client, DomainIdentifier, Identifier, Input) ->
+    update_rule(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_rule_input(), proplists:proplist()) ->
+    {ok, update_rule_output(), tuple()} |
+    {error, any()} |
+    {error, update_rule_errors(), tuple()}.
+update_rule(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/rules/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

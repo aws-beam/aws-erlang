@@ -68,6 +68,7 @@
 %% Example:
 %% create_rule_request() :: #{
 %%   <<"Description">> => string(),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"ResourceTags">> => list(resource_tag()()),
 %%   <<"ResourceType">> := list(any()),
@@ -80,6 +81,7 @@
 %% Example:
 %% create_rule_response() :: #{
 %%   <<"Description">> => string(),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"LockState">> => list(any()),
@@ -108,6 +110,7 @@
 %% Example:
 %% get_rule_response() :: #{
 %%   <<"Description">> => string(),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"LockEndTime">> => non_neg_integer(),
@@ -130,6 +133,7 @@
 
 %% Example:
 %% list_rules_request() :: #{
+%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
 %%   <<"LockState">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -175,6 +179,7 @@
 %% Example:
 %% lock_rule_response() :: #{
 %%   <<"Description">> => string(),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"LockState">> => list(any()),
@@ -264,6 +269,7 @@
 %% Example:
 %% unlock_rule_response() :: #{
 %%   <<"Description">> => string(),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"LockEndTime">> => non_neg_integer(),
@@ -291,6 +297,7 @@
 %% Example:
 %% update_rule_request() :: #{
 %%   <<"Description">> => string(),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
 %%   <<"ResourceTags">> => list(resource_tag()()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"RetentionPeriod">> => retention_period()
@@ -301,6 +308,7 @@
 %% Example:
 %% update_rule_response() :: #{
 %%   <<"Description">> => string(),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockEndTime">> => non_neg_integer(),
 %%   <<"LockState">> => list(any()),
@@ -381,10 +389,31 @@
 
 %% @doc Creates a Recycle Bin retention rule.
 %%
+%% You can create two types of retention rules:
+%%
+%% Tag-level retention rules - These retention rules use
+%% resource tags to identify the resources to protect. For each retention
+%% rule, you specify one or
+%% more tag key and value pairs. Resources (of the specified type) that have
+%% at least one of these
+%% tag key and value pairs are automatically retained in the Recycle Bin upon
+%% deletion. Use this
+%% type of retention rule to protect specific resources in your account based
+%% on their tags.
+%%
+%% Region-level retention rules - These retention rules,
+%% by default, apply to all of the resources (of the specified type) in the
+%% Region, even if the
+%% resources are not tagged. However, you can specify exclusion tags to
+%% exclude resources that have
+%% specific tags. Use this type of retention rule to protect all resources of
+%% a specific type in a
+%% Region.
+%%
 %% For more information, see
 %% Create Recycle Bin retention rules:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-create-rule
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html in the
+%% Amazon EBS User Guide.
 -spec create_rule(aws_client:aws_client(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
@@ -565,9 +594,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Locks a retention rule.
+%% @doc Locks a Region-level retention rule.
 %%
-%% A locked retention rule can't be modified or deleted.
+%% A locked retention rule can't be modified or
+%% deleted.
+%%
+%% You can't lock tag-level retention rules, or Region-level retention
+%% rules that
+%% have exclusion tags.
 -spec lock_rule(aws_client:aws_client(), binary() | list(), lock_rule_request()) ->
     {ok, lock_rule_response(), tuple()} |
     {error, any()} |

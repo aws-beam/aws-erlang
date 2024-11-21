@@ -435,6 +435,7 @@
 %% Example:
 %% list_enabled_baselines_input() :: #{
 %%   <<"filter">> => enabled_baseline_filter(),
+%%   <<"includeChildren">> => [boolean()],
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -535,6 +536,7 @@
 %%   <<"arn">> => string(),
 %%   <<"baselineIdentifier">> => [string()],
 %%   <<"baselineVersion">> => [string()],
+%%   <<"parentIdentifier">> => string(),
 %%   <<"statusSummary">> => enablement_status_summary(),
 %%   <<"targetIdentifier">> => [string()]
 %% }
@@ -807,6 +809,7 @@
 %% Example:
 %% enabled_baseline_filter() :: #{
 %%   <<"baselineIdentifiers">> => list(string()()),
+%%   <<"parentIdentifiers">> => list(string()()),
 %%   <<"targetIdentifiers">> => list(string()())
 %% }
 -type enabled_baseline_filter() :: #{binary() => any()}.
@@ -912,6 +915,7 @@
 %%   <<"baselineIdentifier">> => [string()],
 %%   <<"baselineVersion">> => [string()],
 %%   <<"parameters">> => list(enabled_baseline_parameter_summary()()),
+%%   <<"parentIdentifier">> => string(),
 %%   <<"statusSummary">> => enablement_status_summary(),
 %%   <<"targetIdentifier">> => [string()]
 %% }

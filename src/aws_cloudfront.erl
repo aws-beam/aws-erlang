@@ -17,6 +17,8 @@
          associate_alias/4,
          copy_distribution/3,
          copy_distribution/4,
+         create_anycast_ip_list/2,
+         create_anycast_ip_list/3,
          create_cache_policy/2,
          create_cache_policy/3,
          create_cloud_front_origin_access_identity/2,
@@ -55,6 +57,10 @@
          create_streaming_distribution/3,
          create_streaming_distribution_with_tags/2,
          create_streaming_distribution_with_tags/3,
+         create_vpc_origin/2,
+         create_vpc_origin/3,
+         delete_anycast_ip_list/3,
+         delete_anycast_ip_list/4,
          delete_cache_policy/3,
          delete_cache_policy/4,
          delete_cloud_front_origin_access_identity/3,
@@ -87,12 +93,17 @@
          delete_response_headers_policy/4,
          delete_streaming_distribution/3,
          delete_streaming_distribution/4,
+         delete_vpc_origin/3,
+         delete_vpc_origin/4,
          describe_function/2,
          describe_function/4,
          describe_function/5,
          describe_key_value_store/2,
          describe_key_value_store/4,
          describe_key_value_store/5,
+         get_anycast_ip_list/2,
+         get_anycast_ip_list/4,
+         get_anycast_ip_list/5,
          get_cache_policy/2,
          get_cache_policy/4,
          get_cache_policy/5,
@@ -176,6 +187,12 @@
          get_streaming_distribution_config/2,
          get_streaming_distribution_config/4,
          get_streaming_distribution_config/5,
+         get_vpc_origin/2,
+         get_vpc_origin/4,
+         get_vpc_origin/5,
+         list_anycast_ip_lists/1,
+         list_anycast_ip_lists/3,
+         list_anycast_ip_lists/4,
          list_cache_policies/1,
          list_cache_policies/3,
          list_cache_policies/4,
@@ -191,6 +208,9 @@
          list_distributions/1,
          list_distributions/3,
          list_distributions/4,
+         list_distributions_by_anycast_ip_list_id/2,
+         list_distributions_by_anycast_ip_list_id/4,
+         list_distributions_by_anycast_ip_list_id/5,
          list_distributions_by_cache_policy_id/2,
          list_distributions_by_cache_policy_id/4,
          list_distributions_by_cache_policy_id/5,
@@ -205,6 +225,9 @@
          list_distributions_by_response_headers_policy_id/2,
          list_distributions_by_response_headers_policy_id/4,
          list_distributions_by_response_headers_policy_id/5,
+         list_distributions_by_vpc_origin_id/2,
+         list_distributions_by_vpc_origin_id/4,
+         list_distributions_by_vpc_origin_id/5,
          list_distributions_by_web_acl_id/2,
          list_distributions_by_web_acl_id/4,
          list_distributions_by_web_acl_id/5,
@@ -247,6 +270,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_vpc_origins/1,
+         list_vpc_origins/3,
+         list_vpc_origins/4,
          publish_function/3,
          publish_function/4,
          tag_resource/2,
@@ -286,7 +312,9 @@
          update_response_headers_policy/3,
          update_response_headers_policy/4,
          update_streaming_distribution/3,
-         update_streaming_distribution/4]).
+         update_streaming_distribution/4,
+         update_vpc_origin/3,
+         update_vpc_origin/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -523,6 +551,18 @@
 %% }
 -type status_codes() :: #{binary() => any()}.
 
+
+%% Example:
+%% vpc_origin_endpoint_config() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"HTTPPort">> => integer(),
+%%   <<"HTTPSPort">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"OriginProtocolPolicy">> => list(any()),
+%%   <<"OriginSslProtocols">> => origin_ssl_protocols()
+%% }
+-type vpc_origin_endpoint_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_streaming_distribution_config_request() :: #{}
 -type get_streaming_distribution_config_request() :: #{}.
@@ -578,6 +618,13 @@
 %%   <<"Tags">> => tags()
 %% }
 -type distribution_config_with_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% cannot_update_entity_while_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cannot_update_entity_while_in_use() :: #{binary() => any()}.
 
 
 %% Example:
@@ -662,6 +709,19 @@
 %%   <<"RealtimeLogConfig">> => realtime_log_config()
 %% }
 -type create_realtime_log_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% anycast_ip_list() :: #{
+%%   <<"AnycastIps">> => list(string()()),
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IpCount">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type anycast_ip_list() :: #{binary() => any()}.
 
 
 %% Example:
@@ -775,6 +835,14 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_protocol_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_origin_request() :: #{
+%%   <<"IfMatch">> := string(),
+%%   <<"VpcOriginEndpointConfig">> := vpc_origin_endpoint_config()
+%% }
+-type update_vpc_origin_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1022,6 +1090,7 @@
 %%   <<"ARN">> => string(),
 %%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()()),
 %%   <<"Aliases">> => aliases(),
+%%   <<"AnycastIpListId">> => string(),
 %%   <<"CacheBehaviors">> => cache_behaviors(),
 %%   <<"Comment">> => string(),
 %%   <<"CustomErrorResponses">> => custom_error_responses(),
@@ -1105,6 +1174,7 @@
 %%   <<"FieldLevelEncryptionId">> => string(),
 %%   <<"ForwardedValues">> => forwarded_values(),
 %%   <<"FunctionAssociations">> => function_associations(),
+%%   <<"GrpcConfig">> => grpc_config(),
 %%   <<"LambdaFunctionAssociations">> => lambda_function_associations(),
 %%   <<"MaxTTL">> => float(),
 %%   <<"MinTTL">> => float(),
@@ -1430,6 +1500,13 @@
 
 
 %% Example:
+%% list_distributions_by_anycast_ip_list_id_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_anycast_ip_list_id_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% origin_request_policy_headers_config() :: #{
 %%   <<"HeaderBehavior">> => list(any()),
 %%   <<"Headers">> => headers()
@@ -1450,6 +1527,18 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type query_arg_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% anycast_ip_list_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IpCount">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type anycast_ip_list_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1797,6 +1886,14 @@
 
 
 %% Example:
+%% create_vpc_origin_request() :: #{
+%%   <<"Tags">> => tags(),
+%%   <<"VpcOriginEndpointConfig">> := vpc_origin_endpoint_config()
+%% }
+-type create_vpc_origin_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_public_key_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
@@ -1806,6 +1903,7 @@
 %% Example:
 %% distribution_config() :: #{
 %%   <<"Aliases">> => aliases(),
+%%   <<"AnycastIpListId">> => string(),
 %%   <<"CacheBehaviors">> => cache_behaviors(),
 %%   <<"CallerReference">> => string(),
 %%   <<"Comment">> => string(),
@@ -2102,6 +2200,13 @@
 
 
 %% Example:
+%% vpc_origin_config() :: #{
+%%   <<"VpcOriginId">> => string()
+%% }
+-type vpc_origin_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% origin_access_control() :: #{
 %%   <<"Id">> => string(),
 %%   <<"OriginAccessControlConfig">> => origin_access_control_config()
@@ -2169,6 +2274,14 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions_with_function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_anycast_ip_list_result() :: #{
+%%   <<"AnycastIpList">> => anycast_ip_list(),
+%%   <<"ETag">> => string()
+%% }
+-type get_anycast_ip_list_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2241,6 +2354,18 @@
 %%   <<"Items">> => list(tag()())
 %% }
 -type tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% anycast_ip_list_collection() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(anycast_ip_list_summary()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type anycast_ip_list_collection() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2398,6 +2523,14 @@
 
 
 %% Example:
+%% get_vpc_origin_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"VpcOrigin">> => vpc_origin()
+%% }
+-type get_vpc_origin_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_cloud_front_origin_access_identity_request() :: #{
 %%   <<"CloudFrontOriginAccessIdentityConfig">> := cloud_front_origin_access_identity_config()
 %% }
@@ -2548,6 +2681,13 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_field_level_encryption_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_origins_result() :: #{
+%%   <<"VpcOriginList">> => vpc_origin_list()
+%% }
+-type list_vpc_origins_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2746,6 +2886,13 @@
 
 
 %% Example:
+%% delete_vpc_origin_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_vpc_origin_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% cloud_front_origin_access_identity() :: #{
 %%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
 %%   <<"Id">> => string(),
@@ -2775,6 +2922,15 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_distributions_with_single_function_arn() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_anycast_ip_list_request() :: #{
+%%   <<"IpCount">> := integer(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
+%% }
+-type create_anycast_ip_list_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2856,6 +3012,21 @@
 
 
 %% Example:
+%% create_anycast_ip_list_result() :: #{
+%%   <<"AnycastIpList">> => anycast_ip_list(),
+%%   <<"ETag">> => string()
+%% }
+-type create_anycast_ip_list_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% grpc_config() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type grpc_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% function_config() :: #{
 %%   <<"Comment">> => string(),
 %%   <<"KeyValueStoreAssociations">> => key_value_store_associations(),
@@ -2898,6 +3069,15 @@
 %%   <<"Message">> => string()
 %% }
 -type cache_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_origin_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"VpcOrigin">> => vpc_origin()
+%% }
+-type create_vpc_origin_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2976,6 +3156,14 @@
 
 
 %% Example:
+%% delete_vpc_origin_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"VpcOrigin">> => vpc_origin()
+%% }
+-type delete_vpc_origin_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_field_level_encryption_profile_config_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FieldLevelEncryptionProfileConfig">> => field_level_encryption_profile_config()
@@ -2996,6 +3184,13 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_cloud_front_origin_access_identities() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_anycast_ip_list_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_anycast_ip_list_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3029,6 +3224,14 @@
 %% }
 -type list_distributions_by_response_headers_policy_id_result() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_vpc_origin_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"VpcOrigin">> => vpc_origin()
+%% }
+-type update_vpc_origin_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_monitoring_subscription_request() :: #{}
 -type get_monitoring_subscription_request() :: #{}.
@@ -3045,7 +3248,8 @@
 %%   <<"OriginAccessControlId">> => string(),
 %%   <<"OriginPath">> => string(),
 %%   <<"OriginShield">> => origin_shield(),
-%%   <<"S3OriginConfig">> => s3_origin_config()
+%%   <<"S3OriginConfig">> => s3_origin_config(),
+%%   <<"VpcOriginConfig">> => vpc_origin_config()
 %% }
 -type origin() :: #{binary() => any()}.
 
@@ -3174,6 +3378,14 @@
 
 
 %% Example:
+%% list_distributions_by_anycast_ip_list_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_anycast_ip_list_id_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_distributions_by_realtime_log_config_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
@@ -3270,6 +3482,14 @@
 
 
 %% Example:
+%% list_distributions_by_vpc_origin_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_vpc_origin_id_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_origin_request_policy_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"Location">> => string(),
@@ -3320,6 +3540,10 @@
 %%   <<"ETag">> => string()
 %% }
 -type get_continuous_deployment_policy_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_anycast_ip_list_request() :: #{}
+-type get_anycast_ip_list_request() :: #{}.
 
 
 %% Example:
@@ -3473,6 +3697,18 @@
 
 
 %% Example:
+%% vpc_origin() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"VpcOriginEndpointConfig">> => vpc_origin_endpoint_config()
+%% }
+-type vpc_origin() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_relative_path() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3591,6 +3827,18 @@
 
 
 %% Example:
+%% vpc_origin_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(vpc_origin_summary()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type vpc_origin_list() :: #{binary() => any()}.
+
+
+%% Example:
 %% origin_access_control_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3686,6 +3934,13 @@
 %%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config()
 %% }
 -type get_field_level_encryption_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_vpc_origin_id_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_vpc_origin_id_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_monitoring_subscription_request() :: #{}
@@ -3861,6 +4116,19 @@
 
 
 %% Example:
+%% vpc_origin_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OriginEndpointArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type vpc_origin_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_key_group_config_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"KeyGroupConfig">> => key_group_config()
@@ -3884,6 +4152,7 @@
 %%   <<"FieldLevelEncryptionId">> => string(),
 %%   <<"ForwardedValues">> => forwarded_values(),
 %%   <<"FunctionAssociations">> => function_associations(),
+%%   <<"GrpcConfig">> => grpc_config(),
 %%   <<"LambdaFunctionAssociations">> => lambda_function_associations(),
 %%   <<"MaxTTL">> => float(),
 %%   <<"MinTTL">> => float(),
@@ -3960,6 +4229,14 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_headers_in_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anycast_ip_lists_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_anycast_ip_lists_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4069,6 +4346,13 @@
 
 
 %% Example:
+%% list_anycast_ip_lists_result() :: #{
+%%   <<"AnycastIpLists">> => anycast_ip_list_collection()
+%% }
+-type list_anycast_ip_lists_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_origin_request_policy_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"OriginRequestPolicy">> => origin_request_policy()
@@ -4149,6 +4433,14 @@
 
 
 %% Example:
+%% list_vpc_origins_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_vpc_origins_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalidation() :: #{
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
@@ -4213,6 +4505,10 @@
 %%   <<"SamplingRate">> => float()
 %% }
 -type realtime_log_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_origin_request() :: #{}
+-type get_vpc_origin_request() :: #{}.
 
 %% Example:
 %% get_origin_access_control_config_request() :: #{}
@@ -4432,6 +4728,14 @@
     too_many_function_associations() | 
     too_many_origin_groups_per_distribution().
 
+-type create_anycast_ip_list_errors() ::
+    entity_limit_exceeded() | 
+    unsupported_operation() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
+
 -type create_cache_policy_errors() ::
     cache_policy_already_exists() | 
     inconsistent_quantities() | 
@@ -4512,6 +4816,7 @@
     too_many_cookie_names_in_white_list() | 
     access_denied() | 
     invalid_t_t_l_order() | 
+    entity_not_found() | 
     invalid_protocol_settings() | 
     too_many_distributions_associated_to_key_group() | 
     too_many_distributions_associated_to_origin_request_policy() | 
@@ -4579,6 +4884,7 @@
     too_many_cookie_names_in_white_list() | 
     access_denied() | 
     invalid_t_t_l_order() | 
+    entity_not_found() | 
     invalid_protocol_settings() | 
     invalid_tagging() | 
     too_many_distributions_associated_to_key_group() | 
@@ -4715,6 +5021,25 @@
     invalid_tagging() | 
     invalid_origin_access_identity().
 
+-type create_vpc_origin_errors() ::
+    entity_limit_exceeded() | 
+    inconsistent_quantities() | 
+    unsupported_operation() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
+
+-type delete_anycast_ip_list_errors() ::
+    illegal_delete() | 
+    cannot_delete_entity_while_in_use() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
 -type delete_cache_policy_errors() ::
     illegal_delete() | 
     cache_policy_in_use() | 
@@ -4829,11 +5154,27 @@
     invalid_if_match_version() | 
     streaming_distribution_not_disabled().
 
+-type delete_vpc_origin_errors() ::
+    illegal_delete() | 
+    cannot_delete_entity_while_in_use() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
 -type describe_function_errors() ::
     no_such_function_exists() | 
     unsupported_operation().
 
 -type describe_key_value_store_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
+-type get_anycast_ip_list_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
     access_denied() | 
@@ -4953,6 +5294,18 @@
     no_such_streaming_distribution() | 
     access_denied().
 
+-type get_vpc_origin_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
+-type list_anycast_ip_lists_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 -type list_cache_policies_errors() ::
     no_such_cache_policy() | 
     invalid_argument() | 
@@ -4972,6 +5325,12 @@
 
 -type list_distributions_errors() ::
     invalid_argument().
+
+-type list_distributions_by_anycast_ip_list_id_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
 
 -type list_distributions_by_cache_policy_id_errors() ::
     no_such_cache_policy() | 
@@ -4994,6 +5353,12 @@
     no_such_response_headers_policy() | 
     invalid_argument() | 
     access_denied().
+
+-type list_distributions_by_vpc_origin_id_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
 
 -type list_distributions_by_web_acl_id_errors() ::
     invalid_web_acl_id() | 
@@ -5051,6 +5416,12 @@
     invalid_argument() | 
     access_denied() | 
     invalid_tagging().
+
+-type list_vpc_origins_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
 
 -type publish_function_errors() ::
     no_such_function_exists() | 
@@ -5166,6 +5537,7 @@
     access_denied() | 
     invalid_t_t_l_order() | 
     illegal_update() | 
+    entity_not_found() | 
     too_many_distributions_associated_to_key_group() | 
     too_many_distributions_associated_to_origin_request_policy() | 
     invalid_query_string_parameters() | 
@@ -5231,6 +5603,7 @@
     access_denied() | 
     invalid_t_t_l_order() | 
     illegal_update() | 
+    entity_not_found() | 
     too_many_distributions_associated_to_key_group() | 
     too_many_distributions_associated_to_origin_request_policy() | 
     invalid_query_string_parameters() | 
@@ -5357,6 +5730,19 @@
     invalid_if_match_version() | 
     invalid_origin_access_identity().
 
+-type update_vpc_origin_errors() ::
+    entity_limit_exceeded() | 
+    inconsistent_quantities() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    entity_not_found() | 
+    invalid_if_match_version() | 
+    cannot_update_entity_while_in_use().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -5482,6 +5868,56 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
           [
             {<<"ETag">>, <<"ETag">>},
             {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates an Anycast static IP list.
+-spec create_anycast_ip_list(aws_client:aws_client(), create_anycast_ip_list_request()) ->
+    {ok, create_anycast_ip_list_result(), tuple()} |
+    {error, any()} |
+    {error, create_anycast_ip_list_errors(), tuple()}.
+create_anycast_ip_list(Client, Input) ->
+    create_anycast_ip_list(Client, Input, []).
+
+-spec create_anycast_ip_list(aws_client:aws_client(), create_anycast_ip_list_request(), proplists:proplist()) ->
+    {ok, create_anycast_ip_list_result(), tuple()} |
+    {error, any()} |
+    {error, create_anycast_ip_list_errors(), tuple()}.
+create_anycast_ip_list(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/anycast-ip-list"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -6646,6 +7082,93 @@ create_streaming_distribution_with_tags(Client, Input0, Options0) ->
         Result
     end.
 
+%% @doc Create an Amazon CloudFront VPC origin.
+-spec create_vpc_origin(aws_client:aws_client(), create_vpc_origin_request()) ->
+    {ok, create_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_origin_errors(), tuple()}.
+create_vpc_origin(Client, Input) ->
+    create_vpc_origin(Client, Input, []).
+
+-spec create_vpc_origin(aws_client:aws_client(), create_vpc_origin_request(), proplists:proplist()) ->
+    {ok, create_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_origin_errors(), tuple()}.
+create_vpc_origin(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/vpc-origin"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Deletes an Anycast static IP list.
+-spec delete_anycast_ip_list(aws_client:aws_client(), binary() | list(), delete_anycast_ip_list_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_anycast_ip_list_errors(), tuple()}.
+delete_anycast_ip_list(Client, Id, Input) ->
+    delete_anycast_ip_list(Client, Id, Input, []).
+
+-spec delete_anycast_ip_list(aws_client:aws_client(), binary() | list(), delete_anycast_ip_list_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_anycast_ip_list_errors(), tuple()}.
+delete_anycast_ip_list(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/anycast-ip-list/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a cache policy.
 %%
 %% You cannot delete a cache policy if it's attached to a cache behavior.
@@ -7347,6 +7870,58 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete an Amazon CloudFront VPC origin.
+-spec delete_vpc_origin(aws_client:aws_client(), binary() | list(), delete_vpc_origin_request()) ->
+    {ok, delete_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_origin_errors(), tuple()}.
+delete_vpc_origin(Client, Id, Input) ->
+    delete_vpc_origin(Client, Id, Input, []).
+
+-spec delete_vpc_origin(aws_client:aws_client(), binary() | list(), delete_vpc_origin_request(), proplists:proplist()) ->
+    {ok, delete_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_origin_errors(), tuple()}.
+delete_vpc_origin(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/vpc-origin/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Gets configuration information and metadata about a CloudFront
 %% function, but not the
 %% function's code.
@@ -7437,6 +8012,59 @@ describe_key_value_store(Client, Name, QueryMap, HeadersMap)
 describe_key_value_store(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets an Anycast static IP list.
+-spec get_anycast_ip_list(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_anycast_ip_list_result(), tuple()} |
+    {error, any()} |
+    {error, get_anycast_ip_list_errors(), tuple()}.
+get_anycast_ip_list(Client, Id)
+  when is_map(Client) ->
+    get_anycast_ip_list(Client, Id, #{}, #{}).
+
+-spec get_anycast_ip_list(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_anycast_ip_list_result(), tuple()} |
+    {error, any()} |
+    {error, get_anycast_ip_list_errors(), tuple()}.
+get_anycast_ip_list(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_anycast_ip_list(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_anycast_ip_list(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_anycast_ip_list_result(), tuple()} |
+    {error, any()} |
+    {error, get_anycast_ip_list_errors(), tuple()}.
+get_anycast_ip_list(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/anycast-ip-list/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -9010,6 +9638,101 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
         Result
     end.
 
+%% @doc Get the details of an Amazon CloudFront VPC origin.
+-spec get_vpc_origin(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_origin_errors(), tuple()}.
+get_vpc_origin(Client, Id)
+  when is_map(Client) ->
+    get_vpc_origin(Client, Id, #{}, #{}).
+
+-spec get_vpc_origin(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_origin_errors(), tuple()}.
+get_vpc_origin(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vpc_origin(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_vpc_origin(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_origin_errors(), tuple()}.
+get_vpc_origin(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/vpc-origin/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Lists your Anycast static IP lists.
+-spec list_anycast_ip_lists(aws_client:aws_client()) ->
+    {ok, list_anycast_ip_lists_result(), tuple()} |
+    {error, any()} |
+    {error, list_anycast_ip_lists_errors(), tuple()}.
+list_anycast_ip_lists(Client)
+  when is_map(Client) ->
+    list_anycast_ip_lists(Client, #{}, #{}).
+
+-spec list_anycast_ip_lists(aws_client:aws_client(), map(), map()) ->
+    {ok, list_anycast_ip_lists_result(), tuple()} |
+    {error, any()} |
+    {error, list_anycast_ip_lists_errors(), tuple()}.
+list_anycast_ip_lists(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_anycast_ip_lists(Client, QueryMap, HeadersMap, []).
+
+-spec list_anycast_ip_lists(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_anycast_ip_lists_result(), tuple()} |
+    {error, any()} |
+    {error, list_anycast_ip_lists_errors(), tuple()}.
+list_anycast_ip_lists(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/anycast-ip-list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a list of cache policies.
 %%
 %% You can optionally apply a filter to return only the managed policies
@@ -9294,6 +10017,49 @@ list_distributions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the distributions in your account that are associated with the
+%% specified `AnycastIpListId'.
+-spec list_distributions_by_anycast_ip_list_id(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_anycast_ip_list_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_anycast_ip_list_id_errors(), tuple()}.
+list_distributions_by_anycast_ip_list_id(Client, AnycastIpListId)
+  when is_map(Client) ->
+    list_distributions_by_anycast_ip_list_id(Client, AnycastIpListId, #{}, #{}).
+
+-spec list_distributions_by_anycast_ip_list_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_anycast_ip_list_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_anycast_ip_list_id_errors(), tuple()}.
+list_distributions_by_anycast_ip_list_id(Client, AnycastIpListId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_anycast_ip_list_id(Client, AnycastIpListId, QueryMap, HeadersMap, []).
+
+-spec list_distributions_by_anycast_ip_list_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_anycast_ip_list_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_anycast_ip_list_id_errors(), tuple()}.
+list_distributions_by_anycast_ip_list_id(Client, AnycastIpListId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distributionsByAnycastIpListId/", aws_util:encode_uri(AnycastIpListId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a list of distribution IDs for distributions that have a cache
 %% behavior that's
 %% associated with the specified cache policy.
@@ -9544,6 +10310,48 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
 list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByResponseHeadersPolicyId/", aws_util:encode_uri(ResponseHeadersPolicyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List CloudFront distributions by their VPC origin ID.
+-spec list_distributions_by_vpc_origin_id(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_vpc_origin_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_vpc_origin_id_errors(), tuple()}.
+list_distributions_by_vpc_origin_id(Client, VpcOriginId)
+  when is_map(Client) ->
+    list_distributions_by_vpc_origin_id(Client, VpcOriginId, #{}, #{}).
+
+-spec list_distributions_by_vpc_origin_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_vpc_origin_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_vpc_origin_id_errors(), tuple()}.
+list_distributions_by_vpc_origin_id(Client, VpcOriginId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_vpc_origin_id(Client, VpcOriginId, QueryMap, HeadersMap, []).
+
+-spec list_distributions_by_vpc_origin_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_vpc_origin_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_vpc_origin_id_errors(), tuple()}.
+list_distributions_by_vpc_origin_id(Client, VpcOriginId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distributionsByVpcOriginId/", aws_util:encode_uri(VpcOriginId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -10238,6 +11046,48 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"Resource">>, Resource}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the CloudFront VPC origins in your account.
+-spec list_vpc_origins(aws_client:aws_client()) ->
+    {ok, list_vpc_origins_result(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_origins_errors(), tuple()}.
+list_vpc_origins(Client)
+  when is_map(Client) ->
+    list_vpc_origins(Client, #{}, #{}).
+
+-spec list_vpc_origins(aws_client:aws_client(), map(), map()) ->
+    {ok, list_vpc_origins_result(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_origins_errors(), tuple()}.
+list_vpc_origins(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_origins(Client, QueryMap, HeadersMap, []).
+
+-spec list_vpc_origins(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_vpc_origins_result(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_origins_errors(), tuple()}.
+list_vpc_origins(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/vpc-origin"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -11394,6 +12244,58 @@ update_streaming_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Update an Amazon CloudFront VPC origin in your account.
+-spec update_vpc_origin(aws_client:aws_client(), binary() | list(), update_vpc_origin_request()) ->
+    {ok, update_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, update_vpc_origin_errors(), tuple()}.
+update_vpc_origin(Client, Id, Input) ->
+    update_vpc_origin(Client, Id, Input, []).
+
+-spec update_vpc_origin(aws_client:aws_client(), binary() | list(), update_vpc_origin_request(), proplists:proplist()) ->
+    {ok, update_vpc_origin_result(), tuple()} |
+    {error, any()} |
+    {error, update_vpc_origin_errors(), tuple()}.
+update_vpc_origin(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/vpc-origin/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

@@ -30,6 +30,8 @@
          create_multipart_read_set_upload/4,
          create_reference_store/2,
          create_reference_store/3,
+         create_run_cache/2,
+         create_run_cache/3,
          create_run_group/2,
          create_run_group/3,
          create_sequence_store/2,
@@ -50,6 +52,8 @@
          delete_reference_store/4,
          delete_run/3,
          delete_run/4,
+         delete_run_cache/3,
+         delete_run_cache/4,
          delete_run_group/3,
          delete_run_group/4,
          delete_sequence_store/3,
@@ -99,6 +103,9 @@
          get_run/2,
          get_run/4,
          get_run/5,
+         get_run_cache/2,
+         get_run_cache/4,
+         get_run_cache/5,
          get_run_group/2,
          get_run_group/4,
          get_run_group/5,
@@ -144,6 +151,9 @@
          list_reference_stores/3,
          list_references/3,
          list_references/4,
+         list_run_caches/1,
+         list_run_caches/3,
+         list_run_caches/4,
          list_run_groups/1,
          list_run_groups/3,
          list_run_groups/4,
@@ -189,6 +199,8 @@
          update_annotation_store/4,
          update_annotation_store_version/4,
          update_annotation_store_version/5,
+         update_run_cache/3,
+         update_run_cache/4,
          update_run_group/3,
          update_run_group/4,
          update_variant_store/3,
@@ -262,6 +274,16 @@
 
 
 %% Example:
+%% create_run_cache_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_run_cache_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_variant_store_response() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -300,6 +322,19 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_cache_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheS3Uri">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type run_cache_list_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -361,6 +396,15 @@
 %%   <<"createdBefore">> => [non_neg_integer()]
 %% }
 -type read_set_upload_part_list_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_run_cache_request() :: #{
+%%   <<"cacheBehavior">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_run_cache_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -636,6 +680,14 @@
 
 
 %% Example:
+%% list_run_caches_response() :: #{
+%%   <<"items">> => list(run_cache_list_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_run_caches_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% share_details() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"ownerId">> => [string()],
@@ -713,6 +765,10 @@
 %%   <<"uploadId">> => string()
 %% }
 -type create_multipart_read_set_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_run_cache_request() :: #{}
+-type delete_run_cache_request() :: #{}.
 
 %% Example:
 %% delete_reference_request() :: #{}
@@ -912,6 +968,8 @@
 
 %% Example:
 %% task_list_item() :: #{
+%%   <<"cacheHit">> => [boolean()],
+%%   <<"cacheS3Uri">> => string(),
 %%   <<"cpus">> => [integer()],
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"gpus">> => [integer()],
@@ -1031,6 +1089,19 @@
 %%   <<"shares">> => list(share_details()())
 %% }
 -type list_shares_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_run_cache_request() :: #{
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheBucketOwnerId">> => string(),
+%%   <<"cacheS3Location">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"requestId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_run_cache_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1486,6 +1557,10 @@
 %% }
 -type create_variant_store_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_run_cache_request() :: #{}
+-type get_run_cache_request() :: #{}.
+
 
 %% Example:
 %% list_read_sets_request() :: #{
@@ -1829,6 +1904,30 @@
 
 
 %% Example:
+%% list_run_caches_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"startingToken">> => string()
+%% }
+-type list_run_caches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_run_cache_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheBucketOwnerId">> => string(),
+%%   <<"cacheS3Uri">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_run_cache_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% tsv_version_options() :: #{
 %%   <<"annotationType">> => string(),
 %%   <<"formatToHeader">> => map(),
@@ -1929,6 +2028,8 @@
 
 %% Example:
 %% get_run_task_response() :: #{
+%%   <<"cacheHit">> => [boolean()],
+%%   <<"cacheS3Uri">> => string(),
 %%   <<"cpus">> => [integer()],
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"failureReason">> => string(),
@@ -2021,6 +2122,8 @@
 
 %% Example:
 %% start_run_request() :: #{
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheId">> => string(),
 %%   <<"logLevel">> => string(),
 %%   <<"name">> => string(),
 %%   <<"outputUri">> => string(),
@@ -2180,37 +2283,40 @@
 
 %% Example:
 %% get_run_response() :: #{
-%%   <<"accelerators">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"definition">> => string(),
-%%   <<"digest">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"id">> => string(),
-%%   <<"logLevel">> => string(),
-%%   <<"logLocation">> => run_log_location(),
-%%   <<"name">> => string(),
 %%   <<"outputUri">> => string(),
-%%   <<"parameters">> => any(),
-%%   <<"priority">> => [integer()],
-%%   <<"resourceDigests">> => map(),
-%%   <<"retentionMode">> => string(),
 %%   <<"roleArn">> => string(),
-%%   <<"runGroupId">> => string(),
-%%   <<"runId">> => string(),
-%%   <<"runOutputUri">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"startedBy">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"stopTime">> => non_neg_integer(),
-%%   <<"storageCapacity">> => [integer()],
-%%   <<"storageType">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"uuid">> => string(),
-%%   <<"workflowId">> => string(),
 %%   <<"workflowOwnerId">> => string(),
-%%   <<"workflowType">> => string()
+%%   <<"accelerators">> => string(),
+%%   <<"status">> => string(),
+%%   <<"runOutputUri">> => string(),
+%%   <<"runGroupId">> => string(),
+%%   <<"definition">> => string(),
+%%   <<"id">> => string(),
+%%   <<"cacheId">> => string(),
+%%   <<"storageType">> => string(),
+%%   <<"parameters">> => any(),
+%%   <<"stopTime">> => non_neg_integer(),
+%%   <<"resourceDigests">> => map(),
+%%   <<"tags">> => map(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"priority">> => [integer()],
+%%   <<"retentionMode">> => string(),
+%%   <<"logLevel">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"cacheBehavior">> => string(),
+%%   <<"startedBy">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"engineVersion">> => string(),
+%%   <<"workflowType">> => string(),
+%%   <<"logLocation">> => run_log_location(),
+%%   <<"uuid">> => string(),
+%%   <<"digest">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"name">> => string()
 %% }
 -type get_run_response() :: #{binary() => any()}.
 
@@ -2523,6 +2629,16 @@
     service_quota_exceeded_exception() | 
     request_timeout_exception().
 
+-type create_run_cache_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
 -type create_run_group_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2604,6 +2720,16 @@
     request_timeout_exception().
 
 -type delete_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type delete_run_cache_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2756,6 +2882,16 @@
     request_timeout_exception().
 
 -type get_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type get_run_cache_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2920,6 +3056,16 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type list_run_caches_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     request_timeout_exception().
 
 -type list_run_groups_errors() ::
@@ -3097,6 +3243,16 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_run_cache_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
 
 -type update_run_group_errors() ::
     throttling_exception() | 
@@ -3515,6 +3671,51 @@ create_reference_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc You can create a run cache to save the task outputs from completed
+%% tasks in a run for a private workflow.
+%%
+%% Subsequent runs use the task outputs from the cache, rather than computing
+%% the task outputs again.
+%% You specify an Amazon S3 location where HealthOmics saves the cached data.
+%% This data must be
+%% immediately accessible (not in an archived state).
+%%
+%% For more information, see Creating a run cache:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-create.html in
+%% the AWS HealthOmics User Guide.
+-spec create_run_cache(aws_client:aws_client(), create_run_cache_request()) ->
+    {ok, create_run_cache_response(), tuple()} |
+    {error, any()} |
+    {error, create_run_cache_errors(), tuple()}.
+create_run_cache(Client, Input) ->
+    create_run_cache(Client, Input, []).
+
+-spec create_run_cache(aws_client:aws_client(), create_run_cache_request(), proplists:proplist()) ->
+    {ok, create_run_cache_response(), tuple()} |
+    {error, any()} |
+    {error, create_run_cache_errors(), tuple()}.
+create_run_cache(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/runCache"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc You can optionally create a run group to limit the compute resources
 %% for the runs that you add to the group.
 -spec create_run_group(aws_client:aws_client(), create_run_group_request()) ->
@@ -3852,6 +4053,50 @@ delete_run(Client, Id, Input) ->
 delete_run(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/run/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a run cache.
+%%
+%% This action removes the cache metadata stored in the service account,
+%% but doesn't delete the data in Amazon S3.
+%% You can access the cache data in Amazon S3, for inspection or to
+%% troubleshoot issues.
+%% You can remove old cache data using standard S3 `Delete' operations.
+%%
+%% For more information, see Deleting a run cache:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-delete.html in
+%% the AWS HealthOmics User Guide.
+-spec delete_run_cache(aws_client:aws_client(), binary() | list(), delete_run_cache_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_run_cache_errors(), tuple()}.
+delete_run_cache(Client, Id, Input) ->
+    delete_run_cache(Client, Id, Input, []).
+
+-spec delete_run_cache(aws_client:aws_client(), binary() | list(), delete_run_cache_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_run_cache_errors(), tuple()}.
+delete_run_cache(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/runCache/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4509,6 +4754,14 @@ get_reference_store(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% If a workflow is shared with you, you cannot export information about the
 %% run.
+%%
+%% HealthOmics stores a fixed number of runs that are available to the
+%% console and API. If
+%% GetRun doesn't return the requested run, you can find run logs
+%% for all runs in the CloudWatch logs. For more information about viewing
+%% the run logs, see CloudWatch logs:
+%% https://docs.aws.amazon.com/omics/latest/dev/cloudwatch-logs.html
+%% in the AWS HealthOmics User Guide.
 -spec get_run(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_response(), tuple()} |
     {error, any()} |
@@ -4546,6 +4799,47 @@ get_run(Client, Id, QueryMap, HeadersMap, Options0)
         {<<"export">>, maps:get(<<"export">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve the details for the specified run cache.
+%%
+%% For more information, see Call caching for HealthOmics runs:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflow-call-caching.html in
+%% the AWS HealthOmics User Guide.
+-spec get_run_cache(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_run_cache_response(), tuple()} |
+    {error, any()} |
+    {error, get_run_cache_errors(), tuple()}.
+get_run_cache(Client, Id)
+  when is_map(Client) ->
+    get_run_cache(Client, Id, #{}, #{}).
+
+-spec get_run_cache(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_run_cache_response(), tuple()} |
+    {error, any()} |
+    {error, get_run_cache_errors(), tuple()}.
+get_run_cache(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_run_cache(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_run_cache(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_run_cache_response(), tuple()} |
+    {error, any()} |
+    {error, get_run_cache_errors(), tuple()}.
+get_run_cache(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/runCache/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5253,6 +5547,48 @@ list_references(Client, ReferenceStoreId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves a list of your run caches.
+-spec list_run_caches(aws_client:aws_client()) ->
+    {ok, list_run_caches_response(), tuple()} |
+    {error, any()} |
+    {error, list_run_caches_errors(), tuple()}.
+list_run_caches(Client)
+  when is_map(Client) ->
+    list_run_caches(Client, #{}, #{}).
+
+-spec list_run_caches(aws_client:aws_client(), map(), map()) ->
+    {ok, list_run_caches_response(), tuple()} |
+    {error, any()} |
+    {error, list_run_caches_errors(), tuple()}.
+list_run_caches(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_run_caches(Client, QueryMap, HeadersMap, []).
+
+-spec list_run_caches(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_run_caches_response(), tuple()} |
+    {error, any()} |
+    {error, list_run_caches_errors(), tuple()}.
+list_run_caches(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/runCache"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of run groups.
 -spec list_run_groups(aws_client:aws_client()) ->
     {ok, list_run_groups_response(), tuple()} |
@@ -5340,6 +5676,15 @@ list_run_tasks(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of runs.
+%%
+%% HealthOmics stores a fixed number of runs that are available to the
+%% console and API. If
+%% the ListRuns response doesn't include specific runs that you expected,
+%% you can find run logs
+%% for all runs in the CloudWatch logs. For more information about viewing
+%% the run logs, see CloudWatch logs:
+%% https://docs.aws.amazon.com/omics/latest/dev/cloudwatch-logs.html
+%% in the AWS HealthOmics User Guide.
 -spec list_runs(aws_client:aws_client()) ->
     {ok, list_runs_response(), tuple()} |
     {error, any()} |
@@ -5792,12 +6137,13 @@ start_reference_import_job(Client, ReferenceStoreId, Input0, Options0) ->
 %%
 %% StartRun will not support re-run for a workflow that is shared with you.
 %%
-%% The total number of runs in your account is subject to a quota per Region.
-%% To avoid
-%% needing to delete runs manually, you can set the retention mode to
-%% `REMOVE'.
-%% Runs with this setting are deleted automatically when the run quoata is
-%% exceeded.
+%% HealthOmics stores a fixed number of runs that are available to the
+%% console and API.
+%% By default, HealthOmics doesn't any remove any runs. If HealthOmics
+%% reaches the maximum
+%% number of runs, you must manually remove runs. To have older runs removed
+%% automatically,
+%% set the retention mode to `REMOVE'.
 %%
 %% By default, the run uses STATIC storage. For STATIC storage, set the
 %% `storageCapacity' field.
@@ -5995,6 +6341,40 @@ update_annotation_store_version(Client, Name, VersionName, Input0, Options0) ->
     Method = post,
     Path = ["/annotationStore/", aws_util:encode_uri(Name), "/version/", aws_util:encode_uri(VersionName), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update a run cache.
+-spec update_run_cache(aws_client:aws_client(), binary() | list(), update_run_cache_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_run_cache_errors(), tuple()}.
+update_run_cache(Client, Id, Input) ->
+    update_run_cache(Client, Id, Input, []).
+
+-spec update_run_cache(aws_client:aws_client(), binary() | list(), update_run_cache_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_run_cache_errors(), tuple()}.
+update_run_cache(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/runCache/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

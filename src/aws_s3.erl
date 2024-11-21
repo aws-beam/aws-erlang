@@ -3879,8 +3879,10 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    CustomHeaders = [],
-    Input2 = Input1,
+    CustomHeadersMapping = [
+                             {<<"x-amz-meta-">>, <<"Metadata">>}
+                          ],
+    {CustomHeaders, Input2} = aws_request:build_custom_headers(CustomHeadersMapping, Input1),
 
     Query_ = [],
     Input = Input2,
@@ -4470,8 +4472,10 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    CustomHeaders = [],
-    Input2 = Input1,
+    CustomHeadersMapping = [
+                             {<<"x-amz-meta-">>, <<"Metadata">>}
+                          ],
+    {CustomHeaders, Input2} = aws_request:build_custom_headers(CustomHeadersMapping, Input1),
 
     Query_ = [],
     Input = Input2,
@@ -12625,8 +12629,10 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    CustomHeaders = [],
-    Input2 = Input1,
+    CustomHeadersMapping = [
+                             {<<"x-amz-meta-">>, <<"Metadata">>}
+                          ],
+    {CustomHeaders, Input2} = aws_request:build_custom_headers(CustomHeadersMapping, Input1),
 
     Query_ = [],
     Input = Input2,
@@ -14437,8 +14443,10 @@ write_get_object_response(Client, Input0, Options0) ->
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
-    CustomHeaders = [],
-    Input2 = Input1,
+    CustomHeadersMapping = [
+                             {<<"x-amz-meta-">>, <<"Metadata">>}
+                          ],
+    {CustomHeaders, Input2} = aws_request:build_custom_headers(CustomHeadersMapping, Input1),
 
     Query_ = [],
     Input = Input2,
