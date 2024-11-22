@@ -8,6 +8,8 @@
 
 -export([batch_get_traces/2,
          batch_get_traces/3,
+         cancel_trace_retrieval/2,
+         cancel_trace_retrieval/3,
          create_group/2,
          create_group/3,
          create_sampling_rule/2,
@@ -24,6 +26,8 @@
          get_group/3,
          get_groups/2,
          get_groups/3,
+         get_indexing_rules/2,
+         get_indexing_rules/3,
          get_insight/2,
          get_insight/3,
          get_insight_events/2,
@@ -32,6 +36,8 @@
          get_insight_impact_graph/3,
          get_insight_summaries/2,
          get_insight_summaries/3,
+         get_retrieved_traces_graph/2,
+         get_retrieved_traces_graph/3,
          get_sampling_rules/2,
          get_sampling_rules/3,
          get_sampling_statistic_summaries/2,
@@ -44,10 +50,14 @@
          get_time_series_service_statistics/3,
          get_trace_graph/2,
          get_trace_graph/3,
+         get_trace_segment_destination/2,
+         get_trace_segment_destination/3,
          get_trace_summaries/2,
          get_trace_summaries/3,
          list_resource_policies/2,
          list_resource_policies/3,
+         list_retrieved_traces/2,
+         list_retrieved_traces/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_encryption_config/2,
@@ -58,14 +68,20 @@
          put_telemetry_records/3,
          put_trace_segments/2,
          put_trace_segments/3,
+         start_trace_retrieval/2,
+         start_trace_retrieval/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
          update_group/2,
          update_group/3,
+         update_indexing_rule/2,
+         update_indexing_rule/3,
          update_sampling_rule/2,
-         update_sampling_rule/3]).
+         update_sampling_rule/3,
+         update_trace_segment_destination/2,
+         update_trace_segment_destination/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -127,6 +143,15 @@
 
 
 %% Example:
+%% graph_link() :: #{
+%%   <<"DestinationTraceIds">> => list(string()()),
+%%   <<"ReferenceType">> => string(),
+%%   <<"SourceTraceId">> => string()
+%% }
+-type graph_link() :: #{binary() => any()}.
+
+
+%% Example:
 %% response_time_root_cause_service() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"EntityPath">> => list(response_time_root_cause_entity()()),
@@ -136,6 +161,13 @@
 %%   <<"Type">> => string()
 %% }
 -type response_time_root_cause_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_trace_retrieval_result() :: #{
+%%   <<"RetrievalToken">> => string()
+%% }
+-type start_trace_retrieval_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -186,6 +218,13 @@
 
 
 %% Example:
+%% get_indexing_rules_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type get_indexing_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_group_result() :: #{
 %%   <<"Group">> => group()
 %% }
@@ -204,6 +243,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrieved_traces_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrievalStatus">> => list(any()),
+%%   <<"TraceFormat">> => list(any()),
+%%   <<"Traces">> => list(retrieved_trace()())
+%% }
+-type list_retrieved_traces_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -256,6 +305,14 @@
 
 
 %% Example:
+%% probabilistic_rule_value() :: #{
+%%   <<"ActualSamplingPercentage">> => float(),
+%%   <<"DesiredSamplingPercentage">> => float()
+%% }
+-type probabilistic_rule_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% insight_impact_graph_service() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Edges">> => list(insight_impact_graph_edge()()),
@@ -265,6 +322,15 @@
 %%   <<"Type">> => string()
 %% }
 -type insight_impact_graph_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrieved_traces_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrievalToken">> := string(),
+%%   <<"TraceFormat">> => list(any())
+%% }
+-type list_retrieved_traces_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -377,6 +443,13 @@
 
 
 %% Example:
+%% probabilistic_rule_value_update() :: #{
+%%   <<"DesiredSamplingPercentage">> => float()
+%% }
+-type probabilistic_rule_value_update() :: #{binary() => any()}.
+
+
+%% Example:
 %% sampling_target_document() :: #{
 %%   <<"FixedRate">> => float(),
 %%   <<"Interval">> => integer(),
@@ -396,12 +469,30 @@
 
 
 %% Example:
+%% retrieved_trace() :: #{
+%%   <<"Duration">> => float(),
+%%   <<"Id">> => string(),
+%%   <<"Spans">> => list(span()())
+%% }
+-type retrieved_trace() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_traces_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Traces">> => list(trace()()),
 %%   <<"UnprocessedTraceIds">> => list(string()())
 %% }
 -type batch_get_traces_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% indexing_rule() :: #{
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Rule">> => list()
+%% }
+-type indexing_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -423,12 +514,28 @@
 
 
 %% Example:
+%% update_trace_segment_destination_result() :: #{
+%%   <<"Destination">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type update_trace_segment_destination_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_insight_events_request() :: #{
 %%   <<"InsightId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_insight_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieved_service() :: #{
+%%   <<"Links">> => list(graph_link()()),
+%%   <<"Service">> => service()
+%% }
+-type retrieved_service() :: #{binary() => any()}.
 
 
 %% Example:
@@ -454,6 +561,23 @@
 %%   <<"ServiceIds">> => list(service_id()())
 %% }
 -type value_with_service_ids() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_trace_retrieval_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"StartTime">> := non_neg_integer(),
+%%   <<"TraceIds">> := list(string()())
+%% }
+-type start_trace_retrieval_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% span() :: #{
+%%   <<"Document">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type span() :: #{binary() => any()}.
 
 
 %% Example:
@@ -776,6 +900,21 @@
 
 
 %% Example:
+%% update_trace_segment_destination_request() :: #{
+%%   <<"Destination">> => list(any())
+%% }
+-type update_trace_segment_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_retrieved_traces_graph_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrievalToken">> := string()
+%% }
+-type get_retrieved_traces_graph_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_sampling_rule_result() :: #{
 %%   <<"SamplingRuleRecord">> => sampling_rule_record()
 %% }
@@ -814,6 +953,10 @@
 %%   <<"Type">> => string()
 %% }
 -type alias() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_trace_retrieval_result() :: #{}
+-type cancel_trace_retrieval_result() :: #{}.
 
 
 %% Example:
@@ -883,11 +1026,23 @@
 
 
 %% Example:
+%% get_indexing_rules_result() :: #{
+%%   <<"IndexingRules">> => list(indexing_rule()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_indexing_rules_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_trace_segment_destination_request() :: #{}
+-type get_trace_segment_destination_request() :: #{}.
 
 
 %% Example:
@@ -1041,6 +1196,14 @@
 
 
 %% Example:
+%% get_trace_segment_destination_result() :: #{
+%%   <<"Destination">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_trace_segment_destination_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_arn_detail() :: #{
 %%   <<"ARN">> => string()
 %% }
@@ -1097,6 +1260,22 @@
 %%   <<"GroupName">> => string()
 %% }
 -type get_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_trace_retrieval_request() :: #{
+%%   <<"RetrievalToken">> := string()
+%% }
+-type cancel_trace_retrieval_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_retrieved_traces_graph_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrievalStatus">> => list(any()),
+%%   <<"Services">> => list(retrieved_service()())
+%% }
+-type get_retrieved_traces_graph_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1165,6 +1344,13 @@
 
 
 %% Example:
+%% update_indexing_rule_result() :: #{
+%%   <<"IndexingRule">> => indexing_rule()
+%% }
+-type update_indexing_rule_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_insight_result() :: #{
 %%   <<"Insight">> => insight()
 %% }
@@ -1190,6 +1376,14 @@
 
 
 %% Example:
+%% update_indexing_rule_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Rule">> := list()
+%% }
+-type update_indexing_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_resource_policies_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ResourcePolicies">> => list(resource_policy()())
@@ -1198,6 +1392,11 @@
 
 -type batch_get_traces_errors() ::
     invalid_request_exception() | 
+    throttled_exception().
+
+-type cancel_trace_retrieval_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     throttled_exception().
 
 -type create_group_errors() ::
@@ -1234,6 +1433,10 @@
     invalid_request_exception() | 
     throttled_exception().
 
+-type get_indexing_rules_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
 -type get_insight_errors() ::
     invalid_request_exception() | 
     throttled_exception().
@@ -1248,6 +1451,11 @@
 
 -type get_insight_summaries_errors() ::
     invalid_request_exception() | 
+    throttled_exception().
+
+-type get_retrieved_traces_graph_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     throttled_exception().
 
 -type get_sampling_rules_errors() ::
@@ -1274,12 +1482,21 @@
     invalid_request_exception() | 
     throttled_exception().
 
+-type get_trace_segment_destination_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
 -type get_trace_summaries_errors() ::
     invalid_request_exception() | 
     throttled_exception().
 
 -type list_resource_policies_errors() ::
     invalid_request_exception() | 
+    throttled_exception().
+
+-type list_retrieved_traces_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     throttled_exception().
 
 -type list_tags_for_resource_errors() ::
@@ -1307,6 +1524,11 @@
     invalid_request_exception() | 
     throttled_exception().
 
+-type start_trace_retrieval_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
     invalid_request_exception() | 
@@ -1322,7 +1544,16 @@
     invalid_request_exception() | 
     throttled_exception().
 
+-type update_indexing_rule_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
 -type update_sampling_rule_errors() ::
+    invalid_request_exception() | 
+    throttled_exception().
+
+-type update_trace_segment_destination_errors() ::
     invalid_request_exception() | 
     throttled_exception().
 
@@ -1330,9 +1561,12 @@
 %% API
 %%====================================================================
 
-%% @doc Retrieves a list of traces specified by ID.
+%% @doc
+%% You cannot find traces through this API if Transaction Search is enabled
+%% since trace is not indexed in X-Ray.
 %%
-%% Each trace is a collection of segment
+%% Retrieves a list of traces specified by ID. Each trace is a collection of
+%% segment
 %% documents that originates from a single request. Use
 %% `GetTraceSummaries' to get a
 %% list of trace IDs.
@@ -1350,6 +1584,44 @@ batch_get_traces(Client, Input) ->
 batch_get_traces(Client, Input0, Options0) ->
     Method = post,
     Path = ["/Traces"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Cancels an ongoing trace retrieval job initiated by
+%% `StartTraceRetrieval' using the provided `RetrievalToken'.
+%%
+%% A successful cancellation will return an HTTP 200 response.
+-spec cancel_trace_retrieval(aws_client:aws_client(), cancel_trace_retrieval_request()) ->
+    {ok, cancel_trace_retrieval_result(), tuple()} |
+    {error, any()} |
+    {error, cancel_trace_retrieval_errors(), tuple()}.
+cancel_trace_retrieval(Client, Input) ->
+    cancel_trace_retrieval(Client, Input, []).
+
+-spec cancel_trace_retrieval(aws_client:aws_client(), cancel_trace_retrieval_request(), proplists:proplist()) ->
+    {ok, cancel_trace_retrieval_result(), tuple()} |
+    {error, any()} |
+    {error, cancel_trace_retrieval_errors(), tuple()}.
+cancel_trace_retrieval(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CancelTraceRetrieval"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1657,6 +1929,46 @@ get_groups(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+%% Retrieves all indexing rules.
+%%
+%% Indexing rules are used to determine the server-side sampling rate for
+%% spans ingested through the CloudWatchLogs destination and indexed by
+%% X-Ray. For more information, see Transaction Search:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html.
+-spec get_indexing_rules(aws_client:aws_client(), get_indexing_rules_request()) ->
+    {ok, get_indexing_rules_result(), tuple()} |
+    {error, any()} |
+    {error, get_indexing_rules_errors(), tuple()}.
+get_indexing_rules(Client, Input) ->
+    get_indexing_rules(Client, Input, []).
+
+-spec get_indexing_rules(aws_client:aws_client(), get_indexing_rules_request(), proplists:proplist()) ->
+    {ok, get_indexing_rules_result(), tuple()} |
+    {error, any()} |
+    {error, get_indexing_rules_errors(), tuple()}.
+get_indexing_rules(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetIndexingRules"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the summary information of an insight.
 %%
 %% This includes impact to clients and
@@ -1791,6 +2103,61 @@ get_insight_summaries(Client, Input) ->
 get_insight_summaries(Client, Input0, Options0) ->
     Method = post,
     Path = ["/InsightSummaries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Retrieves a service graph for traces based on the specified
+%% `RetrievalToken' from the CloudWatch log group generated by
+%% Transaction Search.
+%%
+%% This API does not initiate a retrieval job. You must first execute
+%% `StartTraceRetrieval' to obtain the required `RetrievalToken'.
+%%
+%% The trace graph describes services that process incoming requests and any
+%% downstream services they call, which may include Amazon Web Services
+%% resources, external APIs, or databases.
+%%
+%% The response is empty until the `RetrievalStatus' is COMPLETE. Retry
+%% the request after the status changes from RUNNING or SCHEDULED to COMPLETE
+%% to access the full service graph.
+%%
+%% When CloudWatch log is the destination, this API can support cross-account
+%% observability and service graph retrieval across linked accounts.
+%%
+%% For retrieving graphs from X-Ray directly as opposed to the
+%% Transaction-Search Log group, see GetTraceGraph:
+%% https://docs.aws.amazon.com/xray/latest/api/API_GetTraceGraph.html.
+-spec get_retrieved_traces_graph(aws_client:aws_client(), get_retrieved_traces_graph_request()) ->
+    {ok, get_retrieved_traces_graph_result(), tuple()} |
+    {error, any()} |
+    {error, get_retrieved_traces_graph_errors(), tuple()}.
+get_retrieved_traces_graph(Client, Input) ->
+    get_retrieved_traces_graph(Client, Input, []).
+
+-spec get_retrieved_traces_graph(aws_client:aws_client(), get_retrieved_traces_graph_request(), proplists:proplist()) ->
+    {ok, get_retrieved_traces_graph_result(), tuple()} |
+    {error, any()} |
+    {error, get_retrieved_traces_graph_errors(), tuple()}.
+get_retrieved_traces_graph(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetRetrievedTracesGraph"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2027,6 +2394,48 @@ get_trace_graph(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+%% Retrieves the current destination of data sent to `PutTraceSegments'
+%% and OpenTelemetry API.
+%%
+%% The Transaction Search feature requires a CloudWatchLogs destination. For
+%% more information, see Transaction Search:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html
+%% and OpenTelemetry:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OpenTelemetry-Sections.html.
+-spec get_trace_segment_destination(aws_client:aws_client(), get_trace_segment_destination_request()) ->
+    {ok, get_trace_segment_destination_result(), tuple()} |
+    {error, any()} |
+    {error, get_trace_segment_destination_errors(), tuple()}.
+get_trace_segment_destination(Client, Input) ->
+    get_trace_segment_destination(Client, Input, []).
+
+-spec get_trace_segment_destination(aws_client:aws_client(), get_trace_segment_destination_request(), proplists:proplist()) ->
+    {ok, get_trace_segment_destination_result(), tuple()} |
+    {error, any()} |
+    {error, get_trace_segment_destination_errors(), tuple()}.
+get_trace_segment_destination(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetTraceSegmentDestination"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves IDs and annotations for traces available for a specified
 %% time frame using an
 %% optional filter.
@@ -2050,9 +2459,9 @@ get_trace_graph(Client, Input0, Options0) ->
 %%
 %% For a full list of indexed fields and keywords that you can use in filter
 %% expressions,
-%% see Using Filter
-%% Expressions:
-%% https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html
+%% see Use filter
+%% expressions:
+%% https://docs.aws.amazon.com/xray/latest/devguide/aws-xray-interface-console.html#xray-console-filters
 %% in the Amazon Web Services X-Ray Developer Guide.
 -spec get_trace_summaries(aws_client:aws_client(), get_trace_summaries_request()) ->
     {ok, get_trace_summaries_result(), tuple()} |
@@ -2103,6 +2512,62 @@ list_resource_policies(Client, Input) ->
 list_resource_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListResourcePolicies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Retrieves a list of traces for a given `RetrievalToken' from the
+%% CloudWatch log group generated by Transaction Search.
+%%
+%% For information on what each trace returns, see BatchGetTraces:
+%% https://docs.aws.amazon.com/xray/latest/api/API_BatchGetTraces.html.
+%%
+%% This API does not initiate a retrieval job. To start a trace retrieval,
+%% use `StartTraceRetrieval', which generates the required
+%% `RetrievalToken'.
+%%
+%% When the `RetrievalStatus' is not COMPLETE, the API will return an
+%% empty response. Retry the request once the retrieval has completed to
+%% access the full list of traces.
+%%
+%% For cross-account observability, this API can retrieve traces from linked
+%% accounts when CloudWatch log is the destination across relevant accounts.
+%% For more details, see CloudWatch cross-account observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+%%
+%% For retrieving data from X-Ray directly as opposed to the
+%% Transaction-Search Log group, see BatchGetTraces:
+%% https://docs.aws.amazon.com/xray/latest/api/API_BatchGetTraces.html.
+-spec list_retrieved_traces(aws_client:aws_client(), list_retrieved_traces_request()) ->
+    {ok, list_retrieved_traces_result(), tuple()} |
+    {error, any()} |
+    {error, list_retrieved_traces_errors(), tuple()}.
+list_retrieved_traces(Client, Input) ->
+    list_retrieved_traces(Client, Input, []).
+
+-spec list_retrieved_traces(aws_client:aws_client(), list_retrieved_traces_request(), proplists:proplist()) ->
+    {ok, list_retrieved_traces_result(), tuple()} |
+    {error, any()} |
+    {error, list_retrieved_traces_errors(), tuple()}.
+list_retrieved_traces(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRetrievedTraces"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2271,18 +2736,15 @@ put_telemetry_records(Client, Input0, Options0) ->
 
 %% @doc Uploads segment documents to Amazon Web Services X-Ray.
 %%
-%% The X-Ray SDK: https://docs.aws.amazon.com/xray/index.html generates
-%% segment documents and sends them to the X-Ray daemon, which uploads them
-%% in
-%% batches. A segment document can be a completed segment, an in-progress
-%% segment, or an array of
+%% A segment document can be a completed segment, an in-progress segment, or
+%% an array of
 %% subsegments.
 %%
 %% Segments must include the following fields. For the full segment document
 %% schema, see
 %% Amazon Web Services X-Ray
 %% Segment Documents:
-%% https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
+%% https://docs.aws.amazon.com/xray/latest/devguide/aws-xray-interface-api.html#xray-api-segmentdocuments.html
 %% in the Amazon Web Services X-Ray Developer Guide.
 %%
 %% == Required segment document fields ==
@@ -2318,7 +2780,9 @@ put_telemetry_records(Client, Input0, Options0) ->
 %%
 %% A `trace_id' consists of three numbers separated by hyphens. For
 %% example,
-%% 1-58406520-a006649127e371903a2de979. This includes:
+%% 1-58406520-a006649127e371903a2de979. For trace IDs created by an X-Ray
+%% SDK, or by Amazon Web Services services
+%% integrated with X-Ray, a trace ID includes:
 %%
 %% == Trace ID Format ==
 %%
@@ -2332,6 +2796,16 @@ put_telemetry_records(Client, Input0, Options0) ->
 %%
 %% A 96-bit identifier for the trace, globally unique, in 24 hexadecimal
 %% digits.
+%%
+%% Trace IDs created via OpenTelemetry have a different format based on the
+%% W3C Trace Context specification: https://www.w3.org/TR/trace-context/.
+%% A W3C trace ID must be formatted in the X-Ray trace ID format when sending
+%% to X-Ray. For example, a W3C
+%% trace ID `4efaaf4d1e8720b39541901950019ee5' should be formatted as
+%% `1-4efaaf4d-1e8720b39541901950019ee5' when sending to X-Ray. While
+%% X-Ray trace IDs include
+%% the original request timestamp in Unix epoch time, this is not required or
+%% validated.
 -spec put_trace_segments(aws_client:aws_client(), put_trace_segments_request()) ->
     {ok, put_trace_segments_result(), tuple()} |
     {error, any()} |
@@ -2346,6 +2820,61 @@ put_trace_segments(Client, Input) ->
 put_trace_segments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TraceSegments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Initiates a trace retrieval process using the specified time range and for
+%% the give trace IDs on Transaction Search generated by the CloudWatch log
+%% group.
+%%
+%% For more information, see Transaction Search:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html.
+%%
+%% API returns a `RetrievalToken', which can be used with
+%% `ListRetrievedTraces' or `GetRetrievedTracesGraph' to fetch
+%% results. Retrievals will time out after 60 minutes. To execute long time
+%% ranges, consider segmenting into multiple retrievals.
+%%
+%% If you are using CloudWatch cross-account observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html,
+%% you can use this operation in a monitoring account to retrieve data from a
+%% linked source account, as long as both accounts have transaction search
+%% enabled.
+%%
+%% For retrieving data from X-Ray directly as opposed to the
+%% Transaction-Search Log group, see BatchGetTraces:
+%% https://docs.aws.amazon.com/xray/latest/api/API_BatchGetTraces.html.
+-spec start_trace_retrieval(aws_client:aws_client(), start_trace_retrieval_request()) ->
+    {ok, start_trace_retrieval_result(), tuple()} |
+    {error, any()} |
+    {error, start_trace_retrieval_errors(), tuple()}.
+start_trace_retrieval(Client, Input) ->
+    start_trace_retrieval(Client, Input, []).
+
+-spec start_trace_retrieval(aws_client:aws_client(), start_trace_retrieval_request(), proplists:proplist()) ->
+    {ok, start_trace_retrieval_result(), tuple()} |
+    {error, any()} |
+    {error, start_trace_retrieval_errors(), tuple()}.
+start_trace_retrieval(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartTraceRetrieval"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2472,6 +3001,46 @@ update_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+%% Modifies an indexing rule’s configuration.
+%%
+%% Indexing rules are used for determining the sampling rate for spans
+%% indexed from CloudWatch Logs. For more information, see Transaction
+%% Search:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html.
+-spec update_indexing_rule(aws_client:aws_client(), update_indexing_rule_request()) ->
+    {ok, update_indexing_rule_result(), tuple()} |
+    {error, any()} |
+    {error, update_indexing_rule_errors(), tuple()}.
+update_indexing_rule(Client, Input) ->
+    update_indexing_rule(Client, Input, []).
+
+-spec update_indexing_rule(aws_client:aws_client(), update_indexing_rule_request(), proplists:proplist()) ->
+    {ok, update_indexing_rule_result(), tuple()} |
+    {error, any()} |
+    {error, update_indexing_rule_errors(), tuple()}.
+update_indexing_rule(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateIndexingRule"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Modifies a sampling rule's configuration.
 -spec update_sampling_rule(aws_client:aws_client(), update_sampling_rule_request()) ->
     {ok, update_sampling_rule_result(), tuple()} |
@@ -2487,6 +3056,45 @@ update_sampling_rule(Client, Input) ->
 update_sampling_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateSamplingRule"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Modifies the destination of data sent to `PutTraceSegments'.
+%%
+%% The Transaction Search feature requires the CloudWatchLogs destination.
+%% For more information, see Transaction Search:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html.
+-spec update_trace_segment_destination(aws_client:aws_client(), update_trace_segment_destination_request()) ->
+    {ok, update_trace_segment_destination_result(), tuple()} |
+    {error, any()} |
+    {error, update_trace_segment_destination_errors(), tuple()}.
+update_trace_segment_destination(Client, Input) ->
+    update_trace_segment_destination(Client, Input, []).
+
+-spec update_trace_segment_destination(aws_client:aws_client(), update_trace_segment_destination_request(), proplists:proplist()) ->
+    {ok, update_trace_segment_destination_result(), tuple()} |
+    {error, any()} |
+    {error, update_trace_segment_destination_errors(), tuple()}.
+update_trace_segment_destination(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateTraceSegmentDestination"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

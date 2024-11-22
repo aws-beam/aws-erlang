@@ -9,7 +9,7 @@
 %%
 %% You can use
 %% the API operations to get information about events that might affect your
-%% Amazon Web Services and resources.
+%% Amazon Web Services services and resources.
 %%
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% from Amazon Web Services Support: http://aws.amazon.com/premiumsupport/ to
@@ -173,6 +173,7 @@
 %% affected_entity() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"entityArn">> => string(),
+%%   <<"entityMetadata">> => map(),
 %%   <<"entityUrl">> => string(),
 %%   <<"entityValue">> => string(),
 %%   <<"eventArn">> => string(),
@@ -592,7 +593,7 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 %%
 %% Entities can refer to individual customer resources, groups of
 %% customer resources, or any other construct, depending on the Amazon Web
-%% Service. Events that
+%% Services service. Events that
 %% have impact beyond that of the affected entities, or where the extent of
 %% impact is unknown,
 %% include at least one entity indicating this.
@@ -631,7 +632,7 @@ describe_affected_entities(Client, Input, Options)
 %% Entities can refer
 %% to individual customer resources, groups of customer resources, or any
 %% other construct,
-%% depending on the Amazon Web Service.
+%% depending on the Amazon Web Services service.
 %%
 %% At least one event Amazon Resource Name (ARN) and account ID are required.
 %%
@@ -834,8 +835,8 @@ describe_event_details_for_organization(Client, Input, Options)
 %%
 %% You can use this API
 %% operation to find information about the Health event, such as the
-%% category, Amazon Web Service, and event code. The metadata for each event
-%% appears in the EventType:
+%% category, Amazon Web Services service, and event code. The metadata for
+%% each event appears in the EventType:
 %% https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html
 %% object.
 %%

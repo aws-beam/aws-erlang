@@ -87,6 +87,8 @@
          describe_scaling_policies/3,
          describe_scheduled_actions/2,
          describe_scheduled_actions/3,
+         get_predictive_scaling_forecast/2,
+         get_predictive_scaling_forecast/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_scaling_policy/2,
@@ -112,11 +114,34 @@
 -type step_adjustment() :: #{binary() => any()}.
 
 %% Example:
+%% predictive_scaling_metric_specification() :: #{
+%%   <<"CustomizedCapacityMetricSpecification">> => predictive_scaling_customized_metric_specification(),
+%%   <<"CustomizedLoadMetricSpecification">> => predictive_scaling_customized_metric_specification(),
+%%   <<"CustomizedScalingMetricSpecification">> => predictive_scaling_customized_metric_specification(),
+%%   <<"PredefinedLoadMetricSpecification">> => predictive_scaling_predefined_load_metric_specification(),
+%%   <<"PredefinedMetricPairSpecification">> => predictive_scaling_predefined_metric_pair_specification(),
+%%   <<"PredefinedScalingMetricSpecification">> => predictive_scaling_predefined_scaling_metric_specification(),
+%%   <<"TargetValue">> => float()
+%% }
+-type predictive_scaling_metric_specification() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_predictive_scaling_forecast_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"PolicyName">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any()),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_predictive_scaling_forecast_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_scaling_policies_request() :: #{
@@ -130,6 +155,13 @@
 -type describe_scaling_policies_request() :: #{binary() => any()}.
 
 %% Example:
+%% predictive_scaling_metric_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type predictive_scaling_metric_dimension() :: #{binary() => any()}.
+
+%% Example:
 %% delete_scheduled_action_response() :: #{
 
 %% }
@@ -140,6 +172,13 @@
 
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_predefined_scaling_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => string(),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_scaling_metric_specification() :: #{binary() => any()}.
 
 %% Example:
 %% alarm() :: #{
@@ -160,6 +199,14 @@
 -type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% get_predictive_scaling_forecast_response() :: #{
+%%   <<"CapacityForecast">> => capacity_forecast(),
+%%   <<"LoadForecast">> => list(load_forecast()()),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type get_predictive_scaling_forecast_response() :: #{binary() => any()}.
+
+%% Example:
 %% deregister_scalable_target_request() :: #{
 %%   <<"ResourceId">> := string(),
 %%   <<"ScalableDimension">> := list(any()),
@@ -174,6 +221,7 @@
 %%   <<"PolicyARN">> => string(),
 %%   <<"PolicyName">> => string(),
 %%   <<"PolicyType">> => list(any()),
+%%   <<"PredictiveScalingPolicyConfiguration">> => predictive_scaling_policy_configuration(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ScalableDimension">> => list(any()),
 %%   <<"ServiceNamespace">> => list(any()),
@@ -214,6 +262,13 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% predictive_scaling_predefined_load_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => string(),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_load_metric_specification() :: #{binary() => any()}.
+
+%% Example:
 %% customized_metric_specification() :: #{
 %%   <<"Dimensions">> => list(metric_dimension()()),
 %%   <<"MetricName">> => string(),
@@ -247,6 +302,14 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% load_forecast() :: #{
+%%   <<"MetricSpecification">> => predictive_scaling_metric_specification(),
+%%   <<"Timestamps">> => list(non_neg_integer()()),
+%%   <<"Values">> => list(float()())
+%% }
+-type load_forecast() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_next_token_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -275,6 +338,13 @@
 %%   <<"Timezone">> => string()
 %% }
 -type scheduled_action() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_predefined_metric_pair_specification() :: #{
+%%   <<"PredefinedMetricType">> => string(),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_metric_pair_specification() :: #{binary() => any()}.
 
 %% Example:
 %% scaling_activity() :: #{
@@ -349,11 +419,27 @@
 -type metric_dimension() :: #{binary() => any()}.
 
 %% Example:
+%% predictive_scaling_customized_metric_specification() :: #{
+%%   <<"MetricDataQueries">> => list(predictive_scaling_metric_data_query()())
+%% }
+-type predictive_scaling_customized_metric_specification() :: #{binary() => any()}.
+
+%% Example:
 %% put_scaling_policy_response() :: #{
 %%   <<"Alarms">> => list(alarm()()),
 %%   <<"PolicyARN">> => string()
 %% }
 -type put_scaling_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_metric_data_query() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => predictive_scaling_metric_stat(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type predictive_scaling_metric_data_query() :: #{binary() => any()}.
 
 %% Example:
 %% scalable_target_action() :: #{
@@ -426,6 +512,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"MaxCapacity">> => integer(),
 %%   <<"MinCapacity">> => integer(),
+%%   <<"PredictedCapacity">> => integer(),
 %%   <<"ResourceId">> => string(),
 %%   <<"RoleARN">> => string(),
 %%   <<"ScalableDimension">> => list(any()),
@@ -440,6 +527,16 @@
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_policy_configuration() :: #{
+%%   <<"MaxCapacityBreachBehavior">> => list(any()),
+%%   <<"MaxCapacityBuffer">> => integer(),
+%%   <<"MetricSpecifications">> => list(predictive_scaling_metric_specification()()),
+%%   <<"Mode">> => list(any()),
+%%   <<"SchedulingBufferTime">> => integer()
+%% }
+-type predictive_scaling_policy_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% concurrent_update_exception() :: #{
@@ -463,6 +560,7 @@
 %% put_scaling_policy_request() :: #{
 %%   <<"PolicyName">> := string(),
 %%   <<"PolicyType">> => list(any()),
+%%   <<"PredictiveScalingPolicyConfiguration">> => predictive_scaling_policy_configuration(),
 %%   <<"ResourceId">> := string(),
 %%   <<"ScalableDimension">> := list(any()),
 %%   <<"ServiceNamespace">> := list(any()),
@@ -500,6 +598,14 @@
 -type target_tracking_metric_dimension() :: #{binary() => any()}.
 
 %% Example:
+%% predictive_scaling_metric_stat() :: #{
+%%   <<"Metric">> => predictive_scaling_metric(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type predictive_scaling_metric_stat() :: #{binary() => any()}.
+
+%% Example:
 %% describe_scalable_targets_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ScalableTargets">> => list(scalable_target()())
@@ -517,6 +623,13 @@
 -type target_tracking_metric_data_query() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_forecast() :: #{
+%%   <<"Timestamps">> => list(non_neg_integer()()),
+%%   <<"Values">> => list(float()())
+%% }
+-type capacity_forecast() :: #{binary() => any()}.
+
+%% Example:
 %% not_scaled_reason() :: #{
 %%   <<"Code">> => string(),
 %%   <<"CurrentCapacity">> => integer(),
@@ -524,6 +637,14 @@
 %%   <<"MinCapacity">> => integer()
 %% }
 -type not_scaled_reason() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_metric() :: #{
+%%   <<"Dimensions">> => list(predictive_scaling_metric_dimension()()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type predictive_scaling_metric() :: #{binary() => any()}.
 
 %% Example:
 %% deregister_scalable_target_response() :: #{
@@ -591,6 +712,10 @@
     validation_exception() | 
     concurrent_update_exception() | 
     invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type get_predictive_scaling_forecast_errors() ::
+    validation_exception() | 
     internal_service_exception().
 
 -type list_tags_for_resource_errors() ::
@@ -807,6 +932,36 @@ describe_scheduled_actions(Client, Input)
 describe_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledActions">>, Input, Options).
+
+%% @doc Retrieves the forecast data for a predictive scaling policy.
+%%
+%% Load forecasts are predictions of the hourly load values using historical
+%% load data
+%% from CloudWatch and an analysis of historical trends. Capacity forecasts
+%% are represented as
+%% predicted values for the minimum capacity that is needed on an hourly
+%% basis, based on
+%% the hourly load forecast.
+%%
+%% A minimum of 24 hours of data is required to create the initial forecasts.
+%% However,
+%% having a full 14 days of historical data results in more accurate
+%% forecasts.
+-spec get_predictive_scaling_forecast(aws_client:aws_client(), get_predictive_scaling_forecast_request()) ->
+    {ok, get_predictive_scaling_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, get_predictive_scaling_forecast_errors(), tuple()}.
+get_predictive_scaling_forecast(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_predictive_scaling_forecast(Client, Input, []).
+
+-spec get_predictive_scaling_forecast(aws_client:aws_client(), get_predictive_scaling_forecast_request(), proplists:proplist()) ->
+    {ok, get_predictive_scaling_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, get_predictive_scaling_forecast_errors(), tuple()}.
+get_predictive_scaling_forecast(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPredictiveScalingForecast">>, Input, Options).
 
 %% @doc Returns all the tags on the specified Application Auto Scaling
 %% scalable target.

@@ -14,6 +14,12 @@
 %% For more information, see What is Amazon Web Services IoT FleetWise?:
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/ in the
 %% Amazon Web Services IoT FleetWise Developer Guide.
+%%
+%% Access to certain Amazon Web Services IoT FleetWise features is currently
+%% gated. For more information, see Amazon Web Services Region and feature
+%% availability:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 -module(aws_iotfleetwise).
 
 -export([associate_vehicle_fleet/2,
@@ -32,6 +38,8 @@
          create_model_manifest/3,
          create_signal_catalog/2,
          create_signal_catalog/3,
+         create_state_template/2,
+         create_state_template/3,
          create_vehicle/2,
          create_vehicle/3,
          delete_campaign/2,
@@ -44,6 +52,8 @@
          delete_model_manifest/3,
          delete_signal_catalog/2,
          delete_signal_catalog/3,
+         delete_state_template/2,
+         delete_state_template/3,
          delete_vehicle/2,
          delete_vehicle/3,
          disassociate_vehicle_fleet/2,
@@ -64,6 +74,8 @@
          get_register_account_status/3,
          get_signal_catalog/2,
          get_signal_catalog/3,
+         get_state_template/2,
+         get_state_template/3,
          get_vehicle/2,
          get_vehicle/3,
          get_vehicle_status/2,
@@ -92,6 +104,8 @@
          list_signal_catalog_nodes/3,
          list_signal_catalogs/2,
          list_signal_catalogs/3,
+         list_state_templates/2,
+         list_state_templates/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_vehicles/2,
@@ -118,6 +132,8 @@
          update_model_manifest/3,
          update_signal_catalog/2,
          update_signal_catalog/3,
+         update_state_template/2,
+         update_state_template/3,
          update_vehicle/2,
          update_vehicle/3]).
 
@@ -154,6 +170,7 @@
 %%   <<"attributes">> => map(),
 %%   <<"decoderManifestArn">> => string(),
 %%   <<"modelManifestArn">> => string(),
+%%   <<"stateTemplates">> => list(state_template_association()()),
 %%   <<"tags">> => list(tag()()),
 %%   <<"vehicleName">> => string()
 %% }
@@ -200,6 +217,12 @@
 -type vehicle_status() :: #{binary() => any()}.
 
 %% Example:
+%% on_change_state_template_update_strategy() :: #{
+
+%% }
+-type on_change_state_template_update_strategy() :: #{binary() => any()}.
+
+%% Example:
 %% time_based_collection_scheme() :: #{
 %%   <<"periodMs">> => float()
 %% }
@@ -242,6 +265,7 @@
 
 %% Example:
 %% create_decoder_manifest_request() :: #{
+%%   <<"defaultForUnmappedSignals">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"modelManifestArn">> := string(),
 %%   <<"networkInterfaces">> => list(network_interface()()),
@@ -257,6 +281,12 @@
 -type get_campaign_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_state_template_request() :: #{
+
+%% }
+-type delete_state_template_request() :: #{binary() => any()}.
+
+%% Example:
 %% message_signal() :: #{
 %%   <<"structuredMessage">> => list(),
 %%   <<"topicName">> => string()
@@ -266,6 +296,7 @@
 %% Example:
 %% signal_decoder() :: #{
 %%   <<"canSignal">> => can_signal(),
+%%   <<"customDecodingSignal">> => custom_decoding_signal(),
 %%   <<"fullyQualifiedName">> => string(),
 %%   <<"interfaceId">> => string(),
 %%   <<"messageSignal">> => message_signal(),
@@ -290,6 +321,12 @@
 %%   <<"name">> := string()
 %% }
 -type delete_signal_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% periodic_state_template_update_strategy() :: #{
+%%   <<"stateTemplateUpdateRate">> => time_period()
+%% }
+-type periodic_state_template_update_strategy() :: #{binary() => any()}.
 
 %% Example:
 %% list_vehicles_in_fleet_request() :: #{
@@ -351,6 +388,13 @@
 
 %% }
 -type get_register_account_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_partition_upload_options() :: #{
+%%   <<"conditionLanguageVersion">> => integer(),
+%%   <<"expression">> => string()
+%% }
+-type data_partition_upload_options() :: #{binary() => any()}.
 
 %% Example:
 %% delete_model_manifest_request() :: #{
@@ -428,6 +472,7 @@
 %% Example:
 %% network_interface() :: #{
 %%   <<"canInterface">> => can_interface(),
+%%   <<"customDecodingInterface">> => custom_decoding_interface(),
 %%   <<"interfaceId">> => string(),
 %%   <<"obdInterface">> => obd_interface(),
 %%   <<"type">> => list(any()),
@@ -549,6 +594,22 @@
 -type create_vehicle_error() :: #{binary() => any()}.
 
 %% Example:
+%% time_period() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type time_period() :: #{binary() => any()}.
+
+%% Example:
+%% signal_fetch_information() :: #{
+%%   <<"actions">> => list(string()()),
+%%   <<"conditionLanguageVersion">> => integer(),
+%%   <<"fullyQualifiedName">> => string(),
+%%   <<"signalFetchConfig">> => list()
+%% }
+-type signal_fetch_information() :: #{binary() => any()}.
+
+%% Example:
 %% update_signal_catalog_response() :: #{
 %%   <<"arn">> := string(),
 %%   <<"name">> := string()
@@ -600,6 +661,13 @@
 -type import_decoder_manifest_response() :: #{binary() => any()}.
 
 %% Example:
+%% storage_maximum_size() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type storage_maximum_size() :: #{binary() => any()}.
+
+%% Example:
 %% delete_vehicle_response() :: #{
 %%   <<"arn">> := string(),
 %%   <<"vehicleName">> := string()
@@ -623,7 +691,14 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% custom_decoding_interface() :: #{
+%%   <<"name">> => string()
+%% }
+-type custom_decoding_interface() :: #{binary() => any()}.
+
+%% Example:
 %% update_decoder_manifest_request() :: #{
+%%   <<"defaultForUnmappedSignals">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"networkInterfacesToAdd">> => list(network_interface()()),
 %%   <<"networkInterfacesToRemove">> => list(string()()),
@@ -634,6 +709,12 @@
 %%   <<"status">> => list(any())
 %% }
 -type update_decoder_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_state_template_request() :: #{
+
+%% }
+-type get_state_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_campaign_response() :: #{
@@ -648,6 +729,13 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+%% Example:
+%% mqtt_topic_config() :: #{
+%%   <<"executionRoleArn">> => string(),
+%%   <<"mqttTopicArn">> => string()
+%% }
+-type mqtt_topic_config() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_vehicle_fleet_response() :: #{
@@ -800,10 +888,24 @@
 -type create_vehicle_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_state_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(state_template_summary()())
+%% }
+-type list_state_templates_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_decoder_manifest_request() :: #{
 
 %% }
 -type get_decoder_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% condition_based_signal_fetch_config() :: #{
+%%   <<"conditionExpression">> => string(),
+%%   <<"triggerMode">> => list(any())
+%% }
+-type condition_based_signal_fetch_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -825,6 +927,14 @@
 -type get_decoder_manifest_response() :: #{binary() => any()}.
 
 %% Example:
+%% data_partition() :: #{
+%%   <<"id">> => string(),
+%%   <<"storageOptions">> => data_partition_storage_options(),
+%%   <<"uploadOptions">> => data_partition_upload_options()
+%% }
+-type data_partition() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
@@ -838,11 +948,28 @@
 -type associate_vehicle_fleet_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_state_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"metadataExtraDimensions">> => list(string()()),
+%%   <<"name">> => string(),
+%%   <<"signalCatalogArn">> => string(),
+%%   <<"stateTemplateProperties">> => list(string()())
+%% }
+-type get_state_template_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_vehicle_request_item() :: #{
 %%   <<"attributeUpdateMode">> => list(any()),
 %%   <<"attributes">> => map(),
 %%   <<"decoderManifestArn">> => string(),
 %%   <<"modelManifestArn">> => string(),
+%%   <<"stateTemplatesToAdd">> => list(state_template_association()()),
+%%   <<"stateTemplatesToRemove">> => list(string()()),
 %%   <<"vehicleName">> => string()
 %% }
 -type update_vehicle_request_item() :: #{binary() => any()}.
@@ -876,6 +1003,13 @@
 %%   <<"signalNodeType">> => list(any())
 %% }
 -type list_signal_catalog_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% storage_minimum_time_to_live() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type storage_minimum_time_to_live() :: #{binary() => any()}.
 
 %% Example:
 %% create_vehicle_response_item() :: #{
@@ -924,11 +1058,29 @@
 -type invalid_node_exception() :: #{binary() => any()}.
 
 %% Example:
+%% delete_state_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type delete_state_template_response() :: #{binary() => any()}.
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"retryAfterSeconds">> => integer()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_template_request() :: #{
+%%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"description">> => string(),
+%%   <<"metadataExtraDimensions">> => list(string()()),
+%%   <<"stateTemplatePropertiesToAdd">> => list(string()()),
+%%   <<"stateTemplatePropertiesToRemove">> => list(string()())
+%% }
+-type update_state_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_decoder_manifest_response() :: #{
@@ -966,6 +1118,18 @@
 -type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
+%% state_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"signalCatalogArn">> => string()
+%% }
+-type state_template_summary() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_response() :: #{
 
 %% }
@@ -977,6 +1141,7 @@
 %%   <<"compression">> => list(any()),
 %%   <<"dataDestinationConfigs">> => list(list()()),
 %%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"dataPartitions">> => list(data_partition()()),
 %%   <<"description">> => string(),
 %%   <<"diagnosticsMode">> => list(any()),
 %%   <<"expiryTime">> => non_neg_integer(),
@@ -984,6 +1149,7 @@
 %%   <<"priority">> => integer(),
 %%   <<"signalCatalogArn">> := string(),
 %%   <<"signalsToCollect">> => list(signal_information()()),
+%%   <<"signalsToFetch">> => list(signal_fetch_information()()),
 %%   <<"spoolingMode">> => list(any()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"tags">> => list(tag()()),
@@ -1003,6 +1169,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_vehicle_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_state_template_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_decoder_manifest_response() :: #{
@@ -1056,6 +1230,7 @@
 
 %% Example:
 %% signal_information() :: #{
+%%   <<"dataPartitionId">> => string(),
 %%   <<"maxSampleCount">> => float(),
 %%   <<"minimumSamplingIntervalMs">> => float(),
 %%   <<"name">> => string()
@@ -1068,6 +1243,12 @@
 %%   <<"summaries">> => list(model_manifest_summary()())
 %% }
 -type list_model_manifests_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_decoding_signal() :: #{
+%%   <<"id">> => string()
+%% }
+-type custom_decoding_signal() :: #{binary() => any()}.
 
 %% Example:
 %% update_model_manifest_response() :: #{
@@ -1089,6 +1270,20 @@
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_state_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% time_based_signal_fetch_config() :: #{
+%%   <<"executionFrequencyMs">> => float()
+%% }
+-type time_based_signal_fetch_config() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_signals_exception() :: #{
@@ -1114,6 +1309,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"dataDestinationConfigs">> => list(list()()),
 %%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"dataPartitions">> => list(data_partition()()),
 %%   <<"description">> => string(),
 %%   <<"diagnosticsMode">> => list(any()),
 %%   <<"expiryTime">> => non_neg_integer(),
@@ -1123,6 +1319,7 @@
 %%   <<"priority">> => integer(),
 %%   <<"signalCatalogArn">> => string(),
 %%   <<"signalsToCollect">> => list(signal_information()()),
+%%   <<"signalsToFetch">> => list(signal_fetch_information()()),
 %%   <<"spoolingMode">> => list(any()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
@@ -1157,7 +1354,9 @@
 %%   <<"attributeUpdateMode">> => list(any()),
 %%   <<"attributes">> => map(),
 %%   <<"decoderManifestArn">> => string(),
-%%   <<"modelManifestArn">> => string()
+%%   <<"modelManifestArn">> => string(),
+%%   <<"stateTemplatesToAdd">> => list(state_template_association()()),
+%%   <<"stateTemplatesToRemove">> => list(string()())
 %% }
 -type update_vehicle_request() :: #{binary() => any()}.
 
@@ -1253,6 +1452,13 @@
 -type list_vehicles_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_state_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_state_templates_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_campaign_request() :: #{
 %%   <<"action">> := list(any()),
 %%   <<"dataExtraDimensions">> => list(string()()),
@@ -1306,6 +1512,21 @@
 %%   <<"id">> := string()
 %% }
 -type create_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% state_template_association() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"stateTemplateUpdateStrategy">> => list()
+%% }
+-type state_template_association() :: #{binary() => any()}.
+
+%% Example:
+%% data_partition_storage_options() :: #{
+%%   <<"maximumSize">> => storage_maximum_size(),
+%%   <<"minimumTimeToLive">> => storage_minimum_time_to_live(),
+%%   <<"storageLocation">> => string()
+%% }
+-type data_partition_storage_options() :: #{binary() => any()}.
 
 %% Example:
 %% create_campaign_response() :: #{
@@ -1367,6 +1588,7 @@
 %%   <<"attributes">> => map(),
 %%   <<"decoderManifestArn">> := string(),
 %%   <<"modelManifestArn">> := string(),
+%%   <<"stateTemplates">> => list(state_template_association()()),
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_vehicle_request() :: #{binary() => any()}.
@@ -1405,6 +1627,7 @@
 %%   <<"decoderManifestArn">> => string(),
 %%   <<"lastModificationTime">> => non_neg_integer(),
 %%   <<"modelManifestArn">> => string(),
+%%   <<"stateTemplates">> => list(state_template_association()()),
 %%   <<"vehicleName">> => string()
 %% }
 -type get_vehicle_response() :: #{binary() => any()}.
@@ -1436,6 +1659,17 @@
 %%   <<"message">> => string()
 %% }
 -type decoder_manifest_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_template_request() :: #{
+%%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"description">> => string(),
+%%   <<"metadataExtraDimensions">> => list(string()()),
+%%   <<"signalCatalogArn">> := string(),
+%%   <<"stateTemplateProperties">> := list(string()()),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_state_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_model_manifest_request() :: #{
@@ -1512,6 +1746,16 @@
     invalid_node_exception() | 
     conflict_exception().
 
+-type create_state_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_signals_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_vehicle_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -1553,6 +1797,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     conflict_exception().
+
+-type delete_state_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type delete_vehicle_errors() ::
     throttling_exception() | 
@@ -1614,6 +1864,13 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_state_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception().
 
 -type get_vehicle_errors() ::
@@ -1710,6 +1967,12 @@
     resource_not_found_exception().
 
 -type list_signal_catalogs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_state_templates_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1816,6 +2079,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_state_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_signals_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type update_vehicle_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -1910,6 +2182,12 @@ batch_update_vehicle(Client, Input, Options)
 %% For more information, see Collect and transfer data
 %% with campaigns:
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/campaigns.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
+%%
+%% Access to certain Amazon Web Services IoT FleetWise features is currently
+%% gated. For more information, see Amazon Web Services Region and feature
+%% availability:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
 -spec create_campaign(aws_client:aws_client(), create_campaign_request()) ->
     {ok, create_campaign_response(), tuple()} |
@@ -2022,6 +2300,33 @@ create_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSignalCatalog">>, Input, Options).
 
+%% @doc Creates a state template.
+%%
+%% State templates contain state properties, which are signals that belong to
+%% a signal catalog that is synchronized between the Amazon Web Services IoT
+%% FleetWise Edge and the Amazon Web Services Cloud.
+%%
+%% Access to certain Amazon Web Services IoT FleetWise features is currently
+%% gated. For more information, see Amazon Web Services Region and feature
+%% availability:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
+-spec create_state_template(aws_client:aws_client(), create_state_template_request()) ->
+    {ok, create_state_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_state_template_errors(), tuple()}.
+create_state_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_state_template(Client, Input, []).
+
+-spec create_state_template(aws_client:aws_client(), create_state_template_request(), proplists:proplist()) ->
+    {ok, create_state_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_state_template_errors(), tuple()}.
+create_state_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStateTemplate">>, Input, Options).
+
 %% @doc Creates a vehicle, which is an instance of a vehicle model (model
 %% manifest).
 %%
@@ -2078,10 +2383,6 @@ delete_campaign(Client, Input, Options)
 %%
 %% You can't delete a decoder manifest if it has vehicles
 %% associated with it.
-%%
-%% If the decoder manifest is successfully deleted, Amazon Web Services IoT
-%% FleetWise sends back an HTTP 200
-%% response with an empty body.
 -spec delete_decoder_manifest(aws_client:aws_client(), delete_decoder_manifest_request()) ->
     {ok, delete_decoder_manifest_response(), tuple()} |
     {error, any()} |
@@ -2105,10 +2406,6 @@ delete_decoder_manifest(Client, Input, Options)
 %% CLI):
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/delete-fleet-cli.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
-%%
-%% If the fleet is successfully deleted, Amazon Web Services IoT FleetWise
-%% sends back an HTTP 200 response
-%% with an empty body.
 -spec delete_fleet(aws_client:aws_client(), delete_fleet_request()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
@@ -2126,10 +2423,6 @@ delete_fleet(Client, Input, Options)
     request(Client, <<"DeleteFleet">>, Input, Options).
 
 %% @doc Deletes a vehicle model (model manifest).
-%%
-%% If the vehicle model is successfully deleted, Amazon Web Services IoT
-%% FleetWise sends back an HTTP 200
-%% response with an empty body.
 -spec delete_model_manifest(aws_client:aws_client(), delete_model_manifest_request()) ->
     {ok, delete_model_manifest_response(), tuple()} |
     {error, any()} |
@@ -2147,10 +2440,6 @@ delete_model_manifest(Client, Input, Options)
     request(Client, <<"DeleteModelManifest">>, Input, Options).
 
 %% @doc Deletes a signal catalog.
-%%
-%% If the signal catalog is successfully deleted, Amazon Web Services IoT
-%% FleetWise sends back an HTTP 200
-%% response with an empty body.
 -spec delete_signal_catalog(aws_client:aws_client(), delete_signal_catalog_request()) ->
     {ok, delete_signal_catalog_response(), tuple()} |
     {error, any()} |
@@ -2167,11 +2456,24 @@ delete_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSignalCatalog">>, Input, Options).
 
+%% @doc Deletes a state template.
+-spec delete_state_template(aws_client:aws_client(), delete_state_template_request()) ->
+    {ok, delete_state_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_state_template_errors(), tuple()}.
+delete_state_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_state_template(Client, Input, []).
+
+-spec delete_state_template(aws_client:aws_client(), delete_state_template_request(), proplists:proplist()) ->
+    {ok, delete_state_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_state_template_errors(), tuple()}.
+delete_state_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStateTemplate">>, Input, Options).
+
 %% @doc Deletes a vehicle and removes it from any campaigns.
-%%
-%% If the vehicle is successfully deleted, Amazon Web Services IoT FleetWise
-%% sends back an HTTP 200 response
-%% with an empty body.
 -spec delete_vehicle(aws_client:aws_client(), delete_vehicle_request()) ->
     {ok, delete_vehicle_response(), tuple()} |
     {error, any()} |
@@ -2192,10 +2494,6 @@ delete_vehicle(Client, Input, Options)
 %%
 %% Disassociating a vehicle from a
 %% fleet doesn't delete the vehicle.
-%%
-%% If the vehicle is successfully dissociated from a fleet, Amazon Web
-%% Services IoT FleetWise sends back an
-%% HTTP 200 response with an empty body.
 -spec disassociate_vehicle_fleet(aws_client:aws_client(), disassociate_vehicle_fleet_request()) ->
     {ok, disassociate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
@@ -2213,6 +2511,12 @@ disassociate_vehicle_fleet(Client, Input, Options)
     request(Client, <<"DisassociateVehicleFleet">>, Input, Options).
 
 %% @doc Retrieves information about a campaign.
+%%
+%% Access to certain Amazon Web Services IoT FleetWise features is currently
+%% gated. For more information, see Amazon Web Services Region and feature
+%% availability:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 -spec get_campaign(aws_client:aws_client(), get_campaign_request()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
@@ -2359,6 +2663,29 @@ get_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSignalCatalog">>, Input, Options).
 
+%% @doc Retrieves information about a state template.
+%%
+%% Access to certain Amazon Web Services IoT FleetWise features is currently
+%% gated. For more information, see Amazon Web Services Region and feature
+%% availability:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
+-spec get_state_template(aws_client:aws_client(), get_state_template_request()) ->
+    {ok, get_state_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_state_template_errors(), tuple()}.
+get_state_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_state_template(Client, Input, []).
+
+-spec get_state_template(aws_client:aws_client(), get_state_template_request(), proplists:proplist()) ->
+    {ok, get_state_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_state_template_errors(), tuple()}.
+get_state_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetStateTemplate">>, Input, Options).
+
 %% @doc Retrieves information about a vehicle.
 -spec get_vehicle(aws_client:aws_client(), get_vehicle_request()) ->
     {ok, get_vehicle_response(), tuple()} |
@@ -2376,8 +2703,9 @@ get_vehicle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVehicle">>, Input, Options).
 
-%% @doc Retrieves information about the status of a vehicle with any
-%% associated campaigns.
+%% @doc Retrieves information about the status of campaigns, decoder
+%% manifests, or state templates
+%% associated with a vehicle.
 -spec get_vehicle_status(aws_client:aws_client(), get_vehicle_status_request()) ->
     {ok, get_vehicle_status_response(), tuple()} |
     {error, any()} |
@@ -2396,6 +2724,9 @@ get_vehicle_status(Client, Input, Options)
 
 %% @doc Creates a decoder manifest using your existing CAN DBC file from your
 %% local device.
+%%
+%% The CAN signal name must be unique and not repeated across CAN message
+%% definitions in a .dbc file.
 -spec import_decoder_manifest(aws_client:aws_client(), import_decoder_manifest_request()) ->
     {ok, import_decoder_manifest_response(), tuple()} |
     {error, any()} |
@@ -2640,6 +2971,29 @@ list_signal_catalogs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSignalCatalogs">>, Input, Options).
 
+%% @doc Lists information about created state templates.
+%%
+%% Access to certain Amazon Web Services IoT FleetWise features is currently
+%% gated. For more information, see Amazon Web Services Region and feature
+%% availability:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
+-spec list_state_templates(aws_client:aws_client(), list_state_templates_request()) ->
+    {ok, list_state_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_state_templates_errors(), tuple()}.
+list_state_templates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_state_templates(Client, Input, []).
+
+-spec list_state_templates(aws_client:aws_client(), list_state_templates_request(), proplists:proplist()) ->
+    {ok, list_state_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_state_templates_errors(), tuple()}.
+list_state_templates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStateTemplates">>, Input, Options).
+
 %% @doc Lists the tags (metadata) you have assigned to the resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -2700,9 +3054,11 @@ list_vehicles_in_fleet(Client, Input, Options)
 
 %% @doc Creates or updates the encryption configuration.
 %%
-%% Amazon Web Services IoT FleetWise can encrypt your data and resources
-%% using an Amazon Web Services managed key. Or, you can use a KMS key that
-%% you own and manage. For more information, see Data encryption:
+%% Amazon Web Services IoT FleetWise can encrypt your data and
+%% resources using an Amazon Web Services managed key. Or, you can use a KMS
+%% key that you own and
+%% manage. For more information, see Data
+%% encryption:
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/data-encryption.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
 -spec put_encryption_configuration(aws_client:aws_client(), put_encryption_configuration_request()) ->
@@ -2741,25 +3097,32 @@ put_logging_options(Client, Input, Options)
 %% @doc
 %% This API operation contains deprecated parameters.
 %%
-%% Register your account again without the Timestream resources parameter so
-%% that Amazon Web Services IoT FleetWise can remove the Timestream metadata
-%% stored. You should then pass the data destination into the CreateCampaign:
+%% Register your account again
+%% without the Timestream resources parameter so that Amazon Web Services IoT
+%% FleetWise can remove the Timestream
+%% metadata stored. You should then pass the data destination into the
+%% CreateCampaign:
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/APIReference/API_CreateCampaign.html
 %% API operation.
 %%
 %% You must delete any existing campaigns that include an empty data
-%% destination before you register your account again. For more information,
-%% see the DeleteCampaign:
+%% destination
+%% before you register your account again. For more information, see the
+%% DeleteCampaign:
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/APIReference/API_DeleteCampaign.html
 %% API operation.
 %%
 %% If you want to delete the Timestream inline policy from the service-linked
-%% role, such as to mitigate an overly permissive policy, you must first
-%% delete any existing campaigns. Then delete the service-linked role and
-%% register your account again to enable CloudWatch metrics. For more
-%% information, see DeleteServiceLinkedRole:
+%% role, such
+%% as to mitigate an overly permissive policy, you must first delete any
+%% existing
+%% campaigns. Then delete the service-linked role and register your account
+%% again to
+%% enable CloudWatch metrics. For more information, see
+%% DeleteServiceLinkedRole:
 %% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteServiceLinkedRole.html
-%% in the Identity and Access Management API Reference.
+%% in the Identity and Access Management API
+%% Reference.
 %%
 %% Registers your Amazon Web Services account, IAM, and Amazon Timestream
 %% resources so Amazon Web Services IoT FleetWise can
@@ -2873,10 +3236,6 @@ update_decoder_manifest(Client, Input, Options)
     request(Client, <<"UpdateDecoderManifest">>, Input, Options).
 
 %% @doc Updates the description of an existing fleet.
-%%
-%% If the fleet is successfully updated, Amazon Web Services IoT FleetWise
-%% sends back an HTTP 200 response
-%% with an empty HTTP body.
 -spec update_fleet(aws_client:aws_client(), update_fleet_request()) ->
     {ok, update_fleet_response(), tuple()} |
     {error, any()} |
@@ -2929,6 +3288,29 @@ update_signal_catalog(Client, Input)
 update_signal_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSignalCatalog">>, Input, Options).
+
+%% @doc Updates a state template.
+%%
+%% Access to certain Amazon Web Services IoT FleetWise features is currently
+%% gated. For more information, see Amazon Web Services Region and feature
+%% availability:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
+-spec update_state_template(aws_client:aws_client(), update_state_template_request()) ->
+    {ok, update_state_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_state_template_errors(), tuple()}.
+update_state_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_state_template(Client, Input, []).
+
+-spec update_state_template(aws_client:aws_client(), update_state_template_request(), proplists:proplist()) ->
+    {ok, update_state_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_state_template_errors(), tuple()}.
+update_state_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStateTemplate">>, Input, Options).
 
 %% @doc Updates a vehicle.
 -spec update_vehicle(aws_client:aws_client(), update_vehicle_request()) ->

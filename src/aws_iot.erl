@@ -83,6 +83,8 @@
          create_certificate_from_csr/3,
          create_certificate_provider/3,
          create_certificate_provider/4,
+         create_command/3,
+         create_command/4,
          create_custom_metric/3,
          create_custom_metric/4,
          create_dimension/3,
@@ -149,6 +151,10 @@
          delete_certificate/4,
          delete_certificate_provider/3,
          delete_certificate_provider/4,
+         delete_command/3,
+         delete_command/4,
+         delete_command_execution/3,
+         delete_command_execution/4,
          delete_custom_metric/3,
          delete_custom_metric/4,
          delete_dimension/3,
@@ -327,6 +333,12 @@
          get_buckets_aggregation/3,
          get_cardinality/2,
          get_cardinality/3,
+         get_command/2,
+         get_command/4,
+         get_command/5,
+         get_command_execution/3,
+         get_command_execution/5,
+         get_command_execution/6,
          get_effective_policies/2,
          get_effective_policies/3,
          get_indexing_configuration/1,
@@ -408,6 +420,11 @@
          list_certificates_by_ca/2,
          list_certificates_by_ca/4,
          list_certificates_by_ca/5,
+         list_command_executions/2,
+         list_command_executions/3,
+         list_commands/1,
+         list_commands/3,
+         list_commands/4,
          list_custom_metrics/1,
          list_custom_metrics/3,
          list_custom_metrics/4,
@@ -621,6 +638,8 @@
          update_certificate/4,
          update_certificate_provider/3,
          update_certificate_provider/4,
+         update_command/3,
+         update_command/4,
          update_custom_metric/3,
          update_custom_metric/4,
          update_dimension/3,
@@ -716,6 +735,13 @@
 
 
 %% Example:
+%% delete_command_response() :: #{
+%%   <<"statusCode">> => integer()
+%% }
+-type delete_command_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% cancel_job_request() :: #{
 %%   <<"comment">> => string(),
 %%   <<"force">> => boolean(),
@@ -744,6 +770,24 @@
 %% Example:
 %% describe_certificate_provider_request() :: #{}
 -type describe_certificate_provider_request() :: #{}.
+
+
+%% Example:
+%% get_command_response() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"commandId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deprecated">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"mandatoryParameters">> => list(command_parameter()()),
+%%   <<"namespace">> => list(any()),
+%%   <<"payload">> => command_payload(),
+%%   <<"pendingDeletion">> => boolean(),
+%%   <<"roleArn">> => string()
+%% }
+-type get_command_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -852,6 +896,14 @@
 %% Example:
 %% create_provisioning_claim_request() :: #{}
 -type create_provisioning_claim_request() :: #{}.
+
+
+%% Example:
+%% command_payload() :: #{
+%%   <<"content">> => binary(),
+%%   <<"contentType">> => string()
+%% }
+-type command_payload() :: #{binary() => any()}.
 
 %% Example:
 %% get_topic_rule_destination_request() :: #{}
@@ -1200,6 +1252,14 @@
 
 
 %% Example:
+%% status_reason() :: #{
+%%   <<"reasonCode">> => string(),
+%%   <<"reasonDescription">> => string()
+%% }
+-type status_reason() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_domain_configuration_request() :: #{
 %%   <<"applicationProtocol">> => list(any()),
 %%   <<"authenticationType">> => list(any()),
@@ -1274,6 +1334,14 @@
 
 
 %% Example:
+%% list_commands_response() :: #{
+%%   <<"commands">> => list(command_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_commands_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_security_profiles_for_target_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -1315,6 +1383,10 @@
 %% Example:
 %% delete_scheduled_audit_response() :: #{}
 -type delete_scheduled_audit_response() :: #{}.
+
+%% Example:
+%% delete_command_execution_response() :: #{}
+-type delete_command_execution_response() :: #{}.
 
 
 %% Example:
@@ -1854,6 +1926,13 @@
 %%   <<"securityProfileTargetArn">> := string()
 %% }
 -type detach_security_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_command_execution_request() :: #{
+%%   <<"targetArn">> := string()
+%% }
+-type delete_command_execution_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_authorizer_request() :: #{}
@@ -2445,6 +2524,17 @@
 %% }
 -type mitigation_action_identifier() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_commands_request() :: #{
+%%   <<"commandParameterName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_commands_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_authorizer_response() :: #{}
 -type delete_authorizer_response() :: #{}.
@@ -2455,6 +2545,17 @@
 %%   <<"expiresInSec">> => float()
 %% }
 -type aws_job_presigned_url_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_command_response() :: #{
+%%   <<"commandId">> => string(),
+%%   <<"deprecated">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer()
+%% }
+-type update_command_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2668,6 +2769,14 @@
 %% cancel_detect_mitigation_actions_task_request() :: #{}
 -type cancel_detect_mitigation_actions_task_request() :: #{}.
 
+
+%% Example:
+%% get_command_execution_request() :: #{
+%%   <<"includeResult">> => boolean(),
+%%   <<"targetArn">> := string()
+%% }
+-type get_command_execution_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_audit_mitigation_actions_task_request() :: #{}
 -type describe_audit_mitigation_actions_task_request() :: #{}.
@@ -2844,6 +2953,23 @@
 %%   <<"metricType">> => list(any())
 %% }
 -type describe_custom_metric_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_command_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"mandatoryParameters">> => list(command_parameter()()),
+%%   <<"namespace">> => list(any()),
+%%   <<"payload">> => command_payload(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_command_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_command_request() :: #{}
+-type delete_command_request() :: #{}.
 
 %% Example:
 %% cancel_detect_mitigation_actions_task_response() :: #{}
@@ -3022,6 +3148,10 @@
 %% }
 -type list_things_in_billing_group_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_command_request() :: #{}
+-type get_command_request() :: #{}.
+
 
 %% Example:
 %% list_managed_job_templates_request() :: #{
@@ -3052,6 +3182,25 @@
 %%   <<"securityProfileTargetArn">> := string()
 %% }
 -type attach_security_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_command_request() :: #{
+%%   <<"deprecated">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string()
+%% }
+-type update_command_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_parameter() :: #{
+%%   <<"defaultValue">> => command_parameter_value(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"value">> => command_parameter_value()
+%% }
+-type command_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3294,6 +3443,14 @@
 %%   <<"stateValue">> => string()
 %% }
 -type cloudwatch_alarm_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_filter() :: #{
+%%   <<"after">> => string(),
+%%   <<"before">> => string()
+%% }
+-type time_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3978,6 +4135,21 @@
 
 
 %% Example:
+%% list_command_executions_request() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"completedTimeFilter">> => time_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"startedTimeFilter">> => time_filter(),
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string()
+%% }
+-type list_command_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_pair() :: #{
 %%   <<"PrivateKey">> => string(),
 %%   <<"PublicKey">> => string()
@@ -4126,6 +4298,25 @@
 %%   <<"roleArn">> => string()
 %% }
 -type update_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_command_execution_response() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionId">> => string(),
+%%   <<"executionTimeoutSeconds">> => float(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"parameters">> => map(),
+%%   <<"result">> => map(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => status_reason(),
+%%   <<"targetArn">> => string(),
+%%   <<"timeToLive">> => non_neg_integer()
+%% }
+-type get_command_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4382,6 +4573,15 @@
 %%   <<"authorizerDescription">> => authorizer_description()
 %% }
 -type describe_default_authorizer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_execution_result() :: #{
+%%   <<"B">> => boolean(),
+%%   <<"BIN">> => binary(),
+%%   <<"S">> => string()
+%% }
+-type command_execution_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4743,6 +4943,19 @@
 %%   <<"violationEventOccurrenceRange">> => violation_event_occurrence_range()
 %% }
 -type detect_mitigation_actions_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_execution_summary() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string()
+%% }
+-type command_execution_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5939,6 +6152,14 @@
 %% }
 -type list_things_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_command_executions_response() :: #{
+%%   <<"commandExecutions">> => list(command_execution_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_command_executions_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_logging_options_request() :: #{}
 -type get_logging_options_request() :: #{}.
@@ -6297,6 +6518,14 @@
 
 
 %% Example:
+%% create_command_response() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"commandId">> => string()
+%% }
+-type create_command_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% audit_mitigation_actions_task_target() :: #{
 %%   <<"auditCheckToReasonCodeFilter">> => map(),
 %%   <<"auditTaskId">> => string(),
@@ -6342,6 +6571,19 @@
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_summary() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"commandId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deprecated">> => boolean(),
+%%   <<"displayName">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"pendingDeletion">> => boolean()
+%% }
+-type command_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6565,6 +6807,19 @@
 %%   <<"queryVersion">> => string()
 %% }
 -type search_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_parameter_value() :: #{
+%%   <<"B">> => boolean(),
+%%   <<"BIN">> => binary(),
+%%   <<"D">> => float(),
+%%   <<"I">> => integer(),
+%%   <<"L">> => float(),
+%%   <<"S">> => string(),
+%%   <<"UL">> => string()
+%% }
+-type command_parameter_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7076,6 +7331,13 @@
     unauthorized_exception() | 
     internal_failure_exception().
 
+-type create_command_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_custom_metric_errors() ::
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
@@ -7343,6 +7605,18 @@
     delete_conflict_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
+
+-type delete_command_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_command_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 -type delete_custom_metric_errors() ::
     throttling_exception() | 
@@ -7850,6 +8124,18 @@
     unauthorized_exception() | 
     internal_failure_exception().
 
+-type get_command_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_command_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_effective_policies_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -8043,6 +8329,17 @@
     invalid_request_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
+
+-type list_command_executions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_commands_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
 
 -type list_custom_metrics_errors() ::
     throttling_exception() | 
@@ -8607,6 +8904,13 @@
     unauthorized_exception() | 
     internal_failure_exception().
 
+-type update_command_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_custom_metric_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
@@ -8940,12 +9244,13 @@ associate_sbom_with_package_version(Client, PackageName, VersionName, Input0, Op
 %%
 %% The following criteria must be met:
 %%
-%% The job must have been created with the `targetSelection' field set to
-%% &quot;CONTINUOUS&quot;.
+%% The job must have been created with the `targetSelection' field
+%% set to &quot;CONTINUOUS&quot;.
 %%
 %% The job status must currently be &quot;IN_PROGRESS&quot;.
 %%
-%% The total number of targets associated with a job must not exceed 100.
+%% The total number of targets associated with a job must not exceed
+%% 100.
 %%
 %% Requires permission to access the AssociateTargetsWithJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -9747,6 +10052,43 @@ create_certificate_provider(Client, CertificateProviderName, Input) ->
 create_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
     Method = post,
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a command.
+%%
+%% A command contains reusable configurations that can be applied
+%% before they are sent to the devices.
+-spec create_command(aws_client:aws_client(), binary() | list(), create_command_request()) ->
+    {ok, create_command_response(), tuple()} |
+    {error, any()} |
+    {error, create_command_errors(), tuple()}.
+create_command(Client, CommandId, Input) ->
+    create_command(Client, CommandId, Input, []).
+
+-spec create_command(aws_client:aws_client(), binary() | list(), create_command_request(), proplists:proplist()) ->
+    {ok, create_command_response(), tuple()} |
+    {error, any()} |
+    {error, create_command_errors(), tuple()}.
+create_command(Client, CommandId, Input0, Options0) ->
+    Method = put,
+    Path = ["/commands/", aws_util:encode_uri(CommandId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -11145,6 +11487,78 @@ delete_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete a command resource.
+-spec delete_command(aws_client:aws_client(), binary() | list(), delete_command_request()) ->
+    {ok, delete_command_response(), tuple()} |
+    {error, any()} |
+    {error, delete_command_errors(), tuple()}.
+delete_command(Client, CommandId, Input) ->
+    delete_command(Client, CommandId, Input, []).
+
+-spec delete_command(aws_client:aws_client(), binary() | list(), delete_command_request(), proplists:proplist()) ->
+    {ok, delete_command_response(), tuple()} |
+    {error, any()} |
+    {error, delete_command_errors(), tuple()}.
+delete_command(Client, CommandId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/commands/", aws_util:encode_uri(CommandId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a command execution.
+%%
+%% Only command executions that enter a terminal state can be deleted from
+%% your account.
+-spec delete_command_execution(aws_client:aws_client(), binary() | list(), delete_command_execution_request()) ->
+    {ok, delete_command_execution_response(), tuple()} |
+    {error, any()} |
+    {error, delete_command_execution_errors(), tuple()}.
+delete_command_execution(Client, ExecutionId, Input) ->
+    delete_command_execution(Client, ExecutionId, Input, []).
+
+-spec delete_command_execution(aws_client:aws_client(), binary() | list(), delete_command_execution_request(), proplists:proplist()) ->
+    {ok, delete_command_execution_response(), tuple()} |
+    {error, any()} |
+    {error, delete_command_execution_errors(), tuple()}.
+delete_command_execution(Client, ExecutionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/command-executions/", aws_util:encode_uri(ExecutionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"targetArn">>, <<"targetArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc
 %% Deletes a Device Defender detect custom metric.
 %%
@@ -11354,16 +11768,18 @@ delete_fleet_metric(Client, MetricName, Input0, Options0) ->
 
 %% @doc Deletes a job and its related job executions.
 %%
-%% Deleting a job may take time, depending on the number of job
-%% executions created for the job and various other factors. While the job
-%% is being deleted, the status of the job will be shown as
-%% &quot;DELETION_IN_PROGRESS&quot;. Attempting to delete or cancel a job
-%% whose status
-%% is already &quot;DELETION_IN_PROGRESS&quot; will result in an error.
+%% Deleting a job may take time, depending on the number of job executions
+%% created for
+%% the job and various other factors. While the job is being deleted, the
+%% status of the job
+%% will be shown as &quot;DELETION_IN_PROGRESS&quot;. Attempting to delete or
+%% cancel a job whose
+%% status is already &quot;DELETION_IN_PROGRESS&quot; will result in an
+%% error.
 %%
 %% Only 10 jobs may have status &quot;DELETION_IN_PROGRESS&quot; at the same
-%% time, or
-%% a LimitExceededException will occur.
+%% time, or a
+%% LimitExceededException will occur.
 %%
 %% Requires permission to access the DeleteJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -14120,6 +14536,86 @@ get_cardinality(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets information about the specified command.
+-spec get_command(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_command_response(), tuple()} |
+    {error, any()} |
+    {error, get_command_errors(), tuple()}.
+get_command(Client, CommandId)
+  when is_map(Client) ->
+    get_command(Client, CommandId, #{}, #{}).
+
+-spec get_command(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_command_response(), tuple()} |
+    {error, any()} |
+    {error, get_command_errors(), tuple()}.
+get_command(Client, CommandId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_command(Client, CommandId, QueryMap, HeadersMap, []).
+
+-spec get_command(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_command_response(), tuple()} |
+    {error, any()} |
+    {error, get_command_errors(), tuple()}.
+get_command(Client, CommandId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/commands/", aws_util:encode_uri(CommandId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about the specific command execution on a single
+%% device.
+-spec get_command_execution(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_command_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_command_execution_errors(), tuple()}.
+get_command_execution(Client, ExecutionId, TargetArn)
+  when is_map(Client) ->
+    get_command_execution(Client, ExecutionId, TargetArn, #{}, #{}).
+
+-spec get_command_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_command_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_command_execution_errors(), tuple()}.
+get_command_execution(Client, ExecutionId, TargetArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_command_execution(Client, ExecutionId, TargetArn, QueryMap, HeadersMap, []).
+
+-spec get_command_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_command_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_command_execution_errors(), tuple()}.
+get_command_execution(Client, ExecutionId, TargetArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/command-executions/", aws_util:encode_uri(ExecutionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"includeResult">>, maps:get(<<"includeResult">>, QueryMap, undefined)},
+        {<<"targetArn">>, TargetArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a list of the policies that have an effect on the authorization
 %% behavior of the
 %% specified device when it connects to the IoT device gateway.
@@ -15426,6 +15922,95 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
         {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
         {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
         {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all command executions.
+%%
+%% You must provide only the
+%% `startedTimeFilter' or the `completedTimeFilter' information. If
+%% you
+%% provide both time filters, the API will generate an error.
+%% You can use this information to find command executions that started
+%% within
+%% a specific timeframe.
+-spec list_command_executions(aws_client:aws_client(), list_command_executions_request()) ->
+    {ok, list_command_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_command_executions_errors(), tuple()}.
+list_command_executions(Client, Input) ->
+    list_command_executions(Client, Input, []).
+
+-spec list_command_executions(aws_client:aws_client(), list_command_executions_request(), proplists:proplist()) ->
+    {ok, list_command_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_command_executions_errors(), tuple()}.
+list_command_executions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/command-executions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List all commands in your account.
+-spec list_commands(aws_client:aws_client()) ->
+    {ok, list_commands_response(), tuple()} |
+    {error, any()} |
+    {error, list_commands_errors(), tuple()}.
+list_commands(Client)
+  when is_map(Client) ->
+    list_commands(Client, #{}, #{}).
+
+-spec list_commands(aws_client:aws_client(), map(), map()) ->
+    {ok, list_commands_response(), tuple()} |
+    {error, any()} |
+    {error, list_commands_errors(), tuple()}.
+list_commands(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_commands(Client, QueryMap, HeadersMap, []).
+
+-spec list_commands(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_commands_response(), tuple()} |
+    {error, any()} |
+    {error, list_commands_errors(), tuple()}.
+list_commands(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/commands"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"commandParameterName">>, maps:get(<<"commandParameterName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -19191,6 +19776,40 @@ update_certificate_provider(Client, CertificateProviderName, Input) ->
 update_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
     Method = put,
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update information about a command or mark a command for deprecation.
+-spec update_command(aws_client:aws_client(), binary() | list(), update_command_request()) ->
+    {ok, update_command_response(), tuple()} |
+    {error, any()} |
+    {error, update_command_errors(), tuple()}.
+update_command(Client, CommandId, Input) ->
+    update_command(Client, CommandId, Input, []).
+
+-spec update_command(aws_client:aws_client(), binary() | list(), update_command_request(), proplists:proplist()) ->
+    {ok, update_command_response(), tuple()} |
+    {error, any()} |
+    {error, update_command_errors(), tuple()}.
+update_command(Client, CommandId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/commands/", aws_util:encode_uri(CommandId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

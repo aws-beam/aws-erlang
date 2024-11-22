@@ -13,6 +13,9 @@
          create_configuration_manager/3,
          delete_configuration_manager/3,
          delete_configuration_manager/4,
+         get_configuration/2,
+         get_configuration/4,
+         get_configuration/5,
          get_configuration_manager/2,
          get_configuration_manager/4,
          get_configuration_manager/5,
@@ -21,6 +24,8 @@
          get_service_settings/4,
          list_configuration_managers/2,
          list_configuration_managers/3,
+         list_configurations/2,
+         list_configurations/3,
          list_quick_setup_types/1,
          list_quick_setup_types/3,
          list_quick_setup_types/4,
@@ -43,36 +48,6 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_definition() :: #{
-%%   <<"Id">> => [string()],
-%%   <<"LocalDeploymentAdministrationRoleArn">> => string(),
-%%   <<"LocalDeploymentExecutionRoleName">> => [string()],
-%%   <<"Parameters">> => map(),
-%%   <<"Type">> => [string()],
-%%   <<"TypeVersion">> => [string()]
-%% }
--type configuration_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_definition_input() :: #{
-%%   <<"LocalDeploymentAdministrationRoleArn">> => string(),
-%%   <<"LocalDeploymentExecutionRoleName">> => [string()],
-%%   <<"Parameters">> => map(),
-%%   <<"Type">> => [string()],
-%%   <<"TypeVersion">> => [string()]
-%% }
--type configuration_definition_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% configuration_definition_summary() :: #{
 %%   <<"FirstClassParameters">> => map(),
 %%   <<"Id">> => [string()],
@@ -83,54 +58,14 @@
 
 
 %% Example:
-%% configuration_manager_summary() :: #{
-%%   <<"ConfigurationDefinitionSummaries">> => list(configuration_definition_summary()()),
-%%   <<"Description">> => [string()],
-%%   <<"ManagerArn">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"StatusSummaries">> => list(status_summary()())
+%% status_summary() :: #{
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => map(),
+%%   <<"StatusMessage">> => [string()],
+%%   <<"StatusType">> => list(any())
 %% }
--type configuration_manager_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configuration_manager_input() :: #{
-%%   <<"ConfigurationDefinitions">> := list(configuration_definition_input()()),
-%%   <<"Description">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"Tags">> => map()
-%% }
--type create_configuration_manager_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configuration_manager_output() :: #{
-%%   <<"ManagerArn">> => [string()]
-%% }
--type create_configuration_manager_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_manager_input() :: #{}
--type delete_configuration_manager_input() :: #{}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"Key">> => [string()],
-%%   <<"Values">> => list([string()]())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_configuration_manager_input() :: #{}
--type get_configuration_manager_input() :: #{}.
+-type status_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -148,26 +83,36 @@
 
 
 %% Example:
-%% get_service_settings_output() :: #{
-%%   <<"ServiceSettings">> => service_settings()
+%% configuration_summary() :: #{
+%%   <<"Account">> => [string()],
+%%   <<"ConfigurationDefinitionId">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"FirstClassParameters">> => map(),
+%%   <<"Id">> => [string()],
+%%   <<"ManagerArn">> => [string()],
+%%   <<"Region">> => [string()],
+%%   <<"StatusSummaries">> => list(status_summary()()),
+%%   <<"Type">> => [string()],
+%%   <<"TypeVersion">> => [string()]
 %% }
--type get_service_settings_output() :: #{binary() => any()}.
+-type configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
+%% get_configuration_output() :: #{
+%%   <<"Account">> => [string()],
+%%   <<"ConfigurationDefinitionId">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"LastModifiedAt">> => [non_neg_integer()],
+%%   <<"ManagerArn">> => [string()],
+%%   <<"Parameters">> => map(),
+%%   <<"Region">> => [string()],
+%%   <<"StatusSummaries">> => list(status_summary()()),
+%%   <<"Type">> => [string()],
+%%   <<"TypeVersion">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_managers_input() :: #{
-%%   <<"Filters">> => list(filter()()),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"StartingToken">> => [string()]
-%% }
--type list_configuration_managers_input() :: #{binary() => any()}.
+-type get_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -179,29 +124,20 @@
 
 
 %% Example:
-%% list_quick_setup_types_output() :: #{
-%%   <<"QuickSetupTypeList">> => list(quick_setup_type_output()())
+%% create_configuration_manager_input() :: #{
+%%   <<"ConfigurationDefinitions">> := list(configuration_definition_input()()),
+%%   <<"Description">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Tags">> => map()
 %% }
--type list_quick_setup_types_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag_entry()())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type create_configuration_manager_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_setup_type_output() :: #{
-%%   <<"LatestVersion">> => [string()],
-%%   <<"Type">> => [string()]
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type quick_setup_type_output() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -212,29 +148,57 @@
 
 
 %% Example:
-%% service_settings() :: #{
-%%   <<"ExplorerEnablingRoleArn">> => string()
+%% update_configuration_manager_input() :: #{
+%%   <<"Description">> => [string()],
+%%   <<"Name">> => [string()]
 %% }
--type service_settings() :: #{binary() => any()}.
+-type update_configuration_manager_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% status_summary() :: #{
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => map(),
-%%   <<"StatusMessage">> => [string()],
-%%   <<"StatusType">> => list(any())
+%% configuration_definition() :: #{
+%%   <<"Id">> => [string()],
+%%   <<"LocalDeploymentAdministrationRoleArn">> => string(),
+%%   <<"LocalDeploymentExecutionRoleName">> => [string()],
+%%   <<"Parameters">> => map(),
+%%   <<"Type">> => [string()],
+%%   <<"TypeVersion">> => [string()]
 %% }
--type status_summary() :: #{binary() => any()}.
+-type configuration_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_configuration_input() :: #{}
+-type get_configuration_input() :: #{}.
 
 
 %% Example:
-%% tag_entry() :: #{
-%%   <<"Key">> => [string()],
-%%   <<"Value">> => [string()]
+%% list_quick_setup_types_output() :: #{
+%%   <<"QuickSetupTypeList">> => list(quick_setup_type_output()())
 %% }
--type tag_entry() :: #{binary() => any()}.
+-type list_quick_setup_types_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_output() :: #{
+%%   <<"ConfigurationsList">> => list(configuration_summary()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_configurations_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_configuration_manager_input() :: #{}
+-type get_configuration_manager_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag_entry()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_manager_input() :: #{}
+-type delete_configuration_manager_input() :: #{}.
 
 
 %% Example:
@@ -245,10 +209,25 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
+%% filter() :: #{
+%%   <<"Key">> => [string()],
+%%   <<"Values">> => list([string()]())
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -269,11 +248,35 @@
 
 
 %% Example:
-%% update_configuration_manager_input() :: #{
-%%   <<"Description">> => [string()],
-%%   <<"Name">> => [string()]
+%% service_settings() :: #{
+%%   <<"ExplorerEnablingRoleArn">> => string()
 %% }
--type update_configuration_manager_input() :: #{binary() => any()}.
+-type service_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_settings_output() :: #{
+%%   <<"ServiceSettings">> => service_settings()
+%% }
+-type get_service_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -284,99 +287,172 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()]
+%% quick_setup_type_output() :: #{
+%%   <<"LatestVersion">> => [string()],
+%%   <<"Type">> => [string()]
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type quick_setup_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_entry() :: #{
+%%   <<"Key">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type tag_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_manager_output() :: #{
+%%   <<"ManagerArn">> => [string()]
+%% }
+-type create_configuration_manager_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_manager_summary() :: #{
+%%   <<"ConfigurationDefinitionSummaries">> => list(configuration_definition_summary()()),
+%%   <<"Description">> => [string()],
+%%   <<"ManagerArn">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"StatusSummaries">> => list(status_summary()())
+%% }
+-type configuration_manager_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_managers_input() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"StartingToken">> => [string()]
+%% }
+-type list_configuration_managers_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_definition_input() :: #{
+%%   <<"LocalDeploymentAdministrationRoleArn">> => string(),
+%%   <<"LocalDeploymentExecutionRoleName">> => [string()],
+%%   <<"Parameters">> => map(),
+%%   <<"Type">> => [string()],
+%%   <<"TypeVersion">> => [string()]
+%% }
+-type configuration_definition_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_input() :: #{
+%%   <<"ConfigurationDefinitionId">> => [string()],
+%%   <<"Filters">> => list(filter()()),
+%%   <<"ManagerArn">> => [string()],
+%%   <<"MaxItems">> => [integer()],
+%%   <<"StartingToken">> => [string()]
+%% }
+-type list_configurations_input() :: #{binary() => any()}.
 
 -type create_configuration_manager_errors() ::
-    validation_exception() | 
     throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    conflict_exception().
 
 -type delete_configuration_manager_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_configuration_manager_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_service_settings_errors() ::
     throttling_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    conflict_exception().
 
 -type list_configuration_managers_errors() ::
-    validation_exception() | 
     throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    conflict_exception().
+
+-type list_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_quick_setup_types_errors() ::
     throttling_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    conflict_exception().
 
 -type list_tags_for_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type untag_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_configuration_definition_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_configuration_manager_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_service_settings_errors() ::
-    validation_exception() | 
     throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -453,6 +529,43 @@ delete_configuration_manager(Client, ManagerArn, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns details about the specified configuration.
+-spec get_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
+get_configuration(Client, ConfigurationId)
+  when is_map(Client) ->
+    get_configuration(Client, ConfigurationId, #{}, #{}).
+
+-spec get_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
+get_configuration(Client, ConfigurationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration(Client, ConfigurationId, QueryMap, HeadersMap, []).
+
+-spec get_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
+get_configuration(Client, ConfigurationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/getConfiguration/", aws_util:encode_uri(ConfigurationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a configuration manager.
 -spec get_configuration_manager(aws_client:aws_client(), binary() | list()) ->
@@ -544,6 +657,41 @@ list_configuration_managers(Client, Input) ->
 list_configuration_managers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listConfigurationManagers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns configurations deployed by Quick Setup in the requesting
+%% Amazon Web Services account and Amazon Web Services Region.
+-spec list_configurations(aws_client:aws_client(), list_configurations_input()) ->
+    {ok, list_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, list_configurations_errors(), tuple()}.
+list_configurations(Client, Input) ->
+    list_configurations(Client, Input, []).
+
+-spec list_configurations(aws_client:aws_client(), list_configurations_input(), proplists:proplist()) ->
+    {ok, list_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, list_configurations_errors(), tuple()}.
+list_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listConfigurations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

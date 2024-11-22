@@ -42,12 +42,16 @@
          cancel_query/3,
          create_channel/2,
          create_channel/3,
+         create_dashboard/2,
+         create_dashboard/3,
          create_event_data_store/2,
          create_event_data_store/3,
          create_trail/2,
          create_trail/3,
          delete_channel/2,
          delete_channel/3,
+         delete_dashboard/2,
+         delete_dashboard/3,
          delete_event_data_store/2,
          delete_event_data_store/3,
          delete_resource_policy/2,
@@ -68,6 +72,8 @@
          generate_query/3,
          get_channel/2,
          get_channel/3,
+         get_dashboard/2,
+         get_dashboard/3,
          get_event_data_store/2,
          get_event_data_store/3,
          get_event_selectors/2,
@@ -86,6 +92,8 @@
          get_trail_status/3,
          list_channels/2,
          list_channels/3,
+         list_dashboards/2,
+         list_dashboards/3,
          list_event_data_stores/2,
          list_event_data_stores/3,
          list_import_failures/2,
@@ -116,6 +124,8 @@
          remove_tags/3,
          restore_event_data_store/2,
          restore_event_data_store/3,
+         start_dashboard_refresh/2,
+         start_dashboard_refresh/3,
          start_event_data_store_ingestion/2,
          start_event_data_store_ingestion/3,
          start_import/2,
@@ -132,6 +142,8 @@
          stop_logging/3,
          update_channel/2,
          update_channel/3,
+         update_dashboard/2,
+         update_dashboard/3,
          update_event_data_store/2,
          update_event_data_store/3,
          update_trail/2,
@@ -148,16 +160,53 @@
 -type partition_key() :: #{binary() => any()}.
 
 %% Example:
+%% list_dashboards_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_dashboards_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_dashboard_request() :: #{
+%%   <<"DashboardId">> := string()
+%% }
+-type get_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_trail_request() :: #{
 %%   <<"Name">> := string()
 %% }
 -type get_trail_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_dashboard_response() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"DashboardArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RefreshSchedule">> => refresh_schedule(),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Widgets">> => list(widget()())
+%% }
+-type update_dashboard_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_channel_request() :: #{
 %%   <<"Channel">> := string()
 %% }
 -type delete_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_dashboard_request() :: #{
+%%   <<"DashboardId">> := string(),
+%%   <<"RefreshSchedule">> => refresh_schedule(),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"Widgets">> => list(request_widget()())
+%% }
+-type update_dashboard_request() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_max_results_exception() :: #{
@@ -194,6 +243,7 @@
 %%   <<"DeliveryS3Uri">> => string(),
 %%   <<"DeliveryStatus">> => list(any()),
 %%   <<"ErrorMessage">> => string(),
+%%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"Prompt">> => string(),
 %%   <<"QueryId">> => string(),
 %%   <<"QueryStatistics">> => query_statistics_for_describe_query(),
@@ -373,6 +423,7 @@
 %% Example:
 %% get_query_results_request() :: #{
 %%   <<"EventDataStore">> => string(),
+%%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"MaxQueryResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"QueryId">> := string()
@@ -470,6 +521,13 @@
 -type invalid_s3_bucket_name_exception() :: #{binary() => any()}.
 
 %% Example:
+%% start_dashboard_refresh_request() :: #{
+%%   <<"DashboardId">> := string(),
+%%   <<"QueryParameterValues">> => map()
+%% }
+-type start_dashboard_refresh_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceTagList">> => list(resource_tag()())
@@ -478,6 +536,7 @@
 
 %% Example:
 %% get_resource_policy_response() :: #{
+%%   <<"DelegatedAdminResourcePolicy">> => string(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"ResourcePolicy">> => string()
 %% }
@@ -498,8 +557,10 @@
 %% Example:
 %% describe_query_request() :: #{
 %%   <<"EventDataStore">> => string(),
+%%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"QueryAlias">> => string(),
-%%   <<"QueryId">> => string()
+%%   <<"QueryId">> => string(),
+%%   <<"RefreshId">> => string()
 %% }
 -type describe_query_request() :: #{binary() => any()}.
 
@@ -540,6 +601,7 @@
 %% Example:
 %% start_query_request() :: #{
 %%   <<"DeliveryS3Uri">> => string(),
+%%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"QueryAlias">> => string(),
 %%   <<"QueryParameters">> => list(string()()),
 %%   <<"QueryStatement">> => string()
@@ -554,6 +616,7 @@
 
 %% Example:
 %% cancel_query_response() :: #{
+%%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"QueryId">> => string(),
 %%   <<"QueryStatus">> => list(any())
 %% }
@@ -581,6 +644,7 @@
 
 %% Example:
 %% generate_query_response() :: #{
+%%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"QueryAlias">> => string(),
 %%   <<"QueryStatement">> => string()
 %% }
@@ -765,6 +829,7 @@
 %% Example:
 %% cancel_query_request() :: #{
 %%   <<"EventDataStore">> => string(),
+%%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"QueryId">> := string()
 %% }
 -type cancel_query_request() :: #{binary() => any()}.
@@ -792,6 +857,14 @@
 %%   <<"Message">> => string()
 %% }
 -type insufficient_dependency_service_access_permission_exception() :: #{binary() => any()}.
+
+%% Example:
+%% request_widget() :: #{
+%%   <<"QueryParameters">> => list(string()()),
+%%   <<"QueryStatement">> => string(),
+%%   <<"ViewProperties">> => map()
+%% }
+-type request_widget() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -831,6 +904,12 @@
 %%   <<"Message">> => string()
 %% }
 -type event_data_store_federation_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% lookup_attribute() :: #{
@@ -1012,6 +1091,13 @@
 -type list_event_data_stores_request() :: #{binary() => any()}.
 
 %% Example:
+%% refresh_schedule_frequency() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type refresh_schedule_frequency() :: #{binary() => any()}.
+
+%% Example:
 %% account_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1095,6 +1181,27 @@
 -type list_import_failures_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_dashboard_response() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"DashboardArn">> => string(),
+%%   <<"LastRefreshFailureReason">> => string(),
+%%   <<"LastRefreshId">> => string(),
+%%   <<"RefreshSchedule">> => refresh_schedule(),
+%%   <<"Status">> => list(any()),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Widgets">> => list(widget()())
+%% }
+-type get_dashboard_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dashboard_request() :: #{
+%%   <<"DashboardId">> := string()
+%% }
+-type delete_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_event_data_store_request() :: #{
 %%   <<"EventDataStore">> := string()
 %% }
@@ -1105,6 +1212,20 @@
 %%   <<"TrailName">> := string()
 %% }
 -type get_event_selectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_schedule() :: #{
+%%   <<"Frequency">> => refresh_schedule_frequency(),
+%%   <<"Status">> => list(any()),
+%%   <<"TimeOfDay">> => string()
+%% }
+-type refresh_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dashboard_response() :: #{
+
+%% }
+-type delete_dashboard_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_logging_response() :: #{
@@ -1124,6 +1245,18 @@
 %%   <<"EventDataStore">> := string()
 %% }
 -type restore_event_data_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dashboard_response() :: #{
+%%   <<"DashboardArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RefreshSchedule">> => refresh_schedule(),
+%%   <<"TagsList">> => list(tag()()),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"Type">> => list(any()),
+%%   <<"Widgets">> => list(widget()())
+%% }
+-type create_dashboard_response() :: #{binary() => any()}.
 
 %% Example:
 %% import_not_found_exception() :: #{
@@ -1180,6 +1313,7 @@
 
 %% Example:
 %% start_query_response() :: #{
+%%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"QueryId">> => string()
 %% }
 -type start_query_response() :: #{binary() => any()}.
@@ -1258,6 +1392,12 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_dashboard_refresh_response() :: #{
+%%   <<"RefreshId">> => string()
+%% }
+-type start_dashboard_refresh_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_logging_response() :: #{
@@ -1381,6 +1521,16 @@
 -type event_data_store_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% create_dashboard_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"RefreshSchedule">> => refresh_schedule(),
+%%   <<"TagsList">> => list(tag()()),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"Widgets">> => list(request_widget()())
+%% }
+-type create_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_imports_request() :: #{
 %%   <<"Destination">> => string(),
 %%   <<"ImportStatus">> => list(any()),
@@ -1419,6 +1569,7 @@
 
 %% Example:
 %% put_resource_policy_response() :: #{
+%%   <<"DelegatedAdminResourcePolicy">> => string(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"ResourcePolicy">> => string()
 %% }
@@ -1430,6 +1581,15 @@
 %%   <<"Trails">> => list(trail_info()())
 %% }
 -type list_trails_response() :: #{binary() => any()}.
+
+%% Example:
+%% widget() :: #{
+%%   <<"QueryAlias">> => string(),
+%%   <<"QueryParameters">> => list(string()()),
+%%   <<"QueryStatement">> => string(),
+%%   <<"ViewProperties">> => map()
+%% }
+-type widget() :: #{binary() => any()}.
 
 %% Example:
 %% data_resource() :: #{
@@ -1619,6 +1779,13 @@
 -type list_tags_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_dashboards_response() :: #{
+%%   <<"Dashboards">> => list(dashboard_detail()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dashboards_response() :: #{binary() => any()}.
+
+%% Example:
 %% resource_arn_not_valid_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1733,6 +1900,13 @@
 -type describe_trails_response() :: #{binary() => any()}.
 
 %% Example:
+%% dashboard_detail() :: #{
+%%   <<"DashboardArn">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type dashboard_detail() :: #{binary() => any()}.
+
+%% Example:
 %% get_trail_response() :: #{
 %%   <<"Trail">> => trail()
 %% }
@@ -1797,6 +1971,16 @@
     event_data_store_arn_invalid_exception() | 
     unsupported_operation_exception().
 
+-type create_dashboard_errors() ::
+    invalid_query_statement_exception() | 
+    event_data_store_not_found_exception() | 
+    inactive_event_data_store_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    invalid_tag_parameter_exception() | 
+    insufficient_encryption_policy_exception() | 
+    unsupported_operation_exception().
+
 -type create_event_data_store_errors() ::
     cloud_trail_access_not_enabled_exception() | 
     event_data_store_max_limit_exceeded_exception() | 
@@ -1858,6 +2042,11 @@
     channel_not_found_exception() | 
     unsupported_operation_exception().
 
+-type delete_dashboard_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_operation_exception().
+
 -type delete_event_data_store_errors() ::
     event_data_store_has_ongoing_import_exception() | 
     event_data_store_not_found_exception() | 
@@ -1879,6 +2068,7 @@
     resource_policy_not_found_exception() | 
     operation_not_permitted_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     unsupported_operation_exception() | 
     resource_type_not_supported_exception().
 
@@ -1974,6 +2164,10 @@
     channel_not_found_exception() | 
     unsupported_operation_exception().
 
+-type get_dashboard_errors() ::
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
 -type get_event_data_store_errors() ::
     event_data_store_not_found_exception() | 
     invalid_parameter_exception() | 
@@ -2046,6 +2240,9 @@
 -type list_channels_errors() ::
     operation_not_permitted_exception() | 
     invalid_next_token_exception() | 
+    unsupported_operation_exception().
+
+-type list_dashboards_errors() ::
     unsupported_operation_exception().
 
 -type list_event_data_stores_errors() ::
@@ -2156,6 +2353,7 @@
     resource_policy_not_valid_exception() | 
     operation_not_permitted_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     unsupported_operation_exception() | 
     resource_type_not_supported_exception().
 
@@ -2204,6 +2402,13 @@
     organization_not_in_all_features_mode_exception() | 
     no_management_account_s_l_r_exists_exception() | 
     event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type start_dashboard_refresh_errors() ::
+    event_data_store_not_found_exception() | 
+    inactive_event_data_store_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     unsupported_operation_exception().
 
 -type start_event_data_store_ingestion_errors() ::
@@ -2304,6 +2509,16 @@
     event_data_store_arn_invalid_exception() | 
     unsupported_operation_exception().
 
+-type update_dashboard_errors() ::
+    invalid_query_statement_exception() | 
+    event_data_store_not_found_exception() | 
+    inactive_event_data_store_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    insufficient_encryption_policy_exception() | 
+    unsupported_operation_exception().
+
 -type update_event_data_store_errors() ::
     invalid_insight_selectors_exception() | 
     cloud_trail_access_not_enabled_exception() | 
@@ -2365,8 +2580,8 @@
 %% API
 %%====================================================================
 
-%% @doc Adds one or more tags to a trail, event data store, or channel, up to
-%% a limit of 50.
+%% @doc Adds one or more tags to a trail, event data store, dashboard, or
+%% channel, up to a limit of 50.
 %%
 %% Overwrites an
 %% existing tag's value when a new value is specified for an existing tag
@@ -2441,6 +2656,58 @@ create_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateChannel">>, Input, Options).
 
+%% @doc
+%% Creates a custom dashboard or the Highlights dashboard.
+%%
+%% Custom dashboards - Custom dashboards allow you to query
+%% events in any event data store type. You can add up to 10 widgets to a
+%% custom dashboard. You can manually refresh a custom dashboard, or you can
+%% set a refresh schedule.
+%%
+%% Highlights dashboard - You can create
+%% the Highlights dashboard to see a summary of key user activities and API
+%% usage across all your event data stores.
+%% CloudTrail Lake manages the Highlights dashboard and refreshes the
+%% dashboard every 6 hours. To create the Highlights dashboard, you must set
+%% and enable a refresh schedule.
+%%
+%% CloudTrail runs queries to populate the dashboard's widgets during a
+%% manual or scheduled refresh. CloudTrail must be granted permissions to run
+%% the `StartQuery' operation on your behalf. To provide permissions, run
+%% the `PutResourcePolicy' operation to attach a resource-based policy to
+%% each event data store. For more information,
+%% see Example: Allow CloudTrail to run queries to populate a dashboard:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html#security_iam_resource-based-policy-examples-eds-dashboard
+%% in the CloudTrail User Guide.
+%%
+%% To set a refresh schedule, CloudTrail must be granted permissions to run
+%% the `StartDashboardRefresh' operation to refresh the dashboard on your
+%% behalf. To provide permissions, run the `PutResourcePolicy' operation
+%% to attach a resource-based policy to the dashboard. For more information,
+%% see
+%% Resource-based policy example for a dashboard:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html#security_iam_resource-based-policy-examples-dashboards
+%% in the CloudTrail User Guide.
+%%
+%% For more information about dashboards, see CloudTrail Lake dashboards:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-dashboard.html
+%% in the CloudTrail User Guide.
+-spec create_dashboard(aws_client:aws_client(), create_dashboard_request()) ->
+    {ok, create_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, create_dashboard_errors(), tuple()}.
+create_dashboard(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_dashboard(Client, Input, []).
+
+-spec create_dashboard(aws_client:aws_client(), create_dashboard_request(), proplists:proplist()) ->
+    {ok, create_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, create_dashboard_errors(), tuple()}.
+create_dashboard(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDashboard">>, Input, Options).
+
 %% @doc Creates a new event data store.
 -spec create_event_data_store(aws_client:aws_client(), create_event_data_store_request()) ->
     {ok, create_event_data_store_response(), tuple()} |
@@ -2493,6 +2760,26 @@ delete_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChannel">>, Input, Options).
 
+%% @doc
+%% Deletes the specified dashboard.
+%%
+%% You cannot delete a dashboard that has termination protection enabled.
+-spec delete_dashboard(aws_client:aws_client(), delete_dashboard_request()) ->
+    {ok, delete_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dashboard_errors(), tuple()}.
+delete_dashboard(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_dashboard(Client, Input, []).
+
+-spec delete_dashboard(aws_client:aws_client(), delete_dashboard_request(), proplists:proplist()) ->
+    {ok, delete_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dashboard_errors(), tuple()}.
+delete_dashboard(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDashboard">>, Input, Options).
+
 %% @doc Disables the event data store specified by `EventDataStore',
 %% which accepts an
 %% event data store ARN.
@@ -2530,7 +2817,8 @@ delete_event_data_store(Client, Input, Options)
     request(Client, <<"DeleteEventDataStore">>, Input, Options).
 
 %% @doc
-%% Deletes the resource-based policy attached to the CloudTrail channel.
+%% Deletes the resource-based policy attached to the CloudTrail event data
+%% store, dashboard, or channel.
 -spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -2595,10 +2883,12 @@ deregister_organization_delegated_admin(Client, Input, Options)
 %% If the query results were delivered to an S3 bucket,
 %% the response also provides the S3 URI and the delivery status.
 %%
-%% You must specify either a `QueryID' or a `QueryAlias'. Specifying
-%% the `QueryAlias' parameter returns information about the last query
-%% run for the
-%% alias.
+%% You must specify either `QueryId' or `QueryAlias'. Specifying the
+%% `QueryAlias' parameter
+%% returns information about the last query run for the alias. You can
+%% provide
+%% `RefreshId' along with `QueryAlias' to view the query results
+%% of a dashboard query for the specified `RefreshId'.
 -spec describe_query(aws_client:aws_client(), describe_query_request()) ->
     {ok, describe_query_response(), tuple()} |
     {error, any()} |
@@ -2760,6 +3050,24 @@ get_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetChannel">>, Input, Options).
 
+%% @doc
+%% Returns the specified dashboard.
+-spec get_dashboard(aws_client:aws_client(), get_dashboard_request()) ->
+    {ok, get_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_errors(), tuple()}.
+get_dashboard(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_dashboard(Client, Input, []).
+
+-spec get_dashboard(aws_client:aws_client(), get_dashboard_request(), proplists:proplist()) ->
+    {ok, get_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_errors(), tuple()}.
+get_dashboard(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDashboard">>, Input, Options).
+
 %% @doc Returns information about an event data store specified as either an
 %% ARN or the ID
 %% portion of the ARN.
@@ -2901,7 +3209,7 @@ get_query_results(Client, Input, Options)
 
 %% @doc
 %% Retrieves the JSON text of the resource-based policy document attached to
-%% the CloudTrail channel.
+%% the CloudTrail event data store, dashboard, or channel.
 -spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -2977,6 +3285,25 @@ list_channels(Client, Input)
 list_channels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListChannels">>, Input, Options).
+
+%% @doc
+%% Returns information about all dashboards in the account, in the current
+%% Region.
+-spec list_dashboards(aws_client:aws_client(), list_dashboards_request()) ->
+    {ok, list_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboards_errors(), tuple()}.
+list_dashboards(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_dashboards(Client, Input, []).
+
+-spec list_dashboards(aws_client:aws_client(), list_dashboards_request(), proplists:proplist()) ->
+    {ok, list_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboards_errors(), tuple()}.
+list_dashboards(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDashboards">>, Input, Options).
 
 %% @doc Returns information about all event data stores in the account, in
 %% the current
@@ -3129,8 +3456,8 @@ list_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueries">>, Input, Options).
 
-%% @doc Lists the tags for the specified trails, event data stores, or
-%% channels in the current Region.
+%% @doc Lists the tags for the specified trails, event data stores,
+%% dashboards, or channels in the current Region.
 -spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
@@ -3388,9 +3715,8 @@ put_insight_selectors(Client, Input, Options)
     request(Client, <<"PutInsightSelectors">>, Input, Options).
 
 %% @doc
-%% Attaches a resource-based permission policy to a CloudTrail channel that
-%% is used for an integration with an event source outside of Amazon Web
-%% Services.
+%% Attaches a resource-based permission policy to a CloudTrail event data
+%% store, dashboard, or channel.
 %%
 %% For more information about resource-based policies, see
 %% CloudTrail resource-based policy examples:
@@ -3431,8 +3757,8 @@ register_organization_delegated_admin(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterOrganizationDelegatedAdmin">>, Input, Options).
 
-%% @doc Removes the specified tags from a trail, event data store, or
-%% channel.
+%% @doc Removes the specified tags from a trail, event data store, dashboard,
+%% or channel.
 -spec remove_tags(aws_client:aws_client(), remove_tags_request()) ->
     {ok, remove_tags_response(), tuple()} |
     {error, any()} |
@@ -3472,6 +3798,33 @@ restore_event_data_store(Client, Input)
 restore_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreEventDataStore">>, Input, Options).
+
+%% @doc
+%% Starts a refresh of the specified dashboard.
+%%
+%% Each time a dashboard is refreshed, CloudTrail runs queries to populate
+%% the dashboard's widgets. CloudTrail must be granted permissions to run
+%% the `StartQuery' operation on your behalf. To provide permissions, run
+%% the `PutResourcePolicy' operation to attach a resource-based policy to
+%% each event data store. For more information,
+%% see Example: Allow CloudTrail to run queries to populate a dashboard:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html#security_iam_resource-based-policy-examples-eds-dashboard
+%% in the CloudTrail User Guide.
+-spec start_dashboard_refresh(aws_client:aws_client(), start_dashboard_refresh_request()) ->
+    {ok, start_dashboard_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, start_dashboard_refresh_errors(), tuple()}.
+start_dashboard_refresh(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_dashboard_refresh(Client, Input, []).
+
+-spec start_dashboard_refresh(aws_client:aws_client(), start_dashboard_refresh_request(), proplists:proplist()) ->
+    {ok, start_dashboard_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, start_dashboard_refresh_errors(), tuple()}.
+start_dashboard_refresh(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDashboardRefresh">>, Input, Options).
 
 %% @doc Starts the ingestion of live events on an event data store specified
 %% as either an ARN or the ID portion of the ARN.
@@ -3683,6 +4036,42 @@ update_channel(Client, Input)
 update_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateChannel">>, Input, Options).
+
+%% @doc
+%% Updates the specified dashboard.
+%%
+%% To set a refresh schedule, CloudTrail must be granted permissions to run
+%% the `StartDashboardRefresh' operation to refresh the dashboard on your
+%% behalf. To provide permissions, run the `PutResourcePolicy' operation
+%% to attach a resource-based policy to the dashboard. For more information,
+%% see
+%% Resource-based policy example for a dashboard:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html#security_iam_resource-based-policy-examples-dashboards
+%% in the CloudTrail User Guide.
+%%
+%% CloudTrail runs queries to populate the dashboard's widgets during a
+%% manual or scheduled refresh. CloudTrail must be granted permissions to run
+%% the `StartQuery' operation on your behalf. To provide permissions, run
+%% the `PutResourcePolicy' operation to attach a resource-based policy to
+%% each event data store. For more information,
+%% see Example: Allow CloudTrail to run queries to populate a dashboard:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html#security_iam_resource-based-policy-examples-eds-dashboard
+%% in the CloudTrail User Guide.
+-spec update_dashboard(aws_client:aws_client(), update_dashboard_request()) ->
+    {ok, update_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_errors(), tuple()}.
+update_dashboard(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_dashboard(Client, Input, []).
+
+-spec update_dashboard(aws_client:aws_client(), update_dashboard_request(), proplists:proplist()) ->
+    {ok, update_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_errors(), tuple()}.
+update_dashboard(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDashboard">>, Input, Options).
 
 %% @doc Updates an event data store.
 %%

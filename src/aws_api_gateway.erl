@@ -25,6 +25,8 @@
          create_documentation_version/4,
          create_domain_name/2,
          create_domain_name/3,
+         create_domain_name_access_association/2,
+         create_domain_name_access_association/3,
          create_model/3,
          create_model/4,
          create_request_validator/3,
@@ -57,6 +59,8 @@
          delete_documentation_version/5,
          delete_domain_name/3,
          delete_domain_name/4,
+         delete_domain_name_access_association/3,
+         delete_domain_name_access_association/4,
          delete_gateway_response/4,
          delete_gateway_response/5,
          delete_integration/5,
@@ -137,6 +141,9 @@
          get_domain_name/2,
          get_domain_name/4,
          get_domain_name/5,
+         get_domain_name_access_associations/1,
+         get_domain_name_access_associations/3,
+         get_domain_name_access_associations/4,
          get_domain_names/1,
          get_domain_names/3,
          get_domain_names/4,
@@ -245,6 +252,8 @@
          put_method_response/7,
          put_rest_api/3,
          put_rest_api/4,
+         reject_domain_name_access_association/2,
+         reject_domain_name_access_association/3,
          tag_resource/3,
          tag_resource/4,
          test_invoke_authorizer/4,
@@ -679,9 +688,12 @@
 %% }
 -type create_deployment_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_base_path_mapping_request() :: #{}
--type get_base_path_mapping_request() :: #{}.
+%% get_base_path_mapping_request() :: #{
+%%   <<"domainNameId">> => string()
+%% }
+-type get_base_path_mapping_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -692,6 +704,10 @@
 %%   <<"schema">> => string()
 %% }
 -type create_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_name_access_association_request() :: #{}
+-type delete_domain_name_access_association_request() :: #{}.
 
 
 %% Example:
@@ -743,6 +759,7 @@
 %%   <<"endpointConfiguration">> => endpoint_configuration(),
 %%   <<"mutualTlsAuthentication">> => mutual_tls_authentication_input(),
 %%   <<"ownershipVerificationCertificateArn">> => string(),
+%%   <<"policy">> => string(),
 %%   <<"regionalCertificateArn">> => string(),
 %%   <<"regionalCertificateName">> => string(),
 %%   <<"securityPolicy">> => list(any()),
@@ -753,6 +770,7 @@
 
 %% Example:
 %% update_base_path_mapping_request() :: #{
+%%   <<"domainNameId">> => string(),
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_base_path_mapping_request() :: #{binary() => any()}.
@@ -801,6 +819,17 @@
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_documentation_part_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_name_access_association() :: #{
+%%   <<"accessAssociationSource">> => string(),
+%%   <<"accessAssociationSourceType">> => list(any()),
+%%   <<"domainNameAccessAssociationArn">> => string(),
+%%   <<"domainNameArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type domain_name_access_association() :: #{binary() => any()}.
 
 %% Example:
 %% get_model_template_request() :: #{}
@@ -1135,9 +1164,18 @@
 
 
 %% Example:
+%% reject_domain_name_access_association_request() :: #{
+%%   <<"domainNameAccessAssociationArn">> := string(),
+%%   <<"domainNameArn">> := string()
+%% }
+-type reject_domain_name_access_association_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_domain_names_request() :: #{
 %%   <<"limit">> => integer(),
-%%   <<"position">> => string()
+%%   <<"position">> => string(),
+%%   <<"resourceOwner">> => list(any())
 %% }
 -type get_domain_names_request() :: #{binary() => any()}.
 
@@ -1216,6 +1254,7 @@
 
 %% Example:
 %% update_domain_name_request() :: #{
+%%   <<"domainNameId">> => string(),
 %%   <<"patchOperations">> => list(patch_operation()())
 %% }
 -type update_domain_name_request() :: #{binary() => any()}.
@@ -1251,6 +1290,14 @@
 
 
 %% Example:
+%% domain_name_access_associations() :: #{
+%%   <<"items">> => list(domain_name_access_association()()),
+%%   <<"position">> => string()
+%% }
+-type domain_name_access_associations() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_name() :: #{
 %%   <<"certificateArn">> => string(),
 %%   <<"certificateName">> => string(),
@@ -1258,11 +1305,15 @@
 %%   <<"distributionDomainName">> => string(),
 %%   <<"distributionHostedZoneId">> => string(),
 %%   <<"domainName">> => string(),
+%%   <<"domainNameArn">> => string(),
+%%   <<"domainNameId">> => string(),
 %%   <<"domainNameStatus">> => list(any()),
 %%   <<"domainNameStatusMessage">> => string(),
 %%   <<"endpointConfiguration">> => endpoint_configuration(),
+%%   <<"managementPolicy">> => string(),
 %%   <<"mutualTlsAuthentication">> => mutual_tls_authentication(),
 %%   <<"ownershipVerificationCertificateArn">> => string(),
+%%   <<"policy">> => string(),
 %%   <<"regionalCertificateArn">> => string(),
 %%   <<"regionalCertificateName">> => string(),
 %%   <<"regionalDomainName">> => string(),
@@ -1371,6 +1422,15 @@
 %% }
 -type get_export_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_domain_name_access_associations_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string(),
+%%   <<"resourceOwner">> => list(any())
+%% }
+-type get_domain_name_access_associations_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_model_request() :: #{}
 -type delete_model_request() :: #{}.
@@ -1432,6 +1492,7 @@
 %% Example:
 %% create_base_path_mapping_request() :: #{
 %%   <<"basePath">> => string(),
+%%   <<"domainNameId">> => string(),
 %%   <<"restApiId">> := string(),
 %%   <<"stage">> => string()
 %% }
@@ -1471,9 +1532,12 @@
 %% }
 -type usage_plan() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_domain_name_request() :: #{}
--type get_domain_name_request() :: #{}.
+%% get_domain_name_request() :: #{
+%%   <<"domainNameId">> => string()
+%% }
+-type get_domain_name_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1594,13 +1658,19 @@
 %% }
 -type models() :: #{binary() => any()}.
 
-%% Example:
-%% delete_base_path_mapping_request() :: #{}
--type delete_base_path_mapping_request() :: #{}.
 
 %% Example:
-%% delete_domain_name_request() :: #{}
--type delete_domain_name_request() :: #{}.
+%% delete_base_path_mapping_request() :: #{
+%%   <<"domainNameId">> => string()
+%% }
+-type delete_base_path_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_name_request() :: #{
+%%   <<"domainNameId">> => string()
+%% }
+-type delete_domain_name_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1708,6 +1778,7 @@
 
 %% Example:
 %% get_base_path_mappings_request() :: #{
+%%   <<"domainNameId">> => string(),
 %%   <<"limit">> => integer(),
 %%   <<"position">> => string()
 %% }
@@ -1840,6 +1911,16 @@
 
 
 %% Example:
+%% create_domain_name_access_association_request() :: #{
+%%   <<"accessAssociationSource">> := string(),
+%%   <<"accessAssociationSourceType">> := list(any()),
+%%   <<"domainNameArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_domain_name_access_association_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% usage_plan_key() :: #{
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -1946,6 +2027,13 @@
     unauthorized_exception().
 
 -type create_domain_name_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type create_domain_name_access_association_errors() ::
     bad_request_exception() | 
     limit_exceeded_exception() | 
     conflict_exception() | 
@@ -2065,6 +2153,13 @@
     unauthorized_exception().
 
 -type delete_domain_name_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type delete_domain_name_access_association_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
     conflict_exception() | 
@@ -2277,6 +2372,12 @@
     unauthorized_exception().
 
 -type get_domain_name_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type get_domain_name_access_associations_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
     too_many_requests_exception() | 
@@ -2534,6 +2635,13 @@
 -type put_rest_api_errors() ::
     bad_request_exception() | 
     limit_exceeded_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    unauthorized_exception().
+
+-type reject_domain_name_access_association_errors() ::
+    bad_request_exception() | 
     not_found_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
@@ -2843,9 +2951,10 @@ create_base_path_mapping(Client, DomainName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"domainNameId">>, <<"domainNameId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Deployment resource, which makes a specified RestApi
@@ -2966,6 +3075,42 @@ create_domain_name(Client, Input) ->
 create_domain_name(Client, Input0, Options0) ->
     Method = post,
     Path = ["/domainnames"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a domain name access association resource between an access
+%% association source and a private custom
+%% domain name.
+-spec create_domain_name_access_association(aws_client:aws_client(), create_domain_name_access_association_request()) ->
+    {ok, domain_name_access_association(), tuple()} |
+    {error, any()} |
+    {error, create_domain_name_access_association_errors(), tuple()}.
+create_domain_name_access_association(Client, Input) ->
+    create_domain_name_access_association(Client, Input, []).
+
+-spec create_domain_name_access_association(aws_client:aws_client(), create_domain_name_access_association_request(), proplists:proplist()) ->
+    {ok, domain_name_access_association(), tuple()} |
+    {error, any()} |
+    {error, create_domain_name_access_association_errors(), tuple()}.
+create_domain_name_access_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/domainnameaccessassociations"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3362,9 +3507,10 @@ delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"domainNameId">>, <<"domainNameId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the ClientCertificate resource.
@@ -3521,6 +3667,46 @@ delete_domain_name(Client, DomainName, Input) ->
 delete_domain_name(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domainNameId">>, <<"domainNameId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the DomainNameAccessAssociation resource.
+%%
+%% Only the AWS account that created the DomainNameAccessAssociation resource
+%% can delete it. To stop an access association source in another AWS account
+%% from accessing your private custom domain name, use the
+%% RejectDomainNameAccessAssociation operation.
+-spec delete_domain_name_access_association(aws_client:aws_client(), binary() | list(), delete_domain_name_access_association_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_domain_name_access_association_errors(), tuple()}.
+delete_domain_name_access_association(Client, DomainNameAccessAssociationArn, Input) ->
+    delete_domain_name_access_association(Client, DomainNameAccessAssociationArn, Input, []).
+
+-spec delete_domain_name_access_association(aws_client:aws_client(), binary() | list(), delete_domain_name_access_association_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_domain_name_access_association_errors(), tuple()}.
+delete_domain_name_access_association(Client, DomainNameAccessAssociationArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domainnameaccessassociations/", aws_util:encode_uri(DomainNameAccessAssociationArn), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4321,7 +4507,11 @@ get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap, Option
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"domainNameId">>, maps:get(<<"domainNameId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -4360,6 +4550,7 @@ get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"domainNameId">>, maps:get(<<"domainNameId">>, QueryMap, undefined)},
         {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
         {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
       ],
@@ -4725,7 +4916,54 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"domainNameId">>, maps:get(<<"domainNameId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Represents a collection on DomainNameAccessAssociations resources.
+-spec get_domain_name_access_associations(aws_client:aws_client()) ->
+    {ok, domain_name_access_associations(), tuple()} |
+    {error, any()} |
+    {error, get_domain_name_access_associations_errors(), tuple()}.
+get_domain_name_access_associations(Client)
+  when is_map(Client) ->
+    get_domain_name_access_associations(Client, #{}, #{}).
+
+-spec get_domain_name_access_associations(aws_client:aws_client(), map(), map()) ->
+    {ok, domain_name_access_associations(), tuple()} |
+    {error, any()} |
+    {error, get_domain_name_access_associations_errors(), tuple()}.
+get_domain_name_access_associations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_name_access_associations(Client, QueryMap, HeadersMap, []).
+
+-spec get_domain_name_access_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, domain_name_access_associations(), tuple()} |
+    {error, any()} |
+    {error, get_domain_name_access_associations_errors(), tuple()}.
+get_domain_name_access_associations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domainnameaccessassociations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)},
+        {<<"resourceOwner">>, maps:get(<<"resourceOwner">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -4765,7 +5003,8 @@ get_domain_names(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
-        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)}
+        {<<"position">>, maps:get(<<"position">>, QueryMap, undefined)},
+        {<<"resourceOwner">>, maps:get(<<"resourceOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -6293,6 +6532,48 @@ put_rest_api(Client, RestApiId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Rejects a domain name access association with a private custom domain
+%% name.
+%%
+%% To reject a domain name access association with an access association
+%% source in another AWS account, use this operation. To remove a domain name
+%% access association with an access association source in your own account,
+%% use the DeleteDomainNameAccessAssociation operation.
+-spec reject_domain_name_access_association(aws_client:aws_client(), reject_domain_name_access_association_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, reject_domain_name_access_association_errors(), tuple()}.
+reject_domain_name_access_association(Client, Input) ->
+    reject_domain_name_access_association(Client, Input, []).
+
+-spec reject_domain_name_access_association(aws_client:aws_client(), reject_domain_name_access_association_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, reject_domain_name_access_association_errors(), tuple()}.
+reject_domain_name_access_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/rejectdomainnameaccessassociations"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domainNameAccessAssociationArn">>, <<"domainNameAccessAssociationArn">>},
+                     {<<"domainNameArn">>, <<"domainNameArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds or updates a tag on a given resource.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
@@ -6563,9 +6844,10 @@ update_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"domainNameId">>, <<"domainNameId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about an ClientCertificate resource.
@@ -6733,9 +7015,10 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"domainNameId">>, <<"domainNameId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a GatewayResponse of a specified response type on the given

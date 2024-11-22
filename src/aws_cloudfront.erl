@@ -3084,7 +3084,8 @@
 %% origin_group() :: #{
 %%   <<"FailoverCriteria">> => origin_group_failover_criteria(),
 %%   <<"Id">> => string(),
-%%   <<"Members">> => origin_group_members()
+%%   <<"Members">> => origin_group_members(),
+%%   <<"SelectionCriteria">> => list(any())
 %% }
 -type origin_group() :: #{binary() => any()}.
 

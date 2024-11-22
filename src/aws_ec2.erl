@@ -483,6 +483,10 @@
          describe_bundle_tasks/3,
          describe_byoip_cidrs/2,
          describe_byoip_cidrs/3,
+         describe_capacity_block_extension_history/2,
+         describe_capacity_block_extension_history/3,
+         describe_capacity_block_extension_offerings/2,
+         describe_capacity_block_extension_offerings/3,
          describe_capacity_block_offerings/2,
          describe_capacity_block_offerings/3,
          describe_capacity_reservation_billing_requests/2,
@@ -1171,6 +1175,8 @@
          provision_public_ipv4_pool_cidr/3,
          purchase_capacity_block/2,
          purchase_capacity_block/3,
+         purchase_capacity_block_extension/2,
+         purchase_capacity_block_extension/3,
          purchase_host_reservation/2,
          purchase_host_reservation/3,
          purchase_reserved_instances_offering/2,
@@ -2017,7 +2023,9 @@
 %%   <<"CapacityReservationArn">> => string(),
 %%   <<"CapacityReservationFleetId">> => string(),
 %%   <<"CapacityReservationId">> => string(),
+%%   <<"CommitmentInfo">> => capacity_reservation_commitment_info(),
 %%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"DeliveryPreference">> => list(any()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"EndDateType">> => list(any()),
@@ -3959,6 +3967,13 @@
 -type describe_flow_logs_request() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_reservation_commitment_info() :: #{
+%%   <<"CommitmentEndDate">> => non_neg_integer(),
+%%   <<"CommittedInstanceCount">> => integer()
+%% }
+-type capacity_reservation_commitment_info() :: #{binary() => any()}.
+
+%% Example:
 %% elastic_gpu_association() :: #{
 %%   <<"ElasticGpuAssociationId">> => string(),
 %%   <<"ElasticGpuAssociationState">> => string(),
@@ -4102,6 +4117,24 @@
 %%   <<"InstanceEventWindowId">> := string()
 %% }
 -type delete_instance_event_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_block_extension() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CapacityBlockExtensionDurationHours">> => integer(),
+%%   <<"CapacityBlockExtensionEndDate">> => non_neg_integer(),
+%%   <<"CapacityBlockExtensionOfferingId">> => string(),
+%%   <<"CapacityBlockExtensionPurchaseDate">> => non_neg_integer(),
+%%   <<"CapacityBlockExtensionStartDate">> => non_neg_integer(),
+%%   <<"CapacityBlockExtensionStatus">> => list(any()),
+%%   <<"CapacityReservationId">> => string(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type capacity_block_extension() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_transit_gateway_multicast_domain_request() :: #{
@@ -5570,6 +5603,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_reservation_billing_requests_result() :: #{binary() => any()}.
+
+%% Example:
+%% add_ipam_organizational_unit_exclusion() :: #{
+%%   <<"OrganizationsEntityPath">> => string()
+%% }
+-type add_ipam_organizational_unit_exclusion() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_multicast_registered_group_members() :: #{
@@ -7237,6 +7276,7 @@
 %%   <<"IpamResourceDiscoveryRegion">> => string(),
 %%   <<"IsDefault">> => boolean(),
 %%   <<"OperatingRegions">> => list(ipam_operating_region()()),
+%%   <<"OrganizationalUnitExclusions">> => list(ipam_organizational_unit_exclusion()()),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => list(tag()())
@@ -8204,6 +8244,8 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"ClientToken">> => string(),
+%%   <<"CommitmentDuration">> => float(),
+%%   <<"DeliveryPreference">> => list(any()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"EndDate">> => non_neg_integer(),
@@ -8215,6 +8257,7 @@
 %%   <<"InstanceType">> := string(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"PlacementGroupArn">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
 %%   <<"Tenancy">> => list(any())
 %% }
@@ -8820,6 +8863,13 @@
 %%   <<"Enabled">> => boolean()
 %% }
 -type launch_template_enclave_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_block_extension_offerings_result() :: #{
+%%   <<"CapacityBlockExtensionOfferings">> => list(capacity_block_extension_offering()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_block_extension_offerings_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_security_group_rules_request() :: #{
@@ -9592,6 +9642,7 @@
 %% capacity_block_offering() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"CapacityBlockDurationHours">> => integer(),
+%%   <<"CapacityBlockDurationMinutes">> => integer(),
 %%   <<"CapacityBlockOfferingId">> => string(),
 %%   <<"CurrencyCode">> => string(),
 %%   <<"EndDate">> => non_neg_integer(),
@@ -10630,6 +10681,23 @@
 -type launch_template_config() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_block_extension_offering() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CapacityBlockExtensionDurationHours">> => integer(),
+%%   <<"CapacityBlockExtensionEndDate">> => non_neg_integer(),
+%%   <<"CapacityBlockExtensionOfferingId">> => string(),
+%%   <<"CapacityBlockExtensionStartDate">> => non_neg_integer(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Tenancy">> => list(any()),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type capacity_block_extension_offering() :: #{binary() => any()}.
+
+%% Example:
 %% reserved_instances_offering() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"CurrencyCode">> => list(any()),
@@ -11337,6 +11405,20 @@
 -type transit_gateway_connect_peer_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% remove_ipam_organizational_unit_exclusion() :: #{
+%%   <<"OrganizationsEntityPath">> => string()
+%% }
+-type remove_ipam_organizational_unit_exclusion() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_capacity_block_extension_request() :: #{
+%%   <<"CapacityBlockExtensionOfferingId">> := string(),
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"DryRun">> => boolean()
+%% }
+-type purchase_capacity_block_extension_request() :: #{binary() => any()}.
+
+%% Example:
 %% launch_template_ena_srd_udp_specification() :: #{
 %%   <<"EnaSrdUdpEnabled">> => boolean()
 %% }
@@ -11598,6 +11680,16 @@
 %%   <<"TagSpecifications">> => list(tag_specification()())
 %% }
 -type create_local_gateway_route_table_virtual_interface_group_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_block_extension_history_request() :: #{
+%%   <<"CapacityReservationIds">> => list(string()()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_block_extension_history_request() :: #{binary() => any()}.
 
 %% Example:
 %% network_info() :: #{
@@ -12363,6 +12455,13 @@
 %%   <<"TransitGatewayAttachmentId">> := string()
 %% }
 -type accept_transit_gateway_peering_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_block_extension_history_result() :: #{
+%%   <<"CapacityBlockExtensions">> => list(capacity_block_extension()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_block_extension_history_result() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_capacity_reservation_request() :: #{
@@ -13843,10 +13942,12 @@
 %% Example:
 %% modify_ipam_resource_discovery_request() :: #{
 %%   <<"AddOperatingRegions">> => list(add_ipam_operating_region()()),
+%%   <<"AddOrganizationalUnitExclusions">> => list(add_ipam_organizational_unit_exclusion()()),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamResourceDiscoveryId">> := string(),
-%%   <<"RemoveOperatingRegions">> => list(remove_ipam_operating_region()())
+%%   <<"RemoveOperatingRegions">> => list(remove_ipam_operating_region()()),
+%%   <<"RemoveOrganizationalUnitExclusions">> => list(remove_ipam_organizational_unit_exclusion()())
 %% }
 -type modify_ipam_resource_discovery_request() :: #{binary() => any()}.
 
@@ -14507,6 +14608,16 @@
 -type describe_fast_snapshot_restores_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_block_extension_offerings_request() :: #{
+%%   <<"CapacityBlockExtensionDurationHours">> := integer(),
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_block_extension_offerings_request() :: #{binary() => any()}.
+
+%% Example:
 %% peering_tgw_info() :: #{
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"OwnerId">> => string(),
@@ -15049,7 +15160,8 @@
 %%   <<"DiscoveryRegion">> => string(),
 %%   <<"FailureReason">> => ipam_discovery_failure_reason(),
 %%   <<"LastAttemptedDiscoveryTime">> => non_neg_integer(),
-%%   <<"LastSuccessfulDiscoveryTime">> => non_neg_integer()
+%%   <<"LastSuccessfulDiscoveryTime">> => non_neg_integer(),
+%%   <<"OrganizationalUnitId">> => string()
 %% }
 -type ipam_discovered_account() :: #{binary() => any()}.
 
@@ -16571,6 +16683,12 @@
 %%   <<"Regions">> => list(region()())
 %% }
 -type describe_regions_result() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_organizational_unit_exclusion() :: #{
+%%   <<"OrganizationsEntityPath">> => string()
+%% }
+-type ipam_organizational_unit_exclusion() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_vpc_attachment_options() :: #{
@@ -18920,6 +19038,12 @@
 -type export_task_s3_location() :: #{binary() => any()}.
 
 %% Example:
+%% purchase_capacity_block_extension_result() :: #{
+%%   <<"CapacityBlockExtensions">> => list(capacity_block_extension()())
+%% }
+-type purchase_capacity_block_extension_result() :: #{binary() => any()}.
+
+%% Example:
 %% associate_iam_instance_profile_result() :: #{
 %%   <<"IamInstanceProfileAssociation">> => iam_instance_profile_association()
 %% }
@@ -19003,11 +19127,11 @@ accept_address_transfer(Client, Input, Options)
     request(Client, <<"AcceptAddressTransfer">>, Input, Options).
 
 %% @doc Accepts a request to assign billing of the available capacity of a
-%% shared Capacity Reservation to your
-%% account.
+%% shared Capacity
+%% Reservation to your account.
 %%
-%% For more information, see
-%% Billing assignment for shared Amazon EC2 Capacity Reservations:
+%% For more information, see Billing assignment for shared
+%% Amazon EC2 Capacity Reservations:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html.
 -spec accept_capacity_reservation_billing_ownership(aws_client:aws_client(), accept_capacity_reservation_billing_ownership_request()) ->
     {ok, accept_capacity_reservation_billing_ownership_result(), tuple()} |
@@ -19431,12 +19555,12 @@ associate_address(Client, Input, Options)
     request(Client, <<"AssociateAddress">>, Input, Options).
 
 %% @doc Initiates a request to assign billing of the unused capacity of a
-%% shared Capacity Reservation to a consumer
-%% account that is consolidated under the same Amazon Web Services
+%% shared Capacity
+%% Reservation to a consumer account that is consolidated under the same
+%% Amazon Web Services
 %% organizations payer account.
 %%
-%% For more information, see
-%% Billing assignment for shared
+%% For more information, see Billing assignment for shared
 %% Amazon EC2 Capacity Reservations:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html.
 -spec associate_capacity_reservation_billing_owner(aws_client:aws_client(), associate_capacity_reservation_billing_owner_request()) ->
@@ -20167,8 +20291,21 @@ cancel_bundle_task(Client, Input, Options)
     request(Client, <<"CancelBundleTask">>, Input, Options).
 
 %% @doc Cancels the specified Capacity Reservation, releases the reserved
-%% capacity, and changes the Capacity Reservation's state to
-%% `cancelled'.
+%% capacity, and changes
+%% the Capacity Reservation's state to `cancelled'.
+%%
+%% You can cancel a Capacity Reservation that is in the following states:
+%%
+%% `assessing'
+%%
+%% `active' and there is no commitment duration or the commitment
+%% duration has elapsed. You can't cancel a future-dated Capacity
+%% Reservation during the commitment duration.
+%%
+%% If a future-dated Capacity Reservation enters the `delayed' state, the
+%% commitment
+%% duration is waived, and you can cancel it as soon as it enters the
+%% `active' state.
 %%
 %% Instances running in the reserved capacity continue running until you stop
 %% them. Stopped
@@ -20193,16 +20330,15 @@ cancel_capacity_reservation(Client, Input, Options)
 
 %% @doc Cancels one or more Capacity Reservation Fleets.
 %%
-%% When you cancel a Capacity Reservation
-%% Fleet, the following happens:
+%% When you cancel a Capacity
+%% Reservation Fleet, the following happens:
 %%
-%% The Capacity Reservation Fleet's status changes to `cancelled'.
+%% The Capacity Reservation Fleet's status changes to
+%% `cancelled'.
 %%
 %% The individual Capacity Reservations in the Fleet are cancelled. Instances
-%% running
-%% in the Capacity Reservations at the time of cancelling the Fleet continue
-%% to run in
-%% shared capacity.
+%% running in the Capacity Reservations at the time of cancelling the Fleet
+%% continue to run in shared capacity.
 %%
 %% The Fleet stops creating new Capacity Reservations.
 -spec cancel_capacity_reservation_fleets(aws_client:aws_client(), cancel_capacity_reservation_fleets_request()) ->
@@ -20502,35 +20638,37 @@ copy_snapshot(Client, Input, Options)
 
 %% @doc Creates a new Capacity Reservation with the specified attributes.
 %%
-%% Capacity Reservations enable you to reserve capacity for your Amazon EC2
-%% instances in a specific Availability Zone for any duration. This
-%% gives you the flexibility to selectively add capacity reservations and
-%% still get the Regional RI discounts for that usage.
-%% By creating Capacity Reservations, you ensure that you always have access
-%% to Amazon EC2 capacity when you need it, for as long as you need it.
-%% For more information, see Capacity Reservations:
+%% Capacity Reservations enable
+%% you to reserve capacity for your Amazon EC2 instances in a specific
+%% Availability Zone for any
+%% duration.
+%%
+%% You can create a Capacity Reservation at any time, and you can choose when
+%% it starts. You can create a
+%% Capacity Reservation for immediate use or you can request a Capacity
+%% Reservation for a future date.
+%%
+%% For more information, see
+%% Reserve compute capacity with On-Demand Capacity Reservations:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html
 %% in the Amazon EC2 User Guide.
 %%
-%% Your request to create a Capacity Reservation could fail if Amazon EC2
-%% does not have sufficient capacity to
-%% fulfill the request. If your request fails due to Amazon EC2 capacity
-%% constraints, either try
-%% again at a later time, try in a different Availability Zone, or request a
-%% smaller
-%% capacity reservation. If your application is flexible across instance
-%% types and sizes,
-%% try to create a Capacity Reservation with different instance attributes.
+%% Your request to create a Capacity Reservation could fail if:
 %%
-%% Your request could also fail if the requested quantity exceeds your
-%% On-Demand Instance
-%% limit for the selected instance type. If your request fails due to limit
-%% constraints,
-%% increase your On-Demand Instance limit for the required instance type and
-%% try again. For
-%% more information about increasing your instance limits, see Amazon EC2
-%% Service
-%% Quotas:
+%% Amazon EC2 does not have sufficient capacity. In this case, try again at a
+%% later
+%% time, try in a different Availability Zone, or request a smaller Capacity
+%% Reservation. If
+%% your workload is flexible across instance types and sizes, try with
+%% different instance
+%% attributes.
+%%
+%% The requested quantity exceeds your On-Demand Instance quota. In this
+%% case, increase your
+%% On-Demand Instance quota for the requested instance type and try again.
+%% For more information,
+%% see
+%% Amazon EC2 Service Quotas:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html
 %% in the Amazon EC2 User Guide.
 -spec create_capacity_reservation(aws_client:aws_client(), create_capacity_reservation_request()) ->
@@ -20547,13 +20685,14 @@ create_capacity_reservation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCapacityReservation">>, Input, Options).
 
-%% @doc
-%% Create a new Capacity Reservation by splitting the capacity of the source
-%% Capacity Reservation.
+%% @doc Create a new Capacity Reservation by splitting the capacity of the
+%% source Capacity
+%% Reservation.
 %%
 %% The new Capacity Reservation will have the same attributes as the source
 %% Capacity Reservation except for tags. The source Capacity Reservation must
-%% be `active' and owned by your Amazon Web Services account.
+%% be
+%% `active' and owned by your Amazon Web Services account.
 -spec create_capacity_reservation_by_splitting(aws_client:aws_client(), create_capacity_reservation_by_splitting_request()) ->
     {ok, create_capacity_reservation_by_splitting_result(), tuple()} |
     {error, any()}.
@@ -24748,11 +24887,45 @@ describe_byoip_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeByoipCidrs">>, Input, Options).
 
+%% @doc Describes the events for the specified Capacity Block extension
+%% during the specified
+%% time.
+-spec describe_capacity_block_extension_history(aws_client:aws_client(), describe_capacity_block_extension_history_request()) ->
+    {ok, describe_capacity_block_extension_history_result(), tuple()} |
+    {error, any()}.
+describe_capacity_block_extension_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_block_extension_history(Client, Input, []).
+
+-spec describe_capacity_block_extension_history(aws_client:aws_client(), describe_capacity_block_extension_history_request(), proplists:proplist()) ->
+    {ok, describe_capacity_block_extension_history_result(), tuple()} |
+    {error, any()}.
+describe_capacity_block_extension_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityBlockExtensionHistory">>, Input, Options).
+
+%% @doc Describes Capacity Block extension offerings available for purchase
+%% in the Amazon Web Services Region
+%% that you're currently using.
+-spec describe_capacity_block_extension_offerings(aws_client:aws_client(), describe_capacity_block_extension_offerings_request()) ->
+    {ok, describe_capacity_block_extension_offerings_result(), tuple()} |
+    {error, any()}.
+describe_capacity_block_extension_offerings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_block_extension_offerings(Client, Input, []).
+
+-spec describe_capacity_block_extension_offerings(aws_client:aws_client(), describe_capacity_block_extension_offerings_request(), proplists:proplist()) ->
+    {ok, describe_capacity_block_extension_offerings_result(), tuple()} |
+    {error, any()}.
+describe_capacity_block_extension_offerings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityBlockExtensionOfferings">>, Input, Options).
+
 %% @doc Describes Capacity Block offerings available for purchase in the
 %% Amazon Web Services Region that you're currently using.
 %%
-%% With Capacity Blocks, you purchase a specific instance type for a period
-%% of time.
+%% With Capacity Blocks, you purchase a
+%% specific instance type for a period of time.
 -spec describe_capacity_block_offerings(aws_client:aws_client(), describe_capacity_block_offerings_request()) ->
     {ok, describe_capacity_block_offerings_result(), tuple()} |
     {error, any()}.
@@ -24768,10 +24941,11 @@ describe_capacity_block_offerings(Client, Input, Options)
     request(Client, <<"DescribeCapacityBlockOfferings">>, Input, Options).
 
 %% @doc Describes a request to assign the billing of the unused capacity of a
-%% Capacity Reservation.
+%% Capacity
+%% Reservation.
 %%
-%% For more information, see
-%% Billing assignment for shared Amazon EC2 Capacity Reservations:
+%% For more information, see Billing assignment for shared
+%% Amazon EC2 Capacity Reservations:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/transfer-billing.html.
 -spec describe_capacity_reservation_billing_requests(aws_client:aws_client(), describe_capacity_reservation_billing_requests_request()) ->
     {ok, describe_capacity_reservation_billing_requests_result(), tuple()} |
@@ -24804,8 +24978,10 @@ describe_capacity_reservation_fleets(Client, Input, Options)
 
 %% @doc Describes one or more of your Capacity Reservations.
 %%
-%% The results describe only the Capacity Reservations in the
-%% Amazon Web Services Region that you're currently using.
+%% The results describe only the
+%% Capacity Reservations in the Amazon Web Services Region that you're
+%% currently
+%% using.
 -spec describe_capacity_reservations(aws_client:aws_client(), describe_capacity_reservations_request()) ->
     {ok, describe_capacity_reservations_result(), tuple()} |
     {error, any()}.
@@ -27781,7 +27957,7 @@ describe_vpc_block_public_access_exclusions(Client, Input, Options)
 
 %% @doc Describe VPC Block Public Access (BPA) options.
 %%
-%% VPC Block public Access (BPA) enables you to block resources in VPCs and
+%% VPC Block Public Access (BPA) enables you to block resources in VPCs and
 %% subnets that you own in a Region from reaching or being reached from the
 %% internet through internet gateways and egress-only internet gateways. To
 %% learn more about VPC BPA, see Block public access to VPCs and subnets:
@@ -28591,12 +28767,12 @@ disassociate_address(Client, Input, Options)
     request(Client, <<"DisassociateAddress">>, Input, Options).
 
 %% @doc Cancels a pending request to assign billing of the unused capacity of
-%% a Capacity Reservation to a
-%% consumer account, or revokes a request that has already been accepted.
+%% a Capacity
+%% Reservation to a consumer account, or revokes a request that has already
+%% been accepted.
 %%
-%% For more information, see
-%% Billing assignment for
-%% shared Amazon EC2 Capacity Reservations:
+%% For more information, see Billing assignment for shared
+%% Amazon EC2 Capacity Reservations:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html.
 -spec disassociate_capacity_reservation_billing_owner(aws_client:aws_client(), disassociate_capacity_reservation_billing_owner_request()) ->
     {ok, disassociate_capacity_reservation_billing_owner_result(), tuple()} |
@@ -29525,11 +29701,12 @@ get_aws_network_performance_data(Client, Input, Options)
 
 %% @doc Gets usage information about a Capacity Reservation.
 %%
-%% If the Capacity Reservation is shared, it shows usage information for the
-%% Capacity Reservation owner
-%% and each Amazon Web Services account that is currently using the shared
-%% capacity. If the Capacity Reservation is not shared, it shows only
-%% the Capacity Reservation owner's usage.
+%% If the Capacity Reservation is
+%% shared, it shows usage information for the Capacity Reservation owner and
+%% each Amazon Web Services account that is currently using the shared
+%% capacity. If the Capacity
+%% Reservation is not shared, it shows only the Capacity Reservation
+%% owner's usage.
 -spec get_capacity_reservation_usage(aws_client:aws_client(), get_capacity_reservation_usage_request()) ->
     {ok, get_capacity_reservation_usage_result(), tuple()} |
     {error, any()}.
@@ -30764,16 +30941,38 @@ modify_availability_zone_group(Client, Input, Options)
     request(Client, <<"ModifyAvailabilityZoneGroup">>, Input, Options).
 
 %% @doc Modifies a Capacity Reservation's capacity, instance eligibility,
-%% and the conditions under which it is to be released.
+%% and the conditions under
+%% which it is to be released.
 %%
-%% You
-%% can't modify a Capacity Reservation's instance type, EBS
+%% You can't modify a Capacity Reservation's instance type, EBS
 %% optimization, platform, instance store settings, Availability Zone, or
-%% tenancy. If you need to modify any of these attributes, we recommend that
-%% you cancel the Capacity Reservation, and then create a new one with
-%% the required attributes. For more information, see Modify an active
-%% Capacity Reservation:
+%% tenancy. If you need
+%% to modify any of these attributes, we recommend that you cancel the
+%% Capacity Reservation,
+%% and then create a new one with the required attributes. For more
+%% information, see
+%%
+%% Modify an active Capacity Reservation:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html.
+%%
+%% The allowed modifications depend on the state of the Capacity Reservation:
+%%
+%% `assessing' or `scheduled' state - You can modify the tags only.
+%%
+%% `pending' state - You can't modify the Capacity Reservation in any
+%% way.
+%%
+%% `active' state but still within the commitment duration - You
+%% can't decrease the instance
+%% count or set an end date that is within the commitment duration. All other
+%% modifications are allowed.
+%%
+%% `active' state with no commitment duration or elapsed commitment
+%% duration - All modifications
+%% are allowed.
+%%
+%% `expired', `cancelled', `unsupported', or `failed' state -
+%% You can't modify the Capacity Reservation in any way.
 -spec modify_capacity_reservation(aws_client:aws_client(), modify_capacity_reservation_request()) ->
     {ok, modify_capacity_reservation_result(), tuple()} |
     {error, any()}.
@@ -30791,13 +30990,14 @@ modify_capacity_reservation(Client, Input, Options)
 %% @doc Modifies a Capacity Reservation Fleet.
 %%
 %% When you modify the total target capacity of a Capacity Reservation Fleet,
-%% the Fleet automatically
-%% creates new Capacity Reservations, or modifies or cancels existing
-%% Capacity Reservations in the Fleet
-%% to meet the new total target capacity. When you modify the end date for
-%% the Fleet, the end dates for
-%% all of the individual Capacity Reservations in the Fleet are updated
-%% accordingly.
+%% the Fleet
+%% automatically creates new Capacity Reservations, or modifies or cancels
+%% existing
+%% Capacity Reservations in the Fleet to meet the new total target capacity.
+%% When you
+%% modify the end date for the Fleet, the end dates for all of the individual
+%% Capacity
+%% Reservations in the Fleet are updated accordingly.
 -spec modify_capacity_reservation_fleet(aws_client:aws_client(), modify_capacity_reservation_fleet_request()) ->
     {ok, modify_capacity_reservation_fleet_result(), tuple()} |
     {error, any()}.
@@ -31181,11 +31381,11 @@ modify_instance_attribute(Client, Input, Options)
 
 %% @doc Modifies the Capacity Reservation settings for a stopped instance.
 %%
-%% Use this action to configure an
-%% instance to target a specific Capacity Reservation, run in any `open'
-%% Capacity Reservation with matching
-%% attributes, run in On-Demand Instance capacity, or only run in a Capacity
-%% Reservation.
+%% Use this action to
+%% configure an instance to target a specific Capacity Reservation, run in
+%% any
+%% `open' Capacity Reservation with matching attributes, run in On-Demand
+%% Instance capacity, or only run in a Capacity Reservation.
 -spec modify_instance_capacity_reservation_attributes(aws_client:aws_client(), modify_instance_capacity_reservation_attributes_request()) ->
     {ok, modify_instance_capacity_reservation_attributes_result(), tuple()} |
     {error, any()}.
@@ -32145,7 +32345,7 @@ modify_vpc_block_public_access_exclusion(Client, Input, Options)
 
 %% @doc Modify VPC Block Public Access (BPA) options.
 %%
-%% VPC Block public Access (BPA) enables you to block resources in VPCs and
+%% VPC Block Public Access (BPA) enables you to block resources in VPCs and
 %% subnets that you own in a Region from reaching or being reached from the
 %% internet through internet gateways and egress-only internet gateways. To
 %% learn more about VPC BPA, see Block public access to VPCs and subnets:
@@ -32546,7 +32746,8 @@ move_byoip_cidr_to_ipam(Client, Input, Options)
     request(Client, <<"MoveByoipCidrToIpam">>, Input, Options).
 
 %% @doc Move available capacity from a source Capacity Reservation to a
-%% destination Capacity Reservation.
+%% destination Capacity
+%% Reservation.
 %%
 %% The source Capacity Reservation and the destination Capacity Reservation
 %% must be `active', owned by your Amazon Web Services account, and share
@@ -32562,7 +32763,8 @@ move_byoip_cidr_to_ipam(Client, Input, Options)
 %%
 %% Placement group
 %%
-%% Capacity Reservation end time - `At specific time' or `Manually'.
+%% Capacity Reservation end time - `At specific time' or
+%% `Manually'.
 -spec move_capacity_reservation_instances(aws_client:aws_client(), move_capacity_reservation_instances_request()) ->
     {ok, move_capacity_reservation_instances_result(), tuple()} |
     {error, any()}.
@@ -32683,9 +32885,10 @@ provision_public_ipv4_pool_cidr(Client, Input, Options)
 
 %% @doc Purchase the Capacity Block for use with your account.
 %%
-%% With Capacity Blocks you ensure GPU capacity is available for machine
-%% learning (ML) workloads. You must specify the ID of the Capacity Block
-%% offering you are purchasing.
+%% With Capacity Blocks you ensure
+%% GPU capacity is available for machine learning (ML) workloads. You must
+%% specify the ID
+%% of the Capacity Block offering you are purchasing.
 -spec purchase_capacity_block(aws_client:aws_client(), purchase_capacity_block_request()) ->
     {ok, purchase_capacity_block_result(), tuple()} |
     {error, any()}.
@@ -32699,6 +32902,24 @@ purchase_capacity_block(Client, Input)
 purchase_capacity_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseCapacityBlock">>, Input, Options).
+
+%% @doc Purchase the Capacity Block extension for use with your account.
+%%
+%% You must specify the
+%% ID of the Capacity Block extension offering you are purchasing.
+-spec purchase_capacity_block_extension(aws_client:aws_client(), purchase_capacity_block_extension_request()) ->
+    {ok, purchase_capacity_block_extension_result(), tuple()} |
+    {error, any()}.
+purchase_capacity_block_extension(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    purchase_capacity_block_extension(Client, Input, []).
+
+-spec purchase_capacity_block_extension(aws_client:aws_client(), purchase_capacity_block_extension_request(), proplists:proplist()) ->
+    {ok, purchase_capacity_block_extension_result(), tuple()} |
+    {error, any()}.
+purchase_capacity_block_extension(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PurchaseCapacityBlockExtension">>, Input, Options).
 
 %% @doc Purchase a reservation with configurations that match those of your
 %% Dedicated Host.
@@ -32997,11 +33218,11 @@ register_transit_gateway_multicast_group_sources(Client, Input, Options)
     request(Client, <<"RegisterTransitGatewayMulticastGroupSources">>, Input, Options).
 
 %% @doc Rejects a request to assign billing of the available capacity of a
-%% shared Capacity Reservation
-%% to your account.
+%% shared Capacity
+%% Reservation to your account.
 %%
-%% For more information, see
-%% Billing assignment for shared Amazon EC2 Capacity Reservations:
+%% For more information, see Billing assignment for shared
+%% Amazon EC2 Capacity Reservations:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html.
 -spec reject_capacity_reservation_billing_ownership(aws_client:aws_client(), reject_capacity_reservation_billing_ownership_request()) ->
     {ok, reject_capacity_reservation_billing_ownership_result(), tuple()} |

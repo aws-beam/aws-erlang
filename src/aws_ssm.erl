@@ -188,6 +188,8 @@
          get_deployable_patch_snapshot_for_instance/3,
          get_document/2,
          get_document/3,
+         get_execution_preview/2,
+         get_execution_preview/3,
          get_inventory/2,
          get_inventory/3,
          get_inventory_schema/2,
@@ -246,6 +248,10 @@
          list_documents/3,
          list_inventory_entries/2,
          list_inventory_entries/3,
+         list_nodes/2,
+         list_nodes/3,
+         list_nodes_summary/2,
+         list_nodes_summary/3,
          list_ops_item_events/2,
          list_ops_item_events/3,
          list_ops_item_related_items/2,
@@ -292,6 +298,8 @@
          start_automation_execution/3,
          start_change_request_execution/2,
          start_change_request_execution/3,
+         start_execution_preview/2,
+         start_execution_preview/3,
          start_session/2,
          start_session/3,
          stop_automation_execution/2,
@@ -473,6 +481,14 @@
 -type update_association_status_result() :: #{binary() => any()}.
 
 %% Example:
+%% node_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type node_filter() :: #{binary() => any()}.
+
+%% Example:
 %% update_maintenance_window_task_request() :: #{
 %%   <<"AlarmConfiguration">> => alarm_configuration(),
 %%   <<"CutoffBehavior">> => list(any()),
@@ -533,6 +549,12 @@
 -type get_maintenance_window_task_request() :: #{binary() => any()}.
 
 %% Example:
+%% start_execution_preview_response() :: #{
+%%   <<"ExecutionPreviewId">> => string()
+%% }
+-type start_execution_preview_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_resource_policy_response() :: #{
 
 %% }
@@ -567,6 +589,14 @@
 %%   <<"Message">> => string()
 %% }
 -type max_document_size_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% start_execution_preview_request() :: #{
+%%   <<"DocumentName">> := string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"ExecutionInputs">> => list()
+%% }
+-type start_execution_preview_request() :: #{binary() => any()}.
 
 %% Example:
 %% resource_data_sync_already_exists_exception() :: #{
@@ -633,6 +663,12 @@
 %%   <<"Version">> => string()
 %% }
 -type ops_item() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_service_setting_result() :: #{
@@ -727,6 +763,13 @@
 %%   <<"TypeName">> => string()
 %% }
 -type invalid_item_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_nodes_summary_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summary">> => list(map()())
+%% }
+-type list_nodes_summary_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_ops_item_request() :: #{
@@ -1806,6 +1849,12 @@
 -type custom_schema_count_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% get_execution_preview_request() :: #{
+%%   <<"ExecutionPreviewId">> := string()
+%% }
+-type get_execution_preview_request() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_maintenance_window_execution_request() :: #{
 %%   <<"WindowExecutionId">> := string()
 %% }
@@ -1870,6 +1919,22 @@
 %%   <<"Targets">> => list(target()())
 %% }
 -type start_automation_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% automation_execution_preview() :: #{
+%%   <<"Regions">> => list(string()()),
+%%   <<"StepPreviews">> => map(),
+%%   <<"TargetPreviews">> => list(target_preview()()),
+%%   <<"TotalAccounts">> => integer()
+%% }
+-type automation_execution_preview() :: #{binary() => any()}.
+
+%% Example:
+%% list_nodes_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Nodes">> => list(ssm_node()())
+%% }
+-type list_nodes_result() :: #{binary() => any()}.
 
 %% Example:
 %% instance_aggregated_association_overview() :: #{
@@ -2425,6 +2490,15 @@
 -type ops_metadata_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
+%% node_aggregator() :: #{
+%%   <<"AggregatorType">> => list(any()),
+%%   <<"Aggregators">> => list(node_aggregator()()),
+%%   <<"AttributeName">> => list(any()),
+%%   <<"TypeName">> => list(any())
+%% }
+-type node_aggregator() :: #{binary() => any()}.
+
+%% Example:
 %% send_command_request() :: #{
 %%   <<"AlarmConfiguration">> => alarm_configuration(),
 %%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
@@ -2543,6 +2617,16 @@
 %%   <<"CalendarNames">> := list(string()())
 %% }
 -type get_calendar_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_nodes_summary_request() :: #{
+%%   <<"Aggregators">> := list(node_aggregator()()),
+%%   <<"Filters">> => list(node_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SyncName">> => string()
+%% }
+-type list_nodes_summary_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_inventory_request() :: #{
@@ -2808,6 +2892,15 @@
 %%   <<"Targets">> => list(target()())
 %% }
 -type association() :: #{binary() => any()}.
+
+%% Example:
+%% list_nodes_request() :: #{
+%%   <<"Filters">> => list(node_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SyncName">> => string()
+%% }
+-type list_nodes_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_command_invocation_request() :: #{
@@ -3097,6 +3190,17 @@
 -type instance_information_string_filter() :: #{binary() => any()}.
 
 %% Example:
+%% automation_execution_inputs() :: #{
+%%   <<"Parameters">> => map(),
+%%   <<"TargetLocations">> => list(target_location()()),
+%%   <<"TargetLocationsURL">> => string(),
+%%   <<"TargetMaps">> => list(map()()),
+%%   <<"TargetParameterName">> => string(),
+%%   <<"Targets">> => list(target()())
+%% }
+-type automation_execution_inputs() :: #{binary() => any()}.
+
+%% Example:
 %% session() :: #{
 %%   <<"Details">> => string(),
 %%   <<"DocumentName">> => string(),
@@ -3312,6 +3416,24 @@
 %%   <<"OrganizationalUnits">> => list(resource_data_sync_organizational_unit()())
 %% }
 -type resource_data_sync_aws_organizations_source() :: #{binary() => any()}.
+
+%% Example:
+%% node_owner_info() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"OrganizationalUnitId">> => string(),
+%%   <<"OrganizationalUnitPath">> => string()
+%% }
+-type node_owner_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_execution_preview_response() :: #{
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ExecutionPreview">> => list(),
+%%   <<"ExecutionPreviewId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type get_execution_preview_response() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_notification_config() :: #{
@@ -3975,6 +4097,13 @@
 -type resource_data_sync_source() :: #{binary() => any()}.
 
 %% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ReasonCode">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
 %%   <<"ResourceType">> := list(any())
@@ -4363,6 +4492,16 @@
 -type target_not_connected() :: #{binary() => any()}.
 
 %% Example:
+%% ssm_node() :: #{
+%%   <<"CaptureTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"NodeType">> => list(),
+%%   <<"Owner">> => node_owner_info(),
+%%   <<"Region">> => string()
+%% }
+-type ssm_node() :: #{binary() => any()}.
+
+%% Example:
 %% create_ops_metadata_result() :: #{
 %%   <<"OpsMetadataArn">> => string()
 %% }
@@ -4491,6 +4630,13 @@
 -type update_document_default_version_result() :: #{binary() => any()}.
 
 %% Example:
+%% target_preview() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"TargetType">> => string()
+%% }
+-type target_preview() :: #{binary() => any()}.
+
+%% Example:
 %% automation_execution_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -4537,6 +4683,21 @@
 %%   <<"AutomationExecutionId">> => string()
 %% }
 -type start_automation_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% instance_info() :: #{
+%%   <<"AgentType">> => string(),
+%%   <<"AgentVersion">> => string(),
+%%   <<"ComputerName">> => string(),
+%%   <<"InstanceStatus">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"ManagedStatus">> => list(any()),
+%%   <<"PlatformName">> => string(),
+%%   <<"PlatformType">> => list(any()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type instance_info() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_automation_signal_exception() :: #{
@@ -5662,6 +5823,10 @@
     invalid_document_version() | 
     invalid_document().
 
+-type get_execution_preview_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
 -type get_inventory_errors() ::
     invalid_next_token() | 
     invalid_filter() | 
@@ -5819,6 +5984,21 @@
     invalid_instance_id() | 
     internal_server_error() | 
     invalid_type_name_exception().
+
+-type list_nodes_errors() ::
+    invalid_next_token() | 
+    resource_data_sync_not_found_exception() | 
+    invalid_filter() | 
+    internal_server_error() | 
+    unsupported_operation_exception().
+
+-type list_nodes_summary_errors() ::
+    invalid_next_token() | 
+    resource_data_sync_not_found_exception() | 
+    invalid_filter() | 
+    internal_server_error() | 
+    invalid_aggregator_exception() | 
+    unsupported_operation_exception().
 
 -type list_ops_item_events_errors() ::
     ops_item_limit_exceeded_exception() | 
@@ -5985,6 +6165,10 @@
     internal_server_error() | 
     invalid_automation_execution_parameters_exception() | 
     idempotent_parameter_mismatch().
+
+-type start_execution_preview_errors() ::
+    validation_exception() | 
+    internal_server_error().
 
 -type start_session_errors() ::
     target_not_connected() | 
@@ -6466,7 +6650,7 @@ create_patch_baseline(Client, Input, Options)
 %% `SyncToDestination' type to
 %% synchronize Inventory data from multiple Amazon Web Services Regions to a
 %% single Amazon Simple Storage Service (Amazon S3) bucket. For more
-%% information, see Creatinga a
+%% information, see Creating a
 %% resource data sync for Inventory:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/inventory-create-resource-data-sync.html
 %% in the Amazon Web Services Systems Manager User Guide.
@@ -7831,6 +8015,25 @@ get_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDocument">>, Input, Options).
 
+%% @doc Initiates the process of retrieving an existing preview that shows
+%% the effects that running
+%% a specified Automation runbook would have on the targeted resources.
+-spec get_execution_preview(aws_client:aws_client(), get_execution_preview_request()) ->
+    {ok, get_execution_preview_response(), tuple()} |
+    {error, any()} |
+    {error, get_execution_preview_errors(), tuple()}.
+get_execution_preview(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_execution_preview(Client, Input, []).
+
+-spec get_execution_preview(aws_client:aws_client(), get_execution_preview_request(), proplists:proplist()) ->
+    {ok, get_execution_preview_response(), tuple()} |
+    {error, any()} |
+    {error, get_execution_preview_errors(), tuple()}.
+get_execution_preview(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetExecutionPreview">>, Input, Options).
+
 %% @doc Query inventory information.
 %%
 %% This includes managed node status, such as `Stopped'
@@ -8498,6 +8701,45 @@ list_inventory_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInventoryEntries">>, Input, Options).
 
+%% @doc Takes in filters and returns a list of managed nodes matching the
+%% filter criteria.
+-spec list_nodes(aws_client:aws_client(), list_nodes_request()) ->
+    {ok, list_nodes_result(), tuple()} |
+    {error, any()} |
+    {error, list_nodes_errors(), tuple()}.
+list_nodes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_nodes(Client, Input, []).
+
+-spec list_nodes(aws_client:aws_client(), list_nodes_request(), proplists:proplist()) ->
+    {ok, list_nodes_result(), tuple()} |
+    {error, any()} |
+    {error, list_nodes_errors(), tuple()}.
+list_nodes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListNodes">>, Input, Options).
+
+%% @doc Generates a summary of managed instance/node metadata based on the
+%% filters and aggregators
+%% you specify.
+%%
+%% Results are grouped by the input aggregator you specify.
+-spec list_nodes_summary(aws_client:aws_client(), list_nodes_summary_request()) ->
+    {ok, list_nodes_summary_result(), tuple()} |
+    {error, any()} |
+    {error, list_nodes_summary_errors(), tuple()}.
+list_nodes_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_nodes_summary(Client, Input, []).
+
+-spec list_nodes_summary(aws_client:aws_client(), list_nodes_summary_request(), proplists:proplist()) ->
+    {ok, list_nodes_summary_result(), tuple()} |
+    {error, any()} |
+    {error, list_nodes_summary_errors(), tuple()}.
+list_nodes_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListNodesSummary">>, Input, Options).
+
 %% @doc Returns a list of all OpsItem events in the current Amazon Web
 %% Services Region and Amazon Web Services account.
 %%
@@ -9093,6 +9335,25 @@ start_change_request_execution(Client, Input)
 start_change_request_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartChangeRequestExecution">>, Input, Options).
+
+%% @doc Initiates the process of creating a preview showing the effects that
+%% running a specified
+%% Automation runbook would have on the targeted resources.
+-spec start_execution_preview(aws_client:aws_client(), start_execution_preview_request()) ->
+    {ok, start_execution_preview_response(), tuple()} |
+    {error, any()} |
+    {error, start_execution_preview_errors(), tuple()}.
+start_execution_preview(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_execution_preview(Client, Input, []).
+
+-spec start_execution_preview(aws_client:aws_client(), start_execution_preview_request(), proplists:proplist()) ->
+    {ok, start_execution_preview_response(), tuple()} |
+    {error, any()} |
+    {error, start_execution_preview_errors(), tuple()}.
+start_execution_preview(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartExecutionPreview">>, Input, Options).
 
 %% @doc Initiates a connection to a target (for example, a managed node) for
 %% a Session Manager session.

@@ -78,6 +78,8 @@
          delete_delivery_source/3,
          delete_destination/2,
          delete_destination/3,
+         delete_index_policy/2,
+         delete_index_policy/3,
          delete_log_anomaly_detector/2,
          delete_log_anomaly_detector/3,
          delete_log_group/2,
@@ -94,6 +96,8 @@
          delete_retention_policy/3,
          delete_subscription_filter/2,
          delete_subscription_filter/3,
+         delete_transformer/2,
+         delete_transformer/3,
          describe_account_policies/2,
          describe_account_policies/3,
          describe_configuration_templates/2,
@@ -108,6 +112,10 @@
          describe_destinations/3,
          describe_export_tasks/2,
          describe_export_tasks/3,
+         describe_field_indexes/2,
+         describe_field_indexes/3,
+         describe_index_policies/2,
+         describe_index_policies/3,
          describe_log_groups/2,
          describe_log_groups/3,
          describe_log_streams/2,
@@ -146,10 +154,14 @@
          get_log_record/3,
          get_query_results/2,
          get_query_results/3,
+         get_transformer/2,
+         get_transformer/3,
          list_anomalies/2,
          list_anomalies/3,
          list_log_anomaly_detectors/2,
          list_log_anomaly_detectors/3,
+         list_log_groups_for_query/2,
+         list_log_groups_for_query/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_tags_log_group/2,
@@ -168,6 +180,8 @@
          put_destination/3,
          put_destination_policy/2,
          put_destination_policy/3,
+         put_index_policy/2,
+         put_index_policy/3,
          put_log_events/2,
          put_log_events/3,
          put_metric_filter/2,
@@ -180,6 +194,8 @@
          put_retention_policy/3,
          put_subscription_filter/2,
          put_subscription_filter/3,
+         put_transformer/2,
+         put_transformer/3,
          start_live_tail/2,
          start_live_tail/3,
          start_query/2,
@@ -192,6 +208,8 @@
          tag_resource/3,
          test_metric_filter/2,
          test_metric_filter/3,
+         test_transformer/2,
+         test_transformer/3,
          untag_log_group/2,
          untag_log_group/3,
          untag_resource/2,
@@ -219,6 +237,20 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_anomalies_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_key_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"value">> => string()
+%% }
+-type add_key_entry() :: #{binary() => any()}.
+
+%% Example:
+%% trim_string() :: #{
+%%   <<"withKeys">> => list(string()())
+%% }
+-type trim_string() :: #{binary() => any()}.
 
 %% Example:
 %% describe_resource_policies_request() :: #{
@@ -267,6 +299,18 @@
 -type describe_log_groups_request() :: #{binary() => any()}.
 
 %% Example:
+%% parse_cloudfront() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_cloudfront() :: #{binary() => any()}.
+
+%% Example:
+%% copy_value() :: #{
+%%   <<"entries">> => list(copy_value_entry()())
+%% }
+-type copy_value() :: #{binary() => any()}.
+
+%% Example:
 %% delete_query_definition_request() :: #{
 %%   <<"queryDefinitionId">> := string()
 %% }
@@ -298,6 +342,12 @@
 -type account_policy() :: #{binary() => any()}.
 
 %% Example:
+%% delete_index_policy_response() :: #{
+
+%% }
+-type delete_index_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_export_task_request() :: #{
 %%   <<"destination">> := string(),
 %%   <<"destinationPrefix">> => string(),
@@ -315,6 +365,19 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_groups_for_query_response() :: #{
+%%   <<"logGroupIdentifiers">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_groups_for_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% type_converter() :: #{
+%%   <<"entries">> => list(type_converter_entry()())
+%% }
+-type type_converter() :: #{binary() => any()}.
 
 %% Example:
 %% describe_query_definitions_request() :: #{
@@ -378,11 +441,47 @@
 -type put_account_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_transformer_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type get_transformer_request() :: #{binary() => any()}.
+
+%% Example:
 %% entity() :: #{
 %%   <<"attributes">> => map(),
 %%   <<"keyAttributes">> => map()
 %% }
 -type entity() :: #{binary() => any()}.
+
+%% Example:
+%% substitute_string_entry() :: #{
+%%   <<"from">> => string(),
+%%   <<"source">> => string(),
+%%   <<"to">> => string()
+%% }
+-type substitute_string_entry() :: #{binary() => any()}.
+
+%% Example:
+%% type_converter_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type type_converter_entry() :: #{binary() => any()}.
+
+%% Example:
+%% split_string_entry() :: #{
+%%   <<"delimiter">> => string(),
+%%   <<"source">> => string()
+%% }
+-type split_string_entry() :: #{binary() => any()}.
+
+%% Example:
+%% copy_value_entry() :: #{
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string()
+%% }
+-type copy_value_entry() :: #{binary() => any()}.
 
 %% Example:
 %% describe_queries_response() :: #{
@@ -439,6 +538,12 @@
 -type get_query_results_request() :: #{binary() => any()}.
 
 %% Example:
+%% substitute_string() :: #{
+%%   <<"entries">> => list(substitute_string_entry()())
+%% }
+-type substitute_string() :: #{binary() => any()}.
+
+%% Example:
 %% get_delivery_request() :: #{
 %%   <<"id">> := string()
 %% }
@@ -476,6 +581,7 @@
 
 %% Example:
 %% subscription_filter() :: #{
+%%   <<"applyOnTransformedLogs">> => boolean(),
 %%   <<"creationTime">> => float(),
 %%   <<"destinationArn">> => string(),
 %%   <<"distribution">> => list(any()),
@@ -531,7 +637,8 @@
 
 %% Example:
 %% describe_account_policies_response() :: #{
-%%   <<"accountPolicies">> => list(account_policy()())
+%%   <<"accountPolicies">> => list(account_policy()()),
+%%   <<"nextToken">> => string()
 %% }
 -type describe_account_policies_response() :: #{binary() => any()}.
 
@@ -551,6 +658,12 @@
 %%   <<"suppressionType">> => list(any())
 %% }
 -type update_anomaly_request() :: #{binary() => any()}.
+
+%% Example:
+%% parse_w_a_f() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_w_a_f() :: #{binary() => any()}.
 
 %% Example:
 %% put_retention_policy_request() :: #{
@@ -626,11 +739,54 @@
 -type put_data_protection_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% field_index() :: #{
+%%   <<"fieldIndexName">> => string(),
+%%   <<"firstEventTime">> => float(),
+%%   <<"lastEventTime">> => float(),
+%%   <<"lastScanTime">> => float(),
+%%   <<"logGroupIdentifier">> => string()
+%% }
+-type field_index() :: #{binary() => any()}.
+
+%% Example:
+%% processor() :: #{
+%%   <<"addKeys">> => add_keys(),
+%%   <<"copyValue">> => copy_value(),
+%%   <<"csv">> => csv(),
+%%   <<"dateTimeConverter">> => date_time_converter(),
+%%   <<"deleteKeys">> => delete_keys(),
+%%   <<"grok">> => grok(),
+%%   <<"listToMap">> => list_to_map(),
+%%   <<"lowerCaseString">> => lower_case_string(),
+%%   <<"moveKeys">> => move_keys(),
+%%   <<"parseCloudfront">> => parse_cloudfront(),
+%%   <<"parseJSON">> => parse_json(),
+%%   <<"parseKeyValue">> => parse_key_value(),
+%%   <<"parsePostgres">> => parse_postgres(),
+%%   <<"parseRoute53">> => parse_route53(),
+%%   <<"parseVPC">> => parse_vpc(),
+%%   <<"parseWAF">> => parse_w_a_f(),
+%%   <<"renameKeys">> => rename_keys(),
+%%   <<"splitString">> => split_string(),
+%%   <<"substituteString">> => substitute_string(),
+%%   <<"trimString">> => trim_string(),
+%%   <<"typeConverter">> => type_converter(),
+%%   <<"upperCaseString">> => upper_case_string()
+%% }
+-type processor() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_index_policy_response() :: #{
+%%   <<"indexPolicy">> => index_policy()
+%% }
+-type put_index_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% configuration_template() :: #{
@@ -660,6 +816,23 @@
 %%   <<"sessionResults">> => list(live_tail_session_log_event()())
 %% }
 -type live_tail_session_update() :: #{binary() => any()}.
+
+%% Example:
+%% get_transformer_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"transformerConfig">> => list(processor()())
+%% }
+-type get_transformer_response() :: #{binary() => any()}.
+
+%% Example:
+%% transformed_log_record() :: #{
+%%   <<"eventMessage">> => string(),
+%%   <<"eventNumber">> => float(),
+%%   <<"transformedEventMessage">> => string()
+%% }
+-type transformed_log_record() :: #{binary() => any()}.
 
 %% Example:
 %% query_compile_error_location() :: #{
@@ -703,6 +876,12 @@
 %%   <<"forceUpdate">> => boolean()
 %% }
 -type put_destination_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% lower_case_string() :: #{
+%%   <<"withKeys">> => list(string()())
+%% }
+-type lower_case_string() :: #{binary() => any()}.
 
 %% Example:
 %% input_log_event() :: #{
@@ -760,6 +939,20 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% describe_index_policies_request() :: #{
+%%   <<"logGroupIdentifiers">> := list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_index_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_field_indexes_request() :: #{
+%%   <<"logGroupIdentifiers">> := list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_field_indexes_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_log_anomaly_detector_request() :: #{
 %%   <<"anomalyDetectorArn">> := string()
 %% }
@@ -771,6 +964,12 @@
 %%   <<"resourceIdentifier">> => string()
 %% }
 -type disassociate_kms_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transformer_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type delete_transformer_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_export_tasks_request() :: #{
@@ -858,6 +1057,18 @@
 -type delete_log_stream_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_index_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type delete_index_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_transformer_response() :: #{
+%%   <<"transformedLogs">> => list(transformed_log_record()())
+%% }
+-type test_transformer_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_export_task_response() :: #{
 %%   <<"taskId">> => string()
 %% }
@@ -869,6 +1080,23 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_delivery_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% csv() :: #{
+%%   <<"columns">> => list(string()()),
+%%   <<"delimiter">> => string(),
+%%   <<"quoteCharacter">> => string(),
+%%   <<"source">> => string()
+%% }
+-type csv() :: #{binary() => any()}.
+
+%% Example:
+%% rename_key_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"renameTo">> => string()
+%% }
+-type rename_key_entry() :: #{binary() => any()}.
 
 %% Example:
 %% associate_kms_key_request() :: #{
@@ -927,11 +1155,25 @@
 -type put_delivery_source_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_field_indexes_response() :: #{
+%%   <<"fieldIndexes">> => list(field_index()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_field_indexes_response() :: #{binary() => any()}.
+
+%% Example:
 %% log_group_field() :: #{
 %%   <<"name">> => string(),
 %%   <<"percent">> => integer()
 %% }
 -type log_group_field() :: #{binary() => any()}.
+
+%% Example:
+%% put_transformer_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"transformerConfig">> := list(processor()())
+%% }
+-type put_transformer_request() :: #{binary() => any()}.
 
 %% Example:
 %% log_stream() :: #{
@@ -954,12 +1196,20 @@
 
 %% Example:
 %% put_metric_filter_request() :: #{
+%%   <<"applyOnTransformedLogs">> => boolean(),
 %%   <<"filterName">> := string(),
 %%   <<"filterPattern">> := string(),
 %%   <<"logGroupName">> := string(),
 %%   <<"metricTransformations">> := list(metric_transformation()())
 %% }
 -type put_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_index_policies_response() :: #{
+%%   <<"indexPolicies">> => list(index_policy()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_index_policies_response() :: #{binary() => any()}.
 
 %% Example:
 %% filter_log_events_request() :: #{
@@ -985,6 +1235,13 @@
 -type describe_deliveries_response() :: #{binary() => any()}.
 
 %% Example:
+%% grok() :: #{
+%%   <<"match">> => string(),
+%%   <<"source">> => string()
+%% }
+-type grok() :: #{binary() => any()}.
+
+%% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -995,6 +1252,18 @@
 %%   <<"destinationName">> := string()
 %% }
 -type delete_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% parse_key_value() :: #{
+%%   <<"destination">> => string(),
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"keyPrefix">> => string(),
+%%   <<"keyValueDelimiter">> => string(),
+%%   <<"nonMatchValue">> => string(),
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"source">> => string()
+%% }
+-type parse_key_value() :: #{binary() => any()}.
 
 %% Example:
 %% delete_account_policy_request() :: #{
@@ -1011,6 +1280,12 @@
 -type describe_log_groups_response() :: #{binary() => any()}.
 
 %% Example:
+%% upper_case_string() :: #{
+%%   <<"withKeys">> => list(string()())
+%% }
+-type upper_case_string() :: #{binary() => any()}.
+
+%% Example:
 %% untag_log_group_request() :: #{
 %%   <<"logGroupName">> := string(),
 %%   <<"tags">> := list(string()())
@@ -1019,6 +1294,7 @@
 
 %% Example:
 %% put_subscription_filter_request() :: #{
+%%   <<"applyOnTransformedLogs">> => boolean(),
 %%   <<"destinationArn">> := string(),
 %%   <<"distribution">> => list(any()),
 %%   <<"filterName">> := string(),
@@ -1042,6 +1318,14 @@
 -type start_live_tail_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_log_groups_for_query_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryId">> := string()
+%% }
+-type list_log_groups_for_query_request() :: #{binary() => any()}.
+
+%% Example:
 %% delivery_destination() :: #{
 %%   <<"arn">> => string(),
 %%   <<"deliveryDestinationConfiguration">> => delivery_destination_configuration(),
@@ -1051,6 +1335,17 @@
 %%   <<"tags">> => map()
 %% }
 -type delivery_destination() :: #{binary() => any()}.
+
+%% Example:
+%% list_to_map() :: #{
+%%   <<"flatten">> => boolean(),
+%%   <<"flattenedElement">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string(),
+%%   <<"valueKey">> => string()
+%% }
+-type list_to_map() :: #{binary() => any()}.
 
 %% Example:
 %% query_compile_error() :: #{
@@ -1196,6 +1491,12 @@
 -type describe_delivery_sources_request() :: #{binary() => any()}.
 
 %% Example:
+%% rename_keys() :: #{
+%%   <<"entries">> => list(rename_key_entry()())
+%% }
+-type rename_keys() :: #{binary() => any()}.
+
+%% Example:
 %% start_query_response() :: #{
 %%   <<"queryId">> => string()
 %% }
@@ -1258,6 +1559,14 @@
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
+%% move_key_entry() :: #{
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string()
+%% }
+-type move_key_entry() :: #{binary() => any()}.
+
+%% Example:
 %% get_log_events_request() :: #{
 %%   <<"endTime">> => float(),
 %%   <<"limit">> => integer(),
@@ -1270,6 +1579,12 @@
 %%   <<"unmask">> => boolean()
 %% }
 -type get_log_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_keys() :: #{
+%%   <<"entries">> => list(add_key_entry()())
+%% }
+-type add_keys() :: #{binary() => any()}.
 
 %% Example:
 %% rejected_log_events_info() :: #{
@@ -1311,6 +1626,7 @@
 %% Example:
 %% describe_account_policies_request() :: #{
 %%   <<"accountIdentifiers">> => list(string()()),
+%%   <<"nextToken">> => string(),
 %%   <<"policyName">> => string(),
 %%   <<"policyType">> := list(any())
 %% }
@@ -1318,6 +1634,7 @@
 
 %% Example:
 %% metric_filter() :: #{
+%%   <<"applyOnTransformedLogs">> => boolean(),
 %%   <<"creationTime">> => float(),
 %%   <<"filterName">> => string(),
 %%   <<"filterPattern">> => string(),
@@ -1431,6 +1748,18 @@
 -type get_delivery_source_request() :: #{binary() => any()}.
 
 %% Example:
+%% date_time_converter() :: #{
+%%   <<"locale">> => string(),
+%%   <<"matchPatterns">> => list(string()()),
+%%   <<"source">> => string(),
+%%   <<"sourceTimezone">> => string(),
+%%   <<"target">> => string(),
+%%   <<"targetFormat">> => string(),
+%%   <<"targetTimezone">> => string()
+%% }
+-type date_time_converter() :: #{binary() => any()}.
+
+%% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1460,6 +1789,9 @@
 %% Example:
 %% query_statistics() :: #{
 %%   <<"bytesScanned">> => float(),
+%%   <<"estimatedBytesSkipped">> => float(),
+%%   <<"estimatedRecordsSkipped">> => float(),
+%%   <<"logGroupsScanned">> => float(),
 %%   <<"recordsMatched">> => float(),
 %%   <<"recordsScanned">> => float()
 %% }
@@ -1506,11 +1838,24 @@
 -type anomaly_detector() :: #{binary() => any()}.
 
 %% Example:
+%% test_transformer_request() :: #{
+%%   <<"logEventMessages">> := list(string()()),
+%%   <<"transformerConfig">> := list(processor()())
+%% }
+-type test_transformer_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_log_anomaly_detectors_response() :: #{
 %%   <<"anomalyDetectors">> => list(anomaly_detector()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_log_anomaly_detectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% parse_route53() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_route53() :: #{binary() => any()}.
 
 %% Example:
 %% delete_delivery_destination_request() :: #{
@@ -1559,6 +1904,19 @@
 -type test_metric_filter_response() :: #{binary() => any()}.
 
 %% Example:
+%% move_keys() :: #{
+%%   <<"entries">> => list(move_key_entry()())
+%% }
+-type move_keys() :: #{binary() => any()}.
+
+%% Example:
+%% parse_json() :: #{
+%%   <<"destination">> => string(),
+%%   <<"source">> => string()
+%% }
+-type parse_json() :: #{binary() => any()}.
+
+%% Example:
 %% query_definition() :: #{
 %%   <<"lastModified">> => float(),
 %%   <<"logGroupNames">> => list(string()()),
@@ -1567,6 +1925,12 @@
 %%   <<"queryString">> => string()
 %% }
 -type query_definition() :: #{binary() => any()}.
+
+%% Example:
+%% delete_keys() :: #{
+%%   <<"withKeys">> => list(string()())
+%% }
+-type delete_keys() :: #{binary() => any()}.
 
 %% Example:
 %% get_delivery_destination_policy_request() :: #{
@@ -1613,6 +1977,12 @@
 -type test_metric_filter_request() :: #{binary() => any()}.
 
 %% Example:
+%% parse_postgres() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_postgres() :: #{binary() => any()}.
+
+%% Example:
 %% query_info() :: #{
 %%   <<"createTime">> => float(),
 %%   <<"logGroupName">> => string(),
@@ -1629,6 +1999,25 @@
 %%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
 %% }
 -type configuration_template_delivery_config_values() :: #{binary() => any()}.
+
+%% Example:
+%% parse_vpc() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_vpc() :: #{binary() => any()}.
+
+%% Example:
+%% put_index_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"policyDocument">> := string()
+%% }
+-type put_index_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% split_string() :: #{
+%%   <<"entries">> => list(split_string_entry()())
+%% }
+-type split_string() :: #{binary() => any()}.
 
 %% Example:
 %% unrecognized_client_exception() :: #{
@@ -1660,6 +2049,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_metric_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% index_policy() :: #{
+%%   <<"lastUpdateTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"source">> => list(any())
+%% }
+-type index_policy() :: #{binary() => any()}.
 
 %% Example:
 %% log_event() :: #{
@@ -1771,6 +2170,13 @@
     resource_not_found_exception() | 
     operation_aborted_exception().
 
+-type delete_index_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
 -type delete_log_anomaly_detector_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
@@ -1817,6 +2223,13 @@
     resource_not_found_exception() | 
     operation_aborted_exception().
 
+-type delete_transformer_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_operation_exception().
+
 -type describe_account_policies_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
@@ -1854,6 +2267,20 @@
 -type describe_export_tasks_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception().
+
+-type describe_field_indexes_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
+-type describe_index_policies_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
 
 -type describe_log_groups_errors() ::
     invalid_parameter_exception() | 
@@ -1958,6 +2385,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type get_transformer_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
 -type list_anomalies_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
@@ -1969,6 +2402,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type list_log_groups_for_query_errors() ::
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
     invalid_parameter_exception() | 
@@ -2024,6 +2463,13 @@
     service_unavailable_exception() | 
     operation_aborted_exception().
 
+-type put_index_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception().
+
 -type put_log_events_errors() ::
     unrecognized_client_exception() | 
     invalid_parameter_exception() | 
@@ -2037,7 +2483,8 @@
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_operation_exception().
 
 -type put_query_definition_errors() ::
     limit_exceeded_exception() | 
@@ -2061,7 +2508,16 @@
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_operation_exception().
+
+-type put_transformer_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_operation_exception().
 
 -type start_live_tail_errors() ::
     limit_exceeded_exception() | 
@@ -2095,6 +2551,11 @@
 -type test_metric_filter_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception().
+
+-type test_transformer_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    invalid_operation_exception().
 
 -type untag_log_group_errors() ::
     resource_not_found_exception().
@@ -2497,9 +2958,10 @@ create_log_stream(Client, Input, Options)
 
 %% @doc Deletes a CloudWatch Logs account policy.
 %%
-%% This stops the policy from applying to all log groups
-%% or a subset of log groups in the account. Log-group level policies will
-%% still be in effect.
+%% This stops the account-wide policy from applying to log groups in the
+%% account. If you delete a data protection
+%% policy or subscription filter policy, any log-group level policies of
+%% those types remain in effect.
 %%
 %% To use this operation, you must be signed on with the correct permissions
 %% depending on the type of policy
@@ -2512,6 +2974,19 @@ create_log_stream(Client, Input, Options)
 %% To delete a subscription filter policy, you must have the
 %% `logs:DeleteSubscriptionFilter' and
 %% `logs:DeleteAccountPolicy' permissions.
+%%
+%% To delete a transformer policy, you must have the
+%% `logs:DeleteTransformer' and `logs:DeleteAccountPolicy'
+%% permissions.
+%%
+%% To delete a field index policy, you must have the
+%% `logs:DeleteIndexPolicy' and
+%% `logs:DeleteAccountPolicy' permissions.
+%%
+%% If you delete a field index policy, the indexing of the log events that
+%% happened before
+%% you deleted the policy will still be used for up to 30 days to improve
+%% CloudWatch Logs Insights queries.
 -spec delete_account_policy(aws_client:aws_client(), delete_account_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2664,6 +3139,38 @@ delete_destination(Client, Input)
 delete_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDestination">>, Input, Options).
+
+%% @doc Deletes a log-group level field index policy that was applied to a
+%% single log group.
+%%
+%% The indexing of the log events that happened before
+%% you delete the policy will still be used for as many as 30 days to improve
+%% CloudWatch Logs Insights queries.
+%%
+%% You can't use this operation to delete an account-level index policy.
+%% Instead, use
+%% DeletAccountPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DeleteAccountPolicy.html.
+%%
+%% If you delete a log-group level field index policy and there is an
+%% account-level field index policy, in a few minutes the log group begins
+%% using that account-wide policy to index new
+%% incoming log events.
+-spec delete_index_policy(aws_client:aws_client(), delete_index_policy_request()) ->
+    {ok, delete_index_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_index_policy_errors(), tuple()}.
+delete_index_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_index_policy(Client, Input, []).
+
+-spec delete_index_policy(aws_client:aws_client(), delete_index_policy_request(), proplists:proplist()) ->
+    {ok, delete_index_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_index_policy_errors(), tuple()}.
+delete_index_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIndexPolicy">>, Input, Options).
 
 %% @doc Deletes the specified CloudWatch Logs anomaly detector.
 -spec delete_log_anomaly_detector(aws_client:aws_client(), delete_log_anomaly_detector_request()) ->
@@ -2822,6 +3329,35 @@ delete_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubscriptionFilter">>, Input, Options).
 
+%% @doc Deletes the log transformer for the specified log group.
+%%
+%% As soon as you do this,
+%% the transformation of incoming log events according to that transformer
+%% stops. If this account has an
+%% account-level transformer that applies to this log group, the log group
+%% begins
+%% using that account-level transformer when this log-group level transformer
+%% is deleted.
+%%
+%% After you delete a transformer, be sure to edit any metric filters or
+%% subscription filters that relied
+%% on the transformed versions of the log events.
+-spec delete_transformer(aws_client:aws_client(), delete_transformer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_transformer_errors(), tuple()}.
+delete_transformer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_transformer(Client, Input, []).
+
+-spec delete_transformer(aws_client:aws_client(), delete_transformer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_transformer_errors(), tuple()}.
+delete_transformer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTransformer">>, Input, Options).
+
 %% @doc Returns a list of all CloudWatch Logs account policies in the
 %% account.
 -spec describe_account_policies(aws_client:aws_client(), describe_account_policies_request()) ->
@@ -2974,6 +3510,62 @@ describe_export_tasks(Client, Input)
 describe_export_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportTasks">>, Input, Options).
+
+%% @doc Returns a list of field indexes listed in the field index policies of
+%% one or more log groups.
+%%
+%% For more information about field index policies, see
+%% PutIndexPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html.
+-spec describe_field_indexes(aws_client:aws_client(), describe_field_indexes_request()) ->
+    {ok, describe_field_indexes_response(), tuple()} |
+    {error, any()} |
+    {error, describe_field_indexes_errors(), tuple()}.
+describe_field_indexes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_field_indexes(Client, Input, []).
+
+-spec describe_field_indexes(aws_client:aws_client(), describe_field_indexes_request(), proplists:proplist()) ->
+    {ok, describe_field_indexes_response(), tuple()} |
+    {error, any()} |
+    {error, describe_field_indexes_errors(), tuple()}.
+describe_field_indexes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFieldIndexes">>, Input, Options).
+
+%% @doc Returns the field index policies of
+%% one or more log groups.
+%%
+%% For more information about field index policies, see
+%% PutIndexPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html.
+%%
+%% If a specified log group has a log-group level index policy, that policy
+%% is returned by this operation.
+%%
+%% If a specified log group doesn't have a log-group level index policy,
+%% but an account-wide index policy applies to it,
+%% that account-wide policy is returned by this operation.
+%%
+%% To find information about only account-level policies, use
+%% DescribeAccountPolicies:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeAccountPolicies.html
+%% instead.
+-spec describe_index_policies(aws_client:aws_client(), describe_index_policies_request()) ->
+    {ok, describe_index_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_index_policies_errors(), tuple()}.
+describe_index_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_index_policies(Client, Input, []).
+
+-spec describe_index_policies(aws_client:aws_client(), describe_index_policies_request(), proplists:proplist()) ->
+    {ok, describe_index_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_index_policies_errors(), tuple()}.
+describe_index_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIndexPolicies">>, Input, Options).
 
 %% @doc Lists the specified log groups.
 %%
@@ -3534,6 +4126,29 @@ get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
 
+%% @doc Returns the information about the log transformer associated with
+%% this log group.
+%%
+%% This operation returns data only for transformers created at the log group
+%% level. To get information
+%% for an account-level transformer, use DescribeAccountPolicies:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeAccountPolicies.html.
+-spec get_transformer(aws_client:aws_client(), get_transformer_request()) ->
+    {ok, get_transformer_response(), tuple()} |
+    {error, any()} |
+    {error, get_transformer_errors(), tuple()}.
+get_transformer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_transformer(Client, Input, []).
+
+-spec get_transformer(aws_client:aws_client(), get_transformer_request(), proplists:proplist()) ->
+    {ok, get_transformer_response(), tuple()} |
+    {error, any()} |
+    {error, get_transformer_errors(), tuple()}.
+get_transformer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTransformer">>, Input, Options).
+
 %% @doc Returns a list of anomalies that log anomaly detectors have found.
 %%
 %% For details about the structure format of
@@ -3570,6 +4185,33 @@ list_log_anomaly_detectors(Client, Input)
 list_log_anomaly_detectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogAnomalyDetectors">>, Input, Options).
+
+%% @doc Returns a list of the log groups that were analyzed during a single
+%% CloudWatch Logs Insights query.
+%%
+%% This can be useful for queries
+%% that use
+%% log group name prefixes or the `filterIndex' command, because the log
+%% groups are dynamically selected in these cases.
+%%
+%% For more information about field indexes, see
+%% Create field indexes to improve query performance and reduce costs:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html.
+-spec list_log_groups_for_query(aws_client:aws_client(), list_log_groups_for_query_request()) ->
+    {ok, list_log_groups_for_query_response(), tuple()} |
+    {error, any()} |
+    {error, list_log_groups_for_query_errors(), tuple()}.
+list_log_groups_for_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_log_groups_for_query(Client, Input, []).
+
+-spec list_log_groups_for_query(aws_client:aws_client(), list_log_groups_for_query_request(), proplists:proplist()) ->
+    {ok, list_log_groups_for_query_response(), tuple()} |
+    {error, any()} |
+    {error, list_log_groups_for_query_errors(), tuple()}.
+list_log_groups_for_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLogGroupsForQuery">>, Input, Options).
 
 %% @doc Displays the tags associated with a CloudWatch Logs resource.
 %%
@@ -3616,8 +4258,9 @@ list_tags_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsLogGroup">>, Input, Options).
 
-%% @doc Creates an account-level data protection policy or subscription
-%% filter policy that applies to all log groups
+%% @doc Creates an account-level data protection policy, subscription filter
+%% policy, or field index policy
+%% that applies to all log groups
 %% or a subset of log groups in the account.
 %%
 %% Data protection policy
@@ -3710,6 +4353,121 @@ list_tags_log_group(Client, Input, Options)
 %% To perform a `PutAccountPolicy' subscription filter operation for any
 %% destination except a Lambda
 %% function, you must also have the `iam:PassRole' permission.
+%%
+%% Transformer policy
+%%
+%% Creates or updates a log transformer policy for your account. You use log
+%% transformers to transform log events into
+%% a different format, making them easier for you to process and analyze. You
+%% can also transform logs from different sources into standardized formats
+%% that
+%% contain
+%% relevant, source-specific information. After you have created a
+%% transformer,
+%% CloudWatch Logs performs this transformation at the time of log ingestion.
+%% You can then refer to the transformed versions of the logs during
+%% operations such as querying with CloudWatch Logs Insights or creating
+%% metric filters or subscription filters.
+%%
+%% You can also use a transformer to copy metadata from metadata keys into
+%% the log events themselves. This metadata can include log group name,
+%% log stream name, account ID and Region.
+%%
+%% A transformer for a log group is a series of processors, where each
+%% processor applies one type of transformation to the log events
+%% ingested into this log group. For more information about the available
+%% processors to use in a transformer, see
+%% Processors that you can use:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors.
+%%
+%% Having log events in standardized format enables visibility across your
+%% applications for your log analysis, reporting, and alarming needs.
+%% CloudWatch Logs provides transformation for common log types with
+%% out-of-the-box transformation templates for major Amazon Web Services log
+%% sources such
+%% as VPC flow logs, Lambda, and Amazon RDS. You can use pre-built
+%% transformation templates or create custom transformation policies.
+%%
+%% You can create transformers only for the log groups in the Standard log
+%% class.
+%%
+%% You can have one account-level transformer policy that applies to all log
+%% groups in the account.
+%% Or you can create as many as 20 account-level transformer policies that
+%% are each scoped to a subset of log groups with
+%% the `selectionCriteria' parameter. If you have multiple
+%% account-level transformer policies with selection criteria, no two of them
+%% can use the same or overlapping log group name prefixes.
+%% For example, if you have one policy filtered to log groups that start with
+%% `my-log', you can't have another field index
+%% policy filtered to `my-logpprod' or `my-logging'.
+%%
+%% You can also set up a transformer at the log-group level. For more
+%% information, see
+%% PutTransformer:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutTransformer.html.
+%% If there is both a
+%% log-group level transformer created with `PutTransformer' and an
+%% account-level transformer that could apply to the same log
+%% group, the log group uses only the log-group level transformer. It ignores
+%% the account-level transformer.
+%%
+%% Field index policy
+%%
+%% You can use field index policies to create indexes on fields found in
+%% log events in the log group. Creating field indexes can help lower the
+%% scan volume for CloudWatch Logs Insights queries that reference
+%% those fields, because these queries attempt to skip the processing of log
+%% events that are known to not match the indexed field.
+%% Good fields to index are fields that you often need to query for and
+%% fields or values that match only a small fraction of the total log events.
+%% Common examples of indexes
+%% include request ID, session ID, user IDs, or instance IDs. For more
+%% information, see
+%% Create field indexes to improve query performance and reduce costs:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html
+%%
+%% To find the fields that are in your log group events, use the
+%% GetLogGroupFields:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogGroupFields.html
+%% operation.
+%%
+%% For example, suppose you have created a field index for `requestId'.
+%% Then, any
+%% CloudWatch Logs Insights query on that log group that includes
+%% ```
+%% requestId = value '''
+%% or `requestId in [value, value, ...]' will attempt to process only the
+%% log events where
+%% the indexed field matches the specified value.
+%%
+%% Matches of log events to the names of indexed fields are case-sensitive.
+%% For example, an indexed field
+%% of `RequestId' won't match a log event containing `requestId'.
+%%
+%% You can have one account-level field index policy that applies to all log
+%% groups in the account.
+%% Or you can create as many as 20 account-level field index policies that
+%% are each scoped to a subset of log groups with
+%% the `selectionCriteria' parameter. If you have multiple
+%% account-level index policies with selection criteria, no two of them can
+%% use the same or overlapping log group name prefixes.
+%% For example, if you have one policy filtered to log groups that start with
+%% `my-log', you can't have another field index
+%% policy filtered to `my-logpprod' or `my-logging'.
+%%
+%% If you create an account-level field index policy in a monitoring account
+%% in cross-account observability, the policy is applied only
+%% to the monitoring account and not to any source accounts.
+%%
+%% If you want to create a field index policy for a single log group, you can
+%% use PutIndexPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html
+%% instead of
+%% `PutAccountPolicy'. If you do so, that log group will use only that
+%% log-group level policy, and will ignore the account-level policy
+%% that you create with PutAccountPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html.
 -spec put_account_policy(aws_client:aws_client(), put_account_policy_request()) ->
     {ok, put_account_policy_response(), tuple()} |
     {error, any()} |
@@ -4031,6 +4789,76 @@ put_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDestinationPolicy">>, Input, Options).
 
+%% @doc Creates or updates a field index policy for the specified log group.
+%%
+%% Only log groups
+%% in the Standard log class support field index policies. For more
+%% information about log classes, see
+%% Log classes:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html.
+%%
+%% You can use field index policies to create field indexes on fields found
+%% in
+%% log events in the log group. Creating field indexes speeds up and lowers
+%% the costs for CloudWatch Logs Insights queries that reference
+%% those field indexes, because these queries attempt to skip the processing
+%% of log events that are known to not match the indexed field.
+%% Good fields to index are fields that you often need to query for and
+%% fields or values that match only a small fraction of the total log events.
+%% Common examples of indexes
+%% include request ID, session ID, userID, and instance IDs. For more
+%% information, see Create field indexes to improve query performance and
+%% reduce costs:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html.
+%%
+%% To find the fields that are in your log group events, use the
+%% GetLogGroupFields:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogGroupFields.html
+%% operation.
+%%
+%% For example, suppose you have created a field index for `requestId'.
+%% Then, any
+%% CloudWatch Logs Insights query on that log group that includes
+%% ```
+%% requestId = value '''
+%% or `requestId IN [value, value, ...]' will process fewer log events
+%% to reduce costs, and have improved performance.
+%%
+%% Each index policy has the following quotas and restrictions:
+%%
+%% As many as 20 fields can be included in the policy.
+%%
+%% Each field name can include as many as 100 characters.
+%%
+%% Matches of log events to the names of indexed fields are case-sensitive.
+%% For example, a field index
+%% of `RequestId' won't match a log event containing `requestId'.
+%%
+%% Log group-level field index policies created with `PutIndexPolicy'
+%% override account-level field
+%% index policies created with PutAccountPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html.
+%% If you use
+%% `PutIndexPolicy' to create a field
+%% index policy for a log group, that log group uses only that policy. The
+%% log group ignores any account-wide
+%% field index policy that you might have created.
+-spec put_index_policy(aws_client:aws_client(), put_index_policy_request()) ->
+    {ok, put_index_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_index_policy_errors(), tuple()}.
+put_index_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_index_policy(Client, Input, []).
+
+-spec put_index_policy(aws_client:aws_client(), put_index_policy_request(), proplists:proplist()) ->
+    {ok, put_index_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_index_policy_errors(), tuple()}.
+put_index_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutIndexPolicy">>, Input, Options).
+
 %% @doc Uploads a batch of log events to the specified log stream.
 %%
 %% The sequence token is now ignored in `PutLogEvents'
@@ -4115,8 +4943,8 @@ put_log_events(Client, Input, Options)
 %%
 %% Using regular expressions to create metric filters is supported. For these
 %% filters,
-%% there is a quotas of quota of two regular expression patterns within a
-%% single filter pattern. There
+%% there is a quota of two regular expression patterns within a single filter
+%% pattern. There
 %% is also a quota of five regular expression patterns per log group.
 %% For more information about using regular expressions in metric filters,
 %% see
@@ -4342,6 +5170,69 @@ put_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSubscriptionFilter">>, Input, Options).
 
+%% @doc Creates or updates a log transformer for a single log group.
+%%
+%% You use log transformers to transform log events into
+%% a different format, making them easier for you to process and analyze. You
+%% can also transform logs from different sources into standardized formats
+%% that
+%% contains
+%% relevant, source-specific information.
+%%
+%% After you have created a transformer,
+%% CloudWatch Logs performs the transformations at the time of log ingestion.
+%% You can then refer to the transformed versions of the logs during
+%% operations such as querying with CloudWatch Logs Insights or creating
+%% metric filters or subscription filers.
+%%
+%% You can also use a transformer to copy metadata from metadata keys into
+%% the log events themselves. This metadata can include log group name,
+%% log stream name, account ID and Region.
+%%
+%% A transformer for a log group is a series of processors, where each
+%% processor applies one type of transformation to the log events
+%% ingested into this log group. The processors work one after another, in
+%% the order that you list them, like a pipeline. For more information about
+%% the available processors to use in a transformer, see
+%% Processors that you can use:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors.
+%%
+%% Having log events in standardized format enables visibility across your
+%% applications for your log analysis, reporting, and alarming needs.
+%% CloudWatch Logs provides transformation for common log types with
+%% out-of-the-box transformation templates for major Amazon Web Services log
+%% sources such
+%% as VPC flow logs, Lambda, and Amazon RDS. You can use pre-built
+%% transformation templates or create custom transformation policies.
+%%
+%% You can create transformers only for the log groups in the Standard log
+%% class.
+%%
+%% You can also set up a transformer at the account level. For more
+%% information, see
+%% PutAccountPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html.
+%% If there is both a
+%% log-group level transformer created with `PutTransformer' and an
+%% account-level transformer that could apply to the same log
+%% group, the log group uses only the log-group level transformer. It ignores
+%% the account-level transformer.
+-spec put_transformer(aws_client:aws_client(), put_transformer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_transformer_errors(), tuple()}.
+put_transformer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_transformer(Client, Input, []).
+
+-spec put_transformer(aws_client:aws_client(), put_transformer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_transformer_errors(), tuple()}.
+put_transformer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutTransformer">>, Input, Options).
+
 %% @doc Starts a Live Tail streaming session for one or more log groups.
 %%
 %% A Live Tail session returns a stream of
@@ -4414,9 +5305,10 @@ start_live_tail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLiveTail">>, Input, Options).
 
-%% @doc Schedules a query of a log group using CloudWatch Logs Insights.
+%% @doc Starts a query of one or more log groups using CloudWatch Logs
+%% Insights.
 %%
-%% You specify the log group
+%% You specify the log groups
 %% and time range to query and the query string to use.
 %%
 %% For more information, see CloudWatch Logs Insights Query Syntax:
@@ -4429,6 +5321,22 @@ start_live_tail(Client, Input, Options)
 %% to retrieve
 %% the results of a query, using the `queryId' that `StartQuery'
 %% returns.
+%%
+%% To specify the log groups to query, a `StartQuery' operation must
+%% include one of the following:
+%%
+%% Either exactly one of the following
+%% parameters: `logGroupName', `logGroupNames', or
+%% `logGroupIdentifiers'
+%%
+%% Or the `queryString' must include a `SOURCE' command to select log
+%% groups for the query. The `SOURCE' command can select log groups based
+%% on log group name prefix, account ID,
+%% and log class.
+%%
+%% For more information about the `SOURCE' command,
+%% see SOURCE:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax-Source.html.
 %%
 %% If you have associated a KMS key with the query results in this account,
 %% then
@@ -4596,6 +5504,28 @@ test_metric_filter(Client, Input)
 test_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestMetricFilter">>, Input, Options).
+
+%% @doc Use this operation to test a log transformer.
+%%
+%% You enter the transformer configuration and a set of log events to test
+%% with. The operation
+%% responds with an array that includes the original log events and the
+%% transformed versions.
+-spec test_transformer(aws_client:aws_client(), test_transformer_request()) ->
+    {ok, test_transformer_response(), tuple()} |
+    {error, any()} |
+    {error, test_transformer_errors(), tuple()}.
+test_transformer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    test_transformer(Client, Input, []).
+
+-spec test_transformer(aws_client:aws_client(), test_transformer_request(), proplists:proplist()) ->
+    {ok, test_transformer_response(), tuple()} |
+    {error, any()} |
+    {error, test_transformer_errors(), tuple()}.
+test_transformer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TestTransformer">>, Input, Options).
 
 %% @doc
 %% The UntagLogGroup operation is on the path to deprecation.

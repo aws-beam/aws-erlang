@@ -60,6 +60,8 @@
          describe_app_version_template/3,
          describe_draft_app_version_resources_import_status/2,
          describe_draft_app_version_resources_import_status/3,
+         describe_metrics_export/2,
+         describe_metrics_export/3,
          describe_resiliency_policy/2,
          describe_resiliency_policy/3,
          describe_resource_grouping_recommendation_task/2,
@@ -92,6 +94,8 @@
          list_apps/1,
          list_apps/3,
          list_apps/4,
+         list_metrics/2,
+         list_metrics/3,
          list_recommendation_templates/1,
          list_recommendation_templates/3,
          list_recommendation_templates/4,
@@ -125,6 +129,8 @@
          resolve_app_version_resources/3,
          start_app_assessment/2,
          start_app_assessment/3,
+         start_metrics_export/2,
+         start_metrics_export/3,
          start_resource_grouping_recommendation_task/2,
          start_resource_grouping_recommendation_task/3,
          tag_resource/3,
@@ -239,6 +245,16 @@
 %%   <<"resourceName">> => string()
 %% }
 -type describe_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_metrics_export_response() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"exportLocation">> => s3_location(),
+%%   <<"metricsExportId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_metrics_export_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -809,6 +825,14 @@
 
 
 %% Example:
+%% start_metrics_export_response() :: #{
+%%   <<"metricsExportId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_metrics_export_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% scoring_component_resiliency_score() :: #{
 %%   <<"excludedCount">> => float(),
 %%   <<"outstandingCount">> => float(),
@@ -898,6 +922,13 @@
 
 
 %% Example:
+%% describe_metrics_export_request() :: #{
+%%   <<"metricsExportId">> := string()
+%% }
+-type describe_metrics_export_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_app_version_app_component_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string(),
@@ -960,11 +991,27 @@
 
 
 %% Example:
+%% field() :: #{
+%%   <<"aggregation">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type field() :: #{binary() => any()}.
+
+
+%% Example:
 %% reject_grouping_recommendation_entry() :: #{
 %%   <<"groupingRecommendationId">> => string(),
 %%   <<"rejectionReason">> => list(any())
 %% }
 -type reject_grouping_recommendation_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metrics_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"rows">> => list(list(string()())())
+%% }
+-type list_metrics_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1059,6 +1106,15 @@
 
 
 %% Example:
+%% condition() :: #{
+%%   <<"field">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_location() :: #{
 %%   <<"bucket">> => string(),
 %%   <<"prefix">> => string()
@@ -1109,6 +1165,14 @@
 %%   <<"sourceType">> => list(any())
 %% }
 -type physical_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort() :: #{
+%%   <<"ascending">> => boolean(),
+%%   <<"field">> => string()
+%% }
+-type sort() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1578,6 +1642,18 @@
 
 
 %% Example:
+%% list_metrics_request() :: #{
+%%   <<"conditions">> => list(condition()()),
+%%   <<"dataSource">> => string(),
+%%   <<"fields">> => list(field()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sorts">> => list(sort()())
+%% }
+-type list_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_resiliency_policy_response() :: #{
 %%   <<"policyArn">> := string()
 %% }
@@ -1787,6 +1863,14 @@
 %%   <<"groupingRecommendationId">> => string()
 %% }
 -type failed_grouping_recommendation_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_metrics_export_request() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"clientToken">> => string()
+%% }
+-type start_metrics_export_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2060,6 +2144,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type describe_metrics_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type describe_resiliency_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2160,6 +2251,12 @@
     resource_not_found_exception().
 
 -type list_apps_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_metrics_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2269,6 +2366,14 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_metrics_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type start_resource_grouping_recommendation_task_errors() ::
@@ -3247,6 +3352,41 @@ describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes the metrics of the application configuration being
+%% exported.
+-spec describe_metrics_export(aws_client:aws_client(), describe_metrics_export_request()) ->
+    {ok, describe_metrics_export_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metrics_export_errors(), tuple()}.
+describe_metrics_export(Client, Input) ->
+    describe_metrics_export(Client, Input, []).
+
+-spec describe_metrics_export(aws_client:aws_client(), describe_metrics_export_request(), proplists:proplist()) ->
+    {ok, describe_metrics_export_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metrics_export_errors(), tuple()}.
+describe_metrics_export(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describe-metrics-export"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Describes a specified resiliency policy for an Resilience Hub
 %% application.
 %%
@@ -3397,8 +3537,7 @@ list_alarm_recommendations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Indicates the list of compliance drifts that were detected while
-%% running an
+%% @doc List of compliance drifts that were detected while running an
 %% assessment.
 -spec list_app_assessment_compliance_drifts(aws_client:aws_client(), list_app_assessment_compliance_drifts_request()) ->
     {ok, list_app_assessment_compliance_drifts_response(), tuple()} |
@@ -3433,8 +3572,7 @@ list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Indicates the list of resource drifts that were detected while
-%% running an
+%% @doc List of resource drifts that were detected while running an
 %% assessment.
 -spec list_app_assessment_resource_drifts(aws_client:aws_client(), list_app_assessment_resource_drifts_request()) ->
     {ok, list_app_assessment_resource_drifts_response(), tuple()} |
@@ -3829,6 +3967,40 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the metrics that can be exported.
+-spec list_metrics(aws_client:aws_client(), list_metrics_request()) ->
+    {ok, list_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, list_metrics_errors(), tuple()}.
+list_metrics(Client, Input) ->
+    list_metrics(Client, Input, []).
+
+-spec list_metrics(aws_client:aws_client(), list_metrics_request(), proplists:proplist()) ->
+    {ok, list_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, list_metrics_errors(), tuple()}.
+list_metrics(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-metrics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the recommendation templates for the Resilience Hub
 %% applications.
@@ -4342,6 +4514,40 @@ start_app_assessment(Client, Input) ->
 start_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-app-assessment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates the export task of metrics.
+-spec start_metrics_export(aws_client:aws_client(), start_metrics_export_request()) ->
+    {ok, start_metrics_export_response(), tuple()} |
+    {error, any()} |
+    {error, start_metrics_export_errors(), tuple()}.
+start_metrics_export(Client, Input) ->
+    start_metrics_export(Client, Input, []).
+
+-spec start_metrics_export(aws_client:aws_client(), start_metrics_export_request(), proplists:proplist()) ->
+    {ok, start_metrics_export_response(), tuple()} |
+    {error, any()} |
+    {error, start_metrics_export_errors(), tuple()}.
+start_metrics_export(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/start-metrics-export"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

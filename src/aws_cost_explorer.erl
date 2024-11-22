@@ -44,6 +44,8 @@
          get_anomaly_subscriptions/3,
          get_approximate_usage_records/2,
          get_approximate_usage_records/3,
+         get_commitment_purchase_analysis/2,
+         get_commitment_purchase_analysis/3,
          get_cost_and_usage/2,
          get_cost_and_usage/3,
          get_cost_and_usage_with_resources/2,
@@ -76,6 +78,8 @@
          get_tags/3,
          get_usage_forecast/2,
          get_usage_forecast/3,
+         list_commitment_purchase_analyses/2,
+         list_commitment_purchase_analyses/3,
          list_cost_allocation_tag_backfill_history/2,
          list_cost_allocation_tag_backfill_history/3,
          list_cost_allocation_tags/2,
@@ -88,6 +92,8 @@
          list_tags_for_resource/3,
          provide_anomaly_feedback/2,
          provide_anomaly_feedback/3,
+         start_commitment_purchase_analysis/2,
+         start_commitment_purchase_analysis/3,
          start_cost_allocation_tag_backfill/2,
          start_cost_allocation_tag_backfill/3,
          start_savings_plans_purchase_recommendation_generation/2,
@@ -476,6 +482,18 @@
 -type reservation_utilization_group() :: #{binary() => any()}.
 
 %% Example:
+%% analysis_summary() :: #{
+%%   <<"AnalysisCompletionTime">> => string(),
+%%   <<"AnalysisId">> => string(),
+%%   <<"AnalysisStartedTime">> => string(),
+%%   <<"AnalysisStatus">> => list(any()),
+%%   <<"CommitmentPurchaseAnalysisConfiguration">> => commitment_purchase_analysis_configuration(),
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"EstimatedCompletionTime">> => string()
+%% }
+-type analysis_summary() :: #{binary() => any()}.
+
+%% Example:
 %% create_cost_category_definition_response() :: #{
 %%   <<"CostCategoryArn">> => string(),
 %%   <<"EffectiveStart">> => string()
@@ -603,6 +621,33 @@
 -type get_cost_forecast_request() :: #{binary() => any()}.
 
 %% Example:
+%% savings_plans_purchase_analysis_details() :: #{
+%%   <<"AdditionalMetadata">> => string(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"CurrentAverageCoverage">> => string(),
+%%   <<"CurrentAverageHourlyOnDemandSpend">> => string(),
+%%   <<"CurrentMaximumHourlyOnDemandSpend">> => string(),
+%%   <<"CurrentMinimumHourlyOnDemandSpend">> => string(),
+%%   <<"CurrentOnDemandSpend">> => string(),
+%%   <<"EstimatedAverageCoverage">> => string(),
+%%   <<"EstimatedAverageUtilization">> => string(),
+%%   <<"EstimatedCommitmentCost">> => string(),
+%%   <<"EstimatedMonthlySavingsAmount">> => string(),
+%%   <<"EstimatedOnDemandCost">> => string(),
+%%   <<"EstimatedOnDemandCostWithCurrentCommitment">> => string(),
+%%   <<"EstimatedROI">> => string(),
+%%   <<"EstimatedSavingsAmount">> => string(),
+%%   <<"EstimatedSavingsPercentage">> => string(),
+%%   <<"ExistingHourlyCommitment">> => string(),
+%%   <<"HourlyCommitmentToPurchase">> => string(),
+%%   <<"LatestUsageTimestamp">> => string(),
+%%   <<"LookbackPeriodInHours">> => string(),
+%%   <<"MetricsOverLookbackPeriod">> => list(recommendation_detail_hourly_metrics()()),
+%%   <<"UpfrontCost">> => string()
+%% }
+-type savings_plans_purchase_analysis_details() :: #{binary() => any()}.
+
+%% Example:
 %% savings_plans_savings() :: #{
 %%   <<"NetSavings">> => string(),
 %%   <<"OnDemandCostEquivalent">> => string()
@@ -640,6 +685,14 @@
 %%   <<"UtilizationsByTime">> => list(utilization_by_time()())
 %% }
 -type get_reservation_utilization_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_commitment_purchase_analysis_response() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"AnalysisStartedTime">> => string(),
+%%   <<"EstimatedCompletionTime">> => string()
+%% }
+-type start_commitment_purchase_analysis_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_rightsizing_recommendation_request() :: #{
@@ -767,6 +820,19 @@
 %%   <<"EbsWriteOpsPerSecond">> => string()
 %% }
 -type ebs_resource_utilization() :: #{binary() => any()}.
+
+%% Example:
+%% get_commitment_purchase_analysis_response() :: #{
+%%   <<"AnalysisCompletionTime">> => string(),
+%%   <<"AnalysisDetails">> => analysis_details(),
+%%   <<"AnalysisId">> => string(),
+%%   <<"AnalysisStartedTime">> => string(),
+%%   <<"AnalysisStatus">> => list(any()),
+%%   <<"CommitmentPurchaseAnalysisConfiguration">> => commitment_purchase_analysis_configuration(),
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"EstimatedCompletionTime">> => string()
+%% }
+-type get_commitment_purchase_analysis_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_reservation_coverage_response() :: #{
@@ -1002,6 +1068,13 @@
 -type savings_plans_purchase_recommendation_detail() :: #{binary() => any()}.
 
 %% Example:
+%% list_commitment_purchase_analyses_response() :: #{
+%%   <<"AnalysisSummaryList">> => list(analysis_summary()()),
+%%   <<"NextPageToken">> => string()
+%% }
+-type list_commitment_purchase_analyses_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"ResourceTags">> => list(resource_tag()())
 %% }
@@ -1107,6 +1180,12 @@
 %%   <<"Region">> => string()
 %% }
 -type savings_plans_details() :: #{binary() => any()}.
+
+%% Example:
+%% start_commitment_purchase_analysis_request() :: #{
+%%   <<"CommitmentPurchaseAnalysisConfiguration">> := commitment_purchase_analysis_configuration()
+%% }
+-type start_commitment_purchase_analysis_request() :: #{binary() => any()}.
 
 %% Example:
 %% reservation_purchase_recommendation_detail() :: #{
@@ -1338,6 +1417,12 @@
 -type get_anomalies_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_commitment_purchase_analysis_request() :: #{
+%%   <<"AnalysisId">> := string()
+%% }
+-type get_commitment_purchase_analysis_request() :: #{binary() => any()}.
+
+%% Example:
 %% metric_value() :: #{
 %%   <<"Amount">> => string(),
 %%   <<"Unit">> => string()
@@ -1421,6 +1506,18 @@
 -type expression() :: #{binary() => any()}.
 
 %% Example:
+%% commitment_purchase_analysis_configuration() :: #{
+%%   <<"SavingsPlansPurchaseAnalysisConfiguration">> => savings_plans_purchase_analysis_configuration()
+%% }
+-type commitment_purchase_analysis_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% analysis_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type analysis_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
 %% create_anomaly_monitor_response() :: #{
 %%   <<"MonitorArn">> => string()
 %% }
@@ -1495,6 +1592,26 @@
 %%   <<"UtilizationPercentageInUnits">> => string()
 %% }
 -type reservation_aggregates() :: #{binary() => any()}.
+
+%% Example:
+%% list_commitment_purchase_analyses_request() :: #{
+%%   <<"AnalysisIds">> => list(string()()),
+%%   <<"AnalysisStatus">> => list(any()),
+%%   <<"NextPageToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_commitment_purchase_analyses_request() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plans_purchase_analysis_configuration() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountScope">> => list(any()),
+%%   <<"AnalysisType">> => list(any()),
+%%   <<"LookBackTimePeriod">> => date_interval(),
+%%   <<"SavingsPlansToAdd">> => list(savings_plans()()),
+%%   <<"SavingsPlansToExclude">> => list(string()())
+%% }
+-type savings_plans_purchase_analysis_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_reservation_purchase_recommendation_response() :: #{
@@ -1576,6 +1693,12 @@
 -type get_savings_plans_utilization_response() :: #{binary() => any()}.
 
 %% Example:
+%% analysis_details() :: #{
+%%   <<"SavingsPlansPurchaseAnalysisDetails">> => savings_plans_purchase_analysis_details()
+%% }
+-type analysis_details() :: #{binary() => any()}.
+
+%% Example:
 %% get_rightsizing_recommendation_response() :: #{
 %%   <<"Configuration">> => rightsizing_recommendation_configuration(),
 %%   <<"Metadata">> => rightsizing_recommendation_metadata(),
@@ -1621,6 +1744,18 @@
 %%   <<"MonitorArn">> := string()
 %% }
 -type delete_anomaly_monitor_request() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plans() :: #{
+%%   <<"InstanceFamily">> => string(),
+%%   <<"OfferingId">> => string(),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"Region">> => string(),
+%%   <<"SavingsPlansCommitment">> => float(),
+%%   <<"SavingsPlansType">> => list(any()),
+%%   <<"TermInYears">> => list(any())
+%% }
+-type savings_plans() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -1776,6 +1911,11 @@
     limit_exceeded_exception() | 
     data_unavailable_exception().
 
+-type get_commitment_purchase_analysis_errors() ::
+    limit_exceeded_exception() | 
+    analysis_not_found_exception() | 
+    data_unavailable_exception().
+
 -type get_cost_and_usage_errors() ::
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
@@ -1861,6 +2001,11 @@
     unresolvable_usage_unit_exception() | 
     data_unavailable_exception().
 
+-type list_commitment_purchase_analyses_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception().
+
 -type list_cost_allocation_tag_backfill_history_errors() ::
     limit_exceeded_exception() | 
     invalid_next_token_exception().
@@ -1883,6 +2028,12 @@
 
 -type provide_anomaly_feedback_errors() ::
     limit_exceeded_exception().
+
+-type start_commitment_purchase_analysis_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    generation_exists_exception().
 
 -type start_cost_allocation_tag_backfill_errors() ::
     backfill_limit_exceeded_exception() | 
@@ -2144,6 +2295,24 @@ get_approximate_usage_records(Client, Input)
 get_approximate_usage_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApproximateUsageRecords">>, Input, Options).
+
+%% @doc Retrieves a commitment purchase analysis result based on the
+%% `AnalysisId'.
+-spec get_commitment_purchase_analysis(aws_client:aws_client(), get_commitment_purchase_analysis_request()) ->
+    {ok, get_commitment_purchase_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, get_commitment_purchase_analysis_errors(), tuple()}.
+get_commitment_purchase_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_commitment_purchase_analysis(Client, Input, []).
+
+-spec get_commitment_purchase_analysis(aws_client:aws_client(), get_commitment_purchase_analysis_request(), proplists:proplist()) ->
+    {ok, get_commitment_purchase_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, get_commitment_purchase_analysis_errors(), tuple()}.
+get_commitment_purchase_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCommitmentPurchaseAnalysis">>, Input, Options).
 
 %% @doc Retrieves cost and usage metrics for your account.
 %%
@@ -2616,6 +2785,25 @@ get_usage_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUsageForecast">>, Input, Options).
 
+%% @doc Lists the commitment purchase analyses for your account based on the
+%% last 30
+%% days.
+-spec list_commitment_purchase_analyses(aws_client:aws_client(), list_commitment_purchase_analyses_request()) ->
+    {ok, list_commitment_purchase_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, list_commitment_purchase_analyses_errors(), tuple()}.
+list_commitment_purchase_analyses(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_commitment_purchase_analyses(Client, Input, []).
+
+-spec list_commitment_purchase_analyses(aws_client:aws_client(), list_commitment_purchase_analyses_request(), proplists:proplist()) ->
+    {ok, list_commitment_purchase_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, list_commitment_purchase_analyses_errors(), tuple()}.
+list_commitment_purchase_analyses(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCommitmentPurchaseAnalyses">>, Input, Options).
+
 %% @doc
 %% Retrieves a list of your historical cost allocation tag backfill requests.
 -spec list_cost_allocation_tag_backfill_history(aws_client:aws_client(), list_cost_allocation_tag_backfill_history_request()) ->
@@ -2738,6 +2926,30 @@ provide_anomaly_feedback(Client, Input)
 provide_anomaly_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvideAnomalyFeedback">>, Input, Options).
+
+%% @doc Specifies the parameters of a planned commitment purchase and starts
+%% the generation of the
+%% analysis.
+%%
+%% This enables you to estimate the cost, coverage, and utilization impact of
+%% your
+%% planned commitment purchases. You can request up to 20 analysis runs per
+%% day.
+-spec start_commitment_purchase_analysis(aws_client:aws_client(), start_commitment_purchase_analysis_request()) ->
+    {ok, start_commitment_purchase_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, start_commitment_purchase_analysis_errors(), tuple()}.
+start_commitment_purchase_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_commitment_purchase_analysis(Client, Input, []).
+
+-spec start_commitment_purchase_analysis(aws_client:aws_client(), start_commitment_purchase_analysis_request(), proplists:proplist()) ->
+    {ok, start_commitment_purchase_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, start_commitment_purchase_analysis_errors(), tuple()}.
+start_commitment_purchase_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartCommitmentPurchaseAnalysis">>, Input, Options).
 
 %% @doc
 %% Request a cost allocation tag backfill.
