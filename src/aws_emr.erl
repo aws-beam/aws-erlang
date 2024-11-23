@@ -1694,7 +1694,9 @@
 
 %% Example:
 %% managed_scaling_policy() :: #{
-%%   <<"ComputeLimits">> => compute_limits()
+%%   <<"ComputeLimits">> => compute_limits(),
+%%   <<"ScalingStrategy">> => list(any()),
+%%   <<"UtilizationPerformanceIndex">> => integer()
 %% }
 -type managed_scaling_policy() :: #{binary() => any()}.
 

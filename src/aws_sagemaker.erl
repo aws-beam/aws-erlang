@@ -926,10 +926,10 @@
 %% create_inference_component_input() :: #{
 %%   <<"EndpointName">> := string(),
 %%   <<"InferenceComponentName">> := string(),
-%%   <<"RuntimeConfig">> := inference_component_runtime_config(),
+%%   <<"RuntimeConfig">> => inference_component_runtime_config(),
 %%   <<"Specification">> := inference_component_specification(),
 %%   <<"Tags">> => list(tag()()),
-%%   <<"VariantName">> := string()
+%%   <<"VariantName">> => string()
 %% }
 -type create_inference_component_input() :: #{binary() => any()}.
 
@@ -2018,6 +2018,13 @@
 %%   <<"DerivedDataInputConfig">> => string()
 %% }
 -type derived_information() :: #{binary() => any()}.
+
+%% Example:
+%% model_sharding_config() :: #{
+%%   <<"Image">> => string(),
+%%   <<"OverrideEnvironment">> => map()
+%% }
+-type model_sharding_config() :: #{binary() => any()}.
 
 %% Example:
 %% data_quality_baseline_config() :: #{
@@ -7336,6 +7343,7 @@
 
 %% Example:
 %% inference_component_specification_summary() :: #{
+%%   <<"BaseInferenceComponentName">> => string(),
 %%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
 %%   <<"Container">> => inference_component_container_specification_summary(),
 %%   <<"ModelName">> => string(),
@@ -9940,6 +9948,7 @@
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type cluster_instance_group_specification() :: #{binary() => any()}.
@@ -10864,6 +10873,7 @@
 
 %% Example:
 %% inference_component_specification() :: #{
+%%   <<"BaseInferenceComponentName">> => string(),
 %%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
 %%   <<"Container">> => inference_component_container_specification(),
 %%   <<"ModelName">> => string(),
@@ -11346,6 +11356,7 @@
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"TargetCount">> => integer(),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
@@ -11542,6 +11553,7 @@
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"Placement">> => cluster_instance_placement(),
 %%   <<"PrivateDnsHostname">> => string(),
 %%   <<"PrivatePrimaryIp">> => string(),

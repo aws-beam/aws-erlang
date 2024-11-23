@@ -418,6 +418,7 @@
 
 %% Example:
 %% mutual_authentication_attributes() :: #{
+%%   <<"AdvertiseTrustStoreCaNames">> => list(any()),
 %%   <<"IgnoreClientCertificateExpiry">> => boolean(),
 %%   <<"Mode">> => string(),
 %%   <<"TrustStoreArn">> => string(),

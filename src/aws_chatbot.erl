@@ -22,14 +22,20 @@
 %% not US East (N. Virginia) by default.
 -module(aws_chatbot).
 
--export([create_chime_webhook_configuration/2,
+-export([associate_to_configuration/2,
+         associate_to_configuration/3,
+         create_chime_webhook_configuration/2,
          create_chime_webhook_configuration/3,
+         create_custom_action/2,
+         create_custom_action/3,
          create_microsoft_teams_channel_configuration/2,
          create_microsoft_teams_channel_configuration/3,
          create_slack_channel_configuration/2,
          create_slack_channel_configuration/3,
          delete_chime_webhook_configuration/2,
          delete_chime_webhook_configuration/3,
+         delete_custom_action/2,
+         delete_custom_action/3,
          delete_microsoft_teams_channel_configuration/2,
          delete_microsoft_teams_channel_configuration/3,
          delete_microsoft_teams_configured_team/2,
@@ -50,10 +56,18 @@
          describe_slack_user_identities/3,
          describe_slack_workspaces/2,
          describe_slack_workspaces/3,
+         disassociate_from_configuration/2,
+         disassociate_from_configuration/3,
          get_account_preferences/2,
          get_account_preferences/3,
+         get_custom_action/2,
+         get_custom_action/3,
          get_microsoft_teams_channel_configuration/2,
          get_microsoft_teams_channel_configuration/3,
+         list_associations/2,
+         list_associations/3,
+         list_custom_actions/2,
+         list_custom_actions/3,
          list_microsoft_teams_channel_configurations/2,
          list_microsoft_teams_channel_configurations/3,
          list_microsoft_teams_configured_teams/2,
@@ -70,6 +84,8 @@
          update_account_preferences/3,
          update_chime_webhook_configuration/2,
          update_chime_webhook_configuration/3,
+         update_custom_action/2,
+         update_custom_action/3,
          update_microsoft_teams_channel_configuration/2,
          update_microsoft_teams_channel_configuration/3,
          update_slack_channel_configuration/2,
@@ -140,6 +156,37 @@
 %% }
 -type describe_slack_channel_configurations_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_custom_action_result() :: #{
+%%   <<"CustomAction">> => custom_action()
+%% }
+-type get_custom_action_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_action_request() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"Attachments">> => list(custom_action_attachment()()),
+%%   <<"CustomActionArn">> := string(),
+%%   <<"Definition">> := custom_action_definition()
+%% }
+-type update_custom_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_action_result() :: #{
+%%   <<"CustomActionArn">> => string()
+%% }
+-type create_custom_action_result() :: #{binary() => any()}.
+
 %% Example:
 %% delete_slack_workspace_authorization_result() :: #{}
 -type delete_slack_workspace_authorization_result() :: #{}.
@@ -176,6 +223,14 @@
 %%   <<"Message">> => string()
 %% }
 -type delete_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_actions_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_custom_actions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -242,6 +297,14 @@
 
 
 %% Example:
+%% list_custom_actions_result() :: #{
+%%   <<"CustomActions">> => list(string()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_custom_actions_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_account_preferences_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -253,10 +316,23 @@
 
 
 %% Example:
+%% custom_action_attachment_criteria() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [string()],
+%%   <<"VariableName">> => [string()]
+%% }
+-type custom_action_attachment_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_chime_webhook_configuration_result() :: #{
 %%   <<"WebhookConfiguration">> => chime_webhook_configuration()
 %% }
 -type create_chime_webhook_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_from_configuration_result() :: #{}
+-type disassociate_from_configuration_result() :: #{}.
 
 
 %% Example:
@@ -274,11 +350,26 @@
 
 
 %% Example:
+%% delete_custom_action_request() :: #{
+%%   <<"CustomActionArn">> := string()
+%% }
+-type delete_custom_action_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_chime_webhook_configurations_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"WebhookConfigurations">> => list(chime_webhook_configuration()())
 %% }
 -type describe_chime_webhook_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_from_configuration_request() :: #{
+%%   <<"ChatConfiguration">> := string(),
+%%   <<"Resource">> := string()
+%% }
+-type disassociate_from_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -369,6 +460,16 @@
 
 
 %% Example:
+%% custom_action_attachment() :: #{
+%%   <<"ButtonText">> => string(),
+%%   <<"Criteria">> => list(custom_action_attachment_criteria()()),
+%%   <<"NotificationType">> => string(),
+%%   <<"Variables">> => map()
+%% }
+-type custom_action_attachment() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_slack_workspaces_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SlackWorkspaces">> => list(slack_workspace()())
@@ -395,6 +496,14 @@
 %%   <<"Message">> => string()
 %% }
 -type update_chime_webhook_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associations_result() :: #{
+%%   <<"Associations">> => list(association_listing()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -481,6 +590,26 @@
 
 
 %% Example:
+%% create_custom_action_request() :: #{
+%%   <<"ActionName">> := string(),
+%%   <<"AliasName">> => string(),
+%%   <<"Attachments">> => list(custom_action_attachment()()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Definition">> := custom_action_definition(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_custom_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_to_configuration_request() :: #{
+%%   <<"ChatConfiguration">> := string(),
+%%   <<"Resource">> := string()
+%% }
+-type associate_to_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_chime_webhook_configuration_request() :: #{
 %%   <<"ConfigurationName">> := string(),
 %%   <<"IamRoleArn">> := string(),
@@ -564,6 +693,26 @@
 
 
 %% Example:
+%% custom_action() :: #{
+%%   <<"ActionName">> => string(),
+%%   <<"AliasName">> => string(),
+%%   <<"Attachments">> => list(custom_action_attachment()()),
+%%   <<"CustomActionArn">> => string(),
+%%   <<"Definition">> => custom_action_definition()
+%% }
+-type custom_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associations_request() :: #{
+%%   <<"ChatConfiguration">> := string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_slack_user_identity_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -575,6 +724,13 @@
 %%   <<"Message">> => string()
 %% }
 -type describe_chime_webhook_configurations_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_action_definition() :: #{
+%%   <<"CommandText">> => [string()]
+%% }
+-type custom_action_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -614,6 +770,13 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_service_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_action_result() :: #{
+%%   <<"CustomActionArn">> => string()
+%% }
+-type update_custom_action_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -659,6 +822,13 @@
 
 
 %% Example:
+%% association_listing() :: #{
+%%   <<"Resource">> => string()
+%% }
+-type association_listing() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_teams_channel_configuration_result() :: #{
 %%   <<"ChannelConfiguration">> => teams_channel_configuration()
 %% }
@@ -689,6 +859,13 @@
 %%   <<"SlackUserId">> => string()
 %% }
 -type slack_user_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_custom_action_request() :: #{
+%%   <<"CustomActionArn">> := string()
+%% }
+-type get_custom_action_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_chime_webhook_configuration_result() :: #{}
@@ -764,6 +941,10 @@
 %% }
 -type describe_slack_user_identities_result() :: #{binary() => any()}.
 
+%% Example:
+%% associate_to_configuration_result() :: #{}
+-type associate_to_configuration_result() :: #{}.
+
 
 %% Example:
 %% delete_slack_channel_configuration_exception() :: #{
@@ -816,12 +997,28 @@
 %% }
 -type describe_slack_channel_configurations_result() :: #{binary() => any()}.
 
+%% Example:
+%% delete_custom_action_result() :: #{}
+-type delete_custom_action_result() :: #{}.
+
+-type associate_to_configuration_errors() ::
+    internal_service_error() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
 -type create_chime_webhook_configuration_errors() ::
     create_chime_webhook_configuration_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     conflict_exception().
+
+-type create_custom_action_errors() ::
+    limit_exceeded_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_microsoft_teams_channel_configuration_errors() ::
     limit_exceeded_exception() | 
@@ -842,6 +1039,12 @@
     delete_chime_webhook_configuration_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception().
+
+-type delete_custom_action_errors() ::
+    internal_service_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type delete_microsoft_teams_channel_configuration_errors() ::
     invalid_parameter_exception() | 
@@ -893,14 +1096,30 @@
     invalid_request_exception() | 
     describe_slack_workspaces_exception().
 
+-type disassociate_from_configuration_errors() ::
+    internal_service_error() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
+
 -type get_account_preferences_errors() ::
     invalid_request_exception() | 
     get_account_preferences_exception().
+
+-type get_custom_action_errors() ::
+    internal_service_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_microsoft_teams_channel_configuration_errors() ::
     get_teams_channel_configuration_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception().
+
+-type list_custom_actions_errors() ::
+    internal_service_error() | 
+    invalid_request_exception() | 
+    unauthorized_exception().
 
 -type list_microsoft_teams_channel_configurations_errors() ::
     invalid_parameter_exception() | 
@@ -944,6 +1163,12 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type update_custom_action_errors() ::
+    internal_service_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
 -type update_microsoft_teams_channel_configuration_errors() ::
     invalid_parameter_exception() | 
     invalid_request_exception() | 
@@ -960,6 +1185,41 @@
 %% API
 %%====================================================================
 
+%% @doc Links a resource (for example, a custom action) to a channel
+%% configuration.
+-spec associate_to_configuration(aws_client:aws_client(), associate_to_configuration_request()) ->
+    {ok, associate_to_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, associate_to_configuration_errors(), tuple()}.
+associate_to_configuration(Client, Input) ->
+    associate_to_configuration(Client, Input, []).
+
+-spec associate_to_configuration(aws_client:aws_client(), associate_to_configuration_request(), proplists:proplist()) ->
+    {ok, associate_to_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, associate_to_configuration_errors(), tuple()}.
+associate_to_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/associate-to-configuration"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an AWS Chatbot configuration for Amazon Chime.
 -spec create_chime_webhook_configuration(aws_client:aws_client(), create_chime_webhook_configuration_request()) ->
     {ok, create_chime_webhook_configuration_result(), tuple()} |
@@ -975,6 +1235,41 @@ create_chime_webhook_configuration(Client, Input) ->
 create_chime_webhook_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-chime-webhook-configuration"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a custom action that can be invoked as an alias or as a
+%% button on a notification.
+-spec create_custom_action(aws_client:aws_client(), create_custom_action_request()) ->
+    {ok, create_custom_action_result(), tuple()} |
+    {error, any()} |
+    {error, create_custom_action_errors(), tuple()}.
+create_custom_action(Client, Input) ->
+    create_custom_action(Client, Input, []).
+
+-spec create_custom_action(aws_client:aws_client(), create_custom_action_request(), proplists:proplist()) ->
+    {ok, create_custom_action_result(), tuple()} |
+    {error, any()} |
+    {error, create_custom_action_errors(), tuple()}.
+create_custom_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/create-custom-action"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1077,6 +1372,40 @@ delete_chime_webhook_configuration(Client, Input) ->
 delete_chime_webhook_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-chime-webhook-configuration"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a custom action.
+-spec delete_custom_action(aws_client:aws_client(), delete_custom_action_request()) ->
+    {ok, delete_custom_action_result(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_action_errors(), tuple()}.
+delete_custom_action(Client, Input) ->
+    delete_custom_action(Client, Input, []).
+
+-spec delete_custom_action(aws_client:aws_client(), delete_custom_action_request(), proplists:proplist()) ->
+    {ok, delete_custom_action_result(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_action_errors(), tuple()}.
+delete_custom_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-custom-action"],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1446,6 +1775,41 @@ describe_slack_workspaces(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Unlink a resource, for example a custom action, from a channel
+%% configuration.
+-spec disassociate_from_configuration(aws_client:aws_client(), disassociate_from_configuration_request()) ->
+    {ok, disassociate_from_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_from_configuration_errors(), tuple()}.
+disassociate_from_configuration(Client, Input) ->
+    disassociate_from_configuration(Client, Input, []).
+
+-spec disassociate_from_configuration(aws_client:aws_client(), disassociate_from_configuration_request(), proplists:proplist()) ->
+    {ok, disassociate_from_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_from_configuration_errors(), tuple()}.
+disassociate_from_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/disassociate-from-configuration"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns AWS Chatbot account preferences.
 -spec get_account_preferences(aws_client:aws_client(), get_account_preferences_request()) ->
     {ok, get_account_preferences_result(), tuple()} |
@@ -1480,6 +1844,40 @@ get_account_preferences(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a custom action.
+-spec get_custom_action(aws_client:aws_client(), get_custom_action_request()) ->
+    {ok, get_custom_action_result(), tuple()} |
+    {error, any()} |
+    {error, get_custom_action_errors(), tuple()}.
+get_custom_action(Client, Input) ->
+    get_custom_action(Client, Input, []).
+
+-spec get_custom_action(aws_client:aws_client(), get_custom_action_request(), proplists:proplist()) ->
+    {ok, get_custom_action_result(), tuple()} |
+    {error, any()} |
+    {error, get_custom_action_errors(), tuple()}.
+get_custom_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-custom-action"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a Microsoft Teams channel configuration in an AWS account.
 -spec get_microsoft_teams_channel_configuration(aws_client:aws_client(), get_teams_channel_configuration_request()) ->
     {ok, get_teams_channel_configuration_result(), tuple()} |
@@ -1495,6 +1893,72 @@ get_microsoft_teams_channel_configuration(Client, Input) ->
 get_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-ms-teams-channel-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists resources associated with a channel configuration.
+-spec list_associations(aws_client:aws_client(), list_associations_request()) ->
+    {ok, list_associations_result(), tuple()} |
+    {error, any()}.
+list_associations(Client, Input) ->
+    list_associations(Client, Input, []).
+
+-spec list_associations(aws_client:aws_client(), list_associations_request(), proplists:proplist()) ->
+    {ok, list_associations_result(), tuple()} |
+    {error, any()}.
+list_associations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists custom actions defined in this account.
+-spec list_custom_actions(aws_client:aws_client(), list_custom_actions_request()) ->
+    {ok, list_custom_actions_result(), tuple()} |
+    {error, any()} |
+    {error, list_custom_actions_errors(), tuple()}.
+list_custom_actions(Client, Input) ->
+    list_custom_actions(Client, Input, []).
+
+-spec list_custom_actions(aws_client:aws_client(), list_custom_actions_request(), proplists:proplist()) ->
+    {ok, list_custom_actions_result(), tuple()} |
+    {error, any()} |
+    {error, list_custom_actions_errors(), tuple()}.
+list_custom_actions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-custom-actions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1777,6 +2241,40 @@ update_chime_webhook_configuration(Client, Input) ->
 update_chime_webhook_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-chime-webhook-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a custom action.
+-spec update_custom_action(aws_client:aws_client(), update_custom_action_request()) ->
+    {ok, update_custom_action_result(), tuple()} |
+    {error, any()} |
+    {error, update_custom_action_errors(), tuple()}.
+update_custom_action(Client, Input) ->
+    update_custom_action(Client, Input, []).
+
+-spec update_custom_action(aws_client:aws_client(), update_custom_action_request(), proplists:proplist()) ->
+    {ok, update_custom_action_result(), tuple()} |
+    {error, any()} |
+    {error, update_custom_action_errors(), tuple()}.
+update_custom_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-custom-action"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

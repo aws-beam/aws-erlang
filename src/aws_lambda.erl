@@ -359,6 +359,7 @@
 %%   <<"MaximumRetryAttempts">> => integer(),
 %%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
 %%   <<"ParallelizationFactor">> => integer(),
+%%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
 %%   <<"ScalingConfig">> => scaling_config(),
 %%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
 %%   <<"TumblingWindowInSeconds">> => integer()
@@ -1060,6 +1061,7 @@
 %%   <<"MaximumRetryAttempts">> => integer(),
 %%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
 %%   <<"ParallelizationFactor">> => integer(),
+%%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
 %%   <<"Queues">> => list(string()()),
 %%   <<"ScalingConfig">> => scaling_config(),
 %%   <<"SelfManagedEventSource">> => self_managed_event_source(),
@@ -1074,6 +1076,14 @@
 %%   <<"UUID">> => string()
 %% }
 -type event_source_mapping_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_poller_config() :: #{
+%%   <<"MaximumPollers">> => integer(),
+%%   <<"MinimumPollers">> => integer()
+%% }
+-type provisioned_poller_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1094,6 +1104,7 @@
 %%   <<"MaximumRetryAttempts">> => integer(),
 %%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
 %%   <<"ParallelizationFactor">> => integer(),
+%%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
 %%   <<"Queues">> => list(string()()),
 %%   <<"ScalingConfig">> => scaling_config(),
 %%   <<"SelfManagedEventSource">> => self_managed_event_source(),

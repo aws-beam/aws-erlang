@@ -82,12 +82,16 @@
          complete_attached_file_upload/5,
          create_agent_status/3,
          create_agent_status/4,
+         create_contact/2,
+         create_contact/3,
          create_contact_flow/3,
          create_contact_flow/4,
          create_contact_flow_module/3,
          create_contact_flow_module/4,
          create_contact_flow_version/4,
          create_contact_flow_version/5,
+         create_email_address/3,
+         create_email_address/4,
          create_evaluation_form/3,
          create_evaluation_form/4,
          create_hours_of_operation/3,
@@ -140,6 +144,8 @@
          delete_contact_flow/5,
          delete_contact_flow_module/4,
          delete_contact_flow_module/5,
+         delete_email_address/4,
+         delete_email_address/5,
          delete_evaluation_form/4,
          delete_evaluation_form/5,
          delete_hours_of_operation/4,
@@ -196,6 +202,9 @@
          describe_contact_flow_module/3,
          describe_contact_flow_module/5,
          describe_contact_flow_module/6,
+         describe_email_address/3,
+         describe_email_address/5,
+         describe_email_address/6,
          describe_evaluation_form/3,
          describe_evaluation_form/5,
          describe_evaluation_form/6,
@@ -321,6 +330,9 @@
          list_approved_origins/2,
          list_approved_origins/4,
          list_approved_origins/5,
+         list_associated_contacts/3,
+         list_associated_contacts/5,
+         list_associated_contacts/6,
          list_authentication_profiles/2,
          list_authentication_profiles/4,
          list_authentication_profiles/5,
@@ -471,6 +483,8 @@
          search_contact_flows/3,
          search_contacts/2,
          search_contacts/3,
+         search_email_addresses/2,
+         search_email_addresses/3,
          search_hours_of_operations/2,
          search_hours_of_operations/3,
          search_predefined_attributes/2,
@@ -495,6 +509,8 @@
          search_vocabularies/4,
          send_chat_integration_event/2,
          send_chat_integration_event/3,
+         send_outbound_email/3,
+         send_outbound_email/4,
          start_attached_file_upload/3,
          start_attached_file_upload/4,
          start_chat_contact/2,
@@ -505,8 +521,12 @@
          start_contact_recording/3,
          start_contact_streaming/2,
          start_contact_streaming/3,
+         start_email_contact/2,
+         start_email_contact/3,
          start_outbound_chat_contact/2,
          start_outbound_chat_contact/3,
+         start_outbound_email_contact/2,
+         start_outbound_email_contact/3,
          start_outbound_voice_contact/2,
          start_outbound_voice_contact/3,
          start_screen_sharing/2,
@@ -559,6 +579,8 @@
          update_contact_routing_data/5,
          update_contact_schedule/2,
          update_contact_schedule/3,
+         update_email_address_metadata/4,
+         update_email_address_metadata/5,
          update_evaluation_form/4,
          update_evaluation_form/5,
          update_hours_of_operation/4,
@@ -585,6 +607,8 @@
          update_queue_name/5,
          update_queue_outbound_caller_config/4,
          update_queue_outbound_caller_config/5,
+         update_queue_outbound_email_config/4,
+         update_queue_outbound_email_config/5,
          update_queue_status/4,
          update_queue_status/5,
          update_quick_connect_config/4,
@@ -814,6 +838,13 @@
 %%   <<"Title">> := string()
 %% }
 -type update_evaluation_form_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_outbound_email_contact_response() :: #{
+%%   <<"ContactId">> => string()
+%% }
+-type start_outbound_email_contact_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1050,6 +1081,14 @@
 %% }
 -type user_hierarchy_group_search_filter() :: #{binary() => any()}.
 
+
+%% Example:
+%% email_recipient() :: #{
+%%   <<"Address">> => string(),
+%%   <<"DisplayName">> => string()
+%% }
+-type email_recipient() :: #{binary() => any()}.
+
 %% Example:
 %% describe_traffic_distribution_group_request() :: #{}
 -type describe_traffic_distribution_group_request() :: #{}.
@@ -1151,6 +1190,14 @@
 
 
 %% Example:
+%% searchable_segment_attributes() :: #{
+%%   <<"Criteria">> => list(searchable_segment_attributes_criteria()()),
+%%   <<"MatchType">> => list(any())
+%% }
+-type searchable_segment_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% activate_evaluation_form_request() :: #{
 %%   <<"EvaluationFormVersion">> := integer()
 %% }
@@ -1223,6 +1270,7 @@
 %%   <<"InstanceId">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"SelfAssignFlowId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -1254,6 +1302,10 @@
 %%   <<"PropertyList">> => list(property_validation_exception_property()())
 %% }
 -type property_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% send_outbound_email_response() :: #{}
+-type send_outbound_email_response() :: #{}.
 
 
 %% Example:
@@ -1426,6 +1478,14 @@
 
 
 %% Example:
+%% email_attachment() :: #{
+%%   <<"FileName">> => string(),
+%%   <<"S3Url">> => string()
+%% }
+-type email_attachment() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_user_proficiencies_response() :: #{
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -1491,12 +1551,24 @@
 %% }
 -type search_resource_tags_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_email_address_response() :: #{}
+-type delete_email_address_response() :: #{}.
+
 
 %% Example:
 %% phone_number_quick_connect_config() :: #{
 %%   <<"PhoneNumber">> => string()
 %% }
 -type phone_number_quick_connect_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_segment_attributes_criteria() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type searchable_segment_attributes_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1599,6 +1671,15 @@
 
 
 %% Example:
+%% outbound_email_content() :: #{
+%%   <<"MessageSourceType">> => list(any()),
+%%   <<"RawMessage">> => outbound_raw_message(),
+%%   <<"TemplatedMessageConfig">> => templated_message_config()
+%% }
+-type outbound_email_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_security_profile_request() :: #{
 %%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
 %%   <<"AllowedAccessControlTags">> => map(),
@@ -1641,6 +1722,15 @@
 %% Example:
 %% describe_vocabulary_request() :: #{}
 -type describe_vocabulary_request() :: #{}.
+
+
+%% Example:
+%% list_associated_contacts_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_contacts_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1803,6 +1893,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Fields">> := list(task_template_field()()),
 %%   <<"Name">> := string(),
+%%   <<"SelfAssignFlowId">> => string(),
 %%   <<"Status">> => list(any())
 %% }
 -type create_task_template_request() :: #{binary() => any()}.
@@ -1896,6 +1987,19 @@
 %%   <<"FileId">> => string()
 %% }
 -type attached_file_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_outbound_email_contact_request() :: #{
+%%   <<"AdditionalRecipients">> => outbound_additional_recipients(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactId">> := string(),
+%%   <<"DestinationEmailAddress">> := email_address_info(),
+%%   <<"EmailMessage">> := outbound_email_content(),
+%%   <<"FromEmailAddress">> => email_address_info(),
+%%   <<"InstanceId">> := string()
+%% }
+-type start_outbound_email_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2205,6 +2309,14 @@
 %% }
 -type search_agent_statuses_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% inbound_email_content() :: #{
+%%   <<"MessageSourceType">> => list(any()),
+%%   <<"RawMessage">> => inbound_raw_message()
+%% }
+-type inbound_email_content() :: #{binary() => any()}.
+
 %% Example:
 %% delete_view_version_request() :: #{}
 -type delete_view_version_request() :: #{}.
@@ -2239,12 +2351,17 @@
 %%   <<"MaxContacts">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"OutboundCallerConfig">> => outbound_caller_config(),
+%%   <<"OutboundEmailConfig">> => outbound_email_config(),
 %%   <<"QueueArn">> => string(),
 %%   <<"QueueId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type queue() :: #{binary() => any()}.
+
+%% Example:
+%% delete_email_address_request() :: #{}
+-type delete_email_address_request() :: #{}.
 
 
 %% Example:
@@ -2532,6 +2649,15 @@
 
 
 %% Example:
+%% email_address_search_criteria() :: #{
+%%   <<"AndConditions">> => list(email_address_search_criteria()()),
+%%   <<"OrConditions">> => list(email_address_search_criteria()()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type email_address_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% destination_not_allowed_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2562,6 +2688,13 @@
 
 
 %% Example:
+%% contact_search_summary_segment_attribute_value() :: #{
+%%   <<"ValueString">> => string()
+%% }
+-type contact_search_summary_segment_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_vocabulary_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Content">> := string(),
@@ -2587,6 +2720,23 @@
 %%   <<"Files">> => list(attached_file()())
 %% }
 -type batch_get_attached_file_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_message_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type email_message_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_email_address_metadata_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string()
+%% }
+-type update_email_address_metadata_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2636,6 +2786,14 @@
 %%   <<"QueueType">> => list(any())
 %% }
 -type queue_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_response() :: #{
+%%   <<"ContactArn">> => string(),
+%%   <<"ContactId">> => string()
+%% }
+-type create_contact_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_contact_flow_name_response() :: #{}
@@ -2746,7 +2904,17 @@
 
 
 %% Example:
+%% outbound_email_config() :: #{
+%%   <<"OutboundEmailAddressId">> => string()
+%% }
+-type outbound_email_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% connect_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
 %%   <<"Type">> => list(any()),
 %%   <<"Value">> => string()
 %% }
@@ -2758,6 +2926,13 @@
 %%   <<"PredefinedAttribute">> => predefined_attribute()
 %% }
 -type describe_predefined_attribute_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_email_contact_response() :: #{
+%%   <<"ContactId">> => string()
+%% }
+-type start_email_contact_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2915,6 +3090,13 @@
 %%   <<"Template">> => string()
 %% }
 -type view_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_outbound_email_config_request() :: #{
+%%   <<"OutboundEmailConfig">> := outbound_email_config()
+%% }
+-type update_queue_outbound_email_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3235,6 +3417,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Fields">> => list(task_template_field()()),
 %%   <<"Name">> => string(),
+%%   <<"SelfAssignFlowId">> => string(),
 %%   <<"Status">> => list(any())
 %% }
 -type update_task_template_request() :: #{binary() => any()}.
@@ -3363,7 +3546,8 @@
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
@@ -3408,6 +3592,10 @@
 %%   <<"PhoneType">> => list(any())
 %% }
 -type user_phone_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_email_address_request() :: #{}
+-type describe_email_address_request() :: #{}.
 
 
 %% Example:
@@ -3527,6 +3715,16 @@
 %%   <<"Tags">> => map()
 %% }
 -type vocabulary() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbound_raw_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Headers">> => map(),
+%%   <<"Subject">> => string()
+%% }
+-type inbound_raw_message() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3689,6 +3887,14 @@
 
 
 %% Example:
+%% email_address_info() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string()
+%% }
+-type email_address_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_contact_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
@@ -3821,6 +4027,13 @@
 
 
 %% Example:
+%% conditional_operation_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conditional_operation_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_user_phone_config_request() :: #{
 %%   <<"PhoneConfig">> := user_phone_config()
 %% }
@@ -3853,6 +4066,28 @@
 %%   <<"StreamArn">> => string()
 %% }
 -type kinesis_stream_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_email_address_response() :: #{
+%%   <<"CreateTimestamp">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"EmailAddressArn">> => string(),
+%%   <<"EmailAddressId">> => string(),
+%%   <<"ModifiedTimestamp">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_email_address_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_attributes() :: #{
+%%   <<"CustomAttributes">> => map(),
+%%   <<"CustomerProfileAttributes">> => string()
+%% }
+-type template_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4061,6 +4296,7 @@
 %%   <<"References">> => map(),
 %%   <<"RelatedContactId">> => string(),
 %%   <<"ScheduledTime">> => non_neg_integer(),
+%%   <<"SegmentAttributes">> => map(),
 %%   <<"TaskTemplateId">> => string()
 %% }
 -type start_task_contact_request() :: #{binary() => any()}.
@@ -4114,6 +4350,17 @@
 
 
 %% Example:
+%% search_email_addresses_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => email_address_search_criteria(),
+%%   <<"SearchFilter">> => email_address_search_filter()
+%% }
+-type search_email_addresses_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_integration_associations_request() :: #{
 %%   <<"IntegrationArn">> => string(),
 %%   <<"IntegrationType">> => list(any()),
@@ -4130,6 +4377,7 @@
 %%   <<"MaxContacts">> => integer(),
 %%   <<"Name">> := string(),
 %%   <<"OutboundCallerConfig">> => outbound_caller_config(),
+%%   <<"OutboundEmailConfig">> => outbound_email_config(),
 %%   <<"QuickConnectIds">> => list(string()()),
 %%   <<"Tags">> => map()
 %% }
@@ -4146,6 +4394,17 @@
 %% Example:
 %% delete_contact_flow_module_response() :: #{}
 -type delete_contact_flow_module_response() :: #{}.
+
+
+%% Example:
+%% email_address_metadata() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"EmailAddressArn">> => string(),
+%%   <<"EmailAddressId">> => string()
+%% }
+-type email_address_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4315,38 +4574,42 @@
 
 %% Example:
 %% contact() :: #{
-%%   <<"AgentInfo">> => agent_info(),
-%%   <<"AnsweringMachineDetectionStatus">> => list(any()),
-%%   <<"Arn">> => string(),
+%%   <<"AdditionalEmailRecipients">> => additional_email_recipients(),
 %%   <<"Campaign">> => campaign(),
-%%   <<"Channel">> => list(any()),
-%%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),
-%%   <<"Customer">> => customer(),
-%%   <<"CustomerVoiceActivity">> => customer_voice_activity(),
-%%   <<"Description">> => string(),
-%%   <<"DisconnectDetails">> => disconnect_details(),
-%%   <<"DisconnectTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"InitialContactId">> => string(),
 %%   <<"InitiationMethod">> => list(any()),
-%%   <<"InitiationTimestamp">> => non_neg_integer(),
-%%   <<"LastPausedTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
 %%   <<"LastResumedTimestamp">> => non_neg_integer(),
+%%   <<"AnsweringMachineDetectionStatus">> => list(any()),
 %%   <<"LastUpdateTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
 %%   <<"PreviousContactId">> => string(),
-%%   <<"QualityMetrics">> => quality_metrics(),
-%%   <<"QueueInfo">> => queue_info(),
-%%   <<"QueuePriority">> => float(),
-%%   <<"QueueTimeAdjustmentSeconds">> => integer(),
-%%   <<"RelatedContactId">> => string(),
-%%   <<"RoutingCriteria">> => routing_criteria(),
+%%   <<"SystemEndpoint">> => endpoint_info(),
 %%   <<"ScheduledTimestamp">> => non_neg_integer(),
-%%   <<"SegmentAttributes">> => map(),
-%%   <<"Tags">> => map(),
+%%   <<"RoutingCriteria">> => routing_criteria(),
 %%   <<"TotalPauseCount">> => integer(),
+%%   <<"InitialContactId">> => string(),
+%%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),
+%%   <<"LastPausedTimestamp">> => non_neg_integer(),
+%%   <<"CustomerVoiceActivity">> => customer_voice_activity(),
+%%   <<"QualityMetrics">> => quality_metrics(),
+%%   <<"CustomerEndpoint">> => endpoint_info(),
+%%   <<"QueueInfo">> => queue_info(),
+%%   <<"Arn">> => string(),
+%%   <<"QueueTimeAdjustmentSeconds">> => integer(),
+%%   <<"InitiationTimestamp">> => non_neg_integer(),
+%%   <<"DisconnectTimestamp">> => non_neg_integer(),
+%%   <<"Tags">> => map(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"DisconnectDetails">> => disconnect_details(),
 %%   <<"TotalPauseDurationInSeconds">> => integer(),
-%%   <<"WisdomInfo">> => wisdom_info()
+%%   <<"WisdomInfo">> => wisdom_info(),
+%%   <<"ContactAssociationId">> => string(),
+%%   <<"AgentInfo">> => agent_info(),
+%%   <<"Description">> => string(),
+%%   <<"Channel">> => list(any()),
+%%   <<"QueuePriority">> => float(),
+%%   <<"Customer">> => customer()
 %% }
 -type contact() :: #{binary() => any()}.
 
@@ -4459,6 +4722,14 @@
 %%   <<"Options">> => list(evaluation_form_numeric_question_option()())
 %% }
 -type evaluation_form_numeric_question_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_email_recipients() :: #{
+%%   <<"CcList">> => list(email_recipient()()),
+%%   <<"ToList">> => list(email_recipient()())
+%% }
+-type additional_email_recipients() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4578,6 +4849,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_prompts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_email_addresses_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"EmailAddresses">> => list(email_address_metadata()()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_email_addresses_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_contact_evaluation_request() :: #{}
@@ -4812,6 +5092,15 @@
 %% }
 -type list_contact_flow_versions_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% outbound_raw_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Subject">> => string()
+%% }
+-type outbound_raw_message() :: #{binary() => any()}.
+
 %% Example:
 %% describe_rule_request() :: #{}
 -type describe_rule_request() :: #{}.
@@ -4983,6 +5272,26 @@
 %%   <<"View">> => view()
 %% }
 -type update_view_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_email_contact_request() :: #{
+%%   <<"AdditionalRecipients">> => inbound_additional_recipients(),
+%%   <<"Attachments">> => list(email_attachment()()),
+%%   <<"Attributes">> => map(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactFlowId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DestinationEmailAddress">> := string(),
+%%   <<"EmailMessage">> := inbound_email_content(),
+%%   <<"FromEmailAddress">> := email_address_info(),
+%%   <<"InstanceId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"References">> => map(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"SegmentAttributes">> => map()
+%% }
+-type start_email_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5300,6 +5609,23 @@
 
 
 %% Example:
+%% endpoint_info() :: #{
+%%   <<"Address">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type endpoint_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_campaign() :: #{
+%%   <<"CampaignId">> => string(),
+%%   <<"OutboundRequestId">> => string()
+%% }
+-type source_campaign() :: #{binary() => any()}.
+
+
+%% Example:
 %% queue_search_criteria() :: #{
 %%   <<"AndConditions">> => list(queue_search_criteria()()),
 %%   <<"OrConditions">> => list(queue_search_criteria()()),
@@ -5428,7 +5754,8 @@
 %% update_contact_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"References">> => map()
+%%   <<"References">> => map(),
+%%   <<"SegmentAttributes">> => map()
 %% }
 -type update_contact_request() :: #{binary() => any()}.
 
@@ -5445,6 +5772,21 @@
 %%   <<"QuickConnectSummaryList">> => list(quick_connect_summary()())
 %% }
 -type list_queue_quick_connects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_contacts_response() :: #{
+%%   <<"ContactSummaryList">> => list(associated_contact_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_contacts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% outbound_additional_recipients() :: #{
+%%   <<"CcEmailAddresses">> => list(email_address_info()())
+%% }
+-type outbound_additional_recipients() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5745,9 +6087,18 @@
 %%   <<"InitiationTimestamp">> => non_neg_integer(),
 %%   <<"PreviousContactId">> => string(),
 %%   <<"QueueInfo">> => contact_search_summary_queue_info(),
-%%   <<"ScheduledTimestamp">> => non_neg_integer()
+%%   <<"ScheduledTimestamp">> => non_neg_integer(),
+%%   <<"SegmentAttributes">> => map()
 %% }
 -type contact_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_email_address_response() :: #{
+%%   <<"EmailAddressArn">> => string(),
+%%   <<"EmailAddressId">> => string()
+%% }
+-type create_email_address_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5755,6 +6106,25 @@
 %%   <<"ContactFlowModule">> => contact_flow_module()
 %% }
 -type describe_contact_flow_module_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Channel">> := list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ExpiryDurationInMinutes">> => integer(),
+%%   <<"InitiateAs">> => list(any()),
+%%   <<"InitiationMethod">> := list(any()),
+%%   <<"InstanceId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"References">> => map(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"UserInfo">> => user_info()
+%% }
+-type create_contact_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_flow_response() :: #{}
@@ -5901,6 +6271,7 @@
 %%   <<"InstanceId">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"SelfAssignFlowId">> => string(),
 %%   <<"Status">> => list(any())
 %% }
 -type update_task_template_response() :: #{binary() => any()}.
@@ -6109,6 +6480,19 @@
 
 
 %% Example:
+%% send_outbound_email_request() :: #{
+%%   <<"AdditionalRecipients">> => outbound_additional_recipients(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationEmailAddress">> := email_address_info(),
+%%   <<"EmailMessage">> := outbound_email_content(),
+%%   <<"FromEmailAddress">> := email_address_info(),
+%%   <<"SourceCampaign">> => source_campaign(),
+%%   <<"TrafficType">> := list(any())
+%% }
+-type send_outbound_email_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_status_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -6172,6 +6556,13 @@
 %% }
 -type metric_data_v2() :: #{binary() => any()}.
 
+
+%% Example:
+%% email_address_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type email_address_search_filter() :: #{binary() => any()}.
+
 %% Example:
 %% describe_prompt_request() :: #{}
 -type describe_prompt_request() :: #{}.
@@ -6201,6 +6592,17 @@
 %%   <<"Id">> => string()
 %% }
 -type contact_search_summary_queue_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_email_address_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_email_address_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_queue_request() :: #{}
@@ -6281,6 +6683,15 @@
 
 
 %% Example:
+%% templated_message_config() :: #{
+%%   <<"KnowledgeBaseId">> => string(),
+%%   <<"MessageTemplateId">> => string(),
+%%   <<"TemplateAttributes">> => template_attributes()
+%% }
+-type templated_message_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_form_scoring_strategy() :: #{
 %%   <<"Mode">> => list(any()),
 %%   <<"Status">> => list(any())
@@ -6318,6 +6729,21 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_contact_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_contact_summary() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"ContactArn">> => string(),
+%%   <<"ContactId">> => string(),
+%%   <<"DisconnectTimestamp">> => non_neg_integer(),
+%%   <<"InitialContactId">> => string(),
+%%   <<"InitiationMethod">> => list(any()),
+%%   <<"InitiationTimestamp">> => non_neg_integer(),
+%%   <<"PreviousContactId">> => string(),
+%%   <<"RelatedContactId">> => string()
+%% }
+-type associated_contact_summary() :: #{binary() => any()}.
 
 %% Example:
 %% pause_contact_response() :: #{}
@@ -6439,6 +6865,7 @@
 
 %% Example:
 %% attachment_reference() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Value">> => string()
@@ -6593,7 +7020,8 @@
 %%   <<"ContactAnalysis">> => contact_analysis(),
 %%   <<"InitiationMethods">> => list(list(any())()),
 %%   <<"QueueIds">> => list(string()()),
-%%   <<"SearchableContactAttributes">> => searchable_contact_attributes()
+%%   <<"SearchableContactAttributes">> => searchable_contact_attributes(),
+%%   <<"SearchableSegmentAttributes">> => searchable_segment_attributes()
 %% }
 -type search_criteria() :: #{binary() => any()}.
 
@@ -6783,6 +7211,14 @@
 %%   <<"UserId">> => string()
 %% }
 -type create_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbound_additional_recipients() :: #{
+%%   <<"CcAddresses">> => list(email_address_info()()),
+%%   <<"ToAddresses">> => list(email_address_info()())
+%% }
+-type inbound_additional_recipients() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6998,6 +7434,14 @@
 
 
 %% Example:
+%% update_email_address_metadata_response() :: #{
+%%   <<"EmailAddressArn">> => string(),
+%%   <<"EmailAddressId">> => string()
+%% }
+-type update_email_address_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% predefined_attribute() :: #{
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -7012,6 +7456,13 @@
 %%   <<"Name">> := string()
 %% }
 -type update_user_hierarchy_group_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_info() :: #{
+%%   <<"UserId">> => string()
+%% }
+-type user_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7389,6 +7840,17 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type create_contact_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
 -type create_contact_flow_errors() ::
     duplicate_resource_exception() | 
     limit_exceeded_exception() | 
@@ -7416,6 +7878,18 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_email_address_errors() ::
+    resource_conflict_exception() | 
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -7638,6 +8112,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type delete_email_address_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type delete_evaluation_form_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
@@ -7814,6 +8297,14 @@
     contact_flow_not_published_exception().
 
 -type describe_contact_flow_module_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_email_address_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
@@ -8152,6 +8643,13 @@
     internal_service_exception().
 
 -type list_approved_origins_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_associated_contacts_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
@@ -8548,6 +9046,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type search_email_addresses_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type search_hours_of_operations_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -8632,6 +9138,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type send_outbound_email_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type start_attached_file_upload_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
@@ -8668,6 +9183,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type start_email_contact_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type start_outbound_chat_contact_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -8675,6 +9199,15 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    internal_service_exception().
+
+-type start_outbound_email_contact_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     internal_service_exception().
 
 -type start_outbound_voice_contact_errors() ::
@@ -8869,6 +9402,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type update_email_address_metadata_errors() ::
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type update_evaluation_form_errors() ::
     resource_conflict_exception() | 
     throttling_exception() | 
@@ -8965,6 +9507,15 @@
 -type update_queue_outbound_caller_config_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_queue_outbound_email_config_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    conditional_operation_failed_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -10068,6 +10619,40 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+-spec create_contact(aws_client:aws_client(), create_contact_request()) ->
+    {ok, create_contact_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_errors(), tuple()}.
+create_contact(Client, Input) ->
+    create_contact(Client, Input, []).
+
+-spec create_contact(aws_client:aws_client(), create_contact_request(), proplists:proplist()) ->
+    {ok, create_contact_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_errors(), tuple()}.
+create_contact(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/create-contact"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a flow for the specified Amazon Connect instance.
 %%
 %% You can also create and update flows using the Amazon Connect
@@ -10166,6 +10751,40 @@ create_contact_flow_version(Client, ContactFlowId, InstanceId, Input) ->
 create_contact_flow_version(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/version"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+-spec create_email_address(aws_client:aws_client(), binary() | list(), create_email_address_request()) ->
+    {ok, create_email_address_response(), tuple()} |
+    {error, any()} |
+    {error, create_email_address_errors(), tuple()}.
+create_email_address(Client, InstanceId, Input) ->
+    create_email_address(Client, InstanceId, Input, []).
+
+-spec create_email_address(aws_client:aws_client(), binary() | list(), create_email_address_request(), proplists:proplist()) ->
+    {ok, create_email_address_response(), tuple()} |
+    {error, any()} |
+    {error, create_email_address_errors(), tuple()}.
+create_email_address(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/email-addresses/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -11240,6 +11859,40 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+-spec delete_email_address(aws_client:aws_client(), binary() | list(), binary() | list(), delete_email_address_request()) ->
+    {ok, delete_email_address_response(), tuple()} |
+    {error, any()} |
+    {error, delete_email_address_errors(), tuple()}.
+delete_email_address(Client, EmailAddressId, InstanceId, Input) ->
+    delete_email_address(Client, EmailAddressId, InstanceId, Input, []).
+
+-spec delete_email_address(aws_client:aws_client(), binary() | list(), binary() | list(), delete_email_address_request(), proplists:proplist()) ->
+    {ok, delete_email_address_response(), tuple()} |
+    {error, any()} |
+    {error, delete_email_address_errors(), tuple()}.
+delete_email_address(Client, EmailAddressId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/email-addresses/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EmailAddressId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an evaluation form in the specified Amazon Connect instance.
 %%
 %% If the version property is provided, only the specified version of the
@@ -12232,6 +12885,43 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
 describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc
+-spec describe_email_address(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_email_address_response(), tuple()} |
+    {error, any()} |
+    {error, describe_email_address_errors(), tuple()}.
+describe_email_address(Client, EmailAddressId, InstanceId)
+  when is_map(Client) ->
+    describe_email_address(Client, EmailAddressId, InstanceId, #{}, #{}).
+
+-spec describe_email_address(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_email_address_response(), tuple()} |
+    {error, any()} |
+    {error, describe_email_address_errors(), tuple()}.
+describe_email_address(Client, EmailAddressId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_email_address(Client, EmailAddressId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_email_address(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_email_address_response(), tuple()} |
+    {error, any()} |
+    {error, describe_email_address_errors(), tuple()}.
+describe_email_address(Client, EmailAddressId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/email-addresses/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EmailAddressId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -14255,6 +14945,49 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc
+-spec list_associated_contacts(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_associated_contacts_response(), tuple()} |
+    {error, any()} |
+    {error, list_associated_contacts_errors(), tuple()}.
+list_associated_contacts(Client, InstanceId, ContactId)
+  when is_map(Client) ->
+    list_associated_contacts(Client, InstanceId, ContactId, #{}, #{}).
+
+-spec list_associated_contacts(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_associated_contacts_response(), tuple()} |
+    {error, any()} |
+    {error, list_associated_contacts_errors(), tuple()}.
+list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, []).
+
+-spec list_associated_contacts(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_associated_contacts_response(), tuple()} |
+    {error, any()} |
+    {error, list_associated_contacts_errors(), tuple()}.
+list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact/associated/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"contactId">>, ContactId},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -16753,6 +17486,40 @@ search_contacts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+-spec search_email_addresses(aws_client:aws_client(), search_email_addresses_request()) ->
+    {ok, search_email_addresses_response(), tuple()} |
+    {error, any()} |
+    {error, search_email_addresses_errors(), tuple()}.
+search_email_addresses(Client, Input) ->
+    search_email_addresses(Client, Input, []).
+
+-spec search_email_addresses(aws_client:aws_client(), search_email_addresses_request(), proplists:proplist()) ->
+    {ok, search_email_addresses_response(), tuple()} |
+    {error, any()} |
+    {error, search_email_addresses_errors(), tuple()}.
+search_email_addresses(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-email-addresses"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches the hours of operation in an Amazon Connect instance, with
 %% optional
 %% filtering.
@@ -17220,6 +17987,40 @@ send_chat_integration_event(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+-spec send_outbound_email(aws_client:aws_client(), binary() | list(), send_outbound_email_request()) ->
+    {ok, send_outbound_email_response(), tuple()} |
+    {error, any()} |
+    {error, send_outbound_email_errors(), tuple()}.
+send_outbound_email(Client, InstanceId, Input) ->
+    send_outbound_email(Client, InstanceId, Input, []).
+
+-spec send_outbound_email(aws_client:aws_client(), binary() | list(), send_outbound_email_request(), proplists:proplist()) ->
+    {ok, send_outbound_email_response(), tuple()} |
+    {error, any()} |
+    {error, send_outbound_email_errors(), tuple()}.
+send_outbound_email(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/outbound-email"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Provides a pre-signed Amazon S3 URL in response for uploading your
 %% content.
 %%
@@ -17486,6 +18287,40 @@ start_contact_streaming(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+-spec start_email_contact(aws_client:aws_client(), start_email_contact_request()) ->
+    {ok, start_email_contact_response(), tuple()} |
+    {error, any()} |
+    {error, start_email_contact_errors(), tuple()}.
+start_email_contact(Client, Input) ->
+    start_email_contact(Client, Input, []).
+
+-spec start_email_contact(aws_client:aws_client(), start_email_contact_request(), proplists:proplist()) ->
+    {ok, start_email_contact_response(), tuple()} |
+    {error, any()} |
+    {error, start_email_contact_errors(), tuple()}.
+start_email_contact(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/email"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates a new outbound SMS contact to a customer.
 %%
 %% Response of this API provides the
@@ -17529,6 +18364,40 @@ start_outbound_chat_contact(Client, Input) ->
 start_outbound_chat_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/outbound-chat"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+-spec start_outbound_email_contact(aws_client:aws_client(), start_outbound_email_contact_request()) ->
+    {ok, start_outbound_email_contact_response(), tuple()} |
+    {error, any()} |
+    {error, start_outbound_email_contact_errors(), tuple()}.
+start_outbound_email_contact(Client, Input) ->
+    start_outbound_email_contact(Client, Input, []).
+
+-spec start_outbound_email_contact(aws_client:aws_client(), start_outbound_email_contact_request(), proplists:proplist()) ->
+    {ok, start_outbound_email_contact_response(), tuple()} |
+    {error, any()} |
+    {error, start_outbound_email_contact_errors(), tuple()}.
+start_outbound_email_contact(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/outbound-email"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -18732,6 +19601,40 @@ update_contact_schedule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc
+-spec update_email_address_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_email_address_metadata_request()) ->
+    {ok, update_email_address_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_email_address_metadata_errors(), tuple()}.
+update_email_address_metadata(Client, EmailAddressId, InstanceId, Input) ->
+    update_email_address_metadata(Client, EmailAddressId, InstanceId, Input, []).
+
+-spec update_email_address_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_email_address_metadata_request(), proplists:proplist()) ->
+    {ok, update_email_address_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_email_address_metadata_errors(), tuple()}.
+update_email_address_metadata(Client, EmailAddressId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/email-addresses/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EmailAddressId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates details about a specific evaluation form version in the
 %% specified Amazon Connect
 %% instance.
@@ -19268,6 +20171,40 @@ update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/outbound-caller-config"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+-spec update_queue_outbound_email_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_outbound_email_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_queue_outbound_email_config_errors(), tuple()}.
+update_queue_outbound_email_config(Client, InstanceId, QueueId, Input) ->
+    update_queue_outbound_email_config(Client, InstanceId, QueueId, Input, []).
+
+-spec update_queue_outbound_email_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_outbound_email_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_queue_outbound_email_config_errors(), tuple()}.
+update_queue_outbound_email_config(Client, InstanceId, QueueId, Input0, Options0) ->
+    Method = post,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/outbound-email-config"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -892,6 +892,7 @@
 
 %% Example:
 %% root_cause() :: #{
+%%   <<"Impact">> => root_cause_impact(),
 %%   <<"LinkedAccount">> => string(),
 %%   <<"LinkedAccountName">> => string(),
 %%   <<"Region">> => string(),
@@ -1438,6 +1439,12 @@
 %%   <<"SizeFlexEligible">> => boolean()
 %% }
 -type redshift_instance_details() :: #{binary() => any()}.
+
+%% Example:
+%% root_cause_impact() :: #{
+%%   <<"Contribution">> => float()
+%% }
+-type root_cause_impact() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{
@@ -2785,9 +2792,7 @@ get_usage_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUsageForecast">>, Input, Options).
 
-%% @doc Lists the commitment purchase analyses for your account based on the
-%% last 30
-%% days.
+%% @doc Lists the commitment purchase analyses for your account.
 -spec list_commitment_purchase_analyses(aws_client:aws_client(), list_commitment_purchase_analyses_request()) ->
     {ok, list_commitment_purchase_analyses_response(), tuple()} |
     {error, any()} |
@@ -2933,8 +2938,7 @@ provide_anomaly_feedback(Client, Input, Options)
 %%
 %% This enables you to estimate the cost, coverage, and utilization impact of
 %% your
-%% planned commitment purchases. You can request up to 20 analysis runs per
-%% day.
+%% planned commitment purchases.
 -spec start_commitment_purchase_analysis(aws_client:aws_client(), start_commitment_purchase_analysis_request()) ->
     {ok, start_commitment_purchase_analysis_response(), tuple()} |
     {error, any()} |

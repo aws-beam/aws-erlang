@@ -943,6 +943,15 @@
 -type delete_relay_response() :: #{binary() => any()}.
 
 %% Example:
+%% deliver_to_q_business_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"ApplicationId">> => string(),
+%%   <<"IndexId">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type deliver_to_q_business_action() :: #{binary() => any()}.
+
+%% Example:
 %% addon_subscription() :: #{
 %%   <<"AddonName">> => string(),
 %%   <<"AddonSubscriptionArn">> => string(),

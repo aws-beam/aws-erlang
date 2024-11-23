@@ -9,7 +9,9 @@
 %% seconds.
 -module(aws_neptune_graph).
 
--export([cancel_import_task/3,
+-export([cancel_export_task/3,
+         cancel_export_task/4,
+         cancel_import_task/3,
          cancel_import_task/4,
          cancel_query/3,
          cancel_query/4,
@@ -29,6 +31,9 @@
          delete_private_graph_endpoint/5,
          execute_query/2,
          execute_query/3,
+         get_export_task/2,
+         get_export_task/4,
+         get_export_task/5,
          get_graph/2,
          get_graph/4,
          get_graph/5,
@@ -47,6 +52,9 @@
          get_query/3,
          get_query/5,
          get_query/6,
+         list_export_tasks/1,
+         list_export_tasks/3,
+         list_export_tasks/4,
          list_graph_snapshots/1,
          list_graph_snapshots/3,
          list_graph_snapshots/4,
@@ -69,6 +77,8 @@
          reset_graph/4,
          restore_graph_from_snapshot/3,
          restore_graph_from_snapshot/4,
+         start_export_task/2,
+         start_export_task/3,
          start_import_task/3,
          start_import_task/4,
          tag_resource/3,
@@ -101,6 +111,7 @@
 %%   <<"kmsKeyIdentifier">> => string(),
 %%   <<"maxProvisionedMemory">> => integer(),
 %%   <<"minProvisionedMemory">> => integer(),
+%%   <<"parquetType">> => list(any()),
 %%   <<"publicConnectivity">> => [boolean()],
 %%   <<"replicaCount">> => integer(),
 %%   <<"roleArn">> := string(),
@@ -113,6 +124,15 @@
 %% Example:
 %% delete_private_graph_endpoint_input() :: #{}
 -type delete_private_graph_endpoint_input() :: #{}.
+
+
+%% Example:
+%% export_filter_property_attributes() :: #{
+%%   <<"multiValueHandling">> => list(any()),
+%%   <<"outputType">> => string(),
+%%   <<"sourcePropertyName">> => string()
+%% }
+-type export_filter_property_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -143,10 +163,22 @@
 
 
 %% Example:
+%% export_task_details() :: #{
+%%   <<"numEdgesWritten">> => [float()],
+%%   <<"numVerticesWritten">> => [float()],
+%%   <<"progressPercentage">> => [integer()],
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"timeElapsedSeconds">> => [float()]
+%% }
+-type export_task_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_graph_using_import_task_output() :: #{
 %%   <<"format">> => list(any()),
 %%   <<"graphId">> => string(),
 %%   <<"importOptions">> => list(),
+%%   <<"parquetType">> => list(any()),
 %%   <<"roleArn">> => string(),
 %%   <<"source">> => [string()],
 %%   <<"status">> => list(any()),
@@ -177,11 +209,26 @@
 
 
 %% Example:
+%% start_export_task_input() :: #{
+%%   <<"destination">> := [string()],
+%%   <<"exportFilter">> => export_filter(),
+%%   <<"format">> := list(any()),
+%%   <<"graphIdentifier">> := string(),
+%%   <<"kmsKeyIdentifier">> := string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type start_export_task_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_import_task_input() :: #{
 %%   <<"blankNodeHandling">> => list(any()),
 %%   <<"failOnError">> => [boolean()],
 %%   <<"format">> => list(any()),
 %%   <<"importOptions">> => list(),
+%%   <<"parquetType">> => list(any()),
 %%   <<"roleArn">> := string(),
 %%   <<"source">> := [string()]
 %% }
@@ -195,6 +242,7 @@
 %%   <<"graphId">> => string(),
 %%   <<"importOptions">> => list(),
 %%   <<"importTaskDetails">> => import_task_details(),
+%%   <<"parquetType">> => list(any()),
 %%   <<"roleArn">> => string(),
 %%   <<"source">> => [string()],
 %%   <<"status">> => list(any()),
@@ -215,9 +263,25 @@
 
 
 %% Example:
+%% export_filter_element() :: #{
+%%   <<"properties">> => map()
+%% }
+-type export_filter_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_filter() :: #{
+%%   <<"edgeFilter">> => map(),
+%%   <<"vertexFilter">> => map()
+%% }
+-type export_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% cancel_import_task_output() :: #{
 %%   <<"format">> => list(any()),
 %%   <<"graphId">> => string(),
+%%   <<"parquetType">> => list(any()),
 %%   <<"roleArn">> => string(),
 %%   <<"source">> => [string()],
 %%   <<"status">> => list(any()),
@@ -232,6 +296,14 @@
 %%   <<"reason">> => list(any())
 %% }
 -type unprocessable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_export_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(export_task_summary()())
+%% }
+-type list_export_tasks_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -281,6 +353,21 @@
 
 
 %% Example:
+%% cancel_export_task_output() :: #{
+%%   <<"destination">> => [string()],
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type cancel_export_task_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% vector_search_configuration() :: #{
 %%   <<"dimension">> => integer()
 %% }
@@ -297,6 +384,21 @@
 %%   <<"tags">> => map()
 %% }
 -type restore_graph_from_snapshot_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_task_summary() :: #{
+%%   <<"destination">> => [string()],
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type export_task_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -402,6 +504,10 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_export_task_input() :: #{}
+-type cancel_export_task_input() :: #{}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -437,6 +543,22 @@
 %%   <<"vectorSearchConfiguration">> => vector_search_configuration()
 %% }
 -type restore_graph_from_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_export_task_output() :: #{
+%%   <<"destination">> => [string()],
+%%   <<"exportFilter">> => export_filter(),
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type start_export_task_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -481,6 +603,14 @@
 
 
 %% Example:
+%% list_export_tasks_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_export_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_input() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -491,6 +621,7 @@
 %% import_task_summary() :: #{
 %%   <<"format">> => list(any()),
 %%   <<"graphId">> => string(),
+%%   <<"parquetType">> => list(any()),
 %%   <<"roleArn">> => string(),
 %%   <<"source">> => [string()],
 %%   <<"status">> => list(any()),
@@ -634,6 +765,10 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+%% Example:
+%% get_export_task_input() :: #{}
+-type get_export_task_input() :: #{}.
+
 
 %% Example:
 %% untag_resource_input() :: #{
@@ -673,6 +808,7 @@
 %%   <<"format">> => list(any()),
 %%   <<"graphId">> => string(),
 %%   <<"importOptions">> => list(),
+%%   <<"parquetType">> => list(any()),
 %%   <<"roleArn">> => string(),
 %%   <<"source">> => [string()],
 %%   <<"status">> => list(any()),
@@ -821,11 +957,35 @@
 
 
 %% Example:
+%% get_export_task_output() :: #{
+%%   <<"destination">> => [string()],
+%%   <<"exportFilter">> => export_filter(),
+%%   <<"exportTaskDetails">> => export_task_details(),
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type get_export_task_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_import_tasks_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_tasks_input() :: #{binary() => any()}.
+
+-type cancel_export_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type cancel_import_task_errors() ::
     throttling_exception() | 
@@ -900,6 +1060,12 @@
     conflict_exception() | 
     unprocessable_exception().
 
+-type get_export_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_graph_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -935,6 +1101,12 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_export_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
 
@@ -988,6 +1160,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_export_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_import_task_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1017,6 +1196,40 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Cancel the specified export task.
+-spec cancel_export_task(aws_client:aws_client(), binary() | list(), cancel_export_task_input()) ->
+    {ok, cancel_export_task_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_export_task_errors(), tuple()}.
+cancel_export_task(Client, TaskIdentifier, Input) ->
+    cancel_export_task(Client, TaskIdentifier, Input, []).
+
+-spec cancel_export_task(aws_client:aws_client(), binary() | list(), cancel_export_task_input(), proplists:proplist()) ->
+    {ok, cancel_export_task_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_export_task_errors(), tuple()}.
+cancel_export_task(Client, TaskIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/exporttasks/", aws_util:encode_uri(TaskIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified import task.
 -spec cancel_import_task(aws_client:aws_client(), binary() | list(), cancel_import_task_input()) ->
@@ -1391,6 +1604,43 @@ execute_query(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves a specified export task.
+-spec get_export_task(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_export_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_export_task_errors(), tuple()}.
+get_export_task(Client, TaskIdentifier)
+  when is_map(Client) ->
+    get_export_task(Client, TaskIdentifier, #{}, #{}).
+
+-spec get_export_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_export_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_export_task_errors(), tuple()}.
+get_export_task(Client, TaskIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_export_task(Client, TaskIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_export_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_export_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_export_task_errors(), tuple()}.
+get_export_task(Client, TaskIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/exporttasks/", aws_util:encode_uri(TaskIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a specified graph.
 -spec get_graph(aws_client:aws_client(), binary() | list()) ->
     {ok, get_graph_output(), tuple()} |
@@ -1626,6 +1876,48 @@ get_query(Client, QueryId, GraphIdentifier, QueryMap, HeadersMap, Options0)
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of export tasks.
+-spec list_export_tasks(aws_client:aws_client()) ->
+    {ok, list_export_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_export_tasks_errors(), tuple()}.
+list_export_tasks(Client)
+  when is_map(Client) ->
+    list_export_tasks(Client, #{}, #{}).
+
+-spec list_export_tasks(aws_client:aws_client(), map(), map()) ->
+    {ok, list_export_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_export_tasks_errors(), tuple()}.
+list_export_tasks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_export_tasks(Client, QueryMap, HeadersMap, []).
+
+-spec list_export_tasks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_export_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_export_tasks_errors(), tuple()}.
+list_export_tasks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/exporttasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1930,6 +2222,42 @@ restore_graph_from_snapshot(Client, SnapshotIdentifier, Input) ->
 restore_graph_from_snapshot(Client, SnapshotIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotIdentifier), "/restore"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Export data from an existing Neptune Analytics graph to Amazon S3.
+%%
+%% The graph state should be `AVAILABLE'.
+-spec start_export_task(aws_client:aws_client(), start_export_task_input()) ->
+    {ok, start_export_task_output(), tuple()} |
+    {error, any()} |
+    {error, start_export_task_errors(), tuple()}.
+start_export_task(Client, Input) ->
+    start_export_task(Client, Input, []).
+
+-spec start_export_task(aws_client:aws_client(), start_export_task_input(), proplists:proplist()) ->
+    {ok, start_export_task_output(), tuple()} |
+    {error, any()} |
+    {error, start_export_task_errors(), tuple()}.
+start_export_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/exporttasks"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

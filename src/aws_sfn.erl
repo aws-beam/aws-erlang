@@ -564,7 +564,8 @@
 %%   <<"roleArn">> => string(),
 %%   <<"stateMachineArn">> => string(),
 %%   <<"tracingConfiguration">> => tracing_configuration(),
-%%   <<"updateDate">> => non_neg_integer()
+%%   <<"updateDate">> => non_neg_integer(),
+%%   <<"variableReferences">> => map()
 %% }
 -type describe_state_machine_for_execution_output() :: #{binary() => any()}.
 
@@ -653,6 +654,7 @@
 
 %% Example:
 %% inspection_data() :: #{
+%%   <<"afterArguments">> => string(),
 %%   <<"afterInputPath">> => string(),
 %%   <<"afterParameters">> => string(),
 %%   <<"afterResultPath">> => string(),
@@ -660,7 +662,8 @@
 %%   <<"input">> => string(),
 %%   <<"request">> => inspection_data_request(),
 %%   <<"response">> => inspection_data_response(),
-%%   <<"result">> => string()
+%%   <<"result">> => string(),
+%%   <<"variables">> => string()
 %% }
 -type inspection_data() :: #{binary() => any()}.
 
@@ -706,6 +709,8 @@
 
 %% Example:
 %% state_exited_event_details() :: #{
+%%   <<"assignedVariables">> => map(),
+%%   <<"assignedVariablesDetails">> => assigned_variables_details(),
 %%   <<"name">> => string(),
 %%   <<"output">> => string(),
 %%   <<"outputDetails">> => history_event_execution_data_details()
@@ -887,6 +892,7 @@
 %%   <<"lambdaFunctionSucceededEventDetails">> => lambda_function_succeeded_event_details(),
 %%   <<"mapRunRedrivenEventDetails">> => map_run_redriven_event_details(),
 %%   <<"lambdaFunctionScheduleFailedEventDetails">> => lambda_function_schedule_failed_event_details(),
+%%   <<"evaluationFailedEventDetails">> => evaluation_failed_event_details(),
 %%   <<"mapStateStartedEventDetails">> => map_state_started_event_details(),
 %%   <<"lambdaFunctionStartFailedEventDetails">> => lambda_function_start_failed_event_details(),
 %%   <<"taskSubmitFailedEventDetails">> => task_submit_failed_event_details(),
@@ -993,6 +999,15 @@
 -type update_state_machine_input() :: #{binary() => any()}.
 
 %% Example:
+%% evaluation_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"location">> => string(),
+%%   <<"state">> => string()
+%% }
+-type evaluation_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
 %% state_machine_does_not_exist() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1067,6 +1082,12 @@
 %%   <<"creationDate">> => non_neg_integer()
 %% }
 -type create_activity_output() :: #{binary() => any()}.
+
+%% Example:
+%% assigned_variables_details() :: #{
+%%   <<"truncated">> => boolean()
+%% }
+-type assigned_variables_details() :: #{binary() => any()}.
 
 %% Example:
 %% activity_limit_exceeded() :: #{
@@ -1244,7 +1265,8 @@
 %%   <<"input">> => string(),
 %%   <<"inspectionLevel">> => list(any()),
 %%   <<"revealSecrets">> => boolean(),
-%%   <<"roleArn">> := string()
+%%   <<"roleArn">> => string(),
+%%   <<"variables">> => string()
 %% }
 -type test_state_input() :: #{binary() => any()}.
 
@@ -1426,7 +1448,8 @@
 %%   <<"stateMachineArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tracingConfiguration">> => tracing_configuration(),
-%%   <<"type">> => list(any())
+%%   <<"type">> => list(any()),
+%%   <<"variableReferences">> => map()
 %% }
 -type describe_state_machine_output() :: #{binary() => any()}.
 
@@ -3062,29 +3085,49 @@ update_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStateMachineAlias">>, Input, Options).
 
-%% @doc Validates the syntax of a state machine definition.
+%% @doc Validates the syntax of a state machine definition specified in
+%% Amazon States Language:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html
+%% (ASL), a
+%% JSON-based, structured language.
 %%
 %% You can validate that a state machine definition is correct without
-%% creating a state machine resource. Step Functions will implicitly perform
-%% the same
-%% syntax check when you invoke `CreateStateMachine' and
-%% `UpdateStateMachine'. State machine definitions are specified using a
-%% JSON-based, structured language. For more information on Amazon States
-%% Language see Amazon States Language:
-%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html
-%% (ASL).
+%% creating a state
+%% machine resource.
 %%
 %% Suggested uses for `ValidateStateMachineDefinition':
 %%
 %% Integrate automated checks into your code review or Continuous Integration
-%% (CI) process to validate state machine definitions before starting
+%% (CI) process to check state machine definitions before starting
 %% deployments.
 %%
-%% Run the validation from a Git pre-commit hook to check your state machine
-%% definitions before committing them to your source repository.
+%% Run validation from a Git pre-commit hook to verify the definition before
+%% committing to your source repository.
 %%
-%% Errors found in the state machine definition will be returned in the
-%% response as a list of diagnostic elements, rather than raise an exception.
+%% Validation will look for problems in your state machine definition and
+%% return a
+%% result and a list of diagnostic
+%% elements.
+%%
+%% The result value will be `OK' when your
+%% workflow definition can be successfully created or updated. Note the
+%% result can be
+%% `OK' even when diagnostic warnings are present in the response. The
+%% result value will be `FAIL' when the
+%% workflow definition contains errors that would prevent you from creating
+%% or updating
+%% your state machine.
+%%
+%% The list of ValidateStateMachineDefinitionDiagnostic:
+%% https://docs.aws.amazon.com/step-functions/latest/apireference/API_ValidateStateMachineDefinitionDiagnostic.html
+%% data elements can contain zero or more WARNING and/or ERROR elements.
+%%
+%% The ValidateStateMachineDefinition API might add
+%% new diagnostics in the future, adjust diagnostic codes, or change the
+%% message
+%% wording. Your automated processes should only rely on the value of the
+%% result field value (OK, FAIL). Do not rely on the exact order, count, or
+%% wording of diagnostic messages.
 -spec validate_state_machine_definition(aws_client:aws_client(), validate_state_machine_definition_input()) ->
     {ok, validate_state_machine_definition_output(), tuple()} |
     {error, any()} |

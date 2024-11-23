@@ -646,6 +646,7 @@
 %%   <<"MetricName">> => string(),
 %%   <<"Metrics">> => list(target_tracking_metric_data_query()()),
 %%   <<"Namespace">> => string(),
+%%   <<"Period">> => integer(),
 %%   <<"Statistic">> => list(any()),
 %%   <<"Unit">> => string()
 %% }
@@ -921,6 +922,7 @@
 %% Example:
 %% target_tracking_metric_stat() :: #{
 %%   <<"Metric">> => metric(),
+%%   <<"Period">> => integer(),
 %%   <<"Stat">> => string(),
 %%   <<"Unit">> => string()
 %% }
@@ -1662,6 +1664,7 @@
 %%   <<"Id">> => string(),
 %%   <<"Label">> => string(),
 %%   <<"MetricStat">> => target_tracking_metric_stat(),
+%%   <<"Period">> => integer(),
 %%   <<"ReturnData">> => boolean()
 %% }
 -type target_tracking_metric_data_query() :: #{binary() => any()}.

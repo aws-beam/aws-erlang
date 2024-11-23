@@ -277,6 +277,13 @@
 -type create_configuration_set_tracking_options_response() :: #{binary() => any()}.
 
 %% Example:
+%% connect_action() :: #{
+%%   <<"IAMRoleARN">> => string(),
+%%   <<"InstanceARN">> => string()
+%% }
+-type connect_action() :: #{binary() => any()}.
+
+%% Example:
 %% create_receipt_rule_set_response() :: #{
 
 %% }
@@ -883,6 +890,7 @@
 %% receipt_action() :: #{
 %%   <<"AddHeaderAction">> => add_header_action(),
 %%   <<"BounceAction">> => bounce_action(),
+%%   <<"ConnectAction">> => connect_action(),
 %%   <<"LambdaAction">> => lambda_action(),
 %%   <<"S3Action">> => s3_action(),
 %%   <<"SNSAction">> => s_n_s_action(),

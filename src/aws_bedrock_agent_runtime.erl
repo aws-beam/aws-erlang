@@ -14,6 +14,8 @@
          invoke_agent/6,
          invoke_flow/4,
          invoke_flow/5,
+         invoke_inline_agent/3,
+         invoke_inline_agent/4,
          optimize_prompt/2,
          optimize_prompt/3,
          retrieve/3,
@@ -128,6 +130,17 @@
 
 
 %% Example:
+%% inline_session_state() :: #{
+%%   <<"files">> => list(input_file()()),
+%%   <<"invocationId">> => [string()],
+%%   <<"promptSessionAttributes">> => map(),
+%%   <<"returnControlInvocationResults">> => list(list()()),
+%%   <<"sessionAttributes">> => map()
+%% }
+-type inline_session_state() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_file() :: #{
 %%   <<"name">> => [string()],
 %%   <<"source">> => file_source(),
@@ -153,6 +166,14 @@
 
 
 %% Example:
+%% prompt_override_configuration() :: #{
+%%   <<"overrideLambda">> => string(),
+%%   <<"promptConfigurations">> => list(prompt_configuration()())
+%% }
+-type prompt_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% optimized_prompt_event() :: #{
 %%   <<"optimizedPrompt">> => list()
 %% }
@@ -173,6 +194,13 @@
 %%   <<"retrievedReferences">> => list(retrieved_reference()())
 %% }
 -type citation() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_agent_file_part() :: #{
+%%   <<"files">> => list(output_file()())
+%% }
+-type inline_agent_file_part() :: #{binary() => any()}.
 
 
 %% Example:
@@ -212,11 +240,28 @@
 
 
 %% Example:
+%% parameter_detail() :: #{
+%%   <<"description">> => string(),
+%%   <<"required">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type parameter_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% failure_trace() :: #{
 %%   <<"failureReason">> => string(),
 %%   <<"traceId">> => string()
 %% }
 -type failure_trace() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_agent_return_control_payload() :: #{
+%%   <<"invocationId">> => [string()],
+%%   <<"invocationInputs">> => list(list()())
+%% }
+-type inline_agent_return_control_payload() :: #{binary() => any()}.
 
 
 %% Example:
@@ -328,6 +373,14 @@
 
 
 %% Example:
+%% guardrail_configuration_with_arn() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string()
+%% }
+-type guardrail_configuration_with_arn() :: #{binary() => any()}.
+
+
+%% Example:
 %% flow_trace_node_input_field() :: #{
 %%   <<"content">> => list(),
 %%   <<"nodeInputName">> => string()
@@ -404,6 +457,15 @@
 %%   <<"timestamp">> => non_neg_integer()
 %% }
 -type flow_trace_node_input_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base() :: #{
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
+%% }
+-type knowledge_base() :: #{binary() => any()}.
 
 
 %% Example:
@@ -527,6 +589,15 @@
 %%   <<"sessionAttributes">> => map()
 %% }
 -type session_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_inline_agent_response() :: #{
+%%   <<"completion">> => list(),
+%%   <<"contentType">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type invoke_inline_agent_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -673,6 +744,16 @@
 
 
 %% Example:
+%% function_definition() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"requireConfirmation">> => list(any())
+%% }
+-type function_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% flow_trace_node_output_event() :: #{
 %%   <<"fields">> => list(flow_trace_node_output_field()()),
 %%   <<"nodeName">> => string(),
@@ -686,6 +767,14 @@
 %%   <<"url">> => [string()]
 %% }
 -type retrieval_result_salesforce_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_identifier() :: #{
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3ObjectKey">> => string()
+%% }
+-type s3_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -728,6 +817,14 @@
 
 
 %% Example:
+%% inline_agent_payload_part() :: #{
+%%   <<"attribution">> => attribution(),
+%%   <<"bytes">> => binary()
+%% }
+-type inline_agent_payload_part() :: #{binary() => any()}.
+
+
+%% Example:
 %% attribution() :: #{
 %%   <<"citations">> => list(citation()())
 %% }
@@ -743,6 +840,18 @@
 %%   <<"trace">> => list()
 %% }
 -type trace_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_action_group() :: #{
+%%   <<"actionGroupExecutor">> => list(),
+%%   <<"actionGroupName">> => string(),
+%%   <<"apiSchema">> => list(),
+%%   <<"description">> => string(),
+%%   <<"functionSchema">> => list(),
+%%   <<"parentActionGroupSignature">> => list(any())
+%% }
+-type agent_action_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -886,6 +995,24 @@
 %%   <<"nodeType">> => list(any())
 %% }
 -type flow_output_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_inline_agent_request() :: #{
+%%   <<"actionGroups">> => list(agent_action_group()()),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"enableTrace">> => [boolean()],
+%%   <<"endSession">> => [boolean()],
+%%   <<"foundationModel">> := string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration_with_arn(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"inlineSessionState">> => inline_session_state(),
+%%   <<"inputText">> => string(),
+%%   <<"instruction">> := string(),
+%%   <<"knowledgeBases">> => list(knowledge_base()()),
+%%   <<"promptOverrideConfiguration">> => prompt_override_configuration()
+%% }
+-type invoke_inline_agent_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1106,6 +1233,26 @@
 %% }
 -type guardrail_topic() :: #{binary() => any()}.
 
+
+%% Example:
+%% inline_agent_trace_part() :: #{
+%%   <<"sessionId">> => string(),
+%%   <<"trace">> => list()
+%% }
+-type inline_agent_trace_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_configuration() :: #{
+%%   <<"basePromptTemplate">> => string(),
+%%   <<"inferenceConfiguration">> => inference_configuration(),
+%%   <<"parserMode">> => list(any()),
+%%   <<"promptCreationMode">> => list(any()),
+%%   <<"promptState">> => list(any()),
+%%   <<"promptType">> => list(any())
+%% }
+-type prompt_configuration() :: #{binary() => any()}.
+
 -type delete_agent_memory_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1140,6 +1287,17 @@
     bad_gateway_exception().
 
 -type invoke_flow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type invoke_inline_agent_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1392,6 +1550,81 @@ invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Invokes an inline Amazon Bedrock agent using the configurations you
+%% provide with the request.
+%%
+%% Specify the following fields for security purposes.
+%%
+%% (Optional) `customerEncryptionKeyArn' – The Amazon Resource Name (ARN)
+%% of a KMS key to encrypt the creation of the agent.
+%%
+%% (Optional) `idleSessionTTLinSeconds' – Specify the number of seconds
+%% for which the agent should maintain session information. After this time
+%% expires, the subsequent `InvokeInlineAgent' request begins a new
+%% session.
+%%
+%% To override the default prompt behavior for agent orchestration and to use
+%% advanced prompts, include a `promptOverrideConfiguration' object.
+%% For more information, see Advanced prompts:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html.
+%%
+%% The agent instructions will not be honored if your agent has only one
+%% knowledge base, uses default prompts, has no action group, and user input
+%% is disabled.
+%%
+%% The CLI doesn't support streaming operations in Amazon Bedrock,
+%% including `InvokeInlineAgent'.
+-spec invoke_inline_agent(aws_client:aws_client(), binary() | list(), invoke_inline_agent_request()) ->
+    {ok, invoke_inline_agent_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_inline_agent_errors(), tuple()}.
+invoke_inline_agent(Client, SessionId, Input) ->
+    invoke_inline_agent(Client, SessionId, Input, []).
+
+-spec invoke_inline_agent(aws_client:aws_client(), binary() | list(), invoke_inline_agent_request(), proplists:proplist()) ->
+    {ok, invoke_inline_agent_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_inline_agent_errors(), tuple()}.
+invoke_inline_agent(Client, SessionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/agents/", aws_util:encode_uri(SessionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amzn-bedrock-agent-content-type">>, <<"contentType">>},
+            {<<"x-amz-bedrock-agent-session-id">>, <<"sessionId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Optimizes a prompt for the task that you specify.
 %%

@@ -178,6 +178,9 @@
          describe_dashboard_snapshot_job_result/4,
          describe_dashboard_snapshot_job_result/6,
          describe_dashboard_snapshot_job_result/7,
+         describe_dashboards_q_a_configuration/2,
+         describe_dashboards_q_a_configuration/4,
+         describe_dashboards_q_a_configuration/5,
          describe_data_set/3,
          describe_data_set/5,
          describe_data_set/6,
@@ -401,6 +404,8 @@
          search_folders/4,
          search_groups/4,
          search_groups/5,
+         search_topics/3,
+         search_topics/4,
          start_asset_bundle_export_job/3,
          start_asset_bundle_export_job/4,
          start_asset_bundle_import_job/3,
@@ -437,6 +442,8 @@
          update_dashboard_permissions/5,
          update_dashboard_published_version/5,
          update_dashboard_published_version/6,
+         update_dashboards_q_a_configuration/3,
+         update_dashboards_q_a_configuration/4,
          update_data_set/4,
          update_data_set/5,
          update_data_set_permissions/4,
@@ -505,6 +512,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type box_plot_visual() :: #{binary() => any()}.
@@ -665,10 +673,26 @@
 
 
 %% Example:
+%% geospatial_layer_definition() :: #{
+%%   <<"LineLayer">> => geospatial_line_layer(),
+%%   <<"PointLayer">> => geospatial_point_layer(),
+%%   <<"PolygonLayer">> => geospatial_polygon_layer()
+%% }
+-type geospatial_layer_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% free_form_layout_canvas_size_options() :: #{
 %%   <<"ScreenCanvasSizeOptions">> => free_form_layout_screen_canvas_size_options()
 %% }
 -type free_form_layout_canvas_size_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_menu_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type image_menu_option() :: #{binary() => any()}.
 
 
 %% Example:
@@ -815,6 +839,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type radar_chart_visual() :: #{binary() => any()}.
@@ -880,6 +905,15 @@
 %%   <<"StaticValues">> => list(string()())
 %% }
 -type string_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type topic_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -999,6 +1033,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type bar_chart_visual() :: #{binary() => any()}.
@@ -1066,6 +1101,16 @@
 
 
 %% Example:
+%% plugin_visual_field_well() :: #{
+%%   <<"AxisName">> => list(any()),
+%%   <<"Dimensions">> => list(dimension_field()()),
+%%   <<"Measures">> => list(measure_field()()),
+%%   <<"Unaggregated">> => list(unaggregated_field()())
+%% }
+-type plugin_visual_field_well() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_columns_operation() :: #{
 %%   <<"Columns">> => list(calculated_column()())
 %% }
@@ -1101,6 +1146,16 @@
 %%   <<"TotalBarLabel">> => string()
 %% }
 -type waterfall_chart_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_gradient_color() :: #{
+%%   <<"DefaultOpacity">> => float(),
+%%   <<"NullDataSettings">> => geospatial_null_data_settings(),
+%%   <<"NullDataVisibility">> => list(any()),
+%%   <<"StepColors">> => list(geospatial_gradient_step_color()())
+%% }
+-type geospatial_gradient_color() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1149,6 +1204,7 @@
 %%   <<"Height">> => string(),
 %%   <<"Position">> => list(any()),
 %%   <<"Title">> => label_options(),
+%%   <<"ValueFontConfiguration">> => font_configuration(),
 %%   <<"Visibility">> => list(any()),
 %%   <<"Width">> => string()
 %% }
@@ -1301,6 +1357,15 @@
 %%   <<"Source">> => logical_table_source()
 %% }
 -type logical_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_map_style() :: #{
+%%   <<"BackgroundColor">> => string(),
+%%   <<"BaseMapStyle">> => list(any()),
+%%   <<"BaseMapVisibility">> => list(any())
+%% }
+-type geospatial_map_style() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1484,6 +1549,13 @@
 
 
 %% Example:
+%% plugin_visual_sort_configuration() :: #{
+%%   <<"PluginVisualTableQuerySort">> => plugin_visual_table_query_sort()
+%% }
+-type plugin_visual_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% schedule_refresh_on_entity() :: #{
 %%   <<"DayOfMonth">> => string(),
 %%   <<"DayOfWeek">> => list(any())
@@ -1584,6 +1656,10 @@
 %% }
 -type analysis_source_template() :: #{binary() => any()}.
 
+%% Example:
+%% describe_dashboards_q_a_configuration_request() :: #{}
+-type describe_dashboards_q_a_configuration_request() :: #{}.
+
 
 %% Example:
 %% update_refresh_schedule_response() :: #{
@@ -1593,6 +1669,14 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% spatial_static_file() :: #{
+%%   <<"Source">> => static_file_source(),
+%%   <<"StaticFileId">> => string()
+%% }
+-type spatial_static_file() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_ingestion_request() :: #{}
@@ -1612,7 +1696,8 @@
 %%   <<"FilterGroups">> => list(filter_group()()),
 %%   <<"Options">> => asset_options(),
 %%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
-%%   <<"Sheets">> => list(sheet_definition()())
+%%   <<"Sheets">> => list(sheet_definition()()),
+%%   <<"StaticFiles">> => list(static_file()())
 %% }
 -type dashboard_version_definition() :: #{binary() => any()}.
 
@@ -2104,6 +2189,19 @@
 
 
 %% Example:
+%% sheet_image() :: #{
+%%   <<"Actions">> => list(image_custom_action()()),
+%%   <<"ImageContentAltText">> => string(),
+%%   <<"Interactions">> => image_interaction_options(),
+%%   <<"Scaling">> => sheet_image_scaling_configuration(),
+%%   <<"SheetImageId">> => string(),
+%%   <<"Source">> => sheet_image_source(),
+%%   <<"Tooltip">> => sheet_image_tooltip_configuration()
+%% }
+-type sheet_image() :: #{binary() => any()}.
+
+
+%% Example:
 %% lookback_window() :: #{
 %%   <<"ColumnName">> => string(),
 %%   <<"Size">> => float(),
@@ -2285,6 +2383,8 @@
 %%   <<"Arn">> => string(),
 %%   <<"CapacityRegion">> => string(),
 %%   <<"CreationStatus">> => list(any()),
+%%   <<"IamIdentityCenterApplicationArn">> => string(),
+%%   <<"IamIdentityCenterInstanceArn">> => string(),
 %%   <<"IdentityStore">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"NamespaceError">> => namespace_error()
@@ -2320,6 +2420,7 @@
 %% font_configuration() :: #{
 %%   <<"FontColor">> => string(),
 %%   <<"FontDecoration">> => list(any()),
+%%   <<"FontFamily">> => string(),
 %%   <<"FontSize">> => font_size(),
 %%   <<"FontStyle">> => list(any()),
 %%   <<"FontWeight">> => font_weight()
@@ -2466,6 +2567,17 @@
 
 
 %% Example:
+%% geospatial_layer_map_configuration() :: #{
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"MapLayers">> => list(geospatial_layer_item()()),
+%%   <<"MapState">> => geospatial_map_state(),
+%%   <<"MapStyle">> => geospatial_map_style()
+%% }
+-type geospatial_layer_map_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_unavailable_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string(),
@@ -2515,6 +2627,22 @@
 
 
 %% Example:
+%% geospatial_static_file_source() :: #{
+%%   <<"StaticFileId">> => string()
+%% }
+-type geospatial_static_file_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_color() :: #{
+%%   <<"Categorical">> => geospatial_categorical_color(),
+%%   <<"Gradient">> => geospatial_gradient_color(),
+%%   <<"Solid">> => geospatial_solid_color()
+%% }
+-type geospatial_color() :: #{binary() => any()}.
+
+
+%% Example:
 %% sheet_element_rendering_rule() :: #{
 %%   <<"ConfigurationOverrides">> => sheet_element_configuration_overrides(),
 %%   <<"Expression">> => string()
@@ -2530,6 +2658,16 @@
 %%   <<"Status">> => integer()
 %% }
 -type start_asset_bundle_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_topics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicSummaryList">> => list(topic_summary()())
+%% }
+-type search_topics_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2609,6 +2747,13 @@
 %%   <<"Type">> => list(any())
 %% }
 -type input_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_point_style() :: #{
+%%   <<"CircleSymbolStyle">> => geospatial_circle_symbol_style()
+%% }
+-type geospatial_point_style() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2730,6 +2875,13 @@
 %%   <<"RevokePermissions">> => list(resource_permission()())
 %% }
 -type update_analysis_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_point_layer() :: #{
+%%   <<"Style">> => geospatial_point_style()
+%% }
+-type geospatial_point_layer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2919,6 +3071,7 @@
 
 %% Example:
 %% create_topic_request() :: #{
+%%   <<"FolderArns">> => list(string()()),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Topic">> := topic_details(),
 %%   <<"TopicId">> := string()
@@ -3008,6 +3161,15 @@
 %%   <<"Status">> => integer()
 %% }
 -type search_data_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_topics_request() :: #{
+%%   <<"Filters">> := list(topic_search_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_topics_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3316,6 +3478,15 @@
 
 
 %% Example:
+%% geospatial_layer_join_definition() :: #{
+%%   <<"ColorField">> => geospatial_layer_color_field(),
+%%   <<"DatasetKeyField">> => unaggregated_field(),
+%%   <<"ShapeKeyField">> => string()
+%% }
+-type geospatial_layer_join_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% unaggregated_field() :: #{
 %%   <<"Column">> => column_identifier(),
 %%   <<"FieldId">> => string(),
@@ -3413,7 +3584,8 @@
 %%   <<"Options">> => asset_options(),
 %%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
 %%   <<"QueryExecutionOptions">> => query_execution_options(),
-%%   <<"Sheets">> => list(sheet_definition()())
+%%   <<"Sheets">> => list(sheet_definition()()),
+%%   <<"StaticFiles">> => list(static_file()())
 %% }
 -type template_version_definition() :: #{binary() => any()}.
 
@@ -3450,6 +3622,7 @@
 %%   <<"ContentType">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"FilterControls">> => list(filter_control()()),
+%%   <<"Images">> => list(sheet_image()()),
 %%   <<"Layouts">> => list(layout()()),
 %%   <<"Name">> => string(),
 %%   <<"ParameterControls">> => list(parameter_control()()),
@@ -3566,6 +3739,13 @@
 %% Example:
 %% delete_role_custom_permission_request() :: #{}
 -type delete_role_custom_permission_request() :: #{}.
+
+
+%% Example:
+%% geospatial_line_layer() :: #{
+%%   <<"Style">> => geospatial_line_style()
+%% }
+-type geospatial_line_layer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3717,6 +3897,16 @@
 
 
 %% Example:
+%% geospatial_categorical_color() :: #{
+%%   <<"CategoryDataColors">> => list(geospatial_categorical_data_color()()),
+%%   <<"DefaultOpacity">> => float(),
+%%   <<"NullDataSettings">> => geospatial_null_data_settings(),
+%%   <<"NullDataVisibility">> => list(any())
+%% }
+-type geospatial_categorical_color() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_theme_permissions_response() :: #{
 %%   <<"Permissions">> => list(resource_permission()()),
 %%   <<"RequestId">> => string(),
@@ -3744,6 +3934,13 @@
 %%   <<"DisplayOptions">> => relative_date_time_control_display_options()
 %% }
 -type default_relative_date_time_control_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_interaction_options() :: #{
+%%   <<"ImageMenuOption">> => image_menu_option()
+%% }
+-type image_interaction_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3846,6 +4043,13 @@
 
 
 %% Example:
+%% geospatial_line_style() :: #{
+%%   <<"LineSymbolStyle">> => geospatial_line_symbol_style()
+%% }
+-type geospatial_line_style() :: #{binary() => any()}.
+
+
+%% Example:
 %% template_error() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => list(any()),
@@ -3868,6 +4072,14 @@
 %%   <<"CustomPermissionsName">> := string()
 %% }
 -type update_user_custom_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_categorical_data_color() :: #{
+%%   <<"Color">> => string(),
+%%   <<"DataValue">> => string()
+%% }
+-type geospatial_categorical_data_color() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3972,7 +4184,8 @@
 %%   <<"Options">> => asset_options(),
 %%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
 %%   <<"QueryExecutionOptions">> => query_execution_options(),
-%%   <<"Sheets">> => list(sheet_definition()())
+%%   <<"Sheets">> => list(sheet_definition()()),
+%%   <<"StaticFiles">> => list(static_file()())
 %% }
 -type analysis_definition() :: #{binary() => any()}.
 
@@ -4124,6 +4337,13 @@
 %%   <<"Type">> => list(any())
 %% }
 -type parameter_list_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% static_file_url_source_options() :: #{
+%%   <<"Url">> => string()
+%% }
+-type static_file_url_source_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4338,6 +4558,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_image_tooltip_text() :: #{
+%%   <<"PlainText">> => string()
+%% }
+-type sheet_image_tooltip_text() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4786,6 +5013,22 @@
 
 
 %% Example:
+%% geospatial_line_width() :: #{
+%%   <<"LineWidth">> => float()
+%% }
+-type geospatial_line_width() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_visual_configuration() :: #{
+%%   <<"FieldWells">> => list(plugin_visual_field_well()()),
+%%   <<"SortConfiguration">> => plugin_visual_sort_configuration(),
+%%   <<"VisualOptions">> => plugin_visual_options()
+%% }
+-type plugin_visual_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_analyses_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -4843,9 +5086,17 @@
 %%   <<"ConditionalFormatting">> => pivot_table_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type pivot_table_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_image_static_file_source() :: #{
+%%   <<"StaticFileId">> => string()
+%% }
+-type sheet_image_static_file_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5028,6 +5279,18 @@
 
 
 %% Example:
+%% layer_map_visual() :: #{
+%%   <<"ChartConfiguration">> => geospatial_layer_map_configuration(),
+%%   <<"DataSetIdentifier">> => string(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
+%%   <<"VisualId">> => string()
+%% }
+-type layer_map_visual() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_data_sets_request() :: #{
 %%   <<"Filters">> := list(data_set_search_filter()()),
 %%   <<"MaxResults">> => integer(),
@@ -5121,6 +5384,14 @@
 
 
 %% Example:
+%% static_file() :: #{
+%%   <<"ImageStaticFile">> => image_static_file(),
+%%   <<"SpatialStaticFile">> => spatial_static_file()
+%% }
+-type static_file() :: #{binary() => any()}.
+
+
+%% Example:
 %% filled_map_sort_configuration() :: #{
 %%   <<"CategorySort">> => list(field_sort_options()())
 %% }
@@ -5171,9 +5442,28 @@
 %% }
 -type geospatial_window_options() :: #{binary() => any()}.
 
+
+%% Example:
+%% geospatial_layer_color_field() :: #{
+%%   <<"ColorDimensionsFields">> => list(dimension_field()()),
+%%   <<"ColorValuesFields">> => list(measure_field()())
+%% }
+-type geospatial_layer_color_field() :: #{binary() => any()}.
+
 %% Example:
 %% describe_template_alias_request() :: #{}
 -type describe_template_alias_request() :: #{}.
+
+
+%% Example:
+%% layer_custom_action() :: #{
+%%   <<"ActionOperations">> => list(layer_custom_action_operation()()),
+%%   <<"CustomActionId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Trigger">> => list(any())
+%% }
+-type layer_custom_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5203,6 +5493,7 @@
 %%   <<"ConditionalFormatting">> => k_p_i_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type k_p_i_visual() :: #{binary() => any()}.
@@ -5309,6 +5600,7 @@
 %%   <<"ConditionalFormatting">> => table_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type table_visual() :: #{binary() => any()}.
@@ -5536,6 +5828,16 @@
 
 
 %% Example:
+%% geospatial_circle_symbol_style() :: #{
+%%   <<"CircleRadius">> => geospatial_circle_radius(),
+%%   <<"FillColor">> => geospatial_color(),
+%%   <<"StrokeColor">> => geospatial_color(),
+%%   <<"StrokeWidth">> => geospatial_line_width()
+%% }
+-type geospatial_circle_symbol_style() :: #{binary() => any()}.
+
+
+%% Example:
 %% project_operation() :: #{
 %%   <<"ProjectedColumns">> => list(string()())
 %% }
@@ -5569,6 +5871,13 @@
 %%   <<"VersionDescription">> => string()
 %% }
 -type create_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_visual_options() :: #{
+%%   <<"VisualProperties">> => list(plugin_visual_property()())
+%% }
+-type plugin_visual_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5648,6 +5957,7 @@
 %%   <<"ChartConfiguration">> => sankey_diagram_chart_configuration(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type sankey_diagram_visual() :: #{binary() => any()}.
@@ -5780,11 +6090,31 @@
 
 
 %% Example:
+%% image_custom_action() :: #{
+%%   <<"ActionOperations">> => list(image_custom_action_operation()()),
+%%   <<"CustomActionId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Trigger">> => list(any())
+%% }
+-type image_custom_action() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_user_custom_permission_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
 -type delete_user_custom_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboards_q_a_configuration_response() :: #{
+%%   <<"DashboardsQAStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_dashboards_q_a_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_refresh_schedule_request() :: #{}
@@ -5878,6 +6208,15 @@
 
 
 %% Example:
+%% describe_dashboards_q_a_configuration_response() :: #{
+%%   <<"DashboardsQAStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_dashboards_q_a_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_brand_request() :: #{
 %%   <<"BrandDefinition">> => brand_definition(),
 %%   <<"Tags">> => list(tag()())
@@ -5912,12 +6251,20 @@
 
 
 %% Example:
+%% geospatial_data_source_item() :: #{
+%%   <<"StaticFileDataSource">> => geospatial_static_file_source()
+%% }
+-type geospatial_data_source_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% tree_map_visual() :: #{
 %%   <<"Actions">> => list(visual_custom_action()()),
 %%   <<"ChartConfiguration">> => tree_map_configuration(),
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type tree_map_visual() :: #{binary() => any()}.
@@ -5938,6 +6285,13 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type asset_bundle_import_job_data_set_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_polygon_layer() :: #{
+%%   <<"Style">> => geospatial_polygon_style()
+%% }
+-type geospatial_polygon_layer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6023,6 +6377,31 @@
 %% Example:
 %% delete_folder_request() :: #{}
 -type delete_folder_request() :: #{}.
+
+
+%% Example:
+%% static_file_s3_source_options() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ObjectKey">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type static_file_s3_source_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_custom_action_operation() :: #{
+%%   <<"NavigationOperation">> => custom_action_navigation_operation(),
+%%   <<"SetParametersOperation">> => custom_action_set_parameters_operation(),
+%%   <<"URLOperation">> => custom_action_url_operation()
+%% }
+-type image_custom_action_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_image_scaling_configuration() :: #{
+%%   <<"ScalingType">> => list(any())
+%% }
+-type sheet_image_scaling_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6268,6 +6647,21 @@
 %%   <<"BrandArn">> := string()
 %% }
 -type update_brand_assignment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_layer_item() :: #{
+%%   <<"Actions">> => list(layer_custom_action()()),
+%%   <<"DataSource">> => geospatial_data_source_item(),
+%%   <<"JoinDefinition">> => geospatial_layer_join_definition(),
+%%   <<"Label">> => string(),
+%%   <<"LayerDefinition">> => geospatial_layer_definition(),
+%%   <<"LayerId">> => string(),
+%%   <<"LayerType">> => list(any()),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type geospatial_layer_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6808,6 +7202,14 @@
 
 
 %% Example:
+%% static_file_source() :: #{
+%%   <<"S3Options">> => static_file_s3_source_options(),
+%%   <<"UrlOptions">> => static_file_url_source_options()
+%% }
+-type static_file_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% null_value_format_configuration() :: #{
 %%   <<"NullString">> => string()
 %% }
@@ -7106,6 +7508,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type pie_chart_visual() :: #{binary() => any()}.
@@ -7282,12 +7685,21 @@
 
 
 %% Example:
+%% geospatial_map_state() :: #{
+%%   <<"Bounds">> => geospatial_coordinate_bounds(),
+%%   <<"MapNavigation">> => list(any())
+%% }
+-type geospatial_map_state() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_content_visual() :: #{
 %%   <<"Actions">> => list(visual_custom_action()()),
 %%   <<"ChartConfiguration">> => custom_content_configuration(),
 %%   <<"DataSetIdentifier">> => string(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type custom_content_visual() :: #{binary() => any()}.
@@ -7347,6 +7759,14 @@
 %%   <<"Value">> => float()
 %% }
 -type numeric_equality_drill_down_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_image_tooltip_configuration() :: #{
+%%   <<"TooltipText">> => sheet_image_tooltip_text(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type sheet_image_tooltip_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7533,6 +7953,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type funnel_chart_visual() :: #{binary() => any()}.
@@ -7558,6 +7979,13 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_analyses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboards_q_a_configuration_request() :: #{
+%%   <<"DashboardsQAStatus">> := list(any())
+%% }
+-type update_dashboards_q_a_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7612,6 +8040,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type line_chart_visual() :: #{binary() => any()}.
@@ -7769,6 +8198,13 @@
 
 
 %% Example:
+%% geospatial_null_data_settings() :: #{
+%%   <<"SymbolStyle">> => geospatial_null_symbol_style()
+%% }
+-type geospatial_null_data_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_create_topic_reviewed_answer_request() :: #{
 %%   <<"Answers">> := list(create_topic_reviewed_answer()())
 %% }
@@ -7812,6 +8248,15 @@
 
 
 %% Example:
+%% geospatial_polygon_symbol_style() :: #{
+%%   <<"FillColor">> => geospatial_color(),
+%%   <<"StrokeColor">> => geospatial_color(),
+%%   <<"StrokeWidth">> => geospatial_line_width()
+%% }
+-type geospatial_polygon_symbol_style() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_source() :: #{
 %%   <<"Body">> => binary(),
 %%   <<"S3Uri">> => string()
@@ -7833,6 +8278,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type geospatial_map_visual() :: #{binary() => any()}.
@@ -7997,6 +8443,13 @@
 
 
 %% Example:
+%% geospatial_polygon_style() :: #{
+%%   <<"PolygonSymbolStyle">> => geospatial_polygon_symbol_style()
+%% }
+-type geospatial_polygon_style() :: #{binary() => any()}.
+
+
+%% Example:
 %% column_configuration() :: #{
 %%   <<"ColorsConfiguration">> => colors_configuration(),
 %%   <<"Column">> => column_identifier(),
@@ -8116,6 +8569,14 @@
 %%   <<"Status">> => integer()
 %% }
 -type delete_group_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_gradient_step_color() :: #{
+%%   <<"Color">> => string(),
+%%   <<"DataValue">> => float()
+%% }
+-type geospatial_gradient_step_color() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8311,6 +8772,7 @@
 %%   <<"ConditionalFormatting">> => filled_map_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type filled_map_visual() :: #{binary() => any()}.
@@ -8352,9 +8814,18 @@
 %%   <<"ConditionalFormatting">> => gauge_chart_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type gauge_chart_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_visual_table_query_sort() :: #{
+%%   <<"ItemsLimitConfiguration">> => plugin_visual_items_limit_configuration(),
+%%   <<"RowSort">> => list(field_sort_options()())
+%% }
+-type plugin_visual_table_query_sort() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8391,6 +8862,7 @@
 %%   <<"ChartConfiguration">> => histogram_configuration(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type histogram_visual() :: #{binary() => any()}.
@@ -8672,9 +9144,18 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type waterfall_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_visual_property() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type plugin_visual_property() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8876,6 +9357,7 @@
 
 %% Example:
 %% sheet() :: #{
+%%   <<"Images">> => list(sheet_image()()),
 %%   <<"Name">> => string(),
 %%   <<"SheetId">> => string()
 %% }
@@ -8904,6 +9386,14 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_custom_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_static_file() :: #{
+%%   <<"Source">> => static_file_source(),
+%%   <<"StaticFileId">> => string()
+%% }
+-type image_static_file() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -8993,6 +9483,13 @@
 %%   <<"Show">> => boolean()
 %% }
 -type border_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_visual_items_limit_configuration() :: #{
+%%   <<"ItemsLimit">> => float()
+%% }
+-type plugin_visual_items_limit_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9224,6 +9721,14 @@
 
 
 %% Example:
+%% geospatial_line_symbol_style() :: #{
+%%   <<"FillColor">> => geospatial_color(),
+%%   <<"LineWidth">> => geospatial_line_width()
+%% }
+-type geospatial_line_symbol_style() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_namespaces_response() :: #{
 %%   <<"Namespaces">> => list(namespace_info_v2()()),
 %%   <<"NextToken">> => string(),
@@ -9380,6 +9885,16 @@
 %%   <<"WeightSort">> => list(field_sort_options()())
 %% }
 -type sankey_diagram_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer_custom_action_operation() :: #{
+%%   <<"FilterOperation">> => custom_action_filter_operation(),
+%%   <<"NavigationOperation">> => custom_action_navigation_operation(),
+%%   <<"SetParametersOperation">> => custom_action_set_parameters_operation(),
+%%   <<"URLOperation">> => custom_action_url_operation()
+%% }
+-type layer_custom_action_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9954,6 +10469,18 @@
 
 
 %% Example:
+%% plugin_visual() :: #{
+%%   <<"ChartConfiguration">> => plugin_visual_configuration(),
+%%   <<"PluginArn">> => string(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
+%%   <<"VisualId">> => string()
+%% }
+-type plugin_visual() :: #{binary() => any()}.
+
+
+%% Example:
 %% anonymous_user_embedding_experience_configuration() :: #{
 %%   <<"Dashboard">> => anonymous_user_dashboard_embedding_configuration(),
 %%   <<"DashboardVisual">> => anonymous_user_dashboard_visual_embedding_configuration(),
@@ -10199,9 +10726,11 @@
 %%   <<"HistogramVisual">> => histogram_visual(),
 %%   <<"InsightVisual">> => insight_visual(),
 %%   <<"KPIVisual">> => k_p_i_visual(),
+%%   <<"LayerMapVisual">> => layer_map_visual(),
 %%   <<"LineChartVisual">> => line_chart_visual(),
 %%   <<"PieChartVisual">> => pie_chart_visual(),
 %%   <<"PivotTableVisual">> => pivot_table_visual(),
+%%   <<"PluginVisual">> => plugin_visual(),
 %%   <<"RadarChartVisual">> => radar_chart_visual(),
 %%   <<"SankeyDiagramVisual">> => sankey_diagram_visual(),
 %%   <<"ScatterPlotVisual">> => scatter_plot_visual(),
@@ -10388,6 +10917,7 @@
 
 %% Example:
 %% font_size() :: #{
+%%   <<"Absolute">> => string(),
 %%   <<"Relative">> => list(any())
 %% }
 -type font_size() :: #{binary() => any()}.
@@ -10546,6 +11076,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type combo_chart_visual() :: #{binary() => any()}.
@@ -10708,6 +11239,13 @@
 %%   <<"Key">> => string()
 %% }
 -type manifest_file_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_circle_radius() :: #{
+%%   <<"Radius">> => float()
+%% }
+-type geospatial_circle_radius() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11066,6 +11604,7 @@
 %%   <<"InsightConfiguration">> => insight_configuration(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type insight_visual() :: #{binary() => any()}.
@@ -11163,6 +11702,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type scatter_plot_visual() :: #{binary() => any()}.
@@ -11179,6 +11719,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type heat_map_visual() :: #{binary() => any()}.
@@ -11379,6 +11920,15 @@
 
 
 %% Example:
+%% geospatial_null_symbol_style() :: #{
+%%   <<"FillColor">> => string(),
+%%   <<"StrokeColor">> => string(),
+%%   <<"StrokeWidth">> => float()
+%% }
+-type geospatial_null_symbol_style() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_role_custom_permission_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -11551,6 +12101,14 @@
 %% }
 -type create_group_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% geospatial_solid_color() :: #{
+%%   <<"Color">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type geospatial_solid_color() :: #{binary() => any()}.
+
 %% Example:
 %% describe_theme_alias_request() :: #{}
 -type describe_theme_alias_request() :: #{}.
@@ -11601,6 +12159,13 @@
 %%   <<"Values">> => list(measure_field()())
 %% }
 -type box_plot_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_image_source() :: #{
+%%   <<"SheetImageStaticFileSource">> => sheet_image_static_file_source()
+%% }
+-type sheet_image_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11837,6 +12402,7 @@
 %%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualContentAltText">> => string(),
 %%   <<"VisualId">> => string()
 %% }
 -type word_cloud_visual() :: #{binary() => any()}.
@@ -12551,6 +13117,14 @@
     unsupported_user_edition_exception() | 
     internal_failure_exception().
 
+-type describe_dashboards_q_a_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type describe_data_set_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -13210,6 +13784,14 @@
     resource_unavailable_exception() | 
     internal_failure_exception().
 
+-type search_topics_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
 -type start_asset_bundle_export_job_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -13365,6 +13947,14 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboards_q_a_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_failure_exception().
 
 -type update_data_set_errors() ::
@@ -16567,6 +17157,43 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), "/result"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an existing dashboard QA configuration.
+-spec describe_dashboards_q_a_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_dashboards_q_a_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboards_q_a_configuration_errors(), tuple()}.
+describe_dashboards_q_a_configuration(Client, AwsAccountId)
+  when is_map(Client) ->
+    describe_dashboards_q_a_configuration(Client, AwsAccountId, #{}, #{}).
+
+-spec describe_dashboards_q_a_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_dashboards_q_a_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboards_q_a_configuration_errors(), tuple()}.
+describe_dashboards_q_a_configuration(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dashboards_q_a_configuration(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_dashboards_q_a_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dashboards_q_a_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboards_q_a_configuration_errors(), tuple()}.
+describe_dashboards_q_a_configuration(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards-qa-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -19859,6 +20486,40 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for any Q topic that exists in an Amazon QuickSight account.
+-spec search_topics(aws_client:aws_client(), binary() | list(), search_topics_request()) ->
+    {ok, search_topics_response(), tuple()} |
+    {error, any()} |
+    {error, search_topics_errors(), tuple()}.
+search_topics(Client, AwsAccountId, Input) ->
+    search_topics(Client, AwsAccountId, Input, []).
+
+-spec search_topics(aws_client:aws_client(), binary() | list(), search_topics_request(), proplists:proplist()) ->
+    {ok, search_topics_response(), tuple()} |
+    {error, any()} |
+    {error, search_topics_errors(), tuple()}.
+search_topics(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/topics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts an Asset Bundle export job.
 %%
 %% An Asset Bundle export job exports specified Amazon QuickSight assets. You
@@ -20623,6 +21284,40 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a Dashboard QA configuration.
+-spec update_dashboards_q_a_configuration(aws_client:aws_client(), binary() | list(), update_dashboards_q_a_configuration_request()) ->
+    {ok, update_dashboards_q_a_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboards_q_a_configuration_errors(), tuple()}.
+update_dashboards_q_a_configuration(Client, AwsAccountId, Input) ->
+    update_dashboards_q_a_configuration(Client, AwsAccountId, Input, []).
+
+-spec update_dashboards_q_a_configuration(aws_client:aws_client(), binary() | list(), update_dashboards_q_a_configuration_request(), proplists:proplist()) ->
+    {ok, update_dashboards_q_a_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboards_q_a_configuration_errors(), tuple()}.
+update_dashboards_q_a_configuration(Client, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards-qa-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

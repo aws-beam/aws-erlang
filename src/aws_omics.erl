@@ -56,6 +56,8 @@
          delete_run_cache/4,
          delete_run_group/3,
          delete_run_group/4,
+         delete_s3_access_policy/3,
+         delete_s3_access_policy/4,
          delete_sequence_store/3,
          delete_sequence_store/4,
          delete_share/3,
@@ -112,6 +114,9 @@
          get_run_task/3,
          get_run_task/5,
          get_run_task/6,
+         get_s3_access_policy/2,
+         get_s3_access_policy/4,
+         get_s3_access_policy/5,
          get_sequence_store/2,
          get_sequence_store/4,
          get_sequence_store/5,
@@ -177,6 +182,8 @@
          list_workflows/1,
          list_workflows/3,
          list_workflows/4,
+         put_s3_access_policy/3,
+         put_s3_access_policy/4,
          start_annotation_import_job/2,
          start_annotation_import_job/3,
          start_read_set_activation_job/3,
@@ -203,6 +210,8 @@
          update_run_cache/4,
          update_run_group/3,
          update_run_group/4,
+         update_sequence_store/3,
+         update_sequence_store/4,
          update_variant_store/3,
          update_variant_store/4,
          update_workflow/3,
@@ -342,6 +351,25 @@
 %%   <<"description">> => string()
 %% }
 -type update_variant_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sequence_store_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
+%%   <<"fallbackLocation">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"s3Access">> => sequence_store_s3_access(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type update_sequence_store_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -632,6 +660,20 @@
 
 
 %% Example:
+%% put_s3_access_policy_request() :: #{
+%%   <<"s3AccessPolicy">> := string()
+%% }
+-type put_s3_access_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_access_config() :: #{
+%%   <<"accessLogLocation">> => string()
+%% }
+-type s3_access_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% workflow_list_item() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
@@ -702,6 +744,10 @@
 %% }
 -type share_details() :: #{binary() => any()}.
 
+%% Example:
+%% get_s3_access_policy_request() :: #{}
+-type get_s3_access_policy_request() :: #{}.
+
 
 %% Example:
 %% annotation_store_version_item() :: #{
@@ -769,6 +815,10 @@
 %% Example:
 %% delete_run_cache_request() :: #{}
 -type delete_run_cache_request() :: #{}.
+
+%% Example:
+%% delete_s3_access_policy_response() :: #{}
+-type delete_s3_access_policy_response() :: #{}.
 
 %% Example:
 %% delete_reference_request() :: #{}
@@ -1041,6 +1091,8 @@
 %%   <<"eTagAlgorithmFamily">> => string(),
 %%   <<"fallbackLocation">> => string(),
 %%   <<"name">> := string(),
+%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"s3AccessConfig">> => s3_access_config(),
 %%   <<"sseConfig">> => sse_config(),
 %%   <<"tags">> => map()
 %% }
@@ -1195,7 +1247,10 @@
 %% sequence_store_filter() :: #{
 %%   <<"createdAfter">> => [non_neg_integer()],
 %%   <<"createdBefore">> => [non_neg_integer()],
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAfter">> => [non_neg_integer()],
+%%   <<"updatedBefore">> => [non_neg_integer()]
 %% }
 -type sequence_store_filter() :: #{binary() => any()}.
 
@@ -1248,8 +1303,12 @@
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
+%%   <<"propagatedSetLevelTags">> => list(string()()),
 %%   <<"s3Access">> => sequence_store_s3_access(),
-%%   <<"sseConfig">> => sse_config()
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type get_sequence_store_response() :: #{binary() => any()}.
 
@@ -1437,6 +1496,18 @@
 
 
 %% Example:
+%% update_sequence_store_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"fallbackLocation">> => string(),
+%%   <<"name">> => string(),
+%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"s3AccessConfig">> => s3_access_config()
+%% }
+-type update_sequence_store_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_read_set_import_job_response() :: #{
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
@@ -1469,6 +1540,15 @@
 %%   <<"partSource">> => string()
 %% }
 -type read_set_upload_part_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_s3_access_policy_response() :: #{
+%%   <<"s3AccessPointArn">> => string(),
+%%   <<"storeId">> => string(),
+%%   <<"storeType">> => list(any())
+%% }
+-type put_s3_access_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1604,7 +1684,11 @@
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"sseConfig">> => sse_config()
+%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"s3Access">> => sequence_store_s3_access(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
 %% }
 -type create_sequence_store_response() :: #{binary() => any()}.
 
@@ -1695,6 +1779,7 @@
 
 %% Example:
 %% sequence_store_s3_access() :: #{
+%%   <<"accessLogLocation">> => string(),
 %%   <<"s3AccessPointArn">> => string(),
 %%   <<"s3Uri">> => string()
 %% }
@@ -1995,6 +2080,10 @@
 %% delete_reference_store_request() :: #{}
 -type delete_reference_store_request() :: #{}.
 
+%% Example:
+%% delete_s3_access_policy_request() :: #{}
+-type delete_s3_access_policy_request() :: #{}.
+
 
 %% Example:
 %% multipart_read_set_upload_list_item() :: #{
@@ -2114,6 +2203,17 @@
 %% Example:
 %% get_annotation_import_request() :: #{}
 -type get_annotation_import_request() :: #{}.
+
+
+%% Example:
+%% get_s3_access_policy_response() :: #{
+%%   <<"s3AccessPointArn">> => string(),
+%%   <<"s3AccessPolicy">> => string(),
+%%   <<"storeId">> => string(),
+%%   <<"storeType">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_s3_access_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_reference_response() :: #{}
@@ -2498,7 +2598,10 @@
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"sseConfig">> => sse_config()
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type sequence_store_detail() :: #{binary() => any()}.
 
@@ -2749,6 +2852,15 @@
     conflict_exception() | 
     request_timeout_exception().
 
+-type delete_s3_access_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    not_supported_operation_exception() | 
+    request_timeout_exception().
+
 -type delete_sequence_store_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2919,6 +3031,16 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    request_timeout_exception().
+
+-type get_s3_access_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    not_supported_operation_exception() | 
     request_timeout_exception().
 
 -type get_sequence_store_errors() ::
@@ -3148,6 +3270,15 @@
     conflict_exception() | 
     request_timeout_exception().
 
+-type put_s3_access_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    not_supported_operation_exception() | 
+    request_timeout_exception().
+
 -type start_annotation_import_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3260,6 +3391,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type update_sequence_store_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
     request_timeout_exception().
@@ -4150,6 +4290,40 @@ delete_run_group(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an access policy for the specified store.
+-spec delete_s3_access_policy(aws_client:aws_client(), binary() | list(), delete_s3_access_policy_request()) ->
+    {ok, delete_s3_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_s3_access_policy_errors(), tuple()}.
+delete_s3_access_policy(Client, S3AccessPointArn, Input) ->
+    delete_s3_access_policy(Client, S3AccessPointArn, Input, []).
+
+-spec delete_s3_access_policy(aws_client:aws_client(), binary() | list(), delete_s3_access_policy_request(), proplists:proplist()) ->
+    {ok, delete_s3_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_s3_access_policy_errors(), tuple()}.
+delete_s3_access_policy(Client, S3AccessPointArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/s3accesspolicy/", aws_util:encode_uri(S3AccessPointArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a sequence store.
 -spec delete_sequence_store(aws_client:aws_client(), binary() | list(), delete_sequence_store_request()) ->
     {ok, delete_sequence_store_response(), tuple()} |
@@ -4904,6 +5078,43 @@ get_run_task(Client, Id, TaskId, QueryMap, HeadersMap)
 get_run_task(Client, Id, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/run/", aws_util:encode_uri(Id), "/task/", aws_util:encode_uri(TaskId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves details about an access policy on a given store.
+-spec get_s3_access_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_s3_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_s3_access_policy_errors(), tuple()}.
+get_s3_access_policy(Client, S3AccessPointArn)
+  when is_map(Client) ->
+    get_s3_access_policy(Client, S3AccessPointArn, #{}, #{}).
+
+-spec get_s3_access_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_s3_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_s3_access_policy_errors(), tuple()}.
+get_s3_access_policy(Client, S3AccessPointArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_s3_access_policy(Client, S3AccessPointArn, QueryMap, HeadersMap, []).
+
+-spec get_s3_access_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_s3_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_s3_access_policy_errors(), tuple()}.
+get_s3_access_policy(Client, S3AccessPointArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/s3accesspolicy/", aws_util:encode_uri(S3AccessPointArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5957,6 +6168,40 @@ list_workflows(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Adds an access policy to the specified store.
+-spec put_s3_access_policy(aws_client:aws_client(), binary() | list(), put_s3_access_policy_request()) ->
+    {ok, put_s3_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_s3_access_policy_errors(), tuple()}.
+put_s3_access_policy(Client, S3AccessPointArn, Input) ->
+    put_s3_access_policy(Client, S3AccessPointArn, Input, []).
+
+-spec put_s3_access_policy(aws_client:aws_client(), binary() | list(), put_s3_access_policy_request(), proplists:proplist()) ->
+    {ok, put_s3_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_s3_access_policy_errors(), tuple()}.
+put_s3_access_policy(Client, S3AccessPointArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/s3accesspolicy/", aws_util:encode_uri(S3AccessPointArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts an annotation import job.
 -spec start_annotation_import_job(aws_client:aws_client(), start_annotation_import_request()) ->
     {ok, start_annotation_import_response(), tuple()} |
@@ -6409,6 +6654,40 @@ update_run_group(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/runGroup/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update one or more parameters for the sequence store.
+-spec update_sequence_store(aws_client:aws_client(), binary() | list(), update_sequence_store_request()) ->
+    {ok, update_sequence_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_sequence_store_errors(), tuple()}.
+update_sequence_store(Client, Id, Input) ->
+    update_sequence_store(Client, Id, Input, []).
+
+-spec update_sequence_store(aws_client:aws_client(), binary() | list(), update_sequence_store_request(), proplists:proplist()) ->
+    {ok, update_sequence_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_sequence_store_errors(), tuple()}.
+update_sequence_store(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/sequencestore/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

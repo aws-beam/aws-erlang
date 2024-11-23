@@ -150,6 +150,8 @@
          associate_software_token/3,
          change_password/2,
          change_password/3,
+         complete_web_authn_registration/2,
+         complete_web_authn_registration/3,
          confirm_device/2,
          confirm_device/3,
          confirm_forgot_password/2,
@@ -160,6 +162,8 @@
          create_group/3,
          create_identity_provider/2,
          create_identity_provider/3,
+         create_managed_login_branding/2,
+         create_managed_login_branding/3,
          create_resource_server/2,
          create_resource_server/3,
          create_user_import_job/2,
@@ -174,6 +178,8 @@
          delete_group/3,
          delete_identity_provider/2,
          delete_identity_provider/3,
+         delete_managed_login_branding/2,
+         delete_managed_login_branding/3,
          delete_resource_server/2,
          delete_resource_server/3,
          delete_user/2,
@@ -186,8 +192,14 @@
          delete_user_pool_client/3,
          delete_user_pool_domain/2,
          delete_user_pool_domain/3,
+         delete_web_authn_credential/2,
+         delete_web_authn_credential/3,
          describe_identity_provider/2,
          describe_identity_provider/3,
+         describe_managed_login_branding/2,
+         describe_managed_login_branding/3,
+         describe_managed_login_branding_by_client/2,
+         describe_managed_login_branding_by_client/3,
          describe_resource_server/2,
          describe_resource_server/3,
          describe_risk_configuration/2,
@@ -222,6 +234,8 @@
          get_user/3,
          get_user_attribute_verification_code/2,
          get_user_attribute_verification_code/3,
+         get_user_auth_factors/2,
+         get_user_auth_factors/3,
          get_user_pool_mfa_config/2,
          get_user_pool_mfa_config/3,
          global_sign_out/2,
@@ -248,6 +262,8 @@
          list_users/3,
          list_users_in_group/2,
          list_users_in_group/3,
+         list_web_authn_credentials/2,
+         list_web_authn_credentials/3,
          resend_confirmation_code/2,
          resend_confirmation_code/3,
          respond_to_auth_challenge/2,
@@ -270,6 +286,8 @@
          sign_up/3,
          start_user_import_job/2,
          start_user_import_job/3,
+         start_web_authn_registration/2,
+         start_web_authn_registration/3,
          stop_user_import_job/2,
          stop_user_import_job/3,
          tag_resource/2,
@@ -284,6 +302,8 @@
          update_group/3,
          update_identity_provider/2,
          update_identity_provider/3,
+         update_managed_login_branding/2,
+         update_managed_login_branding/3,
          update_resource_server/2,
          update_resource_server/3,
          update_user_attributes/2,
@@ -304,9 +324,16 @@
 
 %% Example:
 %% create_user_pool_domain_response() :: #{
-%%   <<"CloudFrontDomain">> => string()
+%%   <<"CloudFrontDomain">> => string(),
+%%   <<"ManagedLoginVersion">> => integer()
 %% }
 -type create_user_pool_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_authn_credential_response() :: #{
+
+%% }
+-type delete_web_authn_credential_response() :: #{binary() => any()}.
 
 %% Example:
 %% authentication_result_type() :: #{
@@ -350,9 +377,17 @@
 %%   <<"AuthParameters">> => map(),
 %%   <<"ClientId">> := string(),
 %%   <<"ClientMetadata">> => map(),
+%%   <<"Session">> => string(),
 %%   <<"UserContextData">> => user_context_data_type()
 %% }
 -type initiate_auth_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_web_authn_registration_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"Credential">> := any()
+%% }
+-type complete_web_authn_registration_request() :: #{binary() => any()}.
 
 %% Example:
 %% admin_update_device_status_response() :: #{
@@ -365,6 +400,12 @@
 
 %% }
 -type set_user_mfa_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_challenge_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_challenge_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_devices_request() :: #{
@@ -387,6 +428,7 @@
 %%   <<"LambdaConfig">> => lambda_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"Policies">> => user_pool_policy_type(),
+%%   <<"PoolName">> => string(),
 %%   <<"SmsAuthenticationMessage">> => string(),
 %%   <<"SmsConfiguration">> => sms_configuration_type(),
 %%   <<"SmsVerificationMessage">> => string(),
@@ -394,6 +436,7 @@
 %%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
 %%   <<"UserPoolId">> := string(),
 %%   <<"UserPoolTags">> => map(),
+%%   <<"UserPoolTier">> => list(any()),
 %%   <<"VerificationMessageTemplate">> => verification_message_template_type()
 %% }
 -type update_user_pool_request() :: #{binary() => any()}.
@@ -445,6 +488,14 @@
 %%   <<"Timezone">> => string()
 %% }
 -type event_context_data_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_login_branding_request() :: #{
+%%   <<"ManagedLoginBrandingId">> := string(),
+%%   <<"ReturnMergedResources">> => boolean(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_managed_login_branding_request() :: #{binary() => any()}.
 
 %% Example:
 %% s3_configuration_type() :: #{
@@ -546,14 +597,24 @@
 
 %% Example:
 %% confirm_sign_up_response() :: #{
-
+%%   <<"Session">> => string()
 %% }
 -type confirm_sign_up_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_auth_factors_response() :: #{
+%%   <<"ConfiguredUserAuthFactors">> => list(list(any())()),
+%%   <<"PreferredMfaSetting">> => string(),
+%%   <<"UserMFASettingList">> => list(string()()),
+%%   <<"Username">> => string()
+%% }
+-type get_user_auth_factors_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_user_pool_domain_request() :: #{
 %%   <<"CustomDomainConfig">> => custom_domain_config_type(),
 %%   <<"Domain">> := string(),
+%%   <<"ManagedLoginVersion">> => integer(),
 %%   <<"UserPoolId">> := string()
 %% }
 -type create_user_pool_domain_request() :: #{binary() => any()}.
@@ -569,7 +630,8 @@
 
 %% Example:
 %% update_user_pool_domain_response() :: #{
-%%   <<"CloudFrontDomain">> => string()
+%%   <<"CloudFrontDomain">> => string(),
+%%   <<"ManagedLoginVersion">> => integer()
 %% }
 -type update_user_pool_domain_response() :: #{binary() => any()}.
 
@@ -598,6 +660,12 @@
 
 %% }
 -type admin_set_user_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_login_branding_response() :: #{
+%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% }
+-type describe_managed_login_branding_response() :: #{binary() => any()}.
 
 %% Example:
 %% admin_link_provider_for_user_request() :: #{
@@ -685,6 +753,12 @@
 -type associate_software_token_response() :: #{binary() => any()}.
 
 %% Example:
+%% start_web_authn_registration_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type start_web_authn_registration_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_identity_provider_response() :: #{
 %%   <<"IdentityProvider">> => identity_provider_type()
 %% }
@@ -702,6 +776,13 @@
 %%   <<"MinValue">> => string()
 %% }
 -type number_attribute_constraints_type() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_configuration_type() :: #{
+%%   <<"RelyingPartyId">> => string(),
+%%   <<"UserVerification">> => list(any())
+%% }
+-type web_authn_configuration_type() :: #{binary() => any()}.
 
 %% Example:
 %% admin_add_user_to_group_request() :: #{
@@ -879,6 +960,12 @@
 -type admin_create_user_response() :: #{binary() => any()}.
 
 %% Example:
+%% web_authn_relying_party_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_relying_party_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
 %% describe_resource_server_request() :: #{
 %%   <<"Identifier">> := string(),
 %%   <<"UserPoolId">> := string()
@@ -919,6 +1006,14 @@
 -type software_token_mfa_settings_type() :: #{binary() => any()}.
 
 %% Example:
+%% describe_managed_login_branding_by_client_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ReturnMergedResources">> => boolean(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_managed_login_branding_by_client_request() :: #{binary() => any()}.
+
+%% Example:
 %% admin_list_groups_for_user_request() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -926,6 +1021,12 @@
 %%   <<"Username">> := string()
 %% }
 -type admin_list_groups_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_web_authn_registration_response() :: #{
+%%   <<"CredentialCreationOptions">> => any()
+%% }
+-type start_web_authn_registration_response() :: #{binary() => any()}.
 
 %% Example:
 %% attribute_type() :: #{
@@ -973,6 +1074,12 @@
 -type admin_create_user_config_type() :: #{binary() => any()}.
 
 %% Example:
+%% sign_in_policy_type() :: #{
+%%   <<"AllowedFirstAuthFactors">> => list(list(any())())
+%% }
+-type sign_in_policy_type() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"TagKeys">> := list(string()())
@@ -984,7 +1091,8 @@
 %%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
-%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type()
+%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
+%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
 %% }
 -type set_user_pool_mfa_config_response() :: #{binary() => any()}.
 
@@ -1033,6 +1141,7 @@
 %% update_user_pool_domain_request() :: #{
 %%   <<"CustomDomainConfig">> := custom_domain_config_type(),
 %%   <<"Domain">> := string(),
+%%   <<"ManagedLoginVersion">> => integer(),
 %%   <<"UserPoolId">> := string()
 %% }
 -type update_user_pool_domain_request() :: #{binary() => any()}.
@@ -1055,7 +1164,8 @@
 
 %% Example:
 %% user_pool_policy_type() :: #{
-%%   <<"PasswordPolicy">> => password_policy_type()
+%%   <<"PasswordPolicy">> => password_policy_type(),
+%%   <<"SignInPolicy">> => sign_in_policy_type()
 %% }
 -type user_pool_policy_type() :: #{binary() => any()}.
 
@@ -1165,6 +1275,16 @@
 -type update_device_status_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_managed_login_branding_request() :: #{
+%%   <<"Assets">> => list(asset_type()()),
+%%   <<"ManagedLoginBrandingId">> => string(),
+%%   <<"Settings">> => any(),
+%%   <<"UseCognitoProvidedValues">> => boolean(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type update_managed_login_branding_request() :: #{binary() => any()}.
+
+%% Example:
 %% admin_user_global_sign_out_response() :: #{
 
 %% }
@@ -1206,6 +1326,13 @@
 -type device_type() :: #{binary() => any()}.
 
 %% Example:
+%% delete_managed_login_branding_request() :: #{
+%%   <<"ManagedLoginBrandingId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_managed_login_branding_request() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1216,9 +1343,16 @@
 %%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
-%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type()
+%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
+%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
 %% }
 -type get_user_pool_mfa_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_auth_factors_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type get_user_auth_factors_request() :: #{binary() => any()}.
 
 %% Example:
 %% revoke_token_response() :: #{
@@ -1295,6 +1429,12 @@
 -type respond_to_auth_challenge_request() :: #{binary() => any()}.
 
 %% Example:
+%% tier_change_not_allowed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tier_change_not_allowed_exception() :: #{binary() => any()}.
+
+%% Example:
 %% set_ui_customization_response() :: #{
 %%   <<"UICustomization">> => ui_customization_type()
 %% }
@@ -1314,6 +1454,12 @@
 %%   <<"IpAddress">> => string()
 %% }
 -type user_context_data_type() :: #{binary() => any()}.
+
+%% Example:
+%% managed_login_branding_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type managed_login_branding_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% string_attribute_constraints_type() :: #{
@@ -1376,6 +1522,12 @@
 -type password_reset_required_exception() :: #{binary() => any()}.
 
 %% Example:
+%% web_authn_client_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_client_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
 %% admin_set_user_password_response() :: #{
 
 %% }
@@ -1424,6 +1576,7 @@
 %%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
 %%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
 %%   <<"UserPoolTags">> => map(),
+%%   <<"UserPoolTier">> => list(any()),
 %%   <<"UsernameAttributes">> => list(list(any())()),
 %%   <<"UsernameConfiguration">> => username_configuration_type(),
 %%   <<"VerificationMessageTemplate">> => verification_message_template_type()
@@ -1496,6 +1649,12 @@
 -type get_identity_provider_by_identifier_response() :: #{binary() => any()}.
 
 %% Example:
+%% web_authn_configuration_missing_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_configuration_missing_exception() :: #{binary() => any()}.
+
+%% Example:
 %% admin_disable_provider_for_user_response() :: #{
 
 %% }
@@ -1519,6 +1678,24 @@
 %%   <<"message">> => string()
 %% }
 -type user_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% feature_unavailable_in_tier_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type feature_unavailable_in_tier_exception() :: #{binary() => any()}.
+
+%% Example:
+%% managed_login_branding_type() :: #{
+%%   <<"Assets">> => list(asset_type()()),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"ManagedLoginBrandingId">> => string(),
+%%   <<"Settings">> => any(),
+%%   <<"UseCognitoProvidedValues">> => boolean(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type managed_login_branding_type() :: #{binary() => any()}.
 
 %% Example:
 %% password_policy_type() :: #{
@@ -1577,6 +1754,7 @@
 %%   <<"ClientId">> := string(),
 %%   <<"ClientMetadata">> => map(),
 %%   <<"ContextData">> => context_data_type(),
+%%   <<"Session">> => string(),
 %%   <<"UserPoolId">> := string()
 %% }
 -type admin_initiate_auth_request() :: #{binary() => any()}.
@@ -1753,9 +1931,15 @@
 -type event_feedback_type() :: #{binary() => any()}.
 
 %% Example:
+%% describe_managed_login_branding_by_client_response() :: #{
+%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% }
+-type describe_managed_login_branding_by_client_response() :: #{binary() => any()}.
+
+%% Example:
 %% change_password_request() :: #{
 %%   <<"AccessToken">> := string(),
-%%   <<"PreviousPassword">> := string(),
+%%   <<"PreviousPassword">> => string(),
 %%   <<"ProposedPassword">> := string()
 %% }
 -type change_password_request() :: #{binary() => any()}.
@@ -1788,11 +1972,23 @@
 %% Example:
 %% initiate_auth_response() :: #{
 %%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"AvailableChallenges">> => list(list(any())()),
 %%   <<"ChallengeName">> => list(any()),
 %%   <<"ChallengeParameters">> => map(),
 %%   <<"Session">> => string()
 %% }
 -type initiate_auth_response() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_credential_description() :: #{
+%%   <<"AuthenticatorAttachment">> => string(),
+%%   <<"AuthenticatorTransports">> => list(string()()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CredentialId">> => string(),
+%%   <<"FriendlyCredentialName">> => string(),
+%%   <<"RelyingPartyId">> => string()
+%% }
+-type web_authn_credential_description() :: #{binary() => any()}.
 
 %% Example:
 %% get_device_request() :: #{
@@ -1819,17 +2015,29 @@
 -type admin_set_user_password_request() :: #{binary() => any()}.
 
 %% Example:
+%% web_authn_credential_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_credential_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
 %% describe_user_pool_domain_response() :: #{
 %%   <<"DomainDescription">> => domain_description_type()
 %% }
 -type describe_user_pool_domain_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_managed_login_branding_response() :: #{
+%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% }
+-type create_managed_login_branding_response() :: #{binary() => any()}.
+
+%% Example:
 %% sign_up_request() :: #{
 %%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
 %%   <<"ClientId">> := string(),
 %%   <<"ClientMetadata">> => map(),
-%%   <<"Password">> := string(),
+%%   <<"Password">> => string(),
 %%   <<"SecretHash">> => string(),
 %%   <<"UserAttributes">> => list(attribute_type()()),
 %%   <<"UserContextData">> => user_context_data_type(),
@@ -1980,6 +2188,12 @@
 -type create_identity_provider_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_managed_login_branding_response() :: #{
+%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% }
+-type update_managed_login_branding_response() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_user_pool_configuration_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1994,6 +2208,7 @@
 %% Example:
 %% sign_up_response() :: #{
 %%   <<"CodeDeliveryDetails">> => code_delivery_details_type(),
+%%   <<"Session">> => string(),
 %%   <<"UserConfirmed">> => boolean(),
 %%   <<"UserSub">> => string()
 %% }
@@ -2029,7 +2244,8 @@
 
 %% Example:
 %% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
+%%   <<"message">> => string(),
+%%   <<"reasonCode">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
@@ -2045,7 +2261,8 @@
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
 %%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
-%%   <<"UserPoolId">> := string()
+%%   <<"UserPoolId">> := string(),
+%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
 %% }
 -type set_user_pool_mfa_config_request() :: #{binary() => any()}.
 
@@ -2132,6 +2349,16 @@
 %%   <<"Username">> := string()
 %% }
 -type update_auth_event_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% asset_type() :: #{
+%%   <<"Bytes">> => binary(),
+%%   <<"Category">> => list(any()),
+%%   <<"ColorMode">> => list(any()),
+%%   <<"Extension">> => list(any()),
+%%   <<"ResourceId">> => string()
+%% }
+-type asset_type() :: #{binary() => any()}.
 
 %% Example:
 %% pre_token_generation_version_config_type() :: #{
@@ -2245,6 +2472,12 @@
 %%   <<"message">> => string()
 %% }
 -type enable_software_token_mfa_exception() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_not_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_not_enabled_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_group_response() :: #{
@@ -2392,6 +2625,16 @@
 -type forgot_password_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_managed_login_branding_request() :: #{
+%%   <<"Assets">> => list(asset_type()()),
+%%   <<"ClientId">> := string(),
+%%   <<"Settings">> => any(),
+%%   <<"UseCognitoProvidedValues">> => boolean(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_managed_login_branding_request() :: #{binary() => any()}.
+
+%% Example:
 %% schema_attribute_type() :: #{
 %%   <<"AttributeDataType">> => list(any()),
 %%   <<"DeveloperOnlyAttribute">> => boolean(),
@@ -2402,6 +2645,20 @@
 %%   <<"StringAttributeConstraints">> => string_attribute_constraints_type()
 %% }
 -type schema_attribute_type() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_authn_credentials_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_web_authn_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_origin_not_allowed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_origin_not_allowed_exception() :: #{binary() => any()}.
 
 %% Example:
 %% account_takeover_action_type() :: #{
@@ -2469,6 +2726,7 @@
 %%   <<"ConfirmationCode">> := string(),
 %%   <<"ForceAliasCreation">> => boolean(),
 %%   <<"SecretHash">> => string(),
+%%   <<"Session">> => string(),
 %%   <<"UserContextData">> => user_context_data_type(),
 %%   <<"Username">> := string()
 %% }
@@ -2492,6 +2750,13 @@
 -type admin_forget_device_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_web_authn_credential_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"CredentialId">> := string()
+%% }
+-type delete_web_authn_credential_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_groups_request() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -2504,6 +2769,13 @@
 %%   <<"RiskConfiguration">> => risk_configuration_type()
 %% }
 -type set_risk_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_authn_credentials_response() :: #{
+%%   <<"Credentials">> => list(web_authn_credential_description()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_web_authn_credentials_response() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_sms_role_trust_relationship_exception() :: #{
@@ -2540,6 +2812,7 @@
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"SmsConfigurationFailure">> => string(),
+%%   <<"UserPoolTier">> => list(any()),
 %%   <<"EmailVerificationSubject">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"AutoVerifiedAttributes">> => list(list(any())()),
@@ -2664,6 +2937,12 @@
 -type mfa_method_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% complete_web_authn_registration_response() :: #{
+
+%% }
+-type complete_web_authn_registration_response() :: #{binary() => any()}.
+
+%% Example:
 %% internal_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2747,6 +3026,7 @@
 %%   <<"CloudFrontDistribution">> => string(),
 %%   <<"CustomDomainConfig">> => custom_domain_config_type(),
 %%   <<"Domain">> => string(),
+%%   <<"ManagedLoginVersion">> => integer(),
 %%   <<"S3Bucket">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"UserPoolId">> => string(),
@@ -3057,6 +3337,20 @@
     password_history_policy_violation_exception() | 
     user_not_confirmed_exception().
 
+-type complete_web_authn_registration_errors() ::
+    internal_error_exception() | 
+    web_authn_origin_not_allowed_exception() | 
+    limit_exceeded_exception() | 
+    web_authn_not_enabled_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    web_authn_credential_not_supported_exception() | 
+    web_authn_client_mismatch_exception() | 
+    too_many_requests_exception() | 
+    web_authn_relying_party_mismatch_exception() | 
+    forbidden_exception() | 
+    web_authn_challenge_not_found_exception().
+
 -type confirm_device_errors() ::
     internal_error_exception() | 
     invalid_password_exception() | 
@@ -3126,6 +3420,16 @@
     too_many_requests_exception() | 
     duplicate_provider_exception().
 
+-type create_managed_login_branding_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    managed_login_branding_exists_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type create_resource_server_errors() ::
     internal_error_exception() | 
     limit_exceeded_exception() | 
@@ -3150,6 +3454,8 @@
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     user_pool_tagging_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    tier_change_not_allowed_exception() | 
     invalid_sms_role_access_policy_exception() | 
     too_many_requests_exception() | 
     invalid_email_role_access_policy_exception().
@@ -3169,6 +3475,7 @@
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
+    feature_unavailable_in_tier_exception() | 
     resource_not_found_exception().
 
 -type delete_group_errors() ::
@@ -3183,6 +3490,14 @@
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
     unsupported_identity_provider_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_managed_login_branding_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3238,7 +3553,28 @@
     not_authorized_exception() | 
     resource_not_found_exception().
 
+-type delete_web_authn_credential_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception().
+
 -type describe_identity_provider_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_managed_login_branding_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_managed_login_branding_by_client_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
@@ -3399,6 +3735,17 @@
     invalid_email_role_access_policy_exception() | 
     user_not_confirmed_exception().
 
+-type get_user_auth_factors_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_not_found_exception() | 
+    password_reset_required_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    user_not_confirmed_exception().
+
 -type get_user_pool_mfa_config_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
@@ -3508,6 +3855,12 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type list_web_authn_credentials_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    forbidden_exception().
+
 -type resend_confirmation_code_errors() ::
     unexpected_lambda_exception() | 
     internal_error_exception() | 
@@ -3563,6 +3916,7 @@
     internal_error_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
+    feature_unavailable_in_tier_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
 
@@ -3599,6 +3953,7 @@
     concurrent_modification_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
+    feature_unavailable_in_tier_exception() | 
     resource_not_found_exception() | 
     invalid_sms_role_access_policy_exception() | 
     too_many_requests_exception().
@@ -3638,6 +3993,16 @@
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
+
+-type start_web_authn_registration_errors() ::
+    internal_error_exception() | 
+    limit_exceeded_exception() | 
+    web_authn_not_enabled_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    web_authn_configuration_missing_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 -type stop_user_import_job_errors() ::
     internal_error_exception() | 
@@ -3698,6 +4063,14 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type update_managed_login_branding_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type update_resource_server_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
@@ -3733,6 +4106,8 @@
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     user_pool_tagging_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    tier_change_not_allowed_exception() | 
     resource_not_found_exception() | 
     invalid_sms_role_access_policy_exception() | 
     too_many_requests_exception() | 
@@ -3753,6 +4128,7 @@
     internal_error_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
+    feature_unavailable_in_tier_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
 
@@ -3923,7 +4299,7 @@ admin_confirm_sign_up(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -3947,9 +4323,18 @@ admin_confirm_sign_up(Client, Input, Options)
 %% for the `MessageAction' parameter, and Amazon Cognito won't send
 %% any email.
 %%
-%% In either case, the user will be in the `FORCE_CHANGE_PASSWORD' state
-%% until
-%% they sign in and change their password.
+%% In either case, if the user has a password, they will be in the
+%% `FORCE_CHANGE_PASSWORD' state until they sign in and set their
+%% password.
+%% Your invitation message template must have the `{####}' password
+%% placeholder
+%% if your users have passwords. If your template doesn't have this
+%% placeholder, Amazon Cognito
+%% doesn't deliver the invitation message. In this case, you must update
+%% your message
+%% template and resend the password with a new `AdminCreateUser' request
+%% with a
+%% `MessageAction' value of `RESEND'.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4256,7 +4641,9 @@ admin_get_device(Client, Input, Options)
 %% administrator.
 %%
 %% Works on any
-%% user.
+%% user. This operation contributes to your monthly active user (MAU) count
+%% for the purpose
+%% of billing.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4304,7 +4691,7 @@ admin_get_user(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4404,7 +4791,7 @@ admin_link_provider_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminLinkProviderForUser">>, Input, Options).
 
-%% @doc Lists devices, as an administrator.
+%% @doc Lists a user's registered devices.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4557,7 +4944,7 @@ admin_remove_user_from_group(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4644,7 +5031,7 @@ admin_reset_user_password(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -4919,7 +5306,7 @@ admin_update_device_status(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -5123,6 +5510,33 @@ change_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangePassword">>, Input, Options).
 
+%% @doc Completes registration of a passkey authenticator for the current
+%% user.
+%%
+%% Your
+%% application provides data from a successful registration request with the
+%% data from the
+%% output of a StartWebAuthnRegistration:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_StartWebAuthnRegistration.html.
+%%
+%% Authorize this action with a signed-in user's access token. It must
+%% include the scope `aws.cognito.signin.user.admin'.
+-spec complete_web_authn_registration(aws_client:aws_client(), complete_web_authn_registration_request()) ->
+    {ok, complete_web_authn_registration_response(), tuple()} |
+    {error, any()} |
+    {error, complete_web_authn_registration_errors(), tuple()}.
+complete_web_authn_registration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    complete_web_authn_registration(Client, Input, []).
+
+-spec complete_web_authn_registration(aws_client:aws_client(), complete_web_authn_registration_request(), proplists:proplist()) ->
+    {ok, complete_web_authn_registration_response(), tuple()} |
+    {error, any()} |
+    {error, complete_web_authn_registration_errors(), tuple()}.
+complete_web_authn_registration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CompleteWebAuthnRegistration">>, Input, Options).
+
 %% @doc Confirms tracking of the device.
 %%
 %% This API call is the call that begins device
@@ -5301,6 +5715,64 @@ create_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIdentityProvider">>, Input, Options).
 
+%% @doc Creates a new set of branding settings for a user pool style and
+%% associates it with an
+%% app client.
+%%
+%% This operation is the programmatic option for the creation of a new style
+%% in
+%% the branding designer.
+%%
+%% Provides values for UI customization in a `Settings' JSON object and
+%% image
+%% files in an `Assets' array. To send the JSON object `Document'
+%% type parameter in `Settings', you might need to update to the most
+%% recent
+%% version of your Amazon Web Services SDK.
+%%
+%% This operation has a 2-megabyte request-size limit and include the CSS
+%% settings and
+%% image assets for your app client. Your branding settings might exceed 2MB
+%% in size. Amazon Cognito
+%% doesn't require that you pass all parameters in one request and
+%% preserves existing
+%% style settings that you don't specify. If your request is larger than
+%% 2MB, separate it
+%% into multiple requests, each with a size smaller than the limit.
+%%
+%% For more information, see API and SDK operations for managed login
+%% branding:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/managed-login-brandingdesigner.html#branding-designer-api
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_managed_login_branding(aws_client:aws_client(), create_managed_login_branding_request()) ->
+    {ok, create_managed_login_branding_response(), tuple()} |
+    {error, any()} |
+    {error, create_managed_login_branding_errors(), tuple()}.
+create_managed_login_branding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_managed_login_branding(Client, Input, []).
+
+-spec create_managed_login_branding(aws_client:aws_client(), create_managed_login_branding_request(), proplists:proplist()) ->
+    {ok, create_managed_login_branding_response(), tuple()} |
+    {error, any()} |
+    {error, create_managed_login_branding_errors(), tuple()}.
+create_managed_login_branding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateManagedLoginBranding">>, Input, Options).
+
 %% @doc Creates a new OAuth2.0 resource server and defines custom scopes
 %% within it.
 %%
@@ -5381,7 +5853,7 @@ create_user_import_job(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -5472,6 +5944,10 @@ create_user_pool_client(Client, Input, Options)
 
 %% @doc Creates a new domain for a user pool.
 %%
+%% The domain hosts user pool domain services like
+%% managed login, the hosted UI (classic), and the user pool authorization
+%% server.
+%%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
 %% this operation, you must use IAM credentials to authorize requests, and
@@ -5536,6 +6012,40 @@ delete_identity_provider(Client, Input)
 delete_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentityProvider">>, Input, Options).
+
+%% @doc Deletes a managed login branding style.
+%%
+%% When you delete a style, you delete the
+%% branding association for an app client and restore it to default settings.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec delete_managed_login_branding(aws_client:aws_client(), delete_managed_login_branding_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_managed_login_branding_errors(), tuple()}.
+delete_managed_login_branding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_managed_login_branding(Client, Input, []).
+
+-spec delete_managed_login_branding(aws_client:aws_client(), delete_managed_login_branding_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_managed_login_branding_errors(), tuple()}.
+delete_managed_login_branding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteManagedLoginBranding">>, Input, Options).
 
 %% @doc Deletes a resource server.
 -spec delete_resource_server(aws_client:aws_client(), delete_resource_server_request()) ->
@@ -5665,6 +6175,28 @@ delete_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolDomain">>, Input, Options).
 
+%% @doc Deletes a registered passkey, or webauthN, device for the currently
+%% signed-in
+%% user.
+%%
+%% Authorize this action with a signed-in user's access token. It must
+%% include the scope `aws.cognito.signin.user.admin'.
+-spec delete_web_authn_credential(aws_client:aws_client(), delete_web_authn_credential_request()) ->
+    {ok, delete_web_authn_credential_response(), tuple()} |
+    {error, any()} |
+    {error, delete_web_authn_credential_errors(), tuple()}.
+delete_web_authn_credential(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_web_authn_credential(Client, Input, []).
+
+-spec delete_web_authn_credential(aws_client:aws_client(), delete_web_authn_credential_request(), proplists:proplist()) ->
+    {ok, delete_web_authn_credential_response(), tuple()} |
+    {error, any()} |
+    {error, delete_web_authn_credential_errors(), tuple()}.
+delete_web_authn_credential(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWebAuthnCredential">>, Input, Options).
+
 %% @doc Gets information about a specific IdP.
 -spec describe_identity_provider(aws_client:aws_client(), describe_identity_provider_request()) ->
     {ok, describe_identity_provider_response(), tuple()} |
@@ -5681,6 +6213,44 @@ describe_identity_provider(Client, Input)
 describe_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIdentityProvider">>, Input, Options).
+
+%% @doc When given the ID of a managed login branding style, returns detailed
+%% information
+%% about the style.
+-spec describe_managed_login_branding(aws_client:aws_client(), describe_managed_login_branding_request()) ->
+    {ok, describe_managed_login_branding_response(), tuple()} |
+    {error, any()} |
+    {error, describe_managed_login_branding_errors(), tuple()}.
+describe_managed_login_branding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_managed_login_branding(Client, Input, []).
+
+-spec describe_managed_login_branding(aws_client:aws_client(), describe_managed_login_branding_request(), proplists:proplist()) ->
+    {ok, describe_managed_login_branding_response(), tuple()} |
+    {error, any()} |
+    {error, describe_managed_login_branding_errors(), tuple()}.
+describe_managed_login_branding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeManagedLoginBranding">>, Input, Options).
+
+%% @doc When given the ID of a user pool app client, returns detailed
+%% information about the
+%% style assigned to the app client.
+-spec describe_managed_login_branding_by_client(aws_client:aws_client(), describe_managed_login_branding_by_client_request()) ->
+    {ok, describe_managed_login_branding_by_client_response(), tuple()} |
+    {error, any()} |
+    {error, describe_managed_login_branding_by_client_errors(), tuple()}.
+describe_managed_login_branding_by_client(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_managed_login_branding_by_client(Client, Input, []).
+
+-spec describe_managed_login_branding_by_client(aws_client:aws_client(), describe_managed_login_branding_by_client_request(), proplists:proplist()) ->
+    {ok, describe_managed_login_branding_by_client_response(), tuple()} |
+    {error, any()} |
+    {error, describe_managed_login_branding_by_client_errors(), tuple()}.
+describe_managed_login_branding_by_client(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeManagedLoginBrandingByClient">>, Input, Options).
 
 %% @doc Describes a resource server.
 -spec describe_resource_server(aws_client:aws_client(), describe_resource_server_request()) ->
@@ -5903,7 +6473,7 @@ forget_device(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6156,7 +6726,7 @@ get_user(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6184,6 +6754,32 @@ get_user_attribute_verification_code(Client, Input)
 get_user_attribute_verification_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserAttributeVerificationCode">>, Input, Options).
+
+%% @doc Lists the authentication options for the currently signed-in user.
+%%
+%% Returns the
+%% following:
+%%
+%% The user's multi-factor authentication (MFA) preferences.
+%%
+%% The user's options in the `USER_AUTH' flow that they can
+%% select in a `SELECT_CHALLENGE' response or request in a
+%% `PREFERRED_CHALLENGE'request.
+-spec get_user_auth_factors(aws_client:aws_client(), get_user_auth_factors_request()) ->
+    {ok, get_user_auth_factors_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_auth_factors_errors(), tuple()}.
+get_user_auth_factors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_user_auth_factors(Client, Input, []).
+
+-spec get_user_auth_factors(aws_client:aws_client(), get_user_auth_factors_request(), proplists:proplist()) ->
+    {ok, get_user_auth_factors_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_auth_factors_errors(), tuple()}.
+get_user_auth_factors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetUserAuthFactors">>, Input, Options).
 
 %% @doc Gets the user pool multi-factor authentication (MFA) configuration.
 -spec get_user_pool_mfa_config(aws_client:aws_client(), get_user_pool_mfa_config_request()) ->
@@ -6297,7 +6893,7 @@ global_sign_out(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6633,6 +7229,25 @@ list_users_in_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsersInGroup">>, Input, Options).
 
+%% @doc Generates a list of the current user's registered passkey, or
+%% webauthN,
+%% credentials.
+-spec list_web_authn_credentials(aws_client:aws_client(), list_web_authn_credentials_request()) ->
+    {ok, list_web_authn_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_authn_credentials_errors(), tuple()}.
+list_web_authn_credentials(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_web_authn_credentials(Client, Input, []).
+
+-spec list_web_authn_credentials(aws_client:aws_client(), list_web_authn_credentials_request(), proplists:proplist()) ->
+    {ok, list_web_authn_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_authn_credentials_errors(), tuple()}.
+list_web_authn_credentials(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWebAuthnCredentials">>, Input, Options).
+
 %% @doc Resends the confirmation (for confirmation of registration) to a
 %% specific user in the
 %% user pool.
@@ -6662,7 +7277,7 @@ list_users_in_group(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6731,7 +7346,7 @@ resend_confirmation_code(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -6920,7 +7535,8 @@ set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserMFAPreference">>, Input, Options).
 
-%% @doc Sets the user pool multi-factor authentication (MFA) configuration.
+%% @doc Sets the user pool multi-factor authentication (MFA) and passkey
+%% configuration.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers
@@ -6937,7 +7553,7 @@ set_user_mfa_preference(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -7033,7 +7649,7 @@ set_user_settings(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -7046,6 +7662,22 @@ set_user_settings(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+%%
+%% You might receive a `LimitExceeded' exception in response to this
+%% request
+%% if you have exceeded a rate quota for email or SMS messages, and if your
+%% user pool
+%% automatically verifies email addresses or phone numbers. When you get this
+%% exception in
+%% the response, the user is successfully created and is in an
+%% `UNCONFIRMED'
+%% state. You can send a new code with the ResendConfirmationCode:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ResendConfirmationCode.html
+%% request, or confirm the user as an administrator
+%% with an
+%% AdminConfirmSignUp:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminConfirmSignUp.html
+%% request.
 -spec sign_up(aws_client:aws_client(), sign_up_request()) ->
     {ok, sign_up_response(), tuple()} |
     {error, any()} |
@@ -7078,6 +7710,39 @@ start_user_import_job(Client, Input)
 start_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartUserImportJob">>, Input, Options).
+
+%% @doc Requests credential creation options from your user pool for
+%% registration of a passkey
+%% authenticator.
+%%
+%% Returns information about the user pool, the user profile, and
+%% authentication requirements. Users must provide this information in their
+%% request to
+%% enroll your application with their passkey provider.
+%%
+%% After users present this data and register with their passkey provider,
+%% return the
+%% response to your user pool in a CompleteWebAuthnRegistration:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CompleteWebAuthnRegistration.html
+%% API request.
+%%
+%% Authorize this action with a signed-in user's access token. It must
+%% include the scope `aws.cognito.signin.user.admin'.
+-spec start_web_authn_registration(aws_client:aws_client(), start_web_authn_registration_request()) ->
+    {ok, start_web_authn_registration_response(), tuple()} |
+    {error, any()} |
+    {error, start_web_authn_registration_errors(), tuple()}.
+start_web_authn_registration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_web_authn_registration(Client, Input, []).
+
+-spec start_web_authn_registration(aws_client:aws_client(), start_web_authn_registration_request(), proplists:proplist()) ->
+    {ok, start_web_authn_registration_response(), tuple()} |
+    {error, any()} |
+    {error, start_web_authn_registration_errors(), tuple()}.
+start_web_authn_registration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartWebAuthnRegistration">>, Input, Options).
 
 %% @doc Stops the user import job.
 -spec stop_user_import_job(aws_client:aws_client(), stop_user_import_job_request()) ->
@@ -7289,6 +7954,59 @@ update_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIdentityProvider">>, Input, Options).
 
+%% @doc Configures the branding settings for a user pool style.
+%%
+%% This operation is the
+%% programmatic option for the configuration of a style in the branding
+%% designer.
+%%
+%% Provides values for UI customization in a `Settings' JSON object and
+%% image
+%% files in an `Assets' array.
+%%
+%% This operation has a 2-megabyte request-size limit and include the CSS
+%% settings and
+%% image assets for your app client. Your branding settings might exceed 2MB
+%% in size. Amazon Cognito
+%% doesn't require that you pass all parameters in one request and
+%% preserves existing
+%% style settings that you don't specify. If your request is larger than
+%% 2MB, separate it
+%% into multiple requests, each with a size smaller than the limit.
+%%
+%% For more information, see API and SDK operations for managed login
+%% branding:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/managed-login-brandingdesigner.html#branding-designer-api.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_managed_login_branding(aws_client:aws_client(), update_managed_login_branding_request()) ->
+    {ok, update_managed_login_branding_response(), tuple()} |
+    {error, any()} |
+    {error, update_managed_login_branding_errors(), tuple()}.
+update_managed_login_branding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_managed_login_branding(Client, Input, []).
+
+-spec update_managed_login_branding(aws_client:aws_client(), update_managed_login_branding_request(), proplists:proplist()) ->
+    {ok, update_managed_login_branding_response(), tuple()} |
+    {error, any()} |
+    {error, update_managed_login_branding_errors(), tuple()}.
+update_managed_login_branding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateManagedLoginBranding">>, Input, Options).
+
 %% @doc Updates the name and scopes of resource server.
 %%
 %% All other fields are read-only.
@@ -7365,7 +8083,7 @@ update_resource_server(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox
@@ -7411,7 +8129,7 @@ update_user_attributes(Client, Input, Options)
 %% in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
-%% Amazon Web Servicesservice,
+%% Amazon Web Services service,
 %% Amazon Simple Notification Service might place your account in the SMS
 %% sandbox. In
 %% sandbox

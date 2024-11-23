@@ -953,6 +953,7 @@
 %%   <<"externalExecutionUrl">> => string(),
 %%   <<"lastStatusChange">> => non_neg_integer(),
 %%   <<"lastUpdatedBy">> => string(),
+%%   <<"logStreamARN">> => string(),
 %%   <<"percentComplete">> => integer(),
 %%   <<"status">> => list(any()),
 %%   <<"summary">> => string(),
@@ -1651,7 +1652,8 @@
 %%   <<"errorDetails">> => error_details(),
 %%   <<"externalExecutionId">> => string(),
 %%   <<"externalExecutionSummary">> => string(),
-%%   <<"externalExecutionUrl">> => string()
+%%   <<"externalExecutionUrl">> => string(),
+%%   <<"logStreamARN">> => string()
 %% }
 -type action_execution_result() :: #{binary() => any()}.
 
