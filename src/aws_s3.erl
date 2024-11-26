@@ -1244,6 +1244,7 @@
 %%   <<"GrantWriteACP">> => string(),
 %%   <<"Expires">> => non_neg_integer(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"IfMatch">> => string(),
 %%   <<"ContentEncoding">> => string(),
 %%   <<"ContentDisposition">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
@@ -3052,6 +3053,7 @@
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"IfMatch">> => string(),
 %%   <<"IfNoneMatch">> => string(),
 %%   <<"MultipartUpload">> => completed_multipart_upload(),
 %%   <<"RequestPayer">> => list(any()),
@@ -3617,6 +3619,7 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"If-Match">>, <<"IfMatch">>},
                        {<<"If-None-Match">>, <<"IfNoneMatch">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
@@ -12445,7 +12448,11 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% When you enable versioning on a bucket for the first time, it might take a
 %% short
-%% amount of time for the change to be fully propagated. We recommend that
+%% amount of time for the change to be fully propagated. While this change is
+%% propagating,
+%% you may encounter intermittent `HTTP 404 NoSuchKey' errors for
+%% requests to
+%% objects created or updated after enabling versioning. We recommend that
 %% you wait for 15
 %% minutes after enabling versioning before issuing write operations
 %% (`PUT' or
@@ -12831,6 +12838,7 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+                       {<<"If-Match">>, <<"IfMatch">>},
                        {<<"x-amz-write-offset-bytes">>, <<"WriteOffsetBytes">>},
                        {<<"Expires">>, <<"Expires">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},

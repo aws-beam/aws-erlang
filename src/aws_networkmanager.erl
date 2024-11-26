@@ -26,6 +26,8 @@
          create_core_network/3,
          create_device/3,
          create_device/4,
+         create_direct_connect_gateway_attachment/2,
+         create_direct_connect_gateway_attachment/3,
          create_global_network/2,
          create_global_network/3,
          create_link/3,
@@ -107,6 +109,9 @@
          get_devices/2,
          get_devices/4,
          get_devices/5,
+         get_direct_connect_gateway_attachment/2,
+         get_direct_connect_gateway_attachment/4,
+         get_direct_connect_gateway_attachment/5,
          get_link_associations/2,
          get_link_associations/4,
          get_link_associations/5,
@@ -199,6 +204,8 @@
          update_core_network/4,
          update_device/4,
          update_device/5,
+         update_direct_connect_gateway_attachment/3,
+         update_direct_connect_gateway_attachment/4,
          update_global_network/3,
          update_global_network/4,
          update_link/4,
@@ -689,6 +696,7 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
+%%   <<"EdgeLocations">> => list(string()()),
 %%   <<"LastModificationErrors">> => list(attachment_error()()),
 %%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"OwnerAccountId">> => string(),
@@ -708,6 +716,10 @@
 %%   <<"Site">> => site()
 %% }
 -type delete_site_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_direct_connect_gateway_attachment_request() :: #{}
+-type get_direct_connect_gateway_attachment_request() :: #{}.
 
 
 %% Example:
@@ -899,10 +911,28 @@
 
 
 %% Example:
+%% get_direct_connect_gateway_attachment_response() :: #{
+%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
+%% }
+-type get_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_route_analysis_response() :: #{
 %%   <<"RouteAnalysis">> => route_analysis()
 %% }
 -type start_route_analysis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_direct_connect_gateway_attachment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"DirectConnectGatewayArn">> := string(),
+%%   <<"EdgeLocations">> := list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1452,6 +1482,13 @@
 
 
 %% Example:
+%% update_direct_connect_gateway_attachment_response() :: #{
+%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
+%% }
+-type update_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Name">> => string()
@@ -1575,6 +1612,13 @@
 
 
 %% Example:
+%% create_direct_connect_gateway_attachment_response() :: #{
+%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
+%% }
+-type create_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_vpc_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
@@ -1675,6 +1719,13 @@
 
 
 %% Example:
+%% update_direct_connect_gateway_attachment_request() :: #{
+%%   <<"EdgeLocations">> => list(string()())
+%% }
+-type update_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_peering_response() :: #{
 %%   <<"Peering">> => peering()
 %% }
@@ -1693,6 +1744,14 @@
 %%   <<"PolicyDocument">> := string()
 %% }
 -type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% direct_connect_gateway_attachment() :: #{
+%%   <<"Attachment">> => attachment(),
+%%   <<"DirectConnectGatewayArn">> => string()
+%% }
+-type direct_connect_gateway_attachment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2421,6 +2480,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_direct_connect_gateway_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_global_network_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2693,6 +2760,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_direct_connect_gateway_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_link_associations_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2933,6 +3007,14 @@
     conflict_exception().
 
 -type update_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_direct_connect_gateway_attachment_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3373,6 +3455,40 @@ create_device(Client, GlobalNetworkId, Input) ->
 create_device(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon Web Services Direct Connect gateway attachment
+-spec create_direct_connect_gateway_attachment(aws_client:aws_client(), create_direct_connect_gateway_attachment_request()) ->
+    {ok, create_direct_connect_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, create_direct_connect_gateway_attachment_errors(), tuple()}.
+create_direct_connect_gateway_attachment(Client, Input) ->
+    create_direct_connect_gateway_attachment(Client, Input, []).
+
+-spec create_direct_connect_gateway_attachment(aws_client:aws_client(), create_direct_connect_gateway_attachment_request(), proplists:proplist()) ->
+    {ok, create_direct_connect_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, create_direct_connect_gateway_attachment_errors(), tuple()}.
+create_direct_connect_gateway_attachment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/direct-connect-gateway-attachments"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4707,6 +4823,44 @@ get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
         {<<"siteId">>, maps:get(<<"siteId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a specific Amazon Web Services Direct
+%% Connect gateway attachment.
+-spec get_direct_connect_gateway_attachment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_direct_connect_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, get_direct_connect_gateway_attachment_errors(), tuple()}.
+get_direct_connect_gateway_attachment(Client, AttachmentId)
+  when is_map(Client) ->
+    get_direct_connect_gateway_attachment(Client, AttachmentId, #{}, #{}).
+
+-spec get_direct_connect_gateway_attachment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_direct_connect_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, get_direct_connect_gateway_attachment_errors(), tuple()}.
+get_direct_connect_gateway_attachment(Client, AttachmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_direct_connect_gateway_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
+
+-spec get_direct_connect_gateway_attachment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_direct_connect_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, get_direct_connect_gateway_attachment_errors(), tuple()}.
+get_direct_connect_gateway_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/direct-connect-gateway-attachments/", aws_util:encode_uri(AttachmentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6106,6 +6260,41 @@ update_device(Client, DeviceId, GlobalNetworkId, Input) ->
 update_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the edge locations associated with an Amazon Web Services
+%% Direct Connect gateway attachment.
+-spec update_direct_connect_gateway_attachment(aws_client:aws_client(), binary() | list(), update_direct_connect_gateway_attachment_request()) ->
+    {ok, update_direct_connect_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, update_direct_connect_gateway_attachment_errors(), tuple()}.
+update_direct_connect_gateway_attachment(Client, AttachmentId, Input) ->
+    update_direct_connect_gateway_attachment(Client, AttachmentId, Input, []).
+
+-spec update_direct_connect_gateway_attachment(aws_client:aws_client(), binary() | list(), update_direct_connect_gateway_attachment_request(), proplists:proplist()) ->
+    {ok, update_direct_connect_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, update_direct_connect_gateway_attachment_errors(), tuple()}.
+update_direct_connect_gateway_attachment(Client, AttachmentId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/direct-connect-gateway-attachments/", aws_util:encode_uri(AttachmentId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

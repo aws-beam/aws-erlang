@@ -303,6 +303,14 @@
 -type create_direct_connect_gateway_result() :: #{binary() => any()}.
 
 %% Example:
+%% associated_core_network() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ownerAccount">> => string()
+%% }
+-type associated_core_network() :: #{binary() => any()}.
+
+%% Example:
 %% create_interconnect_request() :: #{
 %%   <<"bandwidth">> := string(),
 %%   <<"interconnectName">> := string(),
@@ -439,6 +447,7 @@
 %% Example:
 %% direct_connect_gateway_association() :: #{
 %%   <<"allowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()()),
+%%   <<"associatedCoreNetwork">> => associated_core_network(),
 %%   <<"associatedGateway">> => associated_gateway(),
 %%   <<"associationId">> => string(),
 %%   <<"associationState">> => list(any()),
