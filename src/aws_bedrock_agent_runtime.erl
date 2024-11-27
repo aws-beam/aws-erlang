@@ -75,6 +75,14 @@
 
 
 %% Example:
+%% streaming_configurations() :: #{
+%%   <<"applyGuardrailInterval">> => [integer()],
+%%   <<"streamFinalResponse">> => [boolean()]
+%% }
+-type streaming_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% optimize_prompt_response() :: #{
 %%   <<"optimizedPrompt">> => list()
 %% }
@@ -1106,7 +1114,8 @@
 %%   <<"endSession">> => [boolean()],
 %%   <<"inputText">> => string(),
 %%   <<"memoryId">> => string(),
-%%   <<"sessionState">> => session_state()
+%%   <<"sessionState">> => session_state(),
+%%   <<"streamingConfigurations">> => streaming_configurations()
 %% }
 -type invoke_agent_request() :: #{binary() => any()}.
 
@@ -1127,6 +1136,13 @@
 %%   <<"content">> => map()
 %% }
 -type request_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_orchestration_trace_event() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type custom_orchestration_trace_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1205,6 +1221,14 @@
 %%   <<"text">> => string()
 %% }
 -type knowledge_base_lookup_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_orchestration_trace() :: #{
+%%   <<"event">> => custom_orchestration_trace_event(),
+%%   <<"traceId">> => string()
+%% }
+-type custom_orchestration_trace() :: #{binary() => any()}.
 
 
 %% Example:

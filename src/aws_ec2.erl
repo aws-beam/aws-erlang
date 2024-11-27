@@ -3554,6 +3554,7 @@
 %%   <<"NetworkLoadBalancerArns">> => list(string()()),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"SupportedIpAddressTypes">> => list(string()()),
+%%   <<"SupportedRegions">> => list(string()()),
 %%   <<"TagSpecifications">> => list(tag_specification()())
 %% }
 -type create_vpc_endpoint_service_configuration_request() :: #{binary() => any()}.
@@ -3790,6 +3791,7 @@
 %%   <<"ConnectionNotificationState">> => list(any()),
 %%   <<"ConnectionNotificationType">> => list(any()),
 %%   <<"ServiceId">> => string(),
+%%   <<"ServiceRegion">> => string(),
 %%   <<"VpcEndpointId">> => string()
 %% }
 -type connection_notification() :: #{binary() => any()}.
@@ -9619,12 +9621,14 @@
 %%   <<"AddGatewayLoadBalancerArns">> => list(string()()),
 %%   <<"AddNetworkLoadBalancerArns">> => list(string()()),
 %%   <<"AddSupportedIpAddressTypes">> => list(string()()),
+%%   <<"AddSupportedRegions">> => list(string()()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"RemoveGatewayLoadBalancerArns">> => list(string()()),
 %%   <<"RemoveNetworkLoadBalancerArns">> => list(string()()),
 %%   <<"RemovePrivateDnsName">> => boolean(),
 %%   <<"RemoveSupportedIpAddressTypes">> => list(string()()),
+%%   <<"RemoveSupportedRegions">> => list(string()()),
 %%   <<"ServiceId">> := string()
 %% }
 -type modify_vpc_endpoint_service_configuration_request() :: #{binary() => any()}.
@@ -10460,6 +10464,7 @@
 %%   <<"RequesterManaged">> => boolean(),
 %%   <<"RouteTableIds">> => list(string()()),
 %%   <<"ServiceName">> => string(),
+%%   <<"ServiceRegion">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetIds">> => list(string()()),
 %%   <<"Tags">> => list(tag()()),
@@ -11494,6 +11499,7 @@
 %%   <<"PrivateDnsNames">> => list(private_dns_details()()),
 %%   <<"ServiceId">> => string(),
 %%   <<"ServiceName">> => string(),
+%%   <<"ServiceRegion">> => string(),
 %%   <<"ServiceType">> => list(service_type_detail()()),
 %%   <<"SupportedIpAddressTypes">> => list(list(any())()),
 %%   <<"Tags">> => list(tag()()),
@@ -12422,6 +12428,7 @@
 %%   <<"RouteTableIds">> => list(string()()),
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"ServiceName">> := string(),
+%%   <<"ServiceRegion">> => string(),
 %%   <<"SubnetConfigurations">> => list(subnet_configuration()()),
 %%   <<"SubnetIds">> => list(string()()),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
@@ -12528,6 +12535,7 @@
 %%   <<"VpcEndpointConnectionId">> => string(),
 %%   <<"VpcEndpointId">> => string(),
 %%   <<"VpcEndpointOwner">> => string(),
+%%   <<"VpcEndpointRegion">> => string(),
 %%   <<"VpcEndpointState">> => list(any())
 %% }
 -type vpc_endpoint_connection() :: #{binary() => any()}.
@@ -13060,6 +13068,8 @@
 
 %% Example:
 %% snapshot() :: #{
+%%   <<"CompletionDurationMinutes">> => integer(),
+%%   <<"CompletionTime">> => non_neg_integer(),
 %%   <<"DataEncryptionKeyId">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Encrypted">> => boolean(),
@@ -13076,6 +13086,7 @@
 %%   <<"StateMessage">> => string(),
 %%   <<"StorageTier">> => list(any()),
 %%   <<"Tags">> => list(tag()()),
+%%   <<"TransferType">> => list(any()),
 %%   <<"VolumeId">> => string(),
 %%   <<"VolumeSize">> => integer()
 %% }
@@ -14436,6 +14447,7 @@
 
 %% Example:
 %% copy_snapshot_request() :: #{
+%%   <<"CompletionDurationMinutes">> => integer(),
 %%   <<"Description">> => string(),
 %%   <<"DestinationOutpostArn">> => string(),
 %%   <<"DestinationRegion">> => string(),
@@ -14787,7 +14799,8 @@
 %%   <<"Filters">> => list(filter()()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceNames">> => list(string()())
+%%   <<"ServiceNames">> => list(string()()),
+%%   <<"ServiceRegions">> => list(string()())
 %% }
 -type describe_vpc_endpoint_services_request() :: #{binary() => any()}.
 
@@ -18547,11 +18560,13 @@
 %%   <<"PayerResponsibility">> => list(any()),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateDnsNameConfiguration">> => private_dns_name_configuration(),
+%%   <<"RemoteAccessEnabled">> => boolean(),
 %%   <<"ServiceId">> => string(),
 %%   <<"ServiceName">> => string(),
 %%   <<"ServiceState">> => list(any()),
 %%   <<"ServiceType">> => list(service_type_detail()()),
 %%   <<"SupportedIpAddressTypes">> => list(list(any())()),
+%%   <<"SupportedRegions">> => list(supported_region_detail()()),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type service_configuration() :: #{binary() => any()}.
@@ -18720,6 +18735,13 @@
 %%   <<"Return">> => boolean()
 %% }
 -type disassociate_trunk_interface_result() :: #{binary() => any()}.
+
+%% Example:
+%% supported_region_detail() :: #{
+%%   <<"Region">> => string(),
+%%   <<"ServiceState">> => string()
+%% }
+-type supported_region_detail() :: #{binary() => any()}.
 
 %% Example:
 %% processor_info() :: #{
@@ -32406,14 +32428,8 @@ modify_vpc_endpoint_connection_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyVpcEndpointConnectionNotification">>, Input, Options).
 
-%% @doc Modifies the attributes of your VPC endpoint service configuration.
-%%
-%% You can change the
-%% Network Load Balancers or Gateway Load Balancers for your service, and you
-%% can specify whether acceptance is
-%% required for requests to connect to your endpoint service through an
-%% interface VPC
-%% endpoint.
+%% @doc Modifies the attributes of the specified VPC endpoint service
+%% configuration.
 %%
 %% If you set or modify the private DNS name, you must prove that you own the
 %% private DNS

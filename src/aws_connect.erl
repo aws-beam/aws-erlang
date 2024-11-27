@@ -2405,6 +2405,8 @@
 
 %% Example:
 %% segment_attribute_value() :: #{
+%%   <<"ValueInteger">> => integer(),
+%%   <<"ValueMap">> => map(),
 %%   <<"ValueString">> => string()
 %% }
 -type segment_attribute_value() :: #{binary() => any()}.
@@ -5846,7 +5848,6 @@
 %%   <<"Description">> => string(),
 %%   <<"FlowContentSha256">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"IsDefault">> => boolean(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -10619,7 +10620,7 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Creates a new contact.
 -spec create_contact(aws_client:aws_client(), create_contact_request()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
@@ -10770,7 +10771,13 @@ create_contact_flow_version(Client, ContactFlowId, InstanceId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Create new email address in the specified Amazon Connect instance.
+%%
+%% For more information
+%% about email addresses, see Create email addresses:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/create-email-address1.html
+%% in the
+%% Amazon Connect Administrator Guide.
 -spec create_email_address(aws_client:aws_client(), binary() | list(), create_email_address_request()) ->
     {ok, create_email_address_response(), tuple()} |
     {error, any()} |
@@ -11859,7 +11866,7 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Deletes email address from the specified Amazon Connect instance.
 -spec delete_email_address(aws_client:aws_client(), binary() | list(), binary() | list(), delete_email_address_request()) ->
     {ok, delete_email_address_response(), tuple()} |
     {error, any()} |
@@ -12806,8 +12813,8 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
 %% content
-%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. Once a
-%% contact flow is
+%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. After
+%% a flow is
 %% published, `$SAVED' needs to be supplied to view saved content that
 %% has not been
 %% published.
@@ -12857,8 +12864,8 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, O
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
 %% content
-%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. Once a
-%% contact flow is
+%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. After
+%% a flow is
 %% published, `$SAVED' needs to be supplied to view saved content that
 %% has not been
 %% published.
@@ -12898,7 +12905,7 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Describe email address form the specified Amazon Connect instance.
 -spec describe_email_address(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_email_address_response(), tuple()} |
     {error, any()} |
@@ -14952,7 +14959,9 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Provides information about contact tree, a list of associated
+%% contacts with a unique
+%% identifier.
 -spec list_associated_contacts(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_associated_contacts_response(), tuple()} |
     {error, any()} |
@@ -17416,8 +17425,7 @@ search_contact_flow_modules(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches the contact flows in an Amazon Connect instance, with
-%% optional
+%% @doc Searches the flows in an Amazon Connect instance, with optional
 %% filtering.
 -spec search_contact_flows(aws_client:aws_client(), search_contact_flows_request()) ->
     {ok, search_contact_flows_response(), tuple()} |
@@ -17486,7 +17494,7 @@ search_contacts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Searches email address in an instance, with optional filtering.
 -spec search_email_addresses(aws_client:aws_client(), search_email_addresses_request()) ->
     {ok, search_email_addresses_response(), tuple()} |
     {error, any()} |
@@ -17987,7 +17995,15 @@ send_chat_integration_event(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Send outbound email for outbound campaigns.
+%%
+%% For more information about outbound campaigns,
+%% see Set up Amazon Connect outbound campaigns:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/enable-outbound-campaigns.html.
+%%
+%% Only the Amazon Connect outbound campaigns service principal is allowed to
+%% assume a
+%% role in your account and call this API.
 -spec send_outbound_email(aws_client:aws_client(), binary() | list(), send_outbound_email_request()) ->
     {ok, send_outbound_email_response(), tuple()} |
     {error, any()} |
@@ -18025,7 +18041,11 @@ send_outbound_email(Client, InstanceId, Input0, Options0) ->
 %% content.
 %%
 %% You may only use this API to upload attachments to an Amazon Connect Case:
-%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html.
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html
+%% or
+%% Amazon Connect
+%% Email:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html.
 -spec start_attached_file_upload(aws_client:aws_client(), binary() | list(), start_attached_file_upload_request()) ->
     {ok, start_attached_file_upload_response(), tuple()} |
     {error, any()} |
@@ -18287,7 +18307,11 @@ start_contact_streaming(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Creates an inbound email contact and initiates a flow to start the
+%% email contact for the
+%% customer.
+%%
+%% Response of this API provides the ContactId of the email contact created.
 -spec start_email_contact(aws_client:aws_client(), start_email_contact_request()) ->
     {ok, start_email_contact_response(), tuple()} |
     {error, any()} |
@@ -18383,7 +18407,9 @@ start_outbound_chat_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Initiates a flow to send an agent reply or outbound email contact
+%% (created from the
+%% CreateContact API) to a customer.
 -spec start_outbound_email_contact(aws_client:aws_client(), start_outbound_email_contact_request()) ->
     {ok, start_outbound_email_contact_response(), tuple()} |
     {error, any()} |
@@ -18919,9 +18945,9 @@ tag_contact(Client, Input0, Options0) ->
 %%
 %% Some of the supported resource types are agents, routing profiles, queues,
 %% quick connects,
-%% contact flows, agent statuses, hours of operation, phone numbers, security
-%% profiles, and task
-%% templates. For a complete list, see Tagging resources in Amazon Connect:
+%% flows, agent statuses, hours of operation, phone numbers, security
+%% profiles, and task templates.
+%% For a complete list, see Tagging resources in Amazon Connect:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html.
 %%
 %% For sample policies that use tags, see Amazon Connect
@@ -19323,8 +19349,8 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
 %% content
-%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. Once a
-%% contact flow is
+%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. After
+%% a flow is
 %% published, `$SAVED' needs to be supplied to view saved content that
 %% has not been
 %% published.
@@ -19400,8 +19426,8 @@ update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0
 %%
 %% Use the `$SAVED' alias in the request to describe the `SAVED'
 %% content
-%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. Once a
-%% contact flow is
+%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. After
+%% a flow is
 %% published, `$SAVED' needs to be supplied to view saved content that
 %% has not been
 %% published.
@@ -19601,7 +19627,12 @@ update_contact_schedule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Updates an email address metadata.
+%%
+%% For more information about email addresses, see Create email
+%% addresses:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/create-email-address1.html
+%% in the Amazon Connect Administrator Guide.
 -spec update_email_address_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_email_address_metadata_request()) ->
     {ok, update_email_address_metadata_response(), tuple()} |
     {error, any()} |
@@ -20190,7 +20221,7 @@ update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Updates the outbound email address Id for a specified queue.
 -spec update_queue_outbound_email_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_outbound_email_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

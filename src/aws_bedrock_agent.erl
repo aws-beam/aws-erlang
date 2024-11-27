@@ -161,6 +161,13 @@
 
 
 %% Example:
+%% custom_orchestration() :: #{
+%%   <<"executor">> => list()
+%% }
+-type custom_orchestration() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_configuration() :: #{
 %%   <<"type">> => list(any()),
 %%   <<"vectorKnowledgeBaseConfiguration">> => vector_knowledge_base_configuration()
@@ -513,6 +520,7 @@
 %%   <<"agentName">> := string(),
 %%   <<"agentResourceRoleArn">> => string(),
 %%   <<"clientToken">> => string(),
+%%   <<"customOrchestration">> => custom_orchestration(),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"foundationModel">> => string(),
@@ -520,6 +528,7 @@
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
 %%   <<"memoryConfiguration">> => memory_configuration(),
+%%   <<"orchestrationType">> => list(any()),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
 %%   <<"tags">> => map()
 %% }
@@ -1493,6 +1502,7 @@
 %%   <<"agentVersion">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customOrchestration">> => custom_orchestration(),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"failureReasons">> => list(string()()),
@@ -1501,6 +1511,7 @@
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
 %%   <<"memoryConfiguration">> => memory_configuration(),
+%%   <<"orchestrationType">> => list(any()),
 %%   <<"preparedAt">> => non_neg_integer(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
 %%   <<"recommendedActions">> => list(string()()),
@@ -2009,6 +2020,7 @@
 %% update_agent_request() :: #{
 %%   <<"agentName">> := string(),
 %%   <<"agentResourceRoleArn">> := string(),
+%%   <<"customOrchestration">> => custom_orchestration(),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"foundationModel">> := string(),
@@ -2016,6 +2028,7 @@
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
 %%   <<"memoryConfiguration">> => memory_configuration(),
+%%   <<"orchestrationType">> => list(any()),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration()
 %% }
 -type update_agent_request() :: #{binary() => any()}.

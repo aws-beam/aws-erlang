@@ -42,16 +42,23 @@
          batch_update_category/3,
          create_library_item/2,
          create_library_item/3,
+         create_presigned_url/2,
+         create_presigned_url/3,
          create_q_app/2,
          create_q_app/3,
          delete_library_item/2,
          delete_library_item/3,
          delete_q_app/2,
          delete_q_app/3,
+         describe_q_app_permissions/3,
+         describe_q_app_permissions/5,
+         describe_q_app_permissions/6,
          disassociate_library_item_review/2,
          disassociate_library_item_review/3,
          disassociate_q_app_from_user/2,
          disassociate_q_app_from_user/3,
+         export_q_app_session_data/2,
+         export_q_app_session_data/3,
          get_library_item/3,
          get_library_item/5,
          get_library_item/6,
@@ -61,6 +68,9 @@
          get_q_app_session/3,
          get_q_app_session/5,
          get_q_app_session/6,
+         get_q_app_session_metadata/3,
+         get_q_app_session_metadata/5,
+         get_q_app_session_metadata/6,
          import_document/2,
          import_document/3,
          list_categories/2,
@@ -69,6 +79,9 @@
          list_library_items/2,
          list_library_items/4,
          list_library_items/5,
+         list_q_app_session_data/3,
+         list_q_app_session_data/5,
+         list_q_app_session_data/6,
          list_q_apps/2,
          list_q_apps/4,
          list_q_apps/5,
@@ -91,8 +104,12 @@
          update_library_item_metadata/3,
          update_q_app/2,
          update_q_app/3,
+         update_q_app_permissions/2,
+         update_q_app_permissions/3,
          update_q_app_session/2,
-         update_q_app_session/3]).
+         update_q_app_session/3,
+         update_q_app_session_metadata/2,
+         update_q_app_session_metadata/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -146,10 +163,39 @@
 
 
 %% Example:
+%% update_q_app_permissions_output() :: #{
+%%   <<"appId">> => [string()],
+%%   <<"permissions">> => list(permission_output()()),
+%%   <<"resourceArn">> => [string()]
+%% }
+-type update_q_app_permissions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_q_app_session_metadata_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"sessionId">> := string(),
+%%   <<"sessionName">> => string(),
+%%   <<"sharingConfiguration">> := session_sharing_configuration()
+%% }
+-type update_q_app_session_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% import_document_output() :: #{
 %%   <<"fileId">> => [string()]
 %% }
 -type import_document_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_q_app_session_data_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"sessionArn">> => [string()],
+%%   <<"sessionData">> => list(q_app_session_data()()),
+%%   <<"sessionId">> => string()
+%% }
+-type list_q_app_session_data_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -173,6 +219,22 @@
 %%   <<"message">> => [string()]
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_q_app_session_metadata_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"sessionId">> := string()
+%% }
+-type get_q_app_session_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"principal">> => principal_output()
+%% }
+-type permission_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -211,6 +273,26 @@
 
 
 %% Example:
+%% form_input_card_input() :: #{
+%%   <<"computeMode">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => form_input_card_metadata(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type form_input_card_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_sharing_configuration() :: #{
+%%   <<"acceptResponses">> => boolean(),
+%%   <<"enabled">> => boolean(),
+%%   <<"revealCards">> => boolean()
+%% }
+-type session_sharing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% category_input() :: #{
 %%   <<"color">> => [string()],
 %%   <<"id">> => string(),
@@ -228,11 +310,19 @@
 
 
 %% Example:
+%% form_input_card_metadata() :: #{
+%%   <<"schema">> => any()
+%% }
+-type form_input_card_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_q_app_session_input() :: #{
 %%   <<"appId">> := string(),
 %%   <<"appVersion">> := integer(),
 %%   <<"initialValues">> => list(card_value()()),
 %%   <<"instanceId">> := string(),
+%%   <<"sessionId">> => [string()],
 %%   <<"tags">> => map()
 %% }
 -type start_q_app_session_input() :: #{binary() => any()}.
@@ -295,6 +385,15 @@
 %%   <<"instanceId">> := string()
 %% }
 -type associate_q_app_with_user_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_q_app_permissions_output() :: #{
+%%   <<"appId">> => [string()],
+%%   <<"permissions">> => list(permission_output()()),
+%%   <<"resourceArn">> => [string()]
+%% }
+-type describe_q_app_permissions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -388,6 +487,16 @@
 
 
 %% Example:
+%% create_presigned_url_output() :: #{
+%%   <<"fileId">> => [string()],
+%%   <<"presignedUrl">> => [string()],
+%%   <<"presignedUrlExpiration">> => non_neg_integer(),
+%%   <<"presignedUrlFields">> => map()
+%% }
+-type create_presigned_url_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% library_item_member() :: #{
 %%   <<"appId">> => string(),
 %%   <<"appVersion">> => integer(),
@@ -420,6 +529,7 @@
 %% Example:
 %% get_q_app_input() :: #{
 %%   <<"appId">> := string(),
+%%   <<"appVersion">> => integer(),
 %%   <<"instanceId">> := string()
 %% }
 -type get_q_app_input() :: #{binary() => any()}.
@@ -453,7 +563,8 @@
 %% Example:
 %% card_status() :: #{
 %%   <<"currentState">> => list(any()),
-%%   <<"currentValue">> => [string()]
+%%   <<"currentValue">> => [string()],
+%%   <<"submissions">> => list(submission()())
 %% }
 -type card_status() :: #{binary() => any()}.
 
@@ -463,6 +574,7 @@
 %%   <<"attributeFilter">> => attribute_filter(),
 %%   <<"dependencies">> => list([string()]()),
 %%   <<"id">> => string(),
+%%   <<"memoryReferences">> => list([string()]()),
 %%   <<"outputSource">> => list(any()),
 %%   <<"prompt">> => string(),
 %%   <<"title">> => string(),
@@ -477,6 +589,15 @@
 %%   <<"instanceId">> := string()
 %% }
 -type batch_delete_category_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_output() :: #{
+%%   <<"email">> => [string()],
+%%   <<"userId">> => [string()],
+%%   <<"userType">> => list(any())
+%% }
+-type principal_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -523,6 +644,16 @@
 %%   <<"updatedBy">> => [string()]
 %% }
 -type get_q_app_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_q_app_permissions_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"grantPermissions">> => list(permission_input()()),
+%%   <<"instanceId">> := string(),
+%%   <<"revokePermissions">> => list(permission_input()())
+%% }
+-type update_q_app_permissions_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -591,10 +722,33 @@
 
 
 %% Example:
+%% update_q_app_session_metadata_output() :: #{
+%%   <<"sessionArn">> => [string()],
+%%   <<"sessionId">> => string(),
+%%   <<"sessionName">> => string(),
+%%   <<"sharingConfiguration">> => session_sharing_configuration()
+%% }
+-type update_q_app_session_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_categories_input() :: #{
 %%   <<"instanceId">> := string()
 %% }
 -type list_categories_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_presigned_url_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"cardId">> := string(),
+%%   <<"fileContentsSha256">> := [string()],
+%%   <<"fileName">> := string(),
+%%   <<"instanceId">> := string(),
+%%   <<"scope">> := list(any()),
+%%   <<"sessionId">> => string()
+%% }
+-type create_presigned_url_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -606,10 +760,46 @@
 
 
 %% Example:
+%% get_q_app_session_metadata_output() :: #{
+%%   <<"sessionArn">> => [string()],
+%%   <<"sessionId">> => string(),
+%%   <<"sessionName">> => string(),
+%%   <<"sessionOwner">> => [boolean()],
+%%   <<"sharingConfiguration">> => session_sharing_configuration()
+%% }
+-type get_q_app_session_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_q_app_session_data_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"sessionId">> := string()
+%% }
+-type list_q_app_session_data_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_input() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"principal">> => [string()]
+%% }
+-type permission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% submission() :: #{
+%%   <<"submissionId">> => string(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"value">> => [any()]
+%% }
+-type submission() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -638,10 +828,14 @@
 
 %% Example:
 %% get_q_app_session_output() :: #{
+%%   <<"appVersion">> => integer(),
 %%   <<"cardStatus">> => map(),
+%%   <<"latestPublishedAppVersion">> => integer(),
 %%   <<"sessionArn">> => [string()],
 %%   <<"sessionId">> => [string()],
-%%   <<"status">> => list(any())
+%%   <<"sessionName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"userIsHost">> => [boolean()]
 %% }
 -type get_q_app_session_output() :: #{binary() => any()}.
 
@@ -667,6 +861,14 @@
 
 
 %% Example:
+%% export_q_app_session_data_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"sessionId">> := string()
+%% }
+-type export_q_app_session_data_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"quotaCode">> => [string()],
@@ -674,6 +876,13 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% user() :: #{
+%%   <<"userId">> => string()
+%% }
+-type user() :: #{binary() => any()}.
 
 
 %% Example:
@@ -700,6 +909,7 @@
 %% Example:
 %% card_value() :: #{
 %%   <<"cardId">> => string(),
+%%   <<"submissionMutation">> => submission_mutation(),
 %%   <<"value">> => [string()]
 %% }
 -type card_value() :: #{binary() => any()}.
@@ -827,11 +1037,59 @@
 
 
 %% Example:
+%% describe_q_app_permissions_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"instanceId">> := string()
+%% }
+-type describe_q_app_permissions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% submission_mutation() :: #{
+%%   <<"mutationType">> => list(any()),
+%%   <<"submissionId">> => string()
+%% }
+-type submission_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_input_card() :: #{
+%%   <<"computeMode">> => list(any()),
+%%   <<"dependencies">> => list([string()]()),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => form_input_card_metadata(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type form_input_card() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_q_apps_output() :: #{
 %%   <<"apps">> => list(user_app_item()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_q_apps_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_app_session_data() :: #{
+%%   <<"cardId">> => string(),
+%%   <<"submissionId">> => string(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"user">> => user(),
+%%   <<"value">> => [any()]
+%% }
+-type q_app_session_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_q_app_session_data_output() :: #{
+%%   <<"csvFileLink">> => [string()],
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"sessionArn">> => [string()]
+%% }
+-type export_q_app_session_data_output() :: #{binary() => any()}.
 
 -type associate_library_item_review_errors() ::
     throttling_exception() | 
@@ -888,6 +1146,13 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type create_presigned_url_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    unauthorized_exception().
+
 -type create_q_app_errors() ::
     content_too_large_exception() | 
     throttling_exception() | 
@@ -915,6 +1180,14 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type describe_q_app_permissions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
 -type disassociate_library_item_review_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -931,6 +1204,16 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type export_q_app_session_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     unauthorized_exception().
 
 -type get_library_item_errors() ::
@@ -950,6 +1233,15 @@
     unauthorized_exception().
 
 -type get_q_app_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type get_q_app_session_metadata_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -981,6 +1273,15 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type list_q_app_session_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     unauthorized_exception().
 
@@ -1065,7 +1366,24 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type update_q_app_permissions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
 -type update_q_app_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type update_q_app_session_metadata_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1322,6 +1640,47 @@ create_library_item(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a presigned URL for an S3 POST operation to upload a file.
+%%
+%% You can use this URL to set a default file for a `FileUploadCard'
+%% in a Q App definition or to provide a file for a single Q App run.
+%% The `scope' parameter determines how the file will be used,
+%% either at the app definition level or the app session level.
+-spec create_presigned_url(aws_client:aws_client(), create_presigned_url_input()) ->
+    {ok, create_presigned_url_output(), tuple()} |
+    {error, any()} |
+    {error, create_presigned_url_errors(), tuple()}.
+create_presigned_url(Client, Input) ->
+    create_presigned_url(Client, Input, []).
+
+-spec create_presigned_url(aws_client:aws_client(), create_presigned_url_input(), proplists:proplist()) ->
+    {ok, create_presigned_url_output(), tuple()} |
+    {error, any()} |
+    {error, create_presigned_url_errors(), tuple()}.
+create_presigned_url(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/apps.createPresignedUrl"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"instance-id">>, <<"instanceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new Amazon Q App based on the provided definition.
 %%
 %% The Q App definition specifies
@@ -1440,6 +1799,52 @@ delete_q_app(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes read permissions for a Amazon Q App in Amazon Q Business
+%% application environment instance.
+-spec describe_q_app_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_q_app_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, describe_q_app_permissions_errors(), tuple()}.
+describe_q_app_permissions(Client, AppId, InstanceId)
+  when is_map(Client) ->
+    describe_q_app_permissions(Client, AppId, InstanceId, #{}, #{}).
+
+-spec describe_q_app_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_q_app_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, describe_q_app_permissions_errors(), tuple()}.
+describe_q_app_permissions(Client, AppId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_q_app_permissions(Client, AppId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_q_app_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_q_app_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, describe_q_app_permissions_errors(), tuple()}.
+describe_q_app_permissions(Client, AppId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/apps.describeQAppPermissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"instance-id">>, InstanceId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"appId">>, AppId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Removes a rating or review previously submitted by the user for a
 %% library item.
 -spec disassociate_library_item_review(aws_client:aws_client(), disassociate_library_item_review_input()) ->
@@ -1494,6 +1899,42 @@ disassociate_q_app_from_user(Client, Input) ->
 disassociate_q_app_from_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/apps.uninstall"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"instance-id">>, <<"instanceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Exports the collected data of a Q App data collection session.
+-spec export_q_app_session_data(aws_client:aws_client(), export_q_app_session_data_input()) ->
+    {ok, export_q_app_session_data_output(), tuple()} |
+    {error, any()} |
+    {error, export_q_app_session_data_errors(), tuple()}.
+export_q_app_session_data(Client, Input) ->
+    export_q_app_session_data(Client, Input, []).
+
+-spec export_q_app_session_data(aws_client:aws_client(), export_q_app_session_data_input(), proplists:proplist()) ->
+    {ok, export_q_app_session_data_output(), tuple()} |
+    {error, any()} |
+    {error, export_q_app_session_data_errors(), tuple()}.
+export_q_app_session_data(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/runtime.exportQAppSessionData"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1603,7 +2044,8 @@ get_q_app(Client, AppId, InstanceId, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
-        {<<"appId">>, AppId}
+        {<<"appId">>, AppId},
+        {<<"appVersion">>, maps:get(<<"appVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1634,6 +2076,51 @@ get_q_app_session(Client, SessionId, InstanceId, QueryMap, HeadersMap)
 get_q_app_session(Client, SessionId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/runtime.getQAppSession"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"instance-id">>, InstanceId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"sessionId">>, SessionId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the current configuration of a Q App session.
+-spec get_q_app_session_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_q_app_session_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_q_app_session_metadata_errors(), tuple()}.
+get_q_app_session_metadata(Client, SessionId, InstanceId)
+  when is_map(Client) ->
+    get_q_app_session_metadata(Client, SessionId, InstanceId, #{}, #{}).
+
+-spec get_q_app_session_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_q_app_session_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_q_app_session_metadata_errors(), tuple()}.
+get_q_app_session_metadata(Client, SessionId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_q_app_session_metadata(Client, SessionId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec get_q_app_session_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_q_app_session_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_q_app_session_metadata_errors(), tuple()}.
+get_q_app_session_metadata(Client, SessionId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/runtime.getQAppSessionMetadata"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1785,6 +2272,51 @@ list_library_items(Client, InstanceId, QueryMap, HeadersMap, Options0)
         {<<"categoryId">>, maps:get(<<"categoryId">>, QueryMap, undefined)},
         {<<"limit">>, maps:get(<<"limit">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the collected data of a Q App data collection session.
+-spec list_q_app_session_data(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_q_app_session_data_output(), tuple()} |
+    {error, any()} |
+    {error, list_q_app_session_data_errors(), tuple()}.
+list_q_app_session_data(Client, SessionId, InstanceId)
+  when is_map(Client) ->
+    list_q_app_session_data(Client, SessionId, InstanceId, #{}, #{}).
+
+-spec list_q_app_session_data(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_q_app_session_data_output(), tuple()} |
+    {error, any()} |
+    {error, list_q_app_session_data_errors(), tuple()}.
+list_q_app_session_data(Client, SessionId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_q_app_session_data(Client, SessionId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_q_app_session_data(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_q_app_session_data_output(), tuple()} |
+    {error, any()} |
+    {error, list_q_app_session_data_errors(), tuple()}.
+list_q_app_session_data(Client, SessionId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/runtime.listQAppSessionData"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"instance-id">>, InstanceId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"sessionId">>, SessionId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2180,6 +2712,43 @@ update_q_app(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates read permissions for a Amazon Q App in Amazon Q Business
+%% application environment instance.
+-spec update_q_app_permissions(aws_client:aws_client(), update_q_app_permissions_input()) ->
+    {ok, update_q_app_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, update_q_app_permissions_errors(), tuple()}.
+update_q_app_permissions(Client, Input) ->
+    update_q_app_permissions(Client, Input, []).
+
+-spec update_q_app_permissions(aws_client:aws_client(), update_q_app_permissions_input(), proplists:proplist()) ->
+    {ok, update_q_app_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, update_q_app_permissions_errors(), tuple()}.
+update_q_app_permissions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/apps.updateQAppPermissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"instance-id">>, <<"instanceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the session for a given Q App `sessionId'.
 %%
 %% This is only
@@ -2202,6 +2771,43 @@ update_q_app_session(Client, Input) ->
 update_q_app_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/runtime.updateQAppSession"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"instance-id">>, <<"instanceId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration metadata of a session for a given Q App
+%% `sessionId'.
+-spec update_q_app_session_metadata(aws_client:aws_client(), update_q_app_session_metadata_input()) ->
+    {ok, update_q_app_session_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, update_q_app_session_metadata_errors(), tuple()}.
+update_q_app_session_metadata(Client, Input) ->
+    update_q_app_session_metadata(Client, Input, []).
+
+-spec update_q_app_session_metadata(aws_client:aws_client(), update_q_app_session_metadata_input(), proplists:proplist()) ->
+    {ok, update_q_app_session_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, update_q_app_session_metadata_errors(), tuple()}.
+update_q_app_session_metadata(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/runtime.updateQAppSessionMetadata"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
