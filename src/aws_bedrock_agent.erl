@@ -2526,7 +2526,8 @@
 
 %% Example:
 %% bedrock_embedding_model_configuration() :: #{
-%%   <<"dimensions">> => integer()
+%%   <<"dimensions">> => integer(),
+%%   <<"embeddingDataType">> => list(any())
 %% }
 -type bedrock_embedding_model_configuration() :: #{binary() => any()}.
 

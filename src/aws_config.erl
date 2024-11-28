@@ -42,7 +42,9 @@
 %% Guide.
 -module(aws_config).
 
--export([batch_get_aggregate_resource_config/2,
+-export([associate_resource_types/2,
+         associate_resource_types/3,
+         batch_get_aggregate_resource_config/2,
          batch_get_aggregate_resource_config/3,
          batch_get_resource_config/2,
          batch_get_resource_config/3,
@@ -74,6 +76,8 @@
          delete_resource_config/3,
          delete_retention_configuration/2,
          delete_retention_configuration/3,
+         delete_service_linked_configuration_recorder/2,
+         delete_service_linked_configuration_recorder/3,
          delete_stored_query/2,
          delete_stored_query/3,
          deliver_config_snapshot/2,
@@ -128,6 +132,8 @@
          describe_remediation_execution_status/3,
          describe_retention_configurations/2,
          describe_retention_configurations/3,
+         disassociate_resource_types/2,
+         disassociate_resource_types/3,
          get_aggregate_compliance_details_by_config_rule/2,
          get_aggregate_compliance_details_by_config_rule/3,
          get_aggregate_config_rule_compliance_summary/2,
@@ -168,6 +174,8 @@
          get_stored_query/3,
          list_aggregate_discovered_resources/2,
          list_aggregate_discovered_resources/3,
+         list_configuration_recorders/2,
+         list_configuration_recorders/3,
          list_conformance_pack_compliance_scores/2,
          list_conformance_pack_compliance_scores/3,
          list_discovered_resources/2,
@@ -206,6 +214,8 @@
          put_resource_config/3,
          put_retention_configuration/2,
          put_retention_configuration/3,
+         put_service_linked_configuration_recorder/2,
+         put_service_linked_configuration_recorder/3,
          put_stored_query/2,
          put_stored_query/3,
          select_aggregate_resource_config/2,
@@ -380,6 +390,13 @@
 -type delete_evaluation_results_request() :: #{binary() => any()}.
 
 %% Example:
+%% put_service_linked_configuration_recorder_request() :: #{
+%%   <<"ServicePrincipal">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type put_service_linked_configuration_recorder_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_remediation_configuration_response() :: #{
 
 %% }
@@ -463,6 +480,12 @@
 -type put_config_rule_request() :: #{binary() => any()}.
 
 %% Example:
+%% associate_resource_types_response() :: #{
+%%   <<"ConfigurationRecorder">> => configuration_recorder()
+%% }
+-type associate_resource_types_response() :: #{binary() => any()}.
+
+%% Example:
 %% insufficient_delivery_policy_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -478,6 +501,7 @@
 %% Example:
 %% configuration_aggregator() :: #{
 %%   <<"AccountAggregationSources">> => list(account_aggregation_source()()),
+%%   <<"AggregatorFilters">> => aggregator_filters(),
 %%   <<"ConfigurationAggregatorArn">> => string(),
 %%   <<"ConfigurationAggregatorName">> => string(),
 %%   <<"CreatedBy">> => string(),
@@ -522,10 +546,13 @@
 
 %% Example:
 %% configuration_recorder() :: #{
+%%   <<"arn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"recordingGroup">> => recording_group(),
 %%   <<"recordingMode">> => recording_mode(),
-%%   <<"roleARN">> => string()
+%%   <<"recordingScope">> => list(any()),
+%%   <<"roleARN">> => string(),
+%%   <<"servicePrincipal">> => string()
 %% }
 -type configuration_recorder() :: #{binary() => any()}.
 
@@ -694,6 +721,13 @@
 -type get_aggregate_config_rule_compliance_summary_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_configuration_recorders_response() :: #{
+%%   <<"ConfigurationRecorderSummaries">> => list(configuration_recorder_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_recorders_response() :: #{binary() => any()}.
+
+%% Example:
 %% compliance_contributor_count() :: #{
 %%   <<"CapExceeded">> => boolean(),
 %%   <<"CappedCount">> => integer()
@@ -753,6 +787,12 @@
 -type max_number_of_organization_config_rules_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% unmodifiable_entity_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unmodifiable_entity_exception() :: #{binary() => any()}.
+
+%% Example:
 %% aggregation_authorization() :: #{
 %%   <<"AggregationAuthorizationArn">> => string(),
 %%   <<"AuthorizedAccountId">> => string(),
@@ -767,6 +807,15 @@
 %%   <<"OrganizationConformancePacks">> => list(organization_conformance_pack()())
 %% }
 -type describe_organization_conformance_packs_response() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_recorder_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recordingScope">> => list(any()),
+%%   <<"servicePrincipal">> => string()
+%% }
+-type configuration_recorder_summary() :: #{binary() => any()}.
 
 %% Example:
 %% max_number_of_config_rules_exceeded_exception() :: #{
@@ -1102,6 +1151,7 @@
 
 %% Example:
 %% configuration_recorder_status() :: #{
+%%   <<"arn">> => string(),
 %%   <<"lastErrorCode">> => string(),
 %%   <<"lastErrorMessage">> => string(),
 %%   <<"lastStartTime">> => non_neg_integer(),
@@ -1109,7 +1159,8 @@
 %%   <<"lastStatusChangeTime">> => non_neg_integer(),
 %%   <<"lastStopTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"recording">> => boolean()
+%%   <<"recording">> => boolean(),
+%%   <<"servicePrincipal">> => string()
 %% }
 -type configuration_recorder_status() :: #{binary() => any()}.
 
@@ -1135,6 +1186,13 @@
 %%   <<"ResourceKeys">> => list(resource_key()())
 %% }
 -type describe_remediation_execution_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% aggregator_filter_resource_type() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => list(string()())
+%% }
+-type aggregator_filter_resource_type() :: #{binary() => any()}.
 
 %% Example:
 %% conformance_pack_detail() :: #{
@@ -1163,6 +1221,12 @@
 -type put_conformance_pack_request() :: #{binary() => any()}.
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1183,7 +1247,9 @@
 
 %% Example:
 %% describe_configuration_recorder_status_request() :: #{
-%%   <<"ConfigurationRecorderNames">> => list(string()())
+%%   <<"Arn">> => string(),
+%%   <<"ConfigurationRecorderNames">> => list(string()()),
+%%   <<"ServicePrincipal">> => string()
 %% }
 -type describe_configuration_recorder_status_request() :: #{binary() => any()}.
 
@@ -1339,6 +1405,13 @@
 -type invalid_delivery_channel_name_exception() :: #{binary() => any()}.
 
 %% Example:
+%% aggregator_filters() :: #{
+%%   <<"ResourceType">> => aggregator_filter_resource_type(),
+%%   <<"ServicePrincipal">> => aggregator_filter_service_principal()
+%% }
+-type aggregator_filters() :: #{binary() => any()}.
+
+%% Example:
 %% get_aggregate_resource_config_request() :: #{
 %%   <<"ConfigurationAggregatorName">> := string(),
 %%   <<"ResourceIdentifier">> := aggregate_resource_identifier()
@@ -1369,6 +1442,13 @@
 %%   <<"RetentionPeriodInDays">> := integer()
 %% }
 -type put_retention_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resource_types_request() :: #{
+%%   <<"ConfigurationRecorderArn">> := string(),
+%%   <<"ResourceTypes">> := list(list(any())())
+%% }
+-type disassociate_resource_types_request() :: #{binary() => any()}.
 
 %% Example:
 %% no_such_delivery_channel_exception() :: #{
@@ -1547,7 +1627,9 @@
 
 %% Example:
 %% describe_configuration_recorders_request() :: #{
-%%   <<"ConfigurationRecorderNames">> => list(string()())
+%%   <<"Arn">> => string(),
+%%   <<"ConfigurationRecorderNames">> => list(string()()),
+%%   <<"ServicePrincipal">> => string()
 %% }
 -type describe_configuration_recorders_request() :: #{binary() => any()}.
 
@@ -1590,6 +1672,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_aggregate_compliance_by_conformance_packs_request() :: #{binary() => any()}.
+
+%% Example:
+%% aggregator_filter_service_principal() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => list(string()())
+%% }
+-type aggregator_filter_service_principal() :: #{binary() => any()}.
 
 %% Example:
 %% describe_remediation_exceptions_response() :: #{
@@ -1667,6 +1756,7 @@
 %% Example:
 %% put_configuration_aggregator_request() :: #{
 %%   <<"AccountAggregationSources">> => list(account_aggregation_source()()),
+%%   <<"AggregatorFilters">> => aggregator_filters(),
 %%   <<"ConfigurationAggregatorName">> := string(),
 %%   <<"OrganizationAggregationSource">> => organization_aggregation_source(),
 %%   <<"Tags">> => list(tag()())
@@ -1704,6 +1794,12 @@
 %%   <<"ResultRecordedTime">> => non_neg_integer()
 %% }
 -type conformance_pack_evaluation_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resource_types_response() :: #{
+%%   <<"ConfigurationRecorder">> => configuration_recorder()
+%% }
+-type disassociate_resource_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_aggregation_authorizations_response() :: #{
@@ -1768,6 +1864,20 @@
 %%   <<"RequesterAwsRegion">> := string()
 %% }
 -type delete_pending_aggregation_request_request() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_recorder_filter() :: #{
+%%   <<"filterName">> => list(any()),
+%%   <<"filterValue">> => list(string()())
+%% }
+-type configuration_recorder_filter() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_linked_configuration_recorder_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type delete_service_linked_configuration_recorder_response() :: #{binary() => any()}.
 
 %% Example:
 %% conformance_pack_input_parameter() :: #{
@@ -1901,6 +2011,13 @@
 -type conformance_pack_compliance_score() :: #{binary() => any()}.
 
 %% Example:
+%% associate_resource_types_request() :: #{
+%%   <<"ConfigurationRecorderArn">> := string(),
+%%   <<"ResourceTypes">> := list(list(any())())
+%% }
+-type associate_resource_types_request() :: #{binary() => any()}.
+
+%% Example:
 %% put_configuration_aggregator_response() :: #{
 %%   <<"ConfigurationAggregator">> => configuration_aggregator()
 %% }
@@ -2017,6 +2134,13 @@
 %%   <<"message">> => string()
 %% }
 -type resource_concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_service_linked_configuration_recorder_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type put_service_linked_configuration_recorder_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_configuration_aggregator_sources_status_request() :: #{
@@ -2510,6 +2634,14 @@
 -type query_info() :: #{binary() => any()}.
 
 %% Example:
+%% list_configuration_recorders_request() :: #{
+%%   <<"Filters">> => list(configuration_recorder_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_recorders_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_compliance_summary_by_config_rule_response() :: #{
 %%   <<"ComplianceSummary">> => compliance_summary()
 %% }
@@ -2611,6 +2743,12 @@
 -type describe_organization_conformance_packs_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_service_linked_configuration_recorder_request() :: #{
+%%   <<"ServicePrincipal">> := string()
+%% }
+-type delete_service_linked_configuration_recorder_request() :: #{binary() => any()}.
+
+%% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2695,7 +2833,8 @@
 
 %% Example:
 %% put_configuration_recorder_request() :: #{
-%%   <<"ConfigurationRecorder">> := configuration_recorder()
+%%   <<"ConfigurationRecorder">> := configuration_recorder(),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type put_configuration_recorder_request() :: #{binary() => any()}.
 
@@ -2727,6 +2866,11 @@
 %% }
 -type organization_custom_policy_rule_metadata_no_policy() :: #{binary() => any()}.
 
+-type associate_resource_types_errors() ::
+    validation_exception() | 
+    no_such_configuration_recorder_exception() | 
+    conflict_exception().
+
 -type batch_get_aggregate_resource_config_errors() ::
     validation_exception() | 
     no_such_configuration_aggregator_exception().
@@ -2746,7 +2890,8 @@
     no_such_configuration_aggregator_exception().
 
 -type delete_configuration_recorder_errors() ::
-    no_such_configuration_recorder_exception().
+    no_such_configuration_recorder_exception() | 
+    unmodifiable_entity_exception().
 
 -type delete_conformance_pack_errors() ::
     no_such_conformance_pack_exception() | 
@@ -2789,6 +2934,11 @@
 -type delete_retention_configuration_errors() ::
     no_such_retention_configuration_exception() | 
     invalid_parameter_value_exception().
+
+-type delete_service_linked_configuration_recorder_errors() ::
+    validation_exception() | 
+    no_such_configuration_recorder_exception() | 
+    conflict_exception().
 
 -type delete_stored_query_errors() ::
     validation_exception() | 
@@ -2848,9 +2998,11 @@
     no_such_configuration_aggregator_exception().
 
 -type describe_configuration_recorder_status_errors() ::
+    validation_exception() | 
     no_such_configuration_recorder_exception().
 
 -type describe_configuration_recorders_errors() ::
+    validation_exception() | 
     no_such_configuration_recorder_exception().
 
 -type describe_conformance_pack_compliance_errors() ::
@@ -2919,6 +3071,11 @@
     no_such_retention_configuration_exception() | 
     invalid_parameter_value_exception() | 
     invalid_next_token_exception().
+
+-type disassociate_resource_types_errors() ::
+    validation_exception() | 
+    no_such_configuration_recorder_exception() | 
+    conflict_exception().
 
 -type get_aggregate_compliance_details_by_config_rule_errors() ::
     validation_exception() | 
@@ -3018,6 +3175,9 @@
     invalid_limit_exception() | 
     no_such_configuration_aggregator_exception().
 
+-type list_configuration_recorders_errors() ::
+    validation_exception().
+
 -type list_conformance_pack_compliance_scores_errors() ::
     invalid_parameter_value_exception() | 
     invalid_next_token_exception() | 
@@ -3067,6 +3227,7 @@
     validation_exception() | 
     invalid_role_exception() | 
     max_number_of_configuration_recorders_exceeded_exception() | 
+    unmodifiable_entity_exception() | 
     invalid_recording_group_exception().
 
 -type put_conformance_pack_errors() ::
@@ -3133,6 +3294,12 @@
     max_number_of_retention_configurations_exceeded_exception() | 
     invalid_parameter_value_exception().
 
+-type put_service_linked_configuration_recorder_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    conflict_exception() | 
+    insufficient_permissions_exception().
+
 -type put_stored_query_errors() ::
     too_many_tags_exception() | 
     resource_concurrent_modification_exception() | 
@@ -3157,7 +3324,8 @@
 
 -type start_configuration_recorder_errors() ::
     no_such_configuration_recorder_exception() | 
-    no_available_delivery_channel_exception().
+    no_available_delivery_channel_exception() | 
+    unmodifiable_entity_exception().
 
 -type start_remediation_execution_errors() ::
     no_such_remediation_configuration_exception() | 
@@ -3169,7 +3337,8 @@
     idempotent_parameter_mismatch().
 
 -type stop_configuration_recorder_errors() ::
-    no_such_configuration_recorder_exception().
+    no_such_configuration_recorder_exception() | 
+    unmodifiable_entity_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
@@ -3183,6 +3352,33 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds all resource types specified in the `ResourceTypes' list to
+%% the RecordingGroup:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingGroup.html
+%% of specified configuration recorder and includes those resource types when
+%% recording.
+%%
+%% For this operation, the specified configuration recorder must use a
+%% RecordingStrategy:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingStrategy.html
+%% that is either `INCLUSION_BY_RESOURCE_TYPES' or
+%% `EXCLUSION_BY_RESOURCE_TYPES'.
+-spec associate_resource_types(aws_client:aws_client(), associate_resource_types_request()) ->
+    {ok, associate_resource_types_response(), tuple()} |
+    {error, any()} |
+    {error, associate_resource_types_errors(), tuple()}.
+associate_resource_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_resource_types(Client, Input, []).
+
+-spec associate_resource_types(aws_client:aws_client(), associate_resource_types_request(), proplists:proplist()) ->
+    {ok, associate_resource_types_response(), tuple()} |
+    {error, any()} |
+    {error, associate_resource_types_errors(), tuple()}.
+associate_resource_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateResourceTypes">>, Input, Options).
 
 %% @doc Returns the current configuration items for resources that are
 %% present in your Config aggregator.
@@ -3271,6 +3467,27 @@ delete_aggregation_authorization(Client, Input, Options)
 %%
 %% You can check the state of a rule by using the
 %% `DescribeConfigRules' request.
+%%
+%% Recommendation: Stop recording resource compliance before deleting rules
+%%
+%% It is highly recommended that you stop recording for the
+%% `AWS::Config::ResourceCompliance' resource type before you delete
+%% rules in your account.
+%% Deleting rules creates CIs for `AWS::Config::ResourceCompliance' and
+%% can affect your Config configuration recorder:
+%% https://docs.aws.amazon.com/config/latest/developerguide/stop-start-recorder.html
+%% costs.
+%%
+%% If you are deleting rules which evaluate a large number of resource types,
+%% this can lead to a spike in the number of CIs recorded.
+%%
+%% Best practice:
+%%
+%% Stop recording `AWS::Config::ResourceCompliance'
+%%
+%% Delete rule(s)
+%%
+%% Turn on recording for `AWS::Config::ResourceCompliance'
 -spec delete_config_rule(aws_client:aws_client(), delete_config_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3305,18 +3522,16 @@ delete_configuration_aggregator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationAggregator">>, Input, Options).
 
-%% @doc Deletes the configuration recorder.
+%% @doc Deletes the customer managed configuration recorder.
 %%
-%% After the configuration recorder is deleted, Config will
-%% not record resource configuration changes until you create a new
-%% configuration recorder.
-%%
-%% This action does not delete the configuration information that
+%% This operation does not delete the configuration information that
 %% was previously recorded. You will be able to access the previously
 %% recorded information by using the
-%% `GetResourceConfigHistory' action, but you will not
+%% GetResourceConfigHistory:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_GetResourceConfigHistory.html
+%% operation, but you will not
 %% be able to access this information in the Config console until
-%% you create a new configuration recorder.
+%% you have created a new customer managed configuration recorder.
 -spec delete_configuration_recorder(aws_client:aws_client(), delete_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3358,9 +3573,10 @@ delete_conformance_pack(Client, Input, Options)
 
 %% @doc Deletes the delivery channel.
 %%
-%% Before you can delete the delivery channel, you must stop the
-%% configuration recorder by using the `StopConfigurationRecorder'
-%% action.
+%% Before you can delete the delivery channel, you must stop the customer
+%% managed configuration recorder. You can use the
+%% `StopConfigurationRecorder' operation to stop the customer managed
+%% configuration recorder.
 -spec delete_delivery_channel(aws_client:aws_client(), delete_delivery_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3554,6 +3770,40 @@ delete_retention_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetentionConfiguration">>, Input, Options).
 
+%% @doc Deletes an existing service-linked configuration recorder.
+%%
+%% This operation does not delete the configuration information that was
+%% previously recorded. You will be able to access the previously
+%% recorded information by using the
+%% GetResourceConfigHistory:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_GetResourceConfigHistory.html
+%% operation, but you will not
+%% be able to access this information in the Config console until
+%% you have created a new service-linked configuration recorder for the same
+%% service.
+%%
+%% The recording scope determines if you receive configuration items
+%%
+%% The recording scope is set by the service that is linked to the
+%% configuration recorder and determines whether you receive configuration
+%% items (CIs) in the delivery channel. If the recording scope is internal,
+%% you will not receive CIs in the delivery channel.
+-spec delete_service_linked_configuration_recorder(aws_client:aws_client(), delete_service_linked_configuration_recorder_request()) ->
+    {ok, delete_service_linked_configuration_recorder_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_linked_configuration_recorder_errors(), tuple()}.
+delete_service_linked_configuration_recorder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_service_linked_configuration_recorder(Client, Input, []).
+
+-spec delete_service_linked_configuration_recorder(aws_client:aws_client(), delete_service_linked_configuration_recorder_request(), proplists:proplist()) ->
+    {ok, delete_service_linked_configuration_recorder_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_linked_configuration_recorder_errors(), tuple()}.
+delete_service_linked_configuration_recorder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteServiceLinkedConfigurationRecorder">>, Input, Options).
+
 %% @doc Deletes the stored query for a single Amazon Web Services account and
 %% a single Amazon Web Services Region.
 -spec delete_stored_query(aws_client:aws_client(), delete_stored_query_request()) ->
@@ -3626,9 +3876,9 @@ describe_aggregate_compliance_by_config_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAggregateComplianceByConfigRules">>, Input, Options).
 
-%% @doc Returns a list of the conformance packs and their associated
-%% compliance status with the count of compliant and noncompliant Config
-%% rules within each
+%% @doc Returns a list of the existing and deleted conformance packs and
+%% their associated compliance status with the count of compliant and
+%% noncompliant Config rules within each
 %% conformance pack.
 %%
 %% Also returns the total rule count which includes compliant rules,
@@ -3673,7 +3923,7 @@ describe_aggregation_authorizations(Client, Input, Options)
 
 %% @doc Indicates whether the specified Config rules are compliant.
 %%
-%% If a rule is noncompliant, this action returns the number of Amazon Web
+%% If a rule is noncompliant, this operation returns the number of Amazon Web
 %% Services
 %% resources that do not comply with the rule.
 %%
@@ -3723,8 +3973,8 @@ describe_compliance_by_config_rule(Client, Input, Options)
 %% compliant.
 %%
 %% If
-%% a resource is noncompliant, this action returns the number of Config rules
-%% that the resource does not comply with.
+%% a resource is noncompliant, this operation returns the number of Config
+%% rules that the resource does not comply with.
 %%
 %% A resource is compliant if it complies with all the Config
 %% rules that evaluate it. It is noncompliant if it does not comply
@@ -3830,7 +4080,7 @@ describe_configuration_aggregator_sources_status(Client, Input, Options)
 
 %% @doc Returns the details of one or more configuration aggregators.
 %%
-%% If the configuration aggregator is not specified, this action
+%% If the configuration aggregator is not specified, this operation
 %% returns the details for all the configuration aggregators associated
 %% with the account.
 -spec describe_configuration_aggregators(aws_client:aws_client(), describe_configuration_aggregators_request()) ->
@@ -3849,18 +4099,19 @@ describe_configuration_aggregators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationAggregators">>, Input, Options).
 
-%% @doc Returns the current status of the specified configuration
-%% recorder as well as the status of the last recording event for the
-%% recorder.
+%% @doc Returns the current status of the configuration
+%% recorder you specify as well as the status of the last recording event for
+%% the configuration recorders.
 %%
-%% If a configuration recorder is not specified, this action
-%% returns the status of all configuration recorders associated with
-%% the account.
-%%
-%% &gt;You can specify only one configuration recorder for each Amazon Web
-%% Services Region for each account.
 %% For a detailed status of recording events over time, add your Config
 %% events to Amazon CloudWatch metrics and use CloudWatch metrics.
+%%
+%% If a configuration recorder is not specified, this operation returns the
+%% status for the customer managed configuration recorder configured for the
+%% account, if applicable.
+%%
+%% When making a request to this operation, you can only specify one
+%% configuration recorder.
 -spec describe_configuration_recorder_status(aws_client:aws_client(), describe_configuration_recorder_status_request()) ->
     {ok, describe_configuration_recorder_status_response(), tuple()} |
     {error, any()} |
@@ -3877,14 +4128,14 @@ describe_configuration_recorder_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationRecorderStatus">>, Input, Options).
 
-%% @doc Returns the details for the specified configuration recorders.
+%% @doc Returns details for the configuration recorder you specify.
 %%
-%% If the configuration recorder is not specified, this action returns
-%% the details for all configuration recorders associated with the
-%% account.
+%% If a configuration recorder is not specified, this operation returns
+%% details for the customer managed configuration recorder configured for the
+%% account, if applicable.
 %%
-%% You can specify only one configuration recorder for each Amazon Web
-%% Services Region for each account.
+%% When making a request to this operation, you can only specify one
+%% configuration recorder.
 -spec describe_configuration_recorders(aws_client:aws_client(), describe_configuration_recorders_request()) ->
     {ok, describe_configuration_recorders_response(), tuple()} |
     {error, any()} |
@@ -3958,7 +4209,7 @@ describe_conformance_packs(Client, Input, Options)
 
 %% @doc Returns the current status of the specified delivery channel.
 %%
-%% If a delivery channel is not specified, this action returns the
+%% If a delivery channel is not specified, this operation returns the
 %% current status of all delivery channels associated with the
 %% account.
 %%
@@ -3983,7 +4234,7 @@ describe_delivery_channel_status(Client, Input, Options)
 %% @doc Returns details about the specified delivery channel.
 %%
 %% If a
-%% delivery channel is not specified, this action returns the details
+%% delivery channel is not specified, this operation returns the details
 %% of all delivery channels associated with the account.
 %%
 %% Currently, you can specify only one delivery channel per
@@ -4243,7 +4494,7 @@ describe_remediation_execution_status(Client, Input, Options)
 %% @doc Returns the details of one or more retention configurations.
 %%
 %% If
-%% the retention configuration name is not specified, this action
+%% the retention configuration name is not specified, this operation
 %% returns the details for all the retention configurations for that
 %% account.
 %%
@@ -4264,6 +4515,33 @@ describe_retention_configurations(Client, Input)
 describe_retention_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRetentionConfigurations">>, Input, Options).
+
+%% @doc Removes all resource types specified in the `ResourceTypes' list
+%% from the RecordingGroup:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingGroup.html
+%% of configuration recorder and excludes these resource types when
+%% recording.
+%%
+%% For this operation, the configuration recorder must use a
+%% RecordingStrategy:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingStrategy.html
+%% that is either `INCLUSION_BY_RESOURCE_TYPES' or
+%% `EXCLUSION_BY_RESOURCE_TYPES'.
+-spec disassociate_resource_types(aws_client:aws_client(), disassociate_resource_types_request()) ->
+    {ok, disassociate_resource_types_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_resource_types_errors(), tuple()}.
+disassociate_resource_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_resource_types(Client, Input, []).
+
+-spec disassociate_resource_types(aws_client:aws_client(), disassociate_resource_types_request(), proplists:proplist()) ->
+    {ok, disassociate_resource_types_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_resource_types_errors(), tuple()}.
+disassociate_resource_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateResourceTypes">>, Input, Options).
 
 %% @doc Returns the evaluation results for the specified Config
 %% rule for a specific resource in a rule.
@@ -4367,6 +4645,8 @@ get_aggregate_discovered_resource_counts(Client, Input, Options)
 
 %% @doc Returns configuration item that is aggregated for your specific
 %% resource in a specific source account and region.
+%%
+%% The API does not return results for deleted resources.
 -spec get_aggregate_resource_config(aws_client:aws_client(), get_aggregate_resource_config_request()) ->
     {ok, get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
@@ -4755,6 +5035,24 @@ list_aggregate_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAggregateDiscoveredResources">>, Input, Options).
 
+%% @doc Returns a list of configuration recorders depending on the filters
+%% you specify.
+-spec list_configuration_recorders(aws_client:aws_client(), list_configuration_recorders_request()) ->
+    {ok, list_configuration_recorders_response(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_recorders_errors(), tuple()}.
+list_configuration_recorders(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_configuration_recorders(Client, Input, []).
+
+-spec list_configuration_recorders(aws_client:aws_client(), list_configuration_recorders_request(), proplists:proplist()) ->
+    {ok, list_configuration_recorders_response(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_recorders_errors(), tuple()}.
+list_configuration_recorders(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListConfigurationRecorders">>, Input, Options).
+
 %% @doc Returns a list of conformance pack compliance scores.
 %%
 %% A compliance score is the percentage of the number of compliant
@@ -4875,12 +5173,20 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Authorizes the aggregator account and region to collect data
 %% from the source account and region.
 %%
+%% Tags are added at creation and cannot be updated with this operation
+%%
 %% `PutAggregationAuthorization' is an idempotent API. Subsequent
 %% requests won’t create a duplicate resource if one was already created. If
 %% a following request has different `tags' values,
 %% Config will ignore these differences and treat it as an idempotent request
 %% of the previous. In this case, `tags' will not be updated, even if
 %% they are different.
+%%
+%% Use TagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_TagResource.html
+%% and UntagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_UntagResource.html
+%% to update tags after creation.
 -spec put_aggregation_authorization(aws_client:aws_client(), put_aggregation_authorization_request()) ->
     {ok, put_aggregation_authorization_response(), tuple()} |
     {error, any()} |
@@ -4958,12 +5264,20 @@ put_aggregation_authorization(Client, Input, Options)
 %% https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html
 %% in the Config Developer Guide.
 %%
+%% Tags are added at creation and cannot be updated with this operation
+%%
 %% `PutConfigRule' is an idempotent API. Subsequent requests won’t create
 %% a duplicate resource if one was already created. If a following request
 %% has different `tags' values,
 %% Config will ignore these differences and treat it as an idempotent request
 %% of the previous. In this case, `tags' will not be updated, even if
 %% they are different.
+%%
+%% Use TagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_TagResource.html
+%% and UntagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_UntagResource.html
+%% to update tags after creation.
 -spec put_config_rule(aws_client:aws_client(), put_config_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5009,12 +5323,20 @@ put_config_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/config/latest/developerguide/set-up-aggregator-cli.html#register-a-delegated-administrator-cli
 %% in the Config developer guide.
 %%
+%% Tags are added at creation and cannot be updated with this operation
+%%
 %% `PutConfigurationAggregator' is an idempotent API. Subsequent requests
 %% won’t create a duplicate resource if one was already created. If a
 %% following request has different `tags' values,
 %% Config will ignore these differences and treat it as an idempotent request
 %% of the previous. In this case, `tags' will not be updated, even if
 %% they are different.
+%%
+%% Use TagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_TagResource.html
+%% and UntagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_UntagResource.html
+%% to update tags after creation.
 -spec put_configuration_aggregator(aws_client:aws_client(), put_configuration_aggregator_request()) ->
     {ok, put_configuration_aggregator_response(), tuple()} |
     {error, any()} |
@@ -5031,24 +5353,52 @@ put_configuration_aggregator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigurationAggregator">>, Input, Options).
 
-%% @doc Creates a new configuration recorder to record configuration changes
-%% for specified resource types.
+%% @doc Creates or updates the customer managed configuration recorder.
 %%
-%% You can also use this action to change the `roleARN'
-%% or the `recordingGroup' of an existing recorder.
+%% You can use this operation to create a new customer managed configuration
+%% recorder or to update the `roleARN' and the `recordingGroup' for
+%% an existing customer managed configuration recorder.
+%%
+%% To start the customer managed configuration recorder and begin recording
+%% configuration changes for the resource types you specify,
+%% use the StartConfigurationRecorder:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_StartConfigurationRecorder.html
+%% operation.
+%%
 %% For more information, see
-%% Managing the Configuration Recorder
+%% Working with the Configuration Recorder
 %% :
 %% https://docs.aws.amazon.com/config/latest/developerguide/stop-start-recorder.html
 %% in the Config Developer Guide.
 %%
-%% You can specify only one configuration recorder for each Amazon Web
-%% Services Region for each account.
+%% One customer managed configuration recorder per account per Region
 %%
-%% If the configuration recorder does not have the
-%% `recordingGroup' field
-%% specified, the default is to record all supported resource
-%% types.
+%% You can create only one customer managed configuration recorder for each
+%% account for each Amazon Web Services Region.
+%%
+%% Default is to record all supported resource types, excluding the global
+%% IAM resource types
+%%
+%% If you have not specified values for the `recordingGroup' field, the
+%% default for the customer managed configuration recorder is to record all
+%% supported resource
+%% types, excluding the global IAM resource types: `AWS::IAM::Group',
+%% `AWS::IAM::Policy', `AWS::IAM::Role', and `AWS::IAM::User'.
+%%
+%% Tags are added at creation and cannot be updated
+%%
+%% `PutConfigurationRecorder' is an idempotent API. Subsequent requests
+%% won’t create a duplicate resource if one was already created. If a
+%% following request has different tags values,
+%% Config will ignore these differences and treat it as an idempotent request
+%% of the previous. In this case, tags will not be updated, even if they are
+%% different.
+%%
+%% Use TagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_TagResource.html
+%% and UntagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_UntagResource.html
+%% to update tags after creation.
 -spec put_configuration_recorder(aws_client:aws_client(), put_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5099,27 +5449,23 @@ put_conformance_pack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConformancePack">>, Input, Options).
 
-%% @doc Creates a delivery channel object to deliver configuration
-%% information and other compliance information to an Amazon S3 bucket and
-%% Amazon SNS topic.
+%% @doc Creates or updates a delivery channel to deliver configuration
+%% information and other compliance information.
 %%
-%% For more information,
-%% see Notifications that Config Sends to an Amazon SNS topic:
-%% https://docs.aws.amazon.com/config/latest/developerguide/notifications-for-AWS-Config.html.
+%% You can use this operation to create a new delivery channel or to update
+%% the Amazon S3 bucket and the
+%% Amazon SNS topic of an existing delivery channel.
 %%
-%% Before you can create a delivery channel, you must create a
-%% configuration recorder.
+%% For more information, see
+%% Working with the Delivery Channel
+%% :
+%% https://docs.aws.amazon.com/config/latest/developerguide/manage-delivery-channel.html
+%% in the Config Developer Guide.
 %%
-%% You can use this action to change the Amazon S3 bucket or an
-%% Amazon SNS topic of the existing delivery channel. To change the
-%% Amazon S3 bucket or an Amazon SNS topic, call this action and
-%% specify the changed values for the S3 bucket and the SNS topic. If
-%% you specify a different value for either the S3 bucket or the SNS
-%% topic, this action will keep the existing value for the parameter
-%% that is not changed.
+%% One delivery channel per account per Region
 %%
-%% You can have only one delivery channel per region in your
-%% account.
+%% You can have only one delivery channel for each account for each Amazon
+%% Web Services Region.
 -spec put_delivery_channel(aws_client:aws_client(), put_delivery_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5139,7 +5485,7 @@ put_delivery_channel(Client, Input, Options)
 %% @doc Used by an Lambda function to deliver evaluation results to
 %% Config.
 %%
-%% This action is required in every Lambda function
+%% This operation is required in every Lambda function
 %% that is invoked by an Config rule.
 -spec put_evaluations(aws_client:aws_client(), put_evaluations_request()) ->
     {ok, put_evaluations_response(), tuple()} |
@@ -5427,6 +5773,11 @@ put_remediation_configurations(Client, Input, Options)
 %% https://docs.aws.amazon.com/config/latest/developerguide/config-concepts.html#aws-config-rules
 %% in the Config Developer Guide.
 %%
+%% Exceptions cannot be placed on service-linked remediation actions
+%%
+%% You cannot place an exception on service-linked remediation actions, such
+%% as remediation actions put by an organizational conformance pack.
+%%
 %% Auto remediation can be initiated even for compliant resources
 %%
 %% If you enable auto remediation for a specific Config rule using the
@@ -5524,12 +5875,62 @@ put_retention_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionConfiguration">>, Input, Options).
 
+%% @doc Creates a service-linked configuration recorder that is linked to a
+%% specific Amazon Web Services service based on the `ServicePrincipal'
+%% you specify.
+%%
+%% The configuration recorder's `name', `recordingGroup',
+%% `recordingMode', and `recordingScope' is set by the service that
+%% is linked to the configuration recorder.
+%%
+%% For more information, see
+%% Working with the Configuration Recorder
+%% :
+%% https://docs.aws.amazon.com/config/latest/developerguide/stop-start-recorder.html
+%% in the Config Developer Guide.
+%%
+%% This API creates a service-linked role `AWSServiceRoleForConfig' in
+%% your account. The service-linked role is created only when the role does
+%% not exist in your account.
+%%
+%% The recording scope determines if you receive configuration items
+%%
+%% The recording scope is set by the service that is linked to the
+%% configuration recorder and determines whether you receive configuration
+%% items (CIs) in the delivery channel. If the recording scope is internal,
+%% you will not receive CIs in the delivery channel.
+%%
+%% Tags are added at creation and cannot be updated with this operation
+%%
+%% Use TagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_TagResource.html
+%% and UntagResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_UntagResource.html
+%% to update tags after creation.
+-spec put_service_linked_configuration_recorder(aws_client:aws_client(), put_service_linked_configuration_recorder_request()) ->
+    {ok, put_service_linked_configuration_recorder_response(), tuple()} |
+    {error, any()} |
+    {error, put_service_linked_configuration_recorder_errors(), tuple()}.
+put_service_linked_configuration_recorder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_service_linked_configuration_recorder(Client, Input, []).
+
+-spec put_service_linked_configuration_recorder(aws_client:aws_client(), put_service_linked_configuration_recorder_request(), proplists:proplist()) ->
+    {ok, put_service_linked_configuration_recorder_response(), tuple()} |
+    {error, any()} |
+    {error, put_service_linked_configuration_recorder_errors(), tuple()}.
+put_service_linked_configuration_recorder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutServiceLinkedConfigurationRecorder">>, Input, Options).
+
 %% @doc Saves a new query or updates an existing saved query.
 %%
 %% The `QueryName' must be unique for a single Amazon Web Services
 %% account and a single Amazon Web Services Region.
 %% You can create upto 300 queries in a single Amazon Web Services account
 %% and a single Amazon Web Services Region.
+%%
+%% Tags are added at creation and cannot be updated
 %%
 %% `PutStoredQuery' is an idempotent API. Subsequent requests won’t
 %% create a duplicate resource if one was already created. If a following
@@ -5678,12 +6079,16 @@ start_config_rules_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartConfigRulesEvaluation">>, Input, Options).
 
-%% @doc Starts recording configurations of the Amazon Web Services resources
-%% you have
-%% selected to record in your Amazon Web Services account.
+%% @doc Starts the customer managed configuration recorder.
 %%
-%% You must have created at least one delivery channel to
-%% successfully start the configuration recorder.
+%% The customer managed configuration recorder will begin recording
+%% configuration changes for the resource types you specify.
+%%
+%% You must have created a delivery channel to
+%% successfully start the customer managed configuration recorder. You can
+%% use the PutDeliveryChannel:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_PutDeliveryChannel.html
+%% operation to create a delivery channel.
 -spec start_configuration_recorder(aws_client:aws_client(), start_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5767,8 +6172,10 @@ start_resource_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartResourceEvaluation">>, Input, Options).
 
-%% @doc Stops recording configurations of the Amazon Web Services resources
-%% you have selected to record in your Amazon Web Services account.
+%% @doc Stops the customer managed configuration recorder.
+%%
+%% The customer managed configuration recorder will stop recording
+%% configuration changes for the resource types you have specified.
 -spec stop_configuration_recorder(aws_client:aws_client(), stop_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5786,7 +6193,7 @@ stop_configuration_recorder(Client, Input, Options)
     request(Client, <<"StopConfigurationRecorder">>, Input, Options).
 
 %% @doc Associates the specified tags to a resource with the specified
-%% resourceArn.
+%% `ResourceArn'.
 %%
 %% If existing tags on a resource are not specified in the request
 %% parameters, they are not changed.
