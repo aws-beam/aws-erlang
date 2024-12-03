@@ -80,6 +80,8 @@
          delete_destination/3,
          delete_index_policy/2,
          delete_index_policy/3,
+         delete_integration/2,
+         delete_integration/3,
          delete_log_anomaly_detector/2,
          delete_log_anomaly_detector/3,
          delete_log_group/2,
@@ -144,6 +146,8 @@
          get_delivery_destination_policy/3,
          get_delivery_source/2,
          get_delivery_source/3,
+         get_integration/2,
+         get_integration/3,
          get_log_anomaly_detector/2,
          get_log_anomaly_detector/3,
          get_log_events/2,
@@ -158,6 +162,8 @@
          get_transformer/3,
          list_anomalies/2,
          list_anomalies/3,
+         list_integrations/2,
+         list_integrations/3,
          list_log_anomaly_detectors/2,
          list_log_anomaly_detectors/3,
          list_log_groups_for_query/2,
@@ -182,6 +188,8 @@
          put_destination_policy/3,
          put_index_policy/2,
          put_index_policy/3,
+         put_integration/2,
+         put_integration/3,
          put_log_events/2,
          put_log_events/3,
          put_metric_filter/2,
@@ -280,6 +288,12 @@
 -type rejected_entity_info() :: #{binary() => any()}.
 
 %% Example:
+%% delete_integration_response() :: #{
+
+%% }
+-type delete_integration_response() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"tags">> := map()
@@ -342,6 +356,13 @@
 -type account_policy() :: #{binary() => any()}.
 
 %% Example:
+%% open_search_data_source() :: #{
+%%   <<"dataSourceName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_data_source() :: #{binary() => any()}.
+
+%% Example:
 %% delete_index_policy_response() :: #{
 
 %% }
@@ -383,7 +404,8 @@
 %% describe_query_definitions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"queryDefinitionNamePrefix">> => string()
+%%   <<"queryDefinitionNamePrefix">> => string(),
+%%   <<"queryLanguage">> => list(any())
 %% }
 -type describe_query_definitions_request() :: #{binary() => any()}.
 
@@ -408,6 +430,16 @@
 -type filter_log_events_response() :: #{binary() => any()}.
 
 %% Example:
+%% open_search_resource_config() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"dashboardViewerPrincipals">> => list(string()()),
+%%   <<"dataSourceRoleArn">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"retentionDays">> => integer()
+%% }
+-type open_search_resource_config() :: #{binary() => any()}.
+
+%% Example:
 %% put_destination_request() :: #{
 %%   <<"destinationName">> := string(),
 %%   <<"roleArn">> := string(),
@@ -419,6 +451,7 @@
 %% Example:
 %% get_query_results_response() :: #{
 %%   <<"encryptionKey">> => string(),
+%%   <<"queryLanguage">> => list(any()),
 %%   <<"results">> => list(list(result_field()())()),
 %%   <<"statistics">> => query_statistics(),
 %%   <<"status">> => list(any())
@@ -430,6 +463,7 @@
 %%   <<"logGroupName">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"queryLanguage">> => list(any()),
 %%   <<"status">> => list(any())
 %% }
 -type describe_queries_request() :: #{binary() => any()}.
@@ -565,6 +599,13 @@
 -type create_log_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% open_search_encryption_policy() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_encryption_policy() :: #{binary() => any()}.
+
+%% Example:
 %% put_delivery_destination_request() :: #{
 %%   <<"deliveryDestinationConfiguration">> := delivery_destination_configuration(),
 %%   <<"name">> := string(),
@@ -630,6 +671,14 @@
 -type invalid_operation_exception() :: #{binary() => any()}.
 
 %% Example:
+%% put_integration_request() :: #{
+%%   <<"integrationName">> := string(),
+%%   <<"integrationType">> := list(any()),
+%%   <<"resourceConfig">> := list()
+%% }
+-type put_integration_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_delivery_response() :: #{
 %%   <<"delivery">> => delivery()
 %% }
@@ -679,6 +728,7 @@
 %%   <<"logGroupIdentifiers">> => list(string()()),
 %%   <<"logGroupName">> => string(),
 %%   <<"logGroupNames">> => list(string()()),
+%%   <<"queryLanguage">> => list(any()),
 %%   <<"queryString">> := string(),
 %%   <<"startTime">> := float()
 %% }
@@ -737,6 +787,14 @@
 %%   <<"policyDocument">> => string()
 %% }
 -type put_data_protection_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% integration_summary() :: #{
+%%   <<"integrationName">> => string(),
+%%   <<"integrationStatus">> => list(any()),
+%%   <<"integrationType">> => list(any())
+%% }
+-type integration_summary() :: #{binary() => any()}.
 
 %% Example:
 %% field_index() :: #{
@@ -804,6 +862,13 @@
 -type configuration_template() :: #{binary() => any()}.
 
 %% Example:
+%% put_integration_response() :: #{
+%%   <<"integrationName">> => string(),
+%%   <<"integrationStatus">> => list(any())
+%% }
+-type put_integration_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_destinations_response() :: #{
 %%   <<"destinations">> => list(destination()()),
 %%   <<"nextToken">> => string()
@@ -848,6 +913,14 @@
 -type operation_aborted_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_integrations_request() :: #{
+%%   <<"integrationNamePrefix">> => string(),
+%%   <<"integrationStatus">> => list(any()),
+%%   <<"integrationType">> => list(any())
+%% }
+-type list_integrations_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_query_definitions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"queryDefinitions">> => list(query_definition()())
@@ -876,6 +949,15 @@
 %%   <<"forceUpdate">> => boolean()
 %% }
 -type put_destination_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_response() :: #{
+%%   <<"integrationDetails">> => list(),
+%%   <<"integrationName">> => string(),
+%%   <<"integrationStatus">> => list(any()),
+%%   <<"integrationType">> => list(any())
+%% }
+-type get_integration_response() :: #{binary() => any()}.
 
 %% Example:
 %% lower_case_string() :: #{
@@ -939,6 +1021,13 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% delete_integration_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"integrationName">> := string()
+%% }
+-type delete_integration_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_index_policies_request() :: #{
 %%   <<"logGroupIdentifiers">> := list(string()()),
 %%   <<"nextToken">> => string()
@@ -979,6 +1068,14 @@
 %%   <<"taskId">> => string()
 %% }
 -type describe_export_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_collection() :: #{
+%%   <<"collectionArn">> => string(),
+%%   <<"collectionEndpoint">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_collection() :: #{binary() => any()}.
 
 %% Example:
 %% get_log_anomaly_detector_response() :: #{
@@ -1069,6 +1166,13 @@
 -type test_transformer_response() :: #{binary() => any()}.
 
 %% Example:
+%% open_search_data_access_policy() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_data_access_policy() :: #{binary() => any()}.
+
+%% Example:
 %% create_export_task_response() :: #{
 %%   <<"taskId">> => string()
 %% }
@@ -1134,6 +1238,13 @@
 -type stop_query_request() :: #{binary() => any()}.
 
 %% Example:
+%% open_search_workspace() :: #{
+%%   <<"status">> => open_search_resource_status(),
+%%   <<"workspaceId">> => string()
+%% }
+-type open_search_workspace() :: #{binary() => any()}.
+
+%% Example:
 %% stop_query_response() :: #{
 %%   <<"success">> => boolean()
 %% }
@@ -1167,6 +1278,13 @@
 %%   <<"percent">> => integer()
 %% }
 -type log_group_field() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_network_policy() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_network_policy() :: #{binary() => any()}.
 
 %% Example:
 %% put_transformer_request() :: #{
@@ -1203,6 +1321,12 @@
 %%   <<"metricTransformations">> := list(metric_transformation()())
 %% }
 -type put_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_request() :: #{
+%%   <<"integrationName">> := string()
+%% }
+-type get_integration_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_index_policies_response() :: #{
@@ -1326,6 +1450,13 @@
 -type list_log_groups_for_query_request() :: #{binary() => any()}.
 
 %% Example:
+%% open_search_lifecycle_policy() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_lifecycle_policy() :: #{binary() => any()}.
+
+%% Example:
 %% delivery_destination() :: #{
 %%   <<"arn">> => string(),
 %%   <<"deliveryDestinationConfiguration">> => delivery_destination_configuration(),
@@ -1401,6 +1532,7 @@
 %%   <<"logGroupNames">> => list(string()()),
 %%   <<"name">> := string(),
 %%   <<"queryDefinitionId">> => string(),
+%%   <<"queryLanguage">> => list(any()),
 %%   <<"queryString">> := string()
 %% }
 -type put_query_definition_request() :: #{binary() => any()}.
@@ -1557,6 +1689,19 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_integration_details() :: #{
+%%   <<"accessPolicy">> => open_search_data_access_policy(),
+%%   <<"application">> => open_search_application(),
+%%   <<"collection">> => open_search_collection(),
+%%   <<"dataSource">> => open_search_data_source(),
+%%   <<"encryptionPolicy">> => open_search_encryption_policy(),
+%%   <<"lifecyclePolicy">> => open_search_lifecycle_policy(),
+%%   <<"networkPolicy">> => open_search_network_policy(),
+%%   <<"workspace">> => open_search_workspace()
+%% }
+-type open_search_integration_details() :: #{binary() => any()}.
 
 %% Example:
 %% move_key_entry() :: #{
@@ -1806,6 +1951,13 @@
 -type get_data_protection_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% open_search_resource_status() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string()
+%% }
+-type open_search_resource_status() :: #{binary() => any()}.
+
+%% Example:
 %% delivery_source() :: #{
 %%   <<"arn">> => string(),
 %%   <<"logType">> => string(),
@@ -1917,11 +2069,21 @@
 -type parse_json() :: #{binary() => any()}.
 
 %% Example:
+%% open_search_application() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationEndpoint">> => string(),
+%%   <<"applicationId">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_application() :: #{binary() => any()}.
+
+%% Example:
 %% query_definition() :: #{
 %%   <<"lastModified">> => float(),
 %%   <<"logGroupNames">> => list(string()()),
 %%   <<"name">> => string(),
 %%   <<"queryDefinitionId">> => string(),
+%%   <<"queryLanguage">> => list(any()),
 %%   <<"queryString">> => string()
 %% }
 -type query_definition() :: #{binary() => any()}.
@@ -1987,6 +2149,7 @@
 %%   <<"createTime">> => float(),
 %%   <<"logGroupName">> => string(),
 %%   <<"queryId">> => string(),
+%%   <<"queryLanguage">> => list(any()),
 %%   <<"queryString">> => string(),
 %%   <<"status">> => list(any())
 %% }
@@ -2066,6 +2229,12 @@
 %%   <<"timestamp">> => float()
 %% }
 -type log_event() :: #{binary() => any()}.
+
+%% Example:
+%% list_integrations_response() :: #{
+%%   <<"integrationSummaries">> => list(integration_summary()())
+%% }
+-type list_integrations_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_query_definition_response() :: #{
@@ -2176,6 +2345,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type delete_integration_errors() ::
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type delete_log_anomaly_detector_errors() ::
     invalid_parameter_exception() | 
@@ -2357,6 +2532,11 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type get_integration_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
 -type get_log_anomaly_detector_errors() ::
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
@@ -2396,6 +2576,10 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type list_integrations_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
 
 -type list_log_anomaly_detectors_errors() ::
     invalid_parameter_exception() | 
@@ -2469,6 +2653,12 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception().
+
+-type put_integration_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
 
 -type put_log_events_errors() ::
     unrecognized_client_exception() | 
@@ -3171,6 +3361,32 @@ delete_index_policy(Client, Input)
 delete_index_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIndexPolicy">>, Input, Options).
+
+%% @doc Deletes the integration between CloudWatch Logs and OpenSearch
+%% Service.
+%%
+%% If your integration has active vended logs dashboards,
+%% you must specify `true' for the `force' parameter, otherwise the
+%% operation will fail. If you delete the integration by
+%% setting `force' to `true',
+%% all your vended logs dashboards powered by OpenSearch Service will be
+%% deleted and the data that was on them
+%% will no longer be accessible.
+-spec delete_integration(aws_client:aws_client(), delete_integration_request()) ->
+    {ok, delete_integration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_errors(), tuple()}.
+delete_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_integration(Client, Input, []).
+
+-spec delete_integration(aws_client:aws_client(), delete_integration_request(), proplists:proplist()) ->
+    {ok, delete_integration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_errors(), tuple()}.
+delete_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIntegration">>, Input, Options).
 
 %% @doc Deletes the specified CloudWatch Logs anomaly detector.
 -spec delete_log_anomaly_detector(aws_client:aws_client(), delete_log_anomaly_detector_request()) ->
@@ -3958,6 +4174,24 @@ get_delivery_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeliverySource">>, Input, Options).
 
+%% @doc Returns information about one integration between CloudWatch Logs and
+%% OpenSearch Service.
+-spec get_integration(aws_client:aws_client(), get_integration_request()) ->
+    {ok, get_integration_response(), tuple()} |
+    {error, any()} |
+    {error, get_integration_errors(), tuple()}.
+get_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_integration(Client, Input, []).
+
+-spec get_integration(aws_client:aws_client(), get_integration_request(), proplists:proplist()) ->
+    {ok, get_integration_response(), tuple()} |
+    {error, any()} |
+    {error, get_integration_errors(), tuple()}.
+get_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIntegration">>, Input, Options).
+
 %% @doc Retrieves information about the log anomaly detector that you
 %% specify.
 -spec get_log_anomaly_detector(aws_client:aws_client(), get_log_anomaly_detector_request()) ->
@@ -4168,6 +4402,28 @@ list_anomalies(Client, Input)
 list_anomalies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAnomalies">>, Input, Options).
+
+%% @doc Returns a list of integrations between CloudWatch Logs and other
+%% services in this account.
+%%
+%% Currently, only one
+%% integration can be created in an account, and this integration must be
+%% with OpenSearch Service.
+-spec list_integrations(aws_client:aws_client(), list_integrations_request()) ->
+    {ok, list_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_integrations_errors(), tuple()}.
+list_integrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_integrations(Client, Input, []).
+
+-spec list_integrations(aws_client:aws_client(), list_integrations_request(), proplists:proplist()) ->
+    {ok, list_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_integrations_errors(), tuple()}.
+list_integrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListIntegrations">>, Input, Options).
 
 %% @doc Retrieves a list of the log anomaly detectors in the account.
 -spec list_log_anomaly_detectors(aws_client:aws_client(), list_log_anomaly_detectors_request()) ->
@@ -4858,6 +5114,37 @@ put_index_policy(Client, Input)
 put_index_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutIndexPolicy">>, Input, Options).
+
+%% @doc Creates an integration between CloudWatch Logs and another service in
+%% this account.
+%%
+%% Currently, only integrations with
+%% OpenSearch Service are supported, and currently you can have only one
+%% integration in your account.
+%%
+%% Integrating with OpenSearch Service makes it possible for you to create
+%% curated vended logs dashboards, powered
+%% by OpenSearch Service analytics. For more information, see
+%% Vended log dashboards powered by Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-OpenSearch-Dashboards.html.
+%%
+%% You can use this operation only to create a new integration. You can't
+%% modify an existing integration.
+-spec put_integration(aws_client:aws_client(), put_integration_request()) ->
+    {ok, put_integration_response(), tuple()} |
+    {error, any()} |
+    {error, put_integration_errors(), tuple()}.
+put_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_integration(Client, Input, []).
+
+-spec put_integration(aws_client:aws_client(), put_integration_request(), proplists:proplist()) ->
+    {ok, put_integration_response(), tuple()} |
+    {error, any()} |
+    {error, put_integration_errors(), tuple()}.
+put_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutIntegration">>, Input, Options).
 
 %% @doc Uploads a batch of log events to the specified log stream.
 %%

@@ -222,6 +222,17 @@
 %% }
 -type organization_kubernetes_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% resource_data() :: #{
+%%   <<"AccessKey">> => access_key(),
+%%   <<"Ec2Instance">> => ec2_instance(),
+%%   <<"Ec2NetworkInterface">> => ec2_network_interface(),
+%%   <<"S3Bucket">> => s3_bucket(),
+%%   <<"S3Object">> => s3_object()
+%% }
+-type resource_data() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_master_account_request() :: #{}
 -type disassociate_from_master_account_request() :: #{}.
@@ -496,6 +507,19 @@
 %% }
 -type admin_account() :: #{binary() => any()}.
 
+
+%% Example:
+%% sequence() :: #{
+%%   <<"Actors">> => list(actor()()),
+%%   <<"Description">> => string(),
+%%   <<"Endpoints">> => list(network_endpoint()()),
+%%   <<"Resources">> => list(resource_v2()()),
+%%   <<"SequenceIndicators">> => list(indicator()()),
+%%   <<"Signals">> => list(signal()()),
+%%   <<"Uid">> => string()
+%% }
+-type sequence() :: #{binary() => any()}.
+
 %% Example:
 %% archive_findings_response() :: #{}
 -type archive_findings_response() :: #{}.
@@ -728,6 +752,16 @@
 
 
 %% Example:
+%% public_access_configuration() :: #{
+%%   <<"PublicAclAccess">> => list(any()),
+%%   <<"PublicAclIgnoreBehavior">> => list(any()),
+%%   <<"PublicBucketRestrictBehavior">> => list(any()),
+%%   <<"PublicPolicyAccess">> => list(any())
+%% }
+-type public_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% rds_db_user_details() :: #{
 %%   <<"Application">> => string(),
 %%   <<"AuthMethod">> => string(),
@@ -887,6 +921,25 @@
 %% Example:
 %% update_ip_set_response() :: #{}
 -type update_ip_set_response() :: #{}.
+
+
+%% Example:
+%% network_geo_location() :: #{
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"Latitude">> => float(),
+%%   <<"Longitude">> => float()
+%% }
+-type network_geo_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1123,6 +1176,13 @@
 
 
 %% Example:
+%% network_connection() :: #{
+%%   <<"Direction">> => list(any())
+%% }
+-type network_connection() :: #{binary() => any()}.
+
+
+%% Example:
 %% organization_kubernetes_audit_logs_configuration_result() :: #{
 %%   <<"AutoEnable">> => boolean()
 %% }
@@ -1137,6 +1197,14 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type member_features_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% autonomous_system() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Number">> => integer()
+%% }
+-type autonomous_system() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1231,6 +1299,21 @@
 %%   <<"ScanResult">> => list(any())
 %% }
 -type scan_result_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_v2() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CloudPartition">> => string(),
+%%   <<"Data">> => resource_data(),
+%%   <<"Name">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Service">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Uid">> => string()
+%% }
+-type resource_v2() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1405,6 +1488,22 @@
 
 
 %% Example:
+%% s3_bucket() :: #{
+%%   <<"AccountPublicAccess">> => public_access_configuration(),
+%%   <<"BucketPublicAccess">> => public_access_configuration(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EffectivePermission">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionType">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"PublicReadAccess">> => list(any()),
+%%   <<"PublicWriteAccess">> => list(any()),
+%%   <<"S3ObjectUids">> => list(string()())
+%% }
+-type s3_bucket() :: #{binary() => any()}.
+
+
+%% Example:
 %% master() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"InvitationId">> => string(),
@@ -1493,6 +1592,15 @@
 %% }
 -type bucket_policy() :: #{binary() => any()}.
 
+
+%% Example:
+%% access_key() :: #{
+%%   <<"PrincipalId">> => string(),
+%%   <<"UserName">> => string(),
+%%   <<"UserType">> => string()
+%% }
+-type access_key() :: #{binary() => any()}.
+
 %% Example:
 %% get_malware_protection_plan_request() :: #{}
 -type get_malware_protection_plan_request() :: #{}.
@@ -1545,6 +1653,18 @@
 
 
 %% Example:
+%% ec2_network_interface() :: #{
+%%   <<"Ipv6Addresses">> => list(string()()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()()),
+%%   <<"PublicIp">> => string(),
+%%   <<"SecurityGroups">> => list(security_group()()),
+%%   <<"SubNetId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type ec2_network_interface() :: #{binary() => any()}.
+
+
+%% Example:
 %% ecs_task_details() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Containers">> => list(container()()),
@@ -1562,6 +1682,26 @@
 
 
 %% Example:
+%% signal() :: #{
+%%   <<"ActorIds">> => list(string()()),
+%%   <<"Count">> => integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointIds">> => list(string()()),
+%%   <<"FirstSeenAt">> => non_neg_integer(),
+%%   <<"LastSeenAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceUids">> => list(string()()),
+%%   <<"Severity">> => float(),
+%%   <<"SignalIndicators">> => list(indicator()()),
+%%   <<"Type">> => list(any()),
+%%   <<"Uid">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type signal() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_malware_protection_plan_request() :: #{
 %%   <<"Actions">> => malware_protection_plan_actions(),
 %%   <<"ClientToken">> => string(),
@@ -1570,6 +1710,14 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_malware_protection_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% account() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Uid">> => string()
+%% }
+-type account() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1615,6 +1763,7 @@
 %% finding() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Arn">> => string(),
+%%   <<"AssociatedAttackSequenceArn">> => string(),
 %%   <<"Confidence">> => float(),
 %%   <<"CreatedAt">> => string(),
 %%   <<"Description">> => string(),
@@ -1698,6 +1847,19 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_publishing_destinations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_endpoint() :: #{
+%%   <<"AutonomousSystem">> => autonomous_system(),
+%%   <<"Connection">> => network_connection(),
+%%   <<"Domain">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Ip">> => string(),
+%%   <<"Location">> => network_geo_location(),
+%%   <<"Port">> => integer()
+%% }
+-type network_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1810,14 +1972,40 @@
 
 
 %% Example:
+%% ec2_instance() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Ec2NetworkInterfaceUids">> => list(string()()),
+%%   <<"IamInstanceProfile">> => iam_instance_profile(),
+%%   <<"ImageDescription">> => string(),
+%%   <<"InstanceState">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"ProductCodes">> => list(product_code()())
+%% }
+-type ec2_instance() :: #{binary() => any()}.
+
+
+%% Example:
 %% detection() :: #{
-%%   <<"Anomaly">> => anomaly()
+%%   <<"Anomaly">> => anomaly(),
+%%   <<"Sequence">> => sequence()
 %% }
 -type detection() :: #{binary() => any()}.
 
 %% Example:
 %% update_findings_feedback_response() :: #{}
 -type update_findings_feedback_response() :: #{}.
+
+
+%% Example:
+%% session() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Issuer">> => string(),
+%%   <<"MfaStatus">> => list(any()),
+%%   <<"Uid">> => string()
+%% }
+-type session() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2552,6 +2740,17 @@
 
 
 %% Example:
+%% user() :: #{
+%%   <<"Account">> => account(),
+%%   <<"CredentialUid">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Uid">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+
+%% Example:
 %% coverage_ecs_cluster_details() :: #{
 %%   <<"ClusterName">> => string(),
 %%   <<"ContainerInstanceDetails">> => container_instance_details(),
@@ -2629,6 +2828,15 @@
 %%   <<"RemoteIpDetails">> => remote_ip_details()
 %% }
 -type rds_login_attempt_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Session">> => session(),
+%%   <<"User">> => user()
+%% }
+-type actor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3144,6 +3352,15 @@
 %%   <<"S3BucketDetails">> => list(s3_bucket_detail()())
 %% }
 -type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% indicator() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Title">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type indicator() :: #{binary() => any()}.
 
 
 %% Example:

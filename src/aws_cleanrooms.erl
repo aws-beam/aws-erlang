@@ -938,6 +938,16 @@
 
 
 %% Example:
+%% athena_table_reference() :: #{
+%%   <<"databaseName">> => string(),
+%%   <<"outputLocation">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"workGroup">> => string()
+%% }
+-type athena_table_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_analysis_template_output() :: #{
 %%   <<"analysisTemplate">> := analysis_template()
 %% }
@@ -1984,6 +1994,18 @@
 
 
 %% Example:
+%% snowflake_table_reference() :: #{
+%%   <<"accountIdentifier">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"schemaName">> => string(),
+%%   <<"secretArn">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"tableSchema">> => list()
+%% }
+-type snowflake_table_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_schema_analysis_rule_output() :: #{
 %%   <<"analysisRule">> := analysis_rule()
 %% }
@@ -2258,6 +2280,14 @@
 %%   <<"message">> => [string()]
 %% }
 -type analysis_template_validation_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_table_schema_v1() :: #{
+%%   <<"columnName">> => string(),
+%%   <<"columnType">> => string()
+%% }
+-type snowflake_table_schema_v1() :: #{binary() => any()}.
 
 %% Example:
 %% get_configured_table_input() :: #{}

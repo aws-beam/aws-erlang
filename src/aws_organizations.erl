@@ -1922,6 +1922,9 @@ accept_handshake(Client, Input, Options)
 %% RESOURCE_CONTROL_POLICY:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html
 %%
+%% DECLARATIVE_POLICY_EC2:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html
+%%
 %% BACKUP_POLICY:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html
 %%
@@ -2669,8 +2672,9 @@ describe_create_account_status(Client, Input, Options)
 %% to the
 %% account.
 %%
-%% This operation applies only to policy types other than service
-%% control policies (SCPs).
+%% This operation applies only to management policies. It does not apply to
+%% authorization policies: service
+%% control policies (SCPs) and resource control policies (RCPs).
 %%
 %% For more information about policy inheritance, see Understanding
 %% management policy inheritance:

@@ -19,12 +19,18 @@
          create_access_log_subscription/3,
          create_listener/3,
          create_listener/4,
+         create_resource_configuration/2,
+         create_resource_configuration/3,
+         create_resource_gateway/2,
+         create_resource_gateway/3,
          create_rule/4,
          create_rule/5,
          create_service/2,
          create_service/3,
          create_service_network/2,
          create_service_network/3,
+         create_service_network_resource_association/2,
+         create_service_network_resource_association/3,
          create_service_network_service_association/2,
          create_service_network_service_association/3,
          create_service_network_vpc_association/2,
@@ -37,6 +43,12 @@
          delete_auth_policy/4,
          delete_listener/4,
          delete_listener/5,
+         delete_resource_configuration/3,
+         delete_resource_configuration/4,
+         delete_resource_endpoint_association/3,
+         delete_resource_endpoint_association/4,
+         delete_resource_gateway/3,
+         delete_resource_gateway/4,
          delete_resource_policy/3,
          delete_resource_policy/4,
          delete_rule/5,
@@ -45,6 +57,8 @@
          delete_service/4,
          delete_service_network/3,
          delete_service_network/4,
+         delete_service_network_resource_association/3,
+         delete_service_network_resource_association/4,
          delete_service_network_service_association/3,
          delete_service_network_service_association/4,
          delete_service_network_vpc_association/3,
@@ -62,6 +76,12 @@
          get_listener/3,
          get_listener/5,
          get_listener/6,
+         get_resource_configuration/2,
+         get_resource_configuration/4,
+         get_resource_configuration/5,
+         get_resource_gateway/2,
+         get_resource_gateway/4,
+         get_resource_gateway/5,
          get_resource_policy/2,
          get_resource_policy/4,
          get_resource_policy/5,
@@ -74,6 +94,9 @@
          get_service_network/2,
          get_service_network/4,
          get_service_network/5,
+         get_service_network_resource_association/2,
+         get_service_network_resource_association/4,
+         get_service_network_resource_association/5,
          get_service_network_service_association/2,
          get_service_network_service_association/4,
          get_service_network_service_association/5,
@@ -89,15 +112,30 @@
          list_listeners/2,
          list_listeners/4,
          list_listeners/5,
+         list_resource_configurations/1,
+         list_resource_configurations/3,
+         list_resource_configurations/4,
+         list_resource_endpoint_associations/2,
+         list_resource_endpoint_associations/4,
+         list_resource_endpoint_associations/5,
+         list_resource_gateways/1,
+         list_resource_gateways/3,
+         list_resource_gateways/4,
          list_rules/3,
          list_rules/5,
          list_rules/6,
+         list_service_network_resource_associations/1,
+         list_service_network_resource_associations/3,
+         list_service_network_resource_associations/4,
          list_service_network_service_associations/1,
          list_service_network_service_associations/3,
          list_service_network_service_associations/4,
          list_service_network_vpc_associations/1,
          list_service_network_vpc_associations/3,
          list_service_network_vpc_associations/4,
+         list_service_network_vpc_endpoint_associations/2,
+         list_service_network_vpc_endpoint_associations/4,
+         list_service_network_vpc_endpoint_associations/5,
          list_service_networks/1,
          list_service_networks/3,
          list_service_networks/4,
@@ -126,6 +164,10 @@
          update_access_log_subscription/4,
          update_listener/4,
          update_listener/5,
+         update_resource_configuration/3,
+         update_resource_configuration/4,
+         update_resource_gateway/3,
+         update_resource_gateway/4,
          update_rule/5,
          update_rule/6,
          update_service/3,
@@ -155,6 +197,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"destinationArn">> := string(),
 %%   <<"resourceIdentifier">> := string(),
+%%   <<"serviceNetworkLogType">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_access_log_subscription_request() :: #{binary() => any()}.
@@ -198,6 +241,32 @@
 %% }
 -type create_service_network_vpc_association_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_resource_configuration_request() :: #{}
+-type get_resource_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_resource_configuration_response() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"amazonManaged">> => boolean(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customDomainName">> => string(),
+%%   <<"failureReason">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"portRanges">> => list(string()()),
+%%   <<"protocol">> => string(),
+%%   <<"resourceConfigurationDefinition">> => list(),
+%%   <<"resourceConfigurationGroupId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type get_resource_configuration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_rule_request() :: #{
@@ -220,6 +289,10 @@
 %%   <<"type">> := string()
 %% }
 -type create_target_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_network_resource_association_request() :: #{}
+-type get_service_network_resource_association_request() :: #{}.
 
 
 %% Example:
@@ -252,9 +325,23 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_service_network_resource_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdBy">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string()
+%% }
+-type create_service_network_resource_association_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_policy_response() :: #{}
 -type delete_resource_policy_response() :: #{}.
+
+%% Example:
+%% delete_resource_gateway_request() :: #{}
+-type delete_resource_gateway_request() :: #{}.
 
 
 %% Example:
@@ -278,8 +365,28 @@
 -type create_listener_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_resource_configuration_response() :: #{}
+-type delete_resource_configuration_response() :: #{}.
+
+%% Example:
 %% delete_service_network_request() :: #{}
 -type delete_service_network_request() :: #{}.
+
+
+%% Example:
+%% get_resource_gateway_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcId">> => string()
+%% }
+-type get_resource_gateway_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -312,6 +419,7 @@
 %%   <<"authType">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"name">> := string(),
+%%   <<"sharingConfig">> => sharing_config(),
 %%   <<"tags">> => map()
 %% }
 -type create_service_network_request() :: #{binary() => any()}.
@@ -335,6 +443,13 @@
 %% }
 -type service_network_service_association_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% arn_resource() :: #{
+%%   <<"arn">> => string()
+%% }
+-type arn_resource() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
@@ -349,7 +464,8 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"numberOfAssociatedServices">> => [float()],
-%%   <<"numberOfAssociatedVPCs">> => [float()]
+%%   <<"numberOfAssociatedVPCs">> => [float()],
+%%   <<"sharingConfig">> => sharing_config()
 %% }
 -type get_service_network_response() :: #{binary() => any()}.
 
@@ -362,6 +478,34 @@
 %%   <<"name">> => string()
 %% }
 -type update_service_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_configuration_response() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"portRanges">> => list(string()()),
+%%   <<"protocol">> => string(),
+%%   <<"resourceConfigurationDefinition">> => list(),
+%%   <<"resourceConfigurationGroupId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type update_resource_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_endpoint_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"resourceConfigurationArn">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type delete_resource_endpoint_association_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -381,9 +525,18 @@
 %%   <<"arn">> => string(),
 %%   <<"authType">> => string(),
 %%   <<"id">> => string(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"sharingConfig">> => sharing_config()
 %% }
 -type create_service_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_vpc_endpoint_associations_response() :: #{
+%%   <<"items">> => list(service_network_endpoint_association()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_network_vpc_endpoint_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -397,6 +550,13 @@
 %% get_access_log_subscription_request() :: #{}
 -type get_access_log_subscription_request() :: #{}.
 
+
+%% Example:
+%% ip_resource() :: #{
+%%   <<"ipAddress">> => string()
+%% }
+-type ip_resource() :: #{binary() => any()}.
+
 %% Example:
 %% get_service_network_request() :: #{}
 -type get_service_network_request() :: #{}.
@@ -409,10 +569,24 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"numberOfAssociatedResourceConfigurations">> => [float()],
 %%   <<"numberOfAssociatedServices">> => [float()],
 %%   <<"numberOfAssociatedVPCs">> => [float()]
 %% }
 -type service_network_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_gateway_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"name">> := string(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"subnetIds">> := list(string()()),
+%%   <<"tags">> => map(),
+%%   <<"vpcIdentifier">> := string()
+%% }
+-type create_resource_gateway_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -479,7 +653,8 @@
 %%   <<"destinationArn">> := string(),
 %%   <<"id">> := string(),
 %%   <<"resourceArn">> := string(),
-%%   <<"resourceId">> := string()
+%%   <<"resourceId">> := string(),
+%%   <<"serviceNetworkLogType">> => string()
 %% }
 -type create_access_log_subscription_response() :: #{binary() => any()}.
 
@@ -526,6 +701,20 @@
 
 
 %% Example:
+%% update_resource_gateway_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcId">> => string()
+%% }
+-type update_resource_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_listener_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -549,6 +738,20 @@
 %%   <<"state">> => string()
 %% }
 -type get_auth_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_gateway_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type create_resource_gateway_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -587,6 +790,22 @@
 
 
 %% Example:
+%% resource_configuration_summary() :: #{
+%%   <<"amazonManaged">> => boolean(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationGroupId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type resource_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_network_vpc_association_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -601,6 +820,10 @@
 %% }
 -type service_network_vpc_association_summary() :: #{binary() => any()}.
 
+%% Example:
+%% get_resource_gateway_request() :: #{}
+-type get_resource_gateway_request() :: #{}.
+
 
 %% Example:
 %% target() :: #{
@@ -611,11 +834,28 @@
 
 
 %% Example:
+%% service_network_endpoint_association() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => [string()],
+%%   <<"serviceNetworkArn">> => string(),
+%%   <<"state">> => [string()],
+%%   <<"vpcEndpointId">> => [string()],
+%%   <<"vpcEndpointOwnerId">> => [string()],
+%%   <<"vpcId">> => [string()]
+%% }
+-type service_network_endpoint_association() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_service_networks_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_networks_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_network_resource_association_request() :: #{}
+-type delete_service_network_resource_association_request() :: #{}.
 
 
 %% Example:
@@ -650,11 +890,47 @@
 
 
 %% Example:
+%% list_resource_endpoint_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceConfigurationIdentifier">> := string(),
+%%   <<"resourceEndpointAssociationIdentifier">> => string(),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcEndpointOwner">> => string()
+%% }
+-type list_resource_endpoint_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_gateway_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type resource_gateway_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_listeners_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_listeners_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_resource() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"ipAddressType">> => string()
+%% }
+-type dns_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -719,6 +995,14 @@
 %% }
 -type service_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_resource_gateways_response() :: #{
+%%   <<"items">> => list(resource_gateway_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_gateways_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_service_network_vpc_association_request() :: #{}
 -type delete_service_network_vpc_association_request() :: #{}.
@@ -734,6 +1018,10 @@
 %%   <<"tags">> => map()
 %% }
 -type create_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_configuration_request() :: #{}
+-type delete_resource_configuration_request() :: #{}.
 
 
 %% Example:
@@ -822,6 +1110,14 @@
 
 
 %% Example:
+%% list_service_network_resource_associations_response() :: #{
+%%   <<"items">> => list(service_network_resource_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_network_resource_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_auth_policy_request() :: #{
 %%   <<"policy">> := string()
 %% }
@@ -879,6 +1175,14 @@
 %% }
 -type update_service_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_resource_configurations_response() :: #{
+%%   <<"items">> => list(resource_configuration_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_configurations_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_target_group_request() :: #{}
 -type delete_target_group_request() :: #{}.
@@ -906,10 +1210,30 @@
 
 
 %% Example:
+%% list_resource_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceConfigurationGroupIdentifier">> => string(),
+%%   <<"resourceGatewayIdentifier">> => string()
+%% }
+-type list_resource_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_targets_request() :: #{
 %%   <<"targets">> := list(target()())
 %% }
 -type register_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_network_resource_association_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceConfigurationIdentifier">> := string(),
+%%   <<"serviceNetworkIdentifier">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_service_network_resource_association_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -936,7 +1260,8 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string()
+%%   <<"resourceId">> => string(),
+%%   <<"serviceNetworkLogType">> => string()
 %% }
 -type access_log_subscription_summary() :: #{binary() => any()}.
 
@@ -1006,6 +1331,13 @@
 
 
 %% Example:
+%% update_resource_gateway_request() :: #{
+%%   <<"securityGroupIds">> => list(string()())
+%% }
+-type update_resource_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_target_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -1030,6 +1362,14 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_resource_endpoint_associations_response() :: #{
+%%   <<"items">> => list(resource_endpoint_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_endpoint_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1066,6 +1406,15 @@
 
 
 %% Example:
+%% delete_service_network_resource_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_service_network_resource_association_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"quotaCode">> => [string()],
@@ -1087,6 +1436,37 @@
 
 
 %% Example:
+%% create_resource_configuration_request() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"portRanges">> => list(string()()),
+%%   <<"protocol">> => string(),
+%%   <<"resourceConfigurationDefinition">> => list(),
+%%   <<"resourceConfigurationGroupIdentifier">> => string(),
+%%   <<"resourceGatewayIdentifier">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string()
+%% }
+-type create_resource_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_endpoint_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"id">> => string(),
+%%   <<"resourceConfigurationArn">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceConfigurationName">> => string(),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcEndpointOwner">> => string()
+%% }
+-type resource_endpoint_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_service_network_vpc_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -1094,6 +1474,10 @@
 %%   <<"vpcIdentifier">> => string()
 %% }
 -type list_service_network_vpc_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_endpoint_association_request() :: #{}
+-type delete_resource_endpoint_association_request() :: #{}.
 
 
 %% Example:
@@ -1106,6 +1490,24 @@
 %% Example:
 %% put_resource_policy_response() :: #{}
 -type put_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% list_resource_gateways_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_gateways_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_gateway_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_resource_gateway_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1127,11 +1529,55 @@
 
 
 %% Example:
+%% get_service_network_resource_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"dnsEntry">> => dns_entry(),
+%%   <<"failureCode">> => [string()],
+%%   <<"failureReason">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"isManagedAssociation">> => boolean(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"privateDnsEntry">> => dns_entry(),
+%%   <<"resourceConfigurationArn">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceConfigurationName">> => string(),
+%%   <<"serviceNetworkArn">> => string(),
+%%   <<"serviceNetworkId">> => string(),
+%%   <<"serviceNetworkName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type get_service_network_resource_association_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_targets_response() :: #{
 %%   <<"successful">> => list(target()()),
 %%   <<"unsuccessful">> => list(target_failure()())
 %% }
 -type register_targets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_network_resource_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"dnsEntry">> => dns_entry(),
+%%   <<"failureCode">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"isManagedAssociation">> => boolean(),
+%%   <<"privateDnsEntry">> => dns_entry(),
+%%   <<"resourceConfigurationArn">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceConfigurationName">> => string(),
+%%   <<"serviceNetworkArn">> => string(),
+%%   <<"serviceNetworkId">> => string(),
+%%   <<"serviceNetworkName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type service_network_resource_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1150,6 +1596,16 @@
 %%   <<"hostedZoneId">> => [string()]
 %% }
 -type dns_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_resource_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceConfigurationIdentifier">> => string(),
+%%   <<"serviceNetworkIdentifier">> => string()
+%% }
+-type list_service_network_resource_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1179,6 +1635,15 @@
 %%   <<"securityGroupIds">> := list(string()())
 %% }
 -type update_service_network_vpc_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_vpc_endpoint_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceNetworkIdentifier">> := string()
+%% }
+-type list_service_network_vpc_endpoint_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1239,6 +1704,15 @@
 
 
 %% Example:
+%% update_resource_configuration_request() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"portRanges">> => list(string()()),
+%%   <<"resourceConfigurationDefinition">> => list()
+%% }
+-type update_resource_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_access_log_subscription_response() :: #{
 %%   <<"arn">> := string(),
 %%   <<"createdAt">> := non_neg_integer(),
@@ -1246,7 +1720,8 @@
 %%   <<"id">> := string(),
 %%   <<"lastUpdatedAt">> := non_neg_integer(),
 %%   <<"resourceArn">> := string(),
-%%   <<"resourceId">> := string()
+%%   <<"resourceId">> := string(),
+%%   <<"serviceNetworkLogType">> => string()
 %% }
 -type get_access_log_subscription_response() :: #{binary() => any()}.
 
@@ -1306,6 +1781,13 @@
 
 
 %% Example:
+%% sharing_config() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type sharing_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_service_network_service_associations_response() :: #{
 %%   <<"items">> := list(service_network_service_association_summary()()),
 %%   <<"nextToken">> => string()
@@ -1342,6 +1824,25 @@
 %% get_service_network_vpc_association_request() :: #{}
 -type get_service_network_vpc_association_request() :: #{}.
 
+
+%% Example:
+%% create_resource_configuration_response() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"failureReason">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"portRanges">> => list(string()()),
+%%   <<"protocol">> => string(),
+%%   <<"resourceConfigurationDefinition">> => list(),
+%%   <<"resourceConfigurationGroupId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type create_resource_configuration_response() :: #{binary() => any()}.
+
 -type batch_update_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1359,6 +1860,24 @@
     conflict_exception().
 
 -type create_listener_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_resource_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_resource_gateway_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1386,6 +1905,15 @@
     conflict_exception().
 
 -type create_service_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_network_resource_association_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1443,6 +1971,29 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_resource_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_resource_endpoint_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_resource_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_resource_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1467,6 +2018,14 @@
     conflict_exception().
 
 -type delete_service_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_network_resource_association_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1526,6 +2085,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_resource_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_resource_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1548,6 +2121,13 @@
     resource_not_found_exception().
 
 -type get_service_network_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_network_resource_association_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1588,12 +2168,36 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_resource_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_resource_endpoint_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_resource_gateways_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_rules_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_service_network_resource_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_service_network_service_associations_errors() ::
     throttling_exception() | 
@@ -1602,6 +2206,12 @@
     internal_server_exception().
 
 -type list_service_network_vpc_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_service_network_vpc_endpoint_associations_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1687,14 +2297,31 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type update_resource_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_resource_gateway_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1703,6 +2330,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1727,6 +2355,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1849,6 +2478,78 @@ create_listener(Client, ServiceIdentifier, Input) ->
 create_listener(Client, ServiceIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a resource configuration.
+%%
+%% A resource configuration defines a specific resource. You
+%% can associate a resource configuration with a service network or a VPC
+%% endpoint.
+-spec create_resource_configuration(aws_client:aws_client(), create_resource_configuration_request()) ->
+    {ok, create_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_resource_configuration_errors(), tuple()}.
+create_resource_configuration(Client, Input) ->
+    create_resource_configuration(Client, Input, []).
+
+-spec create_resource_configuration(aws_client:aws_client(), create_resource_configuration_request(), proplists:proplist()) ->
+    {ok, create_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_resource_configuration_errors(), tuple()}.
+create_resource_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/resourceconfigurations"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a resource gateway.
+-spec create_resource_gateway(aws_client:aws_client(), create_resource_gateway_request()) ->
+    {ok, create_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, create_resource_gateway_errors(), tuple()}.
+create_resource_gateway(Client, Input) ->
+    create_resource_gateway(Client, Input, []).
+
+-spec create_resource_gateway(aws_client:aws_client(), create_resource_gateway_request(), proplists:proplist()) ->
+    {ok, create_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, create_resource_gateway_errors(), tuple()}.
+create_resource_gateway(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/resourcegateways"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1994,9 +2695,49 @@ create_service_network(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a service with a service network.
+%% @doc Associates the specified service network with the specified resource
+%% configuration.
 %%
-%% For more information, see Manage service associations:
+%% This allows the resource configuration to receive connections through the
+%% service network,
+%% including through a service network VPC endpoint.
+-spec create_service_network_resource_association(aws_client:aws_client(), create_service_network_resource_association_request()) ->
+    {ok, create_service_network_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_network_resource_association_errors(), tuple()}.
+create_service_network_resource_association(Client, Input) ->
+    create_service_network_resource_association(Client, Input, []).
+
+-spec create_service_network_resource_association(aws_client:aws_client(), create_service_network_resource_association_request(), proplists:proplist()) ->
+    {ok, create_service_network_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_network_resource_association_errors(), tuple()}.
+create_service_network_resource_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/servicenetworkresourceassociations"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates the specified service with the specified service network.
+%%
+%% For more information, see
+%% Manage service associations:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-service-associations
 %% in the Amazon VPC Lattice User Guide.
 %%
@@ -2184,10 +2925,10 @@ delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
 %%
 %% If an auth is set to `AWS_IAM' and the auth
 %% policy is deleted, all requests are denied. If you are trying to remove
-%% the auth
-%% policy completely, you must set the auth type to `NONE'. If auth is
-%% enabled on the
-%% resource, but no auth policy is set, all requests are denied.
+%% the auth policy
+%% completely, you must set the auth type to `NONE'. If auth is enabled
+%% on the resource,
+%% but no auth policy is set, all requests are denied.
 -spec delete_auth_policy(aws_client:aws_client(), binary() | list(), delete_auth_policy_request()) ->
     {ok, delete_auth_policy_response(), tuple()} |
     {error, any()} |
@@ -2237,6 +2978,109 @@ delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
     Method = delete,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified resource configuration.
+-spec delete_resource_configuration(aws_client:aws_client(), binary() | list(), delete_resource_configuration_request()) ->
+    {ok, delete_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_configuration_errors(), tuple()}.
+delete_resource_configuration(Client, ResourceConfigurationIdentifier, Input) ->
+    delete_resource_configuration(Client, ResourceConfigurationIdentifier, Input, []).
+
+-spec delete_resource_configuration(aws_client:aws_client(), binary() | list(), delete_resource_configuration_request(), proplists:proplist()) ->
+    {ok, delete_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_configuration_errors(), tuple()}.
+delete_resource_configuration(Client, ResourceConfigurationIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/resourceconfigurations/", aws_util:encode_uri(ResourceConfigurationIdentifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates the resource configuration from the resource VPC
+%% endpoint.
+-spec delete_resource_endpoint_association(aws_client:aws_client(), binary() | list(), delete_resource_endpoint_association_request()) ->
+    {ok, delete_resource_endpoint_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_endpoint_association_errors(), tuple()}.
+delete_resource_endpoint_association(Client, ResourceEndpointAssociationIdentifier, Input) ->
+    delete_resource_endpoint_association(Client, ResourceEndpointAssociationIdentifier, Input, []).
+
+-spec delete_resource_endpoint_association(aws_client:aws_client(), binary() | list(), delete_resource_endpoint_association_request(), proplists:proplist()) ->
+    {ok, delete_resource_endpoint_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_endpoint_association_errors(), tuple()}.
+delete_resource_endpoint_association(Client, ResourceEndpointAssociationIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/resourceendpointassociations/", aws_util:encode_uri(ResourceEndpointAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified resource gateway.
+-spec delete_resource_gateway(aws_client:aws_client(), binary() | list(), delete_resource_gateway_request()) ->
+    {ok, delete_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_gateway_errors(), tuple()}.
+delete_resource_gateway(Client, ResourceGatewayIdentifier, Input) ->
+    delete_resource_gateway(Client, ResourceGatewayIdentifier, Input, []).
+
+-spec delete_resource_gateway(aws_client:aws_client(), binary() | list(), delete_resource_gateway_request(), proplists:proplist()) ->
+    {ok, delete_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_gateway_errors(), tuple()}.
+delete_resource_gateway(Client, ResourceGatewayIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/resourcegateways/", aws_util:encode_uri(ResourceGatewayIdentifier), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2424,8 +3268,42 @@ delete_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the association between a specified service and the specific
-%% service network.
+%% @doc Deletes the association between a service network and a resource
+%% configuration.
+-spec delete_service_network_resource_association(aws_client:aws_client(), binary() | list(), delete_service_network_resource_association_request()) ->
+    {ok, delete_service_network_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_network_resource_association_errors(), tuple()}.
+delete_service_network_resource_association(Client, ServiceNetworkResourceAssociationIdentifier, Input) ->
+    delete_service_network_resource_association(Client, ServiceNetworkResourceAssociationIdentifier, Input, []).
+
+-spec delete_service_network_resource_association(aws_client:aws_client(), binary() | list(), delete_service_network_resource_association_request(), proplists:proplist()) ->
+    {ok, delete_service_network_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_network_resource_association_errors(), tuple()}.
+delete_service_network_resource_association(Client, ServiceNetworkResourceAssociationIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/servicenetworkresourceassociations/", aws_util:encode_uri(ServiceNetworkResourceAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the association between a service and a service network.
 %%
 %% This
 %% operation fails if an association is still in progress.
@@ -2684,7 +3562,81 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the resource policy.
+%% @doc Retrieves information about the specified resource configuration.
+-spec get_resource_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_configuration_errors(), tuple()}.
+get_resource_configuration(Client, ResourceConfigurationIdentifier)
+  when is_map(Client) ->
+    get_resource_configuration(Client, ResourceConfigurationIdentifier, #{}, #{}).
+
+-spec get_resource_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_configuration_errors(), tuple()}.
+get_resource_configuration(Client, ResourceConfigurationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_configuration(Client, ResourceConfigurationIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_resource_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_configuration_errors(), tuple()}.
+get_resource_configuration(Client, ResourceConfigurationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resourceconfigurations/", aws_util:encode_uri(ResourceConfigurationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the specified resource gateway.
+-spec get_resource_gateway(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_gateway_errors(), tuple()}.
+get_resource_gateway(Client, ResourceGatewayIdentifier)
+  when is_map(Client) ->
+    get_resource_gateway(Client, ResourceGatewayIdentifier, #{}, #{}).
+
+-spec get_resource_gateway(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_gateway_errors(), tuple()}.
+get_resource_gateway(Client, ResourceGatewayIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_gateway(Client, ResourceGatewayIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_resource_gateway(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_gateway_errors(), tuple()}.
+get_resource_gateway(Client, ResourceGatewayIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resourcegateways/", aws_util:encode_uri(ResourceGatewayIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the specified resource policy.
 %%
 %% The resource policy is an IAM policy
 %% created on behalf of the resource owner when they share a resource.
@@ -2724,7 +3676,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about listener rules.
+%% @doc Retrieves information about the specified listener rules.
 %%
 %% You can also retrieve information about the
 %% default listener rule. For more information, see Listener rules:
@@ -2842,8 +3794,45 @@ get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified association between a
-%% service network and a
-%% service.
+%% service network and a resource configuration.
+-spec get_service_network_resource_association(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_service_network_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_network_resource_association_errors(), tuple()}.
+get_service_network_resource_association(Client, ServiceNetworkResourceAssociationIdentifier)
+  when is_map(Client) ->
+    get_service_network_resource_association(Client, ServiceNetworkResourceAssociationIdentifier, #{}, #{}).
+
+-spec get_service_network_resource_association(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_service_network_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_network_resource_association_errors(), tuple()}.
+get_service_network_resource_association(Client, ServiceNetworkResourceAssociationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_service_network_resource_association(Client, ServiceNetworkResourceAssociationIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_service_network_resource_association(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_service_network_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_network_resource_association_errors(), tuple()}.
+get_service_network_resource_association(Client, ServiceNetworkResourceAssociationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/servicenetworkresourceassociations/", aws_util:encode_uri(ServiceNetworkResourceAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the specified association between a
+%% service network and a service.
 -spec get_service_network_service_association(aws_client:aws_client(), binary() | list()) ->
     {ok, get_service_network_service_association_response(), tuple()} |
     {error, any()} |
@@ -2880,8 +3869,8 @@ get_service_network_service_association(Client, ServiceNetworkServiceAssociation
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the association between a service network
-%% and a VPC.
+%% @doc Retrieves information about the specified association between a
+%% service network and a VPC.
 -spec get_service_network_vpc_association(aws_client:aws_client(), binary() | list()) ->
     {ok, get_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
@@ -2955,7 +3944,7 @@ get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all access log subscriptions for the specified service network
+%% @doc Lists the access log subscriptions for the specified service network
 %% or service.
 -spec list_access_log_subscriptions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_log_subscriptions_response(), tuple()} |
@@ -3041,7 +4030,141 @@ list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the rules for the listener.
+%% @doc Lists the resource configurations owned by or shared with this
+%% account.
+-spec list_resource_configurations(aws_client:aws_client()) ->
+    {ok, list_resource_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_configurations_errors(), tuple()}.
+list_resource_configurations(Client)
+  when is_map(Client) ->
+    list_resource_configurations(Client, #{}, #{}).
+
+-spec list_resource_configurations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_resource_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_configurations_errors(), tuple()}.
+list_resource_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_configurations(Client, QueryMap, HeadersMap, []).
+
+-spec list_resource_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_resource_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_configurations_errors(), tuple()}.
+list_resource_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resourceconfigurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceConfigurationGroupIdentifier">>, maps:get(<<"resourceConfigurationGroupIdentifier">>, QueryMap, undefined)},
+        {<<"resourceGatewayIdentifier">>, maps:get(<<"resourceGatewayIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the associations for the specified VPC endpoint.
+-spec list_resource_endpoint_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_resource_endpoint_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_endpoint_associations_errors(), tuple()}.
+list_resource_endpoint_associations(Client, ResourceConfigurationIdentifier)
+  when is_map(Client) ->
+    list_resource_endpoint_associations(Client, ResourceConfigurationIdentifier, #{}, #{}).
+
+-spec list_resource_endpoint_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_resource_endpoint_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_endpoint_associations_errors(), tuple()}.
+list_resource_endpoint_associations(Client, ResourceConfigurationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_endpoint_associations(Client, ResourceConfigurationIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_resource_endpoint_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_resource_endpoint_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_endpoint_associations_errors(), tuple()}.
+list_resource_endpoint_associations(Client, ResourceConfigurationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resourceendpointassociations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceConfigurationIdentifier">>, ResourceConfigurationIdentifier},
+        {<<"resourceEndpointAssociationIdentifier">>, maps:get(<<"resourceEndpointAssociationIdentifier">>, QueryMap, undefined)},
+        {<<"vpcEndpointId">>, maps:get(<<"vpcEndpointId">>, QueryMap, undefined)},
+        {<<"vpcEndpointOwner">>, maps:get(<<"vpcEndpointOwner">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the resource gateways that you own or that were shared with
+%% you.
+-spec list_resource_gateways(aws_client:aws_client()) ->
+    {ok, list_resource_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_gateways_errors(), tuple()}.
+list_resource_gateways(Client)
+  when is_map(Client) ->
+    list_resource_gateways(Client, #{}, #{}).
+
+-spec list_resource_gateways(aws_client:aws_client(), map(), map()) ->
+    {ok, list_resource_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_gateways_errors(), tuple()}.
+list_resource_gateways(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_gateways(Client, QueryMap, HeadersMap, []).
+
+-spec list_resource_gateways(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_resource_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_gateways_errors(), tuple()}.
+list_resource_gateways(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resourcegateways"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the rules for the specified listener.
 -spec list_rules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
@@ -3083,22 +4206,65 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the associations between the service network and the service.
+%% @doc Lists the associations between a service network and a resource
+%% configuration.
+-spec list_service_network_resource_associations(aws_client:aws_client()) ->
+    {ok, list_service_network_resource_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_network_resource_associations_errors(), tuple()}.
+list_service_network_resource_associations(Client)
+  when is_map(Client) ->
+    list_service_network_resource_associations(Client, #{}, #{}).
+
+-spec list_service_network_resource_associations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_service_network_resource_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_network_resource_associations_errors(), tuple()}.
+list_service_network_resource_associations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_service_network_resource_associations(Client, QueryMap, HeadersMap, []).
+
+-spec list_service_network_resource_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_service_network_resource_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_network_resource_associations_errors(), tuple()}.
+list_service_network_resource_associations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/servicenetworkresourceassociations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceConfigurationIdentifier">>, maps:get(<<"resourceConfigurationIdentifier">>, QueryMap, undefined)},
+        {<<"serviceNetworkIdentifier">>, maps:get(<<"serviceNetworkIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the associations between a service network and a service.
 %%
 %% You can filter the list
 %% either by service or service network. You must provide either the service
 %% network identifier or
 %% the service identifier.
 %%
-%% Every association in Amazon VPC Lattice is given a unique Amazon Resource
-%% Name (ARN), such as when a
+%% Every association in Amazon VPC Lattice has a unique Amazon Resource Name
+%% (ARN), such as when a
 %% service network is associated with a VPC or when a service is associated
 %% with a service network.
-%% If the association is for a resource that is shared with another account,
-%% the association
-%% includes the local account ID as the prefix in the ARN for each account
-%% the resource is shared
-%% with.
+%% If the association is for a resource is shared with another account, the
+%% association
+%% includes the local account ID as the prefix in the ARN.
 -spec list_service_network_service_associations(aws_client:aws_client()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
     {error, any()} |
@@ -3142,12 +4308,11 @@ list_service_network_service_associations(Client, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the service network and VPC associations.
+%% @doc Lists the associations between a service network and a VPC.
 %%
 %% You can filter the list either by VPC or
-%% service network. You must provide either the service network identifier or
-%% the VPC
-%% identifier.
+%% service network. You must provide either the ID of the service network
+%% identifier or the ID of the VPC.
 -spec list_service_network_vpc_associations(aws_client:aws_client()) ->
     {ok, list_service_network_vpc_associations_response(), tuple()} |
     {error, any()} |
@@ -3191,11 +4356,53 @@ list_service_network_vpc_associations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the service networks owned by the caller account or shared with
-%% the caller account.
+%% @doc Lists the associations between a service network and a VPC endpoint.
+-spec list_service_network_vpc_endpoint_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_service_network_vpc_endpoint_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_network_vpc_endpoint_associations_errors(), tuple()}.
+list_service_network_vpc_endpoint_associations(Client, ServiceNetworkIdentifier)
+  when is_map(Client) ->
+    list_service_network_vpc_endpoint_associations(Client, ServiceNetworkIdentifier, #{}, #{}).
+
+-spec list_service_network_vpc_endpoint_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_service_network_vpc_endpoint_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_network_vpc_endpoint_associations_errors(), tuple()}.
+list_service_network_vpc_endpoint_associations(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_service_network_vpc_endpoint_associations(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_service_network_vpc_endpoint_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_service_network_vpc_endpoint_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_network_vpc_endpoint_associations_errors(), tuple()}.
+list_service_network_vpc_endpoint_associations(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/servicenetworkvpcendpointassociations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceNetworkIdentifier">>, ServiceNetworkIdentifier}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the service networks owned by or shared with this account.
 %%
-%% Also includes the account ID in the ARN to show which account owns the
-%% service network.
+%% The account ID in the ARN
+%% shows which account owns the service network.
 -spec list_service_networks(aws_client:aws_client()) ->
     {ok, list_service_networks_response(), tuple()} |
     {error, any()} |
@@ -3410,8 +4617,9 @@ list_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
 %% blank lines.
 %%
 %% For more information, see Auth policies:
-%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/auth-policies.html
-%% in the Amazon VPC Lattice User Guide.
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/auth-policies.html in
+%% the Amazon VPC
+%% Lattice User Guide.
 -spec put_auth_policy(aws_client:aws_client(), binary() | list(), put_auth_policy_request()) ->
     {ok, put_auth_policy_response(), tuple()} |
     {error, any()} |
@@ -3659,7 +4867,75 @@ update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a rule for the listener.
+%% @doc Updates the specified resource configuration.
+-spec update_resource_configuration(aws_client:aws_client(), binary() | list(), update_resource_configuration_request()) ->
+    {ok, update_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_resource_configuration_errors(), tuple()}.
+update_resource_configuration(Client, ResourceConfigurationIdentifier, Input) ->
+    update_resource_configuration(Client, ResourceConfigurationIdentifier, Input, []).
+
+-spec update_resource_configuration(aws_client:aws_client(), binary() | list(), update_resource_configuration_request(), proplists:proplist()) ->
+    {ok, update_resource_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_resource_configuration_errors(), tuple()}.
+update_resource_configuration(Client, ResourceConfigurationIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/resourceconfigurations/", aws_util:encode_uri(ResourceConfigurationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified resource gateway.
+-spec update_resource_gateway(aws_client:aws_client(), binary() | list(), update_resource_gateway_request()) ->
+    {ok, update_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, update_resource_gateway_errors(), tuple()}.
+update_resource_gateway(Client, ResourceGatewayIdentifier, Input) ->
+    update_resource_gateway(Client, ResourceGatewayIdentifier, Input, []).
+
+-spec update_resource_gateway(aws_client:aws_client(), binary() | list(), update_resource_gateway_request(), proplists:proplist()) ->
+    {ok, update_resource_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, update_resource_gateway_errors(), tuple()}.
+update_resource_gateway(Client, ResourceGatewayIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/resourcegateways/", aws_util:encode_uri(ResourceGatewayIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a specified rule for the listener.
 %%
 %% You can't modify a default listener rule. To modify a
 %% default listener rule, use `UpdateListener'.
@@ -3767,12 +5043,12 @@ update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 %% @doc Updates the service network and VPC association.
 %%
 %% If you add a security group to the service
-%% network and VPC association, the association must continue to always have
-%% at least one security
+%% network and VPC association, the association must continue to have at
+%% least one security
 %% group. You can add or edit security groups at any time. However, to remove
 %% all security groups,
-%% you must first delete the association and recreate it without security
-%% groups.
+%% you must first delete the association and then recreate it without
+%% security groups.
 -spec update_service_network_vpc_association(aws_client:aws_client(), binary() | list(), update_service_network_vpc_association_request()) ->
     {ok, update_service_network_vpc_association_response(), tuple()} |
     {error, any()} |

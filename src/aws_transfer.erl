@@ -35,6 +35,8 @@
          create_server/3,
          create_user/2,
          create_user/3,
+         create_web_app/2,
+         create_web_app/3,
          create_workflow/2,
          create_workflow/3,
          delete_access/2,
@@ -55,6 +57,10 @@
          delete_ssh_public_key/3,
          delete_user/2,
          delete_user/3,
+         delete_web_app/2,
+         delete_web_app/3,
+         delete_web_app_customization/2,
+         delete_web_app_customization/3,
          delete_workflow/2,
          delete_workflow/3,
          describe_access/2,
@@ -77,6 +83,10 @@
          describe_server/3,
          describe_user/2,
          describe_user/3,
+         describe_web_app/2,
+         describe_web_app/3,
+         describe_web_app_customization/2,
+         describe_web_app_customization/3,
          describe_workflow/2,
          describe_workflow/3,
          import_certificate/2,
@@ -109,6 +119,8 @@
          list_tags_for_resource/3,
          list_users/2,
          list_users/3,
+         list_web_apps/2,
+         list_web_apps/3,
          list_workflows/2,
          list_workflows/3,
          send_workflow_step_state/2,
@@ -144,7 +156,11 @@
          update_server/2,
          update_server/3,
          update_user/2,
-         update_user/3]).
+         update_user/3,
+         update_web_app/2,
+         update_web_app/3,
+         update_web_app_customization/2,
+         update_web_app_customization/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -252,6 +268,16 @@
 -type describe_access_request() :: #{binary() => any()}.
 
 %% Example:
+%% described_web_app_customization() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FaviconFile">> => binary(),
+%%   <<"LogoFile">> => binary(),
+%%   <<"Title">> => string(),
+%%   <<"WebAppId">> => string()
+%% }
+-type described_web_app_customization() :: #{binary() => any()}.
+
+%% Example:
 %% describe_server_request() :: #{
 %%   <<"ServerId">> := string()
 %% }
@@ -350,6 +376,15 @@
 -type listed_profile() :: #{binary() => any()}.
 
 %% Example:
+%% update_web_app_customization_request() :: #{
+%%   <<"FaviconFile">> => binary(),
+%%   <<"LogoFile">> => binary(),
+%%   <<"Title">> => string(),
+%%   <<"WebAppId">> := string()
+%% }
+-type update_web_app_customization_request() :: #{binary() => any()}.
+
+%% Example:
 %% identity_provider_details() :: #{
 %%   <<"DirectoryId">> => string(),
 %%   <<"Function">> => string(),
@@ -428,6 +463,12 @@
 -type update_connector_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_web_app_customization_request() :: #{
+%%   <<"WebAppId">> := string()
+%% }
+-type describe_web_app_customization_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_access_response() :: #{
 %%   <<"ExternalId">> => string(),
 %%   <<"ServerId">> => string()
@@ -482,6 +523,12 @@
 %%   <<"StatusCode">> => list(any())
 %% }
 -type connector_file_transfer_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_app_response() :: #{
+%%   <<"WebAppId">> => string()
+%% }
+-type create_web_app_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_execution_response() :: #{
@@ -601,6 +648,12 @@
 -type import_ssh_public_key_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_web_app_customization_response() :: #{
+%%   <<"WebAppCustomization">> => described_web_app_customization()
+%% }
+-type describe_web_app_customization_response() :: #{binary() => any()}.
+
+%% Example:
 %% described_security_policy() :: #{
 %%   <<"Fips">> => boolean(),
 %%   <<"Protocols">> => list(list(any())()),
@@ -613,6 +666,15 @@
 %%   <<"Type">> => list(any())
 %% }
 -type described_security_policy() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_app_request() :: #{
+%%   <<"AccessEndpoint">> => string(),
+%%   <<"IdentityProviderDetails">> := list(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"WebAppUnits">> => list()
+%% }
+-type create_web_app_request() :: #{binary() => any()}.
 
 %% Example:
 %% listed_user() :: #{
@@ -849,6 +911,12 @@
 -type list_workflows_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_web_app_response() :: #{
+%%   <<"WebApp">> => described_web_app()
+%% }
+-type describe_web_app_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_access_request() :: #{
 %%   <<"ExternalId">> := string(),
 %%   <<"HomeDirectory">> => string(),
@@ -906,6 +974,15 @@
 -type workflow_step() :: #{binary() => any()}.
 
 %% Example:
+%% listed_web_app() :: #{
+%%   <<"AccessEndpoint">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"WebAppEndpoint">> => string(),
+%%   <<"WebAppId">> => string()
+%% }
+-type listed_web_app() :: #{binary() => any()}.
+
+%% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -927,10 +1004,36 @@
 -type tag_step_details() :: #{binary() => any()}.
 
 %% Example:
+%% describe_web_app_request() :: #{
+%%   <<"WebAppId">> := string()
+%% }
+-type describe_web_app_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_agreement_response() :: #{
 %%   <<"AgreementId">> => string()
 %% }
 -type create_agreement_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_app_customization_request() :: #{
+%%   <<"WebAppId">> := string()
+%% }
+-type delete_web_app_customization_request() :: #{binary() => any()}.
+
+%% Example:
+%% described_identity_center_config() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Role">> => string()
+%% }
+-type described_identity_center_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_web_app_identity_center_config() :: #{
+%%   <<"Role">> => string()
+%% }
+-type update_web_app_identity_center_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_connector_request() :: #{
@@ -1014,6 +1117,12 @@
 -type test_identity_provider_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_web_app_request() :: #{
+%%   <<"WebAppId">> := string()
+%% }
+-type delete_web_app_request() :: #{binary() => any()}.
+
+%% Example:
 %% file_location() :: #{
 %%   <<"EfsFileLocation">> => efs_file_location(),
 %%   <<"S3FileLocation">> => s3_file_location()
@@ -1068,6 +1177,15 @@
 -type input_file_location() :: #{binary() => any()}.
 
 %% Example:
+%% update_web_app_request() :: #{
+%%   <<"AccessEndpoint">> => string(),
+%%   <<"IdentityProviderDetails">> => list(),
+%%   <<"WebAppId">> := string(),
+%%   <<"WebAppUnits">> => list()
+%% }
+-type update_web_app_request() :: #{binary() => any()}.
+
+%% Example:
 %% import_ssh_public_key_request() :: #{
 %%   <<"ServerId">> := string(),
 %%   <<"SshPublicKeyBody">> := string(),
@@ -1084,6 +1202,13 @@
 %%   <<"Type">> => list(any())
 %% }
 -type decrypt_step_details() :: #{binary() => any()}.
+
+%% Example:
+%% identity_center_config() :: #{
+%%   <<"InstanceArn">> => string(),
+%%   <<"Role">> => string()
+%% }
+-type identity_center_config() :: #{binary() => any()}.
 
 %% Example:
 %% resource_exists_exception() :: #{
@@ -1158,6 +1283,13 @@
 %%   <<"Status">> => list(any())
 %% }
 -type update_agreement_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_apps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_web_apps_request() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -1300,6 +1432,13 @@
 -type list_host_keys_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_web_apps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WebApps">> => list(listed_web_app()())
+%% }
+-type list_web_apps_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_connector_response() :: #{
 %%   <<"ConnectorId">> => string()
 %% }
@@ -1434,6 +1573,18 @@
 -type describe_host_key_response() :: #{binary() => any()}.
 
 %% Example:
+%% described_web_app() :: #{
+%%   <<"AccessEndpoint">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"DescribedIdentityProviderDetails">> => list(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"WebAppEndpoint">> => string(),
+%%   <<"WebAppId">> => string(),
+%%   <<"WebAppUnits">> => list()
+%% }
+-type described_web_app() :: #{binary() => any()}.
+
+%% Example:
 %% s3_tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -1499,6 +1650,12 @@
 %%   <<"Profile">> => described_profile()
 %% }
 -type describe_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_web_app_response() :: #{
+%%   <<"WebAppId">> => string()
+%% }
+-type update_web_app_response() :: #{binary() => any()}.
 
 %% Example:
 %% execution_results() :: #{
@@ -1573,6 +1730,12 @@
 %% }
 -type create_user_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_web_app_customization_response() :: #{
+%%   <<"WebAppId">> => string()
+%% }
+-type update_web_app_customization_response() :: #{binary() => any()}.
+
 -type create_access_errors() ::
     internal_service_error() | 
     resource_exists_exception() | 
@@ -1616,6 +1779,13 @@
     internal_service_error() | 
     resource_exists_exception() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_web_app_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception().
 
@@ -1684,6 +1854,21 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type delete_web_app_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_web_app_customization_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_workflow_errors() ::
     internal_service_error() | 
     access_denied_exception() | 
@@ -1748,6 +1933,20 @@
 -type describe_user_errors() ::
     internal_service_error() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_web_app_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_web_app_customization_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception().
 
@@ -1858,6 +2057,12 @@
     invalid_next_token_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception().
+
+-type list_web_apps_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception().
 
 -type list_workflows_errors() ::
     internal_service_error() | 
@@ -1986,6 +2191,22 @@
     service_unavailable_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception().
+
+-type update_web_app_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_web_app_customization_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -2147,6 +2368,24 @@ create_user(Client, Input)
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
+
+%% @doc Creates a web app based on specified parameters, and returns the ID
+%% for the new web app.
+-spec create_web_app(aws_client:aws_client(), create_web_app_request()) ->
+    {ok, create_web_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_app_errors(), tuple()}.
+create_web_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_web_app(Client, Input, []).
+
+-spec create_web_app(aws_client:aws_client(), create_web_app_request(), proplists:proplist()) ->
+    {ok, create_web_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_app_errors(), tuple()}.
+create_web_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWebApp">>, Input, Options).
 
 %% @doc
 %% Allows you to create a workflow with specified steps and step details the
@@ -2337,6 +2576,41 @@ delete_user(Client, Input)
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
+
+%% @doc Deletes the specified web app.
+-spec delete_web_app(aws_client:aws_client(), delete_web_app_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_web_app_errors(), tuple()}.
+delete_web_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_web_app(Client, Input, []).
+
+-spec delete_web_app(aws_client:aws_client(), delete_web_app_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_web_app_errors(), tuple()}.
+delete_web_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWebApp">>, Input, Options).
+
+%% @doc Deletes the `WebAppCustomization' object that corresponds to the
+%% web app ID specified.
+-spec delete_web_app_customization(aws_client:aws_client(), delete_web_app_customization_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_web_app_customization_errors(), tuple()}.
+delete_web_app_customization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_web_app_customization(Client, Input, []).
+
+-spec delete_web_app_customization(aws_client:aws_client(), delete_web_app_customization_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_web_app_customization_errors(), tuple()}.
+delete_web_app_customization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWebAppCustomization">>, Input, Options).
 
 %% @doc Deletes the specified workflow.
 -spec delete_workflow(aws_client:aws_client(), delete_workflow_request()) ->
@@ -2566,6 +2840,41 @@ describe_user(Client, Input)
 describe_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUser">>, Input, Options).
+
+%% @doc Describes the web app that's identified by `WebAppId'.
+-spec describe_web_app(aws_client:aws_client(), describe_web_app_request()) ->
+    {ok, describe_web_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_web_app_errors(), tuple()}.
+describe_web_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_web_app(Client, Input, []).
+
+-spec describe_web_app(aws_client:aws_client(), describe_web_app_request(), proplists:proplist()) ->
+    {ok, describe_web_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_web_app_errors(), tuple()}.
+describe_web_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWebApp">>, Input, Options).
+
+%% @doc Describes the web app customization object that's identified by
+%% `WebAppId'.
+-spec describe_web_app_customization(aws_client:aws_client(), describe_web_app_customization_request()) ->
+    {ok, describe_web_app_customization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_web_app_customization_errors(), tuple()}.
+describe_web_app_customization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_web_app_customization(Client, Input, []).
+
+-spec describe_web_app_customization(aws_client:aws_client(), describe_web_app_customization_request(), proplists:proplist()) ->
+    {ok, describe_web_app_customization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_web_app_customization_errors(), tuple()}.
+describe_web_app_customization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWebAppCustomization">>, Input, Options).
 
 %% @doc Describes the specified workflow.
 -spec describe_workflow(aws_client:aws_client(), describe_workflow_request()) ->
@@ -2907,6 +3216,24 @@ list_users(Client, Input)
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
+
+%% @doc Lists all web apps associated with your Amazon Web Services account
+%% for your current region.
+-spec list_web_apps(aws_client:aws_client(), list_web_apps_request()) ->
+    {ok, list_web_apps_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_apps_errors(), tuple()}.
+list_web_apps(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_web_apps(Client, Input, []).
+
+-spec list_web_apps(aws_client:aws_client(), list_web_apps_request(), proplists:proplist()) ->
+    {ok, list_web_apps_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_apps_errors(), tuple()}.
+list_web_apps(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWebApps">>, Input, Options).
 
 %% @doc Lists all workflows associated with your Amazon Web Services account
 %% for your current region.
@@ -3443,6 +3770,45 @@ update_user(Client, Input)
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).
+
+%% @doc Assigns new properties to a web app.
+%%
+%% You can modify the access point, identity provider details, and the web
+%% app units.
+-spec update_web_app(aws_client:aws_client(), update_web_app_request()) ->
+    {ok, update_web_app_response(), tuple()} |
+    {error, any()} |
+    {error, update_web_app_errors(), tuple()}.
+update_web_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_web_app(Client, Input, []).
+
+-spec update_web_app(aws_client:aws_client(), update_web_app_request(), proplists:proplist()) ->
+    {ok, update_web_app_response(), tuple()} |
+    {error, any()} |
+    {error, update_web_app_errors(), tuple()}.
+update_web_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateWebApp">>, Input, Options).
+
+%% @doc Assigns new customization properties to a web app.
+%%
+%% You can modify the icon file, logo file, and title.
+-spec update_web_app_customization(aws_client:aws_client(), update_web_app_customization_request()) ->
+    {ok, update_web_app_customization_response(), tuple()} |
+    {error, any()} |
+    {error, update_web_app_customization_errors(), tuple()}.
+update_web_app_customization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_web_app_customization(Client, Input, []).
+
+-spec update_web_app_customization(aws_client:aws_client(), update_web_app_customization_request(), proplists:proplist()) ->
+    {ok, update_web_app_customization_response(), tuple()} |
+    {error, any()} |
+    {error, update_web_app_customization_errors(), tuple()}.
+update_web_app_customization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateWebAppCustomization">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

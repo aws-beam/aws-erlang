@@ -164,6 +164,7 @@
 %%   <<"AuthParameters">> => update_connection_auth_request_parameters(),
 %%   <<"AuthorizationType">> => list(any()),
 %%   <<"Description">> => string(),
+%%   <<"InvocationConnectivityParameters">> => connectivity_resource_parameters(),
 %%   <<"Name">> := string()
 %% }
 -type update_connection_request() :: #{binary() => any()}.
@@ -336,6 +337,7 @@
 %% connection_auth_response_parameters() :: #{
 %%   <<"ApiKeyAuthParameters">> => connection_api_key_auth_response_parameters(),
 %%   <<"BasicAuthParameters">> => connection_basic_auth_response_parameters(),
+%%   <<"ConnectivityParameters">> => describe_connection_connectivity_parameters(),
 %%   <<"InvocationHttpParameters">> => connection_http_parameters(),
 %%   <<"OAuthParameters">> => connection_o_auth_response_parameters()
 %% }
@@ -454,6 +456,12 @@
 %%   <<"Value">> => string()
 %% }
 -type connection_header_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_connectivity_parameters() :: #{
+%%   <<"ResourceParameters">> => describe_connection_resource_parameters()
+%% }
+-type describe_connection_connectivity_parameters() :: #{binary() => any()}.
 
 %% Example:
 %% delete_api_destination_response() :: #{
@@ -580,6 +588,7 @@
 %% update_connection_auth_request_parameters() :: #{
 %%   <<"ApiKeyAuthParameters">> => update_connection_api_key_auth_request_parameters(),
 %%   <<"BasicAuthParameters">> => update_connection_basic_auth_request_parameters(),
+%%   <<"ConnectivityParameters">> => connectivity_resource_parameters(),
 %%   <<"InvocationHttpParameters">> => connection_http_parameters(),
 %%   <<"OAuthParameters">> => update_connection_o_auth_request_parameters()
 %% }
@@ -651,6 +660,7 @@
 %%   <<"ConnectionState">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
+%%   <<"InvocationConnectivityParameters">> => describe_connection_connectivity_parameters(),
 %%   <<"LastAuthorizedTime">> => non_neg_integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -794,6 +804,13 @@
 %%   <<"InputTemplate">> => string()
 %% }
 -type input_transformer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_resource_parameters() :: #{
+%%   <<"ResourceAssociationArn">> => string(),
+%%   <<"ResourceConfigurationArn">> => string()
+%% }
+-type describe_connection_resource_parameters() :: #{binary() => any()}.
 
 %% Example:
 %% connection_http_parameters() :: #{
@@ -1093,6 +1110,12 @@
 -type create_connection_o_auth_client_request_parameters() :: #{binary() => any()}.
 
 %% Example:
+%% connectivity_resource_configuration_arn() :: #{
+%%   <<"ResourceConfigurationArn">> => string()
+%% }
+-type connectivity_resource_configuration_arn() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_provider_strategy_item() :: #{
 %%   <<"base">> => integer(),
 %%   <<"capacityProvider">> => string(),
@@ -1138,6 +1161,12 @@
 %%   <<"message">> => string()
 %% }
 -type internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_rules_response() :: #{
@@ -1318,6 +1347,12 @@
 -type create_archive_response() :: #{binary() => any()}.
 
 %% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
 %% start_replay_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Destination">> := replay_destination(),
@@ -1404,6 +1439,12 @@
 %%   <<"Subnets">> => list(string()())
 %% }
 -type aws_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% connectivity_resource_parameters() :: #{
+%%   <<"ResourceParameters">> => connectivity_resource_configuration_arn()
+%% }
+-type connectivity_resource_parameters() :: #{binary() => any()}.
 
 %% Example:
 %% create_endpoint_response() :: #{
@@ -1540,6 +1581,7 @@
 %%   <<"AuthParameters">> := create_connection_auth_request_parameters(),
 %%   <<"AuthorizationType">> := list(any()),
 %%   <<"Description">> => string(),
+%%   <<"InvocationConnectivityParameters">> => connectivity_resource_parameters(),
 %%   <<"Name">> := string()
 %% }
 -type create_connection_request() :: #{binary() => any()}.
@@ -1566,6 +1608,7 @@
 %% create_connection_auth_request_parameters() :: #{
 %%   <<"ApiKeyAuthParameters">> => create_connection_api_key_auth_request_parameters(),
 %%   <<"BasicAuthParameters">> => create_connection_basic_auth_request_parameters(),
+%%   <<"ConnectivityParameters">> => connectivity_resource_parameters(),
 %%   <<"InvocationHttpParameters">> => connection_http_parameters(),
 %%   <<"OAuthParameters">> => create_connection_o_auth_request_parameters()
 %% }
@@ -1692,7 +1735,10 @@
 -type create_connection_errors() ::
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    internal_exception().
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
 
 -type create_endpoint_errors() ::
     resource_already_exists_exception() | 
@@ -1940,7 +1986,9 @@
 
 -type update_connection_errors() ::
     limit_exceeded_exception() | 
+    throttling_exception() | 
     concurrent_modification_exception() | 
+    access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception().
 
@@ -2085,6 +2133,10 @@ create_archive(Client, Input, Options)
 %%
 %% A connection defines the authorization type and credentials to use
 %% for authorization with an API destination HTTP endpoint.
+%%
+%% For more information, see Connections for endpoint targets:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-target-connection.html
+%% in the Amazon EventBridge User Guide.
 -spec create_connection(aws_client:aws_client(), create_connection_request()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
@@ -2970,7 +3022,7 @@ list_targets_by_rule(Client, Input, Options)
 %% maximum value of
 %% 9,223,372,036,854,775,807.
 %%
-%% PutEvents will only process nested JSON up to 1100 levels deep.
+%% PutEvents will only process nested JSON up to 1000 levels deep.
 -spec put_events(aws_client:aws_client(), put_events_request()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
@@ -3014,12 +3066,12 @@ put_partner_events(Client, Input, Options)
     request(Client, <<"PutPartnerEvents">>, Input, Options).
 
 %% @doc Running `PutPermission' permits the specified Amazon Web Services
-%% account or
-%% Amazon Web Services organization to put events to the specified event
-%% bus.
+%% account or Amazon Web Services organization
+%% to put events to the specified event bus.
 %%
-%% Amazon EventBridge (CloudWatch Events) rules in your account are
-%% triggered by these events arriving to an event bus in your account.
+%% Amazon EventBridge rules in your account are triggered by these events
+%% arriving to an event bus in your
+%% account.
 %%
 %% For another account to send events to your account, that external account
 %% must have an
@@ -3151,6 +3203,13 @@ put_permission(Client, Input, Options)
 %% see Managing Your Costs with
 %% Budgets:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html.
+%%
+%% To create a rule that filters for management events from Amazon Web
+%% Services services, see
+%% Receiving read-only management events from Amazon Web Services services:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-cloudtrail.html#eb-service-event-cloudtrail-management
+%% in the
+%% EventBridge User Guide.
 -spec put_rule(aws_client:aws_client(), put_rule_request()) ->
     {ok, put_rule_response(), tuple()} |
     {error, any()} |
@@ -3482,8 +3541,7 @@ test_event_pattern(Client, Input, Options)
 
 %% @doc Removes one or more tags from the specified EventBridge resource.
 %%
-%% In Amazon EventBridge
-%% (CloudWatch Events), rules and event buses can be tagged.
+%% In Amazon EventBridge, rules and event buses can be tagged.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

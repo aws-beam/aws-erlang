@@ -834,6 +834,7 @@
 %%   <<"Iops">> => integer(),
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"DBInstanceClass">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"UpgradeStorageConfig">> => boolean(),
 %%   <<"PerformanceInsightsKMSKeyId">> => string(),
 %%   <<"SourceDBInstanceIdentifier">> => string(),
@@ -1134,6 +1135,7 @@
 %%   <<"Iops">> => integer(),
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"SourceEngineVersion">> := string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"PerformanceInsightsKMSKeyId">> => string(),
 %%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DBSecurityGroups">> => list(string()()),
@@ -1624,6 +1626,7 @@
 %%   <<"MultiTenant">> => boolean(),
 %%   <<"BackupTarget">> => string(),
 %%   <<"CharacterSetName">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"PerformanceInsightsKMSKeyId">> => string(),
 %%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DBSecurityGroups">> => list(string()()),
@@ -1765,6 +1768,7 @@
 %%   <<"DomainMemberships">> => list(domain_membership()()),
 %%   <<"DBInstanceClass">> => string(),
 %%   <<"CharacterSetName">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"PendingModifiedValues">> => pending_modified_values(),
 %%   <<"ActivityStreamStatus">> => list(any()),
 %%   <<"PerformanceInsightsKMSKeyId">> => string(),
@@ -3399,6 +3403,7 @@
 %%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
 %%   <<"CharacterSetName">> => string(),
 %%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"DBClusterInstanceClass">> => string(),
 %%   <<"PerformanceInsightsKMSKeyId">> => string(),
 %%   <<"ScalingConfiguration">> => scaling_configuration(),
@@ -4031,6 +4036,7 @@
 %%   <<"DomainMemberships">> => list(domain_membership()()),
 %%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
 %%   <<"CharacterSetName">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"PendingModifiedValues">> => cluster_pending_modified_values(),
 %%   <<"DBClusterInstanceClass">> => string(),
 %%   <<"ActivityStreamStatus">> => list(any()),
@@ -5098,6 +5104,7 @@
 %%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"Iops">> => integer(),
 %%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"DBClusterInstanceClass">> => string(),
 %%   <<"PerformanceInsightsKMSKeyId">> => string(),
 %%   <<"ScalingConfiguration">> => scaling_configuration(),
@@ -5388,6 +5395,7 @@
 %%   <<"MultiTenant">> => boolean(),
 %%   <<"DBInstanceClass">> => string(),
 %%   <<"CertificateRotationRestart">> => boolean(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"PerformanceInsightsKMSKeyId">> => string(),
 %%   <<"DBPortNumber">> => integer(),
 %%   <<"ResumeFullAutomationModeMinutes">> => integer(),
@@ -9148,9 +9156,9 @@ describe_valid_db_instance_modifications(Client, Input, Options)
 %% in the
 %% Amazon Aurora User Guide.
 %%
-%% This operation applies only to Aurora PostgreSQL Serverless v2 and
-%% provisioned DB clusters. To disable the HTTP endpoint for Aurora
-%% Serverless v1 DB clusters,
+%% This operation applies only to Aurora Serverless v2 and provisioned DB
+%% clusters. To disable the HTTP endpoint for Aurora Serverless v1 DB
+%% clusters,
 %% use the `EnableHttpEndpoint' parameter of the `ModifyDBCluster'
 %% operation.
 -spec disable_http_endpoint(aws_client:aws_client(), disable_http_endpoint_request()) ->
@@ -9205,9 +9213,9 @@ download_db_log_file_portion(Client, Input, Options)
 %% in the
 %% Amazon Aurora User Guide.
 %%
-%% This operation applies only to Aurora PostgreSQL Serverless v2 and
-%% provisioned DB clusters. To enable the HTTP endpoint for Aurora Serverless
-%% v1 DB clusters,
+%% This operation applies only to Aurora Serverless v2 and provisioned DB
+%% clusters. To enable the HTTP endpoint for Aurora Serverless v1 DB
+%% clusters,
 %% use the `EnableHttpEndpoint' parameter of the `ModifyDBCluster'
 %% operation.
 -spec enable_http_endpoint(aws_client:aws_client(), enable_http_endpoint_request()) ->

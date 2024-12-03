@@ -330,6 +330,7 @@
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
 %%   <<"EndpointIpAddressRange">> => string(),
 %%   <<"PreferredSubnetId">> => string(),
+%%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
 %%   <<"RootVolumeConfiguration">> => open_z_f_s_create_root_volume_configuration(),
 %%   <<"RouteTableIds">> => list(string()()),
 %%   <<"ThroughputCapacity">> => integer(),
@@ -1023,7 +1024,7 @@
 %%   <<"OntapConfiguration">> => create_file_system_ontap_configuration(),
 %%   <<"OpenZFSConfiguration">> => create_file_system_open_z_f_s_configuration(),
 %%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"StorageCapacity">> := integer(),
+%%   <<"StorageCapacity">> => integer(),
 %%   <<"StorageType">> => list(any()),
 %%   <<"SubnetIds">> := list(string()()),
 %%   <<"Tags">> => list(tag()()),
@@ -1108,6 +1109,7 @@
 %%   <<"EndpointIpAddress">> => string(),
 %%   <<"EndpointIpAddressRange">> => string(),
 %%   <<"PreferredSubnetId">> => string(),
+%%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
 %%   <<"RootVolumeId">> => string(),
 %%   <<"RouteTableIds">> => list(string()()),
 %%   <<"ThroughputCapacity">> => integer(),
@@ -1334,6 +1336,7 @@
 %%   <<"ProgressPercent">> => integer(),
 %%   <<"ResourceARN">> => string(),
 %%   <<"ResourceType">> => list(any()),
+%%   <<"SizeInBytes">> => float(),
 %%   <<"SourceBackupId">> => string(),
 %%   <<"SourceBackupRegion">> => string(),
 %%   <<"Tags">> => list(tag()()),
@@ -1399,6 +1402,13 @@
 %%   <<"AutoImportPolicy">> => auto_import_policy()
 %% }
 -type s3_data_repository_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_read_cache_configuration() :: #{
+%%   <<"SizeGiB">> => integer(),
+%%   <<"SizingMode">> => list(any())
+%% }
+-type open_z_f_s_read_cache_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_ontap_volume_configuration() :: #{
@@ -1527,6 +1537,7 @@
 %%   <<"CopyTagsToVolumes">> => boolean(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
 %%   <<"RemoveRouteTableIds">> => list(string()()),
 %%   <<"ThroughputCapacity">> => integer(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
@@ -3907,6 +3918,8 @@ update_file_cache(Client, Input, Options)
 %% `DailyAutomaticBackupStartTime'
 %%
 %% `DiskIopsConfiguration'
+%%
+%% `ReadCacheConfiguration'
 %%
 %% `RemoveRouteTableIds'
 %%

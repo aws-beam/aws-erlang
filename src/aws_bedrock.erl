@@ -174,6 +174,7 @@
 
 %% Example:
 %% get_evaluation_job_response() :: #{
+%%   <<"applicationType">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"customerEncryptionKeyId">> => string(),
 %%   <<"evaluationConfig">> => list(),
@@ -354,6 +355,16 @@
 
 
 %% Example:
+%% text_inference_config() :: #{
+%%   <<"maxTokens">> => integer(),
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type text_inference_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -381,6 +392,7 @@
 
 %% Example:
 %% list_evaluation_jobs_request() :: #{
+%%   <<"applicationTypeEquals">> => list(any()),
 %%   <<"creationTimeAfter">> => non_neg_integer(),
 %%   <<"creationTimeBefore">> => non_neg_integer(),
 %%   <<"maxResults">> => integer(),
@@ -402,8 +414,18 @@
 
 
 %% Example:
+%% external_source() :: #{
+%%   <<"byteContent">> => byte_content_doc(),
+%%   <<"s3Location">> => s3_object_doc(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type external_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% automated_evaluation_config() :: #{
-%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()())
+%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()()),
+%%   <<"evaluatorModelConfig">> => list()
 %% }
 -type automated_evaluation_config() :: #{binary() => any()}.
 
@@ -446,6 +468,13 @@
 %%   <<"filters">> => list(guardrail_content_filter()())
 %% }
 -type guardrail_content_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_doc() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_object_doc() :: #{binary() => any()}.
 
 
 %% Example:
@@ -591,6 +620,15 @@
 
 
 %% Example:
+%% retrieve_and_generate_configuration() :: #{
+%%   <<"externalSourcesConfiguration">> => external_sources_retrieve_and_generate_configuration(),
+%%   <<"knowledgeBaseConfiguration">> => knowledge_base_retrieve_and_generate_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type retrieve_and_generate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_model_copy_job_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"modelKmsKeyId">> => string(),
@@ -693,6 +731,24 @@
 %% }
 -type model_invocation_job_s3_output_data_config() :: #{binary() => any()}.
 
+
+%% Example:
+%% bedrock_evaluator_model() :: #{
+%%   <<"modelIdentifier">> => string()
+%% }
+-type bedrock_evaluator_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_retrieve_and_generate_configuration() :: #{
+%%   <<"generationConfiguration">> => generation_configuration(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"modelArn">> => string(),
+%%   <<"orchestrationConfiguration">> => orchestration_configuration(),
+%%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
+%% }
+-type knowledge_base_retrieve_and_generate_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_foundation_model_request() :: #{}
 -type get_foundation_model_request() :: #{}.
@@ -730,6 +786,21 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% query_transformation_configuration() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type query_transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_config() :: #{
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseRetrievalConfiguration">> => knowledge_base_retrieval_configuration()
+%% }
+-type retrieve_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_model_copy_job_request() :: #{}
 -type get_model_copy_job_request() :: #{}.
@@ -762,6 +833,13 @@
 %% Example:
 %% get_inference_profile_request() :: #{}
 -type get_inference_profile_request() :: #{}.
+
+
+%% Example:
+%% knowledge_base_retrieval_configuration() :: #{
+%%   <<"vectorSearchConfiguration">> => knowledge_base_vector_search_configuration()
+%% }
+-type knowledge_base_retrieval_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_provisioned_model_throughput_request() :: #{}
@@ -909,6 +987,15 @@
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
+
+%% Example:
+%% external_sources_retrieve_and_generate_configuration() :: #{
+%%   <<"generationConfiguration">> => external_sources_generation_configuration(),
+%%   <<"modelArn">> => string(),
+%%   <<"sources">> => list(external_source()())
+%% }
+-type external_sources_retrieve_and_generate_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_inference_profile_response() :: #{}
 -type delete_inference_profile_response() :: #{}.
@@ -1014,11 +1101,30 @@
 
 
 %% Example:
+%% byte_content_doc() :: #{
+%%   <<"contentType">> => string(),
+%%   <<"data">> => binary(),
+%%   <<"identifier">> => string()
+%% }
+-type byte_content_doc() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_imported_models_response() :: #{
 %%   <<"modelSummaries">> => list(imported_model_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_imported_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_sources_generation_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"kbInferenceConfig">> => kb_inference_config(),
+%%   <<"promptTemplate">> => prompt_template()
+%% }
+-type external_sources_generation_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_model_customization_job_request() :: #{}
@@ -1033,9 +1139,26 @@
 %% }
 -type human_evaluation_custom_metric() :: #{binary() => any()}.
 
+
+%% Example:
+%% knowledge_base_vector_search_configuration() :: #{
+%%   <<"filter">> => list(),
+%%   <<"numberOfResults">> => [integer()],
+%%   <<"overrideSearchType">> => list(any())
+%% }
+-type knowledge_base_vector_search_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_model_invocation_logging_configuration_request() :: #{}
 -type get_model_invocation_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% filter_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => any()
+%% }
+-type filter_attribute() :: #{binary() => any()}.
 
 %% Example:
 %% delete_imported_model_response() :: #{}
@@ -1160,6 +1283,20 @@
 
 
 %% Example:
+%% orchestration_configuration() :: #{
+%%   <<"queryTransformationConfiguration">> => query_transformation_configuration()
+%% }
+-type orchestration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_template() :: #{
+%%   <<"textPromptTemplate">> => string()
+%% }
+-type prompt_template() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1204,6 +1341,16 @@
 %% }
 -type create_model_customization_job_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% generation_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"kbInferenceConfig">> => kb_inference_config(),
+%%   <<"promptTemplate">> => prompt_template()
+%% }
+-type generation_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -1211,6 +1358,7 @@
 
 %% Example:
 %% create_evaluation_job_request() :: #{
+%%   <<"applicationType">> => list(any()),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"customerEncryptionKeyId">> => string(),
 %%   <<"evaluationConfig">> := list(),
@@ -1441,6 +1589,14 @@
 
 
 %% Example:
+%% guardrail_configuration() :: #{
+%%   <<"guardrailId">> => [string()],
+%%   <<"guardrailVersion">> => [string()]
+%% }
+-type guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% validator() :: #{
 %%   <<"s3Uri">> => string()
 %% }
@@ -1503,13 +1659,23 @@
 
 
 %% Example:
+%% kb_inference_config() :: #{
+%%   <<"textInferenceConfig">> => text_inference_config()
+%% }
+-type kb_inference_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_summary() :: #{
+%%   <<"applicationType">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"evaluationTaskTypes">> => list(list(any())()),
+%%   <<"evaluatorModelIdentifiers">> => list(string()()),
 %%   <<"jobArn">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"jobType">> => list(any()),
 %%   <<"modelIdentifiers">> => list(string()()),
+%%   <<"ragIdentifiers">> => list(string()()),
 %%   <<"status">> => list(any())
 %% }
 -type evaluation_summary() :: #{binary() => any()}.
@@ -1987,11 +2153,12 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a batch deletion job.
+%% @doc Deletes a batch of evaluation jobs.
 %%
-%% A model evaluation job can only be deleted if it has following status
-%% `FAILED', `COMPLETED', and `STOPPED'. You can request up to 25
-%% model evaluation jobs be deleted in a single request.
+%% An evaluation job can only be deleted if it has
+%% following status `FAILED', `COMPLETED', and `STOPPED'.
+%% You can request up to 25 model evaluation jobs be deleted in a single
+%% request.
 -spec batch_delete_evaluation_job(aws_client:aws_client(), batch_delete_evaluation_job_request()) ->
     {ok, batch_delete_evaluation_job_response(), tuple()} |
     {error, any()} |
@@ -2025,12 +2192,7 @@ batch_delete_evaluation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc API operation for creating and managing Amazon Bedrock automatic
-%% model evaluation jobs and model evaluation jobs that use human workers.
-%%
-%% To learn more about the requirements for creating a model evaluation job
-%% see, Model evaluation:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html.
+%% @doc Creates an evaluation job.
 -spec create_evaluation_job(aws_client:aws_client(), create_evaluation_job_request()) ->
     {ok, create_evaluation_job_response(), tuple()} |
     {error, any()} |
@@ -2707,12 +2869,8 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the properties associated with a model evaluation job,
-%% including the
-%% status of the job.
-%%
-%% For more information, see Model evaluation:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html.
+%% @doc Gets information about an evaluation job, such as the status of the
+%% job.
 -spec get_evaluation_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_evaluation_job_response(), tuple()} |
     {error, any()} |
@@ -3214,7 +3372,7 @@ list_custom_models(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists model evaluation jobs.
+%% @doc Lists all existing evaluation jobs.
 -spec list_evaluation_jobs(aws_client:aws_client()) ->
     {ok, list_evaluation_jobs_response(), tuple()} |
     {error, any()} |
@@ -3249,6 +3407,7 @@ list_evaluation_jobs(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"applicationTypeEquals">>, maps:get(<<"applicationTypeEquals">>, QueryMap, undefined)},
         {<<"creationTimeAfter">>, maps:get(<<"creationTimeAfter">>, QueryMap, undefined)},
         {<<"creationTimeBefore">>, maps:get(<<"creationTimeBefore">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
@@ -3812,7 +3971,7 @@ put_model_invocation_logging_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops an in progress model evaluation job.
+%% @doc Stops an evaluation job that is current being created or running.
 -spec stop_evaluation_job(aws_client:aws_client(), binary() | list(), stop_evaluation_job_request()) ->
     {ok, stop_evaluation_job_response(), tuple()} |
     {error, any()} |

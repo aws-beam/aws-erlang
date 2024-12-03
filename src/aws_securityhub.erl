@@ -1053,6 +1053,17 @@
 
 
 %% Example:
+%% sequence() :: #{
+%%   <<"Actors">> => list(actor()()),
+%%   <<"Endpoints">> => list(network_endpoint()()),
+%%   <<"SequenceIndicators">> => list(indicator()()),
+%%   <<"Signals">> => list(signal()()),
+%%   <<"Uid">> => string()
+%% }
+-type sequence() :: #{binary() => any()}.
+
+
+%% Example:
 %% remediation() :: #{
 %%   <<"Recommendation">> => recommendation()
 %% }
@@ -1540,6 +1551,14 @@
 %%   <<"VerificationState">> => list(string_filter()())
 %% }
 -type automation_rules_finding_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_autonomous_system() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Number">> => integer()
+%% }
+-type network_autonomous_system() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2047,6 +2066,16 @@
 %%   <<"NetworkInterfaceId">> => string()
 %% }
 -type aws_ec2_instance_network_interfaces_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_geo_location() :: #{
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"Lat">> => float(),
+%%   <<"Lon">> => float()
+%% }
+-type network_geo_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2823,6 +2852,14 @@
 
 
 %% Example:
+%% user_account() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Uid">> => string()
+%% }
+-type user_account() :: #{binary() => any()}.
+
+
+%% Example:
 %% ip_organization_details() :: #{
 %%   <<"Asn">> => integer(),
 %%   <<"AsnOrg">> => string(),
@@ -2913,6 +2950,13 @@
 %%   <<"Product">> => float()
 %% }
 -type severity() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_connection() :: #{
+%%   <<"Direction">> => list(any())
+%% }
+-type network_connection() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4066,6 +4110,27 @@
 
 
 %% Example:
+%% signal() :: #{
+%%   <<"ActorIds">> => list(string()()),
+%%   <<"Count">> => integer(),
+%%   <<"CreatedAt">> => float(),
+%%   <<"EndpointIds">> => list(string()()),
+%%   <<"FirstSeenAt">> => float(),
+%%   <<"Id">> => string(),
+%%   <<"LastSeenAt">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"ProductArn">> => string(),
+%%   <<"ResourceIds">> => list(string()()),
+%%   <<"Severity">> => float(),
+%%   <<"SignalIndicators">> => list(indicator()()),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"UpdatedAt">> => float()
+%% }
+-type signal() :: #{binary() => any()}.
+
+
+%% Example:
 %% account_details() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Email">> => string()
@@ -4538,6 +4603,19 @@
 
 
 %% Example:
+%% network_endpoint() :: #{
+%%   <<"AutonomousSystem">> => network_autonomous_system(),
+%%   <<"Connection">> => network_connection(),
+%%   <<"Domain">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Ip">> => string(),
+%%   <<"Location">> => network_geo_location(),
+%%   <<"Port">> => integer()
+%% }
+-type network_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_cloud_trail_trail_details() :: #{
 %%   <<"CloudWatchLogsLogGroupArn">> => string(),
 %%   <<"CloudWatchLogsRoleArn">> => string(),
@@ -4806,6 +4884,13 @@
 
 
 %% Example:
+%% detection() :: #{
+%%   <<"Sequence">> => sequence()
+%% }
+-type detection() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_elb_app_cookie_stickiness_policy() :: #{
 %%   <<"CookieName">> => string(),
 %%   <<"PolicyName">> => string()
@@ -4916,6 +5001,17 @@
 %%   <<"Type">> => string()
 %% }
 -type aws_waf_rate_based_rule_match_predicate() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor_user() :: #{
+%%   <<"Account">> => user_account(),
+%%   <<"CredentialUid">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Uid">> => string()
+%% }
+-type actor_user() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6789,6 +6885,15 @@
 
 
 %% Example:
+%% actor() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Session">> => actor_session(),
+%%   <<"User">> => actor_user()
+%% }
+-type actor() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_athena_work_group_configuration_result_configuration_details() :: #{
 %%   <<"EncryptionConfiguration">> => aws_athena_work_group_configuration_result_configuration_encryption_configuration_details()
 %% }
@@ -7357,6 +7462,7 @@
 %%   <<"RecordState">> => list(any()),
 %%   <<"Malware">> => list(malware()()),
 %%   <<"Network">> => network(),
+%%   <<"Detection">> => detection(),
 %%   <<"Vulnerabilities">> => list(vulnerability()()),
 %%   <<"CompanyName">> => string(),
 %%   <<"AwsAccountId">> => string(),
@@ -7456,6 +7562,16 @@
 %%   <<"IdentityValidationExpression">> => string()
 %% }
 -type aws_app_sync_graph_ql_api_lambda_authorizer_config_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor_session() :: #{
+%%   <<"CreatedTime">> => float(),
+%%   <<"Issuer">> => string(),
+%%   <<"MfaStatus">> => list(any()),
+%%   <<"Uid">> => string()
+%% }
+-type actor_session() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8636,6 +8752,16 @@
 %%   <<"Type">> => string()
 %% }
 -type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% indicator() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type indicator() :: #{binary() => any()}.
 
 
 %% Example:

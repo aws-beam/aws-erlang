@@ -48,6 +48,8 @@
          put_connect_instance_integration/4,
          put_outbound_request_batch/3,
          put_outbound_request_batch/4,
+         put_profile_outbound_request_batch/3,
+         put_profile_outbound_request_batch/4,
          resume_campaign/3,
          resume_campaign/4,
          start_campaign/3,
@@ -264,6 +266,15 @@
 
 
 %% Example:
+%% failed_profile_outbound_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"failureCode">> => string(),
+%%   <<"id">> => string()
+%% }
+-type failed_profile_outbound_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_campaign_communication_time_request() :: #{
 %%   <<"config">> := string()
 %% }
@@ -308,12 +319,28 @@
 
 
 %% Example:
+%% put_profile_outbound_request_batch_response() :: #{
+%%   <<"failedRequests">> => list(failed_profile_outbound_request()()),
+%%   <<"successfulRequests">> => list(successful_profile_outbound_request()())
+%% }
+-type put_profile_outbound_request_batch_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_campaign_state_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"state">> => string(),
 %%   <<"xAmzErrorType">> => string()
 %% }
 -type invalid_campaign_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_profile_outbound_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"id">> => string()
+%% }
+-type successful_profile_outbound_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -382,6 +409,13 @@
 %% Example:
 %% get_campaign_state_request() :: #{}
 -type get_campaign_state_request() :: #{}.
+
+
+%% Example:
+%% put_profile_outbound_request_batch_request() :: #{
+%%   <<"profileOutboundRequests">> := list(profile_outbound_request()())
+%% }
+-type put_profile_outbound_request_batch_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -487,6 +521,13 @@
 %% Example:
 %% agentless_config() :: #{}
 -type agentless_config() :: #{}.
+
+
+%% Example:
+%% event_trigger() :: #{
+%%   <<"customerProfilesDomainArn">> => string()
+%% }
+-type event_trigger() :: #{binary() => any()}.
 
 
 %% Example:
@@ -674,6 +715,15 @@
 %%   <<"knowledgeBaseArn">> => string()
 %% }
 -type q_connect_integration_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_outbound_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"expirationTime">> => non_neg_integer(),
+%%   <<"profileId">> => string()
+%% }
+-type profile_outbound_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -909,6 +959,15 @@
     conflict_exception().
 
 -type put_outbound_request_batch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_campaign_state_exception().
+
+-type put_profile_outbound_request_batch_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1693,6 +1752,43 @@ put_outbound_request_batch(Client, Id, Input) ->
 put_outbound_request_batch(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/v2/campaigns/", aws_util:encode_uri(Id), "/outbound-requests"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Takes in a list of profile outbound requests to be placed as part of
+%% an outbound campaign.
+%%
+%% This API is idempotent.
+-spec put_profile_outbound_request_batch(aws_client:aws_client(), binary() | list(), put_profile_outbound_request_batch_request()) ->
+    {ok, put_profile_outbound_request_batch_response(), tuple()} |
+    {error, any()} |
+    {error, put_profile_outbound_request_batch_errors(), tuple()}.
+put_profile_outbound_request_batch(Client, Id, Input) ->
+    put_profile_outbound_request_batch(Client, Id, Input, []).
+
+-spec put_profile_outbound_request_batch(aws_client:aws_client(), binary() | list(), put_profile_outbound_request_batch_request(), proplists:proplist()) ->
+    {ok, put_profile_outbound_request_batch_response(), tuple()} |
+    {error, any()} |
+    {error, put_profile_outbound_request_batch_errors(), tuple()}.
+put_profile_outbound_request_batch(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/campaigns/", aws_util:encode_uri(Id), "/profile-outbound-requests"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

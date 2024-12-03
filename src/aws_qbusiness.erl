@@ -100,6 +100,9 @@
          get_index/3,
          get_index/5,
          get_index/6,
+         get_media/5,
+         get_media/7,
+         get_media/8,
          get_plugin/3,
          get_plugin/5,
          get_plugin/6,
@@ -115,6 +118,9 @@
          list_applications/1,
          list_applications/3,
          list_applications/4,
+         list_attachments/2,
+         list_attachments/4,
+         list_attachments/5,
          list_conversations/2,
          list_conversations/4,
          list_conversations/5,
@@ -210,10 +216,24 @@
 
 
 %% Example:
+%% media_extraction_configuration() :: #{
+%%   <<"imageExtractionConfiguration">> => image_extraction_configuration()
+%% }
+-type media_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% encryption_configuration() :: #{
 %%   <<"kmsKeyId">> => string()
 %% }
 -type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_too_large_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type media_too_large_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -318,6 +338,7 @@
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"syncSchedule">> => string(),
 %%   <<"tags">> => list(tag()()),
@@ -347,6 +368,14 @@
 %%   <<"userMessageId">> => string()
 %% }
 -type text_output_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_source() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"conversationId">> => string()
+%% }
+-type conversation_source() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -519,6 +548,22 @@
 
 
 %% Example:
+%% attachment() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"conversationId">> => string(),
+%%   <<"copyFrom">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => error_detail(),
+%%   <<"fileSize">> => integer(),
+%%   <<"fileType">> => string(),
+%%   <<"md5chksum">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type attachment() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_web_experiences_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"webExperiences">> => list(web_experience()())
@@ -644,6 +689,13 @@
 
 
 %% Example:
+%% image_extraction_configuration() :: #{
+%%   <<"imageExtractionStatus">> => list(any())
+%% }
+-type image_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% chat_sync_output() :: #{
 %%   <<"actionReview">> => action_review(),
 %%   <<"authChallengeRequest">> => auth_challenge_request(),
@@ -707,6 +759,7 @@
 
 %% Example:
 %% create_web_experience_request() :: #{
+%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
 %%   <<"clientToken">> => string(),
 %%   <<"identityProviderConfiguration">> => list(),
 %%   <<"origins">> => list(string()()),
@@ -789,6 +842,7 @@
 %% get_web_experience_response() :: #{
 %%   <<"applicationId">> => string(),
 %%   <<"authenticationConfiguration">> => list(),
+%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"defaultEndpoint">> => string(),
 %%   <<"error">> => error_detail(),
@@ -912,6 +966,7 @@
 %% Example:
 %% update_web_experience_request() :: #{
 %%   <<"authenticationConfiguration">> => list(),
+%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
 %%   <<"identityProviderConfiguration">> => list(),
 %%   <<"origins">> => list(string()()),
 %%   <<"roleArn">> => string(),
@@ -985,6 +1040,7 @@
 
 %% Example:
 %% attachment_input() :: #{
+%%   <<"copyFrom">> => list(),
 %%   <<"data">> => binary(),
 %%   <<"name">> => string()
 %% }
@@ -1038,6 +1094,8 @@
 %% text_segment() :: #{
 %%   <<"beginOffset">> => integer(),
 %%   <<"endOffset">> => integer(),
+%%   <<"mediaId">> => string(),
+%%   <<"mediaMimeType">> => string(),
 %%   <<"snippetExcerpt">> => snippet_excerpt()
 %% }
 -type text_segment() :: #{binary() => any()}.
@@ -1148,6 +1206,16 @@
 %% }
 -type data_source_sync_job() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_attachments_request() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type list_attachments_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_request() :: #{}
 -type delete_user_request() :: #{}.
@@ -1185,6 +1253,14 @@
 %% Example:
 %% delete_user_response() :: #{}
 -type delete_user_response() :: #{}.
+
+
+%% Example:
+%% get_media_response() :: #{
+%%   <<"mediaBytes">> => binary(),
+%%   <<"mediaMimeType">> => string()
+%% }
+-type get_media_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1422,6 +1498,10 @@
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
 
+%% Example:
+%% get_media_request() :: #{}
+-type get_media_request() :: #{}.
+
 
 %% Example:
 %% list_conversations_response() :: #{
@@ -1497,6 +1577,7 @@
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"syncSchedule">> => string(),
 %%   <<"vpcConfiguration">> => data_source_vpc_configuration()
@@ -1571,6 +1652,13 @@
 
 
 %% Example:
+%% browser_extension_configuration() :: #{
+%%   <<"enabledBrowserExtensions">> => list(string()())
+%% }
+-type browser_extension_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_group_request() :: #{
 %%   <<"dataSourceId">> => string()
 %% }
@@ -1642,6 +1730,13 @@
 %%   <<"name">> => string()
 %% }
 -type principal_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_resource_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type external_resource_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1768,6 +1863,8 @@
 
 %% Example:
 %% attachment_output() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"conversationId">> => string(),
 %%   <<"error">> => error_detail(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
@@ -1809,6 +1906,7 @@
 %%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
 %%   <<"error">> => error_detail(),
 %%   <<"indexId">> => string(),
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"syncSchedule">> => string(),
@@ -1855,9 +1953,18 @@
 %%   <<"contentType">> => list(any()),
 %%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
 %%   <<"id">> => string(),
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
 %%   <<"title">> => string()
 %% }
 -type document() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachments_response() :: #{
+%%   <<"attachments">> => list(attachment()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_attachments_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_data_source_sync_job_response() :: #{}
@@ -1982,6 +2089,7 @@
     conflict_exception().
 
 -type chat_errors() ::
+    external_resource_exception() | 
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1991,6 +2099,7 @@
     license_not_found_exception().
 
 -type chat_sync_errors() ::
+    external_resource_exception() | 
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2177,6 +2286,15 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_media_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception() | 
+    media_too_large_exception().
+
 -type get_plugin_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2212,6 +2330,14 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_attachments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception().
+
 -type list_conversations_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2225,7 +2351,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type list_data_sources_errors() ::
     throttling_exception() | 
@@ -2322,7 +2449,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
@@ -2587,15 +2715,20 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
 %% You must use the Amazon Q Business console to assign
 %% subscription tiers to users.
 %%
-%% A Amazon Q Apps service linked role will be created if it's absent in
+%% An Amazon Q Apps service linked role will be created if it's absent in
 %% the
-%% Amazon Web Services account when the QAppsConfiguration is enabled in the
-%% request.
-%% For more information, see
+%% Amazon Web Services account when `QAppsConfiguration' is enabled in
+%% the request. For more information, see Using
+%% service-linked roles for Q Apps:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/using-service-linked-roles-qapps.html.
 %%
-%% Using service-linked roles for Q Apps
-%% :
-%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/using-service-linked-roles-qapps.html
+%% When you create an application, Amazon Q Business may securely transmit
+%% data for
+%% processing from your selected Amazon Web Services region, but within your
+%% geography.
+%% For more information, see Cross region
+%% inference in Amazon Q Business:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/cross-region-inference.html.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
@@ -3414,6 +3547,53 @@ get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the image bytes corresponding to a media object.
+%%
+%% If you have implemented your own application with the Chat and ChatSync
+%% APIs, and
+%% have enabled content extraction from visual data in Amazon Q Business, you
+%% use the GetMedia API operation to download
+%% the images so you can show them in your UI with responses.
+%%
+%% For more information, see Extracting semantic meaning from images and
+%% visuals:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/extracting-meaning-from-images.html.
+-spec get_media(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_media_response(), tuple()} |
+    {error, any()} |
+    {error, get_media_errors(), tuple()}.
+get_media(Client, ApplicationId, ConversationId, MediaId, MessageId)
+  when is_map(Client) ->
+    get_media(Client, ApplicationId, ConversationId, MediaId, MessageId, #{}, #{}).
+
+-spec get_media(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_media_response(), tuple()} |
+    {error, any()} |
+    {error, get_media_errors(), tuple()}.
+get_media(Client, ApplicationId, ConversationId, MediaId, MessageId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_media(Client, ApplicationId, ConversationId, MediaId, MessageId, QueryMap, HeadersMap, []).
+
+-spec get_media(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_media_response(), tuple()} |
+    {error, any()} |
+    {error, get_media_errors(), tuple()}.
+get_media(Client, ApplicationId, ConversationId, MediaId, MessageId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations/", aws_util:encode_uri(ConversationId), "/messages/", aws_util:encode_uri(MessageId), "/media/", aws_util:encode_uri(MediaId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about an existing Amazon Q Business plugin.
 -spec get_plugin(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_plugin_response(), tuple()} |
@@ -3567,6 +3747,14 @@ get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon Q Business applications.
+%%
+%% Amazon Q Business applications may securely transmit data for processing
+%% across
+%% Amazon Web Services Regions within your geography. For more information,
+%% see
+%% Cross region
+%% inference in Amazon Q Business:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/cross-region-inference.html.
 -spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
@@ -3603,6 +3791,52 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a list of attachments associated with an Amazon Q Business web
+%% experience or a list of attachements associated with a specific Amazon Q
+%% Business conversation.
+-spec list_attachments(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, list_attachments_errors(), tuple()}.
+list_attachments(Client, ApplicationId)
+  when is_map(Client) ->
+    list_attachments(Client, ApplicationId, #{}, #{}).
+
+-spec list_attachments(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, list_attachments_errors(), tuple()}.
+list_attachments(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_attachments(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+-spec list_attachments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, list_attachments_errors(), tuple()}.
+list_attachments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/attachments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"conversationId">>, maps:get(<<"conversationId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"userId">>, maps:get(<<"userId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -4312,13 +4546,20 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
 
 %% @doc Updates an existing Amazon Q Business application.
 %%
-%% A Amazon Q Apps service-linked role will be created if it's absent in
-%% the Amazon Web Services account
-%% when the QAppsConfiguration is enabled in the request.
-%% For more information, see
-%% Using service-linked roles for Q Apps
-%% :
-%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/using-service-linked-roles-qapps.html
+%% Amazon Q Business applications may securely transmit data for processing
+%% across
+%% Amazon Web Services Regions within your geography. For more information,
+%% see
+%% Cross region
+%% inference in Amazon Q Business:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/cross-region-inference.html.
+%%
+%% An Amazon Q Apps service-linked role will be created if it's absent in
+%% the
+%% Amazon Web Services account when `QAppsConfiguration' is enabled in
+%% the request. For more information, see Using
+%% service-linked roles for Q Apps:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/using-service-linked-roles-qapps.html.
 -spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |

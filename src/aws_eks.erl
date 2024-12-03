@@ -276,6 +276,15 @@
 
 
 %% Example:
+%% compute_config_response() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"nodePools">> => list(string()()),
+%%   <<"nodeRoleArn">> => string()
+%% }
+-type compute_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% compatibility() :: #{
 %%   <<"clusterVersion">> => string(),
 %%   <<"defaultVersion">> => boolean(),
@@ -387,6 +396,14 @@
 %%   <<"fargateProfile">> => fargate_profile()
 %% }
 -type create_fargate_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_network_config_request() :: #{
+%%   <<"remoteNodeNetworks">> => list(remote_node_network()()),
+%%   <<"remotePodNetworks">> => list(remote_pod_network()())
+%% }
+-type remote_network_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -562,6 +579,13 @@
 
 
 %% Example:
+%% elastic_load_balancing() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type elastic_load_balancing() :: #{binary() => any()}.
+
+
+%% Example:
 %% addon_pod_identity_associations() :: #{
 %%   <<"roleArn">> => string(),
 %%   <<"serviceAccount">> => string()
@@ -647,6 +671,15 @@
 %%   <<"resourceIds">> => list(string()())
 %% }
 -type fargate_profile_issue() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_config_request() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"nodePools">> => list(string()()),
+%%   <<"nodeRoleArn">> => string()
+%% }
+-type compute_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -757,13 +790,16 @@
 %%   <<"accessConfig">> => create_access_config_request(),
 %%   <<"bootstrapSelfManagedAddons">> => boolean(),
 %%   <<"clientRequestToken">> => string(),
+%%   <<"computeConfig">> => compute_config_request(),
 %%   <<"encryptionConfig">> => list(encryption_config()()),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> := string(),
 %%   <<"outpostConfig">> => outpost_config_request(),
+%%   <<"remoteNetworkConfig">> => remote_network_config_request(),
 %%   <<"resourcesVpcConfig">> := vpc_config_request(),
 %%   <<"roleArn">> := string(),
+%%   <<"storageConfig">> => storage_config_request(),
 %%   <<"tags">> => map(),
 %%   <<"upgradePolicy">> => upgrade_policy_request(),
 %%   <<"version">> => string(),
@@ -924,6 +960,7 @@
 %%   <<"arn">> => string(),
 %%   <<"certificateAuthority">> => certificate(),
 %%   <<"clientRequestToken">> => string(),
+%%   <<"computeConfig">> => compute_config_response(),
 %%   <<"connectorConfig">> => connector_config_response(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"encryptionConfig">> => list(encryption_config()()),
@@ -936,9 +973,11 @@
 %%   <<"name">> => string(),
 %%   <<"outpostConfig">> => outpost_config_response(),
 %%   <<"platformVersion">> => string(),
+%%   <<"remoteNetworkConfig">> => remote_network_config_response(),
 %%   <<"resourcesVpcConfig">> => vpc_config_response(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
+%%   <<"storageConfig">> => storage_config_response(),
 %%   <<"tags">> => map(),
 %%   <<"upgradePolicy">> => upgrade_policy_response(),
 %%   <<"version">> => string(),
@@ -1032,6 +1071,14 @@
 %%   <<"tags">> => map()
 %% }
 -type create_addon_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_network_config_response() :: #{
+%%   <<"remoteNodeNetworks">> => list(remote_node_network()()),
+%%   <<"remotePodNetworks">> => list(remote_pod_network()())
+%% }
+-type remote_network_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1168,6 +1215,13 @@
 
 
 %% Example:
+%% block_storage() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type block_storage() :: #{binary() => any()}.
+
+
+%% Example:
 %% upgrade_policy_request() :: #{
 %%   <<"supportType">> => list(any())
 %% }
@@ -1215,6 +1269,7 @@
 
 %% Example:
 %% kubernetes_network_config_request() :: #{
+%%   <<"elasticLoadBalancing">> => elastic_load_balancing(),
 %%   <<"ipFamily">> => list(any()),
 %%   <<"serviceIpv4Cidr">> => string()
 %% }
@@ -1352,6 +1407,13 @@
 %%   <<"subscriptionId">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_config_request() :: #{
+%%   <<"blockStorage">> => block_storage()
+%% }
+-type storage_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_pod_identity_association_request() :: #{}
@@ -1530,6 +1592,13 @@
 
 
 %% Example:
+%% storage_config_response() :: #{
+%%   <<"blockStorage">> => block_storage()
+%% }
+-type storage_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% nodegroup_resources() :: #{
 %%   <<"autoScalingGroups">> => list(auto_scaling_group()()),
 %%   <<"remoteAccessSecurityGroup">> => string()
@@ -1557,6 +1626,7 @@
 
 %% Example:
 %% kubernetes_network_config_response() :: #{
+%%   <<"elasticLoadBalancing">> => elastic_load_balancing(),
 %%   <<"ipFamily">> => list(any()),
 %%   <<"serviceIpv4Cidr">> => string(),
 %%   <<"serviceIpv6Cidr">> => string()
@@ -1615,6 +1685,13 @@
 %%   <<"serviceAccount">> => string()
 %% }
 -type list_pod_identity_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_node_network() :: #{
+%%   <<"cidrs">> => list(string()())
+%% }
+-type remote_node_network() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1706,12 +1783,22 @@
 %% update_cluster_config_request() :: #{
 %%   <<"accessConfig">> => update_access_config_request(),
 %%   <<"clientRequestToken">> => string(),
+%%   <<"computeConfig">> => compute_config_request(),
+%%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
 %%   <<"logging">> => logging(),
 %%   <<"resourcesVpcConfig">> => vpc_config_request(),
+%%   <<"storageConfig">> => storage_config_request(),
 %%   <<"upgradePolicy">> => upgrade_policy_request(),
 %%   <<"zonalShiftConfig">> => zonal_shift_config_request()
 %% }
 -type update_cluster_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_pod_network() :: #{
+%%   <<"cidrs">> => list(string()())
+%% }
+-type remote_pod_network() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1878,6 +1965,7 @@
 %%   <<"addonVersion">> => string(),
 %%   <<"architecture">> => list(string()()),
 %%   <<"compatibilities">> => list(compatibility()()),
+%%   <<"computeTypes">> => list(string()()),
 %%   <<"requiresConfiguration">> => boolean(),
 %%   <<"requiresIamPermissions">> => boolean()
 %% }

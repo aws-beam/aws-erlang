@@ -1,14 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc MemoryDB for Redis is a fully managed, Redis-compatible, in-memory
-%% database that delivers ultra-fast performance and Multi-AZ durability for
-%% modern applications built using microservices architectures.
+%% @doc MemoryDB is a fully managed, Redis OSS-compatible, in-memory database
+%% that delivers ultra-fast performance and Multi-AZ durability for modern
+%% applications built using microservices architectures.
 %%
 %% MemoryDB stores the entire database in-memory, enabling low latency and
-%% high throughput data access. It is compatible with Redis, a popular open
-%% source data store, enabling you to leverage Redis’ flexible and friendly
-%% data structures, APIs, and commands.
+%% high throughput data access. It is compatible with Redis OSS, a popular
+%% open source data store, enabling you to leverage Redis OSS’ flexible and
+%% friendly data structures, APIs, and commands.
 -module(aws_memorydb).
 
 -export([batch_update_cluster/2,
@@ -19,6 +19,8 @@
          create_acl/3,
          create_cluster/2,
          create_cluster/3,
+         create_multi_region_cluster/2,
+         create_multi_region_cluster/3,
          create_parameter_group/2,
          create_parameter_group/3,
          create_snapshot/2,
@@ -31,6 +33,8 @@
          delete_acl/3,
          delete_cluster/2,
          delete_cluster/3,
+         delete_multi_region_cluster/2,
+         delete_multi_region_cluster/3,
          delete_parameter_group/2,
          delete_parameter_group/3,
          delete_snapshot/2,
@@ -47,6 +51,8 @@
          describe_engine_versions/3,
          describe_events/2,
          describe_events/3,
+         describe_multi_region_clusters/2,
+         describe_multi_region_clusters/3,
          describe_parameter_groups/2,
          describe_parameter_groups/3,
          describe_parameters/2,
@@ -65,6 +71,8 @@
          describe_users/3,
          failover_shard/2,
          failover_shard/3,
+         list_allowed_multi_region_cluster_updates/2,
+         list_allowed_multi_region_cluster_updates/3,
          list_allowed_node_type_updates/2,
          list_allowed_node_type_updates/3,
          list_tags/2,
@@ -81,6 +89,8 @@
          update_acl/3,
          update_cluster/2,
          update_cluster/3,
+         update_multi_region_cluster/2,
+         update_multi_region_cluster/3,
          update_parameter_group/2,
          update_parameter_group/3,
          update_subnet_group/2,
@@ -150,6 +160,12 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% multi_region_cluster_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type multi_region_cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
 %% failover_shard_response() :: #{
 %%   <<"Cluster">> => cluster()
 %% }
@@ -180,6 +196,12 @@
 %%   <<"Name">> => string()
 %% }
 -type availability_zone() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_multi_region_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_multi_region_cluster_state_fault() :: #{binary() => any()}.
 
 %% Example:
 %% describe_parameter_groups_response() :: #{
@@ -299,6 +321,13 @@
 -type describe_parameters_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_multi_region_clusters_response() :: #{
+%%   <<"MultiRegionClusters">> => list(multi_region_cluster()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_multi_region_clusters_response() :: #{binary() => any()}.
+
+%% Example:
 %% security_group_membership() :: #{
 %%   <<"SecurityGroupId">> => string(),
 %%   <<"Status">> => string()
@@ -352,6 +381,12 @@
 -type create_snapshot_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_allowed_multi_region_cluster_updates_request() :: #{
+%%   <<"MultiRegionClusterName">> := string()
+%% }
+-type list_allowed_multi_region_cluster_updates_request() :: #{binary() => any()}.
+
+%% Example:
 %% acls_update_status() :: #{
 %%   <<"ACLToApply">> => string()
 %% }
@@ -363,6 +398,18 @@
 %%   <<"Identifier">> => string()
 %% }
 -type subnet() :: #{binary() => any()}.
+
+%% Example:
+%% update_multi_region_cluster_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"MultiRegionClusterName">> := string(),
+%%   <<"MultiRegionParameterGroupName">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"ShardConfiguration">> => shard_configuration_request(),
+%%   <<"UpdateStrategy">> => list(any())
+%% }
+-type update_multi_region_cluster_request() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_subnet() :: #{
@@ -534,6 +581,8 @@
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
+%%   <<"MultiRegionClusterName">> => string(),
+%%   <<"MultiRegionParameterGroupName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"NodeType">> => string(),
 %%   <<"NumShards">> => integer(),
@@ -567,6 +616,13 @@
 -type subnet_not_allowed_fault() :: #{binary() => any()}.
 
 %% Example:
+%% list_allowed_multi_region_cluster_updates_response() :: #{
+%%   <<"ScaleDownNodeTypes">> => list(string()()),
+%%   <<"ScaleUpNodeTypes">> => list(string()())
+%% }
+-type list_allowed_multi_region_cluster_updates_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_subnet_group_request() :: #{
 %%   <<"SubnetGroupName">> := string()
 %% }
@@ -589,6 +645,12 @@
 -type subnet_group() :: #{binary() => any()}.
 
 %% Example:
+%% delete_multi_region_cluster_request() :: #{
+%%   <<"MultiRegionClusterName">> := string()
+%% }
+-type delete_multi_region_cluster_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_cluster_request() :: #{
 %%   <<"ACLName">> := string(),
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
@@ -599,6 +661,7 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
+%%   <<"MultiRegionClusterName">> => string(),
 %%   <<"NodeType">> := string(),
 %%   <<"NumReplicasPerShard">> => integer(),
 %%   <<"NumShards">> => integer(),
@@ -652,6 +715,7 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MaintenanceWindow">> => string(),
+%%   <<"MultiRegionClusterName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"NodeType">> => string(),
 %%   <<"NumberOfShards">> => integer(),
@@ -724,6 +788,20 @@
 -type list_allowed_node_type_updates_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_multi_region_cluster_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"MultiRegionClusterNameSuffix">> := string(),
+%%   <<"MultiRegionParameterGroupName">> => string(),
+%%   <<"NodeType">> := string(),
+%%   <<"NumShards">> => integer(),
+%%   <<"TLSEnabled">> => boolean(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_multi_region_cluster_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_subnet_groups_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SubnetGroups">> => list(subnet_group()())
@@ -735,6 +813,12 @@
 %%   <<"ServiceUpdateNameToApply">> => string()
 %% }
 -type service_update_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_multi_region_cluster_response() :: #{
+%%   <<"MultiRegionCluster">> => multi_region_cluster()
+%% }
+-type delete_multi_region_cluster_response() :: #{binary() => any()}.
 
 %% Example:
 %% parameter() :: #{
@@ -792,6 +876,12 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_multi_region_cluster_response() :: #{
+%%   <<"MultiRegionCluster">> => multi_region_cluster()
+%% }
+-type create_multi_region_cluster_response() :: #{binary() => any()}.
 
 %% Example:
 %% acl_pending_changes() :: #{
@@ -938,6 +1028,15 @@
 -type shard_configuration_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_multi_region_clusters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MultiRegionClusterName">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ShowClusterDetails">> => boolean()
+%% }
+-type describe_multi_region_clusters_request() :: #{binary() => any()}.
+
+%% Example:
 %% duplicate_user_name_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -955,7 +1054,8 @@
 %% Example:
 %% delete_cluster_request() :: #{
 %%   <<"ClusterName">> := string(),
-%%   <<"FinalSnapshotName">> => string()
+%%   <<"FinalSnapshotName">> => string(),
+%%   <<"MultiRegionClusterName">> => string()
 %% }
 -type delete_cluster_request() :: #{binary() => any()}.
 
@@ -1016,6 +1116,12 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_multi_region_cluster_response() :: #{
+%%   <<"MultiRegionCluster">> => multi_region_cluster()
+%% }
+-type update_multi_region_cluster_response() :: #{binary() => any()}.
+
+%% Example:
 %% acl_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1027,6 +1133,15 @@
 %%   <<"ReservedNodes">> => list(reserved_node()())
 %% }
 -type describe_reserved_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% regional_cluster() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type regional_cluster() :: #{binary() => any()}.
 
 %% Example:
 %% describe_parameter_groups_request() :: #{
@@ -1112,6 +1227,22 @@
 %%   <<"Type">> => list(any())
 %% }
 -type service_update() :: #{binary() => any()}.
+
+%% Example:
+%% multi_region_cluster() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Clusters">> => list(regional_cluster()()),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"MultiRegionClusterName">> => string(),
+%%   <<"MultiRegionParameterGroupName">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"NumberOfShards">> => integer(),
+%%   <<"Status">> => string(),
+%%   <<"TLSEnabled">> => boolean()
+%% }
+-type multi_region_cluster() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_cluster_state_fault() :: #{
@@ -1208,6 +1339,12 @@
 %%   <<"message">> => string()
 %% }
 -type cluster_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% multi_region_cluster_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type multi_region_cluster_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_request() :: #{
@@ -1317,6 +1454,12 @@
 -type shard_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% multi_region_parameter_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type multi_region_parameter_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
 %% delete_snapshot_response() :: #{
 %%   <<"Snapshot">> => snapshot()
 %% }
@@ -1382,7 +1525,17 @@
     invalid_parameter_combination_exception() | 
     acl_not_found_fault() | 
     subnet_group_not_found_fault() | 
+    invalid_multi_region_cluster_state_fault() | 
+    multi_region_cluster_not_found_fault() | 
     node_quota_for_customer_exceeded_fault().
+
+-type create_multi_region_cluster_errors() ::
+    multi_region_parameter_group_not_found_fault() | 
+    multi_region_cluster_already_exists_fault() | 
+    cluster_quota_for_customer_exceeded_fault() | 
+    invalid_parameter_value_exception() | 
+    tag_quota_per_resource_exceeded() | 
+    invalid_parameter_combination_exception().
 
 -type create_parameter_group_errors() ::
     service_linked_role_not_found_fault() | 
@@ -1433,6 +1586,11 @@
     invalid_parameter_combination_exception() | 
     cluster_not_found_fault().
 
+-type delete_multi_region_cluster_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_multi_region_cluster_state_fault() | 
+    multi_region_cluster_not_found_fault().
+
 -type delete_parameter_group_errors() ::
     parameter_group_not_found_fault() | 
     service_linked_role_not_found_fault() | 
@@ -1476,6 +1634,12 @@
     service_linked_role_not_found_fault() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception().
+
+-type describe_multi_region_clusters_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    cluster_not_found_fault() | 
+    multi_region_cluster_not_found_fault().
 
 -type describe_parameter_groups_errors() ::
     parameter_group_not_found_fault() | 
@@ -1529,6 +1693,11 @@
     cluster_not_found_fault() | 
     invalid_kms_key_fault().
 
+-type list_allowed_multi_region_cluster_updates_errors() ::
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    multi_region_cluster_not_found_fault().
+
 -type list_allowed_node_type_updates_errors() ::
     service_linked_role_not_found_fault() | 
     invalid_parameter_value_exception() | 
@@ -1536,6 +1705,7 @@
     cluster_not_found_fault().
 
 -type list_tags_errors() ::
+    multi_region_parameter_group_not_found_fault() | 
     parameter_group_not_found_fault() | 
     invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
@@ -1544,6 +1714,7 @@
     subnet_group_not_found_fault() | 
     cluster_not_found_fault() | 
     user_not_found_fault() | 
+    multi_region_cluster_not_found_fault() | 
     snapshot_not_found_fault().
 
 -type purchase_reserved_nodes_offering_errors() ::
@@ -1563,27 +1734,33 @@
     invalid_parameter_group_state_fault().
 
 -type tag_resource_errors() ::
+    multi_region_parameter_group_not_found_fault() | 
     parameter_group_not_found_fault() | 
     invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
     invalid_arn_fault() | 
+    invalid_parameter_value_exception() | 
     tag_quota_per_resource_exceeded() | 
     acl_not_found_fault() | 
     subnet_group_not_found_fault() | 
     cluster_not_found_fault() | 
     user_not_found_fault() | 
+    multi_region_cluster_not_found_fault() | 
     snapshot_not_found_fault().
 
 -type untag_resource_errors() ::
+    multi_region_parameter_group_not_found_fault() | 
     parameter_group_not_found_fault() | 
     invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
     invalid_arn_fault() | 
+    invalid_parameter_value_exception() | 
     tag_not_found_fault() | 
     acl_not_found_fault() | 
     subnet_group_not_found_fault() | 
     cluster_not_found_fault() | 
     user_not_found_fault() | 
+    multi_region_cluster_not_found_fault() | 
     snapshot_not_found_fault().
 
 -type update_acl_errors() ::
@@ -1612,6 +1789,13 @@
     cluster_not_found_fault() | 
     invalid_kms_key_fault() | 
     node_quota_for_customer_exceeded_fault().
+
+-type update_multi_region_cluster_errors() ::
+    multi_region_parameter_group_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_multi_region_cluster_state_fault() | 
+    multi_region_cluster_not_found_fault().
 
 -type update_parameter_group_errors() ::
     parameter_group_not_found_fault() | 
@@ -1715,6 +1899,23 @@ create_cluster(Client, Input)
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
+
+%% @doc Creates a new multi-Region cluster.
+-spec create_multi_region_cluster(aws_client:aws_client(), create_multi_region_cluster_request()) ->
+    {ok, create_multi_region_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, create_multi_region_cluster_errors(), tuple()}.
+create_multi_region_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_multi_region_cluster(Client, Input, []).
+
+-spec create_multi_region_cluster(aws_client:aws_client(), create_multi_region_cluster_request(), proplists:proplist()) ->
+    {ok, create_multi_region_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, create_multi_region_cluster_errors(), tuple()}.
+create_multi_region_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMultiRegionCluster">>, Input, Options).
 
 %% @doc Creates a new MemoryDB parameter group.
 %%
@@ -1828,7 +2029,11 @@ delete_acl(Client, Input, Options)
 
 %% @doc Deletes a cluster.
 %%
-%% It also deletes all associated nodes and node endpoints
+%% It also deletes all associated nodes and node endpoints.
+%%
+%% `CreateSnapshot' permission is required to create a final snapshot.
+%% Without this permission, the API call will fail with an `Access
+%% Denied' exception.
 -spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
@@ -1844,6 +2049,23 @@ delete_cluster(Client, Input)
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
+
+%% @doc Deletes an existing multi-Region cluster.
+-spec delete_multi_region_cluster(aws_client:aws_client(), delete_multi_region_cluster_request()) ->
+    {ok, delete_multi_region_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, delete_multi_region_cluster_errors(), tuple()}.
+delete_multi_region_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_multi_region_cluster(Client, Input, []).
+
+-spec delete_multi_region_cluster(aws_client:aws_client(), delete_multi_region_cluster_request(), proplists:proplist()) ->
+    {ok, delete_multi_region_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, delete_multi_region_cluster_errors(), tuple()}.
+delete_multi_region_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMultiRegionCluster">>, Input, Options).
 
 %% @doc Deletes the specified parameter group.
 %%
@@ -1926,7 +2148,7 @@ delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
-%% @doc Returns a list of ACLs
+%% @doc Returns a list of ACLs.
 -spec describe_acls(aws_client:aws_client(), describe_acls_request()) ->
     {ok, describe_acls_response(), tuple()} |
     {error, any()} |
@@ -1962,7 +2184,7 @@ describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
-%% @doc Returns a list of the available engine versions.
+%% @doc Returns a list of the available Redis OSS engine versions.
 -spec describe_engine_versions(aws_client:aws_client(), describe_engine_versions_request()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()} |
@@ -2002,6 +2224,23 @@ describe_events(Client, Input)
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
+
+%% @doc Returns details about one or more multi-Region clusters.
+-spec describe_multi_region_clusters(aws_client:aws_client(), describe_multi_region_clusters_request()) ->
+    {ok, describe_multi_region_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, describe_multi_region_clusters_errors(), tuple()}.
+describe_multi_region_clusters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_multi_region_clusters(Client, Input, []).
+
+-spec describe_multi_region_clusters(aws_client:aws_client(), describe_multi_region_clusters_request(), proplists:proplist()) ->
+    {ok, describe_multi_region_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, describe_multi_region_clusters_errors(), tuple()}.
+describe_multi_region_clusters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMultiRegionClusters">>, Input, Options).
 
 %% @doc Returns a list of parameter group descriptions.
 %%
@@ -2075,7 +2314,7 @@ describe_reserved_nodes_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedNodesOfferings">>, Input, Options).
 
-%% @doc Returns details of the service updates
+%% @doc Returns details of the service updates.
 -spec describe_service_updates(aws_client:aws_client(), describe_service_updates_request()) ->
     {ok, describe_service_updates_response(), tuple()} |
     {error, any()} |
@@ -2174,6 +2413,23 @@ failover_shard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverShard">>, Input, Options).
 
+%% @doc Lists the allowed updates for a multi-Region cluster.
+-spec list_allowed_multi_region_cluster_updates(aws_client:aws_client(), list_allowed_multi_region_cluster_updates_request()) ->
+    {ok, list_allowed_multi_region_cluster_updates_response(), tuple()} |
+    {error, any()} |
+    {error, list_allowed_multi_region_cluster_updates_errors(), tuple()}.
+list_allowed_multi_region_cluster_updates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_allowed_multi_region_cluster_updates(Client, Input, []).
+
+-spec list_allowed_multi_region_cluster_updates(aws_client:aws_client(), list_allowed_multi_region_cluster_updates_request(), proplists:proplist()) ->
+    {ok, list_allowed_multi_region_cluster_updates_response(), tuple()} |
+    {error, any()} |
+    {error, list_allowed_multi_region_cluster_updates_errors(), tuple()}.
+list_allowed_multi_region_cluster_updates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAllowedMultiRegionClusterUpdates">>, Input, Options).
+
 %% @doc Lists all available node types that you can scale to from your
 %% cluster's current node type.
 %%
@@ -2201,7 +2457,7 @@ list_allowed_node_type_updates(Client, Input, Options)
 %% A tag is a key-value pair where the key and value are case-sensitive. You
 %% can use tags to categorize and track your MemoryDB resources.
 %% For more information, see Tagging your MemoryDB resources:
-%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/Tagging-Resources.html
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/Tagging-Resources.html.
 -spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
@@ -2294,7 +2550,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Use this operation to remove tags on a resource
+%% @doc Use this operation to remove tags on a resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -2347,6 +2603,23 @@ update_cluster(Client, Input)
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
+
+%% @doc Updates the configuration of an existing multi-Region cluster.
+-spec update_multi_region_cluster(aws_client:aws_client(), update_multi_region_cluster_request()) ->
+    {ok, update_multi_region_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_multi_region_cluster_errors(), tuple()}.
+update_multi_region_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_multi_region_cluster(Client, Input, []).
+
+-spec update_multi_region_cluster(aws_client:aws_client(), update_multi_region_cluster_request(), proplists:proplist()) ->
+    {ok, update_multi_region_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_multi_region_cluster_errors(), tuple()}.
+update_multi_region_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMultiRegionCluster">>, Input, Options).
 
 %% @doc Updates the parameters of a parameter group.
 %%

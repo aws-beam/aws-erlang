@@ -88,6 +88,8 @@
          get_lifecycle_policy/2,
          get_lifecycle_policy/4,
          get_lifecycle_policy/5,
+         get_marketplace_resource/2,
+         get_marketplace_resource/3,
          get_workflow/2,
          get_workflow/4,
          get_workflow/5,
@@ -1335,6 +1337,7 @@
 %%   <<"owner">> => string(),
 %%   <<"parameters">> => list(component_parameter_detail()()),
 %%   <<"platform">> => list(any()),
+%%   <<"productCodes">> => list(product_code_list_item()()),
 %%   <<"publisher">> => string(),
 %%   <<"state">> => component_state(),
 %%   <<"supportedOsVersions">> => list(string()()),
@@ -1431,6 +1434,15 @@
 %%   <<"status">> => list(any())
 %% }
 -type lifecycle_execution_resource_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_marketplace_resource_response() :: #{
+%%   <<"data">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"url">> => string()
+%% }
+-type get_marketplace_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1652,6 +1664,8 @@
 %%   <<"name">> => string(),
 %%   <<"owner">> => string(),
 %%   <<"platform">> => list(any()),
+%%   <<"productCodes">> => list(product_code_list_item()()),
+%%   <<"status">> => list(any()),
 %%   <<"supportedOsVersions">> => list(string()()),
 %%   <<"type">> => list(any()),
 %%   <<"version">> => string()
@@ -2000,6 +2014,15 @@
 
 
 %% Example:
+%% get_marketplace_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"resourceLocation">> => string(),
+%%   <<"resourceType">> := list(any())
+%% }
+-type get_marketplace_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_workflow_step_executions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -2085,6 +2108,14 @@
 %%   <<"imagePipelineArn">> := string()
 %% }
 -type get_image_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% product_code_list_item() :: #{
+%%   <<"productCodeId">> => string(),
+%%   <<"productCodeType">> => list(any())
+%% }
+-type product_code_list_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3056,6 +3087,14 @@
     forbidden_exception().
 
 -type get_lifecycle_policy_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    invalid_request_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception() | 
+    forbidden_exception().
+
+-type get_marketplace_resource_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
@@ -4713,6 +4752,46 @@ get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Verify the subscription and perform resource dependency checks on the
+%% requested
+%% Amazon Web Services Marketplace resource.
+%%
+%% For Amazon Web Services Marketplace components, the response contains
+%% fields to download the
+%% components and their artifacts.
+-spec get_marketplace_resource(aws_client:aws_client(), get_marketplace_resource_request()) ->
+    {ok, get_marketplace_resource_response(), tuple()} |
+    {error, any()} |
+    {error, get_marketplace_resource_errors(), tuple()}.
+get_marketplace_resource(Client, Input) ->
+    get_marketplace_resource(Client, Input, []).
+
+-spec get_marketplace_resource(aws_client:aws_client(), get_marketplace_resource_request(), proplists:proplist()) ->
+    {ok, get_marketplace_resource_response(), tuple()} |
+    {error, any()} |
+    {error, get_marketplace_resource_errors(), tuple()}.
+get_marketplace_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetMarketplaceResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get a workflow resource object.
 -spec get_workflow(aws_client:aws_client(), binary() | list()) ->

@@ -18,10 +18,14 @@
          invoke_inline_agent/4,
          optimize_prompt/2,
          optimize_prompt/3,
+         rerank/2,
+         rerank/3,
          retrieve/3,
          retrieve/4,
          retrieve_and_generate/2,
-         retrieve_and_generate/3]).
+         retrieve_and_generate/3,
+         retrieve_and_generate_stream/2,
+         retrieve_and_generate_stream/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -65,6 +69,15 @@
 %%   <<"content">> => map()
 %% }
 -type api_request_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_attribute_schema() :: #{
+%%   <<"description">> => [string()],
+%%   <<"key">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type metadata_attribute_schema() :: #{binary() => any()}.
 
 
 %% Example:
@@ -226,6 +239,13 @@
 
 
 %% Example:
+%% rerank_text_document() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type rerank_text_document() :: #{binary() => any()}.
+
+
+%% Example:
 %% metadata() :: #{
 %%   <<"usage">> => usage()
 %% }
@@ -307,6 +327,7 @@
 %% Example:
 %% retrieval_result_location() :: #{
 %%   <<"confluenceLocation">> => retrieval_result_confluence_location(),
+%%   <<"customDocumentLocation">> => retrieval_result_custom_document_location(),
 %%   <<"s3Location">> => retrieval_result_s3_location(),
 %%   <<"salesforceLocation">> => retrieval_result_salesforce_location(),
 %%   <<"sharePointLocation">> => retrieval_result_share_point_location(),
@@ -330,6 +351,14 @@
 %%   <<"kmsKeyArn">> => string()
 %% }
 -type retrieve_and_generate_session_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_reranking_configuration() :: #{
+%%   <<"modelConfiguration">> => bedrock_reranking_model_configuration(),
+%%   <<"numberOfResults">> => [integer()]
+%% }
+-type bedrock_reranking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -359,6 +388,14 @@
 
 
 %% Example:
+%% bedrock_reranking_model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"modelArn">> => string()
+%% }
+-type bedrock_reranking_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_flow_response() :: #{
 %%   <<"responseStream">> => list()
 %% }
@@ -371,6 +408,14 @@
 %%   <<"outputTokens">> => [integer()]
 %% }
 -type usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% rerank_query() :: #{
+%%   <<"textQuery">> => rerank_text_document(),
+%%   <<"type">> => list(any())
+%% }
+-type rerank_query() :: #{binary() => any()}.
 
 
 %% Example:
@@ -532,6 +577,13 @@
 
 
 %% Example:
+%% field_for_reranking() :: #{
+%%   <<"fieldName">> => [string()]
+%% }
+-type field_for_reranking() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_retrieval_configuration() :: #{
 %%   <<"vectorSearchConfiguration">> => knowledge_base_vector_search_configuration()
 %% }
@@ -606,6 +658,13 @@
 %%   <<"sessionId">> => string()
 %% }
 -type invoke_inline_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_output_event() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type retrieve_and_generate_output_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -698,6 +757,14 @@
 
 
 %% Example:
+%% vector_search_reranking_configuration() :: #{
+%%   <<"bedrockRerankingConfiguration">> => vector_search_bedrock_reranking_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type vector_search_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% byte_content_doc() :: #{
 %%   <<"contentType">> => string(),
 %%   <<"data">> => binary(),
@@ -729,10 +796,21 @@
 %% Example:
 %% knowledge_base_vector_search_configuration() :: #{
 %%   <<"filter">> => list(),
+%%   <<"implicitFilterConfiguration">> => implicit_filter_configuration(),
 %%   <<"numberOfResults">> => [integer()],
-%%   <<"overrideSearchType">> => list(any())
+%%   <<"overrideSearchType">> => list(any()),
+%%   <<"rerankingConfiguration">> => vector_search_reranking_configuration()
 %% }
 -type knowledge_base_vector_search_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rerank_result() :: #{
+%%   <<"document">> => rerank_document(),
+%%   <<"index">> => [integer()],
+%%   <<"relevanceScore">> => [float()]
+%% }
+-type rerank_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -778,11 +856,36 @@
 
 
 %% Example:
+%% implicit_filter_configuration() :: #{
+%%   <<"metadataAttributes">> => list(metadata_attribute_schema()()),
+%%   <<"modelArn">> => string()
+%% }
+-type implicit_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_bedrock_reranking_configuration() :: #{
+%%   <<"metadataConfiguration">> => metadata_configuration_for_reranking(),
+%%   <<"modelConfiguration">> => vector_search_bedrock_reranking_model_configuration(),
+%%   <<"numberOfRerankedResults">> => [integer()]
+%% }
+-type vector_search_bedrock_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_identifier() :: #{
 %%   <<"s3BucketName">> => string(),
 %%   <<"s3ObjectKey">> => string()
 %% }
 -type s3_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% reranking_configuration() :: #{
+%%   <<"bedrockRerankingConfiguration">> => bedrock_reranking_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type reranking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -809,6 +912,16 @@
 %%   <<"wordPolicy">> => guardrail_word_policy_assessment()
 %% }
 -type guardrail_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_stream_request() :: #{
+%%   <<"input">> := retrieve_and_generate_input(),
+%%   <<"retrieveAndGenerateConfiguration">> => retrieve_and_generate_configuration(),
+%%   <<"sessionConfiguration">> => retrieve_and_generate_session_configuration(),
+%%   <<"sessionId">> => string()
+%% }
+-type retrieve_and_generate_stream_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -950,6 +1063,13 @@
 
 
 %% Example:
+%% retrieval_result_custom_document_location() :: #{
+%%   <<"id">> => [string()]
+%% }
+-type retrieval_result_custom_document_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_session_summary() :: #{
 %%   <<"memoryId">> => string(),
 %%   <<"sessionExpiryTime">> => non_neg_integer(),
@@ -958,6 +1078,14 @@
 %%   <<"summaryText">> => string()
 %% }
 -type memory_session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration_for_reranking() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"selectiveModeConfiguration">> => list()
+%% }
+-type metadata_configuration_for_reranking() :: #{binary() => any()}.
 
 
 %% Example:
@@ -990,10 +1118,33 @@
 
 
 %% Example:
+%% rerank_source() :: #{
+%%   <<"inlineDocumentSource">> => rerank_document(),
+%%   <<"type">> => list(any())
+%% }
+-type rerank_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_and_generate_output() :: #{
 %%   <<"text">> => [string()]
 %% }
 -type retrieve_and_generate_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_bedrock_reranking_model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"modelArn">> => string()
+%% }
+-type vector_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation_event() :: #{
+%%   <<"citation">> => citation()
+%% }
+-type citation_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1035,6 +1186,14 @@
 %%   <<"content">> => [string()]
 %% }
 -type raw_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rerank_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(rerank_result()())
+%% }
+-type rerank_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1101,11 +1260,22 @@
 
 %% Example:
 %% retrieve_request() :: #{
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"nextToken">> => string(),
 %%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration(),
 %%   <<"retrievalQuery">> := knowledge_base_query()
 %% }
 -type retrieve_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rerank_request() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queries">> := list(rerank_query()()),
+%%   <<"rerankingConfiguration">> := reranking_configuration(),
+%%   <<"sources">> := list(rerank_source()())
+%% }
+-type rerank_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1118,6 +1288,14 @@
 %%   <<"streamingConfigurations">> => streaming_configurations()
 %% }
 -type invoke_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_stream_response() :: #{
+%%   <<"sessionId">> => string(),
+%%   <<"stream">> => list()
+%% }
+-type retrieve_and_generate_stream_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1209,6 +1387,7 @@
 
 %% Example:
 %% retrieve_response() :: #{
+%%   <<"guardrailAction">> => list(any()),
 %%   <<"nextToken">> => string(),
 %%   <<"retrievalResults">> => list(knowledge_base_retrieval_result()())
 %% }
@@ -1277,6 +1456,22 @@
 %% }
 -type prompt_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% rerank_document() :: #{
+%%   <<"jsonDocument">> => [any()],
+%%   <<"textDocument">> => rerank_text_document(),
+%%   <<"type">> => list(any())
+%% }
+-type rerank_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_event() :: #{
+%%   <<"action">> => list(any())
+%% }
+-type guardrail_event() :: #{binary() => any()}.
+
 -type delete_agent_memory_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1340,6 +1535,17 @@
     dependency_failed_exception() | 
     bad_gateway_exception().
 
+-type rerank_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
 -type retrieve_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1352,6 +1558,17 @@
     bad_gateway_exception().
 
 -type retrieve_and_generate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type retrieve_and_generate_stream_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1689,6 +1906,44 @@ optimize_prompt(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Reranks the relevance of sources based on queries.
+%%
+%% For more information, see Improve the relevance of query responses with a
+%% reranker model:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/rerank.html.
+-spec rerank(aws_client:aws_client(), rerank_request()) ->
+    {ok, rerank_response(), tuple()} |
+    {error, any()} |
+    {error, rerank_errors(), tuple()}.
+rerank(Client, Input) ->
+    rerank(Client, Input, []).
+
+-spec rerank(aws_client:aws_client(), rerank_request(), proplists:proplist()) ->
+    {ok, rerank_response(), tuple()} |
+    {error, any()} |
+    {error, rerank_errors(), tuple()}.
+rerank(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/rerank"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Queries a knowledge base and retrieves information from it.
 -spec retrieve(aws_client:aws_client(), binary() | list(), retrieve_request()) ->
     {ok, retrieve_response(), tuple()} |
@@ -1761,6 +2016,60 @@ retrieve_and_generate(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Queries a knowledge base and generates responses based on the
+%% retrieved results, with output in streaming format.
+%%
+%% The CLI doesn't support streaming operations in Amazon Bedrock,
+%% including `InvokeModelWithResponseStream'.
+-spec retrieve_and_generate_stream(aws_client:aws_client(), retrieve_and_generate_stream_request()) ->
+    {ok, retrieve_and_generate_stream_response(), tuple()} |
+    {error, any()} |
+    {error, retrieve_and_generate_stream_errors(), tuple()}.
+retrieve_and_generate_stream(Client, Input) ->
+    retrieve_and_generate_stream(Client, Input, []).
+
+-spec retrieve_and_generate_stream(aws_client:aws_client(), retrieve_and_generate_stream_request(), proplists:proplist()) ->
+    {ok, retrieve_and_generate_stream_response(), tuple()} |
+    {error, any()} |
+    {error, retrieve_and_generate_stream_errors(), tuple()}.
+retrieve_and_generate_stream(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/retrieveAndGenerateStream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amzn-bedrock-knowledge-base-session-id">>, <<"sessionId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %%====================================================================
 %% Internal functions

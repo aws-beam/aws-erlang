@@ -45,6 +45,8 @@
          delete_flow_version/5,
          delete_knowledge_base/3,
          delete_knowledge_base/4,
+         delete_knowledge_base_documents/4,
+         delete_knowledge_base_documents/5,
          delete_prompt/3,
          delete_prompt/4,
          disassociate_agent_knowledge_base/5,
@@ -82,9 +84,13 @@
          get_knowledge_base/2,
          get_knowledge_base/4,
          get_knowledge_base/5,
+         get_knowledge_base_documents/4,
+         get_knowledge_base_documents/5,
          get_prompt/2,
          get_prompt/4,
          get_prompt/5,
+         ingest_knowledge_base_documents/4,
+         ingest_knowledge_base_documents/5,
          list_agent_action_groups/4,
          list_agent_action_groups/5,
          list_agent_aliases/3,
@@ -108,6 +114,8 @@
          list_flows/4,
          list_ingestion_jobs/4,
          list_ingestion_jobs/5,
+         list_knowledge_base_documents/4,
+         list_knowledge_base_documents/5,
          list_knowledge_bases/2,
          list_knowledge_bases/3,
          list_prompts/1,
@@ -165,6 +173,14 @@
 %%   <<"executor">> => list()
 %% }
 -type custom_orchestration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_knowledge_base_documents_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"documentIdentifiers">> := list(document_identifier()())
+%% }
+-type delete_knowledge_base_documents_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -441,6 +457,14 @@
 
 
 %% Example:
+%% ingest_knowledge_base_documents_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"documents">> := list(knowledge_base_document()())
+%% }
+-type ingest_knowledge_base_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% web_source_configuration() :: #{
 %%   <<"urlConfiguration">> => url_configuration()
 %% }
@@ -627,6 +651,13 @@
 
 
 %% Example:
+%% get_knowledge_base_documents_request() :: #{
+%%   <<"documentIdentifiers">> := list(document_identifier()())
+%% }
+-type get_knowledge_base_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% flow_node() :: #{
 %%   <<"configuration">> => list(),
 %%   <<"inputs">> => list(flow_node_input()()),
@@ -635,6 +666,29 @@
 %%   <<"type">> => list(any())
 %% }
 -type flow_node() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_base_documents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_base_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_content_doc() :: #{
+%%   <<"data">> => string()
+%% }
+-type text_content_doc() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => metadata_attribute_value()
+%% }
+-type metadata_attribute() :: #{binary() => any()}.
 
 
 %% Example:
@@ -871,6 +925,15 @@
 
 
 %% Example:
+%% document_identifier() :: #{
+%%   <<"custom">> => custom_document_identifier(),
+%%   <<"dataSourceType">> => list(any()),
+%%   <<"s3">> => s3_location()
+%% }
+-type document_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% malformed_node_input_expression_flow_validation_details() :: #{
 %%   <<"cause">> => string(),
 %%   <<"input">> => string(),
@@ -884,6 +947,13 @@
 %%   <<"filterConfiguration">> => crawl_filter_configuration()
 %% }
 -type share_point_crawler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_knowledge_base_documents_response() :: #{
+%%   <<"documentDetails">> => list(knowledge_base_document_detail()())
+%% }
+-type ingest_knowledge_base_documents_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1259,6 +1329,14 @@
 
 
 %% Example:
+%% knowledge_base_document() :: #{
+%%   <<"content">> => document_content(),
+%%   <<"metadata">> => document_metadata()
+%% }
+-type knowledge_base_document() :: #{binary() => any()}.
+
+
+%% Example:
 %% flow_node_output() :: #{
 %%   <<"name">> => string(),
 %%   <<"type">> => list(any())
@@ -1370,6 +1448,13 @@
 %% }
 -type web_crawler_limits() :: #{binary() => any()}.
 
+
+%% Example:
+%% s3_content() :: #{
+%%   <<"s3Location">> => s3_location()
+%% }
+-type s3_content() :: #{binary() => any()}.
+
 %% Example:
 %% input_flow_node_configuration() :: #{}
 -type input_flow_node_configuration() :: #{}.
@@ -1380,6 +1465,14 @@
 %%   <<"s3Location">> => s3_location()
 %% }
 -type intermediate_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_base_documents_response() :: #{
+%%   <<"documentDetails">> => list(knowledge_base_document_detail()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_knowledge_base_documents_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1480,6 +1573,18 @@
 %%   <<"sourceConfiguration">> => confluence_source_configuration()
 %% }
 -type confluence_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_document_detail() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"identifier">> => document_identifier(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type knowledge_base_document_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1599,6 +1704,14 @@
 
 
 %% Example:
+%% byte_content_doc() :: #{
+%%   <<"data">> => binary(),
+%%   <<"mimeType">> => [string()]
+%% }
+-type byte_content_doc() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
 %%   <<"name">> => string()
@@ -1707,6 +1820,13 @@
 %%   <<"promptVersion">> => string()
 %% }
 -type get_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_document_identifier() :: #{
+%%   <<"id">> => [string()]
+%% }
+-type custom_document_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1862,6 +1982,14 @@
 
 
 %% Example:
+%% custom_s3_location() :: #{
+%%   <<"bucketOwnerAccountId">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type custom_s3_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% crawl_filter_configuration() :: #{
 %%   <<"patternObjectFilter">> => pattern_object_filter_configuration(),
 %%   <<"type">> => list(any())
@@ -1883,6 +2011,15 @@
 %%   <<"values">> => list(string()())
 %% }
 -type ingestion_job_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_content() :: #{
+%%   <<"custom">> => custom_content(),
+%%   <<"dataSourceType">> => list(any()),
+%%   <<"s3">> => s3_content()
+%% }
+-type document_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2006,6 +2143,17 @@
 %%   <<"tags">> => map()
 %% }
 -type create_agent_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_attribute_value() :: #{
+%%   <<"booleanValue">> => [boolean()],
+%%   <<"numberValue">> => float(),
+%%   <<"stringListValue">> => list(string()()),
+%%   <<"stringValue">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_attribute_value() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -2150,6 +2298,15 @@
 %% }
 -type redis_enterprise_cloud_field_mapping() :: #{binary() => any()}.
 
+
+%% Example:
+%% document_metadata() :: #{
+%%   <<"inlineAttributes">> => list(metadata_attribute()()),
+%%   <<"s3Location">> => custom_s3_location(),
+%%   <<"type">> => list(any())
+%% }
+-type document_metadata() :: #{binary() => any()}.
+
 %% Example:
 %% output_flow_node_configuration() :: #{}
 -type output_flow_node_configuration() :: #{}.
@@ -2285,6 +2442,13 @@
 
 
 %% Example:
+%% get_knowledge_base_documents_response() :: #{
+%%   <<"documentDetails">> => list(knowledge_base_document_detail()())
+%% }
+-type get_knowledge_base_documents_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% incompatible_connection_data_type_flow_validation_details() :: #{
 %%   <<"connection">> => string()
 %% }
@@ -2343,6 +2507,15 @@
 %% Example:
 %% get_agent_request() :: #{}
 -type get_agent_request() :: #{}.
+
+
+%% Example:
+%% inline_content() :: #{
+%%   <<"byteContent">> => byte_content_doc(),
+%%   <<"textContent">> => text_content_doc(),
+%%   <<"type">> => list(any())
+%% }
+-type inline_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2519,9 +2692,26 @@
 %% }
 -type mongo_db_atlas_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% custom_content() :: #{
+%%   <<"customDocumentIdentifier">> => custom_document_identifier(),
+%%   <<"inlineContent">> => inline_content(),
+%%   <<"s3Location">> => custom_s3_location(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type custom_content() :: #{binary() => any()}.
+
 %% Example:
 %% get_agent_alias_request() :: #{}
 -type get_agent_alias_request() :: #{}.
+
+
+%% Example:
+%% delete_knowledge_base_documents_response() :: #{
+%%   <<"documentDetails">> => list(knowledge_base_document_detail()())
+%% }
+-type delete_knowledge_base_documents_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2772,6 +2962,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_knowledge_base_documents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type delete_prompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2865,11 +3063,27 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_knowledge_base_documents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type get_prompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception().
+
+-type ingest_knowledge_base_documents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type list_agent_action_groups_errors() ::
@@ -2938,6 +3152,14 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_knowledge_base_documents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type list_knowledge_bases_errors() ::
@@ -3293,7 +3515,10 @@ create_agent_alias(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a data source connector for a knowledge base.
+%% @doc Connects a knowledge base to a data source.
+%%
+%% You specify the configuration for the specific data source service in the
+%% `dataSourceConfiguration' field.
 %%
 %% You can't change the `chunkingConfiguration' after you create the
 %% data source connector.
@@ -3922,6 +4147,46 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes documents from a data source and syncs the changes to the
+%% knowledge base that is connected to it.
+%%
+%% For more information, see Ingest documents into a knowledge base in
+%% real-time:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-real-time-ingestion.html
+%% in the Amazon Bedrock User Guide.
+-spec delete_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), delete_knowledge_base_documents_request()) ->
+    {ok, delete_knowledge_base_documents_response(), tuple()} |
+    {error, any()} |
+    {error, delete_knowledge_base_documents_errors(), tuple()}.
+delete_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input) ->
+    delete_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input, []).
+
+-spec delete_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), delete_knowledge_base_documents_request(), proplists:proplist()) ->
+    {ok, delete_knowledge_base_documents_response(), tuple()} |
+    {error, any()} |
+    {error, delete_knowledge_base_documents_errors(), tuple()}.
+delete_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/documents/deleteDocuments"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a prompt or a version of it, depending on whether you include
 %% the `promptVersion' field or not.
 %%
@@ -4420,6 +4685,46 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves specific documents from a data source that is connected to
+%% a knowledge base.
+%%
+%% For more information, see Ingest documents into a knowledge base in
+%% real-time:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-real-time-ingestion.html
+%% in the Amazon Bedrock User Guide.
+-spec get_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), get_knowledge_base_documents_request()) ->
+    {ok, get_knowledge_base_documents_response(), tuple()} |
+    {error, any()} |
+    {error, get_knowledge_base_documents_errors(), tuple()}.
+get_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input) ->
+    get_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input, []).
+
+-spec get_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), get_knowledge_base_documents_request(), proplists:proplist()) ->
+    {ok, get_knowledge_base_documents_response(), tuple()} |
+    {error, any()} |
+    {error, get_knowledge_base_documents_errors(), tuple()}.
+get_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/documents/getDocuments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about the working draft (`DRAFT' version)
 %% of a prompt or a version of it, depending on whether you include the
 %% `promptVersion' field or not.
@@ -4469,6 +4774,47 @@ get_prompt(Client, PromptIdentifier, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Ingests documents directly into the knowledge base that is connected
+%% to the data source.
+%%
+%% The `dataSourceType' specified in the content for each document must
+%% match the type of the data source that you specify in the header. For more
+%% information, see Ingest documents into a knowledge base in real-time:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-real-time-ingestion.html
+%% in the Amazon Bedrock User Guide.
+-spec ingest_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), ingest_knowledge_base_documents_request()) ->
+    {ok, ingest_knowledge_base_documents_response(), tuple()} |
+    {error, any()} |
+    {error, ingest_knowledge_base_documents_errors(), tuple()}.
+ingest_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input) ->
+    ingest_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input, []).
+
+-spec ingest_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), ingest_knowledge_base_documents_request(), proplists:proplist()) ->
+    {ok, ingest_knowledge_base_documents_response(), tuple()} |
+    {error, any()} |
+    {error, ingest_knowledge_base_documents_errors(), tuple()}.
+ingest_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+    Method = put,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/documents"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the action groups for an agent and information about each one.
 -spec list_agent_action_groups(aws_client:aws_client(), binary() | list(), binary() | list(), list_agent_action_groups_request()) ->
@@ -4828,6 +5174,46 @@ list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input) ->
 list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves all the documents contained in a data source that is
+%% connected to a knowledge base.
+%%
+%% For more information, see Ingest documents into a knowledge base in
+%% real-time:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-real-time-ingestion.html
+%% in the Amazon Bedrock User Guide.
+-spec list_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), list_knowledge_base_documents_request()) ->
+    {ok, list_knowledge_base_documents_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_base_documents_errors(), tuple()}.
+list_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input) ->
+    list_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input, []).
+
+-spec list_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), list_knowledge_base_documents_request(), proplists:proplist()) ->
+    {ok, list_knowledge_base_documents_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_base_documents_errors(), tuple()}.
+list_knowledge_base_documents(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/documents"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

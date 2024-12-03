@@ -17,6 +17,8 @@
          accept_inbound_connection/4,
          add_data_source/3,
          add_data_source/4,
+         add_direct_query_data_source/2,
+         add_direct_query_data_source/3,
          add_tags/2,
          add_tags/3,
          associate_package/4,
@@ -43,6 +45,8 @@
          delete_application/4,
          delete_data_source/4,
          delete_data_source/5,
+         delete_direct_query_data_source/3,
+         delete_direct_query_data_source/4,
          delete_domain/3,
          delete_domain/4,
          delete_inbound_connection/3,
@@ -106,6 +110,9 @@
          get_data_source/3,
          get_data_source/5,
          get_data_source/6,
+         get_direct_query_data_source/2,
+         get_direct_query_data_source/4,
+         get_direct_query_data_source/5,
          get_domain_maintenance_status/3,
          get_domain_maintenance_status/5,
          get_domain_maintenance_status/6,
@@ -124,6 +131,9 @@
          list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
+         list_direct_query_data_sources/1,
+         list_direct_query_data_sources/3,
+         list_direct_query_data_sources/4,
          list_domain_maintenances/2,
          list_domain_maintenances/4,
          list_domain_maintenances/5,
@@ -173,6 +183,8 @@
          update_application/4,
          update_data_source/4,
          update_data_source/5,
+         update_direct_query_data_source/3,
+         update_direct_query_data_source/4,
          update_domain_config/3,
          update_domain_config/4,
          update_package/2,
@@ -381,6 +393,18 @@
 
 
 %% Example:
+%% direct_query_data_source() :: #{
+%%   <<"DataSourceArn">> => string(),
+%%   <<"DataSourceName">> => string(),
+%%   <<"DataSourceType">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"OpenSearchArns">> => list(string()()),
+%%   <<"TagList">> => list(tag()())
+%% }
+-type direct_query_data_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% package_details() :: #{
 %%   <<"AllowListedUserList">> => list(string()()),
 %%   <<"AvailablePackageConfiguration">> => package_configuration(),
@@ -507,6 +531,13 @@
 %%   <<"Status">> => option_status()
 %% }
 -type snapshot_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_direct_query_data_source() :: #{
+%%   <<"RoleArn">> => string()
+%% }
+-type cloud_watch_direct_query_data_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -681,6 +712,14 @@
 %%   <<"LimitValues">> => list(string()())
 %% }
 -type storage_type_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_direct_query_data_sources_response() :: #{
+%%   <<"DirectQueryDataSources">> => list(direct_query_data_source()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_direct_query_data_sources_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1016,6 +1055,17 @@
 
 
 %% Example:
+%% get_direct_query_data_source_response() :: #{
+%%   <<"DataSourceArn">> => string(),
+%%   <<"DataSourceName">> => string(),
+%%   <<"DataSourceType">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"OpenSearchArns">> => list(string()())
+%% }
+-type get_direct_query_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1034,6 +1084,13 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_lake_direct_query_data_source() :: #{
+%%   <<"RoleArn">> => string()
+%% }
+-type security_lake_direct_query_data_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1341,6 +1398,13 @@
 %%   <<"KmsKeyId">> => string()
 %% }
 -type encryption_at_rest_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_direct_query_data_sources_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_direct_query_data_sources_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2185,6 +2249,10 @@
 %% }
 -type start_domain_maintenance_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_direct_query_data_source_request() :: #{}
+-type delete_direct_query_data_source_request() :: #{}.
+
 
 %% Example:
 %% application_summary() :: #{
@@ -2286,6 +2354,17 @@
 
 
 %% Example:
+%% add_direct_query_data_source_request() :: #{
+%%   <<"DataSourceName">> := string(),
+%%   <<"DataSourceType">> := list(),
+%%   <<"Description">> => string(),
+%%   <<"OpenSearchArns">> := list(string()()),
+%%   <<"TagList">> => list(tag()())
+%% }
+-type add_direct_query_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_endpoint_options_status() :: #{
 %%   <<"Options">> => domain_endpoint_options(),
 %%   <<"Status">> => option_status()
@@ -2300,6 +2379,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_inbound_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_direct_query_data_source_request() :: #{
+%%   <<"DataSourceType">> := list(),
+%%   <<"Description">> => string(),
+%%   <<"OpenSearchArns">> := list(string()())
+%% }
+-type update_direct_query_data_source_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2364,6 +2452,10 @@
 %%   <<"PluginProperties">> => plugin_properties()
 %% }
 -type package_version_history() :: #{binary() => any()}.
+
+%% Example:
+%% get_direct_query_data_source_request() :: #{}
+-type get_direct_query_data_source_request() :: #{}.
 
 
 %% Example:
@@ -2479,6 +2571,13 @@
 
 
 %% Example:
+%% add_direct_query_data_source_response() :: #{
+%%   <<"DataSourceArn">> => string()
+%% }
+-type add_direct_query_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_vpc_endpoint_access_response() :: #{
 %%   <<"AuthorizedPrincipalList">> => list(authorized_principal()()),
 %%   <<"NextToken">> => string()
@@ -2535,6 +2634,13 @@
 %%   <<"TLSSecurityPolicy">> => list(any())
 %% }
 -type domain_endpoint_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_direct_query_data_source_response() :: #{
+%%   <<"DataSourceArn">> => string()
+%% }
+-type update_direct_query_data_source_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2649,6 +2755,14 @@
     resource_not_found_exception() | 
     disabled_operation_exception().
 
+-type add_direct_query_data_source_errors() ::
+    limit_exceeded_exception() | 
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type add_tags_errors() ::
     limit_exceeded_exception() | 
     base_exception() | 
@@ -2746,6 +2860,13 @@
     validation_exception() | 
     internal_exception() | 
     dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type delete_direct_query_data_source_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
     resource_not_found_exception() | 
     disabled_operation_exception().
 
@@ -2908,6 +3029,13 @@
     resource_not_found_exception() | 
     disabled_operation_exception().
 
+-type get_direct_query_data_source_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type get_domain_maintenance_status_errors() ::
     base_exception() | 
     validation_exception() | 
@@ -2949,6 +3077,13 @@
     validation_exception() | 
     internal_exception() | 
     dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type list_direct_query_data_sources_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
     resource_not_found_exception() | 
     disabled_operation_exception().
 
@@ -3070,6 +3205,13 @@
     validation_exception() | 
     internal_exception() | 
     dependency_failure_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type update_direct_query_data_source_errors() ::
+    base_exception() | 
+    validation_exception() | 
+    internal_exception() | 
     resource_not_found_exception() | 
     disabled_operation_exception().
 
@@ -3204,12 +3346,49 @@ add_data_source(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches tags to an existing Amazon OpenSearch Service domain.
+%% @doc
+%% Adds a new data source in Amazon OpenSearch Service
+%% so that you can perform direct queries on external data.
+-spec add_direct_query_data_source(aws_client:aws_client(), add_direct_query_data_source_request()) ->
+    {ok, add_direct_query_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, add_direct_query_data_source_errors(), tuple()}.
+add_direct_query_data_source(Client, Input) ->
+    add_direct_query_data_source(Client, Input, []).
+
+-spec add_direct_query_data_source(aws_client:aws_client(), add_direct_query_data_source_request(), proplists:proplist()) ->
+    {ok, add_direct_query_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, add_direct_query_data_source_errors(), tuple()}.
+add_direct_query_data_source(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/directQueryDataSource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Attaches tags to an existing Amazon OpenSearch Service domain, data
+%% source, or application.
 %%
-%% Tags are a set of
-%% case-sensitive key-value pairs. A domain can have up to 10 tags. For more
-%% information, see
-%% Tagging Amazon OpenSearch Service domains:
+%% Tags are a set of case-sensitive key-value pairs. A domain, data source,
+%% or application can
+%% have up to 10 tags. For more information, see Tagging
+%% Amazon OpenSearch Service resources:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html.
 -spec add_tags(aws_client:aws_client(), add_tags_request()) ->
     {ok, undefined, tuple()} |
@@ -3668,6 +3847,42 @@ delete_data_source(Client, DomainName, Name, Input) ->
 delete_data_source(Client, DomainName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Deletes a previously configured direct query data
+%% source from Amazon OpenSearch Service.
+-spec delete_direct_query_data_source(aws_client:aws_client(), binary() | list(), delete_direct_query_data_source_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_direct_query_data_source_errors(), tuple()}.
+delete_direct_query_data_source(Client, DataSourceName, Input) ->
+    delete_direct_query_data_source(Client, DataSourceName, Input, []).
+
+-spec delete_direct_query_data_source(aws_client:aws_client(), binary() | list(), delete_direct_query_data_source_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_direct_query_data_source_errors(), tuple()}.
+delete_direct_query_data_source(Client, DataSourceName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2021-01-01/opensearch/directQueryDataSource/", aws_util:encode_uri(DataSourceName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4692,6 +4907,45 @@ get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc
+%% Returns detailed configuration information for
+%% a specific direct query data source in Amazon OpenSearch Service.
+-spec get_direct_query_data_source(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_direct_query_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_direct_query_data_source_errors(), tuple()}.
+get_direct_query_data_source(Client, DataSourceName)
+  when is_map(Client) ->
+    get_direct_query_data_source(Client, DataSourceName, #{}, #{}).
+
+-spec get_direct_query_data_source(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_direct_query_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_direct_query_data_source_errors(), tuple()}.
+get_direct_query_data_source(Client, DataSourceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_direct_query_data_source(Client, DataSourceName, QueryMap, HeadersMap, []).
+
+-spec get_direct_query_data_source(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_direct_query_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_direct_query_data_source_errors(), tuple()}.
+get_direct_query_data_source(Client, DataSourceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/directQueryDataSource/", aws_util:encode_uri(DataSourceName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc The status of the maintenance action.
 -spec get_domain_maintenance_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_domain_maintenance_status_response(), tuple()} |
@@ -4946,6 +5200,49 @@ list_data_sources(Client, DomainName, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc
+%% Lists an inventory of all the direct query data sources that you
+%% have configured within Amazon OpenSearch Service.
+-spec list_direct_query_data_sources(aws_client:aws_client()) ->
+    {ok, list_direct_query_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_direct_query_data_sources_errors(), tuple()}.
+list_direct_query_data_sources(Client)
+  when is_map(Client) ->
+    list_direct_query_data_sources(Client, #{}, #{}).
+
+-spec list_direct_query_data_sources(aws_client:aws_client(), map(), map()) ->
+    {ok, list_direct_query_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_direct_query_data_sources_errors(), tuple()}.
+list_direct_query_data_sources(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_direct_query_data_sources(Client, QueryMap, HeadersMap, []).
+
+-spec list_direct_query_data_sources(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_direct_query_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_direct_query_data_sources_errors(), tuple()}.
+list_direct_query_data_sources(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/directQueryDataSource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5230,10 +5527,12 @@ list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns all resource tags for an Amazon OpenSearch Service domain.
+%% @doc Returns all resource tags for an Amazon OpenSearch Service domain,
+%% data source, or
+%% application.
 %%
-%% For more information, see
-%% Tagging Amazon OpenSearch Service domains:
+%% For more information, see Tagging
+%% Amazon OpenSearch Service resources:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html.
 -spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
@@ -5519,10 +5818,10 @@ reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified set of tags from an Amazon OpenSearch Service
-%% domain.
+%% domain, data source, or
+%% application.
 %%
-%% For more
-%% information, see Tagging Amazon OpenSearch Service domains:
+%% For more information, see Tagging Amazon OpenSearch Service resources:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains.html#managedomains-awsresorcetagging.
 -spec remove_tags(aws_client:aws_client(), remove_tags_request()) ->
     {ok, undefined, tuple()} |
@@ -5725,6 +6024,42 @@ update_data_source(Client, DomainName, Name, Input) ->
 update_data_source(Client, DomainName, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Updates the configuration or properties of an existing
+%% direct query data source in Amazon OpenSearch Service.
+-spec update_direct_query_data_source(aws_client:aws_client(), binary() | list(), update_direct_query_data_source_request()) ->
+    {ok, update_direct_query_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, update_direct_query_data_source_errors(), tuple()}.
+update_direct_query_data_source(Client, DataSourceName, Input) ->
+    update_direct_query_data_source(Client, DataSourceName, Input, []).
+
+-spec update_direct_query_data_source(aws_client:aws_client(), binary() | list(), update_direct_query_data_source_request(), proplists:proplist()) ->
+    {ok, update_direct_query_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, update_direct_query_data_source_errors(), tuple()}.
+update_direct_query_data_source(Client, DataSourceName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2021-01-01/opensearch/directQueryDataSource/", aws_util:encode_uri(DataSourceName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

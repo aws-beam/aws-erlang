@@ -37,6 +37,8 @@
          create_domain/4,
          create_event_stream/4,
          create_event_stream/5,
+         create_event_trigger/4,
+         create_event_trigger/5,
          create_integration_workflow/3,
          create_integration_workflow/4,
          create_profile/3,
@@ -53,6 +55,8 @@
          delete_domain/4,
          delete_event_stream/4,
          delete_event_stream/5,
+         delete_event_trigger/4,
+         delete_event_trigger/5,
          delete_integration/3,
          delete_integration/4,
          delete_profile/3,
@@ -83,6 +87,9 @@
          get_event_stream/3,
          get_event_stream/5,
          get_event_stream/6,
+         get_event_trigger/3,
+         get_event_trigger/5,
+         get_event_trigger/6,
          get_identity_resolution_job/3,
          get_identity_resolution_job/5,
          get_identity_resolution_job/6,
@@ -130,6 +137,9 @@
          list_event_streams/2,
          list_event_streams/4,
          list_event_streams/5,
+         list_event_triggers/2,
+         list_event_triggers/4,
+         list_event_triggers/5,
          list_identity_resolution_jobs/2,
          list_identity_resolution_jobs/4,
          list_identity_resolution_jobs/5,
@@ -179,6 +189,8 @@
          update_calculated_attribute_definition/5,
          update_domain/3,
          update_domain/4,
+         update_event_trigger/4,
+         update_event_trigger/5,
          update_profile/3,
          update_profile/4]).
 
@@ -245,6 +257,14 @@
 %%   <<"MinAllowedConfidenceScoreForMerging">> => float()
 %% }
 -type auto_merging() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_trigger_limits() :: #{
+%%   <<"EventExpiration">> => float(),
+%%   <<"Periods">> => list(period()())
+%% }
+-type event_trigger_limits() :: #{binary() => any()}.
 
 
 %% Example:
@@ -511,6 +531,14 @@
 
 
 %% Example:
+%% event_trigger_condition() :: #{
+%%   <<"EventTriggerDimensions">> => list(event_trigger_dimension()()),
+%%   <<"LogicalOperator">> => list(any())
+%% }
+-type event_trigger_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_stats() :: #{
 %%   <<"MeteringProfileCount">> => float(),
 %%   <<"ObjectCount">> => float(),
@@ -532,6 +560,13 @@
 %%   <<"Uri">> := string()
 %% }
 -type list_account_integrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_event_trigger_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_event_trigger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -676,6 +711,7 @@
 
 %% Example:
 %% put_integration_request() :: #{
+%%   <<"EventTriggerNames">> => list(string()()),
 %%   <<"FlowDefinition">> => flow_definition(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
@@ -696,6 +732,14 @@
 %%   <<"TriggerConfig">> => trigger_config()
 %% }
 -type flow_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_triggers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_triggers_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -780,6 +824,7 @@
 %% put_integration_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
+%%   <<"EventTriggerNames">> => list(string()()),
 %%   <<"IsUnstructured">> => boolean(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
@@ -843,6 +888,14 @@
 %%   <<"Scheduled">> => scheduled_trigger_properties()
 %% }
 -type trigger_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_triggers_response() :: #{
+%%   <<"Items">> => list(event_trigger_summary_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_triggers_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -962,6 +1015,7 @@
 %% get_integration_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
+%%   <<"EventTriggerNames">> => list(string()()),
 %%   <<"IsUnstructured">> => boolean(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
@@ -1194,6 +1248,18 @@
 
 
 %% Example:
+%% create_event_trigger_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> := list(event_trigger_condition()()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"ObjectTypeName">> := string(),
+%%   <<"SegmentFilter">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_trigger_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% profile_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
 %%   <<"Values">> => list(string()())
@@ -1262,6 +1328,21 @@
 %%   <<"TotalSteps">> => float()
 %% }
 -type appflow_integration_workflow_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_event_trigger_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"EventTriggerName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SegmentFilter">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_trigger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1438,6 +1519,13 @@
 
 
 %% Example:
+%% event_trigger_dimension() :: #{
+%%   <<"ObjectAttributes">> => list(object_attribute()())
+%% }
+-type event_trigger_dimension() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_calculated_attribute_definitions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1481,6 +1569,21 @@
 %%   <<"PotentialMatches">> => integer()
 %% }
 -type get_matches_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_trigger_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"EventTriggerName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SegmentFilter">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_event_trigger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1596,6 +1699,10 @@
 %% }
 -type segment_group() :: #{binary() => any()}.
 
+%% Example:
+%% delete_event_trigger_request() :: #{}
+-type delete_event_trigger_request() :: #{}.
+
 
 %% Example:
 %% search_profiles_request() :: #{
@@ -1660,6 +1767,31 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_trigger_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"EventTriggerName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SegmentFilter">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_trigger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_attribute() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type object_attribute() :: #{binary() => any()}.
 
 %% Example:
 %% get_segment_snapshot_request() :: #{}
@@ -1923,6 +2055,18 @@
 
 
 %% Example:
+%% event_trigger_summary_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type event_trigger_summary_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_event_stream_request() :: #{
 %%   <<"Tags">> => map(),
 %%   <<"Uri">> := string()
@@ -1966,10 +2110,31 @@
 
 
 %% Example:
+%% update_event_trigger_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SegmentFilter">> => string()
+%% }
+-type update_event_trigger_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% period() :: #{
+%%   <<"MaxInvocationsPerProfile">> => integer(),
+%%   <<"Unit">> => list(any()),
+%%   <<"Unlimited">> => boolean(),
+%%   <<"Value">> => integer()
+%% }
+-type period() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1985,6 +2150,10 @@
 %% Example:
 %% profile_attribute_values_request() :: #{}
 -type profile_attribute_values_request() :: #{}.
+
+%% Example:
+%% get_event_trigger_request() :: #{}
+-type get_event_trigger_request() :: #{}.
 
 
 %% Example:
@@ -2126,6 +2295,7 @@
 %% list_integration_item() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
+%%   <<"EventTriggerNames">> => list(string()()),
 %%   <<"IsUnstructured">> => boolean(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
@@ -2336,6 +2506,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_event_trigger_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_integration_workflow_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -2386,6 +2563,13 @@
     resource_not_found_exception().
 
 -type delete_event_stream_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_event_trigger_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -2477,6 +2661,13 @@
     resource_not_found_exception().
 
 -type get_event_stream_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_event_trigger_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -2596,6 +2787,13 @@
     resource_not_found_exception().
 
 -type list_event_streams_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_event_triggers_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -2729,6 +2927,13 @@
     resource_not_found_exception().
 
 -type update_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_event_trigger_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -2989,6 +3194,46 @@ create_event_stream(Client, DomainName, EventStreamName, Input) ->
 create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an event trigger, which specifies the rules when to perform
+%% action based on
+%% customer's ingested data.
+%%
+%% Each event stream can be associated with only one integration in the same
+%% region and AWS
+%% account as the event stream.
+-spec create_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), create_event_trigger_request()) ->
+    {ok, create_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_trigger_errors(), tuple()}.
+create_event_trigger(Client, DomainName, EventTriggerName, Input) ->
+    create_event_trigger(Client, DomainName, EventTriggerName, Input, []).
+
+-spec create_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), create_event_trigger_request(), proplists:proplist()) ->
+    {ok, create_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_trigger_errors(), tuple()}.
+create_event_trigger(Client, DomainName, EventTriggerName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-triggers/", aws_util:encode_uri(EventTriggerName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3277,6 +3522,42 @@ delete_event_stream(Client, DomainName, EventStreamName, Input) ->
 delete_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disable and deletes the Event Trigger.
+%%
+%% You cannot delete an Event Trigger with an active Integration associated.
+-spec delete_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), delete_event_trigger_request()) ->
+    {ok, delete_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, delete_event_trigger_errors(), tuple()}.
+delete_event_trigger(Client, DomainName, EventTriggerName, Input) ->
+    delete_event_trigger(Client, DomainName, EventTriggerName, Input, []).
+
+-spec delete_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), delete_event_trigger_request(), proplists:proplist()) ->
+    {ok, delete_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, delete_event_trigger_errors(), tuple()}.
+delete_event_trigger(Client, DomainName, EventTriggerName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-triggers/", aws_util:encode_uri(EventTriggerName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3774,6 +4055,43 @@ get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap)
 get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get a specific Event Trigger from the domain.
+-spec get_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_trigger_errors(), tuple()}.
+get_event_trigger(Client, DomainName, EventTriggerName)
+  when is_map(Client) ->
+    get_event_trigger(Client, DomainName, EventTriggerName, #{}, #{}).
+
+-spec get_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_trigger_errors(), tuple()}.
+get_event_trigger(Client, DomainName, EventTriggerName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_trigger(Client, DomainName, EventTriggerName, QueryMap, HeadersMap, []).
+
+-spec get_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_trigger_errors(), tuple()}.
+get_event_trigger(Client, DomainName, EventTriggerName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-triggers/", aws_util:encode_uri(EventTriggerName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4492,6 +4810,48 @@ list_event_streams(Client, DomainName, QueryMap, HeadersMap)
 list_event_streams(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all Event Triggers under a domain.
+-spec list_event_triggers(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_event_triggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_triggers_errors(), tuple()}.
+list_event_triggers(Client, DomainName)
+  when is_map(Client) ->
+    list_event_triggers(Client, DomainName, #{}, #{}).
+
+-spec list_event_triggers(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_event_triggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_triggers_errors(), tuple()}.
+list_event_triggers(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_triggers(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_event_triggers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_event_triggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_triggers_errors(), tuple()}.
+list_event_triggers(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-triggers"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5381,6 +5741,40 @@ update_domain(Client, DomainName, Input) ->
 update_domain(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the properties of an Event Trigger.
+-spec update_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), update_event_trigger_request()) ->
+    {ok, update_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_trigger_errors(), tuple()}.
+update_event_trigger(Client, DomainName, EventTriggerName, Input) ->
+    update_event_trigger(Client, DomainName, EventTriggerName, Input, []).
+
+-spec update_event_trigger(aws_client:aws_client(), binary() | list(), binary() | list(), update_event_trigger_request(), proplists:proplist()) ->
+    {ok, update_event_trigger_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_trigger_errors(), tuple()}.
+update_event_trigger(Client, DomainName, EventTriggerName, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-triggers/", aws_util:encode_uri(EventTriggerName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

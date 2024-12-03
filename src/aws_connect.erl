@@ -30,8 +30,8 @@
 %% in the Amazon Connect Administrator
 %% Guide.
 %%
-%% You can connect programmatically to an Amazon Web Services service by
-%% using an endpoint. For
+%% You can use an endpoint to connect programmatically to an Amazon Web
+%% Services service. For
 %% a list of Amazon Connect endpoints, see Amazon Connect Endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -module(aws_connect).
@@ -2528,6 +2528,13 @@
 
 
 %% Example:
+%% queue_info_input() :: #{
+%%   <<"Id">> => string()
+%% }
+-type queue_info_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_rules_request() :: #{
 %%   <<"EventSourceName">> => list(any()),
 %%   <<"MaxResults">> => integer(),
@@ -3263,6 +3270,7 @@
 %% Example:
 %% stop_contact_recording_request() :: #{
 %%   <<"ContactId">> := string(),
+%%   <<"ContactRecordingType">> => list(any()),
 %%   <<"InitialContactId">> := string(),
 %%   <<"InstanceId">> := string()
 %% }
@@ -4711,6 +4719,7 @@
 
 %% Example:
 %% voice_recording_configuration() :: #{
+%%   <<"IvrRecordingTrack">> => list(any()),
 %%   <<"VoiceRecordingTrack">> => list(any())
 %% }
 -type voice_recording_configuration() :: #{binary() => any()}.
@@ -5754,10 +5763,14 @@
 
 %% Example:
 %% update_contact_request() :: #{
+%%   <<"CustomerEndpoint">> => endpoint(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"QueueInfo">> => queue_info_input(),
 %%   <<"References">> => map(),
-%%   <<"SegmentAttributes">> => map()
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"SystemEndpoint">> => endpoint(),
+%%   <<"UserInfo">> => user_info()
 %% }
 -type update_contact_request() :: #{binary() => any()}.
 
@@ -5968,6 +5981,7 @@
 %% Example:
 %% resume_contact_recording_request() :: #{
 %%   <<"ContactId">> := string(),
+%%   <<"ContactRecordingType">> => list(any()),
 %%   <<"InitialContactId">> := string(),
 %%   <<"InstanceId">> := string()
 %% }
@@ -7559,6 +7573,7 @@
 %% Example:
 %% suspend_contact_recording_request() :: #{
 %%   <<"ContactId">> := string(),
+%%   <<"ContactRecordingType">> => list(any()),
 %%   <<"InitialContactId">> := string(),
 %%   <<"InstanceId">> := string()
 %% }
@@ -9329,8 +9344,10 @@
 -type update_contact_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     internal_service_exception().
 
 -type update_contact_attributes_errors() ::
@@ -13177,7 +13194,7 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 %% traffic distribution group, you must provide a full phone number ARN. If a
 %% UUID is provided
 %% in
-%% this scenario, you will receive a
+%% this scenario, you receive a
 %% `ResourceNotFoundException'.
 -spec describe_phone_number(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_phone_number_response(), tuple()} |
@@ -14754,7 +14771,7 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Imports a claimed phone number from an external service, such as
-%% Amazon Pinpoint, into an
+%% Amazon Web Services End User Messaging, into an
 %% Amazon Connect instance.
 %%
 %% You can call this API only in the same Amazon Web Services Region
@@ -17959,8 +17976,8 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
 %% chat contact, a new chat contact is also created before handling chat
 %% action.
 %%
-%% Access to this API is currently restricted to Amazon Pinpoint for
-%% supporting SMS
+%% Access to this API is currently restricted to Amazon Web Services End User
+%% Messaging for supporting SMS
 %% integration.
 -spec send_chat_integration_event(aws_client:aws_client(), send_chat_integration_event_request()) ->
     {ok, send_chat_integration_event_response(), tuple()} |
@@ -18348,7 +18365,7 @@ start_email_contact(Client, Input0, Options0) ->
 %% @doc Initiates a new outbound SMS contact to a customer.
 %%
 %% Response of this API provides the
-%% ContactId of the outbound SMS contact created.
+%% `ContactId' of the outbound SMS contact created.
 %%
 %% SourceEndpoint only supports Endpoints with
 %% `CONNECT_PHONENUMBER_ARN' as Type and DestinationEndpoint only
@@ -18356,7 +18373,7 @@ start_email_contact(Client, Input0, Options0) ->
 %% Type. ContactFlowId initiates the flow to manage the new SMS
 %% contact created.
 %%
-%% This API can be used to initiate outbound SMS contacts for an agent or it
+%% This API can be used to initiate outbound SMS contacts for an agent, or it
 %% can also deflect
 %% an ongoing contact to an outbound SMS contact by using the
 %% StartOutboundChatContact:

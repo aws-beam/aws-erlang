@@ -54,6 +54,10 @@
          create_a_i_agent/4,
          create_a_i_agent_version/4,
          create_a_i_agent_version/5,
+         create_a_i_guardrail/3,
+         create_a_i_guardrail/4,
+         create_a_i_guardrail_version/4,
+         create_a_i_guardrail_version/5,
          create_a_iprompt/3,
          create_a_iprompt/4,
          create_a_iprompt_version/4,
@@ -84,6 +88,10 @@
          delete_a_i_agent/5,
          delete_a_i_agent_version/5,
          delete_a_i_agent_version/6,
+         delete_a_i_guardrail/4,
+         delete_a_i_guardrail/5,
+         delete_a_i_guardrail_version/5,
+         delete_a_i_guardrail_version/6,
          delete_a_iprompt/4,
          delete_a_iprompt/5,
          delete_a_iprompt_version/5,
@@ -109,6 +117,9 @@
          get_a_i_agent/3,
          get_a_i_agent/5,
          get_a_i_agent/6,
+         get_a_i_guardrail/3,
+         get_a_i_guardrail/5,
+         get_a_i_guardrail/6,
          get_a_iprompt/3,
          get_a_iprompt/5,
          get_a_iprompt/6,
@@ -136,6 +147,9 @@
          get_message_template/3,
          get_message_template/5,
          get_message_template/6,
+         get_next_message/4,
+         get_next_message/6,
+         get_next_message/7,
          get_quick_response/3,
          get_quick_response/5,
          get_quick_response/6,
@@ -151,6 +165,12 @@
          list_a_i_agents/2,
          list_a_i_agents/4,
          list_a_i_agents/5,
+         list_a_i_guardrail_versions/3,
+         list_a_i_guardrail_versions/5,
+         list_a_i_guardrail_versions/6,
+         list_a_i_guardrails/2,
+         list_a_i_guardrails/4,
+         list_a_i_guardrails/5,
          list_a_iprompt_versions/3,
          list_a_iprompt_versions/5,
          list_a_iprompt_versions/6,
@@ -181,6 +201,9 @@
          list_message_templates/2,
          list_message_templates/4,
          list_message_templates/5,
+         list_messages/3,
+         list_messages/5,
+         list_messages/6,
          list_quick_responses/2,
          list_quick_responses/4,
          list_quick_responses/5,
@@ -207,6 +230,8 @@
          search_quick_responses/4,
          search_sessions/3,
          search_sessions/4,
+         send_message/4,
+         send_message/5,
          start_content_upload/3,
          start_content_upload/4,
          start_import_job/3,
@@ -217,6 +242,8 @@
          untag_resource/4,
          update_a_i_agent/4,
          update_a_i_agent/5,
+         update_a_i_guardrail/4,
+         update_a_i_guardrail/5,
          update_a_iprompt/4,
          update_a_iprompt/5,
          update_assistant_a_i_agent/3,
@@ -256,6 +283,10 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_message_template_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_a_i_guardrail_request() :: #{}
+-type get_a_i_guardrail_request() :: #{}.
 
 
 %% Example:
@@ -354,6 +385,10 @@
 %% }
 -type list_a_i_agent_versions_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_a_i_guardrail_version_response() :: #{}
+-type delete_a_i_guardrail_version_response() :: #{}.
+
 
 %% Example:
 %% remove_assistant_a_i_agent_request() :: #{
@@ -420,6 +455,16 @@
 %%   <<"endOffsetExclusive">> => integer()
 %% }
 -type highlight() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic_config() :: #{
+%%   <<"definition">> => string(),
+%%   <<"examples">> => list(string()()),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type guardrail_topic_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -500,11 +545,39 @@
 
 
 %% Example:
+%% list_messages_response() :: #{
+%%   <<"messages">> => list(message_output()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_filter_config() :: #{
+%%   <<"threshold">> => float(),
+%%   <<"type">> => string()
+%% }
+-type guardrail_contextual_grounding_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_condition() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
 %% }
 -type tag_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_next_message_response() :: #{
+%%   <<"conversationSessionData">> => list(runtime_session_data()()),
+%%   <<"conversationState">> => conversation_state(),
+%%   <<"nextMessageToken">> => string(),
+%%   <<"requestMessageId">> => string(),
+%%   <<"response">> => message_output(),
+%%   <<"type">> => string()
+%% }
+-type get_next_message_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -520,6 +593,14 @@
 %%   <<"tags">> => map()
 %% }
 -type content_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_guardrail_versions_response() :: #{
+%%   <<"aiGuardrailVersionSummaries">> => list(a_i_guardrail_version_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_guardrail_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -593,6 +674,14 @@
 
 
 %% Example:
+%% conversation_state() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => string()
+%% }
+-type conversation_state() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_content_summary_response() :: #{
 %%   <<"contentSummary">> => content_summary()
 %% }
@@ -661,6 +750,22 @@
 %%   <<"message">> => [string()]
 %% }
 -type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_i_guardrail_request() :: #{
+%%   <<"blockedInputMessaging">> := string(),
+%%   <<"blockedOutputsMessaging">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"contentPolicyConfig">> => a_i_guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => a_i_guardrail_contextual_grounding_policy_config(),
+%%   <<"description">> => string(),
+%%   <<"sensitiveInformationPolicyConfig">> => a_i_guardrail_sensitive_information_policy_config(),
+%%   <<"topicPolicyConfig">> => a_i_guardrail_topic_policy_config(),
+%%   <<"visibilityStatus">> := string(),
+%%   <<"wordPolicyConfig">> => a_i_guardrail_word_policy_config()
+%% }
+-type update_a_i_guardrail_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -759,6 +864,14 @@
 %% }
 -type create_quick_response_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_a_i_guardrail_response() :: #{}
+-type delete_a_i_guardrail_response() :: #{}.
+
+%% Example:
+%% delete_a_i_guardrail_request() :: #{}
+-type delete_a_i_guardrail_request() :: #{}.
+
 
 %% Example:
 %% create_a_i_agent_version_response() :: #{
@@ -845,6 +958,14 @@
 
 
 %% Example:
+%% get_a_i_guardrail_response() :: #{
+%%   <<"aiGuardrail">> => a_i_guardrail_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type get_a_i_guardrail_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_a_i_agents_response() :: #{
 %%   <<"aiAgentSummaries">> => list(a_i_agent_summary()()),
 %%   <<"nextToken">> => string()
@@ -891,6 +1012,13 @@
 %% }
 -type start_content_upload_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% guardrail_managed_words_config() :: #{
+%%   <<"type">> => string()
+%% }
+-type guardrail_managed_words_config() :: #{binary() => any()}.
+
 %% Example:
 %% delete_message_template_response() :: #{}
 -type delete_message_template_response() :: #{}.
@@ -922,6 +1050,16 @@
 %%   <<"origin">> => string()
 %% }
 -type list_a_iprompt_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_service_a_i_agent_configuration() :: #{
+%%   <<"associationConfigurations">> => list(association_configuration()()),
+%%   <<"selfServiceAIGuardrailId">> => string(),
+%%   <<"selfServiceAnswerGenerationAIPromptId">> => string(),
+%%   <<"selfServicePreProcessingAIPromptId">> => string()
+%% }
+-type self_service_a_i_agent_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1031,6 +1169,10 @@
 %% }
 -type update_knowledge_base_template_uri_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_a_i_guardrail_version_request() :: #{}
+-type delete_a_i_guardrail_version_request() :: #{}.
+
 
 %% Example:
 %% a_iprompt_data() :: #{
@@ -1052,6 +1194,13 @@
 %%   <<"visibilityStatus">> => string()
 %% }
 -type a_iprompt_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_i_guardrail_response() :: #{
+%%   <<"aiGuardrail">> => a_i_guardrail_data()
+%% }
+-type update_a_i_guardrail_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_a_iprompt_version_response() :: #{}
@@ -1082,6 +1231,13 @@
 %%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
 %% }
 -type create_knowledge_base_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_input() :: #{
+%%   <<"value">> => list()
+%% }
+-type message_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1222,6 +1378,15 @@
 
 
 %% Example:
+%% guardrail_content_filter_config() :: #{
+%%   <<"inputStrength">> => string(),
+%%   <<"outputStrength">> => string(),
+%%   <<"type">> => string()
+%% }
+-type guardrail_content_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% document_text() :: #{
 %%   <<"highlights">> => list(highlight()()),
 %%   <<"text">> => string()
@@ -1253,6 +1418,29 @@
 %%   <<"versionNumber">> := float()
 %% }
 -type deactivate_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_guardrail_data() :: #{
+%%   <<"aiGuardrailArn">> => string(),
+%%   <<"aiGuardrailId">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"blockedInputMessaging">> => string(),
+%%   <<"blockedOutputsMessaging">> => string(),
+%%   <<"contentPolicyConfig">> => a_i_guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => a_i_guardrail_contextual_grounding_policy_config(),
+%%   <<"description">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"sensitiveInformationPolicyConfig">> => a_i_guardrail_sensitive_information_policy_config(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"topicPolicyConfig">> => a_i_guardrail_topic_policy_config(),
+%%   <<"visibilityStatus">> => string(),
+%%   <<"wordPolicyConfig">> => a_i_guardrail_word_policy_config()
+%% }
+-type a_i_guardrail_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1308,6 +1496,13 @@
 
 
 %% Example:
+%% text_message() :: #{
+%%   <<"value">> => string()
+%% }
+-type text_message() :: #{binary() => any()}.
+
+
+%% Example:
 %% seed_url() :: #{
 %%   <<"url">> => string()
 %% }
@@ -1326,6 +1521,21 @@
 %%   <<"messageTemplate">> => message_template_data()
 %% }
 -type create_message_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_guardrail_version_response() :: #{
+%%   <<"aiGuardrail">> => a_i_guardrail_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type create_a_i_guardrail_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_guardrail_response() :: #{
+%%   <<"aiGuardrail">> => a_i_guardrail_data()
+%% }
+-type create_a_i_guardrail_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_import_job_request() :: #{}
@@ -1354,6 +1564,13 @@
 %%   <<"type">> => string()
 %% }
 -type assistant_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_context() :: #{
+%%   <<"selfServiceConversationHistory">> => list(self_service_conversation_history()())
+%% }
+-type conversation_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1440,6 +1657,16 @@
 %%   <<"plainText">> => list()
 %% }
 -type sms_message_template_content_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_output() :: #{
+%%   <<"messageId">> => string(),
+%%   <<"participant">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"value">> => list()
+%% }
+-type message_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1603,6 +1830,22 @@
 %% }
 -type list_assistant_associations_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% a_i_guardrail_summary() :: #{
+%%   <<"aiGuardrailArn">> => string(),
+%%   <<"aiGuardrailId">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"visibilityStatus">> => string()
+%% }
+-type a_i_guardrail_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_knowledge_base_request() :: #{}
 -type delete_knowledge_base_request() :: #{}.
@@ -1630,6 +1873,13 @@
 %%   <<"type">> => string()
 %% }
 -type assistant_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_guardrail_topic_policy_config() :: #{
+%%   <<"topicsConfig">> => list(guardrail_topic_config()())
+%% }
+-type a_i_guardrail_topic_policy_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1690,6 +1940,13 @@
 %%   <<"kmsKeyId">> => string()
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word_config() :: #{
+%%   <<"text">> => string()
+%% }
+-type guardrail_word_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1778,6 +2035,14 @@
 %% }
 -type list_import_jobs_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_a_i_guardrail_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()]
+%% }
+-type create_a_i_guardrail_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_message_template_request() :: #{}
 -type delete_message_template_request() :: #{}.
@@ -1815,6 +2080,14 @@
 %% }
 -type a_iprompt_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% a_i_guardrail_word_policy_config() :: #{
+%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()()),
+%%   <<"wordsConfig">> => list(guardrail_word_config()())
+%% }
+-type a_i_guardrail_word_policy_config() :: #{binary() => any()}.
+
 %% Example:
 %% remove_knowledge_base_template_uri_request() :: #{}
 -type remove_knowledge_base_template_uri_request() :: #{}.
@@ -1839,6 +2112,32 @@
 %% Example:
 %% get_a_iprompt_request() :: #{}
 -type get_a_iprompt_request() :: #{}.
+
+
+%% Example:
+%% list_a_i_guardrail_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_guardrail_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_guardrail_version_summary() :: #{
+%%   <<"aiGuardrailSummary">> => a_i_guardrail_summary(),
+%%   <<"versionNumber">> => float()
+%% }
+-type a_i_guardrail_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_regex_config() :: #{
+%%   <<"action">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"pattern">> => string()
+%% }
+-type guardrail_regex_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1874,6 +2173,13 @@
 
 
 %% Example:
+%% a_i_guardrail_contextual_grounding_policy_config() :: #{
+%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config()())
+%% }
+-type a_i_guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% notify_recommendations_received_error() :: #{
 %%   <<"message">> => string(),
 %%   <<"recommendationId">> => string()
@@ -1890,6 +2196,7 @@
 
 %% Example:
 %% manual_search_a_i_agent_configuration() :: #{
+%%   <<"answerGenerationAIGuardrailId">> => string(),
 %%   <<"answerGenerationAIPromptId">> => string(),
 %%   <<"associationConfigurations">> => list(association_configuration()())
 %% }
@@ -1916,6 +2223,14 @@
 %% Example:
 %% get_quick_response_request() :: #{}
 -type get_quick_response_request() :: #{}.
+
+
+%% Example:
+%% a_i_guardrail_sensitive_information_policy_config() :: #{
+%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()()),
+%%   <<"regexesConfig">> => list(guardrail_regex_config()())
+%% }
+-type a_i_guardrail_sensitive_information_policy_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2052,6 +2367,14 @@
 %% delete_content_request() :: #{}
 -type delete_content_request() :: #{}.
 
+
+%% Example:
+%% list_a_i_guardrails_response() :: #{
+%%   <<"aiGuardrailSummaries">> => list(a_i_guardrail_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_guardrails_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_content_request() :: #{}
 -type get_content_request() :: #{}.
@@ -2097,6 +2420,14 @@
 %%   <<"sourceURL">> => [string()]
 %% }
 -type content_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_pii_entity_config() :: #{
+%%   <<"action">> => string(),
+%%   <<"type">> => string()
+%% }
+-type guardrail_pii_entity_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2170,6 +2501,15 @@
 
 
 %% Example:
+%% self_service_conversation_history() :: #{
+%%   <<"botResponse">> => string(),
+%%   <<"inputTranscript">> => string(),
+%%   <<"turnNumber">> => [integer()]
+%% }
+-type self_service_conversation_history() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_association_configuration_data() :: #{
 %%   <<"contentTagFilter">> => list(),
 %%   <<"maxResults">> => integer(),
@@ -2183,6 +2523,13 @@
 %%   <<"maxTokens">> => [integer()]
 %% }
 -type hierarchical_chunking_level_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_guardrail_content_policy_config() :: #{
+%%   <<"filtersConfig">> => list(guardrail_content_filter_config()())
+%% }
+-type a_i_guardrail_content_policy_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2227,6 +2574,16 @@
 %%   <<"recommendationIds">> := list(string()())
 %% }
 -type notify_recommendations_received_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"conversationContext">> => conversation_context(),
+%%   <<"message">> := message_input(),
+%%   <<"type">> := string()
+%% }
+-type send_message_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_a_i_agent_response() :: #{}
@@ -2305,6 +2662,13 @@
 
 
 %% Example:
+%% get_next_message_request() :: #{
+%%   <<"nextMessageToken">> := string()
+%% }
+-type get_next_message_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% render_message_template_response() :: #{
 %%   <<"attachments">> => list(message_template_attachment()()),
 %%   <<"attributesNotInterpolated">> => list(string()()),
@@ -2319,6 +2683,14 @@
 %%   <<"plainText">> => list()
 %% }
 -type email_message_template_content_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_guardrails_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_guardrails_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2436,6 +2808,14 @@
 
 
 %% Example:
+%% send_message_response() :: #{
+%%   <<"nextMessageToken">> => string(),
+%%   <<"requestMessageId">> => string()
+%% }
+-type send_message_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_assistants_response() :: #{
 %%   <<"assistantSummaries">> := list(assistant_summary()()),
 %%   <<"nextToken">> => string()
@@ -2511,7 +2891,26 @@
 
 
 %% Example:
+%% create_a_i_guardrail_request() :: #{
+%%   <<"blockedInputMessaging">> := string(),
+%%   <<"blockedOutputsMessaging">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"contentPolicyConfig">> => a_i_guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => a_i_guardrail_contextual_grounding_policy_config(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sensitiveInformationPolicyConfig">> => a_i_guardrail_sensitive_information_policy_config(),
+%%   <<"tags">> => map(),
+%%   <<"topicPolicyConfig">> => a_i_guardrail_topic_policy_config(),
+%%   <<"visibilityStatus">> := string(),
+%%   <<"wordPolicyConfig">> => a_i_guardrail_word_policy_config()
+%% }
+-type create_a_i_guardrail_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% answer_recommendation_a_i_agent_configuration() :: #{
+%%   <<"answerGenerationAIGuardrailId">> => string(),
 %%   <<"answerGenerationAIPromptId">> => string(),
 %%   <<"associationConfigurations">> => list(association_configuration()()),
 %%   <<"intentLabelingGenerationAIPromptId">> => string(),
@@ -2640,6 +3039,14 @@
 
 
 %% Example:
+%% list_messages_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_messages_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_a_iprompt_version_response() :: #{
 %%   <<"aiPrompt">> => a_iprompt_data(),
 %%   <<"versionNumber">> => float()
@@ -2671,6 +3078,22 @@
     conflict_exception().
 
 -type create_a_i_agent_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_a_i_guardrail_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_a_i_guardrail_version_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2785,6 +3208,20 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_a_i_guardrail_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_a_i_guardrail_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_a_iprompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2855,6 +3292,12 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type get_a_i_guardrail_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_a_iprompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2902,6 +3345,11 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type get_next_message_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_quick_response_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -2924,6 +3372,18 @@
     resource_not_found_exception().
 
 -type list_a_i_agents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_a_i_guardrail_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_a_i_guardrails_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2976,6 +3436,11 @@
 
 -type list_message_templates_errors() ::
     throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_messages_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -3043,6 +3508,14 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type send_message_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
 -type start_content_upload_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -3063,6 +3536,13 @@
     resource_not_found_exception().
 
 -type update_a_i_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_a_i_guardrail_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3219,6 +3699,74 @@ create_a_i_agent_version(Client, AiAgentId, AssistantId, Input) ->
 create_a_i_agent_version(Client, AiAgentId, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents/", aws_util:encode_uri(AiAgentId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon Q in Connect AI Guardrail.
+-spec create_a_i_guardrail(aws_client:aws_client(), binary() | list(), create_a_i_guardrail_request()) ->
+    {ok, create_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_guardrail_errors(), tuple()}.
+create_a_i_guardrail(Client, AssistantId, Input) ->
+    create_a_i_guardrail(Client, AssistantId, Input, []).
+
+-spec create_a_i_guardrail(aws_client:aws_client(), binary() | list(), create_a_i_guardrail_request(), proplists:proplist()) ->
+    {ok, create_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_guardrail_errors(), tuple()}.
+create_a_i_guardrail(Client, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiguardrails"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon Q in Connect AI Guardrail version.
+-spec create_a_i_guardrail_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_a_i_guardrail_version_request()) ->
+    {ok, create_a_i_guardrail_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_guardrail_version_errors(), tuple()}.
+create_a_i_guardrail_version(Client, AiGuardrailId, AssistantId, Input) ->
+    create_a_i_guardrail_version(Client, AiGuardrailId, AssistantId, Input, []).
+
+-spec create_a_i_guardrail_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_a_i_guardrail_version_request(), proplists:proplist()) ->
+    {ok, create_a_i_guardrail_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_a_i_guardrail_version_errors(), tuple()}.
+create_a_i_guardrail_version(Client, AiGuardrailId, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiguardrails/", aws_util:encode_uri(AiGuardrailId), "/versions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3857,6 +4405,74 @@ delete_a_i_agent_version(Client, AiAgentId, AssistantId, VersionNumber, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an Amazon Q in Connect AI Guardrail.
+-spec delete_a_i_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), delete_a_i_guardrail_request()) ->
+    {ok, delete_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_guardrail_errors(), tuple()}.
+delete_a_i_guardrail(Client, AiGuardrailId, AssistantId, Input) ->
+    delete_a_i_guardrail(Client, AiGuardrailId, AssistantId, Input, []).
+
+-spec delete_a_i_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), delete_a_i_guardrail_request(), proplists:proplist()) ->
+    {ok, delete_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_guardrail_errors(), tuple()}.
+delete_a_i_guardrail(Client, AiGuardrailId, AssistantId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiguardrails/", aws_util:encode_uri(AiGuardrailId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete and Amazon Q in Connect AI Guardrail version.
+-spec delete_a_i_guardrail_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_a_i_guardrail_version_request()) ->
+    {ok, delete_a_i_guardrail_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_guardrail_version_errors(), tuple()}.
+delete_a_i_guardrail_version(Client, AiGuardrailId, AssistantId, VersionNumber, Input) ->
+    delete_a_i_guardrail_version(Client, AiGuardrailId, AssistantId, VersionNumber, Input, []).
+
+-spec delete_a_i_guardrail_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_a_i_guardrail_version_request(), proplists:proplist()) ->
+    {ok, delete_a_i_guardrail_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_a_i_guardrail_version_errors(), tuple()}.
+delete_a_i_guardrail_version(Client, AiGuardrailId, AssistantId, VersionNumber, Input0, Options0) ->
+    Method = delete,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiguardrails/", aws_util:encode_uri(AiGuardrailId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an Amazon Q in Connect AI Prompt.
 -spec delete_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list(), delete_a_iprompt_request()) ->
     {ok, delete_a_iprompt_response(), tuple()} |
@@ -4304,6 +4920,43 @@ get_a_i_agent(Client, AiAgentId, AssistantId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the Amazon Q in Connect AI Guardrail.
+-spec get_a_i_guardrail(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_i_guardrail_errors(), tuple()}.
+get_a_i_guardrail(Client, AiGuardrailId, AssistantId)
+  when is_map(Client) ->
+    get_a_i_guardrail(Client, AiGuardrailId, AssistantId, #{}, #{}).
+
+-spec get_a_i_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_i_guardrail_errors(), tuple()}.
+get_a_i_guardrail(Client, AiGuardrailId, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_a_i_guardrail(Client, AiGuardrailId, AssistantId, QueryMap, HeadersMap, []).
+
+-spec get_a_i_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, get_a_i_guardrail_errors(), tuple()}.
+get_a_i_guardrail(Client, AiGuardrailId, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiguardrails/", aws_util:encode_uri(AiGuardrailId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets and Amazon Q in Connect AI Prompt.
 -spec get_a_iprompt(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_a_iprompt_response(), tuple()} |
@@ -4615,8 +5268,9 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 %% `&lt;message-template-id&gt;:&lt;qualifier&gt;', which is either an
 %% actual
 %% version number or an Amazon Q Connect managed qualifier
-%% `$ACTIVE_VERSION' | `$LATEST'. If it is
-%% not supplied, then `$LATEST' is assumed implicitly.
+%% `$ACTIVE_VERSION' |
+%% `$LATEST'. If it is not supplied, then `$LATEST' is assumed
+%% implicitly.
 -spec get_message_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_message_template_response(), tuple()} |
     {error, any()} |
@@ -4650,6 +5304,47 @@ get_message_template(Client, KnowledgeBaseId, MessageTemplateId, QueryMap, Heade
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves next message on an Amazon Q in Connect session.
+-spec get_next_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_next_message_response(), tuple()} |
+    {error, any()} |
+    {error, get_next_message_errors(), tuple()}.
+get_next_message(Client, AssistantId, SessionId, NextMessageToken)
+  when is_map(Client) ->
+    get_next_message(Client, AssistantId, SessionId, NextMessageToken, #{}, #{}).
+
+-spec get_next_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_next_message_response(), tuple()} |
+    {error, any()} |
+    {error, get_next_message_errors(), tuple()}.
+get_next_message(Client, AssistantId, SessionId, NextMessageToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_next_message(Client, AssistantId, SessionId, NextMessageToken, QueryMap, HeadersMap, []).
+
+-spec get_next_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_next_message_response(), tuple()} |
+    {error, any()} |
+    {error, get_next_message_errors(), tuple()}.
+get_next_message(Client, AssistantId, SessionId, NextMessageToken, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/messages/next"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextMessageToken">>, NextMessageToken}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -4869,6 +5564,91 @@ list_a_i_agents(Client, AssistantId, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"origin">>, maps:get(<<"origin">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists AI Guardrail versions.
+-spec list_a_i_guardrail_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_a_i_guardrail_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_guardrail_versions_errors(), tuple()}.
+list_a_i_guardrail_versions(Client, AiGuardrailId, AssistantId)
+  when is_map(Client) ->
+    list_a_i_guardrail_versions(Client, AiGuardrailId, AssistantId, #{}, #{}).
+
+-spec list_a_i_guardrail_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_a_i_guardrail_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_guardrail_versions_errors(), tuple()}.
+list_a_i_guardrail_versions(Client, AiGuardrailId, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_a_i_guardrail_versions(Client, AiGuardrailId, AssistantId, QueryMap, HeadersMap, []).
+
+-spec list_a_i_guardrail_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_a_i_guardrail_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_guardrail_versions_errors(), tuple()}.
+list_a_i_guardrail_versions(Client, AiGuardrailId, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiguardrails/", aws_util:encode_uri(AiGuardrailId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the AI Guardrails available on the Amazon Q in Connect
+%% assistant.
+-spec list_a_i_guardrails(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_a_i_guardrails_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_guardrails_errors(), tuple()}.
+list_a_i_guardrails(Client, AssistantId)
+  when is_map(Client) ->
+    list_a_i_guardrails(Client, AssistantId, #{}, #{}).
+
+-spec list_a_i_guardrails(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_a_i_guardrails_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_guardrails_errors(), tuple()}.
+list_a_i_guardrails(Client, AssistantId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_a_i_guardrails(Client, AssistantId, QueryMap, HeadersMap, []).
+
+-spec list_a_i_guardrails(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_a_i_guardrails_response(), tuple()} |
+    {error, any()} |
+    {error, list_a_i_guardrails_errors(), tuple()}.
+list_a_i_guardrails(Client, AssistantId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiguardrails"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -5289,6 +6069,48 @@ list_message_templates(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 list_message_templates(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/messageTemplates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists messages on an Amazon Q in Connect session.
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_messages_errors(), tuple()}.
+list_messages(Client, AssistantId, SessionId)
+  when is_map(Client) ->
+    list_messages(Client, AssistantId, SessionId, #{}, #{}).
+
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_messages_errors(), tuple()}.
+list_messages(Client, AssistantId, SessionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_messages(Client, AssistantId, SessionId, QueryMap, HeadersMap, []).
+
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_messages_errors(), tuple()}.
+list_messages(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/messages"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5775,6 +6597,40 @@ search_sessions(Client, AssistantId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Submits a message to the Amazon Q in Connect session.
+-spec send_message(aws_client:aws_client(), binary() | list(), binary() | list(), send_message_request()) ->
+    {ok, send_message_response(), tuple()} |
+    {error, any()} |
+    {error, send_message_errors(), tuple()}.
+send_message(Client, AssistantId, SessionId, Input) ->
+    send_message(Client, AssistantId, SessionId, Input, []).
+
+-spec send_message(aws_client:aws_client(), binary() | list(), binary() | list(), send_message_request(), proplists:proplist()) ->
+    {ok, send_message_response(), tuple()} |
+    {error, any()} |
+    {error, send_message_errors(), tuple()}.
+send_message(Client, AssistantId, SessionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/message"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Get a URL to upload content to a knowledge base.
 %%
 %% To upload content, first make a PUT
@@ -5953,6 +6809,40 @@ update_a_i_agent(Client, AiAgentId, AssistantId, Input) ->
 update_a_i_agent(Client, AiAgentId, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiagents/", aws_util:encode_uri(AiAgentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an AI Guardrail.
+-spec update_a_i_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), update_a_i_guardrail_request()) ->
+    {ok, update_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, update_a_i_guardrail_errors(), tuple()}.
+update_a_i_guardrail(Client, AiGuardrailId, AssistantId, Input) ->
+    update_a_i_guardrail(Client, AiGuardrailId, AssistantId, Input, []).
+
+-spec update_a_i_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), update_a_i_guardrail_request(), proplists:proplist()) ->
+    {ok, update_a_i_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, update_a_i_guardrail_errors(), tuple()}.
+update_a_i_guardrail(Client, AiGuardrailId, AssistantId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/aiguardrails/", aws_util:encode_uri(AiGuardrailId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

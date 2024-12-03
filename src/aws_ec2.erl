@@ -107,6 +107,8 @@
          cancel_capacity_reservation_fleets/3,
          cancel_conversion_task/2,
          cancel_conversion_task/3,
+         cancel_declarative_policies_report/2,
+         cancel_declarative_policies_report/3,
          cancel_export_task/2,
          cancel_export_task/3,
          cancel_image_launch_permission/2,
@@ -515,6 +517,8 @@
          describe_conversion_tasks/3,
          describe_customer_gateways/2,
          describe_customer_gateways/3,
+         describe_declarative_policies_reports/2,
+         describe_declarative_policies_reports/3,
          describe_dhcp_options/2,
          describe_dhcp_options/3,
          describe_egress_only_internet_gateways/2,
@@ -763,6 +767,8 @@
          describe_vpc_classic_link/3,
          describe_vpc_classic_link_dns_support/2,
          describe_vpc_classic_link_dns_support/3,
+         describe_vpc_endpoint_associations/2,
+         describe_vpc_endpoint_associations/3,
          describe_vpc_endpoint_connection_notifications/2,
          describe_vpc_endpoint_connection_notifications/3,
          describe_vpc_endpoint_connections/2,
@@ -797,6 +803,8 @@
          detach_vpn_gateway/3,
          disable_address_transfer/2,
          disable_address_transfer/3,
+         disable_allowed_images_settings/2,
+         disable_allowed_images_settings/3,
          disable_aws_network_performance_metric_subscription/2,
          disable_aws_network_performance_metric_subscription/3,
          disable_ebs_encryption_by_default/2,
@@ -863,6 +871,8 @@
          disassociate_vpc_cidr_block/3,
          enable_address_transfer/2,
          enable_address_transfer/3,
+         enable_allowed_images_settings/2,
+         enable_allowed_images_settings/3,
          enable_aws_network_performance_metric_subscription/2,
          enable_aws_network_performance_metric_subscription/3,
          enable_ebs_encryption_by_default/2,
@@ -905,6 +915,10 @@
          export_image/3,
          export_transit_gateway_routes/2,
          export_transit_gateway_routes/3,
+         export_verified_access_instance_client_configuration/2,
+         export_verified_access_instance_client_configuration/3,
+         get_allowed_images_settings/2,
+         get_allowed_images_settings/3,
          get_associated_enclave_certificate_iam_roles/2,
          get_associated_enclave_certificate_iam_roles/3,
          get_associated_ipv6_pool_cidrs/2,
@@ -919,6 +933,8 @@
          get_console_output/3,
          get_console_screenshot/2,
          get_console_screenshot/3,
+         get_declarative_policies_report_summary/2,
+         get_declarative_policies_report_summary/3,
          get_default_credit_specification/2,
          get_default_credit_specification/3,
          get_ebs_default_kms_key_id/2,
@@ -995,6 +1011,8 @@
          get_transit_gateway_route_table_propagations/3,
          get_verified_access_endpoint_policy/2,
          get_verified_access_endpoint_policy/3,
+         get_verified_access_endpoint_targets/2,
+         get_verified_access_endpoint_targets/3,
          get_verified_access_group_policy/2,
          get_verified_access_group_policy/3,
          get_vpn_connection_device_sample_configuration/2,
@@ -1213,6 +1231,8 @@
          release_ipam_pool_allocation/3,
          replace_iam_instance_profile_association/2,
          replace_iam_instance_profile_association/3,
+         replace_image_criteria_in_allowed_images_settings/2,
+         replace_image_criteria_in_allowed_images_settings/3,
          replace_network_acl_association/2,
          replace_network_acl_association/3,
          replace_network_acl_entry/2,
@@ -1273,6 +1293,8 @@
          search_transit_gateway_routes/3,
          send_diagnostic_interrupt/2,
          send_diagnostic_interrupt/3,
+         start_declarative_policies_report/2,
+         start_declarative_policies_report/3,
          start_instances/2,
          start_instances/3,
          start_network_insights_access_scope_analysis/2,
@@ -1338,6 +1360,13 @@
 %%   <<"TransitGatewayAttachmentIds">> => list(string()())
 %% }
 -type describe_transit_gateway_connects_request() :: #{binary() => any()}.
+
+%% Example:
+%% verified_access_instance_open_vpn_client_configuration() :: #{
+%%   <<"Config">> => string(),
+%%   <<"Routes">> => list(verified_access_instance_open_vpn_client_configuration_route()())
+%% }
+-type verified_access_instance_open_vpn_client_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_transit_gateway_peering_attachments_result() :: #{
@@ -1674,6 +1703,13 @@
 %%   <<"TransitGatewayAttachmentIds">> => list(string()())
 %% }
 -type describe_transit_gateway_attachments_request() :: #{binary() => any()}.
+
+%% Example:
+%% verified_access_endpoint_port_range() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"ToPort">> => integer()
+%% }
+-type verified_access_endpoint_port_range() :: #{binary() => any()}.
 
 %% Example:
 %% describe_snapshot_tier_status_result() :: #{
@@ -2646,6 +2682,16 @@
 -type deregister_instance_event_notification_attributes_request() :: #{binary() => any()}.
 
 %% Example:
+%% attribute_summary() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"MostFrequentValue">> => string(),
+%%   <<"NumberOfMatchedAccounts">> => integer(),
+%%   <<"NumberOfUnmatchedAccounts">> => integer(),
+%%   <<"RegionalSummaries">> => list(regional_summary()())
+%% }
+-type attribute_summary() :: #{binary() => any()}.
+
+%% Example:
 %% associate_transit_gateway_multicast_domain_result() :: #{
 %%   <<"Associations">> => transit_gateway_multicast_domain_associations()
 %% }
@@ -2835,6 +2881,13 @@
 %%   <<"Message">> => string()
 %% }
 -type unsuccessful_item_error() :: #{binary() => any()}.
+
+%% Example:
+%% create_verified_access_endpoint_port_range() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"ToPort">> => integer()
+%% }
+-type create_verified_access_endpoint_port_range() :: #{binary() => any()}.
 
 %% Example:
 %% volume_status_info() :: #{
@@ -3125,6 +3178,12 @@
 %%   <<"InstanceTagAttribute">> => instance_tag_notification_attribute()
 %% }
 -type register_instance_event_notification_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_verified_access_endpoint_cidr_options() :: #{
+%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range()())
+%% }
+-type modify_verified_access_endpoint_cidr_options() :: #{binary() => any()}.
 
 %% Example:
 %% export_task_s3_location_request() :: #{
@@ -4545,6 +4604,14 @@
 -type modify_ipam_pool_result() :: #{binary() => any()}.
 
 %% Example:
+%% verified_access_endpoint_target() :: #{
+%%   <<"VerifiedAccessEndpointId">> => string(),
+%%   <<"VerifiedAccessEndpointTargetDns">> => string(),
+%%   <<"VerifiedAccessEndpointTargetIpAddress">> => string()
+%% }
+-type verified_access_endpoint_target() :: #{binary() => any()}.
+
+%% Example:
 %% managed_prefix_list() :: #{
 %%   <<"AddressFamily">> => string(),
 %%   <<"MaxEntries">> => integer(),
@@ -5015,6 +5082,18 @@
 -type describe_client_vpn_target_networks_request() :: #{binary() => any()}.
 
 %% Example:
+%% verified_access_endpoint_rds_options() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RdsDbClusterArn">> => string(),
+%%   <<"RdsDbInstanceArn">> => string(),
+%%   <<"RdsDbProxyArn">> => string(),
+%%   <<"RdsEndpoint">> => string(),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type verified_access_endpoint_rds_options() :: #{binary() => any()}.
+
+%% Example:
 %% describe_spot_fleet_instances_response() :: #{
 %%   <<"ActiveInstances">> => list(active_instance()()),
 %%   <<"NextToken">> => string(),
@@ -5358,10 +5437,34 @@
 -type delete_fleet_success_item() :: #{binary() => any()}.
 
 %% Example:
+%% replace_image_criteria_in_allowed_images_settings_result() :: #{
+%%   <<"ReturnValue">> => boolean()
+%% }
+-type replace_image_criteria_in_allowed_images_settings_result() :: #{binary() => any()}.
+
+%% Example:
+%% verified_access_instance_open_vpn_client_configuration_route() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type verified_access_instance_open_vpn_client_configuration_route() :: #{binary() => any()}.
+
+%% Example:
 %% delete_network_insights_path_result() :: #{
 %%   <<"NetworkInsightsPathId">> => string()
 %% }
 -type delete_network_insights_path_result() :: #{binary() => any()}.
+
+%% Example:
+%% native_application_oidc_options() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"PublicSigningKeyEndpoint">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type native_application_oidc_options() :: #{binary() => any()}.
 
 %% Example:
 %% delete_traffic_mirror_filter_result() :: #{
@@ -5760,6 +5863,12 @@
 %%   <<"Resource">> => string()
 %% }
 -type describe_identity_id_format_request() :: #{binary() => any()}.
+
+%% Example:
+%% image_criterion() :: #{
+%%   <<"ImageProviders">> => list(string()())
+%% }
+-type image_criterion() :: #{binary() => any()}.
 
 %% Example:
 %% modify_capacity_reservation_fleet_request() :: #{
@@ -6339,6 +6448,19 @@
 -type delete_local_gateway_route_table_virtual_interface_group_association_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_verified_access_native_application_oidc_options() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"PublicSigningKeyEndpoint">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type create_verified_access_native_application_oidc_options() :: #{binary() => any()}.
+
+%% Example:
 %% modify_capacity_reservation_result() :: #{
 %%   <<"Return">> => boolean()
 %% }
@@ -6428,6 +6550,7 @@
 %% verified_access_endpoint() :: #{
 %%   <<"ApplicationDomain">> => string(),
 %%   <<"AttachmentType">> => list(any()),
+%%   <<"CidrOptions">> => verified_access_endpoint_cidr_options(),
 %%   <<"CreationTime">> => string(),
 %%   <<"DeletionTime">> => string(),
 %%   <<"Description">> => string(),
@@ -6438,6 +6561,7 @@
 %%   <<"LastUpdatedTime">> => string(),
 %%   <<"LoadBalancerOptions">> => verified_access_endpoint_load_balancer_options(),
 %%   <<"NetworkInterfaceOptions">> => verified_access_endpoint_eni_options(),
+%%   <<"RdsOptions">> => verified_access_endpoint_rds_options(),
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SseSpecification">> => verified_access_sse_specification_response(),
 %%   <<"Status">> => verified_access_endpoint_status(),
@@ -6564,6 +6688,7 @@
 %% create_verified_access_endpoint_eni_options() :: #{
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()()),
 %%   <<"Protocol">> => list(any())
 %% }
 -type create_verified_access_endpoint_eni_options() :: #{binary() => any()}.
@@ -6915,6 +7040,7 @@
 %% Example:
 %% modify_verified_access_endpoint_load_balancer_options() :: #{
 %%   <<"Port">> => integer(),
+%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range()()),
 %%   <<"Protocol">> => list(any()),
 %%   <<"SubnetIds">> => list(string()())
 %% }
@@ -7117,6 +7243,7 @@
 
 %% Example:
 %% modify_verified_access_instance_request() :: #{
+%%   <<"CidrEndpointsCustomSubDomain">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -7507,6 +7634,7 @@
 %% Example:
 %% modify_verified_access_endpoint_eni_options() :: #{
 %%   <<"Port">> => integer(),
+%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range()()),
 %%   <<"Protocol">> => list(any())
 %% }
 -type modify_verified_access_endpoint_eni_options() :: #{binary() => any()}.
@@ -7543,6 +7671,16 @@
 %%   <<"TransitGatewayMulticastDomainId">> := string()
 %% }
 -type search_transit_gateway_multicast_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_declarative_policies_report_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"S3Bucket">> := string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TargetId">> := string()
+%% }
+-type start_declarative_policies_report_request() :: #{binary() => any()}.
 
 %% Example:
 %% cidr_block() :: #{
@@ -7653,11 +7791,13 @@
 
 %% Example:
 %% modify_verified_access_endpoint_request() :: #{
+%%   <<"CidrOptions">> => modify_verified_access_endpoint_cidr_options(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"LoadBalancerOptions">> => modify_verified_access_endpoint_load_balancer_options(),
 %%   <<"NetworkInterfaceOptions">> => modify_verified_access_endpoint_eni_options(),
+%%   <<"RdsOptions">> => modify_verified_access_endpoint_rds_options(),
 %%   <<"VerifiedAccessEndpointId">> := string(),
 %%   <<"VerifiedAccessGroupId">> => string()
 %% }
@@ -7722,6 +7862,7 @@
 %% verified_access_endpoint_eni_options() :: #{
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()()),
 %%   <<"Protocol">> => list(any())
 %% }
 -type verified_access_endpoint_eni_options() :: #{binary() => any()}.
@@ -8242,6 +8383,12 @@
 -type delete_subnet_request() :: #{binary() => any()}.
 
 %% Example:
+%% start_declarative_policies_report_result() :: #{
+%%   <<"ReportId">> => string()
+%% }
+-type start_declarative_policies_report_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_capacity_reservation_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
@@ -8410,6 +8557,12 @@
 %%   <<"UseLongIds">> => boolean()
 %% }
 -type id_format() :: #{binary() => any()}.
+
+%% Example:
+%% enable_allowed_images_settings_result() :: #{
+%%   <<"AllowedImagesSettingsState">> => list(any())
+%% }
+-type enable_allowed_images_settings_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_capacity_reservations_request() :: #{
@@ -8884,6 +9037,15 @@
 -type describe_security_group_rules_request() :: #{binary() => any()}.
 
 %% Example:
+%% verified_access_endpoint_cidr_options() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type verified_access_endpoint_cidr_options() :: #{binary() => any()}.
+
+%% Example:
 %% hibernation_options_request() :: #{
 %%   <<"Configured">> => boolean()
 %% }
@@ -8955,6 +9117,7 @@
 %%   <<"DeviceOptions">> => device_options(),
 %%   <<"DeviceTrustProviderType">> => list(any()),
 %%   <<"LastUpdatedTime">> => string(),
+%%   <<"NativeApplicationOidcOptions">> => native_application_oidc_options(),
 %%   <<"OidcOptions">> => oidc_options(),
 %%   <<"PolicyReferenceName">> => string(),
 %%   <<"SseSpecification">> => verified_access_sse_specification_response(),
@@ -9248,6 +9411,23 @@
 -type enable_ebs_encryption_by_default_request() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_endpoint_association() :: #{
+%%   <<"AssociatedResourceAccessibility">> => string(),
+%%   <<"AssociatedResourceArn">> => string(),
+%%   <<"DnsEntry">> => dns_entry(),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"PrivateDnsEntry">> => dns_entry(),
+%%   <<"ResourceConfigurationGroupArn">> => string(),
+%%   <<"ServiceNetworkArn">> => string(),
+%%   <<"ServiceNetworkName">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type vpc_endpoint_association() :: #{binary() => any()}.
+
+%% Example:
 %% modify_default_credit_specification_result() :: #{
 %%   <<"InstanceFamilyCreditSpecification">> => instance_family_credit_specification()
 %% }
@@ -9273,6 +9453,21 @@
 %%   <<"Return">> => boolean()
 %% }
 -type reject_capacity_reservation_billing_ownership_result() :: #{binary() => any()}.
+
+%% Example:
+%% verified_access_instance_user_trust_provider_client_configuration() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"PkceEnabled">> => boolean(),
+%%   <<"PublicSigningKeyEndpoint">> => string(),
+%%   <<"Scopes">> => string(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type verified_access_instance_user_trust_provider_client_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% confirm_product_instance_request() :: #{
@@ -10454,16 +10649,21 @@
 %%   <<"CreationTimestamp">> => non_neg_integer(),
 %%   <<"DnsEntries">> => list(dns_entry()()),
 %%   <<"DnsOptions">> => dns_options(),
+%%   <<"FailureReason">> => string(),
 %%   <<"Groups">> => list(security_group_identifier()()),
 %%   <<"IpAddressType">> => list(any()),
+%%   <<"Ipv4Prefixes">> => list(subnet_ip_prefixes()()),
+%%   <<"Ipv6Prefixes">> => list(subnet_ip_prefixes()()),
 %%   <<"LastError">> => last_error(),
 %%   <<"NetworkInterfaceIds">> => list(string()()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PolicyDocument">> => string(),
 %%   <<"PrivateDnsEnabled">> => boolean(),
 %%   <<"RequesterManaged">> => boolean(),
+%%   <<"ResourceConfigurationArn">> => string(),
 %%   <<"RouteTableIds">> => list(string()()),
 %%   <<"ServiceName">> => string(),
+%%   <<"ServiceNetworkArn">> => string(),
 %%   <<"ServiceRegion">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetIds">> => list(string()()),
@@ -10548,6 +10748,7 @@
 
 %% Example:
 %% get_snapshot_block_public_access_state_result() :: #{
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"State">> => list(any())
 %% }
 -type get_snapshot_block_public_access_state_result() :: #{binary() => any()}.
@@ -10821,6 +11022,13 @@
 -type reset_network_interface_attribute_request() :: #{binary() => any()}.
 
 %% Example:
+%% enable_allowed_images_settings_request() :: #{
+%%   <<"AllowedImagesSettingsState">> := list(any()),
+%%   <<"DryRun">> => boolean()
+%% }
+-type enable_allowed_images_settings_request() :: #{binary() => any()}.
+
+%% Example:
 %% analysis_component() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -11024,6 +11232,13 @@
 -type cancel_image_launch_permission_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_verified_access_endpoint_targets_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VerifiedAccessEndpointTargets">> => list(verified_access_endpoint_target()())
+%% }
+-type get_verified_access_endpoint_targets_result() :: #{binary() => any()}.
+
+%% Example:
 %% launch_template_private_dns_name_options_request() :: #{
 %%   <<"EnableResourceNameDnsAAAARecord">> => boolean(),
 %%   <<"EnableResourceNameDnsARecord">> => boolean(),
@@ -11120,6 +11335,7 @@
 %% image_metadata() :: #{
 %%   <<"CreationDate">> => string(),
 %%   <<"DeprecationTime">> => string(),
+%%   <<"ImageAllowed">> => boolean(),
 %%   <<"ImageId">> => string(),
 %%   <<"ImageOwnerAlias">> => string(),
 %%   <<"IsPublic">> => boolean(),
@@ -11570,6 +11786,12 @@
 -type peering_connection_options_request() :: #{binary() => any()}.
 
 %% Example:
+%% disable_allowed_images_settings_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type disable_allowed_images_settings_request() :: #{binary() => any()}.
+
+%% Example:
 %% network_bandwidth_gbps_request() :: #{
 %%   <<"Max">> => float(),
 %%   <<"Min">> => float()
@@ -11617,6 +11839,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DeviceOptions">> => modify_verified_access_trust_provider_device_options(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"NativeApplicationOidcOptions">> => modify_verified_access_native_application_oidc_options(),
 %%   <<"OidcOptions">> => modify_verified_access_trust_provider_oidc_options(),
 %%   <<"SseSpecification">> => verified_access_sse_specification_request(),
 %%   <<"VerifiedAccessTrustProviderId">> := string()
@@ -11970,6 +12193,13 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type copy_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_verified_access_endpoint_port_range() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"ToPort">> => integer()
+%% }
+-type modify_verified_access_endpoint_port_range() :: #{binary() => any()}.
 
 %% Example:
 %% modify_local_gateway_route_result() :: #{
@@ -12376,6 +12606,13 @@
 -type describe_instance_topology_result() :: #{binary() => any()}.
 
 %% Example:
+%% verified_access_instance_custom_sub_domain() :: #{
+%%   <<"Nameservers">> => list(string()()),
+%%   <<"SubDomain">> => string()
+%% }
+-type verified_access_instance_custom_sub_domain() :: #{binary() => any()}.
+
+%% Example:
 %% device_options() :: #{
 %%   <<"PublicSigningKeyUrl">> => string(),
 %%   <<"TenantId">> => string()
@@ -12425,9 +12662,11 @@
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"PolicyDocument">> => string(),
 %%   <<"PrivateDnsEnabled">> => boolean(),
+%%   <<"ResourceConfigurationArn">> => string(),
 %%   <<"RouteTableIds">> => list(string()()),
 %%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"ServiceName">> := string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceNetworkArn">> => string(),
 %%   <<"ServiceRegion">> => string(),
 %%   <<"SubnetConfigurations">> => list(subnet_configuration()()),
 %%   <<"SubnetIds">> => list(string()()),
@@ -12491,6 +12730,13 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type export_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_endpoint_associations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association()())
+%% }
+-type describe_vpc_endpoint_associations_result() :: #{binary() => any()}.
 
 %% Example:
 %% accelerator_total_memory_mi_b_request() :: #{
@@ -12568,6 +12814,12 @@
 %%   <<"VerifiedAccessTrustProvider">> => verified_access_trust_provider()
 %% }
 -type delete_verified_access_trust_provider_result() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_declarative_policies_report_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type cancel_declarative_policies_report_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_transit_gateway_attachment_propagations_result() :: #{
@@ -13154,6 +13406,7 @@
 %%   <<"TpmSupport">> => list(any()),
 %%   <<"ImageLocation">> => string(),
 %%   <<"UsageOperation">> => string(),
+%%   <<"ImageAllowed">> => boolean(),
 %%   <<"DeregistrationProtection">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"VirtualizationType">> => list(any()),
@@ -13858,6 +14111,15 @@
 -type modify_instance_credit_specification_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_declarative_policies_reports_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReportIds">> => list(string()())
+%% }
+-type describe_declarative_policies_reports_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_launch_template_versions_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"LaunchTemplateId">> => string(),
@@ -14058,6 +14320,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_local_gateway_route_table_virtual_interface_group_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_verified_access_endpoint_cidr_options() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type create_verified_access_endpoint_cidr_options() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpcs_request() :: #{
@@ -14437,6 +14708,14 @@
 -type coip_cidr() :: #{binary() => any()}.
 
 %% Example:
+%% get_allowed_images_settings_result() :: #{
+%%   <<"ImageCriteria">> => list(image_criterion()()),
+%%   <<"ManagedBy">> => list(any()),
+%%   <<"State">> => string()
+%% }
+-type get_allowed_images_settings_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_reserved_instances_listing_request() :: #{
 %%   <<"ClientToken">> := string(),
 %%   <<"InstanceCount">> := integer(),
@@ -14460,6 +14739,13 @@
 %%   <<"TagSpecifications">> => list(tag_specification()())
 %% }
 -type copy_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_declarative_policies_reports_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Reports">> => list(declarative_policies_report()())
+%% }
+-type describe_declarative_policies_reports_result() :: #{binary() => any()}.
 
 %% Example:
 %% instance_monitoring() :: #{
@@ -14569,17 +14855,19 @@
 
 %% Example:
 %% create_verified_access_endpoint_request() :: #{
-%%   <<"ApplicationDomain">> := string(),
+%%   <<"ApplicationDomain">> => string(),
 %%   <<"AttachmentType">> := list(any()),
+%%   <<"CidrOptions">> => create_verified_access_endpoint_cidr_options(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"DomainCertificateArn">> := string(),
+%%   <<"DomainCertificateArn">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"EndpointDomainPrefix">> := string(),
+%%   <<"EndpointDomainPrefix">> => string(),
 %%   <<"EndpointType">> := list(any()),
 %%   <<"LoadBalancerOptions">> => create_verified_access_endpoint_load_balancer_options(),
 %%   <<"NetworkInterfaceOptions">> => create_verified_access_endpoint_eni_options(),
 %%   <<"PolicyDocument">> => string(),
+%%   <<"RdsOptions">> => create_verified_access_endpoint_rds_options(),
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SseSpecification">> => verified_access_sse_specification_request(),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
@@ -14689,8 +14977,10 @@
 %% vpc_block_public_access_options() :: #{
 %%   <<"AwsAccountId">> => string(),
 %%   <<"AwsRegion">> => string(),
+%%   <<"ExclusionsAllowed">> => list(any()),
 %%   <<"InternetGatewayBlockMode">> => list(any()),
 %%   <<"LastUpdateTimestamp">> => non_neg_integer(),
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"Reason">> => string(),
 %%   <<"State">> => list(any())
 %% }
@@ -14762,6 +15052,7 @@
 %% verified_access_endpoint_load_balancer_options() :: #{
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()()),
 %%   <<"Protocol">> => list(any()),
 %%   <<"SubnetIds">> => list(string()())
 %% }
@@ -14877,6 +15168,13 @@
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
 -type deregister_transit_gateway_multicast_group_members_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_verified_access_instance_client_configuration_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"VerifiedAccessInstanceId">> := string()
+%% }
+-type export_verified_access_instance_client_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_fleet_error_item() :: #{
@@ -15166,6 +15464,19 @@
 %%   <<"TotalInstanceCount">> => integer()
 %% }
 -type get_capacity_reservation_usage_result() :: #{binary() => any()}.
+
+%% Example:
+%% declarative_policies_report() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ReportId">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetId">> => string()
+%% }
+-type declarative_policies_report() :: #{binary() => any()}.
 
 %% Example:
 %% ipam_discovered_account() :: #{
@@ -16079,6 +16390,19 @@
 -type modify_address_attribute_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_verified_access_native_application_oidc_options() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"PublicSigningKeyEndpoint">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type modify_verified_access_native_application_oidc_options() :: #{binary() => any()}.
+
+%% Example:
 %% import_snapshot_task() :: #{
 %%   <<"Description">> => string(),
 %%   <<"ImportTaskId">> => string(),
@@ -16138,6 +16462,15 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type delete_launch_template_versions_response_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_verified_access_endpoint_targets_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VerifiedAccessEndpointId">> := string()
+%% }
+-type get_verified_access_endpoint_targets_request() :: #{binary() => any()}.
 
 %% Example:
 %% security_group_reference() :: #{
@@ -16342,6 +16675,12 @@
 -type modify_vpn_tunnel_certificate_request() :: #{binary() => any()}.
 
 %% Example:
+%% disable_allowed_images_settings_result() :: #{
+%%   <<"AllowedImagesSettingsState">> => list(any())
+%% }
+-type disable_allowed_images_settings_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_vpc_endpoint_result() :: #{
 %%   <<"Return">> => boolean()
 %% }
@@ -16506,6 +16845,12 @@
 %%   <<"HostIds">> := list(string()())
 %% }
 -type release_hosts_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_allowed_images_settings_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type get_allowed_images_settings_request() :: #{binary() => any()}.
 
 %% Example:
 %% verified_access_sse_specification_response() :: #{
@@ -16781,6 +17126,14 @@
 -type referenced_security_group() :: #{binary() => any()}.
 
 %% Example:
+%% regional_summary() :: #{
+%%   <<"NumberOfMatchedAccounts">> => integer(),
+%%   <<"NumberOfUnmatchedAccounts">> => integer(),
+%%   <<"RegionName">> => string()
+%% }
+-type regional_summary() :: #{binary() => any()}.
+
+%% Example:
 %% revoke_security_group_ingress_result() :: #{
 %%   <<"Return">> => boolean(),
 %%   <<"RevokedSecurityGroupRules">> => list(revoked_security_group_rule()()),
@@ -16877,6 +17230,7 @@
 %% create_verified_access_endpoint_load_balancer_options() :: #{
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()()),
 %%   <<"Protocol">> => list(any()),
 %%   <<"SubnetIds">> => list(string()())
 %% }
@@ -17139,6 +17493,13 @@
 -type disk_info() :: #{binary() => any()}.
 
 %% Example:
+%% get_declarative_policies_report_summary_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ReportId">> := string()
+%% }
+-type get_declarative_policies_report_summary_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_public_ipv4_pool_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"NetworkBorderGroup">> => string(),
@@ -17188,6 +17549,13 @@
 %%   <<"PerHourPartition">> => boolean()
 %% }
 -type destination_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_declarative_policies_report_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ReportId">> := string()
+%% }
+-type cancel_declarative_policies_report_request() :: #{binary() => any()}.
 
 %% Example:
 %% ipv6_prefix_specification_response() :: #{
@@ -17279,6 +17647,7 @@
 %%   <<"DeviceOptions">> => create_verified_access_trust_provider_device_options(),
 %%   <<"DeviceTrustProviderType">> => list(any()),
 %%   <<"DryRun">> => boolean(),
+%%   <<"NativeApplicationOidcOptions">> => create_verified_access_native_application_oidc_options(),
 %%   <<"OidcOptions">> => create_verified_access_trust_provider_oidc_options(),
 %%   <<"PolicyReferenceName">> := string(),
 %%   <<"SseSpecification">> => verified_access_sse_specification_request(),
@@ -17381,6 +17750,20 @@
 %%   <<"RegionName">> => string()
 %% }
 -type add_ipam_operating_region() :: #{binary() => any()}.
+
+%% Example:
+%% get_declarative_policies_report_summary_result() :: #{
+%%   <<"AttributeSummaries">> => list(attribute_summary()()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NumberOfAccounts">> => integer(),
+%%   <<"NumberOfFailedAccounts">> => integer(),
+%%   <<"ReportId">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TargetId">> => string()
+%% }
+-type get_declarative_policies_report_summary_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vpn_connection_request() :: #{
@@ -17579,6 +17962,12 @@
 -type stop_instances_result() :: #{binary() => any()}.
 
 %% Example:
+%% image_criterion_request() :: #{
+%%   <<"ImageProviders">> => list(string()())
+%% }
+-type image_criterion_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_instance_metadata_defaults_result() :: #{
 %%   <<"AccountLevel">> => instance_metadata_defaults_response()
 %% }
@@ -17586,7 +17975,8 @@
 
 %% Example:
 %% get_image_block_public_access_state_result() :: #{
-%%   <<"ImageBlockPublicAccessState">> => string()
+%%   <<"ImageBlockPublicAccessState">> => string(),
+%%   <<"ManagedBy">> => list(any())
 %% }
 -type get_image_block_public_access_state_result() :: #{binary() => any()}.
 
@@ -17763,6 +18153,17 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_verified_access_instance_client_configuration_result() :: #{
+%%   <<"DeviceTrustProviders">> => list(list(any())()),
+%%   <<"OpenVpnConfigurations">> => list(verified_access_instance_open_vpn_client_configuration()()),
+%%   <<"Region">> => string(),
+%%   <<"UserTrustProvider">> => verified_access_instance_user_trust_provider_client_configuration(),
+%%   <<"VerifiedAccessInstanceId">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type export_verified_access_instance_client_configuration_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_egress_only_internet_gateway_result() :: #{
@@ -18048,6 +18449,13 @@
 -type detach_vpn_gateway_request() :: #{binary() => any()}.
 
 %% Example:
+%% replace_image_criteria_in_allowed_images_settings_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageCriteria">> => list(image_criterion_request()())
+%% }
+-type replace_image_criteria_in_allowed_images_settings_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_network_insights_paths_result() :: #{
 %%   <<"NetworkInsightsPaths">> => list(network_insights_path()()),
 %%   <<"NextToken">> => string()
@@ -18071,7 +18479,9 @@
 %%   <<"HttpEndpoint">> => list(any()),
 %%   <<"HttpPutResponseHopLimit">> => integer(),
 %%   <<"HttpTokens">> => list(any()),
-%%   <<"InstanceMetadataTags">> => list(any())
+%%   <<"InstanceMetadataTags">> => list(any()),
+%%   <<"ManagedBy">> => list(any()),
+%%   <<"ManagedExceptionMessage">> => string()
 %% }
 -type instance_metadata_defaults_response() :: #{binary() => any()}.
 
@@ -18338,6 +18748,7 @@
 
 %% Example:
 %% get_serial_console_access_status_result() :: #{
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"SerialConsoleAccessEnabled">> => boolean()
 %% }
 -type get_serial_console_access_status_result() :: #{binary() => any()}.
@@ -18355,6 +18766,13 @@
 %%   <<"LambdaFunctionArn">> => string()
 %% }
 -type client_connect_options() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_ip_prefixes() :: #{
+%%   <<"IpPrefixes">> => list(string()()),
+%%   <<"SubnetId">> => string()
+%% }
+-type subnet_ip_prefixes() :: #{binary() => any()}.
 
 %% Example:
 %% rule_option() :: #{
@@ -18618,6 +19036,7 @@
 
 %% Example:
 %% verified_access_instance() :: #{
+%%   <<"CidrEndpointsCustomSubDomain">> => verified_access_instance_custom_sub_domain(),
 %%   <<"CreationTime">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"FipsEnabled">> => boolean(),
@@ -18790,6 +19209,7 @@
 
 %% Example:
 %% create_verified_access_instance_request() :: #{
+%%   <<"CidrEndpointsCustomSubDomain">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -18859,6 +19279,28 @@
 %%   <<"Principal">> => string()
 %% }
 -type operator_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_endpoint_associations_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointIds">> => list(string()())
+%% }
+-type describe_vpc_endpoint_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_verified_access_endpoint_rds_options() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RdsDbClusterArn">> => string(),
+%%   <<"RdsDbInstanceArn">> => string(),
+%%   <<"RdsDbProxyArn">> => string(),
+%%   <<"RdsEndpoint">> => string(),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type create_verified_access_endpoint_rds_options() :: #{binary() => any()}.
 
 %% Example:
 %% delete_placement_group_request() :: #{
@@ -19103,6 +19545,14 @@
 %%   <<"HostnameType">> => list(any())
 %% }
 -type private_dns_name_options_on_launch() :: #{binary() => any()}.
+
+%% Example:
+%% modify_verified_access_endpoint_rds_options() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"RdsEndpoint">> => string(),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type modify_verified_access_endpoint_rds_options() :: #{binary() => any()}.
 
 %% Example:
 %% purchase_reserved_instances_offering_request() :: #{
@@ -20398,6 +20848,32 @@ cancel_conversion_task(Client, Input)
 cancel_conversion_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelConversionTask">>, Input, Options).
+
+%% @doc Cancels the generation of an account status report.
+%%
+%% You can only cancel a report while it has the `running' status.
+%% Reports
+%% with other statuses (`complete', `cancelled', or
+%% `error') can't be canceled.
+%%
+%% For more information, see Generating the account status report for
+%% declarative policies:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_status-report.html
+%% in the
+%% Amazon Web Services Organizations User Guide.
+-spec cancel_declarative_policies_report(aws_client:aws_client(), cancel_declarative_policies_report_request()) ->
+    {ok, cancel_declarative_policies_report_result(), tuple()} |
+    {error, any()}.
+cancel_declarative_policies_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_declarative_policies_report(Client, Input, []).
+
+-spec cancel_declarative_policies_report(aws_client:aws_client(), cancel_declarative_policies_report_request(), proplists:proplist()) ->
+    {ok, cancel_declarative_policies_report_result(), tuple()} |
+    {error, any()}.
+cancel_declarative_policies_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelDeclarativePoliciesReport">>, Input, Options).
 
 %% @doc Cancels an active export task.
 %%
@@ -25193,6 +25669,41 @@ describe_customer_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomerGateways">>, Input, Options).
 
+%% @doc Describes the metadata of an account status report, including the
+%% status of the
+%% report.
+%%
+%% To view the full report, download it from the Amazon S3 bucket where it
+%% was saved.
+%% Reports are accessible only when they have the `complete' status.
+%% Reports
+%% with other statuses (`running', `cancelled', or
+%% `error') are not available in the S3 bucket. For more information
+%% about
+%% downloading objects from an S3 bucket, see Downloading objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/download-objects.html
+%% in
+%% the Amazon Simple Storage Service User Guide.
+%%
+%% For more information, see Generating the account status report for
+%% declarative policies:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_status-report.html
+%% in the
+%% Amazon Web Services Organizations User Guide.
+-spec describe_declarative_policies_reports(aws_client:aws_client(), describe_declarative_policies_reports_request()) ->
+    {ok, describe_declarative_policies_reports_result(), tuple()} |
+    {error, any()}.
+describe_declarative_policies_reports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_declarative_policies_reports(Client, Input, []).
+
+-spec describe_declarative_policies_reports(aws_client:aws_client(), describe_declarative_policies_reports_request(), proplists:proplist()) ->
+    {ok, describe_declarative_policies_reports_result(), tuple()} |
+    {error, any()}.
+describe_declarative_policies_reports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDeclarativePoliciesReports">>, Input, Options).
+
 %% @doc Describes your DHCP option sets.
 %%
 %% The default is to describe all your DHCP option sets.
@@ -25662,6 +26173,16 @@ describe_image_attribute(Client, Input, Options)
 %% that the AMI ID
 %% cannot be found.
 %%
+%% When Allowed AMIs is set to `enabled', only allowed images are
+%% returned in the
+%% results, with the `imageAllowed' field set to `true' for each
+%% image. In
+%% `audit-mode', the `imageAllowed' field is set to `true' for
+%% images that meet the account's Allowed AMIs criteria, and `false'
+%% for images that
+%% don't meet the criteria. For more information, see
+%% `EnableAllowedImagesSettings'.
+%%
 %% We strongly recommend using only paginated requests. Unpaginated requests
 %% are
 %% susceptible to throttling and timeouts.
@@ -25858,8 +26379,9 @@ describe_instance_event_windows(Client, Input, Options)
 
 %% @doc Describes the AMI that was used to launch an instance, even if the
 %% AMI is deprecated,
-%% deregistered, or made private (no longer public or shared with your
-%% account).
+%% deregistered, made private (no longer public or shared with your account),
+%% or not
+%% allowed.
 %%
 %% If you specify instance IDs, the output includes information for only the
 %% specified
@@ -28043,6 +28565,23 @@ describe_vpc_classic_link_dns_support(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcClassicLinkDnsSupport">>, Input, Options).
 
+%% @doc Describes the VPC resources, VPC endpoint services, Amazon Lattice
+%% services, or service networks
+%% associated with the VPC endpoint.
+-spec describe_vpc_endpoint_associations(aws_client:aws_client(), describe_vpc_endpoint_associations_request()) ->
+    {ok, describe_vpc_endpoint_associations_result(), tuple()} |
+    {error, any()}.
+describe_vpc_endpoint_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vpc_endpoint_associations(Client, Input, []).
+
+-spec describe_vpc_endpoint_associations(aws_client:aws_client(), describe_vpc_endpoint_associations_request(), proplists:proplist()) ->
+    {ok, describe_vpc_endpoint_associations_result(), tuple()} |
+    {error, any()}.
+describe_vpc_endpoint_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVpcEndpointAssociations">>, Input, Options).
+
 %% @doc Describes the connection notifications for VPC endpoints and VPC
 %% endpoint
 %% services.
@@ -28398,6 +28937,41 @@ disable_address_transfer(Client, Input)
 disable_address_transfer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAddressTransfer">>, Input, Options).
+
+%% @doc Disables Allowed AMIs for your account in the specified Amazon Web
+%% Services Region.
+%%
+%% When set to
+%% `disabled', the image criteria in your Allowed AMIs settings do not
+%% apply, and no
+%% restrictions are placed on AMI discoverability or usage. Users in your
+%% account can launch
+%% instances using any public AMI or AMI shared with your account.
+%%
+%% The Allowed AMIs feature does not restrict the AMIs owned by your account.
+%% Regardless of
+%% the criteria you set, the AMIs created by your account will always be
+%% discoverable and
+%% usable by users in your account.
+%%
+%% For more information, see Control the discovery and use of AMIs in
+%% Amazon EC2 with Allowed AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html
+%% in
+%% Amazon EC2 User Guide.
+-spec disable_allowed_images_settings(aws_client:aws_client(), disable_allowed_images_settings_request()) ->
+    {ok, disable_allowed_images_settings_result(), tuple()} |
+    {error, any()}.
+disable_allowed_images_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_allowed_images_settings(Client, Input, []).
+
+-spec disable_allowed_images_settings(aws_client:aws_client(), disable_allowed_images_settings_request(), proplists:proplist()) ->
+    {ok, disable_allowed_images_settings_result(), tuple()} |
+    {error, any()}.
+disable_allowed_images_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableAllowedImagesSettings">>, Input, Options).
 
 %% @doc Disables Infrastructure Performance metric subscriptions.
 -spec disable_aws_network_performance_metric_subscription(aws_client:aws_client(), disable_aws_network_performance_metric_subscription_request()) ->
@@ -29148,6 +29722,58 @@ enable_address_transfer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAddressTransfer">>, Input, Options).
 
+%% @doc Enables Allowed AMIs for your account in the specified Amazon Web
+%% Services Region.
+%%
+%% Two values are
+%% accepted:
+%%
+%% `enabled': The image criteria in your Allowed AMIs settings are
+%% applied. As
+%% a result, only AMIs matching these criteria are discoverable and can be
+%% used by your
+%% account to launch instances.
+%%
+%% `audit-mode': The image criteria in your Allowed AMIs settings are not
+%% applied. No restrictions are placed on AMI discoverability or usage. Users
+%% in your account
+%% can launch instances using any public AMI or AMI shared with your account.
+%%
+%% The purpose of `audit-mode' is to indicate which AMIs will be affected
+%% when
+%% Allowed AMIs is `enabled'. In `audit-mode', each AMI displays
+%% either
+%% `&quot;ImageAllowed&quot;: true' or `&quot;ImageAllowed&quot;:
+%% false' to indicate
+%% whether the AMI will be discoverable and available to users in the account
+%% when Allowed
+%% AMIs is enabled.
+%%
+%% The Allowed AMIs feature does not restrict the AMIs owned by your account.
+%% Regardless of
+%% the criteria you set, the AMIs created by your account will always be
+%% discoverable and
+%% usable by users in your account.
+%%
+%% For more information, see Control the discovery and use of AMIs in
+%% Amazon EC2 with Allowed AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html
+%% in
+%% Amazon EC2 User Guide.
+-spec enable_allowed_images_settings(aws_client:aws_client(), enable_allowed_images_settings_request()) ->
+    {ok, enable_allowed_images_settings_result(), tuple()} |
+    {error, any()}.
+enable_allowed_images_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_allowed_images_settings(Client, Input, []).
+
+-spec enable_allowed_images_settings(aws_client:aws_client(), enable_allowed_images_settings_request(), proplists:proplist()) ->
+    {ok, enable_allowed_images_settings_result(), tuple()} |
+    {error, any()}.
+enable_allowed_images_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableAllowedImagesSettings">>, Input, Options).
+
 %% @doc Enables Infrastructure Performance subscriptions.
 -spec enable_aws_network_performance_metric_subscription(aws_client:aws_client(), enable_aws_network_performance_metric_subscription_request()) ->
     {ok, enable_aws_network_performance_metric_subscription_result(), tuple()} |
@@ -29668,6 +30294,50 @@ export_transit_gateway_routes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportTransitGatewayRoutes">>, Input, Options).
 
+%% @doc Exports the client configuration for a Verified Access instance.
+-spec export_verified_access_instance_client_configuration(aws_client:aws_client(), export_verified_access_instance_client_configuration_request()) ->
+    {ok, export_verified_access_instance_client_configuration_result(), tuple()} |
+    {error, any()}.
+export_verified_access_instance_client_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_verified_access_instance_client_configuration(Client, Input, []).
+
+-spec export_verified_access_instance_client_configuration(aws_client:aws_client(), export_verified_access_instance_client_configuration_request(), proplists:proplist()) ->
+    {ok, export_verified_access_instance_client_configuration_result(), tuple()} |
+    {error, any()}.
+export_verified_access_instance_client_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportVerifiedAccessInstanceClientConfiguration">>, Input, Options).
+
+%% @doc Gets the current state of the Allowed AMIs setting and the list of
+%% Allowed AMIs criteria
+%% at the account level in the specified Region.
+%%
+%% The Allowed AMIs feature does not restrict the AMIs owned by your account.
+%% Regardless of
+%% the criteria you set, the AMIs created by your account will always be
+%% discoverable and
+%% usable by users in your account.
+%%
+%% For more information, see Control the discovery and use of AMIs in
+%% Amazon EC2 with Allowed AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html
+%% in
+%% Amazon EC2 User Guide.
+-spec get_allowed_images_settings(aws_client:aws_client(), get_allowed_images_settings_request()) ->
+    {ok, get_allowed_images_settings_result(), tuple()} |
+    {error, any()}.
+get_allowed_images_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_allowed_images_settings(Client, Input, []).
+
+-spec get_allowed_images_settings(aws_client:aws_client(), get_allowed_images_settings_request(), proplists:proplist()) ->
+    {ok, get_allowed_images_settings_result(), tuple()} |
+    {error, any()}.
+get_allowed_images_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAllowedImagesSettings">>, Input, Options).
+
 %% @doc Returns the IAM roles that are associated with the specified ACM
 %% (ACM) certificate.
 %%
@@ -29807,6 +30477,39 @@ get_console_screenshot(Client, Input)
 get_console_screenshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConsoleScreenshot">>, Input, Options).
+
+%% @doc Retrieves a summary of the account status report.
+%%
+%% To view the full report, download it from the Amazon S3 bucket where it
+%% was saved.
+%% Reports are accessible only when they have the `complete' status.
+%% Reports
+%% with other statuses (`running', `cancelled', or
+%% `error') are not available in the S3 bucket. For more information
+%% about
+%% downloading objects from an S3 bucket, see Downloading objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/download-objects.html
+%% in
+%% the Amazon Simple Storage Service User Guide.
+%%
+%% For more information, see Generating the account status report for
+%% declarative policies:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_status-report.html
+%% in the
+%% Amazon Web Services Organizations User Guide.
+-spec get_declarative_policies_report_summary(aws_client:aws_client(), get_declarative_policies_report_summary_request()) ->
+    {ok, get_declarative_policies_report_summary_result(), tuple()} |
+    {error, any()}.
+get_declarative_policies_report_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_declarative_policies_report_summary(Client, Input, []).
+
+-spec get_declarative_policies_report_summary(aws_client:aws_client(), get_declarative_policies_report_summary_request(), proplists:proplist()) ->
+    {ok, get_declarative_policies_report_summary_result(), tuple()} |
+    {error, any()}.
+get_declarative_policies_report_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeclarativePoliciesReportSummary">>, Input, Options).
 
 %% @doc Describes the default credit option for CPU usage of a burstable
 %% performance instance
@@ -30609,6 +31312,22 @@ get_verified_access_endpoint_policy(Client, Input)
 get_verified_access_endpoint_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVerifiedAccessEndpointPolicy">>, Input, Options).
+
+%% @doc Gets the targets for the specified network CIDR endpoint for Verified
+%% Access.
+-spec get_verified_access_endpoint_targets(aws_client:aws_client(), get_verified_access_endpoint_targets_request()) ->
+    {ok, get_verified_access_endpoint_targets_result(), tuple()} |
+    {error, any()}.
+get_verified_access_endpoint_targets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_verified_access_endpoint_targets(Client, Input, []).
+
+-spec get_verified_access_endpoint_targets(aws_client:aws_client(), get_verified_access_endpoint_targets_request(), proplists:proplist()) ->
+    {ok, get_verified_access_endpoint_targets_result(), tuple()} |
+    {error, any()}.
+get_verified_access_endpoint_targets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetVerifiedAccessEndpointTargets">>, Input, Options).
 
 %% @doc Shows the contents of the Verified Access policy associated with the
 %% group.
@@ -33467,6 +34186,33 @@ replace_iam_instance_profile_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReplaceIamInstanceProfileAssociation">>, Input, Options).
 
+%% @doc Sets or replaces the criteria for Allowed AMIs.
+%%
+%% The Allowed AMIs feature does not restrict the AMIs owned by your account.
+%% Regardless of
+%% the criteria you set, the AMIs created by your account will always be
+%% discoverable and
+%% usable by users in your account.
+%%
+%% For more information, see Control the discovery and use of AMIs in
+%% Amazon EC2 with Allowed AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html
+%% in
+%% Amazon EC2 User Guide.
+-spec replace_image_criteria_in_allowed_images_settings(aws_client:aws_client(), replace_image_criteria_in_allowed_images_settings_request()) ->
+    {ok, replace_image_criteria_in_allowed_images_settings_result(), tuple()} |
+    {error, any()}.
+replace_image_criteria_in_allowed_images_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    replace_image_criteria_in_allowed_images_settings(Client, Input, []).
+
+-spec replace_image_criteria_in_allowed_images_settings(aws_client:aws_client(), replace_image_criteria_in_allowed_images_settings_request(), proplists:proplist()) ->
+    {ok, replace_image_criteria_in_allowed_images_settings_result(), tuple()} |
+    {error, any()}.
+replace_image_criteria_in_allowed_images_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ReplaceImageCriteriaInAllowedImagesSettings">>, Input, Options).
+
 %% @doc Changes which network ACL a subnet is associated with.
 %%
 %% By default when you create a
@@ -34265,6 +35011,77 @@ send_diagnostic_interrupt(Client, Input)
 send_diagnostic_interrupt(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendDiagnosticInterrupt">>, Input, Options).
+
+%% @doc Generates an account status report.
+%%
+%% The report is generated asynchronously, and can
+%% take several hours to complete.
+%%
+%% The report provides the current status of all attributes supported by
+%% declarative
+%% policies for the accounts within the specified scope. The scope is
+%% determined by the
+%% specified `TargetId', which can represent an individual account, or
+%% all the
+%% accounts that fall under the specified organizational unit (OU) or root
+%% (the entire
+%% Amazon Web Services Organization).
+%%
+%% The report is saved to your specified S3 bucket, using the following path
+%% structure
+%% (with the italicized placeholders representing your specific
+%% values):
+%%
+%% `s3://amzn-s3-demo-bucket/your-optional-s3-prefix/ec2_targetId_reportId_yyyyMMddThhmmZ.csv'
+%%
+%% == Prerequisites for generating a report ==
+%%
+%% The `StartDeclarativePoliciesReport' API can only be called by the
+%% management account or delegated administrators for the organization.
+%%
+%% An S3 bucket must be available before generating the report (you can
+%% create a
+%% new one or use an existing one), and it must have an appropriate bucket
+%% policy.
+%% For a sample S3 policy, see Sample Amazon S3 policy under
+%% .
+%%
+%% Trusted access must be enabled for the service for which the declarative
+%% policy will enforce a baseline configuration. If you use the Amazon Web
+%% Services Organizations
+%% console, this is done automatically when you enable declarative policies.
+%% The
+%% API uses the following service principal to identify the EC2 service:
+%% `ec2.amazonaws.com'. For more information on how to enable
+%% trusted access with the Amazon Web Services CLI and Amazon Web Services
+%% SDKs, see Using
+%% Organizations with other Amazon Web Services services:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html
+%% in the
+%% Amazon Web Services Organizations User Guide.
+%%
+%% Only one report per organization can be generated at a time. Attempting to
+%% generate a report while another is in progress will result in an error.
+%%
+%% For more information, including the required IAM permissions to run this
+%% API, see
+%% Generating the account status report for declarative policies:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_status-report.html
+%% in the
+%% Amazon Web Services Organizations User Guide.
+-spec start_declarative_policies_report(aws_client:aws_client(), start_declarative_policies_report_request()) ->
+    {ok, start_declarative_policies_report_result(), tuple()} |
+    {error, any()}.
+start_declarative_policies_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_declarative_policies_report(Client, Input, []).
+
+-spec start_declarative_policies_report(aws_client:aws_client(), start_declarative_policies_report_request(), proplists:proplist()) ->
+    {ok, start_declarative_policies_report_result(), tuple()} |
+    {error, any()}.
+start_declarative_policies_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDeclarativePoliciesReport">>, Input, Options).
 
 %% @doc Starts an Amazon EBS-backed instance that you've previously
 %% stopped.

@@ -48,6 +48,8 @@
          delete_voice_connector/4,
          delete_voice_connector_emergency_calling_configuration/3,
          delete_voice_connector_emergency_calling_configuration/4,
+         delete_voice_connector_external_systems_configuration/3,
+         delete_voice_connector_external_systems_configuration/4,
          delete_voice_connector_group/3,
          delete_voice_connector_group/4,
          delete_voice_connector_origination/3,
@@ -104,6 +106,9 @@
          get_voice_connector_emergency_calling_configuration/2,
          get_voice_connector_emergency_calling_configuration/4,
          get_voice_connector_emergency_calling_configuration/5,
+         get_voice_connector_external_systems_configuration/2,
+         get_voice_connector_external_systems_configuration/4,
+         get_voice_connector_external_systems_configuration/5,
          get_voice_connector_group/2,
          get_voice_connector_group/4,
          get_voice_connector_group/5,
@@ -179,6 +184,8 @@
          put_sip_media_application_logging_configuration/4,
          put_voice_connector_emergency_calling_configuration/3,
          put_voice_connector_emergency_calling_configuration/4,
+         put_voice_connector_external_systems_configuration/3,
+         put_voice_connector_external_systems_configuration/4,
          put_voice_connector_logging_configuration/3,
          put_voice_connector_logging_configuration/4,
          put_voice_connector_origination/3,
@@ -235,6 +242,14 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% put_voice_connector_external_systems_configuration_request() :: #{
+%%   <<"ContactCenterSystemTypes">> => list(list(any())()),
+%%   <<"SessionBorderControllerTypes">> => list(list(any())())
+%% }
+-type put_voice_connector_external_systems_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -782,6 +797,13 @@
 
 
 %% Example:
+%% get_voice_connector_external_systems_configuration_response() :: #{
+%%   <<"ExternalSystemsConfiguration">> => external_systems_configuration()
+%% }
+-type get_voice_connector_external_systems_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"TagKeys">> := list(string()())
@@ -818,6 +840,14 @@
 %%   <<"ProductType">> := list(any())
 %% }
 -type create_phone_number_order_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_systems_configuration() :: #{
+%%   <<"ContactCenterSystemTypes">> => list(list(any())()),
+%%   <<"SessionBorderControllerTypes">> => list(list(any())())
+%% }
+-type external_systems_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_sip_media_application_request() :: #{}
@@ -869,6 +899,13 @@
 %%   <<"EnableSIPLogs">> => boolean()
 %% }
 -type logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_external_systems_configuration_response() :: #{
+%%   <<"ExternalSystemsConfiguration">> => external_systems_configuration()
+%% }
+-type put_voice_connector_external_systems_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1179,6 +1216,7 @@
 %% Example:
 %% create_voice_connector_request() :: #{
 %%   <<"AwsRegion">> => list(any()),
+%%   <<"IntegrationType">> => list(any()),
 %%   <<"Name">> := string(),
 %%   <<"RequireEncryption">> := boolean(),
 %%   <<"Tags">> => list(tag()())
@@ -1278,6 +1316,7 @@
 %% voice_connector() :: #{
 %%   <<"AwsRegion">> => list(any()),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"IntegrationType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"OutboundHostName">> => string(),
 %%   <<"RequireEncryption">> => boolean(),
@@ -1459,6 +1498,10 @@
 -type get_sip_rule_request() :: #{}.
 
 %% Example:
+%% get_voice_connector_external_systems_configuration_request() :: #{}
+-type get_voice_connector_external_systems_configuration_request() :: #{}.
+
+%% Example:
 %% get_voice_connector_proxy_request() :: #{}
 -type get_voice_connector_proxy_request() :: #{}.
 
@@ -1473,6 +1516,10 @@
 %% Example:
 %% get_sip_media_application_logging_configuration_request() :: #{}
 -type get_sip_media_application_logging_configuration_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_external_systems_configuration_request() :: #{}
+-type delete_voice_connector_external_systems_configuration_request() :: #{}.
 
 %% Example:
 %% stop_voice_tone_analysis_task_request() :: #{}
@@ -2119,6 +2166,15 @@
     forbidden_exception() | 
     service_failure_exception().
 
+-type delete_voice_connector_external_systems_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
 -type delete_voice_connector_group_errors() ::
     bad_request_exception() | 
     service_unavailable_exception() | 
@@ -2314,6 +2370,15 @@
     service_failure_exception().
 
 -type get_voice_connector_emergency_calling_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_external_systems_configuration_errors() ::
     bad_request_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
@@ -2548,6 +2613,16 @@
     bad_request_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_external_systems_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
     throttled_client_exception() | 
     unauthorized_client_exception() | 
     forbidden_exception() | 
@@ -3560,6 +3635,40 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the external systems configuration for a Voice Connector.
+-spec delete_voice_connector_external_systems_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_external_systems_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_external_systems_configuration_errors(), tuple()}.
+delete_voice_connector_external_systems_configuration(Client, VoiceConnectorId, Input) ->
+    delete_voice_connector_external_systems_configuration(Client, VoiceConnectorId, Input, []).
+
+-spec delete_voice_connector_external_systems_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_external_systems_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_external_systems_configuration_errors(), tuple()}.
+delete_voice_connector_external_systems_configuration(Client, VoiceConnectorId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/external-systems-configuration"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an Amazon Chime SDK Voice Connector group.
 %%
 %% Any `VoiceConnectorItems'
@@ -4376,6 +4485,44 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about an external systems configuration for a Voice
+%% Connector.
+-spec get_voice_connector_external_systems_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_external_systems_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_external_systems_configuration_errors(), tuple()}.
+get_voice_connector_external_systems_configuration(Client, VoiceConnectorId)
+  when is_map(Client) ->
+    get_voice_connector_external_systems_configuration(Client, VoiceConnectorId, #{}, #{}).
+
+-spec get_voice_connector_external_systems_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_external_systems_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_external_systems_configuration_errors(), tuple()}.
+get_voice_connector_external_systems_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_connector_external_systems_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+-spec get_voice_connector_external_systems_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_external_systems_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_external_systems_configuration_errors(), tuple()}.
+get_voice_connector_external_systems_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/external-systems-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5423,6 +5570,40 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds an external systems configuration to a Voice Connector.
+-spec put_voice_connector_external_systems_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_external_systems_configuration_request()) ->
+    {ok, put_voice_connector_external_systems_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_external_systems_configuration_errors(), tuple()}.
+put_voice_connector_external_systems_configuration(Client, VoiceConnectorId, Input) ->
+    put_voice_connector_external_systems_configuration(Client, VoiceConnectorId, Input, []).
+
+-spec put_voice_connector_external_systems_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_external_systems_configuration_request(), proplists:proplist()) ->
+    {ok, put_voice_connector_external_systems_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_external_systems_configuration_errors(), tuple()}.
+put_voice_connector_external_systems_configuration(Client, VoiceConnectorId, Input0, Options0) ->
+    Method = put,
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/external-systems-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
