@@ -87,6 +87,8 @@
          delete_data_set_refresh_properties/5,
          delete_data_source/4,
          delete_data_source/5,
+         delete_default_q_business_application/3,
+         delete_default_q_business_application/4,
          delete_folder/4,
          delete_folder/5,
          delete_folder_membership/6,
@@ -196,6 +198,9 @@
          describe_data_source_permissions/3,
          describe_data_source_permissions/5,
          describe_data_source_permissions/6,
+         describe_default_q_business_application/2,
+         describe_default_q_business_application/4,
+         describe_default_q_business_application/5,
          describe_folder/3,
          describe_folder/5,
          describe_folder/6,
@@ -229,6 +234,9 @@
          describe_q_personalization_configuration/2,
          describe_q_personalization_configuration/4,
          describe_q_personalization_configuration/5,
+         describe_quick_sight_q_search_configuration/2,
+         describe_quick_sight_q_search_configuration/4,
+         describe_quick_sight_q_search_configuration/5,
          describe_refresh_schedule/4,
          describe_refresh_schedule/6,
          describe_refresh_schedule/7,
@@ -278,6 +286,8 @@
          generate_embed_url_for_anonymous_user/4,
          generate_embed_url_for_registered_user/3,
          generate_embed_url_for_registered_user/4,
+         generate_embed_url_for_registered_user_with_identity/3,
+         generate_embed_url_for_registered_user_with_identity/4,
          get_dashboard_embed_url/4,
          get_dashboard_embed_url/6,
          get_dashboard_embed_url/7,
@@ -386,6 +396,8 @@
          list_vpc_connections/2,
          list_vpc_connections/4,
          list_vpc_connections/5,
+         predict_q_a_results/3,
+         predict_q_a_results/4,
          put_data_set_refresh_properties/4,
          put_data_set_refresh_properties/5,
          register_user/4,
@@ -426,6 +438,8 @@
          update_analysis/5,
          update_analysis_permissions/4,
          update_analysis_permissions/5,
+         update_application_with_token_exchange_grant/3,
+         update_application_with_token_exchange_grant/4,
          update_brand/4,
          update_brand/5,
          update_brand_assignment/3,
@@ -452,6 +466,8 @@
          update_data_source/5,
          update_data_source_permissions/4,
          update_data_source_permissions/5,
+         update_default_q_business_application/3,
+         update_default_q_business_application/4,
          update_folder/4,
          update_folder/5,
          update_folder_permissions/4,
@@ -470,6 +486,8 @@
          update_public_sharing_settings/4,
          update_q_personalization_configuration/3,
          update_q_personalization_configuration/4,
+         update_quick_sight_q_search_configuration/3,
+         update_quick_sight_q_search_configuration/4,
          update_refresh_schedule/4,
          update_refresh_schedule/5,
          update_role_custom_permission/5,
@@ -1383,6 +1401,15 @@
 
 
 %% Example:
+%% q_a_result() :: #{
+%%   <<"DashboardVisual">> => dashboard_visual_result(),
+%%   <<"GeneratedAnswer">> => generated_answer_result(),
+%%   <<"ResultType">> => list(any())
+%% }
+-type q_a_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% negative_format() :: #{
 %%   <<"Prefix">> => string(),
 %%   <<"Suffix">> => string()
@@ -1865,6 +1892,16 @@
 %%   <<"SelectedFieldOptions">> => list(table_field_option()())
 %% }
 -type table_field_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% predict_q_a_results_request() :: #{
+%%   <<"IncludeGeneratedAnswer">> => list(any()),
+%%   <<"IncludeQuickSightQIndex">> => list(any()),
+%%   <<"MaxTopicsToConsider">> => integer(),
+%%   <<"QueryText">> := string()
+%% }
+-type predict_q_a_results_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3259,6 +3296,13 @@
 
 
 %% Example:
+%% update_application_with_token_exchange_grant_request() :: #{
+%%   <<"Namespace">> := string()
+%% }
+-type update_application_with_token_exchange_grant_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_ingestion_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"IngestionId">> => string(),
@@ -3588,6 +3632,14 @@
 %%   <<"StaticFiles">> => list(static_file()())
 %% }
 -type template_version_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_with_token_exchange_grant_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_application_with_token_exchange_grant_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4324,6 +4376,13 @@
 %%   <<"StepSize">> => float()
 %% }
 -type axis_linear_scale() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quick_sight_q_search_configuration_request() :: #{
+%%   <<"QSearchStatus">> := list(any())
+%% }
+-type update_quick_sight_q_search_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6120,6 +6179,14 @@
 %% delete_refresh_schedule_request() :: #{}
 -type delete_refresh_schedule_request() :: #{}.
 
+
+%% Example:
+%% update_default_q_business_application_request() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"Namespace">> => string()
+%% }
+-type update_default_q_business_application_request() :: #{binary() => any()}.
+
 %% Example:
 %% list_refresh_schedules_request() :: #{}
 -type list_refresh_schedules_request() :: #{}.
@@ -6634,6 +6701,20 @@
 
 
 %% Example:
+%% generated_answer_result() :: #{
+%%   <<"AnswerId">> => string(),
+%%   <<"AnswerStatus">> => list(any()),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionText">> => string(),
+%%   <<"QuestionUrl">> => string(),
+%%   <<"Restatement">> => string(),
+%%   <<"TopicId">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type generated_answer_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_job_refresh_schedule_override_parameters() :: #{
 %%   <<"DataSetId">> => string(),
 %%   <<"ScheduleId">> => string(),
@@ -6647,6 +6728,13 @@
 %%   <<"BrandArn">> := string()
 %% }
 -type update_brand_assignment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_default_q_business_application_request() :: #{
+%%   <<"Namespace">> => string()
+%% }
+-type delete_default_q_business_application_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6729,6 +6817,15 @@
 %%   <<"Properties">> => list(list(any())())
 %% }
 -type asset_bundle_export_job_refresh_schedule_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_embed_url_for_registered_user_with_identity_request() :: #{
+%%   <<"AllowedDomains">> => list(string()()),
+%%   <<"ExperienceConfiguration">> := registered_user_embedding_experience_configuration(),
+%%   <<"SessionLifetimeInMinutes">> => float()
+%% }
+-type generate_embed_url_for_registered_user_with_identity_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7161,6 +7258,20 @@
 
 
 %% Example:
+%% dashboard_visual_result() :: #{
+%%   <<"DashboardId">> => string(),
+%%   <<"DashboardName">> => string(),
+%%   <<"DashboardUrl">> => string(),
+%%   <<"SheetId">> => string(),
+%%   <<"SheetName">> => string(),
+%%   <<"VisualId">> => string(),
+%%   <<"VisualSubtitle">> => string(),
+%%   <<"VisualTitle">> => string()
+%% }
+-type dashboard_visual_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_set_identifier_declaration() :: #{
 %%   <<"DataSetArn">> => string(),
 %%   <<"Identifier">> => string()
@@ -7425,6 +7536,14 @@
 %%   <<"VPCConnectionId">> => string()
 %% }
 -type update_vpc_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_default_q_business_application_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_default_q_business_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8053,6 +8172,14 @@
 %%   <<"SourceFilterId">> => string()
 %% }
 -type filter_cross_sheet_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_default_q_business_application_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_default_q_business_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9674,6 +9801,13 @@
 
 
 %% Example:
+%% describe_default_q_business_application_request() :: #{
+%%   <<"Namespace">> => string()
+%% }
+-type describe_default_q_business_application_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% cancel_ingestion_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"IngestionId">> => string(),
@@ -10302,6 +10436,15 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_default_q_business_application_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_default_q_business_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11598,6 +11741,15 @@
 
 
 %% Example:
+%% generate_embed_url_for_registered_user_with_identity_response() :: #{
+%%   <<"EmbedUrl">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type generate_embed_url_for_registered_user_with_identity_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% insight_visual() :: #{
 %%   <<"Actions">> => list(visual_custom_action()()),
 %%   <<"DataSetIdentifier">> => string(),
@@ -11993,6 +12145,10 @@
 %% }
 -type succeeded_topic_reviewed_answer() :: #{binary() => any()}.
 
+%% Example:
+%% describe_quick_sight_q_search_configuration_request() :: #{}
+-type describe_quick_sight_q_search_configuration_request() :: #{}.
+
 
 %% Example:
 %% describe_template_response() :: #{
@@ -12265,6 +12421,16 @@
 
 
 %% Example:
+%% predict_q_a_results_response() :: #{
+%%   <<"AdditionalResults">> => list(q_a_result()()),
+%%   <<"PrimaryResult">> => q_a_result(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type predict_q_a_results_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_folder_resolved_permissions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"Namespace">> => string(),
@@ -12319,6 +12485,15 @@
 %%   <<"IncludeNullValue">> => boolean()
 %% }
 -type custom_values_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_quick_sight_q_search_configuration_response() :: #{
+%%   <<"QSearchStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_quick_sight_q_search_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12385,6 +12560,15 @@
 %%   <<"DisplayOptions">> => text_area_control_display_options()
 %% }
 -type default_text_area_control_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quick_sight_q_search_configuration_response() :: #{
+%%   <<"QSearchStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_quick_sight_q_search_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12809,6 +12993,13 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type delete_default_q_business_application_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type delete_folder_errors() ::
     precondition_not_met_exception() | 
     throttling_exception() | 
@@ -13162,6 +13353,13 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type describe_default_q_business_application_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type describe_folder_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -13244,6 +13442,14 @@
     internal_failure_exception().
 
 -type describe_q_personalization_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type describe_quick_sight_q_search_configuration_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
@@ -13386,6 +13592,17 @@
     internal_failure_exception().
 
 -type generate_embed_url_for_registered_user_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    quick_sight_user_not_found_exception() | 
+    internal_failure_exception().
+
+-type generate_embed_url_for_registered_user_with_identity_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
     session_lifetime_in_minutes_invalid_exception() | 
@@ -13701,6 +13918,12 @@
     unsupported_user_edition_exception() | 
     internal_failure_exception().
 
+-type predict_q_a_results_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception().
+
 -type put_data_set_refresh_properties_errors() ::
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
@@ -13880,6 +14103,15 @@
     unsupported_user_edition_exception() | 
     internal_failure_exception().
 
+-type update_application_with_token_exchange_grant_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type update_brand_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -13992,6 +14224,14 @@
     conflict_exception() | 
     internal_failure_exception().
 
+-type update_default_q_business_application_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
 -type update_folder_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -14065,6 +14305,14 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_quick_sight_q_search_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
     internal_failure_exception().
 
 -type update_refresh_schedule_errors() ::
@@ -15693,6 +15941,42 @@ delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a linked Amazon Q Business application from an Amazon
+%% QuickSight account
+-spec delete_default_q_business_application(aws_client:aws_client(), binary() | list(), delete_default_q_business_application_request()) ->
+    {ok, delete_default_q_business_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_default_q_business_application_errors(), tuple()}.
+delete_default_q_business_application(Client, AwsAccountId, Input) ->
+    delete_default_q_business_application(Client, AwsAccountId, Input, []).
+
+-spec delete_default_q_business_application(aws_client:aws_client(), binary() | list(), delete_default_q_business_application_request(), proplists:proplist()) ->
+    {ok, delete_default_q_business_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_default_q_business_application_errors(), tuple()}.
+delete_default_q_business_application(Client, AwsAccountId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/default-qbusiness-application"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"namespace">>, <<"Namespace">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an empty folder.
@@ -17398,6 +17682,48 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes a Amazon Q Business application that is linked to an Amazon
+%% QuickSight account.
+-spec describe_default_q_business_application(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_default_q_business_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_default_q_business_application_errors(), tuple()}.
+describe_default_q_business_application(Client, AwsAccountId)
+  when is_map(Client) ->
+    describe_default_q_business_application(Client, AwsAccountId, #{}, #{}).
+
+-spec describe_default_q_business_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_default_q_business_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_default_q_business_application_errors(), tuple()}.
+describe_default_q_business_application(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_default_q_business_application(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_default_q_business_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_default_q_business_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_default_q_business_application_errors(), tuple()}.
+describe_default_q_business_application(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/default-qbusiness-application"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a folder.
 -spec describe_folder(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_folder_response(), tuple()} |
@@ -17819,6 +18145,43 @@ describe_q_personalization_configuration(Client, AwsAccountId, QueryMap, Headers
 describe_q_personalization_configuration(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/q-personalization-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the state of a Amazon QuickSight Q Search configuration.
+-spec describe_quick_sight_q_search_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_quick_sight_q_search_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_quick_sight_q_search_configuration_errors(), tuple()}.
+describe_quick_sight_q_search_configuration(Client, AwsAccountId)
+  when is_map(Client) ->
+    describe_quick_sight_q_search_configuration(Client, AwsAccountId, #{}, #{}).
+
+-spec describe_quick_sight_q_search_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_quick_sight_q_search_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_quick_sight_q_search_configuration_errors(), tuple()}.
+describe_quick_sight_q_search_configuration(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_quick_sight_q_search_configuration(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_quick_sight_q_search_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_quick_sight_q_search_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_quick_sight_q_search_configuration_errors(), tuple()}.
+describe_quick_sight_q_search_configuration(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/quicksight-q-search-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -18530,6 +18893,58 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input) ->
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/registered-user"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Generates an embed URL that you can use to embed an Amazon QuickSight
+%% experience in your website.
+%%
+%% This action can be used for any type of user that is registered in an
+%% Amazon QuickSight account that uses IAM Identity Center for
+%% authentication. This API requires identity-enhanced IAM Role sessions:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html#types-identity-enhanced-iam-role-sessions
+%% for the authenticated user that the API call is being made for.
+%%
+%% This API uses trusted identity propagation:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation.html
+%% to ensure that an end user is authenticated and receives the embed URL
+%% that is specific to that user. The IAM Identity Center application that
+%% the user has logged into needs to have trusted Identity Propagation
+%% enabled for Amazon QuickSight:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-using-customermanagedapps-specify-trusted-apps.html
+%% with the scope value set to `quicksight:read'. Before you use this
+%% action, make sure that you have configured the relevant Amazon QuickSight
+%% resource and permissions.
+-spec generate_embed_url_for_registered_user_with_identity(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_with_identity_request()) ->
+    {ok, generate_embed_url_for_registered_user_with_identity_response(), tuple()} |
+    {error, any()} |
+    {error, generate_embed_url_for_registered_user_with_identity_errors(), tuple()}.
+generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input) ->
+    generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input, []).
+
+-spec generate_embed_url_for_registered_user_with_identity(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_with_identity_request(), proplists:proplist()) ->
+    {ok, generate_embed_url_for_registered_user_with_identity_response(), tuple()} |
+    {error, any()} |
+    {error, generate_embed_url_for_registered_user_with_identity_errors(), tuple()}.
+generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/registered-user-with-identity"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -20155,6 +20570,41 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Predicts existing visuals or generates new visuals to answer a given
+%% query.
+-spec predict_q_a_results(aws_client:aws_client(), binary() | list(), predict_q_a_results_request()) ->
+    {ok, predict_q_a_results_response(), tuple()} |
+    {error, any()} |
+    {error, predict_q_a_results_errors(), tuple()}.
+predict_q_a_results(Client, AwsAccountId, Input) ->
+    predict_q_a_results(Client, AwsAccountId, Input, []).
+
+-spec predict_q_a_results(aws_client:aws_client(), binary() | list(), predict_q_a_results_request(), proplists:proplist()) ->
+    {ok, predict_q_a_results_response(), tuple()} |
+    {error, any()} |
+    {error, predict_q_a_results_errors(), tuple()}.
+predict_q_a_results(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/qa/predict"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates or updates the dataset refresh properties for the dataset.
 -spec put_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request()) ->
     {ok, put_data_set_refresh_properties_response(), tuple()} |
@@ -21022,6 +21472,44 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an Amazon QuickSight application with a token exchange grant.
+%%
+%% This operation only supports Amazon QuickSight applications that are
+%% registered with IAM Identity Center.
+-spec update_application_with_token_exchange_grant(aws_client:aws_client(), binary() | list(), update_application_with_token_exchange_grant_request()) ->
+    {ok, update_application_with_token_exchange_grant_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_with_token_exchange_grant_errors(), tuple()}.
+update_application_with_token_exchange_grant(Client, AwsAccountId, Input) ->
+    update_application_with_token_exchange_grant(Client, AwsAccountId, Input, []).
+
+-spec update_application_with_token_exchange_grant(aws_client:aws_client(), binary() | list(), update_application_with_token_exchange_grant_request(), proplists:proplist()) ->
+    {ok, update_application_with_token_exchange_grant_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_with_token_exchange_grant_errors(), tuple()}.
+update_application_with_token_exchange_grant(Client, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/application-with-token-exchange-grant"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"namespace">>, <<"Namespace">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a brand.
 -spec update_brand(aws_client:aws_client(), binary() | list(), binary() | list(), update_brand_request()) ->
     {ok, update_brand_response(), tuple()} |
@@ -21479,6 +21967,42 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a Amazon Q Business application that is linked to a Amazon
+%% QuickSight account.
+-spec update_default_q_business_application(aws_client:aws_client(), binary() | list(), update_default_q_business_application_request()) ->
+    {ok, update_default_q_business_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_default_q_business_application_errors(), tuple()}.
+update_default_q_business_application(Client, AwsAccountId, Input) ->
+    update_default_q_business_application(Client, AwsAccountId, Input, []).
+
+-spec update_default_q_business_application(aws_client:aws_client(), binary() | list(), update_default_q_business_application_request(), proplists:proplist()) ->
+    {ok, update_default_q_business_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_default_q_business_application_errors(), tuple()}.
+update_default_q_business_application(Client, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/default-qbusiness-application"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"namespace">>, <<"Namespace">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the name of a folder.
 -spec update_folder(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_request()) ->
     {ok, update_folder_response(), tuple()} |
@@ -21797,6 +22321,40 @@ update_q_personalization_configuration(Client, AwsAccountId, Input) ->
 update_q_personalization_configuration(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/q-personalization-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the state of a Amazon QuickSight Q Search configuration.
+-spec update_quick_sight_q_search_configuration(aws_client:aws_client(), binary() | list(), update_quick_sight_q_search_configuration_request()) ->
+    {ok, update_quick_sight_q_search_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_quick_sight_q_search_configuration_errors(), tuple()}.
+update_quick_sight_q_search_configuration(Client, AwsAccountId, Input) ->
+    update_quick_sight_q_search_configuration(Client, AwsAccountId, Input, []).
+
+-spec update_quick_sight_q_search_configuration(aws_client:aws_client(), binary() | list(), update_quick_sight_q_search_configuration_request(), proplists:proplist()) ->
+    {ok, update_quick_sight_q_search_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_quick_sight_q_search_configuration_errors(), tuple()}.
+update_quick_sight_q_search_configuration(Client, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/quicksight-q-search-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

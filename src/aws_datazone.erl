@@ -35,6 +35,8 @@
          create_asset_revision/5,
          create_asset_type/3,
          create_asset_type/4,
+         create_connection/3,
+         create_connection/4,
          create_data_product/3,
          create_data_product/4,
          create_data_product_revision/4,
@@ -65,6 +67,8 @@
          create_project/4,
          create_project_membership/4,
          create_project_membership/5,
+         create_project_profile/3,
+         create_project_profile/4,
          create_rule/3,
          create_rule/4,
          create_subscription_grant/3,
@@ -81,6 +85,8 @@
          delete_asset_filter/6,
          delete_asset_type/4,
          delete_asset_type/5,
+         delete_connection/4,
+         delete_connection/5,
          delete_data_product/4,
          delete_data_product/5,
          delete_data_source/4,
@@ -109,6 +115,8 @@
          delete_project/5,
          delete_project_membership/4,
          delete_project_membership/5,
+         delete_project_profile/4,
+         delete_project_profile/5,
          delete_rule/4,
          delete_rule/5,
          delete_subscription_grant/4,
@@ -130,6 +138,9 @@
          get_asset_type/3,
          get_asset_type/5,
          get_asset_type/6,
+         get_connection/3,
+         get_connection/5,
+         get_connection/6,
          get_data_product/3,
          get_data_product/5,
          get_data_product/6,
@@ -177,6 +188,12 @@
          get_group_profile/6,
          get_iam_portal_login_url/3,
          get_iam_portal_login_url/4,
+         get_job_run/3,
+         get_job_run/5,
+         get_job_run/6,
+         get_lineage_event/3,
+         get_lineage_event/5,
+         get_lineage_event/6,
          get_lineage_node/3,
          get_lineage_node/5,
          get_lineage_node/6,
@@ -189,6 +206,9 @@
          get_project/3,
          get_project/5,
          get_project/6,
+         get_project_profile/3,
+         get_project_profile/5,
+         get_project_profile/6,
          get_rule/3,
          get_rule/5,
          get_rule/6,
@@ -216,6 +236,9 @@
          list_asset_revisions/3,
          list_asset_revisions/5,
          list_asset_revisions/6,
+         list_connections/3,
+         list_connections/5,
+         list_connections/6,
          list_data_product_revisions/3,
          list_data_product_revisions/5,
          list_data_product_revisions/6,
@@ -252,6 +275,12 @@
          list_environments/3,
          list_environments/5,
          list_environments/6,
+         list_job_runs/3,
+         list_job_runs/5,
+         list_job_runs/6,
+         list_lineage_events/2,
+         list_lineage_events/4,
+         list_lineage_events/5,
          list_lineage_node_history/3,
          list_lineage_node_history/5,
          list_lineage_node_history/6,
@@ -267,6 +296,9 @@
          list_project_memberships/3,
          list_project_memberships/5,
          list_project_memberships/6,
+         list_project_profiles/2,
+         list_project_profiles/4,
+         list_project_profiles/5,
          list_projects/2,
          list_projects/4,
          list_projects/5,
@@ -327,6 +359,8 @@
          untag_resource/4,
          update_asset_filter/5,
          update_asset_filter/6,
+         update_connection/4,
+         update_connection/5,
          update_data_source/4,
          update_data_source/5,
          update_domain/3,
@@ -347,6 +381,8 @@
          update_group_profile/5,
          update_project/4,
          update_project/5,
+         update_project_profile/4,
+         update_project_profile/5,
          update_rule/4,
          update_rule/5,
          update_subscription_grant_status/5,
@@ -384,6 +420,14 @@
 
 
 %% Example:
+%% list_project_profiles_output() :: #{
+%%   <<"items">> => list(project_profile_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_project_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% metadata_form_enforcement_detail() :: #{
 %%   <<"requiredMetadataForms">> => list(metadata_form_reference()())
 %% }
@@ -405,6 +449,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => [string()],
 %%   <<"rootDomainUnitId">> => string(),
+%%   <<"serviceRole">> => string(),
 %%   <<"singleSignOn">> => single_sign_on()
 %% }
 -type update_domain_output() :: #{binary() => any()}.
@@ -600,6 +645,18 @@
 
 
 %% Example:
+%% redshift_properties_input() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"databaseName">> => [string()],
+%%   <<"host">> => [string()],
+%%   <<"lineageSync">> => redshift_lineage_sync_configuration_input(),
+%%   <<"port">> => [integer()],
+%%   <<"storage">> => list()
+%% }
+-type redshift_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_data_source_runs_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -666,6 +723,10 @@
 %% }
 -type update_environment_profile_input() :: #{binary() => any()}.
 
+%% Example:
+%% get_project_profile_input() :: #{}
+-type get_project_profile_input() :: #{}.
+
 
 %% Example:
 %% update_subscription_target_output() :: #{
@@ -676,7 +737,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"manageAccessRole">> => [string()],
+%%   <<"manageAccessRole">> => string(),
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
@@ -694,6 +755,10 @@
 %% }
 -type reject_subscription_request_input() :: #{binary() => any()}.
 
+%% Example:
+%% delete_connection_input() :: #{}
+-type delete_connection_input() :: #{}.
+
 
 %% Example:
 %% update_group_profile_output() :: #{
@@ -703,6 +768,14 @@
 %%   <<"status">> => list(any())
 %% }
 -type update_group_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_output() :: #{
+%%   <<"items">> => list(job_run_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_runs_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_domain_input() :: #{}
@@ -762,6 +835,21 @@
 
 
 %% Example:
+%% redshift_properties_output() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"databaseName">> => [string()],
+%%   <<"isProvisionedSecret">> => [boolean()],
+%%   <<"jdbcIamUrl">> => [string()],
+%%   <<"jdbcUrl">> => [string()],
+%%   <<"lineageSync">> => redshift_lineage_sync_configuration_output(),
+%%   <<"redshiftTempDir">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"storage">> => list()
+%% }
+-type redshift_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_listing_details() :: #{
 %%   <<"listingId">> => string(),
 %%   <<"listingStatus">> => list(any())
@@ -771,6 +859,22 @@
 %% Example:
 %% all_users_grant_filter() :: #{}
 -type all_users_grant_filter() :: #{}.
+
+
+%% Example:
+%% environment_configuration_parameters_details() :: #{
+%%   <<"parameterOverrides">> => list(environment_configuration_parameter()()),
+%%   <<"resolvedParameters">> => list(environment_configuration_parameter()()),
+%%   <<"ssmPath">> => string()
+%% }
+-type environment_configuration_parameters_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_sync_schedule() :: #{
+%%   <<"schedule">> => [string()]
+%% }
+-type lineage_sync_schedule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -815,6 +919,7 @@
 %% Example:
 %% update_project_input() :: #{
 %%   <<"description">> => string(),
+%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"name">> => string()
 %% }
@@ -861,6 +966,30 @@
 
 
 %% Example:
+%% glue_connection() :: #{
+%%   <<"athenaProperties">> => map(),
+%%   <<"authenticationConfiguration">> => authentication_configuration(),
+%%   <<"compatibleComputeEnvironments">> => list(list(any())()),
+%%   <<"connectionProperties">> => map(),
+%%   <<"connectionSchemaVersion">> => [integer()],
+%%   <<"connectionType">> => list(any()),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"lastConnectionValidationTime">> => [non_neg_integer()],
+%%   <<"lastUpdatedBy">> => [string()],
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"matchCriteria">> => list([string()]()),
+%%   <<"name">> => [string()],
+%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"pythonProperties">> => map(),
+%%   <<"sparkProperties">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type glue_connection() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_asset_type_policy_grant_detail() :: #{
 %%   <<"includeChildDomainUnits">> => [boolean()]
 %% }
@@ -888,6 +1017,34 @@
 
 
 %% Example:
+%% authentication_configuration_input() :: #{
+%%   <<"authenticationType">> => list(any()),
+%%   <<"basicAuthenticationCredentials">> => basic_authentication_credentials(),
+%%   <<"customAuthenticationCredentials">> => map(),
+%%   <<"kmsKeyArn">> => [string()],
+%%   <<"oAuth2Properties">> => o_auth2_properties(),
+%%   <<"secretArn">> => [string()]
+%% }
+-type authentication_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_profile_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_project_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_listing_change_set_output() :: #{
 %%   <<"listingId">> => string(),
 %%   <<"listingRevision">> => string(),
@@ -908,10 +1065,12 @@
 
 %% Example:
 %% create_environment_input() :: #{
+%%   <<"deploymentOrder">> => [integer()],
 %%   <<"description">> => [string()],
 %%   <<"environmentAccountIdentifier">> => [string()],
 %%   <<"environmentAccountRegion">> => [string()],
 %%   <<"environmentBlueprintIdentifier">> => [string()],
+%%   <<"environmentConfigurationId">> => [string()],
 %%   <<"environmentProfileIdentifier">> := string(),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"name">> := [string()],
@@ -919,6 +1078,14 @@
 %%   <<"userParameters">> => list(environment_parameter()())
 %% }
 -type create_environment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorization_code_properties() :: #{
+%%   <<"authorizationCode">> => [string()],
+%%   <<"redirectUri">> => [string()]
+%% }
+-type authorization_code_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -952,6 +1119,18 @@
 
 
 %% Example:
+%% list_lineage_events_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"processingStatus">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"timestampAfter">> => [non_neg_integer()],
+%%   <<"timestampBefore">> => [non_neg_integer()]
+%% }
+-type list_lineage_events_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_time_series_data_points_output() :: #{
 %%   <<"items">> => list(time_series_data_point_summary_form_output()()),
 %%   <<"nextToken">> => string()
@@ -977,6 +1156,7 @@
 %%   <<"arn">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"domainVersion">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"managedAccountId">> => [string()],
@@ -1014,7 +1194,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"manageAccessRole">> => [string()],
+%%   <<"manageAccessRole">> => string(),
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
@@ -1024,6 +1204,23 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type create_subscription_target_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_run_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"error">> => job_run_error(),
+%%   <<"jobId">> => [string()],
+%%   <<"jobType">> => list(any()),
+%%   <<"runId">> => [string()],
+%%   <<"runMode">> => list(any()),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type job_run_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1069,9 +1266,10 @@
 %%   <<"assetFormsInput">> => list(form_input()()),
 %%   <<"clientToken">> => [string()],
 %%   <<"configuration">> => list(),
+%%   <<"connectionIdentifier">> => [string()],
 %%   <<"description">> => string(),
 %%   <<"enableSetting">> => list(any()),
-%%   <<"environmentIdentifier">> := [string()],
+%%   <<"environmentIdentifier">> => [string()],
 %%   <<"name">> := string(),
 %%   <<"projectIdentifier">> := [string()],
 %%   <<"publishOnImport">> => [boolean()],
@@ -1091,6 +1289,22 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_form_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_project_profile_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_project_profile_output() :: #{binary() => any()}.
 
 %% Example:
 %% add_policy_grant_output() :: #{}
@@ -1133,6 +1347,7 @@
 %%   <<"dataSourceRunId">> => string(),
 %%   <<"database">> => string(),
 %%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"lineageSummary">> => lineage_info(),
 %%   <<"projectId">> => string(),
 %%   <<"technicalDescription">> => string(),
 %%   <<"technicalName">> => string(),
@@ -1202,6 +1417,14 @@
 
 
 %% Example:
+%% environment_configuration_user_parameter() :: #{
+%%   <<"environmentConfigurationName">> => string(),
+%%   <<"environmentParameters">> => list(environment_parameter()())
+%% }
+-type environment_configuration_user_parameter() :: #{binary() => any()}.
+
+
+%% Example:
 %% less_than_expression() :: #{
 %%   <<"columnName">> => [string()],
 %%   <<"value">> => [string()]
@@ -1261,6 +1484,14 @@
 
 
 %% Example:
+%% list_connections_output() :: #{
+%%   <<"items">> => list(connection_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connections_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_details() :: #{
 %%   <<"userId">> => [string()]
 %% }
@@ -1289,6 +1520,25 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_data_product_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_input() :: #{
+%%   <<"awsLocation">> => aws_location(),
+%%   <<"description">> => string(),
+%%   <<"props">> => list()
+%% }
+-type update_connection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_job_runs_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1384,12 +1634,15 @@
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
+%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
 %%   <<"failureReasons">> => list(project_deletion_error()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"projectStatus">> => list(any())
+%%   <<"projectProfileId">> => string(),
+%%   <<"projectStatus">> => list(any()),
+%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
 %% }
 -type create_project_output() :: #{binary() => any()}.
 
@@ -1407,7 +1660,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"manageAccessRole">> => [string()],
+%%   <<"manageAccessRole">> => string(),
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
@@ -1453,6 +1706,22 @@
 
 
 %% Example:
+%% create_connection_output() :: #{
+%%   <<"connectionId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()()),
+%%   <<"projectId">> => string(),
+%%   <<"props">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type create_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% override_project_owners_policy_grant_detail() :: #{
 %%   <<"includeChildDomainUnits">> => [boolean()]
 %% }
@@ -1479,6 +1748,10 @@
 %% }
 -type list_policy_grants_input() :: #{binary() => any()}.
 
+%% Example:
+%% get_lineage_event_input() :: #{}
+-type get_lineage_event_input() :: #{}.
+
 
 %% Example:
 %% domain_unit_filter_for_project() :: #{
@@ -1504,6 +1777,14 @@
 %%   <<"forms">> := list(time_series_data_point_form_input()())
 %% }
 -type post_time_series_data_points_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_properties_output() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type glue_properties_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_domain_unit_input() :: #{}
@@ -1532,9 +1813,28 @@
 
 
 %% Example:
+%% athena_properties_output() :: #{
+%%   <<"workgroupName">> => [string()]
+%% }
+-type athena_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_profile_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainUnitIdentifier">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_project_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_data_source_output() :: #{
 %%   <<"assetFormsOutput">> => list(form_output()()),
 %%   <<"configuration">> => list(),
+%%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
@@ -1696,11 +1996,20 @@
 
 
 %% Example:
+%% authentication_configuration_patch() :: #{
+%%   <<"basicAuthenticationCredentials">> => basic_authentication_credentials(),
+%%   <<"secretArn">> => [string()]
+%% }
+-type authentication_configuration_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% environment_blueprint_configuration_item() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
 %%   <<"enabledRegions">> => list(string()()),
 %%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
 %%   <<"provisioningConfigurations">> => list(list()()),
 %%   <<"provisioningRoleArn">> => string(),
@@ -1749,6 +2058,24 @@
 %%   <<"targetType">> => list(any())
 %% }
 -type create_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_run_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"error">> => job_run_error(),
+%%   <<"id">> => [string()],
+%%   <<"jobId">> => [string()],
+%%   <<"jobType">> => list(any()),
+%%   <<"runMode">> => list(any()),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type get_job_run_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_data_product_input() :: #{}
@@ -1829,16 +2156,35 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"description">> => [string()],
 %%   <<"domainExecutionRole">> := string(),
+%%   <<"domainVersion">> => list(any()),
 %%   <<"kmsKeyIdentifier">> => string(),
 %%   <<"name">> := [string()],
+%%   <<"serviceRole">> => string(),
 %%   <<"singleSignOn">> => single_sign_on(),
 %%   <<"tags">> => map()
 %% }
 -type create_domain_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% iam_properties_output() :: #{
+%%   <<"environmentId">> => [string()],
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type iam_properties_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscription_target_input() :: #{}
 -type delete_subscription_target_input() :: #{}.
+
+
+%% Example:
+%% hyper_pod_properties_output() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"clusterName">> => [string()],
+%%   <<"orchestrator">> => list(any())
+%% }
+-type hyper_pod_properties_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1903,6 +2249,44 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_run_error() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type job_run_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_event_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"eventSummary">> => list(),
+%%   <<"eventTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"processingStatus">> => list(any())
+%% }
+-type lineage_event_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_connection_input() :: #{
+%%   <<"athenaProperties">> => map(),
+%%   <<"authenticationConfiguration">> => authentication_configuration_input(),
+%%   <<"connectionProperties">> => map(),
+%%   <<"connectionType">> => list(any()),
+%%   <<"description">> => [string()],
+%%   <<"matchCriteria">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"pythonProperties">> => map(),
+%%   <<"sparkProperties">> => map(),
+%%   <<"validateCredentials">> => [boolean()],
+%%   <<"validateForComputeEnvironments">> => list(list(any())())
+%% }
+-type glue_connection_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1978,6 +2362,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"enabledRegions">> => list(string()()),
 %%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
 %%   <<"provisioningConfigurations">> => list(list()()),
 %%   <<"provisioningRoleArn">> => string(),
@@ -1993,7 +2378,7 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"environmentIdentifier">> := string(),
 %%   <<"grantedEntity">> := list(),
-%%   <<"subscriptionTargetIdentifier">> := string()
+%%   <<"subscriptionTargetIdentifier">> => string()
 %% }
 -type create_subscription_grant_input() :: #{binary() => any()}.
 
@@ -2092,6 +2477,14 @@
 
 
 %% Example:
+%% o_auth2_client_application() :: #{
+%%   <<"aWSManagedClientApplicationReference">> => [string()],
+%%   <<"userManagedClientApplicationClientId">> => [string()]
+%% }
+-type o_auth2_client_application() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_user_profile_input() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"userIdentifier">> := string(),
@@ -2102,6 +2495,15 @@
 %% Example:
 %% delete_environment_blueprint_configuration_input() :: #{}
 -type delete_environment_blueprint_configuration_input() :: #{}.
+
+
+%% Example:
+%% lineage_info() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"eventId">> => [string()],
+%%   <<"eventStatus">> => list(any())
+%% }
+-type lineage_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2156,7 +2558,7 @@
 %%   <<"applicableAssetTypes">> := list(string()()),
 %%   <<"authorizedPrincipals">> := list(string()()),
 %%   <<"clientToken">> => [string()],
-%%   <<"manageAccessRole">> := [string()],
+%%   <<"manageAccessRole">> := string(),
 %%   <<"name">> := string(),
 %%   <<"provider">> => [string()],
 %%   <<"subscriptionTargetConfig">> := list(subscription_target_form()()),
@@ -2385,6 +2787,7 @@
 %% create_data_source_output() :: #{
 %%   <<"assetFormsOutput">> => list(form_output()()),
 %%   <<"configuration">> => list(),
+%%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
@@ -2405,6 +2808,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type create_data_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_glue_args() :: #{
+%%   <<"connection">> => [string()]
+%% }
+-type spark_glue_args() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2456,6 +2866,7 @@
 %% delete_data_source_output() :: #{
 %%   <<"assetFormsOutput">> => list(form_output()()),
 %%   <<"configuration">> => list(),
+%%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
@@ -2477,6 +2888,31 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type delete_data_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connection_input() :: #{
+%%   <<"withSecret">> => [boolean()]
+%% }
+-type get_connection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connection_output() :: #{
+%%   <<"connectionCredentials">> => connection_credentials(),
+%%   <<"connectionId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"environmentUserRole">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()()),
+%%   <<"projectId">> => string(),
+%%   <<"props">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type get_connection_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2515,6 +2951,7 @@
 
 %% Example:
 %% list_data_sources_input() :: #{
+%%   <<"connectionIdentifier">> => [string()],
 %%   <<"environmentIdentifier">> => [string()],
 %%   <<"maxResults">> => integer(),
 %%   <<"name">> => string(),
@@ -2524,6 +2961,21 @@
 %%   <<"type">> => string()
 %% }
 -type list_data_sources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lineage_events_output() :: #{
+%%   <<"items">> => list(lineage_event_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_lineage_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_properties_input() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type iam_properties_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2575,6 +3027,13 @@
 
 
 %% Example:
+%% data_source_run_lineage_summary() :: #{
+%%   <<"importStatus">> => list(any())
+%% }
+-type data_source_run_lineage_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% reject_subscription_request_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -2592,6 +3051,13 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type reject_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% hyper_pod_properties_input() :: #{
+%%   <<"clusterName">> => [string()]
+%% }
+-type hyper_pod_properties_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2618,12 +3084,14 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => [string()],
 %%   <<"domainExecutionRole">> => string(),
+%%   <<"domainVersion">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"kmsKeyIdentifier">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => [string()],
 %%   <<"portalUrl">> => [string()],
 %%   <<"rootDomainUnitId">> => string(),
+%%   <<"serviceRole">> => string(),
 %%   <<"singleSignOn">> => single_sign_on(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
@@ -2715,6 +3183,13 @@
 
 
 %% Example:
+%% glue_properties_patch() :: #{
+%%   <<"glueConnectionInput">> => glue_connection_patch()
+%% }
+-type glue_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_subscription_grant_status_output() :: #{
 %%   <<"assets">> => list(subscribed_asset()()),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -2749,13 +3224,24 @@
 %% }
 -type list_subscription_targets_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% sage_maker_run_configuration_input() :: #{
+%%   <<"trackingAssets">> => map()
+%% }
+-type sage_maker_run_configuration_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_asset_filter_input() :: #{}
 -type get_asset_filter_input() :: #{}.
 
+
 %% Example:
-%% post_lineage_event_output() :: #{}
--type post_lineage_event_output() :: #{}.
+%% post_lineage_event_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string()
+%% }
+-type post_lineage_event_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2816,12 +3302,30 @@
 
 
 %% Example:
+%% glue_o_auth2_credentials() :: #{
+%%   <<"accessToken">> => [string()],
+%%   <<"jwtToken">> => [string()],
+%%   <<"refreshToken">> => [string()],
+%%   <<"userManagedClientApplicationClientSecret">> => [string()]
+%% }
+-type glue_o_auth2_credentials() :: #{binary() => any()}.
+
+
+%% Example:
 %% glue_run_configuration_input() :: #{
 %%   <<"autoImportDataQualityResult">> => [boolean()],
+%%   <<"catalogName">> => [string()],
 %%   <<"dataAccessRole">> => [string()],
 %%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
 %% }
 -type glue_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% athena_properties_input() :: #{
+%%   <<"workgroupName">> => [string()]
+%% }
+-type athena_properties_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2878,6 +3382,20 @@
 
 
 %% Example:
+%% spark_glue_properties_input() :: #{
+%%   <<"additionalArgs">> => spark_glue_args(),
+%%   <<"glueConnectionName">> => [string()],
+%%   <<"glueVersion">> => [string()],
+%%   <<"idleTimeout">> => [integer()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"numberOfWorkers">> => [integer()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"workerType">> => [string()]
+%% }
+-type spark_glue_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_subscription_grant_output() :: #{
 %%   <<"assets">> => list(subscribed_asset()()),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -2903,6 +3421,13 @@
 %% Example:
 %% delete_glossary_term_output() :: #{}
 -type delete_glossary_term_output() :: #{}.
+
+
+%% Example:
+%% athena_properties_patch() :: #{
+%%   <<"workgroupName">> => [string()]
+%% }
+-type athena_properties_patch() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3050,12 +3575,23 @@
 
 
 %% Example:
+%% glue_properties_input() :: #{
+%%   <<"glueConnectionInput">> => glue_connection_input()
+%% }
+-type glue_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_asset_filters_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type list_asset_filters_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_run_input() :: #{}
+-type get_job_run_input() :: #{}.
 
 
 %% Example:
@@ -3151,7 +3687,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"manageAccessRole">> => [string()],
+%%   <<"manageAccessRole">> => string(),
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
@@ -3210,6 +3746,16 @@
 
 
 %% Example:
+%% connection_credentials() :: #{
+%%   <<"accessKeyId">> => [string()],
+%%   <<"expiration">> => [non_neg_integer()],
+%%   <<"secretAccessKey">> => [string()],
+%%   <<"sessionToken">> => [string()]
+%% }
+-type connection_credentials() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_domain_unit_output() :: #{
 %%   <<"ancestorDomainUnitIds">> => list(string()()),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -3252,6 +3798,15 @@
 
 
 %% Example:
+%% glue_connection_patch() :: #{
+%%   <<"authenticationConfiguration">> => authentication_configuration_patch(),
+%%   <<"connectionProperties">> => map(),
+%%   <<"description">> => [string()]
+%% }
+-type glue_connection_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_environment_profiles_input() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"awsAccountRegion">> => string(),
@@ -3268,6 +3823,7 @@
 %% update_data_source_output() :: #{
 %%   <<"assetFormsOutput">> => list(form_output()()),
 %%   <<"configuration">> => list(),
+%%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
@@ -3297,7 +3853,9 @@
 %%   <<"description">> => string(),
 %%   <<"domainUnitId">> => string(),
 %%   <<"glossaryTerms">> => list(string()()),
-%%   <<"name">> := string()
+%%   <<"name">> := string(),
+%%   <<"projectProfileId">> => string(),
+%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
 %% }
 -type create_project_input() :: #{binary() => any()}.
 
@@ -3447,6 +4005,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"enabledRegions">> => list(string()()),
 %%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
 %%   <<"provisioningConfigurations">> => list(list()()),
 %%   <<"provisioningRoleArn">> => string(),
@@ -3461,11 +4020,13 @@
 %%   <<"arn">> => [string()],
 %%   <<"description">> => [string()],
 %%   <<"domainExecutionRole">> => string(),
+%%   <<"domainVersion">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"kmsKeyIdentifier">> => string(),
 %%   <<"name">> => [string()],
 %%   <<"portalUrl">> => [string()],
 %%   <<"rootDomainUnitId">> => string(),
+%%   <<"serviceRole">> => string(),
 %%   <<"singleSignOn">> => single_sign_on(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
@@ -3520,11 +4081,32 @@
 
 
 %% Example:
+%% redshift_properties_patch() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"databaseName">> => [string()],
+%%   <<"host">> => [string()],
+%%   <<"lineageSync">> => redshift_lineage_sync_configuration_input(),
+%%   <<"port">> => [integer()],
+%%   <<"storage">> => list()
+%% }
+-type redshift_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% accepted_asset_scope() :: #{
 %%   <<"assetId">> => string(),
 %%   <<"filterIds">> => list(string()())
 %% }
 -type accepted_asset_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_lineage_sync_configuration_output() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"lineageJobId">> => [string()],
+%%   <<"schedule">> => lineage_sync_schedule()
+%% }
+-type redshift_lineage_sync_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3568,6 +4150,16 @@
 %% delete_asset_input() :: #{}
 -type delete_asset_input() :: #{}.
 
+
+%% Example:
+%% physical_connection_requirements() :: #{
+%%   <<"availabilityZone">> => [string()],
+%%   <<"securityGroupIdList">> => list([string()]()),
+%%   <<"subnetId">> => string(),
+%%   <<"subnetIdList">> => list(string()())
+%% }
+-type physical_connection_requirements() :: #{binary() => any()}.
+
 %% Example:
 %% remove_policy_grant_output() :: #{}
 -type remove_policy_grant_output() :: #{}.
@@ -3579,11 +4171,13 @@
 
 %% Example:
 %% data_source_summary() :: #{
+%%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dataSourceId">> => string(),
+%%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"enableSetting">> => list(any()),
-%%   <<"environmentId">> => string(),
+%%   <<"environmentId">> => [string()],
 %%   <<"lastRunAssetCount">> => [integer()],
 %%   <<"lastRunAt">> => non_neg_integer(),
 %%   <<"lastRunErrorMessage">> => data_source_error_message(),
@@ -3641,6 +4235,23 @@
 %% }
 -type list_environment_blueprints_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% spark_emr_properties_output() :: #{
+%%   <<"computeArn">> => [string()],
+%%   <<"credentials">> => username_password(),
+%%   <<"credentialsExpiration">> => [non_neg_integer()],
+%%   <<"governanceType">> => list(any()),
+%%   <<"instanceProfileArn">> => [string()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"livyEndpoint">> => [string()],
+%%   <<"logUri">> => [string()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"runtimeRole">> => [string()],
+%%   <<"trustedCertificatesS3Uri">> => [string()]
+%% }
+-type spark_emr_properties_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_asset_output() :: #{}
 -type delete_asset_output() :: #{}.
@@ -3648,6 +4259,10 @@
 %% Example:
 %% get_iam_portal_login_url_input() :: #{}
 -type get_iam_portal_login_url_input() :: #{}.
+
+%% Example:
+%% delete_project_profile_input() :: #{}
+-type delete_project_profile_input() :: #{}.
 
 
 %% Example:
@@ -3682,12 +4297,15 @@
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
+%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
 %%   <<"failureReasons">> => list(project_deletion_error()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"projectStatus">> => list(any())
+%%   <<"projectProfileId">> => string(),
+%%   <<"projectStatus">> => list(any()),
+%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
 %% }
 -type update_project_output() :: #{binary() => any()}.
 
@@ -3774,6 +4392,7 @@
 %%   <<"dataSourceId">> => string(),
 %%   <<"errorMessage">> => data_source_error_message(),
 %%   <<"id">> => string(),
+%%   <<"lineageSummary">> => data_source_run_lineage_summary(),
 %%   <<"projectId">> => string(),
 %%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
 %%   <<"startedAt">> => non_neg_integer(),
@@ -3783,6 +4402,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type data_source_run_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% username_password() :: #{
+%%   <<"password">> => string(),
+%%   <<"username">> => string()
+%% }
+-type username_password() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -3902,6 +4529,21 @@
 
 
 %% Example:
+%% connection_summary() :: #{
+%%   <<"connectionId">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()()),
+%%   <<"projectId">> => string(),
+%%   <<"props">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type connection_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% self_grant_status_detail() :: #{
 %%   <<"databaseName">> => [string()],
 %%   <<"failureCause">> => [string()],
@@ -3918,6 +4560,13 @@
 %%   <<"principal">> := list()
 %% }
 -type remove_policy_grant_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connection_output() :: #{
+%%   <<"status">> => [string()]
+%% }
+-type delete_connection_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4028,6 +4677,20 @@
 
 
 %% Example:
+%% spark_glue_properties_output() :: #{
+%%   <<"additionalArgs">> => spark_glue_args(),
+%%   <<"glueConnectionName">> => [string()],
+%%   <<"glueVersion">> => [string()],
+%%   <<"idleTimeout">> => [integer()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"numberOfWorkers">> => [integer()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"workerType">> => [string()]
+%% }
+-type spark_glue_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_domain_units_for_parent_output() :: #{
 %%   <<"items">> => list(domain_unit_summary()()),
 %%   <<"nextToken">> => string()
@@ -4057,6 +4720,14 @@
 %% associate_environment_role_output() :: #{}
 -type associate_environment_role_output() :: #{}.
 
+
+%% Example:
+%% environment_deployment_details() :: #{
+%%   <<"environmentFailureReasons">> => map(),
+%%   <<"overallDeploymentStatus">> => list(any())
+%% }
+-type environment_deployment_details() :: #{binary() => any()}.
+
 %% Example:
 %% get_glossary_input() :: #{}
 -type get_glossary_input() :: #{}.
@@ -4076,14 +4747,28 @@
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
+%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
 %%   <<"failureReasons">> => list(project_deletion_error()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"projectStatus">> => list(any())
+%%   <<"projectProfileId">> => string(),
+%%   <<"projectStatus">> => list(any()),
+%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
 %% }
 -type get_project_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_profiles_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_project_profiles_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4155,6 +4840,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"errorMessage">> => data_source_error_message(),
 %%   <<"id">> => string(),
+%%   <<"lineageSummary">> => data_source_run_lineage_summary(),
 %%   <<"projectId">> => string(),
 %%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
 %%   <<"startedAt">> => non_neg_integer(),
@@ -4164,6 +4850,43 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_data_source_run_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lineage_event_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"event">> => binary(),
+%%   <<"eventTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"processingStatus">> => list(any())
+%% }
+-type get_lineage_event_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_emr_properties_patch() :: #{
+%%   <<"computeArn">> => [string()],
+%%   <<"instanceProfileArn">> => [string()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"logUri">> => [string()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"runtimeRole">> => [string()],
+%%   <<"trustedCertificatesS3Uri">> => [string()]
+%% }
+-type spark_emr_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_lineage_run_event_summary() :: #{
+%%   <<"eventType">> => list(any()),
+%%   <<"inputs">> => list(name_identifier()()),
+%%   <<"job">> => name_identifier(),
+%%   <<"outputs">> => list(name_identifier()()),
+%%   <<"runId">> => [string()]
+%% }
+-type open_lineage_run_event_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_glossary_term_input() :: #{}
@@ -4192,6 +4915,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_metadata_generation_runs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_run_details() :: #{
+%%   <<"sqlQueryRunDetails">> => lineage_sql_query_run_details()
+%% }
+-type lineage_run_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4247,6 +4977,17 @@
 
 
 %% Example:
+%% create_project_profile_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainUnitIdentifier">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"name">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_project_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_project_memberships_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -4254,6 +4995,21 @@
 %%   <<"sortOrder">> => list(any())
 %% }
 -type list_project_memberships_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_configuration() :: #{
+%%   <<"awsAccount">> => list(),
+%%   <<"awsRegion">> => list(),
+%%   <<"configurationParameters">> => environment_configuration_parameters_details(),
+%%   <<"deploymentMode">> => list(any()),
+%%   <<"deploymentOrder">> => integer(),
+%%   <<"description">> => string(),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type environment_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4296,9 +5052,30 @@
 
 
 %% Example:
+%% name_identifier() :: #{
+%%   <<"name">> => [string()],
+%%   <<"namespace">> => [string()]
+%% }
+-type name_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_properties() :: #{
+%%   <<"authorizationCodeProperties">> => authorization_code_properties(),
+%%   <<"oAuth2ClientApplication">> => o_auth2_client_application(),
+%%   <<"oAuth2Credentials">> => glue_o_auth2_credentials(),
+%%   <<"oAuth2GrantType">> => list(any()),
+%%   <<"tokenUrl">> => [string()],
+%%   <<"tokenUrlParametersMap">> => map()
+%% }
+-type o_auth2_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% glue_run_configuration_output() :: #{
 %%   <<"accountId">> => [string()],
 %%   <<"autoImportDataQualityResult">> => [boolean()],
+%%   <<"catalogName">> => [string()],
 %%   <<"dataAccessRole">> => [string()],
 %%   <<"region">> => [string()],
 %%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
@@ -4311,6 +5088,19 @@
 %%   <<"identifier">> => string()
 %% }
 -type subscribed_project_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% physical_endpoint() :: #{
+%%   <<"awsLocation">> => aws_location(),
+%%   <<"glueConnection">> => glue_connection(),
+%%   <<"glueConnectionName">> => [string()],
+%%   <<"host">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"protocol">> => list(any()),
+%%   <<"stage">> => [string()]
+%% }
+-type physical_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4380,6 +5170,30 @@
 
 
 %% Example:
+%% spark_emr_properties_input() :: #{
+%%   <<"computeArn">> => [string()],
+%%   <<"instanceProfileArn">> => [string()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"logUri">> => [string()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"runtimeRole">> => [string()],
+%%   <<"trustedCertificatesS3Uri">> => [string()]
+%% }
+-type spark_emr_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_sql_query_run_details() :: #{
+%%   <<"errorMessages">> => list([string()]()),
+%%   <<"numQueriesFailed">> => [integer()],
+%%   <<"queryEndTime">> => [non_neg_integer()],
+%%   <<"queryStartTime">> => [non_neg_integer()],
+%%   <<"totalQueriesProcessed">> => [integer()]
+%% }
+-type lineage_sql_query_run_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_scope() :: #{
 %%   <<"assetId">> => string(),
 %%   <<"errorMessage">> => [string()],
@@ -4387,6 +5201,20 @@
 %%   <<"status">> => [string()]
 %% }
 -type asset_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connections_input() :: #{
+%%   <<"environmentIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_connections_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4450,13 +5278,61 @@
 %% }
 -type delete_domain_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% aws_location() :: #{
+%%   <<"accessRole">> => [string()],
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"iamConnectionId">> => string()
+%% }
+-type aws_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication_configuration() :: #{
+%%   <<"authenticationType">> => list(any()),
+%%   <<"oAuth2Properties">> => o_auth2_properties(),
+%%   <<"secretArn">> => [string()]
+%% }
+-type authentication_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_domain_unit_output() :: #{}
 -type delete_domain_unit_output() :: #{}.
 
+
+%% Example:
+%% create_project_from_project_profile_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()],
+%%   <<"projectProfiles">> => list([string()]())
+%% }
+-type create_project_from_project_profile_policy_grant_detail() :: #{binary() => any()}.
+
 %% Example:
 %% delete_listing_input() :: #{}
 -type delete_listing_input() :: #{}.
+
+
+%% Example:
+%% sage_maker_run_configuration_output() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"region">> => [string()],
+%%   <<"trackingAssets">> => map()
+%% }
+-type sage_maker_run_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connection_input() :: #{
+%%   <<"awsLocation">> => aws_location(),
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"environmentIdentifier">> := string(),
+%%   <<"name">> := string(),
+%%   <<"props">> => list()
+%% }
+-type create_connection_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4493,6 +5369,22 @@
 %%   <<"value">> => [string()]
 %% }
 -type greater_than_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_profile_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_project_profile_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4567,6 +5459,14 @@
 %%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail()())
 %% }
 -type glue_self_grant_status_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_lineage_sync_configuration_input() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"schedule">> => lineage_sync_schedule()
+%% }
+-type redshift_lineage_sync_configuration_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_environment_blueprint_input() :: #{}
@@ -4650,6 +5550,13 @@
 
 
 %% Example:
+%% iam_properties_patch() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type iam_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_environment_credentials_output() :: #{
 %%   <<"accessKeyId">> => [string()],
 %%   <<"expiration">> => [non_neg_integer()],
@@ -4664,6 +5571,21 @@
 %%   <<"formName">> := string()
 %% }
 -type get_time_series_data_point_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_profile_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type project_profile_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4753,6 +5675,26 @@
 %% }
 -type create_group_profile_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_project_profile_output() :: #{}
+-type delete_project_profile_output() :: #{}.
+
+
+%% Example:
+%% update_connection_output() :: #{
+%%   <<"connectionId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()()),
+%%   <<"projectId">> => string(),
+%%   <<"props">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type update_connection_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_group_profiles_output() :: #{
@@ -4774,7 +5716,7 @@
 %% update_subscription_target_input() :: #{
 %%   <<"applicableAssetTypes">> => list(string()()),
 %%   <<"authorizedPrincipals">> => list(string()()),
-%%   <<"manageAccessRole">> => [string()],
+%%   <<"manageAccessRole">> => string(),
 %%   <<"name">> => string(),
 %%   <<"provider">> => [string()],
 %%   <<"subscriptionTargetConfig">> => list(subscription_target_form()())
@@ -4796,6 +5738,7 @@
 %%   <<"description">> => [string()],
 %%   <<"domainExecutionRole">> => string(),
 %%   <<"name">> => [string()],
+%%   <<"serviceRole">> => string(),
 %%   <<"singleSignOn">> => single_sign_on()
 %% }
 -type update_domain_input() :: #{binary() => any()}.
@@ -4853,6 +5796,23 @@
 
 
 %% Example:
+%% basic_authentication_credentials() :: #{
+%%   <<"password">> => [string()],
+%%   <<"userName">> => [string()]
+%% }
+-type basic_authentication_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_configuration_parameter() :: #{
+%%   <<"isEditable">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"value">> => [string()]
+%% }
+-type environment_configuration_parameter() :: #{binary() => any()}.
+
+
+%% Example:
 %% configurable_action_parameter() :: #{
 %%   <<"key">> => [string()],
 %%   <<"value">> => [string()]
@@ -4885,6 +5845,7 @@
 %% Example:
 %% put_environment_blueprint_configuration_input() :: #{
 %%   <<"enabledRegions">> := list(string()()),
+%%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
 %%   <<"provisioningConfigurations">> => list(list()()),
 %%   <<"provisioningRoleArn">> => string(),
@@ -5000,6 +5961,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_data_product_errors() ::
@@ -5125,6 +6095,15 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_project_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5187,6 +6166,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type delete_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type delete_data_product_errors() ::
     throttling_exception() | 
@@ -5295,6 +6281,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type delete_project_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5357,6 +6350,13 @@
     resource_not_found_exception().
 
 -type get_asset_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_connection_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -5479,6 +6479,20 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_job_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_lineage_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_lineage_node_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5501,6 +6515,13 @@
     resource_not_found_exception().
 
 -type get_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_project_profile_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -5568,6 +6589,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_connections_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_data_product_revisions_errors() ::
     throttling_exception() | 
@@ -5655,6 +6682,19 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_job_runs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_lineage_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_lineage_node_history_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5687,6 +6727,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_project_profiles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_projects_errors() ::
     throttling_exception() | 
@@ -5868,6 +6914,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_data_source_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -5942,6 +6997,15 @@
     resource_not_found_exception().
 
 -type update_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_project_profile_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -6353,6 +7417,44 @@ create_asset_type(Client, DomainIdentifier, Input) ->
 create_asset_type(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/asset-types"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new connection.
+%%
+%% In Amazon DataZone, a connection enables you to connect your
+%% resources (domains, projects, and environments) to external resources and
+%% services.
+-spec create_connection(aws_client:aws_client(), binary() | list(), create_connection_input()) ->
+    {ok, create_connection_output(), tuple()} |
+    {error, any()} |
+    {error, create_connection_errors(), tuple()}.
+create_connection(Client, DomainIdentifier, Input) ->
+    create_connection(Client, DomainIdentifier, Input, []).
+
+-spec create_connection(aws_client:aws_client(), binary() | list(), create_connection_input(), proplists:proplist()) ->
+    {ok, create_connection_output(), tuple()} |
+    {error, any()} |
+    {error, create_connection_errors(), tuple()}.
+create_connection(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/connections"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6886,6 +7988,40 @@ create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, O
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a project profile.
+-spec create_project_profile(aws_client:aws_client(), binary() | list(), create_project_profile_input()) ->
+    {ok, create_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, create_project_profile_errors(), tuple()}.
+create_project_profile(Client, DomainIdentifier, Input) ->
+    create_project_profile(Client, DomainIdentifier, Input, []).
+
+-spec create_project_profile(aws_client:aws_client(), binary() | list(), create_project_profile_input(), proplists:proplist()) ->
+    {ok, create_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, create_project_profile_errors(), tuple()}.
+create_project_profile(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/project-profiles"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a rule in Amazon DataZone.
 %%
 %% A rule is a formal agreement that enforces specific
@@ -7153,6 +8289,44 @@ delete_asset_type(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/asset-types/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes and connection.
+%%
+%% In Amazon DataZone, a connection enables you to connect your
+%% resources (domains, projects, and environments) to external resources and
+%% services.
+-spec delete_connection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_connection_input()) ->
+    {ok, delete_connection_output(), tuple()} |
+    {error, any()} |
+    {error, delete_connection_errors(), tuple()}.
+delete_connection(Client, DomainIdentifier, Identifier, Input) ->
+    delete_connection(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_connection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_connection_input(), proplists:proplist()) ->
+    {ok, delete_connection_output(), tuple()} |
+    {error, any()} |
+    {error, delete_connection_errors(), tuple()}.
+delete_connection(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/connections/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -7654,6 +8828,40 @@ delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, O
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a project profile.
+-spec delete_project_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_profile_input()) ->
+    {ok, delete_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, delete_project_profile_errors(), tuple()}.
+delete_project_profile(Client, DomainIdentifier, Identifier, Input) ->
+    delete_project_profile(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_project_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_profile_input(), proplists:proplist()) ->
+    {ok, delete_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, delete_project_profile_errors(), tuple()}.
+delete_project_profile(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/project-profiles/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a rule in Amazon DataZone.
 %%
 %% A rule is a formal agreement that enforces specific
@@ -7987,6 +9195,51 @@ get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Optio
     Query0_ =
       [
         {<<"revision">>, maps:get(<<"revision">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a connection.
+%%
+%% In Amazon DataZone, a connection enables you to connect your
+%% resources (domains, projects, and environments) to external resources and
+%% services.
+-spec get_connection(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_connection_output(), tuple()} |
+    {error, any()} |
+    {error, get_connection_errors(), tuple()}.
+get_connection(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_connection(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_connection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_connection_output(), tuple()} |
+    {error, any()} |
+    {error, get_connection_errors(), tuple()}.
+get_connection(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connection(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_connection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_connection_output(), tuple()} |
+    {error, any()} |
+    {error, get_connection_errors(), tuple()}.
+get_connection(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/connections/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"withSecret">>, maps:get(<<"withSecret">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -8589,6 +9842,101 @@ get_iam_portal_login_url(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc The details of the job run.
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_job_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_job_run_errors(), tuple()}.
+get_job_run(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_job_run(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_job_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_job_run_errors(), tuple()}.
+get_job_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_job_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_job_run_errors(), tuple()}.
+get_job_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/jobRuns/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the lineage event.
+-spec get_lineage_event(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_lineage_event_output(), tuple()} |
+    {error, any()} |
+    {error, get_lineage_event_errors(), tuple()}.
+get_lineage_event(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_lineage_event(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_lineage_event(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_lineage_event_output(), tuple()} |
+    {error, any()} |
+    {error, get_lineage_event_errors(), tuple()}.
+get_lineage_event(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lineage_event(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_lineage_event(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_lineage_event_output(), tuple()} |
+    {error, any()} |
+    {error, get_lineage_event_errors(), tuple()}.
+get_lineage_event(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/lineage/events/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Created-At">>, <<"createdAt">>},
+            {<<"Created-By">>, <<"createdBy">>},
+            {<<"Domain-Id">>, <<"domainId">>},
+            {<<"Event-Time">>, <<"eventTime">>},
+            {<<"Id">>, <<"id">>},
+            {<<"Processing-Status">>, <<"processingStatus">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Gets the data lineage node.
 -spec get_lineage_node(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_lineage_node_output(), tuple()} |
@@ -8735,6 +10083,43 @@ get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
 get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The details of the project profile.
+-spec get_project_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_project_profile_errors(), tuple()}.
+get_project_profile(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_project_profile(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_project_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_project_profile_errors(), tuple()}.
+get_project_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_project_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_project_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_project_profile_errors(), tuple()}.
+get_project_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/project-profiles/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -9117,6 +10502,58 @@ list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists connections.
+%%
+%% In Amazon DataZone, a connection enables you to connect your
+%% resources (domains, projects, and environments) to external resources and
+%% services.
+-spec list_connections(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_connections_output(), tuple()} |
+    {error, any()} |
+    {error, list_connections_errors(), tuple()}.
+list_connections(Client, DomainIdentifier, ProjectIdentifier)
+  when is_map(Client) ->
+    list_connections(Client, DomainIdentifier, ProjectIdentifier, #{}, #{}).
+
+-spec list_connections(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_connections_output(), tuple()} |
+    {error, any()} |
+    {error, list_connections_errors(), tuple()}.
+list_connections(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_connections(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_connections(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_connections_output(), tuple()} |
+    {error, any()} |
+    {error, list_connections_errors(), tuple()}.
+list_connections(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/connections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"environmentIdentifier">>, maps:get(<<"environmentIdentifier">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"projectIdentifier">>, ProjectIdentifier},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists data product revisions.
 -spec list_data_product_revisions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_data_product_revisions_output(), tuple()} |
@@ -9280,6 +10717,7 @@ list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
 
     Query0_ =
       [
+        {<<"connectionIdentifier">>, maps:get(<<"connectionIdentifier">>, QueryMap, undefined)},
         {<<"environmentIdentifier">>, maps:get(<<"environmentIdentifier">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
@@ -9645,6 +11083,96 @@ list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists job runs.
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_job_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
+list_job_runs(Client, DomainIdentifier, JobIdentifier)
+  when is_map(Client) ->
+    list_job_runs(Client, DomainIdentifier, JobIdentifier, #{}, #{}).
+
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_job_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
+list_job_runs(Client, DomainIdentifier, JobIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_runs(Client, DomainIdentifier, JobIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_job_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
+list_job_runs(Client, DomainIdentifier, JobIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/jobs/", aws_util:encode_uri(JobIdentifier), "/runs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists lineage events.
+-spec list_lineage_events(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_lineage_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_lineage_events_errors(), tuple()}.
+list_lineage_events(Client, DomainIdentifier)
+  when is_map(Client) ->
+    list_lineage_events(Client, DomainIdentifier, #{}, #{}).
+
+-spec list_lineage_events(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_lineage_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_lineage_events_errors(), tuple()}.
+list_lineage_events(Client, DomainIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lineage_events(Client, DomainIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_lineage_events(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_lineage_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_lineage_events_errors(), tuple()}.
+list_lineage_events(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/lineage/events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"processingStatus">>, maps:get(<<"processingStatus">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"timestampAfter">>, maps:get(<<"timestampAfter">>, QueryMap, undefined)},
+        {<<"timestampBefore">>, maps:get(<<"timestampBefore">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the history of the specified data lineage node.
 -spec list_lineage_node_history(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_lineage_node_history_output(), tuple()} |
@@ -9861,6 +11389,51 @@ list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, QueryMap, 
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists project profiles.
+-spec list_project_profiles(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_project_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, list_project_profiles_errors(), tuple()}.
+list_project_profiles(Client, DomainIdentifier)
+  when is_map(Client) ->
+    list_project_profiles(Client, DomainIdentifier, #{}, #{}).
+
+-spec list_project_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_project_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, list_project_profiles_errors(), tuple()}.
+list_project_profiles(Client, DomainIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_project_profiles(Client, DomainIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_project_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_project_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, list_project_profiles_errors(), tuple()}.
+list_project_profiles(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/project-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)}
@@ -10270,16 +11843,17 @@ post_lineage_event(Client, DomainIdentifier, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"Client-Token">>, <<"clientToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
 
-    QueryMapping = [
-                     {<<"clientToken">>, <<"clientToken">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Posts time series data points to Amazon DataZone for the specified
@@ -10867,6 +12441,44 @@ update_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a connection.
+%%
+%% In Amazon DataZone, a connection enables you to connect your
+%% resources (domains, projects, and environments) to external resources and
+%% services.
+-spec update_connection(aws_client:aws_client(), binary() | list(), binary() | list(), update_connection_input()) ->
+    {ok, update_connection_output(), tuple()} |
+    {error, any()} |
+    {error, update_connection_errors(), tuple()}.
+update_connection(Client, DomainIdentifier, Identifier, Input) ->
+    update_connection(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_connection(aws_client:aws_client(), binary() | list(), binary() | list(), update_connection_input(), proplists:proplist()) ->
+    {ok, update_connection_output(), tuple()} |
+    {error, any()} |
+    {error, update_connection_errors(), tuple()}.
+update_connection(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/connections/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the specified data source in Amazon DataZone.
 -spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_input()) ->
     {ok, update_data_source_output(), tuple()} |
@@ -11189,6 +12801,40 @@ update_project(Client, DomainIdentifier, Identifier, Input) ->
 update_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a project profile.
+-spec update_project_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_project_profile_input()) ->
+    {ok, update_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, update_project_profile_errors(), tuple()}.
+update_project_profile(Client, DomainIdentifier, Identifier, Input) ->
+    update_project_profile(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_project_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_project_profile_input(), proplists:proplist()) ->
+    {ok, update_project_profile_output(), tuple()} |
+    {error, any()} |
+    {error, update_project_profile_errors(), tuple()}.
+update_project_profile(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/project-profiles/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

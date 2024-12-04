@@ -43,7 +43,9 @@
 %% https://docs.aws.amazon.com/general/latest/gr/amazonq.html
 -module(aws_qbusiness).
 
--export([batch_delete_document/4,
+-export([associate_permission/3,
+         associate_permission/4,
+         batch_delete_document/4,
          batch_delete_document/5,
          batch_put_document/4,
          batch_put_document/5,
@@ -53,6 +55,8 @@
          chat_sync/4,
          create_application/2,
          create_application/3,
+         create_data_accessor/3,
+         create_data_accessor/4,
          create_data_source/4,
          create_data_source/5,
          create_index/3,
@@ -71,6 +75,8 @@
          delete_chat_controls_configuration/4,
          delete_conversation/4,
          delete_conversation/5,
+         delete_data_accessor/4,
+         delete_data_accessor/5,
          delete_data_source/5,
          delete_data_source/6,
          delete_group/5,
@@ -85,12 +91,17 @@
          delete_user/5,
          delete_web_experience/4,
          delete_web_experience/5,
+         disassociate_permission/4,
+         disassociate_permission/5,
          get_application/2,
          get_application/4,
          get_application/5,
          get_chat_controls_configuration/2,
          get_chat_controls_configuration/4,
          get_chat_controls_configuration/5,
+         get_data_accessor/3,
+         get_data_accessor/5,
+         get_data_accessor/6,
          get_data_source/4,
          get_data_source/6,
          get_data_source/7,
@@ -106,6 +117,9 @@
          get_plugin/3,
          get_plugin/5,
          get_plugin/6,
+         get_policy/2,
+         get_policy/4,
+         get_policy/5,
          get_retriever/3,
          get_retriever/5,
          get_retriever/6,
@@ -124,6 +138,9 @@
          list_conversations/2,
          list_conversations/4,
          list_conversations/5,
+         list_data_accessors/2,
+         list_data_accessors/4,
+         list_data_accessors/5,
          list_data_source_sync_jobs/4,
          list_data_source_sync_jobs/6,
          list_data_source_sync_jobs/7,
@@ -142,6 +159,15 @@
          list_messages/3,
          list_messages/5,
          list_messages/6,
+         list_plugin_actions/3,
+         list_plugin_actions/5,
+         list_plugin_actions/6,
+         list_plugin_type_actions/2,
+         list_plugin_type_actions/4,
+         list_plugin_type_actions/5,
+         list_plugin_type_metadata/1,
+         list_plugin_type_metadata/3,
+         list_plugin_type_metadata/4,
          list_plugins/2,
          list_plugins/4,
          list_plugins/5,
@@ -158,6 +184,8 @@
          put_feedback/6,
          put_group/4,
          put_group/5,
+         search_relevant_content/3,
+         search_relevant_content/4,
          start_data_source_sync_job/5,
          start_data_source_sync_job/6,
          stop_data_source_sync_job/5,
@@ -170,6 +198,8 @@
          update_application/4,
          update_chat_controls_configuration/3,
          update_chat_controls_configuration/4,
+         update_data_accessor/4,
+         update_data_accessor/5,
          update_data_source/5,
          update_data_source/6,
          update_index/4,
@@ -200,6 +230,16 @@
 
 
 %% Example:
+%% action_summary() :: #{
+%%   <<"actionIdentifier">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"instructionExample">> => string()
+%% }
+-type action_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% applied_attachments_configuration() :: #{
 %%   <<"attachmentsControlMode">> => list(any())
 %% }
@@ -213,6 +253,14 @@
 %%   <<"userId">> => string()
 %% }
 -type put_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_accessor_request() :: #{
+%%   <<"actionConfigurations">> := list(action_configuration()()),
+%%   <<"displayName">> => string()
+%% }
+-type update_data_accessor_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -264,6 +312,14 @@
 %%   <<"subnetIds">> => list(string()())
 %% }
 -type data_source_vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_accessors_response() :: #{
+%%   <<"dataAccessors">> => list(data_accessor()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_accessors_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -361,6 +417,29 @@
 
 
 %% Example:
+%% get_data_accessor_response() :: #{
+%%   <<"actionConfigurations">> => list(action_configuration()()),
+%%   <<"applicationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataAccessorArn">> => string(),
+%%   <<"dataAccessorId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"idcApplicationArn">> => string(),
+%%   <<"principal">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_data_accessor_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% idc_auth_configuration() :: #{
+%%   <<"idcApplicationArn">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type idc_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% text_output_event() :: #{
 %%   <<"conversationId">> => string(),
 %%   <<"systemMessage">> => string(),
@@ -400,10 +479,22 @@
 
 %% Example:
 %% o_auth2_client_credential_configuration() :: #{
+%%   <<"authorizationUrl">> => string(),
 %%   <<"roleArn">> => string(),
-%%   <<"secretArn">> => string()
+%%   <<"secretArn">> => string(),
+%%   <<"tokenUrl">> => string()
 %% }
 -type o_auth2_client_credential_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% customization_configuration() :: #{
+%%   <<"customCSSUrl">> => string(),
+%%   <<"faviconUrl">> => string(),
+%%   <<"fontUrl">> => string(),
+%%   <<"logoUrl">> => string()
+%% }
+-type customization_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -431,6 +522,18 @@
 %% }
 -type content_blocker_rule() :: #{binary() => any()}.
 
+%% Example:
+%% get_policy_request() :: #{}
+-type get_policy_request() :: #{}.
+
+
+%% Example:
+%% list_plugin_type_metadata_response() :: #{
+%%   <<"items">> => list(plugin_type_metadata_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_type_metadata_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% failed_attachment_event() :: #{
@@ -449,6 +552,15 @@
 %%   <<"membershipType">> => list(any())
 %% }
 -type principal_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_accessor_response() :: #{
+%%   <<"dataAccessorArn">> => string(),
+%%   <<"dataAccessorId">> => string(),
+%%   <<"idcApplicationArn">> => string()
+%% }
+-type create_data_accessor_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -491,6 +603,17 @@
 %%   <<"documentsScanned">> => string()
 %% }
 -type data_source_sync_job_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_accessor_request() :: #{
+%%   <<"actionConfigurations">> := list(action_configuration()()),
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"principal">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_data_accessor_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -572,6 +695,14 @@
 
 
 %% Example:
+%% list_plugin_actions_response() :: #{
+%%   <<"items">> => list(action_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% action_review() :: #{
 %%   <<"payload">> => map(),
 %%   <<"payloadFieldNameSeparator">> => string(),
@@ -616,6 +747,10 @@
 %%   <<"userMessage">> => string()
 %% }
 -type text_input_event() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_accessor_request() :: #{}
+-type delete_data_accessor_request() :: #{}.
 
 
 %% Example:
@@ -663,6 +798,10 @@
 %% }
 -type list_documents_response() :: #{binary() => any()}.
 
+%% Example:
+%% update_data_accessor_response() :: #{}
+-type update_data_accessor_response() :: #{}.
+
 
 %% Example:
 %% create_plugin_request() :: #{
@@ -693,6 +832,23 @@
 %%   <<"imageExtractionStatus">> => list(any())
 %% }
 -type image_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_type_metadata_summary() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type plugin_type_metadata_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_type_actions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_type_actions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -761,6 +917,7 @@
 %% create_web_experience_request() :: #{
 %%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
 %%   <<"clientToken">> => string(),
+%%   <<"customizationConfiguration">> => customization_configuration(),
 %%   <<"identityProviderConfiguration">> => list(),
 %%   <<"origins">> => list(string()()),
 %%   <<"roleArn">> => string(),
@@ -844,6 +1001,7 @@
 %%   <<"authenticationConfiguration">> => list(),
 %%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customizationConfiguration">> => customization_configuration(),
 %%   <<"defaultEndpoint">> => string(),
 %%   <<"error">> => error_detail(),
 %%   <<"identityProviderConfiguration">> => list(),
@@ -967,6 +1125,7 @@
 %% update_web_experience_request() :: #{
 %%   <<"authenticationConfiguration">> => list(),
 %%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
+%%   <<"customizationConfiguration">> => customization_configuration(),
 %%   <<"identityProviderConfiguration">> => list(),
 %%   <<"origins">> => list(string()()),
 %%   <<"roleArn">> => string(),
@@ -984,6 +1143,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"displayName">> => string(),
 %%   <<"identityType">> => list(any()),
+%%   <<"quickSightConfiguration">> => quick_sight_configuration(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -996,6 +1156,10 @@
 %%   <<"boostingType">> => list(any())
 %% }
 -type number_attribute_boosting_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_permission_response() :: #{}
+-type disassociate_permission_response() :: #{}.
 
 
 %% Example:
@@ -1084,6 +1248,7 @@
 %%   <<"identityType">> => list(any()),
 %%   <<"personalizationConfiguration">> => personalization_configuration(),
 %%   <<"qAppsConfiguration">> => q_apps_configuration(),
+%%   <<"quickSightConfiguration">> => quick_sight_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => list(tag()())
 %% }
@@ -1243,12 +1408,23 @@
 -type stop_data_source_sync_job_request() :: #{}.
 
 %% Example:
+%% get_data_accessor_request() :: #{}
+-type get_data_accessor_request() :: #{}.
+
+%% Example:
 %% delete_plugin_response() :: #{}
 -type delete_plugin_response() :: #{}.
 
 %% Example:
 %% delete_application_response() :: #{}
 -type delete_application_response() :: #{}.
+
+
+%% Example:
+%% score_attributes() :: #{
+%%   <<"scoreConfidence">> => list(any())
+%% }
+-type score_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% delete_user_response() :: #{}
@@ -1264,12 +1440,35 @@
 
 
 %% Example:
+%% get_policy_response() :: #{
+%%   <<"policy">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% blocked_phrases_configuration_update() :: #{
 %%   <<"blockedPhrasesToCreateOrUpdate">> => list(string()()),
 %%   <<"blockedPhrasesToDelete">> => list(string()()),
 %%   <<"systemMessageOverride">> => string()
 %% }
 -type blocked_phrases_configuration_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_type_actions_response() :: #{
+%%   <<"items">> => list(action_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_type_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_actions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_actions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1319,6 +1518,18 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+%% Example:
+%% disassociate_permission_request() :: #{}
+-type disassociate_permission_request() :: #{}.
+
+
+%% Example:
+%% search_relevant_content_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"relevantContent">> => list(relevant_content()())
+%% }
+-type search_relevant_content_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_data_source_response() :: #{
@@ -1337,6 +1548,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type document_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_type_metadata_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_type_metadata_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_web_experience_request() :: #{}
@@ -1360,6 +1579,7 @@
 %%   <<"identityType">> => list(any()),
 %%   <<"personalizationConfiguration">> => personalization_configuration(),
 %%   <<"qAppsConfiguration">> => q_apps_configuration(),
+%%   <<"quickSightConfiguration">> => quick_sight_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1455,6 +1675,18 @@
 %% }
 -type error_detail() :: #{binary() => any()}.
 
+
+%% Example:
+%% relevant_content() :: #{
+%%   <<"content">> => string(),
+%%   <<"documentAttributes">> => list(document_attribute()()),
+%%   <<"documentId">> => string(),
+%%   <<"documentTitle">> => string(),
+%%   <<"documentUri">> => string(),
+%%   <<"scoreAttributes">> => score_attributes()
+%% }
+-type relevant_content() :: #{binary() => any()}.
+
 %% Example:
 %% delete_group_response() :: #{}
 -type delete_group_response() :: #{}.
@@ -1504,11 +1736,28 @@
 
 
 %% Example:
+%% search_relevant_content_request() :: #{
+%%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"contentSource">> := list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryText">> := string(),
+%%   <<"userGroups">> => list(string()()),
+%%   <<"userId">> => string()
+%% }
+-type search_relevant_content_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_conversations_response() :: #{
 %%   <<"conversations">> => list(conversation()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_conversations_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_accessor_response() :: #{}
+-type delete_data_accessor_response() :: #{}.
 
 
 %% Example:
@@ -1554,6 +1803,14 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_data_accessors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_accessors_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1635,6 +1892,13 @@
 
 
 %% Example:
+%% quick_sight_configuration() :: #{
+%%   <<"clientNamespace">> => string()
+%% }
+-type quick_sight_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% document_enrichment_configuration() :: #{
 %%   <<"inlineConfigurations">> => list(inline_document_enrichment_configuration()()),
 %%   <<"postExtractionHookConfiguration">> => hook_configuration(),
@@ -1663,6 +1927,15 @@
 %%   <<"dataSourceId">> => string()
 %% }
 -type delete_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_permission_request() :: #{
+%%   <<"actions">> := list(string()()),
+%%   <<"principal">> := string(),
+%%   <<"statementId">> := string()
+%% }
+-type associate_permission_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1737,6 +2010,14 @@
 %%   <<"message">> => string()
 %% }
 -type external_resource_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_configuration() :: #{
+%%   <<"action">> => string(),
+%%   <<"filterConfiguration">> => action_filter_configuration()
+%% }
+-type action_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1856,6 +2137,19 @@
 %% }
 -type text_document_statistics() :: #{binary() => any()}.
 
+
+%% Example:
+%% data_accessor() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataAccessorArn">> => string(),
+%%   <<"dataAccessorId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"idcApplicationArn">> => string(),
+%%   <<"principal">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_accessor() :: #{binary() => any()}.
+
 %% Example:
 %% update_index_response() :: #{}
 -type update_index_response() :: #{}.
@@ -1928,6 +2222,13 @@
 %% }
 -type date_attribute_boosting_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% action_filter_configuration() :: #{
+%%   <<"documentAttributeFilter">> => attribute_filter()
+%% }
+-type action_filter_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_index_request() :: #{}
 -type get_index_request() :: #{}.
@@ -1943,6 +2244,13 @@
 %% Example:
 %% create_user_response() :: #{}
 -type create_user_response() :: #{}.
+
+
+%% Example:
+%% retriever_content_source() :: #{
+%%   <<"retrieverId">> => string()
+%% }
+-type retriever_content_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2004,6 +2312,13 @@
 %%   <<"textDocumentStatistics">> => text_document_statistics()
 %% }
 -type index_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_permission_response() :: #{
+%%   <<"statement">> => string()
+%% }
+-type associate_permission_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2071,6 +2386,15 @@
 %% }
 -type message() :: #{binary() => any()}.
 
+-type associate_permission_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type batch_delete_document_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2109,6 +2433,15 @@
     license_not_found_exception().
 
 -type create_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_accessor_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2194,6 +2527,14 @@
     resource_not_found_exception() | 
     license_not_found_exception().
 
+-type delete_data_accessor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_data_source_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2250,6 +2591,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type disassociate_permission_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type get_application_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2258,6 +2607,13 @@
     resource_not_found_exception().
 
 -type get_chat_controls_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_accessor_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2296,6 +2652,13 @@
     media_too_large_exception().
 
 -type get_plugin_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2346,6 +2709,13 @@
     resource_not_found_exception() | 
     license_not_found_exception().
 
+-type list_data_accessors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_data_source_sync_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2391,6 +2761,25 @@
     resource_not_found_exception() | 
     license_not_found_exception().
 
+-type list_plugin_actions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_plugin_type_actions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_plugin_type_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_plugins_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2434,6 +2823,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type search_relevant_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception().
 
 -type start_data_source_sync_job_errors() ::
     throttling_exception() | 
@@ -2481,6 +2878,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_accessor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2538,6 +2943,46 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds or updates a permission policy for a Q Business application,
+%% allowing cross-account access for an ISV.
+%%
+%% This operation creates a new policy statement for the specified Q Business
+%% application.
+%% The policy statement defines the IAM actions that the ISV is allowed to
+%% perform on the Q Business application's resources.
+-spec associate_permission(aws_client:aws_client(), binary() | list(), associate_permission_request()) ->
+    {ok, associate_permission_response(), tuple()} |
+    {error, any()} |
+    {error, associate_permission_errors(), tuple()}.
+associate_permission(Client, ApplicationId, Input) ->
+    associate_permission(Client, ApplicationId, Input, []).
+
+-spec associate_permission(aws_client:aws_client(), binary() | list(), associate_permission_request(), proplists:proplist()) ->
+    {ok, associate_permission_response(), tuple()} |
+    {error, any()} |
+    {error, associate_permission_errors(), tuple()}.
+associate_permission(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Asynchronously deletes one or more documents added using the
 %% `BatchPutDocument' API from an Amazon Q Business index.
@@ -2743,6 +3188,51 @@ create_application(Client, Input) ->
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new data accessor for an ISV to access data from a Q
+%% Business application.
+%%
+%% The data accessor is an entity that represents the ISV's access to the
+%% Q Business application's data.
+%% It includes the IAM role ARN for the ISV, a friendly name, and a set of
+%% action configurations that define the
+%% specific actions the ISV is allowed to perform and any associated data
+%% filters. When the data accessor is created,
+%% an AWS IAM Identity Center application is also created to manage the
+%% ISV's identity and authentication for
+%% accessing the Q Business application.
+-spec create_data_accessor(aws_client:aws_client(), binary() | list(), create_data_accessor_request()) ->
+    {ok, create_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_accessor_errors(), tuple()}.
+create_data_accessor(Client, ApplicationId, Input) ->
+    create_data_accessor(Client, ApplicationId, Input, []).
+
+-spec create_data_accessor(aws_client:aws_client(), binary() | list(), create_data_accessor_request(), proplists:proplist()) ->
+    {ok, create_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_accessor_errors(), tuple()}.
+create_data_accessor(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataaccessors"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3091,6 +3581,44 @@ delete_conversation(Client, ApplicationId, ConversationId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a specified data accessor.
+%%
+%% This operation permanently removes the data accessor
+%% and its associated AWS IAM Identity Center application. Any access granted
+%% to the ISV through this data accessor will be revoked
+-spec delete_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_accessor_request()) ->
+    {ok, delete_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_accessor_errors(), tuple()}.
+delete_data_accessor(Client, ApplicationId, DataAccessorId, Input) ->
+    delete_data_accessor(Client, ApplicationId, DataAccessorId, Input, []).
+
+-spec delete_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_accessor_request(), proplists:proplist()) ->
+    {ok, delete_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_accessor_errors(), tuple()}.
+delete_data_accessor(Client, ApplicationId, DataAccessorId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataaccessors/", aws_util:encode_uri(DataAccessorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an Amazon Q Business data source connector.
 %%
 %% While the data source is being
@@ -3350,6 +3878,45 @@ delete_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a permission policy from a Q Business application, revoking
+%% the cross-account access that was
+%% previously granted to an ISV.
+%%
+%% This operation deletes the specified policy statement from the
+%% application's permission policy.
+-spec disassociate_permission(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_permission_request()) ->
+    {ok, disassociate_permission_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_permission_errors(), tuple()}.
+disassociate_permission(Client, ApplicationId, StatementId, Input) ->
+    disassociate_permission(Client, ApplicationId, StatementId, Input, []).
+
+-spec disassociate_permission(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_permission_request(), proplists:proplist()) ->
+    {ok, disassociate_permission_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_permission_errors(), tuple()}.
+disassociate_permission(Client, ApplicationId, StatementId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy/", aws_util:encode_uri(StatementId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets information about an existing Amazon Q Business application.
 -spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
@@ -3428,6 +3995,51 @@ get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, Opt
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specified data accessor.
+%%
+%% This operation returns details about the
+%% data accessor, including its display name, unique identifier, Amazon
+%% Resource Name (ARN), the associated
+%% Q Business application and AWS IAM Identity Center application, the IAM
+%% role for the ISV, the
+%% action configurations, and the timestamps for when the data accessor was
+%% created and last updated.
+-spec get_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_accessor_errors(), tuple()}.
+get_data_accessor(Client, ApplicationId, DataAccessorId)
+  when is_map(Client) ->
+    get_data_accessor(Client, ApplicationId, DataAccessorId, #{}, #{}).
+
+-spec get_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_accessor_errors(), tuple()}.
+get_data_accessor(Client, ApplicationId, DataAccessorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_accessor(Client, ApplicationId, DataAccessorId, QueryMap, HeadersMap, []).
+
+-spec get_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_accessor_errors(), tuple()}.
+get_data_accessor(Client, ApplicationId, DataAccessorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataaccessors/", aws_util:encode_uri(DataAccessorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3618,6 +4230,47 @@ get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap)
 get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/plugins/", aws_util:encode_uri(PluginId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the current permission policy for a Q Business application.
+%%
+%% The policy is
+%% returned as a JSON-formatted string and defines the IAM actions that are
+%% allowed or denied for the application's resources.
+-spec get_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, ApplicationId)
+  when is_map(Client) ->
+    get_policy(Client, ApplicationId, #{}, #{}).
+
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3885,6 +4538,54 @@ list_conversations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the data accessors for a Q Business application.
+%%
+%% This operation returns a paginated
+%% list of data accessor summaries, including the friendly name, unique
+%% identifier, ARN,
+%% associated IAM role, and creation/update timestamps for each data
+%% accessor.
+-spec list_data_accessors(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_accessors_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_accessors_errors(), tuple()}.
+list_data_accessors(Client, ApplicationId)
+  when is_map(Client) ->
+    list_data_accessors(Client, ApplicationId, #{}, #{}).
+
+-spec list_data_accessors(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_accessors_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_accessors_errors(), tuple()}.
+list_data_accessors(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_accessors(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+-spec list_data_accessors(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_accessors_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_accessors_errors(), tuple()}.
+list_data_accessors(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataaccessors"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Get information about an Amazon Q Business data source connector
 %% synchronization.
 -spec list_data_source_sync_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
@@ -4147,6 +4848,134 @@ list_messages(Client, ApplicationId, ConversationId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists configured Amazon Q Business actions for a specific plugin in
+%% an Amazon Q Business application.
+-spec list_plugin_actions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_plugin_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_actions_errors(), tuple()}.
+list_plugin_actions(Client, ApplicationId, PluginId)
+  when is_map(Client) ->
+    list_plugin_actions(Client, ApplicationId, PluginId, #{}, #{}).
+
+-spec list_plugin_actions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_plugin_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_actions_errors(), tuple()}.
+list_plugin_actions(Client, ApplicationId, PluginId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_plugin_actions(Client, ApplicationId, PluginId, QueryMap, HeadersMap, []).
+
+-spec list_plugin_actions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_plugin_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_actions_errors(), tuple()}.
+list_plugin_actions(Client, ApplicationId, PluginId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/plugins/", aws_util:encode_uri(PluginId), "/actions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists configured Amazon Q Business actions for any plugin type—both
+%% built-in and custom.
+-spec list_plugin_type_actions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_plugin_type_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_type_actions_errors(), tuple()}.
+list_plugin_type_actions(Client, PluginType)
+  when is_map(Client) ->
+    list_plugin_type_actions(Client, PluginType, #{}, #{}).
+
+-spec list_plugin_type_actions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_plugin_type_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_type_actions_errors(), tuple()}.
+list_plugin_type_actions(Client, PluginType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_plugin_type_actions(Client, PluginType, QueryMap, HeadersMap, []).
+
+-spec list_plugin_type_actions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_plugin_type_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_type_actions_errors(), tuple()}.
+list_plugin_type_actions(Client, PluginType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/pluginTypes/", aws_util:encode_uri(PluginType), "/actions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists metadata for all Amazon Q Business plugin types.
+-spec list_plugin_type_metadata(aws_client:aws_client()) ->
+    {ok, list_plugin_type_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_type_metadata_errors(), tuple()}.
+list_plugin_type_metadata(Client)
+  when is_map(Client) ->
+    list_plugin_type_metadata(Client, #{}, #{}).
+
+-spec list_plugin_type_metadata(aws_client:aws_client(), map(), map()) ->
+    {ok, list_plugin_type_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_type_metadata_errors(), tuple()}.
+list_plugin_type_metadata(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_plugin_type_metadata(Client, QueryMap, HeadersMap, []).
+
+-spec list_plugin_type_metadata(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_plugin_type_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugin_type_metadata_errors(), tuple()}.
+list_plugin_type_metadata(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/pluginTypeMetadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists configured Amazon Q Business plugins.
 -spec list_plugins(aws_client:aws_client(), binary() | list()) ->
     {ok, list_plugins_response(), tuple()} |
@@ -4397,6 +5226,54 @@ put_group(Client, ApplicationId, IndexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for relevant content in a Q Business application based on a
+%% query.
+%%
+%% This operation takes a
+%% search query text, the Q Business application identifier, and optional
+%% filters
+%% (such as user ID, user groups, content source, and maximum results) as
+%% input. It returns a list of
+%% relevant content items, where each item includes the content text, the
+%% unique document identifier,
+%% the document title, the document URI, any relevant document attributes,
+%% and score attributes
+%% indicating the confidence level of the relevance.
+-spec search_relevant_content(aws_client:aws_client(), binary() | list(), search_relevant_content_request()) ->
+    {ok, search_relevant_content_response(), tuple()} |
+    {error, any()} |
+    {error, search_relevant_content_errors(), tuple()}.
+search_relevant_content(Client, ApplicationId, Input) ->
+    search_relevant_content(Client, ApplicationId, Input, []).
+
+-spec search_relevant_content(aws_client:aws_client(), binary() | list(), search_relevant_content_request(), proplists:proplist()) ->
+    {ok, search_relevant_content_response(), tuple()} |
+    {error, any()} |
+    {error, search_relevant_content_errors(), tuple()}.
+search_relevant_content(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/relevant-content"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"userGroups">>, <<"userGroups">>},
+                     {<<"userId">>, <<"userId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts a data source connector synchronization job.
 %%
 %% If a synchronization job is
@@ -4610,6 +5487,46 @@ update_chat_controls_configuration(Client, ApplicationId, Input) ->
 update_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatcontrols"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing data accessor.
+%%
+%% This operation allows modifying the action configurations
+%% (the allowed actions and associated filters) and the display name of the
+%% data accessor.
+%% It does not allow changing the IAM role associated with the data accessor
+%% or other core properties of the data accessor.
+-spec update_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_accessor_request()) ->
+    {ok, update_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_accessor_errors(), tuple()}.
+update_data_accessor(Client, ApplicationId, DataAccessorId, Input) ->
+    update_data_accessor(Client, ApplicationId, DataAccessorId, Input, []).
+
+-spec update_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_accessor_request(), proplists:proplist()) ->
+    {ok, update_data_accessor_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_accessor_errors(), tuple()}.
+update_data_accessor(Client, ApplicationId, DataAccessorId, Input0, Options0) ->
+    Method = put,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataaccessors/", aws_util:encode_uri(DataAccessorId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

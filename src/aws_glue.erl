@@ -54,6 +54,8 @@
          check_schema_version_validity/3,
          create_blueprint/2,
          create_blueprint/3,
+         create_catalog/2,
+         create_catalog/3,
          create_classifier/2,
          create_classifier/3,
          create_column_statistics_task_settings/2,
@@ -70,6 +72,12 @@
          create_database/3,
          create_dev_endpoint/2,
          create_dev_endpoint/3,
+         create_integration/2,
+         create_integration/3,
+         create_integration_resource_property/2,
+         create_integration_resource_property/3,
+         create_integration_table_properties/2,
+         create_integration_table_properties/3,
          create_job/2,
          create_job/3,
          create_ml_transform/2,
@@ -102,6 +110,8 @@
          create_workflow/3,
          delete_blueprint/2,
          delete_blueprint/3,
+         delete_catalog/2,
+         delete_catalog/3,
          delete_classifier/2,
          delete_classifier/3,
          delete_column_statistics_for_partition/2,
@@ -122,6 +132,10 @@
          delete_database/3,
          delete_dev_endpoint/2,
          delete_dev_endpoint/3,
+         delete_integration/2,
+         delete_integration/3,
+         delete_integration_table_properties/2,
+         delete_integration_table_properties/3,
          delete_job/2,
          delete_job/3,
          delete_ml_transform/2,
@@ -156,14 +170,26 @@
          delete_user_defined_function/3,
          delete_workflow/2,
          delete_workflow/3,
+         describe_connection_type/2,
+         describe_connection_type/3,
+         describe_entity/2,
+         describe_entity/3,
+         describe_inbound_integrations/2,
+         describe_inbound_integrations/3,
+         describe_integrations/2,
+         describe_integrations/3,
          get_blueprint/2,
          get_blueprint/3,
          get_blueprint_run/2,
          get_blueprint_run/3,
          get_blueprint_runs/2,
          get_blueprint_runs/3,
+         get_catalog/2,
+         get_catalog/3,
          get_catalog_import_status/2,
          get_catalog_import_status/3,
+         get_catalogs/2,
+         get_catalogs/3,
          get_classifier/2,
          get_classifier/3,
          get_classifiers/2,
@@ -214,6 +240,12 @@
          get_dev_endpoint/3,
          get_dev_endpoints/2,
          get_dev_endpoints/3,
+         get_entity_records/2,
+         get_entity_records/3,
+         get_integration_resource_property/2,
+         get_integration_resource_property/3,
+         get_integration_table_properties/2,
+         get_integration_table_properties/3,
          get_job/2,
          get_job/3,
          get_job_bookmark/2,
@@ -306,6 +338,8 @@
          list_blueprints/3,
          list_column_statistics_task_runs/2,
          list_column_statistics_task_runs/3,
+         list_connection_types/2,
+         list_connection_types/3,
          list_crawlers/2,
          list_crawlers/3,
          list_crawls/2,
@@ -326,6 +360,8 @@
          list_data_quality_statistics/3,
          list_dev_endpoints/2,
          list_dev_endpoints/3,
+         list_entities/2,
+         list_entities/3,
          list_jobs/2,
          list_jobs/3,
          list_ml_transforms/2,
@@ -348,6 +384,8 @@
          list_usage_profiles/3,
          list_workflows/2,
          list_workflows/3,
+         modify_integration/2,
+         modify_integration/3,
          put_data_catalog_encryption_settings/2,
          put_data_catalog_encryption_settings/3,
          put_data_quality_profile_annotation/2,
@@ -422,6 +460,8 @@
          untag_resource/3,
          update_blueprint/2,
          update_blueprint/3,
+         update_catalog/2,
+         update_catalog/3,
          update_classifier/2,
          update_classifier/3,
          update_column_statistics_for_partition/2,
@@ -442,6 +482,10 @@
          update_database/3,
          update_dev_endpoint/2,
          update_dev_endpoint/3,
+         update_integration_resource_property/2,
+         update_integration_resource_property/3,
+         update_integration_table_properties/2,
+         update_integration_table_properties/3,
          update_job/2,
          update_job/3,
          update_job_from_source_control/2,
@@ -480,6 +524,12 @@
 -type decimal_number() :: #{binary() => any()}.
 
 %% Example:
+%% get_catalog_request() :: #{
+%%   <<"CatalogId">> := string()
+%% }
+-type get_catalog_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_ml_transform_response() :: #{
 %%   <<"TransformId">> => string()
 %% }
@@ -490,6 +540,12 @@
 %%   <<"Name">> := string()
 %% }
 -type start_crawler_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_catalog_response() :: #{
+
+%% }
+-type delete_catalog_response() :: #{binary() => any()}.
 
 %% Example:
 %% evaluate_data_quality_multi_frame() :: #{
@@ -524,6 +580,7 @@
 
 %% Example:
 %% get_connection_request() :: #{
+%%   <<"ApplyOverrideForComputeEnvironment">> => list(any()),
 %%   <<"CatalogId">> => string(),
 %%   <<"HidePassword">> => boolean(),
 %%   <<"Name">> := string()
@@ -557,6 +614,15 @@
 %%   <<"RegexString">> => string()
 %% }
 -type get_custom_entity_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_table_properties_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceTableConfig">> => source_table_config(),
+%%   <<"TableName">> := string(),
+%%   <<"TargetTableConfig">> => target_table_config()
+%% }
+-type create_integration_table_properties_request() :: #{binary() => any()}.
 
 %% Example:
 %% statistic_summary() :: #{
@@ -597,6 +663,20 @@
 %%   <<"Table">> => string()
 %% }
 -type s3_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% update_catalog_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"CatalogInput">> := catalog_input()
+%% }
+-type update_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_table_properties_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_integration_table_properties_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_job_run_response() :: #{
@@ -706,11 +786,30 @@
 -type batch_get_triggers_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_entities_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"DataStoreApiVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParentEntityName">> => string()
+%% }
+-type list_entities_request() :: #{binary() => any()}.
+
+%% Example:
 %% recipe_reference() :: #{
 %%   <<"RecipeArn">> => string(),
 %%   <<"RecipeVersion">> => string()
 %% }
 -type recipe_reference() :: #{binary() => any()}.
+
+%% Example:
+%% target_processing_properties() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"EventBusArn">> => string(),
+%%   <<"KmsArn">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type target_processing_properties() :: #{binary() => any()}.
 
 %% Example:
 %% basic_catalog_target() :: #{
@@ -734,6 +833,23 @@
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type job_bookmarks_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_response() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(integration_error()()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetArn">> => string()
+%% }
+-type delete_integration_response() :: #{binary() => any()}.
 
 %% Example:
 %% view_definition_input() :: #{
@@ -801,6 +917,23 @@
 %%   <<"Tags">> => map()
 %% }
 -type list_blueprints_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_response() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(integration_error()()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetArn">> => string()
+%% }
+-type create_integration_response() :: #{binary() => any()}.
 
 %% Example:
 %% supported_dialect() :: #{
@@ -1064,6 +1197,30 @@
 %%   <<"Session">> => session()
 %% }
 -type get_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_lake_access_properties_output() :: #{
+%%   <<"CatalogType">> => string(),
+%%   <<"DataLakeAccess">> => boolean(),
+%%   <<"DataTransferRole">> => string(),
+%%   <<"KmsKey">> => string(),
+%%   <<"ManagedWorkgroupName">> => string(),
+%%   <<"ManagedWorkgroupStatus">> => string(),
+%%   <<"RedshiftDatabaseName">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type data_lake_access_properties_output() :: #{binary() => any()}.
+
+%% Example:
+%% inbound_integration() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Errors">> => list(integration_error()()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetArn">> => string()
+%% }
+-type inbound_integration() :: #{binary() => any()}.
 
 %% Example:
 %% data_quality_result_description() :: #{
@@ -1355,6 +1512,23 @@
 -type amazon_redshift_advanced_option() :: #{binary() => any()}.
 
 %% Example:
+%% integration() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(integration_error()()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetArn">> => string()
+%% }
+-type integration() :: #{binary() => any()}.
+
+%% Example:
 %% import_catalog_to_glue_request() :: #{
 %%   <<"CatalogId">> => string()
 %% }
@@ -1416,6 +1590,23 @@
 -type create_partition_response() :: #{binary() => any()}.
 
 %% Example:
+%% modify_integration_response() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(integration_error()()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetArn">> => string()
+%% }
+-type modify_integration_response() :: #{binary() => any()}.
+
+%% Example:
 %% job_run() :: #{
 %%   <<"AllocatedCapacity">> => integer(),
 %%   <<"Arguments">> => map(),
@@ -1454,6 +1645,17 @@
 
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"Category">> => string(),
+%%   <<"CustomProperties">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"EntityName">> => string(),
+%%   <<"IsParentEntity">> => boolean(),
+%%   <<"Label">> => string()
+%% }
+-type entity() :: #{binary() => any()}.
 
 %% Example:
 %% iceberg_orphan_file_deletion_configuration() :: #{
@@ -1588,6 +1790,9 @@
 %% Example:
 %% authentication_configuration_input() :: #{
 %%   <<"AuthenticationType">> => list(any()),
+%%   <<"BasicAuthenticationCredentials">> => basic_authentication_credentials(),
+%%   <<"CustomAuthenticationCredentials">> => map(),
+%%   <<"KmsKeyArn">> => string(),
 %%   <<"OAuth2Properties">> => o_auth2_properties_input(),
 %%   <<"SecretArn">> => string()
 %% }
@@ -1720,6 +1925,13 @@
 %%   <<"EncryptionAtRest">> => encryption_at_rest()
 %% }
 -type data_catalog_encryption_settings() :: #{binary() => any()}.
+
+%% Example:
+%% integration_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type integration_filter() :: #{binary() => any()}.
 
 %% Example:
 %% column() :: #{
@@ -1915,6 +2127,13 @@
 -type get_table_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_inbound_integrations_response() :: #{
+%%   <<"InboundIntegrations">> => list(inbound_integration()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_inbound_integrations_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_blueprint_response() :: #{
 %%   <<"Name">> => string()
 %% }
@@ -1947,6 +2166,13 @@
 -type catalog_kinesis_source() :: #{binary() => any()}.
 
 %% Example:
+%% federated_catalog() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"Identifier">> => string()
+%% }
+-type federated_catalog() :: #{binary() => any()}.
+
+%% Example:
 %% dynamic_transform() :: #{
 %%   <<"FunctionName">> => string(),
 %%   <<"Inputs">> => list(string()()),
@@ -1958,6 +2184,13 @@
 %%   <<"Version">> => string()
 %% }
 -type dynamic_transform() :: #{binary() => any()}.
+
+%% Example:
+%% integration_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type integration_error() :: #{binary() => any()}.
 
 %% Example:
 %% concurrent_runs_exceeded_exception() :: #{
@@ -2045,6 +2278,12 @@
 -type get_user_defined_function_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_catalog_response() :: #{
+
+%% }
+-type update_catalog_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_ml_transform_response() :: #{
 %%   <<"TransformId">> => string()
 %% }
@@ -2080,6 +2319,13 @@
 %%   <<"ProfileId">> := string()
 %% }
 -type put_data_quality_profile_annotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_entity_records_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Records">> => list(any()())
+%% }
+-type get_entity_records_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_ml_task_run_request() :: #{
@@ -2119,6 +2365,21 @@
 %%   <<"Database">> => database()
 %% }
 -type get_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_entity_records_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionOptions">> => map(),
+%%   <<"DataStoreApiVersion">> => string(),
+%%   <<"EntityName">> := string(),
+%%   <<"FilterPredicate">> => string(),
+%%   <<"Limit">> := float(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrderBy">> => [string()],
+%%   <<"SelectedFields">> => list(string()())
+%% }
+-type get_entity_records_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_table_response() :: #{
@@ -2166,6 +2427,13 @@
 %%   <<"WorkerType">> => list(any())
 %% }
 -type create_ml_transform_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connection_types_response() :: #{
+%%   <<"ConnectionTypes">> => list(connection_type_brief()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connection_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% partition_index_descriptor() :: #{
@@ -2388,6 +2656,15 @@
 -type query_schema_version_metadata_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_integration_table_properties_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceTableConfig">> => source_table_config(),
+%%   <<"TableName">> := string(),
+%%   <<"TargetTableConfig">> => target_table_config()
+%% }
+-type update_integration_table_properties_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_data_quality_model_result_response() :: #{
 %%   <<"CompletedOn">> => non_neg_integer(),
 %%   <<"Model">> => list(statistic_model_result()())
@@ -2408,6 +2685,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% auth_configuration() :: #{
+%%   <<"AuthenticationType">> => property(),
+%%   <<"BasicAuthenticationProperties">> => map(),
+%%   <<"CustomAuthenticationProperties">> => map(),
+%%   <<"OAuth2Properties">> => map(),
+%%   <<"SecretArn">> => property()
+%% }
+-type auth_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_data_quality_ruleset_response() :: #{
@@ -2592,6 +2879,13 @@
 -type column_error() :: #{binary() => any()}.
 
 %% Example:
+%% describe_entity_response() :: #{
+%%   <<"Fields">> => list(field()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_entity_response() :: #{binary() => any()}.
+
+%% Example:
 %% code_gen_edge() :: #{
 %%   <<"Source">> => string(),
 %%   <<"Target">> => string(),
@@ -2619,11 +2913,26 @@
 -type create_schema_response() :: #{binary() => any()}.
 
 %% Example:
+%% modify_integration_request() :: #{
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationIdentifier">> := string(),
+%%   <<"IntegrationName">> => string()
+%% }
+-type modify_integration_request() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"TagsToRemove">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% target_resource_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type target_resource_not_found() :: #{binary() => any()}.
 
 %% Example:
 %% get_tables_request() :: #{
@@ -2658,6 +2967,14 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_table_config() :: #{
+%%   <<"PartitionSpec">> => list(integration_partition()()),
+%%   <<"TargetTableName">> => string(),
+%%   <<"UnnestSpec">> => list(any())
+%% }
+-type target_table_config() :: #{binary() => any()}.
 
 %% Example:
 %% status_details() :: #{
@@ -2752,6 +3069,14 @@
 -type stop_column_statistics_task_run_request() :: #{binary() => any()}.
 
 %% Example:
+%% connection_type_brief() :: #{
+%%   <<"Capabilities">> => capabilities(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"Description">> => string()
+%% }
+-type connection_type_brief() :: #{binary() => any()}.
+
+%% Example:
 %% get_catalog_import_status_request() :: #{
 %%   <<"CatalogId">> => string()
 %% }
@@ -2838,6 +3163,12 @@
 %%   <<"UpperBound">> => float()
 %% }
 -type j_db_c_connector_options() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_resource_property_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_integration_resource_property_request() :: #{binary() => any()}.
 
 %% Example:
 %% segment() :: #{
@@ -2929,6 +3260,15 @@
 %%   <<"TimestampFilter">> => timestamp_filter()
 %% }
 -type list_data_quality_statistic_annotations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_catalogs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParentCatalogId">> => string(),
+%%   <<"Recursive">> => boolean()
+%% }
+-type get_catalogs_request() :: #{binary() => any()}.
 
 %% Example:
 %% filter_value() :: #{
@@ -3027,6 +3367,12 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type register_schema_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_table_properties_response() :: #{
+
+%% }
+-type create_integration_table_properties_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_crawler_request() :: #{
@@ -3132,6 +3478,12 @@
 -type update_usage_profile_response() :: #{binary() => any()}.
 
 %% Example:
+%% integration_conflict_operation_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type integration_conflict_operation_fault() :: #{binary() => any()}.
+
+%% Example:
 %% create_session_request() :: #{
 %%   <<"Command">> := session_command(),
 %%   <<"Connections">> => connections_list(),
@@ -3150,6 +3502,12 @@
 %%   <<"WorkerType">> => list(any())
 %% }
 -type create_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_table_properties_response() :: #{
+
+%% }
+-type update_integration_table_properties_response() :: #{binary() => any()}.
 
 %% Example:
 %% long_column_statistics_data() :: #{
@@ -3247,6 +3605,15 @@
 -type get_partition_indexes_response() :: #{binary() => any()}.
 
 %% Example:
+%% execution_attempt() :: #{
+%%   <<"ColumnStatisticsTaskRunId">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExecutionTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type execution_attempt() :: #{binary() => any()}.
+
+%% Example:
 %% create_user_defined_function_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
@@ -3261,6 +3628,13 @@
 %%   <<"UpsertKeys">> => list(string()())
 %% }
 -type upsert_redshift_target_options() :: #{binary() => any()}.
+
+%% Example:
+%% allowed_value() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type allowed_value() :: #{binary() => any()}.
 
 %% Example:
 %% delete_workflow_response() :: #{
@@ -3331,6 +3705,12 @@
 %%   <<"TableName">> := string()
 %% }
 -type get_column_statistics_for_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_catalog_request() :: #{
+%%   <<"CatalogId">> := string()
+%% }
+-type delete_catalog_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_trigger_request() :: #{
@@ -3435,6 +3815,12 @@
 -type column_statistics_task_not_running_exception() :: #{binary() => any()}.
 
 %% Example:
+%% integration_quota_exceeded_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type integration_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
 %% configuration_object() :: #{
 %%   <<"AllowedValues">> => list(string()()),
 %%   <<"DefaultValue">> => string(),
@@ -3480,6 +3866,12 @@
 -type governed_catalog_target() :: #{binary() => any()}.
 
 %% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
 %% list_column_statistics_task_runs_response() :: #{
 %%   <<"ColumnStatisticsTaskRunIds">> => list(string()()),
 %%   <<"NextToken">> => string()
@@ -3493,6 +3885,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_triggers_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_request() :: #{
+%%   <<"IntegrationIdentifier">> := string()
+%% }
+-type delete_integration_request() :: #{binary() => any()}.
 
 %% Example:
 %% retention_configuration() :: #{
@@ -3673,6 +4071,22 @@
 -type get_data_quality_rule_recommendation_run_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_connection_type_response() :: #{
+%%   <<"AthenaConnectionProperties">> => map(),
+%%   <<"AuthenticationConfiguration">> => auth_configuration(),
+%%   <<"Capabilities">> => capabilities(),
+%%   <<"ComputeEnvironmentConfigurations">> => map(),
+%%   <<"ConnectionOptions">> => map(),
+%%   <<"ConnectionProperties">> => map(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"PhysicalConnectionRequirements">> => map(),
+%%   <<"PythonConnectionProperties">> => map(),
+%%   <<"SparkConnectionProperties">> => map()
+%% }
+-type describe_connection_type_response() :: #{binary() => any()}.
+
+%% Example:
 %% dynamo_db_target() :: #{
 %%   <<"Path">> => string(),
 %%   <<"scanAll">> => boolean(),
@@ -3692,6 +4106,13 @@
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
 %% }
 -type s3_delta_direct_target() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
 
 %% Example:
 %% s3_encryption() :: #{
@@ -3832,7 +4253,9 @@
 %% connection() :: #{
 %%   <<"AthenaProperties">> => map(),
 %%   <<"AuthenticationConfiguration">> => authentication_configuration(),
+%%   <<"CompatibleComputeEnvironments">> => list(list(any())()),
 %%   <<"ConnectionProperties">> => map(),
+%%   <<"ConnectionSchemaVersion">> => integer(),
 %%   <<"ConnectionType">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -3842,6 +4265,8 @@
 %%   <<"MatchCriteria">> => list(string()()),
 %%   <<"Name">> => string(),
 %%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"PythonProperties">> => map(),
+%%   <<"SparkProperties">> => map(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
 %% }
@@ -3864,6 +4289,7 @@
 
 %% Example:
 %% get_connections_filter() :: #{
+%%   <<"ConnectionSchemaVersion">> => integer(),
 %%   <<"ConnectionType">> => list(any()),
 %%   <<"MatchCriteria">> => list(string()())
 %% }
@@ -3925,6 +4351,14 @@
 %%   <<"Nodes">> => list(glue_node()())
 %% }
 -type workflow_graph() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_resource_property_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type get_integration_resource_property_response() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_data_quality_rule_recommendation_run_response() :: #{
@@ -4242,6 +4676,29 @@
 -type view_validation() :: #{binary() => any()}.
 
 %% Example:
+%% field() :: #{
+%%   <<"CustomProperties">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"FieldName">> => string(),
+%%   <<"FieldType">> => list(any()),
+%%   <<"IsCreateable">> => boolean(),
+%%   <<"IsDefaultOnCreate">> => boolean(),
+%%   <<"IsFilterable">> => boolean(),
+%%   <<"IsNullable">> => boolean(),
+%%   <<"IsPartitionable">> => boolean(),
+%%   <<"IsPrimaryKey">> => boolean(),
+%%   <<"IsRetrievable">> => boolean(),
+%%   <<"IsUpdateable">> => boolean(),
+%%   <<"IsUpsertable">> => boolean(),
+%%   <<"Label">> => string(),
+%%   <<"NativeDataType">> => [string()],
+%%   <<"ParentField">> => [string()],
+%%   <<"SupportedFilterOperators">> => list(list(any())()),
+%%   <<"SupportedValues">> => list([string()]())
+%% }
+-type field() :: #{binary() => any()}.
+
+%% Example:
 %% illegal_workflow_state_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -4407,6 +4864,13 @@
 -type get_column_statistics_task_run_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_integration_table_properties_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type delete_integration_table_properties_request() :: #{binary() => any()}.
+
+%% Example:
 %% storage_descriptor() :: #{
 %%   <<"AdditionalLocations">> => list(string()()),
 %%   <<"BucketColumns">> => list(string()()),
@@ -4432,11 +4896,33 @@
 -type compaction_metrics() :: #{binary() => any()}.
 
 %% Example:
+%% get_integration_table_properties_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"SourceTableConfig">> => source_table_config(),
+%%   <<"TableName">> => string(),
+%%   <<"TargetTableConfig">> => target_table_config()
+%% }
+-type get_integration_table_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% integration_partition() :: #{
+%%   <<"FieldName">> => string(),
+%%   <<"FunctionSpec">> => string()
+%% }
+-type integration_partition() :: #{binary() => any()}.
+
+%% Example:
 %% error_details() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"ErrorMessage">> => string()
 %% }
 -type error_details() :: #{binary() => any()}.
+
+%% Example:
+%% target_redshift_catalog() :: #{
+%%   <<"CatalogArn">> => string()
+%% }
+-type target_redshift_catalog() :: #{binary() => any()}.
 
 %% Example:
 %% delete_security_configuration_request() :: #{
@@ -4527,6 +5013,27 @@
 -type get_catalog_import_status_response() :: #{binary() => any()}.
 
 %% Example:
+%% catalog_input() :: #{
+%%   <<"CatalogProperties">> => catalog_properties(),
+%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()()),
+%%   <<"Description">> => string(),
+%%   <<"FederatedCatalog">> => federated_catalog(),
+%%   <<"Parameters">> => map(),
+%%   <<"TargetRedshiftCatalog">> => target_redshift_catalog()
+%% }
+-type catalog_input() :: #{binary() => any()}.
+
+%% Example:
+%% source_table_config() :: #{
+%%   <<"Fields">> => list(string()()),
+%%   <<"FilterPredicate">> => string(),
+%%   <<"PrimaryKey">> => list(string()()),
+%%   <<"RecordUpdateField">> => string()
+%% }
+-type source_table_config() :: #{binary() => any()}.
+
+%% Example:
 %% delete_dev_endpoint_request() :: #{
 %%   <<"EndpointName">> := string()
 %% }
@@ -4545,6 +5052,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_crawler_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_lake_access_properties() :: #{
+%%   <<"CatalogType">> => string(),
+%%   <<"DataLakeAccess">> => boolean(),
+%%   <<"DataTransferRole">> => string(),
+%%   <<"KmsKey">> => string()
+%% }
+-type data_lake_access_properties() :: #{binary() => any()}.
 
 %% Example:
 %% list_sessions_request() :: #{
@@ -4632,6 +5148,20 @@
 %%   <<"RunId">> => string()
 %% }
 -type start_workflow_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% compute_environment_configuration() :: #{
+%%   <<"ComputeEnvironment">> => list(any()),
+%%   <<"ConnectionOptionNameOverrides">> => map(),
+%%   <<"ConnectionOptions">> => map(),
+%%   <<"ConnectionPropertiesRequiredOverrides">> => list([string()]()),
+%%   <<"ConnectionPropertyNameOverrides">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PhysicalConnectionPropertiesRequired">> => boolean(),
+%%   <<"SupportedAuthenticationTypes">> => list(list(any())())
+%% }
+-type compute_environment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_csv_classifier_request() :: #{
@@ -4825,6 +5355,12 @@
 %%   <<"WorkerType">> => list(any())
 %% }
 -type session() :: #{binary() => any()}.
+
+%% Example:
+%% get_catalog_response() :: #{
+%%   <<"Catalog">> => catalog()
+%% }
+-type get_catalog_response() :: #{binary() => any()}.
 
 %% Example:
 %% execution_property() :: #{
@@ -5047,6 +5583,12 @@
 -type start_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
 
 %% Example:
+%% integration_not_found_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type integration_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
 %% list_ml_transforms_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TransformIds">> => list(string()())
@@ -5133,6 +5675,12 @@
 -type table_identifier() :: #{binary() => any()}.
 
 %% Example:
+%% source_processing_properties() :: #{
+%%   <<"RoleArn">> => string()
+%% }
+-type source_processing_properties() :: #{binary() => any()}.
+
+%% Example:
 %% update_job_response() :: #{
 %%   <<"JobName">> => string()
 %% }
@@ -5148,7 +5696,10 @@
 %%   <<"MatchCriteria">> => list(string()()),
 %%   <<"Name">> => string(),
 %%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
-%%   <<"ValidateCredentials">> => boolean()
+%%   <<"PythonProperties">> => map(),
+%%   <<"SparkProperties">> => map(),
+%%   <<"ValidateCredentials">> => boolean(),
+%%   <<"ValidateForComputeEnvironments">> => list(list(any())())
 %% }
 -type connection_input() :: #{binary() => any()}.
 
@@ -5183,6 +5734,19 @@
 -type list_custom_entity_types_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_integration_request() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationName">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceArn">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetArn">> := string()
+%% }
+-type create_integration_request() :: #{binary() => any()}.
+
+%% Example:
 %% register_schema_version_input() :: #{
 %%   <<"SchemaDefinition">> := string(),
 %%   <<"SchemaId">> := schema_id()
@@ -5204,6 +5768,12 @@
 %%   <<"WorkerType">> => list(any())
 %% }
 -type update_ml_transform_request() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
 %% test_connection_response() :: #{
@@ -5299,6 +5869,12 @@
 -type timestamp_filter() :: #{binary() => any()}.
 
 %% Example:
+%% kms_key_not_accessible_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_key_not_accessible_fault() :: #{binary() => any()}.
+
+%% Example:
 %% federated_resource_already_exists_exception() :: #{
 %%   <<"AssociatedGlueResource">> => string(),
 %%   <<"Message">> => string()
@@ -5391,6 +5967,15 @@
 -type test_connection_input() :: #{binary() => any()}.
 
 %% Example:
+%% o_auth2_credentials() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"JwtToken">> => string(),
+%%   <<"RefreshToken">> => string(),
+%%   <<"UserManagedClientApplicationClientSecret">> => string()
+%% }
+-type o_auth2_credentials() :: #{binary() => any()}.
+
+%% Example:
 %% s3_source_additional_options() :: #{
 %%   <<"BoundedFiles">> => float(),
 %%   <<"BoundedSize">> => float()
@@ -5411,6 +5996,23 @@
 %%   <<"VersionId">> => string()
 %% }
 -type table_version() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_properties() :: #{
+%%   <<"CustomProperties">> => map(),
+%%   <<"DataLakeAccessProperties">> => data_lake_access_properties()
+%% }
+-type catalog_properties() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> := string(),
+%%   <<"DataStoreApiVersion">> => string(),
+%%   <<"EntityName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_entity_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_column_statistics_task_settings_request() :: #{
@@ -5510,6 +6112,14 @@
 -type get_plan_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_integration_resource_property_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type update_integration_resource_property_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_registries_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Registries">> => list(registry_list_item()())
@@ -5549,6 +6159,14 @@
 -type schema_change_policy() :: #{binary() => any()}.
 
 %% Example:
+%% create_integration_resource_property_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type create_integration_resource_property_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_source_control_from_job_request() :: #{
 %%   <<"AuthStrategy">> => list(any()),
 %%   <<"AuthToken">> => string(),
@@ -5570,11 +6188,34 @@
 -type recipe_step() :: #{binary() => any()}.
 
 %% Example:
+%% catalog() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"CatalogProperties">> => catalog_properties_output(),
+%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()()),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FederatedCatalog">> => federated_catalog(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"TargetRedshiftCatalog">> => target_redshift_catalog(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type catalog() :: #{binary() => any()}.
+
+%% Example:
 %% get_database_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Name">> := string()
 %% }
 -type get_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_integration_state_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_integration_state_fault() :: #{binary() => any()}.
 
 %% Example:
 %% error_detail() :: #{
@@ -5869,10 +6510,26 @@
 -type partition_input() :: #{binary() => any()}.
 
 %% Example:
+%% describe_integrations_request() :: #{
+%%   <<"Filters">> => list(integration_filter()()),
+%%   <<"IntegrationIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_integrations_request() :: #{binary() => any()}.
+
+%% Example:
 %% batch_update_partition_response() :: #{
 %%   <<"Errors">> => list(batch_update_partition_failure_entry()())
 %% }
 -type batch_update_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_response() :: #{
+%%   <<"Integrations">> => list(integration()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_integrations_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_job_request() :: #{
@@ -5993,6 +6650,13 @@
 %%   <<"StopJobOnFailureTiming">> => list(any())
 %% }
 -type d_q_stop_job_on_failure_options() :: #{binary() => any()}.
+
+%% Example:
+%% get_catalogs_response() :: #{
+%%   <<"CatalogList">> => list(catalog()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_catalogs_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_registry_response() :: #{
@@ -6143,6 +6807,24 @@
 -type connector_data_target() :: #{binary() => any()}.
 
 %% Example:
+%% property() :: #{
+%%   <<"AllowedValues">> => list(allowed_value()()),
+%%   <<"DataOperationScopes">> => list(list(any())()),
+%%   <<"DefaultValue">> => [string()],
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PropertyTypes">> => list(list(any())()),
+%%   <<"Required">> => boolean()
+%% }
+-type property() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_type_request() :: #{
+%%   <<"ConnectionType">> := string()
+%% }
+-type describe_connection_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_usage_profile_request() :: #{
 %%   <<"Name">> := string()
 %% }
@@ -6178,6 +6860,12 @@
 %%   <<"Version">> => string()
 %% }
 -type iceberg_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_table_properties_response() :: #{
+
+%% }
+-type delete_integration_table_properties_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_blueprint_request() :: #{
@@ -6338,6 +7026,13 @@
 -type resume_workflow_run_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_connection_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connection_types_request() :: #{binary() => any()}.
+
+%% Example:
 %% option() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Label">> => string(),
@@ -6410,6 +7105,15 @@
 %%   <<"SortCriteria">> => list(sort_criterion()())
 %% }
 -type search_tables_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inbound_integrations_request() :: #{
+%%   <<"IntegrationArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TargetArn">> => string()
+%% }
+-type describe_inbound_integrations_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_crawler_schedule_request() :: #{
@@ -6496,6 +7200,13 @@
 %%   <<"PolicyHash">> => string()
 %% }
 -type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_properties_output() :: #{
+%%   <<"CustomProperties">> => map(),
+%%   <<"DataLakeAccessProperties">> => data_lake_access_properties_output()
+%% }
+-type catalog_properties_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_data_quality_ruleset_request() :: #{
@@ -6828,6 +7539,7 @@
 %% o_auth2_properties_input() :: #{
 %%   <<"AuthorizationCodeProperties">> => authorization_code_properties(),
 %%   <<"OAuth2ClientApplication">> => o_auth2_client_application(),
+%%   <<"OAuth2Credentials">> => o_auth2_credentials(),
 %%   <<"OAuth2GrantType">> => list(any()),
 %%   <<"TokenUrl">> => string(),
 %%   <<"TokenUrlParametersMap">> => map()
@@ -6953,10 +7665,25 @@
 -type snowflake_target() :: #{binary() => any()}.
 
 %% Example:
+%% create_catalog_request() :: #{
+%%   <<"CatalogInput">> := catalog_input(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_catalog_request() :: #{binary() => any()}.
+
+%% Example:
 %% operation_not_supported_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type operation_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_response() :: #{
+%%   <<"Entities">> => list(entity()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entities_response() :: #{binary() => any()}.
 
 %% Example:
 %% edge() :: #{
@@ -7124,6 +7851,14 @@
 -type glue_schema() :: #{binary() => any()}.
 
 %% Example:
+%% update_integration_resource_property_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type update_integration_resource_property_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_job_response() :: #{
 %%   <<"JobName">> => string()
 %% }
@@ -7210,6 +7945,14 @@
 %%   <<"ScriptLocation">> => string()
 %% }
 -type job_command() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_resource_property_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type create_integration_resource_property_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_partition_request() :: #{
@@ -7406,10 +8149,13 @@
 %%   <<"CatalogID">> => string(),
 %%   <<"ColumnNameList">> => list(string()()),
 %%   <<"DatabaseName">> => string(),
+%%   <<"LastExecutionAttempt">> => execution_attempt(),
 %%   <<"Role">> => string(),
 %%   <<"SampleSize">> => float(),
 %%   <<"Schedule">> => schedule(),
+%%   <<"ScheduleType">> => list(any()),
 %%   <<"SecurityConfiguration">> => string(),
+%%   <<"SettingSource">> => list(any()),
 %%   <<"TableName">> => string()
 %% }
 -type column_statistics_task_settings() :: #{binary() => any()}.
@@ -7429,6 +8175,12 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_catalog_response() :: #{
+
+%% }
+-type create_catalog_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_user_defined_functions_request() :: #{
@@ -7592,6 +8344,14 @@
 -type list_column_statistics_task_runs_request() :: #{binary() => any()}.
 
 %% Example:
+%% capabilities() :: #{
+%%   <<"SupportedAuthenticationTypes">> => list(list(any())()),
+%%   <<"SupportedComputeEnvironments">> => list(list(any())()),
+%%   <<"SupportedDataOperations">> => list(list(any())())
+%% }
+-type capabilities() :: #{binary() => any()}.
+
+%% Example:
 %% create_registry_input() :: #{
 %%   <<"Description">> => string(),
 %%   <<"RegistryName">> := string(),
@@ -7601,6 +8361,7 @@
 
 %% Example:
 %% test_connection_request() :: #{
+%%   <<"CatalogId">> => string(),
 %%   <<"ConnectionName">> => string(),
 %%   <<"TestConnectionInput">> => test_connection_input()
 %% }
@@ -7726,6 +8487,13 @@
 %%   <<"NumberOfNulls">> => float()
 %% }
 -type string_column_statistics_data() :: #{binary() => any()}.
+
+%% Example:
+%% basic_authentication_credentials() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type basic_authentication_credentials() :: #{binary() => any()}.
 
 %% Example:
 %% iceberg_retention_configuration() :: #{
@@ -7926,6 +8694,19 @@
     already_exists_exception() | 
     operation_timeout_exception().
 
+-type create_catalog_errors() ::
+    glue_encryption_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    federated_resource_already_exists_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type create_classifier_errors() ::
     invalid_input_exception() | 
     already_exists_exception() | 
@@ -7971,8 +8752,10 @@
 
 -type create_database_errors() ::
     glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
     concurrent_modification_exception() | 
     federated_resource_already_exists_exception() | 
+    federation_source_exception() | 
     invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
     internal_service_exception() | 
@@ -7988,6 +8771,39 @@
     internal_service_exception() | 
     already_exists_exception() | 
     operation_timeout_exception().
+
+-type create_integration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    kms_key_not_accessible_fault() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    integration_quota_exceeded_fault() | 
+    integration_conflict_operation_fault() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type create_integration_resource_property_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type create_integration_table_properties_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
 
 -type create_job_errors() ::
     concurrent_modification_exception() | 
@@ -8067,7 +8883,9 @@
 -type create_table_errors() ::
     resource_not_ready_exception() | 
     glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
     concurrent_modification_exception() | 
+    federation_source_exception() | 
     invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
     internal_service_exception() | 
@@ -8124,6 +8942,16 @@
     internal_service_exception() | 
     operation_timeout_exception().
 
+-type delete_catalog_errors() ::
+    glue_encryption_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type delete_classifier_errors() ::
     operation_timeout_exception() | 
     entity_not_found_exception().
@@ -8171,7 +8999,9 @@
     entity_not_found_exception().
 
 -type delete_database_errors() ::
+    federation_source_retryable_exception() | 
     concurrent_modification_exception() | 
+    federation_source_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
@@ -8181,6 +9011,28 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_integration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_integration_state_fault() | 
+    internal_server_exception() | 
+    integration_not_found_fault() | 
+    invalid_input_exception() | 
+    conflict_exception() | 
+    integration_conflict_operation_fault() | 
+    invalid_state_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type delete_integration_table_properties_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type delete_job_errors() ::
@@ -8249,7 +9101,9 @@
 
 -type delete_table_errors() ::
     resource_not_ready_exception() | 
+    federation_source_retryable_exception() | 
     concurrent_modification_exception() | 
+    federation_source_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
@@ -8292,6 +9146,41 @@
     internal_service_exception() | 
     operation_timeout_exception().
 
+-type describe_connection_type_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type describe_entity_errors() ::
+    glue_encryption_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type describe_inbound_integrations_errors() ::
+    operation_not_supported_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    integration_not_found_fault() | 
+    invalid_input_exception() | 
+    target_resource_not_found() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type describe_integrations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    integration_not_found_fault() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type get_blueprint_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -8309,9 +9198,29 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type get_catalog_errors() ::
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    access_denied_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type get_catalog_import_status_errors() ::
     internal_service_exception() | 
     operation_timeout_exception().
+
+-type get_catalogs_errors() ::
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    access_denied_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
 
 -type get_classifier_errors() ::
     operation_timeout_exception() | 
@@ -8419,6 +9328,7 @@
 
 -type get_database_errors() ::
     glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
     federation_source_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -8427,9 +9337,12 @@
 
 -type get_databases_errors() ::
     glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    entity_not_found_exception().
 
 -type get_dataflow_graph_errors() ::
     invalid_input_exception() | 
@@ -8446,6 +9359,33 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_entity_records_errors() ::
+    glue_encryption_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_integration_resource_property_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type get_integration_table_properties_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type get_job_errors() ::
@@ -8755,6 +9695,10 @@
 -type list_column_statistics_task_runs_errors() ::
     operation_timeout_exception().
 
+-type list_connection_types_errors() ::
+    access_denied_exception() | 
+    internal_service_exception().
+
 -type list_crawlers_errors() ::
     operation_timeout_exception().
 
@@ -8801,6 +9745,15 @@
 -type list_dev_endpoints_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type list_entities_errors() ::
+    glue_encryption_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
 
@@ -8871,6 +9824,19 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception().
+
+-type modify_integration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_integration_state_fault() | 
+    internal_server_exception() | 
+    integration_not_found_fault() | 
+    invalid_input_exception() | 
+    conflict_exception() | 
+    integration_conflict_operation_fault() | 
+    invalid_state_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
 
 -type put_data_catalog_encryption_settings_errors() ::
     invalid_input_exception() | 
@@ -9127,6 +10093,16 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type update_catalog_errors() ::
+    glue_encryption_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    federation_source_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type update_classifier_errors() ::
     invalid_input_exception() | 
     version_mismatch_exception() | 
@@ -9185,9 +10161,12 @@
 
 -type update_database_errors() ::
     glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
     concurrent_modification_exception() | 
+    federation_source_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    already_exists_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
 
@@ -9196,6 +10175,24 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_integration_resource_property_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type update_integration_table_properties_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type update_job_errors() ::
@@ -9254,10 +10251,13 @@
 -type update_table_errors() ::
     resource_not_ready_exception() | 
     glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
     concurrent_modification_exception() | 
+    federation_source_exception() | 
     invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
     internal_service_exception() | 
+    already_exists_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
 
@@ -9769,6 +10769,23 @@ create_blueprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBlueprint">>, Input, Options).
 
+%% @doc Creates a new catalog in the Glue Data Catalog.
+-spec create_catalog(aws_client:aws_client(), create_catalog_request()) ->
+    {ok, create_catalog_response(), tuple()} |
+    {error, any()} |
+    {error, create_catalog_errors(), tuple()}.
+create_catalog(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_catalog(Client, Input, []).
+
+-spec create_catalog(aws_client:aws_client(), create_catalog_request(), proplists:proplist()) ->
+    {ok, create_catalog_response(), tuple()} |
+    {error, any()} |
+    {error, create_catalog_errors(), tuple()}.
+create_catalog(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCatalog">>, Input, Options).
+
 %% @doc Creates a classifier in the user's account.
 %%
 %% This can be a `GrokClassifier', an
@@ -9925,6 +10942,73 @@ create_dev_endpoint(Client, Input)
 create_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDevEndpoint">>, Input, Options).
+
+%% @doc Creates a Zero-ETL integration in the caller's account between
+%% two resources with Amazon Resource Names (ARNs): the `SourceArn' and
+%% `TargetArn'.
+-spec create_integration(aws_client:aws_client(), create_integration_request()) ->
+    {ok, create_integration_response(), tuple()} |
+    {error, any()} |
+    {error, create_integration_errors(), tuple()}.
+create_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_integration(Client, Input, []).
+
+-spec create_integration(aws_client:aws_client(), create_integration_request(), proplists:proplist()) ->
+    {ok, create_integration_response(), tuple()} |
+    {error, any()} |
+    {error, create_integration_errors(), tuple()}.
+create_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIntegration">>, Input, Options).
+
+%% @doc This API can be used for setting up the `ResourceProperty' of the
+%% Glue connection (for the source) or Glue database ARN (for the target).
+%%
+%% These properties can include the role to access the connection or
+%% database. To set both source and target properties the same API needs to
+%% be invoked with the Glue connection ARN as `ResourceArn' with
+%% `SourceProcessingProperties' and the Glue database ARN as
+%% `ResourceArn' with `TargetProcessingProperties' respectively.
+-spec create_integration_resource_property(aws_client:aws_client(), create_integration_resource_property_request()) ->
+    {ok, create_integration_resource_property_response(), tuple()} |
+    {error, any()} |
+    {error, create_integration_resource_property_errors(), tuple()}.
+create_integration_resource_property(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_integration_resource_property(Client, Input, []).
+
+-spec create_integration_resource_property(aws_client:aws_client(), create_integration_resource_property_request(), proplists:proplist()) ->
+    {ok, create_integration_resource_property_response(), tuple()} |
+    {error, any()} |
+    {error, create_integration_resource_property_errors(), tuple()}.
+create_integration_resource_property(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIntegrationResourceProperty">>, Input, Options).
+
+%% @doc This API is used to provide optional override properties for the the
+%% tables that need to be replicated.
+%%
+%% These properties can include properties for filtering and partitioning for
+%% the source and target tables. To set both source and target properties the
+%% same API need to be invoked with the Glue connection ARN as
+%% `ResourceArn' with `SourceTableConfig', and the Glue database ARN
+%% as `ResourceArn' with `TargetTableConfig' respectively.
+-spec create_integration_table_properties(aws_client:aws_client(), create_integration_table_properties_request()) ->
+    {ok, create_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, create_integration_table_properties_errors(), tuple()}.
+create_integration_table_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_integration_table_properties(Client, Input, []).
+
+-spec create_integration_table_properties(aws_client:aws_client(), create_integration_table_properties_request(), proplists:proplist()) ->
+    {ok, create_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, create_integration_table_properties_errors(), tuple()}.
+create_integration_table_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIntegrationTableProperties">>, Input, Options).
 
 %% @doc Creates a new job definition.
 -spec create_job(aws_client:aws_client(), create_job_request()) ->
@@ -10239,6 +11323,36 @@ delete_blueprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBlueprint">>, Input, Options).
 
+%% @doc Removes the specified catalog from the Glue Data Catalog.
+%%
+%% After completing this operation, you no longer have access to the
+%% databases, tables (and all table versions and partitions that might belong
+%% to the tables) and the user-defined functions in the deleted catalog. Glue
+%% deletes these &quot;orphaned&quot; resources asynchronously in a timely
+%% manner, at the discretion of the service.
+%%
+%% To ensure the immediate deletion of all related resources before calling
+%% the `DeleteCatalog' operation, use `DeleteTableVersion' (or
+%% `BatchDeleteTableVersion'), `DeletePartition' (or
+%% `BatchDeletePartition'), `DeleteTable' (or
+%% `BatchDeleteTable'), `DeleteUserDefinedFunction' and
+%% `DeleteDatabase' to delete any resources that belong to the catalog.
+-spec delete_catalog(aws_client:aws_client(), delete_catalog_request()) ->
+    {ok, delete_catalog_response(), tuple()} |
+    {error, any()} |
+    {error, delete_catalog_errors(), tuple()}.
+delete_catalog(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_catalog(Client, Input, []).
+
+-spec delete_catalog(aws_client:aws_client(), delete_catalog_request(), proplists:proplist()) ->
+    {ok, delete_catalog_response(), tuple()} |
+    {error, any()} |
+    {error, delete_catalog_errors(), tuple()}.
+delete_catalog(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCatalog">>, Input, Options).
+
 %% @doc Removes a classifier from the Data Catalog.
 -spec delete_classifier(aws_client:aws_client(), delete_classifier_request()) ->
     {ok, delete_classifier_response(), tuple()} |
@@ -10431,6 +11545,41 @@ delete_dev_endpoint(Client, Input)
 delete_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDevEndpoint">>, Input, Options).
+
+%% @doc Deletes the specified Zero-ETL integration.
+-spec delete_integration(aws_client:aws_client(), delete_integration_request()) ->
+    {ok, delete_integration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_errors(), tuple()}.
+delete_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_integration(Client, Input, []).
+
+-spec delete_integration(aws_client:aws_client(), delete_integration_request(), proplists:proplist()) ->
+    {ok, delete_integration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_errors(), tuple()}.
+delete_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIntegration">>, Input, Options).
+
+%% @doc Deletes the table properties that have been created for the tables
+%% that need to be replicated.
+-spec delete_integration_table_properties(aws_client:aws_client(), delete_integration_table_properties_request()) ->
+    {ok, delete_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_table_properties_errors(), tuple()}.
+delete_integration_table_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_integration_table_properties(Client, Input, []).
+
+-spec delete_integration_table_properties(aws_client:aws_client(), delete_integration_table_properties_request(), proplists:proplist()) ->
+    {ok, delete_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_table_properties_errors(), tuple()}.
+delete_integration_table_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIntegrationTableProperties">>, Input, Options).
 
 %% @doc Deletes a specified job definition.
 %%
@@ -10782,6 +11931,79 @@ delete_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkflow">>, Input, Options).
 
+%% @doc The `DescribeConnectionType' API provides full details of the
+%% supported options for a given connection type in Glue.
+-spec describe_connection_type(aws_client:aws_client(), describe_connection_type_request()) ->
+    {ok, describe_connection_type_response(), tuple()} |
+    {error, any()} |
+    {error, describe_connection_type_errors(), tuple()}.
+describe_connection_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_connection_type(Client, Input, []).
+
+-spec describe_connection_type(aws_client:aws_client(), describe_connection_type_request(), proplists:proplist()) ->
+    {ok, describe_connection_type_response(), tuple()} |
+    {error, any()} |
+    {error, describe_connection_type_errors(), tuple()}.
+describe_connection_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConnectionType">>, Input, Options).
+
+%% @doc Provides details regarding the entity used with the connection type,
+%% with a description of the data model for each field in the selected
+%% entity.
+%%
+%% The response includes all the fields which make up the entity.
+-spec describe_entity(aws_client:aws_client(), describe_entity_request()) ->
+    {ok, describe_entity_response(), tuple()} |
+    {error, any()} |
+    {error, describe_entity_errors(), tuple()}.
+describe_entity(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_entity(Client, Input, []).
+
+-spec describe_entity(aws_client:aws_client(), describe_entity_request(), proplists:proplist()) ->
+    {ok, describe_entity_response(), tuple()} |
+    {error, any()} |
+    {error, describe_entity_errors(), tuple()}.
+describe_entity(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEntity">>, Input, Options).
+
+%% @doc Returns a list of inbound integrations for the specified integration.
+-spec describe_inbound_integrations(aws_client:aws_client(), describe_inbound_integrations_request()) ->
+    {ok, describe_inbound_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inbound_integrations_errors(), tuple()}.
+describe_inbound_integrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_inbound_integrations(Client, Input, []).
+
+-spec describe_inbound_integrations(aws_client:aws_client(), describe_inbound_integrations_request(), proplists:proplist()) ->
+    {ok, describe_inbound_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inbound_integrations_errors(), tuple()}.
+describe_inbound_integrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInboundIntegrations">>, Input, Options).
+
+%% @doc The API is used to retrieve a list of integrations.
+-spec describe_integrations(aws_client:aws_client(), describe_integrations_request()) ->
+    {ok, describe_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_integrations_errors(), tuple()}.
+describe_integrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_integrations(Client, Input, []).
+
+-spec describe_integrations(aws_client:aws_client(), describe_integrations_request(), proplists:proplist()) ->
+    {ok, describe_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_integrations_errors(), tuple()}.
+describe_integrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIntegrations">>, Input, Options).
+
 %% @doc Retrieves the details of a blueprint.
 -spec get_blueprint(aws_client:aws_client(), get_blueprint_request()) ->
     {ok, get_blueprint_response(), tuple()} |
@@ -10833,6 +12055,25 @@ get_blueprint_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlueprintRuns">>, Input, Options).
 
+%% @doc The name of the Catalog to retrieve.
+%%
+%% This should be all lowercase.
+-spec get_catalog(aws_client:aws_client(), get_catalog_request()) ->
+    {ok, get_catalog_response(), tuple()} |
+    {error, any()} |
+    {error, get_catalog_errors(), tuple()}.
+get_catalog(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_catalog(Client, Input, []).
+
+-spec get_catalog(aws_client:aws_client(), get_catalog_request(), proplists:proplist()) ->
+    {ok, get_catalog_response(), tuple()} |
+    {error, any()} |
+    {error, get_catalog_errors(), tuple()}.
+get_catalog(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCatalog">>, Input, Options).
+
 %% @doc Retrieves the status of a migration operation.
 -spec get_catalog_import_status(aws_client:aws_client(), get_catalog_import_status_request()) ->
     {ok, get_catalog_import_status_response(), tuple()} |
@@ -10849,6 +12090,27 @@ get_catalog_import_status(Client, Input)
 get_catalog_import_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCatalogImportStatus">>, Input, Options).
+
+%% @doc Retrieves all catalogs defined in a catalog in the Glue Data Catalog.
+%%
+%% For a Redshift-federated catalog use case, this operation returns the list
+%% of catalogs mapped to Redshift databases in the Redshift namespace
+%% catalog.
+-spec get_catalogs(aws_client:aws_client(), get_catalogs_request()) ->
+    {ok, get_catalogs_response(), tuple()} |
+    {error, any()} |
+    {error, get_catalogs_errors(), tuple()}.
+get_catalogs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_catalogs(Client, Input, []).
+
+-spec get_catalogs(aws_client:aws_client(), get_catalogs_request(), proplists:proplist()) ->
+    {ok, get_catalogs_response(), tuple()} |
+    {error, any()} |
+    {error, get_catalogs_errors(), tuple()}.
+get_catalogs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCatalogs">>, Input, Options).
 
 %% @doc Retrieve a classifier by name.
 -spec get_classifier(aws_client:aws_client(), get_classifier_request()) ->
@@ -11299,6 +12561,71 @@ get_dev_endpoints(Client, Input)
 get_dev_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevEndpoints">>, Input, Options).
+
+%% @doc This API is used to query preview data from a given connection type
+%% or from a native Amazon S3 based Glue Data Catalog.
+%%
+%% Returns records as an array of JSON blobs. Each record is formatted using
+%% Jackson JsonNode based on the field type defined by the
+%% `DescribeEntity' API.
+%%
+%% Spark connectors generate schemas according to the same data type mapping
+%% as in the `DescribeEntity' API. Spark connectors convert data to the
+%% appropriate data types matching the schema when returning rows.
+-spec get_entity_records(aws_client:aws_client(), get_entity_records_request()) ->
+    {ok, get_entity_records_response(), tuple()} |
+    {error, any()} |
+    {error, get_entity_records_errors(), tuple()}.
+get_entity_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_entity_records(Client, Input, []).
+
+-spec get_entity_records(aws_client:aws_client(), get_entity_records_request(), proplists:proplist()) ->
+    {ok, get_entity_records_response(), tuple()} |
+    {error, any()} |
+    {error, get_entity_records_errors(), tuple()}.
+get_entity_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEntityRecords">>, Input, Options).
+
+%% @doc This API is used for fetching the `ResourceProperty' of the Glue
+%% connection (for the source) or Glue database ARN (for the target)
+-spec get_integration_resource_property(aws_client:aws_client(), get_integration_resource_property_request()) ->
+    {ok, get_integration_resource_property_response(), tuple()} |
+    {error, any()} |
+    {error, get_integration_resource_property_errors(), tuple()}.
+get_integration_resource_property(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_integration_resource_property(Client, Input, []).
+
+-spec get_integration_resource_property(aws_client:aws_client(), get_integration_resource_property_request(), proplists:proplist()) ->
+    {ok, get_integration_resource_property_response(), tuple()} |
+    {error, any()} |
+    {error, get_integration_resource_property_errors(), tuple()}.
+get_integration_resource_property(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIntegrationResourceProperty">>, Input, Options).
+
+%% @doc This API is used to retrieve optional override properties for the
+%% tables that need to be replicated.
+%%
+%% These properties can include properties for filtering and partition for
+%% source and target tables.
+-spec get_integration_table_properties(aws_client:aws_client(), get_integration_table_properties_request()) ->
+    {ok, get_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, get_integration_table_properties_errors(), tuple()}.
+get_integration_table_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_integration_table_properties(Client, Input, []).
+
+-spec get_integration_table_properties(aws_client:aws_client(), get_integration_table_properties_request(), proplists:proplist()) ->
+    {ok, get_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, get_integration_table_properties_errors(), tuple()}.
+get_integration_table_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIntegrationTableProperties">>, Input, Options).
 
 %% @doc Retrieves an existing job definition.
 -spec get_job(aws_client:aws_client(), get_job_request()) ->
@@ -12176,6 +13503,29 @@ list_column_statistics_task_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListColumnStatisticsTaskRuns">>, Input, Options).
 
+%% @doc The `ListConnectionTypes' API provides a discovery mechanism to
+%% learn available connection types in Glue.
+%%
+%% The response contains a list of connection types with high-level details
+%% of what is supported for each connection type. The connection types listed
+%% are the set of supported options for the `ConnectionType' value in the
+%% `CreateConnection' API.
+-spec list_connection_types(aws_client:aws_client(), list_connection_types_request()) ->
+    {ok, list_connection_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_connection_types_errors(), tuple()}.
+list_connection_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_connection_types(Client, Input, []).
+
+-spec list_connection_types(aws_client:aws_client(), list_connection_types_request(), proplists:proplist()) ->
+    {ok, list_connection_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_connection_types_errors(), tuple()}.
+list_connection_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListConnectionTypes">>, Input, Options).
+
 %% @doc Retrieves the names of all crawler resources in this Amazon Web
 %% Services account, or the
 %% resources with the specified tag.
@@ -12384,6 +13734,23 @@ list_dev_endpoints(Client, Input)
 list_dev_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevEndpoints">>, Input, Options).
+
+%% @doc Returns the available entities supported by the connection type.
+-spec list_entities(aws_client:aws_client(), list_entities_request()) ->
+    {ok, list_entities_response(), tuple()} |
+    {error, any()} |
+    {error, list_entities_errors(), tuple()}.
+list_entities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_entities(Client, Input, []).
+
+-spec list_entities(aws_client:aws_client(), list_entities_request(), proplists:proplist()) ->
+    {ok, list_entities_response(), tuple()} |
+    {error, any()} |
+    {error, list_entities_errors(), tuple()}.
+list_entities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEntities">>, Input, Options).
 
 %% @doc Retrieves the names of all job resources in this Amazon Web Services
 %% account, or the resources with the specified tag.
@@ -12613,6 +13980,23 @@ list_workflows(Client, Input)
 list_workflows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkflows">>, Input, Options).
+
+%% @doc Modifies a Zero-ETL integration in the caller's account.
+-spec modify_integration(aws_client:aws_client(), modify_integration_request()) ->
+    {ok, modify_integration_response(), tuple()} |
+    {error, any()} |
+    {error, modify_integration_errors(), tuple()}.
+modify_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_integration(Client, Input, []).
+
+-spec modify_integration(aws_client:aws_client(), modify_integration_request(), proplists:proplist()) ->
+    {ok, modify_integration_response(), tuple()} |
+    {error, any()} |
+    {error, modify_integration_errors(), tuple()}.
+modify_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIntegration">>, Input, Options).
 
 %% @doc Sets the security configuration for a specified catalog.
 %%
@@ -13423,6 +14807,24 @@ update_blueprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBlueprint">>, Input, Options).
 
+%% @doc Updates an existing catalog's properties in the Glue Data
+%% Catalog.
+-spec update_catalog(aws_client:aws_client(), update_catalog_request()) ->
+    {ok, update_catalog_response(), tuple()} |
+    {error, any()} |
+    {error, update_catalog_errors(), tuple()}.
+update_catalog(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_catalog(Client, Input, []).
+
+-spec update_catalog(aws_client:aws_client(), update_catalog_request(), proplists:proplist()) ->
+    {ok, update_catalog_response(), tuple()} |
+    {error, any()} |
+    {error, update_catalog_errors(), tuple()}.
+update_catalog(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCatalog">>, Input, Options).
+
 %% @doc Modifies an existing classifier (a `GrokClassifier',
 %% an `XMLClassifier', a `JsonClassifier', or a `CsvClassifier',
 %% depending on
@@ -13605,6 +15007,56 @@ update_dev_endpoint(Client, Input)
 update_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDevEndpoint">>, Input, Options).
+
+%% @doc This API can be used for updating the `ResourceProperty' of the
+%% Glue connection (for the source) or Glue database ARN (for the target).
+%%
+%% These properties can include the role to access the connection or
+%% database. Since the same resource can be used across multiple
+%% integrations, updating resource properties will impact all the
+%% integrations using it.
+-spec update_integration_resource_property(aws_client:aws_client(), update_integration_resource_property_request()) ->
+    {ok, update_integration_resource_property_response(), tuple()} |
+    {error, any()} |
+    {error, update_integration_resource_property_errors(), tuple()}.
+update_integration_resource_property(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_integration_resource_property(Client, Input, []).
+
+-spec update_integration_resource_property(aws_client:aws_client(), update_integration_resource_property_request(), proplists:proplist()) ->
+    {ok, update_integration_resource_property_response(), tuple()} |
+    {error, any()} |
+    {error, update_integration_resource_property_errors(), tuple()}.
+update_integration_resource_property(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateIntegrationResourceProperty">>, Input, Options).
+
+%% @doc This API is used to provide optional override properties for the
+%% tables that need to be replicated.
+%%
+%% These properties can include properties for filtering and partitioning for
+%% the source and target tables. To set both source and target properties the
+%% same API need to be invoked with the Glue connection ARN as
+%% `ResourceArn' with `SourceTableConfig', and the Glue database ARN
+%% as `ResourceArn' with `TargetTableConfig' respectively.
+%%
+%% The override will be reflected across all the integrations using same
+%% `ResourceArn' and source table.
+-spec update_integration_table_properties(aws_client:aws_client(), update_integration_table_properties_request()) ->
+    {ok, update_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, update_integration_table_properties_errors(), tuple()}.
+update_integration_table_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_integration_table_properties(Client, Input, []).
+
+-spec update_integration_table_properties(aws_client:aws_client(), update_integration_table_properties_request(), proplists:proplist()) ->
+    {ok, update_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, update_integration_table_properties_errors(), tuple()}.
+update_integration_table_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateIntegrationTableProperties">>, Input, Options).
 
 %% @doc Updates an existing job definition.
 %%

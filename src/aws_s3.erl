@@ -12,6 +12,8 @@
          copy_object/5,
          create_bucket/3,
          create_bucket/4,
+         create_bucket_metadata_table_configuration/3,
+         create_bucket_metadata_table_configuration/4,
          create_multipart_upload/4,
          create_multipart_upload/5,
          create_session/2,
@@ -31,6 +33,8 @@
          delete_bucket_inventory_configuration/4,
          delete_bucket_lifecycle/3,
          delete_bucket_lifecycle/4,
+         delete_bucket_metadata_table_configuration/3,
+         delete_bucket_metadata_table_configuration/4,
          delete_bucket_metrics_configuration/3,
          delete_bucket_metrics_configuration/4,
          delete_bucket_ownership_controls/3,
@@ -81,6 +85,9 @@
          get_bucket_logging/2,
          get_bucket_logging/4,
          get_bucket_logging/5,
+         get_bucket_metadata_table_configuration/2,
+         get_bucket_metadata_table_configuration/4,
+         get_bucket_metadata_table_configuration/5,
          get_bucket_metrics_configuration/3,
          get_bucket_metrics_configuration/5,
          get_bucket_metrics_configuration/6,
@@ -806,6 +813,16 @@
 
 
 %% Example:
+%% create_bucket_metadata_table_configuration_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MetadataTableConfiguration">> := metadata_table_configuration()
+%% }
+-type create_bucket_metadata_table_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% analytics_export_destination() :: #{
 %%   <<"S3BucketDestination">> => analytics_s3_bucket_destination()
 %% }
@@ -960,6 +977,15 @@
 %%   <<"URI">> => string()
 %% }
 -type grantee() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metadata_table_configuration_result() :: #{
+%%   <<"Error">> => error_details(),
+%%   <<"MetadataTableConfigurationResult">> => metadata_table_configuration_result(),
+%%   <<"Status">> => string()
+%% }
+-type get_bucket_metadata_table_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1182,6 +1208,14 @@
 
 
 %% Example:
+%% s3_tables_destination() :: #{
+%%   <<"TableBucketArn">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type s3_tables_destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% select_parameters() :: #{
 %%   <<"Expression">> => string(),
 %%   <<"ExpressionType">> => list(any()),
@@ -1286,6 +1320,16 @@
 %% Example:
 %% invalid_write_offset() :: #{}
 -type invalid_write_offset() :: #{}.
+
+
+%% Example:
+%% s3_tables_destination_result() :: #{
+%%   <<"TableArn">> => string(),
+%%   <<"TableBucketArn">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableNamespace">> => string()
+%% }
+-type s3_tables_destination_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1427,6 +1471,13 @@
 
 
 %% Example:
+%% metadata_table_configuration() :: #{
+%%   <<"S3TablesDestination">> => s3_tables_destination()
+%% }
+-type metadata_table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_bucket_replication_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
@@ -1475,6 +1526,13 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type intelligent_tiering_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_table_configuration_result() :: #{
+%%   <<"S3TablesDestinationResult">> => s3_tables_destination_result()
+%% }
+-type metadata_table_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1864,6 +1922,14 @@
 
 
 %% Example:
+%% error_details() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_control_translation() :: #{
 %%   <<"Owner">> => list(any())
 %% }
@@ -2057,6 +2123,13 @@
 
 
 %% Example:
+%% get_bucket_metadata_table_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_metadata_table_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% server_side_encryption_configuration() :: #{
 %%   <<"Rules">> => list(server_side_encryption_rule()())
 %% }
@@ -2180,6 +2253,13 @@
 %% Example:
 %% no_such_bucket() :: #{}
 -type no_such_bucket() :: #{}.
+
+
+%% Example:
+%% delete_bucket_metadata_table_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_metadata_table_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2872,6 +2952,13 @@
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type get_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metadata_table_configuration_output() :: #{
+%%   <<"GetBucketMetadataTableConfigurationResult">> => get_bucket_metadata_table_configuration_result()
+%% }
+-type get_bucket_metadata_table_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4194,6 +4281,87 @@ create_bucket(Client, Bucket, Input0, Options0) ->
         Result
     end.
 
+%% @doc Creates a metadata table configuration for a general purpose bucket.
+%%
+%% For more
+%% information, see Accelerating data
+%% discovery with S3 Metadata:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html
+%% in the Amazon S3 User Guide.
+%%
+%% Permissions
+%%
+%% To use this operation, you must have the following permissions. For more
+%% information, see Setting up
+%% permissions for configuring metadata tables:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html
+%% in the
+%% Amazon S3 User Guide.
+%%
+%% If you also want to integrate your table bucket with Amazon Web Services
+%% analytics services so that you
+%% can query your metadata table, you need additional permissions. For more
+%% information, see
+%%
+%% Integrating Amazon S3 Tables with Amazon Web Services analytics services:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-integrating-aws.html
+%% in the
+%% Amazon S3 User Guide.
+%%
+%% `s3:CreateBucketMetadataTableConfiguration'
+%%
+%% `s3tables:CreateNamespace'
+%%
+%% `s3tables:GetTable'
+%%
+%% `s3tables:CreateTable'
+%%
+%% `s3tables:PutTablePolicy'
+%%
+%% The following operations are related to
+%% `CreateBucketMetadataTableConfiguration':
+%%
+%% DeleteBucketMetadataTableConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetadataTableConfiguration.html
+%%
+%% GetBucketMetadataTableConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetadataTableConfiguration.html
+-spec create_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list(), create_bucket_metadata_table_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+create_bucket_metadata_table_configuration(Client, Bucket, Input) ->
+    create_bucket_metadata_table_configuration(Client, Bucket, Input, []).
+
+-spec create_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list(), create_bucket_metadata_table_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+create_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
+    Method = post,
+    Path = ["/", aws_util:encode_uri(Bucket), "?metadataTable"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"Content-MD5">>, <<"ContentMD5">>},
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
+
 %% @doc This action initiates a multipart upload and returns an upload ID.
 %%
 %% This upload ID is
@@ -5371,6 +5539,67 @@ delete_bucket_lifecycle(Client, Bucket, Input) ->
 delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
+
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
+
+%% @doc
+%% Deletes a metadata table configuration from a general purpose bucket.
+%%
+%% For more
+%% information, see Accelerating data
+%% discovery with S3 Metadata:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html
+%% in the Amazon S3 User Guide.
+%%
+%% Permissions
+%%
+%% To use this operation, you must have the
+%% `s3:DeleteBucketMetadataTableConfiguration' permission. For more
+%% information, see Setting up
+%% permissions for configuring metadata tables:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html
+%% in the
+%% Amazon S3 User Guide.
+%%
+%% The following operations are related to
+%% `DeleteBucketMetadataTableConfiguration':
+%%
+%% CreateBucketMetadataTableConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucketMetadataTableConfiguration.html
+%%
+%% GetBucketMetadataTableConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetadataTableConfiguration.html
+-spec delete_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metadata_table_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+delete_bucket_metadata_table_configuration(Client, Bucket, Input) ->
+    delete_bucket_metadata_table_configuration(Client, Bucket, Input, []).
+
+-spec delete_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metadata_table_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+delete_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
+    Method = delete,
+    Path = ["/", aws_util:encode_uri(Bucket), "?metadataTable"],
 
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
@@ -7162,6 +7391,71 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
+
+%% @doc
+%% Retrieves the metadata table configuration for a general purpose bucket.
+%%
+%% For more
+%% information, see Accelerating data
+%% discovery with S3 Metadata:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html
+%% in the Amazon S3 User Guide.
+%%
+%% Permissions
+%%
+%% To use this operation, you must have the
+%% `s3:GetBucketMetadataTableConfiguration' permission. For more
+%% information, see Setting up
+%% permissions for configuring metadata tables:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html
+%% in the
+%% Amazon S3 User Guide.
+%%
+%% The following operations are related to
+%% `GetBucketMetadataTableConfiguration':
+%%
+%% CreateBucketMetadataTableConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucketMetadataTableConfiguration.html
+%%
+%% DeleteBucketMetadataTableConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetadataTableConfiguration.html
+-spec get_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_metadata_table_configuration_output(), tuple()} |
+    {error, any()}.
+get_bucket_metadata_table_configuration(Client, Bucket)
+  when is_map(Client) ->
+    get_bucket_metadata_table_configuration(Client, Bucket, #{}, #{}).
+
+-spec get_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_metadata_table_configuration_output(), tuple()} |
+    {error, any()}.
+get_bucket_metadata_table_configuration(Client, Bucket, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_metadata_table_configuration(Client, Bucket, QueryMap, HeadersMap, []).
+
+-spec get_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_metadata_table_configuration_output(), tuple()} |
+    {error, any()}.
+get_bucket_metadata_table_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/", aws_util:encode_uri(Bucket), "?metadataTable"],
 
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),

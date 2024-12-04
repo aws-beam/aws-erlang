@@ -15,8 +15,8 @@
 %% focus on using your data to acquire new insights for your business and
 %% customers.
 %%
-%% To learn more about Amazon Redshift Serverless,
-%% see What is Amazon Redshift Serverless:
+%% To learn more about Amazon Redshift Serverless, see What is Amazon
+%% Redshift Serverless?:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html.
 -module(aws_redshift_serverless).
 
@@ -82,6 +82,8 @@
          list_custom_domain_associations/3,
          list_endpoint_access/2,
          list_endpoint_access/3,
+         list_managed_workgroups/2,
+         list_managed_workgroups/3,
          list_namespaces/2,
          list_namespaces/3,
          list_recovery_points/2,
@@ -264,6 +266,13 @@
 %%   <<"message">> => [string()]
 %% }
 -type ipv6_cidr_block_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_workgroups_response() :: #{
+%%   <<"managedWorkgroups">> => list(managed_workgroup_list_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_workgroups_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_snapshot_request() :: #{
@@ -635,6 +644,14 @@
 -type convert_recovery_point_to_snapshot_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_managed_workgroups_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sourceArn">> => string()
+%% }
+-type list_managed_workgroups_request() :: #{binary() => any()}.
+
+%% Example:
 %% snapshot_copy_configuration() :: #{
 %%   <<"destinationKmsKeyId">> => string(),
 %%   <<"destinationRegion">> => [string()],
@@ -920,6 +937,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_domain_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% managed_workgroup_list_item() :: #{
+%%   <<"creationDate">> => [non_neg_integer()],
+%%   <<"managedWorkgroupId">> => [string()],
+%%   <<"managedWorkgroupName">> => string(),
+%%   <<"sourceArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type managed_workgroup_list_item() :: #{binary() => any()}.
 
 %% Example:
 %% put_resource_policy_request() :: #{
@@ -1481,6 +1508,10 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type list_managed_workgroups_errors() ::
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_namespaces_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -1786,6 +1817,27 @@ create_usage_limit(Client, Input, Options)
     request(Client, <<"CreateUsageLimit">>, Input, Options).
 
 %% @doc Creates an workgroup in Amazon Redshift Serverless.
+%%
+%% VPC Block Public Access (BPA) enables you to block resources in VPCs and
+%% subnets that
+%% you own in a Region from reaching or being reached from the internet
+%% through internet
+%% gateways and egress-only internet gateways. If a workgroup is in an
+%% account with VPC BPA
+%% turned on, the following capabilities are blocked:
+%%
+%% Creating a public access workgroup
+%%
+%% Modifying a private workgroup to public
+%%
+%% Adding a subnet with VPC BPA turned on to the workgroup when the workgroup
+%% is
+%% public
+%%
+%% For more information about VPC BPA, see Block public access to VPCs and
+%% subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
 -spec create_workgroup(aws_client:aws_client(), create_workgroup_request()) ->
     {ok, create_workgroup_response(), tuple()} |
     {error, any()} |
@@ -2191,6 +2243,24 @@ list_endpoint_access(Client, Input)
 list_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointAccess">>, Input, Options).
+
+%% @doc Returns information about a list of specified managed workgroups in
+%% your account.
+-spec list_managed_workgroups(aws_client:aws_client(), list_managed_workgroups_request()) ->
+    {ok, list_managed_workgroups_response(), tuple()} |
+    {error, any()} |
+    {error, list_managed_workgroups_errors(), tuple()}.
+list_managed_workgroups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_managed_workgroups(Client, Input, []).
+
+-spec list_managed_workgroups(aws_client:aws_client(), list_managed_workgroups_request(), proplists:proplist()) ->
+    {ok, list_managed_workgroups_response(), tuple()} |
+    {error, any()} |
+    {error, list_managed_workgroups_errors(), tuple()}.
+list_managed_workgroups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListManagedWorkgroups">>, Input, Options).
 
 %% @doc Returns information about a list of specified namespaces.
 -spec list_namespaces(aws_client:aws_client(), list_namespaces_request()) ->
@@ -2612,6 +2682,27 @@ update_usage_limit(Client, Input, Options)
 %% You can't update multiple parameters in one request. For example,
 %% you can update `baseCapacity' or `port' in a single request, but
 %% you can't update both in the same request.
+%%
+%% VPC Block Public Access (BPA) enables you to block resources in VPCs and
+%% subnets that
+%% you own in a Region from reaching or being reached from the internet
+%% through internet
+%% gateways and egress-only internet gateways. If a workgroup is in an
+%% account with VPC BPA
+%% turned on, the following capabilities are blocked:
+%%
+%% Creating a public access workgroup
+%%
+%% Modifying a private workgroup to public
+%%
+%% Adding a subnet with VPC BPA turned on to the workgroup when the workgroup
+%% is
+%% public
+%%
+%% For more information about VPC BPA, see Block public access to VPCs and
+%% subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
 -spec update_workgroup(aws_client:aws_client(), update_workgroup_request()) ->
     {ok, update_workgroup_response(), tuple()} |
     {error, any()} |

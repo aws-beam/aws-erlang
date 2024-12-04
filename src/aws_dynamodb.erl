@@ -166,6 +166,7 @@
 %%   <<"LatestStreamArn">> => string(),
 %%   <<"LatestStreamLabel">> => string(),
 %%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_description()()),
+%%   <<"MultiRegionConsistency">> => list(any()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
 %%   <<"Replicas">> => list(replica_description()()),
@@ -580,6 +581,12 @@
 %%   <<"TableName">> => string()
 %% }
 -type table_creation_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% replicated_write_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replicated_write_conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% execute_statement_output() :: #{
@@ -2057,6 +2064,7 @@
 %%   <<"BillingMode">> => list(any()),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_update()()),
+%%   <<"MultiRegionConsistency">> => list(any()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"ReplicaUpdates">> => list(replication_group_update()()),
@@ -2282,6 +2290,7 @@
     transaction_conflict_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
+    replicated_write_conflict_exception() | 
     invalid_endpoint_exception() | 
     item_collection_size_limit_exceeded_exception().
 
@@ -2449,6 +2458,7 @@
     transaction_conflict_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
+    replicated_write_conflict_exception() | 
     invalid_endpoint_exception() | 
     item_collection_size_limit_exceeded_exception().
 
@@ -2559,6 +2569,7 @@
     transaction_conflict_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
+    replicated_write_conflict_exception() | 
     invalid_endpoint_exception() | 
     item_collection_size_limit_exceeded_exception().
 

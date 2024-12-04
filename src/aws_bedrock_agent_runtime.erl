@@ -35,6 +35,8 @@
 %% function_invocation_input() :: #{
 %%   <<"actionGroup">> => [string()],
 %%   <<"actionInvocationType">> => list(any()),
+%%   <<"agentId">> => [string()],
+%%   <<"collaboratorName">> => string(),
 %%   <<"function">> => [string()],
 %%   <<"parameters">> => list(function_parameter()())
 %% }
@@ -65,6 +67,14 @@
 
 
 %% Example:
+%% return_control_results() :: #{
+%%   <<"invocationId">> => [string()],
+%%   <<"returnControlInvocationResults">> => list(list()())
+%% }
+-type return_control_results() :: #{binary() => any()}.
+
+
+%% Example:
 %% api_request_body() :: #{
 %%   <<"content">> => map()
 %% }
@@ -78,6 +88,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type metadata_attribute_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_collaborator_input_payload() :: #{
+%%   <<"returnControlResults">> => return_control_results(),
+%%   <<"text">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type agent_collaborator_input_payload() :: #{binary() => any()}.
 
 
 %% Example:
@@ -257,6 +276,13 @@
 %%   <<"text">> => [string()]
 %% }
 -type knowledge_base_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_history() :: #{
+%%   <<"messages">> => list(message()())
+%% }
+-type conversation_history() :: #{binary() => any()}.
 
 
 %% Example:
@@ -450,6 +476,15 @@
 
 
 %% Example:
+%% agent_collaborator_output_payload() :: #{
+%%   <<"returnControlPayload">> => return_control_payload(),
+%%   <<"text">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type agent_collaborator_output_payload() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_body() :: #{
 %%   <<"body">> => [string()]
 %% }
@@ -470,6 +505,7 @@
 %% Example:
 %% observation() :: #{
 %%   <<"actionGroupInvocationOutput">> => action_group_invocation_output(),
+%%   <<"agentCollaboratorInvocationOutput">> => agent_collaborator_invocation_output(),
 %%   <<"codeInterpreterInvocationOutput">> => code_interpreter_invocation_output(),
 %%   <<"finalResponse">> => final_response(),
 %%   <<"knowledgeBaseLookupOutput">> => knowledge_base_lookup_output(),
@@ -513,6 +549,15 @@
 
 
 %% Example:
+%% agent_collaborator_invocation_input() :: #{
+%%   <<"agentCollaboratorAliasArn">> => string(),
+%%   <<"agentCollaboratorName">> => [string()],
+%%   <<"input">> => agent_collaborator_input_payload()
+%% }
+-type agent_collaborator_invocation_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base() :: #{
 %%   <<"description">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
@@ -532,6 +577,7 @@
 %% Example:
 %% function_result() :: #{
 %%   <<"actionGroup">> => [string()],
+%%   <<"agentId">> => [string()],
 %%   <<"confirmationState">> => list(any()),
 %%   <<"function">> => [string()],
 %%   <<"responseBody">> => map(),
@@ -622,6 +668,24 @@
 
 
 %% Example:
+%% agent_collaborator_invocation_output() :: #{
+%%   <<"agentCollaboratorAliasArn">> => string(),
+%%   <<"agentCollaboratorName">> => [string()],
+%%   <<"output">> => agent_collaborator_output_payload()
+%% }
+-type agent_collaborator_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_classifier_model_invocation_output() :: #{
+%%   <<"metadata">> => metadata(),
+%%   <<"rawResponse">> => raw_response(),
+%%   <<"traceId">> => string()
+%% }
+-type routing_classifier_model_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% text_response_part() :: #{
 %%   <<"span">> => span(),
 %%   <<"text">> => [string()]
@@ -641,6 +705,7 @@
 
 %% Example:
 %% session_state() :: #{
+%%   <<"conversationHistory">> => conversation_history(),
 %%   <<"files">> => list(input_file()()),
 %%   <<"invocationId">> => [string()],
 %%   <<"knowledgeBaseConfigurations">> => list(knowledge_base_configuration()()),
@@ -699,7 +764,9 @@
 %% api_invocation_input() :: #{
 %%   <<"actionGroup">> => [string()],
 %%   <<"actionInvocationType">> => list(any()),
+%%   <<"agentId">> => [string()],
 %%   <<"apiPath">> => string(),
+%%   <<"collaboratorName">> => string(),
 %%   <<"httpMethod">> => [string()],
 %%   <<"parameters">> => list(api_parameter()()),
 %%   <<"requestBody">> => api_request_body()
@@ -746,6 +813,7 @@
 %% Example:
 %% api_result() :: #{
 %%   <<"actionGroup">> => [string()],
+%%   <<"agentId">> => [string()],
 %%   <<"apiPath">> => string(),
 %%   <<"confirmationState">> => list(any()),
 %%   <<"httpMethod">> => [string()],
@@ -926,6 +994,7 @@
 
 %% Example:
 %% model_invocation_input() :: #{
+%%   <<"foundationModel">> => string(),
 %%   <<"inferenceConfiguration">> => inference_configuration(),
 %%   <<"overrideLambda">> => string(),
 %%   <<"parserMode">> => list(any()),
@@ -957,6 +1026,8 @@
 %%   <<"agentAliasId">> => string(),
 %%   <<"agentId">> => string(),
 %%   <<"agentVersion">> => string(),
+%%   <<"callerChain">> => list(list()()),
+%%   <<"collaboratorName">> => string(),
 %%   <<"sessionId">> => string(),
 %%   <<"trace">> => list()
 %% }
@@ -1285,6 +1356,7 @@
 %%   <<"inputText">> => string(),
 %%   <<"memoryId">> => string(),
 %%   <<"sessionState">> => session_state(),
+%%   <<"sourceArn">> => string(),
 %%   <<"streamingConfigurations">> => streaming_configurations()
 %% }
 -type invoke_agent_request() :: #{binary() => any()}.
@@ -1301,6 +1373,7 @@
 %% Example:
 %% invocation_input() :: #{
 %%   <<"actionGroupInvocationInput">> => action_group_invocation_input(),
+%%   <<"agentCollaboratorInvocationInput">> => agent_collaborator_invocation_input(),
 %%   <<"codeInterpreterInvocationInput">> => code_interpreter_invocation_input(),
 %%   <<"invocationType">> => list(any()),
 %%   <<"knowledgeBaseLookupInput">> => knowledge_base_lookup_input(),
@@ -1464,6 +1537,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type rerank_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% message() :: #{
+%%   <<"content">> => list(list()()),
+%%   <<"role">> => list(any())
+%% }
+-type message() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1719,8 +1800,10 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amz-source-arn">>, <<"sourceArn">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

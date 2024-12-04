@@ -195,12 +195,16 @@
 %% Example:
 %% data_catalog_summary() :: #{
 %%   <<"CatalogName">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"Error">> => string(),
+%%   <<"Status">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
 -type data_catalog_summary() :: #{binary() => any()}.
 
 %% Example:
 %% delete_data_catalog_input() :: #{
+%%   <<"DeleteCatalogOnly">> => boolean(),
 %%   <<"Name">> := string()
 %% }
 -type delete_data_catalog_input() :: #{binary() => any()}.
@@ -654,9 +658,12 @@
 
 %% Example:
 %% data_catalog() :: #{
+%%   <<"ConnectionType">> => list(any()),
 %%   <<"Description">> => string(),
+%%   <<"Error">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Parameters">> => map(),
+%%   <<"Status">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
 -type data_catalog() :: #{binary() => any()}.
@@ -978,7 +985,7 @@
 
 %% Example:
 %% delete_data_catalog_output() :: #{
-
+%%   <<"DataCatalog">> => data_catalog()
 %% }
 -type delete_data_catalog_output() :: #{binary() => any()}.
 
@@ -1081,7 +1088,7 @@
 
 %% Example:
 %% create_data_catalog_output() :: #{
-
+%%   <<"DataCatalog">> => data_catalog()
 %% }
 -type create_data_catalog_output() :: #{binary() => any()}.
 
@@ -2170,6 +2177,20 @@ create_capacity_reservation(Client, Input, Options)
 %%
 %% Catalogs
 %% created are visible to all users of the same Amazon Web Services account.
+%%
+%% This API operation creates the following resources.
+%%
+%% CFN Stack Name with a maximum length of 128 characters and prefix
+%% `athenafederatedcatalog-CATALOG_NAME_SANITIZED' with length 23
+%% characters.
+%%
+%% Lambda Function Name with a maximum length of 64 characters and prefix
+%% `athenafederatedcatalog_CATALOG_NAME_SANITIZED' with length 23
+%% characters.
+%%
+%% Glue Connection Name with a maximum length of 255 characters and a prefix
+%% `athenafederatedcatalog_CATALOG_NAME_SANITIZED' with length 23
+%% characters.
 -spec create_data_catalog(aws_client:aws_client(), create_data_catalog_input()) ->
     {ok, create_data_catalog_output(), tuple()} |
     {error, any()} |

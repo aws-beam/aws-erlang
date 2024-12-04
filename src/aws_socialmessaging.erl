@@ -398,7 +398,8 @@
 %% linked_whats_app_business_account_id_meta_data() :: #{
 %%   <<"accountName">> => string(),
 %%   <<"registrationStatus">> => list(any()),
-%%   <<"unregisteredWhatsAppPhoneNumbers">> => list(whats_app_phone_number_detail()())
+%%   <<"unregisteredWhatsAppPhoneNumbers">> => list(whats_app_phone_number_detail()()),
+%%   <<"wabaId">> => string()
 %% }
 -type linked_whats_app_business_account_id_meta_data() :: #{binary() => any()}.
 
@@ -431,7 +432,8 @@
 
 %% Example:
 %% whats_app_business_account_event_destination() :: #{
-%%   <<"eventDestinationArn">> => string()
+%%   <<"eventDestinationArn">> => string(),
+%%   <<"roleArn">> => string()
 %% }
 -type whats_app_business_account_event_destination() :: #{binary() => any()}.
 

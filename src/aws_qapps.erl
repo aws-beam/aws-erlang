@@ -2,32 +2,32 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon Q Apps feature capability within Amazon Q Business allows
-%% web experience
-%% users to create lightweight, purpose-built AI apps to fulfill specific
-%% tasks from
-%% within their web experience.
+%% web experience users to create
+%% lightweight, purpose-built AI apps to fulfill specific tasks from within
+%% their web experience.
 %%
-%% For example, users can create a Q App that exclusively
-%% generates marketing-related content to improve your marketing team's
-%% productivity or a
-%% Q App for writing customer emails and creating promotional content using a
-%% certain
-%% style of voice, tone, and branding. For more information on the
-%% capabilities, see
-%% Amazon Q Apps capabilities:
+%% For example, users can create a Q App that exclusively generates
+%% marketing-related content to
+%% improve your marketing team's productivity or a Q App for writing
+%% customer emails and
+%% creating promotional content using a certain style of voice, tone, and
+%% branding. For more
+%% information on the capabilities, see Amazon Q Apps capabilities:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/deploy-experience-iam-role.html#q-apps-actions
-%% in the Amazon Q Business User Guide.
+%% in the Amazon Q Business User
+%% Guide.
 %%
-%% For an overview of the Amazon Q App APIs, see Overview of
-%% Amazon Q Apps API operations:
+%% For an overview of the Amazon Q App APIs, see Overview of Amazon Q Apps
+%% API
+%% operations:
 %% https://docs.aws.amazon.com/amazonq/latest/api-reference/API_Operations_QApps.html.
 %%
-%% For information about the IAM access control permissions you need to
-%% use the Amazon Q Apps API, see
+%% For information about the IAM access control permissions you need to use
+%% the Amazon Q Apps API, see
 %% IAM role for the Amazon Q Business web experience including Amazon Q Apps:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/deploy-experience-iam-role.html
-%% in the
-%% Amazon Q Business User Guide.
+%% in
+%% the Amazon Q Business User Guide.
 -module(aws_qapps).
 
 -export([associate_library_item_review/2,
@@ -409,6 +409,7 @@
 
 %% Example:
 %% q_plugin_card() :: #{
+%%   <<"actionIdentifier">> => string(),
 %%   <<"dependencies">> => list([string()]()),
 %%   <<"id">> => string(),
 %%   <<"pluginId">> => [string()],
@@ -611,6 +612,7 @@
 
 %% Example:
 %% q_plugin_card_input() :: #{
+%%   <<"actionIdentifier">> => string(),
 %%   <<"id">> => string(),
 %%   <<"pluginId">> => string(),
 %%   <<"prompt">> => string(),
@@ -1397,8 +1399,7 @@
 %%====================================================================
 
 %% @doc Associates a rating or review for a library item with the user
-%% submitting
-%% the request.
+%% submitting the request.
 %%
 %% This increments the rating count for the specified library item.
 -spec associate_library_item_review(aws_client:aws_client(), associate_library_item_review_input()) ->
@@ -1440,9 +1441,9 @@ associate_library_item_review(Client, Input0, Options0) ->
 %% the operation and a
 %% specific Q App.
 %%
-%% This is useful to mark the Q App as a favorite for
-%% the user if the user doesn't own the Amazon Q App so they can still
-%% run it and see it in their
+%% This is useful to mark the Q App as a favorite for the
+%% user if the user doesn't own the Amazon Q App so they can still run it
+%% and see it in their
 %% inventory of Q Apps.
 -spec associate_q_app_with_user(aws_client:aws_client(), associate_q_app_with_user_input()) ->
     {ok, undefined, tuple()} |
@@ -1482,8 +1483,10 @@ associate_q_app_with_user(Client, Input0, Options0) ->
 %% @doc Creates Categories for the Amazon Q Business application environment
 %% instance.
 %%
-%% Web experience users use Categories to tag and filter library items. For
-%% more information, see Custom labels for Amazon Q Apps:
+%% Web experience users use
+%% Categories to tag and filter library items. For more information, see
+%% Custom
+%% labels for Amazon Q Apps:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-custom-labels.html.
 -spec batch_create_category(aws_client:aws_client(), batch_create_category_input()) ->
     {ok, undefined, tuple()} |
@@ -1523,8 +1526,10 @@ batch_create_category(Client, Input0, Options0) ->
 %% @doc Deletes Categories for the Amazon Q Business application environment
 %% instance.
 %%
-%% Web experience users use Categories to tag and filter library items. For
-%% more information, see Custom labels for Amazon Q Apps:
+%% Web experience users use
+%% Categories to tag and filter library items. For more information, see
+%% Custom
+%% labels for Amazon Q Apps:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-custom-labels.html.
 -spec batch_delete_category(aws_client:aws_client(), batch_delete_category_input()) ->
     {ok, undefined, tuple()} |
@@ -1564,8 +1569,10 @@ batch_delete_category(Client, Input0, Options0) ->
 %% @doc Updates Categories for the Amazon Q Business application environment
 %% instance.
 %%
-%% Web experience users use Categories to tag and filter library items. For
-%% more information, see Custom labels for Amazon Q Apps:
+%% Web experience users use
+%% Categories to tag and filter library items. For more information, see
+%% Custom
+%% labels for Amazon Q Apps:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-custom-labels.html.
 -spec batch_update_category(aws_client:aws_client(), batch_update_category_input()) ->
     {ok, undefined, tuple()} |
@@ -1603,8 +1610,8 @@ batch_update_category(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new library item for an Amazon Q App, allowing it to be
-%% discovered and
-%% used by other allowed users.
+%% discovered and used by
+%% other allowed users.
 -spec create_library_item(aws_client:aws_client(), create_library_item_input()) ->
     {ok, create_library_item_output(), tuple()} |
     {error, any()} |
@@ -1642,10 +1649,12 @@ create_library_item(Client, Input0, Options0) ->
 
 %% @doc Creates a presigned URL for an S3 POST operation to upload a file.
 %%
-%% You can use this URL to set a default file for a `FileUploadCard'
-%% in a Q App definition or to provide a file for a single Q App run.
-%% The `scope' parameter determines how the file will be used,
-%% either at the app definition level or the app session level.
+%% You can use this URL to
+%% set a default file for a `FileUploadCard' in a Q App definition or to
+%% provide a
+%% file for a single Q App run. The `scope' parameter determines how the
+%% file will be
+%% used, either at the app definition level or the app session level.
 -spec create_presigned_url(aws_client:aws_client(), create_presigned_url_input()) ->
     {ok, create_presigned_url_output(), tuple()} |
     {error, any()} |
@@ -1685,8 +1694,8 @@ create_presigned_url(Client, Input0, Options0) ->
 %%
 %% The Q App definition specifies
 %% the cards and flow of the Q App. This operation also calculates the
-%% dependencies between the cards
-%% by inspecting the references in the prompts.
+%% dependencies between the
+%% cards by inspecting the references in the prompts.
 -spec create_q_app(aws_client:aws_client(), create_q_app_input()) ->
     {ok, create_q_app_output(), tuple()} |
     {error, any()} |
@@ -1723,8 +1732,8 @@ create_q_app(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a library item for an Amazon Q App, removing it from the
-%% library
-%% so it can no longer be discovered or used by other users.
+%% library so it can no longer
+%% be discovered or used by other users.
 -spec delete_library_item(aws_client:aws_client(), delete_library_item_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1762,8 +1771,8 @@ delete_library_item(Client, Input0, Options0) ->
 
 %% @doc Deletes an Amazon Q App owned by the user.
 %%
-%% If the Q App was previously published to the library, it is also removed
-%% from the library.
+%% If the Q App was previously published to the
+%% library, it is also removed from the library.
 -spec delete_q_app(aws_client:aws_client(), delete_q_app_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1883,8 +1892,7 @@ disassociate_library_item_review(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a Q App from a user removing the user's access to
-%% run the
-%% Q App.
+%% run the Q App.
 -spec disassociate_q_app_from_user(aws_client:aws_client(), disassociate_q_app_from_user_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2005,7 +2013,8 @@ get_library_item(Client, LibraryItemId, InstanceId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the full details of an Q App, including its definition
-%% specifying the cards and flow.
+%% specifying the cards and
+%% flow.
 -spec get_q_app(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_q_app_output(), tuple()} |
     {error, any()} |
@@ -2143,12 +2152,13 @@ get_q_app_session_metadata(Client, SessionId, InstanceId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Uploads a file that can then be used either as a default in a
-%% `FileUploadCard' from Q App definition or as a file that
-%% is used inside a single Q App run.
+%% `FileUploadCard'
+%% from Q App definition or as a file that is used inside a single Q App run.
 %%
-%% The purpose of the document is
-%% determined by a scope parameter that indicates whether it is at the
-%% app definition level or at the app session level.
+%% The purpose of
+%% the document is determined by a scope parameter that indicates whether it
+%% is at the app
+%% definition level or at the app session level.
 -spec import_document(aws_client:aws_client(), import_document_input()) ->
     {ok, import_document_output(), tuple()} |
     {error, any()} |
@@ -2187,7 +2197,8 @@ import_document(Client, Input0, Options0) ->
 %% @doc Lists the categories of a Amazon Q Business application environment
 %% instance.
 %%
-%% For more information, see Custom labels for Amazon Q Apps:
+%% For more information, see
+%% Custom labels for Amazon Q Apps:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-custom-labels.html.
 -spec list_categories(aws_client:aws_client(), binary() | list()) ->
     {ok, list_categories_output(), tuple()} |
@@ -2230,7 +2241,8 @@ list_categories(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the library items for Amazon Q Apps that are published and
-%% available for users in your Amazon Web Services account.
+%% available for users in your
+%% Amazon Web Services account.
 -spec list_library_items(aws_client:aws_client(), binary() | list()) ->
     {ok, list_library_items_output(), tuple()} |
     {error, any()} |
@@ -2323,11 +2335,11 @@ list_q_app_session_data(Client, SessionId, InstanceId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Q Apps owned by or associated with the user either
-%% because
-%% they created it or because they used it from the library in the past.
+%% because they created it
+%% or because they used it from the library in the past.
 %%
-%% The user
-%% identity is extracted from the credentials used to invoke this operation..
+%% The user identity is extracted from the
+%% credentials used to invoke this operation..
 -spec list_q_apps(aws_client:aws_client(), binary() | list()) ->
     {ok, list_q_apps_output(), tuple()} |
     {error, any()} |
@@ -2411,12 +2423,11 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates an Amazon Q App definition based on either a conversation
-%% or
-%% a problem statement provided as input.The resulting app definition
-%% can be used to call `CreateQApp'.
+%% or a problem statement
+%% provided as input.The resulting app definition can be used to call
+%% `CreateQApp'.
 %%
-%% This API doesn't create
-%% Amazon Q Apps directly.
+%% This API doesn't create Amazon Q Apps directly.
 -spec predict_q_app(aws_client:aws_client(), predict_q_app_input()) ->
     {ok, predict_q_app_output(), tuple()} |
     {error, any()} |
@@ -2453,11 +2464,11 @@ predict_q_app(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a new session for an Amazon Q App, allowing inputs to be
-%% provided
-%% and the app to be run.
+%% provided and the app to be
+%% run.
 %%
-%% Each Q App session will be condensed into a single conversation
-%% in the web experience.
+%% Each Q App session will be condensed into a single conversation in the web
+%% experience.
 -spec start_q_app_session(aws_client:aws_client(), start_q_app_session_input()) ->
     {ok, start_q_app_session_output(), tuple()} |
     {error, any()} |
@@ -2494,10 +2505,11 @@ start_q_app_session(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops an active session for an Amazon Q App.This deletes all data
-%% related to the session and makes it invalid for future uses.
+%% related to the session and
+%% makes it invalid for future uses.
 %%
-%% The
-%% results of the session will be persisted as part of the conversation.
+%% The results of the session will be persisted as part of the
+%% conversation.
 -spec stop_q_app_session(aws_client:aws_client(), stop_q_app_session_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2676,7 +2688,8 @@ update_library_item_metadata(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Q App, allowing modifications to its
-%% title, description, and definition.
+%% title, description, and
+%% definition.
 -spec update_q_app(aws_client:aws_client(), update_q_app_input()) ->
     {ok, update_q_app_output(), tuple()} |
     {error, any()} |
@@ -2751,12 +2764,13 @@ update_q_app_permissions(Client, Input0, Options0) ->
 
 %% @doc Updates the session for a given Q App `sessionId'.
 %%
-%% This is only
-%% valid when at least one card of the session is in the `WAITING' state.
-%% Data for each `WAITING' card can be provided as input. If inputs
-%% are not provided, the call will be accepted but session will not move
-%% forward.
-%% Inputs for cards that are not in the `WAITING' status will be ignored.
+%% This is only valid when at
+%% least one card of the session is in the `WAITING' state. Data for each
+%% `WAITING' card can be provided as input. If inputs are not provided,
+%% the call
+%% will be accepted but session will not move forward. Inputs for cards that
+%% are not in the
+%% `WAITING' status will be ignored.
 -spec update_q_app_session(aws_client:aws_client(), update_q_app_session_input()) ->
     {ok, update_q_app_session_output(), tuple()} |
     {error, any()} |

@@ -478,6 +478,7 @@
 %% Example:
 %% principal_resource_permissions() :: #{
 %%   <<"AdditionalDetails">> => details_map(),
+%%   <<"Condition">> => condition(),
 %%   <<"LastUpdated">> => non_neg_integer(),
 %%   <<"LastUpdatedBy">> => string(),
 %%   <<"Permissions">> => list(list(any())()),
@@ -840,9 +841,12 @@
 %% table_wildcard() :: #{}
 -type table_wildcard() :: #{}.
 
+
 %% Example:
-%% catalog_resource() :: #{}
--type catalog_resource() :: #{}.
+%% catalog_resource() :: #{
+%%   <<"Id">> => string()
+%% }
+-type catalog_resource() :: #{binary() => any()}.
 
 %% Example:
 %% update_resource_response() :: #{}
@@ -867,6 +871,7 @@
 
 %% Example:
 %% lake_formation_opt_ins_info() :: #{
+%%   <<"Condition">> => condition(),
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"LastUpdatedBy">> => string(),
 %%   <<"Principal">> => data_lake_principal(),
@@ -1023,6 +1028,13 @@
 %%   <<"State">> => list(any())
 %% }
 -type get_query_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"Expression">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
 
 
 %% Example:

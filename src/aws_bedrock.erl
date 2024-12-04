@@ -543,6 +543,15 @@
 
 
 %% Example:
+%% invocation_logs_config() :: #{
+%%   <<"invocationLogSource">> => list(),
+%%   <<"requestMetadataFilters">> => list(),
+%%   <<"usePromptResponse">> => boolean()
+%% }
+-type invocation_logs_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_inference_profiles_response() :: #{
 %%   <<"inferenceProfileSummaries">> => list(inference_profile_summary()()),
 %%   <<"nextToken">> => string()
@@ -569,7 +578,8 @@
 %%   <<"embeddingDataDeliveryEnabled">> => [boolean()],
 %%   <<"imageDataDeliveryEnabled">> => [boolean()],
 %%   <<"s3Config">> => s3_config(),
-%%   <<"textDataDeliveryEnabled">> => [boolean()]
+%%   <<"textDataDeliveryEnabled">> => [boolean()],
+%%   <<"videoDataDeliveryEnabled">> => [boolean()]
 %% }
 -type logging_config() :: #{binary() => any()}.
 
@@ -898,6 +908,7 @@
 %% get_custom_model_response() :: #{
 %%   <<"baseModelArn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customizationConfig">> => list(),
 %%   <<"customizationType">> => list(any()),
 %%   <<"hyperParameters">> => map(),
 %%   <<"jobArn">> => string(),
@@ -978,6 +989,14 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_provisioned_model_throughput_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% teacher_model_config() :: #{
+%%   <<"maxResponseLengthForInference">> => [integer()],
+%%   <<"teacherModelIdentifier">> => string()
+%% }
+-type teacher_model_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1209,6 +1228,13 @@
 
 
 %% Example:
+%% distillation_config() :: #{
+%%   <<"teacherModelConfig">> => teacher_model_config()
+%% }
+-type distillation_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1329,8 +1355,9 @@
 %%   <<"customModelKmsKeyId">> => string(),
 %%   <<"customModelName">> := string(),
 %%   <<"customModelTags">> => list(tag()()),
+%%   <<"customizationConfig">> => list(),
 %%   <<"customizationType">> => list(any()),
-%%   <<"hyperParameters">> := map(),
+%%   <<"hyperParameters">> => map(),
 %%   <<"jobName">> := string(),
 %%   <<"jobTags">> => list(tag()()),
 %%   <<"outputDataConfig">> := output_data_config(),
@@ -1468,6 +1495,7 @@
 %%   <<"baseModelArn">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customizationConfig">> => list(),
 %%   <<"customizationType">> => list(any()),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"failureMessage">> => string(),
@@ -1659,6 +1687,14 @@
 
 
 %% Example:
+%% request_metadata_base_filters() :: #{
+%%   <<"equals">> => map(),
+%%   <<"notEquals">> => map()
+%% }
+-type request_metadata_base_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% kb_inference_config() :: #{
 %%   <<"textInferenceConfig">> => text_inference_config()
 %% }
@@ -1683,6 +1719,7 @@
 
 %% Example:
 %% training_data_config() :: #{
+%%   <<"invocationLogsConfig">> => invocation_logs_config(),
 %%   <<"s3Uri">> => string()
 %% }
 -type training_data_config() :: #{binary() => any()}.
@@ -2257,7 +2294,7 @@ create_evaluation_job(Client, Input0, Options0) ->
 %% the user if a user input or model response is in violation of the policies
 %% defined in the guardrail.
 %%
-%% For more information, see Guardrails for Amazon Bedrock:
+%% For more information, see Amazon Bedrock Guardrails:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html in
 %% the Amazon Bedrock User Guide.
 -spec create_guardrail(aws_client:aws_client(), create_guardrail_request()) ->
@@ -3199,8 +3236,8 @@ get_model_import_job(Client, JobIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets details about a batch inference job.
 %%
-%% For more information, see View details about a batch inference job:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view
+%% For more information, see Monitor batch inference jobs:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-monitor
 -spec get_model_invocation_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_model_invocation_job_response(), tuple()} |
     {error, any()} |
@@ -3796,7 +3833,7 @@ list_model_import_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all batch inference jobs in the account.
 %%
 %% For more information, see View details about a batch inference job:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view.
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-view.html.
 -spec list_model_invocation_jobs(aws_client:aws_client()) ->
     {ok, list_model_invocation_jobs_response(), tuple()} |
     {error, any()} |
@@ -4048,7 +4085,7 @@ stop_model_customization_job(Client, JobIdentifier, Input0, Options0) ->
 %%
 %% You're only charged for tokens that were already processed. For more
 %% information, see Stop a batch inference job:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-stop.
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-stop.html.
 -spec stop_model_invocation_job(aws_client:aws_client(), binary() | list(), stop_model_invocation_job_request()) ->
     {ok, stop_model_invocation_job_response(), tuple()} |
     {error, any()} |

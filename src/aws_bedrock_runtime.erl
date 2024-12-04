@@ -11,13 +11,29 @@
          converse/4,
          converse_stream/3,
          converse_stream/4,
+         get_async_invoke/2,
+         get_async_invoke/4,
+         get_async_invoke/5,
          invoke_model/3,
          invoke_model/4,
          invoke_model_with_response_stream/3,
-         invoke_model_with_response_stream/4]).
+         invoke_model_with_response_stream/4,
+         list_async_invokes/1,
+         list_async_invokes/3,
+         list_async_invokes/4,
+         start_async_invoke/2,
+         start_async_invoke/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_async_invokes_response() :: #{
+%%   <<"asyncInvokeSummaries">> => list(async_invoke_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_async_invokes_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -68,6 +84,10 @@
 -type content_block_stop_event() :: #{binary() => any()}.
 
 %% Example:
+%% get_async_invoke_request() :: #{}
+-type get_async_invoke_request() :: #{}.
+
+%% Example:
 %% any_tool_choice() :: #{}
 -type any_tool_choice() :: #{}.
 
@@ -101,7 +121,9 @@
 %%   <<"guardrailConfig">> => guardrail_configuration(),
 %%   <<"inferenceConfig">> => inference_configuration(),
 %%   <<"messages">> => list(message()()),
+%%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptVariables">> => map(),
+%%   <<"requestMetadata">> => map(),
 %%   <<"system">> => list(list()()),
 %%   <<"toolConfig">> => tool_configuration()
 %% }
@@ -144,7 +166,8 @@
 %% Example:
 %% invoke_model_with_response_stream_response() :: #{
 %%   <<"body">> => list(),
-%%   <<"contentType">> => string()
+%%   <<"contentType">> => string(),
+%%   <<"performanceConfigLatency">> => list(any())
 %% }
 -type invoke_model_with_response_stream_response() :: #{binary() => any()}.
 
@@ -163,6 +186,15 @@
 %%   <<"source">> => list()
 %% }
 -type image_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_invoke_s3_output_data_config() :: #{
+%%   <<"bucketOwner">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type async_invoke_s3_output_data_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -213,6 +245,30 @@
 
 
 %% Example:
+%% start_async_invoke_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"modelId">> := string(),
+%%   <<"modelInput">> := any(),
+%%   <<"outputDataConfig">> := list(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type start_async_invoke_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_async_invokes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any()),
+%%   <<"submitTimeAfter">> => non_neg_integer(),
+%%   <<"submitTimeBefore">> => non_neg_integer()
+%% }
+-type list_async_invokes_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_coverage() :: #{
 %%   <<"textCharacters">> => guardrail_text_characters_coverage()
 %% }
@@ -226,9 +282,17 @@
 %%   <<"contentType">> => string(),
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
+%%   <<"performanceConfigLatency">> => list(any()),
 %%   <<"trace">> => list(any())
 %% }
 -type invoke_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -245,6 +309,7 @@
 %%   <<"contentType">> => string(),
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
+%%   <<"performanceConfigLatency">> => list(any()),
 %%   <<"trace">> => list(any())
 %% }
 -type invoke_model_with_response_stream_request() :: #{binary() => any()}.
@@ -266,6 +331,14 @@
 
 
 %% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
 %% tool_use_block_start() :: #{
 %%   <<"name">> => string(),
 %%   <<"toolUseId">> => string()
@@ -276,7 +349,8 @@
 %% Example:
 %% invoke_model_response() :: #{
 %%   <<"body">> => binary(),
-%%   <<"contentType">> => string()
+%%   <<"contentType">> => string(),
+%%   <<"performanceConfigLatency">> => list(any())
 %% }
 -type invoke_model_response() :: #{binary() => any()}.
 
@@ -339,6 +413,21 @@
 
 
 %% Example:
+%% get_async_invoke_response() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"invocationArn">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"outputDataConfig">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"submitTime">> => non_neg_integer()
+%% }
+-type get_async_invoke_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_contextual_grounding_policy_assessment() :: #{
 %%   <<"filters">> => list(guardrail_contextual_grounding_filter()())
 %% }
@@ -346,8 +435,17 @@
 
 
 %% Example:
+%% s3_location() :: #{
+%%   <<"bucketOwner">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% converse_stream_metadata_event() :: #{
 %%   <<"metrics">> => converse_stream_metrics(),
+%%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"trace">> => converse_stream_trace(),
 %%   <<"usage">> => token_usage()
 %% }
@@ -423,7 +521,9 @@
 %%   <<"guardrailConfig">> => guardrail_stream_configuration(),
 %%   <<"inferenceConfig">> => inference_configuration(),
 %%   <<"messages">> => list(message()()),
+%%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptVariables">> => map(),
+%%   <<"requestMetadata">> => map(),
 %%   <<"system">> => list(list()()),
 %%   <<"toolConfig">> => tool_configuration()
 %% }
@@ -484,6 +584,21 @@
 
 
 %% Example:
+%% async_invoke_summary() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"invocationArn">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"outputDataConfig">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"submitTime">> => non_neg_integer()
+%% }
+-type async_invoke_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_stream_error_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"originalMessage">> => string(),
@@ -533,6 +648,14 @@
 
 
 %% Example:
+%% video_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type video_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_output_content() :: #{
 %%   <<"text">> => string()
 %% }
@@ -571,12 +694,26 @@
 
 
 %% Example:
+%% start_async_invoke_response() :: #{
+%%   <<"invocationArn">> => string()
+%% }
+-type start_async_invoke_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_topic() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"name">> => [string()],
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_configuration() :: #{
+%%   <<"latency">> => list(any())
+%% }
+-type performance_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -592,6 +729,7 @@
 %%   <<"additionalModelResponseFields">> => [any()],
 %%   <<"metrics">> => converse_metrics(),
 %%   <<"output">> => list(),
+%%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"stopReason">> => list(any()),
 %%   <<"trace">> => converse_trace(),
 %%   <<"usage">> => token_usage()
@@ -628,6 +766,12 @@
     resource_not_found_exception() | 
     model_not_ready_exception().
 
+-type get_async_invoke_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type invoke_model_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -653,11 +797,33 @@
     resource_not_found_exception() | 
     model_not_ready_exception().
 
+-type list_async_invokes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type start_async_invoke_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc The action to apply a guardrail.
+%%
+%% For troubleshooting some of the common errors you might encounter when
+%% using the `ApplyGuardrail' API,
+%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
+%% in the Amazon Bedrock User Guide
 -spec apply_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), apply_guardrail_request()) ->
     {ok, apply_guardrail_response(), tuple()} |
     {error, any()} |
@@ -731,6 +897,24 @@ apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0)
 %%
 %% This operation requires permission for the `bedrock:InvokeModel'
 %% action.
+%%
+%% To deny all inference access to resources that you specify in the modelId
+%% field, you
+%% need to deny access to the `bedrock:InvokeModel' and
+%% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
+%% denies
+%% access to the resource through the base inference actions (InvokeModel:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModel.html
+%% and InvokeModelWithResponseStream:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithResponseStream.html).
+%% For more information see Deny access for inference on specific models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
+%%
+%% For troubleshooting some of the common errors you might encounter when
+%% using the `Converse' API,
+%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
+%% in the Amazon Bedrock User Guide
 -spec converse(aws_client:aws_client(), binary() | list(), converse_request()) ->
     {ok, converse_response(), tuple()} |
     {error, any()} |
@@ -812,6 +996,24 @@ converse(Client, ModelId, Input0, Options0) ->
 %%
 %% This operation requires permission for the
 %% `bedrock:InvokeModelWithResponseStream' action.
+%%
+%% To deny all inference access to resources that you specify in the modelId
+%% field, you
+%% need to deny access to the `bedrock:InvokeModel' and
+%% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
+%% denies
+%% access to the resource through the base inference actions (InvokeModel:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModel.html
+%% and InvokeModelWithResponseStream:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithResponseStream.html).
+%% For more information see Deny access for inference on specific models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
+%%
+%% For troubleshooting some of the common errors you might encounter when
+%% using the `ConverseStream' API,
+%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
+%% in the Amazon Bedrock User Guide
 -spec converse_stream(aws_client:aws_client(), binary() | list(), converse_stream_request()) ->
     {ok, converse_stream_response(), tuple()} |
     {error, any()} |
@@ -845,6 +1047,43 @@ converse_stream(Client, ModelId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieve information about an asynchronous invocation.
+-spec get_async_invoke(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_async_invoke_response(), tuple()} |
+    {error, any()} |
+    {error, get_async_invoke_errors(), tuple()}.
+get_async_invoke(Client, InvocationArn)
+  when is_map(Client) ->
+    get_async_invoke(Client, InvocationArn, #{}, #{}).
+
+-spec get_async_invoke(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_async_invoke_response(), tuple()} |
+    {error, any()} |
+    {error, get_async_invoke_errors(), tuple()}.
+get_async_invoke(Client, InvocationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_async_invoke(Client, InvocationArn, QueryMap, HeadersMap, []).
+
+-spec get_async_invoke(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_async_invoke_response(), tuple()} |
+    {error, any()} |
+    {error, get_async_invoke_errors(), tuple()}.
+get_async_invoke(Client, InvocationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/async-invoke/", aws_util:encode_uri(InvocationArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Invokes the specified Amazon Bedrock model to run inference using the
 %% prompt and inference parameters provided in the request body.
 %%
@@ -855,6 +1094,24 @@ converse_stream(Client, ModelId, Input0, Options0) ->
 %%
 %% This operation requires permission for the `bedrock:InvokeModel'
 %% action.
+%%
+%% To deny all inference access to resources that you specify in the modelId
+%% field, you
+%% need to deny access to the `bedrock:InvokeModel' and
+%% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
+%% denies
+%% access to the resource through the Converse API actions (Converse:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html
+%% and ConverseStream:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html).
+%% For more information see Deny access for inference on specific models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
+%%
+%% For troubleshooting some of the common errors you might encounter when
+%% using the `InvokeModel' API,
+%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
+%% in the Amazon Bedrock User Guide
 -spec invoke_model(aws_client:aws_client(), binary() | list(), invoke_model_request()) ->
     {ok, invoke_model_response(), tuple()} |
     {error, any()} |
@@ -882,6 +1139,7 @@ invoke_model(Client, ModelId, Input0, Options0) ->
                        {<<"Content-Type">>, <<"contentType">>},
                        {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
                        {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
+                       {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
                        {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
@@ -896,7 +1154,8 @@ invoke_model(Client, ModelId, Input0, Options0) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {<<"Content-Type">>, <<"contentType">>}
+            {<<"Content-Type">>, <<"contentType">>},
+            {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -927,6 +1186,24 @@ invoke_model(Client, ModelId, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `bedrock:InvokeModelWithResponseStream' action.
+%%
+%% To deny all inference access to resources that you specify in the modelId
+%% field, you
+%% need to deny access to the `bedrock:InvokeModel' and
+%% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
+%% denies
+%% access to the resource through the Converse API actions (Converse:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html
+%% and ConverseStream:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html).
+%% For more information see Deny access for inference on specific models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
+%%
+%% For troubleshooting some of the common errors you might encounter when
+%% using the `InvokeModelWithResponseStream' API,
+%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
+%% in the Amazon Bedrock User Guide
 -spec invoke_model_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_model_with_response_stream_request()) ->
     {ok, invoke_model_with_response_stream_response(), tuple()} |
     {error, any()} |
@@ -954,6 +1231,7 @@ invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
                        {<<"Content-Type">>, <<"contentType">>},
                        {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
                        {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
+                       {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
                        {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
@@ -968,7 +1246,8 @@ invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {<<"X-Amzn-Bedrock-Content-Type">>, <<"contentType">>}
+            {<<"X-Amzn-Bedrock-Content-Type">>, <<"contentType">>},
+            {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -981,6 +1260,102 @@ invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Lists asynchronous invocations.
+-spec list_async_invokes(aws_client:aws_client()) ->
+    {ok, list_async_invokes_response(), tuple()} |
+    {error, any()} |
+    {error, list_async_invokes_errors(), tuple()}.
+list_async_invokes(Client)
+  when is_map(Client) ->
+    list_async_invokes(Client, #{}, #{}).
+
+-spec list_async_invokes(aws_client:aws_client(), map(), map()) ->
+    {ok, list_async_invokes_response(), tuple()} |
+    {error, any()} |
+    {error, list_async_invokes_errors(), tuple()}.
+list_async_invokes(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_async_invokes(Client, QueryMap, HeadersMap, []).
+
+-spec list_async_invokes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_async_invokes_response(), tuple()} |
+    {error, any()} |
+    {error, list_async_invokes_errors(), tuple()}.
+list_async_invokes(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/async-invoke"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"statusEquals">>, maps:get(<<"statusEquals">>, QueryMap, undefined)},
+        {<<"submitTimeAfter">>, maps:get(<<"submitTimeAfter">>, QueryMap, undefined)},
+        {<<"submitTimeBefore">>, maps:get(<<"submitTimeBefore">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Starts an asynchronous invocation.
+%%
+%% This operation requires permission for the `bedrock:InvokeModel'
+%% action.
+%%
+%% To deny all inference access to resources that you specify in the modelId
+%% field, you
+%% need to deny access to the `bedrock:InvokeModel' and
+%% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
+%% denies
+%% access to the resource through the Converse API actions (Converse:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html
+%% and ConverseStream:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html).
+%% For more information see Deny access for inference on specific models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
+-spec start_async_invoke(aws_client:aws_client(), start_async_invoke_request()) ->
+    {ok, start_async_invoke_response(), tuple()} |
+    {error, any()} |
+    {error, start_async_invoke_errors(), tuple()}.
+start_async_invoke(Client, Input) ->
+    start_async_invoke(Client, Input, []).
+
+-spec start_async_invoke(aws_client:aws_client(), start_async_invoke_request(), proplists:proplist()) ->
+    {ok, start_async_invoke_response(), tuple()} |
+    {error, any()} |
+    {error, start_async_invoke_errors(), tuple()}.
+start_async_invoke(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/async-invoke"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

@@ -5,7 +5,9 @@
 %% agents.
 -module(aws_bedrock_agent).
 
--export([associate_agent_knowledge_base/4,
+-export([associate_agent_collaborator/4,
+         associate_agent_collaborator/5,
+         associate_agent_knowledge_base/4,
          associate_agent_knowledge_base/5,
          create_agent/2,
          create_agent/3,
@@ -49,6 +51,8 @@
          delete_knowledge_base_documents/5,
          delete_prompt/3,
          delete_prompt/4,
+         disassociate_agent_collaborator/5,
+         disassociate_agent_collaborator/6,
          disassociate_agent_knowledge_base/5,
          disassociate_agent_knowledge_base/6,
          get_agent/2,
@@ -60,6 +64,9 @@
          get_agent_alias/3,
          get_agent_alias/5,
          get_agent_alias/6,
+         get_agent_collaborator/4,
+         get_agent_collaborator/6,
+         get_agent_collaborator/7,
          get_agent_knowledge_base/4,
          get_agent_knowledge_base/6,
          get_agent_knowledge_base/7,
@@ -95,6 +102,8 @@
          list_agent_action_groups/5,
          list_agent_aliases/3,
          list_agent_aliases/4,
+         list_agent_collaborators/4,
+         list_agent_collaborators/5,
          list_agent_knowledge_bases/4,
          list_agent_knowledge_bases/5,
          list_agent_versions/3,
@@ -142,6 +151,8 @@
          update_agent_action_group/6,
          update_agent_alias/4,
          update_agent_alias/5,
+         update_agent_collaborator/5,
+         update_agent_collaborator/6,
          update_agent_knowledge_base/5,
          update_agent_knowledge_base/6,
          update_data_source/4,
@@ -211,6 +222,10 @@
 %%   <<"bucketName">> => string()
 %% }
 -type storage_flow_node_s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_agent_collaborator_response() :: #{}
+-type disassociate_agent_collaborator_response() :: #{}.
 
 
 %% Example:
@@ -541,6 +556,7 @@
 
 %% Example:
 %% create_agent_request() :: #{
+%%   <<"agentCollaboration">> => list(any()),
 %%   <<"agentName">> := string(),
 %%   <<"agentResourceRoleArn">> => string(),
 %%   <<"clientToken">> => string(),
@@ -689,6 +705,21 @@
 %%   <<"value">> => metadata_attribute_value()
 %% }
 -type metadata_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_collaborator_summary() :: #{
+%%   <<"agentDescriptor">> => agent_descriptor(),
+%%   <<"agentId">> => string(),
+%%   <<"agentVersion">> => string(),
+%%   <<"collaborationInstruction">> => string(),
+%%   <<"collaboratorId">> => string(),
+%%   <<"collaboratorName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"relayConversationHistory">> => list(any())
+%% }
+-type agent_collaborator_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1035,6 +1066,16 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type ingestion_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_collaborator_request() :: #{
+%%   <<"agentDescriptor">> := agent_descriptor(),
+%%   <<"collaborationInstruction">> := string(),
+%%   <<"collaboratorName">> := string(),
+%%   <<"relayConversationHistory">> => list(any())
+%% }
+-type update_agent_collaborator_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1600,6 +1641,7 @@
 %% Example:
 %% agent() :: #{
 %%   <<"agentArn">> => string(),
+%%   <<"agentCollaboration">> => list(any()),
 %%   <<"agentId">> => string(),
 %%   <<"agentName">> => string(),
 %%   <<"agentResourceRoleArn">> => string(),
@@ -1728,6 +1770,17 @@
 
 
 %% Example:
+%% associate_agent_collaborator_request() :: #{
+%%   <<"agentDescriptor">> := agent_descriptor(),
+%%   <<"clientToken">> => string(),
+%%   <<"collaborationInstruction">> := string(),
+%%   <<"collaboratorName">> := string(),
+%%   <<"relayConversationHistory">> => list(any())
+%% }
+-type associate_agent_collaborator_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_agent_response() :: #{
 %%   <<"agentId">> => string(),
 %%   <<"agentStatus">> => list(any())
@@ -1843,6 +1896,7 @@
 %% Example:
 %% agent_version() :: #{
 %%   <<"agentArn">> => string(),
+%%   <<"agentCollaboration">> => list(any()),
 %%   <<"agentId">> => string(),
 %%   <<"agentName">> => string(),
 %%   <<"agentResourceRoleArn">> => string(),
@@ -1865,11 +1919,34 @@
 
 
 %% Example:
+%% agent_collaborator() :: #{
+%%   <<"agentDescriptor">> => agent_descriptor(),
+%%   <<"agentId">> => string(),
+%%   <<"agentVersion">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"collaborationInstruction">> => string(),
+%%   <<"collaboratorId">> => string(),
+%%   <<"collaboratorName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"relayConversationHistory">> => list(any())
+%% }
+-type agent_collaborator() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_alias_routing_configuration_list_item() :: #{
 %%   <<"agentVersion">> => string(),
 %%   <<"provisionedThroughput">> => string()
 %% }
 -type agent_alias_routing_configuration_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_collaborator_response() :: #{
+%%   <<"agentCollaborator">> => agent_collaborator()
+%% }
+-type update_agent_collaborator_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1929,6 +2006,18 @@
 %% }
 -type list_prompts_request() :: #{binary() => any()}.
 
+%% Example:
+%% disassociate_agent_collaborator_request() :: #{}
+-type disassociate_agent_collaborator_request() :: #{}.
+
+
+%% Example:
+%% list_agent_collaborators_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_collaborators_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% share_point_source_configuration() :: #{
@@ -1971,6 +2060,10 @@
 %%   <<"parentActionGroupSignature">> => list(any())
 %% }
 -type create_agent_action_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_collaborator_request() :: #{}
+-type get_agent_collaborator_request() :: #{}.
 
 
 %% Example:
@@ -2053,6 +2146,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type data_source_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_descriptor() :: #{
+%%   <<"aliasArn">> => string()
+%% }
+-type agent_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2166,6 +2266,7 @@
 
 %% Example:
 %% update_agent_request() :: #{
+%%   <<"agentCollaboration">> => list(any()),
 %%   <<"agentName">> := string(),
 %%   <<"agentResourceRoleArn">> := string(),
 %%   <<"customOrchestration">> => custom_orchestration(),
@@ -2211,6 +2312,14 @@
 %%   <<"toolConfiguration">> => tool_configuration()
 %% }
 -type chat_prompt_template_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_collaborators_response() :: #{
+%%   <<"agentCollaboratorSummaries">> => list(agent_collaborator_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_collaborators_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2565,6 +2674,13 @@
 
 
 %% Example:
+%% get_agent_collaborator_response() :: #{
+%%   <<"agentCollaborator">> => agent_collaborator()
+%% }
+-type get_agent_collaborator_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_agent_knowledge_bases_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -2738,6 +2854,13 @@
 
 
 %% Example:
+%% associate_agent_collaborator_response() :: #{
+%%   <<"agentCollaborator">> => agent_collaborator()
+%% }
+-type associate_agent_collaborator_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_data_source_configuration() :: #{
 %%   <<"bucketArn">> => string(),
 %%   <<"bucketOwnerAccountId">> => string(),
@@ -2766,6 +2889,7 @@
 %% Example:
 %% prompt_configuration() :: #{
 %%   <<"basePromptTemplate">> => string(),
+%%   <<"foundationModel">> => string(),
 %%   <<"inferenceConfiguration">> => inference_configuration(),
 %%   <<"parserMode">> => list(any()),
 %%   <<"promptCreationMode">> => list(any()),
@@ -2795,6 +2919,15 @@
 %%   <<"templateType">> => list(any())
 %% }
 -type prompt_variant() :: #{binary() => any()}.
+
+-type associate_agent_collaborator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type associate_agent_knowledge_base_errors() ::
     throttling_exception() | 
@@ -2978,6 +3111,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type disassociate_agent_collaborator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type disassociate_agent_knowledge_base_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3001,6 +3142,13 @@
     resource_not_found_exception().
 
 -type get_agent_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_agent_collaborator_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3094,6 +3242,13 @@
     resource_not_found_exception().
 
 -type list_agent_aliases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_agent_collaborators_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3259,6 +3414,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_agent_collaborator_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_agent_knowledge_base_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3319,6 +3483,40 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Makes an agent a collaborator for another agent.
+-spec associate_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), associate_agent_collaborator_request()) ->
+    {ok, associate_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, associate_agent_collaborator_errors(), tuple()}.
+associate_agent_collaborator(Client, AgentId, AgentVersion, Input) ->
+    associate_agent_collaborator(Client, AgentId, AgentVersion, Input, []).
+
+-spec associate_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), associate_agent_collaborator_request(), proplists:proplist()) ->
+    {ok, associate_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, associate_agent_collaborator_errors(), tuple()}.
+associate_agent_collaborator(Client, AgentId, AgentVersion, Input0, Options0) ->
+    Method = put,
+    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/agentcollaborators/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a knowledge base with an agent.
 %%
@@ -4229,6 +4427,40 @@ delete_prompt(Client, PromptIdentifier, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates an agent collaborator.
+-spec disassociate_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_collaborator_request()) ->
+    {ok, disassociate_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_agent_collaborator_errors(), tuple()}.
+disassociate_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, Input) ->
+    disassociate_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, Input, []).
+
+-spec disassociate_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_collaborator_request(), proplists:proplist()) ->
+    {ok, disassociate_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_agent_collaborator_errors(), tuple()}.
+disassociate_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/agentcollaborators/", aws_util:encode_uri(CollaboratorId), "/"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates a knowledge base from an agent.
 -spec disassociate_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_knowledge_base_request()) ->
     {ok, disassociate_agent_knowledge_base_response(), tuple()} |
@@ -4361,6 +4593,43 @@ get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap)
 get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/", aws_util:encode_uri(AgentAliasId), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about an agent's collaborator.
+-spec get_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_collaborator_errors(), tuple()}.
+get_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId)
+  when is_map(Client) ->
+    get_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, #{}, #{}).
+
+-spec get_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_collaborator_errors(), tuple()}.
+get_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, QueryMap, HeadersMap, []).
+
+-spec get_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_collaborator_errors(), tuple()}.
+get_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/agentcollaborators/", aws_util:encode_uri(CollaboratorId), "/"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4865,6 +5134,40 @@ list_agent_aliases(Client, AgentId, Input) ->
 list_agent_aliases(Client, AgentId, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieve a list of an agent's collaborators.
+-spec list_agent_collaborators(aws_client:aws_client(), binary() | list(), binary() | list(), list_agent_collaborators_request()) ->
+    {ok, list_agent_collaborators_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_collaborators_errors(), tuple()}.
+list_agent_collaborators(Client, AgentId, AgentVersion, Input) ->
+    list_agent_collaborators(Client, AgentId, AgentVersion, Input, []).
+
+-spec list_agent_collaborators(aws_client:aws_client(), binary() | list(), binary() | list(), list_agent_collaborators_request(), proplists:proplist()) ->
+    {ok, list_agent_collaborators_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_collaborators_errors(), tuple()}.
+list_agent_collaborators(Client, AgentId, AgentVersion, Input0, Options0) ->
+    Method = post,
+    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/agentcollaborators/"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5661,6 +5964,40 @@ update_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
     Method = put,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/", aws_util:encode_uri(AgentAliasId), "/"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an agent's collaborator.
+-spec update_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_agent_collaborator_request()) ->
+    {ok, update_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_collaborator_errors(), tuple()}.
+update_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, Input) ->
+    update_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, Input, []).
+
+-spec update_agent_collaborator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_agent_collaborator_request(), proplists:proplist()) ->
+    {ok, update_agent_collaborator_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_collaborator_errors(), tuple()}.
+update_agent_collaborator(Client, AgentId, AgentVersion, CollaboratorId, Input0, Options0) ->
+    Method = put,
+    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/agentcollaborators/", aws_util:encode_uri(CollaboratorId), "/"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

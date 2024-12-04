@@ -143,6 +143,8 @@
          delete_tags/3,
          delete_usage_limit/2,
          delete_usage_limit/3,
+         deregister_namespace/2,
+         deregister_namespace/3,
          describe_account_attributes/2,
          describe_account_attributes/3,
          describe_authentication_profiles/2,
@@ -295,6 +297,8 @@
          put_resource_policy/3,
          reboot_cluster/2,
          reboot_cluster/3,
+         register_namespace/2,
+         register_namespace/3,
          reject_data_share/2,
          reject_data_share/3,
          reset_cluster_parameter_group/2,
@@ -1349,6 +1353,19 @@
 -type modify_snapshot_schedule_message() :: #{binary() => any()}.
 
 %% Example:
+%% serverless_identifier() :: #{
+%%   <<"NamespaceIdentifier">> => string(),
+%%   <<"WorkgroupIdentifier">> => string()
+%% }
+-type serverless_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_namespace_output_message() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type deregister_namespace_output_message() :: #{binary() => any()}.
+
+%% Example:
 %% authorize_endpoint_access_message() :: #{
 %%   <<"Account">> := string(),
 %%   <<"ClusterIdentifier">> => string(),
@@ -1544,6 +1561,13 @@
 %%   <<"HsmConfigurationIdentifier">> := string()
 %% }
 -type delete_hsm_configuration_message() :: #{binary() => any()}.
+
+%% Example:
+%% register_namespace_input_message() :: #{
+%%   <<"ConsumerIdentifiers">> := list(string()()),
+%%   <<"NamespaceIdentifier">> := list()
+%% }
+-type register_namespace_input_message() :: #{binary() => any()}.
 
 %% Example:
 %% delete_integration_message() :: #{
@@ -2169,6 +2193,7 @@
 %%   <<"AllowPubliclyAccessibleConsumers">> => boolean(),
 %%   <<"DataShareArn">> => string(),
 %%   <<"DataShareAssociations">> => list(data_share_association()()),
+%%   <<"DataShareType">> => list(any()),
 %%   <<"ManagedBy">> => string(),
 %%   <<"ProducerArn">> => string()
 %% }
@@ -2228,6 +2253,13 @@
 %%   <<"HsmClientCertificate">> => hsm_client_certificate()
 %% }
 -type create_hsm_client_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_namespace_input_message() :: #{
+%%   <<"ConsumerIdentifiers">> := list(string()()),
+%%   <<"NamespaceIdentifier">> := list()
+%% }
+-type deregister_namespace_input_message() :: #{binary() => any()}.
 
 %% Example:
 %% reserved_node_offerings_message() :: #{
@@ -3146,6 +3178,12 @@
 -type describe_clusters_message() :: #{binary() => any()}.
 
 %% Example:
+%% provisioned_identifier() :: #{
+%%   <<"ClusterIdentifier">> => string()
+%% }
+-type provisioned_identifier() :: #{binary() => any()}.
+
+%% Example:
 %% snapshot_schedule_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -3778,6 +3816,12 @@
 -type disassociate_data_share_consumer_message() :: #{binary() => any()}.
 
 %% Example:
+%% register_namespace_output_message() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type register_namespace_output_message() :: #{binary() => any()}.
+
+%% Example:
 %% authorized_token_issuer() :: #{
 %%   <<"AuthorizedAudiencesList">> => list(string()()),
 %%   <<"TrustedTokenIssuerArn">> => string()
@@ -4297,6 +4341,11 @@
     unsupported_operation_fault() | 
     usage_limit_not_found_fault().
 
+-type deregister_namespace_errors() ::
+    invalid_cluster_state_fault() | 
+    invalid_namespace_fault() | 
+    cluster_not_found_fault().
+
 -type describe_authentication_profiles_errors() ::
     authentication_profile_not_found_fault() | 
     invalid_authentication_profile_request_fault().
@@ -4670,6 +4719,11 @@
 
 -type reboot_cluster_errors() ::
     invalid_cluster_state_fault() | 
+    cluster_not_found_fault().
+
+-type register_namespace_errors() ::
+    invalid_cluster_state_fault() | 
+    invalid_namespace_fault() | 
     cluster_not_found_fault().
 
 -type reject_data_share_errors() ::
@@ -5068,6 +5122,30 @@ create_authentication_profile(Client, Input, Options)
 %% Amazon Redshift Clusters:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html
 %% in the Amazon Redshift Cluster Management Guide.
+%%
+%% VPC Block Public Access (BPA) enables you to block resources in VPCs and
+%% subnets that
+%% you own in a Region from reaching or being reached from the internet
+%% through internet
+%% gateways and egress-only internet gateways. If a subnet group for a
+%% provisioned cluster is in an account with VPC BPA turned on, the following
+%% capabilities
+%% are blocked:
+%%
+%% Creating a public cluster
+%%
+%% Restoring a public cluster
+%%
+%% Modifying a private cluster to be public
+%%
+%% Adding a subnet with VPC BPA turned on to the subnet group when
+%% there's at
+%% least one public cluster within the group
+%%
+%% For more information about VPC BPA, see Block public access to VPCs and
+%% subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
 -spec create_cluster(aws_client:aws_client(), create_cluster_message()) ->
     {ok, create_cluster_result(), tuple()} |
     {error, any()} |
@@ -5908,6 +5986,24 @@ delete_usage_limit(Client, Input)
 delete_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUsageLimit">>, Input, Options).
+
+%% @doc Deregisters a cluster or serverless namespace from the Amazon Web
+%% Services Glue Data Catalog.
+-spec deregister_namespace(aws_client:aws_client(), deregister_namespace_input_message()) ->
+    {ok, deregister_namespace_output_message(), tuple()} |
+    {error, any()} |
+    {error, deregister_namespace_errors(), tuple()}.
+deregister_namespace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_namespace(Client, Input, []).
+
+-spec deregister_namespace(aws_client:aws_client(), deregister_namespace_input_message(), proplists:proplist()) ->
+    {ok, deregister_namespace_output_message(), tuple()} |
+    {error, any()} |
+    {error, deregister_namespace_errors(), tuple()}.
+deregister_namespace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterNamespace">>, Input, Options).
 
 %% @doc Returns a list of attributes attached to an account
 -spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_message()) ->
@@ -7271,6 +7367,30 @@ modify_authentication_profile(Client, Input, Options)
 %% Amazon Redshift Clusters:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html
 %% in the Amazon Redshift Cluster Management Guide.
+%%
+%% VPC Block Public Access (BPA) enables you to block resources in VPCs and
+%% subnets that
+%% you own in a Region from reaching or being reached from the internet
+%% through internet
+%% gateways and egress-only internet gateways. If a subnet group for a
+%% provisioned cluster is in an account with VPC BPA turned on, the following
+%% capabilities
+%% are blocked:
+%%
+%% Creating a public cluster
+%%
+%% Restoring a public cluster
+%%
+%% Modifying a private cluster to be public
+%%
+%% Adding a subnet with VPC BPA turned on to the subnet group when
+%% there's at
+%% least one public cluster within the group
+%%
+%% For more information about VPC BPA, see Block public access to VPCs and
+%% subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
 -spec modify_cluster(aws_client:aws_client(), modify_cluster_message()) ->
     {ok, modify_cluster_result(), tuple()} |
     {error, any()} |
@@ -7416,6 +7536,30 @@ modify_cluster_snapshot_schedule(Client, Input, Options)
 %% The
 %% operation replaces the existing list of subnets with the new list of
 %% subnets.
+%%
+%% VPC Block Public Access (BPA) enables you to block resources in VPCs and
+%% subnets that
+%% you own in a Region from reaching or being reached from the internet
+%% through internet
+%% gateways and egress-only internet gateways. If a subnet group for a
+%% provisioned cluster is in an account with VPC BPA turned on, the following
+%% capabilities
+%% are blocked:
+%%
+%% Creating a public cluster
+%%
+%% Restoring a public cluster
+%%
+%% Modifying a private cluster to be public
+%%
+%% Adding a subnet with VPC BPA turned on to the subnet group when
+%% there's at
+%% least one public cluster within the group
+%%
+%% For more information about VPC BPA, see Block public access to VPCs and
+%% subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
 -spec modify_cluster_subnet_group(aws_client:aws_client(), modify_cluster_subnet_group_message()) ->
     {ok, modify_cluster_subnet_group_result(), tuple()} |
     {error, any()} |
@@ -7697,6 +7841,24 @@ reboot_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootCluster">>, Input, Options).
 
+%% @doc Registers a cluster or serverless namespace to the Amazon Web
+%% Services Glue Data Catalog.
+-spec register_namespace(aws_client:aws_client(), register_namespace_input_message()) ->
+    {ok, register_namespace_output_message(), tuple()} |
+    {error, any()} |
+    {error, register_namespace_errors(), tuple()}.
+register_namespace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_namespace(Client, Input, []).
+
+-spec register_namespace(aws_client:aws_client(), register_namespace_input_message(), proplists:proplist()) ->
+    {ok, register_namespace_output_message(), tuple()} |
+    {error, any()} |
+    {error, register_namespace_errors(), tuple()}.
+register_namespace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterNamespace">>, Input, Options).
+
 %% @doc From a datashare consumer account, rejects the specified datashare.
 -spec reject_data_share(aws_client:aws_client(), reject_data_share_message()) ->
     {ok, data_share(), tuple()} |
@@ -7799,6 +7961,30 @@ resize_cluster(Client, Input, Options)
 %% If you restore a cluster into a VPC, you must provide a cluster subnet
 %% group where
 %% you want the cluster restored.
+%%
+%% VPC Block Public Access (BPA) enables you to block resources in VPCs and
+%% subnets that
+%% you own in a Region from reaching or being reached from the internet
+%% through internet
+%% gateways and egress-only internet gateways. If a subnet group for a
+%% provisioned cluster is in an account with VPC BPA turned on, the following
+%% capabilities
+%% are blocked:
+%%
+%% Creating a public cluster
+%%
+%% Restoring a public cluster
+%%
+%% Modifying a private cluster to be public
+%%
+%% Adding a subnet with VPC BPA turned on to the subnet group when
+%% there's at
+%% least one public cluster within the group
+%%
+%% For more information about VPC BPA, see Block public access to VPCs and
+%% subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html in
+%% the Amazon VPC User Guide.
 %%
 %% For more information about working with snapshots, go to
 %% Amazon Redshift Snapshots:
