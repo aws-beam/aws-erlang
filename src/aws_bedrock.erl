@@ -15,6 +15,8 @@
          create_guardrail_version/4,
          create_inference_profile/2,
          create_inference_profile/3,
+         create_marketplace_model_endpoint/2,
+         create_marketplace_model_endpoint/3,
          create_model_copy_job/2,
          create_model_copy_job/3,
          create_model_customization_job/2,
@@ -33,10 +35,14 @@
          delete_imported_model/4,
          delete_inference_profile/3,
          delete_inference_profile/4,
+         delete_marketplace_model_endpoint/3,
+         delete_marketplace_model_endpoint/4,
          delete_model_invocation_logging_configuration/2,
          delete_model_invocation_logging_configuration/3,
          delete_provisioned_model_throughput/3,
          delete_provisioned_model_throughput/4,
+         deregister_marketplace_model_endpoint/3,
+         deregister_marketplace_model_endpoint/4,
          get_custom_model/2,
          get_custom_model/4,
          get_custom_model/5,
@@ -55,6 +61,9 @@
          get_inference_profile/2,
          get_inference_profile/4,
          get_inference_profile/5,
+         get_marketplace_model_endpoint/2,
+         get_marketplace_model_endpoint/4,
+         get_marketplace_model_endpoint/5,
          get_model_copy_job/2,
          get_model_copy_job/4,
          get_model_copy_job/5,
@@ -70,6 +79,9 @@
          get_model_invocation_logging_configuration/1,
          get_model_invocation_logging_configuration/3,
          get_model_invocation_logging_configuration/4,
+         get_prompt_router/2,
+         get_prompt_router/4,
+         get_prompt_router/5,
          get_provisioned_model_throughput/2,
          get_provisioned_model_throughput/4,
          get_provisioned_model_throughput/5,
@@ -91,6 +103,9 @@
          list_inference_profiles/1,
          list_inference_profiles/3,
          list_inference_profiles/4,
+         list_marketplace_model_endpoints/1,
+         list_marketplace_model_endpoints/3,
+         list_marketplace_model_endpoints/4,
          list_model_copy_jobs/1,
          list_model_copy_jobs/3,
          list_model_copy_jobs/4,
@@ -103,6 +118,9 @@
          list_model_invocation_jobs/1,
          list_model_invocation_jobs/3,
          list_model_invocation_jobs/4,
+         list_prompt_routers/1,
+         list_prompt_routers/3,
+         list_prompt_routers/4,
          list_provisioned_model_throughputs/1,
          list_provisioned_model_throughputs/3,
          list_provisioned_model_throughputs/4,
@@ -110,6 +128,8 @@
          list_tags_for_resource/3,
          put_model_invocation_logging_configuration/2,
          put_model_invocation_logging_configuration/3,
+         register_marketplace_model_endpoint/3,
+         register_marketplace_model_endpoint/4,
          stop_evaluation_job/3,
          stop_evaluation_job/4,
          stop_model_customization_job/3,
@@ -122,6 +142,8 @@
          untag_resource/3,
          update_guardrail/3,
          update_guardrail/4,
+         update_marketplace_model_endpoint/3,
+         update_marketplace_model_endpoint/4,
          update_provisioned_model_throughput/3,
          update_provisioned_model_throughput/4]).
 
@@ -159,6 +181,18 @@
 %%   <<"sortOrder">> => list(any())
 %% }
 -type list_custom_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% marketplace_model_endpoint_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpointArn">> => string(),
+%%   <<"modelSourceIdentifier">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type marketplace_model_endpoint_summary() :: #{binary() => any()}.
 
 %% Example:
 %% delete_provisioned_model_throughput_response() :: #{}
@@ -206,6 +240,14 @@
 %%   <<"responseStreamingSupported">> => [boolean()]
 %% }
 -type foundation_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_marketplace_model_endpoints_response() :: #{
+%%   <<"marketplaceModelEndpoints">> => list(marketplace_model_endpoint_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_marketplace_model_endpoints_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -273,6 +315,17 @@
 %%   <<"jobArn">> => string()
 %% }
 -type create_model_customization_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_endpoint() :: #{
+%%   <<"executionRole">> => string(),
+%%   <<"initialInstanceCount">> => integer(),
+%%   <<"instanceType">> => string(),
+%%   <<"kmsEncryptionKey">> => string(),
+%%   <<"vpc">> => vpc_config()
+%% }
+-type sage_maker_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -362,6 +415,15 @@
 %%   <<"topP">> => float()
 %% }
 -type text_inference_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_marketplace_model_endpoints_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"modelSourceEquals">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_marketplace_model_endpoints_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -471,10 +533,21 @@
 
 
 %% Example:
+%% routing_criteria() :: #{
+%%   <<"responseQualityDifference">> => [float()]
+%% }
+-type routing_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_object_doc() :: #{
 %%   <<"uri">> => string()
 %% }
 -type s3_object_doc() :: #{binary() => any()}.
+
+%% Example:
+%% get_marketplace_model_endpoint_request() :: #{}
+-type get_marketplace_model_endpoint_request() :: #{}.
 
 
 %% Example:
@@ -543,12 +616,31 @@
 
 
 %% Example:
+%% marketplace_model_endpoint() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpointArn">> => string(),
+%%   <<"endpointConfig">> => list(),
+%%   <<"endpointStatus">> => [string()],
+%%   <<"endpointStatusMessage">> => [string()],
+%%   <<"modelSourceIdentifier">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type marketplace_model_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
 %% invocation_logs_config() :: #{
 %%   <<"invocationLogSource">> => list(),
 %%   <<"requestMetadataFilters">> => list(),
 %%   <<"usePromptResponse">> => boolean()
 %% }
 -type invocation_logs_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_prompt_router_request() :: #{}
+-type get_prompt_router_request() :: #{}.
 
 
 %% Example:
@@ -647,6 +739,22 @@
 %%   <<"targetModelTags">> => list(tag()())
 %% }
 -type create_model_copy_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_router_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"fallbackModel">> => prompt_router_target_model(),
+%%   <<"models">> => list(prompt_router_target_model()()),
+%%   <<"promptRouterArn">> => string(),
+%%   <<"promptRouterName">> => string(),
+%%   <<"routingCriteria">> => routing_criteria(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type prompt_router_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -763,6 +871,10 @@
 %% get_foundation_model_request() :: #{}
 -type get_foundation_model_request() :: #{}.
 
+%% Example:
+%% deregister_marketplace_model_endpoint_response() :: #{}
+-type deregister_marketplace_model_endpoint_response() :: #{}.
+
 
 %% Example:
 %% imported_model_summary() :: #{
@@ -818,7 +930,9 @@
 
 %% Example:
 %% guardrail_content_filter_config() :: #{
+%%   <<"inputModalities">> => list(list(any())()),
 %%   <<"inputStrength">> => list(any()),
+%%   <<"outputModalities">> => list(list(any())()),
 %%   <<"outputStrength">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
@@ -851,6 +965,18 @@
 %% }
 -type knowledge_base_retrieval_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_marketplace_model_endpoint_request() :: #{
+%%   <<"acceptEula">> => boolean(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endpointConfig">> := list(),
+%%   <<"endpointName">> := string(),
+%%   <<"modelSourceIdentifier">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_marketplace_model_endpoint_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_provisioned_model_throughput_request() :: #{}
 -type delete_provisioned_model_throughput_request() :: #{}.
@@ -867,7 +993,9 @@
 
 %% Example:
 %% guardrail_content_filter() :: #{
+%%   <<"inputModalities">> => list(list(any())()),
 %%   <<"inputStrength">> => list(any()),
+%%   <<"outputModalities">> => list(list(any())()),
 %%   <<"outputStrength">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
@@ -1029,6 +1157,29 @@
 
 
 %% Example:
+%% get_prompt_router_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"fallbackModel">> => prompt_router_target_model(),
+%%   <<"models">> => list(prompt_router_target_model()()),
+%%   <<"promptRouterArn">> => string(),
+%%   <<"promptRouterName">> => string(),
+%%   <<"routingCriteria">> => routing_criteria(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_prompt_router_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_marketplace_model_endpoint_response() :: #{
+%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
+%% }
+-type update_marketplace_model_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_pii_entity() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"type">> => list(any())
@@ -1137,6 +1288,13 @@
 
 
 %% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_sources_generation_configuration() :: #{
 %%   <<"additionalModelRequestFields">> => map(),
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
@@ -1180,6 +1338,10 @@
 -type filter_attribute() :: #{binary() => any()}.
 
 %% Example:
+%% delete_marketplace_model_endpoint_response() :: #{}
+-type delete_marketplace_model_endpoint_response() :: #{}.
+
+%% Example:
 %% delete_imported_model_response() :: #{}
 -type delete_imported_model_response() :: #{}.
 
@@ -1214,6 +1376,13 @@
 %%   <<"status">> => list(any())
 %% }
 -type foundation_model_lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_marketplace_model_endpoint_response() :: #{
+%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
+%% }
+-type create_marketplace_model_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1270,6 +1439,14 @@
 %% Example:
 %% stop_model_invocation_job_response() :: #{}
 -type stop_model_invocation_job_response() :: #{}.
+
+
+%% Example:
+%% list_prompt_routers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_prompt_routers_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_provisioned_model_throughput_response() :: #{}
@@ -1397,6 +1574,13 @@
 %%   <<"roleArn">> := string()
 %% }
 -type create_evaluation_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_marketplace_model_endpoint_response() :: #{
+%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
+%% }
+-type get_marketplace_model_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1536,11 +1720,27 @@
 
 
 %% Example:
+%% update_marketplace_model_endpoint_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endpointConfig">> := list()
+%% }
+-type update_marketplace_model_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_custom_models_response() :: #{
 %%   <<"modelSummaries">> => list(custom_model_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prompt_routers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"promptRouterSummaries">> => list(prompt_router_summary()())
+%% }
+-type list_prompt_routers_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1604,6 +1804,13 @@
 
 
 %% Example:
+%% prompt_router_target_model() :: #{
+%%   <<"modelArn">> => string()
+%% }
+-type prompt_router_target_model() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_guardrails_request() :: #{
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"maxResults">> => integer(),
@@ -1629,6 +1836,13 @@
 %%   <<"s3Uri">> => string()
 %% }
 -type validator() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_marketplace_model_endpoint_request() :: #{
+%%   <<"modelSourceIdentifier">> := string()
+%% }
+-type register_marketplace_model_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1685,6 +1899,10 @@
 %% }
 -type model_invocation_job_summary() :: #{binary() => any()}.
 
+%% Example:
+%% deregister_marketplace_model_endpoint_request() :: #{}
+-type deregister_marketplace_model_endpoint_request() :: #{}.
+
 
 %% Example:
 %% request_metadata_base_filters() :: #{
@@ -1692,6 +1910,13 @@
 %%   <<"notEquals">> => map()
 %% }
 -type request_metadata_base_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_marketplace_model_endpoint_response() :: #{
+%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
+%% }
+-type register_marketplace_model_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1797,6 +2022,10 @@
 %% }
 -type human_evaluation_config() :: #{binary() => any()}.
 
+%% Example:
+%% delete_marketplace_model_endpoint_request() :: #{}
+-type delete_marketplace_model_endpoint_request() :: #{}.
+
 
 %% Example:
 %% get_model_invocation_job_response() :: #{
@@ -1871,6 +2100,15 @@
 
 -type create_inference_profile_errors() ::
     too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_marketplace_model_endpoint_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1955,6 +2193,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_marketplace_model_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_model_invocation_logging_configuration_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -1967,6 +2212,14 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type deregister_marketplace_model_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type get_custom_model_errors() ::
     throttling_exception() | 
@@ -2010,6 +2263,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_marketplace_model_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_model_copy_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2042,6 +2302,13 @@
     throttling_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type get_prompt_router_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_provisioned_model_throughput_errors() ::
     throttling_exception() | 
@@ -2087,6 +2354,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_marketplace_model_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_model_copy_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2112,6 +2386,12 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_prompt_routers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_provisioned_model_throughputs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2130,6 +2410,14 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type register_marketplace_model_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type stop_evaluation_job_errors() ::
     throttling_exception() | 
@@ -2171,6 +2459,15 @@
     resource_not_found_exception().
 
 -type update_guardrail_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_marketplace_model_endpoint_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2395,6 +2692,43 @@ create_inference_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/inference-profiles"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an endpoint for a model from Amazon Bedrock Marketplace.
+%%
+%% The endpoint is hosted by
+%% Amazon SageMaker.
+-spec create_marketplace_model_endpoint(aws_client:aws_client(), create_marketplace_model_endpoint_request()) ->
+    {ok, create_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_marketplace_model_endpoint_errors(), tuple()}.
+create_marketplace_model_endpoint(Client, Input) ->
+    create_marketplace_model_endpoint(Client, Input, []).
+
+-spec create_marketplace_model_endpoint(aws_client:aws_client(), create_marketplace_model_endpoint_request(), proplists:proplist()) ->
+    {ok, create_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_marketplace_model_endpoint_errors(), tuple()}.
+create_marketplace_model_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/marketplace-model/endpoints"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2791,6 +3125,40 @@ delete_inference_profile(Client, InferenceProfileIdentifier, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an endpoint for a model from Amazon Bedrock Marketplace.
+-spec delete_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), delete_marketplace_model_endpoint_request()) ->
+    {ok, delete_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_marketplace_model_endpoint_errors(), tuple()}.
+delete_marketplace_model_endpoint(Client, EndpointArn, Input) ->
+    delete_marketplace_model_endpoint(Client, EndpointArn, Input, []).
+
+-spec delete_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), delete_marketplace_model_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_marketplace_model_endpoint_errors(), tuple()}.
+delete_marketplace_model_endpoint(Client, EndpointArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/marketplace-model/endpoints/", aws_util:encode_uri(EndpointArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete the invocation logging.
 -spec delete_model_invocation_logging_configuration(aws_client:aws_client(), delete_model_invocation_logging_configuration_request()) ->
     {ok, delete_model_invocation_logging_configuration_response(), tuple()} |
@@ -2846,6 +3214,45 @@ delete_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
 delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/provisioned-model-throughput/", aws_util:encode_uri(ProvisionedModelId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deregisters an endpoint for a model from Amazon Bedrock Marketplace.
+%%
+%% This operation removes the
+%% endpoint's association with Amazon Bedrock but does not delete the
+%% underlying Amazon SageMaker
+%% endpoint.
+-spec deregister_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), deregister_marketplace_model_endpoint_request()) ->
+    {ok, deregister_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_marketplace_model_endpoint_errors(), tuple()}.
+deregister_marketplace_model_endpoint(Client, EndpointArn, Input) ->
+    deregister_marketplace_model_endpoint(Client, EndpointArn, Input, []).
+
+-spec deregister_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), deregister_marketplace_model_endpoint_request(), proplists:proplist()) ->
+    {ok, deregister_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_marketplace_model_endpoint_errors(), tuple()}.
+deregister_marketplace_model_endpoint(Client, EndpointArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/marketplace-model/endpoints/", aws_util:encode_uri(EndpointArn), "/registration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3104,6 +3511,44 @@ get_inference_profile(Client, InferenceProfileIdentifier, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves details about a specific endpoint for a model from Amazon
+%% Bedrock Marketplace.
+-spec get_marketplace_model_endpoint(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_marketplace_model_endpoint_errors(), tuple()}.
+get_marketplace_model_endpoint(Client, EndpointArn)
+  when is_map(Client) ->
+    get_marketplace_model_endpoint(Client, EndpointArn, #{}, #{}).
+
+-spec get_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_marketplace_model_endpoint_errors(), tuple()}.
+get_marketplace_model_endpoint(Client, EndpointArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_marketplace_model_endpoint(Client, EndpointArn, QueryMap, HeadersMap, []).
+
+-spec get_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_marketplace_model_endpoint_errors(), tuple()}.
+get_marketplace_model_endpoint(Client, EndpointArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/marketplace-model/endpoints/", aws_util:encode_uri(EndpointArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a model copy job.
 %%
 %% For more information, see Copy models to be used in other regions:
@@ -3298,6 +3743,43 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap)
 get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging/modelinvocations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves details about a prompt router.
+-spec get_prompt_router(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_prompt_router_response(), tuple()} |
+    {error, any()} |
+    {error, get_prompt_router_errors(), tuple()}.
+get_prompt_router(Client, PromptRouterArn)
+  when is_map(Client) ->
+    get_prompt_router(Client, PromptRouterArn, #{}, #{}).
+
+-spec get_prompt_router(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_prompt_router_response(), tuple()} |
+    {error, any()} |
+    {error, get_prompt_router_errors(), tuple()}.
+get_prompt_router(Client, PromptRouterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_prompt_router(Client, PromptRouterArn, QueryMap, HeadersMap, []).
+
+-spec get_prompt_router(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_prompt_router_response(), tuple()} |
+    {error, any()} |
+    {error, get_prompt_router_errors(), tuple()}.
+get_prompt_router(Client, PromptRouterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prompt-routers/", aws_util:encode_uri(PromptRouterArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3662,6 +4144,51 @@ list_inference_profiles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the endpoints for models from Amazon Bedrock Marketplace in
+%% your Amazon Web Services
+%% account.
+-spec list_marketplace_model_endpoints(aws_client:aws_client()) ->
+    {ok, list_marketplace_model_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_marketplace_model_endpoints_errors(), tuple()}.
+list_marketplace_model_endpoints(Client)
+  when is_map(Client) ->
+    list_marketplace_model_endpoints(Client, #{}, #{}).
+
+-spec list_marketplace_model_endpoints(aws_client:aws_client(), map(), map()) ->
+    {ok, list_marketplace_model_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_marketplace_model_endpoints_errors(), tuple()}.
+list_marketplace_model_endpoints(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_marketplace_model_endpoints(Client, QueryMap, HeadersMap, []).
+
+-spec list_marketplace_model_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_marketplace_model_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_marketplace_model_endpoints_errors(), tuple()}.
+list_marketplace_model_endpoints(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/marketplace-model/endpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"modelSourceIdentifier">>, maps:get(<<"modelSourceIdentifier">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of model copy jobs that you have submitted.
 %%
 %% You can filter the jobs to return based on
@@ -3881,6 +4408,48 @@ list_model_invocation_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a list of prompt routers.
+-spec list_prompt_routers(aws_client:aws_client()) ->
+    {ok, list_prompt_routers_response(), tuple()} |
+    {error, any()} |
+    {error, list_prompt_routers_errors(), tuple()}.
+list_prompt_routers(Client)
+  when is_map(Client) ->
+    list_prompt_routers(Client, #{}, #{}).
+
+-spec list_prompt_routers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_prompt_routers_response(), tuple()} |
+    {error, any()} |
+    {error, list_prompt_routers_errors(), tuple()}.
+list_prompt_routers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_prompt_routers(Client, QueryMap, HeadersMap, []).
+
+-spec list_prompt_routers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_prompt_routers_response(), tuple()} |
+    {error, any()} |
+    {error, list_prompt_routers_errors(), tuple()}.
+list_prompt_routers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prompt-routers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the Provisioned Throughputs in the account.
 %%
 %% For more information, see Provisioned Throughput:
@@ -3989,6 +4558,42 @@ put_model_invocation_logging_configuration(Client, Input) ->
 put_model_invocation_logging_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging/modelinvocations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers an existing Amazon SageMaker endpoint with Amazon Bedrock
+%% Marketplace, allowing it to be used with
+%% Amazon Bedrock APIs.
+-spec register_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), register_marketplace_model_endpoint_request()) ->
+    {ok, register_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, register_marketplace_model_endpoint_errors(), tuple()}.
+register_marketplace_model_endpoint(Client, EndpointIdentifier, Input) ->
+    register_marketplace_model_endpoint(Client, EndpointIdentifier, Input, []).
+
+-spec register_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), register_marketplace_model_endpoint_request(), proplists:proplist()) ->
+    {ok, register_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, register_marketplace_model_endpoint_errors(), tuple()}.
+register_marketplace_model_endpoint(Client, EndpointIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/marketplace-model/endpoints/", aws_util:encode_uri(EndpointIdentifier), "/registration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4253,6 +4858,42 @@ update_guardrail(Client, GuardrailIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/guardrails/", aws_util:encode_uri(GuardrailIdentifier), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of an existing endpoint for a model from
+%% Amazon Bedrock
+%% Marketplace.
+-spec update_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), update_marketplace_model_endpoint_request()) ->
+    {ok, update_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, update_marketplace_model_endpoint_errors(), tuple()}.
+update_marketplace_model_endpoint(Client, EndpointArn, Input) ->
+    update_marketplace_model_endpoint(Client, EndpointArn, Input, []).
+
+-spec update_marketplace_model_endpoint(aws_client:aws_client(), binary() | list(), update_marketplace_model_endpoint_request(), proplists:proplist()) ->
+    {ok, update_marketplace_model_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, update_marketplace_model_endpoint_errors(), tuple()}.
+update_marketplace_model_endpoint(Client, EndpointArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/marketplace-model/endpoints/", aws_util:encode_uri(EndpointArn), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

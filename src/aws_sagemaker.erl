@@ -40,10 +40,14 @@
          create_auto_ml_job_v2/3,
          create_cluster/2,
          create_cluster/3,
+         create_cluster_scheduler_config/2,
+         create_cluster_scheduler_config/3,
          create_code_repository/2,
          create_code_repository/3,
          create_compilation_job/2,
          create_compilation_job/3,
+         create_compute_quota/2,
+         create_compute_quota/3,
          create_context/2,
          create_context/3,
          create_data_quality_job_definition/2,
@@ -114,6 +118,10 @@
          create_notebook_instance_lifecycle_config/3,
          create_optimization_job/2,
          create_optimization_job/3,
+         create_partner_app/2,
+         create_partner_app/3,
+         create_partner_app_presigned_url/2,
+         create_partner_app_presigned_url/3,
          create_pipeline/2,
          create_pipeline/3,
          create_presigned_domain_url/2,
@@ -132,6 +140,8 @@
          create_studio_lifecycle_config/3,
          create_training_job/2,
          create_training_job/3,
+         create_training_plan/2,
+         create_training_plan/3,
          create_transform_job/2,
          create_transform_job/3,
          create_trial/2,
@@ -158,10 +168,14 @@
          delete_association/3,
          delete_cluster/2,
          delete_cluster/3,
+         delete_cluster_scheduler_config/2,
+         delete_cluster_scheduler_config/3,
          delete_code_repository/2,
          delete_code_repository/3,
          delete_compilation_job/2,
          delete_compilation_job/3,
+         delete_compute_quota/2,
+         delete_compute_quota/3,
          delete_context/2,
          delete_context/3,
          delete_data_quality_job_definition/2,
@@ -228,6 +242,8 @@
          delete_notebook_instance_lifecycle_config/3,
          delete_optimization_job/2,
          delete_optimization_job/3,
+         delete_partner_app/2,
+         delete_partner_app/3,
          delete_pipeline/2,
          delete_pipeline/3,
          delete_project/2,
@@ -268,10 +284,14 @@
          describe_cluster/3,
          describe_cluster_node/2,
          describe_cluster_node/3,
+         describe_cluster_scheduler_config/2,
+         describe_cluster_scheduler_config/3,
          describe_code_repository/2,
          describe_code_repository/3,
          describe_compilation_job/2,
          describe_compilation_job/3,
+         describe_compute_quota/2,
+         describe_compute_quota/3,
          describe_context/2,
          describe_context/3,
          describe_data_quality_job_definition/2,
@@ -346,6 +366,8 @@
          describe_notebook_instance_lifecycle_config/3,
          describe_optimization_job/2,
          describe_optimization_job/3,
+         describe_partner_app/2,
+         describe_partner_app/3,
          describe_pipeline/2,
          describe_pipeline/3,
          describe_pipeline_definition_for_execution/2,
@@ -364,6 +386,8 @@
          describe_subscribed_workteam/3,
          describe_training_job/2,
          describe_training_job/3,
+         describe_training_plan/2,
+         describe_training_plan/3,
          describe_transform_job/2,
          describe_transform_job/3,
          describe_trial/2,
@@ -416,12 +440,16 @@
          list_candidates_for_auto_ml_job/3,
          list_cluster_nodes/2,
          list_cluster_nodes/3,
+         list_cluster_scheduler_configs/2,
+         list_cluster_scheduler_configs/3,
          list_clusters/2,
          list_clusters/3,
          list_code_repositories/2,
          list_code_repositories/3,
          list_compilation_jobs/2,
          list_compilation_jobs/3,
+         list_compute_quotas/2,
+         list_compute_quotas/3,
          list_contexts/2,
          list_contexts/3,
          list_data_quality_job_definitions/2,
@@ -510,6 +538,8 @@
          list_notebook_instances/3,
          list_optimization_jobs/2,
          list_optimization_jobs/3,
+         list_partner_apps/2,
+         list_partner_apps/3,
          list_pipeline_execution_steps/2,
          list_pipeline_execution_steps/3,
          list_pipeline_executions/2,
@@ -538,6 +568,8 @@
          list_training_jobs/3,
          list_training_jobs_for_hyper_parameter_tuning_job/2,
          list_training_jobs_for_hyper_parameter_tuning_job/3,
+         list_training_plans/2,
+         list_training_plans/3,
          list_transform_jobs/2,
          list_transform_jobs/3,
          list_trial_components/2,
@@ -562,6 +594,8 @@
          retry_pipeline_execution/3,
          search/2,
          search/3,
+         search_training_plan_offerings/2,
+         search_training_plan_offerings/3,
          send_pipeline_execution_step_failure/2,
          send_pipeline_execution_step_failure/3,
          send_pipeline_execution_step_success/2,
@@ -618,10 +652,14 @@
          update_artifact/3,
          update_cluster/2,
          update_cluster/3,
+         update_cluster_scheduler_config/2,
+         update_cluster_scheduler_config/3,
          update_cluster_software/2,
          update_cluster_software/3,
          update_code_repository/2,
          update_code_repository/3,
+         update_compute_quota/2,
+         update_compute_quota/3,
          update_context/2,
          update_context/3,
          update_device_fleet/2,
@@ -666,6 +704,8 @@
          update_notebook_instance/3,
          update_notebook_instance_lifecycle_config/2,
          update_notebook_instance_lifecycle_config/3,
+         update_partner_app/2,
+         update_partner_app/3,
          update_pipeline/2,
          update_pipeline/3,
          update_pipeline_execution/2,
@@ -1128,6 +1168,13 @@
 -type resolved_attributes() :: #{binary() => any()}.
 
 %% Example:
+%% training_plan_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type training_plan_filter() :: #{binary() => any()}.
+
+%% Example:
 %% list_user_profiles_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UserProfiles">> => list(user_profile_details()())
@@ -1320,6 +1367,13 @@
 %%   <<"S3ExportArtifacts">> => string()
 %% }
 -type model_card_export_artifacts() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_apps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_partner_apps_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_model_explainability_job_definitions_request() :: #{
@@ -1624,6 +1678,23 @@
 -type list_optimization_jobs_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_training_plan_response() :: #{
+%%   <<"TrainingPlanArn">> => string()
+%% }
+-type create_training_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_training_plan_offerings_request() :: #{
+%%   <<"DurationHours">> => float(),
+%%   <<"EndTimeBefore">> => non_neg_integer(),
+%%   <<"InstanceCount">> := integer(),
+%%   <<"InstanceType">> := list(any()),
+%%   <<"StartTimeAfter">> => non_neg_integer(),
+%%   <<"TargetResources">> := list(list(any())())
+%% }
+-type search_training_plan_offerings_request() :: #{binary() => any()}.
+
+%% Example:
 %% s3_storage_config() :: #{
 %%   <<"KmsKeyId">> => string(),
 %%   <<"ResolvedOutputS3Uri">> => string(),
@@ -1706,6 +1777,13 @@
 %%   <<"TrafficRoutingConfiguration">> => traffic_routing_config()
 %% }
 -type blue_green_update_policy() :: #{binary() => any()}.
+
+%% Example:
+%% compute_quota_target() :: #{
+%%   <<"FairShareWeight">> => integer(),
+%%   <<"TeamName">> => string()
+%% }
+-type compute_quota_target() :: #{binary() => any()}.
 
 %% Example:
 %% create_studio_lifecycle_config_request() :: #{
@@ -1821,6 +1899,12 @@
 -type model_digests() :: #{binary() => any()}.
 
 %% Example:
+%% create_partner_app_presigned_url_response() :: #{
+%%   <<"Url">> => string()
+%% }
+-type create_partner_app_presigned_url_response() :: #{binary() => any()}.
+
+%% Example:
 %% start_mlflow_tracking_server_request() :: #{
 %%   <<"TrackingServerName">> := string()
 %% }
@@ -1831,6 +1915,13 @@
 %%   <<"PropertyNameSuggestions">> => list(property_name_suggestion()())
 %% }
 -type get_search_suggestions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_apps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(partner_app_summary()())
+%% }
+-type list_partner_apps_response() :: #{binary() => any()}.
 
 %% Example:
 %% oidc_member_definition() :: #{
@@ -1926,6 +2017,13 @@
 %%   <<"NodeId">> := string()
 %% }
 -type describe_cluster_node_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_scheduler_configs_response() :: #{
+%%   <<"ClusterSchedulerConfigSummaries">> => list(cluster_scheduler_config_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_scheduler_configs_response() :: #{binary() => any()}.
 
 %% Example:
 %% clarify_shap_baseline_config() :: #{
@@ -2129,6 +2227,12 @@
 -type property_name_query() :: #{binary() => any()}.
 
 %% Example:
+%% partner_app_maintenance_config() :: #{
+%%   <<"MaintenanceWindowStart">> => string()
+%% }
+-type partner_app_maintenance_config() :: #{binary() => any()}.
+
+%% Example:
 %% describe_inference_component_input() :: #{
 %%   <<"InferenceComponentName">> := string()
 %% }
@@ -2169,6 +2273,13 @@
 %%   <<"TrackingServerArn">> => string()
 %% }
 -type delete_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% priority_class() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Weight">> => integer()
+%% }
+-type priority_class() :: #{binary() => any()}.
 
 %% Example:
 %% list_stage_devices_request() :: #{
@@ -2571,6 +2682,12 @@
 -type pipeline_execution() :: #{binary() => any()}.
 
 %% Example:
+%% f_sx_lustre_file_system() :: #{
+%%   <<"FileSystemId">> => string()
+%% }
+-type f_sx_lustre_file_system() :: #{binary() => any()}.
+
+%% Example:
 %% monitoring_alert_summary() :: #{
 %%   <<"Actions">> => monitoring_alert_actions(),
 %%   <<"AlertStatus">> => list(any()),
@@ -2746,6 +2863,12 @@
 %%   <<"RetainDeploymentConfig">> => boolean()
 %% }
 -type update_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_training_plan_offerings_response() :: #{
+%%   <<"TrainingPlanOfferings">> => list(training_plan_offering()())
+%% }
+-type search_training_plan_offerings_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_space_request() :: #{
@@ -3012,6 +3135,13 @@
 -type get_sagemaker_servicecatalog_portfolio_status_output() :: #{binary() => any()}.
 
 %% Example:
+%% create_compute_quota_response() :: #{
+%%   <<"ComputeQuotaArn">> => string(),
+%%   <<"ComputeQuotaId">> => string()
+%% }
+-type create_compute_quota_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_inference_components_input() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -3050,6 +3180,26 @@
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type create_endpoint_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_plan_response() :: #{
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InUseInstanceCount">> => integer(),
+%%   <<"ReservedCapacitySummaries">> => list(reserved_capacity_summary()()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TargetResources">> => list(list(any())()),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"TrainingPlanName">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type describe_training_plan_response() :: #{binary() => any()}.
 
 %% Example:
 %% kernel_gateway_image_config() :: #{
@@ -3115,6 +3265,20 @@
 %%   <<"MaxPercentageOfInputDatasetLabeled">> => integer()
 %% }
 -type labeling_job_stopping_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% list_compute_quotas_request() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_compute_quotas_request() :: #{binary() => any()}.
 
 %% Example:
 %% monitoring_statistics_resource() :: #{
@@ -3193,6 +3357,13 @@
 %%   <<"ResourceCatalogs">> => list(resource_catalog()())
 %% }
 -type list_resource_catalogs_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_compute_quota_response() :: #{
+%%   <<"ComputeQuotaArn">> => string(),
+%%   <<"ComputeQuotaVersion">> => integer()
+%% }
+-type update_compute_quota_response() :: #{binary() => any()}.
 
 %% Example:
 %% metric_definition() :: #{
@@ -3314,6 +3485,7 @@
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any()),
 %%   <<"StatusEquals">> => list(any()),
+%%   <<"TrainingPlanArnEquals">> => string(),
 %%   <<"WarmPoolStatusEquals">> => list(any())
 %% }
 -type list_training_jobs_request() :: #{binary() => any()}.
@@ -3434,6 +3606,13 @@
 %%   <<"Name">> := string()
 %% }
 -type delete_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% error_info() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type error_info() :: #{binary() => any()}.
 
 %% Example:
 %% endpoint_input() :: #{
@@ -3734,6 +3913,18 @@
 -type update_cluster_software_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_training_plans_request() :: #{
+%%   <<"Filters">> => list(training_plan_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StartTimeAfter">> => non_neg_integer(),
+%%   <<"StartTimeBefore">> => non_neg_integer()
+%% }
+-type list_training_plans_request() :: #{binary() => any()}.
+
+%% Example:
 %% model_metrics() :: #{
 %%   <<"Bias">> => bias(),
 %%   <<"Explainability">> => explainability(),
@@ -4022,6 +4213,12 @@
 %%   <<"Statistic">> => list(any())
 %% }
 -type customized_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% delete_compute_quota_request() :: #{
+%%   <<"ComputeQuotaId">> := string()
+%% }
+-type delete_compute_quota_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_association_request() :: #{
@@ -4395,7 +4592,8 @@
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterName">> => string(),
 %%   <<"ClusterStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer()
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"TrainingPlanArns">> => list(string()())
 %% }
 -type cluster_summary() :: #{binary() => any()}.
 
@@ -4962,6 +5160,20 @@
 -type pending_deployment_summary() :: #{binary() => any()}.
 
 %% Example:
+%% training_plan_offering() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"RequestedEndTimeBefore">> => non_neg_integer(),
+%%   <<"RequestedStartTimeAfter">> => non_neg_integer(),
+%%   <<"ReservedCapacityOfferings">> => list(reserved_capacity_offering()()),
+%%   <<"TargetResources">> => list(list(any())()),
+%%   <<"TrainingPlanOfferingId">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type training_plan_offering() :: #{binary() => any()}.
+
+%% Example:
 %% delete_workteam_response() :: #{
 %%   <<"Success">> => boolean()
 %% }
@@ -5276,6 +5488,12 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
+%% delete_partner_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type delete_partner_app_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_auto_ml_jobs_request() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -5524,6 +5742,12 @@
 %%   <<"ModelDataUrl">> => string()
 %% }
 -type source_algorithm() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_scheduler_config_request() :: #{
+%%   <<"ClusterSchedulerConfigId">> := string()
+%% }
+-type delete_cluster_scheduler_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_describe_model_package_output() :: #{
@@ -6745,6 +6969,12 @@
 -type create_training_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_partner_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type update_partner_app_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_hub_content_versions_request() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -6825,6 +7055,20 @@
 %%   <<"SourceUri">> => string()
 %% }
 -type list_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_scheduler_config_response() :: #{
+%%   <<"ClusterSchedulerConfigArn">> => string(),
+%%   <<"ClusterSchedulerConfigId">> => string()
+%% }
+-type create_cluster_scheduler_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% partner_app_config() :: #{
+%%   <<"AdminUsers">> => list(string()()),
+%%   <<"Arguments">> => map()
+%% }
+-type partner_app_config() :: #{binary() => any()}.
 
 %% Example:
 %% athena_dataset_definition() :: #{
@@ -7073,6 +7317,14 @@
 %%   <<"Value">> => string()
 %% }
 -type filter() :: #{binary() => any()}.
+
+%% Example:
+%% compute_quota_config() :: #{
+%%   <<"ComputeQuotaResources">> => list(compute_quota_resource_config()()),
+%%   <<"PreemptTeamTasks">> => list(any()),
+%%   <<"ResourceSharingConfig">> => resource_sharing_config()
+%% }
+-type compute_quota_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_image_response() :: #{
@@ -7460,7 +7712,8 @@
 %%   <<"NameContains">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TrainingPlanArn">> => string()
 %% }
 -type list_clusters_request() :: #{binary() => any()}.
 
@@ -7639,6 +7892,7 @@
 %%   <<"TrainingJobArn">> => string(),
 %%   <<"TrainingJobName">> => string(),
 %%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"TrainingPlanArn">> => string(),
 %%   <<"WarmPoolStatus">> => warm_pool_status()
 %% }
 -type training_job_summary() :: #{binary() => any()}.
@@ -7875,6 +8129,20 @@
 -type list_pipeline_executions_response() :: #{binary() => any()}.
 
 %% Example:
+%% resource_sharing_config() :: #{
+%%   <<"BorrowLimit">> => integer(),
+%%   <<"Strategy">> => list(any())
+%% }
+-type resource_sharing_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_compute_quotas_response() :: #{
+%%   <<"ComputeQuotaSummaries">> => list(compute_quota_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compute_quotas_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_labeling_job_request() :: #{
 %%   <<"HumanTaskConfig">> := human_task_config(),
 %%   <<"InputConfig">> := labeling_job_input_config(),
@@ -8108,6 +8376,12 @@
 -type render_ui_template_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_partner_app_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type describe_partner_app_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_auto_ml_job_v2_response() :: #{
 %%   <<"AutoMLComputeConfig">> => auto_ml_compute_config(),
 %%   <<"AutoMLJobArn">> => string(),
@@ -8198,6 +8472,13 @@
 -type create_compilation_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% compute_quota_resource_config() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type compute_quota_resource_config() :: #{binary() => any()}.
+
+%% Example:
 %% label_counters() :: #{
 %%   <<"FailedNonRetryableError">> => integer(),
 %%   <<"HumanLabeled">> => integer(),
@@ -8267,6 +8548,7 @@
 %%   <<"InstanceGroups">> => list(instance_group()()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"KeepAlivePeriodInSeconds">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VolumeSizeInGB">> => integer()
 %% }
@@ -8413,6 +8695,13 @@
 -type describe_feature_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_cluster_scheduler_config_response() :: #{
+%%   <<"ClusterSchedulerConfigArn">> => string(),
+%%   <<"ClusterSchedulerConfigVersion">> => integer()
+%% }
+-type update_cluster_scheduler_config_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_compilation_job_request() :: #{
 %%   <<"CompilationJobName">> := string()
 %% }
@@ -8427,6 +8716,18 @@
 %%   <<"KmsKeyId">> => string()
 %% }
 -type data_capture_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_compute_quota_request() :: #{
+%%   <<"ActivationState">> => list(any()),
+%%   <<"ClusterArn">> := string(),
+%%   <<"ComputeQuotaConfig">> := compute_quota_config(),
+%%   <<"ComputeQuotaTarget">> := compute_quota_target(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_compute_quota_request() :: #{binary() => any()}.
 
 %% Example:
 %% monitoring_schedule_config() :: #{
@@ -8468,6 +8769,21 @@
 -type app_image_config_details() :: #{binary() => any()}.
 
 %% Example:
+%% create_partner_app_request() :: #{
+%%   <<"ApplicationConfig">> => partner_app_config(),
+%%   <<"AuthType">> := list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"EnableIamSessionBasedIdentity">> => boolean(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Tier">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_partner_app_request() :: #{binary() => any()}.
+
+%% Example:
 %% model_compilation_config() :: #{
 %%   <<"Image">> => string(),
 %%   <<"OverrideEnvironment">> => map()
@@ -8483,6 +8799,13 @@
 %%   <<"ParameterRemovals">> => list(string()())
 %% }
 -type update_feature_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_plans_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingPlanSummaries">> => list(training_plan_summary()())
+%% }
+-type list_training_plans_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_labeling_job_request() :: #{
@@ -8536,6 +8859,14 @@
 -type trial_component_source_detail() :: #{binary() => any()}.
 
 %% Example:
+%% create_training_plan_request() :: #{
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrainingPlanName">> := string(),
+%%   <<"TrainingPlanOfferingId">> := string()
+%% }
+-type create_training_plan_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_candidates_for_auto_ml_job_response() :: #{
 %%   <<"Candidates">> => list(auto_ml_candidate()()),
 %%   <<"NextToken">> => string()
@@ -8576,6 +8907,13 @@
 %%   <<"SourceUri">> => string()
 %% }
 -type action_source() :: #{binary() => any()}.
+
+%% Example:
+%% f_sx_lustre_file_system_config() :: #{
+%%   <<"FileSystemId">> => string(),
+%%   <<"FileSystemPath">> => string()
+%% }
+-type f_sx_lustre_file_system_config() :: #{binary() => any()}.
 
 %% Example:
 %% hyper_parameter_tuning_job_summary() :: #{
@@ -8640,6 +8978,12 @@
 %%   <<"ThroughputConfig">> => throughput_config_update()
 %% }
 -type update_feature_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_plan_request() :: #{
+%%   <<"TrainingPlanName">> := string()
+%% }
+-type describe_training_plan_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_edge_deployment_plans_response() :: #{
@@ -8877,6 +9221,14 @@
 %%   <<"TrialName">> := string()
 %% }
 -type delete_trial_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_app_presigned_url_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer()
+%% }
+-type create_partner_app_presigned_url_request() :: #{binary() => any()}.
 
 %% Example:
 %% hyper_parameter_tuning_job_objective() :: #{
@@ -9143,6 +9495,22 @@
 %%   <<"SortOrder">> => list(any())
 %% }
 -type list_lineage_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% compute_quota_summary() :: #{
+%%   <<"ActivationState">> => list(any()),
+%%   <<"ClusterArn">> => string(),
+%%   <<"ComputeQuotaArn">> => string(),
+%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
+%%   <<"ComputeQuotaId">> => string(),
+%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
+%%   <<"ComputeQuotaVersion">> => integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type compute_quota_summary() :: #{binary() => any()}.
 
 %% Example:
 %% create_mlflow_tracking_server_request() :: #{
@@ -9721,6 +10089,12 @@
 -type inference_metrics() :: #{binary() => any()}.
 
 %% Example:
+%% create_partner_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_partner_app_response() :: #{binary() => any()}.
+
+%% Example:
 %% stop_mlflow_tracking_server_response() :: #{
 %%   <<"TrackingServerArn">> => string()
 %% }
@@ -9820,6 +10194,13 @@
 %%   <<"Metrics">> => inference_metrics()
 %% }
 -type endpoint_performance() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_scheduler_config_request() :: #{
+%%   <<"ClusterSchedulerConfigId">> := string(),
+%%   <<"ClusterSchedulerConfigVersion">> => integer()
+%% }
+-type describe_cluster_scheduler_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% query_filters() :: #{
@@ -9949,7 +10330,8 @@
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
-%%   <<"ThreadsPerCore">> => integer()
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"TrainingPlanArn">> => string()
 %% }
 -type cluster_instance_group_specification() :: #{binary() => any()}.
 
@@ -10135,6 +10517,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_monitoring_alerts_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_compute_quota_request() :: #{
+%%   <<"ComputeQuotaId">> := string(),
+%%   <<"ComputeQuotaVersion">> => integer()
+%% }
+-type describe_compute_quota_request() :: #{binary() => any()}.
 
 %% Example:
 %% tabular_resolved_attributes() :: #{
@@ -10410,6 +10799,13 @@
 -type trial_component_summary() :: #{binary() => any()}.
 
 %% Example:
+%% scheduler_config() :: #{
+%%   <<"FairShare">> => list(any()),
+%%   <<"PriorityClasses">> => list(priority_class()())
+%% }
+-type scheduler_config() :: #{binary() => any()}.
+
+%% Example:
 %% domain_details() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DomainArn">> => string(),
@@ -10532,6 +10928,26 @@
 -type describe_user_profile_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_compute_quota_response() :: #{
+%%   <<"ActivationState">> => list(any()),
+%%   <<"ClusterArn">> => string(),
+%%   <<"ComputeQuotaArn">> => string(),
+%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
+%%   <<"ComputeQuotaId">> => string(),
+%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
+%%   <<"ComputeQuotaVersion">> => integer(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_compute_quota_response() :: #{binary() => any()}.
+
+%% Example:
 %% transform_input() :: #{
 %%   <<"CompressionType">> => list(any()),
 %%   <<"ContentType">> => string(),
@@ -10563,6 +10979,15 @@
 -type device() :: #{binary() => any()}.
 
 %% Example:
+%% update_cluster_scheduler_config_request() :: #{
+%%   <<"ClusterSchedulerConfigId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"SchedulerConfig">> => scheduler_config(),
+%%   <<"TargetVersion">> := integer()
+%% }
+-type update_cluster_scheduler_config_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_workteam_response() :: #{
 %%   <<"Workteam">> => workteam()
 %% }
@@ -10576,6 +11001,20 @@
 %%   <<"VariantName">> => string()
 %% }
 -type desired_weight_and_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_capacity_summary() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ReservedCapacityArn">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalInstanceCount">> => integer()
+%% }
+-type reserved_capacity_summary() :: #{binary() => any()}.
 
 %% Example:
 %% parent() :: #{
@@ -10599,6 +11038,24 @@
 %%   <<"Value">> => float()
 %% }
 -type final_hyper_parameter_tuning_job_objective_metric() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_scheduler_config_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterSchedulerConfigArn">> => string(),
+%%   <<"ClusterSchedulerConfigId">> => string(),
+%%   <<"ClusterSchedulerConfigVersion">> => integer(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SchedulerConfig">> => scheduler_config(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_cluster_scheduler_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_pipeline_request() :: #{
@@ -10866,6 +11323,20 @@
 -type hyper_parameter_tuning_job_completion_details() :: #{binary() => any()}.
 
 %% Example:
+%% list_cluster_scheduler_configs_request() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_cluster_scheduler_configs_request() :: #{binary() => any()}.
+
+%% Example:
 %% model_data_source() :: #{
 %%   <<"S3DataSource">> => s3_model_data_source()
 %% }
@@ -10896,6 +11367,16 @@
 %%   <<"SortOrder">> => list(any())
 %% }
 -type list_flow_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% partner_app_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type partner_app_summary() :: #{binary() => any()}.
 
 %% Example:
 %% drift_check_baselines() :: #{
@@ -10938,6 +11419,19 @@
 %%   <<"AvailabilityZoneId">> => string()
 %% }
 -type cluster_instance_placement() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_scheduler_config_summary() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterSchedulerConfigArn">> => string(),
+%%   <<"ClusterSchedulerConfigId">> => string(),
+%%   <<"ClusterSchedulerConfigVersion">> => integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type cluster_scheduler_config_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_model_packages_output() :: #{
@@ -11052,6 +11546,16 @@
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
 -type model_dashboard_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_scheduler_config_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SchedulerConfig">> := scheduler_config(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_cluster_scheduler_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_device_fleet_request() :: #{
@@ -11335,6 +11839,25 @@
 -type update_image_version_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_partner_app_response() :: #{
+%%   <<"ApplicationConfig">> => partner_app_config(),
+%%   <<"Arn">> => string(),
+%%   <<"AuthType">> => list(any()),
+%%   <<"BaseUrl">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EnableIamSessionBasedIdentity">> => boolean(),
+%%   <<"Error">> => error_info(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tier">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type describe_partner_app_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_trials_request() :: #{
 %%   <<"CreatedAfter">> => non_neg_integer(),
 %%   <<"CreatedBefore">> => non_neg_integer(),
@@ -11357,8 +11880,11 @@
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"Status">> => list(any()),
 %%   <<"TargetCount">> => integer(),
-%%   <<"ThreadsPerCore">> => integer()
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"TrainingPlanStatus">> => string()
 %% }
 -type cluster_instance_group_details() :: #{binary() => any()}.
 
@@ -11457,11 +11983,35 @@
 -type stop_edge_packaging_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_partner_app_request() :: #{
+%%   <<"ApplicationConfig">> => partner_app_config(),
+%%   <<"Arn">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"EnableIamSessionBasedIdentity">> => boolean(),
+%%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Tier">> => string()
+%% }
+-type update_partner_app_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_subscribed_workteams_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SubscribedWorkteams">> => list(subscribed_workteam()())
 %% }
 -type list_subscribed_workteams_response() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_capacity_offering() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type reserved_capacity_offering() :: #{binary() => any()}.
 
 %% Example:
 %% delete_endpoint_config_input() :: #{
@@ -11482,6 +12032,26 @@
 %%   <<"OptimizationTypes">> => list(string()())
 %% }
 -type optimization_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% training_plan_summary() :: #{
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InUseInstanceCount">> => integer(),
+%%   <<"ReservedCapacitySummaries">> => list(reserved_capacity_summary()()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TargetResources">> => list(list(any())()),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"TrainingPlanName">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type training_plan_summary() :: #{binary() => any()}.
 
 %% Example:
 %% create_edge_packaging_job_request() :: #{
@@ -11519,6 +12089,17 @@
 %%   <<"HumanLoopActivationConditionsConfig">> => human_loop_activation_conditions_config()
 %% }
 -type human_loop_activation_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_compute_quota_request() :: #{
+%%   <<"ActivationState">> => list(any()),
+%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
+%%   <<"ComputeQuotaId">> := string(),
+%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
+%%   <<"Description">> => string(),
+%%   <<"TargetVersion">> := integer()
+%% }
+-type update_compute_quota_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_image_request() :: #{
@@ -11647,6 +12228,13 @@
 %%   <<"HomeEfsFileSystem">> => list(any())
 %% }
 -type retention_policy() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partner_app_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ClientToken">> => string()
+%% }
+-type delete_partner_app_request() :: #{binary() => any()}.
 
 %% Example:
 %% dynamic_scaling_configuration() :: #{
@@ -11839,9 +12427,17 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_cluster_scheduler_config_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception().
+
 -type create_compilation_job_errors() ::
     resource_limit_exceeded() | 
     resource_in_use().
+
+-type create_compute_quota_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception().
 
 -type create_context_errors() ::
     resource_limit_exceeded().
@@ -11973,6 +12569,13 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_partner_app_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception().
+
+-type create_partner_app_presigned_url_errors() ::
+    resource_not_found().
+
 -type create_pipeline_errors() ::
     resource_limit_exceeded() | 
     conflict_exception() | 
@@ -12000,6 +12603,11 @@
     resource_in_use().
 
 -type create_training_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_training_plan_errors() ::
     resource_limit_exceeded() | 
     resource_in_use() | 
     resource_not_found().
@@ -12047,7 +12655,13 @@
     conflict_exception() | 
     resource_not_found().
 
+-type delete_cluster_scheduler_config_errors() ::
+    resource_not_found().
+
 -type delete_compilation_job_errors() ::
+    resource_not_found().
+
+-type delete_compute_quota_errors() ::
     resource_not_found().
 
 -type delete_context_errors() ::
@@ -12133,6 +12747,10 @@
 -type delete_optimization_job_errors() ::
     resource_not_found().
 
+-type delete_partner_app_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
 -type delete_pipeline_errors() ::
     conflict_exception() | 
     resource_not_found().
@@ -12185,7 +12803,13 @@
 -type describe_cluster_node_errors() ::
     resource_not_found().
 
+-type describe_cluster_scheduler_config_errors() ::
+    resource_not_found().
+
 -type describe_compilation_job_errors() ::
+    resource_not_found().
+
+-type describe_compute_quota_errors() ::
     resource_not_found().
 
 -type describe_context_errors() ::
@@ -12275,6 +12899,9 @@
 -type describe_optimization_job_errors() ::
     resource_not_found().
 
+-type describe_partner_app_errors() ::
+    resource_not_found().
+
 -type describe_pipeline_errors() ::
     resource_not_found().
 
@@ -12294,6 +12921,9 @@
     resource_not_found().
 
 -type describe_training_job_errors() ::
+    resource_not_found().
+
+-type describe_training_plan_errors() ::
     resource_not_found().
 
 -type describe_transform_job_errors() ::
@@ -12406,6 +13036,9 @@
     conflict_exception() | 
     resource_not_found().
 
+-type search_training_plan_offerings_errors() ::
+    resource_limit_exceeded().
+
 -type send_pipeline_execution_step_failure_errors() ::
     resource_limit_exceeded() | 
     conflict_exception() | 
@@ -12493,12 +13126,22 @@
     conflict_exception() | 
     resource_not_found().
 
+-type update_cluster_scheduler_config_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
 -type update_cluster_software_errors() ::
     conflict_exception() | 
     resource_not_found().
 
 -type update_code_repository_errors() ::
     conflict_exception().
+
+-type update_compute_quota_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
 
 -type update_context_errors() ::
     conflict_exception() | 
@@ -12576,6 +13219,10 @@
 
 -type update_notebook_instance_lifecycle_config_errors() ::
     resource_limit_exceeded().
+
+-type update_partner_app_errors() ::
+    conflict_exception() | 
+    resource_not_found().
 
 -type update_pipeline_errors() ::
     conflict_exception() | 
@@ -13066,6 +13713,28 @@ create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
 
+%% @doc Create cluster policy configuration.
+%%
+%% This policy is used for task prioritization and
+%% fair-share allocation of idle compute. This helps prioritize critical
+%% workloads and distributes
+%% idle compute across entities.
+-spec create_cluster_scheduler_config(aws_client:aws_client(), create_cluster_scheduler_config_request()) ->
+    {ok, create_cluster_scheduler_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_scheduler_config_errors(), tuple()}.
+create_cluster_scheduler_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_cluster_scheduler_config(Client, Input, []).
+
+-spec create_cluster_scheduler_config(aws_client:aws_client(), create_cluster_scheduler_config_request(), proplists:proplist()) ->
+    {ok, create_cluster_scheduler_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_scheduler_config_errors(), tuple()}.
+create_cluster_scheduler_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateClusterSchedulerConfig">>, Input, Options).
+
 %% @doc Creates a Git repository as a resource in your SageMaker account.
 %%
 %% You can
@@ -13151,6 +13820,28 @@ create_compilation_job(Client, Input)
 create_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCompilationJob">>, Input, Options).
+
+%% @doc Create compute allocation definition.
+%%
+%% This defines how compute is allocated, shared, and
+%% borrowed for specified entities. Specifically, how to lend and borrow idle
+%% compute and
+%% assign a fair-share weight to the specified entities.
+-spec create_compute_quota(aws_client:aws_client(), create_compute_quota_request()) ->
+    {ok, create_compute_quota_response(), tuple()} |
+    {error, any()} |
+    {error, create_compute_quota_errors(), tuple()}.
+create_compute_quota(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_compute_quota(Client, Input, []).
+
+-spec create_compute_quota(aws_client:aws_client(), create_compute_quota_request(), proplists:proplist()) ->
+    {ok, create_compute_quota_response(), tuple()} |
+    {error, any()} |
+    {error, create_compute_quota_errors(), tuple()}.
+create_compute_quota(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateComputeQuota">>, Input, Options).
 
 %% @doc Creates a context.
 %%
@@ -14352,6 +15043,40 @@ create_optimization_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOptimizationJob">>, Input, Options).
 
+%% @doc Creates an Amazon SageMaker Partner AI App.
+-spec create_partner_app(aws_client:aws_client(), create_partner_app_request()) ->
+    {ok, create_partner_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_partner_app_errors(), tuple()}.
+create_partner_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_partner_app(Client, Input, []).
+
+-spec create_partner_app(aws_client:aws_client(), create_partner_app_request(), proplists:proplist()) ->
+    {ok, create_partner_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_partner_app_errors(), tuple()}.
+create_partner_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePartnerApp">>, Input, Options).
+
+%% @doc Creates a presigned URL to access an Amazon SageMaker Partner AI App.
+-spec create_partner_app_presigned_url(aws_client:aws_client(), create_partner_app_presigned_url_request()) ->
+    {ok, create_partner_app_presigned_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_partner_app_presigned_url_errors(), tuple()}.
+create_partner_app_presigned_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_partner_app_presigned_url(Client, Input, []).
+
+-spec create_partner_app_presigned_url(aws_client:aws_client(), create_partner_app_presigned_url_request(), proplists:proplist()) ->
+    {ok, create_partner_app_presigned_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_partner_app_presigned_url_errors(), tuple()}.
+create_partner_app_presigned_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePartnerAppPresignedUrl">>, Input, Options).
+
 %% @doc Creates a pipeline using a JSON pipeline definition.
 -spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
@@ -14643,6 +15368,81 @@ create_training_job(Client, Input)
 create_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrainingJob">>, Input, Options).
+
+%% @doc Creates a new training plan in SageMaker to reserve compute capacity.
+%%
+%% Amazon SageMaker Training Plan is a capability within SageMaker that
+%% allows customers to reserve and manage GPU
+%% capacity for large-scale AI model training. It provides a way to secure
+%% predictable access
+%% to computational resources within specific timelines and budgets, without
+%% the need to
+%% manage underlying infrastructure.
+%%
+%% How it works
+%%
+%% Plans can be created for specific resources such as SageMaker Training
+%% Jobs or SageMaker HyperPod
+%% clusters, automatically provisioning resources, setting up infrastructure,
+%% executing
+%% workloads, and handling infrastructure failures.
+%%
+%% Plan creation workflow
+%%
+%% Users search for available plan offerings based on their requirements
+%% (e.g.,
+%% instance type, count, start time, duration) using the
+%% ```
+%% SearchTrainingPlanOfferings:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SearchTrainingPlanOfferings.html
+%% ''' API operation.
+%%
+%% They create a plan that best matches their needs using the ID of the plan
+%% offering
+%% they want to use.
+%%
+%% After successful upfront payment, the plan's status becomes
+%% `Scheduled'.
+%%
+%% The plan can be used to:
+%%
+%% Queue training jobs.
+%%
+%% Allocate to an instance group of a SageMaker HyperPod cluster.
+%%
+%% When the plan start date arrives, it becomes `Active'. Based on
+%% available reserved capacity:
+%%
+%% Training jobs are launched.
+%%
+%% Instance groups are provisioned.
+%%
+%% Plan composition
+%%
+%% A plan can consist of one or more Reserved Capacities, each defined by a
+%% specific
+%% instance type, quantity, Availability Zone, duration, and start and end
+%% times. For more
+%% information about Reserved Capacity, see
+%% ```
+%% ReservedCapacitySummary:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ReservedCapacitySummary.html
+%% '''.
+-spec create_training_plan(aws_client:aws_client(), create_training_plan_request()) ->
+    {ok, create_training_plan_response(), tuple()} |
+    {error, any()} |
+    {error, create_training_plan_errors(), tuple()}.
+create_training_plan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_training_plan(Client, Input, []).
+
+-spec create_training_plan(aws_client:aws_client(), create_training_plan_request(), proplists:proplist()) ->
+    {ok, create_training_plan_response(), tuple()} |
+    {error, any()} |
+    {error, create_training_plan_errors(), tuple()}.
+create_training_plan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTrainingPlan">>, Input, Options).
 
 %% @doc Starts a transform job.
 %%
@@ -14996,6 +15796,23 @@ delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
 
+%% @doc Deletes the cluster policy of the cluster.
+-spec delete_cluster_scheduler_config(aws_client:aws_client(), delete_cluster_scheduler_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cluster_scheduler_config_errors(), tuple()}.
+delete_cluster_scheduler_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_cluster_scheduler_config(Client, Input, []).
+
+-spec delete_cluster_scheduler_config(aws_client:aws_client(), delete_cluster_scheduler_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cluster_scheduler_config_errors(), tuple()}.
+delete_cluster_scheduler_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteClusterSchedulerConfig">>, Input, Options).
+
 %% @doc Deletes the specified Git repository from your account.
 -spec delete_code_repository(aws_client:aws_client(), delete_code_repository_input()) ->
     {ok, undefined, tuple()} |
@@ -15040,6 +15857,23 @@ delete_compilation_job(Client, Input)
 delete_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCompilationJob">>, Input, Options).
+
+%% @doc Deletes the compute allocation from the cluster.
+-spec delete_compute_quota(aws_client:aws_client(), delete_compute_quota_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_compute_quota_errors(), tuple()}.
+delete_compute_quota(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_compute_quota(Client, Input, []).
+
+-spec delete_compute_quota(aws_client:aws_client(), delete_compute_quota_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_compute_quota_errors(), tuple()}.
+delete_compute_quota(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteComputeQuota">>, Input, Options).
 
 %% @doc Deletes an context.
 -spec delete_context(aws_client:aws_client(), delete_context_request()) ->
@@ -15703,6 +16537,23 @@ delete_optimization_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOptimizationJob">>, Input, Options).
 
+%% @doc Deletes a SageMaker Partner AI App.
+-spec delete_partner_app(aws_client:aws_client(), delete_partner_app_request()) ->
+    {ok, delete_partner_app_response(), tuple()} |
+    {error, any()} |
+    {error, delete_partner_app_errors(), tuple()}.
+delete_partner_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_partner_app(Client, Input, []).
+
+-spec delete_partner_app(aws_client:aws_client(), delete_partner_app_request(), proplists:proplist()) ->
+    {ok, delete_partner_app_response(), tuple()} |
+    {error, any()} |
+    {error, delete_partner_app_errors(), tuple()}.
+delete_partner_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePartnerApp">>, Input, Options).
+
 %% @doc Deletes a pipeline if there are no running instances of the pipeline.
 %%
 %% To delete a
@@ -16109,6 +16960,28 @@ describe_cluster_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterNode">>, Input, Options).
 
+%% @doc Description of the cluster policy.
+%%
+%% This policy is used for task prioritization and
+%% fair-share allocation. This helps prioritize critical workloads and
+%% distributes
+%% idle compute across entities.
+-spec describe_cluster_scheduler_config(aws_client:aws_client(), describe_cluster_scheduler_config_request()) ->
+    {ok, describe_cluster_scheduler_config_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_scheduler_config_errors(), tuple()}.
+describe_cluster_scheduler_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cluster_scheduler_config(Client, Input, []).
+
+-spec describe_cluster_scheduler_config(aws_client:aws_client(), describe_cluster_scheduler_config_request(), proplists:proplist()) ->
+    {ok, describe_cluster_scheduler_config_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_scheduler_config_errors(), tuple()}.
+describe_cluster_scheduler_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeClusterSchedulerConfig">>, Input, Options).
+
 %% @doc Gets details about the specified Git repository.
 -spec describe_code_repository(aws_client:aws_client(), describe_code_repository_input()) ->
     {ok, describe_code_repository_output(), tuple()} |
@@ -16146,6 +17019,23 @@ describe_compilation_job(Client, Input)
 describe_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCompilationJob">>, Input, Options).
+
+%% @doc Description of the compute allocation definition.
+-spec describe_compute_quota(aws_client:aws_client(), describe_compute_quota_request()) ->
+    {ok, describe_compute_quota_response(), tuple()} |
+    {error, any()} |
+    {error, describe_compute_quota_errors(), tuple()}.
+describe_compute_quota(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_compute_quota(Client, Input, []).
+
+-spec describe_compute_quota(aws_client:aws_client(), describe_compute_quota_request(), proplists:proplist()) ->
+    {ok, describe_compute_quota_response(), tuple()} |
+    {error, any()} |
+    {error, describe_compute_quota_errors(), tuple()}.
+describe_compute_quota(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeComputeQuota">>, Input, Options).
 
 %% @doc Describes a context.
 -spec describe_context(aws_client:aws_client(), describe_context_request()) ->
@@ -16799,6 +17689,23 @@ describe_optimization_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOptimizationJob">>, Input, Options).
 
+%% @doc Gets information about a SageMaker Partner AI App.
+-spec describe_partner_app(aws_client:aws_client(), describe_partner_app_request()) ->
+    {ok, describe_partner_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_partner_app_errors(), tuple()}.
+describe_partner_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_partner_app(Client, Input, []).
+
+-spec describe_partner_app(aws_client:aws_client(), describe_partner_app_request(), proplists:proplist()) ->
+    {ok, describe_partner_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_partner_app_errors(), tuple()}.
+describe_partner_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePartnerApp">>, Input, Options).
+
 %% @doc Describes the details of a pipeline.
 -spec describe_pipeline(aws_client:aws_client(), describe_pipeline_request()) ->
     {ok, describe_pipeline_response(), tuple()} |
@@ -16958,6 +17865,23 @@ describe_training_job(Client, Input)
 describe_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrainingJob">>, Input, Options).
+
+%% @doc Retrieves detailed information about a specific training plan.
+-spec describe_training_plan(aws_client:aws_client(), describe_training_plan_request()) ->
+    {ok, describe_training_plan_response(), tuple()} |
+    {error, any()} |
+    {error, describe_training_plan_errors(), tuple()}.
+describe_training_plan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_training_plan(Client, Input, []).
+
+-spec describe_training_plan(aws_client:aws_client(), describe_training_plan_request(), proplists:proplist()) ->
+    {ok, describe_training_plan_response(), tuple()} |
+    {error, any()} |
+    {error, describe_training_plan_errors(), tuple()}.
+describe_training_plan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrainingPlan">>, Input, Options).
 
 %% @doc Returns information about a transform job.
 -spec describe_transform_job(aws_client:aws_client(), describe_transform_job_request()) ->
@@ -17442,6 +18366,21 @@ list_cluster_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusterNodes">>, Input, Options).
 
+%% @doc List the cluster policy configurations.
+-spec list_cluster_scheduler_configs(aws_client:aws_client(), list_cluster_scheduler_configs_request()) ->
+    {ok, list_cluster_scheduler_configs_response(), tuple()} |
+    {error, any()}.
+list_cluster_scheduler_configs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cluster_scheduler_configs(Client, Input, []).
+
+-spec list_cluster_scheduler_configs(aws_client:aws_client(), list_cluster_scheduler_configs_request(), proplists:proplist()) ->
+    {ok, list_cluster_scheduler_configs_response(), tuple()} |
+    {error, any()}.
+list_cluster_scheduler_configs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListClusterSchedulerConfigs">>, Input, Options).
+
 %% @doc Retrieves the list of SageMaker HyperPod clusters.
 -spec list_clusters(aws_client:aws_client(), list_clusters_request()) ->
     {ok, list_clusters_response(), tuple()} |
@@ -17492,6 +18431,21 @@ list_compilation_jobs(Client, Input)
 list_compilation_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCompilationJobs">>, Input, Options).
+
+%% @doc List the resource allocation definitions.
+-spec list_compute_quotas(aws_client:aws_client(), list_compute_quotas_request()) ->
+    {ok, list_compute_quotas_response(), tuple()} |
+    {error, any()}.
+list_compute_quotas(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_compute_quotas(Client, Input, []).
+
+-spec list_compute_quotas(aws_client:aws_client(), list_compute_quotas_request(), proplists:proplist()) ->
+    {ok, list_compute_quotas_response(), tuple()} |
+    {error, any()}.
+list_compute_quotas(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListComputeQuotas">>, Input, Options).
 
 %% @doc Lists the contexts in your account and their properties.
 -spec list_contexts(aws_client:aws_client(), list_contexts_request()) ->
@@ -18205,6 +19159,21 @@ list_optimization_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOptimizationJobs">>, Input, Options).
 
+%% @doc Lists all of the SageMaker Partner AI Apps in an account.
+-spec list_partner_apps(aws_client:aws_client(), list_partner_apps_request()) ->
+    {ok, list_partner_apps_response(), tuple()} |
+    {error, any()}.
+list_partner_apps(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_partner_apps(Client, Input, []).
+
+-spec list_partner_apps(aws_client:aws_client(), list_partner_apps_request(), proplists:proplist()) ->
+    {ok, list_partner_apps_response(), tuple()} |
+    {error, any()}.
+list_partner_apps(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPartnerApps">>, Input, Options).
+
 %% @doc Gets a list of `PipeLineExecutionStep' objects.
 -spec list_pipeline_execution_steps(aws_client:aws_client(), list_pipeline_execution_steps_request()) ->
     {ok, list_pipeline_execution_steps_response(), tuple()} |
@@ -18463,6 +19432,21 @@ list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrainingJobsForHyperParameterTuningJob">>, Input, Options).
 
+%% @doc Retrieves a list of training plans for the current account.
+-spec list_training_plans(aws_client:aws_client(), list_training_plans_request()) ->
+    {ok, list_training_plans_response(), tuple()} |
+    {error, any()}.
+list_training_plans(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_training_plans(Client, Input, []).
+
+-spec list_training_plans(aws_client:aws_client(), list_training_plans_request(), proplists:proplist()) ->
+    {ok, list_training_plans_response(), tuple()} |
+    {error, any()}.
+list_training_plans(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTrainingPlans">>, Input, Options).
+
 %% @doc Lists transform jobs.
 -spec list_transform_jobs(aws_client:aws_client(), list_transform_jobs_request()) ->
     {ok, list_transform_jobs_response(), tuple()} |
@@ -18713,6 +19697,40 @@ search(Client, Input)
 search(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Search">>, Input, Options).
+
+%% @doc Searches for available training plan offerings based on specified
+%% criteria.
+%%
+%% Users search for available plan offerings based on their requirements
+%% (e.g.,
+%% instance type, count, start time, duration).
+%%
+%% And then, they create a plan that best matches their needs using the ID of
+%% the
+%% plan offering they want to use.
+%%
+%% For more information about how to reserve GPU capacity for your SageMaker
+%% training jobs or
+%% SageMaker HyperPod clusters using Amazon SageMaker Training Plan , see
+%% ```
+%% CreateTrainingPlan:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingPlan.html
+%% '''.
+-spec search_training_plan_offerings(aws_client:aws_client(), search_training_plan_offerings_request()) ->
+    {ok, search_training_plan_offerings_response(), tuple()} |
+    {error, any()} |
+    {error, search_training_plan_offerings_errors(), tuple()}.
+search_training_plan_offerings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_training_plan_offerings(Client, Input, []).
+
+-spec search_training_plan_offerings(aws_client:aws_client(), search_training_plan_offerings_request(), proplists:proplist()) ->
+    {ok, search_training_plan_offerings_response(), tuple()} |
+    {error, any()} |
+    {error, search_training_plan_offerings_errors(), tuple()}.
+search_training_plan_offerings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchTrainingPlanOfferings">>, Input, Options).
 
 %% @doc Notifies the pipeline that the execution of a callback step failed,
 %% along with a
@@ -19299,6 +20317,23 @@ update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
 
+%% @doc Update the cluster policy configuration.
+-spec update_cluster_scheduler_config(aws_client:aws_client(), update_cluster_scheduler_config_request()) ->
+    {ok, update_cluster_scheduler_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_scheduler_config_errors(), tuple()}.
+update_cluster_scheduler_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cluster_scheduler_config(Client, Input, []).
+
+-spec update_cluster_scheduler_config(aws_client:aws_client(), update_cluster_scheduler_config_request(), proplists:proplist()) ->
+    {ok, update_cluster_scheduler_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_scheduler_config_errors(), tuple()}.
+update_cluster_scheduler_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateClusterSchedulerConfig">>, Input, Options).
+
 %% @doc Updates the platform software of a SageMaker HyperPod cluster for
 %% security patching.
 %%
@@ -19344,6 +20379,23 @@ update_code_repository(Client, Input)
 update_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCodeRepository">>, Input, Options).
+
+%% @doc Update the compute allocation definition.
+-spec update_compute_quota(aws_client:aws_client(), update_compute_quota_request()) ->
+    {ok, update_compute_quota_response(), tuple()} |
+    {error, any()} |
+    {error, update_compute_quota_errors(), tuple()}.
+update_compute_quota(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_compute_quota(Client, Input, []).
+
+-spec update_compute_quota(aws_client:aws_client(), update_compute_quota_request(), proplists:proplist()) ->
+    {ok, update_compute_quota_response(), tuple()} |
+    {error, any()} |
+    {error, update_compute_quota_errors(), tuple()}.
+update_compute_quota(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateComputeQuota">>, Input, Options).
 
 %% @doc Updates a context.
 -spec update_context(aws_client:aws_client(), update_context_request()) ->
@@ -19806,6 +20858,23 @@ update_notebook_instance_lifecycle_config(Client, Input)
 update_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotebookInstanceLifecycleConfig">>, Input, Options).
+
+%% @doc Updates all of the SageMaker Partner AI Apps in an account.
+-spec update_partner_app(aws_client:aws_client(), update_partner_app_request()) ->
+    {ok, update_partner_app_response(), tuple()} |
+    {error, any()} |
+    {error, update_partner_app_errors(), tuple()}.
+update_partner_app(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_partner_app(Client, Input, []).
+
+-spec update_partner_app(aws_client:aws_client(), update_partner_app_request(), proplists:proplist()) ->
+    {ok, update_partner_app_response(), tuple()} |
+    {error, any()} |
+    {error, update_partner_app_errors(), tuple()}.
+update_partner_app(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePartnerApp">>, Input, Options).
 
 %% @doc Updates a pipeline.
 -spec update_pipeline(aws_client:aws_client(), update_pipeline_request()) ->

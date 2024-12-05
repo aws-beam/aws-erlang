@@ -7,6 +7,8 @@
 
 -export([delete_agent_memory/4,
          delete_agent_memory/5,
+         generate_query/2,
+         generate_query/3,
          get_agent_memory/5,
          get_agent_memory/7,
          get_agent_memory/8,
@@ -354,9 +356,11 @@
 %% retrieval_result_location() :: #{
 %%   <<"confluenceLocation">> => retrieval_result_confluence_location(),
 %%   <<"customDocumentLocation">> => retrieval_result_custom_document_location(),
+%%   <<"kendraDocumentLocation">> => retrieval_result_kendra_document_location(),
 %%   <<"s3Location">> => retrieval_result_s3_location(),
 %%   <<"salesforceLocation">> => retrieval_result_salesforce_location(),
 %%   <<"sharePointLocation">> => retrieval_result_share_point_location(),
+%%   <<"sqlLocation">> => retrieval_result_sql_location(),
 %%   <<"type">> => list(any()),
 %%   <<"webLocation">> => retrieval_result_web_location()
 %% }
@@ -373,6 +377,13 @@
 
 
 %% Example:
+%% retrieval_result_sql_location() :: #{
+%%   <<"query">> => [string()]
+%% }
+-type retrieval_result_sql_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_and_generate_session_configuration() :: #{
 %%   <<"kmsKeyArn">> => string()
 %% }
@@ -385,6 +396,13 @@
 %%   <<"numberOfResults">> => [integer()]
 %% }
 -type bedrock_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_query_response() :: #{
+%%   <<"queries">> => list(generated_query()())
+%% }
+-type generate_query_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -446,7 +464,10 @@
 
 %% Example:
 %% retrieval_result_content() :: #{
-%%   <<"text">> => [string()]
+%%   <<"byteContent">> => [string()],
+%%   <<"row">> => list(retrieval_result_content_column()()),
+%%   <<"text">> => [string()],
+%%   <<"type">> => list(any())
 %% }
 -type retrieval_result_content() :: #{binary() => any()}.
 
@@ -485,10 +506,27 @@
 
 
 %% Example:
+%% retrieval_result_content_column() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"columnValue">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type retrieval_result_content_column() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_body() :: #{
 %%   <<"body">> => [string()]
 %% }
 -type content_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% transformation_configuration() :: #{
+%%   <<"mode">> => list(any()),
+%%   <<"textToSqlConfiguration">> => text_to_sql_configuration()
+%% }
+-type transformation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -564,6 +602,14 @@
 %%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
 %% }
 -type knowledge_base() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_to_sql_configuration() :: #{
+%%   <<"knowledgeBaseConfiguration">> => text_to_sql_knowledge_base_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type text_to_sql_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -740,6 +786,14 @@
 %%   <<"traceId">> => string()
 %% }
 -type pre_processing_model_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_query_request() :: #{
+%%   <<"queryGenerationInput">> := query_generation_input(),
+%%   <<"transformationConfiguration">> := transformation_configuration()
+%% }
+-type generate_query_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -993,6 +1047,13 @@
 
 
 %% Example:
+%% text_to_sql_knowledge_base_configuration() :: #{
+%%   <<"knowledgeBaseArn">> => string()
+%% }
+-type text_to_sql_knowledge_base_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_invocation_input() :: #{
 %%   <<"foundationModel">> => string(),
 %%   <<"inferenceConfiguration">> => inference_configuration(),
@@ -1167,6 +1228,22 @@
 
 
 %% Example:
+%% generated_query() :: #{
+%%   <<"sql">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type generated_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_generation_input() :: #{
+%%   <<"text">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type query_generation_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_agent_memory_response() :: #{
 %%   <<"memoryContents">> => list(list()()),
 %%   <<"nextToken">> => string()
@@ -1304,6 +1381,13 @@
 %%   <<"retrievedReferences">> => list(retrieved_reference()())
 %% }
 -type knowledge_base_lookup_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_result_kendra_document_location() :: #{
+%%   <<"uri">> => [string()]
+%% }
+-type retrieval_result_kendra_document_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1564,6 +1648,17 @@
     dependency_failed_exception() | 
     bad_gateway_exception().
 
+-type generate_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
 -type get_agent_memory_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1697,6 +1792,44 @@ delete_agent_memory(Client, AgentAliasId, AgentId, Input0, Options0) ->
                      {<<"memoryId">>, <<"memoryId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Generates an SQL query from a natural language query.
+%%
+%% For more information, see Generate a query for structured data:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-generate-query.html
+%% in the Amazon Bedrock User Guide.
+-spec generate_query(aws_client:aws_client(), generate_query_request()) ->
+    {ok, generate_query_response(), tuple()} |
+    {error, any()} |
+    {error, generate_query_errors(), tuple()}.
+generate_query(Client, Input) ->
+    generate_query(Client, Input, []).
+
+-spec generate_query(aws_client:aws_client(), generate_query_request(), proplists:proplist()) ->
+    {ok, generate_query_response(), tuple()} |
+    {error, any()} |
+    {error, generate_query_errors(), tuple()}.
+generate_query(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/generateQuery"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the sessions stored in the memory of the agent.

@@ -189,6 +189,14 @@
 
 
 %% Example:
+%% guardrail_converse_image_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type guardrail_converse_image_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% async_invoke_s3_output_data_config() :: #{
 %%   <<"bucketOwner">> => string(),
 %%   <<"kmsKeyId">> => string(),
@@ -211,6 +219,21 @@
 %%   <<"start">> => list()
 %% }
 -type content_block_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_router_trace() :: #{
+%%   <<"invokedModelId">> => string()
+%% }
+-type prompt_router_trace() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_image_coverage() :: #{
+%%   <<"guarded">> => integer(),
+%%   <<"total">> => integer()
+%% }
+-type guardrail_image_coverage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -270,6 +293,7 @@
 
 %% Example:
 %% guardrail_coverage() :: #{
+%%   <<"images">> => guardrail_image_coverage(),
 %%   <<"textCharacters">> => guardrail_text_characters_coverage()
 %% }
 -type guardrail_coverage() :: #{binary() => any()}.
@@ -374,7 +398,8 @@
 
 %% Example:
 %% converse_trace() :: #{
-%%   <<"guardrail">> => guardrail_trace_assessment()
+%%   <<"guardrail">> => guardrail_trace_assessment(),
+%%   <<"promptRouter">> => prompt_router_trace()
 %% }
 -type converse_trace() :: #{binary() => any()}.
 
@@ -396,6 +421,14 @@
 %%   <<"name">> => string()
 %% }
 -type tool_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_image_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type guardrail_image_block() :: #{binary() => any()}.
 
 
 %% Example:
@@ -681,7 +714,8 @@
 
 %% Example:
 %% converse_stream_trace() :: #{
-%%   <<"guardrail">> => guardrail_trace_assessment()
+%%   <<"guardrail">> => guardrail_trace_assessment(),
+%%   <<"promptRouter">> => prompt_router_trace()
 %% }
 -type converse_stream_trace() :: #{binary() => any()}.
 

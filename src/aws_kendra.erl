@@ -1578,6 +1578,7 @@
 
 %% Example:
 %% batch_delete_document_response_failed_document() :: #{
+%%   <<"DataSourceId">> => string(),
 %%   <<"ErrorCode">> => list(any()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"Id">> => string()
@@ -2144,6 +2145,7 @@
 
 %% Example:
 %% batch_get_document_status_response_error() :: #{
+%%   <<"DataSourceId">> => string(),
 %%   <<"DocumentId">> => string(),
 %%   <<"ErrorCode">> => list(any()),
 %%   <<"ErrorMessage">> => string()
@@ -2624,6 +2626,7 @@
 
 %% Example:
 %% batch_put_document_response_failed_document() :: #{
+%%   <<"DataSourceId">> => string(),
 %%   <<"ErrorCode">> => list(any()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"Id">> => string()
@@ -3399,6 +3402,13 @@ clear_query_suggestions(Client, Input, Options)
 %% control
 %% configuration for S3 data sources and documents indexed using the
 %% `BatchPutDocument' API.
+%%
+%% You can't configure access control using
+%% `CreateAccessControlConfiguration' for an Amazon Kendra Gen AI
+%% Enterprise
+%% Edition index. Amazon Kendra will return a `ValidationException' error
+%% for a
+%% `Gen_AI_ENTERPRISE_EDITION' index.
 -spec create_access_control_configuration(aws_client:aws_client(), create_access_control_configuration_request()) ->
     {ok, create_access_control_configuration_response(), tuple()} |
     {error, any()} |
@@ -3703,7 +3713,7 @@ delete_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExperience">>, Input, Options).
 
-%% @doc Removes an FAQ from an index.
+%% @doc Removes a FAQ from an index.
 -spec delete_faq(aws_client:aws_client(), delete_faq_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3722,11 +3732,10 @@ delete_faq(Client, Input, Options)
 
 %% @doc Deletes an Amazon Kendra index.
 %%
-%% An exception is not thrown if the index is
-%% already being deleted. While the index is being deleted, the `Status'
-%% field
-%% returned by a call to the `DescribeIndex' API is set to
-%% `DELETING'.
+%% An exception is not thrown if the index is already
+%% being deleted. While the index is being deleted, the `Status' field
+%% returned by a
+%% call to the `DescribeIndex' API is set to `DELETING'.
 -spec delete_index(aws_client:aws_client(), delete_index_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3743,8 +3752,7 @@ delete_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIndex">>, Input, Options).
 
-%% @doc Deletes a group so that all users and sub groups that belong to the
-%% group can no
+%% @doc Deletes a group so that all users that belong to the group can no
 %% longer access documents only available to that group.
 %%
 %% For example, after deleting the group &quot;Summer Interns&quot;, all
@@ -3886,7 +3894,7 @@ describe_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExperience">>, Input, Options).
 
-%% @doc Gets information about an FAQ list.
+%% @doc Gets information about a FAQ.
 -spec describe_faq(aws_client:aws_client(), describe_faq_request()) ->
     {ok, describe_faq_response(), tuple()} |
     {error, any()} |
@@ -4251,7 +4259,7 @@ list_experiences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExperiences">>, Input, Options).
 
-%% @doc Gets a list of FAQ lists associated with an index.
+%% @doc Gets a list of FAQs associated with an index.
 -spec list_faqs(aws_client:aws_client(), list_faqs_request()) ->
     {ok, list_faqs_response(), tuple()} |
     {error, any()} |
@@ -4355,10 +4363,10 @@ list_query_suggestions_block_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQuerySuggestionsBlockLists">>, Input, Options).
 
-%% @doc Gets a list of tags associated with a specified resource.
+%% @doc Gets a list of tags associated with a resource.
 %%
-%% Indexes, FAQs, and data sources
-%% can have tags associated with them.
+%% Indexes, FAQs, data sources, and
+%% other resources can have tags associated with them.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -4472,6 +4480,14 @@ put_principal_mapping(Client, Input, Options)
 %% returned. If you filter result type to only answers, a maximum of three
 %% results are
 %% returned.
+%%
+%% If you're using an Amazon Kendra Gen AI Enterprise Edition index, you
+%% can only use
+%% `ATTRIBUTE_FILTER' to filter search results by user context. If
+%% you're
+%% using an Amazon Kendra Gen AI Enterprise Edition index and you try to use
+%% `USER_TOKEN' to configure user context policy, Amazon Kendra returns a
+%% `ValidationException' error.
 -spec query(aws_client:aws_client(), query_request()) ->
     {ok, query_result(), tuple()} |
     {error, any()} |
@@ -4534,6 +4550,14 @@ query(Client, Input, Options)
 %% Adjusting
 %% capacity:
 %% https://docs.aws.amazon.com/kendra/latest/dg/adjusting-capacity.html.
+%%
+%% If you're using an Amazon Kendra Gen AI Enterprise Edition index, you
+%% can only use
+%% `ATTRIBUTE_FILTER' to filter search results by user context. If
+%% you're using an Amazon Kendra Gen AI Enterprise Edition index and you
+%% try to use
+%% `USER_TOKEN' to configure user context policy, Amazon Kendra returns a
+%% `ValidationException' error.
 -spec retrieve(aws_client:aws_client(), retrieve_request()) ->
     {ok, retrieve_result(), tuple()} |
     {error, any()} |
@@ -4618,11 +4642,11 @@ submit_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitFeedback">>, Input, Options).
 
-%% @doc Adds the specified tag to the specified index, FAQ, or data source
-%% resource.
+%% @doc Adds the specified tag to the specified index, FAQ, data source, or
+%% other resource.
 %%
-%% If the tag
-%% already exists, the existing value is replaced with the new value.
+%% If
+%% the tag already exists, the existing value is replaced with the new value.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -4639,7 +4663,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes a tag from an index, FAQ, or a data source.
+%% @doc Removes a tag from an index, FAQ, data source, or other resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -4694,6 +4718,13 @@ untag_resource(Client, Input, Options)
 %% file. Amazon Kendra currently only supports access control configuration
 %% for S3
 %% data sources and documents indexed using the `BatchPutDocument' API.
+%%
+%% You can't configure access control using
+%% `CreateAccessControlConfiguration' for an Amazon Kendra Gen AI
+%% Enterprise
+%% Edition index. Amazon Kendra will return a `ValidationException' error
+%% for a
+%% `Gen_AI_ENTERPRISE_EDITION' index.
 -spec update_access_control_configuration(aws_client:aws_client(), update_access_control_configuration_request()) ->
     {ok, update_access_control_configuration_response(), tuple()} |
     {error, any()} |

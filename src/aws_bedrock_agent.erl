@@ -196,6 +196,8 @@
 
 %% Example:
 %% knowledge_base_configuration() :: #{
+%%   <<"kendraKnowledgeBaseConfiguration">> => kendra_knowledge_base_configuration(),
+%%   <<"sqlKnowledgeBaseConfiguration">> => sql_knowledge_base_configuration(),
 %%   <<"type">> => list(any()),
 %%   <<"vectorKnowledgeBaseConfiguration">> => vector_knowledge_base_configuration()
 %% }
@@ -248,6 +250,14 @@
 %%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()())
 %% }
 -type update_flow_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_serverless_auth_configuration() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"usernamePasswordSecretArn">> => string()
+%% }
+-type redshift_serverless_auth_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -328,6 +338,14 @@
 %%   <<"storageDays">> => integer()
 %% }
 -type memory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_generation_context() :: #{
+%%   <<"curatedQueries">> => list(curated_query()()),
+%%   <<"tables">> => list(query_generation_table()())
+%% }
+-type query_generation_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -412,6 +430,15 @@
 %%   <<"serviceConfiguration">> => list()
 %% }
 -type storage_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_query_engine_storage_configuration() :: #{
+%%   <<"awsDataCatalogConfiguration">> => redshift_query_engine_aws_data_catalog_storage_configuration(),
+%%   <<"redshiftConfiguration">> => redshift_query_engine_redshift_storage_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type redshift_query_engine_storage_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -685,6 +712,15 @@
 
 
 %% Example:
+%% query_generation_column() :: #{
+%%   <<"description">> => string(),
+%%   <<"inclusion">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type query_generation_column() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_knowledge_base_documents_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -705,6 +741,14 @@
 %%   <<"value">> => metadata_attribute_value()
 %% }
 -type metadata_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% curated_query() :: #{
+%%   <<"naturalLanguage">> => string(),
+%%   <<"sql">> => string()
+%% }
+-type curated_query() :: #{binary() => any()}.
 
 
 %% Example:
@@ -739,7 +783,7 @@
 %%   <<"knowledgeBaseConfiguration">> := knowledge_base_configuration(),
 %%   <<"name">> := string(),
 %%   <<"roleArn">> := string(),
-%%   <<"storageConfiguration">> := storage_configuration()
+%%   <<"storageConfiguration">> => storage_configuration()
 %% }
 -type update_knowledge_base_request() :: #{binary() => any()}.
 
@@ -924,6 +968,7 @@
 
 %% Example:
 %% parsing_configuration() :: #{
+%%   <<"bedrockDataAutomationConfiguration">> => bedrock_data_automation_configuration(),
 %%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration(),
 %%   <<"parsingStrategy">> => list(any())
 %% }
@@ -999,6 +1044,15 @@
 
 
 %% Example:
+%% redshift_provisioned_auth_configuration() :: #{
+%%   <<"databaseUser">> => [string()],
+%%   <<"type">> => list(any()),
+%%   <<"usernamePasswordSecretArn">> => string()
+%% }
+-type redshift_provisioned_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_flow_node_configuration() :: #{
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"knowledgeBaseId">> => string(),
@@ -1019,6 +1073,15 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type create_flow_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_query_engine_configuration() :: #{
+%%   <<"provisionedConfiguration">> => redshift_provisioned_configuration(),
+%%   <<"serverlessConfiguration">> => redshift_serverless_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type redshift_query_engine_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1086,6 +1149,13 @@
 
 
 %% Example:
+%% kendra_knowledge_base_configuration() :: #{
+%%   <<"kendraIndexArn">> => string()
+%% }
+-type kendra_knowledge_base_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% hierarchical_chunking_configuration() :: #{
 %%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()()),
 %%   <<"overlapTokens">> => [integer()]
@@ -1125,6 +1195,14 @@
 %%   <<"agentActionGroup">> => agent_action_group()
 %% }
 -type get_agent_action_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_provisioned_configuration() :: #{
+%%   <<"authConfiguration">> => redshift_provisioned_auth_configuration(),
+%%   <<"clusterIdentifier">> => string()
+%% }
+-type redshift_provisioned_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1229,7 +1307,7 @@
 %%   <<"knowledgeBaseConfiguration">> := knowledge_base_configuration(),
 %%   <<"name">> := string(),
 %%   <<"roleArn">> := string(),
-%%   <<"storageConfiguration">> := storage_configuration(),
+%%   <<"storageConfiguration">> => storage_configuration(),
 %%   <<"tags">> => map()
 %% }
 -type create_knowledge_base_request() :: #{binary() => any()}.
@@ -1537,6 +1615,7 @@
 %% Example:
 %% bedrock_foundation_model_configuration() :: #{
 %%   <<"modelArn">> => string(),
+%%   <<"parsingModality">> => list(any()),
 %%   <<"parsingPrompt">> => parsing_prompt()
 %% }
 -type bedrock_foundation_model_configuration() :: #{binary() => any()}.
@@ -2156,6 +2235,14 @@
 
 
 %% Example:
+%% sql_knowledge_base_configuration() :: #{
+%%   <<"redshiftConfiguration">> => redshift_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type sql_knowledge_base_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_prompt_request() :: #{
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"defaultVariant">> => string(),
@@ -2481,6 +2568,14 @@
 
 
 %% Example:
+%% redshift_serverless_configuration() :: #{
+%%   <<"authConfiguration">> => redshift_serverless_auth_configuration(),
+%%   <<"workgroupArn">> => string()
+%% }
+-type redshift_serverless_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_knowledge_base() :: #{
 %%   <<"agentId">> => string(),
 %%   <<"agentVersion">> => string(),
@@ -2515,6 +2610,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_data_automation_configuration() :: #{
+%%   <<"parsingModality">> => list(any())
+%% }
+-type bedrock_data_automation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2589,6 +2691,14 @@
 %%   <<"agentVersion">> => agent_version()
 %% }
 -type get_agent_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% supplemental_data_storage_location() :: #{
+%%   <<"s3Location">> => s3_location(),
+%%   <<"type">> => list(any())
+%% }
+-type supplemental_data_storage_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2668,6 +2778,13 @@
 %% }
 -type prompt_flow_node_resource_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% redshift_query_engine_redshift_storage_configuration() :: #{
+%%   <<"databaseName">> => string()
+%% }
+-type redshift_query_engine_redshift_storage_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_flow_request() :: #{}
 -type get_flow_request() :: #{}.
@@ -2735,6 +2852,15 @@
 
 
 %% Example:
+%% redshift_configuration() :: #{
+%%   <<"queryEngineConfiguration">> => redshift_query_engine_configuration(),
+%%   <<"queryGenerationConfiguration">> => query_generation_configuration(),
+%%   <<"storageConfigurations">> => list(redshift_query_engine_storage_configuration()())
+%% }
+-type redshift_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_agent_knowledge_base_response() :: #{
 %%   <<"agentKnowledgeBase">> => agent_knowledge_base()
 %% }
@@ -2768,7 +2894,8 @@
 %% Example:
 %% vector_knowledge_base_configuration() :: #{
 %%   <<"embeddingModelArn">> => string(),
-%%   <<"embeddingModelConfiguration">> => embedding_model_configuration()
+%%   <<"embeddingModelConfiguration">> => embedding_model_configuration(),
+%%   <<"supplementalDataStorageConfiguration">> => supplemental_data_storage_configuration()
 %% }
 -type vector_knowledge_base_configuration() :: #{binary() => any()}.
 
@@ -2778,6 +2905,13 @@
 %%   <<"dataSource">> => data_source()
 %% }
 -type get_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_query_engine_aws_data_catalog_storage_configuration() :: #{
+%%   <<"tableNames">> => list(string()())
+%% }
+-type redshift_query_engine_aws_data_catalog_storage_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2794,6 +2928,16 @@
 %%   <<"agentVersion">> => string()
 %% }
 -type delete_agent_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_generation_table() :: #{
+%%   <<"columns">> => list(query_generation_column()()),
+%%   <<"description">> => string(),
+%%   <<"inclusion">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type query_generation_table() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2900,6 +3044,13 @@
 
 
 %% Example:
+%% supplemental_data_storage_configuration() :: #{
+%%   <<"storageLocations">> => list(supplemental_data_storage_location()())
+%% }
+-type supplemental_data_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% message() :: #{
 %%   <<"content">> => list(list()()),
 %%   <<"role">> => list(any())
@@ -2919,6 +3070,14 @@
 %%   <<"templateType">> => list(any())
 %% }
 -type prompt_variant() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_generation_configuration() :: #{
+%%   <<"executionTimeoutSeconds">> => integer(),
+%%   <<"generationContext">> => query_generation_context()
+%% }
+-type query_generation_configuration() :: #{binary() => any()}.
 
 -type associate_agent_collaborator_errors() ::
     throttling_exception() | 

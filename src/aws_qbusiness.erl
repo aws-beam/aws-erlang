@@ -1741,9 +1741,7 @@
 %%   <<"contentSource">> := list(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"queryText">> := string(),
-%%   <<"userGroups">> => list(string()()),
-%%   <<"userId">> => string()
+%%   <<"queryText">> := string()
 %% }
 -type search_relevant_content_request() :: #{binary() => any()}.
 
@@ -5232,8 +5230,8 @@ put_group(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% This operation takes a
 %% search query text, the Q Business application identifier, and optional
 %% filters
-%% (such as user ID, user groups, content source, and maximum results) as
-%% input. It returns a list of
+%% (such as content source and maximum results) as input. It returns a list
+%% of
 %% relevant content items, where each item includes the content text, the
 %% unique document identifier,
 %% the document title, the document URI, any relevant document attributes,
@@ -5267,11 +5265,9 @@ search_relevant_content(Client, ApplicationId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    QueryMapping = [
-                     {<<"userGroups">>, <<"userGroups">>},
-                     {<<"userId">>, <<"userId">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a data source connector synchronization job.
