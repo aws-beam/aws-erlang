@@ -2922,6 +2922,7 @@
 %%   <<"Bitrate">> => integer(),
 %%   <<"TimecodeBurninSettings">> => timecode_burnin_settings(),
 %%   <<"TileHeight">> => integer(),
+%%   <<"Deblocking">> => list(any()),
 %%   <<"Profile">> => list(any()),
 %%   <<"RateControlMode">> => list(any()),
 %%   <<"ParNumerator">> => integer(),

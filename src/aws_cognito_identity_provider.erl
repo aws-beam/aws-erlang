@@ -1139,7 +1139,7 @@
 
 %% Example:
 %% update_user_pool_domain_request() :: #{
-%%   <<"CustomDomainConfig">> := custom_domain_config_type(),
+%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
 %%   <<"Domain">> := string(),
 %%   <<"ManagedLoginVersion">> => integer(),
 %%   <<"UserPoolId">> := string()

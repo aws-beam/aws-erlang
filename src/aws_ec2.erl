@@ -1083,6 +1083,8 @@
          modify_instance_metadata_defaults/3,
          modify_instance_metadata_options/2,
          modify_instance_metadata_options/3,
+         modify_instance_network_performance_options/2,
+         modify_instance_network_performance_options/3,
          modify_instance_placement/2,
          modify_instance_placement/3,
          modify_ipam/2,
@@ -1764,6 +1766,12 @@
 %%   <<"VpcId">> => string()
 %% }
 -type describe_vpc_attribute_result() :: #{binary() => any()}.
+
+%% Example:
+%% instance_network_performance_options_request() :: #{
+%%   <<"BandwidthWeighting">> => list(any())
+%% }
+-type instance_network_performance_options_request() :: #{binary() => any()}.
 
 %% Example:
 %% modify_id_format_request() :: #{
@@ -3929,6 +3937,12 @@
 -type active_instance() :: #{binary() => any()}.
 
 %% Example:
+%% launch_template_network_performance_options_request() :: #{
+%%   <<"BandwidthWeighting">> => list(any())
+%% }
+-type launch_template_network_performance_options_request() :: #{binary() => any()}.
+
+%% Example:
 %% ipam_external_resource_verification_token() :: #{
 %%   <<"IpamArn">> => string(),
 %%   <<"IpamExternalResourceVerificationTokenArn">> => string(),
@@ -4748,6 +4762,14 @@
 %%   <<"InstanceMetadataOptions">> => instance_metadata_options_response()
 %% }
 -type modify_instance_metadata_options_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_instance_network_performance_request() :: #{
+%%   <<"BandwidthWeighting">> := list(any()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceId">> := string()
+%% }
+-type modify_instance_network_performance_request() :: #{binary() => any()}.
 
 %% Example:
 %% network_interface() :: #{
@@ -6258,6 +6280,7 @@
 %%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
 %%   <<"ElasticGpuSpecification">> => list(elastic_gpu_specification()()),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"NetworkPerformanceOptions">> => instance_network_performance_options_request(),
 %%   <<"MaintenanceOptions">> => instance_maintenance_options_request(),
 %%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()()),
 %%   <<"KernelId">> => string(),
@@ -7171,6 +7194,13 @@
 %%   <<"Return">> => boolean()
 %% }
 -type associate_capacity_reservation_billing_owner_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_instance_network_performance_result() :: #{
+%%   <<"BandwidthWeighting">> => list(any()),
+%%   <<"InstanceId">> => string()
+%% }
+-type modify_instance_network_performance_result() :: #{binary() => any()}.
 
 %% Example:
 %% ipv6_prefix_specification_request() :: #{
@@ -8636,6 +8666,12 @@
 %%   <<"TransitGatewayRouteTableId">> := string()
 %% }
 -type disassociate_transit_gateway_route_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template_network_performance_options() :: #{
+%%   <<"BandwidthWeighting">> => list(any())
+%% }
+-type launch_template_network_performance_options() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_classic_link_dns_support_result() :: #{
@@ -10704,38 +10740,39 @@
 
 %% Example:
 %% response_launch_template_data() :: #{
-%%   <<"BlockDeviceMappings">> => list(launch_template_block_device_mapping()()),
-%%   <<"CapacityReservationSpecification">> => launch_template_capacity_reservation_specification_response(),
-%%   <<"CpuOptions">> => launch_template_cpu_options(),
-%%   <<"CreditSpecification">> => credit_specification(),
-%%   <<"DisableApiStop">> => boolean(),
-%%   <<"DisableApiTermination">> => boolean(),
-%%   <<"EbsOptimized">> => boolean(),
-%%   <<"ElasticGpuSpecifications">> => list(elastic_gpu_specification_response()()),
-%%   <<"ElasticInferenceAccelerators">> => list(launch_template_elastic_inference_accelerator_response()()),
-%%   <<"EnclaveOptions">> => launch_template_enclave_options(),
-%%   <<"HibernationOptions">> => launch_template_hibernation_options(),
-%%   <<"IamInstanceProfile">> => launch_template_iam_instance_profile_specification(),
-%%   <<"ImageId">> => string(),
-%%   <<"InstanceInitiatedShutdownBehavior">> => list(any()),
-%%   <<"InstanceMarketOptions">> => launch_template_instance_market_options(),
-%%   <<"InstanceRequirements">> => instance_requirements(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"KernelId">> => string(),
-%%   <<"KeyName">> => string(),
-%%   <<"LicenseSpecifications">> => list(launch_template_license_configuration()()),
-%%   <<"MaintenanceOptions">> => launch_template_instance_maintenance_options(),
-%%   <<"MetadataOptions">> => launch_template_instance_metadata_options(),
-%%   <<"Monitoring">> => launch_templates_monitoring(),
-%%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification()()),
-%%   <<"Operator">> => operator_response(),
 %%   <<"Placement">> => launch_template_placement(),
-%%   <<"PrivateDnsNameOptions">> => launch_template_private_dns_name_options(),
-%%   <<"RamDiskId">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"Monitoring">> => launch_templates_monitoring(),
 %%   <<"TagSpecifications">> => list(launch_template_tag_specification()()),
-%%   <<"UserData">> => string()
+%%   <<"NetworkPerformanceOptions">> => launch_template_network_performance_options(),
+%%   <<"MaintenanceOptions">> => launch_template_instance_maintenance_options(),
+%%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification()()),
+%%   <<"KernelId">> => string(),
+%%   <<"RamDiskId">> => string(),
+%%   <<"DisableApiStop">> => boolean(),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"CreditSpecification">> => credit_specification(),
+%%   <<"KeyName">> => string(),
+%%   <<"BlockDeviceMappings">> => list(launch_template_block_device_mapping()()),
+%%   <<"PrivateDnsNameOptions">> => launch_template_private_dns_name_options(),
+%%   <<"InstanceInitiatedShutdownBehavior">> => list(any()),
+%%   <<"MetadataOptions">> => launch_template_instance_metadata_options(),
+%%   <<"EnclaveOptions">> => launch_template_enclave_options(),
+%%   <<"CapacityReservationSpecification">> => launch_template_capacity_reservation_specification_response(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"HibernationOptions">> => launch_template_hibernation_options(),
+%%   <<"ElasticGpuSpecifications">> => list(elastic_gpu_specification_response()()),
+%%   <<"LicenseSpecifications">> => list(launch_template_license_configuration()()),
+%%   <<"CpuOptions">> => launch_template_cpu_options(),
+%%   <<"ElasticInferenceAccelerators">> => list(launch_template_elastic_inference_accelerator_response()()),
+%%   <<"IamInstanceProfile">> => launch_template_iam_instance_profile_specification(),
+%%   <<"InstanceRequirements">> => instance_requirements(),
+%%   <<"UserData">> => string(),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"DisableApiTermination">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Operator">> => operator_response(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceMarketOptions">> => launch_template_instance_market_options()
 %% }
 -type response_launch_template_data() :: #{binary() => any()}.
 
@@ -11922,6 +11959,7 @@
 
 %% Example:
 %% network_info() :: #{
+%%   <<"BandwidthWeightings">> => list(list(any())()),
 %%   <<"DefaultNetworkCardIndex">> => integer(),
 %%   <<"EfaInfo">> => efa_info(),
 %%   <<"EfaSupported">> => boolean(),
@@ -13012,38 +13050,39 @@
 
 %% Example:
 %% request_launch_template_data() :: #{
-%%   <<"BlockDeviceMappings">> => list(launch_template_block_device_mapping_request()()),
-%%   <<"CapacityReservationSpecification">> => launch_template_capacity_reservation_specification_request(),
-%%   <<"CpuOptions">> => launch_template_cpu_options_request(),
-%%   <<"CreditSpecification">> => credit_specification_request(),
-%%   <<"DisableApiStop">> => boolean(),
-%%   <<"DisableApiTermination">> => boolean(),
-%%   <<"EbsOptimized">> => boolean(),
-%%   <<"ElasticGpuSpecifications">> => list(elastic_gpu_specification()()),
-%%   <<"ElasticInferenceAccelerators">> => list(launch_template_elastic_inference_accelerator()()),
-%%   <<"EnclaveOptions">> => launch_template_enclave_options_request(),
-%%   <<"HibernationOptions">> => launch_template_hibernation_options_request(),
-%%   <<"IamInstanceProfile">> => launch_template_iam_instance_profile_specification_request(),
-%%   <<"ImageId">> => string(),
-%%   <<"InstanceInitiatedShutdownBehavior">> => list(any()),
-%%   <<"InstanceMarketOptions">> => launch_template_instance_market_options_request(),
-%%   <<"InstanceRequirements">> => instance_requirements_request(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"KernelId">> => string(),
-%%   <<"KeyName">> => string(),
-%%   <<"LicenseSpecifications">> => list(launch_template_license_configuration_request()()),
-%%   <<"MaintenanceOptions">> => launch_template_instance_maintenance_options_request(),
-%%   <<"MetadataOptions">> => launch_template_instance_metadata_options_request(),
-%%   <<"Monitoring">> => launch_templates_monitoring_request(),
-%%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification_request()()),
-%%   <<"Operator">> => operator_request(),
 %%   <<"Placement">> => launch_template_placement_request(),
-%%   <<"PrivateDnsNameOptions">> => launch_template_private_dns_name_options_request(),
-%%   <<"RamDiskId">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"Monitoring">> => launch_templates_monitoring_request(),
 %%   <<"TagSpecifications">> => list(launch_template_tag_specification_request()()),
-%%   <<"UserData">> => string()
+%%   <<"NetworkPerformanceOptions">> => launch_template_network_performance_options_request(),
+%%   <<"MaintenanceOptions">> => launch_template_instance_maintenance_options_request(),
+%%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification_request()()),
+%%   <<"KernelId">> => string(),
+%%   <<"RamDiskId">> => string(),
+%%   <<"DisableApiStop">> => boolean(),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"CreditSpecification">> => credit_specification_request(),
+%%   <<"KeyName">> => string(),
+%%   <<"BlockDeviceMappings">> => list(launch_template_block_device_mapping_request()()),
+%%   <<"PrivateDnsNameOptions">> => launch_template_private_dns_name_options_request(),
+%%   <<"InstanceInitiatedShutdownBehavior">> => list(any()),
+%%   <<"MetadataOptions">> => launch_template_instance_metadata_options_request(),
+%%   <<"EnclaveOptions">> => launch_template_enclave_options_request(),
+%%   <<"CapacityReservationSpecification">> => launch_template_capacity_reservation_specification_request(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"HibernationOptions">> => launch_template_hibernation_options_request(),
+%%   <<"ElasticGpuSpecifications">> => list(elastic_gpu_specification()()),
+%%   <<"LicenseSpecifications">> => list(launch_template_license_configuration_request()()),
+%%   <<"CpuOptions">> => launch_template_cpu_options_request(),
+%%   <<"ElasticInferenceAccelerators">> => list(launch_template_elastic_inference_accelerator()()),
+%%   <<"IamInstanceProfile">> => launch_template_iam_instance_profile_specification_request(),
+%%   <<"InstanceRequirements">> => instance_requirements_request(),
+%%   <<"UserData">> => string(),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"DisableApiTermination">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Operator">> => operator_request(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceMarketOptions">> => launch_template_instance_market_options_request()
 %% }
 -type request_launch_template_data() :: #{binary() => any()}.
 
@@ -13783,6 +13822,7 @@
 %%   <<"Monitoring">> => monitoring(),
 %%   <<"SourceDestCheck">> => boolean(),
 %%   <<"SubnetId">> => string(),
+%%   <<"NetworkPerformanceOptions">> => instance_network_performance_options(),
 %%   <<"MaintenanceOptions">> => instance_maintenance_options(),
 %%   <<"ElasticGpuAssociations">> => list(elastic_gpu_association()()),
 %%   <<"SpotInstanceRequestId">> => string(),
@@ -14882,6 +14922,12 @@
 %%   <<"PoolId">> := string()
 %% }
 -type deprovision_public_ipv4_pool_cidr_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_network_performance_options() :: #{
+%%   <<"BandwidthWeighting">> => list(any())
+%% }
+-type instance_network_performance_options() :: #{binary() => any()}.
 
 %% Example:
 %% register_transit_gateway_multicast_group_sources_request() :: #{
@@ -26510,7 +26556,7 @@ describe_instance_status(Client, Input, Options)
 %%
 %% `p3dn.24xlarge' | `p4d.24xlarge' |
 %% `p4de.24xlarge' | `p5.48xlarge' |
-%% `p5e.48xlarge'
+%% `p5e.48xlarge' | `p5en.48xlarge'
 %%
 %% `trn1.2xlarge' | `trn1.32xlarge' |
 %% `trn1n.32xlarge'
@@ -32325,6 +32371,23 @@ modify_instance_metadata_options(Client, Input)
 modify_instance_metadata_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyInstanceMetadataOptions">>, Input, Options).
+
+%% @doc Change the configuration of the network performance options for an
+%% existing
+%% instance.
+-spec modify_instance_network_performance_options(aws_client:aws_client(), modify_instance_network_performance_request()) ->
+    {ok, modify_instance_network_performance_result(), tuple()} |
+    {error, any()}.
+modify_instance_network_performance_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_instance_network_performance_options(Client, Input, []).
+
+-spec modify_instance_network_performance_options(aws_client:aws_client(), modify_instance_network_performance_request(), proplists:proplist()) ->
+    {ok, modify_instance_network_performance_result(), tuple()} |
+    {error, any()}.
+modify_instance_network_performance_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyInstanceNetworkPerformanceOptions">>, Input, Options).
 
 %% @doc Modifies the placement attributes for a specified instance.
 %%
