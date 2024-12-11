@@ -31,8 +31,8 @@
 %% Guide.
 %%
 %% You can use an endpoint to connect programmatically to an Amazon Web
-%% Services service. For
-%% a list of Amazon Connect endpoints, see Amazon Connect Endpoints:
+%% Services service. For a
+%% list of Amazon Connect endpoints, see Amazon Connect Endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -module(aws_connect).
 
@@ -108,6 +108,8 @@
          create_predefined_attribute/4,
          create_prompt/3,
          create_prompt/4,
+         create_push_notification_registration/3,
+         create_push_notification_registration/4,
          create_queue/3,
          create_queue/4,
          create_quick_connect/3,
@@ -158,6 +160,8 @@
          delete_predefined_attribute/5,
          delete_prompt/4,
          delete_prompt/5,
+         delete_push_notification_registration/4,
+         delete_push_notification_registration/5,
          delete_queue/4,
          delete_queue/5,
          delete_quick_connect/4,
@@ -1641,6 +1645,13 @@
 
 
 %% Example:
+%% create_push_notification_registration_response() :: #{
+%%   <<"RegistrationId">> => string()
+%% }
+-type create_push_notification_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_hours_of_operation_request() :: #{
 %%   <<"Config">> := list(hours_of_operation_config()()),
 %%   <<"Description">> => string(),
@@ -2187,6 +2198,15 @@
 %% }
 -type update_phone_number_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% contact_configuration() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"IncludeRawMessage">> => boolean(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type contact_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_user_hierarchy_group_request() :: #{}
 -type delete_user_hierarchy_group_request() :: #{}.
@@ -2569,6 +2589,10 @@
 %%   <<"Id">> => string()
 %% }
 -type queue_info() :: #{binary() => any()}.
+
+%% Example:
+%% delete_push_notification_registration_response() :: #{}
+-type delete_push_notification_registration_response() :: #{}.
 
 
 %% Example:
@@ -3995,6 +4019,17 @@
 
 
 %% Example:
+%% create_push_notification_registration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactConfiguration">> := contact_configuration(),
+%%   <<"DeviceToken">> := string(),
+%%   <<"DeviceType">> := list(any()),
+%%   <<"PinpointAppArn">> := string()
+%% }
+-type create_push_notification_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_contact_streaming_response() :: #{
 %%   <<"StreamingId">> => string()
 %% }
@@ -5147,6 +5182,13 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_agent_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_push_notification_registration_request() :: #{
+%%   <<"ContactId">> := string()
+%% }
+-type delete_push_notification_registration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7973,6 +8015,14 @@
     invalid_request_exception() | 
     internal_service_exception().
 
+-type create_push_notification_registration_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type create_queue_errors() ::
     duplicate_resource_exception() | 
     limit_exceeded_exception() | 
@@ -8174,6 +8224,13 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_push_notification_registration_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -11158,6 +11215,48 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates registration for a device token and a chat contact to receive
+%% real-time push
+%% notifications.
+%%
+%% For more information about push notifications, see Set up push
+%% notifications in Amazon Connect for mobile chat:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/set-up-push-notifications-for-mobile-chat.html
+%% in the Amazon Connect
+%% Administrator Guide.
+-spec create_push_notification_registration(aws_client:aws_client(), binary() | list(), create_push_notification_registration_request()) ->
+    {ok, create_push_notification_registration_response(), tuple()} |
+    {error, any()} |
+    {error, create_push_notification_registration_errors(), tuple()}.
+create_push_notification_registration(Client, InstanceId, Input) ->
+    create_push_notification_registration(Client, InstanceId, Input, []).
+
+-spec create_push_notification_registration(aws_client:aws_client(), binary() | list(), create_push_notification_registration_request(), proplists:proplist()) ->
+    {ok, create_push_notification_registration_response(), tuple()} |
+    {error, any()} |
+    {error, create_push_notification_registration_errors(), tuple()}.
+create_push_notification_registration(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/push-notification/", aws_util:encode_uri(InstanceId), "/registrations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -12149,6 +12248,41 @@ delete_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes registration for a device token and a chat contact.
+-spec delete_push_notification_registration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_push_notification_registration_request()) ->
+    {ok, delete_push_notification_registration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_push_notification_registration_errors(), tuple()}.
+delete_push_notification_registration(Client, InstanceId, RegistrationId, Input) ->
+    delete_push_notification_registration(Client, InstanceId, RegistrationId, Input, []).
+
+-spec delete_push_notification_registration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_push_notification_registration_request(), proplists:proplist()) ->
+    {ok, delete_push_notification_registration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_push_notification_registration_errors(), tuple()}.
+delete_push_notification_registration(Client, InstanceId, RegistrationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/push-notification/", aws_util:encode_uri(InstanceId), "/registrations/", aws_util:encode_uri(RegistrationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"contactId">>, <<"ContactId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a queue.
@@ -13194,8 +13328,7 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 %% traffic distribution group, you must provide a full phone number ARN. If a
 %% UUID is provided
 %% in
-%% this scenario, you receive a
-%% `ResourceNotFoundException'.
+%% this scenario, you receive a `ResourceNotFoundException'.
 -spec describe_phone_number(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_phone_number_response(), tuple()} |
     {error, any()} |
@@ -14771,11 +14904,11 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Imports a claimed phone number from an external service, such as
-%% Amazon Web Services End User Messaging, into an
-%% Amazon Connect instance.
+%% Amazon Web Services End User
+%% Messaging, into an Amazon Connect instance.
 %%
-%% You can call this API only in the same Amazon Web Services Region
-%% where the Amazon Connect instance was created.
+%% You can call this API only in the same Amazon Web Services Region where
+%% the Amazon Connect instance was created.
 %%
 %% Call the DescribePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
@@ -17977,8 +18110,8 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
 %% action.
 %%
 %% Access to this API is currently restricted to Amazon Web Services End User
-%% Messaging for supporting SMS
-%% integration.
+%% Messaging for
+%% supporting SMS integration.
 -spec send_chat_integration_event(aws_client:aws_client(), send_chat_integration_event_request()) ->
     {ok, send_chat_integration_event_response(), tuple()} |
     {error, any()} |

@@ -276,6 +276,7 @@
 
 %% Example:
 %% dkim_signing_attributes() :: #{
+%%   <<"DomainSigningAttributesOrigin">> => list(any()),
 %%   <<"DomainSigningPrivateKey">> => string(),
 %%   <<"DomainSigningSelector">> => string(),
 %%   <<"NextSigningKeyLength">> => list(any())

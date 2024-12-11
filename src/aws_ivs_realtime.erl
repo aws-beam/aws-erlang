@@ -657,8 +657,9 @@
 
 %% Example:
 %% auto_participant_recording_configuration() :: #{
-%%   <<"mediaTypes">> => list(string()()),
-%%   <<"storageConfigurationArn">> => string()
+%%   <<"mediaTypes">> => list(list(any())()),
+%%   <<"storageConfigurationArn">> => string(),
+%%   <<"thumbnailConfiguration">> => participant_thumbnail_configuration()
 %% }
 -type auto_participant_recording_configuration() :: #{binary() => any()}.
 
@@ -674,7 +675,8 @@
 %% s3_destination_configuration() :: #{
 %%   <<"encoderConfigurationArns">> => list(string()()),
 %%   <<"recordingConfiguration">> => recording_configuration(),
-%%   <<"storageConfigurationArn">> => string()
+%%   <<"storageConfigurationArn">> => string(),
+%%   <<"thumbnailConfigurations">> => list(composition_thumbnail_configuration()())
 %% }
 -type s3_destination_configuration() :: #{binary() => any()}.
 
@@ -705,6 +707,15 @@
 %%   <<"stageSessions">> => list(stage_session_summary()())
 %% }
 -type list_stage_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_thumbnail_configuration() :: #{
+%%   <<"recordingMode">> => list(any()),
+%%   <<"storage">> => list(list(any())()),
+%%   <<"targetIntervalSeconds">> => integer()
+%% }
+-type participant_thumbnail_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -917,6 +928,14 @@
 %%   <<"arn">> := string()
 %% }
 -type get_ingest_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_thumbnail_configuration() :: #{
+%%   <<"storage">> => list(list(any())()),
+%%   <<"targetIntervalSeconds">> => integer()
+%% }
+-type composition_thumbnail_configuration() :: #{binary() => any()}.
 
 
 %% Example:
