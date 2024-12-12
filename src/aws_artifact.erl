@@ -17,6 +17,9 @@
          get_term_for_report/2,
          get_term_for_report/4,
          get_term_for_report/5,
+         list_customer_agreements/1,
+         list_customer_agreements/3,
+         list_customer_agreements/4,
          list_reports/1,
          list_reports/3,
          list_reports/4,
@@ -36,7 +39,7 @@
 
 %% Example:
 %% account_settings() :: #{
-%%   <<"notificationSubscriptionStatus">> => string()
+%%   <<"notificationSubscriptionStatus">> => list(any())
 %% }
 -type account_settings() :: #{binary() => any()}.
 
@@ -48,6 +51,25 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_agreement_summary() :: #{
+%%   <<"acceptanceTerms">> => list(string()()),
+%%   <<"agreementArn">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"awsAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"effectiveEnd">> => non_neg_integer(),
+%%   <<"effectiveStart">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"organizationArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"terminateTerms">> => list(string()()),
+%%   <<"type">> => list(any())
+%% }
+-type customer_agreement_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_account_settings_request() :: #{}
@@ -117,6 +139,22 @@
 
 
 %% Example:
+%% list_customer_agreements_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_customer_agreements_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_customer_agreements_response() :: #{
+%%   <<"customerAgreements">> => list(customer_agreement_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_customer_agreements_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_reports_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -134,7 +172,7 @@
 
 %% Example:
 %% put_account_settings_request() :: #{
-%%   <<"notificationSubscriptionStatus">> => string()
+%%   <<"notificationSubscriptionStatus">> => list(any())
 %% }
 -type put_account_settings_request() :: #{binary() => any()}.
 
@@ -148,7 +186,7 @@
 
 %% Example:
 %% report_detail() :: #{
-%%   <<"acceptanceType">> => string(),
+%%   <<"acceptanceType">> => list(any()),
 %%   <<"arn">> => string(),
 %%   <<"category">> => string(),
 %%   <<"companyName">> => string(),
@@ -163,10 +201,10 @@
 %%   <<"productName">> => string(),
 %%   <<"sequenceNumber">> => float(),
 %%   <<"series">> => string(),
-%%   <<"state">> => string(),
+%%   <<"state">> => list(any()),
 %%   <<"statusMessage">> => string(),
 %%   <<"termArn">> => string(),
-%%   <<"uploadState">> => string(),
+%%   <<"uploadState">> => list(any()),
 %%   <<"version">> => float()
 %% }
 -type report_detail() :: #{binary() => any()}.
@@ -174,7 +212,7 @@
 
 %% Example:
 %% report_summary() :: #{
-%%   <<"acceptanceType">> => string(),
+%%   <<"acceptanceType">> => list(any()),
 %%   <<"arn">> => string(),
 %%   <<"category">> => string(),
 %%   <<"companyName">> => string(),
@@ -185,9 +223,9 @@
 %%   <<"periodStart">> => non_neg_integer(),
 %%   <<"productName">> => string(),
 %%   <<"series">> => string(),
-%%   <<"state">> => string(),
+%%   <<"state">> => list(any()),
 %%   <<"statusMessage">> => string(),
-%%   <<"uploadState">> => string(),
+%%   <<"uploadState">> => list(any()),
 %%   <<"version">> => float()
 %% }
 -type report_summary() :: #{binary() => any()}.
@@ -272,6 +310,12 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type list_customer_agreements_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type list_reports_errors() ::
@@ -454,6 +498,48 @@ get_term_for_report(Client, ReportId, QueryMap, HeadersMap, Options0)
       [
         {<<"reportId">>, ReportId},
         {<<"reportVersion">>, maps:get(<<"reportVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List active customer-agreements applicable to calling identity.
+-spec list_customer_agreements(aws_client:aws_client()) ->
+    {ok, list_customer_agreements_response(), tuple()} |
+    {error, any()} |
+    {error, list_customer_agreements_errors(), tuple()}.
+list_customer_agreements(Client)
+  when is_map(Client) ->
+    list_customer_agreements(Client, #{}, #{}).
+
+-spec list_customer_agreements(aws_client:aws_client(), map(), map()) ->
+    {ok, list_customer_agreements_response(), tuple()} |
+    {error, any()} |
+    {error, list_customer_agreements_errors(), tuple()}.
+list_customer_agreements(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_customer_agreements(Client, QueryMap, HeadersMap, []).
+
+-spec list_customer_agreements(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_customer_agreements_response(), tuple()} |
+    {error, any()} |
+    {error, list_customer_agreements_errors(), tuple()}.
+list_customer_agreements(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/customer-agreement/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

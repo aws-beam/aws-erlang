@@ -3,8 +3,8 @@
 
 %% @doc Amazon Timestream for InfluxDB is a managed time-series database
 %% engine that makes it easy for application developers and DevOps teams to
-%% run InfluxDB databases on AWS for near real-time time-series applications
-%% using open-source APIs.
+%% run InfluxDB databases on Amazon Web Services for near real-time
+%% time-series applications using open-source APIs.
 %%
 %% With Amazon Timestream for InfluxDB, it is easy to set up, operate, and
 %% scale time-series workloads that can answer queries with single-digit
@@ -65,6 +65,7 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -148,6 +149,7 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -183,6 +185,7 @@
 %%   <<"endpoint">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
 %%   <<"port">> => integer(),
 %%   <<"status">> => list(any())
 %% }
@@ -254,6 +257,7 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -312,6 +316,7 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
@@ -381,6 +386,7 @@
 %%   <<"deploymentType">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> := string(),
+%%   <<"networkType">> => list(any()),
 %%   <<"organization">> => string(),
 %%   <<"password">> := string(),
 %%   <<"port">> => integer(),
@@ -450,6 +456,7 @@
     resource_not_found_exception().
 
 -type tag_resource_errors() ::
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type untag_resource_errors() ::

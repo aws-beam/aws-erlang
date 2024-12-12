@@ -43,6 +43,8 @@
          create_export_job/3,
          create_import_job/2,
          create_import_job/3,
+         create_multi_region_endpoint/2,
+         create_multi_region_endpoint/3,
          delete_configuration_set/3,
          delete_configuration_set/4,
          delete_configuration_set_event_destination/4,
@@ -61,6 +63,8 @@
          delete_email_identity_policy/5,
          delete_email_template/3,
          delete_email_template/4,
+         delete_multi_region_endpoint/3,
+         delete_multi_region_endpoint/4,
          delete_suppressed_destination/3,
          delete_suppressed_destination/4,
          get_account/1,
@@ -123,6 +127,9 @@
          get_message_insights/2,
          get_message_insights/4,
          get_message_insights/5,
+         get_multi_region_endpoint/2,
+         get_multi_region_endpoint/4,
+         get_multi_region_endpoint/5,
          get_suppressed_destination/2,
          get_suppressed_destination/4,
          get_suppressed_destination/5,
@@ -156,6 +163,9 @@
          list_export_jobs/3,
          list_import_jobs/2,
          list_import_jobs/3,
+         list_multi_region_endpoints/1,
+         list_multi_region_endpoints/3,
+         list_multi_region_endpoints/4,
          list_recommendations/2,
          list_recommendations/3,
          list_suppressed_destinations/1,
@@ -237,6 +247,10 @@
 %% Example:
 %% create_custom_verification_email_template_response() :: #{}
 -type create_custom_verification_email_template_response() :: #{}.
+
+%% Example:
+%% delete_multi_region_endpoint_request() :: #{}
+-type delete_multi_region_endpoint_request() :: #{}.
 
 %% Example:
 %% put_configuration_set_tracking_options_response() :: #{}
@@ -583,9 +597,24 @@
 %% }
 -type suppressed_destination_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% route_details() :: #{
+%%   <<"Region">> => string()
+%% }
+-type route_details() :: #{binary() => any()}.
+
 %% Example:
 %% delete_email_identity_policy_response() :: #{}
 -type delete_email_identity_policy_response() :: #{}.
+
+
+%% Example:
+%% list_multi_region_endpoints_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_multi_region_endpoints_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -735,6 +764,14 @@
 %% Example:
 %% delete_configuration_set_event_destination_response() :: #{}
 -type delete_configuration_set_event_destination_response() :: #{}.
+
+
+%% Example:
+%% list_multi_region_endpoints_response() :: #{
+%%   <<"MultiRegionEndpoints">> => list(multi_region_endpoint()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multi_region_endpoints_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_account_vdm_attributes_response() :: #{}
@@ -1190,6 +1227,18 @@
 %% get_configuration_set_event_destinations_request() :: #{}
 -type get_configuration_set_event_destinations_request() :: #{}.
 
+
+%% Example:
+%% multi_region_endpoint() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EndpointId">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Regions">> => list(string()()),
+%%   <<"Status">> => list(any())
+%% }
+-type multi_region_endpoint() :: #{binary() => any()}.
+
 %% Example:
 %% put_configuration_set_vdm_options_response() :: #{}
 -type put_configuration_set_vdm_options_response() :: #{}.
@@ -1214,6 +1263,13 @@
 %%   <<"Type">> => list(any())
 %% }
 -type recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% details() :: #{
+%%   <<"RoutesDetails">> => list(route_details()())
+%% }
+-type details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1276,6 +1332,25 @@
 %%   <<"MessageId">> => string()
 %% }
 -type send_custom_verification_email_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% route() :: #{
+%%   <<"Region">> => string()
+%% }
+-type route() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_endpoint_response() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EndpointId">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Routes">> => list(route()()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_multi_region_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1412,6 +1487,13 @@
 
 
 %% Example:
+%% delete_multi_region_endpoint_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_multi_region_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% raw_message() :: #{
 %%   <<"Data">> => binary()
 %% }
@@ -1484,6 +1566,15 @@
 
 
 %% Example:
+%% create_multi_region_endpoint_request() :: #{
+%%   <<"Details">> := details(),
+%%   <<"EndpointName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_multi_region_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact() :: #{
 %%   <<"EmailAddress">> => string(),
 %%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
@@ -1535,6 +1626,7 @@
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"DefaultContent">> := bulk_email_content(),
 %%   <<"DefaultEmailTags">> => list(message_tag()()),
+%%   <<"EndpointId">> => string(),
 %%   <<"FeedbackForwardingEmailAddress">> => string(),
 %%   <<"FeedbackForwardingEmailAddressIdentityArn">> => string(),
 %%   <<"FromEmailAddress">> => string(),
@@ -1794,6 +1886,14 @@
 
 
 %% Example:
+%% create_multi_region_endpoint_response() :: #{
+%%   <<"EndpointId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_multi_region_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% sending_options() :: #{
 %%   <<"SendingEnabled">> => boolean()
 %% }
@@ -1861,6 +1961,10 @@
 %%   <<"ToAddresses">> => list(string()())
 %% }
 -type destination() :: #{binary() => any()}.
+
+%% Example:
+%% get_multi_region_endpoint_request() :: #{}
+-type get_multi_region_endpoint_request() :: #{}.
 
 
 %% Example:
@@ -2091,6 +2195,7 @@
 %%   <<"Content">> := email_content(),
 %%   <<"Destination">> => destination(),
 %%   <<"EmailTags">> => list(message_tag()()),
+%%   <<"EndpointId">> => string(),
 %%   <<"FeedbackForwardingEmailAddress">> => string(),
 %%   <<"FeedbackForwardingEmailAddressIdentityArn">> => string(),
 %%   <<"FromEmailAddress">> => string(),
@@ -2507,6 +2612,12 @@
     limit_exceeded_exception() | 
     too_many_requests_exception().
 
+-type create_multi_region_endpoint_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
 -type delete_configuration_set_errors() ::
     bad_request_exception() | 
     concurrent_modification_exception() | 
@@ -2553,6 +2664,12 @@
 
 -type delete_email_template_errors() ::
     bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_multi_region_endpoint_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
     not_found_exception() | 
     too_many_requests_exception().
 
@@ -2660,6 +2777,11 @@
     not_found_exception() | 
     too_many_requests_exception().
 
+-type get_multi_region_endpoint_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
 -type get_suppressed_destination_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
@@ -2709,6 +2831,10 @@
     too_many_requests_exception().
 
 -type list_import_jobs_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_multi_region_endpoints_errors() ::
     bad_request_exception() | 
     too_many_requests_exception().
 
@@ -3515,6 +3641,49 @@ create_import_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a multi-region endpoint (global-endpoint).
+%%
+%% The primary region is going to be the AWS-Region where the operation is
+%% executed.
+%% The secondary region has to be provided in request's parameters.
+%% From the data flow standpoint there is no difference between primary
+%% and secondary regions - sending traffic will be split equally between the
+%% two.
+%% The primary region is the region where the resource has been created and
+%% where it can be managed.
+-spec create_multi_region_endpoint(aws_client:aws_client(), create_multi_region_endpoint_request()) ->
+    {ok, create_multi_region_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_multi_region_endpoint_errors(), tuple()}.
+create_multi_region_endpoint(Client, Input) ->
+    create_multi_region_endpoint(Client, Input, []).
+
+-spec create_multi_region_endpoint(aws_client:aws_client(), create_multi_region_endpoint_request(), proplists:proplist()) ->
+    {ok, create_multi_region_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_multi_region_endpoint_errors(), tuple()}.
+create_multi_region_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/multi-region-endpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete an existing configuration set.
 %%
 %% Configuration sets are groups of rules that you can apply to the
@@ -3848,6 +4017,44 @@ delete_email_template(Client, TemplateName, Input) ->
 delete_email_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a multi-region endpoint (global-endpoint).
+%%
+%% Only multi-region endpoints (global-endpoints) whose primary region is the
+%% AWS-Region
+%% where operation is executed can be deleted.
+-spec delete_multi_region_endpoint(aws_client:aws_client(), binary() | list(), delete_multi_region_endpoint_request()) ->
+    {ok, delete_multi_region_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_multi_region_endpoint_errors(), tuple()}.
+delete_multi_region_endpoint(Client, EndpointName, Input) ->
+    delete_multi_region_endpoint(Client, EndpointName, Input, []).
+
+-spec delete_multi_region_endpoint(aws_client:aws_client(), binary() | list(), delete_multi_region_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_multi_region_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_multi_region_endpoint_errors(), tuple()}.
+delete_multi_region_endpoint(Client, EndpointName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/email/multi-region-endpoints/", aws_util:encode_uri(EndpointName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4751,6 +4958,47 @@ get_message_insights(Client, MessageId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Displays the multi-region endpoint (global-endpoint) configuration.
+%%
+%% Only multi-region endpoints (global-endpoints) whose primary region is the
+%% AWS-Region
+%% where operation is executed can be displayed.
+-spec get_multi_region_endpoint(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_multi_region_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_multi_region_endpoint_errors(), tuple()}.
+get_multi_region_endpoint(Client, EndpointName)
+  when is_map(Client) ->
+    get_multi_region_endpoint(Client, EndpointName, #{}, #{}).
+
+-spec get_multi_region_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_multi_region_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_multi_region_endpoint_errors(), tuple()}.
+get_multi_region_endpoint(Client, EndpointName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_multi_region_endpoint(Client, EndpointName, QueryMap, HeadersMap, []).
+
+-spec get_multi_region_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_multi_region_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_multi_region_endpoint_errors(), tuple()}.
+get_multi_region_endpoint(Client, EndpointName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/email/multi-region-endpoints/", aws_util:encode_uri(EndpointName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a specific email address that's on
 %% the suppression list
 %% for your account.
@@ -5274,6 +5522,52 @@ list_import_jobs(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List the multi-region endpoints (global-endpoints).
+%%
+%% Only multi-region endpoints (global-endpoints) whose primary region is the
+%% AWS-Region
+%% where operation is executed will be listed.
+-spec list_multi_region_endpoints(aws_client:aws_client()) ->
+    {ok, list_multi_region_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_multi_region_endpoints_errors(), tuple()}.
+list_multi_region_endpoints(Client)
+  when is_map(Client) ->
+    list_multi_region_endpoints(Client, #{}, #{}).
+
+-spec list_multi_region_endpoints(aws_client:aws_client(), map(), map()) ->
+    {ok, list_multi_region_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_multi_region_endpoints_errors(), tuple()}.
+list_multi_region_endpoints(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_multi_region_endpoints(Client, QueryMap, HeadersMap, []).
+
+-spec list_multi_region_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_multi_region_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_multi_region_endpoints_errors(), tuple()}.
+list_multi_region_endpoints(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/email/multi-region-endpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the recommendations present in your Amazon SES account in the
 %% current Amazon Web Services Region.

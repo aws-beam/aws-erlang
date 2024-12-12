@@ -18,6 +18,8 @@
          associate_created_artifact/3,
          associate_discovered_resource/2,
          associate_discovered_resource/3,
+         associate_source_resource/2,
+         associate_source_resource/3,
          create_progress_update_stream/2,
          create_progress_update_stream/3,
          delete_progress_update_stream/2,
@@ -30,6 +32,8 @@
          disassociate_created_artifact/3,
          disassociate_discovered_resource/2,
          disassociate_discovered_resource/3,
+         disassociate_source_resource/2,
+         disassociate_source_resource/3,
          import_migration_task/2,
          import_migration_task/3,
          list_application_states/2,
@@ -38,10 +42,14 @@
          list_created_artifacts/3,
          list_discovered_resources/2,
          list_discovered_resources/3,
+         list_migration_task_updates/2,
+         list_migration_task_updates/3,
          list_migration_tasks/2,
          list_migration_tasks/3,
          list_progress_update_streams/2,
          list_progress_update_streams/3,
+         list_source_resources/2,
+         list_source_resources/3,
          notify_application_state/2,
          notify_application_state/3,
          notify_migration_task_state/2,
@@ -74,6 +82,15 @@
 %%   <<"Value">> => string()
 %% }
 -type resource_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% list_source_resources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProgressUpdateStream">> := string()
+%% }
+-type list_source_resources_request() :: #{binary() => any()}.
 
 %% Example:
 %% notify_application_state_request() :: #{
@@ -139,6 +156,13 @@
 -type disassociate_created_artifact_result() :: #{binary() => any()}.
 
 %% Example:
+%% list_source_resources_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SourceResourceList">> => list(source_resource()())
+%% }
+-type list_source_resources_result() :: #{binary() => any()}.
+
+%% Example:
 %% associate_discovered_resource_request() :: #{
 %%   <<"DiscoveredResource">> := discovered_resource(),
 %%   <<"DryRun">> => boolean(),
@@ -180,6 +204,14 @@
 -type list_application_states_result() :: #{binary() => any()}.
 
 %% Example:
+%% source_resource() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"StatusDetail">> => string()
+%% }
+-type source_resource() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -199,6 +231,15 @@
 %%   <<"Name">> => string()
 %% }
 -type created_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_resource_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"ProgressUpdateStream">> := string(),
+%%   <<"SourceResource">> := source_resource()
+%% }
+-type associate_source_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_discovered_resources_request() :: #{
@@ -266,6 +307,13 @@
 -type service_unavailable_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_migration_task_updates_result() :: #{
+%%   <<"MigrationTaskUpdateList">> => list(migration_task_update()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_migration_task_updates_result() :: #{binary() => any()}.
+
+%% Example:
 %% notify_migration_task_state_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"MigrationTaskName">> := string(),
@@ -286,6 +334,15 @@
 -type disassociate_created_artifact_request() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_source_resource_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"ProgressUpdateStream">> := string(),
+%%   <<"SourceResourceName">> := string()
+%% }
+-type disassociate_source_resource_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_created_artifacts_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"MigrationTaskName">> := string(),
@@ -300,6 +357,15 @@
 %%   <<"Description">> => string()
 %% }
 -type discovered_resource() :: #{binary() => any()}.
+
+%% Example:
+%% list_migration_task_updates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProgressUpdateStream">> := string()
+%% }
+-type list_migration_task_updates_request() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_error() :: #{
@@ -339,6 +405,12 @@
 %%   <<"Message">> => string()
 %% }
 -type policy_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_resource_result() :: #{
+
+%% }
+-type associate_source_resource_result() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -402,12 +474,26 @@
 -type list_discovered_resources_result() :: #{binary() => any()}.
 
 %% Example:
+%% migration_task_update() :: #{
+%%   <<"MigrationTaskState">> => task(),
+%%   <<"UpdateDateTime">> => non_neg_integer(),
+%%   <<"UpdateType">> => list(any())
+%% }
+-type migration_task_update() :: #{binary() => any()}.
+
+%% Example:
 %% application_state() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"ApplicationStatus">> => list(any()),
 %%   <<"LastUpdatedTime">> => non_neg_integer()
 %% }
 -type application_state() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_source_resource_result() :: #{
+
+%% }
+-type disassociate_source_resource_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_application_state_result() :: #{
@@ -441,6 +527,16 @@
     home_region_not_set_exception() | 
     throttling_exception() | 
     policy_error_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
+-type associate_source_resource_errors() ::
+    throttling_exception() | 
     access_denied_exception() | 
     internal_server_error() | 
     service_unavailable_exception() | 
@@ -511,6 +607,16 @@
     dry_run_operation() | 
     unauthorized_operation().
 
+-type disassociate_source_resource_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    dry_run_operation() | 
+    unauthorized_operation().
+
 -type import_migration_task_errors() ::
     home_region_not_set_exception() | 
     throttling_exception() | 
@@ -548,6 +654,14 @@
     invalid_input_exception() | 
     resource_not_found_exception().
 
+-type list_migration_task_updates_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
 -type list_migration_tasks_errors() ::
     home_region_not_set_exception() | 
     throttling_exception() | 
@@ -565,6 +679,14 @@
     internal_server_error() | 
     service_unavailable_exception() | 
     invalid_input_exception().
+
+-type list_source_resources_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
 
 -type notify_application_state_errors() ::
     home_region_not_set_exception() | 
@@ -656,6 +778,26 @@ associate_discovered_resource(Client, Input)
 associate_discovered_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDiscoveredResource">>, Input, Options).
+
+%% @doc Associates a source resource with a migration task.
+%%
+%% For example, the source resource can
+%% be a source server, an application, or a migration wave.
+-spec associate_source_resource(aws_client:aws_client(), associate_source_resource_request()) ->
+    {ok, associate_source_resource_result(), tuple()} |
+    {error, any()} |
+    {error, associate_source_resource_errors(), tuple()}.
+associate_source_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_source_resource(Client, Input, []).
+
+-spec associate_source_resource(aws_client:aws_client(), associate_source_resource_request(), proplists:proplist()) ->
+    {ok, associate_source_resource_result(), tuple()} |
+    {error, any()} |
+    {error, associate_source_resource_errors(), tuple()}.
+associate_source_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateSourceResource">>, Input, Options).
 
 %% @doc Creates a progress update stream which is an AWS resource used for
 %% access control as
@@ -816,6 +958,24 @@ disassociate_discovered_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDiscoveredResource">>, Input, Options).
 
+%% @doc Removes the association between a source resource and a migration
+%% task.
+-spec disassociate_source_resource(aws_client:aws_client(), disassociate_source_resource_request()) ->
+    {ok, disassociate_source_resource_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_source_resource_errors(), tuple()}.
+disassociate_source_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_source_resource(Client, Input, []).
+
+-spec disassociate_source_resource(aws_client:aws_client(), disassociate_source_resource_request(), proplists:proplist()) ->
+    {ok, disassociate_source_resource_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_source_resource_errors(), tuple()}.
+disassociate_source_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateSourceResource">>, Input, Options).
+
 %% @doc Registers a new migration task which represents a server, database,
 %% etc., being migrated
 %% to AWS by a migration tool.
@@ -909,6 +1069,25 @@ list_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
 
+%% @doc This is a paginated API that returns all the migration-task states
+%% for the specified
+%% `MigrationTaskName' and `ProgressUpdateStream'.
+-spec list_migration_task_updates(aws_client:aws_client(), list_migration_task_updates_request()) ->
+    {ok, list_migration_task_updates_result(), tuple()} |
+    {error, any()} |
+    {error, list_migration_task_updates_errors(), tuple()}.
+list_migration_task_updates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_migration_task_updates(Client, Input, []).
+
+-spec list_migration_task_updates(aws_client:aws_client(), list_migration_task_updates_request(), proplists:proplist()) ->
+    {ok, list_migration_task_updates_result(), tuple()} |
+    {error, any()} |
+    {error, list_migration_task_updates_errors(), tuple()}.
+list_migration_task_updates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMigrationTaskUpdates">>, Input, Options).
+
 %% @doc Lists all, or filtered by resource name, migration tasks associated
 %% with the user
 %% account making this call.
@@ -955,6 +1134,24 @@ list_progress_update_streams(Client, Input)
 list_progress_update_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProgressUpdateStreams">>, Input, Options).
+
+%% @doc Lists all the source resource that are associated with the specified
+%% `MigrationTaskName' and `ProgressUpdateStream'.
+-spec list_source_resources(aws_client:aws_client(), list_source_resources_request()) ->
+    {ok, list_source_resources_result(), tuple()} |
+    {error, any()} |
+    {error, list_source_resources_errors(), tuple()}.
+list_source_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_source_resources(Client, Input, []).
+
+-spec list_source_resources(aws_client:aws_client(), list_source_resources_request(), proplists:proplist()) ->
+    {ok, list_source_resources_result(), tuple()} |
+    {error, any()} |
+    {error, list_source_resources_errors(), tuple()}.
+list_source_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSourceResources">>, Input, Options).
 
 %% @doc Sets the migration state of an application.
 %%

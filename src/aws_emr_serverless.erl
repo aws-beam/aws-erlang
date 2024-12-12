@@ -566,6 +566,7 @@
 
 %% Example:
 %% get_dashboard_for_job_run_request() :: #{
+%%   <<"accessSystemProfileLogs">> => [boolean()],
 %%   <<"attempt">> => integer()
 %% }
 -type get_dashboard_for_job_run_request() :: #{binary() => any()}.
@@ -944,6 +945,7 @@ get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap,
 
     Query0_ =
       [
+        {<<"accessSystemProfileLogs">>, maps:get(<<"accessSystemProfileLogs">>, QueryMap, undefined)},
         {<<"attempt">>, maps:get(<<"attempt">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
