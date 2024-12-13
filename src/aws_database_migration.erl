@@ -348,7 +348,8 @@
 %%   <<"NoHexPrefix">> => boolean(),
 %%   <<"PartitionIncludeSchemaTable">> => boolean(),
 %%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"StreamArn">> => string()
+%%   <<"StreamArn">> => string(),
+%%   <<"UseLargeIntegerValue">> => boolean()
 %% }
 -type kinesis_settings() :: #{binary() => any()}.
 
@@ -871,6 +872,7 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"FreeUntil">> => non_neg_integer(),
 %%   <<"InstanceCreateTime">> => non_neg_integer(),
+%%   <<"KerberosAuthenticationSettings">> => kerberos_authentication_settings(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MultiAZ">> => boolean(),
 %%   <<"NetworkType">> => string(),
@@ -1880,6 +1882,14 @@
 -type describe_extension_pack_associations_response() :: #{binary() => any()}.
 
 %% Example:
+%% kerberos_authentication_settings() :: #{
+%%   <<"KeyCacheSecretIamArn">> => string(),
+%%   <<"KeyCacheSecretId">> => string(),
+%%   <<"Krb5FileContents">> => string()
+%% }
+-type kerberos_authentication_settings() :: #{binary() => any()}.
+
+%% Example:
 %% move_replication_task_response() :: #{
 %%   <<"ReplicationTask">> => replication_task()
 %% }
@@ -2291,6 +2301,7 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"DnsNameServers">> => string(),
 %%   <<"EngineVersion">> => string(),
+%%   <<"KerberosAuthenticationSettings">> => kerberos_authentication_settings(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MultiAZ">> => boolean(),
 %%   <<"NetworkType">> => string(),
@@ -2548,6 +2559,7 @@
 %%   <<"OpenTransactionWindow">> => integer(),
 %%   <<"ReadTableSpaceName">> => boolean(),
 %%   <<"AllowSelectNestedTables">> => boolean(),
+%%   <<"AuthenticationMethod">> => list(any()),
 %%   <<"ArchivedLogDestId">> => integer(),
 %%   <<"AsmUser">> => string(),
 %%   <<"AdditionalArchivedLogDestId">> => integer(),
@@ -2596,7 +2608,8 @@
 %%   <<"SslClientKeyArn">> => string(),
 %%   <<"SslClientKeyPassword">> => string(),
 %%   <<"SslEndpointIdentificationAlgorithm">> => list(any()),
-%%   <<"Topic">> => string()
+%%   <<"Topic">> => string(),
+%%   <<"UseLargeIntegerValue">> => boolean()
 %% }
 -type kafka_settings() :: #{binary() => any()}.
 
@@ -3045,6 +3058,7 @@
 
 %% Example:
 %% microsoft_s_q_l_server_settings() :: #{
+%%   <<"AuthenticationMethod">> => list(any()),
 %%   <<"BcpPacketSize">> => integer(),
 %%   <<"ControlTablesFileGroup">> => string(),
 %%   <<"DatabaseName">> => string(),
@@ -3114,6 +3128,7 @@
 %%   <<"DatabaseMode">> => list(any()),
 %%   <<"DatabaseName">> => string(),
 %%   <<"DdlArtifactsSchema">> => string(),
+%%   <<"DisableUnicodeSourceFilter">> => boolean(),
 %%   <<"ExecuteTimeout">> => integer(),
 %%   <<"FailTasksOnLobTruncation">> => boolean(),
 %%   <<"HeartbeatEnable">> => boolean(),
@@ -3212,6 +3227,7 @@
 %%   <<"ApplyImmediately">> => boolean(),
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
 %%   <<"EngineVersion">> => string(),
+%%   <<"KerberosAuthenticationSettings">> => kerberos_authentication_settings(),
 %%   <<"MultiAZ">> => boolean(),
 %%   <<"NetworkType">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
@@ -3599,6 +3615,7 @@
     resource_not_found_fault().
 
 -type delete_event_subscription_errors() ::
+    access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
@@ -3634,6 +3651,7 @@
     resource_not_found_fault().
 
 -type delete_replication_subnet_group_errors() ::
+    access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
@@ -3768,6 +3786,7 @@
     resource_not_found_fault().
 
 -type describe_table_statistics_errors() ::
+    access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
 
@@ -3814,6 +3833,7 @@
     kms_not_found_fault() | 
     kms_access_denied_fault() | 
     kms_invalid_state_fault() | 
+    access_denied_fault() | 
     resource_not_found_fault().
 
 -type modify_instance_profile_errors() ::

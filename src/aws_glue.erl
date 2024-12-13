@@ -863,6 +863,7 @@
 %% Example:
 %% encryption_configuration() :: #{
 %%   <<"CloudWatchEncryption">> => cloud_watch_encryption(),
+%%   <<"DataQualityEncryption">> => data_quality_encryption(),
 %%   <<"JobBookmarksEncryption">> => job_bookmarks_encryption(),
 %%   <<"S3Encryption">> => list(s3_encryption()())
 %% }
@@ -5265,6 +5266,13 @@
 %%   <<"ScanAll">> => boolean()
 %% }
 -type mongo_db_target() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_encryption() :: #{
+%%   <<"DataQualityEncryptionMode">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type data_quality_encryption() :: #{binary() => any()}.
 
 %% Example:
 %% datatype() :: #{
@@ -11239,6 +11247,11 @@ create_table_optimizer(Client, Input, Options)
     request(Client, <<"CreateTableOptimizer">>, Input, Options).
 
 %% @doc Creates a new trigger.
+%%
+%% Job arguments may be logged. Do not pass plaintext secrets as arguments.
+%% Retrieve secrets from a Glue Connection, Amazon Web Services Secrets
+%% Manager or other secret management mechanism if you intend to keep them
+%% within the Job.
 -spec create_trigger(aws_client:aws_client(), create_trigger_request()) ->
     {ok, create_trigger_response(), tuple()} |
     {error, any()} |
@@ -12674,7 +12687,7 @@ get_job_bookmark(Client, Input, Options)
 
 %% @doc Retrieves the metadata for a given job run.
 %%
-%% Job run history is accessible for 90 days for your workflow and job run.
+%% Job run history is accessible for 365 days for your workflow and job run.
 -spec get_job_run(aws_client:aws_client(), get_job_run_request()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
@@ -12692,6 +12705,9 @@ get_job_run(Client, Input, Options)
     request(Client, <<"GetJobRun">>, Input, Options).
 
 %% @doc Retrieves metadata for all runs of a given job definition.
+%%
+%% `GetJobRuns' returns the job runs in chronological order, with the
+%% newest jobs returned first.
 -spec get_job_runs(aws_client:aws_client(), get_job_runs_request()) ->
     {ok, get_job_runs_response(), tuple()} |
     {error, any()} |
@@ -15253,6 +15269,11 @@ update_table_optimizer(Client, Input, Options)
     request(Client, <<"UpdateTableOptimizer">>, Input, Options).
 
 %% @doc Updates a trigger definition.
+%%
+%% Job arguments may be logged. Do not pass plaintext secrets as arguments.
+%% Retrieve secrets from a Glue Connection, Amazon Web Services Secrets
+%% Manager or other secret management mechanism if you intend to keep them
+%% within the Job.
 -spec update_trigger(aws_client:aws_client(), update_trigger_request()) ->
     {ok, update_trigger_response(), tuple()} |
     {error, any()} |

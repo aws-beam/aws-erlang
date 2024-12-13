@@ -96,6 +96,8 @@
          create_evaluation_form/4,
          create_hours_of_operation/3,
          create_hours_of_operation/4,
+         create_hours_of_operation_override/4,
+         create_hours_of_operation_override/5,
          create_instance/2,
          create_instance/3,
          create_integration_association/3,
@@ -152,6 +154,8 @@
          delete_evaluation_form/5,
          delete_hours_of_operation/4,
          delete_hours_of_operation/5,
+         delete_hours_of_operation_override/5,
+         delete_hours_of_operation_override/6,
          delete_instance/3,
          delete_instance/4,
          delete_integration_association/4,
@@ -215,6 +219,9 @@
          describe_hours_of_operation/3,
          describe_hours_of_operation/5,
          describe_hours_of_operation/6,
+         describe_hours_of_operation_override/4,
+         describe_hours_of_operation_override/6,
+         describe_hours_of_operation_override/7,
          describe_instance/2,
          describe_instance/4,
          describe_instance/5,
@@ -304,6 +311,9 @@
          get_current_metric_data/4,
          get_current_user_data/3,
          get_current_user_data/4,
+         get_effective_hours_of_operations/5,
+         get_effective_hours_of_operations/7,
+         get_effective_hours_of_operations/8,
          get_federation_token/2,
          get_federation_token/4,
          get_federation_token/5,
@@ -369,6 +379,9 @@
          list_flow_associations/2,
          list_flow_associations/4,
          list_flow_associations/5,
+         list_hours_of_operation_overrides/3,
+         list_hours_of_operation_overrides/5,
+         list_hours_of_operation_overrides/6,
          list_hours_of_operations/2,
          list_hours_of_operations/4,
          list_hours_of_operations/5,
@@ -489,6 +502,8 @@
          search_contacts/3,
          search_email_addresses/2,
          search_email_addresses/3,
+         search_hours_of_operation_overrides/2,
+         search_hours_of_operation_overrides/3,
          search_hours_of_operations/2,
          search_hours_of_operations/3,
          search_predefined_attributes/2,
@@ -589,6 +604,8 @@
          update_evaluation_form/5,
          update_hours_of_operation/4,
          update_hours_of_operation/5,
+         update_hours_of_operation_override/5,
+         update_hours_of_operation_override/6,
          update_instance_attribute/4,
          update_instance_attribute/5,
          update_instance_storage_config/4,
@@ -773,6 +790,14 @@
 %%   <<"StreamingEndpointArn">> => string()
 %% }
 -type chat_streaming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_effective_hours_of_operations_request() :: #{
+%%   <<"FromDate">> := string(),
+%%   <<"ToDate">> := string()
+%% }
+-type get_effective_hours_of_operations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1118,6 +1143,10 @@
 %%   <<"Name">> => string()
 %% }
 -type prompt_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hours_of_operation_override_request() :: #{}
+-type delete_hours_of_operation_override_request() :: #{}.
 
 %% Example:
 %% disassociate_flow_request() :: #{}
@@ -1736,6 +1765,16 @@
 
 
 %% Example:
+%% hours_of_operation_override_search_criteria() :: #{
+%%   <<"AndConditions">> => list(hours_of_operation_override_search_criteria()()),
+%%   <<"DateCondition">> => date_condition(),
+%%   <<"OrConditions">> => list(hours_of_operation_override_search_criteria()()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type hours_of_operation_override_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_associated_contacts_request() :: #{
 %%   <<"ContactId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -1869,6 +1908,15 @@
 %%   <<"QueueName">> => string()
 %% }
 -type routing_profile_queue_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type date_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2046,6 +2094,8 @@
 %% contact_flow_module_search_criteria() :: #{
 %%   <<"AndConditions">> => list(contact_flow_module_search_criteria()()),
 %%   <<"OrConditions">> => list(contact_flow_module_search_criteria()()),
+%%   <<"StateCondition">> => list(any()),
+%%   <<"StatusCondition">> => list(any()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type contact_flow_module_search_criteria() :: #{binary() => any()}.
@@ -2190,6 +2240,10 @@
 %% }
 -type stop_contact_request() :: #{binary() => any()}.
 
+%% Example:
+%% describe_hours_of_operation_override_request() :: #{}
+-type describe_hours_of_operation_override_request() :: #{}.
+
 
 %% Example:
 %% update_phone_number_response() :: #{
@@ -2290,6 +2344,16 @@
 %%   <<"State">> => list(any())
 %% }
 -type update_contact_flow_module_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hours_of_operation_overrides_response() :: #{
+%%   <<"HoursOfOperationOverrideList">> => list(hours_of_operation_override()()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hours_of_operation_overrides_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2394,6 +2458,14 @@
 
 
 %% Example:
+%% override_time_slice() :: #{
+%%   <<"Hours">> => integer(),
+%%   <<"Minutes">> => integer()
+%% }
+-type override_time_slice() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_proficiency_disassociate() :: #{
 %%   <<"AttributeName">> => string(),
 %%   <<"AttributeValue">> => string()
@@ -2486,6 +2558,17 @@
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_hours_of_operation_override_request() :: #{
+%%   <<"Config">> => list(hours_of_operation_override_config()()),
+%%   <<"Description">> => string(),
+%%   <<"EffectiveFrom">> => string(),
+%%   <<"EffectiveTill">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_hours_of_operation_override_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2610,6 +2693,14 @@
 %%   <<"PhoneNumberType">> => list(any())
 %% }
 -type available_number_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_effective_hours_of_operations_response() :: #{
+%%   <<"EffectiveHoursOfOperationList">> => list(effective_hours_of_operations()()),
+%%   <<"TimeZone">> => string()
+%% }
+-type get_effective_hours_of_operations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4303,6 +4394,14 @@
 
 
 %% Example:
+%% effective_hours_of_operations() :: #{
+%%   <<"Date">> => string(),
+%%   <<"OperationalHours">> => list(operational_hour()())
+%% }
+-type effective_hours_of_operations() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_view_response() :: #{
 %%   <<"View">> => view()
 %% }
@@ -4735,6 +4834,17 @@
 
 
 %% Example:
+%% search_hours_of_operation_overrides_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => hours_of_operation_override_search_criteria(),
+%%   <<"SearchFilter">> => hours_of_operation_search_filter()
+%% }
+-type search_hours_of_operation_overrides_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% routing_profile_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -4998,6 +5108,20 @@
 
 
 %% Example:
+%% hours_of_operation_override() :: #{
+%%   <<"Config">> => list(hours_of_operation_override_config()()),
+%%   <<"Description">> => string(),
+%%   <<"EffectiveFrom">> => string(),
+%%   <<"EffectiveTill">> => string(),
+%%   <<"HoursOfOperationArn">> => string(),
+%%   <<"HoursOfOperationId">> => string(),
+%%   <<"HoursOfOperationOverrideId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type hours_of_operation_override() :: #{binary() => any()}.
+
+
+%% Example:
 %% rule_summary() :: #{
 %%   <<"ActionSummaries">> => list(action_summary()()),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -5032,6 +5156,13 @@
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type contact_flow_module_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_hours_of_operation_override_response() :: #{
+%%   <<"HoursOfOperationOverride">> => hours_of_operation_override()
+%% }
+-type describe_hours_of_operation_override_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5474,6 +5605,15 @@
 
 
 %% Example:
+%% search_hours_of_operation_overrides_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"HoursOfOperationOverrides">> => list(hours_of_operation_override()()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_hours_of_operation_overrides_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_contact_flow_module_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string()
@@ -5518,6 +5658,13 @@
 %%   <<"RuleSummaryList">> => list(rule_summary()())
 %% }
 -type list_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_hours_of_operation_override_response() :: #{
+%%   <<"HoursOfOperationOverrideId">> => string()
+%% }
+-type create_hours_of_operation_override_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6151,6 +6298,17 @@
 
 
 %% Example:
+%% create_hours_of_operation_override_request() :: #{
+%%   <<"Config">> := list(hours_of_operation_override_config()()),
+%%   <<"Description">> => string(),
+%%   <<"EffectiveFrom">> := string(),
+%%   <<"EffectiveTill">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_hours_of_operation_override_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_email_address_response() :: #{
 %%   <<"EmailAddressArn">> => string(),
 %%   <<"EmailAddressId">> => string()
@@ -6584,6 +6742,14 @@
 
 
 %% Example:
+%% list_hours_of_operation_overrides_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hours_of_operation_overrides_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_queue_status_request() :: #{
 %%   <<"Status">> := list(any())
 %% }
@@ -6604,6 +6770,14 @@
 %%   <<"ResourceType">> := list(any())
 %% }
 -type associate_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% operational_hour() :: #{
+%%   <<"End">> => override_time_slice(),
+%%   <<"Start">> => override_time_slice()
+%% }
+-type operational_hour() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7712,6 +7886,15 @@
 
 
 %% Example:
+%% hours_of_operation_override_config() :: #{
+%%   <<"Day">> => list(any()),
+%%   <<"EndTime">> => override_time_slice(),
+%%   <<"StartTime">> => override_time_slice()
+%% }
+-type hours_of_operation_override_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_associate_analytics_data_set_response() :: #{
 %%   <<"Created">> => list(analytics_data_association_result()()),
 %%   <<"Errors">> => list(error_result()())
@@ -7969,6 +8152,15 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type create_hours_of_operation_override_errors() ::
+    duplicate_resource_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type create_instance_errors() ::
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -8201,6 +8393,13 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type delete_hours_of_operation_override_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type delete_instance_errors() ::
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -8392,6 +8591,13 @@
     internal_service_exception().
 
 -type describe_hours_of_operation_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_hours_of_operation_override_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
@@ -8642,6 +8848,13 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type get_effective_hours_of_operations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type get_federation_token_errors() ::
     duplicate_resource_exception() | 
     invalid_parameter_exception() | 
@@ -8800,6 +9013,13 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_hours_of_operation_overrides_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -9123,6 +9343,13 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_hours_of_operation_overrides_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -9498,6 +9725,15 @@
     duplicate_resource_exception() | 
     throttling_exception() | 
     invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_hours_of_operation_override_errors() ::
+    duplicate_resource_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    conditional_operation_failed_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -10963,6 +11199,42 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an hours of operation override in an Amazon Connect hours of
+%% operation
+%% resource
+-spec create_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), create_hours_of_operation_override_request()) ->
+    {ok, create_hours_of_operation_override_response(), tuple()} |
+    {error, any()} |
+    {error, create_hours_of_operation_override_errors(), tuple()}.
+create_hours_of_operation_override(Client, HoursOfOperationId, InstanceId, Input) ->
+    create_hours_of_operation_override(Client, HoursOfOperationId, InstanceId, Input, []).
+
+-spec create_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), create_hours_of_operation_override_request(), proplists:proplist()) ->
+    {ok, create_hours_of_operation_override_response(), tuple()} |
+    {error, any()} |
+    {error, create_hours_of_operation_override_errors(), tuple()}.
+create_hours_of_operation_override(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), "/overrides"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -11257,10 +11529,7 @@ create_push_notification_registration(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Creates a new queue for the specified Amazon Connect instance.
+%% @doc Creates a new queue for the specified Amazon Connect instance.
 %%
 %% If the phone number is claimed to a traffic distribution group that was
 %% created in the
@@ -12075,6 +12344,42 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
 delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an hours of operation override in an Amazon Connect hours of
+%% operation
+%% resource
+-spec delete_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hours_of_operation_override_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hours_of_operation_override_errors(), tuple()}.
+delete_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, Input) ->
+    delete_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, Input, []).
+
+-spec delete_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hours_of_operation_override_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hours_of_operation_override_errors(), tuple()}.
+delete_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), "/overrides/", aws_util:encode_uri(HoursOfOperationOverrideId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -13166,6 +13471,43 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, He
 describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the hours of operation override.
+-spec describe_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_hours_of_operation_override_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hours_of_operation_override_errors(), tuple()}.
+describe_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId)
+  when is_map(Client) ->
+    describe_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, #{}, #{}).
+
+-spec describe_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_hours_of_operation_override_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hours_of_operation_override_errors(), tuple()}.
+describe_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_hours_of_operation_override_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hours_of_operation_override_errors(), tuple()}.
+describe_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), "/overrides/", aws_util:encode_uri(HoursOfOperationOverrideId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -14586,6 +14928,48 @@ get_current_user_data(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Get the hours of operations with the effective override applied.
+-spec get_effective_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_effective_hours_of_operations_response(), tuple()} |
+    {error, any()} |
+    {error, get_effective_hours_of_operations_errors(), tuple()}.
+get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDate, ToDate)
+  when is_map(Client) ->
+    get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDate, ToDate, #{}, #{}).
+
+-spec get_effective_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_effective_hours_of_operations_response(), tuple()} |
+    {error, any()} |
+    {error, get_effective_hours_of_operations_errors(), tuple()}.
+get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDate, ToDate, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDate, ToDate, QueryMap, HeadersMap, []).
+
+-spec get_effective_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_effective_hours_of_operations_response(), tuple()} |
+    {error, any()} |
+    {error, get_effective_hours_of_operations_errors(), tuple()}.
+get_effective_hours_of_operations(Client, HoursOfOperationId, InstanceId, FromDate, ToDate, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/effective-hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"fromDate">>, FromDate},
+        {<<"toDate">>, ToDate}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Supports SAML sign-in for Amazon Connect.
 %%
 %% Retrieves a token for federation. The token is
@@ -15641,6 +16025,48 @@ list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"ResourceType">>, maps:get(<<"ResourceType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the hours of operation overrides.
+-spec list_hours_of_operation_overrides(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_hours_of_operation_overrides_response(), tuple()} |
+    {error, any()} |
+    {error, list_hours_of_operation_overrides_errors(), tuple()}.
+list_hours_of_operation_overrides(Client, HoursOfOperationId, InstanceId)
+  when is_map(Client) ->
+    list_hours_of_operation_overrides(Client, HoursOfOperationId, InstanceId, #{}, #{}).
+
+-spec list_hours_of_operation_overrides(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_hours_of_operation_overrides_response(), tuple()} |
+    {error, any()} |
+    {error, list_hours_of_operation_overrides_errors(), tuple()}.
+list_hours_of_operation_overrides(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_hours_of_operation_overrides(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_hours_of_operation_overrides(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_hours_of_operation_overrides_response(), tuple()} |
+    {error, any()} |
+    {error, list_hours_of_operation_overrides_errors(), tuple()}.
+list_hours_of_operation_overrides(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), "/overrides"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -17659,6 +18085,40 @@ search_email_addresses(Client, Input) ->
 search_email_addresses(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-email-addresses"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches the hours of operation overrides.
+-spec search_hours_of_operation_overrides(aws_client:aws_client(), search_hours_of_operation_overrides_request()) ->
+    {ok, search_hours_of_operation_overrides_response(), tuple()} |
+    {error, any()} |
+    {error, search_hours_of_operation_overrides_errors(), tuple()}.
+search_hours_of_operation_overrides(Client, Input) ->
+    search_hours_of_operation_overrides(Client, Input, []).
+
+-spec search_hours_of_operation_overrides(aws_client:aws_client(), search_hours_of_operation_overrides_request(), proplists:proplist()) ->
+    {ok, search_hours_of_operation_overrides_response(), tuple()} |
+    {error, any()} |
+    {error, search_hours_of_operation_overrides_errors(), tuple()}.
+search_hours_of_operation_overrides(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-hours-of-operation-overrides"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -19878,6 +20338,40 @@ update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
 update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the hours of operation override.
+-spec update_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_hours_of_operation_override_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_hours_of_operation_override_errors(), tuple()}.
+update_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, Input) ->
+    update_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, Input, []).
+
+-spec update_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_hours_of_operation_override_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_hours_of_operation_override_errors(), tuple()}.
+update_hours_of_operation_override(Client, HoursOfOperationId, HoursOfOperationOverrideId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), "/overrides/", aws_util:encode_uri(HoursOfOperationOverrideId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
