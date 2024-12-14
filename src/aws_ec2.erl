@@ -7196,6 +7196,13 @@
 -type associate_capacity_reservation_billing_owner_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_security_group_result() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"Return">> => boolean()
+%% }
+-type delete_security_group_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_instance_network_performance_result() :: #{
 %%   <<"BandwidthWeighting">> => list(any()),
 %%   <<"InstanceId">> => string()
@@ -24356,14 +24363,14 @@ delete_route_table(Client, Input, Options)
 %% association, the operation fails with
 %% `DependencyViolation'.
 -spec delete_security_group(aws_client:aws_client(), delete_security_group_request()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_security_group_result(), tuple()} |
     {error, any()}.
 delete_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_group(Client, Input, []).
 
 -spec delete_security_group(aws_client:aws_client(), delete_security_group_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_security_group_result(), tuple()} |
     {error, any()}.
 delete_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
@@ -35104,10 +35111,11 @@ send_diagnostic_interrupt(Client, Input, Options)
 %%
 %% An S3 bucket must be available before generating the report (you can
 %% create a
-%% new one or use an existing one), and it must have an appropriate bucket
-%% policy.
-%% For a sample S3 policy, see Sample Amazon S3 policy under
-%% .
+%% new one or use an existing one), it must be in the same Region where the
+%% report
+%% generation request is made, and it must have an appropriate bucket policy.
+%% For a
+%% sample S3 policy, see Sample Amazon S3 policy under .
 %%
 %% Trusted access must be enabled for the service for which the declarative
 %% policy will enforce a baseline configuration. If you use the Amazon Web

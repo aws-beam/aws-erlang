@@ -28,6 +28,8 @@
          delete_namespace/3,
          delete_service/2,
          delete_service/3,
+         delete_service_attributes/2,
+         delete_service_attributes/3,
          deregister_instance/2,
          deregister_instance/3,
          discover_instances/2,
@@ -44,6 +46,8 @@
          get_operation/3,
          get_service/2,
          get_service/3,
+         get_service_attributes/2,
+         get_service_attributes/3,
          list_instances/2,
          list_instances/3,
          list_namespaces/2,
@@ -69,7 +73,9 @@
          update_public_dns_namespace/2,
          update_public_dns_namespace/3,
          update_service/2,
-         update_service/3]).
+         update_service/3,
+         update_service_attributes/2,
+         update_service_attributes/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -139,6 +145,12 @@
 %%   <<"OperationId">> => string()
 %% }
 -type update_http_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_attributes_response() :: #{
+%%   <<"ServiceAttributes">> => service_attributes()
+%% }
+-type get_service_attributes_response() :: #{binary() => any()}.
 
 %% Example:
 %% private_dns_namespace_properties() :: #{
@@ -348,6 +360,12 @@
 -type get_service_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_service_attributes_request() :: #{
+%%   <<"ServiceId">> := string()
+%% }
+-type get_service_attributes_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_instance_request() :: #{
 %%   <<"InstanceId">> := string(),
 %%   <<"ServiceId">> := string()
@@ -513,6 +531,13 @@
 -type duplicate_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_service_attributes_request() :: #{
+%%   <<"Attributes">> := list(string()()),
+%%   <<"ServiceId">> := string()
+%% }
+-type delete_service_attributes_request() :: #{binary() => any()}.
+
+%% Example:
 %% discover_instances_revision_request() :: #{
 %%   <<"NamespaceName">> := string(),
 %%   <<"ServiceName">> := string()
@@ -606,6 +631,12 @@
 -type list_instances_response() :: #{binary() => any()}.
 
 %% Example:
+%% service_attributes_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_attributes_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% namespace_already_exists() :: #{
 %%   <<"CreatorRequestId">> => string(),
 %%   <<"Message">> => string(),
@@ -640,6 +671,12 @@
 %%   <<"Id">> => string()
 %% }
 -type instance() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_attributes_response() :: #{
+
+%% }
+-type delete_service_attributes_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -687,6 +724,13 @@
 -type health_check_config() :: #{binary() => any()}.
 
 %% Example:
+%% service_attributes() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ServiceArn">> => string()
+%% }
+-type service_attributes() :: #{binary() => any()}.
+
+%% Example:
 %% instance_summary() :: #{
 %%   <<"Attributes">> => map(),
 %%   <<"Id">> => string()
@@ -725,6 +769,12 @@
 %%   <<"UpdaterRequestId">> => string()
 %% }
 -type update_private_dns_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_attributes_response() :: #{
+
+%% }
+-type update_service_attributes_response() :: #{binary() => any()}.
 
 %% Example:
 %% instance_not_found() :: #{
@@ -814,6 +864,13 @@
 -type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
+%% update_service_attributes_request() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"ServiceId">> := string()
+%% }
+-type update_service_attributes_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_namespace_request() :: #{
 %%   <<"Id">> := string()
 %% }
@@ -858,6 +915,10 @@
     resource_in_use() | 
     invalid_input().
 
+-type delete_service_attributes_errors() ::
+    service_not_found() | 
+    invalid_input().
+
 -type deregister_instance_errors() ::
     instance_not_found() | 
     service_not_found() | 
@@ -896,6 +957,10 @@
     invalid_input().
 
 -type get_service_errors() ::
+    service_not_found() | 
+    invalid_input().
+
+-type get_service_attributes_errors() ::
     service_not_found() | 
     invalid_input().
 
@@ -959,6 +1024,11 @@
 -type update_service_errors() ::
     service_not_found() | 
     duplicate_request() | 
+    invalid_input().
+
+-type update_service_attributes_errors() ::
+    service_attributes_limit_exceeded_exception() | 
+    service_not_found() | 
     invalid_input().
 
 %%====================================================================
@@ -1129,7 +1199,7 @@ delete_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamespace">>, Input, Options).
 
-%% @doc Deletes a specified service.
+%% @doc Deletes a specified service and all associated service attributes.
 %%
 %% If the service still contains one or more registered instances, the
 %% request
@@ -1149,6 +1219,23 @@ delete_service(Client, Input)
 delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
+
+%% @doc Deletes specific attributes associated with a service.
+-spec delete_service_attributes(aws_client:aws_client(), delete_service_attributes_request()) ->
+    {ok, delete_service_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_attributes_errors(), tuple()}.
+delete_service_attributes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_service_attributes(Client, Input, []).
+
+-spec delete_service_attributes(aws_client:aws_client(), delete_service_attributes_request(), proplists:proplist()) ->
+    {ok, delete_service_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_attributes_errors(), tuple()}.
+delete_service_attributes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteServiceAttributes">>, Input, Options).
 
 %% @doc Deletes the Amazon Route 53 DNS records and health check, if any,
 %% that Cloud Map created for the specified
@@ -1307,6 +1394,23 @@ get_service(Client, Input)
 get_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetService">>, Input, Options).
+
+%% @doc Returns the attributes associated with a specified service.
+-spec get_service_attributes(aws_client:aws_client(), get_service_attributes_request()) ->
+    {ok, get_service_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_attributes_errors(), tuple()}.
+get_service_attributes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_service_attributes(Client, Input, []).
+
+-spec get_service_attributes(aws_client:aws_client(), get_service_attributes_request(), proplists:proplist()) ->
+    {ok, get_service_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_attributes_errors(), tuple()}.
+get_service_attributes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetServiceAttributes">>, Input, Options).
 
 %% @doc Lists summary information about the instances that you registered by
 %% using a specified service.
@@ -1611,6 +1715,24 @@ update_service(Client, Input)
 update_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateService">>, Input, Options).
+
+%% @doc Submits a request to update a specified service to add service-level
+%% attributes.
+-spec update_service_attributes(aws_client:aws_client(), update_service_attributes_request()) ->
+    {ok, update_service_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, update_service_attributes_errors(), tuple()}.
+update_service_attributes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_service_attributes(Client, Input, []).
+
+-spec update_service_attributes(aws_client:aws_client(), update_service_attributes_request(), proplists:proplist()) ->
+    {ok, update_service_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, update_service_attributes_errors(), tuple()}.
+update_service_attributes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateServiceAttributes">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

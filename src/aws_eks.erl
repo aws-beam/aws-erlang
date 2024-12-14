@@ -309,6 +309,7 @@
 %%   <<"instanceTypes">> => list(string()()),
 %%   <<"labels">> => map(),
 %%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"nodeRepairConfig">> => node_repair_config(),
 %%   <<"nodeRole">> := string(),
 %%   <<"nodegroupName">> := string(),
 %%   <<"releaseVersion">> => string(),
@@ -355,6 +356,7 @@
 %% update_nodegroup_config_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"labels">> => update_labels_payload(),
+%%   <<"nodeRepairConfig">> => node_repair_config(),
 %%   <<"scalingConfig">> => nodegroup_scaling_config(),
 %%   <<"taints">> => update_taints_payload(),
 %%   <<"updateConfig">> => nodegroup_update_config()
@@ -520,6 +522,7 @@
 %%   <<"labels">> => map(),
 %%   <<"launchTemplate">> => launch_template_specification(),
 %%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"nodeRepairConfig">> => node_repair_config(),
 %%   <<"nodeRole">> => string(),
 %%   <<"nodegroupArn">> => string(),
 %%   <<"nodegroupName">> => string(),
@@ -1208,6 +1211,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_fargate_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_repair_config() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type node_repair_config() :: #{binary() => any()}.
 
 %% Example:
 %% delete_fargate_profile_request() :: #{}

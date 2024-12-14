@@ -146,6 +146,12 @@
 -type delete_hsm_response() :: #{binary() => any()}.
 
 %% Example:
+%% cloud_hsm_resource_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_hsm_resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% modify_cluster_response() :: #{
 %%   <<"Cluster">> => cluster()
 %% }
@@ -171,6 +177,7 @@
 %%   <<"BackupRetentionPolicy">> => backup_retention_policy(),
 %%   <<"HsmType">> := string(),
 %%   <<"Mode">> => list(any()),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"SourceBackupId">> => string(),
 %%   <<"SubnetIds">> := list(string()()),
 %%   <<"TagList">> => list(tag()())
@@ -204,6 +211,7 @@
 %%   <<"HsmType">> => string(),
 %%   <<"Hsms">> => list(hsm()()),
 %%   <<"Mode">> => list(any()),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"PreCoPassword">> => string(),
 %%   <<"SecurityGroup">> => string(),
 %%   <<"SourceBackupId">> => string(),
@@ -313,6 +321,7 @@
 %%   <<"ClusterId">> => string(),
 %%   <<"EniId">> => string(),
 %%   <<"EniIp">> => string(),
+%%   <<"EniIpV6">> => string(),
 %%   <<"HsmId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
@@ -540,6 +549,7 @@
     cloud_hsm_service_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_resource_limit_exceeded_exception() | 
     cloud_hsm_access_denied_exception() | 
     cloud_hsm_resource_not_found_exception().
 

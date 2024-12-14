@@ -880,6 +880,7 @@
 %% Example:
 %% add_bridge_network_source_request() :: #{
 %%   <<"MulticastIp">> => string(),
+%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
 %%   <<"Name">> => string(),
 %%   <<"NetworkName">> => string(),
 %%   <<"Port">> => integer(),
@@ -890,6 +891,13 @@
 %% Example:
 %% describe_flow_request() :: #{}
 -type describe_flow_request() :: #{}.
+
+
+%% Example:
+%% multicast_source_settings() :: #{
+%%   <<"MulticastSourceIp">> => string()
+%% }
+-type multicast_source_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1093,6 +1101,7 @@
 %% Example:
 %% bridge_network_source() :: #{
 %%   <<"MulticastIp">> => string(),
+%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
 %%   <<"Name">> => string(),
 %%   <<"NetworkName">> => string(),
 %%   <<"Port">> => integer(),
@@ -1245,6 +1254,7 @@
 %% Example:
 %% update_bridge_network_source_request() :: #{
 %%   <<"MulticastIp">> => string(),
+%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
 %%   <<"NetworkName">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"Protocol">> => list(any())
