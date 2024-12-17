@@ -246,6 +246,7 @@
 %% list_core_devices_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"runtime">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"thingGroupArn">> => string()
 %% }
@@ -283,6 +284,7 @@
 %%   <<"coreVersion">> => string(),
 %%   <<"lastStatusUpdateTimestamp">> => non_neg_integer(),
 %%   <<"platform">> => string(),
+%%   <<"runtime">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -348,8 +350,11 @@
 
 %% Example:
 %% core_device() :: #{
+%%   <<"architecture">> => string(),
 %%   <<"coreDeviceThingName">> => string(),
 %%   <<"lastStatusUpdateTimestamp">> => non_neg_integer(),
+%%   <<"platform">> => string(),
+%%   <<"runtime">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type core_device() :: #{binary() => any()}.
@@ -2134,8 +2139,15 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 %% When the core device receives a deployment from the Amazon Web Services
 %% Cloud
 %%
-%% When the status of any component on the core device becomes
-%% `BROKEN'
+%% For Greengrass nucleus 2.12.2 and earlier, the core device sends status
+%% updates when the
+%% status of any component on the core device becomes `ERRORED' or
+%% `BROKEN'.
+%%
+%% For Greengrass nucleus 2.12.3 and later, the core device sends status
+%% updates when the
+%% status of any component on the core device becomes `ERRORED',
+%% `BROKEN', `RUNNING', or `FINISHED'.
 %%
 %% At a regular interval that you can configure:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-nucleus-component.html#greengrass-nucleus-component-configuration-fss,
@@ -2180,6 +2192,7 @@ list_core_devices(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"runtime">>, maps:get(<<"runtime">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
         {<<"thingGroupArn">>, maps:get(<<"thingGroupArn">>, QueryMap, undefined)}
       ],

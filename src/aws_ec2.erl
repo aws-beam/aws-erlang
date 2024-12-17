@@ -4136,6 +4136,7 @@
 %% create_snapshot_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"Location">> => list(any()),
 %%   <<"OutpostArn">> => string(),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
 %%   <<"VolumeId">> := string()
@@ -6540,6 +6541,7 @@
 
 %% Example:
 %% snapshot_info() :: #{
+%%   <<"AvailabilityZone">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Encrypted">> => boolean(),
 %%   <<"OutpostArn">> => string(),
@@ -6961,6 +6963,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceSpecification">> := instance_specification(),
+%%   <<"Location">> => list(any()),
 %%   <<"OutpostArn">> => string(),
 %%   <<"TagSpecifications">> => list(tag_specification()())
 %% }
@@ -13366,6 +13369,7 @@
 
 %% Example:
 %% snapshot() :: #{
+%%   <<"AvailabilityZone">> => string(),
 %%   <<"CompletionDurationMinutes">> => integer(),
 %%   <<"CompletionTime">> => non_neg_integer(),
 %%   <<"DataEncryptionKeyId">> => string(),
@@ -22582,14 +22586,20 @@ create_security_group(Client, Input, Options)
 %% down an
 %% instance.
 %%
-%% You can create snapshots of volumes in a Region and volumes on an Outpost.
-%% If you
-%% create a snapshot of a volume in a Region, the snapshot must be stored in
+%% The location of the source EBS volume determines where you can create the
+%% snapshot.
+%%
+%% If the source volume is in a Region, you must create the snapshot in the
+%% same
+%% Region as the volume.
+%%
+%% If the source volume is in a Local Zone, you can create the snapshot in
 %% the same
-%% Region as the volume. If you create a snapshot of a volume on an Outpost,
-%% the snapshot
-%% can be stored on the same Outpost as the volume, or in the Region for that
-%% Outpost.
+%% Local Zone or in parent Amazon Web Services Region.
+%%
+%% If the source volume is on an Outpost, you can create the snapshot on the
+%% same
+%% Outpost or in its parent Amazon Web Services Region.
 %%
 %% When a snapshot is created, any Amazon Web Services Marketplace product
 %% codes that are associated with the
@@ -22619,19 +22629,11 @@ create_security_group(Client, Input, Options)
 %% encrypted. Volumes that
 %% are created from encrypted snapshots are also automatically encrypted.
 %% Your encrypted volumes
-%% and any associated snapshots always remain protected.
-%%
-%% You can tag your snapshots during creation. For more information, see Tag
-%% your Amazon EC2
-%% resources:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
-%% Amazon EC2 User Guide.
-%%
-%% For more information, see Amazon EBS:
-%% https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html and
+%% and any associated snapshots always remain protected. For more
+%% information,
 %% Amazon EBS encryption:
-%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html in
-%% the Amazon EBS User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html
+%% in the Amazon EBS User Guide.
 -spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
     {ok, snapshot(), tuple()} |
     {error, any()}.
@@ -22646,27 +22648,31 @@ create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
-%% @doc Creates crash-consistent snapshots of multiple EBS volumes and stores
-%% the data in S3.
+%% @doc Creates crash-consistent snapshots of multiple EBS volumes attached
+%% to an Amazon EC2 instance.
 %%
-%% Volumes are chosen by specifying an instance. Any attached volumes will
-%% produce one snapshot
-%% each that is crash-consistent across the instance.
+%% Volumes are chosen by specifying an instance. Each volume attached to the
+%% specified instance
+%% will produce one snapshot that is crash-consistent across the instance.
+%% You can include all of
+%% the volumes currently attached to the instance, or you can exclude the
+%% root volume or specific
+%% data (non-root) volumes from the multi-volume snapshot set.
 %%
-%% You can include all of the volumes currently attached to the instance, or
-%% you can exclude
-%% the root volume or specific data (non-root) volumes from the multi-volume
-%% snapshot set.
+%% The location of the source instance determines where you can create the
+%% snapshots.
 %%
-%% You can create multi-volume snapshots of instances in a Region and
-%% instances on an
-%% Outpost. If you create snapshots from an instance in a Region, the
-%% snapshots must be stored
-%% in the same Region as the instance. If you create snapshots from an
-%% instance on an Outpost,
-%% the snapshots can be stored on the same Outpost as the instance, or in the
-%% Region for that
-%% Outpost.
+%% If the source instance is in a Region, you must create the snapshots in
+%% the same
+%% Region as the instance.
+%%
+%% If the source instance is in a Local Zone, you can create the snapshots in
+%% the same
+%% Local Zone or in parent Amazon Web Services Region.
+%%
+%% If the source instance is on an Outpost, you can create the snapshots on
+%% the same
+%% Outpost or in its parent Amazon Web Services Region.
 -spec create_snapshots(aws_client:aws_client(), create_snapshots_request()) ->
     {ok, create_snapshots_result(), tuple()} |
     {error, any()}.

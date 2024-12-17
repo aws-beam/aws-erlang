@@ -4147,7 +4147,11 @@
 %% Example:
 %% cmaf_ingest_group_settings() :: #{
 %%   <<"Destination">> => output_location_ref(),
+%%   <<"KlvBehavior">> => list(any()),
+%%   <<"KlvNameModifier">> => string(),
 %%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"NielsenId3NameModifier">> => string(),
+%%   <<"Scte35NameModifier">> => string(),
 %%   <<"Scte35Type">> => list(any()),
 %%   <<"SegmentLength">> => integer(),
 %%   <<"SegmentLengthUnits">> => list(any()),
@@ -5328,7 +5332,9 @@
 
 %% Example:
 %% media_package_output_destination_settings() :: #{
-%%   <<"ChannelId">> => string()
+%%   <<"ChannelGroup">> => string(),
+%%   <<"ChannelId">> => string(),
+%%   <<"ChannelName">> => string()
 %% }
 -type media_package_output_destination_settings() :: #{binary() => any()}.
 

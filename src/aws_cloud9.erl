@@ -10,6 +10,11 @@
 %% For more information about Cloud9, see the Cloud9 User Guide:
 %% https://docs.aws.amazon.com/cloud9/latest/user-guide.
 %%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
+%%
 %% Cloud9 supports these operations:
 %%
 %% `CreateEnvironmentEC2': Creates an Cloud9 development environment,
@@ -481,6 +486,11 @@
 %% @doc Creates an Cloud9 development environment, launches an Amazon Elastic
 %% Compute Cloud (Amazon EC2) instance, and
 %% then connects from the instance to the environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec create_environment_ec2(aws_client:aws_client(), create_environment_ec2_request()) ->
     {ok, create_environment_ec2_result(), tuple()} |
     {error, any()} |
@@ -498,6 +508,11 @@ create_environment_ec2(Client, Input, Options)
     request(Client, <<"CreateEnvironmentEC2">>, Input, Options).
 
 %% @doc Adds an environment member to an Cloud9 development environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec create_environment_membership(aws_client:aws_client(), create_environment_membership_request()) ->
     {ok, create_environment_membership_result(), tuple()} |
     {error, any()} |
@@ -518,6 +533,11 @@ create_environment_membership(Client, Input, Options)
 %%
 %% If an Amazon EC2 instance is connected to the
 %% environment, also terminates the instance.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec delete_environment(aws_client:aws_client(), delete_environment_request()) ->
     {ok, delete_environment_result(), tuple()} |
     {error, any()} |
@@ -535,6 +555,11 @@ delete_environment(Client, Input, Options)
     request(Client, <<"DeleteEnvironment">>, Input, Options).
 
 %% @doc Deletes an environment member from a development environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec delete_environment_membership(aws_client:aws_client(), delete_environment_membership_request()) ->
     {ok, delete_environment_membership_result(), tuple()} |
     {error, any()} |
@@ -553,6 +578,11 @@ delete_environment_membership(Client, Input, Options)
 
 %% @doc Gets information about environment members for an Cloud9 development
 %% environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec describe_environment_memberships(aws_client:aws_client(), describe_environment_memberships_request()) ->
     {ok, describe_environment_memberships_result(), tuple()} |
     {error, any()} |
@@ -570,6 +600,11 @@ describe_environment_memberships(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentMemberships">>, Input, Options).
 
 %% @doc Gets status information for an Cloud9 development environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec describe_environment_status(aws_client:aws_client(), describe_environment_status_request()) ->
     {ok, describe_environment_status_result(), tuple()} |
     {error, any()} |
@@ -587,6 +622,11 @@ describe_environment_status(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentStatus">>, Input, Options).
 
 %% @doc Gets information about Cloud9 development environments.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec describe_environments(aws_client:aws_client(), describe_environments_request()) ->
     {ok, describe_environments_result(), tuple()} |
     {error, any()} |
@@ -604,6 +644,16 @@ describe_environments(Client, Input, Options)
     request(Client, <<"DescribeEnvironments">>, Input, Options).
 
 %% @doc Gets a list of Cloud9 development environment identifiers.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec list_environments(aws_client:aws_client(), list_environments_request()) ->
     {ok, list_environments_result(), tuple()} |
     {error, any()} |
@@ -622,6 +672,11 @@ list_environments(Client, Input, Options)
 
 %% @doc Gets a list of the tags associated with an Cloud9 development
 %% environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -639,6 +694,11 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Adds tags to an Cloud9 development environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 %%
 %% Tags that you add to an Cloud9 environment by using this method will NOT
 %% be
@@ -660,6 +720,11 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from an Cloud9 development environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -677,6 +742,11 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Changes the settings of an existing Cloud9 development environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec update_environment(aws_client:aws_client(), update_environment_request()) ->
     {ok, update_environment_result(), tuple()} |
     {error, any()} |
@@ -696,6 +766,11 @@ update_environment(Client, Input, Options)
 %% @doc Changes the settings of an existing environment member for an Cloud9
 %% development
 %% environment.
+%%
+%% Cloud9 is no longer available to new customers. Existing customers of
+%% Cloud9 can continue to use the service as normal.
+%% Learn more&quot;:
+%% http://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/
 -spec update_environment_membership(aws_client:aws_client(), update_environment_membership_request()) ->
     {ok, update_environment_membership_result(), tuple()} |
     {error, any()} |
