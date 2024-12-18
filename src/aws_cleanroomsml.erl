@@ -1542,6 +1542,7 @@
 %% audience_generation_job_data_source() :: #{
 %%   <<"dataSource">> => s3_config_map(),
 %%   <<"roleArn">> => string(),
+%%   <<"sqlComputeConfiguration">> => list(),
 %%   <<"sqlParameters">> => protected_query_s_q_l_parameters()
 %% }
 -type audience_generation_job_data_source() :: #{binary() => any()}.

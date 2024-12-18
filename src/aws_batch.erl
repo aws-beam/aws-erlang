@@ -115,7 +115,9 @@
 
 %% Example:
 %% eks_metadata() :: #{
-%%   <<"labels">> => map()
+%%   <<"annotations">> => map(),
+%%   <<"labels">> => map(),
+%%   <<"namespace">> => string()
 %% }
 -type eks_metadata() :: #{binary() => any()}.
 
@@ -762,6 +764,7 @@
 %%   <<"emptyDir">> => eks_empty_dir(),
 %%   <<"hostPath">> => eks_host_path(),
 %%   <<"name">> => string(),
+%%   <<"persistentVolumeClaim">> => eks_persistent_volume_claim(),
 %%   <<"secret">> => eks_secret()
 %% }
 -type eks_volume() :: #{binary() => any()}.
@@ -1079,6 +1082,14 @@
 
 
 %% Example:
+%% eks_persistent_volume_claim() :: #{
+%%   <<"claimName">> => string(),
+%%   <<"readOnly">> => boolean()
+%% }
+-type eks_persistent_volume_claim() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_jobs_response() :: #{
 %%   <<"jobs">> => list(job_detail()())
 %% }
@@ -1166,7 +1177,8 @@
 %% eks_container_volume_mount() :: #{
 %%   <<"mountPath">> => string(),
 %%   <<"name">> => string(),
-%%   <<"readOnly">> => boolean()
+%%   <<"readOnly">> => boolean(),
+%%   <<"subPath">> => string()
 %% }
 -type eks_container_volume_mount() :: #{binary() => any()}.
 
@@ -1776,12 +1788,10 @@ cancel_job(Client, Input0, Options0) ->
 %% `SPOT_PRICE_CAPACITY_OPTIMIZED'.
 %%
 %% Set the update to latest image version (`updateToLatestImageVersion')
-%% parameter to
-%% `true'.
-%% The `updateToLatestImageVersion' parameter is used when you update a
-%% compute
-%% environment. This parameter is ignored when you create a compute
-%% environment.
+%% parameter to `true'. The `updateToLatestImageVersion' parameter
+%% is used when you update a compute environment. This parameter is ignored
+%% when you create
+%% a compute environment.
 %%
 %% Don't specify an AMI ID in `imageId', `imageIdOverride' (in
 %%

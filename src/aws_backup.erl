@@ -113,6 +113,9 @@
          get_legal_hold/2,
          get_legal_hold/4,
          get_legal_hold/5,
+         get_recovery_point_index_details/3,
+         get_recovery_point_index_details/5,
+         get_recovery_point_index_details/6,
          get_recovery_point_restore_metadata/3,
          get_recovery_point_restore_metadata/5,
          get_recovery_point_restore_metadata/6,
@@ -161,6 +164,9 @@
          list_frameworks/1,
          list_frameworks/3,
          list_frameworks/4,
+         list_indexed_recovery_points/1,
+         list_indexed_recovery_points/3,
+         list_indexed_recovery_points/4,
          list_legal_holds/1,
          list_legal_holds/3,
          list_legal_holds/4,
@@ -231,6 +237,8 @@
          update_framework/4,
          update_global_settings/2,
          update_global_settings/3,
+         update_recovery_point_index_settings/4,
+         update_recovery_point_index_settings/5,
          update_recovery_point_lifecycle/4,
          update_recovery_point_lifecycle/5,
          update_region_settings/2,
@@ -286,6 +294,19 @@
 %%   <<"Type">> => string()
 %% }
 -type missing_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indexed_recovery_points_input() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceResourceArn">> => string()
+%% }
+-type list_indexed_recovery_points_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -369,6 +390,7 @@
 %%   <<"CompleteWindowMinutes">> => float(),
 %%   <<"IamRoleArn">> := string(),
 %%   <<"IdempotencyToken">> => string(),
+%%   <<"Index">> => list(any()),
 %%   <<"Lifecycle">> => lifecycle(),
 %%   <<"RecoveryPointTags">> => map(),
 %%   <<"ResourceArn">> := string(),
@@ -486,6 +508,8 @@
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"IamRoleArn">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
 %%   <<"IsEncrypted">> => boolean(),
 %%   <<"IsParent">> => boolean(),
 %%   <<"LastRestoreTime">> => non_neg_integer(),
@@ -785,6 +809,16 @@
 
 
 %% Example:
+%% update_recovery_point_index_settings_output() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"Index">> => list(any()),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"RecoveryPointArn">> => string()
+%% }
+-type update_recovery_point_index_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_backup_vault_output() :: #{
 %%   <<"BackupVaultArn">> => string(),
 %%   <<"BackupVaultName">> => string(),
@@ -886,6 +920,14 @@
 
 
 %% Example:
+%% update_recovery_point_index_settings_input() :: #{
+%%   <<"IamRoleArn">> => string(),
+%%   <<"Index">> := list(any())
+%% }
+-type update_recovery_point_index_settings_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% export_backup_plan_template_output() :: #{
 %%   <<"BackupPlanTemplateJson">> => string()
 %% }
@@ -933,6 +975,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_legal_holds_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_recovery_point_index_details_input() :: #{}
+-type get_recovery_point_index_details_input() :: #{}.
 
 
 %% Example:
@@ -1406,6 +1452,14 @@
 
 
 %% Example:
+%% list_indexed_recovery_points_output() :: #{
+%%   <<"IndexedRecoveryPoints">> => list(indexed_recovery_point()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_indexed_recovery_points_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% report_delivery_channel() :: #{
 %%   <<"Formats">> => list(string()()),
 %%   <<"S3BucketName">> => string(),
@@ -1475,6 +1529,21 @@
 
 
 %% Example:
+%% indexed_recovery_point() :: #{
+%%   <<"BackupCreationDate">> => non_neg_integer(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IndexCreationDate">> => non_neg_integer(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceResourceArn">> => string()
+%% }
+-type indexed_recovery_point() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_restore_jobs_input() :: #{
 %%   <<"ByAccountId">> => string(),
 %%   <<"ByCompleteAfter">> => non_neg_integer(),
@@ -1511,6 +1580,8 @@
 %%   <<"BackupVaultName">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"EncryptionKeyArn">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
 %%   <<"IsParent">> => boolean(),
 %%   <<"ParentRecoveryPointArn">> => string(),
 %%   <<"RecoveryPointArn">> => string(),
@@ -1520,6 +1591,21 @@
 %%   <<"VaultType">> => list(any())
 %% }
 -type recovery_point_by_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_point_index_details_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"IndexCompletionDate">> => non_neg_integer(),
+%%   <<"IndexCreationDate">> => non_neg_integer(),
+%%   <<"IndexDeletionDate">> => non_neg_integer(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"SourceResourceArn">> => string(),
+%%   <<"TotalItemsIndexed">> => float()
+%% }
+-type get_recovery_point_index_details_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1634,6 +1720,7 @@
 %%   <<"CompletionWindowMinutes">> => float(),
 %%   <<"CopyActions">> => list(copy_action()()),
 %%   <<"EnableContinuousBackup">> => boolean(),
+%%   <<"IndexActions">> => list(index_action()()),
 %%   <<"Lifecycle">> => lifecycle(),
 %%   <<"RecoveryPointTags">> => map(),
 %%   <<"RuleId">> => string(),
@@ -1917,6 +2004,7 @@
 %%   <<"CompletionWindowMinutes">> => float(),
 %%   <<"CopyActions">> => list(copy_action()()),
 %%   <<"EnableContinuousBackup">> => boolean(),
+%%   <<"IndexActions">> => list(index_action()()),
 %%   <<"Lifecycle">> => lifecycle(),
 %%   <<"RecoveryPointTags">> => map(),
 %%   <<"RuleName">> => string(),
@@ -2165,6 +2253,8 @@
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"IamRoleArn">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
 %%   <<"IsEncrypted">> => boolean(),
 %%   <<"IsParent">> => boolean(),
 %%   <<"LastRestoreTime">> => non_neg_integer(),
@@ -2256,6 +2346,13 @@
 %% Example:
 %% delete_backup_vault_lock_configuration_input() :: #{}
 -type delete_backup_vault_lock_configuration_input() :: #{}.
+
+
+%% Example:
+%% index_action() :: #{
+%%   <<"ResourceTypes">> => list(string()())
+%% }
+-type index_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2622,6 +2719,12 @@
     resource_not_found_exception() | 
     missing_parameter_value_exception().
 
+-type get_recovery_point_index_details_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
 -type get_recovery_point_restore_metadata_errors() ::
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
@@ -2700,6 +2803,11 @@
 -type list_frameworks_errors() ::
     service_unavailable_exception() | 
     invalid_parameter_value_exception().
+
+-type list_indexed_recovery_points_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
 
 -type list_legal_holds_errors() ::
     service_unavailable_exception() | 
@@ -2865,6 +2973,13 @@
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
     invalid_request_exception() | 
+    missing_parameter_value_exception().
+
+-type update_recovery_point_index_settings_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     missing_parameter_value_exception().
 
 -type update_recovery_point_lifecycle_errors() ::
@@ -4582,6 +4697,44 @@ get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This operation returns the metadata and details specific to
+%% the backup index associated with the specified recovery point.
+-spec get_recovery_point_index_details(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_recovery_point_index_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_point_index_details_errors(), tuple()}.
+get_recovery_point_index_details(Client, BackupVaultName, RecoveryPointArn)
+  when is_map(Client) ->
+    get_recovery_point_index_details(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
+
+-spec get_recovery_point_index_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_recovery_point_index_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_point_index_details_errors(), tuple()}.
+get_recovery_point_index_details(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_recovery_point_index_details(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
+
+-spec get_recovery_point_index_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recovery_point_index_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_point_index_details_errors(), tuple()}.
+get_recovery_point_index_details(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/index"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a set of metadata key-value pairs that were used to create
 %% the backup.
 -spec get_recovery_point_restore_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -5307,6 +5460,58 @@ list_frameworks(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This operation returns a list of recovery points that have an
+%% associated index, belonging to the specified account.
+%%
+%% Optional parameters you can include are: MaxResults;
+%% NextToken; SourceResourceArns; CreatedBefore; CreatedAfter;
+%% and ResourceType.
+-spec list_indexed_recovery_points(aws_client:aws_client()) ->
+    {ok, list_indexed_recovery_points_output(), tuple()} |
+    {error, any()} |
+    {error, list_indexed_recovery_points_errors(), tuple()}.
+list_indexed_recovery_points(Client)
+  when is_map(Client) ->
+    list_indexed_recovery_points(Client, #{}, #{}).
+
+-spec list_indexed_recovery_points(aws_client:aws_client(), map(), map()) ->
+    {ok, list_indexed_recovery_points_output(), tuple()} |
+    {error, any()} |
+    {error, list_indexed_recovery_points_errors(), tuple()}.
+list_indexed_recovery_points(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_indexed_recovery_points(Client, QueryMap, HeadersMap, []).
+
+-spec list_indexed_recovery_points(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_indexed_recovery_points_output(), tuple()} |
+    {error, any()} |
+    {error, list_indexed_recovery_points_errors(), tuple()}.
+list_indexed_recovery_points(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/indexes/recovery-point"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"indexStatus">>, maps:get(<<"indexStatus">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
+        {<<"sourceResourceArn">>, maps:get(<<"sourceResourceArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -6487,6 +6692,42 @@ update_global_settings(Client, Input) ->
 update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/global-settings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This operation updates the settings of a recovery point index.
+%%
+%% Required: BackupVaultName, RecoveryPointArn, and IAMRoleArn
+-spec update_recovery_point_index_settings(aws_client:aws_client(), binary() | list(), binary() | list(), update_recovery_point_index_settings_input()) ->
+    {ok, update_recovery_point_index_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_point_index_settings_errors(), tuple()}.
+update_recovery_point_index_settings(Client, BackupVaultName, RecoveryPointArn, Input) ->
+    update_recovery_point_index_settings(Client, BackupVaultName, RecoveryPointArn, Input, []).
+
+-spec update_recovery_point_index_settings(aws_client:aws_client(), binary() | list(), binary() | list(), update_recovery_point_index_settings_input(), proplists:proplist()) ->
+    {ok, update_recovery_point_index_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_point_index_settings_errors(), tuple()}.
+update_recovery_point_index_settings(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/index"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -285,6 +285,7 @@
 %%   <<"environmentId">> => string(),
 %%   <<"instanceType">> => string(),
 %%   <<"name">> => string(),
+%%   <<"networkType">> => string(),
 %%   <<"status">> => string()
 %% }
 -type environment_summary() :: #{binary() => any()}.
@@ -375,6 +376,7 @@
 %%   <<"kmsKeyId">> => [string()],
 %%   <<"loadBalancerArn">> => [string()],
 %%   <<"name">> := string(),
+%%   <<"networkType">> => string(),
 %%   <<"pendingMaintenance">> => pending_maintenance(),
 %%   <<"preferredMaintenanceWindow">> => string(),
 %%   <<"publiclyAccessible">> => boolean(),
@@ -955,6 +957,7 @@
 %%   <<"instanceType">> := string(),
 %%   <<"kmsKeyId">> => [string()],
 %%   <<"name">> := string(),
+%%   <<"networkType">> => string(),
 %%   <<"preferredMaintenanceWindow">> => string(),
 %%   <<"publiclyAccessible">> => boolean(),
 %%   <<"securityGroupIds">> => list(string()()),

@@ -2201,6 +2201,8 @@
 
 %% Example:
 %% vpc_origin_config() :: #{
+%%   <<"OriginKeepaliveTimeout">> => integer(),
+%%   <<"OriginReadTimeout">> => integer(),
 %%   <<"VpcOriginId">> => string()
 %% }
 -type vpc_origin_config() :: #{binary() => any()}.

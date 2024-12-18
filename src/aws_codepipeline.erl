@@ -1246,6 +1246,7 @@
 
 %% Example:
 %% rule_declaration() :: #{
+%%   <<"commands">> => list(string()()),
 %%   <<"configuration">> => map(),
 %%   <<"inputArtifacts">> => list(input_artifact()()),
 %%   <<"name">> => string(),
@@ -2691,6 +2692,12 @@ list_rule_executions(Client, Input, Options)
     request(Client, <<"ListRuleExecutions">>, Input, Options).
 
 %% @doc Lists the rules for the condition.
+%%
+%% For more information about conditions, see Stage
+%% conditions:
+%% https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html.
+%% For more information about rules, see the CodePipeline rule reference:
+%% https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html.
 -spec list_rule_types(aws_client:aws_client(), list_rule_types_input()) ->
     {ok, list_rule_types_output(), tuple()} |
     {error, any()} |

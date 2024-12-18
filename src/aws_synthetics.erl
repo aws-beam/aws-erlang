@@ -364,6 +364,7 @@
 
 %% Example:
 %% vpc_config_output() :: #{
+%%   <<"Ipv6AllowedForDualStack">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SubnetIds">> => list(string()()),
 %%   <<"VpcId">> => string()
@@ -517,6 +518,7 @@
 
 %% Example:
 %% vpc_config_input() :: #{
+%%   <<"Ipv6AllowedForDualStack">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SubnetIds">> => list(string()())
 %% }
