@@ -610,6 +610,8 @@
          update_instance_attribute/5,
          update_instance_storage_config/4,
          update_instance_storage_config/5,
+         update_participant_authentication/2,
+         update_participant_authentication/3,
          update_participant_role_config/4,
          update_participant_role_config/5,
          update_phone_number/3,
@@ -2923,6 +2925,10 @@
 %% update_contact_flow_name_response() :: #{}
 -type update_contact_flow_name_response() :: #{}.
 
+%% Example:
+%% update_participant_authentication_response() :: #{}
+-type update_participant_authentication_response() :: #{}.
+
 
 %% Example:
 %% list_task_templates_response() :: #{
@@ -4733,6 +4739,7 @@
 %%   <<"InitialContactId">> => string(),
 %%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),
 %%   <<"LastPausedTimestamp">> => non_neg_integer(),
+%%   <<"CustomerId">> => string(),
 %%   <<"CustomerVoiceActivity">> => customer_voice_activity(),
 %%   <<"QualityMetrics">> => quality_metrics(),
 %%   <<"CustomerEndpoint">> => endpoint_info(),
@@ -5924,6 +5931,17 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_default_vocabularies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_participant_authentication_request() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"ErrorDescription">> => string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"State">> := string()
+%% }
+-type update_participant_authentication_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7183,6 +7201,7 @@
 %%   <<"ChatDurationInMinutes">> => integer(),
 %%   <<"ClientToken">> => string(),
 %%   <<"ContactFlowId">> := string(),
+%%   <<"CustomerId">> => string(),
 %%   <<"InitialMessage">> => chat_message(),
 %%   <<"InstanceId">> := string(),
 %%   <<"ParticipantDetails">> := participant_details(),
@@ -9752,6 +9771,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type update_participant_authentication_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception().
+
 -type update_participant_role_config_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -11493,7 +11520,7 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 %%
 %% For more information about push notifications, see Set up push
 %% notifications in Amazon Connect for mobile chat:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/set-up-push-notifications-for-mobile-chat.html
+%% https://docs.aws.amazon.com/connect/latest/adminguide/enable-push-notifications-for-mobile-chat.html
 %% in the Amazon Connect
 %% Administrator Guide.
 -spec create_push_notification_registration(aws_client:aws_client(), binary() | list(), create_push_notification_registration_request()) ->
@@ -15592,7 +15619,7 @@ list_authentication_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% For the specified version of Amazon Lex, returns a paginated list of all
 %% the Amazon Lex bots currently associated with the instance. Use this API
-%% to returns both Amazon Lex V1 and V2 bots.
+%% to return both Amazon Lex V1 and V2 bots.
 -spec list_bots(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
@@ -20465,6 +20492,55 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
                      {<<"resourceType">>, <<"ResourceType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Instructs Amazon Connect to resume the authentication process.
+%%
+%% The subsequent actions
+%% depend on the request body contents:
+%%
+%% If a code is provided: Connect retrieves the identity
+%% information from Amazon Cognito and imports it into Connect Customer
+%% Profiles.
+%%
+%% If an error is provided: The error branch of the
+%% Authenticate Customer block is executed.
+%%
+%% The API returns a success response to acknowledge the request. However,
+%% the interaction and
+%% exchange of identity information occur asynchronously after the response
+%% is returned.
+-spec update_participant_authentication(aws_client:aws_client(), update_participant_authentication_request()) ->
+    {ok, update_participant_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, update_participant_authentication_errors(), tuple()}.
+update_participant_authentication(Client, Input) ->
+    update_participant_authentication(Client, Input, []).
+
+-spec update_participant_authentication(aws_client:aws_client(), update_participant_authentication_request(), proplists:proplist()) ->
+    {ok, update_participant_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, update_participant_authentication_errors(), tuple()}.
+update_participant_authentication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/update-participant-authentication"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates timeouts for when human chat participants are to be

@@ -1,8 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Connect is an easy-to-use omnichannel cloud contact center
-%% service that
+%% @doc
+%%
+%% Participant Service actions:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Participant_Service.html
+%%
+%% Participant Service data types:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Participant_Service.html
+%%
+%% Amazon Connect is an easy-to-use omnichannel cloud contact center service
+%% that
 %% enables companies of any size to deliver superior customer service at a
 %% lower cost.
 %%
@@ -21,7 +29,9 @@
 %% retrieving chat transcripts.
 -module(aws_connectparticipant).
 
--export([complete_attachment_upload/2,
+-export([cancel_participant_authentication/2,
+         cancel_participant_authentication/3,
+         complete_attachment_upload/2,
          complete_attachment_upload/3,
          create_participant_connection/2,
          create_participant_connection/3,
@@ -32,6 +42,8 @@
          disconnect_participant/3,
          get_attachment/2,
          get_attachment/3,
+         get_authentication_url/2,
+         get_authentication_url/3,
          get_transcript/2,
          get_transcript/3,
          send_event/2,
@@ -46,6 +58,14 @@
 
 
 %% Example:
+%% cancel_participant_authentication_request() :: #{
+%%   <<"ConnectionToken">> := string(),
+%%   <<"SessionId">> := string()
+%% }
+-type cancel_participant_authentication_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% view() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Content">> => view_content(),
@@ -54,6 +74,13 @@
 %%   <<"Version">> => integer()
 %% }
 -type view() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_authentication_url_response() :: #{
+%%   <<"AuthenticationUrl">> => string()
+%% }
+-type get_authentication_url_response() :: #{binary() => any()}.
 
 %% Example:
 %% disconnect_participant_response() :: #{}
@@ -198,6 +225,15 @@
 
 
 %% Example:
+%% get_authentication_url_request() :: #{
+%%   <<"ConnectionToken">> := string(),
+%%   <<"RedirectUri">> := string(),
+%%   <<"SessionId">> := string()
+%% }
+-type get_authentication_url_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_view_request() :: #{
 %%   <<"ConnectionToken">> := string()
 %% }
@@ -206,6 +242,7 @@
 
 %% Example:
 %% get_attachment_response() :: #{
+%%   <<"AttachmentSizeInBytes">> => float(),
 %%   <<"Url">> => string(),
 %%   <<"UrlExpiry">> => string()
 %% }
@@ -244,7 +281,8 @@
 %% Example:
 %% get_attachment_request() :: #{
 %%   <<"AttachmentId">> := string(),
-%%   <<"ConnectionToken">> := string()
+%%   <<"ConnectionToken">> := string(),
+%%   <<"UrlExpiryInSeconds">> => integer()
 %% }
 -type get_attachment_request() :: #{binary() => any()}.
 
@@ -318,6 +356,10 @@
 %% }
 -type send_message_request() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_participant_authentication_response() :: #{}
+-type cancel_participant_authentication_response() :: #{}.
+
 
 %% Example:
 %% send_message_response() :: #{
@@ -342,6 +384,12 @@
 %%   <<"Websocket">> => websocket()
 %% }
 -type create_participant_connection_response() :: #{binary() => any()}.
+
+-type cancel_participant_authentication_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type complete_attachment_upload_errors() ::
     throttling_exception() | 
@@ -371,6 +419,12 @@
     internal_server_exception().
 
 -type get_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_authentication_url_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -406,12 +460,58 @@
 %% API
 %%====================================================================
 
+%% @doc Cancels the authentication session.
+%%
+%% The opted out branch of the Authenticate Customer
+%% flow block will be taken.
+%%
+%% The current supported channel is chat. This API is not supported for Apple
+%% Messages for Business, WhatsApp, or SMS chats.
+-spec cancel_participant_authentication(aws_client:aws_client(), cancel_participant_authentication_request()) ->
+    {ok, cancel_participant_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_participant_authentication_errors(), tuple()}.
+cancel_participant_authentication(Client, Input) ->
+    cancel_participant_authentication(Client, Input, []).
+
+-spec cancel_participant_authentication(aws_client:aws_client(), cancel_participant_authentication_request(), proplists:proplist()) ->
+    {ok, cancel_participant_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_participant_authentication_errors(), tuple()}.
+cancel_participant_authentication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/participant/cancel-authentication"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Allows you to confirm that the attachment has been uploaded using the
 %% pre-signed URL
 %% provided in StartAttachmentUpload API.
 %%
 %% A conflict exception is thrown when an attachment
 %% with that identifier is already being uploaded.
+%%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
@@ -455,6 +555,10 @@ complete_attachment_upload(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates the participant's connection.
+%%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
 %% `ParticipantToken' is used for invoking this API instead of
 %% `ConnectionToken'.
@@ -539,6 +643,10 @@ create_participant_connection(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the view for the specified view token.
+%%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 -spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
@@ -580,6 +688,10 @@ describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Disconnects a participant.
+%%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
@@ -627,6 +739,10 @@ disconnect_participant(Client, Input0, Options0) ->
 %% This is an
 %% asynchronous API for use with active contacts.
 %%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
+%%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
 %%
@@ -668,6 +784,54 @@ get_attachment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the AuthenticationUrl for the current authentication
+%% session for the
+%% AuthenticateCustomer flow block.
+%%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
+%%
+%% This API can only be called within one minute of receiving the
+%% authenticationInitiated event.
+%%
+%% The current supported channel is chat. This API is not supported for Apple
+%% Messages for Business, WhatsApp, or SMS chats.
+-spec get_authentication_url(aws_client:aws_client(), get_authentication_url_request()) ->
+    {ok, get_authentication_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_authentication_url_errors(), tuple()}.
+get_authentication_url(Client, Input) ->
+    get_authentication_url(Client, Input, []).
+
+-spec get_authentication_url(aws_client:aws_client(), get_authentication_url_request(), proplists:proplist()) ->
+    {ok, get_authentication_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_authentication_url_errors(), tuple()}.
+get_authentication_url(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/participant/authentication-url"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves a transcript of the session, including details about any
 %% attachments.
 %%
@@ -677,11 +841,15 @@ get_attachment(Client, Input0, Options0) ->
 %% Enable persistent chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html.
 %%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
+%%
 %% If you have a process that consumes events in the transcript of an chat
-%% that has ended, note that chat
-%% transcripts contain the following event content types if the event has
-%% occurred
-%% during the chat session:
+%% that has
+%% ended, note that chat transcripts contain the following event content
+%% types if the event
+%% has occurred during the chat session:
 %%
 %% `application/vnd.amazonaws.connect.event.participant.left'
 %%
@@ -750,6 +918,10 @@ get_transcript(Client, Input0, Options0) ->
 %% when a supervisor
 %% is barged-in will result in a conflict exception.
 %%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
+%%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
 %%
@@ -792,6 +964,10 @@ send_event(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends a message.
+%%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
@@ -837,6 +1013,10 @@ send_message(Client, Input0, Options0) ->
 %% @doc Provides a pre-signed Amazon S3 URL in response for uploading the
 %% file directly to
 %% S3.
+%%
+%% For security recommendations, see Amazon Connect Chat security best
+%% practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.

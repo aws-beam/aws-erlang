@@ -1802,6 +1802,13 @@
 
 
 %% Example:
+%% unique_key() :: #{
+%%   <<"ColumnNames">> => list(string()())
+%% }
+-type unique_key() :: #{binary() => any()}.
+
+
+%% Example:
 %% gauge_chart_configuration() :: #{
 %%   <<"ColorConfiguration">> => gauge_chart_color_configuration(),
 %%   <<"DataLabels">> => data_label_options(),
@@ -2161,6 +2168,7 @@
 %%   <<"LogicalTableMap">> => map(),
 %%   <<"Name">> => string(),
 %%   <<"OutputColumns">> => list(output_column()()),
+%%   <<"PerformanceConfiguration">> => performance_configuration(),
 %%   <<"PhysicalTableMap">> => map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration()
@@ -5304,6 +5312,7 @@
 %%   <<"ImportMode">> := list(any()),
 %%   <<"LogicalTableMap">> => map(),
 %%   <<"Name">> := string(),
+%%   <<"PerformanceConfiguration">> => performance_configuration(),
 %%   <<"Permissions">> => list(resource_permission()()),
 %%   <<"PhysicalTableMap">> := map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
@@ -12209,6 +12218,7 @@
 %%   <<"ImportMode">> := list(any()),
 %%   <<"LogicalTableMap">> => map(),
 %%   <<"Name">> := string(),
+%%   <<"PerformanceConfiguration">> => performance_configuration(),
 %%   <<"PhysicalTableMap">> := map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration()
@@ -12445,6 +12455,13 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_public_sharing_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_configuration() :: #{
+%%   <<"UniqueKeys">> => list(unique_key()())
+%% }
+-type performance_configuration() :: #{binary() => any()}.
 
 
 %% Example:

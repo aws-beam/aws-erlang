@@ -443,6 +443,14 @@
 
 
 %% Example:
+%% alarm() :: #{
+%%   <<"alarmArn">> => string(),
+%%   <<"source">> => string()
+%% }
+-type alarm() :: #{binary() => any()}.
+
+
+%% Example:
 %% config_recommendation() :: #{
 %%   <<"appComponentName">> => string(),
 %%   <<"compliance">> => map(),
@@ -620,6 +628,7 @@
 
 %% Example:
 %% update_recommendation_status_request_entry() :: #{
+%%   <<"appComponentId">> => string(),
 %%   <<"entryId">> => string(),
 %%   <<"excludeReason">> => list(any()),
 %%   <<"excluded">> => boolean(),
@@ -712,8 +721,10 @@
 %% Example:
 %% recommendation_item() :: #{
 %%   <<"alreadyImplemented">> => boolean(),
+%%   <<"discoveredAlarm">> => alarm(),
 %%   <<"excludeReason">> => list(any()),
 %%   <<"excluded">> => boolean(),
+%%   <<"latestDiscoveredExperiment">> => experiment(),
 %%   <<"resourceId">> => string(),
 %%   <<"targetAccountId">> => string(),
 %%   <<"targetRegion">> => string()
@@ -965,6 +976,7 @@
 
 %% Example:
 %% batch_update_recommendation_status_successful_entry() :: #{
+%%   <<"appComponentId">> => string(),
 %%   <<"entryId">> => string(),
 %%   <<"excludeReason">> => list(any()),
 %%   <<"excluded">> => boolean(),
@@ -1498,6 +1510,7 @@
 
 %% Example:
 %% test_recommendation() :: #{
+%%   <<"appComponentId">> => string(),
 %%   <<"appComponentName">> => string(),
 %%   <<"dependsOnAlarms">> => list(string()()),
 %%   <<"description">> => string(),
@@ -1697,6 +1710,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type physical_resource_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment() :: #{
+%%   <<"experimentArn">> => string(),
+%%   <<"experimentTemplateId">> => string()
+%% }
+-type experiment() :: #{binary() => any()}.
 
 
 %% Example:

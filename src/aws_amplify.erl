@@ -134,7 +134,9 @@
 %%   <<"repository">> => string(),
 %%   <<"repositoryCloneMethod">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"updateTime">> => non_neg_integer()
+%%   <<"updateTime">> => non_neg_integer(),
+%%   <<"wafConfiguration">> => waf_configuration(),
+%%   <<"webhookCreateTime">> => non_neg_integer()
 %% }
 -type app() :: #{binary() => any()}.
 
@@ -584,6 +586,15 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% waf_configuration() :: #{
+%%   <<"statusReason">> => string(),
+%%   <<"wafStatus">> => list(any()),
+%%   <<"webAclArn">> => string()
+%% }
+-type waf_configuration() :: #{binary() => any()}.
 
 
 %% Example:

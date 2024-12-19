@@ -375,6 +375,8 @@
          get_registration_code/4,
          get_statistics/2,
          get_statistics/3,
+         get_thing_connectivity_data/3,
+         get_thing_connectivity_data/4,
          get_topic_rule/2,
          get_topic_rule/4,
          get_topic_rule/5,
@@ -1349,6 +1351,16 @@
 %%   <<"securityProfileTargetArn">> := string()
 %% }
 -type list_security_profiles_for_target_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_thing_connectivity_data_response() :: #{
+%%   <<"connected">> => boolean(),
+%%   <<"disconnectReason">> => list(any()),
+%%   <<"thingName">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type get_thing_connectivity_data_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5779,6 +5791,10 @@
 -type get_behavior_model_training_summaries_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_thing_connectivity_data_request() :: #{}
+-type get_thing_connectivity_data_request() :: #{}.
+
+%% Example:
 %% describe_provisioning_template_version_request() :: #{}
 -type describe_provisioning_template_version_request() :: #{}.
 
@@ -8229,6 +8245,15 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_aggregation_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type get_thing_connectivity_data_errors() ::
+    throttling_exception() | 
+    index_not_ready_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
 
@@ -15182,6 +15207,40 @@ get_statistics(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the live connectivity status per device.
+-spec get_thing_connectivity_data(aws_client:aws_client(), binary() | list(), get_thing_connectivity_data_request()) ->
+    {ok, get_thing_connectivity_data_response(), tuple()} |
+    {error, any()} |
+    {error, get_thing_connectivity_data_errors(), tuple()}.
+get_thing_connectivity_data(Client, ThingName, Input) ->
+    get_thing_connectivity_data(Client, ThingName, Input, []).
+
+-spec get_thing_connectivity_data(aws_client:aws_client(), binary() | list(), get_thing_connectivity_data_request(), proplists:proplist()) ->
+    {ok, get_thing_connectivity_data_response(), tuple()} |
+    {error, any()} |
+    {error, get_thing_connectivity_data_errors(), tuple()}.
+get_thing_connectivity_data(Client, ThingName, Input0, Options0) ->
+    Method = post,
+    Path = ["/things/", aws_util:encode_uri(ThingName), "/connectivity-data"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets information about the rule.
 %%
 %% Requires permission to access the GetTopicRule:
@@ -15929,13 +15988,21 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
 
 %% @doc List all command executions.
 %%
-%% You must provide only the
-%% `startedTimeFilter' or the `completedTimeFilter' information. If
-%% you
-%% provide both time filters, the API will generate an error.
-%% You can use this information to find command executions that started
-%% within
-%% a specific timeframe.
+%% You must provide only the `startedTimeFilter' or
+%% the `completedTimeFilter' information. If you provide
+%% both time filters, the API will generate an error. You can use
+%% this information to retrieve a list of command executions
+%% within a specific timeframe.
+%%
+%% You must provide only the `commandArn' or
+%% the `thingArn' information depending on whether you want
+%% to list executions for a specific command or an IoT thing. If you provide
+%% both fields, the API will generate an error.
+%%
+%% For more information about considerations for using this API, see
+%% List
+%% command executions in your account (CLI):
+%% https://docs.aws.amazon.com/iot/latest/developerguide/iot-remote-command-execution-start-monitor.html#iot-remote-command-execution-list-cli.
 -spec list_command_executions(aws_client:aws_client(), list_command_executions_request()) ->
     {ok, list_command_executions_response(), tuple()} |
     {error, any()} |

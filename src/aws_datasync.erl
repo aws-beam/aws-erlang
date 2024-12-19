@@ -123,12 +123,24 @@
          update_discovery_job/3,
          update_location_azure_blob/2,
          update_location_azure_blob/3,
+         update_location_efs/2,
+         update_location_efs/3,
+         update_location_fsx_lustre/2,
+         update_location_fsx_lustre/3,
+         update_location_fsx_ontap/2,
+         update_location_fsx_ontap/3,
+         update_location_fsx_open_zfs/2,
+         update_location_fsx_open_zfs/3,
+         update_location_fsx_windows/2,
+         update_location_fsx_windows/3,
          update_location_hdfs/2,
          update_location_hdfs/3,
          update_location_nfs/2,
          update_location_nfs/3,
          update_location_object_storage/2,
          update_location_object_storage/3,
+         update_location_s3/2,
+         update_location_s3/3,
          update_location_smb/2,
          update_location_smb/3,
          update_storage_system/2,
@@ -245,6 +257,14 @@
 -type cancel_task_execution_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_location_fsx_ontap_request() :: #{
+%%   <<"LocationArn">> := string(),
+%%   <<"Protocol">> => fsx_update_protocol(),
+%%   <<"Subdirectory">> => string()
+%% }
+-type update_location_fsx_ontap_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_location_fsx_lustre_response() :: #{
 %%   <<"LocationArn">> => string()
 %% }
@@ -262,6 +282,13 @@
 %%   <<"Version">> => list(any())
 %% }
 -type nfs_mount_options() :: #{binary() => any()}.
+
+%% Example:
+%% fsx_update_protocol() :: #{
+%%   <<"NFS">> => fsx_protocol_nfs(),
+%%   <<"SMB">> => fsx_update_protocol_smb()
+%% }
+-type fsx_update_protocol() :: #{binary() => any()}.
 
 %% Example:
 %% update_task_execution_request() :: #{
@@ -680,6 +707,12 @@
 -type list_storage_systems_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_location_fsx_lustre_response() :: #{
+
+%% }
+-type update_location_fsx_lustre_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_storage_system_resource_metrics_request() :: #{
 %%   <<"DiscoveryJobArn">> := string(),
 %%   <<"EndTime">> => non_neg_integer(),
@@ -756,10 +789,25 @@
 -type update_task_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_location_efs_response() :: #{
+
+%% }
+-type update_location_efs_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_agent_response() :: #{
 
 %% }
 -type update_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% fsx_update_protocol_smb() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"MountOptions">> => smb_mount_options(),
+%%   <<"Password">> => string(),
+%%   <<"User">> => string()
+%% }
+-type fsx_update_protocol_smb() :: #{binary() => any()}.
 
 %% Example:
 %% report_override() :: #{
@@ -902,6 +950,12 @@
 %%   <<"TaskMode">> => list(any())
 %% }
 -type task_execution_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_fsx_open_zfs_response() :: #{
+
+%% }
+-type update_location_fsx_open_zfs_response() :: #{binary() => any()}.
 
 %% Example:
 %% net_app_o_n_t_a_p_cluster() :: #{
@@ -1112,6 +1166,12 @@
 -type describe_task_execution_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_location_s3_response() :: #{
+
+%% }
+-type update_location_s3_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_location_fsx_windows_response() :: #{
 %%   <<"LocationArn">> => string()
 %% }
@@ -1186,6 +1246,13 @@
 -type describe_agent_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_location_fsx_lustre_request() :: #{
+%%   <<"LocationArn">> := string(),
+%%   <<"Subdirectory">> => string()
+%% }
+-type update_location_fsx_lustre_request() :: #{binary() => any()}.
+
+%% Example:
 %% report_destination_s3() :: #{
 %%   <<"BucketAccessRoleArn">> => string(),
 %%   <<"S3BucketArn">> => string(),
@@ -1209,6 +1276,16 @@
 %%   <<"ResourceType">> := list(any())
 %% }
 -type describe_storage_system_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_efs_request() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"FileSystemAccessRoleArn">> => string(),
+%%   <<"InTransitEncryption">> => list(any()),
+%%   <<"LocationArn">> := string(),
+%%   <<"Subdirectory">> => string()
+%% }
+-type update_location_efs_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_location_azure_blob_request() :: #{
@@ -1343,10 +1420,35 @@
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_location_fsx_ontap_response() :: #{
+
+%% }
+-type update_location_fsx_ontap_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_task_response() :: #{
 %%   <<"TaskArn">> => string()
 %% }
 -type create_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_s3_request() :: #{
+%%   <<"LocationArn">> := string(),
+%%   <<"S3Config">> => s3_config(),
+%%   <<"S3StorageClass">> => list(any()),
+%%   <<"Subdirectory">> => string()
+%% }
+-type update_location_s3_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_fsx_windows_request() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"LocationArn">> := string(),
+%%   <<"Password">> => string(),
+%%   <<"Subdirectory">> => string(),
+%%   <<"User">> => string()
+%% }
+-type update_location_fsx_windows_request() :: #{binary() => any()}.
 
 %% Example:
 %% resource_metrics() :: #{
@@ -1492,6 +1594,12 @@
 -type list_tasks_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_location_fsx_windows_response() :: #{
+
+%% }
+-type update_location_fsx_windows_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_location_azure_blob_response() :: #{
 %%   <<"AccessTier">> => list(any()),
 %%   <<"AgentArns">> => list(string()()),
@@ -1516,6 +1624,14 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type task_filter() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_fsx_open_zfs_request() :: #{
+%%   <<"LocationArn">> := string(),
+%%   <<"Protocol">> => fsx_protocol(),
+%%   <<"Subdirectory">> => string()
+%% }
+-type update_location_fsx_open_zfs_request() :: #{binary() => any()}.
 
 %% Example:
 %% ec2_config() :: #{
@@ -1854,6 +1970,26 @@
     internal_exception() | 
     invalid_request_exception().
 
+-type update_location_efs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_fsx_lustre_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_fsx_ontap_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_fsx_open_zfs_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_fsx_windows_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
 -type update_location_hdfs_errors() ::
     internal_exception() | 
     invalid_request_exception().
@@ -1863,6 +1999,10 @@
     invalid_request_exception().
 
 -type update_location_object_storage_errors() ::
+    internal_exception() | 
+    invalid_request_exception().
+
+-type update_location_s3_errors() ::
     internal_exception() | 
     invalid_request_exception().
 
@@ -2158,12 +2298,6 @@ create_location_hdfs(Client, Input, Options)
 %% accesses
 %% NFS file servers:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#accessing-nfs.
-%%
-%% If you're copying data to or from an Snowcone device, you can also use
-%% `CreateLocationNfs' to create your transfer location. For more
-%% information, see
-%% Configuring transfers with Snowcone:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/nfs-on-snowcone.html.
 -spec create_location_nfs(aws_client:aws_client(), create_location_nfs_request()) ->
     {ok, create_location_nfs_response(), tuple()} |
     {error, any()} |
@@ -3059,8 +3193,12 @@ update_discovery_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDiscoveryJob">>, Input, Options).
 
-%% @doc Modifies some configurations of the Microsoft Azure Blob Storage
-%% transfer location that you're using with DataSync.
+%% @doc Modifies the following configurations of the Microsoft Azure Blob
+%% Storage transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with Azure Blob
+%% Storage:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html.
 -spec update_location_azure_blob(aws_client:aws_client(), update_location_azure_blob_request()) ->
     {ok, update_location_azure_blob_response(), tuple()} |
     {error, any()} |
@@ -3077,9 +3215,125 @@ update_location_azure_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationAzureBlob">>, Input, Options).
 
-%% @doc Updates some parameters of a previously created location for a Hadoop
+%% @doc Modifies the following configuration parameters of the Amazon EFS
+%% transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with Amazon EFS:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html.
+-spec update_location_efs(aws_client:aws_client(), update_location_efs_request()) ->
+    {ok, update_location_efs_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_efs_errors(), tuple()}.
+update_location_efs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_efs(Client, Input, []).
+
+-spec update_location_efs(aws_client:aws_client(), update_location_efs_request(), proplists:proplist()) ->
+    {ok, update_location_efs_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_efs_errors(), tuple()}.
+update_location_efs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationEfs">>, Input, Options).
+
+%% @doc Modifies the following configuration parameters of the Amazon FSx for
+%% Lustre transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with FSx for
+%% Lustre:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-lustre-location.html.
+-spec update_location_fsx_lustre(aws_client:aws_client(), update_location_fsx_lustre_request()) ->
+    {ok, update_location_fsx_lustre_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_fsx_lustre_errors(), tuple()}.
+update_location_fsx_lustre(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_fsx_lustre(Client, Input, []).
+
+-spec update_location_fsx_lustre(aws_client:aws_client(), update_location_fsx_lustre_request(), proplists:proplist()) ->
+    {ok, update_location_fsx_lustre_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_fsx_lustre_errors(), tuple()}.
+update_location_fsx_lustre(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationFsxLustre">>, Input, Options).
+
+%% @doc Modifies the following configuration parameters of the Amazon FSx for
+%% NetApp ONTAP transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with FSx for
+%% ONTAP:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-ontap-location.html.
+-spec update_location_fsx_ontap(aws_client:aws_client(), update_location_fsx_ontap_request()) ->
+    {ok, update_location_fsx_ontap_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_fsx_ontap_errors(), tuple()}.
+update_location_fsx_ontap(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_fsx_ontap(Client, Input, []).
+
+-spec update_location_fsx_ontap(aws_client:aws_client(), update_location_fsx_ontap_request(), proplists:proplist()) ->
+    {ok, update_location_fsx_ontap_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_fsx_ontap_errors(), tuple()}.
+update_location_fsx_ontap(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationFsxOntap">>, Input, Options).
+
+%% @doc Modifies the following configuration parameters of the Amazon FSx for
+%% OpenZFS transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with FSx for
+%% OpenZFS:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-openzfs-location.html.
+%%
+%% Request parameters related to `SMB' aren't supported with the
+%% `UpdateLocationFsxOpenZfs' operation.
+-spec update_location_fsx_open_zfs(aws_client:aws_client(), update_location_fsx_open_zfs_request()) ->
+    {ok, update_location_fsx_open_zfs_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_fsx_open_zfs_errors(), tuple()}.
+update_location_fsx_open_zfs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_fsx_open_zfs(Client, Input, []).
+
+-spec update_location_fsx_open_zfs(aws_client:aws_client(), update_location_fsx_open_zfs_request(), proplists:proplist()) ->
+    {ok, update_location_fsx_open_zfs_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_fsx_open_zfs_errors(), tuple()}.
+update_location_fsx_open_zfs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationFsxOpenZfs">>, Input, Options).
+
+%% @doc Modifies the following configuration parameters of the Amazon FSx for
+%% Windows File Server transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with FSx for
+%% Windows File Server:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-fsx-location.html.
+-spec update_location_fsx_windows(aws_client:aws_client(), update_location_fsx_windows_request()) ->
+    {ok, update_location_fsx_windows_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_fsx_windows_errors(), tuple()}.
+update_location_fsx_windows(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_fsx_windows(Client, Input, []).
+
+-spec update_location_fsx_windows(aws_client:aws_client(), update_location_fsx_windows_request(), proplists:proplist()) ->
+    {ok, update_location_fsx_windows_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_fsx_windows_errors(), tuple()}.
+update_location_fsx_windows(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationFsxWindows">>, Input, Options).
+
+%% @doc Modifies the following configuration parameters of the Hadoop
 %% Distributed File
-%% System cluster.
+%% System (HDFS) transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with an HDFS
+%% cluster:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-hdfs-location.html.
 -spec update_location_hdfs(aws_client:aws_client(), update_location_hdfs_request()) ->
     {ok, update_location_hdfs_response(), tuple()} |
     {error, any()} |
@@ -3096,11 +3350,10 @@ update_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationHdfs">>, Input, Options).
 
-%% @doc Modifies some configurations of the Network File System (NFS)
-%% transfer location that
-%% you're using with DataSync.
+%% @doc Modifies the following configuration parameters of the Network File
+%% System (NFS) transfer location that you're using with DataSync.
 %%
-%% For more information, see Configuring transfers to or from an
+%% For more information, see Configuring transfers with an
 %% NFS file server:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html.
 -spec update_location_nfs(aws_client:aws_client(), update_location_nfs_request()) ->
@@ -3119,9 +3372,12 @@ update_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationNfs">>, Input, Options).
 
-%% @doc Updates some parameters of an existing DataSync location for an
-%% object
-%% storage system.
+%% @doc Modifies the following configuration parameters of the object storage
+%% transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with an object
+%% storage system:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html.
 -spec update_location_object_storage(aws_client:aws_client(), update_location_object_storage_request()) ->
     {ok, update_location_object_storage_response(), tuple()} |
     {error, any()} |
@@ -3138,8 +3394,40 @@ update_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationObjectStorage">>, Input, Options).
 
-%% @doc Updates some of the parameters of a Server Message Block
-%% (SMB) file server location that you can use for DataSync transfers.
+%% @doc Modifies the following configuration parameters of the Amazon S3
+%% transfer location that you're using with DataSync.
+%%
+%% Before you begin, make sure that you read the following topics:
+%%
+%% Storage
+%% class considerations with Amazon S3 locations:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes
+%%
+%% Evaluating S3 request costs when using DataSync:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#create-s3-location-s3-requests
+-spec update_location_s3(aws_client:aws_client(), update_location_s3_request()) ->
+    {ok, update_location_s3_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_s3_errors(), tuple()}.
+update_location_s3(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_s3(Client, Input, []).
+
+-spec update_location_s3(aws_client:aws_client(), update_location_s3_request(), proplists:proplist()) ->
+    {ok, update_location_s3_response(), tuple()} |
+    {error, any()} |
+    {error, update_location_s3_errors(), tuple()}.
+update_location_s3(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationS3">>, Input, Options).
+
+%% @doc Modifies the following configuration parameters of the Server Message
+%% Block
+%% (SMB) transfer location that you're using with DataSync.
+%%
+%% For more information, see Configuring DataSync transfers with an SMB file
+%% server:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html.
 -spec update_location_smb(aws_client:aws_client(), update_location_smb_request()) ->
     {ok, update_location_smb_response(), tuple()} |
     {error, any()} |
