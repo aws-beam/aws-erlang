@@ -687,6 +687,7 @@
 %% Example:
 %% workspace_properties() :: #{
 %%   <<"ComputeTypeName">> => list(any()),
+%%   <<"GlobalAccelerator">> => global_accelerator_for_work_space(),
 %%   <<"OperatingSystemName">> => list(any()),
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"RootVolumeSizeGib">> => integer(),
@@ -1035,6 +1036,13 @@
 %%   <<"WorkspaceId">> => string()
 %% }
 -type stop_request() :: #{binary() => any()}.
+
+%% Example:
+%% global_accelerator_for_work_space() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"PreferredProtocol">> => list(any())
+%% }
+-type global_accelerator_for_work_space() :: #{binary() => any()}.
 
 %% Example:
 %% describe_connection_aliases_request() :: #{
@@ -1908,6 +1916,7 @@
 
 %% Example:
 %% streaming_properties() :: #{
+%%   <<"GlobalAccelerator">> => global_accelerator_for_directory(),
 %%   <<"StorageConnectors">> => list(storage_connector()()),
 %%   <<"StreamingExperiencePreferredProtocol">> => list(any()),
 %%   <<"UserSettings">> => list(user_setting()())
@@ -2107,6 +2116,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_workspace_image_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% global_accelerator_for_directory() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"PreferredProtocol">> => list(any())
+%% }
+-type global_accelerator_for_directory() :: #{binary() => any()}.
 
 %% Example:
 %% failed_create_workspace_request() :: #{

@@ -508,6 +508,15 @@
 
 
 %% Example:
+%% component_info() :: #{
+%%   <<"ComponentType">> => list(any()),
+%%   <<"Ec2InstanceId">> => string(),
+%%   <<"Sid">> => string()
+%% }
+-type component_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_application_settings_input() :: #{
 %%   <<"ApplicationId">> := string(),
 %%   <<"Backint">> => backint_config(),
@@ -610,6 +619,7 @@
 %% register_application_input() :: #{
 %%   <<"ApplicationId">> := string(),
 %%   <<"ApplicationType">> := list(any()),
+%%   <<"ComponentsInfo">> => list(component_info()()),
 %%   <<"Credentials">> => list(application_credential()()),
 %%   <<"DatabaseArn">> => string(),
 %%   <<"Instances">> := list(string()()),

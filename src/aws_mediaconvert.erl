@@ -477,6 +477,7 @@
 %%   <<"HexFontColor">> => string(),
 %%   <<"OutlineColor">> => list(any()),
 %%   <<"OutlineSize">> => integer(),
+%%   <<"RemoveRubyReserveAttributes">> => list(any()),
 %%   <<"ShadowColor">> => list(any()),
 %%   <<"ShadowOpacity">> => integer(),
 %%   <<"ShadowXOffset">> => integer(),
@@ -820,6 +821,7 @@
 %%   <<"ScalingBehavior">> => list(any()),
 %%   <<"Sharpness">> => integer(),
 %%   <<"TimecodeInsertion">> => list(any()),
+%%   <<"TimecodeTrack">> => list(any()),
 %%   <<"VideoPreprocessors">> => video_preprocessor(),
 %%   <<"Width">> => integer()
 %% }

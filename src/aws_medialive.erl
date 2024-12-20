@@ -206,6 +206,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_versions/1,
+         list_versions/3,
+         list_versions/4,
          purchase_offering/3,
          purchase_offering/4,
          reboot_input_device/3,
@@ -622,11 +625,20 @@
 
 
 %% Example:
+%% channel_engine_version_response() :: #{
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"Version">> => string()
+%% }
+-type channel_engine_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% restart_channel_pipelines_response() :: #{
 %%   <<"AnywhereSettings">> => describe_anywhere_settings(),
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
 %%   <<"Destinations">> => list(output_destination()()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -767,6 +779,13 @@
 %% }
 -type ip_pool_update_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% channel_engine_version_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type channel_engine_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% start_input_device_request() :: #{}
 -type start_input_device_request() :: #{}.
@@ -888,6 +907,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
 %%   <<"Destinations">> => list(output_destination()()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -2126,6 +2146,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
 %%   <<"Destinations">> => list(output_destination()()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
 %%   <<"Id">> => string(),
@@ -2138,6 +2159,7 @@
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
+%%   <<"UsedChannelEngineVersions">> => list(channel_engine_version_response()()),
 %%   <<"Vpc">> => vpc_output_settings_description()
 %% }
 -type channel_summary() :: #{binary() => any()}.
@@ -2167,6 +2189,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
 %%   <<"Destinations">> => list(output_destination()()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -2559,6 +2582,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
 %%   <<"Destinations">> => list(output_destination()()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -2845,7 +2869,9 @@
 %%   <<"AnywhereSettings">> => anywhere_settings(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
 %%   <<"Destinations">> => list(output_destination()()),
+%%   <<"DryRun">> => boolean(),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()()),
 %%   <<"InputSpecification">> => input_specification(),
@@ -3133,6 +3159,13 @@
 
 
 %% Example:
+%% list_versions_response() :: #{
+%%   <<"Versions">> => list(channel_engine_version_response()())
+%% }
+-type list_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_channel_placement_group_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Channels">> => list(string()()),
@@ -3374,7 +3407,9 @@
 %% Example:
 %% update_channel_request() :: #{
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
 %%   <<"Destinations">> => list(output_destination()()),
+%%   <<"DryRun">> => boolean(),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()()),
 %%   <<"InputSpecification">> => input_specification(),
@@ -4369,6 +4404,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
 %%   <<"Destinations">> => list(output_destination()()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -4386,6 +4422,10 @@
 %%   <<"Vpc">> => vpc_output_settings_description()
 %% }
 -type channel() :: #{binary() => any()}.
+
+%% Example:
+%% list_versions_request() :: #{}
+-type list_versions_request() :: #{}.
 
 
 %% Example:
@@ -4418,6 +4458,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
 %%   <<"Destinations">> => list(output_destination()()),
 %%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
 %%   <<"EncoderSettings">> => encoder_settings(),
@@ -4685,6 +4726,7 @@
 %%   <<"ActiveInputSwitchActionName">> => string(),
 %%   <<"ActiveMotionGraphicsActionName">> => string(),
 %%   <<"ActiveMotionGraphicsUri">> => string(),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
 %%   <<"PipelineId">> => string()
 %% }
 -type pipeline_detail() :: #{binary() => any()}.
@@ -6289,6 +6331,16 @@
     internal_server_error_exception() | 
     not_found_exception() | 
     forbidden_exception().
+
+-type list_versions_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
 
 -type purchase_offering_errors() ::
     bad_request_exception() | 
@@ -9675,6 +9727,44 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves an array of all the encoder engine versions that are
+%% available in this AWS account.
+-spec list_versions(aws_client:aws_client()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
+list_versions(Client)
+  when is_map(Client) ->
+    list_versions(Client, #{}, #{}).
+
+-spec list_versions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
+list_versions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_versions(Client, QueryMap, HeadersMap, []).
+
+-spec list_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
+list_versions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/versions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -2198,7 +2198,8 @@
 %% manual_search_a_i_agent_configuration() :: #{
 %%   <<"answerGenerationAIGuardrailId">> => string(),
 %%   <<"answerGenerationAIPromptId">> => string(),
-%%   <<"associationConfigurations">> => list(association_configuration()())
+%%   <<"associationConfigurations">> => list(association_configuration()()),
+%%   <<"locale">> => string()
 %% }
 -type manual_search_a_i_agent_configuration() :: #{binary() => any()}.
 
@@ -2914,6 +2915,7 @@
 %%   <<"answerGenerationAIPromptId">> => string(),
 %%   <<"associationConfigurations">> => list(association_configuration()()),
 %%   <<"intentLabelingGenerationAIPromptId">> => string(),
+%%   <<"locale">> => string(),
 %%   <<"queryReformulationAIPromptId">> => string()
 %% }
 -type answer_recommendation_a_i_agent_configuration() :: #{binary() => any()}.
