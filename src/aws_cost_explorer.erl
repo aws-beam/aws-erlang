@@ -242,6 +242,7 @@
 
 %% Example:
 %% get_tags_request() :: #{
+%%   <<"BillingViewArn">> => string(),
 %%   <<"Filter">> => expression(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextPageToken">> => string(),
@@ -254,6 +255,7 @@
 
 %% Example:
 %% get_cost_and_usage_with_resources_request() :: #{
+%%   <<"BillingViewArn">> => string(),
 %%   <<"Filter">> := expression(),
 %%   <<"Granularity">> := list(any()),
 %%   <<"GroupBy">> => list(group_definition()()),
@@ -612,6 +614,7 @@
 
 %% Example:
 %% get_cost_forecast_request() :: #{
+%%   <<"BillingViewArn">> => string(),
 %%   <<"Filter">> => expression(),
 %%   <<"Granularity">> := list(any()),
 %%   <<"Metric">> := list(any()),
@@ -868,6 +871,7 @@
 
 %% Example:
 %% get_cost_and_usage_request() :: #{
+%%   <<"BillingViewArn">> => string(),
 %%   <<"Filter">> => expression(),
 %%   <<"Granularity">> := list(any()),
 %%   <<"GroupBy">> => list(group_definition()()),
@@ -1129,6 +1133,7 @@
 
 %% Example:
 %% get_usage_forecast_request() :: #{
+%%   <<"BillingViewArn">> => string(),
 %%   <<"Filter">> => expression(),
 %%   <<"Granularity">> := list(any()),
 %%   <<"Metric">> := list(any()),
@@ -1717,6 +1722,7 @@
 
 %% Example:
 %% get_dimension_values_request() :: #{
+%%   <<"BillingViewArn">> => string(),
 %%   <<"Context">> => list(any()),
 %%   <<"Dimension">> := list(any()),
 %%   <<"Filter">> => expression(),
@@ -1804,6 +1810,7 @@
 
 %% Example:
 %% get_cost_categories_request() :: #{
+%%   <<"BillingViewArn">> => string(),
 %%   <<"CostCategoryName">> => string(),
 %%   <<"Filter">> => expression(),
 %%   <<"MaxResults">> => integer(),
@@ -1928,32 +1935,37 @@
     bill_expiration_exception() | 
     data_unavailable_exception() | 
     invalid_next_token_exception() | 
-    request_changed_exception().
+    request_changed_exception() | 
+    resource_not_found_exception().
 
 -type get_cost_and_usage_with_resources_errors() ::
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
     data_unavailable_exception() | 
     invalid_next_token_exception() | 
-    request_changed_exception().
+    request_changed_exception() | 
+    resource_not_found_exception().
 
 -type get_cost_categories_errors() ::
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
     data_unavailable_exception() | 
     invalid_next_token_exception() | 
-    request_changed_exception().
+    request_changed_exception() | 
+    resource_not_found_exception().
 
 -type get_cost_forecast_errors() ::
     limit_exceeded_exception() | 
-    data_unavailable_exception().
+    data_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type get_dimension_values_errors() ::
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
     data_unavailable_exception() | 
     invalid_next_token_exception() | 
-    request_changed_exception().
+    request_changed_exception() | 
+    resource_not_found_exception().
 
 -type get_reservation_coverage_errors() ::
     limit_exceeded_exception() | 
@@ -2001,12 +2013,14 @@
     bill_expiration_exception() | 
     data_unavailable_exception() | 
     invalid_next_token_exception() | 
-    request_changed_exception().
+    request_changed_exception() | 
+    resource_not_found_exception().
 
 -type get_usage_forecast_errors() ::
     limit_exceeded_exception() | 
     unresolvable_usage_unit_exception() | 
-    data_unavailable_exception().
+    data_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type list_commitment_purchase_analyses_errors() ::
     limit_exceeded_exception() | 

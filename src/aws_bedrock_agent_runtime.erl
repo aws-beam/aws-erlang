@@ -144,6 +144,13 @@
 
 
 %% Example:
+%% model_not_ready_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type model_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_source() :: #{
 %%   <<"byteContent">> => byte_content_doc(),
 %%   <<"s3Location">> => s3_object_doc(),
@@ -169,6 +176,13 @@
 %%   <<"resourceName">> => string()
 %% }
 -type bad_gateway_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_bedrock_model_configurations() :: #{
+%%   <<"performanceConfig">> => performance_configuration()
+%% }
+-type inline_bedrock_model_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -763,6 +777,13 @@
 
 
 %% Example:
+%% bedrock_model_configurations() :: #{
+%%   <<"performanceConfig">> => performance_configuration()
+%% }
+-type bedrock_model_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_inline_agent_response() :: #{
 %%   <<"completion">> => list(),
 %%   <<"contentType">> => string(),
@@ -900,6 +921,7 @@
 %%   <<"additionalModelRequestFields">> => map(),
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"inferenceConfig">> => inference_config(),
+%%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptTemplate">> => prompt_template()
 %% }
 -type external_sources_generation_configuration() :: #{binary() => any()}.
@@ -1118,6 +1140,7 @@
 %% orchestration_configuration() :: #{
 %%   <<"additionalModelRequestFields">> => map(),
 %%   <<"inferenceConfig">> => inference_config(),
+%%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptTemplate">> => prompt_template(),
 %%   <<"queryTransformationConfiguration">> => query_transformation_configuration()
 %% }
@@ -1157,6 +1180,7 @@
 %%   <<"additionalModelRequestFields">> => map(),
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"inferenceConfig">> => inference_config(),
+%%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptTemplate">> => prompt_template()
 %% }
 -type generation_configuration() :: #{binary() => any()}.
@@ -1307,6 +1331,7 @@
 %% Example:
 %% invoke_inline_agent_request() :: #{
 %%   <<"actionGroups">> => list(agent_action_group()()),
+%%   <<"bedrockModelConfigurations">> => inline_bedrock_model_configurations(),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"enableTrace">> => [boolean()],
 %%   <<"endSession">> => [boolean()],
@@ -1371,7 +1396,8 @@
 
 %% Example:
 %% delete_agent_memory_request() :: #{
-%%   <<"memoryId">> => string()
+%%   <<"memoryId">> => string(),
+%%   <<"sessionId">> => string()
 %% }
 -type delete_agent_memory_request() :: #{binary() => any()}.
 
@@ -1435,6 +1461,7 @@
 
 %% Example:
 %% invoke_agent_request() :: #{
+%%   <<"bedrockModelConfigurations">> => bedrock_model_configurations(),
 %%   <<"enableTrace">> => [boolean()],
 %%   <<"endSession">> => [boolean()],
 %%   <<"inputText">> => string(),
@@ -1444,6 +1471,13 @@
 %%   <<"streamingConfigurations">> => streaming_configurations()
 %% }
 -type invoke_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_performance_configuration() :: #{
+%%   <<"performanceConfig">> => performance_configuration()
+%% }
+-type model_performance_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1528,7 +1562,8 @@
 %% Example:
 %% invoke_flow_request() :: #{
 %%   <<"enableTrace">> => [boolean()],
-%%   <<"inputs">> := list(flow_input()())
+%%   <<"inputs">> := list(flow_input()()),
+%%   <<"modelPerformanceConfiguration">> => model_performance_configuration()
 %% }
 -type invoke_flow_request() :: #{binary() => any()}.
 
@@ -1615,6 +1650,13 @@
 
 
 %% Example:
+%% performance_configuration() :: #{
+%%   <<"latency">> => list(any())
+%% }
+-type performance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% rerank_document() :: #{
 %%   <<"jsonDocument">> => [any()],
 %%   <<"textDocument">> => rerank_text_document(),
@@ -1679,7 +1721,8 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     dependency_failed_exception() | 
-    bad_gateway_exception().
+    bad_gateway_exception() | 
+    model_not_ready_exception().
 
 -type invoke_flow_errors() ::
     throttling_exception() | 
@@ -1789,7 +1832,8 @@ delete_agent_memory(Client, AgentAliasId, AgentId, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"memoryId">>, <<"memoryId">>}
+                     {<<"memoryId">>, <<"memoryId">>},
+                     {<<"sessionId">>, <<"sessionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -1891,6 +1935,15 @@ get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, 
 %% to the information it processed, the actions it took, and the final result
 %% it yielded. For more information, see Trace enablement:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events.
+%%
+%% To stream agent responses, make sure that only orchestration prompt is
+%% enabled. Agent streaming is not supported for the following steps:
+%%
+%% `Pre-processing'
+%%
+%% `Post-processing'
+%%
+%% Agent with 1 Knowledge base and `User Input' not enabled
 %%
 %% End a conversation by setting `endSession' to `true'.
 %%

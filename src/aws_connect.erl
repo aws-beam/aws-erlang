@@ -971,6 +971,14 @@
 %% }
 -type user_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% range() :: #{
+%%   <<"MaxProficiencyLevel">> => float(),
+%%   <<"MinProficiencyLevel">> => float()
+%% }
+-type range() :: #{binary() => any()}.
+
 %% Example:
 %% describe_user_hierarchy_structure_request() :: #{}
 -type describe_user_hierarchy_structure_request() :: #{}.
@@ -1131,6 +1139,7 @@
 %%   <<"MatchCriteria">> => match_criteria(),
 %%   <<"Name">> => string(),
 %%   <<"ProficiencyLevel">> => float(),
+%%   <<"Range">> => range(),
 %%   <<"Value">> => string()
 %% }
 -type attribute_condition() :: #{binary() => any()}.
@@ -6292,6 +6301,7 @@
 %% expression() :: #{
 %%   <<"AndExpression">> => list(expression()()),
 %%   <<"AttributeCondition">> => attribute_condition(),
+%%   <<"NotAttributeCondition">> => attribute_condition(),
 %%   <<"OrExpression">> => list(expression()())
 %% }
 -type expression() :: #{binary() => any()}.

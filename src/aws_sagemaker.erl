@@ -13471,8 +13471,8 @@ create_algorithm(Client, Input, Options)
 %% @doc Creates a running app for the specified UserProfile.
 %%
 %% This operation is automatically
-%% invoked by Amazon SageMaker upon access to the associated Domain, and when
-%% new kernel
+%% invoked by Amazon SageMaker AI upon access to the associated Domain, and
+%% when new kernel
 %% configurations are selected by the user. A user may have multiple Apps
 %% active
 %% simultaneously.
@@ -13492,7 +13492,7 @@ create_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApp">>, Input, Options).
 
-%% @doc Creates a configuration for running a SageMaker image as a
+%% @doc Creates a configuration for running a SageMaker AI image as a
 %% KernelGateway app.
 %%
 %% The
@@ -13543,13 +13543,13 @@ create_artifact(Client, Input, Options)
 %% @doc Creates an Autopilot job also referred to as Autopilot experiment or
 %% AutoML job.
 %%
-%% An AutoML job in SageMaker is a fully automated process that allows you to
-%% build machine
+%% An AutoML job in SageMaker AI is a fully automated process that allows you
+%% to build machine
 %% learning models with minimal effort and machine learning expertise. When
 %% initiating an
 %% AutoML job, you provide your data and optionally specify parameters
 %% tailored to your use
-%% case. SageMaker then automates the entire model development lifecycle,
+%% case. SageMaker AI then automates the entire model development lifecycle,
 %% including data
 %% preprocessing, model training, tuning, and evaluation. AutoML jobs are
 %% designed to simplify
@@ -13559,14 +13559,14 @@ create_artifact(Client, Input, Options)
 %% techniques, and
 %% hyperparameter values. The output of an AutoML job comprises one or more
 %% trained models
-%% ready for deployment and inference. Additionally, SageMaker AutoML jobs
+%% ready for deployment and inference. Additionally, SageMaker AI AutoML jobs
 %% generate a candidate
 %% model leaderboard, allowing you to select the best-performing model for
 %% deployment.
 %%
 %% For more information about AutoML jobs, see
 %% [https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html]
-%% in the SageMaker developer guide.
+%% in the SageMaker AI developer guide.
 %%
 %% We recommend using the new versions CreateAutoMLJobV2:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
@@ -13610,13 +13610,13 @@ create_auto_ml_job(Client, Input, Options)
 %% @doc Creates an Autopilot job also referred to as Autopilot experiment or
 %% AutoML job V2.
 %%
-%% An AutoML job in SageMaker is a fully automated process that allows you to
-%% build machine
+%% An AutoML job in SageMaker AI is a fully automated process that allows you
+%% to build machine
 %% learning models with minimal effort and machine learning expertise. When
 %% initiating an
 %% AutoML job, you provide your data and optionally specify parameters
 %% tailored to your use
-%% case. SageMaker then automates the entire model development lifecycle,
+%% case. SageMaker AI then automates the entire model development lifecycle,
 %% including data
 %% preprocessing, model training, tuning, and evaluation. AutoML jobs are
 %% designed to simplify
@@ -13626,14 +13626,14 @@ create_auto_ml_job(Client, Input, Options)
 %% techniques, and
 %% hyperparameter values. The output of an AutoML job comprises one or more
 %% trained models
-%% ready for deployment and inference. Additionally, SageMaker AutoML jobs
+%% ready for deployment and inference. Additionally, SageMaker AI AutoML jobs
 %% generate a candidate
 %% model leaderboard, allowing you to select the best-performing model for
 %% deployment.
 %%
 %% For more information about AutoML jobs, see
 %% [https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html]
-%% in the SageMaker developer guide.
+%% in the SageMaker AI developer guide.
 %%
 %% AutoML jobs V2 support various problem types such as regression, binary,
 %% and multiclass
@@ -13735,13 +13735,13 @@ create_cluster_scheduler_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSchedulerConfig">>, Input, Options).
 
-%% @doc Creates a Git repository as a resource in your SageMaker account.
+%% @doc Creates a Git repository as a resource in your SageMaker AI account.
 %%
 %% You can
 %% associate the repository with notebook instances so that you can use Git
 %% source control
 %% for the notebooks you create. The Git repository is a resource in your
-%% SageMaker
+%% SageMaker AI
 %% account, so it can be associated with more than one notebook instance, and
 %% it persists
 %% independently from the lifecycle of any notebook instances it is
@@ -13766,13 +13766,13 @@ create_code_repository(Client, Input, Options)
 
 %% @doc Starts a model compilation job.
 %%
-%% After the model has been compiled, Amazon SageMaker saves the
+%% After the model has been compiled, Amazon SageMaker AI saves the
 %% resulting model artifacts to an Amazon Simple Storage Service (Amazon S3)
 %% bucket that you specify.
 %%
 %% If
-%% you choose to host your model using Amazon SageMaker hosting services, you
-%% can use the resulting
+%% you choose to host your model using Amazon SageMaker AI hosting services,
+%% you can use the resulting
 %% model artifacts as part of the model. You can also use the artifacts with
 %% Amazon Web Services IoT Greengrass. In that case, deploy them as an ML
 %% resource.
@@ -13787,7 +13787,7 @@ create_code_repository(Client, Input, Options)
 %% the
 %% model runs on
 %%
-%% The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker
+%% The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker AI
 %% assumes to perform
 %% the model compilation job.
 %%
@@ -13871,7 +13871,7 @@ create_context(Client, Input, Options)
 %% @doc Creates a definition for a job that monitors data quality and drift.
 %%
 %% For information
-%% about model monitor, see Amazon SageMaker Model
+%% about model monitor, see Amazon SageMaker AI Model
 %% Monitor:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html.
 -spec create_data_quality_job_definition(aws_client:aws_client(), create_data_quality_job_definition_request()) ->
@@ -13924,8 +13924,8 @@ create_device_fleet(Client, Input, Options)
 %% for notebooks, Git
 %% repositories, and data files.
 %%
-%% SageMaker uses the Amazon Web Services Key Management Service (Amazon Web
-%% Services
+%% SageMaker AI uses the Amazon Web Services Key Management Service (Amazon
+%% Web Services
 %% KMS) to encrypt the EFS volume attached to the domain with an Amazon Web
 %% Services managed key
 %% by default. For more control, you can specify a customer managed key. For
@@ -13946,7 +13946,8 @@ create_device_fleet(Client, Input, Options)
 %% available:
 %%
 %% `PublicInternetOnly' - Non-EFS traffic goes through a VPC managed by
-%% Amazon SageMaker, which allows internet access. This is the default value.
+%% Amazon SageMaker AI, which allows internet access. This is the default
+%% value.
 %%
 %% `VpcOnly' - All traffic is through the specified VPC and subnets.
 %% Internet
@@ -13955,18 +13956,18 @@ create_device_fleet(Client, Input, Options)
 %% gateway.
 %%
 %% When internet access is disabled, you won't be able to run a Amazon
-%% SageMaker
+%% SageMaker AI
 %% Studio notebook or to train or host models unless your VPC has an
 %% interface endpoint to
-%% the SageMaker API and runtime or a NAT gateway and your security groups
+%% the SageMaker AI API and runtime or a NAT gateway and your security groups
 %% allow
 %% outbound connections.
 %%
 %% NFS traffic over TCP on port 2049 needs to be allowed in both inbound and
 %% outbound rules
-%% in order to launch a Amazon SageMaker Studio app successfully.
+%% in order to launch a Amazon SageMaker AI Studio app successfully.
 %%
-%% For more information, see Connect Amazon SageMaker Studio Notebooks to
+%% For more information, see Connect Amazon SageMaker AI Studio Notebooks to
 %% Resources in a VPC:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html.
 -spec create_domain(aws_client:aws_client(), create_domain_request()) ->
@@ -14457,12 +14458,12 @@ create_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHyperParameterTuningJob">>, Input, Options).
 
-%% @doc Creates a custom SageMaker image.
+%% @doc Creates a custom SageMaker AI image.
 %%
-%% A SageMaker image is a set of image versions. Each image
+%% A SageMaker AI image is a set of image versions. Each image
 %% version represents a container image stored in Amazon ECR. For more
 %% information, see
-%% Bring your own SageMaker image:
+%% Bring your own SageMaker AI image:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html.
 -spec create_image(aws_client:aws_client(), create_image_request()) ->
     {ok, create_image_response(), tuple()} |
@@ -14480,7 +14481,7 @@ create_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImage">>, Input, Options).
 
-%% @doc Creates a version of the SageMaker image specified by
+%% @doc Creates a version of the SageMaker AI image specified by
 %% `ImageName'.
 %%
 %% The version
@@ -14501,8 +14502,8 @@ create_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImageVersion">>, Input, Options).
 
-%% @doc Creates an inference component, which is a SageMaker hosting object
-%% that you can
+%% @doc Creates an inference component, which is a SageMaker AI hosting
+%% object that you can
 %% use to deploy a model to an endpoint.
 %%
 %% In the inference component settings, you specify the
@@ -14866,7 +14867,7 @@ create_model_package_group(Client, Input, Options)
 %% @doc Creates a definition for a job that monitors model quality and drift.
 %%
 %% For information
-%% about model monitor, see Amazon SageMaker Model
+%% about model monitor, see Amazon SageMaker AI Model
 %% Monitor:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html.
 -spec create_model_quality_job_definition(aws_client:aws_client(), create_model_quality_job_definition_request()) ->
@@ -14885,9 +14886,9 @@ create_model_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelQualityJobDefinition">>, Input, Options).
 
-%% @doc Creates a schedule that regularly starts Amazon SageMaker Processing
-%% Jobs to
-%% monitor the data captured for an Amazon SageMaker Endpoint.
+%% @doc Creates a schedule that regularly starts Amazon SageMaker AI
+%% Processing Jobs to
+%% monitor the data captured for an Amazon SageMaker AI Endpoint.
 -spec create_monitoring_schedule(aws_client:aws_client(), create_monitoring_schedule_request()) ->
     {ok, create_monitoring_schedule_response(), tuple()} |
     {error, any()} |
@@ -14904,53 +14905,53 @@ create_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMonitoringSchedule">>, Input, Options).
 
-%% @doc Creates an SageMaker notebook instance.
+%% @doc Creates an SageMaker AI notebook instance.
 %%
 %% A notebook instance is a machine
 %% learning (ML) compute instance running on a Jupyter notebook.
 %%
 %% In a `CreateNotebookInstance' request, specify the type of ML compute
-%% instance that you want to run. SageMaker launches the instance, installs
-%% common
+%% instance that you want to run. SageMaker AI launches the instance,
+%% installs common
 %% libraries that you can use to explore datasets for model training, and
 %% attaches an ML
 %% storage volume to the notebook instance.
 %%
-%% SageMaker also provides a set of example notebooks. Each notebook
-%% demonstrates how to use SageMaker with a specific algorithm or with a
+%% SageMaker AI also provides a set of example notebooks. Each notebook
+%% demonstrates how to use SageMaker AI with a specific algorithm or with a
 %% machine
 %% learning framework.
 %%
-%% After receiving the request, SageMaker does the following:
+%% After receiving the request, SageMaker AI does the following:
 %%
-%% Creates a network interface in the SageMaker VPC.
+%% Creates a network interface in the SageMaker AI VPC.
 %%
-%% (Option) If you specified `SubnetId', SageMaker creates
+%% (Option) If you specified `SubnetId', SageMaker AI creates
 %% a network interface in your own VPC, which is inferred from the subnet ID
 %% that
 %% you provide in the input. When creating this network interface, SageMaker
-%% attaches the security group that you specified in the request to the
+%% AI attaches the security group that you specified in the request to the
 %% network
 %% interface that it creates in your VPC.
 %%
 %% Launches an EC2 instance of the type specified in the request in the
-%% SageMaker VPC. If you specified `SubnetId' of your VPC,
-%% SageMaker specifies both network interfaces when launching this
+%% SageMaker AI VPC. If you specified `SubnetId' of your VPC,
+%% SageMaker AI specifies both network interfaces when launching this
 %% instance. This enables inbound traffic from your own VPC to the notebook
 %% instance, assuming that the security groups allow it.
 %%
-%% After creating the notebook instance, SageMaker returns its Amazon
+%% After creating the notebook instance, SageMaker AI returns its Amazon
 %% Resource
 %% Name (ARN). You can't change the name of a notebook instance after you
 %% create
 %% it.
 %%
-%% After SageMaker creates the notebook instance, you can connect to the
+%% After SageMaker AI creates the notebook instance, you can connect to the
 %% Jupyter server and work in Jupyter notebooks. For example, you can write
 %% code to explore
 %% a dataset that you can use for model training, train a model, host models
 %% by creating
-%% SageMaker endpoints, and validate hosted models.
+%% SageMaker AI endpoints, and validate hosted models.
 %%
 %% For more information, see How It Works:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
@@ -15113,7 +15114,7 @@ create_pipeline(Client, Input, Options)
 %% You can restrict access to this API and to the URL that it returns to a
 %% list of IP
 %% addresses, Amazon VPCs or Amazon VPC Endpoints that you specify. For more
-%% information, see Connect to Amazon SageMaker
+%% information, see Connect to Amazon SageMaker AI
 %% Studio Through an Interface VPC Endpoint:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-interface-endpoint.html
 %% .
@@ -15168,8 +15169,8 @@ create_presigned_mlflow_tracking_server_url(Client, Input, Options)
 %% a notebook
 %% instance.
 %%
-%% In the SageMaker console, when you choose `Open' next to a
-%% notebook instance, SageMaker opens a new tab showing the Jupyter server
+%% In the SageMaker AI console, when you choose `Open' next to a
+%% notebook instance, SageMaker AI opens a new tab showing the Jupyter server
 %% home
 %% page from the notebook instance. The console uses this API to get the URL
 %% and show the
@@ -15266,7 +15267,7 @@ create_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSpace">>, Input, Options).
 
-%% @doc Creates a new Amazon SageMaker Studio Lifecycle Configuration.
+%% @doc Creates a new Amazon SageMaker AI Studio Lifecycle Configuration.
 -spec create_studio_lifecycle_config(aws_client:aws_client(), create_studio_lifecycle_config_request()) ->
     {ok, create_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
@@ -15831,8 +15832,8 @@ delete_code_repository(Client, Input, Options)
 %% @doc Deletes the specified compilation job.
 %%
 %% This action deletes only the compilation job
-%% resource in Amazon SageMaker. It doesn't delete other resources that
-%% are related to
+%% resource in Amazon SageMaker AI. It doesn't delete other resources
+%% that are related to
 %% that job, such as the model artifacts that the job creates, the
 %% compilation logs in
 %% CloudWatch, the compiled model, or the IAM role.
@@ -16223,7 +16224,7 @@ delete_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHyperParameterTuningJob">>, Input, Options).
 
-%% @doc Deletes a SageMaker image and all versions of the image.
+%% @doc Deletes a SageMaker AI image and all versions of the image.
 %%
 %% The container images aren't
 %% deleted.
@@ -16243,7 +16244,7 @@ delete_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImage">>, Input, Options).
 
-%% @doc Deletes a version of a SageMaker image.
+%% @doc Deletes a version of a SageMaker AI image.
 %%
 %% The container image the version represents isn't
 %% deleted.
@@ -16341,7 +16342,7 @@ delete_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModel">>, Input, Options).
 
-%% @doc Deletes an Amazon SageMaker model bias job definition.
+%% @doc Deletes an Amazon SageMaker AI model bias job definition.
 -spec delete_model_bias_job_definition(aws_client:aws_client(), delete_model_bias_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -16375,7 +16376,7 @@ delete_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelCard">>, Input, Options).
 
-%% @doc Deletes an Amazon SageMaker model explainability job definition.
+%% @doc Deletes an Amazon SageMaker AI model explainability job definition.
 -spec delete_model_explainability_job_definition(aws_client:aws_client(), delete_model_explainability_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -16483,13 +16484,14 @@ delete_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMonitoringSchedule">>, Input, Options).
 
-%% @doc Deletes an SageMaker notebook instance.
+%% @doc Deletes an SageMaker AI notebook instance.
 %%
 %% Before you can delete a notebook
 %% instance, you must call the `StopNotebookInstance' API.
 %%
 %% When you delete a notebook instance, you lose all of your data. SageMaker
-%% removes the ML compute instance, and deletes the ML storage volume and the
+%% AI removes the ML compute instance, and deletes the ML storage volume and
+%% the
 %% network interface associated with the notebook instance.
 -spec delete_notebook_instance(aws_client:aws_client(), delete_notebook_instance_input()) ->
     {ok, undefined, tuple()} |
@@ -16611,7 +16613,7 @@ delete_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSpace">>, Input, Options).
 
-%% @doc Deletes the Amazon SageMaker Studio Lifecycle Configuration.
+%% @doc Deletes the Amazon SageMaker AI Studio Lifecycle Configuration.
 %%
 %% In order to delete the
 %% Lifecycle Configuration, there must be no running apps using the Lifecycle
@@ -17336,7 +17338,7 @@ describe_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHyperParameterTuningJob">>, Input, Options).
 
-%% @doc Describes a SageMaker image.
+%% @doc Describes a SageMaker AI image.
 -spec describe_image(aws_client:aws_client(), describe_image_request()) ->
     {ok, describe_image_response(), tuple()} |
     {error, any()} |
@@ -17353,7 +17355,7 @@ describe_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImage">>, Input, Options).
 
-%% @doc Describes a version of a SageMaker image.
+%% @doc Describes a version of a SageMaker AI image.
 -spec describe_image_version(aws_client:aws_client(), describe_image_version_request()) ->
     {ok, describe_image_version_response(), tuple()} |
     {error, any()} |
@@ -17806,7 +17808,7 @@ describe_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpace">>, Input, Options).
 
-%% @doc Describes the Amazon SageMaker Studio Lifecycle Configuration.
+%% @doc Describes the Amazon SageMaker AI Studio Lifecycle Configuration.
 -spec describe_studio_lifecycle_config(aws_client:aws_client(), describe_studio_lifecycle_config_request()) ->
     {ok, describe_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
@@ -19127,7 +19129,7 @@ list_notebook_instance_lifecycle_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookInstanceLifecycleConfigs">>, Input, Options).
 
-%% @doc Returns a list of the SageMaker notebook instances in the
+%% @doc Returns a list of the SageMaker AI notebook instances in the
 %% requester's
 %% account in an Amazon Web Services Region.
 -spec list_notebook_instances(aws_client:aws_client(), list_notebook_instances_input()) ->
@@ -19320,7 +19322,7 @@ list_stage_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStageDevices">>, Input, Options).
 
-%% @doc Lists the Amazon SageMaker Studio Lifecycle Configurations in your
+%% @doc Lists the Amazon SageMaker AI Studio Lifecycle Configurations in your
 %% Amazon Web Services
 %% Account.
 -spec list_studio_lifecycle_configs(aws_client:aws_client(), list_studio_lifecycle_configs_request()) ->
@@ -19852,7 +19854,7 @@ start_monitoring_schedule(Client, Input, Options)
 %% libraries and
 %% attaches your ML storage volume.
 %%
-%% After configuring the notebook instance, SageMaker sets the notebook
+%% After configuring the notebook instance, SageMaker AI sets the notebook
 %% instance status to `InService'. A notebook
 %% instance's status must be `InService' before you can connect to
 %% your Jupyter
@@ -19909,11 +19911,11 @@ stop_auto_ml_job(Client, Input, Options)
 
 %% @doc Stops a model compilation job.
 %%
-%% To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal.
+%% To stop a job, Amazon SageMaker AI sends the algorithm the SIGTERM signal.
 %% This gracefully shuts the
 %% job down. If the job hasn't stopped, it sends the SIGKILL signal.
 %%
-%% When it receives a `StopCompilationJob' request, Amazon SageMaker
+%% When it receives a `StopCompilationJob' request, Amazon SageMaker AI
 %% changes the
 %% `CompilationJobStatus' of the job to `Stopping'. After Amazon
 %% SageMaker stops the job, it sets the `CompilationJobStatus' to
@@ -20082,9 +20084,9 @@ stop_monitoring_schedule(Client, Input, Options)
 
 %% @doc Terminates the ML compute instance.
 %%
-%% Before terminating the instance, SageMaker disconnects the ML storage
-%% volume from it. SageMaker preserves the
-%% ML storage volume. SageMaker stops charging you for the ML compute
+%% Before terminating the instance, SageMaker AI disconnects the ML storage
+%% volume from it. SageMaker AI preserves the
+%% ML storage volume. SageMaker AI stops charging you for the ML compute
 %% instance when
 %% you call `StopNotebookInstance'.
 %%
@@ -20629,7 +20631,7 @@ update_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHub">>, Input, Options).
 
-%% @doc Updates the properties of a SageMaker image.
+%% @doc Updates the properties of a SageMaker AI image.
 %%
 %% To change the image's tags, use the
 %% AddTags:
@@ -20653,7 +20655,7 @@ update_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImage">>, Input, Options).
 
-%% @doc Updates the properties of a SageMaker image version.
+%% @doc Updates the properties of a SageMaker AI image version.
 -spec update_image_version(aws_client:aws_client(), update_image_version_request()) ->
     {ok, update_image_version_response(), tuple()} |
     {error, any()} |
@@ -20936,6 +20938,8 @@ update_project(Client, Input, Options)
     request(Client, <<"UpdateProject">>, Input, Options).
 
 %% @doc Updates the settings of a space.
+%%
+%% You can't edit the app type of a space in the `SpaceSettings'.
 -spec update_space(aws_client:aws_client(), update_space_request()) ->
     {ok, update_space_response(), tuple()} |
     {error, any()} |

@@ -335,6 +335,7 @@
 %% Example:
 %% memory_configuration() :: #{
 %%   <<"enabledMemoryTypes">> => list(list(any())()),
+%%   <<"sessionSummaryConfiguration">> => session_summary_configuration(),
 %%   <<"storageDays">> => integer()
 %% }
 -type memory_configuration() :: #{binary() => any()}.
@@ -600,6 +601,13 @@
 %%   <<"tags">> => map()
 %% }
 -type create_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary_configuration() :: #{
+%%   <<"maxRecentSessions">> => integer()
+%% }
+-type session_summary_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1563,6 +1571,7 @@
 
 %% Example:
 %% web_crawler_limits() :: #{
+%%   <<"maxPages">> => [integer()],
 %%   <<"rateLimit">> => [integer()]
 %% }
 -type web_crawler_limits() :: #{binary() => any()}.
@@ -2115,7 +2124,8 @@
 %%   <<"crawlerLimits">> => web_crawler_limits(),
 %%   <<"exclusionFilters">> => list(string()()),
 %%   <<"inclusionFilters">> => list(string()()),
-%%   <<"scope">> => list(any())
+%%   <<"scope">> => list(any()),
+%%   <<"userAgent">> => string()
 %% }
 -type web_crawler_configuration() :: #{binary() => any()}.
 

@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Bedrock Keystone Runtime
+%% @doc Amazon Bedrock Data Automation Runtime
 -module(aws_bedrock_data_automation_runtime).
 
 -export([get_data_automation_status/2,

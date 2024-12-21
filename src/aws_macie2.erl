@@ -5319,8 +5319,8 @@ list_classification_scopes(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a subset of information about all the custom data
-%% identifiers for an account.
+%% @doc Retrieves a subset of information about the custom data identifiers
+%% for an account.
 -spec list_custom_data_identifiers(aws_client:aws_client(), list_custom_data_identifiers_request()) ->
     {ok, list_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
@@ -5830,7 +5830,8 @@ put_findings_publication_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) statistical data and other information about
-%% Amazon Web Services resources that Amazon Macie monitors and analyzes.
+%% Amazon Web Services resources that Amazon Macie monitors and analyzes for
+%% an account.
 -spec search_resources(aws_client:aws_client(), search_resources_request()) ->
     {ok, search_resources_response(), tuple()} |
     {error, any()} |

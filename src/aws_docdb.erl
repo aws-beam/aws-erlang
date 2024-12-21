@@ -732,6 +732,14 @@
 -type add_source_identifier_to_subscription_result() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_master_user_secret() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SecretStatus">> => string()
+%% }
+-type cluster_master_user_secret() :: #{binary() => any()}.
+
+%% Example:
 %% db_parameter_group_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1083,7 +1091,9 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"GlobalClusterIdentifier">> => string(),
 %%   <<"KmsKeyId">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
 %%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"MasterUsername">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"PreSignedUrl">> => string(),
@@ -1279,6 +1289,7 @@
 %%   <<"Engine">> => string(),
 %%   <<"DBClusterMembers">> => list(db_cluster_member()()),
 %%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"MasterUserSecret">> => cluster_master_user_secret(),
 %%   <<"DBClusterParameterGroup">> => string(),
 %%   <<"HostedZoneId">> => string(),
 %%   <<"DBSubnetGroup">> => string(),
@@ -1567,11 +1578,14 @@
 %%   <<"DBClusterParameterGroupName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
 %%   <<"EngineVersion">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
 %%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"NewDBClusterIdentifier">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"RotateMasterUserPassword">> => boolean(),
 %%   <<"StorageType">> => string(),
 %%   <<"VpcSecurityGroupIds">> => list(string()())
 %% }

@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Bedrock Keystone Build
+%% @doc Amazon Bedrock Data Automation BuildTime
 -module(aws_bedrock_data_automation).
 
 -export([create_blueprint/2,
@@ -653,7 +653,7 @@
 %% API
 %%====================================================================
 
-%% @doc Creates an Amazon Bedrock Keystone Blueprint
+%% @doc Creates an Amazon Bedrock Data Automation Blueprint
 -spec create_blueprint(aws_client:aws_client(), create_blueprint_request()) ->
     {ok, create_blueprint_response(), tuple()} |
     {error, any()} |
@@ -687,7 +687,7 @@ create_blueprint(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new version of an existing Amazon Bedrock Keystone
+%% @doc Creates a new version of an existing Amazon Bedrock Data Automation
 %% Blueprint
 -spec create_blueprint_version(aws_client:aws_client(), binary() | list(), create_blueprint_version_request()) ->
     {ok, create_blueprint_version_response(), tuple()} |
@@ -722,7 +722,7 @@ create_blueprint_version(Client, BlueprintArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Bedrock Keystone DataAutomationProject
+%% @doc Creates an Amazon Bedrock Data Automation Project
 -spec create_data_automation_project(aws_client:aws_client(), create_data_automation_project_request()) ->
     {ok, create_data_automation_project_response(), tuple()} |
     {error, any()} |
@@ -756,7 +756,7 @@ create_data_automation_project(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing Amazon Bedrock Keystone Blueprint
+%% @doc Deletes an existing Amazon Bedrock Data Automation Blueprint
 -spec delete_blueprint(aws_client:aws_client(), binary() | list(), delete_blueprint_request()) ->
     {ok, delete_blueprint_response(), tuple()} |
     {error, any()} |
@@ -791,7 +791,7 @@ delete_blueprint(Client, BlueprintArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing Amazon Bedrock Keystone DataAutomationProject
+%% @doc Deletes an existing Amazon Bedrock Data Automation Project
 -spec delete_data_automation_project(aws_client:aws_client(), binary() | list(), delete_data_automation_project_request()) ->
     {ok, delete_data_automation_project_response(), tuple()} |
     {error, any()} |
@@ -825,7 +825,7 @@ delete_data_automation_project(Client, ProjectArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets an existing Amazon Bedrock Keystone Blueprint
+%% @doc Gets an existing Amazon Bedrock Data Automation Blueprint
 -spec get_blueprint(aws_client:aws_client(), binary() | list(), get_blueprint_request()) ->
     {ok, get_blueprint_response(), tuple()} |
     {error, any()} |
@@ -859,7 +859,7 @@ get_blueprint(Client, BlueprintArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets an existing Amazon Bedrock Keystone DataAutomationProject
+%% @doc Gets an existing Amazon Bedrock Data Automation Project
 -spec get_data_automation_project(aws_client:aws_client(), binary() | list(), get_data_automation_project_request()) ->
     {ok, get_data_automation_project_response(), tuple()} |
     {error, any()} |
@@ -893,7 +893,7 @@ get_data_automation_project(Client, ProjectArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all existing Amazon Bedrock Keystone Blueprints
+%% @doc Lists all existing Amazon Bedrock Data Automation Blueprints
 -spec list_blueprints(aws_client:aws_client(), list_blueprints_request()) ->
     {ok, list_blueprints_response(), tuple()} |
     {error, any()} |
@@ -927,7 +927,7 @@ list_blueprints(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all existing Amazon Bedrock Keystone DataAutomationProjects
+%% @doc Lists all existing Amazon Bedrock Data Automation Projects
 -spec list_data_automation_projects(aws_client:aws_client(), list_data_automation_projects_request()) ->
     {ok, list_data_automation_projects_response(), tuple()} |
     {error, any()} |
@@ -961,7 +961,7 @@ list_data_automation_projects(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Amazon Bedrock Blueprint
+%% @doc Updates an existing Amazon Bedrock Data Automation Blueprint
 -spec update_blueprint(aws_client:aws_client(), binary() | list(), update_blueprint_request()) ->
     {ok, update_blueprint_response(), tuple()} |
     {error, any()} |
@@ -995,7 +995,7 @@ update_blueprint(Client, BlueprintArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Amazon Bedrock DataAutomationProject
+%% @doc Updates an existing Amazon Bedrock Data Automation Project
 -spec update_data_automation_project(aws_client:aws_client(), binary() | list(), update_data_automation_project_request()) ->
     {ok, update_data_automation_project_response(), tuple()} |
     {error, any()} |

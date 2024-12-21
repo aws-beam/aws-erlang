@@ -2180,7 +2180,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts the specified capacity task.
 %%
-%% You can have one active capacity task per order or Outpost.
+%% You can have one active capacity task for each order and each Outpost.
 -spec start_capacity_task(aws_client:aws_client(), binary() | list(), start_capacity_task_input()) ->
     {ok, start_capacity_task_output(), tuple()} |
     {error, any()} |
