@@ -2329,7 +2329,7 @@ describe_repository_creation_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRepositoryCreationTemplates">>, Input, Options).
 
-%% @doc Retrieves the basic scan type version name.
+%% @doc Retrieves the account setting value for the specified setting name.
 -spec get_account_setting(aws_client:aws_client(), get_account_setting_request()) ->
     {ok, get_account_setting_response(), tuple()} |
     {error, any()} |
@@ -2566,9 +2566,8 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Allows you to change the basic scan type version by setting the
-%% `name'
-%% parameter to either `CLAIR' to `AWS_NATIVE'.
+%% @doc Allows you to change the basic scan type version or registry policy
+%% scope.
 -spec put_account_setting(aws_client:aws_client(), put_account_setting_request()) ->
     {ok, put_account_setting_response(), tuple()} |
     {error, any()} |

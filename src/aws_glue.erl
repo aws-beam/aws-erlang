@@ -3264,6 +3264,7 @@
 
 %% Example:
 %% get_catalogs_request() :: #{
+%%   <<"IncludeRoot">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ParentCatalogId">> => string(),

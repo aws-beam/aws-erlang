@@ -73,6 +73,9 @@
          describe_cluster/2,
          describe_cluster/4,
          describe_cluster/5,
+         describe_cluster_versions/1,
+         describe_cluster_versions/3,
+         describe_cluster_versions/4,
          describe_eks_anywhere_subscription/2,
          describe_eks_anywhere_subscription/4,
          describe_eks_anywhere_subscription/5,
@@ -906,6 +909,19 @@
 
 
 %% Example:
+%% describe_cluster_versions_request() :: #{
+%%   <<"clusterType">> => string(),
+%%   <<"clusterVersions">> => list(string()()),
+%%   <<"defaultOnly">> => boolean(),
+%%   <<"includeAll">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_cluster_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% deprecation_detail() :: #{
 %%   <<"clientStats">> => list(client_stat()()),
 %%   <<"replacedWith">> => string(),
@@ -1061,6 +1077,14 @@
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_cluster_versions_response() :: #{
+%%   <<"clusterVersions">> => list(cluster_version_information()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_cluster_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1973,6 +1997,21 @@
 
 
 %% Example:
+%% cluster_version_information() :: #{
+%%   <<"clusterType">> => string(),
+%%   <<"clusterVersion">> => string(),
+%%   <<"defaultPlatformVersion">> => string(),
+%%   <<"defaultVersion">> => boolean(),
+%%   <<"endOfExtendedSupportDate">> => non_neg_integer(),
+%%   <<"endOfStandardSupportDate">> => non_neg_integer(),
+%%   <<"kubernetesPatchVersion">> => string(),
+%%   <<"releaseDate">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type cluster_version_information() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_pod_identity_association_response() :: #{
 %%   <<"association">> => pod_identity_association()
 %% }
@@ -2153,6 +2192,11 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     client_exception().
+
+-type describe_cluster_versions_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception().
 
 -type describe_eks_anywhere_subscription_errors() ::
     server_exception() | 
@@ -3470,6 +3514,53 @@ describe_cluster(Client, Name, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists available Kubernetes versions for Amazon EKS clusters.
+-spec describe_cluster_versions(aws_client:aws_client()) ->
+    {ok, describe_cluster_versions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_versions_errors(), tuple()}.
+describe_cluster_versions(Client)
+  when is_map(Client) ->
+    describe_cluster_versions(Client, #{}, #{}).
+
+-spec describe_cluster_versions(aws_client:aws_client(), map(), map()) ->
+    {ok, describe_cluster_versions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_versions_errors(), tuple()}.
+describe_cluster_versions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_cluster_versions(Client, QueryMap, HeadersMap, []).
+
+-spec describe_cluster_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, describe_cluster_versions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_versions_errors(), tuple()}.
+describe_cluster_versions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/cluster-versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"clusterType">>, maps:get(<<"clusterType">>, QueryMap, undefined)},
+        {<<"clusterVersions">>, maps:get(<<"clusterVersions">>, QueryMap, undefined)},
+        {<<"defaultOnly">>, maps:get(<<"defaultOnly">>, QueryMap, undefined)},
+        {<<"includeAll">>, maps:get(<<"includeAll">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
