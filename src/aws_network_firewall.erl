@@ -14,8 +14,20 @@
 %% about using the Amazon Web Services REST APIs, see Amazon Web Services
 %% APIs: https://docs.aws.amazon.com/general/latest/gr/aws-apis.html.
 %%
-%% To access Network Firewall using the REST API endpoint:
+%% To view the complete list of Amazon Web Services Regions where Network
+%% Firewall is available, see
+%% Service
+%% endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/network-firewall.html in the
+%% Amazon Web Services General
+%% Reference.
+%%
+%% To access Network Firewall using the IPv4 REST API endpoint:
 %% `https://network-firewall..amazonaws.com '
+%%
+%% To access Network Firewall using the Dualstack (IPv4 and IPv6) REST API
+%% endpoint:
+%% `https://network-firewall..aws.api '
 %%
 %% Alternatively, you can use one of the Amazon Web Services SDKs to access
 %% an API that's tailored to

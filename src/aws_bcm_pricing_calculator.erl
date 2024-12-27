@@ -1268,7 +1268,8 @@
     conflict_exception().
 
 -type delete_bill_estimate_errors() ::
-    data_unavailable_exception().
+    data_unavailable_exception() | 
+    conflict_exception().
 
 -type delete_bill_scenario_errors() ::
     data_unavailable_exception().
