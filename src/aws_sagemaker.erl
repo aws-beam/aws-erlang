@@ -1887,6 +1887,7 @@
 %% Example:
 %% additional_s3_data_source() :: #{
 %%   <<"CompressionType">> => list(any()),
+%%   <<"ETag">> => string(),
 %%   <<"S3DataType">> => list(any()),
 %%   <<"S3Uri">> => string()
 %% }
@@ -5738,6 +5739,7 @@
 %% Example:
 %% source_algorithm() :: #{
 %%   <<"AlgorithmName">> => string(),
+%%   <<"ModelDataETag">> => string(),
 %%   <<"ModelDataSource">> => model_data_source(),
 %%   <<"ModelDataUrl">> => string()
 %% }
@@ -9255,7 +9257,9 @@
 %% Example:
 %% s3_model_data_source() :: #{
 %%   <<"CompressionType">> => list(any()),
+%%   <<"ETag">> => string(),
 %%   <<"HubAccessConfig">> => inference_hub_access_config(),
+%%   <<"ManifestEtag">> => string(),
 %%   <<"ManifestS3Uri">> => string(),
 %%   <<"ModelAccessConfig">> => model_access_config(),
 %%   <<"S3DataType">> => list(any()),
@@ -11169,6 +11173,7 @@
 %%   <<"FrameworkVersion">> => string(),
 %%   <<"Image">> => string(),
 %%   <<"ImageDigest">> => string(),
+%%   <<"ModelDataETag">> => string(),
 %%   <<"ModelDataSource">> => model_data_source(),
 %%   <<"ModelDataUrl">> => string(),
 %%   <<"ModelInput">> => model_input(),

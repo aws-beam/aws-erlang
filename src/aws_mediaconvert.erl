@@ -2842,6 +2842,7 @@
 %%   <<"DynamicSubGop">> => list(any()),
 %%   <<"GopSize">> => float(),
 %%   <<"UnregisteredSeiTimecode">> => list(any()),
+%%   <<"WriteMp4PackagingType">> => list(any()),
 %%   <<"SlowPal">> => list(any()),
 %%   <<"Telecine">> => list(any()),
 %%   <<"CodecProfile">> => list(any()),

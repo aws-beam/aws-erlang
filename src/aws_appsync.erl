@@ -1669,7 +1669,7 @@
 %% Example:
 %% update_graphql_api_request() :: #{
 %%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()()),
-%%   <<"authenticationType">> => list(any()),
+%%   <<"authenticationType">> := list(any()),
 %%   <<"enhancedMetricsConfig">> => enhanced_metrics_config(),
 %%   <<"introspectionConfig">> => list(any()),
 %%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),

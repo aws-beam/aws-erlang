@@ -403,6 +403,14 @@
 %% }
 -type list_offerings_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% frozen_frames() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
+%% }
+-type frozen_frames() :: #{binary() => any()}.
+
 %% Example:
 %% remove_bridge_source_request() :: #{}
 -type remove_bridge_source_request() :: #{}.
@@ -871,6 +879,14 @@
 
 
 %% Example:
+%% silent_audio() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
+%% }
+-type silent_audio() :: #{binary() => any()}.
+
+
+%% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -978,6 +994,13 @@
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_monitoring_setting() :: #{
+%%   <<"SilentAudio">> => silent_audio()
+%% }
+-type audio_monitoring_setting() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1383,7 +1406,10 @@
 
 %% Example:
 %% monitoring_config() :: #{
-%%   <<"ThumbnailState">> => list(any())
+%%   <<"AudioMonitoringSettings">> => list(audio_monitoring_setting()()),
+%%   <<"ContentQualityAnalysisState">> => list(any()),
+%%   <<"ThumbnailState">> => list(any()),
+%%   <<"VideoMonitoringSettings">> => list(video_monitoring_setting()())
 %% }
 -type monitoring_config() :: #{binary() => any()}.
 
@@ -1431,6 +1457,14 @@
 %%   <<"ResourceSpecification">> => resource_specification()
 %% }
 -type offering() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_monitoring_setting() :: #{
+%%   <<"BlackFrames">> => black_frames(),
+%%   <<"FrozenFrames">> => frozen_frames()
+%% }
+-type video_monitoring_setting() :: #{binary() => any()}.
 
 %% Example:
 %% remove_flow_media_stream_request() :: #{}
@@ -1693,6 +1727,14 @@
 %%   <<"Ttl">> => integer()
 %% }
 -type add_bridge_network_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% black_frames() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
+%% }
+-type black_frames() :: #{binary() => any()}.
 
 
 %% Example:
