@@ -3396,10 +3396,10 @@
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -3586,10 +3586,10 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -3784,10 +3784,10 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -4104,10 +4104,10 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -4409,10 +4409,10 @@ create_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -4811,10 +4811,10 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Path-style requests are not supported. For more information about
 %% endpoints in Availability Zones, see Regional and Zonal endpoints for
 %% directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -5030,10 +5030,10 @@ create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -5502,10 +5502,10 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -5761,10 +5761,10 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -6084,10 +6084,10 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -6332,10 +6332,10 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -7195,10 +7195,10 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -7699,10 +7699,10 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -8231,10 +8231,10 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -8636,10 +8636,10 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -9386,10 +9386,10 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Path-style requests are not supported. For more information about
 %% endpoints in Availability Zones, see Regional and Zonal endpoints for
 %% directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -9607,10 +9607,10 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -10146,10 +10146,10 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -10273,10 +10273,10 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -10644,10 +10644,10 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -10826,10 +10826,10 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -11487,10 +11487,10 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -12025,10 +12025,10 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -12486,10 +12486,10 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -13142,10 +13142,10 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -14477,10 +14477,10 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -14763,10 +14763,10 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Available Local Zone for directory buckets:
+%% see Concepts for directory buckets in Local Zones:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.

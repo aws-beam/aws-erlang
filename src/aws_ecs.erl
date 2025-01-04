@@ -3812,7 +3812,7 @@ list_container_instances(Client, Input, Options)
 %% specified filter
 %% criteria.
 %%
-%% A service deployment happens when you release a softwre update for the
+%% A service deployment happens when you release a software update for the
 %% service. You
 %% route traffic from the running service revisions to the new service
 %% revison and control
