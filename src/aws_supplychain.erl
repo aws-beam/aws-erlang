@@ -387,7 +387,8 @@
 %%   <<"instanceDescription">> => string(),
 %%   <<"instanceName">> => string(),
 %%   <<"kmsKeyArn">> => string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"webAppDnsDomain">> => string()
 %% }
 -type create_instance_request() :: #{binary() => any()}.
 
@@ -966,9 +967,8 @@ delete_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) 
 %% This is an asynchronous operation. Upon receiving a DeleteInstance
 %% request, Amazon Web Services Supply Chain immediately returns a response
 %% with the instance resource, delete state while cleaning up all Amazon Web
-%% Services resources created during
-%% the instance creation process. You can use the GetInstance action to check
-%% the instance status.
+%% Services resources created during the instance creation process. You can
+%% use the GetInstance action to check the instance status.
 -spec delete_instance(aws_client:aws_client(), binary() | list(), delete_instance_request()) ->
     {ok, delete_instance_response(), tuple()} |
     {error, any()} |
@@ -1340,9 +1340,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% for analysis or monitoring.
 %%
 %% The real-time data events are stored in an Amazon Web Services service
-%% before being processed and stored in data lake.
-%% New data events are synced with data lake at 5 PM GMT everyday. The
-%% updated transactional data is available in data lake after ingestion.
+%% before being processed and stored in data lake. New data events are synced
+%% with data lake at 5 PM GMT everyday. The updated transactional data is
+%% available in data lake after ingestion.
 -spec send_data_integration_event(aws_client:aws_client(), binary() | list(), send_data_integration_event_request()) ->
     {ok, send_data_integration_event_response(), tuple()} |
     {error, any()} |
@@ -1380,10 +1380,9 @@ send_data_integration_event(Client, InstanceId, Input0, Options0) ->
 %% instance, data flow, or dataset in AWS Supply chain.
 %%
 %% During the data ingestion process, you can add tags such as dev, test, or
-%% prod to data flows
-%% created during the data ingestion process in the AWS Supply Chain
-%% datasets. You can use these tags to identify a group of resources or a
-%% single resource used by the developer.
+%% prod to data flows created during the data ingestion process in the AWS
+%% Supply Chain datasets. You can use these tags to identify a group of
+%% resources or a single resource used by the developer.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1421,9 +1420,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% such as instance, data flow, or dataset in AWS Supply Chain.
 %%
 %% During the data ingestion process, you can delete tags such as dev, test,
-%% or prod to data flows
-%% created during the data ingestion process in the AWS Supply Chain
-%% datasets.
+%% or prod to data flows created during the data ingestion process in the AWS
+%% Supply Chain datasets.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
