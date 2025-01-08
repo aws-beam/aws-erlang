@@ -300,7 +300,8 @@
 %% point_in_time_recovery_description() :: #{
 %%   <<"EarliestRestorableDateTime">> => non_neg_integer(),
 %%   <<"LatestRestorableDateTime">> => non_neg_integer(),
-%%   <<"PointInTimeRecoveryStatus">> => list(any())
+%%   <<"PointInTimeRecoveryStatus">> => list(any()),
+%%   <<"RecoveryPeriodInDays">> => integer()
 %% }
 -type point_in_time_recovery_description() :: #{binary() => any()}.
 
@@ -1269,7 +1270,8 @@
 
 %% Example:
 %% point_in_time_recovery_specification() :: #{
-%%   <<"PointInTimeRecoveryEnabled">> => boolean()
+%%   <<"PointInTimeRecoveryEnabled">> => boolean(),
+%%   <<"RecoveryPeriodInDays">> => integer()
 %% }
 -type point_in_time_recovery_specification() :: #{binary() => any()}.
 
@@ -3227,7 +3229,8 @@ describe_backup(Client, Input, Options)
 %%
 %% `LatestRestorableDateTime' is typically 5 minutes before the current
 %% time.
-%% You can restore your table to any point in time during the last 35 days.
+%% You can restore your table to any point in time in the last 35 days. You
+%% can set the recovery period to any value between 1 and 35 days.
 %%
 %% You can call `DescribeContinuousBackups' at a maximum rate of 10 times
 %% per
@@ -4205,8 +4208,9 @@ restore_table_from_backup(Client, Input, Options)
 %% @doc Restores the specified table to the specified point in time within
 %% `EarliestRestorableDateTime' and `LatestRestorableDateTime'.
 %%
-%% You can restore your table to any point in time during the last 35 days.
-%% Any number of
+%% You can restore your table to any point in time in the last 35 days. You
+%% can set the recovery period to any value between 1 and 35 days. Any number
+%% of
 %% users can execute up to 50 concurrent restores (any type of restore) in a
 %% given account.
 %%
@@ -4581,7 +4585,8 @@ untag_resource(Client, Input, Options)
 %%
 %% `LatestRestorableDateTime' is typically 5 minutes before the current
 %% time.
-%% You can restore your table to any point in time during the last 35 days.
+%% You can restore your table to any point in time in the last 35 days. You
+%% can set the recovery period to any value between 1 and 35 days.
 -spec update_continuous_backups(aws_client:aws_client(), update_continuous_backups_input()) ->
     {ok, update_continuous_backups_output(), tuple()} |
     {error, any()} |

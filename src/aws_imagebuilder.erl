@@ -101,6 +101,8 @@
          get_workflow_step_execution/5,
          import_component/2,
          import_component/3,
+         import_disk_image/2,
+         import_disk_image/3,
          import_vm_image/2,
          import_vm_image/3,
          list_component_build_versions/2,
@@ -1269,6 +1271,14 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_disk_image_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string()
+%% }
+-type import_disk_image_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2519,6 +2529,22 @@
 
 
 %% Example:
+%% import_disk_image_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"osVersion">> := string(),
+%%   <<"platform">> := string(),
+%%   <<"semanticVersion">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"uri">> := string()
+%% }
+-type import_disk_image_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% workflow_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
@@ -3137,6 +3163,11 @@
     forbidden_exception() | 
     resource_in_use_exception() | 
     invalid_version_number_exception().
+
+-type import_disk_image_errors() ::
+    service_unavailable_exception() | 
+    service_exception() | 
+    client_exception().
 
 -type import_vm_image_errors() ::
     service_unavailable_exception() | 
@@ -4936,6 +4967,46 @@ import_component(Client, Input) ->
 import_component(Client, Input0, Options0) ->
     Method = put,
     Path = ["/ImportComponent"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Import a Windows operating system image from a verified Microsoft ISO
+%% disk
+%% file.
+%%
+%% The following disk images are supported:
+%%
+%% Windows 11 Enterprise
+-spec import_disk_image(aws_client:aws_client(), import_disk_image_request()) ->
+    {ok, import_disk_image_response(), tuple()} |
+    {error, any()} |
+    {error, import_disk_image_errors(), tuple()}.
+import_disk_image(Client, Input) ->
+    import_disk_image(Client, Input, []).
+
+-spec import_disk_image(aws_client:aws_client(), import_disk_image_request(), proplists:proplist()) ->
+    {ok, import_disk_image_response(), tuple()} |
+    {error, any()} |
+    {error, import_disk_image_errors(), tuple()}.
+import_disk_image(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/ImportDiskImage"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

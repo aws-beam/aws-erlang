@@ -209,6 +209,7 @@
 %%   <<"ClusterId">> => string(),
 %%   <<"CreateTimestamp">> => non_neg_integer(),
 %%   <<"HsmType">> => string(),
+%%   <<"HsmTypeRollbackExpiration">> => non_neg_integer(),
 %%   <<"Hsms">> => list(hsm()()),
 %%   <<"Mode">> => list(any()),
 %%   <<"NetworkType">> => list(any()),
@@ -259,8 +260,9 @@
 
 %% Example:
 %% modify_cluster_request() :: #{
-%%   <<"BackupRetentionPolicy">> := backup_retention_policy(),
-%%   <<"ClusterId">> := string()
+%%   <<"BackupRetentionPolicy">> => backup_retention_policy(),
+%%   <<"ClusterId">> := string(),
+%%   <<"HsmType">> => string()
 %% }
 -type modify_cluster_request() :: #{binary() => any()}.
 
@@ -323,6 +325,7 @@
 %%   <<"EniIp">> => string(),
 %%   <<"EniIpV6">> => string(),
 %%   <<"HsmId">> => string(),
+%%   <<"HsmType">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
 %%   <<"SubnetId">> => string()
