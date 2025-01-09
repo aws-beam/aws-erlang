@@ -12143,6 +12143,7 @@
 %%   <<"Placement">> => cluster_instance_placement(),
 %%   <<"PrivateDnsHostname">> => string(),
 %%   <<"PrivatePrimaryIp">> => string(),
+%%   <<"PrivatePrimaryIpv6">> => string(),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type cluster_node_details() :: #{binary() => any()}.
