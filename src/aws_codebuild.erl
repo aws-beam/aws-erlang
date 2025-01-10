@@ -1274,6 +1274,7 @@
 %% Example:
 %% batch_restrictions() :: #{
 %%   <<"computeTypesAllowed">> => list(string()()),
+%%   <<"fleetsAllowed">> => list(string()()),
 %%   <<"maximumBuildsAllowed">> => integer()
 %% }
 -type batch_restrictions() :: #{binary() => any()}.

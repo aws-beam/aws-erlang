@@ -1330,10 +1330,14 @@
 
 %% Example:
 %% auto_scaling_group_configuration() :: #{
+%%   <<"allocationStrategy">> => list(any()),
 %%   <<"desiredCapacity">> => integer(),
+%%   <<"estimatedInstanceHourReductionPercentage">> => float(),
 %%   <<"instanceType">> => string(),
 %%   <<"maxSize">> => integer(),
-%%   <<"minSize">> => integer()
+%%   <<"minSize">> => integer(),
+%%   <<"mixedInstanceTypes">> => list(string()()),
+%%   <<"type">> => list(any())
 %% }
 -type auto_scaling_group_configuration() :: #{binary() => any()}.
 

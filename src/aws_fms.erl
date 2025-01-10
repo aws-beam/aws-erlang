@@ -1121,6 +1121,7 @@
 %%   <<"PolicyUpdateToken">> => string(),
 %%   <<"RemediationEnabled">> => boolean(),
 %%   <<"ResourceSetIds">> => list(string()()),
+%%   <<"ResourceTagLogicalOperator">> => list(any()),
 %%   <<"ResourceTags">> => list(resource_tag()()),
 %%   <<"ResourceType">> => string(),
 %%   <<"ResourceTypeList">> => list(string()()),
