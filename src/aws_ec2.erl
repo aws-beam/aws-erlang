@@ -13141,6 +13141,7 @@
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"ConnectionLogOptions">> => connection_log_options(),
 %%   <<"Description">> => string(),
+%%   <<"DisconnectOnSessionTimeout">> => boolean(),
 %%   <<"DnsServers">> => dns_servers_options_modify_structure(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()()),
@@ -13686,6 +13687,7 @@
 %%   <<"CreationTime">> => string(),
 %%   <<"DeletionTime">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"DisconnectOnSessionTimeout">> => boolean(),
 %%   <<"DnsName">> => string(),
 %%   <<"DnsServers">> => list(string()()),
 %%   <<"SecurityGroupIds">> => list(string()()),
@@ -18266,6 +18268,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectionLogOptions">> := connection_log_options(),
 %%   <<"Description">> => string(),
+%%   <<"DisconnectOnSessionTimeout">> => boolean(),
 %%   <<"DnsServers">> => list(string()()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()()),
@@ -20831,6 +20834,10 @@ cancel_bundle_task(Client, Input, Options)
 %% duration has elapsed. You can't cancel a future-dated Capacity
 %% Reservation during the commitment duration.
 %%
+%% You can't modify or cancel a Capacity Block. For more information, see
+%% Capacity Blocks for ML:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html.
+%%
 %% If a future-dated Capacity Reservation enters the `delayed' state, the
 %% commitment
 %% duration is waived, and you can cancel it as soon as it enters the
@@ -21161,11 +21168,12 @@ copy_image(Client, Input, Options)
 %% used to encrypt the snapshot.
 %%
 %% Snapshots copied to an Outpost are encrypted by default using the default
-%% encryption key for the Region, or a different key that you specify in the
-%% request using
-%% KmsKeyId. Outposts do not support unencrypted
-%% snapshots. For more information,
-%% Amazon EBS local snapshots on Outposts:
+%% encryption key
+%% for the Region, or a different key that you specify in the request using
+%% KmsKeyId. Outposts do not support unencrypted snapshots. For more
+%% information,
+%% see Amazon EBS
+%% local snapshots on Outposts:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami
 %% in the Amazon EBS User Guide.
 %%
@@ -22594,8 +22602,8 @@ create_security_group(Client, Input, Options)
 %% Region as the volume.
 %%
 %% If the source volume is in a Local Zone, you can create the snapshot in
-%% the same
-%% Local Zone or in parent Amazon Web Services Region.
+%% the same Local
+%% Zone or in its parent Amazon Web Services Region.
 %%
 %% If the source volume is on an Outpost, you can create the snapshot on the
 %% same
@@ -22630,8 +22638,7 @@ create_security_group(Client, Input, Options)
 %% are created from encrypted snapshots are also automatically encrypted.
 %% Your encrypted volumes
 %% and any associated snapshots always remain protected. For more
-%% information,
-%% Amazon EBS encryption:
+%% information, see Amazon EBS encryption:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html
 %% in the Amazon EBS User Guide.
 -spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
@@ -22668,7 +22675,7 @@ create_snapshot(Client, Input, Options)
 %%
 %% If the source instance is in a Local Zone, you can create the snapshots in
 %% the same
-%% Local Zone or in parent Amazon Web Services Region.
+%% Local Zone or in its parent Amazon Web Services Region.
 %%
 %% If the source instance is on an Outpost, you can create the snapshots on
 %% the same
@@ -24396,7 +24403,7 @@ delete_security_group(Client, Input, Options)
 %%
 %% You cannot delete a snapshot of the root device of an EBS volume used by a
 %% registered AMI.
-%% You must first de-register the AMI before you can delete the snapshot.
+%% You must first deregister the AMI before you can delete the snapshot.
 %%
 %% For more information, see Delete an Amazon EBS snapshot:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-deleting-snapshot.html
@@ -25483,6 +25490,16 @@ describe_capacity_block_extension_offerings(Client, Input, Options)
 %%
 %% With Capacity Blocks, you purchase a
 %% specific instance type for a period of time.
+%%
+%% To search for an available Capacity Block offering, you specify a
+%% reservation duration
+%% and instance count. You must select one of the following options.
+%%
+%% For reservation durations 1-day increments
+%% up 14 days and 7-day increments up to 182 days total
+%%
+%% For instance count 1, 2, 4, 8, 16, 32, or
+%% 64 instances
 -spec describe_capacity_block_offerings(aws_client:aws_client(), describe_capacity_block_offerings_request()) ->
     {ok, describe_capacity_block_offerings_result(), tuple()} |
     {error, any()}.
@@ -26572,7 +26589,8 @@ describe_instance_status(Client, Input, Options)
 %% `p5e.48xlarge' | `p5en.48xlarge'
 %%
 %% `trn1.2xlarge' | `trn1.32xlarge' |
-%% `trn1n.32xlarge'
+%% `trn1n.32xlarge' | `trn2.48xlarge' |
+%% `trn2u.48xlarge'
 %%
 %% For more information, see Amazon EC2 instance
 %% topology:

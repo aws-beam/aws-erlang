@@ -407,6 +407,7 @@
 %%   <<"MediaSampleRateHertz">> => integer(),
 %%   <<"Settings">> => call_analytics_job_settings(),
 %%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"Transcript">> => transcript()
 %% }
 -type call_analytics_job() :: #{binary() => any()}.
@@ -534,7 +535,8 @@
 %%   <<"Media">> := media(),
 %%   <<"OutputEncryptionKMSKeyId">> => string(),
 %%   <<"OutputLocation">> => string(),
-%%   <<"Settings">> => call_analytics_job_settings()
+%%   <<"Settings">> => call_analytics_job_settings(),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type start_call_analytics_job_request() :: #{binary() => any()}.
 
@@ -579,7 +581,8 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"InputType">> => list(any()),
 %%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"Rules">> => list(list()())
+%%   <<"Rules">> => list(list()()),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type category_properties() :: #{binary() => any()}.
 
@@ -1147,7 +1150,8 @@
 %% Example:
 %% create_call_analytics_category_request() :: #{
 %%   <<"InputType">> => list(any()),
-%%   <<"Rules">> := list(list()())
+%%   <<"Rules">> := list(list()()),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type create_call_analytics_category_request() :: #{binary() => any()}.
 

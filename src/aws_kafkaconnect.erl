@@ -19,12 +19,18 @@
          describe_connector/2,
          describe_connector/4,
          describe_connector/5,
+         describe_connector_operation/2,
+         describe_connector_operation/4,
+         describe_connector_operation/5,
          describe_custom_plugin/2,
          describe_custom_plugin/4,
          describe_custom_plugin/5,
          describe_worker_configuration/2,
          describe_worker_configuration/4,
          describe_worker_configuration/5,
+         list_connector_operations/2,
+         list_connector_operations/4,
+         list_connector_operations/5,
          list_connectors/1,
          list_connectors/3,
          list_connectors/4,
@@ -195,7 +201,8 @@
 
 %% Example:
 %% update_connector_request() :: #{
-%%   <<"capacity">> := capacity_update(),
+%%   <<"capacity">> => capacity_update(),
+%%   <<"connectorConfiguration">> => map(),
 %%   <<"currentVersion">> := string()
 %% }
 -type update_connector_request() :: #{binary() => any()}.
@@ -226,6 +233,13 @@
 %%   <<"cpuUtilizationPercentage">> => integer()
 %% }
 -type scale_in_policy_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_setting() :: #{
+%%   <<"capacity">> => capacity_description()
+%% }
+-type worker_setting() :: #{binary() => any()}.
 
 
 %% Example:
@@ -283,6 +297,22 @@
 %%   <<"apacheKafkaCluster">> => apache_kafka_cluster()
 %% }
 -type kafka_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_operation_step() :: #{
+%%   <<"stepState">> => string(),
+%%   <<"stepType">> => string()
+%% }
+-type connector_operation_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_operations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connector_operations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -503,10 +533,39 @@
 
 
 %% Example:
+%% connector_operation_summary() :: #{
+%%   <<"connectorOperationArn">> => string(),
+%%   <<"connectorOperationState">> => string(),
+%%   <<"connectorOperationType">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"endTime">> => non_neg_integer()
+%% }
+-type connector_operation_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% scale_in_policy_update() :: #{
 %%   <<"cpuUtilizationPercentage">> => integer()
 %% }
 -type scale_in_policy_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_connector_operation_response() :: #{
+%%   <<"connectorArn">> => string(),
+%%   <<"connectorOperationArn">> => string(),
+%%   <<"connectorOperationState">> => string(),
+%%   <<"connectorOperationType">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"errorInfo">> => state_description(),
+%%   <<"operationSteps">> => list(connector_operation_step()()),
+%%   <<"originConnectorConfiguration">> => map(),
+%%   <<"originWorkerSetting">> => worker_setting(),
+%%   <<"targetConnectorConfiguration">> => map(),
+%%   <<"targetWorkerSetting">> => worker_setting()
+%% }
+-type describe_connector_operation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -641,6 +700,7 @@
 %% Example:
 %% update_connector_response() :: #{
 %%   <<"connectorArn">> => string(),
+%%   <<"connectorOperationArn">> => string(),
 %%   <<"connectorState">> => string()
 %% }
 -type update_connector_response() :: #{binary() => any()}.
@@ -781,6 +841,14 @@
 
 
 %% Example:
+%% list_connector_operations_response() :: #{
+%%   <<"connectorOperations">> => list(connector_operation_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connector_operations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% scale_out_policy() :: #{
 %%   <<"cpuUtilizationPercentage">> => integer()
 %% }
@@ -804,6 +872,10 @@
 %%   <<"tags">> => map()
 %% }
 -type create_custom_plugin_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connector_operation_request() :: #{}
+-type describe_connector_operation_request() :: #{}.
 
 %% Example:
 %% describe_worker_configuration_request() :: #{}
@@ -887,6 +959,15 @@
     forbidden_exception() | 
     unauthorized_exception().
 
+-type describe_connector_operation_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
 -type describe_custom_plugin_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -897,6 +978,15 @@
     unauthorized_exception().
 
 -type describe_worker_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_connector_operations_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     service_unavailable_exception() | 
@@ -1215,6 +1305,43 @@ describe_connector(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about the specified connector's operations.
+-spec describe_connector_operation(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_connector_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_connector_operation_errors(), tuple()}.
+describe_connector_operation(Client, ConnectorOperationArn)
+  when is_map(Client) ->
+    describe_connector_operation(Client, ConnectorOperationArn, #{}, #{}).
+
+-spec describe_connector_operation(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_connector_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_connector_operation_errors(), tuple()}.
+describe_connector_operation(Client, ConnectorOperationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_connector_operation(Client, ConnectorOperationArn, QueryMap, HeadersMap, []).
+
+-spec describe_connector_operation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_connector_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_connector_operation_errors(), tuple()}.
+describe_connector_operation(Client, ConnectorOperationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/connectorOperations/", aws_util:encode_uri(ConnectorOperationArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc A summary description of the custom plugin.
 -spec describe_custom_plugin(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_custom_plugin_response(), tuple()} |
@@ -1286,6 +1413,48 @@ describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersM
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists information about a connector's operation(s).
+-spec list_connector_operations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_connector_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_connector_operations_errors(), tuple()}.
+list_connector_operations(Client, ConnectorArn)
+  when is_map(Client) ->
+    list_connector_operations(Client, ConnectorArn, #{}, #{}).
+
+-spec list_connector_operations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_connector_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_connector_operations_errors(), tuple()}.
+list_connector_operations(Client, ConnectorArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_connector_operations(Client, ConnectorArn, QueryMap, HeadersMap, []).
+
+-spec list_connector_operations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_connector_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_connector_operations_errors(), tuple()}.
+list_connector_operations(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/connectors/", aws_util:encode_uri(ConnectorArn), "/operations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

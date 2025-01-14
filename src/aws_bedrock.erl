@@ -1953,7 +1953,8 @@
 %% Example:
 %% evaluation_bedrock_model() :: #{
 %%   <<"inferenceParams">> => string(),
-%%   <<"modelIdentifier">> => string()
+%%   <<"modelIdentifier">> => string(),
+%%   <<"performanceConfig">> => performance_configuration()
 %% }
 -type evaluation_bedrock_model() :: #{binary() => any()}.
 
@@ -2021,6 +2022,13 @@
 %%   <<"humanWorkflowConfig">> => human_workflow_config()
 %% }
 -type human_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_configuration() :: #{
+%%   <<"latency">> => list(any())
+%% }
+-type performance_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_marketplace_model_endpoint_request() :: #{}
