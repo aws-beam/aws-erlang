@@ -412,8 +412,10 @@
 %% copy_object_result() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ETag">> => string(),
 %%   <<"LastModified">> => non_neg_integer()
 %% }
@@ -476,6 +478,7 @@
 %%   <<"Expires">> => non_neg_integer(),
 %%   <<"ContentLanguage">> => string(),
 %%   <<"TagCount">> => integer(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"Restore">> => string(),
 %%   <<"DeleteMarker">> => boolean(),
 %%   <<"ContentEncoding">> => string(),
@@ -618,6 +621,7 @@
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
 %%   <<"ETag">> => string(),
@@ -743,12 +747,14 @@
 %%   <<"ReplicationStatus">> => list(any()),
 %%   <<"Expires">> => non_neg_integer(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ArchiveStatus">> => list(any()),
 %%   <<"Restore">> => string(),
 %%   <<"DeleteMarker">> => boolean(),
 %%   <<"ContentEncoding">> => string(),
 %%   <<"ContentDisposition">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ContentType">> => string(),
 %%   <<"MissingMeta">> => integer(),
 %%   <<"ChecksumSHA1">> => string(),
@@ -893,6 +899,7 @@
 %% copy_part_result() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
 %%   <<"ETag">> => string(),
@@ -953,6 +960,7 @@
 %%   <<"ChecksumAlgorithm">> => list(any()),
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
 %%   <<"ContentLength">> => float(),
@@ -1030,8 +1038,10 @@
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ETag">> => string(),
 %%   <<"Expiration">> => string(),
 %%   <<"RequestCharged">> => list(any()),
@@ -1120,6 +1130,7 @@
 %%   <<"Bucket">> => string(),
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"Key">> => string(),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"SSECustomerAlgorithm">> => string(),
@@ -1278,6 +1289,7 @@
 %%   <<"GrantWriteACP">> => string(),
 %%   <<"Expires">> => non_neg_integer(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"IfMatch">> => string(),
 %%   <<"ContentEncoding">> => string(),
 %%   <<"ContentDisposition">> => string(),
@@ -1297,6 +1309,7 @@
 %% Example:
 %% object_version() :: #{
 %%   <<"ChecksumAlgorithm">> => list(list(any())()),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ETag">> => string(),
 %%   <<"IsLatest">> => boolean(),
 %%   <<"Key">> => string(),
@@ -1717,6 +1730,7 @@
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"CacheControl">> => string(),
 %%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ContentDisposition">> => string(),
 %%   <<"ContentEncoding">> => string(),
 %%   <<"ContentLanguage">> => string(),
@@ -1836,6 +1850,7 @@
 %% completed_part() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
 %%   <<"ETag">> => string(),
@@ -2052,11 +2067,13 @@
 %%   <<"Expires">> => non_neg_integer(),
 %%   <<"ContentLanguage">> => string(),
 %%   <<"TagCount">> => integer(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"Restore">> => string(),
 %%   <<"DeleteMarker">> => boolean(),
 %%   <<"ContentEncoding">> => string(),
 %%   <<"ContentDisposition">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ContentType">> => string(),
 %%   <<"MissingMeta">> => integer(),
 %%   <<"ChecksumSHA1">> => string(),
@@ -2084,6 +2101,7 @@
 %% Example:
 %% object() :: #{
 %%   <<"ChecksumAlgorithm">> => list(list(any())()),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ETag">> => string(),
 %%   <<"Key">> => string(),
 %%   <<"LastModified">> => non_neg_integer(),
@@ -2108,8 +2126,10 @@
 %%   <<"BucketKeyEnabled">> => boolean(),
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ETag">> => string(),
 %%   <<"Expiration">> => string(),
 %%   <<"Key">> => string(),
@@ -2233,8 +2253,10 @@
 %% checksum() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string()
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumType">> => list(any())
 %% }
 -type checksum() :: #{binary() => any()}.
 
@@ -2559,6 +2581,7 @@
 %% part() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
 %%   <<"ETag">> => string(),
@@ -2580,6 +2603,7 @@
 %% object_part() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
 %%   <<"PartNumber">> => integer(),
@@ -2751,6 +2775,7 @@
 %% Example:
 %% multipart_upload() :: #{
 %%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"Initiated">> => non_neg_integer(),
 %%   <<"Initiator">> => initiator(),
 %%   <<"Key">> => string(),
@@ -2850,6 +2875,7 @@
 %%   <<"AbortRuleId">> => string(),
 %%   <<"Bucket">> => string(),
 %%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"Initiator">> => initiator(),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Key">> => string(),
@@ -3137,11 +3163,14 @@
 %% complete_multipart_upload_request() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ChecksumSHA1">> => string(),
 %%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumType">> => list(any()),
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"IfMatch">> => string(),
 %%   <<"IfNoneMatch">> => string(),
+%%   <<"MpuObjectSize">> => string(),
 %%   <<"MultipartUpload">> => completed_multipart_upload(),
 %%   <<"RequestPayer">> => list(any()),
 %%   <<"SSECustomerAlgorithm">> => string(),
@@ -3396,10 +3425,10 @@
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -3586,10 +3615,10 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -3713,11 +3742,14 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     HeadersMapping = [
                        {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
                        {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+                       {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
                        {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+                       {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"If-Match">>, <<"IfMatch">>},
                        {<<"If-None-Match">>, <<"IfNoneMatch">>},
+                       {<<"x-amz-mp-object-size">>, <<"MpuObjectSize">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
                        {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
@@ -3784,10 +3816,10 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -4104,10 +4136,10 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -4409,10 +4441,10 @@ create_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -4690,6 +4722,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
                        {<<"Cache-Control">>, <<"CacheControl">>},
                        {<<"x-amz-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
                        {<<"Content-Disposition">>, <<"ContentDisposition">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"Content-Language">>, <<"ContentLanguage">>},
@@ -4732,6 +4765,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-abort-rule-id">>, <<"AbortRuleId">>},
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"x-amz-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
             {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
@@ -4811,10 +4845,10 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Path-style requests are not supported. For more information about
 %% endpoints in Availability Zones, see Regional and Zonal endpoints for
 %% directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -5030,10 +5064,10 @@ create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -5502,10 +5536,10 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -5761,10 +5795,10 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -6084,10 +6118,10 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -6332,10 +6366,10 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -7195,10 +7229,10 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -7699,10 +7733,10 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -8231,10 +8265,10 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -8476,6 +8510,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
             {<<"accept-ranges">>, <<"AcceptRanges">>},
             {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
             {<<"Content-Language">>, <<"ContentLanguage">>},
+            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
             {<<"Content-Encoding">>, <<"ContentEncoding">>},
             {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
@@ -8488,6 +8523,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
             {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
             {<<"x-amz-storage-class">>, <<"StorageClass">>},
+            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
             {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
             {<<"Content-Length">>, <<"ContentLength">>},
             {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
@@ -8636,10 +8672,10 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -9386,10 +9422,10 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Path-style requests are not supported. For more information about
 %% endpoints in Availability Zones, see Regional and Zonal endpoints for
 %% directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -9607,10 +9643,10 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -9691,6 +9727,7 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"accept-ranges">>, <<"AcceptRanges">>},
             {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
             {<<"Content-Language">>, <<"ContentLanguage">>},
+            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
             {<<"Content-Encoding">>, <<"ContentEncoding">>},
             {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
@@ -9702,6 +9739,7 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
             {<<"x-amz-storage-class">>, <<"StorageClass">>},
+            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
             {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
             {<<"Content-Length">>, <<"ContentLength">>},
             {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
@@ -10146,10 +10184,10 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -10273,10 +10311,10 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -10644,10 +10682,10 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -10826,10 +10864,10 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -11487,10 +11525,10 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -12025,10 +12063,10 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -12486,10 +12524,10 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% '''. Virtual-hosted-style requests aren't supported.
 %% For more information about endpoints in Availability Zones, see Regional
 %% and Zonal endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -12905,7 +12943,7 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% short
 %% amount of time for the change to be fully propagated. While this change is
 %% propagating,
-%% you may encounter intermittent `HTTP 404 NoSuchKey' errors for
+%% you might encounter intermittent `HTTP 404 NoSuchKey' errors for
 %% requests to
 %% objects created or updated after enabling versioning. We recommend that
 %% you wait for 15
@@ -13142,10 +13180,10 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -13295,6 +13333,7 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
                        {<<"Content-Language">>, <<"ContentLanguage">>},
+                       {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
@@ -13334,8 +13373,10 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
             {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
             {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
             {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
             {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
@@ -14477,10 +14518,10 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -14666,6 +14707,7 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
                        {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+                       {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
                        {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
                        {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"Content-Length">>, <<"ContentLength">>},
@@ -14693,6 +14735,7 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
             {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
             {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
             {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
             {<<"ETag">>, <<"ETag">>},
@@ -14763,10 +14806,10 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% '''. Path-style requests are not supported. For more
 %% information about endpoints in Availability Zones, see Regional and Zonal
 %% endpoints for directory buckets in Availability Zones:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
 %% in the
 %% Amazon S3 User Guide. For more information about endpoints in Local Zones,
-%% see Concepts for directory buckets in Local Zones:
+%% see Available Local Zone for directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
@@ -15128,6 +15171,7 @@ write_get_object_response(Client, Input0, Options0) ->
                        {<<"x-amz-fwd-header-x-amz-version-id">>, <<"VersionId">>},
                        {<<"x-amz-fwd-header-accept-ranges">>, <<"AcceptRanges">>},
                        {<<"x-amz-fwd-header-Content-Language">>, <<"ContentLanguage">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
                        {<<"x-amz-fwd-header-x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
                        {<<"x-amz-fwd-header-Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"x-amz-fwd-header-x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},

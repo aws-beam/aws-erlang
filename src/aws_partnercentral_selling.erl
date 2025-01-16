@@ -113,6 +113,8 @@
          list_resource_snapshots/3,
          list_solutions/2,
          list_solutions/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          put_selling_system_settings/2,
          put_selling_system_settings/3,
          reject_engagement_invitation/2,
@@ -127,6 +129,10 @@
          stop_resource_snapshot_job/3,
          submit_opportunity/2,
          submit_opportunity/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_opportunity/2,
          update_opportunity/3]).
 
@@ -141,6 +147,13 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_engagement_members_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_engagement_resource_associations_request() :: #{
@@ -252,6 +265,12 @@
 %%   <<"BeforeLastModifiedDate">> => non_neg_integer()
 %% }
 -type last_modified_date() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% resource_snapshot_job_summary() :: #{
@@ -452,6 +471,13 @@
 -type update_opportunity_request() :: #{binary() => any()}.
 
 %% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_opportunity_response() :: #{
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
@@ -566,6 +592,13 @@
 %%   <<"Revision">> => integer()
 %% }
 -type create_resource_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
 
 %% Example:
 %% start_engagement_from_opportunity_task_response() :: #{
@@ -743,6 +776,12 @@
 %%   <<"Identifier">> := string()
 %% }
 -type get_engagement_invitation_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_engagement_invitations_request() :: #{
@@ -949,7 +988,8 @@
 %%   <<"AwsSubmission">> := aws_submission(),
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
-%%   <<"Identifier">> := string()
+%%   <<"Identifier">> := string(),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type start_engagement_from_opportunity_task_request() :: #{binary() => any()}.
 
@@ -976,6 +1016,12 @@
 %%   <<"Identifier">> := string()
 %% }
 -type get_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% aws_opportunity_life_cycle() :: #{
@@ -1051,6 +1097,12 @@
 -type validation_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
 %% customer_projects_context() :: #{
 %%   <<"Customer">> => engagement_customer(),
 %%   <<"Project">> => engagement_customer_project_details()
@@ -1092,7 +1144,8 @@
 %%   <<"EngagementIdentifier">> := string(),
 %%   <<"ResourceIdentifier">> := string(),
 %%   <<"ResourceSnapshotTemplateIdentifier">> := string(),
-%%   <<"ResourceType">> := list(any())
+%%   <<"ResourceType">> := list(any()),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type create_resource_snapshot_job_request() :: #{binary() => any()}.
 
@@ -1304,7 +1357,8 @@
 %% start_engagement_by_accepting_invitation_task_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
-%%   <<"Identifier">> := string()
+%%   <<"Identifier">> := string(),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type start_engagement_by_accepting_invitation_task_request() :: #{binary() => any()}.
 
@@ -1313,7 +1367,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type assign_opportunity_errors() ::
     throttling_exception() | 
@@ -1373,7 +1428,8 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type disassociate_opportunity_errors() ::
     throttling_exception() | 
@@ -1474,7 +1530,8 @@
 -type list_resource_snapshot_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
-    access_denied_exception().
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type list_resource_snapshots_errors() ::
     throttling_exception() | 
@@ -1483,6 +1540,13 @@
     resource_not_found_exception().
 
 -type list_solutions_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1499,7 +1563,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type start_engagement_by_accepting_invitation_task_errors() ::
     throttling_exception() | 
@@ -1538,6 +1603,22 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_opportunity_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1550,13 +1631,14 @@
 %% API
 %%====================================================================
 
-%% @doc
-%% Use the `AcceptEngagementInvitation' action to accept an engagement
+%% @doc Use the `AcceptEngagementInvitation' action to accept an
+%% engagement
 %% invitation shared by AWS.
 %%
-%% Accepting the invitation indicates your willingness to participate in the
-%% engagement,
-%% granting you access to all engagement-related data.
+%% Accepting the invitation indicates your willingness to
+%% participate in the engagement, granting you access to all
+%% engagement-related
+%% data.
 -spec accept_engagement_invitation(aws_client:aws_client(), accept_engagement_invitation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1669,14 +1751,13 @@ associate_opportunity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateOpportunity">>, Input, Options).
 
-%% @doc
-%% The `CreateEngagement' action allows you to create an
-%% `Engagement',
-%% which serves as a collaborative space between different parties such as
-%% AWS Partners and AWS Sellers.
+%% @doc The `CreateEngagement' action allows you to create an
+%% `Engagement', which serves as a collaborative space between different
+%% parties such as AWS Partners and AWS Sellers.
 %%
-%% This action automatically adds the caller's AWS account as an active
-%% member of the newly created `Engagement'.
+%% This action automatically adds the
+%% caller's AWS account as an active member of the newly created
+%% `Engagement'.
 -spec create_engagement(aws_client:aws_client(), create_engagement_request()) ->
     {ok, create_engagement_response(), tuple()} |
     {error, any()} |
@@ -1693,9 +1774,9 @@ create_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEngagement">>, Input, Options).
 
-%% @doc
-%% This action creates an invitation from a sender to a single receiver to
-%% join an engagement.
+%% @doc This action creates an invitation from a sender to a single receiver
+%% to join an
+%% engagement.
 -spec create_engagement_invitation(aws_client:aws_client(), create_engagement_invitation_request()) ->
     {ok, create_engagement_invitation_response(), tuple()} |
     {error, any()} |
@@ -1728,8 +1809,8 @@ create_engagement_invitation(Client, Input, Options)
 %% To associate a solution with the opportunity, use
 %% `AssociateOpportunity'.
 %%
-%% To submit the opportunity, use
-%% `StartEngagementFromOpportunityTask'.
+%% To start the engagement with AWS, use
+%% `StartEngagementFromOpportunity'.
 %%
 %% After submission, you can't edit the opportunity until the review is
 %% complete. But
@@ -1758,13 +1839,13 @@ create_opportunity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOpportunity">>, Input, Options).
 
-%% @doc
-%% This action allows you to create an immutable snapshot of a specific
-%% resource, such as an opportunity,
-%% within the context of an engagement.
+%% @doc This action allows you to create an immutable snapshot of a specific
+%% resource, such
+%% as an opportunity, within the context of an engagement.
 %%
-%% The snapshot captures a subset of the resource's data based on the
-%% schema defined by the provided template.
+%% The snapshot captures a subset
+%% of the resource's data based on the schema defined by the provided
+%% template.
 -spec create_resource_snapshot(aws_client:aws_client(), create_resource_snapshot_request()) ->
     {ok, create_resource_snapshot_response(), tuple()} |
     {error, any()} |
@@ -1781,16 +1862,16 @@ create_resource_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceSnapshot">>, Input, Options).
 
-%% @doc
-%% Use this action to create a job to generate a snapshot of the specified
-%% resource
+%% @doc Use this action to create a job to generate a snapshot of the
+%% specified resource
 %% within an engagement.
 %%
 %% It initiates an asynchronous process to create a resource
 %% snapshot. The job creates a new snapshot only if the resource state has
 %% changed,
 %% adhering to the same access control and immutability rules as direct
-%% snapshot creation.
+%% snapshot
+%% creation.
 -spec create_resource_snapshot_job(aws_client:aws_client(), create_resource_snapshot_job_request()) ->
     {ok, create_resource_snapshot_job_response(), tuple()} |
     {error, any()} |
@@ -1807,11 +1888,11 @@ create_resource_snapshot_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceSnapshotJob">>, Input, Options).
 
-%% @doc
-%% Use this action to deletes a previously created resource snapshot job.
+%% @doc Use this action to deletes a previously created resource snapshot
+%% job.
 %%
-%% The job must be
-%% in a stopped state before it can be deleted.
+%% The job must
+%% be in a stopped state before it can be deleted.
 -spec delete_resource_snapshot_job(aws_client:aws_client(), delete_resource_snapshot_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1888,8 +1969,7 @@ get_aws_opportunity_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAwsOpportunitySummary">>, Input, Options).
 
-%% @doc
-%% Use this action to retrieve the engagement record for a given
+%% @doc Use this action to retrieve the engagement record for a given
 %% `EngagementIdentifier'.
 -spec get_engagement(aws_client:aws_client(), get_engagement_request()) ->
     {ok, get_engagement_response(), tuple()} |
@@ -1971,8 +2051,7 @@ get_resource_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceSnapshot">>, Input, Options).
 
-%% @doc
-%% Use this action to retrieves information about a specific resource
+%% @doc Use this action to retrieves information about a specific resource
 %% snapshot
 %% job.
 -spec get_resource_snapshot_job(aws_client:aws_client(), get_resource_snapshot_job_request()) ->
@@ -1992,7 +2071,8 @@ get_resource_snapshot_job(Client, Input, Options)
     request(Client, <<"GetResourceSnapshotJob">>, Input, Options).
 
 %% @doc Retrieves the currently set system settings, which include the IAM
-%% Role used for resource snapshot jobs.
+%% Role used for
+%% resource snapshot jobs.
 -spec get_selling_system_settings(aws_client:aws_client(), get_selling_system_settings_request()) ->
     {ok, get_selling_system_settings_response(), tuple()} |
     {error, any()} |
@@ -2009,8 +2089,7 @@ get_selling_system_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSellingSystemSettings">>, Input, Options).
 
-%% @doc
-%% Lists all in-progress, completed, or failed
+%% @doc Lists all in-progress, completed, or failed
 %% StartEngagementByAcceptingInvitationTask
 %% tasks that were initiated by the caller's account.
 -spec list_engagement_by_accepting_invitation_tasks(aws_client:aws_client(), list_engagement_by_accepting_invitation_tasks_request()) ->
@@ -2029,10 +2108,9 @@ list_engagement_by_accepting_invitation_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngagementByAcceptingInvitationTasks">>, Input, Options).
 
-%% @doc
-%% Lists all in-progress, completed, or failed
-%% `EngagementFromOpportunity' tasks that were
-%% initiated by the caller's account.
+%% @doc Lists all in-progress, completed, or failed
+%% `EngagementFromOpportunity'
+%% tasks that were initiated by the caller's account.
 -spec list_engagement_from_opportunity_tasks(aws_client:aws_client(), list_engagement_from_opportunity_tasks_request()) ->
     {ok, list_engagement_from_opportunity_tasks_response(), tuple()} |
     {error, any()} |
@@ -2071,15 +2149,14 @@ list_engagement_invitations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngagementInvitations">>, Input, Options).
 
-%% @doc
-%% Retrieves the details of member partners in an engagement.
+%% @doc Retrieves the details of member partners in an Engagement.
 %%
 %% This operation can only be
-%% invoked by members of the engagement. The `ListEngagementMembers'
-%% operation allows you to
-%% fetch information about the members of a specific engagement. This action
-%% is restricted
-%% to members of the engagement being queried.
+%% invoked by members of the Engagement. The `ListEngagementMembers'
+%% operation
+%% allows you to fetch information about the members of a specific
+%% Engagement. This action
+%% is restricted to members of the Engagement being queried.
 -spec list_engagement_members(aws_client:aws_client(), list_engagement_members_request()) ->
     {ok, list_engagement_members_response(), tuple()} |
     {error, any()} |
@@ -2096,9 +2173,8 @@ list_engagement_members(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngagementMembers">>, Input, Options).
 
-%% @doc
-%% Lists the associations between resources and engagements where the caller
-%% is a member
+%% @doc Lists the associations between resources and engagements where the
+%% caller is a member
 %% and has at least one snapshot in the engagement.
 -spec list_engagement_resource_associations(aws_client:aws_client(), list_engagement_resource_associations_request()) ->
     {ok, list_engagement_resource_associations_response(), tuple()} |
@@ -2116,9 +2192,8 @@ list_engagement_resource_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngagementResourceAssociations">>, Input, Options).
 
-%% @doc
-%% This action allows users to retrieve a list of engagement records from
-%% Partner
+%% @doc This action allows users to retrieve a list of Engagement records
+%% from Partner
 %% Central.
 %%
 %% This action can be used to manage and track various engagements across
@@ -2184,8 +2259,7 @@ list_opportunities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpportunities">>, Input, Options).
 
-%% @doc
-%% Lists resource snapshot jobs owned by the customer.
+%% @doc Lists resource snapshot jobs owned by the customer.
 %%
 %% This operation supports various
 %% filtering scenarios, including listing all jobs owned by the caller, jobs
@@ -2208,8 +2282,22 @@ list_resource_snapshot_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceSnapshotJobs">>, Input, Options).
 
-%% @doc
-%% Retrieves a list of resource view snapshots based on specified criteria.
+%% @doc Retrieves a list of resource view snapshots based on specified
+%% criteria.
+%%
+%% This
+%% operation supports various use cases, including:
+%%
+%% Fetching all snapshots associated with an engagement.
+%%
+%% Retrieving snapshots of a specific resource type within an engagement.
+%%
+%% Obtaining snapshots for a particular resource using a specified
+%% template.
+%%
+%% Accessing the latest snapshot of a resource within an engagement.
+%%
+%% Filtering snapshots by resource owner.
 -spec list_resource_snapshots(aws_client:aws_client(), list_resource_snapshots_request()) ->
     {ok, list_resource_snapshots_response(), tuple()} |
     {error, any()} |
@@ -2248,8 +2336,26 @@ list_solutions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSolutions">>, Input, Options).
 
+%% @doc Returns a list of tags for a resource.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Updates the currently set system settings, which include the IAM Role
-%% used for resource snapshot jobs.
+%% used for
+%% resource snapshot jobs.
 -spec put_selling_system_settings(aws_client:aws_client(), put_selling_system_settings_request()) ->
     {ok, put_selling_system_settings_response(), tuple()} |
     {error, any()} |
@@ -2340,8 +2446,7 @@ start_engagement_from_opportunity_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEngagementFromOpportunityTask">>, Input, Options).
 
-%% @doc
-%% Starts a resource snapshot job that has been previously created.
+%% @doc Starts a resource snapshot job that has been previously created.
 -spec start_resource_snapshot_job(aws_client:aws_client(), start_resource_snapshot_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2358,8 +2463,7 @@ start_resource_snapshot_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartResourceSnapshotJob">>, Input, Options).
 
-%% @doc
-%% Stops a resource snapshot job.
+%% @doc Stops a resource snapshot job.
 %%
 %% The job must be started prior to being stopped.
 -spec stop_resource_snapshot_job(aws_client:aws_client(), stop_resource_snapshot_job_request()) ->
@@ -2378,12 +2482,11 @@ stop_resource_snapshot_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopResourceSnapshotJob">>, Input, Options).
 
-%% @doc
-%% Use this action to submit an opportunity that was previously created by
-%% partner for
+%% @doc Use this action to submit an Opportunity that was previously created
+%% by partner for
 %% AWS review.
 %%
-%% After you perform this action, the opportunity becomes non-editable until
+%% After you perform this action, the Opportunity becomes non-editable until
 %% it
 %% is reviewed by AWS and has ` LifeCycle.ReviewStatus ' as either
 %% `Approved' or `Action Required'.
@@ -2402,6 +2505,40 @@ submit_opportunity(Client, Input)
 submit_opportunity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitOpportunity">>, Input, Options).
+
+%% @doc Assigns one or more tags (key-value pairs) to the specified resource.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes a tag or tags from a resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates the `Opportunity' record identified by a given
 %% `Identifier'.

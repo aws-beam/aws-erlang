@@ -1342,7 +1342,8 @@
 %%   <<"inputText">> => string(),
 %%   <<"instruction">> := string(),
 %%   <<"knowledgeBases">> => list(knowledge_base()()),
-%%   <<"promptOverrideConfiguration">> => prompt_override_configuration()
+%%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
+%%   <<"streamingConfigurations">> => streaming_configurations()
 %% }
 -type invoke_inline_agent_request() :: #{binary() => any()}.
 
@@ -1921,11 +1922,10 @@ get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
-%% The CLI doesn't support streaming operations in Amazon Bedrock,
-%% including `InvokeAgent'.
 %%
-%% Sends a prompt for the agent to process and respond to. Note the following
-%% fields for the request:
+%% Sends a prompt for the agent to process and respond to.
+%%
+%% Note the following fields for the request:
 %%
 %% To continue the same conversation with an agent, use the same
 %% `sessionId' value in the request.
@@ -1951,8 +1951,11 @@ get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, 
 %% session or prompt or, if you configured an action group to return control,
 %% results from invocation of the action group.
 %%
-%% The response is returned in the `bytes' field of the `chunk'
-%% object.
+%% The response contains both chunk and trace attributes.
+%%
+%% The final response is returned in the `bytes' field of the `chunk'
+%% object. The `InvokeAgent' returns one chunk for the entire
+%% interaction.
 %%
 %% The `attribution' object contains citations for parts of the response.
 %%
@@ -2083,9 +2086,6 @@ invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
 %% The agent instructions will not be honored if your agent has only one
 %% knowledge base, uses default prompts, has no action group, and user input
 %% is disabled.
-%%
-%% The CLI doesn't support streaming operations in Amazon Bedrock,
-%% including `InvokeInlineAgent'.
 -spec invoke_inline_agent(aws_client:aws_client(), binary() | list(), invoke_inline_agent_request()) ->
     {ok, invoke_inline_agent_response(), tuple()} |
     {error, any()} |
