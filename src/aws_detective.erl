@@ -86,7 +86,7 @@
 %%
 %% All API actions are logged as CloudTrail events. See Logging Detective API
 %% Calls with CloudTrail:
-%% https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html.
+%% https://docs.aws.amazon.com/detective/latest/userguide/logging-using-cloudtrail.html.
 %%
 %% We replaced the term &quot;master account&quot; with the term
 %% &quot;administrator account&quot;. An
@@ -2139,7 +2139,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a data source packages for the behavior graph.
+%% @doc Starts a data source package for the Detective behavior graph.
 -spec update_datasource_packages(aws_client:aws_client(), update_datasource_packages_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

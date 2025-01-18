@@ -19937,17 +19937,16 @@ apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplySecurityGroupsToClientVpnTargetNetwork">>, Input, Options).
 
-%% @doc Assigns one or more IPv6 addresses to the specified network
+%% @doc Assigns the specified IPv6 addresses to the specified network
 %% interface.
 %%
 %% You can
-%% specify one or more specific IPv6 addresses, or you can specify the number
-%% of IPv6
-%% addresses to be automatically assigned from within the subnet's IPv6
-%% CIDR block range.
+%% specify specific IPv6 addresses, or you can specify the number of IPv6
+%% addresses to be automatically assigned from the subnet's IPv6 CIDR
+%% block range.
 %% You can assign as many IPv6 addresses to a network interface as you can
 %% assign private
-%% IPv4 addresses, and the limit varies per instance type.
+%% IPv4 addresses, and the limit varies by instance type.
 %%
 %% You must specify either the IPv6 addresses or the IPv6 address count in
 %% the request.
@@ -19974,12 +19973,12 @@ assign_ipv6_addresses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignIpv6Addresses">>, Input, Options).
 
-%% @doc Assigns one or more secondary private IP addresses to the specified
+%% @doc Assigns the specified secondary private IP addresses to the specified
 %% network interface.
 %%
-%% You can specify one or more specific secondary IP addresses, or you can
-%% specify the number
-%% of secondary IP addresses to be automatically assigned within the
+%% You can specify specific secondary IP addresses, or you can specify the
+%% number
+%% of secondary IP addresses to be automatically assigned from the
 %% subnet's CIDR block range.
 %% The number of secondary IP addresses that you can assign to an instance
 %% varies by instance type.
@@ -22100,7 +22099,7 @@ create_local_gateway_route_table_vpc_association(Client, Input, Options)
 
 %% @doc Creates a managed prefix list.
 %%
-%% You can specify one or more entries for the prefix list.
+%% You can specify entries for the prefix list.
 %% Each entry consists of a CIDR block and an optional description.
 -spec create_managed_prefix_list(aws_client:aws_client(), create_managed_prefix_list_request()) ->
     {ok, create_managed_prefix_list_result(), tuple()} |
@@ -27224,7 +27223,8 @@ describe_network_interface_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNetworkInterfacePermissions">>, Input, Options).
 
-%% @doc Describes one or more of your network interfaces.
+%% @doc Describes the specified network interfaces or all your network
+%% interfaces.
 %%
 %% If you have a large number of network interfaces, the operation fails
 %% unless
@@ -35476,7 +35476,7 @@ terminate_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateInstances">>, Input, Options).
 
-%% @doc Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes
+%% @doc Unassigns the specified IPv6 addresses or Prefix Delegation prefixes
 %% from a network interface.
 -spec unassign_ipv6_addresses(aws_client:aws_client(), unassign_ipv6_addresses_request()) ->
     {ok, unassign_ipv6_addresses_result(), tuple()} |
@@ -35492,7 +35492,7 @@ unassign_ipv6_addresses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnassignIpv6Addresses">>, Input, Options).
 
-%% @doc Unassigns one or more secondary private IP addresses, or IPv4 Prefix
+%% @doc Unassigns the specified secondary private IP addresses or IPv4 Prefix
 %% Delegation prefixes from a
 %% network interface.
 -spec unassign_private_ip_addresses(aws_client:aws_client(), unassign_private_ip_addresses_request()) ->
