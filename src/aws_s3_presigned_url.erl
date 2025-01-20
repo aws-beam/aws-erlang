@@ -9,7 +9,8 @@
 -module(aws_s3_presigned_url).
 
 -export([ make_presigned_v4_url/5,
-          make_presigned_v4_url/6
+          make_presigned_v4_url/6,
+          make_presigned_v4_url/7
         ]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -23,6 +24,11 @@ make_presigned_v4_url(Client0, Method, ExpireSeconds, Bucket, Key) ->
 
 -spec make_presigned_v4_url(map(), get | put, integer(), binary(), binary(),path|virtual_host) -> {ok, binary()}.
 make_presigned_v4_url(Client0, Method, ExpireSeconds, Bucket, Key, Style) ->
+    make_presigned_v4_url(Client0, Method, ExpireSeconds, Bucket, Key, Style, undefined).
+
+-spec make_presigned_v4_url(map(), get | put, integer(), binary(), binary(), path|virtual_host, undefined|binary()) ->
+    {ok, binary()}.
+make_presigned_v4_url(Client0, Method, ExpireSeconds, Bucket, Key, Style, Tags) ->
     MethodBin = aws_request:method_to_binary(Method),
     Path = build_path(Client0,Bucket,Key,Style),
     Client = Client0#{service => <<"s3">>},
@@ -38,12 +44,20 @@ make_presigned_v4_url(Client0, Method, ExpireSeconds, Bucket, Key, Style) ->
                , {body_digest, <<"UNSIGNED-PAYLOAD">>}
                , {uri_encode_path, false} %% We already encode in build_path/4
                ],
-    Options = case SecurityToken of
-                undefined ->
-                  Options0;
-                _ ->
-                  [{session_token, hackney_url:urlencode(SecurityToken)} | Options0]
-              end,
+    Options1 =
+        case SecurityToken of
+            undefined ->
+                Options0;
+            _ ->
+                [{session_token, hackney_url:urlencode(SecurityToken)} | Options0]
+        end,
+    Options =
+        case Tags of
+            undefined ->
+                Options1;
+            _ ->
+                [{tags, Tags} | Options1]
+        end,
     {ok, aws_signature:sign_v4_query_params(AccessKeyID, SecretAccessKey, Region, Service, Now, MethodBin, URL, Options)}.
 
 %%====================================================================
@@ -197,4 +211,26 @@ presigned_url_virtual_host_style_test() ->
     ?assertEqual(<<"3600">>, proplists:get_value(<<"X-Amz-Expires">>, ParsedQs)),
     ?assertEqual(<<"Token">>, proplists:get_value(<<"X-Amz-Security-Token">>, ParsedQs)),
     ?assertEqual(<<"host">>, proplists:get_value(<<"X-Amz-SignedHeaders">>, ParsedQs)).
+
+presigned_url_tags_test() ->
+    Client = aws_client:make_temporary_client(<<"AccessKeyID">>, <<"SecretAccessKey">>,
+                                              <<"Token">>, <<"eu-west-1">>),
+    {ok, Url} = aws_s3_presigned_url:make_presigned_v4_url(Client, put, 3600, <<"bucket">>, <<"key">>, path, <<"key1=value1&key2=value2">>),
+    HackneyUrl = hackney_url:parse_url(Url),
+    ParsedQs = hackney_url:parse_qs(HackneyUrl#hackney_url.qs),
+    Credential = proplists:get_value(<<"X-Amz-Credential">>, ParsedQs),
+    [AccessKeyId, _ShortDate, Region, Service, Request] = binary:split(Credential, <<"/">>, [global]),
+    ?assertEqual(https, HackneyUrl#hackney_url.scheme),
+    ?assertEqual(443, HackneyUrl#hackney_url.port),
+    ?assertEqual("s3.eu-west-1.amazonaws.com", HackneyUrl#hackney_url.host),
+    ?assertEqual(<<"/bucket/key">>, HackneyUrl#hackney_url.path),
+    ?assertEqual(7, length(ParsedQs)),
+    ?assertEqual(<<"AccessKeyID">>, AccessKeyId),
+    ?assertEqual(<<"eu-west-1">>, Region),
+    ?assertEqual(<<"s3">>, Service),
+    ?assertEqual(<<"aws4_request">>, Request),
+    ?assertEqual(<<"AWS4-HMAC-SHA256">>, proplists:get_value(<<"X-Amz-Algorithm">>, ParsedQs)),
+    ?assertEqual(<<"3600">>, proplists:get_value(<<"X-Amz-Expires">>, ParsedQs)),
+    ?assertEqual(<<"Token">>, proplists:get_value(<<"X-Amz-Security-Token">>, ParsedQs)),
+    ?assertEqual(<<"host;x-amz-tagging">>, proplists:get_value(<<"X-Amz-SignedHeaders">>, ParsedQs)).
 -endif.
