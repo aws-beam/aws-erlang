@@ -148,6 +148,8 @@
          delete_contact_flow/5,
          delete_contact_flow_module/4,
          delete_contact_flow_module/5,
+         delete_contact_flow_version/5,
+         delete_contact_flow_version/6,
          delete_email_address/4,
          delete_email_address/5,
          delete_evaluation_form/4,
@@ -1614,6 +1616,10 @@
 %% }
 -type searchable_segment_attributes_criteria() :: #{binary() => any()}.
 
+%% Example:
+%% delete_contact_flow_version_request() :: #{}
+-type delete_contact_flow_version_request() :: #{}.
+
 
 %% Example:
 %% describe_security_profile_response() :: #{
@@ -1707,6 +1713,10 @@
 %%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_character_offsets()())
 %% }
 -type real_time_contact_analysis_point_of_interest() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_flow_version_response() :: #{}
+-type delete_contact_flow_version_response() :: #{}.
 
 %% Example:
 %% update_contact_flow_metadata_response() :: #{}
@@ -6539,6 +6549,7 @@
 
 %% Example:
 %% create_contact_flow_version_request() :: #{
+%%   <<"ContactFlowVersion">> => float(),
 %%   <<"Description">> => string(),
 %%   <<"FlowContentSha256">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
@@ -8392,6 +8403,14 @@
     internal_service_exception().
 
 -type delete_contact_flow_module_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_contact_flow_version_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
@@ -10580,7 +10599,7 @@ associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, In
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc &gt;Associates a set of proficiencies with a user.
+%% @doc Associates a set of proficiencies with a user.
 -spec associate_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), associate_user_proficiencies_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -11076,14 +11095,10 @@ create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
 %% @doc Publishes a new version of the flow provided.
 %%
 %% Versions are immutable and monotonically
-%% increasing. If a version of the same flow content already exists, no new
-%% version is created and
-%% instead the existing version number is returned. If the
-%% `FlowContentSha256' provided
-%% is different from the `FlowContentSha256' of the `$LATEST'
-%% published flow
-%% content, then an error is returned. This API only supports creating
-%% versions for flows of type
+%% increasing. If the `FlowContentSha256' provided is different from the
+%% `FlowContentSha256' of the `$LATEST' published flow content, then
+%% an error
+%% is returned. This API only supports creating versions for flows of type
 %% `Campaign'.
 -spec create_contact_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_version_request()) ->
     {ok, create_contact_flow_version_response(), tuple()} |
@@ -12288,6 +12303,40 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the particular version specified in flow version identifier.
+-spec delete_contact_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_version_request()) ->
+    {ok, delete_contact_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_flow_version_errors(), tuple()}.
+delete_contact_flow_version(Client, ContactFlowId, ContactFlowVersion, InstanceId, Input) ->
+    delete_contact_flow_version(Client, ContactFlowId, ContactFlowVersion, InstanceId, Input, []).
+
+-spec delete_contact_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_version_request(), proplists:proplist()) ->
+    {ok, delete_contact_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_flow_version_errors(), tuple()}.
+delete_contact_flow_version(Client, ContactFlowId, ContactFlowVersion, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/version/", aws_util:encode_uri(ContactFlowVersion), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes email address from the specified Amazon Connect instance.
 -spec delete_email_address(aws_client:aws_client(), binary() | list(), binary() | list(), delete_email_address_request()) ->
     {ok, delete_email_address_response(), tuple()} |
@@ -12628,9 +12677,6 @@ delete_push_notification_registration(Client, InstanceId, RegistrationId, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a queue.
-%%
-%% It isn't possible to delete a queue by using the Amazon Connect admin
-%% website.
 -spec delete_queue(aws_client:aws_client(), binary() | list(), binary() | list(), delete_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -13311,6 +13357,10 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 %% published, `$SAVED' needs to be supplied to view saved content that
 %% has not been
 %% published.
+%%
+%% Use `arn:aws:.../contact-flow/{id}:{version}' to retrieve the content
+%% of a
+%% specific flow version.
 %%
 %% In the response, Status indicates the flow status as either
 %% `SAVED' or `PUBLISHED'. The `PUBLISHED' status will initiate

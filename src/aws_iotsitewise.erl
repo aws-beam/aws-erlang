@@ -660,6 +660,13 @@
 
 
 %% Example:
+%% property_value_null_value() :: #{
+%%   <<"valueType">> => list(any())
+%% }
+-type property_value_null_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_asset_response() :: #{
 %%   <<"assetArn">> => string(),
 %%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()()),
@@ -1773,6 +1780,7 @@
 %% Example:
 %% put_storage_configuration_response() :: #{
 %%   <<"configurationStatus">> => configuration_status(),
+%%   <<"disallowIngestNullNaN">> => boolean(),
 %%   <<"disassociatedDataStorage">> => list(any()),
 %%   <<"multiLayerStorage">> => multi_layer_storage(),
 %%   <<"retentionPeriod">> => retention_period(),
@@ -1881,6 +1889,7 @@
 
 %% Example:
 %% batch_put_asset_property_value_request() :: #{
+%%   <<"enablePartialEntryProcessing">> => boolean(),
 %%   <<"entries">> := list(put_asset_property_value_entry()())
 %% }
 -type batch_put_asset_property_value_request() :: #{binary() => any()}.
@@ -1954,6 +1963,7 @@
 
 %% Example:
 %% put_storage_configuration_request() :: #{
+%%   <<"disallowIngestNullNaN">> => boolean(),
 %%   <<"disassociatedDataStorage">> => list(any()),
 %%   <<"multiLayerStorage">> => multi_layer_storage(),
 %%   <<"retentionPeriod">> => retention_period(),
@@ -2286,6 +2296,7 @@
 %% Example:
 %% describe_storage_configuration_response() :: #{
 %%   <<"configurationStatus">> => configuration_status(),
+%%   <<"disallowIngestNullNaN">> => boolean(),
 %%   <<"disassociatedDataStorage">> => list(any()),
 %%   <<"lastUpdateDate">> => non_neg_integer(),
 %%   <<"multiLayerStorage">> => multi_layer_storage(),
@@ -2980,6 +2991,7 @@
 %%   <<"booleanValue">> => boolean(),
 %%   <<"doubleValue">> => float(),
 %%   <<"integerValue">> => integer(),
+%%   <<"nullValue">> => property_value_null_value(),
 %%   <<"stringValue">> => string()
 %% }
 -type variant() :: #{binary() => any()}.

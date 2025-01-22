@@ -7734,6 +7734,7 @@
 
 %% Example:
 %% thousand_separator_options() :: #{
+%%   <<"GroupingStyle">> => list(any()),
 %%   <<"Symbol">> => list(any()),
 %%   <<"Visibility">> => list(any())
 %% }
