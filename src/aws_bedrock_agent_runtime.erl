@@ -245,6 +245,15 @@
 
 
 %% Example:
+%% flow_multi_turn_input_request_event() :: #{
+%%   <<"content">> => list(),
+%%   <<"nodeName">> => string(),
+%%   <<"nodeType">> => list(any())
+%% }
+-type flow_multi_turn_input_request_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% citation() :: #{
 %%   <<"generatedResponsePart">> => generated_response_part(),
 %%   <<"retrievedReferences">> => list(retrieved_reference()())
@@ -455,6 +464,7 @@
 
 %% Example:
 %% invoke_flow_response() :: #{
+%%   <<"executionId">> => string(),
 %%   <<"responseStream">> => list()
 %% }
 -type invoke_flow_response() :: #{binary() => any()}.
@@ -1196,6 +1206,7 @@
 %% Example:
 %% flow_input() :: #{
 %%   <<"content">> => list(),
+%%   <<"nodeInputName">> => string(),
 %%   <<"nodeName">> => string(),
 %%   <<"nodeOutputName">> => string()
 %% }
@@ -1563,6 +1574,7 @@
 %% Example:
 %% invoke_flow_request() :: #{
 %%   <<"enableTrace">> => [boolean()],
+%%   <<"executionId">> => string(),
 %%   <<"inputs">> := list(flow_input()()),
 %%   <<"modelPerformanceConfiguration">> => model_performance_configuration()
 %% }
@@ -2062,7 +2074,23 @@ invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-bedrock-flow-execution-id">>, <<"executionId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc
 %% Invokes an inline Amazon Bedrock agent using the configurations you

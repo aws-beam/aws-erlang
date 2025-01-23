@@ -1432,6 +1432,14 @@
 
 
 %% Example:
+%% id3_segment_tagging_schedule_action_settings() :: #{
+%%   <<"Id3">> => string(),
+%%   <<"Tag">> => string()
+%% }
+-type id3_segment_tagging_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% video_selector_pid() :: #{
 %%   <<"Pid">> => integer()
 %% }
@@ -1643,6 +1651,13 @@
 %%   <<"Cidr">> => string()
 %% }
 -type input_whitelist_rule_cidr() :: #{binary() => any()}.
+
+
+%% Example:
+%% timed_metadata_schedule_action_settings() :: #{
+%%   <<"Id3">> => string()
+%% }
+-type timed_metadata_schedule_action_settings() :: #{binary() => any()}.
 
 %% Example:
 %% describe_channel_placement_group_request() :: #{}
@@ -2330,6 +2345,7 @@
 %% schedule_action_settings() :: #{
 %%   <<"HlsId3SegmentTaggingSettings">> => hls_id3_segment_tagging_schedule_action_settings(),
 %%   <<"HlsTimedMetadataSettings">> => hls_timed_metadata_schedule_action_settings(),
+%%   <<"Id3SegmentTaggingSettings">> => id3_segment_tagging_schedule_action_settings(),
 %%   <<"InputPrepareSettings">> => input_prepare_schedule_action_settings(),
 %%   <<"InputSwitchSettings">> => input_switch_schedule_action_settings(),
 %%   <<"MotionGraphicsImageActivateSettings">> => motion_graphics_activate_schedule_action_settings(),
@@ -2342,7 +2358,8 @@
 %%   <<"StaticImageActivateSettings">> => static_image_activate_schedule_action_settings(),
 %%   <<"StaticImageDeactivateSettings">> => static_image_deactivate_schedule_action_settings(),
 %%   <<"StaticImageOutputActivateSettings">> => static_image_output_activate_schedule_action_settings(),
-%%   <<"StaticImageOutputDeactivateSettings">> => static_image_output_deactivate_schedule_action_settings()
+%%   <<"StaticImageOutputDeactivateSettings">> => static_image_output_deactivate_schedule_action_settings(),
+%%   <<"TimedMetadataSettings">> => timed_metadata_schedule_action_settings()
 %% }
 -type schedule_action_settings() :: #{binary() => any()}.
 
@@ -4182,6 +4199,8 @@
 %% Example:
 %% cmaf_ingest_group_settings() :: #{
 %%   <<"Destination">> => output_location_ref(),
+%%   <<"Id3Behavior">> => list(any()),
+%%   <<"Id3NameModifier">> => string(),
 %%   <<"KlvBehavior">> => list(any()),
 %%   <<"KlvNameModifier">> => string(),
 %%   <<"NielsenId3Behavior">> => list(any()),
