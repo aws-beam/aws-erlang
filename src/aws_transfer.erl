@@ -385,6 +385,16 @@
 -type update_web_app_customization_request() :: #{binary() => any()}.
 
 %% Example:
+%% custom_directories_type() :: #{
+%%   <<"FailedFilesDirectory">> => string(),
+%%   <<"MdnFilesDirectory">> => string(),
+%%   <<"PayloadFilesDirectory">> => string(),
+%%   <<"StatusFilesDirectory">> => string(),
+%%   <<"TemporaryFilesDirectory">> => string()
+%% }
+-type custom_directories_type() :: #{binary() => any()}.
+
+%% Example:
 %% identity_provider_details() :: #{
 %%   <<"DirectoryId">> => string(),
 %%   <<"Function">> => string(),
@@ -403,7 +413,8 @@
 %% Example:
 %% create_agreement_request() :: #{
 %%   <<"AccessRole">> := string(),
-%%   <<"BaseDirectory">> := string(),
+%%   <<"BaseDirectory">> => string(),
+%%   <<"CustomDirectories">> => custom_directories_type(),
 %%   <<"Description">> => string(),
 %%   <<"EnforceMessageSigning">> => list(any()),
 %%   <<"LocalProfileId">> := string(),
@@ -1279,6 +1290,7 @@
 %%   <<"AccessRole">> => string(),
 %%   <<"AgreementId">> := string(),
 %%   <<"BaseDirectory">> => string(),
+%%   <<"CustomDirectories">> => custom_directories_type(),
 %%   <<"Description">> => string(),
 %%   <<"EnforceMessageSigning">> => list(any()),
 %%   <<"LocalProfileId">> => string(),
@@ -1548,6 +1560,7 @@
 %%   <<"AgreementId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"BaseDirectory">> => string(),
+%%   <<"CustomDirectories">> => custom_directories_type(),
 %%   <<"Description">> => string(),
 %%   <<"EnforceMessageSigning">> => list(any()),
 %%   <<"LocalProfileId">> => string(),
@@ -2259,6 +2272,10 @@ create_access(Client, Input, Options)
 %%
 %% The partner is identified with the `PartnerProfileId', and the AS2
 %% process is identified with the `LocalProfileId'.
+%%
+%% Specify either
+%% `BaseDirectory' or `CustomDirectories', but not both. Specifying
+%% both causes the command to fail.
 -spec create_agreement(aws_client:aws_client(), create_agreement_request()) ->
     {ok, create_agreement_response(), tuple()} |
     {error, any()} |
@@ -3615,6 +3632,15 @@ update_access(Client, Input, Options)
 %% `AgreementId' and the `ServerId' for the agreement that you want
 %% to
 %% update, along with the new values for the parameters to update.
+%%
+%% Specify either
+%% `BaseDirectory' or `CustomDirectories', but not both. Specifying
+%% both causes the command to fail.
+%%
+%% If you update an agreement from using base directory to custom
+%% directories, the base directory is no longer used. Similarly, if you
+%% change from custom directories to a base directory, the custom directories
+%% are no longer used.
 -spec update_agreement(aws_client:aws_client(), update_agreement_request()) ->
     {ok, update_agreement_response(), tuple()} |
     {error, any()} |

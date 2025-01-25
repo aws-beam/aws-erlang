@@ -19,7 +19,8 @@
 %% standard Kubernetes environment, whether running in on-premises data
 %% centers or public
 %% clouds. This means that you can easily migrate any standard Kubernetes
-%% application to Amazon EKS without any code modification required.
+%% application to Amazon EKS
+%% without any code modification required.
 -module(aws_eks).
 
 -export([associate_access_policy/4,
@@ -471,7 +472,8 @@
 %% Example:
 %% nodegroup_update_config() :: #{
 %%   <<"maxUnavailable">> => integer(),
-%%   <<"maxUnavailablePercentage">> => integer()
+%%   <<"maxUnavailablePercentage">> => integer(),
+%%   <<"updateStrategy">> => list(any())
 %% }
 -type nodegroup_update_config() :: #{binary() => any()}.
 
@@ -2600,9 +2602,9 @@ create_access_entry(Client, ClusterName, Input0, Options0) ->
 %% management
 %% of common operational software for Amazon EKS clusters. For more
 %% information,
-%% see Amazon EKS add-ons:
-%% https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html in the
-%% Amazon EKS User Guide.
+%% see Amazon EKS
+%% add-ons: https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
+%% in the Amazon EKS User Guide.
 -spec create_addon(aws_client:aws_client(), binary() | list(), create_addon_request()) ->
     {ok, create_addon_response(), tuple()} |
     {error, any()} |
@@ -2643,8 +2645,8 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% Kubernetes software, such as `etcd' and the API server. The control
 %% plane runs in
 %% an account managed by Amazon Web Services, and the Kubernetes API is
-%% exposed by the Amazon EKS API server endpoint. Each Amazon EKS cluster
-%% control plane is
+%% exposed by the Amazon EKS
+%% API server endpoint. Each Amazon EKS cluster control plane is
 %% single tenant and unique. It runs on its own set of Amazon EC2 instances.
 %%
 %% The cluster control plane is provisioned across multiple Availability
@@ -2668,7 +2670,8 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% private access to your cluster's Kubernetes API server endpoint. By
 %% default, public access is
 %% enabled, and private access is disabled. For more information, see Amazon
-%% EKS Cluster Endpoint Access Control:
+%% EKS
+%% Cluster Endpoint Access Control:
 %% https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html in
 %% the
 %%
@@ -2786,8 +2789,8 @@ create_eks_anywhere_subscription(Client, Input0, Options0) ->
 %%
 %% The Fargate profile allows an administrator to declare which pods run
 %% on Fargate and specify which pods run on which Fargate
-%% profile. This declaration is done through the profile’s selectors. Each
-%% profile can have
+%% profile. This declaration is done through the profile's selectors.
+%% Each profile can have
 %% up to five selectors that contain a namespace and labels. A namespace is
 %% required for
 %% every selector. The label field consists of multiple optional key-value
@@ -2807,7 +2810,8 @@ create_eks_anywhere_subscription(Client, Input0, Options0) ->
 %% Amazon EKS cluster so that it can appear in your cluster as a node. The
 %% pod
 %% execution role also provides IAM permissions to the Fargate infrastructure
-%% to allow read access to Amazon ECR image repositories. For
+%% to
+%% allow read access to Amazon ECR image repositories. For
 %% more information, see Pod Execution Role:
 %% https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html
 %% in the Amazon EKS User Guide.
@@ -4298,8 +4302,8 @@ list_insights(Client, ClusterName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the managed node groups associated with the specified cluster
-%% in your Amazon Web Services account in the specified Amazon Web Services
-%% Region.
+%% in your Amazon Web Services
+%% account in the specified Amazon Web Services Region.
 %%
 %% Self-managed node
 %% groups aren't listed.
@@ -4429,7 +4433,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the updates associated with an Amazon EKS resource in your
-%% Amazon Web Services account, in the specified Amazon Web Services Region.
+%% Amazon Web Services
+%% account, in the specified Amazon Web Services Region.
 -spec list_updates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_updates_response(), tuple()} |
     {error, any()} |
@@ -4693,7 +4698,8 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% logs for your cluster to CloudWatch Logs. By default, cluster control
 %% plane logs
 %% aren't exported to CloudWatch Logs. For more information, see Amazon
-%% EKS Cluster control plane logs:
+%% EKS
+%% Cluster control plane logs:
 %% https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
 %% in the
 %%
@@ -4709,8 +4715,8 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% private access to
 %% your cluster's Kubernetes API server endpoint. By default, public
 %% access is enabled, and
-%% private access is disabled. For more information, see Amazon EKS cluster
-%% endpoint access control:
+%% private access is disabled. For more information, see Amazon EKS
+%% cluster endpoint access control:
 %% https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html in
 %% the
 %%
@@ -4792,9 +4798,9 @@ update_cluster_config(Client, Name, Input0, Options0) ->
 %% `Successful'), the cluster status moves to `Active'.
 %%
 %% If your cluster has managed node groups attached to it, all of your node
-%% groups’ Kubernetes
-%% versions must match the cluster’s Kubernetes version in order to update
-%% the cluster to a new
+%% groups' Kubernetes
+%% versions must match the cluster's Kubernetes version in order to
+%% update the cluster to a new
 %% Kubernetes version.
 -spec update_cluster_version(aws_client:aws_client(), binary() | list(), update_cluster_version_request()) ->
     {ok, update_cluster_version_response(), tuple()} |
@@ -4872,9 +4878,9 @@ update_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 %% continues to function during the update. The response output includes an
 %% update ID that
 %% you can use to track the status of your node group update with the
-%% `DescribeUpdate' API operation. Currently you can update the
-%% Kubernetes labels
-%% for a node group or the scaling configuration.
+%% `DescribeUpdate' API operation. You can update the Kubernetes labels
+%% and taints
+%% for a node group and the scaling and version update configuration.
 -spec update_nodegroup_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_nodegroup_config_request()) ->
     {ok, update_nodegroup_config_response(), tuple()} |
     {error, any()} |

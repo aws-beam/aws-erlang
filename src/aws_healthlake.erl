@@ -84,7 +84,7 @@
 
 %% Example:
 %% start_fhir_import_job_request() :: #{
-%%   <<"ClientToken">> := string(),
+%%   <<"ClientToken">> => string(),
 %%   <<"DataAccessRoleArn">> := string(),
 %%   <<"DatastoreId">> := string(),
 %%   <<"InputDataConfig">> := list(),
@@ -378,7 +378,7 @@
 
 %% Example:
 %% start_fhir_export_job_request() :: #{
-%%   <<"ClientToken">> := string(),
+%%   <<"ClientToken">> => string(),
 %%   <<"DataAccessRoleArn">> := string(),
 %%   <<"DatastoreId">> := string(),
 %%   <<"JobName">> => string(),

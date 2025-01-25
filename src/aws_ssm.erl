@@ -15,19 +15,20 @@
 %%
 %% == Related resources ==
 %%
-%% For information about each of the capabilities that comprise Systems
-%% Manager, see Systems Manager capabilities:
-%% https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities
+%% For information about each of the tools that comprise Systems Manager, see
+%% Using
+%% Systems Manager tools:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-tools.html
 %% in the Amazon Web Services Systems Manager User Guide.
 %%
-%% For details about predefined runbooks for Automation, a capability of
-%% Amazon Web Services Systems Manager, see the
+%% For details about predefined runbooks for Automation, a tool in Amazon Web
+%% Services Systems Manager, see the
 %%
 %% Systems Manager Automation runbook reference:
 %% https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html
 %% .
 %%
-%% For information about AppConfig, a capability of Systems Manager, see the
+%% For information about AppConfig, a tool in Systems Manager, see the
 %% AppConfig User Guide:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/
 %%
@@ -37,8 +38,7 @@
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/
 %% .
 %%
-%% For information about Incident Manager, a capability of Systems Manager,
-%% see the
+%% For information about Incident Manager, a tool in Systems Manager, see the
 %% Systems Manager Incident Manager User
 %% Guide: https://docs.aws.amazon.com/incident-manager/latest/userguide/
 %% and the
@@ -6351,7 +6351,7 @@ add_tags_to_resource(Client, Input, Options)
 %%
 %% For example, you can associate an
 %% Incident Manager incident or analysis with an OpsItem. Incident Manager
-%% and OpsCenter are capabilities of
+%% and OpsCenter are tools in
 %% Amazon Web Services Systems Manager.
 -spec associate_ops_item_related_item(aws_client:aws_client(), associate_ops_item_related_item_request()) ->
     {ok, associate_ops_item_related_item_response(), tuple()} |
@@ -6418,9 +6418,9 @@ cancel_maintenance_window_execution(Client, Input, Options)
 %%
 %% Registering these machines with
 %% Systems Manager makes it possible to manage them using Systems Manager
-%% capabilities. You use the activation code and
-%% ID when installing SSM Agent on machines in your hybrid environment. For
-%% more information about
+%% tools. You use the activation code and ID when
+%% installing SSM Agent on machines in your hybrid environment. For more
+%% information about
 %% requirements for managing on-premises machines using Systems Manager, see
 %% Using Amazon Web Services Systems Manager in
 %% hybrid and multicloud environments:
@@ -6457,16 +6457,17 @@ create_activation(Client, Input, Options)
 %% association specifies a schedule for when the configuration is reapplied.
 %% For dynamic targets,
 %% such as an Amazon Web Services resource group or an Amazon Web Services
-%% autoscaling group, State Manager, a capability of
-%% Amazon Web Services Systems Manager applies the configuration when new
-%% managed nodes are added to the group. The
-%% association also specifies actions to take when applying the
-%% configuration. For example, an
-%% association for anti-virus software might run once a day. If the software
-%% isn't installed, then
-%% State Manager installs it. If the software is installed, but the service
-%% isn't running, then the
-%% association might instruct State Manager to start the service.
+%% autoscaling group, State Manager, a tool in Amazon Web Services Systems
+%% Manager
+%% applies the configuration when new managed nodes are added to the group.
+%% The association also
+%% specifies actions to take when applying the configuration. For example, an
+%% association for
+%% anti-virus software might run once a day. If the software isn't
+%% installed, then State Manager
+%% installs it. If the software is installed, but the service isn't
+%% running, then the association
+%% might instruct State Manager to start the service.
 -spec create_association(aws_client:aws_client(), create_association_request()) ->
     {ok, create_association_result(), tuple()} |
     {error, any()} |
@@ -7809,7 +7810,7 @@ describe_sessions(Client, Input, Options)
 %%
 %% For example, this API
 %% operation can delete an Incident Manager incident from an OpsItem.
-%% Incident Manager is a capability of
+%% Incident Manager is a tool in
 %% Amazon Web Services Systems Manager.
 -spec disassociate_ops_item_related_item(aws_client:aws_client(), disassociate_ops_item_related_item_request()) ->
     {ok, disassociate_ops_item_related_item_response(), tuple()} |
@@ -7862,9 +7863,8 @@ get_automation_execution(Client, Input, Options)
 %% calendars in the
 %% request are closed, the status returned is `CLOSED'.
 %%
-%% For more information about Change Calendar, a capability of Amazon Web
-%% Services Systems Manager, see Amazon Web Services Systems Manager Change
-%% Calendar:
+%% For more information about Change Calendar, a tool in Amazon Web Services
+%% Systems Manager, see Amazon Web Services Systems Manager Change Calendar:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html
 %% in the Amazon Web Services Systems Manager User Guide.
 -spec get_calendar_state(aws_client:aws_client(), get_calendar_state_request()) ->
@@ -7975,11 +7975,11 @@ get_default_patch_baseline(Client, Input, Options)
 %% (CLI), the system attempts to use your local Amazon Web Services
 %% credentials and the operation fails. To avoid
 %% this, you can run the command in the Amazon Web Services Systems Manager
-%% console. Use Run Command, a capability of
-%% Amazon Web Services Systems Manager, with an SSM document that enables you
-%% to target a managed node with a script or
-%% command. For example, run the command using the `AWS-RunShellScript'
-%% document or the
+%% console. Use Run Command, a tool in Amazon Web Services Systems Manager,
+%% with an SSM document that enables you to target a managed node with a
+%% script or command. For
+%% example, run the command using the `AWS-RunShellScript' document or
+%% the
 %% `AWS-RunPowerShellScript' document.
 -spec get_deployable_patch_snapshot_for_instance(aws_client:aws_client(), get_deployable_patch_snapshot_for_instance_request()) ->
     {ok, get_deployable_patch_snapshot_for_instance_result(), tuple()} |
@@ -8314,8 +8314,8 @@ get_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParameters">>, Input, Options).
 
-%% @doc Retrieve information about one or more parameters in a specific
-%% hierarchy.
+%% @doc Retrieve information about one or more parameters under a specified
+%% level in a hierarchy.
 %%
 %% Request results are returned on a best-effort basis. If you specify
 %% `MaxResults'
@@ -8521,7 +8521,7 @@ list_association_versions(Client, Input, Options)
 %% You
 %% can limit the results to a specific State Manager association document or
 %% managed node by
-%% specifying a filter. State Manager is a capability of Amazon Web Services
+%% specifying a filter. State Manager is a tool in Amazon Web Services
 %% Systems Manager.
 -spec list_associations(aws_client:aws_client(), list_associations_request()) ->
     {ok, list_associations_result(), tuple()} |
@@ -8766,7 +8766,7 @@ list_ops_item_events(Client, Input, Options)
 %% OpsCenter OpsItem.
 %%
 %% OpsCenter is a
-%% capability of Amazon Web Services Systems Manager.
+%% tool in Amazon Web Services Systems Manager.
 -spec list_ops_item_related_items(aws_client:aws_client(), list_ops_item_related_items_request()) ->
     {ok, list_ops_item_related_items_response(), tuple()} |
     {error, any()} |

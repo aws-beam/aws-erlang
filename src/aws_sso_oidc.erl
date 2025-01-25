@@ -2,18 +2,20 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc IAM Identity Center OpenID Connect (OIDC) is a web service that
-%% enables a client (such as CLI
-%% or a native application) to register with IAM Identity Center.
+%% enables a client (such as CLI or a
+%% native application) to register with IAM Identity Center.
 %%
-%% The service also enables the client to
-%% fetch the user’s access token upon successful authentication and
-%% authorization with
+%% The service also enables the client to fetch the
+%% user’s access token upon successful authentication and authorization with
 %% IAM Identity Center.
 %%
-%% IAM Identity Center uses the `sso' and `identitystore' API
-%% namespaces.
+%% API namespaces
 %%
-%% Considerations for Using This Guide
+%% IAM Identity Center uses the `sso' and `identitystore' API
+%% namespaces. IAM Identity Center
+%% OpenID Connect uses the `sso-oidc' namespace.
+%%
+%% Considerations for using this guide
 %%
 %% Before you begin using this guide, we recommend that you first review the
 %% following
@@ -33,9 +35,10 @@
 %% supports token refresh and doesn’t require re-authentication, update to
 %% the latest CLI
 %% version (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for OIDC
-%% token refresh and
-%% configurable IAM Identity Center session durations. For more information,
-%% see Configure Amazon Web Services access portal session duration :
+%% token refresh
+%% and configurable IAM Identity Center session durations. For more
+%% information, see Configure Amazon Web Services access portal session
+%% duration :
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html.
 %%
 %% The access tokens provided by this service grant access to all Amazon Web
@@ -336,7 +339,7 @@
 %% authenticated using
 %% client secrets.
 %%
-%% The access token can be used to fetch short-term credentials for the
+%% The access token can be used to fetch short-lived credentials for the
 %% assigned
 %% AWS accounts or to access application APIs using `bearer'
 %% authentication.
@@ -377,10 +380,10 @@ create_token(Client, Input0, Options0) ->
 %% applications that are
 %% authenticated using IAM entities.
 %%
-%% The access token can be used to fetch short-term credentials
-%% for the assigned Amazon Web Services accounts or to access application
-%% APIs using `bearer'
-%% authentication.
+%% The access token can be used to fetch short-lived
+%% credentials for the assigned Amazon Web Services accounts or to access
+%% application APIs using
+%% `bearer' authentication.
 -spec create_token_with_iam(aws_client:aws_client(), create_token_with_iam_request()) ->
     {ok, create_token_with_iam_response(), tuple()} |
     {error, any()} |
@@ -414,11 +417,12 @@ create_token_with_iam(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Registers a client with IAM Identity Center.
+%% @doc Registers a public client with IAM Identity Center.
 %%
-%% This allows clients to initiate device authorization.
-%% The output should be persisted for reuse through many authentication
-%% requests.
+%% This allows clients to perform authorization using
+%% the authorization code grant with Proof Key for Code Exchange (PKCE)
+%% or the device
+%% code grant.
 -spec register_client(aws_client:aws_client(), register_client_request()) ->
     {ok, register_client_response(), tuple()} |
     {error, any()} |

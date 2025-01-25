@@ -124,6 +124,8 @@
          remove_tags/3,
          restore_event_data_store/2,
          restore_event_data_store/3,
+         search_sample_queries/2,
+         search_sample_queries/3,
          start_dashboard_refresh/2,
          start_dashboard_refresh/3,
          start_event_data_store_ingestion/2,
@@ -231,6 +233,14 @@
 
 %% }
 -type start_event_data_store_ingestion_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_sample_queries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchPhrase">> := string()
+%% }
+-type search_sample_queries_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_trail_request() :: #{
@@ -1430,6 +1440,13 @@
 -type channel_arn_invalid_exception() :: #{binary() => any()}.
 
 %% Example:
+%% search_sample_queries_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SearchResults">> => list(search_sample_queries_search_result()())
+%% }
+-type search_sample_queries_response() :: #{binary() => any()}.
+
+%% Example:
 %% event_data_store() :: #{
 %%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
@@ -1784,6 +1801,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_dashboards_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_sample_queries_search_result() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Relevance">> => float(),
+%%   <<"SQL">> => string()
+%% }
+-type search_sample_queries_search_result() :: #{binary() => any()}.
 
 %% Example:
 %% resource_arn_not_valid_exception() :: #{
@@ -2402,6 +2428,11 @@
     organization_not_in_all_features_mode_exception() | 
     no_management_account_s_l_r_exists_exception() | 
     event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type search_sample_queries_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
     unsupported_operation_exception().
 
 -type start_dashboard_refresh_errors() ::
@@ -3168,7 +3199,7 @@ get_import(Client, Input, Options)
 %% or the `TrailName' parameter to the get Insights event selectors for a
 %% trail. You cannot specify these parameters together.
 %%
-%% For more information, see Logging CloudTrail Insights events:
+%% For more information, see Working with CloudTrail Insights:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
 %% in the CloudTrail User Guide.
 -spec get_insight_selectors(aws_client:aws_client(), get_insight_selectors_request()) ->
@@ -3583,8 +3614,8 @@ lookup_events(Client, Input, Options)
 %% If you want your trail to log Insights events, be sure the event selector
 %% or advanced event selector enables
 %% logging of the Insights event types you want configured for your trail.
-%% For more information about logging Insights events, see Logging Insights
-%% events:
+%% For more information about logging Insights events, see Working with
+%% CloudTrail Insights:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
 %% in the CloudTrail User Guide.
 %% By default, trails created without specific event selectors are configured
@@ -3695,7 +3726,7 @@ put_event_selectors(Client, Input, Options)
 %% event data store to check whether the event data store logs management
 %% events.
 %%
-%% For more information, see Logging CloudTrail Insights events:
+%% For more information, see Working with CloudTrail Insights:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
 %% in the CloudTrail User Guide.
 -spec put_insight_selectors(aws_client:aws_client(), put_insight_selectors_request()) ->
@@ -3798,6 +3829,28 @@ restore_event_data_store(Client, Input)
 restore_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreEventDataStore">>, Input, Options).
+
+%% @doc
+%% Searches sample queries and returns a list of sample queries that are
+%% sorted by relevance.
+%%
+%% To search for sample queries, provide a natural language
+%% `SearchPhrase' in English.
+-spec search_sample_queries(aws_client:aws_client(), search_sample_queries_request()) ->
+    {ok, search_sample_queries_response(), tuple()} |
+    {error, any()} |
+    {error, search_sample_queries_errors(), tuple()}.
+search_sample_queries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_sample_queries(Client, Input, []).
+
+-spec search_sample_queries(aws_client:aws_client(), search_sample_queries_request(), proplists:proplist()) ->
+    {ok, search_sample_queries_response(), tuple()} |
+    {error, any()} |
+    {error, search_sample_queries_errors(), tuple()}.
+search_sample_queries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchSampleQueries">>, Input, Options).
 
 %% @doc
 %% Starts a refresh of the specified dashboard.
