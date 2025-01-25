@@ -11,13 +11,13 @@
 %% if applicable.
 -module(aws_apigatewaymanagementapi).
 
--export([delete_connection/4,
-         delete_connection/5,
-         get_connection/3,
-         get_connection/5,
+-export([delete_connection/5,
+         delete_connection/6,
+         get_connection/4,
          get_connection/6,
-         post_to_connection/4,
-         post_to_connection/5]).
+         get_connection/7,
+         post_to_connection/5,
+         post_to_connection/6]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -94,18 +94,18 @@
 %%====================================================================
 
 %% @doc Delete the connection with the provided id.
--spec delete_connection(aws_client:aws_client(), list() | binary(), binary() | list(), delete_connection_request()) ->
+-spec delete_connection(aws_client:aws_client(), list() | binary(), list() | binary(), binary() | list(), delete_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
-delete_connection(Client, Stage, ConnectionId, Input) ->
-    delete_connection(Client, Stage, ConnectionId, Input, []).
+delete_connection(Client, ApiId, Stage, ConnectionId, Input) ->
+    delete_connection(Client, ApiId, Stage, ConnectionId, Input, []).
 
--spec delete_connection(aws_client:aws_client(), list() | binary(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), list() | binary(), list() | binary(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
-delete_connection(Client, Stage, ConnectionId, Input0, Options0) ->
+delete_connection(Client, ApiId, Stage, ConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/", Stage, "/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 204,
@@ -125,30 +125,30 @@ delete_connection(Client, Stage, ConnectionId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client#{api_id => ApiId}, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get information about the connection with the provided id.
--spec get_connection(aws_client:aws_client(), list() | binary(), binary() | list()) ->
+-spec get_connection(aws_client:aws_client(), list() | binary(), list() | binary(), binary() | list()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
-get_connection(Client, Stage, ConnectionId)
+get_connection(Client, ApiId, Stage, ConnectionId)
   when is_map(Client) ->
-    get_connection(Client, Stage, ConnectionId, #{}, #{}).
+    get_connection(Client, ApiId, Stage, ConnectionId, #{}, #{}).
 
--spec get_connection(aws_client:aws_client(), list() | binary(), binary() | list(), map(), map()) ->
+-spec get_connection(aws_client:aws_client(), list() | binary(), list() | binary(), binary() | list(), map(), map()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
-get_connection(Client, Stage, ConnectionId, QueryMap, HeadersMap)
+get_connection(Client, ApiId, Stage, ConnectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_connection(Client, Stage, ConnectionId, QueryMap, HeadersMap, []).
+    get_connection(Client, ApiId, Stage, ConnectionId, QueryMap, HeadersMap, []).
 
--spec get_connection(aws_client:aws_client(), list() | binary(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connection(aws_client:aws_client(), list() | binary(), list() | binary(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
-get_connection(Client, Stage, ConnectionId, QueryMap, HeadersMap, Options0)
+get_connection(Client, ApiId, Stage, ConnectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", Stage, "/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
@@ -162,21 +162,21 @@ get_connection(Client, Stage, ConnectionId, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client#{api_id => ApiId}, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sends the provided data to the specified connection.
--spec post_to_connection(aws_client:aws_client(), list() | binary(), binary() | list(), post_to_connection_request()) ->
+-spec post_to_connection(aws_client:aws_client(), list() | binary(), list() | binary(), binary() | list(), post_to_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, post_to_connection_errors(), tuple()}.
-post_to_connection(Client, Stage, ConnectionId, Input) ->
-    post_to_connection(Client, Stage, ConnectionId, Input, []).
+post_to_connection(Client, ApiId, Stage, ConnectionId, Input) ->
+    post_to_connection(Client, ApiId, Stage, ConnectionId, Input, []).
 
--spec post_to_connection(aws_client:aws_client(), list() | binary(), binary() | list(), post_to_connection_request(), proplists:proplist()) ->
+-spec post_to_connection(aws_client:aws_client(), list() | binary(), list() | binary(), binary() | list(), post_to_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, post_to_connection_errors(), tuple()}.
-post_to_connection(Client, Stage, ConnectionId, Input0, Options0) ->
+post_to_connection(Client, ApiId, Stage, ConnectionId, Input0, Options0) ->
     Method = post,
     Path = ["/", Stage, "/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
@@ -196,7 +196,7 @@ post_to_connection(Client, Stage, ConnectionId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client#{api_id => ApiId}, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
@@ -243,7 +243,7 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
-    SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
+    SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload, [{uri_encode_path, true}]),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
@@ -305,8 +305,8 @@ build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
     Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
+build_host(EndpointPrefix, #{api_id := ApiId, region := Region, endpoint := Endpoint}) ->
+    aws_util:binary_join([ApiId, EndpointPrefix, Region, Endpoint], <<".">>).
 
 build_url(Host, Path0, Client) ->
     Proto = aws_client:proto(Client),
