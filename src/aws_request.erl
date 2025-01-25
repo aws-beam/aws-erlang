@@ -7,6 +7,7 @@
         , method_to_binary/1
         , request/2
         , sign_request/5
+        , sign_request/6
         ]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -23,6 +24,9 @@ request(RequestFun, Options) ->
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
 sign_request(Client, Method, URL, Headers0, Body) ->
+  sign_request(Client, Method, URL, Headers0, Body, [{uri_encode_path, false}]).
+
+sign_request(Client, Method, URL, Headers0, Body, Options) ->
     AccessKeyID = aws_client:access_key_id(Client),
     SecretAccessKey = aws_client:secret_access_key(Client),
     Region = aws_client:region(Client),
@@ -32,7 +36,7 @@ sign_request(Client, Method, URL, Headers0, Body) ->
                 undefined -> Headers0;
                 _ -> [{<<"X-Amz-Security-Token">>, Token}|Headers0]
               end,
-    aws_signature:sign_v4(AccessKeyID, SecretAccessKey, Region, Service, calendar:universal_time(), Method, URL, Headers, Body, [{uri_encode_path, false}]).
+    aws_signature:sign_v4(AccessKeyID, SecretAccessKey, Region, Service, calendar:universal_time(), Method, URL, Headers, Body, Options).
 
 %% @doc Include additions only if they don't already exist in the provided list.
 add_headers([], Headers) ->
