@@ -2413,7 +2413,7 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
-    SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
+    SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload, [{uri_encode_path, true}]),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
