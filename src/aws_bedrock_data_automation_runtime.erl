@@ -206,7 +206,7 @@ do_request(Client, Action, Input0, Options) ->
     Input = Input0,
 
     Payload = jsx:encode(Input),
-    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
+    SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload, [{uri_encode_path, true}]),
     Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
 
