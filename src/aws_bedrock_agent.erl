@@ -203,6 +203,14 @@
 %% }
 -type knowledge_base_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% unknown_node_output_flow_validation_details() :: #{
+%%   <<"node">> => string(),
+%%   <<"output">> => string()
+%% }
+-type unknown_node_output_flow_validation_details() :: #{binary() => any()}.
+
 %% Example:
 %% prepare_agent_request() :: #{}
 -type prepare_agent_request() :: #{}.
@@ -298,6 +306,7 @@
 
 %% Example:
 %% text_prompt_template_configuration() :: #{
+%%   <<"cachePoint">> => cache_point_block(),
 %%   <<"inputVariables">> => list(prompt_input_variable()()),
 %%   <<"text">> => string()
 %% }
@@ -1820,6 +1829,13 @@
 %% }
 -type parsing_prompt() :: #{binary() => any()}.
 
+
+%% Example:
+%% cache_point_block() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type cache_point_block() :: #{binary() => any()}.
+
 %% Example:
 %% delete_knowledge_base_request() :: #{}
 -type delete_knowledge_base_request() :: #{}.
@@ -2261,6 +2277,14 @@
 %%   <<"variants">> => list(prompt_variant()())
 %% }
 -type update_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_node_input_flow_validation_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type unknown_node_input_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:

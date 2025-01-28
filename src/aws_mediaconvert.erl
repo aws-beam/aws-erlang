@@ -839,6 +839,7 @@
 %%   <<"DeblockFilter">> => list(any()),
 %%   <<"DenoiseFilter">> => list(any()),
 %%   <<"DolbyVisionMetadataXml">> => string(),
+%%   <<"DynamicAudioSelectors">> => map(),
 %%   <<"FilterEnable">> => list(any()),
 %%   <<"FilterStrength">> => integer(),
 %%   <<"ImageInserter">> => image_inserter(),
@@ -966,6 +967,17 @@
 
 
 %% Example:
+%% dynamic_audio_selector() :: #{
+%%   <<"AudioDurationCorrection">> => list(any()),
+%%   <<"ExternalAudioFileInput">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Offset">> => integer(),
+%%   <<"SelectorType">> => list(any())
+%% }
+-type dynamic_audio_selector() :: #{binary() => any()}.
+
+
+%% Example:
 %% image_inserter() :: #{
 %%   <<"InsertableImages">> => list(insertable_image()()),
 %%   <<"SdrReferenceWhiteLevel">> => integer()
@@ -1074,6 +1086,7 @@
 %%   <<"DecryptionSettings">> => input_decryption_settings(),
 %%   <<"DenoiseFilter">> => list(any()),
 %%   <<"DolbyVisionMetadataXml">> => string(),
+%%   <<"DynamicAudioSelectors">> => map(),
 %%   <<"FileInput">> => string(),
 %%   <<"FilterEnable">> => list(any()),
 %%   <<"FilterStrength">> => integer(),
@@ -1393,6 +1406,7 @@
 %%   <<"InterlaceMode">> => list(any()),
 %%   <<"ScanTypeConversionMode">> => list(any()),
 %%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"Deblocking">> => list(any()),
 %%   <<"RateControlMode">> => list(any()),
 %%   <<"FramerateControl">> => list(any()),
 %%   <<"ParNumerator">> => integer(),
