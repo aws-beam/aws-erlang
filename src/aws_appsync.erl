@@ -224,7 +224,9 @@
 %% evaluate_code_response() :: #{
 %%   <<"error">> => evaluate_code_error_detail(),
 %%   <<"evaluationResult">> => string(),
-%%   <<"logs">> => list(string()())
+%%   <<"logs">> => list(string()()),
+%%   <<"outErrors">> => string(),
+%%   <<"stash">> => string()
 %% }
 -type evaluate_code_response() :: #{binary() => any()}.
 
@@ -629,7 +631,9 @@
 %% evaluate_mapping_template_response() :: #{
 %%   <<"error">> => error_detail(),
 %%   <<"evaluationResult">> => string(),
-%%   <<"logs">> => list(string()())
+%%   <<"logs">> => list(string()()),
+%%   <<"outErrors">> => string(),
+%%   <<"stash">> => string()
 %% }
 -type evaluate_mapping_template_response() :: #{binary() => any()}.
 

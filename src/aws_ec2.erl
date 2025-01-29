@@ -20834,6 +20834,10 @@ cancel_bundle_task(Client, Input, Options)
 %% duration has elapsed. You can't cancel a future-dated Capacity
 %% Reservation during the commitment duration.
 %%
+%% You can't modify or cancel a Capacity Block. For more information, see
+%% Capacity Blocks for ML:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html.
+%%
 %% If a future-dated Capacity Reservation enters the `delayed' state, the
 %% commitment
 %% duration is waived, and you can cancel it as soon as it enters the
@@ -25486,6 +25490,16 @@ describe_capacity_block_extension_offerings(Client, Input, Options)
 %%
 %% With Capacity Blocks, you purchase a
 %% specific instance type for a period of time.
+%%
+%% To search for an available Capacity Block offering, you specify a
+%% reservation duration
+%% and instance count. You must select one of the following options.
+%%
+%% For reservation durations 1-day increments
+%% up 14 days and 7-day increments up to 182 days total
+%%
+%% For instance count 1, 2, 4, 8, 16, 32, or
+%% 64 instances
 -spec describe_capacity_block_offerings(aws_client:aws_client(), describe_capacity_block_offerings_request()) ->
     {ok, describe_capacity_block_offerings_result(), tuple()} |
     {error, any()}.
@@ -26575,7 +26589,8 @@ describe_instance_status(Client, Input, Options)
 %% `p5e.48xlarge' | `p5en.48xlarge'
 %%
 %% `trn1.2xlarge' | `trn1.32xlarge' |
-%% `trn1n.32xlarge'
+%% `trn1n.32xlarge' | `trn2.48xlarge' |
+%% `trn2u.48xlarge'
 %%
 %% For more information, see Amazon EC2 instance
 %% topology:

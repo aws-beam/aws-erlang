@@ -209,8 +209,10 @@
 
 %% Example:
 %% update_db_instance_input() :: #{
+%%   <<"allocatedStorage">> => integer(),
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
 %%   <<"deploymentType">> => list(any()),
 %%   <<"identifier">> := string(),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),

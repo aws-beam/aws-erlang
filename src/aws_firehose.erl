@@ -156,6 +156,12 @@
 -type resource_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
+%% direct_put_source_configuration() :: #{
+%%   <<"ThroughputHintInMBs">> => integer()
+%% }
+-type direct_put_source_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% extended_s3_destination_description() :: #{
 %%   <<"BucketARN">> => string(),
 %%   <<"BufferingHints">> => buffering_hints(),
@@ -208,6 +214,7 @@
 
 %% Example:
 %% iceberg_destination_update() :: #{
+%%   <<"AppendOnly">> => boolean(),
 %%   <<"BufferingHints">> => buffering_hints(),
 %%   <<"CatalogConfiguration">> => catalog_configuration(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
@@ -265,6 +272,7 @@
 %%   <<"DeliveryStreamEncryptionConfigurationInput">> => delivery_stream_encryption_configuration_input(),
 %%   <<"DeliveryStreamName">> := string(),
 %%   <<"DeliveryStreamType">> => list(any()),
+%%   <<"DirectPutSourceConfiguration">> => direct_put_source_configuration(),
 %%   <<"ElasticsearchDestinationConfiguration">> => elasticsearch_destination_configuration(),
 %%   <<"ExtendedS3DestinationConfiguration">> => extended_s3_destination_configuration(),
 %%   <<"HttpEndpointDestinationConfiguration">> => http_endpoint_destination_configuration(),
@@ -291,6 +299,7 @@
 %% Example:
 %% source_description() :: #{
 %%   <<"DatabaseSourceDescription">> => database_source_description(),
+%%   <<"DirectPutSourceDescription">> => direct_put_source_description(),
 %%   <<"KinesisStreamSourceDescription">> => kinesis_stream_source_description(),
 %%   <<"MSKSourceDescription">> => m_s_k_source_description()
 %% }
@@ -493,6 +502,12 @@
 -type elasticsearch_retry_options() :: #{binary() => any()}.
 
 %% Example:
+%% direct_put_source_description() :: #{
+%%   <<"ThroughputHintInMBs">> => integer()
+%% }
+-type direct_put_source_description() :: #{binary() => any()}.
+
+%% Example:
 %% database_column_list() :: #{
 %%   <<"Exclude">> => list(string()()),
 %%   <<"Include">> => list(string()())
@@ -516,6 +531,7 @@
 
 %% Example:
 %% iceberg_destination_configuration() :: #{
+%%   <<"AppendOnly">> => boolean(),
 %%   <<"BufferingHints">> => buffering_hints(),
 %%   <<"CatalogConfiguration">> => catalog_configuration(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
@@ -898,6 +914,7 @@
 
 %% Example:
 %% iceberg_destination_description() :: #{
+%%   <<"AppendOnly">> => boolean(),
 %%   <<"BufferingHints">> => buffering_hints(),
 %%   <<"CatalogConfiguration">> => catalog_configuration(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),

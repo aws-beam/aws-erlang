@@ -736,7 +736,12 @@
 %% Example:
 %% update_location_smb_request() :: #{
 %%   <<"AgentArns">> => list(string()()),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"DnsIpAddresses">> => list(string()()),
 %%   <<"Domain">> => string(),
+%%   <<"KerberosKeytab">> => binary(),
+%%   <<"KerberosKrb5Conf">> => binary(),
+%%   <<"KerberosPrincipal">> => string(),
 %%   <<"LocationArn">> := string(),
 %%   <<"MountOptions">> => smb_mount_options(),
 %%   <<"Password">> => string(),
@@ -1223,13 +1228,18 @@
 %% Example:
 %% create_location_smb_request() :: #{
 %%   <<"AgentArns">> := list(string()()),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"DnsIpAddresses">> => list(string()()),
 %%   <<"Domain">> => string(),
+%%   <<"KerberosKeytab">> => binary(),
+%%   <<"KerberosKrb5Conf">> => binary(),
+%%   <<"KerberosPrincipal">> => string(),
 %%   <<"MountOptions">> => smb_mount_options(),
-%%   <<"Password">> := string(),
+%%   <<"Password">> => string(),
 %%   <<"ServerHostname">> := string(),
 %%   <<"Subdirectory">> := string(),
 %%   <<"Tags">> => list(tag_list_entry()()),
-%%   <<"User">> := string()
+%%   <<"User">> => string()
 %% }
 -type create_location_smb_request() :: #{binary() => any()}.
 
@@ -1700,8 +1710,11 @@
 %% Example:
 %% describe_location_smb_response() :: #{
 %%   <<"AgentArns">> => list(string()()),
+%%   <<"AuthenticationType">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DnsIpAddresses">> => list(string()()),
 %%   <<"Domain">> => string(),
+%%   <<"KerberosPrincipal">> => string(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
 %%   <<"MountOptions">> => smb_mount_options(),
@@ -2376,10 +2389,10 @@ create_location_s3(Client, Input, Options)
 %% DataSync can use this location as a source or destination for
 %% transferring data.
 %%
-%% Before you begin, make sure that you understand how DataSync
-%% accesses
-%% SMB file servers:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html#configuring-smb.
+%% Before you begin, make sure that you understand how DataSync accesses SMB
+%% file servers. For more information, see Providing DataSync access to SMB
+%% file servers:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html#configuring-smb-permissions.
 -spec create_location_smb(aws_client:aws_client(), create_location_smb_request()) ->
     {ok, create_location_smb_response(), tuple()} |
     {error, any()} |

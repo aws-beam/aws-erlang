@@ -57,6 +57,8 @@
          create_job/5,
          create_license_endpoint/2,
          create_license_endpoint/3,
+         create_limit/3,
+         create_limit/4,
          create_monitor/2,
          create_monitor/3,
          create_queue/3,
@@ -65,6 +67,8 @@
          create_queue_environment/5,
          create_queue_fleet_association/3,
          create_queue_fleet_association/4,
+         create_queue_limit_association/3,
+         create_queue_limit_association/4,
          create_storage_profile/3,
          create_storage_profile/4,
          create_worker/4,
@@ -77,6 +81,8 @@
          delete_fleet/5,
          delete_license_endpoint/3,
          delete_license_endpoint/4,
+         delete_limit/4,
+         delete_limit/5,
          delete_metered_product/4,
          delete_metered_product/5,
          delete_monitor/3,
@@ -87,6 +93,8 @@
          delete_queue_environment/6,
          delete_queue_fleet_association/5,
          delete_queue_fleet_association/6,
+         delete_queue_limit_association/5,
+         delete_queue_limit_association/6,
          delete_storage_profile/4,
          delete_storage_profile/5,
          delete_worker/5,
@@ -114,6 +122,9 @@
          get_license_endpoint/2,
          get_license_endpoint/4,
          get_license_endpoint/5,
+         get_limit/3,
+         get_limit/5,
+         get_limit/6,
          get_monitor/2,
          get_monitor/4,
          get_monitor/5,
@@ -126,6 +137,9 @@
          get_queue_fleet_association/4,
          get_queue_fleet_association/6,
          get_queue_fleet_association/7,
+         get_queue_limit_association/4,
+         get_queue_limit_association/6,
+         get_queue_limit_association/7,
          get_session/5,
          get_session/7,
          get_session/8,
@@ -180,6 +194,9 @@
          list_license_endpoints/1,
          list_license_endpoints/3,
          list_license_endpoints/4,
+         list_limits/2,
+         list_limits/4,
+         list_limits/5,
          list_metered_products/2,
          list_metered_products/4,
          list_metered_products/5,
@@ -192,6 +209,9 @@
          list_queue_fleet_associations/2,
          list_queue_fleet_associations/4,
          list_queue_fleet_associations/5,
+         list_queue_limit_associations/2,
+         list_queue_limit_associations/4,
+         list_queue_limit_associations/5,
          list_queue_members/3,
          list_queue_members/5,
          list_queue_members/6,
@@ -255,6 +275,8 @@
          update_fleet/5,
          update_job/5,
          update_job/6,
+         update_limit/4,
+         update_limit/5,
          update_monitor/3,
          update_monitor/4,
          update_queue/4,
@@ -263,6 +285,8 @@
          update_queue_environment/6,
          update_queue_fleet_association/5,
          update_queue_fleet_association/6,
+         update_queue_limit_association/5,
+         update_queue_limit_association/6,
          update_session/6,
          update_session/7,
          update_step/6,
@@ -523,6 +547,13 @@
 
 
 %% Example:
+%% update_queue_limit_association_request() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_queue_limit_association_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_job_response() :: #{
 %%   <<"jobId">> => string()
 %% }
@@ -610,6 +641,10 @@
 -type list_sessions_for_worker_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_limit_request() :: #{}
+-type get_limit_request() :: #{}.
+
+%% Example:
 %% get_task_request() :: #{}
 -type get_task_request() :: #{}.
 
@@ -669,6 +704,19 @@
 
 
 %% Example:
+%% queue_limit_association_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"limitId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type queue_limit_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_storage_profile_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> => string(),
@@ -685,6 +733,10 @@
 %%   <<"min">> => integer()
 %% }
 -type v_cpu_count_range() :: #{binary() => any()}.
+
+%% Example:
+%% update_limit_response() :: #{}
+-type update_limit_response() :: #{}.
 
 %% Example:
 %% disassociate_member_from_fleet_response() :: #{}
@@ -976,6 +1028,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"maxFailedTasksCount">> => integer(),
 %%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
 %%   <<"parameters">> => map(),
 %%   <<"priority">> := integer(),
 %%   <<"sourceJobId">> => string(),
@@ -985,6 +1038,14 @@
 %%   <<"templateType">> => list(any())
 %% }
 -type create_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_limits_response() :: #{
+%%   <<"limits">> => list(limit_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_limits_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1072,6 +1133,14 @@
 %% }
 -type list_job_members_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_queue_limit_association_request() :: #{
+%%   <<"limitId">> := string(),
+%%   <<"queueId">> := string()
+%% }
+-type create_queue_limit_association_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_monitor_response() :: #{}
 -type update_monitor_response() :: #{}.
@@ -1100,6 +1169,10 @@
 %% Example:
 %% get_session_request() :: #{}
 -type get_session_request() :: #{}.
+
+%% Example:
+%% delete_queue_limit_association_response() :: #{}
+-type delete_queue_limit_association_response() :: #{}.
 
 
 %% Example:
@@ -1189,6 +1262,19 @@
 
 
 %% Example:
+%% get_queue_limit_association_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"limitId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_queue_limit_association_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% step_details_entity() :: #{
 %%   <<"dependencies">> => list(string()()),
 %%   <<"jobId">> => string(),
@@ -1244,6 +1330,16 @@
 %% Example:
 %% delete_storage_profile_response() :: #{}
 -type delete_storage_profile_response() :: #{}.
+
+
+%% Example:
+%% list_queue_limit_associations_request() :: #{
+%%   <<"limitId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queueId">> => string()
+%% }
+-type list_queue_limit_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1323,6 +1419,7 @@
 %%   <<"lifecycleStatusMessage">> => string(),
 %%   <<"maxFailedTasksCount">> => integer(),
 %%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer(),
 %%   <<"sourceJobId">> => string(),
@@ -1489,6 +1586,7 @@
 %%   <<"lifecycleStatus">> => list(any()),
 %%   <<"maxFailedTasksCount">> => integer(),
 %%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
 %%   <<"priority">> => integer(),
 %%   <<"targetTaskRunStatus">> => list(any())
 %% }
@@ -1512,6 +1610,7 @@
 
 %% Example:
 %% get_session_action_response() :: #{
+%%   <<"acquiredLimits">> => list(acquired_limit()()),
 %%   <<"definition">> => list(),
 %%   <<"endedAt">> => non_neg_integer(),
 %%   <<"processExitCode">> => integer(),
@@ -1663,6 +1762,23 @@
 
 
 %% Example:
+%% get_limit_response() :: #{
+%%   <<"amountRequirementName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"currentCount">> => integer(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"limitId">> => string(),
+%%   <<"maxCount">> => integer(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_limit_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% assume_queue_role_for_worker_request() :: #{
 %%   <<"queueId">> := string()
 %% }
@@ -1713,6 +1829,14 @@
 %%   <<"targetLifecycleStatus">> := list(any())
 %% }
 -type update_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_limit_associations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queueLimitAssociations">> => list(queue_limit_association_summary()())
+%% }
+-type list_queue_limit_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1820,6 +1944,22 @@
 
 
 %% Example:
+%% limit_summary() :: #{
+%%   <<"amountRequirementName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"currentCount">> => integer(),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"limitId">> => string(),
+%%   <<"maxCount">> => integer(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type limit_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% environment_exit_session_action_definition_summary() :: #{
 %%   <<"environmentId">> => string()
 %% }
@@ -1832,6 +1972,14 @@
 %%   <<"targetRunStatus">> := list(any())
 %% }
 -type update_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% acquired_limit() :: #{
+%%   <<"count">> => integer(),
+%%   <<"limitId">> => string()
+%% }
+-type acquired_limit() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2057,6 +2205,10 @@
 %% Example:
 %% put_metered_product_response() :: #{}
 -type put_metered_product_response() :: #{}.
+
+%% Example:
+%% delete_limit_response() :: #{}
+-type delete_limit_response() :: #{}.
 
 
 %% Example:
@@ -2324,6 +2476,7 @@
 %%   <<"lifecycleStatusMessage">> => string(),
 %%   <<"maxFailedTasksCount">> => integer(),
 %%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"parameters">> => map(),
 %%   <<"priority">> => integer(),
@@ -2342,6 +2495,17 @@
 %% get_storage_profile_request() :: #{}
 -type get_storage_profile_request() :: #{}.
 
+
+%% Example:
+%% create_limit_request() :: #{
+%%   <<"amountRequirementName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"maxCount">> := integer()
+%% }
+-type create_limit_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_queue_environment_response() :: #{}
 -type update_queue_environment_response() :: #{}.
@@ -2358,6 +2522,10 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type queue_fleet_association_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_limit_request() :: #{}
+-type delete_limit_request() :: #{}.
 
 
 %% Example:
@@ -2549,6 +2717,15 @@
 
 
 %% Example:
+%% update_limit_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"maxCount">> => integer()
+%% }
+-type update_limit_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_queue_fleet_association_request() :: #{
 %%   <<"status">> := list(any())
 %% }
@@ -2608,6 +2785,13 @@
 
 
 %% Example:
+%% create_limit_response() :: #{
+%%   <<"limitId">> => string()
+%% }
+-type create_limit_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_search_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -2618,6 +2802,7 @@
 %%   <<"lifecycleStatusMessage">> => string(),
 %%   <<"maxFailedTasksCount">> => integer(),
 %%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer(),
 %%   <<"queueId">> => string(),
@@ -2786,6 +2971,10 @@
 %% }
 -type log_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% update_queue_limit_association_response() :: #{}
+-type update_queue_limit_association_response() :: #{}.
+
 
 %% Example:
 %% list_fleet_members_response() :: #{
@@ -2809,10 +2998,22 @@
 
 
 %% Example:
+%% list_limits_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_fleet_response() :: #{
 %%   <<"fleetId">> => string()
 %% }
 -type create_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_limit_association_response() :: #{}
+-type create_queue_limit_association_response() :: #{}.
 
 
 %% Example:
@@ -2885,6 +3086,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_queue_members_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_limit_association_request() :: #{}
+-type get_queue_limit_association_request() :: #{}.
+
+%% Example:
+%% delete_queue_limit_association_request() :: #{}
+-type delete_queue_limit_association_request() :: #{}.
 
 
 %% Example:
@@ -3179,6 +3388,14 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type create_limit_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type create_monitor_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
@@ -3203,6 +3420,13 @@
     resource_not_found_exception().
 
 -type create_queue_fleet_association_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type create_queue_limit_association_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
@@ -3255,6 +3479,12 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_limit_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
 -type delete_metered_product_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
@@ -3284,6 +3514,14 @@
     access_denied_exception().
 
 -type delete_queue_fleet_association_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_queue_limit_association_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
@@ -3370,6 +3608,13 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type get_limit_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_monitor_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
@@ -3392,6 +3637,13 @@
     resource_not_found_exception().
 
 -type get_queue_fleet_association_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_queue_limit_association_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
@@ -3520,6 +3772,13 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type list_limits_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type list_metered_products_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
@@ -3541,6 +3800,12 @@
     resource_not_found_exception().
 
 -type list_queue_fleet_associations_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_queue_limit_associations_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     access_denied_exception() | 
@@ -3725,6 +3990,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_limit_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type update_monitor_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
@@ -3747,6 +4019,13 @@
     resource_not_found_exception().
 
 -type update_queue_fleet_association_errors() ::
+    throttling_exception() | 
+    internal_server_error_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_queue_limit_association_errors() ::
     throttling_exception() | 
     internal_server_error_exception() | 
     validation_exception() | 
@@ -4326,7 +4605,7 @@ create_fleet(Client, FarmId, Input0, Options0) ->
 
 %% @doc Creates a job.
 %%
-%% A job is a set of instructions that AWS Deadline Cloud uses to schedule
+%% A job is a set of instructions that Deadline Cloud uses to schedule
 %% and run work on available workers. For more information, see Deadline
 %% Cloud
 %% jobs:
@@ -4383,6 +4662,53 @@ create_license_endpoint(Client, Input) ->
 create_license_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2023-10-12/license-endpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amz-Client-Token">>, <<"clientToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a limit that manages the distribution of shared resources,
+%% such as floating
+%% licenses.
+%%
+%% A limit can throttle work assignments, help manage workloads, and track
+%% current
+%% usage. Before you use a limit, you must associate the limit with one or
+%% more queues.
+%%
+%% You must add the `amountRequirementName' to a step in a job template
+%% to
+%% declare the limit requirement.
+-spec create_limit(aws_client:aws_client(), binary() | list(), create_limit_request()) ->
+    {ok, create_limit_response(), tuple()} |
+    {error, any()} |
+    {error, create_limit_errors(), tuple()}.
+create_limit(Client, FarmId, Input) ->
+    create_limit(Client, FarmId, Input, []).
+
+-spec create_limit(aws_client:aws_client(), binary() | list(), create_limit_request(), proplists:proplist()) ->
+    {ok, create_limit_response(), tuple()} |
+    {error, any()} |
+    {error, create_limit_errors(), tuple()}.
+create_limit(Client, FarmId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/limits"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4538,6 +4864,47 @@ create_queue_fleet_association(Client, FarmId, Input) ->
 create_queue_fleet_association(Client, FarmId, Input0, Options0) ->
     Method = put,
     Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-fleet-associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a limit with a particular queue.
+%%
+%% After the limit is associated, all workers
+%% for jobs that specify the limit associated with the queue are subject to
+%% the limit. You
+%% can't associate two limits with the same `amountRequirementName'
+%% to the same
+%% queue.
+-spec create_queue_limit_association(aws_client:aws_client(), binary() | list(), create_queue_limit_association_request()) ->
+    {ok, create_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_queue_limit_association_errors(), tuple()}.
+create_queue_limit_association(Client, FarmId, Input) ->
+    create_queue_limit_association(Client, FarmId, Input, []).
+
+-spec create_queue_limit_association(aws_client:aws_client(), binary() | list(), create_queue_limit_association_request(), proplists:proplist()) ->
+    {ok, create_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_queue_limit_association_errors(), tuple()}.
+create_queue_limit_association(Client, FarmId, Input0, Options0) ->
+    Method = put,
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-limit-associations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4776,6 +5143,45 @@ delete_license_endpoint(Client, LicenseEndpointId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a limit from the specified farm.
+%%
+%% Before you delete a limit you must use the
+%% `DeleteQueueLimitAssociation' operation to remove the association with
+%% any
+%% queues.
+-spec delete_limit(aws_client:aws_client(), binary() | list(), binary() | list(), delete_limit_request()) ->
+    {ok, delete_limit_response(), tuple()} |
+    {error, any()} |
+    {error, delete_limit_errors(), tuple()}.
+delete_limit(Client, FarmId, LimitId, Input) ->
+    delete_limit(Client, FarmId, LimitId, Input, []).
+
+-spec delete_limit(aws_client:aws_client(), binary() | list(), binary() | list(), delete_limit_request(), proplists:proplist()) ->
+    {ok, delete_limit_response(), tuple()} |
+    {error, any()} |
+    {error, delete_limit_errors(), tuple()}.
+delete_limit(Client, FarmId, LimitId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/limits/", aws_util:encode_uri(LimitId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a metered product.
 -spec delete_metered_product(aws_client:aws_client(), binary() | list(), binary() | list(), delete_metered_product_request()) ->
     {ok, delete_metered_product_response(), tuple()} |
@@ -4934,6 +5340,49 @@ delete_queue_fleet_association(Client, FarmId, FleetId, QueueId, Input) ->
 delete_queue_fleet_association(Client, FarmId, FleetId, QueueId, Input0, Options0) ->
     Method = delete,
     Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-fleet-associations/", aws_util:encode_uri(QueueId), "/", aws_util:encode_uri(FleetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the association between a queue and a limit.
+%%
+%% You must use the
+%% `UpdateQueueLimitAssociation' operation to set the status to
+%% `STOP_LIMIT_USAGE_AND_COMPLETE_TASKS' or
+%% `STOP_LIMIT_USAGE_AND_CANCEL_TASKS'. The status does not change
+%% immediately.
+%% Use the `GetQueueLimitAssociation' operation to see if the status
+%% changed to
+%% `STOPPED' before deleting the association.
+-spec delete_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_queue_limit_association_request()) ->
+    {ok, delete_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_queue_limit_association_errors(), tuple()}.
+delete_queue_limit_association(Client, FarmId, LimitId, QueueId, Input) ->
+    delete_queue_limit_association(Client, FarmId, LimitId, QueueId, Input, []).
+
+-spec delete_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_queue_limit_association_request(), proplists:proplist()) ->
+    {ok, delete_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_queue_limit_association_errors(), tuple()}.
+delete_queue_limit_association(Client, FarmId, LimitId, QueueId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-limit-associations/", aws_util:encode_uri(QueueId), "/", aws_util:encode_uri(LimitId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5342,6 +5791,43 @@ get_license_endpoint(Client, LicenseEndpointId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about a specific limit.
+-spec get_limit(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_limit_response(), tuple()} |
+    {error, any()} |
+    {error, get_limit_errors(), tuple()}.
+get_limit(Client, FarmId, LimitId)
+  when is_map(Client) ->
+    get_limit(Client, FarmId, LimitId, #{}, #{}).
+
+-spec get_limit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_limit_response(), tuple()} |
+    {error, any()} |
+    {error, get_limit_errors(), tuple()}.
+get_limit(Client, FarmId, LimitId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_limit(Client, FarmId, LimitId, QueryMap, HeadersMap, []).
+
+-spec get_limit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_limit_response(), tuple()} |
+    {error, any()} |
+    {error, get_limit_errors(), tuple()}.
+get_limit(Client, FarmId, LimitId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/limits/", aws_util:encode_uri(LimitId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about the specified monitor.
 -spec get_monitor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_monitor_response(), tuple()} |
@@ -5477,6 +5963,44 @@ get_queue_fleet_association(Client, FarmId, FleetId, QueueId, QueryMap, HeadersM
 get_queue_fleet_association(Client, FarmId, FleetId, QueueId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-fleet-associations/", aws_util:encode_uri(QueueId), "/", aws_util:encode_uri(FleetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about a specific association between a queue and a
+%% limit.
+-spec get_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_queue_limit_association_errors(), tuple()}.
+get_queue_limit_association(Client, FarmId, LimitId, QueueId)
+  when is_map(Client) ->
+    get_queue_limit_association(Client, FarmId, LimitId, QueueId, #{}, #{}).
+
+-spec get_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_queue_limit_association_errors(), tuple()}.
+get_queue_limit_association(Client, FarmId, LimitId, QueueId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_queue_limit_association(Client, FarmId, LimitId, QueueId, QueryMap, HeadersMap, []).
+
+-spec get_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_queue_limit_association_errors(), tuple()}.
+get_queue_limit_association(Client, FarmId, LimitId, QueueId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-limit-associations/", aws_util:encode_uri(QueueId), "/", aws_util:encode_uri(LimitId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6225,6 +6749,48 @@ list_license_endpoints(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a list of limits defined in the specified farm.
+-spec list_limits(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_limits_response(), tuple()} |
+    {error, any()} |
+    {error, list_limits_errors(), tuple()}.
+list_limits(Client, FarmId)
+  when is_map(Client) ->
+    list_limits(Client, FarmId, #{}, #{}).
+
+-spec list_limits(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_limits_response(), tuple()} |
+    {error, any()} |
+    {error, list_limits_errors(), tuple()}.
+list_limits(Client, FarmId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_limits(Client, FarmId, QueryMap, HeadersMap, []).
+
+-spec list_limits(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_limits_response(), tuple()} |
+    {error, any()} |
+    {error, list_limits_errors(), tuple()}.
+list_limits(Client, FarmId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/limits"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists metered products.
 -spec list_metered_products(aws_client:aws_client(), binary() | list()) ->
     {ok, list_metered_products_response(), tuple()} |
@@ -6387,6 +6953,51 @@ list_queue_fleet_associations(Client, FarmId, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"fleetId">>, maps:get(<<"fleetId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"queueId">>, maps:get(<<"queueId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a list of the associations between queues and limits defined in
+%% a farm.
+-spec list_queue_limit_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_queue_limit_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_queue_limit_associations_errors(), tuple()}.
+list_queue_limit_associations(Client, FarmId)
+  when is_map(Client) ->
+    list_queue_limit_associations(Client, FarmId, #{}, #{}).
+
+-spec list_queue_limit_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_queue_limit_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_queue_limit_associations_errors(), tuple()}.
+list_queue_limit_associations(Client, FarmId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_queue_limit_associations(Client, FarmId, QueryMap, HeadersMap, []).
+
+-spec list_queue_limit_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_queue_limit_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_queue_limit_associations_errors(), tuple()}.
+list_queue_limit_associations(Client, FarmId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-limit-associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"limitId">>, maps:get(<<"limitId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"queueId">>, maps:get(<<"queueId">>, QueryMap, undefined)}
@@ -7376,6 +7987,40 @@ update_job(Client, FarmId, JobId, QueueId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the properties of the specified limit.
+-spec update_limit(aws_client:aws_client(), binary() | list(), binary() | list(), update_limit_request()) ->
+    {ok, update_limit_response(), tuple()} |
+    {error, any()} |
+    {error, update_limit_errors(), tuple()}.
+update_limit(Client, FarmId, LimitId, Input) ->
+    update_limit(Client, FarmId, LimitId, Input, []).
+
+-spec update_limit(aws_client:aws_client(), binary() | list(), binary() | list(), update_limit_request(), proplists:proplist()) ->
+    {ok, update_limit_response(), tuple()} |
+    {error, any()} |
+    {error, update_limit_errors(), tuple()}.
+update_limit(Client, FarmId, LimitId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/limits/", aws_util:encode_uri(LimitId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Modifies the settings for a Deadline Cloud monitor.
 %%
 %% You can modify one or all of the settings
@@ -7500,6 +8145,44 @@ update_queue_fleet_association(Client, FarmId, FleetId, QueueId, Input) ->
 update_queue_fleet_association(Client, FarmId, FleetId, QueueId, Input0, Options0) ->
     Method = patch,
     Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-fleet-associations/", aws_util:encode_uri(QueueId), "/", aws_util:encode_uri(FleetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status of the queue.
+%%
+%% If you set the status to one of the
+%% `STOP_LIMIT_USAGE*' values, there will be a delay before the status
+%% transitions to the `STOPPED' state.
+-spec update_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_queue_limit_association_request()) ->
+    {ok, update_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_queue_limit_association_errors(), tuple()}.
+update_queue_limit_association(Client, FarmId, LimitId, QueueId, Input) ->
+    update_queue_limit_association(Client, FarmId, LimitId, QueueId, Input, []).
+
+-spec update_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_queue_limit_association_request(), proplists:proplist()) ->
+    {ok, update_queue_limit_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_queue_limit_association_errors(), tuple()}.
+update_queue_limit_association(Client, FarmId, LimitId, QueueId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/2023-10-12/farms/", aws_util:encode_uri(FarmId), "/queue-limit-associations/", aws_util:encode_uri(QueueId), "/", aws_util:encode_uri(LimitId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
