@@ -1226,12 +1226,14 @@
 
 -type batch_delete_bill_scenario_commitment_modification_errors() ::
     data_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type batch_delete_bill_scenario_usage_modification_errors() ::
     data_unavailable_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type batch_delete_workload_estimate_usage_errors() ::
     data_unavailable_exception() | 
@@ -1240,12 +1242,14 @@
 
 -type batch_update_bill_scenario_commitment_modification_errors() ::
     data_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type batch_update_bill_scenario_usage_modification_errors() ::
     data_unavailable_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type batch_update_workload_estimate_usage_errors() ::
     data_unavailable_exception() | 
@@ -1272,7 +1276,8 @@
     conflict_exception().
 
 -type delete_bill_scenario_errors() ::
-    data_unavailable_exception().
+    data_unavailable_exception() | 
+    conflict_exception().
 
 -type delete_workload_estimate_errors() ::
     data_unavailable_exception().
@@ -1365,6 +1370,13 @@
 %% @doc
 %% Create Compute Savings Plans, EC2 Instance Savings Plans, or EC2 Reserved
 %% Instances commitments that you want to model in a Bill Scenario.
+%%
+%% The `BatchCreateBillScenarioCommitmentModification' operation
+%% doesn't have its own IAM permission. To authorize this operation for
+%% Amazon Web Services principals,
+%% include the permission
+%% `bcm-pricing-calculator:CreateBillScenarioCommitmentModification' in
+%% your policies.
 -spec batch_create_bill_scenario_commitment_modification(aws_client:aws_client(), batch_create_bill_scenario_commitment_modification_request()) ->
     {ok, batch_create_bill_scenario_commitment_modification_response(), tuple()} |
     {error, any()} |
@@ -1384,6 +1396,13 @@ batch_create_bill_scenario_commitment_modification(Client, Input, Options)
 %% @doc
 %% Create Amazon Web Services service usage that you want to model in a Bill
 %% Scenario.
+%%
+%% The `BatchCreateBillScenarioUsageModification' operation doesn't
+%% have its own IAM permission. To authorize this operation for Amazon Web
+%% Services principals,
+%% include the permission
+%% `bcm-pricing-calculator:CreateBillScenarioUsageModification' in your
+%% policies.
 -spec batch_create_bill_scenario_usage_modification(aws_client:aws_client(), batch_create_bill_scenario_usage_modification_request()) ->
     {ok, batch_create_bill_scenario_usage_modification_response(), tuple()} |
     {error, any()} |
@@ -1403,6 +1422,12 @@ batch_create_bill_scenario_usage_modification(Client, Input, Options)
 %% @doc
 %% Create Amazon Web Services service usage that you want to model in a
 %% Workload Estimate.
+%%
+%% The `BatchCreateWorkloadEstimateUsage' operation doesn't have its
+%% own IAM permission. To authorize this operation for Amazon Web Services
+%% principals,
+%% include the permission
+%% `bcm-pricing-calculator:CreateWorkloadEstimateUsage' in your policies.
 -spec batch_create_workload_estimate_usage(aws_client:aws_client(), batch_create_workload_estimate_usage_request()) ->
     {ok, batch_create_workload_estimate_usage_response(), tuple()} |
     {error, any()} |
@@ -1433,6 +1458,13 @@ batch_create_workload_estimate_usage(Client, Input, Options)
 %% BatchCreateBillScenarioCommitmentModification:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioUsageModification.html
 %% operation.
+%%
+%% The `BatchDeleteBillScenarioCommitmentModification' operation
+%% doesn't have its own IAM permission. To authorize this operation for
+%% Amazon Web Services principals,
+%% include the permission
+%% `bcm-pricing-calculator:DeleteBillScenarioCommitmentModification' in
+%% your policies.
 -spec batch_delete_bill_scenario_commitment_modification(aws_client:aws_client(), batch_delete_bill_scenario_commitment_modification_request()) ->
     {ok, batch_delete_bill_scenario_commitment_modification_response(), tuple()} |
     {error, any()} |
@@ -1458,6 +1490,13 @@ batch_delete_bill_scenario_commitment_modification(Client, Input, Options)
 %%
 %% BatchUpdateBillScenarioUsageModification:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioUsageModification.html.
+%%
+%% The `BatchDeleteBillScenarioUsageModification' operation doesn't
+%% have its own IAM permission. To authorize this operation for Amazon Web
+%% Services principals,
+%% include the permission
+%% `bcm-pricing-calculator:DeleteBillScenarioUsageModification' in your
+%% policies.
 -spec batch_delete_bill_scenario_usage_modification(aws_client:aws_client(), batch_delete_bill_scenario_usage_modification_request()) ->
     {ok, batch_delete_bill_scenario_usage_modification_response(), tuple()} |
     {error, any()} |
@@ -1483,6 +1522,12 @@ batch_delete_bill_scenario_usage_modification(Client, Input, Options)
 %%
 %% BatchUpdateWorkloadEstimateUsage:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateWorkloadEstimateUsage.html.
+%%
+%% The `BatchDeleteWorkloadEstimateUsage' operation doesn't have its
+%% own IAM permission. To authorize this operation for Amazon Web Services
+%% principals,
+%% include the permission
+%% `bcm-pricing-calculator:DeleteWorkloadEstimateUsage' in your policies.
 -spec batch_delete_workload_estimate_usage(aws_client:aws_client(), batch_delete_workload_estimate_usage_request()) ->
     {ok, batch_delete_workload_estimate_usage_response(), tuple()} |
     {error, any()} |
@@ -1504,6 +1549,13 @@ batch_delete_workload_estimate_usage(Client, Input, Options)
 %%
 %% You can update the commitment group based on a commitment ID and a Bill
 %% scenario ID.
+%%
+%% The `BatchUpdateBillScenarioCommitmentModification' operation
+%% doesn't have its own IAM permission. To authorize this operation for
+%% Amazon Web Services principals,
+%% include the permission
+%% `bcm-pricing-calculator:UpdateBillScenarioCommitmentModification' in
+%% your policies.
 -spec batch_update_bill_scenario_commitment_modification(aws_client:aws_client(), batch_update_bill_scenario_commitment_modification_request()) ->
     {ok, batch_update_bill_scenario_commitment_modification_response(), tuple()} |
     {error, any()} |
@@ -1525,6 +1577,13 @@ batch_update_bill_scenario_commitment_modification(Client, Input, Options)
 %%
 %% You can update the usage amounts, usage hour, and usage group based on a
 %% usage ID and a Bill scenario ID.
+%%
+%% The `BatchUpdateBillScenarioUsageModification' operation doesn't
+%% have its own IAM permission. To authorize this operation for Amazon Web
+%% Services principals,
+%% include the permission
+%% `bcm-pricing-calculator:UpdateBillScenarioUsageModification' in your
+%% policies.
 -spec batch_update_bill_scenario_usage_modification(aws_client:aws_client(), batch_update_bill_scenario_usage_modification_request()) ->
     {ok, batch_update_bill_scenario_usage_modification_response(), tuple()} |
     {error, any()} |
@@ -1546,6 +1605,12 @@ batch_update_bill_scenario_usage_modification(Client, Input, Options)
 %%
 %% You can update the usage amounts and usage group based on a usage ID and a
 %% Workload estimate ID.
+%%
+%% The `BatchUpdateWorkloadEstimateUsage' operation doesn't have its
+%% own IAM permission. To authorize this operation for Amazon Web Services
+%% principals,
+%% include the permission
+%% `bcm-pricing-calculator:UpdateWorkloadEstimateUsage' in your policies.
 -spec batch_update_workload_estimate_usage(aws_client:aws_client(), batch_update_workload_estimate_usage_request()) ->
     {ok, batch_update_workload_estimate_usage_response(), tuple()} |
     {error, any()} |

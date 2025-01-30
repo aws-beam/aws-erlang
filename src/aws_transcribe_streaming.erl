@@ -1,10 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Transcribe streaming offers three main types of real-time
+%% @doc Amazon Transcribe streaming offers four main types of real-time
 %% transcription:
-%% Standard, Medical, and
-%% Call Analytics.
+%% Standard, Medical,
+%% Call Analytics,
+%% and Health Scribe.
 %%
 %% Standard transcriptions are the most common option. Refer
 %% to for details.
@@ -20,10 +21,20 @@
 %% center audio on two different channels; if you're looking for insight
 %% into customer service calls, use this
 %% option. Refer to for details.
+%%
+%% HealthScribe transcriptions are designed to
+%% automatically create clinical notes from patient-clinician conversations
+%% using generative AI.
+%% Refer to [here] for details.
 -module(aws_transcribe_streaming).
 
--export([start_call_analytics_stream_transcription/2,
+-export([get_medical_scribe_stream/2,
+         get_medical_scribe_stream/4,
+         get_medical_scribe_stream/5,
+         start_call_analytics_stream_transcription/2,
          start_call_analytics_stream_transcription/3,
+         start_medical_scribe_stream/2,
+         start_medical_scribe_stream/3,
          start_medical_stream_transcription/2,
          start_medical_stream_transcription/3,
          start_stream_transcription/2,
@@ -59,6 +70,26 @@
 
 
 %% Example:
+%% medical_scribe_encryption_settings() :: #{
+%%   <<"KmsEncryptionContext">> => map(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type medical_scribe_encryption_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_medical_scribe_stream_response() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"MediaEncoding">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResultStream">> => list(),
+%%   <<"SessionId">> => string()
+%% }
+-type start_medical_scribe_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_failure_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -70,6 +101,41 @@
 %%   <<"TimestampRanges">> => list(timestamp_range()())
 %% }
 -type points_of_interest() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_stream_details() :: #{
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()()),
+%%   <<"EncryptionSettings">> => medical_scribe_encryption_settings(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"MediaEncoding">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"PostStreamAnalyticsResult">> => medical_scribe_post_stream_analytics_result(),
+%%   <<"PostStreamAnalyticsSettings">> => medical_scribe_post_stream_analytics_settings(),
+%%   <<"ResourceAccessRoleArn">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"StreamCreatedAt">> => non_neg_integer(),
+%%   <<"StreamEndedAt">> => non_neg_integer(),
+%%   <<"StreamStatus">> => list(any()),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyName">> => string()
+%% }
+-type medical_scribe_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_audio_event() :: #{
+%%   <<"AudioChunk">> => binary()
+%% }
+-type medical_scribe_audio_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_post_stream_analytics_settings() :: #{
+%%   <<"ClinicalNoteGenerationSettings">> => clinical_note_generation_settings()
+%% }
+-type medical_scribe_post_stream_analytics_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -100,6 +166,13 @@
 
 
 %% Example:
+%% clinical_note_generation_settings() :: #{
+%%   <<"OutputBucketName">> => string()
+%% }
+-type clinical_note_generation_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% medical_alternative() :: #{
 %%   <<"Entities">> => list(medical_entity()()),
 %%   <<"Items">> => list(medical_item()()),
@@ -114,6 +187,26 @@
 %%   <<"MatchedDetails">> => map()
 %% }
 -type category_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_post_stream_analytics_result() :: #{
+%%   <<"ClinicalNoteGenerationResult">> => clinical_note_generation_result()
+%% }
+-type medical_scribe_post_stream_analytics_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_configuration_event() :: #{
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()()),
+%%   <<"EncryptionSettings">> => medical_scribe_encryption_settings(),
+%%   <<"PostStreamAnalyticsSettings">> => medical_scribe_post_stream_analytics_settings(),
+%%   <<"ResourceAccessRoleArn">> => string(),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyName">> => string()
+%% }
+-type medical_scribe_configuration_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -132,6 +225,13 @@
 
 
 %% Example:
+%% medical_scribe_transcript_event() :: #{
+%%   <<"TranscriptSegment">> => medical_scribe_transcript_segment()
+%% }
+-type medical_scribe_transcript_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% medical_entity() :: #{
 %%   <<"Category">> => string(),
 %%   <<"Confidence">> => float(),
@@ -147,6 +247,13 @@
 %%   <<"Results">> => list(medical_result()())
 %% }
 -type medical_transcript() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_medical_scribe_stream_response() :: #{
+%%   <<"MedicalScribeStreamDetails">> => medical_scribe_stream_details()
+%% }
+-type get_medical_scribe_stream_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -208,6 +315,13 @@
 %%   <<"VocabularyName">> => string()
 %% }
 -type start_medical_stream_transcription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -389,6 +503,21 @@
 
 
 %% Example:
+%% start_medical_scribe_stream_request() :: #{
+%%   <<"InputStream">> := list(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"MediaEncoding">> := list(any()),
+%%   <<"MediaSampleRateHertz">> := integer(),
+%%   <<"SessionId">> => string()
+%% }
+-type start_medical_scribe_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_scribe_stream_request() :: #{}
+-type get_medical_scribe_stream_request() :: #{}.
+
+
+%% Example:
 %% utterance_event() :: #{
 %%   <<"BeginOffsetMillis">> => float(),
 %%   <<"EndOffsetMillis">> => float(),
@@ -405,6 +534,18 @@
 
 
 %% Example:
+%% medical_scribe_transcript_item() :: #{
+%%   <<"BeginAudioTime">> => float(),
+%%   <<"Confidence">> => float(),
+%%   <<"Content">> => string(),
+%%   <<"EndAudioTime">> => float(),
+%%   <<"Type">> => list(any()),
+%%   <<"VocabularyFilterMatch">> => boolean()
+%% }
+-type medical_scribe_transcript_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -412,10 +553,30 @@
 
 
 %% Example:
+%% medical_scribe_session_control_event() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type medical_scribe_session_control_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_transcript_segment() :: #{
+%%   <<"BeginAudioTime">> => float(),
+%%   <<"ChannelId">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"EndAudioTime">> => float(),
+%%   <<"IsPartial">> => boolean(),
+%%   <<"Items">> => list(medical_scribe_transcript_item()()),
+%%   <<"SegmentId">> => string()
+%% }
+-type medical_scribe_transcript_segment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -431,10 +592,28 @@
 
 
 %% Example:
+%% medical_scribe_channel_definition() :: #{
+%%   <<"ChannelId">> => integer(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type medical_scribe_channel_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% transcript_event() :: #{
 %%   <<"Transcript">> => transcript()
 %% }
 -type transcript_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% clinical_note_generation_result() :: #{
+%%   <<"ClinicalNoteOutputLocation">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TranscriptOutputLocation">> => string()
+%% }
+-type clinical_note_generation_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -445,7 +624,20 @@
 %% }
 -type alternative() :: #{binary() => any()}.
 
+-type get_medical_scribe_stream_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type start_call_analytics_stream_transcription_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type start_medical_scribe_stream_errors() ::
     bad_request_exception() | 
     limit_exceeded_exception() | 
     service_unavailable_exception() | 
@@ -469,6 +661,49 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Provides details about the specified Amazon Web Services HealthScribe
+%% streaming session.
+%%
+%% To view the status of the streaming session, check the `StreamStatus'
+%% field in the response. To get the
+%% details of post-stream analytics, including its status, check the
+%% `PostStreamAnalyticsResult' field in the response.
+-spec get_medical_scribe_stream(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_medical_scribe_stream_response(), tuple()} |
+    {error, any()} |
+    {error, get_medical_scribe_stream_errors(), tuple()}.
+get_medical_scribe_stream(Client, SessionId)
+  when is_map(Client) ->
+    get_medical_scribe_stream(Client, SessionId, #{}, #{}).
+
+-spec get_medical_scribe_stream(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_medical_scribe_stream_response(), tuple()} |
+    {error, any()} |
+    {error, get_medical_scribe_stream_errors(), tuple()}.
+get_medical_scribe_stream(Client, SessionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_medical_scribe_stream(Client, SessionId, QueryMap, HeadersMap, []).
+
+-spec get_medical_scribe_stream(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_medical_scribe_stream_response(), tuple()} |
+    {error, any()} |
+    {error, get_medical_scribe_stream_errors(), tuple()}.
+get_medical_scribe_stream(Client, SessionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/medical-scribe-stream/", aws_util:encode_uri(SessionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts a bidirectional HTTP/2 or WebSocket stream where audio is
 %% streamed to
@@ -554,6 +789,104 @@ start_call_analytics_stream_transcription(Client, Input0, Options0) ->
             {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
             {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
             {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Starts a bidirectional HTTP/2 stream, where audio is streamed to
+%% Amazon Web Services HealthScribe
+%% and the transcription results are streamed to your application.
+%%
+%% When you start a stream, you first specify the stream configuration in a
+%% `MedicalScribeConfigurationEvent'.
+%% This event includes channel definitions, encryption settings, and
+%% post-stream analytics settings, such as the output configuration for
+%% aggregated transcript and clinical note generation. These are additional
+%% streaming session configurations beyond those provided in your initial
+%% start request headers. Whether you are starting a new session or resuming
+%% an existing session,
+%% your first event must be a `MedicalScribeConfigurationEvent'.
+%%
+%% After you send a `MedicalScribeConfigurationEvent', you start
+%% `AudioEvents' and Amazon Web Services HealthScribe
+%% responds with real-time transcription results. When you are finished, to
+%% start processing the results with the post-stream analytics, send a
+%% `MedicalScribeSessionControlEvent' with a `Type' of
+%% `END_OF_SESSION' and Amazon Web Services HealthScribe starts the
+%% analytics.
+%%
+%% You can pause or resume streaming.
+%% To pause streaming, complete the input stream without sending the
+%% `MedicalScribeSessionControlEvent'.
+%% To resume streaming, call the `StartMedicalScribeStream' and specify
+%% the same SessionId you used to start the stream.
+%%
+%% The following parameters are required:
+%%
+%% `language-code'
+%%
+%% `media-encoding'
+%%
+%% `media-sample-rate-hertz'
+%%
+%% For more information on streaming with
+%% Amazon Web Services HealthScribe,
+%% see Amazon Web Services HealthScribe:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/health-scribe-streaming.html.
+-spec start_medical_scribe_stream(aws_client:aws_client(), start_medical_scribe_stream_request()) ->
+    {ok, start_medical_scribe_stream_response(), tuple()} |
+    {error, any()} |
+    {error, start_medical_scribe_stream_errors(), tuple()}.
+start_medical_scribe_stream(Client, Input) ->
+    start_medical_scribe_stream(Client, Input, []).
+
+-spec start_medical_scribe_stream(aws_client:aws_client(), start_medical_scribe_stream_request(), proplists:proplist()) ->
+    {ok, start_medical_scribe_stream_response(), tuple()} |
+    {error, any()} |
+    {error, start_medical_scribe_stream_errors(), tuple()}.
+start_medical_scribe_stream(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/medical-scribe-stream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
+                       {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
+                       {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
+                       {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
+            {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
+            {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
+            {<<"x-amzn-request-id">>, <<"RequestId">>},
+            {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of

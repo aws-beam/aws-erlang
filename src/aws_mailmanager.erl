@@ -21,6 +21,10 @@
          create_addon_instance/3,
          create_addon_subscription/2,
          create_addon_subscription/3,
+         create_address_list/2,
+         create_address_list/3,
+         create_address_list_import_job/2,
+         create_address_list_import_job/3,
          create_archive/2,
          create_archive/3,
          create_ingress_point/2,
@@ -35,6 +39,8 @@
          delete_addon_instance/3,
          delete_addon_subscription/2,
          delete_addon_subscription/3,
+         delete_address_list/2,
+         delete_address_list/3,
          delete_archive/2,
          delete_archive/3,
          delete_ingress_point/2,
@@ -45,10 +51,16 @@
          delete_rule_set/3,
          delete_traffic_policy/2,
          delete_traffic_policy/3,
+         deregister_member_from_address_list/2,
+         deregister_member_from_address_list/3,
          get_addon_instance/2,
          get_addon_instance/3,
          get_addon_subscription/2,
          get_addon_subscription/3,
+         get_address_list/2,
+         get_address_list/3,
+         get_address_list_import_job/2,
+         get_address_list_import_job/3,
          get_archive/2,
          get_archive/3,
          get_archive_export/2,
@@ -63,6 +75,8 @@
          get_archive_search_results/3,
          get_ingress_point/2,
          get_ingress_point/3,
+         get_member_of_address_list/2,
+         get_member_of_address_list/3,
          get_relay/2,
          get_relay/3,
          get_rule_set/2,
@@ -73,6 +87,10 @@
          list_addon_instances/3,
          list_addon_subscriptions/2,
          list_addon_subscriptions/3,
+         list_address_list_import_jobs/2,
+         list_address_list_import_jobs/3,
+         list_address_lists/2,
+         list_address_lists/3,
          list_archive_exports/2,
          list_archive_exports/3,
          list_archive_searches/2,
@@ -81,6 +99,8 @@
          list_archives/3,
          list_ingress_points/2,
          list_ingress_points/3,
+         list_members_of_address_list/2,
+         list_members_of_address_list/3,
          list_relays/2,
          list_relays/3,
          list_rule_sets/2,
@@ -89,10 +109,16 @@
          list_tags_for_resource/3,
          list_traffic_policies/2,
          list_traffic_policies/3,
+         register_member_to_address_list/2,
+         register_member_to_address_list/3,
+         start_address_list_import_job/2,
+         start_address_list_import_job/3,
          start_archive_export/2,
          start_archive_export/3,
          start_archive_search/2,
          start_archive_search/3,
+         stop_address_list_import_job/2,
+         stop_address_list_import_job/3,
          stop_archive_export/2,
          stop_archive_export/3,
          stop_archive_search/2,
@@ -122,6 +148,12 @@
 -type create_addon_instance_response() :: #{binary() => any()}.
 
 %% Example:
+%% import_data_format() :: #{
+%%   <<"ImportDataType">> => list(any())
+%% }
+-type import_data_format() :: #{binary() => any()}.
+
+%% Example:
 %% list_traffic_policies_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
@@ -148,6 +180,29 @@
 %%   <<"SmtpPasswordVersion">> => [string()]
 %% }
 -type ingress_point_password_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_address_list_import_job_response() :: #{
+%%   <<"AddressListId">> => string(),
+%%   <<"CompletedTimestamp">> => [non_neg_integer()],
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"Error">> => string(),
+%%   <<"FailedItemsCount">> => integer(),
+%%   <<"ImportDataFormat">> => import_data_format(),
+%%   <<"ImportedItemsCount">> => integer(),
+%%   <<"JobId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"StartTimestamp">> => [non_neg_integer()],
+%%   <<"Status">> => list(any())
+%% }
+-type get_address_list_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_address_list_import_job_response() :: #{
+
+%% }
+-type start_address_list_import_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -239,6 +294,13 @@
 -type create_traffic_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_address_lists_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_address_lists_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_addon_instance_request() :: #{
 %%   <<"AddonSubscriptionId">> := string(),
 %%   <<"ClientToken">> => string(),
@@ -266,6 +328,14 @@
 -type relay_action() :: #{binary() => any()}.
 
 %% Example:
+%% create_address_list_request() :: #{
+%%   <<"AddressListName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_address_list_request() :: #{binary() => any()}.
+
+%% Example:
 %% rule_number_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
@@ -283,6 +353,12 @@
 -type export_status() :: #{binary() => any()}.
 
 %% Example:
+%% delete_address_list_response() :: #{
+
+%% }
+-type delete_address_list_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_archive_search_response() :: #{
 %%   <<"ArchiveId">> => string(),
 %%   <<"Filters">> => archive_filters(),
@@ -298,6 +374,15 @@
 
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_members_of_address_list_request() :: #{
+%%   <<"AddressListId">> := string(),
+%%   <<"Filter">> => address_filter(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_members_of_address_list_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_relay_response() :: #{
@@ -321,6 +406,12 @@
 %%   <<"S3SseKmsKeyId">> => string()
 %% }
 -type s3_action() :: #{binary() => any()}.
+
+%% Example:
+%% stop_address_list_import_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_address_list_import_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_addon_subscriptions_response() :: #{
@@ -405,6 +496,12 @@
 -type message_body() :: #{binary() => any()}.
 
 %% Example:
+%% get_address_list_import_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type get_address_list_import_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_rule_set_response() :: #{
 
 %% }
@@ -467,6 +564,16 @@
 -type get_ingress_point_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_address_list_response() :: #{
+%%   <<"AddressListArn">> => string(),
+%%   <<"AddressListId">> => string(),
+%%   <<"AddressListName">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()]
+%% }
+-type get_address_list_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_archive_message_request() :: #{
 %%   <<"ArchivedMessageId">> := string()
 %% }
@@ -478,6 +585,12 @@
 %%   <<"Operator">> => list(any())
 %% }
 -type rule_boolean_expression() :: #{binary() => any()}.
+
+%% Example:
+%% start_address_list_import_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type start_address_list_import_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% send_action() :: #{
@@ -520,6 +633,12 @@
 -type get_relay_request() :: #{binary() => any()}.
 
 %% Example:
+%% register_member_to_address_list_response() :: #{
+
+%% }
+-type register_member_to_address_list_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_archive_response() :: #{
 
 %% }
@@ -540,6 +659,15 @@
 %%   <<"Operator">> => list(any())
 %% }
 -type ingress_boolean_expression() :: #{binary() => any()}.
+
+%% Example:
+%% create_address_list_import_job_request() :: #{
+%%   <<"AddressListId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ImportDataFormat">> := import_data_format(),
+%%   <<"Name">> := string()
+%% }
+-type create_address_list_import_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% search_summary() :: #{
@@ -579,6 +707,20 @@
 
 %% }
 -type delete_addon_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_address_list_import_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"PreSignedUrl">> => string()
+%% }
+-type create_address_list_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% ingress_is_in_address_list() :: #{
+%%   <<"AddressLists">> => list(string()()),
+%%   <<"Attribute">> => list(any())
+%% }
+-type ingress_is_in_address_list() :: #{binary() => any()}.
 
 %% Example:
 %% list_archives_request() :: #{
@@ -627,6 +769,14 @@
 %%   <<"Values">> => list(string()())
 %% }
 -type ingress_ipv4_expression() :: #{binary() => any()}.
+
+%% Example:
+%% list_address_list_import_jobs_request() :: #{
+%%   <<"AddressListId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_address_list_import_jobs_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_relays_response() :: #{
@@ -733,6 +883,13 @@
 -type delete_ingress_point_request() :: #{binary() => any()}.
 
 %% Example:
+%% saved_address() :: #{
+%%   <<"Address">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()]
+%% }
+-type saved_address() :: #{binary() => any()}.
+
+%% Example:
 %% create_rule_set_response() :: #{
 %%   <<"RuleSetId">> => string()
 %% }
@@ -752,6 +909,12 @@
 -type export_summary() :: #{binary() => any()}.
 
 %% Example:
+%% address_filter() :: #{
+%%   <<"AddressPrefix">> => string()
+%% }
+-type address_filter() :: #{binary() => any()}.
+
+%% Example:
 %% update_traffic_policy_request() :: #{
 %%   <<"DefaultAction">> => list(any()),
 %%   <<"MaxMessageSizeBytes">> => integer(),
@@ -760,6 +923,18 @@
 %%   <<"TrafficPolicyName">> => string()
 %% }
 -type update_traffic_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_address_list_request() :: #{
+%%   <<"AddressListId">> := string()
+%% }
+-type delete_address_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_address_list_request() :: #{
+%%   <<"AddressListId">> := string()
+%% }
+-type get_address_list_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_rule_set_response() :: #{
@@ -774,10 +949,24 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% deregister_member_from_address_list_request() :: #{
+%%   <<"Address">> := string(),
+%%   <<"AddressListId">> := string()
+%% }
+-type deregister_member_from_address_list_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_ingress_point_response() :: #{
 
 %% }
 -type update_ingress_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_member_of_address_list_response() :: #{
+%%   <<"Address">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()]
+%% }
+-type get_member_of_address_list_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_ingress_point_response() :: #{
@@ -844,6 +1033,23 @@
 %%   <<"PageSize">> => integer()
 %% }
 -type list_archive_searches_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_job() :: #{
+%%   <<"AddressListId">> => string(),
+%%   <<"CompletedTimestamp">> => [non_neg_integer()],
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"Error">> => string(),
+%%   <<"FailedItemsCount">> => integer(),
+%%   <<"ImportDataFormat">> => import_data_format(),
+%%   <<"ImportedItemsCount">> => integer(),
+%%   <<"JobId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"StartTimestamp">> => [non_neg_integer()],
+%%   <<"Status">> => list(any())
+%% }
+-type import_job() :: #{binary() => any()}.
 
 %% Example:
 %% list_archive_searches_response() :: #{
@@ -931,6 +1137,19 @@
 -type get_archive_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_address_list_import_jobs_response() :: #{
+%%   <<"ImportJobs">> => list(import_job()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_address_list_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_address_list_import_job_response() :: #{
+
+%% }
+-type stop_address_list_import_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_response() :: #{
 
 %% }
@@ -950,6 +1169,13 @@
 %%   <<"RoleArn">> => string()
 %% }
 -type deliver_to_q_business_action() :: #{binary() => any()}.
+
+%% Example:
+%% register_member_to_address_list_request() :: #{
+%%   <<"Address">> := string(),
+%%   <<"AddressListId">> := string()
+%% }
+-type register_member_to_address_list_request() :: #{binary() => any()}.
 
 %% Example:
 %% addon_subscription() :: #{
@@ -1045,6 +1271,13 @@
 -type list_relays_request() :: #{binary() => any()}.
 
 %% Example:
+%% rule_is_in_address_list() :: #{
+%%   <<"AddressLists">> => list(string()()),
+%%   <<"Attribute">> => list(any())
+%% }
+-type rule_is_in_address_list() :: #{binary() => any()}.
+
+%% Example:
 %% ingress_string_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
@@ -1123,6 +1356,23 @@
 -type list_archive_exports_response() :: #{binary() => any()}.
 
 %% Example:
+%% address_list() :: #{
+%%   <<"AddressListArn">> => string(),
+%%   <<"AddressListId">> => string(),
+%%   <<"AddressListName">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()]
+%% }
+-type address_list() :: #{binary() => any()}.
+
+%% Example:
+%% list_members_of_address_list_response() :: #{
+%%   <<"Addresses">> => list(saved_address()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_members_of_address_list_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_archive_exports_request() :: #{
 %%   <<"ArchiveId">> := string(),
 %%   <<"NextToken">> => string(),
@@ -1163,6 +1413,19 @@
 %%   <<"SecretArn">> => string()
 %% }
 -type ingress_point_auth_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_member_from_address_list_response() :: #{
+
+%% }
+-type deregister_member_from_address_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_address_lists_response() :: #{
+%%   <<"AddressLists">> => list(address_list()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_address_lists_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_archive_search_response() :: #{
@@ -1209,6 +1472,13 @@
 -type create_relay_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_member_of_address_list_request() :: #{
+%%   <<"Address">> := string(),
+%%   <<"AddressListId">> := string()
+%% }
+-type get_member_of_address_list_request() :: #{binary() => any()}.
+
+%% Example:
 %% add_header_action() :: #{
 %%   <<"HeaderName">> => string(),
 %%   <<"HeaderValue">> => string()
@@ -1222,6 +1492,12 @@
 %% }
 -type archive_filters() :: #{binary() => any()}.
 
+%% Example:
+%% create_address_list_response() :: #{
+%%   <<"AddressListId">> => string()
+%% }
+-type create_address_list_response() :: #{binary() => any()}.
+
 -type create_addon_instance_errors() ::
     validation_exception() | 
     service_quota_exceeded_exception() | 
@@ -1232,6 +1508,19 @@
     validation_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception().
+
+-type create_address_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_address_list_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type create_archive_errors() ::
     throttling_exception() | 
@@ -1268,6 +1557,11 @@
     validation_exception() | 
     conflict_exception().
 
+-type delete_address_list_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    conflict_exception().
+
 -type delete_archive_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1293,12 +1587,30 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type deregister_member_from_address_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_addon_instance_errors() ::
     validation_exception() | 
     resource_not_found_exception().
 
 -type get_addon_subscription_errors() ::
     validation_exception() | 
+    resource_not_found_exception().
+
+-type get_address_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_address_list_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception().
 
 -type get_archive_errors() ::
@@ -1337,6 +1649,12 @@
     validation_exception() | 
     resource_not_found_exception().
 
+-type get_member_of_address_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_relay_errors() ::
     validation_exception() | 
     resource_not_found_exception().
@@ -1354,6 +1672,17 @@
 
 -type list_addon_subscriptions_errors() ::
     validation_exception().
+
+-type list_address_list_import_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_address_lists_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
 
 -type list_archive_exports_errors() ::
     throttling_exception() | 
@@ -1375,6 +1704,12 @@
 -type list_ingress_points_errors() ::
     validation_exception().
 
+-type list_members_of_address_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type list_relays_errors() ::
     validation_exception().
 
@@ -1388,6 +1723,21 @@
 -type list_traffic_policies_errors() ::
     validation_exception().
 
+-type register_member_to_address_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type start_address_list_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_archive_export_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1400,6 +1750,13 @@
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_address_list_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1499,6 +1856,40 @@ create_addon_subscription(Client, Input)
 create_addon_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAddonSubscription">>, Input, Options).
+
+%% @doc Creates a new address list.
+-spec create_address_list(aws_client:aws_client(), create_address_list_request()) ->
+    {ok, create_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, create_address_list_errors(), tuple()}.
+create_address_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_address_list(Client, Input, []).
+
+-spec create_address_list(aws_client:aws_client(), create_address_list_request(), proplists:proplist()) ->
+    {ok, create_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, create_address_list_errors(), tuple()}.
+create_address_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAddressList">>, Input, Options).
+
+%% @doc Creates an import job for an address list.
+-spec create_address_list_import_job(aws_client:aws_client(), create_address_list_import_job_request()) ->
+    {ok, create_address_list_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_address_list_import_job_errors(), tuple()}.
+create_address_list_import_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_address_list_import_job(Client, Input, []).
+
+-spec create_address_list_import_job(aws_client:aws_client(), create_address_list_import_job_request(), proplists:proplist()) ->
+    {ok, create_address_list_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_address_list_import_job_errors(), tuple()}.
+create_address_list_import_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAddressListImportJob">>, Input, Options).
 
 %% @doc Creates a new email archive resource for storing and retaining
 %% emails.
@@ -1622,6 +2013,23 @@ delete_addon_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAddonSubscription">>, Input, Options).
 
+%% @doc Deletes an address list.
+-spec delete_address_list(aws_client:aws_client(), delete_address_list_request()) ->
+    {ok, delete_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, delete_address_list_errors(), tuple()}.
+delete_address_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_address_list(Client, Input, []).
+
+-spec delete_address_list(aws_client:aws_client(), delete_address_list_request(), proplists:proplist()) ->
+    {ok, delete_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, delete_address_list_errors(), tuple()}.
+delete_address_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAddressList">>, Input, Options).
+
 %% @doc Initiates deletion of an email archive.
 %%
 %% This changes the archive state to pending
@@ -1716,6 +2124,23 @@ delete_traffic_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrafficPolicy">>, Input, Options).
 
+%% @doc Removes a member from an address list.
+-spec deregister_member_from_address_list(aws_client:aws_client(), deregister_member_from_address_list_request()) ->
+    {ok, deregister_member_from_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_member_from_address_list_errors(), tuple()}.
+deregister_member_from_address_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_member_from_address_list(Client, Input, []).
+
+-spec deregister_member_from_address_list(aws_client:aws_client(), deregister_member_from_address_list_request(), proplists:proplist()) ->
+    {ok, deregister_member_from_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_member_from_address_list_errors(), tuple()}.
+deregister_member_from_address_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterMemberFromAddressList">>, Input, Options).
+
 %% @doc Gets detailed information about an Add On instance.
 -spec get_addon_instance(aws_client:aws_client(), get_addon_instance_request()) ->
     {ok, get_addon_instance_response(), tuple()} |
@@ -1749,6 +2174,40 @@ get_addon_subscription(Client, Input)
 get_addon_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAddonSubscription">>, Input, Options).
+
+%% @doc Fetch attributes of an address list.
+-spec get_address_list(aws_client:aws_client(), get_address_list_request()) ->
+    {ok, get_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, get_address_list_errors(), tuple()}.
+get_address_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_address_list(Client, Input, []).
+
+-spec get_address_list(aws_client:aws_client(), get_address_list_request(), proplists:proplist()) ->
+    {ok, get_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, get_address_list_errors(), tuple()}.
+get_address_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAddressList">>, Input, Options).
+
+%% @doc Fetch attributes of an import job.
+-spec get_address_list_import_job(aws_client:aws_client(), get_address_list_import_job_request()) ->
+    {ok, get_address_list_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_address_list_import_job_errors(), tuple()}.
+get_address_list_import_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_address_list_import_job(Client, Input, []).
+
+-spec get_address_list_import_job(aws_client:aws_client(), get_address_list_import_job_request(), proplists:proplist()) ->
+    {ok, get_address_list_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_address_list_import_job_errors(), tuple()}.
+get_address_list_import_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAddressListImportJob">>, Input, Options).
 
 %% @doc Retrieves the full details and current state of a specified email
 %% archive.
@@ -1878,6 +2337,23 @@ get_ingress_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIngressPoint">>, Input, Options).
 
+%% @doc Fetch attributes of a member in an address list.
+-spec get_member_of_address_list(aws_client:aws_client(), get_member_of_address_list_request()) ->
+    {ok, get_member_of_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, get_member_of_address_list_errors(), tuple()}.
+get_member_of_address_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_member_of_address_list(Client, Input, []).
+
+-spec get_member_of_address_list(aws_client:aws_client(), get_member_of_address_list_request(), proplists:proplist()) ->
+    {ok, get_member_of_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, get_member_of_address_list_errors(), tuple()}.
+get_member_of_address_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMemberOfAddressList">>, Input, Options).
+
 %% @doc Fetch the relay resource and it's attributes.
 -spec get_relay(aws_client:aws_client(), get_relay_request()) ->
     {ok, get_relay_response(), tuple()} |
@@ -1963,6 +2439,40 @@ list_addon_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAddonSubscriptions">>, Input, Options).
 
+%% @doc Lists jobs for an address list.
+-spec list_address_list_import_jobs(aws_client:aws_client(), list_address_list_import_jobs_request()) ->
+    {ok, list_address_list_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_address_list_import_jobs_errors(), tuple()}.
+list_address_list_import_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_address_list_import_jobs(Client, Input, []).
+
+-spec list_address_list_import_jobs(aws_client:aws_client(), list_address_list_import_jobs_request(), proplists:proplist()) ->
+    {ok, list_address_list_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_address_list_import_jobs_errors(), tuple()}.
+list_address_list_import_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAddressListImportJobs">>, Input, Options).
+
+%% @doc Lists address lists for this account.
+-spec list_address_lists(aws_client:aws_client(), list_address_lists_request()) ->
+    {ok, list_address_lists_response(), tuple()} |
+    {error, any()} |
+    {error, list_address_lists_errors(), tuple()}.
+list_address_lists(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_address_lists(Client, Input, []).
+
+-spec list_address_lists(aws_client:aws_client(), list_address_lists_request(), proplists:proplist()) ->
+    {ok, list_address_lists_response(), tuple()} |
+    {error, any()} |
+    {error, list_address_lists_errors(), tuple()}.
+list_address_lists(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAddressLists">>, Input, Options).
+
 %% @doc Returns a list of email archive export jobs.
 -spec list_archive_exports(aws_client:aws_client(), list_archive_exports_request()) ->
     {ok, list_archive_exports_response(), tuple()} |
@@ -2030,6 +2540,23 @@ list_ingress_points(Client, Input)
 list_ingress_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIngressPoints">>, Input, Options).
+
+%% @doc Lists members of an address list.
+-spec list_members_of_address_list(aws_client:aws_client(), list_members_of_address_list_request()) ->
+    {ok, list_members_of_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, list_members_of_address_list_errors(), tuple()}.
+list_members_of_address_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_members_of_address_list(Client, Input, []).
+
+-spec list_members_of_address_list(aws_client:aws_client(), list_members_of_address_list_request(), proplists:proplist()) ->
+    {ok, list_members_of_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, list_members_of_address_list_errors(), tuple()}.
+list_members_of_address_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMembersOfAddressList">>, Input, Options).
 
 %% @doc Lists all the existing relay resources.
 -spec list_relays(aws_client:aws_client(), list_relays_request()) ->
@@ -2100,6 +2627,40 @@ list_traffic_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrafficPolicies">>, Input, Options).
 
+%% @doc Adds a member to an address list.
+-spec register_member_to_address_list(aws_client:aws_client(), register_member_to_address_list_request()) ->
+    {ok, register_member_to_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, register_member_to_address_list_errors(), tuple()}.
+register_member_to_address_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_member_to_address_list(Client, Input, []).
+
+-spec register_member_to_address_list(aws_client:aws_client(), register_member_to_address_list_request(), proplists:proplist()) ->
+    {ok, register_member_to_address_list_response(), tuple()} |
+    {error, any()} |
+    {error, register_member_to_address_list_errors(), tuple()}.
+register_member_to_address_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterMemberToAddressList">>, Input, Options).
+
+%% @doc Starts an import job for an address list.
+-spec start_address_list_import_job(aws_client:aws_client(), start_address_list_import_job_request()) ->
+    {ok, start_address_list_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_address_list_import_job_errors(), tuple()}.
+start_address_list_import_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_address_list_import_job(Client, Input, []).
+
+-spec start_address_list_import_job(aws_client:aws_client(), start_address_list_import_job_request(), proplists:proplist()) ->
+    {ok, start_address_list_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_address_list_import_job_errors(), tuple()}.
+start_address_list_import_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartAddressListImportJob">>, Input, Options).
+
 %% @doc Initiates an export of emails from the specified archive.
 -spec start_archive_export(aws_client:aws_client(), start_archive_export_request()) ->
     {ok, start_archive_export_response(), tuple()} |
@@ -2133,6 +2694,23 @@ start_archive_search(Client, Input)
 start_archive_search(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartArchiveSearch">>, Input, Options).
+
+%% @doc Stops an ongoing import job for an address list.
+-spec stop_address_list_import_job(aws_client:aws_client(), stop_address_list_import_job_request()) ->
+    {ok, stop_address_list_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_address_list_import_job_errors(), tuple()}.
+stop_address_list_import_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_address_list_import_job(Client, Input, []).
+
+-spec stop_address_list_import_job(aws_client:aws_client(), stop_address_list_import_job_request(), proplists:proplist()) ->
+    {ok, stop_address_list_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_address_list_import_job_errors(), tuple()}.
+stop_address_list_import_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopAddressListImportJob">>, Input, Options).
 
 %% @doc Stops an in-progress export of emails from an archive.
 -spec stop_archive_export(aws_client:aws_client(), stop_archive_export_request()) ->
