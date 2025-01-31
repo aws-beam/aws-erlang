@@ -49,6 +49,8 @@
          batch_delete_document/5,
          batch_put_document/4,
          batch_put_document/5,
+         cancel_subscription/4,
+         cancel_subscription/5,
          chat/3,
          chat/4,
          chat_sync/3,
@@ -65,6 +67,8 @@
          create_plugin/4,
          create_retriever/3,
          create_retriever/4,
+         create_subscription/3,
+         create_subscription/4,
          create_user/3,
          create_user/4,
          create_web_experience/3,
@@ -174,6 +178,9 @@
          list_retrievers/2,
          list_retrievers/4,
          list_retrievers/5,
+         list_subscriptions/2,
+         list_subscriptions/4,
+         list_subscriptions/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -208,6 +215,8 @@
          update_plugin/5,
          update_retriever/4,
          update_retriever/5,
+         update_subscription/4,
+         update_subscription/5,
          update_user/4,
          update_user/5,
          update_web_experience/4,
@@ -244,6 +253,15 @@
 %%   <<"attachmentsControlMode">> => list(any())
 %% }
 -type applied_attachments_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"principal">> := list(),
+%%   <<"type">> := list(any())
+%% }
+-type create_subscription_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -711,6 +729,13 @@
 %% }
 -type action_review() :: #{binary() => any()}.
 
+
+%% Example:
+%% subscription_details() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type subscription_details() :: #{binary() => any()}.
+
 %% Example:
 %% update_data_source_response() :: #{}
 -type update_data_source_response() :: #{}.
@@ -863,6 +888,15 @@
 %%   <<"userMessageId">> => string()
 %% }
 -type chat_sync_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_subscription_response() :: #{
+%%   <<"currentSubscription">> => subscription_details(),
+%%   <<"nextSubscription">> => subscription_details(),
+%%   <<"subscriptionArn">> => string()
+%% }
+-type cancel_subscription_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_plugin_request() :: #{}
@@ -1295,6 +1329,15 @@
 
 
 %% Example:
+%% update_subscription_response() :: #{
+%%   <<"currentSubscription">> => subscription_details(),
+%%   <<"nextSubscription">> => subscription_details(),
+%%   <<"subscriptionArn">> => string()
+%% }
+-type update_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
 %%   <<"name">> => string()
@@ -1384,6 +1427,16 @@
 %% Example:
 %% delete_user_request() :: #{}
 -type delete_user_request() :: #{}.
+
+
+%% Example:
+%% create_subscription_response() :: #{
+%%   <<"currentSubscription">> => subscription_details(),
+%%   <<"nextSubscription">> => subscription_details(),
+%%   <<"subscriptionArn">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type create_subscription_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1789,6 +1842,10 @@
 %% }
 -type update_chat_controls_configuration_request() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_subscription_request() :: #{}
+-type cancel_subscription_request() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -1857,6 +1914,13 @@
 
 
 %% Example:
+%% update_subscription_request() :: #{
+%%   <<"type">> := list(any())
+%% }
+-type update_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% action_review_payload_field_allowed_value() :: #{
 %%   <<"displayValue">> => any(),
 %%   <<"value">> => any()
@@ -1870,6 +1934,17 @@
 %%   <<"statusHistory">> => list(group_status_detail()())
 %% }
 -type get_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription() :: #{
+%%   <<"currentSubscription">> => subscription_details(),
+%%   <<"nextSubscription">> => subscription_details(),
+%%   <<"principal">> => list(),
+%%   <<"subscriptionArn">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type subscription() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1894,6 +1969,14 @@
 %%   <<"clientNamespace">> => string()
 %% }
 -type quick_sight_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptions">> => list(subscription()())
+%% }
+-type list_subscriptions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2252,6 +2335,14 @@
 
 
 %% Example:
+%% list_subscriptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% document() :: #{
 %%   <<"accessConfiguration">> => access_configuration(),
 %%   <<"attributes">> => list(document_attribute()()),
@@ -2410,6 +2501,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type cancel_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type chat_errors() ::
     external_resource_exception() | 
     throttling_exception() | 
@@ -2481,6 +2579,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2792,6 +2898,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_subscriptions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2922,6 +3036,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_user_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2942,13 +3064,13 @@
 %% API
 %%====================================================================
 
-%% @doc Adds or updates a permission policy for a Q Business application,
-%% allowing cross-account access for an ISV.
+%% @doc Adds or updates a permission policy for a Amazon Q Business
+%% application, allowing cross-account access for an ISV.
 %%
-%% This operation creates a new policy statement for the specified Q Business
-%% application.
+%% This operation creates a new policy statement for the specified Amazon Q
+%% Business application.
 %% The policy statement defines the IAM actions that the ISV is allowed to
-%% perform on the Q Business application's resources.
+%% perform on the Amazon Q Business application's resources.
 -spec associate_permission(aws_client:aws_client(), binary() | list(), associate_permission_request()) ->
     {ok, associate_permission_response(), tuple()} |
     {error, any()} |
@@ -3052,6 +3174,46 @@ batch_put_document(Client, ApplicationId, IndexId, Input) ->
 batch_put_document(Client, ApplicationId, IndexId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/documents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Unsubscribes a user or a group from their pricing tier in an Amazon Q
+%% Business
+%% application.
+%%
+%% An unsubscribed user or group loses all Amazon Q Business feature access
+%% at the
+%% start of next month.
+-spec cancel_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_subscription_request()) ->
+    {ok, cancel_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_subscription_errors(), tuple()}.
+cancel_subscription(Client, ApplicationId, SubscriptionId, Input) ->
+    cancel_subscription(Client, ApplicationId, SubscriptionId, Input, []).
+
+-spec cancel_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_subscription_request(), proplists:proplist()) ->
+    {ok, cancel_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_subscription_errors(), tuple()}.
+cancel_subscription(Client, ApplicationId, SubscriptionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/subscriptions/", aws_util:encode_uri(SubscriptionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3205,18 +3367,18 @@ create_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new data accessor for an ISV to access data from a Q
+%% @doc Creates a new data accessor for an ISV to access data from a Amazon Q
 %% Business application.
 %%
 %% The data accessor is an entity that represents the ISV's access to the
-%% Q Business application's data.
+%% Amazon Q Business application's data.
 %% It includes the IAM role ARN for the ISV, a friendly name, and a set of
 %% action configurations that define the
 %% specific actions the ISV is allowed to perform and any associated data
 %% filters. When the data accessor is created,
-%% an AWS IAM Identity Center application is also created to manage the
-%% ISV's identity and authentication for
-%% accessing the Q Business application.
+%% an IAM Identity Center application is also created to manage the ISV's
+%% identity and authentication for
+%% accessing the Amazon Q Business application.
 -spec create_data_accessor(aws_client:aws_client(), binary() | list(), create_data_accessor_request()) ->
     {ok, create_data_accessor_response(), tuple()} |
     {error, any()} |
@@ -3386,6 +3548,49 @@ create_retriever(Client, ApplicationId, Input) ->
 create_retriever(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/retrievers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Subscribes an IAM Identity Center user or a group to a pricing tier
+%% for an
+%% Amazon Q Business application.
+%%
+%% Amazon Q Business offers two subscription tiers: `Q_LITE' and
+%% `Q_BUSINESS'. Subscription tier determines feature access for the
+%% user.
+%% For more information on subscriptions and pricing tiers, see Amazon Q
+%% Business
+%% pricing: https://aws.amazon.com/q/business/pricing/.
+-spec create_subscription(aws_client:aws_client(), binary() | list(), create_subscription_request()) ->
+    {ok, create_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, create_subscription_errors(), tuple()}.
+create_subscription(Client, ApplicationId, Input) ->
+    create_subscription(Client, ApplicationId, Input, []).
+
+-spec create_subscription(aws_client:aws_client(), binary() | list(), create_subscription_request(), proplists:proplist()) ->
+    {ok, create_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, create_subscription_errors(), tuple()}.
+create_subscription(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/subscriptions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3582,8 +3787,8 @@ delete_conversation(Client, ApplicationId, ConversationId, Input0, Options0) ->
 %% @doc Deletes a specified data accessor.
 %%
 %% This operation permanently removes the data accessor
-%% and its associated AWS IAM Identity Center application. Any access granted
-%% to the ISV through this data accessor will be revoked
+%% and its associated IAM Identity Center application. Any access granted to
+%% the ISV through this data accessor will be revoked.
 -spec delete_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_accessor_request()) ->
     {ok, delete_data_accessor_response(), tuple()} |
     {error, any()} |
@@ -3876,8 +4081,8 @@ delete_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a permission policy from a Q Business application, revoking
-%% the cross-account access that was
+%% @doc Removes a permission policy from a Amazon Q Business application,
+%% revoking the cross-account access that was
 %% previously granted to an ISV.
 %%
 %% This operation deletes the specified policy statement from the
@@ -4001,7 +4206,7 @@ get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, Opt
 %% This operation returns details about the
 %% data accessor, including its display name, unique identifier, Amazon
 %% Resource Name (ARN), the associated
-%% Q Business application and AWS IAM Identity Center application, the IAM
+%% Amazon Q Business application and IAM Identity Center application, the IAM
 %% role for the ISV, the
 %% action configurations, and the timestamps for when the data accessor was
 %% created and last updated.
@@ -4241,7 +4446,8 @@ get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the current permission policy for a Q Business application.
+%% @doc Retrieves the current permission policy for a Amazon Q Business
+%% application.
 %%
 %% The policy is
 %% returned as a JSON-formatted string and defines the IAM actions that are
@@ -4536,7 +4742,7 @@ list_conversations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the data accessors for a Q Business application.
+%% @doc Lists the data accessors for a Amazon Q Business application.
 %%
 %% This operation returns a paginated
 %% list of data accessor summaries, including the friendly name, unique
@@ -5058,6 +5264,48 @@ list_retrievers(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all subscriptions created in an Amazon Q Business application.
+-spec list_subscriptions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
+list_subscriptions(Client, ApplicationId)
+  when is_map(Client) ->
+    list_subscriptions(Client, ApplicationId, #{}, #{}).
+
+-spec list_subscriptions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
+list_subscriptions(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_subscriptions(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+-spec list_subscriptions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
+list_subscriptions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/subscriptions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a list of tags associated with a specified resource.
 %%
 %% Amazon Q Business applications
@@ -5191,6 +5439,14 @@ put_feedback(Client, ApplicationId, ConversationId, MessageId, Input0, Options0)
 %% property group,
 %% can see top-secret company documents in their Amazon Q Business chat
 %% results.
+%%
+%% There are two options for creating groups, either passing group members
+%% inline or using an S3 file via the
+%% S3PathForGroupMembers field. For inline groups, there is a limit of 1000
+%% members per group and for provided S3 files
+%% there is a limit of 100 thousand members. When creating a group using an
+%% S3 file, you provide both
+%% an S3 file and a `RoleArn' for Amazon Q Buisness to access the file.
 -spec put_group(aws_client:aws_client(), binary() | list(), binary() | list(), put_group_request()) ->
     {ok, put_group_response(), tuple()} |
     {error, any()} |
@@ -5224,12 +5480,12 @@ put_group(Client, ApplicationId, IndexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches for relevant content in a Q Business application based on a
-%% query.
+%% @doc Searches for relevant content in a Amazon Q Business application
+%% based on a query.
 %%
 %% This operation takes a
-%% search query text, the Q Business application identifier, and optional
-%% filters
+%% search query text, the Amazon Q Business application identifier, and
+%% optional filters
 %% (such as content source and maximum results) as input. It returns a list
 %% of
 %% relevant content items, where each item includes the content text, the
@@ -5659,6 +5915,47 @@ update_retriever(Client, ApplicationId, RetrieverId, Input) ->
 update_retriever(Client, ApplicationId, RetrieverId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/retrievers/", aws_util:encode_uri(RetrieverId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the pricing tier for an Amazon Q Business subscription.
+%%
+%% Upgrades are instant.
+%% Downgrades apply at the start of the next month. Subscription tier
+%% determines feature
+%% access for the user. For more information on subscriptions and pricing
+%% tiers, see Amazon Q Business
+%% pricing: https://aws.amazon.com/q/business/pricing/.
+-spec update_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), update_subscription_request()) ->
+    {ok, update_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, update_subscription_errors(), tuple()}.
+update_subscription(Client, ApplicationId, SubscriptionId, Input) ->
+    update_subscription(Client, ApplicationId, SubscriptionId, Input, []).
+
+-spec update_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), update_subscription_request(), proplists:proplist()) ->
+    {ok, update_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, update_subscription_errors(), tuple()}.
+update_subscription(Client, ApplicationId, SubscriptionId, Input0, Options0) ->
+    Method = put,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/subscriptions/", aws_util:encode_uri(SubscriptionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

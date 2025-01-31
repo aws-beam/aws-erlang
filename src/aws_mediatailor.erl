@@ -267,6 +267,7 @@
 
 %% Example:
 %% playback_configuration() :: #{
+%%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
@@ -329,6 +330,13 @@
 %% Example:
 %% delete_channel_policy_request() :: #{}
 -type delete_channel_policy_request() :: #{}.
+
+
+%% Example:
+%% ad_conditioning_configuration() :: #{
+%%   <<"StreamingMediaFileConditioning">> => list(any())
+%% }
+-type ad_conditioning_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -896,6 +904,7 @@
 
 %% Example:
 %% get_playback_configuration_response() :: #{
+%%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
@@ -1057,6 +1066,7 @@
 
 %% Example:
 %% put_playback_configuration_request() :: #{
+%%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
@@ -1184,6 +1194,7 @@
 
 %% Example:
 %% put_playback_configuration_response() :: #{
+%%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
@@ -1401,7 +1412,8 @@ configure_logs_for_channel(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon CloudWatch log settings for a playback configuration.
+%% @doc Defines where AWS Elemental MediaTailor sends logs for the playback
+%% configuration.
 -spec configure_logs_for_playback_configuration(aws_client:aws_client(), configure_logs_for_playback_configuration_request()) ->
     {ok, configure_logs_for_playback_configuration_response(), tuple()} |
     {error, any()}.

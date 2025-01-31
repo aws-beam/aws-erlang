@@ -1053,7 +1053,8 @@
 
 %% Example:
 %% internal_server_exception() :: #{
-%%   <<"message">> => string()
+%%   <<"message">> => string(),
+%%   <<"reason">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
@@ -2319,6 +2320,9 @@ retrieve_and_generate(Client, Input0, Options0) ->
 %%
 %% The CLI doesn't support streaming operations in Amazon Bedrock,
 %% including `InvokeModelWithResponseStream'.
+%%
+%% This operation requires permission for the `
+%% bedrock:RetrieveAndGenerate' action.
 -spec retrieve_and_generate_stream(aws_client:aws_client(), retrieve_and_generate_stream_request()) ->
     {ok, retrieve_and_generate_stream_response(), tuple()} |
     {error, any()} |

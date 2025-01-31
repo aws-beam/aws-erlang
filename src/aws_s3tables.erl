@@ -215,6 +215,7 @@
 %% Example:
 %% create_table_request() :: #{
 %%   <<"format">> := list(any()),
+%%   <<"metadata">> => list(),
 %%   <<"name">> := string()
 %% }
 -type create_table_request() :: #{binary() => any()}.
@@ -286,6 +287,13 @@
 %%   <<"namespace">> := list(string()())
 %% }
 -type create_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_metadata() :: #{
+%%   <<"schema">> => iceberg_schema()
+%% }
+-type iceberg_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -399,6 +407,15 @@
 
 
 %% Example:
+%% schema_field() :: #{
+%%   <<"name">> => [string()],
+%%   <<"required">> => [boolean()],
+%%   <<"type">> => [string()]
+%% }
+-type schema_field() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_namespace_response() :: #{
 %%   <<"namespace">> => list(string()()),
 %%   <<"tableBucketARN">> => string()
@@ -456,6 +473,13 @@
 %%   <<"warehouseLocation">> => string()
 %% }
 -type get_table_metadata_location_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_schema() :: #{
+%%   <<"fields">> => list(schema_field()())
+%% }
+-type iceberg_schema() :: #{binary() => any()}.
 
 
 %% Example:
@@ -737,9 +761,15 @@
 %% @doc Creates a namespace.
 %%
 %% A namespace is a logical grouping of tables within your table bucket,
-%% which you can use to organize tables. For more information, see Table
-%% namespaces:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace.html.
+%% which you can use to organize tables. For more information, see Create a
+%% namespace:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace-create.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:CreateNamespace' permission to use this
+%% operation.
 -spec create_namespace(aws_client:aws_client(), binary() | list(), create_namespace_request()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
@@ -775,6 +805,18 @@ create_namespace(Client, TableBucketARN, Input0, Options0) ->
 
 %% @doc Creates a new table associated with the given namespace in a table
 %% bucket.
+%%
+%% For more information, see Creating an Amazon S3 table:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-create.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:CreateTable' permission to use this
+%% operation.
+%%
+%% Additionally, you must have the `s3tables:PutTableData' permission to
+%% use this operation with the optional `metadata' request parameter.
 -spec create_table(aws_client:aws_client(), binary() | list(), binary() | list(), create_table_request()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
@@ -809,6 +851,15 @@ create_table(Client, Namespace, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a table bucket.
+%%
+%% For more information, see Creating a table bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-create.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:CreateTableBucket' permission to use this
+%% operation.
 -spec create_table_bucket(aws_client:aws_client(), create_table_bucket_request()) ->
     {ok, create_table_bucket_response(), tuple()} |
     {error, any()} |
@@ -843,6 +894,15 @@ create_table_bucket(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a namespace.
+%%
+%% For more information, see Delete a namespace:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace-delete.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:DeleteNamespace' permission to use this
+%% operation.
 -spec delete_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_namespace_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -877,6 +937,15 @@ delete_namespace(Client, Namespace, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a table.
+%%
+%% For more information, see Deleting an Amazon S3 table:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-delete.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:DeleteTable' permission to use this
+%% operation.
 -spec delete_table(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_table_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -912,6 +981,15 @@ delete_table(Client, Name, Namespace, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a table bucket.
+%%
+%% For more information, see Deleting a table bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-delete.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:DeleteTableBucket' permission to use this
+%% operation.
 -spec delete_table_bucket(aws_client:aws_client(), binary() | list(), delete_table_bucket_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -946,6 +1024,15 @@ delete_table_bucket(Client, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a table bucket policy.
+%%
+%% For more information, see Deleting a table bucket policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-delete
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:DeleteTableBucketPolicy' permission to use
+%% this operation.
 -spec delete_table_bucket_policy(aws_client:aws_client(), binary() | list(), delete_table_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -980,6 +1067,15 @@ delete_table_bucket_policy(Client, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a table policy.
+%%
+%% For more information, see Deleting a table policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-delete
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:DeleteTablePolicy' permission to use this
+%% operation.
 -spec delete_table_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_table_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1014,6 +1110,15 @@ delete_table_policy(Client, Name, Namespace, TableBucketARN, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets details about a namespace.
+%%
+%% For more information, see Table namespaces:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetNamespace' permission to use this
+%% operation.
 -spec get_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
@@ -1051,6 +1156,15 @@ get_namespace(Client, Namespace, TableBucketARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a table.
+%%
+%% For more information, see S3 Tables:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-tables.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTable' permission to use this
+%% operation.
 -spec get_table(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
@@ -1088,6 +1202,15 @@ get_table(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details on a table bucket.
+%%
+%% For more information, see Viewing details about an Amazon S3 table bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-details.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTableBucket' permission to use this
+%% operation.
 -spec get_table_bucket(aws_client:aws_client(), binary() | list()) ->
     {ok, get_table_bucket_response(), tuple()} |
     {error, any()} |
@@ -1126,6 +1249,15 @@ get_table_bucket(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets details about a maintenance configuration for a given table
 %% bucket.
+%%
+%% For more information, see Amazon S3 table bucket maintenance:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-table-buckets-maintenance.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTableBucketMaintenanceConfiguration'
+%% permission to use this operation.
 -spec get_table_bucket_maintenance_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_table_bucket_maintenance_configuration_response(), tuple()} |
     {error, any()} |
@@ -1163,6 +1295,15 @@ get_table_bucket_maintenance_configuration(Client, TableBucketARN, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a table bucket policy.
+%%
+%% For more information, see Viewing a table bucket policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-get
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTableBucketPolicy' permission to use
+%% this operation.
 -spec get_table_bucket_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_table_bucket_policy_response(), tuple()} |
     {error, any()} |
@@ -1200,6 +1341,15 @@ get_table_bucket_policy(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about the maintenance configuration of a table.
+%%
+%% For more information, see S3 Tables maintenance:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-maintenance.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTableMaintenanceConfiguration'
+%% permission to use this operation.
 -spec get_table_maintenance_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_maintenance_configuration_response(), tuple()} |
     {error, any()} |
@@ -1237,6 +1387,15 @@ get_table_maintenance_configuration(Client, Name, Namespace, TableBucketARN, Que
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the status of a maintenance job for a table.
+%%
+%% For more information, see S3 Tables maintenance:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-maintenance.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTableMaintenanceJobStatus' permission
+%% to use this operation.
 -spec get_table_maintenance_job_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_maintenance_job_status_response(), tuple()} |
     {error, any()} |
@@ -1274,6 +1433,11 @@ get_table_maintenance_job_status(Client, Name, Namespace, TableBucketARN, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the location of the table metadata.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTableMetadataLocation' permission to
+%% use this operation.
 -spec get_table_metadata_location(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_metadata_location_response(), tuple()} |
     {error, any()} |
@@ -1311,6 +1475,15 @@ get_table_metadata_location(Client, Name, Namespace, TableBucketARN, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a table policy.
+%%
+%% For more information, see Viewing a table policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-get
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTablePolicy' permission to use this
+%% operation.
 -spec get_table_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_policy_response(), tuple()} |
     {error, any()} |
@@ -1348,6 +1521,15 @@ get_table_policy(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the namespaces within a table bucket.
+%%
+%% For more information, see Table namespaces:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:ListNamespaces' permission to use this
+%% operation.
 -spec list_namespaces(aws_client:aws_client(), binary() | list()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
@@ -1391,6 +1573,15 @@ list_namespaces(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists table buckets for your account.
+%%
+%% For more information, see S3 Table buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:ListTableBuckets' permission to use this
+%% operation.
 -spec list_table_buckets(aws_client:aws_client()) ->
     {ok, list_table_buckets_response(), tuple()} |
     {error, any()} |
@@ -1434,6 +1625,15 @@ list_table_buckets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List tables in the given table bucket.
+%%
+%% For more information, see S3 Tables:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-tables.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:ListTables' permission to use this
+%% operation.
 -spec list_tables(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
@@ -1480,6 +1680,15 @@ list_tables(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
 %% @doc Creates a new maintenance configuration or replaces an existing
 %% maintenance configuration
 %% for a table bucket.
+%%
+%% For more information, see Amazon S3 table bucket maintenance:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-table-buckets-maintenance.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:PutTableBucketMaintenanceConfiguration'
+%% permission to use this operation.
 -spec put_table_bucket_maintenance_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_table_bucket_maintenance_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1516,6 +1725,15 @@ put_table_bucket_maintenance_configuration(Client, TableBucketARN, Type, Input0,
 %% @doc Creates a new maintenance configuration or replaces an existing table
 %% bucket policy for a
 %% table bucket.
+%%
+%% For more information, see Adding a table bucket policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-add
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:PutTableBucketPolicy' permission to use
+%% this operation.
 -spec put_table_bucket_policy(aws_client:aws_client(), binary() | list(), put_table_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1552,6 +1770,15 @@ put_table_bucket_policy(Client, TableBucketARN, Input0, Options0) ->
 %% @doc Creates a new maintenance configuration or replaces an existing
 %% maintenance configuration
 %% for a table.
+%%
+%% For more information, see S3 Tables maintenance:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-maintenance.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:PutTableMaintenanceConfiguration'
+%% permission to use this operation.
 -spec put_table_maintenance_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_table_maintenance_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1587,6 +1814,15 @@ put_table_maintenance_configuration(Client, Name, Namespace, TableBucketARN, Typ
 
 %% @doc Creates a new maintenance configuration or replaces an existing table
 %% policy for a table.
+%%
+%% For more information, see Adding a table policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-add
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:PutTablePolicy' permission to use this
+%% operation.
 -spec put_table_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_table_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1621,6 +1857,15 @@ put_table_policy(Client, Name, Namespace, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Renames a table or a namespace.
+%%
+%% For more information, see S3 Tables:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-tables.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:RenameTable' permission to use this
+%% operation.
 -spec rename_table(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), rename_table_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1655,6 +1900,16 @@ rename_table(Client, Name, Namespace, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the metadata location for a table.
+%%
+%% The metadata location of a table must be an S3 URI that begins with the
+%% table's warehouse location. The metadata location for an Apache
+%% Iceberg table must end with `.metadata.json', or if the metadata file
+%% is Gzip-compressed, `.metadata.json.gz'.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:UpdateTableMetadataLocation' permission to
+%% use this operation.
 -spec update_table_metadata_location(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_table_metadata_location_request()) ->
     {ok, update_table_metadata_location_response(), tuple()} |
     {error, any()} |

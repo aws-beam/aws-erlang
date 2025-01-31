@@ -1102,6 +1102,7 @@
 %% storage_connector() :: #{
 %%   <<"ConnectorType">> => list(any()),
 %%   <<"Domains">> => list(string()()),
+%%   <<"DomainsRequireAdminConsent">> => list(string()()),
 %%   <<"ResourceIdentifier">> => string()
 %% }
 -type storage_connector() :: #{binary() => any()}.
