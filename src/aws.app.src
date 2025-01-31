@@ -5,11 +5,10 @@
  , { applications
    , [ kernel
      , stdlib
-     , xmerl
      , crypto
      , hackney
      , jsx
-     , aws_signature
+     , aws_beam_core
      ]
    }
  , {env,[]}
