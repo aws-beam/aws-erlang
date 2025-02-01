@@ -122,6 +122,7 @@
 %%   <<"alias">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"destination">> => list(),
+%%   <<"roleConfiguration">> => role_configuration(),
 %%   <<"scrapeConfiguration">> => list()
 %% }
 -type update_scraper_request() :: #{binary() => any()}.
@@ -497,6 +498,7 @@
 %%   <<"destination">> => list(),
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
 %%   <<"roleArn">> => string(),
+%%   <<"roleConfiguration">> => role_configuration(),
 %%   <<"scrapeConfiguration">> => list(),
 %%   <<"scraperId">> => string(),
 %%   <<"source">> => list(),
@@ -516,6 +518,14 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% role_configuration() :: #{
+%%   <<"sourceRoleArn">> => string(),
+%%   <<"targetRoleArn">> => string()
+%% }
+-type role_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -594,6 +604,7 @@
 %%   <<"alias">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"destination">> := list(),
+%%   <<"roleConfiguration">> => role_configuration(),
 %%   <<"scrapeConfiguration">> := list(),
 %%   <<"source">> := list(),
 %%   <<"tags">> => map()
@@ -688,6 +699,7 @@
 %%   <<"destination">> => list(),
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
 %%   <<"roleArn">> => string(),
+%%   <<"roleConfiguration">> => role_configuration(),
 %%   <<"scraperId">> => string(),
 %%   <<"source">> => list(),
 %%   <<"status">> => scraper_status(),

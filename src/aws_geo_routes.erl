@@ -1,15 +1,17 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc With the Amazon Location Routes API you can calculate
-%% routes and estimate travel time based on up-to-date road network and live
-%% traffic information.
+%% @doc With the Amazon Location Routes API you can calculate routes and
+%% estimate travel time
+%% based on up-to-date road network and live traffic information.
 %%
 %% Calculate optimal travel routes and estimate travel times using up-to-date
-%% road network and traffic data. Key features include:
+%% road network
+%% and traffic data. Key features include:
 %%
 %% Point-to-point routing with estimated travel time, distance, and
-%% turn-by-turn directions
+%% turn-by-turn
+%% directions
 %%
 %% Multi-point route optimization to minimize travel time or distance
 %%
@@ -327,6 +329,14 @@
 
 
 %% Example:
+%% waypoint_optimization_clustering_options() :: #{
+%%   <<"Algorithm">> => string(),
+%%   <<"DrivingDistanceOptions">> => waypoint_optimization_driving_distance_options()
+%% }
+-type waypoint_optimization_clustering_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% route_roundabout_exit_step_details() :: #{
 %%   <<"Intersection">> => list(localized_string()()),
 %%   <<"RelativeExit">> => [integer()],
@@ -497,6 +507,7 @@
 %% Example:
 %% optimize_waypoints_request() :: #{
 %%   <<"Avoid">> => waypoint_optimization_avoidance_options(),
+%%   <<"Clustering">> => waypoint_optimization_clustering_options(),
 %%   <<"DepartureTime">> => string(),
 %%   <<"Destination">> => list([float()]()),
 %%   <<"DestinationOptions">> => waypoint_optimization_destination_options(),
@@ -1460,6 +1471,7 @@
 %% Example:
 %% waypoint_optimization_optimized_waypoint() :: #{
 %%   <<"ArrivalTime">> => string(),
+%%   <<"ClusterIndex">> => integer(),
 %%   <<"DepartureTime">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Position">> => list([float()]())
@@ -1888,6 +1900,13 @@
 
 
 %% Example:
+%% waypoint_optimization_driving_distance_options() :: #{
+%%   <<"DrivingDistance">> => float()
+%% }
+-type waypoint_optimization_driving_distance_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% isoline_truck_options() :: #{
 %%   <<"AxleCount">> => [integer()],
 %%   <<"EngineType">> => string(),
@@ -2077,12 +2096,14 @@ calculate_isolines(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Calculates route matrix containing the results for all pairs of
-%% Origins to Destinations.
+%% @doc Use `CalculateRouteMatrix' to compute results for all pairs of
+%% Origins to
+%% Destinations.
 %%
-%% Each row corresponds to one entry in Origins.
-%% Each entry in the row corresponds to the route from that entry in Origins
-%% to an entry in Destinations positions.
+%% Each row corresponds to one entry in Origins. Each entry in the row
+%% corresponds to the route from that entry in Origins to an entry in
+%% Destinations
+%% positions.
 -spec calculate_route_matrix(aws_client:aws_client(), calculate_route_matrix_request()) ->
     {ok, calculate_route_matrix_response(), tuple()} |
     {error, any()} |
@@ -2133,7 +2154,9 @@ calculate_route_matrix(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Calculates a route given the following required parameters:
+%% @doc
+%% `CalculateRoutes' computes routes given the following required
+%% parameters:
 %% `Origin' and `Destination'.
 -spec calculate_routes(aws_client:aws_client(), calculate_routes_request()) ->
     {ok, calculate_routes_response(), tuple()} |
@@ -2185,11 +2208,12 @@ calculate_routes(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Calculates the optimal order to travel between a set of waypoints to
-%% minimize either the
-%% travel time or the distance travelled during the journey, based on road
-%% network
-%% restrictions and the traffic pattern data.
+%% @doc
+%% `OptimizeWaypoints' calculates the optimal order to travel between a
+%% set of
+%% waypoints to minimize either the travel time or the distance travelled
+%% during the journey,
+%% based on road network restrictions and the traffic pattern data.
 -spec optimize_waypoints(aws_client:aws_client(), optimize_waypoints_request()) ->
     {ok, optimize_waypoints_response(), tuple()} |
     {error, any()} |
@@ -2240,8 +2264,8 @@ optimize_waypoints(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc The SnapToRoads action matches GPS trace to roads most likely
-%% traveled on.
+%% @doc
+%% `SnapToRoads' matches GPS trace to roads most likely traveled on.
 -spec snap_to_roads(aws_client:aws_client(), snap_to_roads_request()) ->
     {ok, snap_to_roads_response(), tuple()} |
     {error, any()} |

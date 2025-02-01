@@ -1326,7 +1326,9 @@
 
 %% Example:
 %% citation_event() :: #{
-%%   <<"citation">> => citation()
+%%   <<"citation">> => citation(),
+%%   <<"generatedResponsePart">> => generated_response_part(),
+%%   <<"retrievedReferences">> => list(retrieved_reference()())
 %% }
 -type citation_event() :: #{binary() => any()}.
 
