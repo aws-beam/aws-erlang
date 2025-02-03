@@ -3,15 +3,13 @@ name: Build
 on:
   pull_request:
   push:
-    branches:
-      - master
 
 jobs:
   build:
     strategy:
       matrix:
         platform: [ubuntu-latest]
-        otp-version: [24, 25, 26, 27]
+        otp-version: [25, 26, 27]
     runs-on: ${{ matrix.platform }}
     container:
       image: erlang:${{ matrix.otp-version }}
@@ -27,20 +25,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Cache Hex packages
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/rebar3/hex/hexpm/packages
-        key: ${{ runner.os }}-hex-${{ hashFiles(format('{0}{1}', github.workspace, '/rebar.lock')) }}
-        restore-keys: |
-          ${{ runner.os }}-hex-
-    - name: Cache Dialyzer PLTs
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/rebar3/rebar3_*.plt
-        key: ${{ runner.os }}-dialyzer-${{ hashFiles(format('{0}{1}', github.workspace, '/rebar.config')) }}
-        restore-keys: |
-          ${{ runner.os }}-dialyzer-
     - name: Compile
       run: rebar3 compile
     - name: Run EUnit Tests
@@ -52,14 +36,8 @@ jobs:
         S3MOCK_HOST: s3mock
     - name: Check app calls
       run: rebar3 check_app_calls
-    - name: Create Cover Reports
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: rebar3 cover
     - name: Produce Documentation
-      run: rebar3 edoc || true
-    - name: Produce Documentation
-      run: rebar3 ex_doc || true
+      run: rebar3 ex_doc
     - name: Publish Documentation
       uses: actions/upload-artifact@v4
       with:
