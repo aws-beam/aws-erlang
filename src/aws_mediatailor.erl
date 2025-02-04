@@ -190,6 +190,7 @@
 
 %% Example:
 %% configure_logs_for_playback_configuration_response() :: #{
+%%   <<"EnabledLoggingStrategies">> => list(list(any())()),
 %%   <<"PercentEnabled">> := integer(),
 %%   <<"PlaybackConfigurationName">> => string()
 %% }
@@ -349,6 +350,7 @@
 
 %% Example:
 %% configure_logs_for_playback_configuration_request() :: #{
+%%   <<"EnabledLoggingStrategies">> => list(list(any())()),
 %%   <<"PercentEnabled">> => integer(),
 %%   <<"PlaybackConfigurationName">> => string()
 %% }
@@ -1265,6 +1267,7 @@
 
 %% Example:
 %% log_configuration() :: #{
+%%   <<"EnabledLoggingStrategies">> => list(list(any())()),
 %%   <<"PercentEnabled">> => integer()
 %% }
 -type log_configuration() :: #{binary() => any()}.
