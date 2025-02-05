@@ -1249,7 +1249,8 @@
 %%   <<"NumberOfJobs">> => integer(),
 %%   <<"SelectionRules">> => string(),
 %%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"SourceDataSettings">> => list(source_data_setting()())
+%%   <<"SourceDataSettings">> => list(source_data_setting()()),
+%%   <<"TargetDataSettings">> => list(target_data_setting()())
 %% }
 -type modify_data_migration_message() :: #{binary() => any()}.
 
@@ -1770,6 +1771,12 @@
 -type describe_pending_maintenance_actions_response() :: #{binary() => any()}.
 
 %% Example:
+%% target_data_setting() :: #{
+%%   <<"TablePreparationMode">> => list(any())
+%% }
+-type target_data_setting() :: #{binary() => any()}.
+
+%% Example:
 %% recommendation() :: #{
 %%   <<"CreatedDate">> => string(),
 %%   <<"Data">> => recommendation_data(),
@@ -2168,7 +2175,8 @@
 %%   <<"PublicIpAddresses">> => list(string()()),
 %%   <<"ServiceAccessRoleArn">> => string(),
 %%   <<"SourceDataSettings">> => list(source_data_setting()()),
-%%   <<"StopReason">> => string()
+%%   <<"StopReason">> => string(),
+%%   <<"TargetDataSettings">> => list(target_data_setting()())
 %% }
 -type data_migration() :: #{binary() => any()}.
 
@@ -2769,7 +2777,8 @@
 %%   <<"SelectionRules">> => string(),
 %%   <<"ServiceAccessRoleArn">> := string(),
 %%   <<"SourceDataSettings">> => list(source_data_setting()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetDataSettings">> => list(target_data_setting()())
 %% }
 -type create_data_migration_message() :: #{binary() => any()}.
 

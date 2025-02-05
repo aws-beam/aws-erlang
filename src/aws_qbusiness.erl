@@ -357,6 +357,13 @@
 
 
 %% Example:
+%% applied_orchestration_configuration() :: #{
+%%   <<"control">> => list(any())
+%% }
+-type applied_orchestration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% index_capacity_configuration() :: #{
 %%   <<"units">> => integer()
 %% }
@@ -1740,6 +1747,13 @@
 %% }
 -type relevant_content() :: #{binary() => any()}.
 
+
+%% Example:
+%% orchestration_configuration() :: #{
+%%   <<"control">> => list(any())
+%% }
+-type orchestration_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_group_response() :: #{}
 -type delete_group_response() :: #{}.
@@ -1836,6 +1850,7 @@
 %%   <<"blockedPhrasesConfigurationUpdate">> => blocked_phrases_configuration_update(),
 %%   <<"clientToken">> => string(),
 %%   <<"creatorModeConfiguration">> => creator_mode_configuration(),
+%%   <<"orchestrationConfiguration">> => orchestration_configuration(),
 %%   <<"responseScope">> => list(any()),
 %%   <<"topicConfigurationsToCreateOrUpdate">> => list(topic_configuration()()),
 %%   <<"topicConfigurationsToDelete">> => list(topic_configuration()())
@@ -2106,6 +2121,7 @@
 %%   <<"blockedPhrases">> => blocked_phrases_configuration(),
 %%   <<"creatorModeConfiguration">> => applied_creator_mode_configuration(),
 %%   <<"nextToken">> => string(),
+%%   <<"orchestrationConfiguration">> => applied_orchestration_configuration(),
 %%   <<"responseScope">> => list(any()),
 %%   <<"topicConfigurations">> => list(topic_configuration()())
 %% }
@@ -4157,7 +4173,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about an chat controls configured for an existing
+%% @doc Gets information about chat controls configured for an existing
 %% Amazon Q Business
 %% application.
 -spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list()) ->
@@ -5722,7 +5738,7 @@ update_application(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an set of chat controls configured for an existing Amazon Q
+%% @doc Updates a set of chat controls configured for an existing Amazon Q
 %% Business
 %% application.
 -spec update_chat_controls_configuration(aws_client:aws_client(), binary() | list(), update_chat_controls_configuration_request()) ->

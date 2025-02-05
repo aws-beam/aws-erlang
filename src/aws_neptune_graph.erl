@@ -604,6 +604,7 @@
 
 %% Example:
 %% list_export_tasks_input() :: #{
+%%   <<"graphIdentifier">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1914,6 +1915,7 @@ list_export_tasks(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"graphIdentifier">>, maps:get(<<"graphIdentifier">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
