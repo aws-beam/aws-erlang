@@ -1,7 +1,17 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc With Amazon Connect Cases, your agents can track and manage customer
+%% @doc
+%%
+%% Cases
+%% actions:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Cases.html
+%%
+%% Cases data
+%% types:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Cases.html
+%%
+%% With Amazon Connect Cases, your agents can track and manage customer
 %% issues that require
 %% multiple interactions, follow-up tasks, and teams in your contact center.
 %%
@@ -13,12 +23,16 @@
 %% Amazon Connect Administrator Guide.
 -module(aws_connectcases).
 
--export([batch_get_field/3,
+-export([batch_get_case_rule/3,
+         batch_get_case_rule/4,
+         batch_get_field/3,
          batch_get_field/4,
          batch_put_field_options/4,
          batch_put_field_options/5,
          create_case/3,
          create_case/4,
+         create_case_rule/3,
+         create_case_rule/4,
          create_domain/2,
          create_domain/3,
          create_field/3,
@@ -29,6 +43,8 @@
          create_related_item/5,
          create_template/3,
          create_template/4,
+         delete_case_rule/4,
+         delete_case_rule/5,
          delete_domain/3,
          delete_domain/4,
          delete_field/4,
@@ -49,6 +65,8 @@
          get_layout/5,
          get_template/4,
          get_template/5,
+         list_case_rules/3,
+         list_case_rules/4,
          list_cases_for_contact/3,
          list_cases_for_contact/4,
          list_domains/2,
@@ -76,6 +94,8 @@
          untag_resource/4,
          update_case/4,
          update_case/5,
+         update_case_rule/4,
+         update_case_rule/5,
          update_field/4,
          update_field/5,
          update_layout/4,
@@ -99,8 +119,16 @@
 -type get_domain_request() :: #{}.
 
 %% Example:
+%% delete_case_rule_request() :: #{}
+-type delete_case_rule_request() :: #{}.
+
+%% Example:
 %% delete_domain_response() :: #{}
 -type delete_domain_response() :: #{}.
+
+%% Example:
+%% update_case_rule_response() :: #{}
+-type update_case_rule_response() :: #{}.
 
 
 %% Example:
@@ -116,6 +144,14 @@
 %%   <<"name">> => string()
 %% }
 -type update_layout_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_rule() :: #{
+%%   <<"caseRuleId">> => string(),
+%%   <<"fieldId">> => string()
+%% }
+-type template_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -160,6 +196,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_case_audit_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_case_rule_response() :: #{
+%%   <<"caseRuleArn">> => string(),
+%%   <<"caseRuleId">> => string()
+%% }
+-type create_case_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -213,6 +257,7 @@
 %%   <<"layoutConfiguration">> => layout_configuration(),
 %%   <<"name">> := string(),
 %%   <<"requiredFields">> => list(required_field()()),
+%%   <<"rules">> => list(template_rule()()),
 %%   <<"status">> => string()
 %% }
 -type create_template_request() :: #{binary() => any()}.
@@ -227,6 +272,7 @@
 %%   <<"layoutConfiguration">> => layout_configuration(),
 %%   <<"name">> := string(),
 %%   <<"requiredFields">> => list(required_field()()),
+%%   <<"rules">> => list(template_rule()()),
 %%   <<"status">> := string(),
 %%   <<"tags">> => map(),
 %%   <<"templateArn">> := string(),
@@ -288,6 +334,7 @@
 %%   <<"layoutConfiguration">> => layout_configuration(),
 %%   <<"name">> => string(),
 %%   <<"requiredFields">> => list(required_field()()),
+%%   <<"rules">> => list(template_rule()()),
 %%   <<"status">> => string()
 %% }
 -type update_template_request() :: #{binary() => any()}.
@@ -339,6 +386,21 @@
 %%   <<"fieldId">> => string()
 %% }
 -type required_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_case_rule_response() :: #{
+%%   <<"caseRuleArn">> => string(),
+%%   <<"caseRuleId">> => string(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"rule">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type get_case_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_layout_response() :: #{}
@@ -468,6 +530,14 @@
 %% }
 -type list_domains_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_case_rules_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_case_rules_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_field_response() :: #{}
 -type update_field_response() :: #{}.
@@ -481,6 +551,15 @@
 %%   <<"templateId">> => string()
 %% }
 -type template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_case_rule_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"rule">> := list()
+%% }
+-type create_case_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -501,6 +580,18 @@
 
 
 %% Example:
+%% list_case_rules_response() :: #{
+%%   <<"caseRules">> => list(case_rule_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_case_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_case_rule_response() :: #{}
+-type delete_case_rule_response() :: #{}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
@@ -513,6 +604,10 @@
 %%   <<"layoutId">> := string()
 %% }
 -type create_layout_response() :: #{binary() => any()}.
+
+%% Example:
+%% empty_operand_value() :: #{}
+-type empty_operand_value() :: #{}.
 
 %% Example:
 %% put_case_event_configuration_response() :: #{}
@@ -644,9 +739,29 @@
 %% delete_field_response() :: #{}
 -type delete_field_response() :: #{}.
 
+
+%% Example:
+%% update_case_rule_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"rule">> => list()
+%% }
+-type update_case_rule_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_layout_request() :: #{}
 -type get_layout_request() :: #{}.
+
+
+%% Example:
+%% case_rule_summary() :: #{
+%%   <<"caseRuleArn">> => string(),
+%%   <<"caseRuleId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ruleType">> => string()
+%% }
+-type case_rule_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -654,6 +769,14 @@
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_case_rule_response() :: #{
+%%   <<"caseRules">> => list(get_case_rule_response()()),
+%%   <<"errors">> => list(case_rule_error()())
+%% }
+-type batch_get_case_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -777,6 +900,15 @@
 
 
 %% Example:
+%% case_rule_error() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type case_rule_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_template_response() :: #{
 %%   <<"templateArn">> := string(),
 %%   <<"templateId">> := string()
@@ -805,9 +937,26 @@
 %% }
 -type file_content() :: #{binary() => any()}.
 
+
+%% Example:
+%% boolean_operands() :: #{
+%%   <<"operandOne">> => list(),
+%%   <<"operandTwo">> => list(),
+%%   <<"result">> => [boolean()]
+%% }
+-type boolean_operands() :: #{binary() => any()}.
+
 %% Example:
 %% delete_layout_request() :: #{}
 -type delete_layout_request() :: #{}.
+
+
+%% Example:
+%% required_case_rule() :: #{
+%%   <<"conditions">> => list(list()()),
+%%   <<"defaultValue">> => [boolean()]
+%% }
+-type required_case_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -816,6 +965,13 @@
 %%   <<"options">> := list(field_option()())
 %% }
 -type list_field_options_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_rule_identifier() :: #{
+%%   <<"id">> => string()
+%% }
+-type case_rule_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -917,6 +1073,20 @@
 %% }
 -type audit_event_performed_by() :: #{binary() => any()}.
 
+
+%% Example:
+%% batch_get_case_rule_request() :: #{
+%%   <<"caseRules">> := list(case_rule_identifier()())
+%% }
+-type batch_get_case_rule_request() :: #{binary() => any()}.
+
+-type batch_get_case_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type batch_get_field_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -937,6 +1107,15 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_case_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -980,6 +1159,13 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_case_rule_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1052,6 +1238,13 @@
     resource_not_found_exception().
 
 -type get_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_case_rules_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1148,6 +1341,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type update_case_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_field_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1176,6 +1377,47 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Gets a batch of case rules.
+%%
+%% In the Amazon Connect admin website, case rules are known as case field
+%% conditions. For more
+%% information about case field conditions, see Add case field conditions to
+%% a
+%% case template:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
+-spec batch_get_case_rule(aws_client:aws_client(), binary() | list(), batch_get_case_rule_request()) ->
+    {ok, batch_get_case_rule_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_case_rule_errors(), tuple()}.
+batch_get_case_rule(Client, DomainId, Input) ->
+    batch_get_case_rule(Client, DomainId, Input, []).
+
+-spec batch_get_case_rule(aws_client:aws_client(), binary() | list(), batch_get_case_rule_request(), proplists:proplist()) ->
+    {ok, batch_get_case_rule_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_case_rule_errors(), tuple()}.
+batch_get_case_rule(Client, DomainId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/rules-batch"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the description for the list of fields in the request
 %% parameters.
@@ -1283,6 +1525,47 @@ create_case(Client, DomainId, Input) ->
 create_case(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new case rule.
+%%
+%% In the Amazon Connect admin website, case rules are known as case field
+%% conditions. For more
+%% information about case field conditions, see Add case field conditions to
+%% a
+%% case template:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
+-spec create_case_rule(aws_client:aws_client(), binary() | list(), create_case_rule_request()) ->
+    {ok, create_case_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_case_rule_errors(), tuple()}.
+create_case_rule(Client, DomainId, Input) ->
+    create_case_rule(Client, DomainId, Input, []).
+
+-spec create_case_rule(aws_client:aws_client(), binary() | list(), create_case_rule_request(), proplists:proplist()) ->
+    {ok, create_case_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_case_rule_errors(), tuple()}.
+create_case_rule(Client, DomainId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-rules"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1450,6 +1733,8 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %% DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the ARN of the user that you provide.
+%%
+%% The `type' field is reserved for internal use only.
 -spec create_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), create_related_item_request()) ->
     {ok, create_related_item_response(), tuple()} |
     {error, any()} |
@@ -1495,6 +1780,20 @@ create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
 %% template can be either Active or Inactive, as indicated by its status.
 %% Inactive templates
 %% cannot be used to create cases.
+%%
+%% Other template APIs are:
+%%
+%% DeleteTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteTemplate.html
+%%
+%% GetTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetTemplate.html
+%%
+%% ListTemplates:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListTemplates.html
+%%
+%% UpdateTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateTemplate.html
 -spec create_template(aws_client:aws_client(), binary() | list(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
@@ -1509,6 +1808,47 @@ create_template(Client, DomainId, Input) ->
 create_template(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a case rule.
+%%
+%% In the Amazon Connect admin website, case rules are known as case field
+%% conditions. For more
+%% information about case field conditions, see Add case field conditions to
+%% a
+%% case template:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
+-spec delete_case_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_case_rule_request()) ->
+    {ok, delete_case_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_case_rule_errors(), tuple()}.
+delete_case_rule(Client, CaseRuleId, DomainId, Input) ->
+    delete_case_rule(Client, CaseRuleId, DomainId, Input, []).
+
+-spec delete_case_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_case_rule_request(), proplists:proplist()) ->
+    {ok, delete_case_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_case_rule_errors(), tuple()}.
+delete_case_rule(Client, CaseRuleId, DomainId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-rules/", aws_util:encode_uri(CaseRuleId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1583,38 +1923,39 @@ delete_domain(Client, DomainId, Input0, Options0) ->
 %% Deleted fields are not included in the `ListFields' response.
 %%
 %% Calling `CreateCase' with a deleted field throws a
-%% `ValidationException' denoting
-%% which field IDs in the request have been deleted.
+%% `ValidationException' denoting which field IDs in the request have
+%% been
+%% deleted.
 %%
 %% Calling `GetCase' with a deleted field ID returns the deleted
-%% field's value if one
-%% exists.
+%% field's value
+%% if one exists.
 %%
 %% Calling `UpdateCase' with a deleted field ID throws a
-%% `ValidationException' if the
-%% case does not already contain a value for the deleted field. Otherwise it
-%% succeeds,
-%% allowing you to update or remove (using `emptyValue: {}') the
-%% field's value from the
-%% case.
+%% `ValidationException' if the case does not already contain a value for
+%% the
+%% deleted field. Otherwise it succeeds, allowing you to update or remove
+%% (using
+%% `emptyValue: {}') the field's value from the case.
 %%
 %% `GetTemplate' does not return field IDs for deleted fields.
 %%
 %% `GetLayout' does not return field IDs for deleted fields.
 %%
 %% Calling `SearchCases' with the deleted field ID as a filter returns
-%% any cases that
-%% have a value for the deleted field that matches the filter criteria.
+%% any
+%% cases that have a value for the deleted field that matches the filter
+%% criteria.
 %%
 %% Calling `SearchCases' with a `searchTerm' value that matches a
-%% deleted field's value on a
-%% case returns the case in the response.
+%% deleted field's value on a case returns the case in the response.
 %%
 %% Calling `BatchPutFieldOptions' with a deleted field ID throw a
 %% `ValidationException'.
 %%
 %% Calling `GetCaseEventConfiguration' does not return field IDs for
-%% deleted fields.
+%% deleted
+%% fields.
 -spec delete_field(aws_client:aws_client(), binary() | list(), binary() | list(), delete_field_request()) ->
     {ok, delete_field_response(), tuple()} |
     {error, any()} |
@@ -1650,7 +1991,8 @@ delete_field(Client, DomainId, FieldId, Input0, Options0) ->
 
 %% @doc Deletes a layout from a cases template.
 %%
-%% You can delete up to 100 layouts per domain.
+%% You can delete up to 100 layouts per
+%% domain.
 %%
 %% After a layout is deleted:
 %%
@@ -1911,6 +2253,20 @@ get_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the details for the requested template.
+%%
+%% Other template APIs are:
+%%
+%% CreateTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateTemplate.html
+%%
+%% DeleteTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteTemplate.html
+%%
+%% ListTemplates:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListTemplates.html
+%%
+%% UpdateTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateTemplate.html
 -spec get_template(aws_client:aws_client(), binary() | list(), binary() | list(), get_template_request()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
@@ -1942,6 +2298,49 @@ get_template(Client, DomainId, TemplateId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all case rules in a Cases domain.
+%%
+%% In the Amazon Connect admin website, case rules are known as case field
+%% conditions. For more
+%% information about case field conditions, see Add case field conditions to
+%% a
+%% case template:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
+-spec list_case_rules(aws_client:aws_client(), binary() | list(), list_case_rules_request()) ->
+    {ok, list_case_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_case_rules_errors(), tuple()}.
+list_case_rules(Client, DomainId, Input) ->
+    list_case_rules(Client, DomainId, Input, []).
+
+-spec list_case_rules(aws_client:aws_client(), binary() | list(), list_case_rules_request(), proplists:proplist()) ->
+    {ok, list_case_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_case_rules_errors(), tuple()}.
+list_case_rules(Client, DomainId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/rules-list/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists cases for a given contact.
@@ -2170,6 +2569,20 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% Each list item is a condensed summary
 %% object of the template.
+%%
+%% Other template APIs are:
+%%
+%% CreateTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateTemplate.html
+%%
+%% DeleteTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteTemplate.html
+%%
+%% GetTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetTemplate.html
+%%
+%% UpdateTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateTemplate.html
 -spec list_templates(aws_client:aws_client(), binary() | list(), list_templates_request()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
@@ -2444,6 +2857,47 @@ update_case(Client, CaseId, DomainId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a case rule.
+%%
+%% In the Amazon Connect admin website, case rules are known as case field
+%% conditions. For more
+%% information about case field conditions, see Add case field conditions to
+%% a
+%% case template:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
+-spec update_case_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_case_rule_request()) ->
+    {ok, update_case_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_case_rule_errors(), tuple()}.
+update_case_rule(Client, CaseRuleId, DomainId, Input) ->
+    update_case_rule(Client, CaseRuleId, DomainId, Input, []).
+
+-spec update_case_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_case_rule_request(), proplists:proplist()) ->
+    {ok, update_case_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_case_rule_errors(), tuple()}.
+update_case_rule(Client, CaseRuleId, DomainId, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-rules/", aws_util:encode_uri(CaseRuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the properties of an existing field.
 -spec update_field(aws_client:aws_client(), binary() | list(), binary() | list(), update_field_request()) ->
     {ok, update_field_response(), tuple()} |
@@ -2530,6 +2984,20 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 %% least one of these attributes must not be null. If a null value is
 %% provided for a given
 %% attribute, that attribute is ignored and its current value is preserved.
+%%
+%% Other template APIs are:
+%%
+%% CreateTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateTemplate.html
+%%
+%% DeleteTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteTemplate.html
+%%
+%% GetTemplate:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetTemplate.html
+%%
+%% ListTemplates:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListTemplates.html
 -spec update_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |

@@ -50,6 +50,8 @@
          create_stack/3,
          create_stack_instances/2,
          create_stack_instances/3,
+         create_stack_refactor/2,
+         create_stack_refactor/3,
          create_stack_set/2,
          create_stack_set/3,
          deactivate_organizations_access/2,
@@ -88,6 +90,8 @@
          describe_stack_events/3,
          describe_stack_instance/2,
          describe_stack_instance/3,
+         describe_stack_refactor/2,
+         describe_stack_refactor/3,
          describe_stack_resource/2,
          describe_stack_resource/3,
          describe_stack_resource_drifts/2,
@@ -114,6 +118,8 @@
          estimate_template_cost/3,
          execute_change_set/2,
          execute_change_set/3,
+         execute_stack_refactor/2,
+         execute_stack_refactor/3,
          get_generated_template/2,
          get_generated_template/3,
          get_stack_policy/2,
@@ -144,6 +150,10 @@
          list_stack_instance_resource_drifts/3,
          list_stack_instances/2,
          list_stack_instances/3,
+         list_stack_refactor_actions/2,
+         list_stack_refactor_actions/3,
+         list_stack_refactors/2,
+         list_stack_refactors/3,
          list_stack_resources/2,
          list_stack_resources/3,
          list_stack_set_auto_deployment_targets/2,
@@ -244,6 +254,12 @@
 -type set_stack_policy_input() :: #{binary() => any()}.
 
 %% Example:
+%% create_stack_refactor_output() :: #{
+%%   <<"StackRefactorId">> => string()
+%% }
+-type create_stack_refactor_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_stack_policy_input() :: #{
 %%   <<"StackName">> := string()
 %% }
@@ -263,6 +279,17 @@
 %%   <<"VersionBump">> => list(any())
 %% }
 -type activate_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% stack_refactor_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExecutionStatus">> => list(any()),
+%%   <<"ExecutionStatusReason">> => string(),
+%%   <<"StackRefactorId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type stack_refactor_summary() :: #{binary() => any()}.
 
 %% Example:
 %% stack_resource_summary() :: #{
@@ -490,6 +517,22 @@
 -type stack_event() :: #{binary() => any()}.
 
 %% Example:
+%% resource_mapping() :: #{
+%%   <<"Destination">> => resource_location(),
+%%   <<"Source">> => resource_location()
+%% }
+-type resource_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% create_stack_refactor_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EnableStackCreation">> => boolean(),
+%%   <<"ResourceMappings">> => list(resource_mapping()()),
+%%   <<"StackDefinitions">> := list(stack_definition()())
+%% }
+-type create_stack_refactor_input() :: #{binary() => any()}.
+
+%% Example:
 %% physical_resource_id_context_key_value_pair() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -584,6 +627,12 @@
 %%   <<"Message">> => string()
 %% }
 -type concurrent_resources_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stack_refactor_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type stack_refactor_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% managed_execution() :: #{
@@ -696,6 +745,21 @@
 %%   <<"StackName">> => string()
 %% }
 -type stack_resource_detail() :: #{binary() => any()}.
+
+%% Example:
+%% stack_refactor_action() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Detection">> => list(any()),
+%%   <<"DetectionReason">> => string(),
+%%   <<"Entity">> => list(any()),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceMapping">> => resource_mapping(),
+%%   <<"TagResources">> => list(tag()()),
+%%   <<"UntagResources">> => list(string()())
+%% }
+-type stack_refactor_action() :: #{binary() => any()}.
 
 %% Example:
 %% stack_instance_summary() :: #{
@@ -899,6 +963,13 @@
 %%   <<"RegistrationToken">> := string()
 %% }
 -type describe_type_registration_input() :: #{binary() => any()}.
+
+%% Example:
+%% resource_location() :: #{
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type resource_location() :: #{binary() => any()}.
 
 %% Example:
 %% test_type_output() :: #{
@@ -1200,6 +1271,13 @@
 -type describe_stack_set_input() :: #{binary() => any()}.
 
 %% Example:
+%% list_stack_refactors_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackRefactorSummaries">> => list(stack_refactor_summary()())
+%% }
+-type list_stack_refactors_output() :: #{binary() => any()}.
+
+%% Example:
 %% activate_type_output() :: #{
 %%   <<"Arn">> => string()
 %% }
@@ -1386,6 +1464,14 @@
 %%   <<"Message">> => string()
 %% }
 -type resource_scan_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stack_definition() :: #{
+%%   <<"StackName">> => string(),
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type stack_definition() :: #{binary() => any()}.
 
 %% Example:
 %% activate_organizations_access_input() :: #{
@@ -2151,10 +2237,23 @@
 -type deactivate_organizations_access_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_stack_refactor_actions_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackRefactorActions">> => list(stack_refactor_action()())
+%% }
+-type list_stack_refactor_actions_output() :: #{binary() => any()}.
+
+%% Example:
 %% token_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type token_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_refactor_input() :: #{
+%%   <<"StackRefactorId">> := string()
+%% }
+-type describe_stack_refactor_input() :: #{binary() => any()}.
 
 %% Example:
 %% batch_describe_type_configurations_input() :: #{
@@ -2334,6 +2433,32 @@
 %%   <<"Values">> => string()
 %% }
 -type operation_result_filter() :: #{binary() => any()}.
+
+%% Example:
+%% execute_stack_refactor_input() :: #{
+%%   <<"StackRefactorId">> := string()
+%% }
+-type execute_stack_refactor_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_refactor_output() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExecutionStatus">> => list(any()),
+%%   <<"ExecutionStatusReason">> => string(),
+%%   <<"StackIds">> => list(string()()),
+%%   <<"StackRefactorId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type describe_stack_refactor_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_refactors_input() :: #{
+%%   <<"ExecutionStatusFilter">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stack_refactors_input() :: #{binary() => any()}.
 
 %% Example:
 %% change_set_not_found_exception() :: #{
@@ -2523,6 +2648,14 @@
 %% }
 -type auto_deployment() :: #{binary() => any()}.
 
+%% Example:
+%% list_stack_refactor_actions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackRefactorId">> := string()
+%% }
+-type list_stack_refactor_actions_input() :: #{binary() => any()}.
+
 -type activate_organizations_access_errors() ::
     operation_not_found_exception() | 
     invalid_operation_exception().
@@ -2625,6 +2758,9 @@
 -type describe_stack_instance_errors() ::
     stack_instance_not_found_exception() | 
     stack_set_not_found_exception().
+
+-type describe_stack_refactor_errors() ::
+    stack_refactor_not_found_exception().
 
 -type describe_stack_set_errors() ::
     stack_set_not_found_exception().
@@ -3035,6 +3171,22 @@ create_stack_instances(Client, Input)
 create_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStackInstances">>, Input, Options).
+
+%% @doc Creates a refactor across multiple stacks, with the list of stacks
+%% and resources that are affected.
+-spec create_stack_refactor(aws_client:aws_client(), create_stack_refactor_input()) ->
+    {ok, create_stack_refactor_output(), tuple()} |
+    {error, any()}.
+create_stack_refactor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_stack_refactor(Client, Input, []).
+
+-spec create_stack_refactor(aws_client:aws_client(), create_stack_refactor_input(), proplists:proplist()) ->
+    {ok, create_stack_refactor_output(), tuple()} |
+    {error, any()}.
+create_stack_refactor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStackRefactor">>, Input, Options).
 
 %% @doc Creates a stack set.
 -spec create_stack_set(aws_client:aws_client(), create_stack_set_input()) ->
@@ -3507,6 +3659,23 @@ describe_stack_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackInstance">>, Input, Options).
 
+%% @doc Describes the stack refactor status.
+-spec describe_stack_refactor(aws_client:aws_client(), describe_stack_refactor_input()) ->
+    {ok, describe_stack_refactor_output(), tuple()} |
+    {error, any()} |
+    {error, describe_stack_refactor_errors(), tuple()}.
+describe_stack_refactor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_stack_refactor(Client, Input, []).
+
+-spec describe_stack_refactor(aws_client:aws_client(), describe_stack_refactor_input(), proplists:proplist()) ->
+    {ok, describe_stack_refactor_output(), tuple()} |
+    {error, any()} |
+    {error, describe_stack_refactor_errors(), tuple()}.
+describe_stack_refactor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStackRefactor">>, Input, Options).
+
 %% @doc Returns a description of the specified resource in the specified
 %% stack.
 %%
@@ -3816,8 +3985,8 @@ detect_stack_resource_drift(Client, Input, Options)
 %% When CloudFormation performs drift detection on a stack set, it
 %% performs drift detection on the stack associated with each stack instance
 %% in the stack set.
-%% For more information, see How CloudFormation performs drift
-%% detection on a stack set:
+%% For more information, see Performing drift detection on
+%% CloudFormation StackSets:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html.
 %%
 %% `DetectStackSetDrift' returns the `OperationId' of the stack set
@@ -3848,11 +4017,6 @@ detect_stack_resource_drift(Client, Input, Options)
 %% Use `DescribeStackInstance' to return detailed information about a
 %% specific stack instance, including its drift status and last drift time
 %% checked.
-%%
-%% For more information about performing a drift detection operation on a
-%% stack set, see
-%% Detecting unmanaged changes in stack sets:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html.
 %%
 %% You can only run a single drift detection operation on a given stack set
 %% at one
@@ -3931,6 +4095,21 @@ execute_change_set(Client, Input)
 execute_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteChangeSet">>, Input, Options).
+
+%% @doc Executes the stack refactor operation.
+-spec execute_stack_refactor(aws_client:aws_client(), execute_stack_refactor_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+execute_stack_refactor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    execute_stack_refactor(Client, Input, []).
+
+-spec execute_stack_refactor(aws_client:aws_client(), execute_stack_refactor_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+execute_stack_refactor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExecuteStackRefactor">>, Input, Options).
 
 %% @doc Retrieves a generated template.
 %%
@@ -4270,6 +4449,37 @@ list_stack_instances(Client, Input)
 list_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackInstances">>, Input, Options).
+
+%% @doc Lists the stack refactor actions that will be taken after calling the
+%% `ExecuteStackRefactor' action.
+-spec list_stack_refactor_actions(aws_client:aws_client(), list_stack_refactor_actions_input()) ->
+    {ok, list_stack_refactor_actions_output(), tuple()} |
+    {error, any()}.
+list_stack_refactor_actions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_stack_refactor_actions(Client, Input, []).
+
+-spec list_stack_refactor_actions(aws_client:aws_client(), list_stack_refactor_actions_input(), proplists:proplist()) ->
+    {ok, list_stack_refactor_actions_output(), tuple()} |
+    {error, any()}.
+list_stack_refactor_actions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStackRefactorActions">>, Input, Options).
+
+%% @doc Lists all account stack refactor operations and their statuses.
+-spec list_stack_refactors(aws_client:aws_client(), list_stack_refactors_input()) ->
+    {ok, list_stack_refactors_output(), tuple()} |
+    {error, any()}.
+list_stack_refactors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_stack_refactors(Client, Input, []).
+
+-spec list_stack_refactors(aws_client:aws_client(), list_stack_refactors_input(), proplists:proplist()) ->
+    {ok, list_stack_refactors_output(), tuple()} |
+    {error, any()}.
+list_stack_refactors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStackRefactors">>, Input, Options).
 
 %% @doc Returns descriptions of all resources of the specified stack.
 %%
@@ -4755,8 +4965,9 @@ start_resource_scan(Client, Input, Options)
 %% @doc Stops an in-progress operation on a stack set and its associated
 %% stack instances.
 %%
-%% StackSets will cancel all the
-%% unstarted stack instance deployments and wait for those are in-progress to
+%% StackSets
+%% will cancel all the unstarted stack instance deployments and wait for
+%% those are in-progress to
 %% complete.
 -spec stop_stack_set_operation(aws_client:aws_client(), stop_stack_set_operation_input()) ->
     {ok, stop_stack_set_operation_output(), tuple()} |

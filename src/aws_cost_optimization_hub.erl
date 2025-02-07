@@ -400,6 +400,12 @@
 -type reserved_instances_cost_calculation() :: #{binary() => any()}.
 
 %% Example:
+%% mixed_instance_configuration() :: #{
+%%   <<"type">> => [string()]
+%% }
+-type mixed_instance_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% elasti_cache_reserved_instances_configuration() :: #{
 %%   <<"accountScope">> => [string()],
 %%   <<"currentGeneration">> => [string()],
@@ -455,7 +461,10 @@
 
 %% Example:
 %% ec2_auto_scaling_group_configuration() :: #{
-%%   <<"instance">> => instance_configuration()
+%%   <<"allocationStrategy">> => list(any()),
+%%   <<"instance">> => instance_configuration(),
+%%   <<"mixedInstances">> => list(mixed_instance_configuration()()),
+%%   <<"type">> => list(any())
 %% }
 -type ec2_auto_scaling_group_configuration() :: #{binary() => any()}.
 
