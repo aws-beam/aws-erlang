@@ -167,6 +167,7 @@
 
 %% Example:
 %% clinical_note_generation_settings() :: #{
+%%   <<"NoteTemplate">> => list(any()),
 %%   <<"OutputBucketName">> => string()
 %% }
 -type clinical_note_generation_settings() :: #{binary() => any()}.

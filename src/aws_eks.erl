@@ -918,7 +918,8 @@
 %%   <<"includeAll">> => boolean(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"versionStatus">> => list(any())
 %% }
 -type describe_cluster_versions_request() :: #{binary() => any()}.
 
@@ -2008,7 +2009,8 @@
 %%   <<"endOfStandardSupportDate">> => non_neg_integer(),
 %%   <<"kubernetesPatchVersion">> => string(),
 %%   <<"releaseDate">> => non_neg_integer(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"versionStatus">> => list(any())
 %% }
 -type cluster_version_information() :: #{binary() => any()}.
 
@@ -3562,7 +3564,8 @@ describe_cluster_versions(Client, QueryMap, HeadersMap, Options0)
         {<<"includeAll">>, maps:get(<<"includeAll">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"versionStatus">>, maps:get(<<"versionStatus">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3798,7 +3801,7 @@ describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, 
 
 %% @doc Describes an update to an Amazon EKS resource.
 %%
-%% When the status of the update is `Succeeded', the update is complete.
+%% When the status of the update is `Successful', the update is complete.
 %% If an
 %% update fails, the status is `Failed', and an error detail explains the
 %% reason
@@ -4485,8 +4488,10 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
 %% current information about the cluster and its nodes.
 %%
 %% Cluster connection requires two steps. First, send a
-%% ```
-%% `RegisterClusterRequest' ''' to add it to the Amazon EKS
+%% `RegisterClusterRequest'
+%% :
+%% https://docs.aws.amazon.com/eks/latest/APIReference/API_RegisterClusterRequest.html
+%% to add it to the Amazon EKS
 %% control plane.
 %%
 %% Second, a Manifest:
@@ -4787,7 +4792,11 @@ update_cluster_config(Client, Name, Input0, Options0) ->
 %% continues to function during the update. The response output includes an
 %% update ID that
 %% you can use to track the status of your cluster update with the
-%% `DescribeUpdate' API operation.
+%%
+%% `DescribeUpdate'
+%% :
+%% https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html
+%% API operation.
 %%
 %% Cluster updates are asynchronous, and they should finish within a few
 %% minutes. During
@@ -4878,8 +4887,11 @@ update_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 %% continues to function during the update. The response output includes an
 %% update ID that
 %% you can use to track the status of your node group update with the
-%% `DescribeUpdate' API operation. You can update the Kubernetes labels
-%% and taints
+%%
+%% `DescribeUpdate'
+%% :
+%% https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html
+%% API operation. You can update the Kubernetes labels and taints
 %% for a node group and the scaling and version update configuration.
 -spec update_nodegroup_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_nodegroup_config_request()) ->
     {ok, update_nodegroup_config_response(), tuple()} |

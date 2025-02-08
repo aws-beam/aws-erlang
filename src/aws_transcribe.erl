@@ -297,6 +297,12 @@
 -type non_talk_time_filter() :: #{binary() => any()}.
 
 %% Example:
+%% clinical_note_generation_settings() :: #{
+%%   <<"NoteTemplate">> => list(any())
+%% }
+-type clinical_note_generation_settings() :: #{binary() => any()}.
+
+%% Example:
 %% start_medical_transcription_job_response() :: #{
 %%   <<"MedicalTranscriptionJob">> => medical_transcription_job()
 %% }
@@ -615,6 +621,7 @@
 %% Example:
 %% medical_scribe_settings() :: #{
 %%   <<"ChannelIdentification">> => boolean(),
+%%   <<"ClinicalNoteGenerationSettings">> => clinical_note_generation_settings(),
 %%   <<"MaxSpeakerLabels">> => integer(),
 %%   <<"ShowSpeakerLabels">> => boolean(),
 %%   <<"VocabularyFilterMethod">> => list(any()),

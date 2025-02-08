@@ -810,6 +810,7 @@
 %% video_description() :: #{
 %%   <<"AfdSignaling">> => list(any()),
 %%   <<"AntiAlias">> => list(any()),
+%%   <<"ChromaPositionMode">> => list(any()),
 %%   <<"CodecSettings">> => video_codec_settings(),
 %%   <<"ColorMetadata">> => list(any()),
 %%   <<"Crop">> => rectangle(),
@@ -1229,6 +1230,7 @@
 %%   <<"AvcIntraSettings">> => avc_intra_settings(),
 %%   <<"Codec">> => list(any()),
 %%   <<"FrameCaptureSettings">> => frame_capture_settings(),
+%%   <<"GifSettings">> => gif_settings(),
 %%   <<"H264Settings">> => h264_settings(),
 %%   <<"H265Settings">> => h265_settings(),
 %%   <<"Mpeg2Settings">> => mpeg2_settings(),
@@ -2606,6 +2608,16 @@
 %%   <<"Preset">> => preset()
 %% }
 -type create_preset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gif_settings() :: #{
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer()
+%% }
+-type gif_settings() :: #{binary() => any()}.
 
 
 %% Example:

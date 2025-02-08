@@ -97,6 +97,7 @@
 %% performance_insights_metric() :: #{
 %%   <<"Dimensions">> => map(),
 %%   <<"DisplayName">> => string(),
+%%   <<"Filter">> => map(),
 %%   <<"Metric">> => string(),
 %%   <<"Value">> => float()
 %% }
@@ -610,7 +611,7 @@ describe_dimension_keys(Client, Input, Options)
 %% `db.sql.statement' associated with this ID.
 %% This operation is useful because `GetResourceMetrics' and
 %% `DescribeDimensionKeys' don't support retrieval of large
-%% SQL statement text.
+%% SQL statement text, lock snapshots, and execution plans.
 -spec get_dimension_key_details(aws_client:aws_client(), get_dimension_key_details_request()) ->
     {ok, get_dimension_key_details_response(), tuple()} |
     {error, any()} |
