@@ -953,6 +953,16 @@
 -type dynamo_db_settings() :: #{binary() => any()}.
 
 %% Example:
+%% ibm_db2z_os_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type ibm_db2z_os_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
 %% subnet() :: #{
 %%   <<"SubnetAvailabilityZone">> => availability_zone(),
 %%   <<"SubnetIdentifier">> => string(),
@@ -1463,6 +1473,16 @@
 %%   <<"message">> => string()
 %% }
 -type failed_dependency_fault() :: #{binary() => any()}.
+
+%% Example:
+%% ibm_db2_luw_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type ibm_db2_luw_data_provider_settings() :: #{binary() => any()}.
 
 %% Example:
 %% stop_replication_task_response() :: #{
@@ -5264,7 +5284,8 @@ describe_orderable_replication_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrderableReplicationInstances">>, Input, Options).
 
-%% @doc For internal use only
+%% @doc Returns a list of upcoming maintenance events for replication
+%% instances in your account in the current Region.
 -spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message()) ->
     {ok, describe_pending_maintenance_actions_response(), tuple()} |
     {error, any()} |

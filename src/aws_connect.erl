@@ -10986,7 +10986,13 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new contact.
+%% @doc
+%% Only the EMAIL channel is supported.
+%%
+%% The supported initiation
+%% methods are: OUTBOUND, AGENT_REPLY, and FLOW.
+%%
+%% Creates a new EMAIL contact.
 -spec create_contact(aws_client:aws_client(), create_contact_request()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
@@ -21445,6 +21451,13 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 
 %% @doc Updates the traffic distribution for a given traffic distribution
 %% group.
+%%
+%% When you shift telephony traffic, also shift agents and/or agent sign-ins
+%% to ensure they
+%% can handle the calls in the other Region. If you don't shift the
+%% agents, voice calls will go to
+%% the shifted Region but there won't be any agents available to receive
+%% the calls.
 %%
 %% The `SignInConfig' distribution is available only on a
 %% default `TrafficDistributionGroup' (see the `IsDefault' parameter
