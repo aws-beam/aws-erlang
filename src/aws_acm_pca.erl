@@ -529,7 +529,9 @@
 %% Example:
 %% crl_configuration() :: #{
 %%   <<"CrlDistributionPointExtensionConfiguration">> => crl_distribution_point_extension_configuration(),
+%%   <<"CrlType">> => list(any()),
 %%   <<"CustomCname">> => string(),
+%%   <<"CustomPath">> => string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"ExpirationInDays">> => integer(),
 %%   <<"S3BucketName">> => string(),

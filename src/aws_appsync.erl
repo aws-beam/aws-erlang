@@ -4118,8 +4118,7 @@ list_apis(Client, QueryMap, HeadersMap, Options0)
 %%
 %% `ListChannelNamespaces' returns only high level details for the
 %% channel
-%% namespace. To retrieve code handlers, use
-%% `GetChannelNamespace'.
+%% namespace. To retrieve code handlers, use `GetChannelNamespace'.
 -spec list_channel_namespaces(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channel_namespaces_response(), tuple()} |
     {error, any()} |
