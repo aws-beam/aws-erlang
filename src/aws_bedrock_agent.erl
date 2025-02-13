@@ -3066,6 +3066,7 @@
 
 %% Example:
 %% prompt_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
 %%   <<"basePromptTemplate">> => string(),
 %%   <<"foundationModel">> => string(),
 %%   <<"inferenceConfiguration">> => inference_configuration(),
@@ -4541,9 +4542,8 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Deletes documents from a data source and syncs the changes to the
 %% knowledge base that is connected to it.
 %%
-%% For more information, see Ingest documents into a knowledge base in
-%% real-time:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-real-time-ingestion.html
+%% For more information, see Ingest changes directly into a knowledge base:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html
 %% in the Amazon Bedrock User Guide.
 -spec delete_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), delete_knowledge_base_documents_request()) ->
     {ok, delete_knowledge_base_documents_response(), tuple()} |
@@ -5150,9 +5150,8 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves specific documents from a data source that is connected to
 %% a knowledge base.
 %%
-%% For more information, see Ingest documents into a knowledge base in
-%% real-time:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-real-time-ingestion.html
+%% For more information, see Ingest changes directly into a knowledge base:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html
 %% in the Amazon Bedrock User Guide.
 -spec get_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), get_knowledge_base_documents_request()) ->
     {ok, get_knowledge_base_documents_response(), tuple()} |
@@ -5242,8 +5241,8 @@ get_prompt(Client, PromptIdentifier, QueryMap, HeadersMap, Options0)
 %%
 %% The `dataSourceType' specified in the content for each document must
 %% match the type of the data source that you specify in the header. For more
-%% information, see Ingest documents into a knowledge base in real-time:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-real-time-ingestion.html
+%% information, see Ingest changes directly into a knowledge base:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html
 %% in the Amazon Bedrock User Guide.
 -spec ingest_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), ingest_knowledge_base_documents_request()) ->
     {ok, ingest_knowledge_base_documents_response(), tuple()} |
@@ -5692,9 +5691,8 @@ list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Retrieves all the documents contained in a data source that is
 %% connected to a knowledge base.
 %%
-%% For more information, see Ingest documents into a knowledge base in
-%% real-time:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-real-time-ingestion.html
+%% For more information, see Ingest changes directly into a knowledge base:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html
 %% in the Amazon Bedrock User Guide.
 -spec list_knowledge_base_documents(aws_client:aws_client(), binary() | list(), binary() | list(), list_knowledge_base_documents_request()) ->
     {ok, list_knowledge_base_documents_response(), tuple()} |

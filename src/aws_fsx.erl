@@ -894,6 +894,7 @@
 %% update_file_system_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"FileSystemId">> := string(),
+%%   <<"FileSystemTypeVersion">> => string(),
 %%   <<"LustreConfiguration">> => update_file_system_lustre_configuration(),
 %%   <<"OntapConfiguration">> => update_file_system_ontap_configuration(),
 %%   <<"OpenZFSConfiguration">> => update_file_system_open_z_f_s_configuration(),
@@ -2469,7 +2470,7 @@ associate_file_system_aliases(Client, Input, Options)
 %% that task is in either the
 %% `PENDING' or `EXECUTING' state.
 %%
-%% When you cancel am export task, Amazon FSx
+%% When you cancel an export task, Amazon FSx
 %% does the following.
 %%
 %% Any files that FSx has already exported are not reverted.
@@ -2761,7 +2762,7 @@ create_data_repository_task(Client, Input, Options)
 %% If a file cache with the specified client request token doesn't exist,
 %% `CreateFileCache' does the following:
 %%
-%% Creates a new, empty Amazon File Cache resourcewith an assigned ID, and
+%% Creates a new, empty Amazon File Cache resource with an assigned ID, and
 %% an initial lifecycle state of `CREATING'.
 %%
 %% Returns the description of the cache in JSON format.
@@ -3866,6 +3867,8 @@ update_file_cache(Client, Input, Options)
 %% `DailyAutomaticBackupStartTime'
 %%
 %% `DataCompressionType'
+%%
+%% `FileSystemTypeVersion'
 %%
 %% `LogConfiguration'
 %%

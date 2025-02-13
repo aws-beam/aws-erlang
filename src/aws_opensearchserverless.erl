@@ -989,6 +989,7 @@
 %% saml_config_options() :: #{
 %%   <<"groupAttribute">> => string(),
 %%   <<"metadata">> => string(),
+%%   <<"openSearchServerlessEntityId">> => string(),
 %%   <<"sessionTimeout">> => [integer()],
 %%   <<"userAttribute">> => string()
 %% }

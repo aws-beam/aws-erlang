@@ -1540,6 +1540,7 @@
 %% create_event_bridge_rule_template_group_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"RequestId">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_event_bridge_rule_template_group_request() :: #{binary() => any()}.
@@ -1790,7 +1791,8 @@
 
 %% Example:
 %% start_monitor_deployment_request() :: #{
-%%   <<"DryRun">> => boolean()
+%%   <<"DryRun">> => boolean(),
+%%   <<"RequestId">> => string()
 %% }
 -type start_monitor_deployment_request() :: #{binary() => any()}.
 
@@ -3731,6 +3733,7 @@
 %%   <<"DiscoveryEntryPointArn">> := string(),
 %%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()()),
 %%   <<"Name">> := string(),
+%%   <<"RequestId">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_signal_map_request() :: #{binary() => any()}.
@@ -4408,6 +4411,7 @@
 %%   <<"MetricName">> := string(),
 %%   <<"Name">> := string(),
 %%   <<"Period">> := integer(),
+%%   <<"RequestId">> => string(),
 %%   <<"Statistic">> := list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"TargetResourceType">> := list(any()),
@@ -5103,6 +5107,7 @@
 %%   <<"EventType">> := list(any()),
 %%   <<"GroupIdentifier">> := string(),
 %%   <<"Name">> := string(),
+%%   <<"RequestId">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_event_bridge_rule_template_request() :: #{binary() => any()}.
@@ -5404,6 +5409,7 @@
 %% create_cloud_watch_alarm_template_group_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"RequestId">> => string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_cloud_watch_alarm_template_group_request() :: #{binary() => any()}.

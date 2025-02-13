@@ -1655,6 +1655,7 @@
 
 %% Example:
 %% prompt_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
 %%   <<"basePromptTemplate">> => string(),
 %%   <<"inferenceConfiguration">> => inference_configuration(),
 %%   <<"parserMode">> => list(any()),
