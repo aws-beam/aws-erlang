@@ -105,6 +105,8 @@
          attach_volume/3,
          cancel_archival/2,
          cancel_archival/3,
+         cancel_cache_report/2,
+         cancel_cache_report/3,
          cancel_retrieval/2,
          cancel_retrieval/3,
          create_cached_iscsi_volume/2,
@@ -129,6 +131,8 @@
          delete_automatic_tape_creation_policy/3,
          delete_bandwidth_rate_limit/2,
          delete_bandwidth_rate_limit/3,
+         delete_cache_report/2,
+         delete_cache_report/3,
          delete_chap_credentials/2,
          delete_chap_credentials/3,
          delete_file_share/2,
@@ -153,6 +157,8 @@
          describe_bandwidth_rate_limit_schedule/3,
          describe_cache/2,
          describe_cache/3,
+         describe_cache_report/2,
+         describe_cache_report/3,
          describe_cached_iscsi_volumes/2,
          describe_cached_iscsi_volumes/3,
          describe_chap_credentials/2,
@@ -195,6 +201,8 @@
          join_domain/3,
          list_automatic_tape_creation_policies/2,
          list_automatic_tape_creation_policies/3,
+         list_cache_reports/2,
+         list_cache_reports/3,
          list_file_shares/2,
          list_file_shares/3,
          list_file_system_associations/2,
@@ -235,6 +243,8 @@
          shutdown_gateway/3,
          start_availability_monitor_test/2,
          start_availability_monitor_test/3,
+         start_cache_report/2,
+         start_cache_report/3,
          start_gateway/2,
          start_gateway/3,
          update_automatic_tape_creation_policy/2,
@@ -270,6 +280,12 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% describe_cache_report_output() :: #{
+%%   <<"CacheReportInfo">> => cache_report_info()
+%% }
+-type describe_cache_report_output() :: #{binary() => any()}.
 
 %% Example:
 %% join_domain_output() :: #{
@@ -377,6 +393,20 @@
 %%   <<"GatewayARN">> => string()
 %% }
 -type describe_cache_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_cache_report_input() :: #{
+%%   <<"BucketRegion">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"ExclusionFilters">> => list(cache_report_filter()()),
+%%   <<"FileShareARN">> := string(),
+%%   <<"InclusionFilters">> => list(cache_report_filter()()),
+%%   <<"LocationARN">> := string(),
+%%   <<"Role">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VPCEndpointDNSName">> => string()
+%% }
+-type start_cache_report_input() :: #{binary() => any()}.
 
 %% Example:
 %% assign_tape_pool_output() :: #{
@@ -530,6 +560,12 @@
 -type delete_tape_archive_input() :: #{binary() => any()}.
 
 %% Example:
+%% start_cache_report_output() :: #{
+%%   <<"CacheReportARN">> => string()
+%% }
+-type start_cache_report_output() :: #{binary() => any()}.
+
+%% Example:
 %% volume_recovery_point_info() :: #{
 %%   <<"VolumeARN">> => string(),
 %%   <<"VolumeRecoveryPointTime">> => string(),
@@ -548,6 +584,12 @@
 %%   <<"StorageClass">> => list(any())
 %% }
 -type pool_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cache_report_input() :: #{
+%%   <<"CacheReportARN">> := string()
+%% }
+-type describe_cache_report_input() :: #{binary() => any()}.
 
 %% Example:
 %% create_tapes_output() :: #{
@@ -868,6 +910,13 @@
 -type retrieve_tape_recovery_point_output() :: #{binary() => any()}.
 
 %% Example:
+%% cache_report_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type cache_report_filter() :: #{binary() => any()}.
+
+%% Example:
 %% update_vtl_device_type_input() :: #{
 %%   <<"DeviceType">> := string(),
 %%   <<"VTLDeviceARN">> := string()
@@ -914,6 +963,12 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_cache_report_input() :: #{
+%%   <<"CacheReportARN">> := string()
+%% }
+-type cancel_cache_report_input() :: #{binary() => any()}.
+
+%% Example:
 %% update_bandwidth_rate_limit_output() :: #{
 %%   <<"GatewayARN">> => string()
 %% }
@@ -935,6 +990,23 @@
 %%   <<"VTLDevices">> => list(vtl_device()())
 %% }
 -type describe_vtl_devices_output() :: #{binary() => any()}.
+
+%% Example:
+%% cache_report_info() :: #{
+%%   <<"CacheReportARN">> => string(),
+%%   <<"CacheReportStatus">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ExclusionFilters">> => list(cache_report_filter()()),
+%%   <<"FileShareARN">> => string(),
+%%   <<"InclusionFilters">> => list(cache_report_filter()()),
+%%   <<"LocationARN">> => string(),
+%%   <<"ReportCompletionPercent">> => integer(),
+%%   <<"ReportName">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type cache_report_info() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_archival_output() :: #{
@@ -979,6 +1051,19 @@
 %%   <<"GatewayARN">> => string()
 %% }
 -type start_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_cache_reports_input() :: #{
+%%   <<"Marker">> => string()
+%% }
+-type list_cache_reports_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_cache_reports_output() :: #{
+%%   <<"CacheReportList">> => list(cache_report_info()()),
+%%   <<"Marker">> => string()
+%% }
+-type list_cache_reports_output() :: #{binary() => any()}.
 
 %% Example:
 %% assign_tape_pool_input() :: #{
@@ -1152,6 +1237,12 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_tape_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cache_report_input() :: #{
+%%   <<"CacheReportARN">> := string()
+%% }
+-type delete_cache_report_input() :: #{binary() => any()}.
 
 %% Example:
 %% detach_volume_input() :: #{
@@ -1721,6 +1812,12 @@
 -type describe_working_storage_output() :: #{binary() => any()}.
 
 %% Example:
+%% delete_cache_report_output() :: #{
+%%   <<"CacheReportARN">> => string()
+%% }
+-type delete_cache_report_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_stored_iscsi_volume_output() :: #{
 %%   <<"TargetARN">> => string(),
 %%   <<"VolumeARN">> => string(),
@@ -2036,6 +2133,12 @@
 -type set_smb_guest_password_output() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_cache_report_output() :: #{
+%%   <<"CacheReportARN">> => string()
+%% }
+-type cancel_cache_report_output() :: #{binary() => any()}.
+
+%% Example:
 %% add_working_storage_input() :: #{
 %%   <<"DiskIds">> := list(string()()),
 %%   <<"GatewayARN">> := string()
@@ -2099,6 +2202,10 @@
     invalid_gateway_request_exception() | 
     internal_server_error().
 
+-type cancel_cache_report_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
 -type cancel_retrieval_errors() ::
     invalid_gateway_request_exception() | 
     internal_server_error().
@@ -2149,6 +2256,10 @@
     invalid_gateway_request_exception() | 
     internal_server_error().
 
+-type delete_cache_report_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
 -type delete_chap_credentials_errors() ::
     invalid_gateway_request_exception() | 
     internal_server_error().
@@ -2194,6 +2305,10 @@
     internal_server_error().
 
 -type describe_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_cache_report_errors() ::
     invalid_gateway_request_exception() | 
     internal_server_error().
 
@@ -2281,6 +2396,10 @@
     invalid_gateway_request_exception() | 
     internal_server_error().
 
+-type list_cache_reports_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
 -type list_file_shares_errors() ::
     invalid_gateway_request_exception() | 
     internal_server_error().
@@ -2358,6 +2477,10 @@
     internal_server_error().
 
 -type start_availability_monitor_test_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type start_cache_report_errors() ::
     invalid_gateway_request_exception() | 
     internal_server_error().
 
@@ -2679,6 +2802,32 @@ cancel_archival(Client, Input)
 cancel_archival(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelArchival">>, Input, Options).
+
+%% @doc Cancels generation of a specified cache report.
+%%
+%% You can use this operation to manually
+%% cancel an IN-PROGRESS report for any reason. This action changes the
+%% report status from
+%% IN-PROGRESS to CANCELLED. You can only cancel in-progress reports. If the
+%% the report you
+%% attempt to cancel is in FAILED, ERROR, or COMPLETED state, the cancel
+%% operation returns an
+%% error.
+-spec cancel_cache_report(aws_client:aws_client(), cancel_cache_report_input()) ->
+    {ok, cancel_cache_report_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_cache_report_errors(), tuple()}.
+cancel_cache_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_cache_report(Client, Input, []).
+
+-spec cancel_cache_report(aws_client:aws_client(), cancel_cache_report_input(), proplists:proplist()) ->
+    {ok, cancel_cache_report_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_cache_report_errors(), tuple()}.
+cancel_cache_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelCacheReport">>, Input, Options).
 
 %% @doc Cancels retrieval of a virtual tape from the virtual tape shelf (VTS)
 %% to a gateway after
@@ -3090,6 +3239,32 @@ delete_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBandwidthRateLimit">>, Input, Options).
 
+%% @doc Deletes the specified cache report and any associated tags from the
+%% Storage Gateway database.
+%%
+%% You can only delete completed reports. If the status of the
+%% report you attempt to delete still IN-PROGRESS, the delete operation
+%% returns an error. You
+%% can use `CancelCacheReport' to cancel an IN-PROGRESS report.
+%%
+%% `DeleteCacheReport' does not delete the report object from your Amazon
+%% S3 bucket.
+-spec delete_cache_report(aws_client:aws_client(), delete_cache_report_input()) ->
+    {ok, delete_cache_report_output(), tuple()} |
+    {error, any()} |
+    {error, delete_cache_report_errors(), tuple()}.
+delete_cache_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_cache_report(Client, Input, []).
+
+-spec delete_cache_report(aws_client:aws_client(), delete_cache_report_input(), proplists:proplist()) ->
+    {ok, delete_cache_report_output(), tuple()} |
+    {error, any()} |
+    {error, delete_cache_report_errors(), tuple()}.
+delete_cache_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCacheReport">>, Input, Options).
+
 %% @doc Deletes Challenge-Handshake Authentication Protocol (CHAP)
 %% credentials for a specified
 %% iSCSI target and initiator pair.
@@ -3436,6 +3611,25 @@ describe_cache(Client, Input)
 describe_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCache">>, Input, Options).
+
+%% @doc Returns information about the specified cache report, including
+%% completion status and
+%% generation progress.
+-spec describe_cache_report(aws_client:aws_client(), describe_cache_report_input()) ->
+    {ok, describe_cache_report_output(), tuple()} |
+    {error, any()} |
+    {error, describe_cache_report_errors(), tuple()}.
+describe_cache_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cache_report(Client, Input, []).
+
+-spec describe_cache_report(aws_client:aws_client(), describe_cache_report_input(), proplists:proplist()) ->
+    {ok, describe_cache_report_output(), tuple()} |
+    {error, any()} |
+    {error, describe_cache_report_errors(), tuple()}.
+describe_cache_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCacheReport">>, Input, Options).
 
 %% @doc Returns a description of the gateway volumes specified in the
 %% request.
@@ -3957,6 +4151,29 @@ list_automatic_tape_creation_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutomaticTapeCreationPolicies">>, Input, Options).
 
+%% @doc Returns a list of existing cache reports for all file shares
+%% associated with your
+%% Amazon Web Services account.
+%%
+%% This list includes all information provided by the
+%% `DescribeCacheReport' action, such as report name, status, completion
+%% progress, start time, end time, filters, and tags.
+-spec list_cache_reports(aws_client:aws_client(), list_cache_reports_input()) ->
+    {ok, list_cache_reports_output(), tuple()} |
+    {error, any()} |
+    {error, list_cache_reports_errors(), tuple()}.
+list_cache_reports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cache_reports(Client, Input, []).
+
+-spec list_cache_reports(aws_client:aws_client(), list_cache_reports_input(), proplists:proplist()) ->
+    {ok, list_cache_reports_output(), tuple()} |
+    {error, any()} |
+    {error, list_cache_reports_errors(), tuple()}.
+list_cache_reports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCacheReports">>, Input, Options).
+
 %% @doc Gets a list of the file shares for a specific S3 File Gateway, or the
 %% list of file
 %% shares that belong to the calling Amazon Web Services account.
@@ -4241,20 +4458,20 @@ list_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumes">>, Input, Options).
 
-%% @doc Sends you notification through CloudWatch Events when all files
+%% @doc Sends you notification through Amazon EventBridge when all files
 %% written to your file
 %% share have been uploaded to Amazon S3.
 %%
-%% Storage Gateway can send a notification through Amazon CloudWatch Events
-%% when all
+%% Storage Gateway can send a notification through Amazon EventBridge when
+%% all
 %% files written to your file share up to that point in time have been
 %% uploaded to Amazon S3. These files include files written to the file share
 %% up to the time that you
 %% make a request for notification. When the upload is done, Storage Gateway
 %% sends you
-%% notification through an Amazon CloudWatch Event. You can configure
-%% CloudWatch Events to
-%% send the notification through event targets such as Amazon SNS or Lambda
+%% notification through EventBridge. You can configure EventBridge to send
+%% the
+%% notification through event targets such as Amazon SNS or Lambda
 %% function. This operation is only supported for S3 File Gateways.
 %%
 %% For more information, see Getting
@@ -4598,6 +4815,57 @@ start_availability_monitor_test(Client, Input)
 start_availability_monitor_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAvailabilityMonitorTest">>, Input, Options).
+
+%% @doc Starts generating a report of the file metadata currently cached by
+%% an S3 File Gateway for a specific file share.
+%%
+%% You can use this report to identify and resolve
+%% issues if you have files failing upload from your gateway to Amazon S3.
+%% The report
+%% is a CSV file containing a list of files which match the set of filter
+%% parameters you
+%% specify in the request.
+%%
+%% The Files Failing Upload flag is reset every 24
+%% hours and during gateway reboot. If this report captures the files after
+%% the reset, but
+%% before they become flagged again, they will not be reported as Files
+%% Failing Upload.
+%%
+%% The following requirements must be met to successfully generate a cache
+%% report:
+%%
+%% You must have permissions to list the entire Amazon S3 bucket associated
+%% with the specified file share.
+%%
+%% No other cache reports can currently be in-progress for the specified file
+%% share.
+%%
+%% There must be fewer than 10 existing cache reports for the specified file
+%% share.
+%%
+%% The gateway must be online and connected to Amazon Web Services.
+%%
+%% The root disk must have at least 20GB of free space when report generation
+%% starts.
+%%
+%% You must specify at least one value for `InclusionFilters' or
+%% `ExclusionFilters' in the request.
+-spec start_cache_report(aws_client:aws_client(), start_cache_report_input()) ->
+    {ok, start_cache_report_output(), tuple()} |
+    {error, any()} |
+    {error, start_cache_report_errors(), tuple()}.
+start_cache_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_cache_report(Client, Input, []).
+
+-spec start_cache_report(aws_client:aws_client(), start_cache_report_input(), proplists:proplist()) ->
+    {ok, start_cache_report_output(), tuple()} |
+    {error, any()} |
+    {error, start_cache_report_errors(), tuple()}.
+start_cache_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartCacheReport">>, Input, Options).
 
 %% @doc Starts a gateway that you previously shut down (see
 %% `ShutdownGateway').

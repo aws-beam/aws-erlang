@@ -91,6 +91,8 @@
          get_finding_v2/3,
          get_finding_v2/5,
          get_finding_v2/6,
+         get_findings_statistics/2,
+         get_findings_statistics/3,
          get_generated_policy/2,
          get_generated_policy/4,
          get_generated_policy/5,
@@ -188,6 +190,13 @@
 
 
 %% Example:
+%% get_findings_statistics_request() :: #{
+%%   <<"analyzerArn">> := string()
+%% }
+-type get_findings_statistics_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% status_reason() :: #{
 %%   <<"code">> => string()
 %% }
@@ -209,6 +218,14 @@
 
 
 %% Example:
+%% unused_access_type_statistics() :: #{
+%%   <<"total">> => [integer()],
+%%   <<"unusedAccessType">> => [string()]
+%% }
+-type unused_access_type_statistics() :: #{binary() => any()}.
+
+
+%% Example:
 %% check_no_public_access_response() :: #{
 %%   <<"message">> => [string()],
 %%   <<"reasons">> => list(reason_summary()()),
@@ -222,6 +239,15 @@
 %%   <<"clientToken">> => [string()]
 %% }
 -type delete_archive_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_aggregation_account_details() :: #{
+%%   <<"account">> => [string()],
+%%   <<"details">> => map(),
+%%   <<"numberOfActiveFindings">> => [integer()]
+%% }
+-type finding_aggregation_account_details() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -312,6 +338,14 @@
 %%   <<"permission">> => string()
 %% }
 -type s3_bucket_acl_grant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_statistics_response() :: #{
+%%   <<"findingsStatistics">> => list(list()()),
+%%   <<"lastUpdatedAt">> => non_neg_integer()
+%% }
+-type get_findings_statistics_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -583,6 +617,16 @@
 
 
 %% Example:
+%% external_access_findings_statistics() :: #{
+%%   <<"resourceTypeStatistics">> => map(),
+%%   <<"totalActiveFindings">> => [integer()],
+%%   <<"totalArchivedFindings">> => [integer()],
+%%   <<"totalResolvedFindings">> => [integer()]
+%% }
+-type external_access_findings_statistics() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_access_preview_request() :: #{
 %%   <<"analyzerArn">> := string(),
 %%   <<"clientToken">> => [string()],
@@ -782,6 +826,14 @@
 %%   <<"status">> => string()
 %% }
 -type policy_generation() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_type_details() :: #{
+%%   <<"totalActiveCrossAccount">> => [integer()],
+%%   <<"totalActivePublic">> => [integer()]
+%% }
+-type resource_type_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1031,6 +1083,17 @@
 %%   <<"resourceArn">> => string()
 %% }
 -type get_analyzed_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_access_findings_statistics() :: #{
+%%   <<"topAccounts">> => list(finding_aggregation_account_details()()),
+%%   <<"totalActiveFindings">> => [integer()],
+%%   <<"totalArchivedFindings">> => [integer()],
+%%   <<"totalResolvedFindings">> => [integer()],
+%%   <<"unusedAccessTypeStatistics">> => list(unused_access_type_statistics()())
+%% }
+-type unused_access_findings_statistics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1486,6 +1549,13 @@
     resource_not_found_exception().
 
 -type get_finding_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_findings_statistics_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2327,6 +2397,42 @@ get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of aggregated finding statistics for an external
+%% access or unused
+%% access analyzer.
+-spec get_findings_statistics(aws_client:aws_client(), get_findings_statistics_request()) ->
+    {ok, get_findings_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, get_findings_statistics_errors(), tuple()}.
+get_findings_statistics(Client, Input) ->
+    get_findings_statistics(Client, Input, []).
+
+-spec get_findings_statistics(aws_client:aws_client(), get_findings_statistics_request(), proplists:proplist()) ->
+    {ok, get_findings_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, get_findings_statistics_errors(), tuple()}.
+get_findings_statistics(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/analyzer/findings/statistics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the policy that was generated using
 %% `StartPolicyGeneration'.
