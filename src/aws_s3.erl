@@ -725,6 +725,7 @@
 
 %% Example:
 %% head_object_output() :: #{
+%%   <<"ContentRange">> => string(),
 %%   <<"StorageClass">> => list(any()),
 %%   <<"Expiration">> => string(),
 %%   <<"AcceptRanges">> => string(),
@@ -9742,6 +9743,7 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-archive-status">>, <<"ArchiveStatus">>},
             {<<"Last-Modified">>, <<"LastModified">>},
+            {<<"Content-Range">>, <<"ContentRange">>},
             {<<"Expires">>, <<"Expires">>},
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},

@@ -594,7 +594,8 @@
 %%   <<"prefix">> => string(),
 %%   <<"reportArn">> => string(),
 %%   <<"status">> => string(),
-%%   <<"testRawDataPath">> => string()
+%%   <<"testRawDataPath">> => string(),
+%%   <<"testSuiteName">> => string()
 %% }
 -type test_case() :: #{binary() => any()}.
 

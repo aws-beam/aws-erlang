@@ -923,6 +923,22 @@
 -type event_subscription() :: #{binary() => any()}.
 
 %% Example:
+%% premigration_assessment_status() :: #{
+%%   <<"AssessmentProgress">> => replication_task_assessment_run_progress(),
+%%   <<"FailOnAssessmentFailure">> => boolean(),
+%%   <<"LastFailureMessage">> => string(),
+%%   <<"PremigrationAssessmentRunArn">> => string(),
+%%   <<"PremigrationAssessmentRunCreationDate">> => non_neg_integer(),
+%%   <<"ResultEncryptionMode">> => string(),
+%%   <<"ResultKmsKeyArn">> => string(),
+%%   <<"ResultLocationBucket">> => string(),
+%%   <<"ResultLocationFolder">> => string(),
+%%   <<"ResultStatistic">> => replication_task_assessment_run_result_statistic(),
+%%   <<"Status">> => string()
+%% }
+-type premigration_assessment_status() :: #{binary() => any()}.
+
+%% Example:
 %% describe_replication_task_assessment_results_response() :: #{
 %%   <<"BucketName">> => string(),
 %%   <<"Marker">> => string(),
@@ -1006,6 +1022,7 @@
 %%   <<"CdcStartPosition">> => string(),
 %%   <<"CdcStartTime">> => non_neg_integer(),
 %%   <<"CdcStopPosition">> => string(),
+%%   <<"PremigrationAssessmentSettings">> => string(),
 %%   <<"ReplicationConfigArn">> := string(),
 %%   <<"StartReplicationType">> := string()
 %% }
@@ -1601,6 +1618,7 @@
 %%   <<"CdcStartTime">> => non_neg_integer(),
 %%   <<"CdcStopPosition">> => string(),
 %%   <<"FailureMessages">> => list(string()()),
+%%   <<"PremigrationAssessmentStatuses">> => list(premigration_assessment_status()()),
 %%   <<"ProvisionData">> => provision_data(),
 %%   <<"RecoveryCheckpoint">> => string(),
 %%   <<"ReplicationConfigArn">> => string(),
@@ -4085,7 +4103,8 @@
 %% an IAM policy for DMS. For more information, see
 %% `Tag'
 %% : https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html data
-%% type description.
+%% type
+%% description.
 -spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
@@ -4103,7 +4122,8 @@ add_tags_to_resource(Client, Input, Options)
     request(Client, <<"AddTagsToResource">>, Input, Options).
 
 %% @doc Applies a pending maintenance action to a resource (for example, to a
-%% replication instance).
+%% replication
+%% instance).
 -spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message()) ->
     {ok, apply_pending_maintenance_action_response(), tuple()} |
     {error, any()} |
@@ -4192,8 +4212,8 @@ create_data_migration(Client, Input, Options)
 
 %% @doc Creates a data provider using the provided settings.
 %%
-%% A data provider stores
-%% a data store type and location information about your database.
+%% A data provider stores a data store
+%% type and location information about your database.
 -spec create_data_provider(aws_client:aws_client(), create_data_provider_message()) ->
     {ok, create_data_provider_response(), tuple()} |
     {error, any()} |
@@ -4215,12 +4235,13 @@ create_data_provider(Client, Input, Options)
 %% For a MySQL source or target endpoint, don't explicitly specify the
 %% database using
 %% the `DatabaseName' request parameter on the `CreateEndpoint' API
-%% call.
-%% Specifying `DatabaseName' when you create a MySQL endpoint replicates
-%% all the
-%% task tables to this single database. For MySQL endpoints, you specify the
-%% database only when
-%% you specify the schema in the table-mapping rules of the DMS task.
+%% call. Specifying `DatabaseName' when you create a MySQL endpoint
+%% replicates
+%% all the task tables to this single database. For MySQL endpoints, you
+%% specify the
+%% database only when you specify the schema in the table-mapping rules of
+%% the DMS
+%% task.
 -spec create_endpoint(aws_client:aws_client(), create_endpoint_message()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
@@ -4262,8 +4283,7 @@ create_endpoint(Client, Input, Options)
 %% For more information about DMS events, see Working with Events and
 %% Notifications:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
-%% Database Migration Service User
-%% Guide.
+%% Database Migration Service User Guide.
 -spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message()) ->
     {ok, create_event_subscription_response(), tuple()} |
     {error, any()} |
@@ -4339,12 +4359,11 @@ create_migration_project(Client, Input, Options)
     request(Client, <<"CreateMigrationProject">>, Input, Options).
 
 %% @doc Creates a configuration that you can later provide to configure and
-%% start an DMS Serverless
-%% replication.
+%% start an DMS
+%% Serverless replication.
 %%
-%% You can also provide options to validate the configuration inputs before
-%% you start the
-%% replication.
+%% You can also provide options to validate the configuration inputs
+%% before you start the replication.
 -spec create_replication_config(aws_client:aws_client(), create_replication_config_message()) ->
     {ok, create_replication_config_response(), tuple()} |
     {error, any()} |
@@ -4364,21 +4383,20 @@ create_replication_config(Client, Input, Options)
 %% @doc Creates the replication instance using the specified parameters.
 %%
 %% DMS requires that your account have certain roles with appropriate
-%% permissions
-%% before you can create a replication instance. For information on the
-%% required roles, see
-%% Creating the IAM Roles to Use With the CLI and DMS API:
+%% permissions before
+%% you can create a replication instance. For information on the required
+%% roles, see Creating the IAM Roles to Use With the CLI and DMS API:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.APIRole.
-%% For
-%% information on the required permissions, see
-%% IAM Permissions Needed to Use DMS:
+%% For information on
+%% the required permissions, see IAM
+%% Permissions Needed to Use DMS:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.IAMPermissions.
 %%
 %% If you don't specify a version when creating a replication instance,
-%% DMS will create the instance using the
-%% default engine version. For information about the default engine version,
-%% see
-%% Release Notes:
+%% DMS will
+%% create the instance using the default engine version. For information
+%% about the default
+%% engine version, see Release Notes:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReleaseNotes.html.
 -spec create_replication_instance(aws_client:aws_client(), create_replication_instance_message()) ->
     {ok, create_replication_instance_response(), tuple()} |
@@ -4400,19 +4418,21 @@ create_replication_instance(Client, Input, Options)
 %% a VPC.
 %%
 %% The VPC needs to have at least one subnet in at least two availability
-%% zones in the Amazon Web Services Region, otherwise the
-%% service will throw a `ReplicationSubnetGroupDoesNotCoverEnoughAZs'
-%% exception.
+%% zones in the
+%% Amazon Web Services Region, otherwise the service will throw a
+%% `ReplicationSubnetGroupDoesNotCoverEnoughAZs' exception.
 %%
 %% If a replication subnet group exists in your Amazon Web Services account,
-%% the CreateReplicationSubnetGroup action
-%% returns the following error message: The Replication Subnet Group already
-%% exists. In this case, delete
-%% the existing replication subnet group. To do so, use the
-%% DeleteReplicationSubnetGroup:
+%% the
+%% CreateReplicationSubnetGroup action returns the following error message:
+%% The Replication
+%% Subnet Group already exists. In this case, delete the existing replication
+%% subnet group. To
+%% do so, use the DeleteReplicationSubnetGroup:
 %% https://docs.aws.amazon.com/en_us/dms/latest/APIReference/API_DeleteReplicationSubnetGroup.html
-%% action. Optionally, choose Subnet groups in the DMS console,
-%% then choose your subnet group. Next, choose Delete from Actions.
+%% action. Optionally, choose Subnet groups in the
+%% DMS console, then choose your subnet group. Next, choose Delete from
+%% Actions.
 -spec create_replication_subnet_group(aws_client:aws_client(), create_replication_subnet_group_message()) ->
     {ok, create_replication_subnet_group_response(), tuple()} |
     {error, any()} |
@@ -4594,8 +4614,8 @@ delete_fleet_advisor_databases(Client, Input, Options)
 %% @doc Deletes the specified instance profile.
 %%
 %% All migration projects associated with the instance profile must be
-%% deleted or modified
-%% before you can delete the instance profile.
+%% deleted or
+%% modified before you can delete the instance profile.
 -spec delete_instance_profile(aws_client:aws_client(), delete_instance_profile_message()) ->
     {ok, delete_instance_profile_response(), tuple()} |
     {error, any()} |
@@ -4633,11 +4653,12 @@ delete_migration_project(Client, Input, Options)
 
 %% @doc Deletes an DMS Serverless replication configuration.
 %%
-%% This effectively deprovisions any and all
-%% replications that use this configuration. You can't delete the
-%% configuration for an DMS Serverless replication
-%% that is ongoing. You can delete the configuration when the replication is
-%% in a non-RUNNING and non-STARTING state.
+%% This effectively deprovisions any
+%% and all replications that use this configuration. You can't delete the
+%% configuration for an
+%% DMS Serverless replication that is ongoing. You can delete the
+%% configuration when the
+%% replication is in a non-RUNNING and non-STARTING state.
 -spec delete_replication_config(aws_client:aws_client(), delete_replication_config_message()) ->
     {ok, delete_replication_config_response(), tuple()} |
     {error, any()} |
@@ -4765,31 +4786,34 @@ describe_account_attributes(Client, Input, Options)
 %% assessment run, given one or more parameters.
 %%
 %% If you specify an existing migration task, this operation provides the
-%% default individual
-%% assessments you can specify for that task. Otherwise, the specified
-%% parameters model elements
-%% of a possible migration task on which to base a premigration assessment
+%% default
+%% individual assessments you can specify for that task. Otherwise, the
+%% specified parameters
+%% model elements of a possible migration task on which to base a
+%% premigration assessment
 %% run.
 %%
 %% To use these migration task modeling parameters, you must specify an
-%% existing replication instance,
-%% a source database engine, a target database engine, and a migration type.
-%% This combination of
-%% parameters potentially limits the default individual assessments available
-%% for an assessment run
-%% created for a corresponding migration task.
+%% existing
+%% replication instance, a source database engine, a target database engine,
+%% and a migration
+%% type. This combination of parameters potentially limits the default
+%% individual assessments
+%% available for an assessment run created for a corresponding migration
+%% task.
 %%
 %% If you specify no parameters, this operation provides a list of all
-%% possible individual assessments
-%% that you can specify for an assessment run. If you specify any one of the
-%% task modeling parameters, you must
-%% specify all of them or the operation cannot provide a list of individual
-%% assessments.
-%% The only parameter that you can specify alone is for an existing migration
-%% task. The specified task
-%% definition then determines the default list of individual assessments that
-%% you can specify in an
-%% assessment run for the task.
+%% possible individual
+%% assessments that you can specify for an assessment run. If you specify any
+%% one of the task
+%% modeling parameters, you must specify all of them or the operation cannot
+%% provide a list of
+%% individual assessments. The only parameter that you can specify alone is
+%% for an existing
+%% migration task. The specified task definition then determines the default
+%% list of
+%% individual assessments that you can specify in an assessment run for the
+%% task.
 -spec describe_applicable_individual_assessments(aws_client:aws_client(), describe_applicable_individual_assessments_message()) ->
     {ok, describe_applicable_individual_assessments_response(), tuple()} |
     {error, any()} |
@@ -4879,7 +4903,8 @@ describe_data_migrations(Client, Input, Options)
     request(Client, <<"DescribeDataMigrations">>, Input, Options).
 
 %% @doc Returns a paginated list of data providers for your account in the
-%% current region.
+%% current
+%% region.
 -spec describe_data_providers(aws_client:aws_client(), describe_data_providers_message()) ->
     {ok, describe_data_providers_response(), tuple()} |
     {error, any()} |
@@ -4897,7 +4922,8 @@ describe_data_providers(Client, Input, Options)
     request(Client, <<"DescribeDataProviders">>, Input, Options).
 
 %% @doc Returns information about the possible endpoint settings available
-%% when you create an endpoint for a specific database engine.
+%% when you create an
+%% endpoint for a specific database engine.
 -spec describe_endpoint_settings(aws_client:aws_client(), describe_endpoint_settings_message()) ->
     {ok, describe_endpoint_settings_response(), tuple()} |
     {error, any()}.
@@ -4969,8 +4995,7 @@ describe_engine_versions(Client, Input, Options)
 %% with Events
 %% and Notifications:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
-%% Database Migration Service User
-%% Guide.
+%% Database Migration Service User Guide.
 -spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message()) ->
     {ok, describe_event_categories_response(), tuple()} |
     {error, any()}.
@@ -5018,8 +5043,7 @@ describe_event_subscriptions(Client, Input, Options)
 %% Events and
 %% Notifications:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
-%% Database Migration Service User
-%% Guide.
+%% Database Migration Service User Guide.
 -spec describe_events(aws_client:aws_client(), describe_events_message()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()}.
@@ -5035,12 +5059,12 @@ describe_events(Client, Input, Options)
     request(Client, <<"DescribeEvents">>, Input, Options).
 
 %% @doc Returns a paginated list of extension pack associations for the
-%% specified migration project.
+%% specified migration
+%% project.
 %%
-%% An extension pack is an add-on module
-%% that emulates functions present in a source database that are required
-%% when converting objects
-%% to the target database.
+%% An extension pack is an add-on module that emulates functions present in a
+%% source
+%% database that are required when converting objects to the target database.
 -spec describe_extension_pack_associations(aws_client:aws_client(), describe_extension_pack_associations_message()) ->
     {ok, describe_extension_pack_associations_response(), tuple()} |
     {error, any()}.
@@ -5145,7 +5169,8 @@ describe_fleet_advisor_schemas(Client, Input, Options)
     request(Client, <<"DescribeFleetAdvisorSchemas">>, Input, Options).
 
 %% @doc Returns a paginated list of instance profiles for your account in the
-%% current region.
+%% current
+%% region.
 -spec describe_instance_profiles(aws_client:aws_client(), describe_instance_profiles_message()) ->
     {ok, describe_instance_profiles_response(), tuple()} |
     {error, any()} |
@@ -5163,7 +5188,8 @@ describe_instance_profiles(Client, Input, Options)
     request(Client, <<"DescribeInstanceProfiles">>, Input, Options).
 
 %% @doc Returns a paginated list of metadata model assessments for your
-%% account in the current region.
+%% account in the current
+%% region.
 -spec describe_metadata_model_assessments(aws_client:aws_client(), describe_metadata_model_assessments_message()) ->
     {ok, describe_metadata_model_assessments_response(), tuple()} |
     {error, any()} |
@@ -5250,7 +5276,8 @@ describe_metadata_model_imports(Client, Input, Options)
     request(Client, <<"DescribeMetadataModelImports">>, Input, Options).
 
 %% @doc Returns a paginated list of migration projects for your account in
-%% the current region.
+%% the current
+%% region.
 -spec describe_migration_projects(aws_client:aws_client(), describe_migration_projects_message()) ->
     {ok, describe_migration_projects_response(), tuple()} |
     {error, any()} |
@@ -5285,7 +5312,8 @@ describe_orderable_replication_instances(Client, Input, Options)
     request(Client, <<"DescribeOrderableReplicationInstances">>, Input, Options).
 
 %% @doc Returns a list of upcoming maintenance events for replication
-%% instances in your account in the current Region.
+%% instances in your account
+%% in the current Region.
 -spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message()) ->
     {ok, describe_pending_maintenance_actions_response(), tuple()} |
     {error, any()} |
@@ -5358,7 +5386,8 @@ describe_refresh_schemas_status(Client, Input, Options)
     request(Client, <<"DescribeRefreshSchemasStatus">>, Input, Options).
 
 %% @doc Returns one or more existing DMS Serverless replication
-%% configurations as a list of structures.
+%% configurations as a list of
+%% structures.
 -spec describe_replication_configs(aws_client:aws_client(), describe_replication_configs_message()) ->
     {ok, describe_replication_configs_response(), tuple()} |
     {error, any()} |
@@ -5451,11 +5480,11 @@ describe_replication_table_statistics(Client, Input, Options)
 %% DMS creates in your
 %% Amazon Web Services account.
 %%
-%% This action always returns the
-%% latest results.
+%% This action always returns the latest results.
 %%
-%% For more information about DMS task assessments, see
-%% Creating a task assessment report:
+%% For more information about DMS task assessments, see Creating a task
+%% assessment
+%% report:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.AssessmentReport.html
 %% in the Database Migration Service User Guide.
 -spec describe_replication_task_assessment_results(aws_client:aws_client(), describe_replication_task_assessment_results_message()) ->
@@ -5607,8 +5636,9 @@ describe_table_statistics(Client, Input, Options)
 %% @doc Saves a copy of a database migration assessment report to your Amazon
 %% S3 bucket.
 %%
-%% DMS can save
-%% your assessment report as a comma-separated value (CSV) or a PDF file.
+%% DMS can
+%% save your assessment report as a comma-separated value (CSV) or a PDF
+%% file.
 -spec export_metadata_model_assessment(aws_client:aws_client(), export_metadata_model_assessment_message()) ->
     {ok, export_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
@@ -5643,12 +5673,13 @@ import_certificate(Client, Input, Options)
     request(Client, <<"ImportCertificate">>, Input, Options).
 
 %% @doc Lists all metadata tags attached to an DMS resource, including
-%% replication instance, endpoint, subnet group, and migration task.
+%% replication instance,
+%% endpoint, subnet group, and migration task.
 %%
 %% For more information, see
 %% `Tag'
-%% : https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html data
-%% type description.
+%% : https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html
+%% data type description.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -5703,7 +5734,8 @@ modify_data_migration(Client, Input, Options)
 %% @doc Modifies the specified data provider using the provided settings.
 %%
 %% You must remove the data provider from all migration projects before you
-%% can modify it.
+%% can modify
+%% it.
 -spec modify_data_provider(aws_client:aws_client(), modify_data_provider_message()) ->
     {ok, modify_data_provider_response(), tuple()} |
     {error, any()} |
@@ -5725,12 +5757,13 @@ modify_data_provider(Client, Input, Options)
 %% For a MySQL source or target endpoint, don't explicitly specify the
 %% database using
 %% the `DatabaseName' request parameter on the `ModifyEndpoint' API
-%% call.
-%% Specifying `DatabaseName' when you modify a MySQL endpoint replicates
-%% all the
-%% task tables to this single database. For MySQL endpoints, you specify the
-%% database only when
-%% you specify the schema in the table-mapping rules of the DMS task.
+%% call. Specifying `DatabaseName' when you modify a MySQL endpoint
+%% replicates
+%% all the task tables to this single database. For MySQL endpoints, you
+%% specify the
+%% database only when you specify the schema in the table-mapping rules of
+%% the DMS
+%% task.
 -spec modify_endpoint(aws_client:aws_client(), modify_endpoint_message()) ->
     {ok, modify_endpoint_response(), tuple()} |
     {error, any()} |
@@ -5768,8 +5801,8 @@ modify_event_subscription(Client, Input, Options)
 %% parameters.
 %%
 %% All migration projects associated with the instance profile must be
-%% deleted
-%% or modified before you can modify the instance profile.
+%% deleted or
+%% modified before you can modify the instance profile.
 -spec modify_instance_profile(aws_client:aws_client(), modify_instance_profile_message()) ->
     {ok, modify_instance_profile_response(), tuple()} |
     {error, any()} |
@@ -5807,21 +5840,21 @@ modify_migration_project(Client, Input, Options)
     request(Client, <<"ModifyMigrationProject">>, Input, Options).
 
 %% @doc Modifies an existing DMS Serverless replication configuration that
-%% you can use
-%% to start a replication.
+%% you can use to
+%% start a replication.
 %%
-%% This command includes input validation and logic to check
-%% the state of any replication that uses this configuration. You can only
-%% modify a replication
+%% This command includes input validation and logic to check the state of
+%% any replication that uses this configuration. You can only modify a
+%% replication
 %% configuration before any replication that uses it has started. As soon as
-%% you have initially
-%% started a replication with a given configuiration, you can't modify
-%% that configuration,
-%% even if you stop it.
+%% you have
+%% initially started a replication with a given configuiration, you can't
+%% modify that
+%% configuration, even if you stop it.
 %%
 %% Other run statuses that allow you to run this command include FAILED and
-%% CREATED.
-%% A provisioning state that allows you to run this command is
+%% CREATED. A
+%% provisioning state that allows you to run this command is
 %% FAILED_PROVISION.
 -spec modify_replication_config(aws_client:aws_client(), modify_replication_config_message()) ->
     {ok, modify_replication_config_response(), tuple()} |
@@ -5994,8 +6027,8 @@ reload_replication_tables(Client, Input, Options)
 %% @doc Reloads the target database table with the source data.
 %%
 %% You can only use this operation with a task in the `RUNNING' state,
-%% otherwise the service
-%% will throw an `InvalidResourceStateFault' exception.
+%% otherwise
+%% the service will throw an `InvalidResourceStateFault' exception.
 -spec reload_tables(aws_client:aws_client(), reload_tables_message()) ->
     {ok, reload_tables_response(), tuple()} |
     {error, any()} |
@@ -6013,14 +6046,14 @@ reload_tables(Client, Input, Options)
     request(Client, <<"ReloadTables">>, Input, Options).
 
 %% @doc Removes metadata tags from an DMS resource, including replication
-%% instance,
-%% endpoint, subnet group, and migration task.
+%% instance, endpoint,
+%% subnet group, and migration task.
 %%
 %% For more information, see
-%%
 %% `Tag'
-%% : https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html
-%% data type description.
+%% : https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html data
+%% type
+%% description.
 -spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
@@ -6100,8 +6133,8 @@ start_extension_pack_association(Client, Input, Options)
 %%
 %% A database migration assessment report summarizes all of the schema
 %% conversion tasks. It also details the action items for database objects
-%% that can't be converted
-%% to the database engine of your target database instance.
+%% that can't be
+%% converted to the database engine of your target database instance.
 -spec start_metadata_model_assessment(aws_client:aws_client(), start_metadata_model_assessment_message()) ->
     {ok, start_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
@@ -6137,7 +6170,8 @@ start_metadata_model_conversion(Client, Input, Options)
     request(Client, <<"StartMetadataModelConversion">>, Input, Options).
 
 %% @doc Saves your converted code to a file as a SQL script, and stores this
-%% file on your Amazon S3 bucket.
+%% file on your Amazon S3
+%% bucket.
 -spec start_metadata_model_export_as_script(aws_client:aws_client(), start_metadata_model_export_as_script_message()) ->
     {ok, start_metadata_model_export_as_script_response(), tuple()} |
     {error, any()} |
@@ -6175,7 +6209,8 @@ start_metadata_model_export_to_target(Client, Input, Options)
 %% parent object.
 %%
 %% This operation uses your project's Amazon S3 bucket as a metadata
-%% cache to improve performance.
+%% cache to improve
+%% performance.
 -spec start_metadata_model_import(aws_client:aws_client(), start_metadata_model_import_message()) ->
     {ok, start_metadata_model_import_response(), tuple()} |
     {error, any()} |
@@ -6216,14 +6251,15 @@ start_recommendations(Client, Input, Options)
     request(Client, <<"StartRecommendations">>, Input, Options).
 
 %% @doc For a given DMS Serverless replication configuration, DMS connects to
-%% the source endpoint and
-%% collects the metadata to analyze the replication workload.
+%% the source
+%% endpoint and collects the metadata to analyze the replication workload.
 %%
-%% Using this metadata, DMS then
-%% computes and provisions the required capacity and starts replicating to
-%% the target endpoint
-%% using the server resources that DMS has provisioned for the DMS Serverless
-%% replication.
+%% Using this
+%% metadata, DMS then computes and provisions the required capacity and
+%% starts replicating
+%% to the target endpoint using the server resources that DMS has provisioned
+%% for the DMS
+%% Serverless replication.
 -spec start_replication(aws_client:aws_client(), start_replication_message()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
@@ -6273,12 +6309,14 @@ start_replication_task(Client, Input, Options)
 %% The task must have successful connections to the source and target.
 %%
 %% If either of these conditions are not met, an
-%% `InvalidResourceStateFault' error will result.
+%% `InvalidResourceStateFault'
+%% error will result.
 %%
-%% For information about DMS task assessments, see
-%% Creating a task assessment report:
+%% For information about DMS task assessments, see Creating a task assessment
+%% report:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.AssessmentReport.html
-%% in the Database Migration Service User Guide.
+%% in the Database Migration Service User
+%% Guide.
 -spec start_replication_task_assessment(aws_client:aws_client(), start_replication_task_assessment_message()) ->
     {ok, start_replication_task_assessment_response(), tuple()} |
     {error, any()} |
@@ -6296,8 +6334,8 @@ start_replication_task_assessment(Client, Input, Options)
     request(Client, <<"StartReplicationTaskAssessment">>, Input, Options).
 
 %% @doc Starts a new premigration assessment run for one or more individual
-%% assessments
-%% of a migration task.
+%% assessments of a
+%% migration task.
 %%
 %% The assessments that you can specify depend on the source and target
 %% database engine and
@@ -6342,9 +6380,11 @@ stop_data_migration(Client, Input, Options)
     request(Client, <<"StopDataMigration">>, Input, Options).
 
 %% @doc For a given DMS Serverless replication configuration, DMS stops any
-%% and all ongoing DMS Serverless replications.
+%% and all ongoing
+%% DMS Serverless replications.
 %%
-%% This command doesn't deprovision the stopped replications.
+%% This command doesn't deprovision the stopped
+%% replications.
 -spec stop_replication(aws_client:aws_client(), stop_replication_message()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
@@ -6397,24 +6437,29 @@ test_connection(Client, Input, Options)
     request(Client, <<"TestConnection">>, Input, Options).
 
 %% @doc Migrates 10 active and enabled Amazon SNS subscriptions at a time and
-%% converts them to corresponding Amazon EventBridge rules.
+%% converts them to
+%% corresponding Amazon EventBridge rules.
 %%
-%% By default, this operation migrates subscriptions only when all your
-%% replication instance versions are 3.4.5 or higher.
-%% If any replication instances are from versions earlier than 3.4.5, the
-%% operation raises an error and tells you
+%% By default, this operation migrates subscriptions
+%% only when all your replication instance versions are 3.4.5 or higher. If
+%% any replication
+%% instances are from versions earlier than 3.4.5, the operation raises an
+%% error and tells you
 %% to upgrade these instances to version 3.4.5 or higher. To enable migration
-%% regardless of version, set the `Force'
-%% option to true. However, if you don't upgrade instances earlier than
-%% version 3.4.5, some types of events might not be
-%% available when you use Amazon EventBridge.
+%% regardless of
+%% version, set the `Force' option to true. However, if you don't
+%% upgrade instances
+%% earlier than version 3.4.5, some types of events might not be available
+%% when you use Amazon
+%% EventBridge.
 %%
 %% To call this operation, make sure that you have certain permissions added
-%% to your user account.
-%% For more information, see Migrating event subscriptions to Amazon
+%% to your user
+%% account. For more information, see Migrating event subscriptions to Amazon
 %% EventBridge:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html#CHAP_Events-migrate-to-eventbridge
-%% in the Amazon Web Services Database Migration Service User Guide.
+%% in the
+%% Amazon Web Services Database Migration Service User Guide.
 -spec update_subscriptions_to_event_bridge(aws_client:aws_client(), update_subscriptions_to_event_bridge_message()) ->
     {ok, update_subscriptions_to_event_bridge_response(), tuple()} |
     {error, any()} |

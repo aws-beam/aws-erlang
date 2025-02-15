@@ -343,6 +343,9 @@
          list_analytics_data_associations/2,
          list_analytics_data_associations/4,
          list_analytics_data_associations/5,
+         list_analytics_data_lake_data_sets/2,
+         list_analytics_data_lake_data_sets/4,
+         list_analytics_data_lake_data_sets/5,
          list_approved_origins/2,
          list_approved_origins/4,
          list_approved_origins/5,
@@ -685,6 +688,7 @@
 
 %% Example:
 %% associate_instance_storage_config_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"ResourceType">> := list(any()),
 %%   <<"StorageConfig">> := instance_storage_config()
 %% }
@@ -1726,6 +1730,7 @@
 %% Example:
 %% disassociate_lex_bot_request() :: #{
 %%   <<"BotName">> := string(),
+%%   <<"ClientToken">> => string(),
 %%   <<"LexRegion">> := string()
 %% }
 -type disassociate_lex_bot_request() :: #{binary() => any()}.
@@ -1806,6 +1811,7 @@
 
 %% Example:
 %% update_instance_storage_config_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"ResourceType">> := list(any()),
 %%   <<"StorageConfig">> := instance_storage_config()
 %% }
@@ -2254,6 +2260,14 @@
 
 
 %% Example:
+%% analytics_data_sets_result() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"DataSetName">> => string()
+%% }
+-type analytics_data_sets_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_contact_request() :: #{
 %%   <<"ContactId">> := string(),
 %%   <<"DisconnectReason">> => disconnect_reason(),
@@ -2511,6 +2525,7 @@
 
 %% Example:
 %% disassociate_approved_origin_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Origin">> := string()
 %% }
 -type disassociate_approved_origin_request() :: #{binary() => any()}.
@@ -2534,6 +2549,7 @@
 
 %% Example:
 %% associate_lambda_function_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"FunctionArn">> := string()
 %% }
 -type associate_lambda_function_request() :: #{binary() => any()}.
@@ -2788,6 +2804,7 @@
 
 %% Example:
 %% associate_approved_origin_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Origin">> := string()
 %% }
 -type associate_approved_origin_request() :: #{binary() => any()}.
@@ -2995,6 +3012,14 @@
 
 
 %% Example:
+%% list_analytics_data_lake_data_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_analytics_data_lake_data_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_lex_bots_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -3172,6 +3197,7 @@
 
 %% Example:
 %% update_instance_attribute_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Value">> := string()
 %% }
 -type update_instance_attribute_request() :: #{binary() => any()}.
@@ -3579,6 +3605,7 @@
 
 %% Example:
 %% disassociate_bot_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"LexBot">> => lex_bot(),
 %%   <<"LexV2Bot">> => lex_v2_bot()
 %% }
@@ -4168,6 +4195,7 @@
 
 %% Example:
 %% disassociate_lambda_function_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"FunctionArn">> := string()
 %% }
 -type disassociate_lambda_function_request() :: #{binary() => any()}.
@@ -4175,6 +4203,7 @@
 
 %% Example:
 %% disassociate_instance_storage_config_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"ResourceType">> := list(any())
 %% }
 -type disassociate_instance_storage_config_request() :: #{binary() => any()}.
@@ -5097,6 +5126,7 @@
 
 %% Example:
 %% associate_security_key_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Key">> := string()
 %% }
 -type associate_security_key_request() :: #{binary() => any()}.
@@ -5145,6 +5175,14 @@
 %%   <<"Name">> => string()
 %% }
 -type hours_of_operation_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analytics_data_lake_data_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(analytics_data_sets_result()())
+%% }
+-type list_analytics_data_lake_data_sets_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5212,6 +5250,7 @@
 
 %% Example:
 %% associate_bot_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"LexBot">> => lex_bot(),
 %%   <<"LexV2Bot">> => lex_v2_bot()
 %% }
@@ -5220,6 +5259,7 @@
 
 %% Example:
 %% associate_lex_bot_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"LexBot">> := lex_bot()
 %% }
 -type associate_lex_bot_request() :: #{binary() => any()}.
@@ -6213,9 +6253,12 @@
 %% }
 -type resume_contact_recording_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% disassociate_security_key_request() :: #{}
--type disassociate_security_key_request() :: #{}.
+%% disassociate_security_key_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type disassociate_security_key_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6264,9 +6307,12 @@
 %% }
 -type search_predefined_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_instance_request() :: #{}
--type delete_instance_request() :: #{}.
+%% delete_instance_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type delete_instance_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6474,6 +6520,7 @@
 %%   <<"DataSetId">> => string(),
 %%   <<"ResourceShareArn">> => string(),
 %%   <<"ResourceShareId">> => string(),
+%%   <<"ResourceShareStatus">> => string(),
 %%   <<"TargetAccountId">> => string()
 %% }
 -type analytics_data_association_result() :: #{binary() => any()}.
@@ -8976,6 +9023,13 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type list_analytics_data_lake_data_sets_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type list_approved_origins_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -10989,8 +11043,8 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 %% @doc
 %% Only the EMAIL channel is supported.
 %%
-%% The supported initiation
-%% methods are: OUTBOUND, AGENT_REPLY, and FLOW.
+%% The supported initiation methods are: OUTBOUND,
+%% AGENT_REPLY, and FLOW.
 %%
 %% Creates a new EMAIL contact.
 -spec create_contact(aws_client:aws_client(), create_contact_request()) ->
@@ -12535,9 +12589,10 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"clientToken">>, <<"ClientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Web Services resource association from an Amazon
@@ -13227,7 +13282,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web Services Support.
+%% request access to this API, contact Amazon Web ServicesSupport.
 %%
 %% Describes the target authentication profile.
 -spec describe_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -13271,11 +13326,14 @@ describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, Que
 %%
 %% Describes the specified contact.
 %%
+%% `CustomerEndpoint' and `SystemEndpoint' are only populated for
+%% EMAIL contacts.
+%%
 %% Contact information remains available in Amazon Connect for 24 months from
 %% the
-%% InitiationTimestamp, and then it is deleted. Only contact information that
-%% is available in
-%% Amazon Connect is returned by this API
+%% `InitiationTimestamp', and then it is deleted. Only contact
+%% information that is available in
+%% Amazon Connect is returned by this API.
 -spec describe_contact(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
@@ -14390,6 +14448,7 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"clientToken">>, <<"ClientToken">>},
                      {<<"origin">>, <<"Origin">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
@@ -14503,6 +14562,7 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"clientToken">>, <<"ClientToken">>},
                      {<<"resourceType">>, <<"ResourceType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
@@ -14543,6 +14603,7 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"clientToken">>, <<"ClientToken">>},
                      {<<"functionArn">>, <<"FunctionArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
@@ -14584,6 +14645,7 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"botName">>, <<"BotName">>},
+                     {<<"clientToken">>, <<"ClientToken">>},
                      {<<"lexRegion">>, <<"LexRegion">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
@@ -14742,9 +14804,10 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) -
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"clientToken">>, <<"ClientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an agent from a traffic distribution group.
@@ -15415,7 +15478,7 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 %% then release 99, you
 %% will have exceeded the 200% limit. At that point you are blocked from
 %% claiming any more numbers
-%% until you open an Amazon Web Services Support ticket.
+%% until you open an Amazon Web ServicesSupport ticket.
 -spec import_phone_number(aws_client:aws_client(), import_phone_number_request()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
@@ -15540,6 +15603,50 @@ list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the data lake datasets available to associate with for a given
+%% Amazon Connect
+%% instance.
+-spec list_analytics_data_lake_data_sets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_analytics_data_lake_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_analytics_data_lake_data_sets_errors(), tuple()}.
+list_analytics_data_lake_data_sets(Client, InstanceId)
+  when is_map(Client) ->
+    list_analytics_data_lake_data_sets(Client, InstanceId, #{}, #{}).
+
+-spec list_analytics_data_lake_data_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_analytics_data_lake_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_analytics_data_lake_data_sets_errors(), tuple()}.
+list_analytics_data_lake_data_sets(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_analytics_data_lake_data_sets(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_analytics_data_lake_data_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_analytics_data_lake_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_analytics_data_lake_data_sets_errors(), tuple()}.
+list_analytics_data_lake_data_sets(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/datasets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -15635,7 +15742,7 @@ list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web Services Support.
+%% request access to this API, contact Amazon Web ServicesSupport.
 %%
 %% Provides summary information about the authentication profiles in a
 %% specified Amazon Connect instance.
@@ -17803,7 +17910,7 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% period for up to
 %% 180 days. It cannot be searched for or claimed again until the period has
 %% ended. If you
-%% accidentally release a phone number, contact Amazon Web Services Support.
+%% accidentally release a phone number, contact Amazon Web ServicesSupport.
 %%
 %% If you plan to claim and release numbers frequently,
 %% contact us for a service quota exception. Otherwise, it is possible you
@@ -18813,7 +18920,7 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 %% error, your
 %% account may not support the ability to configure custom chat durations.
 %% For more information,
-%% contact Amazon Web Services Support.
+%% contact Amazon Web ServicesSupport.
 %%
 %% For more information about chat, see the following topics in the Amazon
 %% Connect
@@ -19864,7 +19971,7 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web Services Support.
+%% request access to this API, contact Amazon Web ServicesSupport.
 %%
 %% Updates the selected authentication profile.
 -spec update_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_authentication_profile_request()) ->
