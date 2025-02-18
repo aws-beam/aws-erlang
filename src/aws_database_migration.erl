@@ -1857,6 +1857,7 @@
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"MigrationType">> => list(any()),
+%%   <<"ReplicationConfigArn">> => string(),
 %%   <<"ReplicationInstanceArn">> => string(),
 %%   <<"ReplicationTaskArn">> => string(),
 %%   <<"SourceEngineName">> => string(),

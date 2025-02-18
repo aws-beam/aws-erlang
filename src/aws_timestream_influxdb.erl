@@ -11,18 +11,28 @@
 %% millisecond query response time.
 -module(aws_timestream_influxdb).
 
--export([create_db_instance/2,
+-export([create_db_cluster/2,
+         create_db_cluster/3,
+         create_db_instance/2,
          create_db_instance/3,
          create_db_parameter_group/2,
          create_db_parameter_group/3,
+         delete_db_cluster/2,
+         delete_db_cluster/3,
          delete_db_instance/2,
          delete_db_instance/3,
+         get_db_cluster/2,
+         get_db_cluster/3,
          get_db_instance/2,
          get_db_instance/3,
          get_db_parameter_group/2,
          get_db_parameter_group/3,
+         list_db_clusters/2,
+         list_db_clusters/3,
          list_db_instances/2,
          list_db_instances/3,
+         list_db_instances_for_cluster/2,
+         list_db_instances_for_cluster/3,
          list_db_parameter_groups/2,
          list_db_parameter_groups/3,
          list_tags_for_resource/2,
@@ -31,6 +41,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_db_cluster/2,
+         update_db_cluster/3,
          update_db_instance/2,
          update_db_instance/3]).
 
@@ -45,6 +57,14 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_db_instances_for_cluster_input() :: #{
+%%   <<"dbClusterId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_instances_for_cluster_input() :: #{binary() => any()}.
+
+%% Example:
 %% list_db_parameter_groups_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -52,10 +72,22 @@
 -type list_db_parameter_groups_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_db_cluster_input() :: #{
+%%   <<"dbClusterId">> := string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"failoverMode">> => list(any()),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"port">> => integer()
+%% }
+-type update_db_cluster_input() :: #{binary() => any()}.
+
+%% Example:
 %% delete_db_instance_output() :: #{
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"arn">> => string(),
 %%   <<"availabilityZone">> => [string()],
+%%   <<"dbClusterId">> => string(),
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
@@ -63,6 +95,7 @@
 %%   <<"endpoint">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
@@ -74,6 +107,13 @@
 %%   <<"vpcSubnetIds">> => list(string()())
 %% }
 -type delete_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_clusters_output() :: #{
+%%   <<"items">> => list(db_cluster_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_clusters_output() :: #{binary() => any()}.
 
 %% Example:
 %% db_parameter_group_summary() :: #{
@@ -95,6 +135,13 @@
 %%   <<"identifier">> := string()
 %% }
 -type delete_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_instances_for_cluster_output() :: #{
+%%   <<"items">> => list(db_instance_for_cluster_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_instances_for_cluster_output() :: #{binary() => any()}.
 
 %% Example:
 %% influx_dbv2_parameters() :: #{
@@ -140,6 +187,7 @@
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"arn">> => string(),
 %%   <<"availabilityZone">> => [string()],
+%%   <<"dbClusterId">> => string(),
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
@@ -147,6 +195,7 @@
 %%   <<"endpoint">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
@@ -192,6 +241,29 @@
 -type db_instance_summary() :: #{binary() => any()}.
 
 %% Example:
+%% create_db_cluster_input() :: #{
+%%   <<"allocatedStorage">> := integer(),
+%%   <<"bucket">> => string(),
+%%   <<"dbInstanceType">> := list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> := list(any()),
+%%   <<"failoverMode">> => list(any()),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"name">> := string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"organization">> => string(),
+%%   <<"password">> := string(),
+%%   <<"port">> => integer(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"tags">> => map(),
+%%   <<"username">> => string(),
+%%   <<"vpcSecurityGroupIds">> := list(string()()),
+%%   <<"vpcSubnetIds">> := list(string()())
+%% }
+-type create_db_cluster_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_db_parameter_group_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"description">> => [string()],
@@ -200,6 +272,13 @@
 %%   <<"parameters">> => list()
 %% }
 -type get_db_parameter_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_clusters_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_clusters_input() :: #{binary() => any()}.
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -221,10 +300,41 @@
 -type update_db_instance_input() :: #{binary() => any()}.
 
 %% Example:
+%% create_db_cluster_output() :: #{
+%%   <<"dbClusterId">> => string(),
+%%   <<"dbClusterStatus">> => list(any())
+%% }
+-type create_db_cluster_output() :: #{binary() => any()}.
+
+%% Example:
 %% log_delivery_configuration() :: #{
 %%   <<"s3Configuration">> => s3_configuration()
 %% }
 -type log_delivery_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_cluster_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"failoverMode">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"port">> => integer(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"readerEndpoint">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()()),
+%%   <<"vpcSubnetIds">> => list(string()())
+%% }
+-type get_db_cluster_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -250,6 +360,7 @@
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"arn">> => string(),
 %%   <<"availabilityZone">> => [string()],
+%%   <<"dbClusterId">> => string(),
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
@@ -257,6 +368,7 @@
 %%   <<"endpoint">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
@@ -268,6 +380,29 @@
 %%   <<"vpcSubnetIds">> => list(string()())
 %% }
 -type create_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_for_cluster_summary() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"instanceMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"port">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type db_instance_for_cluster_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_cluster_input() :: #{
+%%   <<"dbClusterId">> := string()
+%% }
+-type get_db_cluster_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_db_instances_output() :: #{
@@ -309,6 +444,7 @@
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"arn">> => string(),
 %%   <<"availabilityZone">> => [string()],
+%%   <<"dbClusterId">> => string(),
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
@@ -316,6 +452,7 @@
 %%   <<"endpoint">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
@@ -336,6 +473,12 @@
 -type duration() :: #{binary() => any()}.
 
 %% Example:
+%% update_db_cluster_output() :: #{
+%%   <<"dbClusterStatus">> => list(any())
+%% }
+-type update_db_cluster_output() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
@@ -347,6 +490,12 @@
 %%   <<"resourceArn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_input() :: #{
+%%   <<"dbClusterId">> := string()
+%% }
+-type delete_db_cluster_input() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -367,6 +516,29 @@
 %%   <<"identifier">> := string()
 %% }
 -type get_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_output() :: #{
+%%   <<"dbClusterStatus">> => list(any())
+%% }
+-type delete_db_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_summary() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"port">> => integer(),
+%%   <<"readerEndpoint">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type db_cluster_summary() :: #{binary() => any()}.
 
 %% Example:
 %% create_db_parameter_group_output() :: #{
@@ -400,6 +572,15 @@
 %% }
 -type create_db_instance_input() :: #{binary() => any()}.
 
+-type create_db_cluster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_db_instance_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -418,6 +599,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_db_cluster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_db_instance_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -425,6 +614,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type get_db_cluster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_db_instance_errors() ::
     throttling_exception() | 
@@ -440,7 +636,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_db_clusters_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_db_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_db_instances_for_cluster_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -464,6 +674,14 @@
 -type untag_resource_errors() ::
     resource_not_found_exception().
 
+-type update_db_cluster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_db_instance_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -475,6 +693,23 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a new Timestream for InfluxDB cluster.
+-spec create_db_cluster(aws_client:aws_client(), create_db_cluster_input()) ->
+    {ok, create_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, create_db_cluster_errors(), tuple()}.
+create_db_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_db_cluster(Client, Input, []).
+
+-spec create_db_cluster(aws_client:aws_client(), create_db_cluster_input(), proplists:proplist()) ->
+    {ok, create_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, create_db_cluster_errors(), tuple()}.
+create_db_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDbCluster">>, Input, Options).
 
 %% @doc Creates a new Timestream for InfluxDB DB instance.
 -spec create_db_instance(aws_client:aws_client(), create_db_instance_input()) ->
@@ -511,6 +746,23 @@ create_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDbParameterGroup">>, Input, Options).
 
+%% @doc Deletes a Timestream for InfluxDB cluster.
+-spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_input()) ->
+    {ok, delete_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, delete_db_cluster_errors(), tuple()}.
+delete_db_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_db_cluster(Client, Input, []).
+
+-spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_input(), proplists:proplist()) ->
+    {ok, delete_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, delete_db_cluster_errors(), tuple()}.
+delete_db_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDbCluster">>, Input, Options).
+
 %% @doc Deletes a Timestream for InfluxDB DB instance.
 -spec delete_db_instance(aws_client:aws_client(), delete_db_instance_input()) ->
     {ok, delete_db_instance_output(), tuple()} |
@@ -527,6 +779,23 @@ delete_db_instance(Client, Input)
 delete_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDbInstance">>, Input, Options).
+
+%% @doc Retrieves information about a Timestream for InfluxDB cluster.
+-spec get_db_cluster(aws_client:aws_client(), get_db_cluster_input()) ->
+    {ok, get_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, get_db_cluster_errors(), tuple()}.
+get_db_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_db_cluster(Client, Input, []).
+
+-spec get_db_cluster(aws_client:aws_client(), get_db_cluster_input(), proplists:proplist()) ->
+    {ok, get_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, get_db_cluster_errors(), tuple()}.
+get_db_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDbCluster">>, Input, Options).
 
 %% @doc Returns a Timestream for InfluxDB DB instance.
 -spec get_db_instance(aws_client:aws_client(), get_db_instance_input()) ->
@@ -562,6 +831,23 @@ get_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDbParameterGroup">>, Input, Options).
 
+%% @doc Returns a list of Timestream for InfluxDB DB clusters.
+-spec list_db_clusters(aws_client:aws_client(), list_db_clusters_input()) ->
+    {ok, list_db_clusters_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_clusters_errors(), tuple()}.
+list_db_clusters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_db_clusters(Client, Input, []).
+
+-spec list_db_clusters(aws_client:aws_client(), list_db_clusters_input(), proplists:proplist()) ->
+    {ok, list_db_clusters_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_clusters_errors(), tuple()}.
+list_db_clusters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDbClusters">>, Input, Options).
+
 %% @doc Returns a list of Timestream for InfluxDB DB instances.
 -spec list_db_instances(aws_client:aws_client(), list_db_instances_input()) ->
     {ok, list_db_instances_output(), tuple()} |
@@ -578,6 +864,23 @@ list_db_instances(Client, Input)
 list_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDbInstances">>, Input, Options).
+
+%% @doc Returns a list of Timestream for InfluxDB clusters.
+-spec list_db_instances_for_cluster(aws_client:aws_client(), list_db_instances_for_cluster_input()) ->
+    {ok, list_db_instances_for_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_instances_for_cluster_errors(), tuple()}.
+list_db_instances_for_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_db_instances_for_cluster(Client, Input, []).
+
+-spec list_db_instances_for_cluster(aws_client:aws_client(), list_db_instances_for_cluster_input(), proplists:proplist()) ->
+    {ok, list_db_instances_for_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_instances_for_cluster_errors(), tuple()}.
+list_db_instances_for_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDbInstancesForCluster">>, Input, Options).
 
 %% @doc Returns a list of Timestream for InfluxDB DB parameter groups.
 -spec list_db_parameter_groups(aws_client:aws_client(), list_db_parameter_groups_input()) ->
@@ -649,6 +952,23 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates a Timestream for InfluxDB cluster.
+-spec update_db_cluster(aws_client:aws_client(), update_db_cluster_input()) ->
+    {ok, update_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, update_db_cluster_errors(), tuple()}.
+update_db_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_db_cluster(Client, Input, []).
+
+-spec update_db_cluster(aws_client:aws_client(), update_db_cluster_input(), proplists:proplist()) ->
+    {ok, update_db_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, update_db_cluster_errors(), tuple()}.
+update_db_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDbCluster">>, Input, Options).
 
 %% @doc Updates a Timestream for InfluxDB DB instance.
 -spec update_db_instance(aws_client:aws_client(), update_db_instance_input()) ->
