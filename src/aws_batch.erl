@@ -2486,7 +2486,7 @@ register_job_definition(Client, Input0, Options0) ->
 %% the
 %% `containerOverrides' parameter.
 %%
-%% Job queues with a scheduling policy are limited to 500 active fair share
+%% Job queues with a scheduling policy are limited to 500 active share
 %% identifiers at
 %% a time.
 %%

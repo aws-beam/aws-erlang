@@ -251,6 +251,7 @@
 %% monitoring_configuration() :: #{
 %%   <<"cloudWatchMonitoringConfiguration">> => cloud_watch_monitoring_configuration(),
 %%   <<"containerLogRotationConfiguration">> => container_log_rotation_configuration(),
+%%   <<"managedLogs">> => managed_logs(),
 %%   <<"persistentAppUI">> => list(any()),
 %%   <<"s3MonitoringConfiguration">> => s3_monitoring_configuration()
 %% }
@@ -366,6 +367,14 @@
 %% Example:
 %% describe_job_template_request() :: #{}
 -type describe_job_template_request() :: #{}.
+
+
+%% Example:
+%% managed_logs() :: #{
+%%   <<"allowAWSToRetainLogs">> => list(any()),
+%%   <<"encryptionKeyArn">> => string()
+%% }
+-type managed_logs() :: #{binary() => any()}.
 
 
 %% Example:

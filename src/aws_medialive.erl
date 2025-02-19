@@ -1791,8 +1791,7 @@
 
 %% Example:
 %% start_monitor_deployment_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"RequestId">> => string()
+%%   <<"DryRun">> => boolean()
 %% }
 -type start_monitor_deployment_request() :: #{binary() => any()}.
 
