@@ -469,10 +469,15 @@
 
 %% Example:
 %% metadata() :: #{
+%%   <<"ConfigurationSet">> => [string()],
 %%   <<"IngressPointId">> => string(),
 %%   <<"RuleSetId">> => string(),
 %%   <<"SenderHostname">> => [string()],
 %%   <<"SenderIpAddress">> => string(),
+%%   <<"SendingMethod">> => [string()],
+%%   <<"SendingPool">> => [string()],
+%%   <<"SourceArn">> => [string()],
+%%   <<"SourceIdentity">> => [string()],
 %%   <<"Timestamp">> => [non_neg_integer()],
 %%   <<"TlsCipherSuite">> => [string()],
 %%   <<"TlsProtocol">> => [string()],
@@ -856,6 +861,7 @@
 %%   <<"ReceivedTimestamp">> => [non_neg_integer()],
 %%   <<"SenderHostname">> => [string()],
 %%   <<"SenderIpAddress">> => string(),
+%%   <<"SourceArn">> => [string()],
 %%   <<"Subject">> => [string()],
 %%   <<"To">> => [string()],
 %%   <<"XMailer">> => [string()],

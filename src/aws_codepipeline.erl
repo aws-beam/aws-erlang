@@ -546,6 +546,13 @@
 -type get_third_party_job_details_output() :: #{binary() => any()}.
 
 %% Example:
+%% environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type environment_variable() :: #{binary() => any()}.
+
+%% Example:
 %% third_party_job() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"jobId">> => string()
@@ -888,6 +895,7 @@
 %%   <<"actionTypeId">> => action_type_id(),
 %%   <<"commands">> => list(string()()),
 %%   <<"configuration">> => map(),
+%%   <<"environmentVariables">> => list(environment_variable()()),
 %%   <<"inputArtifacts">> => list(input_artifact()()),
 %%   <<"name">> => string(),
 %%   <<"namespace">> => string(),
@@ -2695,8 +2703,10 @@ list_rule_executions(Client, Input, Options)
 %%
 %% For more information about conditions, see Stage
 %% conditions:
-%% https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html.
-%% For more information about rules, see the CodePipeline rule reference:
+%% https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html
+%% and How do stage conditions work?:
+%% https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts-how-it-works-conditions.html.For
+%% more information about rules, see the CodePipeline rule reference:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html.
 -spec list_rule_types(aws_client:aws_client(), list_rule_types_input()) ->
     {ok, list_rule_types_output(), tuple()} |
@@ -2758,6 +2768,12 @@ list_webhooks(Client, Input, Options)
     request(Client, <<"ListWebhooks">>, Input, Options).
 
 %% @doc Used to override a stage condition.
+%%
+%% For more information about conditions, see Stage
+%% conditions:
+%% https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html
+%% and How do stage conditions work?:
+%% https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts-how-it-works-conditions.html.
 -spec override_stage_condition(aws_client:aws_client(), override_stage_condition_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

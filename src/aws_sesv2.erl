@@ -184,6 +184,8 @@
          put_account_suppression_attributes/3,
          put_account_vdm_attributes/2,
          put_account_vdm_attributes/3,
+         put_configuration_set_archiving_options/3,
+         put_configuration_set_archiving_options/4,
          put_configuration_set_delivery_options/3,
          put_configuration_set_delivery_options/4,
          put_configuration_set_reputation_options/3,
@@ -319,6 +321,13 @@
 %% Example:
 %% update_email_identity_policy_response() :: #{}
 -type update_email_identity_policy_response() :: #{}.
+
+
+%% Example:
+%% put_configuration_set_archiving_options_request() :: #{
+%%   <<"ArchiveArn">> => string()
+%% }
+-type put_configuration_set_archiving_options_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -805,6 +814,10 @@
 %%   <<"DimensionValueSource">> => list(any())
 %% }
 -type cloud_watch_dimension_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_archiving_options_response() :: #{}
+-type put_configuration_set_archiving_options_response() :: #{}.
 
 %% Example:
 %% delete_custom_verification_email_template_response() :: #{}
@@ -1854,6 +1867,13 @@
 
 
 %% Example:
+%% archiving_options() :: #{
+%%   <<"ArchiveArn">> => string()
+%% }
+-type archiving_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% suppression_options() :: #{
 %%   <<"SuppressedReasons">> => list(list(any())())
 %% }
@@ -2154,6 +2174,7 @@
 
 %% Example:
 %% get_configuration_set_response() :: #{
+%%   <<"ArchivingOptions">> => archiving_options(),
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"DeliveryOptions">> => delivery_options(),
 %%   <<"ReputationOptions">> => reputation_options(),
@@ -2364,6 +2385,7 @@
 
 %% Example:
 %% create_configuration_set_request() :: #{
+%%   <<"ArchivingOptions">> => archiving_options(),
 %%   <<"ConfigurationSetName">> := string(),
 %%   <<"DeliveryOptions">> => delivery_options(),
 %%   <<"ReputationOptions">> => reputation_options(),
@@ -2872,6 +2894,11 @@
 
 -type put_account_vdm_attributes_errors() ::
     bad_request_exception() | 
+    too_many_requests_exception().
+
+-type put_configuration_set_archiving_options_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
     too_many_requests_exception().
 
 -type put_configuration_set_delivery_options_errors() ::
@@ -5857,6 +5884,46 @@ put_account_vdm_attributes(Client, Input) ->
 put_account_vdm_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/vdm"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associate the configuration set with a MailManager archive.
+%%
+%% When you send email using the
+%% `SendEmail' or `SendBulkEmail' operations the message as it will
+%% be given
+%% to the receiving SMTP server will be archived, along with the recipient
+%% information.
+-spec put_configuration_set_archiving_options(aws_client:aws_client(), binary() | list(), put_configuration_set_archiving_options_request()) ->
+    {ok, put_configuration_set_archiving_options_response(), tuple()} |
+    {error, any()} |
+    {error, put_configuration_set_archiving_options_errors(), tuple()}.
+put_configuration_set_archiving_options(Client, ConfigurationSetName, Input) ->
+    put_configuration_set_archiving_options(Client, ConfigurationSetName, Input, []).
+
+-spec put_configuration_set_archiving_options(aws_client:aws_client(), binary() | list(), put_configuration_set_archiving_options_request(), proplists:proplist()) ->
+    {ok, put_configuration_set_archiving_options_response(), tuple()} |
+    {error, any()} |
+    {error, put_configuration_set_archiving_options_errors(), tuple()}.
+put_configuration_set_archiving_options(Client, ConfigurationSetName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/archiving-options"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

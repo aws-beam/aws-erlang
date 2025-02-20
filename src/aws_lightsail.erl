@@ -21,7 +21,7 @@
 %% Command Line Interface (CLI), or SDKs. For more information about
 %% Lightsail
 %% concepts and tasks, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.
 %%
 %% This API Reference provides detailed information about the actions, data
 %% types,
@@ -5378,7 +5378,7 @@ attach_certificate_to_distribution(Client, Input, Options)
 %% applied to the resource identified by `disk name'. For more
 %% information, see the
 %% Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec attach_disk(aws_client:aws_client(), attach_disk_request()) ->
     {ok, attach_disk_result(), tuple()} |
     {error, any()} |
@@ -5407,7 +5407,7 @@ attach_disk(Client, Input, Options)
 %% ```
 %% load balancer name'''. For more information, see the Lightsail
 %% Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec attach_instances_to_load_balancer(aws_client:aws_client(), attach_instances_to_load_balancer_request()) ->
     {ok, attach_instances_to_load_balancer_result(), tuple()} |
     {error, any()} |
@@ -5444,7 +5444,7 @@ attach_instances_to_load_balancer(Client, Input, Options)
 %% ```
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec attach_load_balancer_tls_certificate(aws_client:aws_client(), attach_load_balancer_tls_certificate_request()) ->
     {ok, attach_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
@@ -5485,7 +5485,7 @@ attach_static_ip(Client, Input, Options)
 %% resource tags applied to the resource identified by `instanceName'.
 %% For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec close_instance_public_ports(aws_client:aws_client(), close_instance_public_ports_request()) ->
     {ok, close_instance_public_ports_result(), tuple()} |
     {error, any()} |
@@ -5546,7 +5546,7 @@ copy_snapshot(Client, Input, Options)
 %% Use buckets to store objects such as data and its descriptive metadata.
 %% For more information
 %% about buckets, see Buckets in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/buckets-in-amazon-lightsail
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/buckets-in-amazon-lightsail
 %% in the Amazon Lightsail Developer
 %% Guide.
 -spec create_bucket(aws_client:aws_client(), create_bucket_request()) ->
@@ -5579,7 +5579,7 @@ create_bucket(Client, Input, Options)
 %% more
 %% information about access keys, see Creating access keys for a bucket in
 %% Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-bucket-access-keys
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-creating-bucket-access-keys
 %% in the
 %% Amazon Lightsail Developer Guide.
 %%
@@ -5682,7 +5682,7 @@ create_cloud_formation_stack(Client, Input, Options)
 %% Regions, and SMS text messages cannot be sent to some countries/regions.
 %% For more information,
 %% see Notifications in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.
 -spec create_contact_method(aws_client:aws_client(), create_contact_method_request()) ->
     {ok, create_contact_method_result(), tuple()} |
     {error, any()} |
@@ -5704,7 +5704,7 @@ create_contact_method(Client, Input, Options)
 %% A Lightsail container service is a compute resource to which you can
 %% deploy containers.
 %% For more information, see Container services in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-container-services
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-container-services
 %% in the Lightsail Dev
 %% Guide.
 -spec create_container_service(aws_client:aws_client(), create_container_service_request()) ->
@@ -5740,7 +5740,7 @@ create_container_service(Client, Input, Options)
 %% registry such as Amazon ECR Public, or from your local machine. For more
 %% information, see
 %% Creating container images for your Amazon Lightsail container services:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-container-images
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-creating-container-images
 %% in the
 %% Amazon Lightsail Developer Guide.
 -spec create_container_service_deployment(aws_client:aws_client(), create_container_service_deployment_request()) ->
@@ -5789,7 +5789,7 @@ create_container_service_deployment(Client, Input, Options)
 %% service. For
 %% more information, see Pushing and managing container images on your Amazon
 %% Lightsail container services:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-pushing-container-images
 %% in the Amazon Lightsail Developer Guide.
 -spec create_container_service_registry_login(aws_client:aws_client(), create_container_service_registry_login_request()) ->
     {ok, create_container_service_registry_login_result(), tuple()} |
@@ -5814,7 +5814,7 @@ create_container_service_registry_login(Client, Input, Options)
 %% The `create disk' operation supports tag-based access control via
 %% request tags.
 %% For more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_disk(aws_client:aws_client(), create_disk_request()) ->
     {ok, create_disk_result(), tuple()} |
     {error, any()} |
@@ -5845,7 +5845,7 @@ create_disk(Client, Input, Options)
 %% ```
 %% disk snapshot name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_disk_from_snapshot(aws_client:aws_client(), create_disk_from_snapshot_request()) ->
     {ok, create_disk_from_snapshot_result(), tuple()} |
     {error, any()} |
@@ -5903,7 +5903,7 @@ create_disk_from_snapshot(Client, Input, Options)
 %% via
 %% request tags. For more information, see the Amazon Lightsail Developer
 %% Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_disk_snapshot(aws_client:aws_client(), create_disk_snapshot_request()) ->
     {ok, create_disk_snapshot_result(), tuple()} |
     {error, any()} |
@@ -5928,7 +5928,7 @@ create_disk_snapshot(Client, Input, Options)
 %% performance of your website or web application hosted on a Lightsail
 %% instance. For more
 %% information, see Content delivery networks in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-content-delivery-network-distributions.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-content-delivery-network-distributions.
 -spec create_distribution(aws_client:aws_client(), create_distribution_request()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
@@ -5950,7 +5950,7 @@ create_distribution(Client, Input, Options)
 %% The `create domain' operation supports tag-based access control via
 %% request
 %% tags. For more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_result(), tuple()} |
     {error, any()} |
@@ -5978,7 +5978,7 @@ create_domain(Client, Input, Options)
 %% resource tags applied to the resource identified by `domain name'. For
 %% more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_domain_entry(aws_client:aws_client(), create_domain_entry_request()) ->
     {ok, create_domain_entry_result(), tuple()} |
     {error, any()} |
@@ -5999,8 +5999,8 @@ create_domain_entry(Client, Input, Options)
 %% graphical user interface
 %% (GUI) session.
 %%
-%% The primary URL initiates a web-based NICE DCV session to the virtual
-%% computer's application. The secondary URL initiates a web-based NICE
+%% The primary URL initiates a web-based Amazon DCV session to the virtual
+%% computer's application. The secondary URL initiates a web-based Amazon
 %% DCV session to the
 %% virtual computer's operating session.
 %%
@@ -6030,7 +6030,7 @@ create_g_ui_session_access_details(Client, Input, Options)
 %% control via
 %% request tags. For more information, see the Amazon Lightsail Developer
 %% Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_instance_snapshot(aws_client:aws_client(), create_instance_snapshot_request()) ->
     {ok, create_instance_snapshot_result(), tuple()} |
     {error, any()} |
@@ -6052,7 +6052,7 @@ create_instance_snapshot(Client, Input, Options)
 %% The `create instances' operation supports tag-based access control via
 %% request
 %% tags. For more information, see the Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_instances(aws_client:aws_client(), create_instances_request()) ->
     {ok, create_instances_result(), tuple()} |
     {error, any()} |
@@ -6079,7 +6079,7 @@ create_instances(Client, Input, Options)
 %% identified by
 %% `instance snapshot name'. For more information, see the Amazon
 %% Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_instances_from_snapshot(aws_client:aws_client(), create_instances_from_snapshot_request()) ->
     {ok, create_instances_from_snapshot_result(), tuple()} |
     {error, any()} |
@@ -6110,7 +6110,7 @@ create_instances_from_snapshot(Client, Input, Options)
 %% The `create key pair' operation supports tag-based access control via
 %% request
 %% tags. For more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_key_pair(aws_client:aws_client(), create_key_pair_request()) ->
     {ok, create_key_pair_result(), tuple()} |
     {error, any()} |
@@ -6132,7 +6132,7 @@ create_key_pair(Client, Input, Options)
 %% To learn more about deciding whether to load balance
 %% your application, see Configure your Lightsail instances for load
 %% balancing:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/configure-lightsail-instances-for-load-balancing.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.
 %% You can create up to 5
 %% load balancers per AWS Region in your account.
 %%
@@ -6146,7 +6146,7 @@ create_key_pair(Client, Input, Options)
 %% via
 %% request tags. For more information, see the Amazon Lightsail Developer
 %% Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_load_balancer(aws_client:aws_client(), create_load_balancer_request()) ->
     {ok, create_load_balancer_result(), tuple()} |
     {error, any()} |
@@ -6173,7 +6173,7 @@ create_load_balancer(Client, Input, Options)
 %% ```
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_load_balancer_tls_certificate(aws_client:aws_client(), create_load_balancer_tls_certificate_request()) ->
     {ok, create_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
@@ -6196,7 +6196,7 @@ create_load_balancer_tls_certificate(Client, Input, Options)
 %% control
 %% via request tags. For more information, see the Amazon Lightsail Developer
 %% Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_relational_database(aws_client:aws_client(), create_relational_database_request()) ->
     {ok, create_relational_database_result(), tuple()} |
     {error, any()} |
@@ -6228,7 +6228,7 @@ create_relational_database(Client, Input, Options)
 %% identified by
 %% relationalDatabaseSnapshotName. For more information, see the Amazon
 %% Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_relational_database_from_snapshot(aws_client:aws_client(), create_relational_database_from_snapshot_request()) ->
     {ok, create_relational_database_from_snapshot_result(), tuple()} |
     {error, any()} |
@@ -6254,7 +6254,7 @@ create_relational_database_from_snapshot(Client, Input, Options)
 %% access
 %% control via request tags. For more information, see the Amazon Lightsail
 %% Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec create_relational_database_snapshot(aws_client:aws_client(), create_relational_database_snapshot_request()) ->
     {ok, create_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
@@ -6279,7 +6279,7 @@ create_relational_database_snapshot(Client, Input, Options)
 %% a banner displayed
 %% on the Amazon Lightsail console. For more information, see Alarms
 %% in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-alarms.
 -spec delete_alarm(aws_client:aws_client(), delete_alarm_request()) ->
     {ok, delete_alarm_result(), tuple()} |
     {error, any()} |
@@ -6299,7 +6299,7 @@ delete_alarm(Client, Input, Options)
 %% @doc Deletes an automatic snapshot of an instance or disk.
 %%
 %% For more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.
 -spec delete_auto_snapshot(aws_client:aws_client(), delete_auto_snapshot_request()) ->
     {ok, delete_auto_snapshot_result(), tuple()} |
     {error, any()} |
@@ -6344,7 +6344,7 @@ delete_bucket(Client, Input, Options)
 %%
 %% For more information about access keys, see Creating access keys for a
 %% bucket in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-bucket-access-keys
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-creating-bucket-access-keys
 %% in the
 %% Amazon Lightsail Developer Guide.
 -spec delete_bucket_access_key(aws_client:aws_client(), delete_bucket_access_key_request()) ->
@@ -6398,7 +6398,7 @@ delete_certificate(Client, Input, Options)
 %% Regions, and SMS text messages cannot be sent to some countries/regions.
 %% For more information,
 %% see Notifications in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.
 -spec delete_contact_method(aws_client:aws_client(), delete_contact_method_request()) ->
     {ok, delete_contact_method_result(), tuple()} |
     {error, any()} |
@@ -6463,7 +6463,7 @@ delete_container_service(Client, Input, Options)
 %% applied to the resource identified by `disk name'. For more
 %% information, see the
 %% Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_disk(aws_client:aws_client(), delete_disk_request()) ->
     {ok, delete_disk_result(), tuple()} |
     {error, any()} |
@@ -6497,7 +6497,7 @@ delete_disk(Client, Input, Options)
 %% resource tags applied to the resource identified by `disk snapshot
 %% name'. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_disk_snapshot(aws_client:aws_client(), delete_disk_snapshot_request()) ->
     {ok, delete_disk_snapshot_result(), tuple()} |
     {error, any()} |
@@ -6539,7 +6539,7 @@ delete_distribution(Client, Input, Options)
 %% tags applied to the resource identified by `domain name'. For more
 %% information, see
 %% the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_domain(aws_client:aws_client(), delete_domain_request()) ->
     {ok, delete_domain_result(), tuple()} |
     {error, any()} |
@@ -6563,7 +6563,7 @@ delete_domain(Client, Input, Options)
 %% resource tags applied to the resource identified by `domain name'. For
 %% more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_domain_entry(aws_client:aws_client(), delete_domain_entry_request()) ->
     {ok, delete_domain_entry_result(), tuple()} |
     {error, any()} |
@@ -6587,7 +6587,7 @@ delete_domain_entry(Client, Input, Options)
 %% tags applied to the resource identified by `instance name'. For more
 %% information,
 %% see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_instance(aws_client:aws_client(), delete_instance_request()) ->
     {ok, delete_instance_result(), tuple()} |
     {error, any()} |
@@ -6612,7 +6612,7 @@ delete_instance(Client, Input, Options)
 %% resource tags applied to the resource identified by `instance snapshot
 %% name'. For
 %% more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_instance_snapshot(aws_client:aws_client(), delete_instance_snapshot_request()) ->
     {ok, delete_instance_snapshot_result(), tuple()} |
     {error, any()} |
@@ -6649,7 +6649,7 @@ delete_instance_snapshot(Client, Input, Options)
 %% tags applied to the resource identified by `key pair name'. For more
 %% information,
 %% see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_key_pair(aws_client:aws_client(), delete_key_pair_request()) ->
     {ok, delete_key_pair_result(), tuple()} |
     {error, any()} |
@@ -6680,7 +6680,7 @@ delete_key_pair(Client, Input, Options)
 %% information, see Troubleshooting connection issues when using the Amazon
 %% Lightsail browser-based SSH or RDP
 %% client:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection.
 -spec delete_known_host_keys(aws_client:aws_client(), delete_known_host_keys_request()) ->
     {ok, delete_known_host_keys_result(), tuple()} |
     {error, any()} |
@@ -6710,7 +6710,7 @@ delete_known_host_keys(Client, Input, Options)
 %% resource tags applied to the resource identified by `load balancer
 %% name'. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_load_balancer(aws_client:aws_client(), delete_load_balancer_request()) ->
     {ok, delete_load_balancer_result(), tuple()} |
     {error, any()} |
@@ -6736,7 +6736,7 @@ delete_load_balancer(Client, Input, Options)
 %% ```
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_load_balancer_tls_certificate(aws_client:aws_client(), delete_load_balancer_tls_certificate_request()) ->
     {ok, delete_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
@@ -6760,7 +6760,7 @@ delete_load_balancer_tls_certificate(Client, Input, Options)
 %% via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_relational_database(aws_client:aws_client(), delete_relational_database_request()) ->
     {ok, delete_relational_database_result(), tuple()} |
     {error, any()} |
@@ -6784,7 +6784,7 @@ delete_relational_database(Client, Input, Options)
 %% control via resource tags applied to the resource identified by
 %% relationalDatabaseName. For
 %% more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec delete_relational_database_snapshot(aws_client:aws_client(), delete_relational_database_snapshot_request()) ->
     {ok, delete_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
@@ -6836,7 +6836,7 @@ detach_certificate_from_distribution(Client, Input, Options)
 %% applied to the resource identified by `disk name'. For more
 %% information, see the
 %% Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec detach_disk(aws_client:aws_client(), detach_disk_request()) ->
     {ok, detach_disk_result(), tuple()} |
     {error, any()} |
@@ -6865,7 +6865,7 @@ detach_disk(Client, Input, Options)
 %% ```
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec detach_instances_from_load_balancer(aws_client:aws_client(), detach_instances_from_load_balancer_request()) ->
     {ok, detach_instances_from_load_balancer_result(), tuple()} |
     {error, any()} |
@@ -6903,7 +6903,7 @@ detach_static_ip(Client, Input, Options)
 %% @doc Disables an add-on for an Amazon Lightsail resource.
 %%
 %% For more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.
 -spec disable_add_on(aws_client:aws_client(), disable_add_on_request()) ->
     {ok, disable_add_on_result(), tuple()} |
     {error, any()} |
@@ -6945,7 +6945,7 @@ download_default_key_pair(Client, Input, Options)
 %%
 %% For more information, see
 %% the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.
 -spec enable_add_on(aws_client:aws_client(), enable_add_on_request()) ->
     {ok, enable_add_on_result(), tuple()} |
     {error, any()} |
@@ -6984,7 +6984,7 @@ enable_add_on(Client, Input, Options)
 %% tags applied to the resource identified by `source snapshot name'. For
 %% more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 %%
 %% Use the `get instance snapshots' or `get disk snapshots'
 %% operations to get a list of snapshots that you can export to Amazon EC2.
@@ -7034,7 +7034,7 @@ get_active_names(Client, Input, Options)
 %% a banner displayed
 %% on the Amazon Lightsail console. For more information, see Alarms
 %% in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-alarms.
 -spec get_alarms(aws_client:aws_client(), get_alarms_request()) ->
     {ok, get_alarms_result(), tuple()} |
     {error, any()} |
@@ -7055,7 +7055,7 @@ get_alarms(Client, Input, Options)
 %%
 %% For more information,
 %% see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.
 -spec get_auto_snapshots(aws_client:aws_client(), get_auto_snapshots_request()) ->
     {ok, get_auto_snapshots_result(), tuple()} |
     {error, any()} |
@@ -7188,7 +7188,7 @@ get_bucket_metric_data(Client, Input, Options)
 %% account-level block public access feature for your Lightsail buckets.
 %%
 %% For more information about buckets, see Buckets in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/buckets-in-amazon-lightsail
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/buckets-in-amazon-lightsail
 %% in the Amazon Lightsail Developer
 %% Guide.
 -spec get_buckets(aws_client:aws_client(), get_buckets_request()) ->
@@ -7295,7 +7295,7 @@ get_cloud_formation_stack_records(Client, Input, Options)
 %% Regions, and SMS text messages cannot be sent to some countries/regions.
 %% For more information,
 %% see Notifications in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.
 -spec get_contact_methods(aws_client:aws_client(), get_contact_methods_request()) ->
     {ok, get_contact_methods_result(), tuple()} |
     {error, any()} |
@@ -7752,7 +7752,7 @@ get_instance(Client, Input, Options)
 %% via resource tags applied to the resource identified by `instance
 %% name'. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec get_instance_access_details(aws_client:aws_client(), get_instance_access_details_request()) ->
     {ok, get_instance_access_details_result(), tuple()} |
     {error, any()} |
@@ -7992,7 +7992,7 @@ get_load_balancer_tls_certificates(Client, Input, Options)
 %% For more information about load balancer TLS security policies, see
 %% Configuring TLS security policies on your Amazon Lightsail load
 %% balancers:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configure-load-balancer-tls-security-policy
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy
 %% in the Amazon Lightsail Developer Guide.
 -spec get_load_balancer_tls_policies(aws_client:aws_client(), get_load_balancer_tls_policies_request()) ->
     {ok, get_load_balancer_tls_policies_result(), tuple()} |
@@ -8449,7 +8449,7 @@ is_vpc_peered(Client, Input, Options)
 %% resource tags applied to the resource identified by `instanceName'.
 %% For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec open_instance_public_ports(aws_client:aws_client(), open_instance_public_ports_request()) ->
     {ok, open_instance_public_ports_result(), tuple()} |
     {error, any()} |
@@ -8492,7 +8492,7 @@ peer_vpc(Client, Input, Options)
 %% a banner displayed
 %% on the Amazon Lightsail console. For more information, see Alarms
 %% in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-alarms.
 %%
 %% When this action creates an alarm, the alarm state is immediately set to
 %% `INSUFFICIENT_DATA'. The alarm is then evaluated and its state is set
@@ -8538,7 +8538,7 @@ put_alarm(Client, Input, Options)
 %% resource tags applied to the resource identified by `instanceName'.
 %% For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec put_instance_public_ports(aws_client:aws_client(), put_instance_public_ports_request()) ->
     {ok, put_instance_public_ports_result(), tuple()} |
     {error, any()} |
@@ -8562,7 +8562,7 @@ put_instance_public_ports(Client, Input, Options)
 %% tags applied to the resource identified by `instance name'. For more
 %% information,
 %% see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec reboot_instance(aws_client:aws_client(), reboot_instance_request()) ->
     {ok, reboot_instance_result(), tuple()} |
     {error, any()} |
@@ -8586,7 +8586,7 @@ reboot_instance(Client, Input, Options)
 %% via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec reboot_relational_database(aws_client:aws_client(), reboot_relational_database_request()) ->
     {ok, reboot_relational_database_result(), tuple()} |
     {error, any()} |
@@ -8611,7 +8611,7 @@ reboot_relational_database(Client, Input, Options)
 %% service. For
 %% more information, see Pushing and managing container images on your Amazon
 %% Lightsail container services:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-pushing-container-images
 %% in the Amazon Lightsail Developer Guide.
 -spec register_container_image(aws_client:aws_client(), register_container_image_request()) ->
     {ok, register_container_image_result(), tuple()} |
@@ -8683,7 +8683,7 @@ reset_distribution_cache(Client, Input, Options)
 %% Regions, and SMS text messages cannot be sent to some countries/regions.
 %% For more information,
 %% see Notifications in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.
 %%
 %% A verification request is sent to the contact method when you initially
 %% create it. Use
@@ -8814,14 +8814,14 @@ start_g_ui_session(Client, Input, Options)
 %% instance, create a
 %% static IP address and attach it to the instance. For more information, see
 %% the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-create-static-ip.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-create-static-ip.
 %%
 %% The `start instance' operation supports tag-based access control via
 %% resource
 %% tags applied to the resource identified by `instance name'. For more
 %% information,
 %% see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec start_instance(aws_client:aws_client(), start_instance_request()) ->
     {ok, start_instance_result(), tuple()} |
     {error, any()} |
@@ -8848,7 +8848,7 @@ start_instance(Client, Input, Options)
 %% resource tags applied to the resource identified by
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec start_relational_database(aws_client:aws_client(), start_relational_database_request()) ->
     {ok, start_relational_database_result(), tuple()} |
     {error, any()} |
@@ -8865,7 +8865,7 @@ start_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRelationalDatabase">>, Input, Options).
 
-%% @doc Terminates a web-based NICE DCV session that’s used to access a
+%% @doc Terminates a web-based Amazon DCV session that’s used to access a
 %% virtual computer’s
 %% operating system or application.
 %%
@@ -8895,14 +8895,14 @@ stop_g_ui_session(Client, Input, Options)
 %% instance, create a
 %% static IP address and attach it to the instance. For more information, see
 %% the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-create-static-ip.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-create-static-ip.
 %%
 %% The `stop instance' operation supports tag-based access control via
 %% resource
 %% tags applied to the resource identified by `instance name'. For more
 %% information,
 %% see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec stop_instance(aws_client:aws_client(), stop_instance_request()) ->
     {ok, stop_instance_result(), tuple()} |
     {error, any()} |
@@ -8922,12 +8922,19 @@ stop_instance(Client, Input, Options)
 %% @doc Stops a specific database that is currently running in Amazon
 %% Lightsail.
 %%
+%% If you don't manually start your database instance after it has been
+%% stopped for seven
+%% consecutive days, Amazon Lightsail automatically starts it for you. This
+%% action helps ensure
+%% that your database instance doesn't fall behind on any required
+%% maintenance updates.
+%%
 %% The `stop relational database' operation supports tag-based access
 %% control via
 %% resource tags applied to the resource identified by
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec stop_relational_database(aws_client:aws_client(), stop_relational_database_request()) ->
     {ok, stop_relational_database_result(), tuple()} |
     {error, any()} |
@@ -8951,14 +8958,14 @@ stop_relational_database(Client, Input, Options)
 %% keys must be unique
 %% per resource. For more information about tags, see the Amazon Lightsail
 %% Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-tags.
 %%
 %% The `tag resource' operation supports tag-based access control via
 %% request tags
 %% and resource tags applied to the resource identified by `resource
 %% name'. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
@@ -8990,7 +8997,7 @@ tag_resource(Client, Input, Options)
 %% a banner displayed
 %% on the Amazon Lightsail console. For more information, see Alarms
 %% in Amazon Lightsail:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-alarms.
 -spec test_alarm(aws_client:aws_client(), test_alarm_request()) ->
     {ok, test_alarm_result(), tuple()} |
     {error, any()} |
@@ -9033,7 +9040,7 @@ unpeer_vpc(Client, Input, Options)
 %% tags and resource tags applied to the resource identified by `resource
 %% name'. For
 %% more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
@@ -9197,7 +9204,7 @@ update_distribution_bundle(Client, Input, Options)
 %% resource tags applied to the resource identified by `domain name'. For
 %% more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec update_domain_entry(aws_client:aws_client(), update_domain_entry_request()) ->
     {ok, update_domain_entry_result(), tuple()} |
     {error, any()} |
@@ -9226,7 +9233,7 @@ update_domain_entry(Client, Input, Options)
 %% changes to `applied' in subsequent `GetInstance' or
 %% `GetInstances' API calls. For more information, see Use IMDSv2 with an
 %% Amazon Lightsail instance:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-instance-metadata-service
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-instance-metadata-service
 %% in the Amazon Lightsail Developer Guide.
 -spec update_instance_metadata_options(aws_client:aws_client(), update_instance_metadata_options_request()) ->
     {ok, update_instance_metadata_options_result(), tuple()} |
@@ -9255,7 +9262,7 @@ update_instance_metadata_options(Client, Input, Options)
 %% ```
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec update_load_balancer_attribute(aws_client:aws_client(), update_load_balancer_attribute_request()) ->
     {ok, update_load_balancer_attribute_result(), tuple()} |
     {error, any()} |
@@ -9284,7 +9291,7 @@ update_load_balancer_attribute(Client, Input, Options)
 %% via resource tags applied to the resource identified by
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec update_relational_database(aws_client:aws_client(), update_relational_database_request()) ->
     {ok, update_relational_database_result(), tuple()} |
     {error, any()} |
@@ -9319,7 +9326,7 @@ update_relational_database(Client, Input, Options)
 %% control via resource tags applied to the resource identified by
 %% relationalDatabaseName. For
 %% more information, see the Amazon Lightsail Developer Guide:
-%% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.
 -spec update_relational_database_parameters(aws_client:aws_client(), update_relational_database_parameters_request()) ->
     {ok, update_relational_database_parameters_result(), tuple()} |
     {error, any()} |

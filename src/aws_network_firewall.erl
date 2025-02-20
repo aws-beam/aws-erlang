@@ -51,6 +51,10 @@
 %% rules that are compatible
 %% with Suricata, a free, open source network analysis and threat detection
 %% engine.
+%% Network Firewall supports Suricata version 7.0.3. For information about
+%% Suricata,
+%% see the Suricata website: https://suricata.io/ and the
+%% Suricata User Guide: https://suricata.readthedocs.io/en/suricata-7.0.3/.
 %%
 %% You can use Network Firewall to monitor and protect your VPC traffic in a
 %% number of ways.
@@ -142,6 +146,10 @@
          describe_t_l_s_inspection_configuration/3,
          disassociate_subnets/2,
          disassociate_subnets/3,
+         get_analysis_report_results/2,
+         get_analysis_report_results/3,
+         list_analysis_reports/2,
+         list_analysis_reports/3,
          list_firewall_policies/2,
          list_firewall_policies/3,
          list_firewalls/2,
@@ -154,10 +162,14 @@
          list_tags_for_resource/3,
          put_resource_policy/2,
          put_resource_policy/3,
+         start_analysis_report/2,
+         start_analysis_report/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_firewall_analysis_settings/2,
+         update_firewall_analysis_settings/3,
          update_firewall_delete_protection/2,
          update_firewall_delete_protection/3,
          update_firewall_description/2,
@@ -350,6 +362,18 @@
 -type describe_rule_group_metadata_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_analysis_report_results_response() :: #{
+%%   <<"AnalysisReportResults">> => list(analysis_type_report_result()()),
+%%   <<"AnalysisType">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReportTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type get_analysis_report_results_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_rule_group_request() :: #{
 %%   <<"AnalyzeRuleGroup">> => boolean(),
 %%   <<"RuleGroupArn">> => string(),
@@ -381,6 +405,15 @@
 %%   <<"SubnetId">> => string()
 %% }
 -type attachment() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_analysis_settings_request() :: #{
+%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_analysis_settings_request() :: #{binary() => any()}.
 
 %% Example:
 %% t_l_s_inspection_configuration() :: #{
@@ -486,6 +519,16 @@
 -type firewall_policy() :: #{binary() => any()}.
 
 %% Example:
+%% get_analysis_report_results_request() :: #{
+%%   <<"AnalysisReportId">> := string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_analysis_report_results_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_firewall_policy_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -531,6 +574,13 @@
 %%   <<"Message">> => string()
 %% }
 -type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_analysis_reports_response() :: #{
+%%   <<"AnalysisReports">> => list(analysis_report()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_analysis_reports_response() :: #{binary() => any()}.
 
 %% Example:
 %% firewall_status() :: #{
@@ -614,6 +664,12 @@
 -type sync_state() :: #{binary() => any()}.
 
 %% Example:
+%% hits() :: #{
+%%   <<"Count">> => integer()
+%% }
+-type hits() :: #{binary() => any()}.
+
+%% Example:
 %% create_firewall_response() :: #{
 %%   <<"Firewall">> => firewall(),
 %%   <<"FirewallStatus">> => firewall_status()
@@ -662,6 +718,15 @@
 -type rule_group_response() :: #{binary() => any()}.
 
 %% Example:
+%% analysis_report() :: #{
+%%   <<"AnalysisReportId">> => string(),
+%%   <<"AnalysisType">> => list(any()),
+%%   <<"ReportTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type analysis_report() :: #{binary() => any()}.
+
+%% Example:
 %% ip_set() :: #{
 %%   <<"Definition">> => list(string()())
 %% }
@@ -708,6 +773,15 @@
 -type create_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_analysis_reports_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_analysis_reports_request() :: #{binary() => any()}.
+
+%% Example:
 %% firewall_policy_response() :: #{
 %%   <<"ConsumedStatefulRuleCapacity">> => integer(),
 %%   <<"ConsumedStatelessRuleCapacity">> => integer(),
@@ -751,6 +825,7 @@
 %% firewall() :: #{
 %%   <<"DeleteProtection">> => boolean(),
 %%   <<"Description">> => string(),
+%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallId">> => string(),
@@ -774,16 +849,28 @@
 %% create_firewall_request() :: #{
 %%   <<"DeleteProtection">> => boolean(),
 %%   <<"Description">> => string(),
+%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"FirewallName">> := string(),
 %%   <<"FirewallPolicyArn">> := string(),
 %%   <<"FirewallPolicyChangeProtection">> => boolean(),
 %%   <<"SubnetChangeProtection">> => boolean(),
-%%   <<"SubnetMappings">> := list(subnet_mapping()()),
+%%   <<"SubnetMappings">> => list(subnet_mapping()()),
 %%   <<"Tags">> => list(tag()()),
-%%   <<"VpcId">> := string()
+%%   <<"VpcId">> => string()
 %% }
 -type create_firewall_request() :: #{binary() => any()}.
+
+%% Example:
+%% analysis_type_report_result() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"FirstAccessed">> => non_neg_integer(),
+%%   <<"Hits">> => hits(),
+%%   <<"LastAccessed">> => non_neg_integer(),
+%%   <<"Protocol">> => string(),
+%%   <<"UniqueSources">> => unique_sources()
+%% }
+-type analysis_type_report_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_firewall_request() :: #{
@@ -1002,6 +1089,12 @@
 -type describe_firewall_response() :: #{binary() => any()}.
 
 %% Example:
+%% unique_sources() :: #{
+%%   <<"Count">> => integer()
+%% }
+-type unique_sources() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1022,6 +1115,15 @@
 %%   <<"PortSets">> => map()
 %% }
 -type rule_variables() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_analysis_settings_response() :: #{
+%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_analysis_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -1075,6 +1177,14 @@
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_analysis_report_request() :: #{
+%%   <<"AnalysisType">> := list(any()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string()
+%% }
+-type start_analysis_report_request() :: #{binary() => any()}.
 
 %% Example:
 %% dimension() :: #{
@@ -1259,6 +1369,12 @@
 -type check_certificate_revocation_status_actions() :: #{binary() => any()}.
 
 %% Example:
+%% start_analysis_report_response() :: #{
+%%   <<"AnalysisReportId">> => string()
+%% }
+-type start_analysis_report_response() :: #{binary() => any()}.
+
+%% Example:
 %% ip_set_reference() :: #{
 %%   <<"ReferenceArn">> => string()
 %% }
@@ -1441,6 +1557,18 @@
     resource_not_found_exception() | 
     invalid_operation_exception().
 
+-type get_analysis_report_results_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_analysis_reports_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type list_firewall_policies_errors() ::
     throttling_exception() | 
     internal_server_error() | 
@@ -1474,6 +1602,12 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type start_analysis_report_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type tag_resource_errors() ::
     throttling_exception() | 
     internal_server_error() | 
@@ -1481,6 +1615,12 @@
     resource_not_found_exception().
 
 -type untag_resource_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_firewall_analysis_settings_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -1634,6 +1774,9 @@ associate_subnets(Client, Input, Options)
 %%
 %% To retrieve information about firewalls, use `ListFirewalls' and
 %% `DescribeFirewall'.
+%%
+%% To generate a report on the last 30 days of traffic monitored by a
+%% firewall, use `StartAnalysisReport'.
 -spec create_firewall(aws_client:aws_client(), create_firewall_request()) ->
     {ok, create_firewall_response(), tuple()} |
     {error, any()} |
@@ -1994,6 +2137,44 @@ disassociate_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateSubnets">>, Input, Options).
 
+%% @doc The results of a `COMPLETED' analysis report generated with
+%% `StartAnalysisReport'.
+%%
+%% For more information, see `AnalysisTypeReportResult'.
+-spec get_analysis_report_results(aws_client:aws_client(), get_analysis_report_results_request()) ->
+    {ok, get_analysis_report_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_analysis_report_results_errors(), tuple()}.
+get_analysis_report_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_analysis_report_results(Client, Input, []).
+
+-spec get_analysis_report_results(aws_client:aws_client(), get_analysis_report_results_request(), proplists:proplist()) ->
+    {ok, get_analysis_report_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_analysis_report_results_errors(), tuple()}.
+get_analysis_report_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAnalysisReportResults">>, Input, Options).
+
+%% @doc Returns a list of all traffic analysis reports generated within the
+%% last 30 days.
+-spec list_analysis_reports(aws_client:aws_client(), list_analysis_reports_request()) ->
+    {ok, list_analysis_reports_response(), tuple()} |
+    {error, any()} |
+    {error, list_analysis_reports_errors(), tuple()}.
+list_analysis_reports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_analysis_reports(Client, Input, []).
+
+-spec list_analysis_reports(aws_client:aws_client(), list_analysis_reports_request(), proplists:proplist()) ->
+    {ok, list_analysis_reports_response(), tuple()} |
+    {error, any()} |
+    {error, list_analysis_reports_errors(), tuple()}.
+list_analysis_reports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAnalysisReports">>, Input, Options).
+
 %% @doc Retrieves the metadata for the firewall policies that you have
 %% defined.
 %%
@@ -2160,6 +2341,27 @@ put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
+%% @doc Generates a traffic analysis report for the timeframe and traffic
+%% type you specify.
+%%
+%% For information on the contents of a traffic analysis report, see
+%% `AnalysisReport'.
+-spec start_analysis_report(aws_client:aws_client(), start_analysis_report_request()) ->
+    {ok, start_analysis_report_response(), tuple()} |
+    {error, any()} |
+    {error, start_analysis_report_errors(), tuple()}.
+start_analysis_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_analysis_report(Client, Input, []).
+
+-spec start_analysis_report(aws_client:aws_client(), start_analysis_report_request(), proplists:proplist()) ->
+    {ok, start_analysis_report_response(), tuple()} |
+    {error, any()} |
+    {error, start_analysis_report_errors(), tuple()}.
+start_analysis_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartAnalysisReport">>, Input, Options).
+
 %% @doc Adds the specified tags to the specified resource.
 %%
 %% Tags are key:value pairs that you can
@@ -2218,6 +2420,24 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Enables specific types of firewall analysis on a specific firewall
+%% you define.
+-spec update_firewall_analysis_settings(aws_client:aws_client(), update_firewall_analysis_settings_request()) ->
+    {ok, update_firewall_analysis_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_firewall_analysis_settings_errors(), tuple()}.
+update_firewall_analysis_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_firewall_analysis_settings(Client, Input, []).
+
+-spec update_firewall_analysis_settings(aws_client:aws_client(), update_firewall_analysis_settings_request(), proplists:proplist()) ->
+    {ok, update_firewall_analysis_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_firewall_analysis_settings_errors(), tuple()}.
+update_firewall_analysis_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFirewallAnalysisSettings">>, Input, Options).
 
 %% @doc Modifies the flag, `DeleteProtection', which indicates whether it
 %% is possible
