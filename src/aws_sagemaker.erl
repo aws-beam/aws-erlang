@@ -4020,6 +4020,7 @@
 %% update_cluster_request() :: #{
 %%   <<"ClusterName">> := string(),
 %%   <<"InstanceGroups">> := list(cluster_instance_group_specification()()),
+%%   <<"InstanceGroupsToDelete">> => list(string()()),
 %%   <<"NodeRecovery">> => list(any())
 %% }
 -type update_cluster_request() :: #{binary() => any()}.

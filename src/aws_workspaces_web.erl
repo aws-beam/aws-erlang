@@ -562,6 +562,7 @@
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
 %%   <<"pasteAllowed">> => string(),
 %%   <<"printAllowed">> => string(),
+%%   <<"toolbarConfiguration">> => toolbar_configuration(),
 %%   <<"uploadAllowed">> => string(),
 %%   <<"userSettingsArn">> => string()
 %% }
@@ -1007,6 +1008,7 @@
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
 %%   <<"pasteAllowed">> => string(),
 %%   <<"printAllowed">> => string(),
+%%   <<"toolbarConfiguration">> => toolbar_configuration(),
 %%   <<"uploadAllowed">> => string()
 %% }
 -type update_user_settings_request() :: #{binary() => any()}.
@@ -1165,6 +1167,7 @@
 %%   <<"pasteAllowed">> := string(),
 %%   <<"printAllowed">> := string(),
 %%   <<"tags">> => list(tag()()),
+%%   <<"toolbarConfiguration">> => toolbar_configuration(),
 %%   <<"uploadAllowed">> := string()
 %% }
 -type create_user_settings_request() :: #{binary() => any()}.
@@ -1284,6 +1287,16 @@
 
 
 %% Example:
+%% toolbar_configuration() :: #{
+%%   <<"hiddenToolbarItems">> => list(string()()),
+%%   <<"maxDisplayResolution">> => string(),
+%%   <<"toolbarType">> => string(),
+%%   <<"visualMode">> => string()
+%% }
+-type toolbar_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_data_protection_settings_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1347,6 +1360,7 @@
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
 %%   <<"pasteAllowed">> => string(),
 %%   <<"printAllowed">> => string(),
+%%   <<"toolbarConfiguration">> => toolbar_configuration(),
 %%   <<"uploadAllowed">> => string(),
 %%   <<"userSettingsArn">> => string()
 %% }

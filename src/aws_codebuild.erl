@@ -1510,6 +1510,8 @@
 %%   <<"payloadUrl">> => string(),
 %%   <<"scopeConfiguration">> => scope_configuration(),
 %%   <<"secret">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
 %%   <<"url">> => string()
 %% }
 -type webhook() :: #{binary() => any()}.
