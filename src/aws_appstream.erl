@@ -2337,6 +2337,7 @@
 
 -type update_directory_config_errors() ::
     concurrent_modification_exception() | 
+    incompatible_image_exception() | 
     invalid_role_exception() | 
     operation_not_permitted_exception() | 
     resource_not_found_exception() | 

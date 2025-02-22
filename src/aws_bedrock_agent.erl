@@ -2141,7 +2141,8 @@
 %%   <<"exclusionFilters">> => list(string()()),
 %%   <<"inclusionFilters">> => list(string()()),
 %%   <<"scope">> => list(any()),
-%%   <<"userAgent">> => string()
+%%   <<"userAgent">> => string(),
+%%   <<"userAgentHeader">> => string()
 %% }
 -type web_crawler_configuration() :: #{binary() => any()}.
 
