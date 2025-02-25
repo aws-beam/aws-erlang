@@ -645,6 +645,14 @@
 
 
 %% Example:
+%% reasoning_text_block() :: #{
+%%   <<"signature">> => [string()],
+%%   <<"text">> => [string()]
+%% }
+-type reasoning_text_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% function_result() :: #{
 %%   <<"actionGroup">> => [string()],
 %%   <<"agentId">> => [string()],
@@ -814,6 +822,7 @@
 %%   <<"metadata">> => metadata(),
 %%   <<"parsedResponse">> => pre_processing_parsed_response(),
 %%   <<"rawResponse">> => raw_response(),
+%%   <<"reasoningContent">> => list(),
 %%   <<"traceId">> => string()
 %% }
 -type pre_processing_model_invocation_output() :: #{binary() => any()}.
@@ -1551,6 +1560,7 @@
 %%   <<"metadata">> => metadata(),
 %%   <<"parsedResponse">> => post_processing_parsed_response(),
 %%   <<"rawResponse">> => raw_response(),
+%%   <<"reasoningContent">> => list(),
 %%   <<"traceId">> => string()
 %% }
 -type post_processing_model_invocation_output() :: #{binary() => any()}.
@@ -1569,6 +1579,7 @@
 %% orchestration_model_invocation_output() :: #{
 %%   <<"metadata">> => metadata(),
 %%   <<"rawResponse">> => raw_response(),
+%%   <<"reasoningContent">> => list(),
 %%   <<"traceId">> => string()
 %% }
 -type orchestration_model_invocation_output() :: #{binary() => any()}.

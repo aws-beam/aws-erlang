@@ -313,6 +313,14 @@
 
 
 %% Example:
+%% reasoning_text_block() :: #{
+%%   <<"signature">> => [string()],
+%%   <<"text">> => [string()]
+%% }
+-type reasoning_text_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }

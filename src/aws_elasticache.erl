@@ -3674,7 +3674,7 @@ create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
-%% @doc For Valkey engine version 7.2 onwards and Redis OSS 6.0 and onwards:
+%% @doc For Valkey engine version 7.2 onwards and Redis OSS 6.0 to 7.1:
 %% Creates a user.
 %%
 %% For more information, see
@@ -3696,7 +3696,7 @@ create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
 
-%% @doc For Valkey engine version 7.2 onwards and Redis OSS 6.0 onwards:
+%% @doc For Valkey engine version 7.2 onwards and Redis OSS 6.0 to 7.1:
 %% Creates a user group.
 %%
 %% For more
