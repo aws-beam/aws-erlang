@@ -100,8 +100,10 @@
 %% additional_info_response() :: #{
 %%   <<"brazilAdditionalInfo">> => brazil_additional_info(),
 %%   <<"canadaAdditionalInfo">> => canada_additional_info(),
+%%   <<"egyptAdditionalInfo">> => egypt_additional_info(),
 %%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
 %%   <<"georgiaAdditionalInfo">> => georgia_additional_info(),
+%%   <<"greeceAdditionalInfo">> => greece_additional_info(),
 %%   <<"indiaAdditionalInfo">> => india_additional_info(),
 %%   <<"israelAdditionalInfo">> => israel_additional_info(),
 %%   <<"italyAdditionalInfo">> => italy_additional_info(),
@@ -113,7 +115,8 @@
 %%   <<"southKoreaAdditionalInfo">> => south_korea_additional_info(),
 %%   <<"spainAdditionalInfo">> => spain_additional_info(),
 %%   <<"turkeyAdditionalInfo">> => turkey_additional_info(),
-%%   <<"ukraineAdditionalInfo">> => ukraine_additional_info()
+%%   <<"ukraineAdditionalInfo">> => ukraine_additional_info(),
+%%   <<"vietnamAdditionalInfo">> => vietnam_additional_info()
 %% }
 -type additional_info_response() :: #{binary() => any()}.
 
@@ -179,6 +182,13 @@
 
 
 %% Example:
+%% greece_additional_info() :: #{
+%%   <<"contractingAuthorityCode">> => string()
+%% }
+-type greece_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_tax_registration_response() :: #{
 %%   <<"taxRegistration">> => tax_registration()
 %% }
@@ -232,6 +242,14 @@
 
 
 %% Example:
+%% egypt_additional_info() :: #{
+%%   <<"uniqueIdentificationNumber">> => string(),
+%%   <<"uniqueIdentificationNumberExpirationDate">> => string()
+%% }
+-type egypt_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% case_creation_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -281,8 +299,10 @@
 %% Example:
 %% additional_info_request() :: #{
 %%   <<"canadaAdditionalInfo">> => canada_additional_info(),
+%%   <<"egyptAdditionalInfo">> => egypt_additional_info(),
 %%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
 %%   <<"georgiaAdditionalInfo">> => georgia_additional_info(),
+%%   <<"greeceAdditionalInfo">> => greece_additional_info(),
 %%   <<"israelAdditionalInfo">> => israel_additional_info(),
 %%   <<"italyAdditionalInfo">> => italy_additional_info(),
 %%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
@@ -293,7 +313,8 @@
 %%   <<"southKoreaAdditionalInfo">> => south_korea_additional_info(),
 %%   <<"spainAdditionalInfo">> => spain_additional_info(),
 %%   <<"turkeyAdditionalInfo">> => turkey_additional_info(),
-%%   <<"ukraineAdditionalInfo">> => ukraine_additional_info()
+%%   <<"ukraineAdditionalInfo">> => ukraine_additional_info(),
+%%   <<"vietnamAdditionalInfo">> => vietnam_additional_info()
 %% }
 -type additional_info_request() :: #{binary() => any()}.
 
@@ -545,6 +566,16 @@
 %%   <<"taxOffice">> => string()
 %% }
 -type turkey_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% vietnam_additional_info() :: #{
+%%   <<"electronicTransactionCodeNumber">> => string(),
+%%   <<"enterpriseIdentificationNumber">> => string(),
+%%   <<"paymentVoucherNumber">> => string(),
+%%   <<"paymentVoucherNumberDate">> => string()
+%% }
+-type vietnam_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -873,6 +904,8 @@ batch_delete_tax_registration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get the active tax exemptions for a given list of accounts.
+%%
+%% The IAM action is `tax:GetExemptions'.
 -spec batch_get_tax_exemptions(aws_client:aws_client(), batch_get_tax_exemptions_request()) ->
     {ok, batch_get_tax_exemptions_response(), tuple()} |
     {error, any()} |
@@ -1167,6 +1200,8 @@ delete_tax_registration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get supported tax exemption types.
+%%
+%% The IAM action is `tax:GetExemptions'.
 -spec get_tax_exemption_types(aws_client:aws_client(), get_tax_exemption_types_request()) ->
     {ok, get_tax_exemption_types_response(), tuple()} |
     {error, any()} |
@@ -1341,6 +1376,8 @@ list_supplemental_tax_registrations(Client, Input0, Options0) ->
 
 %% @doc Retrieves the tax exemption of accounts listed in a consolidated
 %% billing family.
+%%
+%% The IAM action is `tax:GetExemptions'.
 -spec list_tax_exemptions(aws_client:aws_client(), list_tax_exemptions_request()) ->
     {ok, list_tax_exemptions_response(), tuple()} |
     {error, any()} |
@@ -1450,6 +1487,8 @@ put_supplemental_tax_registration(Client, Input0, Options0) ->
 
 %% @doc Adds the tax exemption for a single account or all accounts listed in
 %% a consolidated billing family.
+%%
+%% The IAM action is `tax:UpdateExemptions'.
 -spec put_tax_exemption(aws_client:aws_client(), put_tax_exemption_request()) ->
     {ok, put_tax_exemption_response(), tuple()} |
     {error, any()} |

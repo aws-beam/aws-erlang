@@ -1186,6 +1186,7 @@
 %%   <<"phases">> => list(build_batch_phase()()),
 %%   <<"projectName">> => string(),
 %%   <<"queuedTimeoutInMinutes">> => integer(),
+%%   <<"reportArns">> => list(string()()),
 %%   <<"resolvedSourceVersion">> => string(),
 %%   <<"secondaryArtifacts">> => list(build_artifacts()()),
 %%   <<"secondarySourceVersions">> => list(project_source_version()()),

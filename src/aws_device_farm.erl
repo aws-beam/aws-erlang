@@ -211,6 +211,7 @@
 %% Example:
 %% create_remote_access_session_configuration() :: #{
 %%   <<"billingMethod">> => list(any()),
+%%   <<"deviceProxy">> => device_proxy(),
 %%   <<"vpceConfigurationArns">> => list(string()())
 %% }
 -type create_remote_access_session_configuration() :: #{binary() => any()}.
@@ -759,6 +760,7 @@
 %%   <<"auxiliaryApps">> => list(string()()),
 %%   <<"billingMethod">> => list(any()),
 %%   <<"customerArtifactPaths">> => customer_artifact_paths(),
+%%   <<"deviceProxy">> => device_proxy(),
 %%   <<"extraDataPackageArn">> => string(),
 %%   <<"locale">> => string(),
 %%   <<"location">> => location(),
@@ -1351,6 +1353,7 @@
 %%   <<"created">> => non_neg_integer(),
 %%   <<"device">> => device(),
 %%   <<"deviceMinutes">> => device_minutes(),
+%%   <<"deviceProxy">> => device_proxy(),
 %%   <<"deviceUdid">> => string(),
 %%   <<"endpoint">> => string(),
 %%   <<"hostAddress">> => string(),
@@ -1758,6 +1761,13 @@
 -type create_project_result() :: #{binary() => any()}.
 
 %% Example:
+%% device_proxy() :: #{
+%%   <<"host">> => string(),
+%%   <<"port">> => integer()
+%% }
+-type device_proxy() :: #{binary() => any()}.
+
+%% Example:
 %% stop_job_result() :: #{
 %%   <<"job">> => job()
 %% }
@@ -1833,38 +1843,39 @@
 
 %% Example:
 %% run() :: #{
-%%   <<"appUpload">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"billingMethod">> => list(any()),
-%%   <<"completedJobs">> => integer(),
-%%   <<"counters">> => counters(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"customerArtifactPaths">> => customer_artifact_paths(),
-%%   <<"deviceMinutes">> => device_minutes(),
-%%   <<"devicePoolArn">> => string(),
-%%   <<"deviceSelectionResult">> => device_selection_result(),
-%%   <<"eventCount">> => integer(),
-%%   <<"jobTimeoutMinutes">> => integer(),
-%%   <<"locale">> => string(),
-%%   <<"location">> => location(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string(),
 %%   <<"networkProfile">> => network_profile(),
-%%   <<"parsingResultUrl">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"radios">> => radios(),
-%%   <<"result">> => list(any()),
-%%   <<"resultCode">> => list(any()),
-%%   <<"seed">> => integer(),
-%%   <<"skipAppResign">> => boolean(),
-%%   <<"started">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stopped">> => non_neg_integer(),
-%%   <<"testSpecArn">> => string(),
-%%   <<"totalJobs">> => integer(),
 %%   <<"type">> => list(any()),
+%%   <<"deviceMinutes">> => device_minutes(),
+%%   <<"seed">> => integer(),
+%%   <<"completedJobs">> => integer(),
+%%   <<"testSpecArn">> => string(),
+%%   <<"billingMethod">> => list(any()),
+%%   <<"webUrl">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"location">> => location(),
+%%   <<"counters">> => counters(),
+%%   <<"status">> => list(any()),
+%%   <<"jobTimeoutMinutes">> => integer(),
+%%   <<"result">> => list(any()),
+%%   <<"totalJobs">> => integer(),
 %%   <<"vpcConfig">> => vpc_config(),
-%%   <<"webUrl">> => string()
+%%   <<"customerArtifactPaths">> => customer_artifact_paths(),
+%%   <<"locale">> => string(),
+%%   <<"skipAppResign">> => boolean(),
+%%   <<"appUpload">> => string(),
+%%   <<"deviceSelectionResult">> => device_selection_result(),
+%%   <<"radios">> => radios(),
+%%   <<"stopped">> => non_neg_integer(),
+%%   <<"arn">> => string(),
+%%   <<"parsingResultUrl">> => string(),
+%%   <<"devicePoolArn">> => string(),
+%%   <<"resultCode">> => list(any()),
+%%   <<"deviceProxy">> => device_proxy(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"eventCount">> => integer(),
+%%   <<"started">> => non_neg_integer(),
+%%   <<"name">> => string()
 %% }
 -type run() :: #{binary() => any()}.
 

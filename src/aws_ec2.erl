@@ -4425,6 +4425,7 @@
 %%   <<"Encrypted">> => boolean(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"SnapshotCopyCompletionDurationMinutes">> => float(),
 %%   <<"SourceImageId">> := string(),
 %%   <<"SourceRegion">> := string(),
 %%   <<"TagSpecifications">> => list(tag_specification()())

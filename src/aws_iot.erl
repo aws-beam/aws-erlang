@@ -5858,6 +5858,7 @@
 
 %% Example:
 %% audit_check_configuration() :: #{
+%%   <<"configuration">> => map(),
 %%   <<"enabled">> => boolean()
 %% }
 -type audit_check_configuration() :: #{binary() => any()}.
