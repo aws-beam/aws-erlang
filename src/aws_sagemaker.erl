@@ -1075,6 +1075,7 @@
 %%   <<"InferenceComponentArn">> => string(),
 %%   <<"InferenceComponentName">> => string(),
 %%   <<"InferenceComponentStatus">> => list(any()),
+%%   <<"LastDeploymentConfig">> => inference_component_deployment_config(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"RuntimeConfig">> => inference_component_runtime_config_summary(),
 %%   <<"Specification">> => inference_component_specification_summary(),
@@ -4174,6 +4175,13 @@
 -type update_code_repository_output() :: #{binary() => any()}.
 
 %% Example:
+%% inference_component_capacity_size() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type inference_component_capacity_size() :: #{binary() => any()}.
+
+%% Example:
 %% image_version() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"FailureReason">> => string(),
@@ -4619,6 +4627,13 @@
 %%   <<"Input">> => string()
 %% }
 -type renderable_task() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_deployment_config() :: #{
+%%   <<"AutoRollbackConfiguration">> => auto_rollback_config(),
+%%   <<"RollingUpdatePolicy">> => inference_component_rolling_update_policy()
+%% }
+-type inference_component_deployment_config() :: #{binary() => any()}.
 
 %% Example:
 %% app_details() :: #{
@@ -8892,6 +8907,15 @@
 -type endpoint_input_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% inference_component_rolling_update_policy() :: #{
+%%   <<"MaximumBatchSize">> => inference_component_capacity_size(),
+%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
+%%   <<"RollbackMaximumBatchSize">> => inference_component_capacity_size(),
+%%   <<"WaitIntervalInSeconds">> => integer()
+%% }
+-type inference_component_rolling_update_policy() :: #{binary() => any()}.
+
+%% Example:
 %% delete_model_input() :: #{
 %%   <<"ModelName">> := string()
 %% }
@@ -10178,6 +10202,7 @@
 
 %% Example:
 %% update_inference_component_input() :: #{
+%%   <<"DeploymentConfig">> => inference_component_deployment_config(),
 %%   <<"InferenceComponentName">> := string(),
 %%   <<"RuntimeConfig">> => inference_component_runtime_config(),
 %%   <<"Specification">> => inference_component_specification()
@@ -14814,12 +14839,13 @@ create_model_explainability_job_definition(Client, Input, Options)
     request(Client, <<"CreateModelExplainabilityJobDefinition">>, Input, Options).
 
 %% @doc Creates a model package that you can use to create SageMaker models
-%% or list on Amazon Web Services
-%% Marketplace, or a versioned model that is part of a model group.
+%% or list on Amazon Web Services Marketplace, or a versioned model that is
+%% part of a model group.
 %%
-%% Buyers can subscribe to
-%% model packages listed on Amazon Web Services Marketplace to create models
-%% in SageMaker.
+%% Buyers
+%% can subscribe to model packages listed on Amazon Web Services Marketplace
+%% to create
+%% models in SageMaker.
 %%
 %% To create a model package by specifying a Docker container that contains
 %% your
@@ -16403,9 +16429,10 @@ delete_model_explainability_job_definition(Client, Input, Options)
 %% @doc Deletes a model package.
 %%
 %% A model package is used to create SageMaker models or list on Amazon Web
-%% Services Marketplace. Buyers can
-%% subscribe to model packages listed on Amazon Web Services Marketplace to
-%% create models in SageMaker.
+%% Services
+%% Marketplace. Buyers can subscribe to model packages listed on Amazon Web
+%% Services
+%% Marketplace to create models in SageMaker.
 -spec delete_model_package(aws_client:aws_client(), delete_model_package_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -17576,14 +17603,13 @@ describe_model_explainability_job_definition(Client, Input, Options)
 %% models or list them on Amazon Web Services Marketplace.
 %%
 %% If you provided a KMS Key ID when you created your model package,
-%% you will see the KMS
-%% Decrypt:
+%% you will see the KMS Decrypt:
 %% https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html API
-%% call in your CloudTrail logs when you use this API.
+%% call in
+%% your CloudTrail logs when you use this API.
 %%
 %% To create models in SageMaker, buyers can subscribe to model packages
-%% listed on Amazon Web Services
-%% Marketplace.
+%% listed on Amazon Web Services Marketplace.
 -spec describe_model_package(aws_client:aws_client(), describe_model_package_input()) ->
     {ok, describe_model_package_output(), tuple()} |
     {error, any()}.
@@ -18113,8 +18139,8 @@ get_lineage_group_policy(Client, Input, Options)
 %% resource policies, see Identity-based
 %% policies and resource-based policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
-%% in the Amazon Web Services Identity and
-%% Access Management User Guide..
+%% in the Amazon Web Services
+%% Identity and Access Management User Guide..
 -spec get_model_package_group_policy(aws_client:aws_client(), get_model_package_group_policy_input()) ->
     {ok, get_model_package_group_policy_output(), tuple()} |
     {error, any()}.
@@ -19584,7 +19610,8 @@ list_workteams(Client, Input, Options)
 %% resoure policies, see Identity-based
 %% policies and resource-based policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
-%% in the Amazon Web Services Identity and Access Management User Guide..
+%% in the Amazon Web Services
+%% Identity and Access Management User Guide..
 -spec put_model_package_group_policy(aws_client:aws_client(), put_model_package_group_policy_input()) ->
     {ok, put_model_package_group_policy_output(), tuple()} |
     {error, any()} |

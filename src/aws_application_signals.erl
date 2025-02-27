@@ -196,16 +196,19 @@
 
 %% Example:
 %% list_service_level_objectives_input() :: #{
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OperationName">> => string()
+%%   <<"OperationName">> => string(),
+%%   <<"SloOwnerAwsAccountId">> => string()
 %% }
 -type list_service_level_objectives_input() :: #{binary() => any()}.
 
 
 %% Example:
 %% metric_reference() :: #{
+%%   <<"AccountId">> => string(),
 %%   <<"Dimensions">> => list(dimension()()),
 %%   <<"MetricName">> => string(),
 %%   <<"MetricType">> => string(),
@@ -608,7 +611,9 @@
 
 %% Example:
 %% list_services_input() :: #{
+%%   <<"AwsAccountId">> => string(),
 %%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StartTime">> := [non_neg_integer()]
@@ -770,6 +775,10 @@ batch_get_service_level_objective_budget_report(Client, Input0, Options0) ->
 %% availability.
 %% You can also set SLOs against any CloudWatch metric or math expression
 %% that produces a time series.
+%%
+%% You can't create an SLO for a service operation that was discovered by
+%% Application Signals until after that operation has reported standard
+%% metrics to Application Signals.
 %%
 %% When you create an SLO, you specify whether it is a period-based SLO
 %% or a request-based SLO. Each type of SLO has a different way of evaluating
@@ -1093,9 +1102,11 @@ list_service_level_objectives(Client, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"IncludeLinkedAccounts">>, <<"IncludeLinkedAccounts">>},
                      {<<"MaxResults">>, <<"MaxResults">>},
                      {<<"NextToken">>, <<"NextToken">>},
-                     {<<"OperationName">>, <<"OperationName">>}
+                     {<<"OperationName">>, <<"OperationName">>},
+                     {<<"SloOwnerAwsAccountId">>, <<"SloOwnerAwsAccountId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -1182,7 +1193,9 @@ list_services(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"AwsAccountId">>, maps:get(<<"AwsAccountId">>, QueryMap, undefined)},
         {<<"EndTime">>, EndTime},
+        {<<"IncludeLinkedAccounts">>, maps:get(<<"IncludeLinkedAccounts">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
         {<<"StartTime">>, StartTime}

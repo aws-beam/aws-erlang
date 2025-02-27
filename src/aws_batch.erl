@@ -30,12 +30,16 @@
          cancel_job/3,
          create_compute_environment/2,
          create_compute_environment/3,
+         create_consumable_resource/2,
+         create_consumable_resource/3,
          create_job_queue/2,
          create_job_queue/3,
          create_scheduling_policy/2,
          create_scheduling_policy/3,
          delete_compute_environment/2,
          delete_compute_environment/3,
+         delete_consumable_resource/2,
+         delete_consumable_resource/3,
          delete_job_queue/2,
          delete_job_queue/3,
          delete_scheduling_policy/2,
@@ -44,6 +48,8 @@
          deregister_job_definition/3,
          describe_compute_environments/2,
          describe_compute_environments/3,
+         describe_consumable_resource/2,
+         describe_consumable_resource/3,
          describe_job_definitions/2,
          describe_job_definitions/3,
          describe_job_queues/2,
@@ -54,8 +60,12 @@
          describe_scheduling_policies/3,
          get_job_queue_snapshot/2,
          get_job_queue_snapshot/3,
+         list_consumable_resources/2,
+         list_consumable_resources/3,
          list_jobs/2,
          list_jobs/3,
+         list_jobs_by_consumable_resource/2,
+         list_jobs_by_consumable_resource/3,
          list_scheduling_policies/2,
          list_scheduling_policies/3,
          list_tags_for_resource/2,
@@ -73,6 +83,8 @@
          untag_resource/4,
          update_compute_environment/2,
          update_compute_environment/3,
+         update_consumable_resource/2,
+         update_consumable_resource/3,
          update_job_queue/2,
          update_job_queue/3,
          update_scheduling_policy/2,
@@ -134,6 +146,23 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_consumable_resource_summary() :: #{
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
+%%   <<"createdAt">> => float(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobDefinitionArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobQueueArn">> => string(),
+%%   <<"jobStatus">> => string(),
+%%   <<"quantity">> => float(),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string()
+%% }
+-type list_jobs_by_consumable_resource_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -302,6 +331,7 @@
 
 %% Example:
 %% node_property_override() :: #{
+%%   <<"consumableResourcePropertiesOverride">> => consumable_resource_properties(),
 %%   <<"containerOverrides">> => container_overrides(),
 %%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
 %%   <<"eksPropertiesOverride">> => eks_properties_override(),
@@ -380,6 +410,16 @@
 %%   <<"tags">> => map()
 %% }
 -type job_queue_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_consumable_resource_request() :: #{
+%%   <<"consumableResourceName">> := string(),
+%%   <<"resourceType">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"totalQuantity">> => float()
+%% }
+-type create_consumable_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -493,6 +533,16 @@
 %%   <<"name">> => string()
 %% }
 -type create_scheduling_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_consumable_resource_request() :: #{
+%%   <<"consumableResource">> := string(),
+%%   <<"filters">> => list(key_values_pair()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_by_consumable_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -617,6 +667,7 @@
 
 %% Example:
 %% register_job_definition_request() :: #{
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
 %%   <<"containerProperties">> => container_properties(),
 %%   <<"ecsProperties">> => ecs_properties(),
 %%   <<"eksProperties">> => eks_properties(),
@@ -641,6 +692,7 @@
 %% Example:
 %% submit_job_request() :: #{
 %%   <<"arrayProperties">> => array_properties(),
+%%   <<"consumableResourcePropertiesOverride">> => consumable_resource_properties(),
 %%   <<"containerOverrides">> => container_overrides(),
 %%   <<"dependsOn">> => list(job_dependency()()),
 %%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
@@ -678,6 +730,14 @@
 %%   <<"taskArn">> => string()
 %% }
 -type attempt_container_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_consumable_resources_response() :: #{
+%%   <<"consumableResources">> => list(consumable_resource_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_consumable_resources_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -772,6 +832,7 @@
 
 %% Example:
 %% job_definition() :: #{
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
 %%   <<"containerOrchestrationType">> => list(any()),
 %%   <<"containerProperties">> => container_properties(),
 %%   <<"ecsProperties">> => ecs_properties(),
@@ -817,10 +878,26 @@
 
 
 %% Example:
+%% delete_consumable_resource_request() :: #{
+%%   <<"consumableResource">> := string()
+%% }
+-type delete_consumable_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% ephemeral_storage() :: #{
 %%   <<"sizeInGiB">> => integer()
 %% }
 -type ephemeral_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_consumable_resource_response() :: #{
+%%   <<"consumableResourceArn">> => string(),
+%%   <<"consumableResourceName">> => string(),
+%%   <<"totalQuantity">> => float()
+%% }
+-type update_consumable_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1009,10 +1086,24 @@
 
 
 %% Example:
+%% update_consumable_resource_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"consumableResource">> := string(),
+%%   <<"operation">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type update_consumable_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% scheduling_policy_listing_detail() :: #{
 %%   <<"arn">> => string()
 %% }
 -type scheduling_policy_listing_detail() :: #{binary() => any()}.
+
+%% Example:
+%% delete_consumable_resource_response() :: #{}
+-type delete_consumable_resource_response() :: #{}.
 
 
 %% Example:
@@ -1022,6 +1113,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type describe_compute_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% consumable_resource_requirement() :: #{
+%%   <<"consumableResource">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type consumable_resource_requirement() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1039,6 +1138,20 @@
 %%   <<"name">> => string()
 %% }
 -type volume() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_consumable_resource_response() :: #{
+%%   <<"availableQuantity">> => float(),
+%%   <<"consumableResourceArn">> => string(),
+%%   <<"consumableResourceName">> => string(),
+%%   <<"createdAt">> => float(),
+%%   <<"inUseQuantity">> => float(),
+%%   <<"resourceType">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"totalQuantity">> => float()
+%% }
+-type describe_consumable_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1062,6 +1175,7 @@
 
 %% Example:
 %% node_range_property() :: #{
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
 %%   <<"container">> => container_properties(),
 %%   <<"ecsProperties">> => ecs_properties(),
 %%   <<"eksProperties">> => eks_properties(),
@@ -1184,6 +1298,22 @@
 
 
 %% Example:
+%% create_consumable_resource_response() :: #{
+%%   <<"consumableResourceArn">> => string(),
+%%   <<"consumableResourceName">> => string()
+%% }
+-type create_consumable_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_consumable_resource_response() :: #{
+%%   <<"jobs">> => list(list_jobs_by_consumable_resource_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_by_consumable_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_pod_properties() :: #{
 %%   <<"containers">> => list(eks_container()()),
 %%   <<"dnsPolicy">> => string(),
@@ -1245,6 +1375,15 @@
 %%   <<"numNodes">> => integer()
 %% }
 -type node_properties_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_consumable_resources_request() :: #{
+%%   <<"filters">> => list(key_values_pair()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_consumable_resources_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1313,6 +1452,7 @@
 %% job_detail() :: #{
 %%   <<"arrayProperties">> => array_properties_detail(),
 %%   <<"attempts">> => list(attempt_detail()()),
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
 %%   <<"container">> => container_detail(),
 %%   <<"createdAt">> => float(),
 %%   <<"dependsOn">> => list(job_dependency()()),
@@ -1376,6 +1516,17 @@
 
 
 %% Example:
+%% consumable_resource_summary() :: #{
+%%   <<"consumableResourceArn">> => string(),
+%%   <<"consumableResourceName">> => string(),
+%%   <<"inUseQuantity">> => float(),
+%%   <<"resourceType">> => string(),
+%%   <<"totalQuantity">> => float()
+%% }
+-type consumable_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_job_queue_request() :: #{
 %%   <<"computeEnvironmentOrder">> := list(compute_environment_order()()),
 %%   <<"jobQueueName">> := string(),
@@ -1395,6 +1546,13 @@
 %%   <<"secretOptions">> => list(secret()())
 %% }
 -type log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_consumable_resource_request() :: #{
+%%   <<"consumableResource">> := string()
+%% }
+-type describe_consumable_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_job_response() :: #{}
@@ -1481,6 +1639,13 @@
 
 
 %% Example:
+%% consumable_resource_properties() :: #{
+%%   <<"consumableResourceList">> => list(consumable_resource_requirement()())
+%% }
+-type consumable_resource_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% repository_credentials() :: #{
 %%   <<"credentialsParameter">> => string()
 %% }
@@ -1546,6 +1711,10 @@
     server_exception() | 
     client_exception().
 
+-type create_consumable_resource_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type create_job_queue_errors() ::
     server_exception() | 
     client_exception().
@@ -1555,6 +1724,10 @@
     client_exception().
 
 -type delete_compute_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_consumable_resource_errors() ::
     server_exception() | 
     client_exception().
 
@@ -1571,6 +1744,10 @@
     client_exception().
 
 -type describe_compute_environments_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_consumable_resource_errors() ::
     server_exception() | 
     client_exception().
 
@@ -1594,7 +1771,15 @@
     server_exception() | 
     client_exception().
 
+-type list_consumable_resources_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type list_jobs_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type list_jobs_by_consumable_resource_errors() ::
     server_exception() | 
     client_exception().
 
@@ -1627,6 +1812,10 @@
     client_exception().
 
 -type update_compute_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_consumable_resource_errors() ::
     server_exception() | 
     client_exception().
 
@@ -1859,6 +2048,40 @@ create_compute_environment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an Batch consumable resource.
+-spec create_consumable_resource(aws_client:aws_client(), create_consumable_resource_request()) ->
+    {ok, create_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, create_consumable_resource_errors(), tuple()}.
+create_consumable_resource(Client, Input) ->
+    create_consumable_resource(Client, Input, []).
+
+-spec create_consumable_resource(aws_client:aws_client(), create_consumable_resource_request(), proplists:proplist()) ->
+    {ok, create_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, create_consumable_resource_errors(), tuple()}.
+create_consumable_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/createconsumableresource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Batch job queue.
 %%
 %% When you create a job queue, you associate one or more
@@ -1965,6 +2188,40 @@ delete_compute_environment(Client, Input) ->
 delete_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletecomputeenvironment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified consumable resource.
+-spec delete_consumable_resource(aws_client:aws_client(), delete_consumable_resource_request()) ->
+    {ok, delete_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, delete_consumable_resource_errors(), tuple()}.
+delete_consumable_resource(Client, Input) ->
+    delete_consumable_resource(Client, Input, []).
+
+-spec delete_consumable_resource(aws_client:aws_client(), delete_consumable_resource_request(), proplists:proplist()) ->
+    {ok, delete_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, delete_consumable_resource_errors(), tuple()}.
+delete_consumable_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/deleteconsumableresource"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2123,6 +2380,40 @@ describe_compute_environments(Client, Input) ->
 describe_compute_environments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describecomputeenvironments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a description of the specified consumable resource.
+-spec describe_consumable_resource(aws_client:aws_client(), describe_consumable_resource_request()) ->
+    {ok, describe_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, describe_consumable_resource_errors(), tuple()}.
+describe_consumable_resource(Client, Input) ->
+    describe_consumable_resource(Client, Input, []).
+
+-spec describe_consumable_resource(aws_client:aws_client(), describe_consumable_resource_request(), proplists:proplist()) ->
+    {ok, describe_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, describe_consumable_resource_errors(), tuple()}.
+describe_consumable_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/describeconsumableresource"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2316,6 +2607,40 @@ get_job_queue_snapshot(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of Batch consumable resources.
+-spec list_consumable_resources(aws_client:aws_client(), list_consumable_resources_request()) ->
+    {ok, list_consumable_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_consumable_resources_errors(), tuple()}.
+list_consumable_resources(Client, Input) ->
+    list_consumable_resources(Client, Input, []).
+
+-spec list_consumable_resources(aws_client:aws_client(), list_consumable_resources_request(), proplists:proplist()) ->
+    {ok, list_consumable_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_consumable_resources_errors(), tuple()}.
+list_consumable_resources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/listconsumableresources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of Batch jobs.
 %%
 %% You must specify only one of the following items:
@@ -2343,6 +2668,41 @@ list_jobs(Client, Input) ->
 list_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/listjobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of Batch jobs that require a specific consumable
+%% resource.
+-spec list_jobs_by_consumable_resource(aws_client:aws_client(), list_jobs_by_consumable_resource_request()) ->
+    {ok, list_jobs_by_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_by_consumable_resource_errors(), tuple()}.
+list_jobs_by_consumable_resource(Client, Input) ->
+    list_jobs_by_consumable_resource(Client, Input, []).
+
+-spec list_jobs_by_consumable_resource(aws_client:aws_client(), list_jobs_by_consumable_resource_request(), proplists:proplist()) ->
+    {ok, list_jobs_by_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_by_consumable_resource_errors(), tuple()}.
+list_jobs_by_consumable_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/listjobsbyconsumableresource"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2486,7 +2846,7 @@ register_job_definition(Client, Input0, Options0) ->
 %% the
 %% `containerOverrides' parameter.
 %%
-%% Job queues with a scheduling policy are limited to 500 active share
+%% Job queues with a scheduling policy are limited to 500 active fair share
 %% identifiers at
 %% a time.
 %%
@@ -2662,6 +3022,40 @@ update_compute_environment(Client, Input) ->
 update_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updatecomputeenvironment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a consumable resource.
+-spec update_consumable_resource(aws_client:aws_client(), update_consumable_resource_request()) ->
+    {ok, update_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, update_consumable_resource_errors(), tuple()}.
+update_consumable_resource(Client, Input) ->
+    update_consumable_resource(Client, Input, []).
+
+-spec update_consumable_resource(aws_client:aws_client(), update_consumable_resource_request(), proplists:proplist()) ->
+    {ok, update_consumable_resource_response(), tuple()} |
+    {error, any()} |
+    {error, update_consumable_resource_errors(), tuple()}.
+update_consumable_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/updateconsumableresource"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

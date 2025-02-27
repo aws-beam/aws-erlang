@@ -2175,6 +2175,15 @@
 -type disassociate_enclave_certificate_iam_role_result() :: #{binary() => any()}.
 
 %% Example:
+%% fleet_block_device_mapping_request() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"Ebs">> => fleet_ebs_block_device_request(),
+%%   <<"NoDevice">> => string(),
+%%   <<"VirtualName">> => string()
+%% }
+-type fleet_block_device_mapping_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_spot_instance_requests_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SpotInstanceRequests">> => list(spot_instance_request()())
@@ -3792,6 +3801,19 @@
 -type describe_trunk_interface_associations_request() :: #{binary() => any()}.
 
 %% Example:
+%% fleet_ebs_block_device_request() :: #{
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeSize">> => integer(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type fleet_ebs_block_device_request() :: #{binary() => any()}.
+
+%% Example:
 %% associate_enclave_certificate_iam_role_request() :: #{
 %%   <<"CertificateArn">> := string(),
 %%   <<"DryRun">> => boolean(),
@@ -5144,6 +5166,12 @@
 %%   <<"ImageId">> := string()
 %% }
 -type disable_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_image_result() :: #{
+
+%% }
+-type deregister_image_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_spot_datafeed_subscription_result() :: #{
@@ -8628,6 +8656,7 @@
 %% Example:
 %% fleet_launch_template_overrides() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping_response()()),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceRequirements">> => instance_requirements(),
 %%   <<"InstanceType">> => list(any()),
@@ -9987,6 +10016,15 @@
 %%   <<"VolumesModifications">> => list(volume_modification()())
 %% }
 -type describe_volumes_modifications_result() :: #{binary() => any()}.
+
+%% Example:
+%% block_device_mapping_response() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"Ebs">> => ebs_block_device_response(),
+%%   <<"NoDevice">> => string(),
+%%   <<"VirtualName">> => string()
+%% }
+-type block_device_mapping_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_restore_image_task_request() :: #{
@@ -12192,6 +12230,19 @@
 %%   <<"VpcAttachment">> => vpc_attachment()
 %% }
 -type attach_vpn_gateway_result() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_block_device_response() :: #{
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeSize">> => integer(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type ebs_block_device_response() :: #{binary() => any()}.
 
 %% Example:
 %% attachment_ena_srd_udp_specification() :: #{
@@ -17205,6 +17256,7 @@
 %% Example:
 %% fleet_launch_template_overrides_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"BlockDeviceMappings">> => list(fleet_block_device_mapping_request()()),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceRequirements">> => instance_requirements_request(),
 %%   <<"InstanceType">> => list(any()),
@@ -21962,8 +22014,8 @@ create_key_pair(Client, Input, Options)
 %% instance using `RunInstances', you can specify a launch template
 %% instead
 %% of providing the launch parameters in the request. For more information,
-%% see Launch
-%% an instance from a launch template:
+%% see Store
+%% instance launch parameters in Amazon EC2 launch templates:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html
 %% in the
 %% Amazon EC2 User Guide.
@@ -21974,7 +22026,7 @@ create_key_pair(Client, Input, Options)
 %% template. For more
 %% information, see Create a launch template from an existing launch
 %% template:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template-from-existing-launch-template
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#create-launch-template-from-existing-launch-template
 %% in the
 %% Amazon EC2 User Guide.
 -spec create_launch_template(aws_client:aws_client(), create_launch_template_request()) ->
@@ -22012,7 +22064,7 @@ create_launch_template(Client, Input, Options)
 %%
 %% For more information, see Modify a launch template (manage launch template
 %% versions):
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#manage-launch-template-versions
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-launch-template-versions.html
 %% in the
 %% Amazon EC2 User Guide.
 -spec create_launch_template_version(aws_client:aws_client(), create_launch_template_version_request()) ->
@@ -23734,24 +23786,28 @@ delete_egress_only_internet_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEgressOnlyInternetGateway">>, Input, Options).
 
-%% @doc Deletes the specified EC2 Fleets.
+%% @doc Deletes the specified EC2 Fleet request.
 %%
-%% After you delete an EC2 Fleet, it launches no new instances.
+%% After you delete an EC2 Fleet request, it launches no new instances.
 %%
-%% You must also specify whether a deleted EC2 Fleet should terminate its
-%% instances. If you
-%% choose to terminate the instances, the EC2 Fleet enters the
-%% `deleted_terminating'
-%% state. Otherwise, the EC2 Fleet enters the `deleted_running' state,
-%% and the instances
-%% continue to run until they are interrupted or you terminate them manually.
+%% You must also specify whether a deleted EC2 Fleet request should terminate
+%% its instances. If
+%% you choose to terminate the instances, the EC2 Fleet request enters the
+%% `deleted_terminating' state. Otherwise, it enters the
+%% `deleted_running' state, and the instances continue to run until they
+%% are
+%% interrupted or you terminate them manually.
 %%
-%% For `instant' fleets, EC2 Fleet must terminate the instances when the
-%% fleet is
-%% deleted. Up to 1000 instances can be terminated in a single request to
-%% delete
-%% `instant' fleets. A deleted `instant' fleet with running instances
-%% is not supported.
+%% A deleted `instant' fleet with running instances is not supported.
+%% When you
+%% delete an `instant' fleet, Amazon EC2 automatically terminates all its
+%% instances. For
+%% fleets with more than 1000 instances, the deletion request might fail. If
+%% your fleet has
+%% more than 1000 instances, first terminate most of the instances manually,
+%% leaving 1000 or
+%% fewer. Then delete the fleet, and the remaining instances will be
+%% terminated automatically.
 %%
 %% == Restrictions ==
 %%
@@ -23768,10 +23824,10 @@ delete_egress_only_internet_gateway(Client, Input, Options)
 %% If you exceed the specified number of fleets to delete, no fleets are
 %% deleted.
 %%
-%% For more information, see Delete an EC2
-%% Fleet:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#delete-fleet
-%% in the Amazon EC2 User Guide.
+%% For more information, see Delete an EC2 Fleet request and the instances
+%% in the fleet:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/delete-fleet.html in
+%% the Amazon EC2 User Guide.
 -spec delete_fleets(aws_client:aws_client(), delete_fleets_request()) ->
     {ok, delete_fleets_result(), tuple()} |
     {error, any()}.
@@ -24028,7 +24084,7 @@ delete_launch_template(Client, Input, Options)
 %% deletes the launch template and all of its versions.
 %%
 %% For more information, see Delete a launch template version:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-launch-template-versions.html#delete-launch-template-version
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/delete-launch-template.html#delete-launch-template-version
 %% in the
 %% Amazon EC2 User Guide.
 -spec delete_launch_template_versions(aws_client:aws_client(), delete_launch_template_versions_request()) ->
@@ -25149,14 +25205,14 @@ deprovision_public_ipv4_pool_cidr(Client, Input, Options)
 %% uploaded to Amazon S3 when you
 %% created the AMI.
 -spec deregister_image(aws_client:aws_client(), deregister_image_request()) ->
-    {ok, undefined, tuple()} |
+    {ok, deregister_image_result(), tuple()} |
     {error, any()}.
 deregister_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_image(Client, Input, []).
 
 -spec deregister_image(aws_client:aws_client(), deregister_image_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, deregister_image_result(), tuple()} |
     {error, any()}.
 deregister_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
@@ -27227,7 +27283,7 @@ describe_network_interface_permissions(Client, Input, Options)
 %% unless
 %% you use pagination or one of the following filters: `group-id',
 %% `mac-address', `private-dns-name', `private-ip-address',
-%% `private-dns-name', `subnet-id', or `vpc-id'.
+%% `subnet-id', or `vpc-id'.
 %%
 %% We strongly recommend using only paginated requests. Unpaginated requests
 %% are

@@ -309,6 +309,7 @@
 %% list_vehicles_request() :: #{
 %%   <<"attributeNames">> => list(string()()),
 %%   <<"attributeValues">> => list(string()()),
+%%   <<"listResponseScope">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"modelManifestArn">> => string(),
 %%   <<"nextToken">> => string()
@@ -482,6 +483,7 @@
 
 %% Example:
 %% list_model_manifests_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"signalCatalogArn">> => string()
@@ -516,6 +518,7 @@
 
 %% Example:
 %% list_fleets_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -523,6 +526,7 @@
 
 %% Example:
 %% list_decoder_manifests_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"modelManifestArn">> => string(),
 %%   <<"nextToken">> => string()
@@ -647,6 +651,7 @@
 
 %% Example:
 %% list_campaigns_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"status">> => string()
@@ -1453,6 +1458,7 @@
 
 %% Example:
 %% list_state_templates_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
