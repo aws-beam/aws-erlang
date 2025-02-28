@@ -5,21 +5,45 @@
 %% bases.
 -module(aws_bedrock_agent_runtime).
 
--export([delete_agent_memory/4,
+-export([create_invocation/3,
+         create_invocation/4,
+         create_session/2,
+         create_session/3,
+         delete_agent_memory/4,
          delete_agent_memory/5,
+         delete_session/3,
+         delete_session/4,
+         end_session/3,
+         end_session/4,
          generate_query/2,
          generate_query/3,
          get_agent_memory/5,
          get_agent_memory/7,
          get_agent_memory/8,
+         get_invocation_step/4,
+         get_invocation_step/5,
+         get_session/2,
+         get_session/4,
+         get_session/5,
          invoke_agent/5,
          invoke_agent/6,
          invoke_flow/4,
          invoke_flow/5,
          invoke_inline_agent/3,
          invoke_inline_agent/4,
+         list_invocation_steps/3,
+         list_invocation_steps/4,
+         list_invocations/3,
+         list_invocations/4,
+         list_sessions/2,
+         list_sessions/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          optimize_prompt/2,
          optimize_prompt/3,
+         put_invocation_step/3,
+         put_invocation_step/4,
          rerank/2,
          rerank/3,
          retrieve/3,
@@ -27,7 +51,13 @@
          retrieve_and_generate/2,
          retrieve_and_generate/3,
          retrieve_and_generate_stream/2,
-         retrieve_and_generate_stream/3]).
+         retrieve_and_generate_stream/3,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
+         update_session/3,
+         update_session/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -93,12 +123,43 @@
 
 
 %% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_collaborator_input_payload() :: #{
 %%   <<"returnControlResults">> => return_control_results(),
 %%   <<"text">> => string(),
 %%   <<"type">> => list(any())
 %% }
 -type agent_collaborator_input_payload() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionStatus">> => list(any())
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionMetadata">> => map(),
+%%   <<"sessionStatus">> => list(any())
+%% }
+-type get_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -149,6 +210,10 @@
 %% }
 -type model_not_ready_exception() :: #{binary() => any()}.
 
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% external_source() :: #{
@@ -194,6 +259,14 @@
 %%   <<"sessionAttributes">> => map()
 %% }
 -type inline_session_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invocations_response() :: #{
+%%   <<"invocationSummaries">> => list(invocation_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_invocations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -376,6 +449,15 @@
 
 
 %% Example:
+%% list_invocation_steps_request() :: #{
+%%   <<"invocationIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_invocation_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieval_result_location() :: #{
 %%   <<"confluenceLocation">> => retrieval_result_confluence_location(),
 %%   <<"customDocumentLocation">> => retrieval_result_custom_document_location(),
@@ -422,10 +504,25 @@
 
 
 %% Example:
+%% image_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type image_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% generate_query_response() :: #{
 %%   <<"queries">> => list(generated_query()())
 %% }
 -type generate_query_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -446,6 +543,10 @@
 %% }
 -type retrieve_and_generate_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
+
 
 %% Example:
 %% retrieval_result_s3_location() :: #{
@@ -460,6 +561,17 @@
 %%   <<"modelArn">> => string()
 %% }
 -type bedrock_reranking_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_step() :: #{
+%%   <<"invocationId">> => string(),
+%%   <<"invocationStepId">> => string(),
+%%   <<"invocationStepTime">> => non_neg_integer(),
+%%   <<"payload">> => list(),
+%%   <<"sessionId">> => string()
+%% }
+-type invocation_step() :: #{binary() => any()}.
 
 
 %% Example:
@@ -579,6 +691,15 @@
 
 
 %% Example:
+%% create_session_request() :: #{
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"sessionMetadata">> => map(),
+%%   <<"tags">> => map()
+%% }
+-type create_session_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_word_policy_assessment() :: #{
 %%   <<"customWords">> => list(guardrail_custom_word()()),
 %%   <<"managedWordLists">> => list(guardrail_managed_word()())
@@ -637,6 +758,14 @@
 
 
 %% Example:
+%% list_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionSummaries">> => list(session_summary()())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% pre_processing_parsed_response() :: #{
 %%   <<"isValid">> => [boolean()],
 %%   <<"rationale">> => string()
@@ -690,6 +819,18 @@
 %%   <<"text">> => string()
 %% }
 -type post_processing_parsed_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invocation_steps_response() :: #{
+%%   <<"invocationStepSummaries">> => list(invocation_step_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_invocation_steps_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_session_response() :: #{}
+-type delete_session_response() :: #{}.
 
 
 %% Example:
@@ -829,6 +970,13 @@
 
 
 %% Example:
+%% update_session_request() :: #{
+%%   <<"sessionMetadata">> => map()
+%% }
+-type update_session_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% generate_query_request() :: #{
 %%   <<"queryGenerationInput">> := query_generation_input(),
 %%   <<"transformationConfiguration">> := transformation_configuration()
@@ -905,6 +1053,13 @@
 
 
 %% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% api_result() :: #{
 %%   <<"actionGroup">> => [string()],
 %%   <<"agentId">> => [string()],
@@ -916,6 +1071,21 @@
 %%   <<"responseState">> => list(any())
 %% }
 -type api_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_invocation_step_response() :: #{
+%%   <<"invocationStep">> => invocation_step()
+%% }
+-type get_invocation_step_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -944,6 +1114,13 @@
 %%   <<"promptTemplate">> => prompt_template()
 %% }
 -type external_sources_generation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -977,6 +1154,14 @@
 
 
 %% Example:
+%% create_invocation_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"invocationId">> => string()
+%% }
+-type create_invocation_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter_attribute() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => any()
@@ -990,6 +1175,14 @@
 %%   <<"nodeOutputName">> => string()
 %% }
 -type flow_trace_node_output_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invocations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_invocations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1024,6 +1217,15 @@
 %%   <<"modelArn">> => string()
 %% }
 -type implicit_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% end_session_response() :: #{
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionStatus">> => list(any())
+%% }
+-type end_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1086,6 +1288,13 @@
 %%   <<"sessionId">> => string()
 %% }
 -type retrieve_and_generate_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_invocation_step_request() :: #{
+%%   <<"invocationIdentifier">> := string()
+%% }
+-type get_invocation_step_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1205,6 +1414,10 @@
 %% }
 -type generation_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% property_parameters() :: #{
@@ -1240,6 +1453,13 @@
 
 
 %% Example:
+%% put_invocation_step_response() :: #{
+%%   <<"invocationStepId">> => string()
+%% }
+-type put_invocation_step_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieval_result_custom_document_location() :: #{
 %%   <<"id">> => [string()]
 %% }
@@ -1270,6 +1490,10 @@
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -1323,6 +1547,17 @@
 %%   <<"text">> => [string()]
 %% }
 -type retrieve_and_generate_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_session_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionStatus">> => list(any())
+%% }
+-type update_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1402,6 +1637,16 @@
 
 
 %% Example:
+%% invocation_step_summary() :: #{
+%%   <<"invocationId">> => string(),
+%%   <<"invocationStepId">> => string(),
+%%   <<"invocationStepTime">> => non_neg_integer(),
+%%   <<"sessionId">> => string()
+%% }
+-type invocation_step_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_regex_filter() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"match">> => [string()],
@@ -1412,10 +1657,24 @@
 
 
 %% Example:
+%% put_invocation_step_request() :: #{
+%%   <<"invocationIdentifier">> := string(),
+%%   <<"invocationStepId">> => string(),
+%%   <<"invocationStepTime">> := non_neg_integer(),
+%%   <<"payload">> := list()
+%% }
+-type put_invocation_step_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieval_result_web_location() :: #{
 %%   <<"url">> => [string()]
 %% }
 -type retrieval_result_web_location() :: #{binary() => any()}.
+
+%% Example:
+%% end_session_request() :: #{}
+-type end_session_request() :: #{}.
 
 
 %% Example:
@@ -1438,6 +1697,15 @@
 %%   <<"uri">> => [string()]
 %% }
 -type retrieval_result_kendra_document_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"invocationId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type invocation_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1576,6 +1844,20 @@
 
 
 %% Example:
+%% create_session_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionStatus">> => list(any())
+%% }
+-type create_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_session_request() :: #{}
+-type delete_session_request() :: #{}.
+
+
+%% Example:
 %% orchestration_model_invocation_output() :: #{
 %%   <<"metadata">> => metadata(),
 %%   <<"rawResponse">> => raw_response(),
@@ -1685,6 +1967,15 @@
 
 
 %% Example:
+%% create_invocation_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"invocationId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type create_invocation_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% rerank_document() :: #{
 %%   <<"jsonDocument">> => [any()],
 %%   <<"textDocument">> => rerank_text_document(),
@@ -1707,6 +1998,23 @@
 %% }
 -type guardrail_event() :: #{binary() => any()}.
 
+-type create_invocation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type delete_agent_memory_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1717,6 +2025,22 @@
     conflict_exception() | 
     dependency_failed_exception() | 
     bad_gateway_exception().
+
+-type delete_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type end_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type generate_query_errors() ::
     throttling_exception() | 
@@ -1739,6 +2063,20 @@
     conflict_exception() | 
     dependency_failed_exception() | 
     bad_gateway_exception().
+
+-type get_invocation_step_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type invoke_agent_errors() ::
     throttling_exception() | 
@@ -1774,6 +2112,33 @@
     dependency_failed_exception() | 
     bad_gateway_exception().
 
+-type list_invocation_steps_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_invocations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_sessions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type optimize_prompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1781,6 +2146,15 @@
     internal_server_exception() | 
     dependency_failed_exception() | 
     bad_gateway_exception().
+
+-type put_invocation_step_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type rerank_errors() ::
     throttling_exception() | 
@@ -1826,9 +2200,155 @@
     dependency_failed_exception() | 
     bad_gateway_exception().
 
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_session_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a new invocation within a session.
+%%
+%% An invocation groups the related invocation steps that store the content
+%% from
+%% a conversation. For more information about sessions, see Store and
+%% retrieve conversation history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+%%
+%% Related APIs
+%%
+%% ListInvocations:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_ListInvocations.html
+%%
+%% ListSessions:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_ListSessions.html
+%%
+%% GetSession:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_GetSession.html
+-spec create_invocation(aws_client:aws_client(), binary() | list(), create_invocation_request()) ->
+    {ok, create_invocation_response(), tuple()} |
+    {error, any()} |
+    {error, create_invocation_errors(), tuple()}.
+create_invocation(Client, SessionIdentifier, Input) ->
+    create_invocation(Client, SessionIdentifier, Input, []).
+
+-spec create_invocation(aws_client:aws_client(), binary() | list(), create_invocation_request(), proplists:proplist()) ->
+    {ok, create_invocation_response(), tuple()} |
+    {error, any()} |
+    {error, create_invocation_errors(), tuple()}.
+create_invocation(Client, SessionIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), "/invocations/"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a session to temporarily store conversations for generative
+%% AI (GenAI) applications built with open-source
+%% frameworks such as LangGraph and LlamaIndex.
+%%
+%% Sessions enable you to save the state of
+%% conversations at checkpoints, with the added security and infrastructure
+%% of Amazon Web Services. For more information, see
+%% Store and retrieve conversation history and context with Amazon Bedrock
+%% sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+%%
+%% By default, Amazon Bedrock uses Amazon Web Services-managed keys for
+%% session encryption, including session metadata,
+%% or you can use your own KMS key. For more information, see Amazon Bedrock
+%% session encryption:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/session-encryption.html.
+%%
+%% You use a session to store state and conversation history for generative
+%% AI applications built with open-source frameworks.
+%% For Amazon Bedrock Agents, the service automatically manages conversation
+%% context and associates them with the agent-specific sessionId you specify
+%% in the
+%% InvokeAgent:
+%% https://docs.aws.amazon.com/bedrock/latest/API_agent-runtime_InvokeAgent.html
+%% API operation.
+%%
+%% Related APIs:
+%%
+%% ListSessions:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_ListSessions.html
+%%
+%% GetSession:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_GetSession.html
+%%
+%% EndSession:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_EndSession.html
+%%
+%% DeleteSession:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_DeleteSession.html
+-spec create_session(aws_client:aws_client(), create_session_request()) ->
+    {ok, create_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_session_errors(), tuple()}.
+create_session(Client, Input) ->
+    create_session(Client, Input, []).
+
+-spec create_session(aws_client:aws_client(), create_session_request(), proplists:proplist()) ->
+    {ok, create_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_session_errors(), tuple()}.
+create_session(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/sessions/"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes memory from the specified memory identifier.
 -spec delete_agent_memory(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_memory_request()) ->
@@ -1864,6 +2384,90 @@ delete_agent_memory(Client, AgentAliasId, AgentId, Input0, Options0) ->
                      {<<"sessionId">>, <<"sessionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a session that you ended.
+%%
+%% You can't delete a session with an `ACTIVE' status. To delete an
+%% active session, you must first end it with the
+%% EndSession:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_EndSession.html
+%% API operation.
+%% For more information about sessions, see Store and retrieve conversation
+%% history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+-spec delete_session(aws_client:aws_client(), binary() | list(), delete_session_request()) ->
+    {ok, delete_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_session_errors(), tuple()}.
+delete_session(Client, SessionIdentifier, Input) ->
+    delete_session(Client, SessionIdentifier, Input, []).
+
+-spec delete_session(aws_client:aws_client(), binary() | list(), delete_session_request(), proplists:proplist()) ->
+    {ok, delete_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_session_errors(), tuple()}.
+delete_session(Client, SessionIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Ends the session.
+%%
+%% After you end a session, you can still access its content but you can’t
+%% add to it. To delete the session and it's content, you use the
+%% DeleteSession API operation.
+%% For more information about sessions, see Store and retrieve conversation
+%% history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+-spec end_session(aws_client:aws_client(), binary() | list(), end_session_request()) ->
+    {ok, end_session_response(), tuple()} |
+    {error, any()} |
+    {error, end_session_errors(), tuple()}.
+end_session(Client, SessionIdentifier, Input) ->
+    end_session(Client, SessionIdentifier, Input, []).
+
+-spec end_session(aws_client:aws_client(), binary() | list(), end_session_request(), proplists:proplist()) ->
+    {ok, end_session_response(), tuple()} |
+    {error, any()} |
+    {error, end_session_errors(), tuple()}.
+end_session(Client, SessionIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates an SQL query from a natural language query.
@@ -1945,6 +2549,86 @@ get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, 
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a specific invocation step within an
+%% invocation in a session.
+%%
+%% For more information about sessions, see Store and retrieve conversation
+%% history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+-spec get_invocation_step(aws_client:aws_client(), binary() | list(), binary() | list(), get_invocation_step_request()) ->
+    {ok, get_invocation_step_response(), tuple()} |
+    {error, any()} |
+    {error, get_invocation_step_errors(), tuple()}.
+get_invocation_step(Client, InvocationStepId, SessionIdentifier, Input) ->
+    get_invocation_step(Client, InvocationStepId, SessionIdentifier, Input, []).
+
+-spec get_invocation_step(aws_client:aws_client(), binary() | list(), binary() | list(), get_invocation_step_request(), proplists:proplist()) ->
+    {ok, get_invocation_step_response(), tuple()} |
+    {error, any()} |
+    {error, get_invocation_step_errors(), tuple()}.
+get_invocation_step(Client, InvocationStepId, SessionIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), "/invocationSteps/", aws_util:encode_uri(InvocationStepId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves details about a specific session.
+%%
+%% For more information about sessions, see Store and retrieve conversation
+%% history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+-spec get_session(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, SessionIdentifier)
+  when is_map(Client) ->
+    get_session(Client, SessionIdentifier, #{}, #{}).
+
+-spec get_session(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, SessionIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_session(Client, SessionIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_session(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, SessionIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -2179,6 +2863,164 @@ invoke_inline_agent(Client, SessionId, Input0, Options0) ->
         Result
     end.
 
+%% @doc Lists all invocation steps associated with a session and optionally,
+%% an invocation within the session.
+%%
+%% For more information about sessions, see Store and retrieve conversation
+%% history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+-spec list_invocation_steps(aws_client:aws_client(), binary() | list(), list_invocation_steps_request()) ->
+    {ok, list_invocation_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_invocation_steps_errors(), tuple()}.
+list_invocation_steps(Client, SessionIdentifier, Input) ->
+    list_invocation_steps(Client, SessionIdentifier, Input, []).
+
+-spec list_invocation_steps(aws_client:aws_client(), binary() | list(), list_invocation_steps_request(), proplists:proplist()) ->
+    {ok, list_invocation_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_invocation_steps_errors(), tuple()}.
+list_invocation_steps(Client, SessionIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), "/invocationSteps/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all invocations associated with a specific session.
+%%
+%% For more information about sessions, see Store and retrieve conversation
+%% history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+-spec list_invocations(aws_client:aws_client(), binary() | list(), list_invocations_request()) ->
+    {ok, list_invocations_response(), tuple()} |
+    {error, any()} |
+    {error, list_invocations_errors(), tuple()}.
+list_invocations(Client, SessionIdentifier, Input) ->
+    list_invocations(Client, SessionIdentifier, Input, []).
+
+-spec list_invocations(aws_client:aws_client(), binary() | list(), list_invocations_request(), proplists:proplist()) ->
+    {ok, list_invocations_response(), tuple()} |
+    {error, any()} |
+    {error, list_invocations_errors(), tuple()}.
+list_invocations(Client, SessionIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), "/invocations/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all sessions in your Amazon Web Services account.
+%%
+%% For more information about sessions, see Store and retrieve conversation
+%% history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+-spec list_sessions(aws_client:aws_client(), list_sessions_request()) ->
+    {ok, list_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, Input) ->
+    list_sessions(Client, Input, []).
+
+-spec list_sessions(aws_client:aws_client(), list_sessions_request(), proplists:proplist()) ->
+    {ok, list_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sessions/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List all the tags for the resource you specify.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Optimizes a prompt for the task that you specify.
 %%
 %% For more information, see Optimize a prompt:
@@ -2200,6 +3042,60 @@ optimize_prompt(Client, Input0, Options0) ->
     Method = post,
     Path = ["/optimize-prompt"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Add an invocation step to an invocation in a session.
+%%
+%% An invocation step stores fine-grained state checkpoints, including text
+%% and images, for each interaction. For more information about sessions, see
+%% Store and retrieve conversation history and context with Amazon Bedrock
+%% sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+%%
+%% Related APIs:
+%%
+%% GetInvocationStep:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_GetInvocationStep.html
+%%
+%% ListInvocationSteps:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_ListInvocationSteps.html
+%%
+%% ListInvocations:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_ListInvocations.html
+%%
+%% ListSessions:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_ListInvocations.html
+-spec put_invocation_step(aws_client:aws_client(), binary() | list(), put_invocation_step_request()) ->
+    {ok, put_invocation_step_response(), tuple()} |
+    {error, any()} |
+    {error, put_invocation_step_errors(), tuple()}.
+put_invocation_step(Client, SessionIdentifier, Input) ->
+    put_invocation_step(Client, SessionIdentifier, Input, []).
+
+-spec put_invocation_step(aws_client:aws_client(), binary() | list(), put_invocation_step_request(), proplists:proplist()) ->
+    {ok, put_invocation_step_response(), tuple()} |
+    {error, any()} |
+    {error, put_invocation_step_errors(), tuple()}.
+put_invocation_step(Client, SessionIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), "/invocationSteps/"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2385,6 +3281,117 @@ retrieve_and_generate_stream(Client, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Associate tags with a resource.
+%%
+%% For more information, see Tagging resources:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Amazon Bedrock User Guide.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove tags from a resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the metadata or encryption settings of a session.
+%%
+%% For more information about sessions, see Store and retrieve conversation
+%% history and context with Amazon Bedrock sessions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
+-spec update_session(aws_client:aws_client(), binary() | list(), update_session_request()) ->
+    {ok, update_session_response(), tuple()} |
+    {error, any()} |
+    {error, update_session_errors(), tuple()}.
+update_session(Client, SessionIdentifier, Input) ->
+    update_session(Client, SessionIdentifier, Input, []).
+
+-spec update_session(aws_client:aws_client(), binary() | list(), update_session_request(), proplists:proplist()) ->
+    {ok, update_session_response(), tuple()} |
+    {error, any()} |
+    {error, update_session_errors(), tuple()}.
+update_session(Client, SessionIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/sessions/", aws_util:encode_uri(SessionIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

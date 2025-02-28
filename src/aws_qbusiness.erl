@@ -75,6 +75,8 @@
          create_web_experience/4,
          delete_application/3,
          delete_application/4,
+         delete_attachment/5,
+         delete_attachment/6,
          delete_chat_controls_configuration/3,
          delete_chat_controls_configuration/4,
          delete_conversation/4,
@@ -1134,6 +1136,13 @@
 %% Example:
 %% get_data_source_request() :: #{}
 -type get_data_source_request() :: #{}.
+
+
+%% Example:
+%% delete_attachment_request() :: #{
+%%   <<"userId">> => string()
+%% }
+-type delete_attachment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2349,6 +2358,10 @@
 %% }
 -type retriever_content_source() :: #{binary() => any()}.
 
+%% Example:
+%% delete_attachment_response() :: #{}
+-type delete_attachment_response() :: #{}.
+
 
 %% Example:
 %% list_subscriptions_request() :: #{
@@ -2631,6 +2644,14 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type delete_attachment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception().
 
 -type delete_chat_controls_configuration_errors() ::
     throttling_exception() | 
@@ -3728,6 +3749,42 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an attachment associated with a specific Amazon Q Business
+%% conversation.
+-spec delete_attachment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_attachment_request()) ->
+    {ok, delete_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_attachment_errors(), tuple()}.
+delete_attachment(Client, ApplicationId, AttachmentId, ConversationId, Input) ->
+    delete_attachment(Client, ApplicationId, AttachmentId, ConversationId, Input, []).
+
+-spec delete_attachment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_attachment_request(), proplists:proplist()) ->
+    {ok, delete_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_attachment_errors(), tuple()}.
+delete_attachment(Client, ApplicationId, AttachmentId, ConversationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations/", aws_util:encode_uri(ConversationId), "/attachments/", aws_util:encode_uri(AttachmentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"userId">>, <<"userId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes chat controls configured for an existing Amazon Q Business

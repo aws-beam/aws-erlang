@@ -197,6 +197,8 @@
          disable_gateway/3,
          disassociate_file_system/2,
          disassociate_file_system/3,
+         evict_files_failing_upload/2,
+         evict_files_failing_upload/3,
          join_domain/2,
          join_domain/3,
          list_automatic_tape_creation_policies/2,
@@ -307,6 +309,12 @@
 %%   <<"TargetName">> := string()
 %% }
 -type create_stored_iscsi_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% evict_files_failing_upload_output() :: #{
+%%   <<"NotificationId">> => string()
+%% }
+-type evict_files_failing_upload_output() :: #{binary() => any()}.
 
 %% Example:
 %% associate_file_system_output() :: #{
@@ -1204,6 +1212,13 @@
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type remove_tags_from_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% evict_files_failing_upload_input() :: #{
+%%   <<"FileShareARN">> := string(),
+%%   <<"ForceRemove">> => boolean()
+%% }
+-type evict_files_failing_upload_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_smb_file_share_visibility_output() :: #{
@@ -2385,6 +2400,10 @@
     internal_server_error().
 
 -type disassociate_file_system_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type evict_files_failing_upload_errors() ::
     invalid_gateway_request_exception() | 
     internal_server_error().
 
@@ -4095,6 +4114,43 @@ disassociate_file_system(Client, Input)
 disassociate_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFileSystem">>, Input, Options).
+
+%% @doc Starts a process that cleans the specified file share's cache of
+%% file entries that are
+%% failing upload to Amazon S3.
+%%
+%% This API operation reports success if the request is
+%% received with valid arguments, and there are no other cache clean
+%% operations currently
+%% in-progress for the specified file share. After a successful request, the
+%% cache clean
+%% operation occurs asynchronously and reports progress using CloudWatch logs
+%% and
+%% notifications.
+%%
+%% If `ForceRemove' is set to `True', the cache clean operation
+%% will delete file data from the gateway which might otherwise be
+%% recoverable. We
+%% recommend using this operation only after all other methods to clear files
+%% failing
+%% upload have been exhausted, and if your business need outweighs the
+%% potential data
+%% loss.
+-spec evict_files_failing_upload(aws_client:aws_client(), evict_files_failing_upload_input()) ->
+    {ok, evict_files_failing_upload_output(), tuple()} |
+    {error, any()} |
+    {error, evict_files_failing_upload_errors(), tuple()}.
+evict_files_failing_upload(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    evict_files_failing_upload(Client, Input, []).
+
+-spec evict_files_failing_upload(aws_client:aws_client(), evict_files_failing_upload_input(), proplists:proplist()) ->
+    {ok, evict_files_failing_upload_output(), tuple()} |
+    {error, any()} |
+    {error, evict_files_failing_upload_errors(), tuple()}.
+evict_files_failing_upload(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EvictFilesFailingUpload">>, Input, Options).
 
 %% @doc Adds a file gateway to an Active Directory domain.
 %%

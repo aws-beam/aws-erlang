@@ -680,6 +680,10 @@
          update_feature_metadata/3,
          update_hub/2,
          update_hub/3,
+         update_hub_content/2,
+         update_hub_content/3,
+         update_hub_content_reference/2,
+         update_hub_content_reference/3,
          update_image/2,
          update_image/3,
          update_image_version/2,
@@ -996,6 +1000,20 @@
 %%   <<"ShadowModeConfig">> => shadow_mode_config()
 %% }
 -type update_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_content_request() :: #{
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentMarkdown">> => string(),
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentSearchKeywords">> => list(string()()),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> := string(),
+%%   <<"HubName">> := string(),
+%%   <<"SupportStatus">> => list(any())
+%% }
+-type update_hub_content_request() :: #{binary() => any()}.
 
 %% Example:
 %% hub_content_dependency() :: #{
@@ -1635,6 +1653,7 @@
 %%   <<"HubContentType">> => list(any()),
 %%   <<"HubContentVersion">> => string(),
 %%   <<"HubName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"ReferenceMinVersion">> => string(),
 %%   <<"SageMakerPublicHubContentArn">> => string(),
 %%   <<"SupportStatus">> => list(any())
@@ -3746,6 +3765,7 @@
 %%   <<"HubContentType">> := list(any()),
 %%   <<"HubContentVersion">> => string(),
 %%   <<"HubName">> := string(),
+%%   <<"SupportStatus">> => list(any()),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type import_hub_content_request() :: #{binary() => any()}.
@@ -6908,6 +6928,15 @@
 -type public_workforce_task_price() :: #{binary() => any()}.
 
 %% Example:
+%% update_hub_content_reference_request() :: #{
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubName">> := string(),
+%%   <<"MinVersion">> => string()
+%% }
+-type update_hub_content_reference_request() :: #{binary() => any()}.
+
+%% Example:
 %% monitoring_csv_dataset_format() :: #{
 %%   <<"Header">> => boolean()
 %% }
@@ -8263,6 +8292,12 @@
 %%   <<"ModelCardVersion">> => integer()
 %% }
 -type describe_model_card_request() :: #{binary() => any()}.
+
+%% Example:
+%% hub_access_config() :: #{
+%%   <<"HubContentArn">> => string()
+%% }
+-type hub_access_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_model_packages_input() :: #{
@@ -11062,6 +11097,13 @@
 -type text_classification_job_config() :: #{binary() => any()}.
 
 %% Example:
+%% update_hub_content_response() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type update_hub_content_response() :: #{binary() => any()}.
+
+%% Example:
 %% final_hyper_parameter_tuning_job_objective_metric() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"Type">> => list(any()),
@@ -11751,6 +11793,13 @@
 -type space_code_editor_app_settings() :: #{binary() => any()}.
 
 %% Example:
+%% update_hub_content_reference_response() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type update_hub_content_reference_response() :: #{binary() => any()}.
+
+%% Example:
 %% autotune() :: #{
 %%   <<"Mode">> => list(any())
 %% }
@@ -12388,7 +12437,9 @@
 %% Example:
 %% s3_data_source() :: #{
 %%   <<"AttributeNames">> => list(string()()),
+%%   <<"HubAccessConfig">> => hub_access_config(),
 %%   <<"InstanceGroupNames">> => list(string()()),
+%%   <<"ModelAccessConfig">> => model_access_config(),
 %%   <<"S3DataDistributionType">> => list(any()),
 %%   <<"S3DataType">> => list(any()),
 %%   <<"S3Uri">> => string()
@@ -13205,6 +13256,14 @@
     resource_not_found().
 
 -type update_hub_errors() ::
+    resource_not_found().
+
+-type update_hub_content_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_hub_content_reference_errors() ::
+    resource_in_use() | 
     resource_not_found().
 
 -type update_image_errors() ::
@@ -20664,6 +20723,81 @@ update_hub(Client, Input)
 update_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHub">>, Input, Options).
+
+%% @doc Updates SageMaker hub content (either a `Model' or `Notebook'
+%% resource).
+%%
+%% You can update the metadata that describes the resource. In addition to
+%% the required request
+%% fields, specify at least one of the following fields to update:
+%%
+%% `HubContentDescription'
+%%
+%% `HubContentDisplayName'
+%%
+%% `HubContentMarkdown'
+%%
+%% `HubContentSearchKeywords'
+%%
+%% `SupportStatus'
+%%
+%% For more information about hubs, see Private curated hubs for foundation
+%% model access control in JumpStart:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-curated-hubs.html.
+%%
+%% If you want to update a `ModelReference' resource in your hub, use the
+%% `UpdateHubContentResource' API instead.
+-spec update_hub_content(aws_client:aws_client(), update_hub_content_request()) ->
+    {ok, update_hub_content_response(), tuple()} |
+    {error, any()} |
+    {error, update_hub_content_errors(), tuple()}.
+update_hub_content(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_hub_content(Client, Input, []).
+
+-spec update_hub_content(aws_client:aws_client(), update_hub_content_request(), proplists:proplist()) ->
+    {ok, update_hub_content_response(), tuple()} |
+    {error, any()} |
+    {error, update_hub_content_errors(), tuple()}.
+update_hub_content(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateHubContent">>, Input, Options).
+
+%% @doc Updates the contents of a SageMaker hub for a `ModelReference'
+%% resource.
+%%
+%% A `ModelReference' allows you to access public SageMaker JumpStart
+%% models from within your private hub.
+%%
+%% When using this API, you can update the
+%% `MinVersion' field for additional flexibility in the model version.
+%% You shouldn't update
+%% any additional fields when using this API, because the metadata in your
+%% private hub
+%% should match the public JumpStart model's metadata.
+%%
+%% If you want to update a `Model' or `Notebook'
+%% resource in your hub, use the `UpdateHubContent' API instead.
+%%
+%% For more information about adding model references to your hub, see
+%%
+%% Add models to a private hub:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-curated-hubs-admin-guide-add-models.html.
+-spec update_hub_content_reference(aws_client:aws_client(), update_hub_content_reference_request()) ->
+    {ok, update_hub_content_reference_response(), tuple()} |
+    {error, any()} |
+    {error, update_hub_content_reference_errors(), tuple()}.
+update_hub_content_reference(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_hub_content_reference(Client, Input, []).
+
+-spec update_hub_content_reference(aws_client:aws_client(), update_hub_content_reference_request(), proplists:proplist()) ->
+    {ok, update_hub_content_reference_response(), tuple()} |
+    {error, any()} |
+    {error, update_hub_content_reference_errors(), tuple()}.
+update_hub_content_reference(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateHubContentReference">>, Input, Options).
 
 %% @doc Updates the properties of a SageMaker AI image.
 %%

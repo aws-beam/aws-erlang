@@ -74,6 +74,8 @@
          get_snapshot/3,
          get_table_restore_status/2,
          get_table_restore_status/3,
+         get_track/2,
+         get_track/3,
          get_usage_limit/2,
          get_usage_limit/3,
          get_workgroup/2,
@@ -98,6 +100,8 @@
          list_table_restore_status/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_tracks/2,
+         list_tracks/3,
          list_usage_limits/2,
          list_usage_limits/3,
          list_workgroups/2,
@@ -162,6 +166,12 @@
 %%   <<"workgroupName">> => [string()]
 %% }
 -type table_restore_status() :: #{binary() => any()}.
+
+%% Example:
+%% get_track_response() :: #{
+%%   <<"track">> => serverless_track()
+%% }
+-type get_track_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_endpoint_access_request() :: #{
@@ -459,6 +469,12 @@
 -type update_scheduled_action_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_track_request() :: #{
+%%   <<"trackName">> := string()
+%% }
+-type get_track_request() :: #{binary() => any()}.
+
+%% Example:
 %% restore_table_from_recovery_point_request() :: #{
 %%   <<"activateCaseSensitiveIdentifier">> => [boolean()],
 %%   <<"namespaceName">> := [string()],
@@ -504,6 +520,14 @@
 -type get_recovery_point_request() :: #{binary() => any()}.
 
 %% Example:
+%% serverless_track() :: #{
+%%   <<"trackName">> => string(),
+%%   <<"updateTargets">> => list(update_target()()),
+%%   <<"workgroupVersion">> => [string()]
+%% }
+-type serverless_track() :: #{binary() => any()}.
+
+%% Example:
 %% list_scheduled_actions_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"namespaceName">> => string(),
@@ -545,6 +569,13 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tracks_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_tracks_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_scheduled_action_request() :: #{
@@ -594,12 +625,14 @@
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"namespaceName">> => [string()],
 %%   <<"patchVersion">> => [string()],
+%%   <<"pendingTrackName">> => string(),
 %%   <<"port">> => [integer()],
 %%   <<"pricePerformanceTarget">> => performance_target(),
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"status">> => string(),
 %%   <<"subnetIds">> => list(string()()),
+%%   <<"trackName">> => string(),
 %%   <<"workgroupArn">> => [string()],
 %%   <<"workgroupId">> => [string()],
 %%   <<"workgroupName">> => string(),
@@ -811,6 +844,7 @@
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"subnetIds">> => list(string()()),
 %%   <<"tags">> => list(tag()()),
+%%   <<"trackName">> => string(),
 %%   <<"workgroupName">> := string()
 %% }
 -type create_workgroup_request() :: #{binary() => any()}.
@@ -1063,6 +1097,13 @@
 -type get_scheduled_action_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_target() :: #{
+%%   <<"trackName">> => string(),
+%%   <<"workgroupVersion">> => [string()]
+%% }
+-type update_target() :: #{binary() => any()}.
+
+%% Example:
 %% create_custom_domain_association_request() :: #{
 %%   <<"customDomainCertificateArn">> := string(),
 %%   <<"customDomainName">> := string(),
@@ -1175,6 +1216,7 @@
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"subnetIds">> => list(string()()),
+%%   <<"trackName">> => string(),
 %%   <<"workgroupName">> := string()
 %% }
 -type update_workgroup_request() :: #{binary() => any()}.
@@ -1218,6 +1260,13 @@
 %%   <<"status">> => string()
 %% }
 -type performance_target() :: #{binary() => any()}.
+
+%% Example:
+%% list_tracks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tracks">> => list(serverless_track()())
+%% }
+-type list_tracks_response() :: #{binary() => any()}.
 
 %% Example:
 %% namespace() :: #{
@@ -1484,6 +1533,14 @@
     validation_exception() | 
     resource_not_found_exception().
 
+-type get_track_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type get_usage_limit_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -1548,6 +1605,13 @@
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_tracks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_pagination_exception().
 
 -type list_usage_limits_errors() ::
     validation_exception() | 
@@ -2175,6 +2239,23 @@ get_table_restore_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTableRestoreStatus">>, Input, Options).
 
+%% @doc Get the Redshift Serverless version for a specified track.
+-spec get_track(aws_client:aws_client(), get_track_request()) ->
+    {ok, get_track_response(), tuple()} |
+    {error, any()} |
+    {error, get_track_errors(), tuple()}.
+get_track(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_track(Client, Input, []).
+
+-spec get_track(aws_client:aws_client(), get_track_request(), proplists:proplist()) ->
+    {ok, get_track_response(), tuple()} |
+    {error, any()} |
+    {error, get_track_errors(), tuple()}.
+get_track(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTrack">>, Input, Options).
+
 %% @doc Returns information about a usage limit.
 -spec get_usage_limit(aws_client:aws_client(), get_usage_limit_request()) ->
     {ok, get_usage_limit_response(), tuple()} |
@@ -2383,6 +2464,23 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc List the Amazon Redshift Serverless versions.
+-spec list_tracks(aws_client:aws_client(), list_tracks_request()) ->
+    {ok, list_tracks_response(), tuple()} |
+    {error, any()} |
+    {error, list_tracks_errors(), tuple()}.
+list_tracks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tracks(Client, Input, []).
+
+-spec list_tracks(aws_client:aws_client(), list_tracks_request(), proplists:proplist()) ->
+    {ok, list_tracks_response(), tuple()} |
+    {error, any()} |
+    {error, list_tracks_errors(), tuple()}.
+list_tracks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTracks">>, Input, Options).
 
 %% @doc Lists all usage limits within Amazon Redshift Serverless.
 -spec list_usage_limits(aws_client:aws_client(), list_usage_limits_request()) ->
