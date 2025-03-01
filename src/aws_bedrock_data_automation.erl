@@ -22,6 +22,12 @@
          list_blueprints/3,
          list_data_automation_projects/2,
          list_data_automation_projects/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_blueprint/3,
          update_blueprint/4,
          update_data_automation_project/3,
@@ -67,6 +73,14 @@
 
 
 %% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% video_standard_output_configuration() :: #{
 %%   <<"extraction">> => video_standard_extraction(),
 %%   <<"generativeField">> => video_standard_generative_field()
@@ -92,6 +106,10 @@
 %%   <<"projectStage">> => list(any())
 %% }
 -type data_automation_project_summary() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -127,6 +145,7 @@
 %% Example:
 %% update_data_automation_project_request() :: #{
 %%   <<"customOutputConfiguration">> => custom_output_configuration(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"overrideConfiguration">> => override_configuration(),
 %%   <<"projectDescription">> => string(),
 %%   <<"projectStage">> => list(any()),
@@ -201,6 +220,14 @@
 
 
 %% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_blueprint_version_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
@@ -261,6 +288,14 @@
 
 
 %% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -290,9 +325,17 @@
 %%   <<"projectDescription">> => string(),
 %%   <<"projectName">> := string(),
 %%   <<"projectStage">> => list(any()),
-%%   <<"standardOutputConfiguration">> := standard_output_configuration()
+%%   <<"standardOutputConfiguration">> := standard_output_configuration(),
+%%   <<"tags">> => list(tag()())
 %% }
 -type create_data_automation_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -393,6 +436,7 @@
 %% Example:
 %% update_blueprint_request() :: #{
 %%   <<"blueprintStage">> => list(any()),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"schema">> := string()
 %% }
 -type update_blueprint_request() :: #{binary() => any()}.
@@ -426,6 +470,10 @@
 %% }
 -type audio_standard_extraction() :: #{binary() => any()}.
 
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% document_standard_output_configuration() :: #{
@@ -451,6 +499,13 @@
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -489,6 +544,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"schema">> := string(),
+%%   <<"tags">> => list(tag()()),
 %%   <<"type">> := list(any())
 %% }
 -type create_blueprint_request() :: #{binary() => any()}.
@@ -633,6 +689,28 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type update_blueprint_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -646,6 +724,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -771,7 +850,7 @@ delete_blueprint(Client, BlueprintArn, Input) ->
 delete_blueprint(Client, BlueprintArn, Input0, Options0) ->
     Method = delete,
     Path = ["/blueprints/", aws_util:encode_uri(BlueprintArn), "/"],
-    SuccessStatusCode = 204,
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -806,7 +885,7 @@ delete_data_automation_project(Client, ProjectArn, Input) ->
 delete_data_automation_project(Client, ProjectArn, Input0, Options0) ->
     Method = delete,
     Path = ["/data-automation-projects/", aws_util:encode_uri(ProjectArn), "/"],
-    SuccessStatusCode = 204,
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -942,6 +1021,108 @@ list_data_automation_projects(Client, Input) ->
 list_data_automation_projects(Client, Input0, Options0) ->
     Method = post,
     Path = ["/data-automation-projects/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List tags for an Amazon Bedrock Data Automation resource
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input) ->
+    list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listTagsForResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Tag an Amazon Bedrock Data Automation resource
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/tagResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Untag an Amazon Bedrock Data Automation resource
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/untagResource"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

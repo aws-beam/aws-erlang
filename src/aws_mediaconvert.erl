@@ -61,6 +61,8 @@
          list_versions/1,
          list_versions/3,
          list_versions/4,
+         probe/2,
+         probe/3,
          put_policy/2,
          put_policy/3,
          search_jobs/1,
@@ -247,6 +249,15 @@
 %%   <<"NexguardFileMarkerSettings">> => nex_guard_file_marker_settings()
 %% }
 -type partner_watermarking() :: #{binary() => any()}.
+
+
+%% Example:
+%% container() :: #{
+%%   <<"Duration">> => float(),
+%%   <<"Format">> => list(any()),
+%%   <<"Tracks">> => list(track()())
+%% }
+-type container() :: #{binary() => any()}.
 
 
 %% Example:
@@ -554,6 +565,16 @@
 
 
 %% Example:
+%% metadata() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FileSize">> => float(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"MimeType">> => string()
+%% }
+-type metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_video_generator() :: #{
 %%   <<"Channels">> => integer(),
 %%   <<"Duration">> => integer(),
@@ -792,6 +813,28 @@
 %%   <<"TimedMetadataInsertion">> => timed_metadata_insertion()
 %% }
 -type job_template_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% track() :: #{
+%%   <<"AudioProperties">> => audio_properties(),
+%%   <<"Codec">> => list(any()),
+%%   <<"DataProperties">> => data_properties(),
+%%   <<"Duration">> => float(),
+%%   <<"Index">> => integer(),
+%%   <<"TrackType">> => list(any()),
+%%   <<"VideoProperties">> => video_properties()
+%% }
+-type track() :: #{binary() => any()}.
+
+
+%% Example:
+%% track_mapping() :: #{
+%%   <<"AudioTrackIndexes">> => list(integer()()),
+%%   <<"DataTrackIndexes">> => list(integer()()),
+%%   <<"VideoTrackIndexes">> => list(integer()())
+%% }
+-type track_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1253,6 +1296,18 @@
 
 
 %% Example:
+%% audio_properties() :: #{
+%%   <<"BitDepth">> => integer(),
+%%   <<"BitRate">> => integer(),
+%%   <<"Channels">> => integer(),
+%%   <<"FrameRate">> => frame_rate(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"SampleRate">> => integer()
+%% }
+-type audio_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_policy_response() :: #{
 %%   <<"Policy">> => policy()
 %% }
@@ -1368,6 +1423,14 @@
 %%   <<"Url">> => string()
 %% }
 -type speke_key_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_rate() :: #{
+%%   <<"Denominator">> => integer(),
+%%   <<"Numerator">> => integer()
+%% }
+-type frame_rate() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1890,6 +1953,20 @@
 %% delete_policy_request() :: #{}
 -type delete_policy_request() :: #{}.
 
+
+%% Example:
+%% video_properties() :: #{
+%%   <<"BitDepth">> => integer(),
+%%   <<"BitRate">> => integer(),
+%%   <<"ColorPrimaries">> => list(any()),
+%%   <<"FrameRate">> => frame_rate(),
+%%   <<"Height">> => integer(),
+%%   <<"MatrixCoefficients">> => list(any()),
+%%   <<"TransferCharacteristics">> => list(any()),
+%%   <<"Width">> => integer()
+%% }
+-type video_properties() :: #{binary() => any()}.
+
 %% Example:
 %% get_preset_request() :: #{}
 -type get_preset_request() :: #{}.
@@ -1929,6 +2006,15 @@
 %%   <<"S3Inputs">> => list(any())
 %% }
 -type policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_result() :: #{
+%%   <<"Container">> => container(),
+%%   <<"Metadata">> => metadata(),
+%%   <<"TrackMappings">> => list(track_mapping()())
+%% }
+-type probe_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2168,6 +2254,13 @@
 
 
 %% Example:
+%% probe_response() :: #{
+%%   <<"ProbeResults">> => list(probe_result()())
+%% }
+-type probe_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% ac3_settings() :: #{
 %%   <<"Bitrate">> => integer(),
 %%   <<"BitstreamMode">> => list(any()),
@@ -2274,6 +2367,13 @@
 %%   <<"TimecodeStart">> => string()
 %% }
 -type video_overlay_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_input_file() :: #{
+%%   <<"FileUrl">> => string()
+%% }
+-type probe_input_file() :: #{binary() => any()}.
 
 %% Example:
 %% get_job_request() :: #{}
@@ -2423,6 +2523,13 @@
 %%   <<"UnallocatedConcurrentJobs">> => integer()
 %% }
 -type list_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_properties() :: #{
+%%   <<"LanguageCode">> => string()
+%% }
+-type data_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2656,6 +2763,13 @@
 %%   <<"InputChannelsFineTune">> => list(float()())
 %% }
 -type output_channel_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_request() :: #{
+%%   <<"InputFiles">> => list(probe_input_file()())
+%% }
+-type probe_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3111,6 +3225,14 @@
     forbidden_exception().
 
 -type list_versions_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type probe_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
@@ -4068,6 +4190,42 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The Probe operation analyzes the provided media file and returns
+%% comprehensive metadata about its container format, tracks, and any
+%% encountered errors.
+-spec probe(aws_client:aws_client(), probe_request()) ->
+    {ok, probe_response(), tuple()} |
+    {error, any()} |
+    {error, probe_errors(), tuple()}.
+probe(Client, Input) ->
+    probe(Client, Input, []).
+
+-spec probe(aws_client:aws_client(), probe_request(), proplists:proplist()) ->
+    {ok, probe_response(), tuple()} |
+    {error, any()} |
+    {error, probe_errors(), tuple()}.
+probe(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2017-08-29/probe"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create or change your policy.
 %%

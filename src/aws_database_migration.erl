@@ -2337,6 +2337,7 @@
 %%   <<"Error">> => integer(),
 %%   <<"Failed">> => integer(),
 %%   <<"Passed">> => integer(),
+%%   <<"Skipped">> => integer(),
 %%   <<"Warning">> => integer()
 %% }
 -type replication_task_assessment_run_result_statistic() :: #{binary() => any()}.

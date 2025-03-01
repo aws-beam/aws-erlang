@@ -6996,10 +6996,18 @@ delete_resource_policy(Client, Input, Options)
 %% @doc Removes the server or virtual machine from the list of registered
 %% servers.
 %%
-%% You can
-%% reregister the node again at any time. If you don't plan to use Run
-%% Command on the server, we
-%% suggest uninstalling SSM Agent first.
+%% If you want to reregister an on-premises server, edge device, or VM, you
+%% must use a
+%% different Activation Code and Activation ID than used to register the
+%% machine previously. The
+%% Activation Code and Activation ID must not have already been used on the
+%% maximum number of
+%% activations specified when they were created. For more information, see
+%% Deregistering
+%% managed nodes in a hybrid and multicloud environment:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/fleet-manager-deregister-hybrid-nodes.html
+%% in the
+%% Amazon Web Services Systems Manager User Guide.
 -spec deregister_managed_instance(aws_client:aws_client(), deregister_managed_instance_request()) ->
     {ok, deregister_managed_instance_result(), tuple()} |
     {error, any()} |
@@ -8992,7 +9000,7 @@ put_inventory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInventory">>, Input, Options).
 
-%% @doc Add a parameter to the system.
+%% @doc Create or update a parameter in Parameter Store.
 -spec put_parameter(aws_client:aws_client(), put_parameter_request()) ->
     {ok, put_parameter_result(), tuple()} |
     {error, any()} |

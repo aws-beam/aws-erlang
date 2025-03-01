@@ -2,25 +2,26 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service
-%% that makes it easy
-%% for you to run Kubernetes on Amazon Web Services without needing to setup
-%% or maintain your own
+%% that makes it easy for you to run Kubernetes on
+%% Amazon Web Services without needing to setup or maintain your own
 %% Kubernetes control plane.
 %%
-%% Kubernetes is an open-source system for automating the deployment,
-%% scaling, and management of containerized applications.
+%% Kubernetes is an
+%% open-source system for automating the deployment, scaling, and management
+%% of
+%% containerized applications.
 %%
 %% Amazon EKS runs up-to-date versions of the open-source Kubernetes
-%% software, so you
-%% can use all the existing plugins and tooling from the Kubernetes
-%% community. Applications
-%% running on Amazon EKS are fully compatible with applications running on
-%% any
-%% standard Kubernetes environment, whether running in on-premises data
-%% centers or public
-%% clouds. This means that you can easily migrate any standard Kubernetes
-%% application to Amazon EKS
-%% without any code modification required.
+%% software, so you can use all
+%% the existing plugins and tooling from the Kubernetes community.
+%% Applications running on Amazon EKS
+%% are fully compatible with applications running on any standard Kubernetes
+%% environment,
+%% whether running in on-premises data centers or public clouds. This means
+%% that you can
+%% easily migrate any standard Kubernetes application to Amazon EKS without
+%% any code modification
+%% required.
 -module(aws_eks).
 
 -export([associate_access_policy/4,
@@ -504,6 +505,14 @@
 %%   <<"serviceAccount">> => string()
 %% }
 -type addon_pod_identity_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% license() :: #{
+%%   <<"id">> => string(),
+%%   <<"token">> => string()
+%% }
+-type license() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1435,6 +1444,7 @@
 %%   <<"licenseArns">> => list(string()()),
 %%   <<"licenseQuantity">> => integer(),
 %%   <<"licenseType">> => list(any()),
+%%   <<"licenses">> => list(license()()),
 %%   <<"status">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"term">> => eks_anywhere_subscription_term()
@@ -2551,14 +2561,12 @@ associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 %% authorizing an IAM principal to access Kubernetes objects on your cluster:
 %% Kubernetes
 %% role-based access control (RBAC), Amazon EKS, or both. Kubernetes RBAC
-%% authorization
-%% requires you to create and manage Kubernetes `Role',
-%% `ClusterRole',
+%% authorization requires you
+%% to create and manage Kubernetes `Role', `ClusterRole',
 %% `RoleBinding', and `ClusterRoleBinding' objects, in addition
 %% to managing access entries. If you use Amazon EKS authorization
-%% exclusively, you
-%% don't need to create and manage Kubernetes `Role',
-%% `ClusterRole',
+%% exclusively, you don't need
+%% to create and manage Kubernetes `Role', `ClusterRole',
 %% `RoleBinding', and `ClusterRoleBinding' objects.
 %%
 %% For more information about access entries, see Access entries:
@@ -2601,10 +2609,9 @@ create_access_entry(Client, ClusterName, Input0, Options0) ->
 %% @doc Creates an Amazon EKS add-on.
 %%
 %% Amazon EKS add-ons help to automate the provisioning and lifecycle
-%% management
-%% of common operational software for Amazon EKS clusters. For more
-%% information,
-%% see Amazon EKS
+%% management of common
+%% operational software for Amazon EKS clusters. For more information, see
+%% Amazon EKS
 %% add-ons: https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
 %% in the Amazon EKS User Guide.
 -spec create_addon(aws_client:aws_client(), binary() | list(), create_addon_request()) ->
@@ -2643,49 +2650,48 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% @doc Creates an Amazon EKS control plane.
 %%
 %% The Amazon EKS control plane consists of control plane instances that run
-%% the
-%% Kubernetes software, such as `etcd' and the API server. The control
-%% plane runs in
-%% an account managed by Amazon Web Services, and the Kubernetes API is
-%% exposed by the Amazon EKS
-%% API server endpoint. Each Amazon EKS cluster control plane is
-%% single tenant and unique. It runs on its own set of Amazon EC2 instances.
+%% the Kubernetes
+%% software, such as `etcd' and the API server. The control plane runs in
+%% an
+%% account managed by Amazon Web Services, and the Kubernetes API is exposed
+%% by the Amazon EKS API server endpoint.
+%% Each Amazon EKS cluster control plane is single tenant and unique. It runs
+%% on its own set of
+%% Amazon EC2 instances.
 %%
 %% The cluster control plane is provisioned across multiple Availability
-%% Zones and
-%% fronted by an Elastic Load Balancing
+%% Zones and fronted by an Elastic Load Balancing
 %% Network Load Balancer. Amazon EKS also provisions elastic network
-%% interfaces in
-%% your VPC subnets to provide connectivity from the control plane instances
-%% to the nodes
-%% (for example, to support `kubectl exec', `logs', and
-%% `proxy' data flows).
+%% interfaces in your VPC subnets to provide
+%% connectivity from the control plane instances to the nodes (for example,
+%% to support
+%% `kubectl exec', `logs', and `proxy' data
+%% flows).
 %%
 %% Amazon EKS nodes run in your Amazon Web Services account and connect to
-%% your
-%% cluster's control plane over the Kubernetes API server endpoint and a
-%% certificate file that
-%% is created for your cluster.
+%% your cluster's control plane over
+%% the Kubernetes API server endpoint and a certificate file that is created
+%% for your
+%% cluster.
 %%
 %% You can use the `endpointPublicAccess' and
 %% `endpointPrivateAccess' parameters to enable or disable public and
 %% private access to your cluster's Kubernetes API server endpoint. By
 %% default, public access is
 %% enabled, and private access is disabled. For more information, see Amazon
-%% EKS
-%% Cluster Endpoint Access Control:
+%% EKS Cluster
+%% Endpoint Access Control:
 %% https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html in
 %% the
-%%
 %% Amazon EKS User Guide
 %% .
 %%
 %% You can use the `logging' parameter to enable or disable exporting the
 %% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-%% default, cluster
-%% control plane logs aren't exported to CloudWatch Logs. For more
-%% information, see
-%% Amazon EKS Cluster Control Plane Logs:
+%% default, cluster control plane
+%% logs aren't exported to CloudWatch Logs. For more information, see
+%% Amazon EKS
+%% Cluster Control Plane Logs:
 %% https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
 %% in the
 %%
@@ -2693,20 +2699,20 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% .
 %%
 %% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
-%% to
-%% exported control plane logs. For more information, see CloudWatch
-%% Pricing: http://aws.amazon.com/cloudwatch/pricing/.
+%% to exported
+%% control plane logs. For more information, see CloudWatch Pricing:
+%% http://aws.amazon.com/cloudwatch/pricing/.
 %%
 %% In most cases, it takes several minutes to create a cluster. After you
-%% create an
-%% Amazon EKS cluster, you must configure your Kubernetes tooling to
-%% communicate
-%% with the API server and launch nodes into your cluster. For more
-%% information, see Allowing users to
+%% create an Amazon EKS
+%% cluster, you must configure your Kubernetes tooling to communicate with
+%% the API server and
+%% launch nodes into your cluster. For more information, see Allowing users
+%% to
 %% access your cluster:
 %% https://docs.aws.amazon.com/eks/latest/userguide/cluster-auth.html and
-%% Launching
-%% Amazon EKS nodes:
+%% Launching Amazon EKS
+%% nodes:
 %% https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html in
 %% the Amazon EKS User Guide.
 -spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
@@ -2785,52 +2791,56 @@ create_eks_anywhere_subscription(Client, Input0, Options0) ->
 
 %% @doc Creates an Fargate profile for your Amazon EKS cluster.
 %%
-%% You
-%% must have at least one Fargate profile in a cluster to be able to run
-%% pods on Fargate.
+%% You must have at least one
+%% Fargate profile in a cluster to be able to run pods on Fargate.
 %%
-%% The Fargate profile allows an administrator to declare which pods run
-%% on Fargate and specify which pods run on which Fargate
-%% profile. This declaration is done through the profile's selectors.
-%% Each profile can have
-%% up to five selectors that contain a namespace and labels. A namespace is
-%% required for
-%% every selector. The label field consists of multiple optional key-value
-%% pairs. Pods that
-%% match the selectors are scheduled on Fargate. If a to-be-scheduled pod
-%% matches any of the selectors in the Fargate profile, then that pod is run
-%% on Fargate.
+%% The Fargate profile allows an administrator to declare which pods run on
+%% Fargate
+%% and specify which pods run on which Fargate profile. This declaration is
+%% done through
+%% the profile's selectors. Each profile can have up to five selectors
+%% that contain a
+%% namespace and labels. A namespace is required for every selector. The
+%% label field
+%% consists of multiple optional key-value pairs. Pods that match the
+%% selectors are
+%% scheduled on Fargate. If a to-be-scheduled pod matches any of the
+%% selectors in the
+%% Fargate profile, then that pod is run on Fargate.
 %%
-%% When you create a Fargate profile, you must specify a pod execution
-%% role to use with the pods that are scheduled with the profile. This role
-%% is added to the
-%% cluster's Kubernetes Role Based
-%% Access Control:
+%% When you create a Fargate profile, you must specify a pod execution role
+%% to use with
+%% the pods that are scheduled with the profile. This role is added to the
+%% cluster's Kubernetes
+%% Role
+%% Based Access Control:
 %% https://kubernetes.io/docs/reference/access-authn-authz/rbac/ (RBAC) for
-%% authorization so that the `kubelet'
-%% that is running on the Fargate infrastructure can register with your
-%% Amazon EKS cluster so that it can appear in your cluster as a node. The
-%% pod
+%% authorization so that the
+%% `kubelet' that is running on the Fargate infrastructure can register
+%% with your Amazon EKS cluster so that it can appear in your cluster as a
+%% node. The pod
 %% execution role also provides IAM permissions to the Fargate infrastructure
-%% to
-%% allow read access to Amazon ECR image repositories. For
-%% more information, see Pod Execution Role:
+%% to allow
+%% read access to Amazon ECR image repositories. For more information, see
+%% Pod
+%% Execution Role:
 %% https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html
 %% in the Amazon EKS User Guide.
 %%
 %% Fargate profiles are immutable. However, you can create a new updated
-%% profile to replace an existing profile and then delete the original after
-%% the updated
-%% profile has finished creating.
+%% profile to
+%% replace an existing profile and then delete the original after the updated
+%% profile has
+%% finished creating.
 %%
-%% If any Fargate profiles in a cluster are in the `DELETING'
-%% status, you must wait for that Fargate profile to finish deleting before
-%% you can create any other profiles in that cluster.
+%% If any Fargate profiles in a cluster are in the `DELETING' status, you
+%% must wait for that Fargate profile to finish deleting before you can
+%% create any other
+%% profiles in that cluster.
 %%
 %% For more information, see Fargate profile:
 %% https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html in
-%% the
-%% Amazon EKS User Guide.
+%% the Amazon EKS User Guide.
 -spec create_fargate_profile(aws_client:aws_client(), binary() | list(), create_fargate_profile_request()) ->
     {ok, create_fargate_profile_response(), tuple()} |
     {error, any()} |
@@ -2872,20 +2882,31 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 %% release version
 %% for the respective minor Kubernetes version of the cluster, unless you
 %% deploy a custom AMI
-%% using a launch template. For more information about using launch
-%% templates, see Customizing managed nodes with launch templates:
+%% using a launch template.
+%%
+%% For later updates, you will only be able to update a node group using a
+%% launch
+%% template only if it was originally deployed with a launch template.
+%% Additionally, the
+%% launch template ID or name must match what was used when the node group
+%% was created. You
+%% can update the launch template version with necessary changes. For more
+%% information
+%% about using launch templates, see Customizing managed nodes with
+%% launch templates:
 %% https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html.
 %%
-%% An Amazon EKS managed node group is an Amazon EC2
-%% Auto Scaling group and associated Amazon EC2 instances that are managed by
-%% Amazon Web Services for an Amazon EKS cluster. For more information, see
-%% Managed node groups:
+%% An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
+%% associated Amazon EC2 instances that
+%% are managed by Amazon Web Services for an Amazon EKS cluster. For more
+%% information, see Managed
+%% node groups:
 %% https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 %% in the Amazon EKS User Guide.
 %%
 %% Windows AMI types are only supported for commercial Amazon Web Services
-%% Regions
-%% that support Windows on Amazon EKS.
+%% Regions that support
+%% Windows on Amazon EKS.
 -spec create_nodegroup(aws_client:aws_client(), binary() | list(), create_nodegroup_request()) ->
     {ok, create_nodegroup_response(), tuple()} |
     {error, any()} |
@@ -3069,8 +3090,9 @@ delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% the Amazon EKS User Guide.
 %%
 %% If you have managed node groups or Fargate profiles attached to the
-%% cluster, you must delete them first. For more information, see
-%% `DeleteNodgroup' and `DeleteFargateProfile'.
+%% cluster, you
+%% must delete them first. For more information, see `DeleteNodgroup' and
+%% `DeleteFargateProfile'.
 -spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
@@ -3108,10 +3130,10 @@ delete_cluster(Client, Name, Input0, Options0) ->
 %%
 %% Deleting inactive subscriptions removes
 %% them from the Amazon Web Services Management Console view and from
-%% list/describe API responses.
-%% Subscriptions can only be cancelled within 7 days of creation and are
-%% cancelled by
-%% creating a ticket in the Amazon Web Services Support Center.
+%% list/describe API responses. Subscriptions can
+%% only be cancelled within 7 days of creation and are cancelled by creating
+%% a ticket in
+%% the Amazon Web Services Support Center.
 -spec delete_eks_anywhere_subscription(aws_client:aws_client(), binary() | list(), delete_eks_anywhere_subscription_request()) ->
     {ok, delete_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
@@ -3147,18 +3169,19 @@ delete_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes an Fargate profile.
 %%
-%% When you delete a Fargate profile, any `Pod' running on
-%% Fargate that was created with the profile is deleted. If the
-%% `Pod' matches another Fargate profile, then it is
-%% scheduled on Fargate with that profile. If it no longer matches any
-%% Fargate profiles, then it's not scheduled on Fargate
-%% and may remain in a pending state.
+%% When you delete a Fargate profile, any `Pod' running on Fargate that
+%% was created with the profile is deleted. If the `Pod' matches another
+%% Fargate profile, then it is scheduled on Fargate with that profile. If it
+%% no longer
+%% matches any Fargate profiles, then it's not scheduled on Fargate and
+%% may remain in a
+%% pending state.
 %%
-%% Only one Fargate profile in a cluster can be in the
-%% `DELETING' status at a time. You must wait for a Fargate
-%% profile to finish deleting before you can delete any other profiles in
-%% that
-%% cluster.
+%% Only one Fargate profile in a cluster can be in the `DELETING' status
+%% at
+%% a time. You must wait for a Fargate profile to finish deleting before you
+%% can delete
+%% any other profiles in that cluster.
 -spec delete_fargate_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_fargate_profile_request()) ->
     {ok, delete_fargate_profile_response(), tuple()} |
     {error, any()} |
@@ -3266,8 +3289,7 @@ delete_pod_identity_association(Client, AssociationId, ClusterName, Input0, Opti
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters a connected cluster to remove it from the Amazon EKS
-%% control
-%% plane.
+%% control plane.
 %%
 %% A connected cluster is a Kubernetes cluster that you've connected to
 %% your control plane
@@ -3480,8 +3502,7 @@ describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
 %% operation are
 %% required for `kubelet' and `kubectl' to communicate with your
 %% Kubernetes API server. For more information, see Creating or
-%% updating a `kubeconfig' file for an Amazon EKS
-%% cluster:
+%% updating a `kubeconfig' file for an Amazon EKS cluster:
 %% https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html.
 %%
 %% The API server endpoint and certificate authority data aren't
@@ -3802,10 +3823,10 @@ describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, 
 %% @doc Describes an update to an Amazon EKS resource.
 %%
 %% When the status of the update is `Successful', the update is complete.
-%% If an
-%% update fails, the status is `Failed', and an error detail explains the
-%% reason
-%% for the failure.
+%% If
+%% an update fails, the status is `Failed', and an error detail explains
+%% the
+%% reason for the failure.
 -spec describe_update(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_update_response(), tuple()} |
     {error, any()} |
@@ -4091,8 +4112,7 @@ list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon EKS clusters in your Amazon Web Services account in
-%% the
-%% specified Amazon Web Services Region.
+%% the specified Amazon Web Services Region.
 -spec list_clusters(aws_client:aws_client()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
@@ -4179,8 +4199,8 @@ list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Fargate profiles associated with the specified cluster in
-%% your Amazon Web Services account in the specified Amazon Web Services
-%% Region.
+%% your Amazon Web Services
+%% account in the specified Amazon Web Services Region.
 -spec list_fargate_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_fargate_profiles_response(), tuple()} |
     {error, any()} |
@@ -4308,8 +4328,7 @@ list_insights(Client, ClusterName, Input0, Options0) ->
 %% in your Amazon Web Services
 %% account in the specified Amazon Web Services Region.
 %%
-%% Self-managed node
-%% groups aren't listed.
+%% Self-managed node groups aren't listed.
 -spec list_nodegroups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_nodegroups_response(), tuple()} |
     {error, any()} |
@@ -4436,8 +4455,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the updates associated with an Amazon EKS resource in your
-%% Amazon Web Services
-%% account, in the specified Amazon Web Services Region.
+%% Amazon Web Services account, in the
+%% specified Amazon Web Services Region.
 -spec list_updates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_updates_response(), tuple()} |
     {error, any()} |
@@ -4484,15 +4503,15 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
 %% @doc Connects a Kubernetes cluster to the Amazon EKS control plane.
 %%
 %% Any Kubernetes cluster can be connected to the Amazon EKS control plane to
-%% view
-%% current information about the cluster and its nodes.
+%% view current
+%% information about the cluster and its nodes.
 %%
 %% Cluster connection requires two steps. First, send a
 %% `RegisterClusterRequest'
 %% :
 %% https://docs.aws.amazon.com/eks/latest/APIReference/API_RegisterClusterRequest.html
-%% to add it to the Amazon EKS
-%% control plane.
+%% to add it to the Amazon EKS control
+%% plane.
 %%
 %% Second, a Manifest:
 %% https://amazon-eks.s3.us-west-2.amazonaws.com/eks-connector/manifests/eks-connector/latest/eks-connector.yaml
@@ -4504,9 +4523,8 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
 %% After the manifest is updated and applied, the connected cluster is
 %% visible to the
 %% Amazon EKS control plane. If the manifest isn't applied within three
-%% days,
-%% the connected cluster will no longer be visible and must be deregistered
-%% using
+%% days, the connected
+%% cluster will no longer be visible and must be deregistered using
 %% `DeregisterCluster'.
 -spec register_cluster(aws_client:aws_client(), register_cluster_request()) ->
     {ok, register_cluster_response(), tuple()} |
@@ -4549,11 +4567,12 @@ register_cluster(Client, Input0, Options0) ->
 %% request parameters, they aren't changed. When a resource is deleted,
 %% the tags associated
 %% with that resource are also deleted. Tags that you create for Amazon EKS
-%% resources don't propagate to any other resources associated with the
-%% cluster. For
-%% example, if you tag a cluster with this operation, that tag doesn't
-%% automatically
-%% propagate to the subnets and nodes associated with the cluster.
+%% resources don't
+%% propagate to any other resources associated with the cluster. For example,
+%% if you tag a
+%% cluster with this operation, that tag doesn't automatically propagate
+%% to the subnets and
+%% nodes associated with the cluster.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -4692,18 +4711,16 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 
 %% @doc Updates an Amazon EKS cluster configuration.
 %%
-%% Your cluster continues to
-%% function during the update. The response output includes an update ID that
-%% you can use
-%% to track the status of your cluster update with
-%% `DescribeUpdate'&quot;/&gt;.
+%% Your cluster continues to function during the
+%% update. The response output includes an update ID that you can use to
+%% track the status
+%% of your cluster update with `DescribeUpdate'&quot;/&gt;.
 %%
 %% You can use this API operation to enable or disable exporting the
 %% Kubernetes control plane
 %% logs for your cluster to CloudWatch Logs. By default, cluster control
-%% plane logs
-%% aren't exported to CloudWatch Logs. For more information, see Amazon
-%% EKS
+%% plane logs aren't exported
+%% to CloudWatch Logs. For more information, see Amazon EKS
 %% Cluster control plane logs:
 %% https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
 %% in the
@@ -4712,39 +4729,39 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% .
 %%
 %% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
-%% to
-%% exported control plane logs. For more information, see CloudWatch
-%% Pricing: http://aws.amazon.com/cloudwatch/pricing/.
+%% to exported
+%% control plane logs. For more information, see CloudWatch Pricing:
+%% http://aws.amazon.com/cloudwatch/pricing/.
 %%
 %% You can also use this API operation to enable or disable public and
 %% private access to
 %% your cluster's Kubernetes API server endpoint. By default, public
 %% access is enabled, and
-%% private access is disabled. For more information, see Amazon EKS
-%% cluster endpoint access control:
+%% private access is disabled. For more information, see Amazon EKS cluster
+%% endpoint access control:
 %% https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html in
 %% the
-%%
 %% Amazon EKS User Guide
 %% .
 %%
 %% You can also use this API operation to choose different subnets and
 %% security groups
 %% for the cluster. You must specify at least two subnets that are in
-%% different
-%% Availability Zones. You can't change which VPC the subnets are from,
-%% the subnets must be
-%% in the same VPC as the subnets that the cluster was created with. For more
-%% information
-%% about the VPC requirements, see
+%% different Availability Zones. You
+%% can't change which VPC the subnets are from, the subnets must be in
+%% the same VPC as the
+%% subnets that the cluster was created with. For more information about the
+%% VPC
+%% requirements, see
 %% [https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html] in
 %% the
 %% Amazon EKS User Guide
 %% .
 %%
 %% You can also use this API operation to enable or disable ARC zonal shift.
-%% If zonal shift is enabled, Amazon Web Services
-%% configures zonal autoshift for the cluster.
+%% If zonal
+%% shift is enabled, Amazon Web Services configures zonal autoshift for the
+%% cluster.
 %%
 %% Cluster updates are asynchronous, and they should finish within a few
 %% minutes. During
@@ -4788,11 +4805,10 @@ update_cluster_config(Client, Name, Input0, Options0) ->
 
 %% @doc Updates an Amazon EKS cluster to the specified Kubernetes version.
 %%
-%% Your cluster
-%% continues to function during the update. The response output includes an
-%% update ID that
-%% you can use to track the status of your cluster update with the
-%%
+%% Your cluster continues to
+%% function during the update. The response output includes an update ID that
+%% you can use
+%% to track the status of your cluster update with the
 %% `DescribeUpdate'
 %% :
 %% https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html
@@ -4883,16 +4899,16 @@ update_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 
 %% @doc Updates an Amazon EKS managed node group configuration.
 %%
-%% Your node group
-%% continues to function during the update. The response output includes an
-%% update ID that
-%% you can use to track the status of your node group update with the
-%%
+%% Your node group continues to
+%% function during the update. The response output includes an update ID that
+%% you can use
+%% to track the status of your node group update with the
 %% `DescribeUpdate'
 %% :
 %% https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html
-%% API operation. You can update the Kubernetes labels and taints
-%% for a node group and the scaling and version update configuration.
+%% API operation. You can update the Kubernetes labels
+%% and taints for a node group and the scaling and version update
+%% configuration.
 -spec update_nodegroup_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_nodegroup_config_request()) ->
     {ok, update_nodegroup_config_response(), tuple()} |
     {error, any()} |
@@ -4927,18 +4943,22 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the Kubernetes version or AMI version of an Amazon EKS
-%% managed node
-%% group.
+%% managed node group.
 %%
 %% You can update a node group using a launch template only if the node group
 %% was
-%% originally deployed with a launch template. If you need to update a custom
-%% AMI in a node
-%% group that was deployed with a launch template, then update your custom
-%% AMI, specify the
-%% new ID in a new version of the launch template, and then update the node
-%% group to the
-%% new version of the launch template.
+%% originally deployed with a launch template. Additionally, the launch
+%% template ID or name
+%% must match what was used when the node group was created. You can update
+%% the launch
+%% template version with necessary changes.
+%%
+%% If you need to update a custom AMI in a node group that was deployed with
+%% a launch
+%% template, then update your custom AMI, specify the new ID in a new version
+%% of the launch
+%% template, and then update the node group to the new version of the launch
+%% template.
 %%
 %% If you update without a launch template, then you can update to the latest
 %% available
@@ -4952,10 +4972,10 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html
 %% in the
 %% Amazon EKS User Guide. For information about Windows versions, see Amazon
-%% EKS optimized Windows AMI versions:
+%% EKS
+%% optimized Windows AMI versions:
 %% https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html
-%% in the
-%% Amazon EKS User Guide.
+%% in the Amazon EKS User Guide.
 %%
 %% You cannot roll back a node group to an earlier Kubernetes version or AMI
 %% version.
@@ -4963,9 +4983,12 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
 %% When a node in a managed node group is terminated due to a scaling action
 %% or update,
 %% every `Pod' on that node is drained first. Amazon EKS attempts to
-%% drain the nodes gracefully and will fail if it is unable to do so. You can
-%% `force' the update if Amazon EKS is unable to drain the nodes as
-%% a result of a `Pod' disruption budget issue.
+%% drain the nodes
+%% gracefully and will fail if it is unable to do so. You can `force' the
+%% update
+%% if Amazon EKS is unable to drain the nodes as a result of a `Pod'
+%% disruption
+%% budget issue.
 -spec update_nodegroup_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_nodegroup_version_request()) ->
     {ok, update_nodegroup_version_response(), tuple()} |
     {error, any()} |
