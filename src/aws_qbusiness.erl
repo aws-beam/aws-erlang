@@ -285,7 +285,9 @@
 
 %% Example:
 %% media_extraction_configuration() :: #{
-%%   <<"imageExtractionConfiguration">> => image_extraction_configuration()
+%%   <<"audioExtractionConfiguration">> => audio_extraction_configuration(),
+%%   <<"imageExtractionConfiguration">> => image_extraction_configuration(),
+%%   <<"videoExtractionConfiguration">> => video_extraction_configuration()
 %% }
 -type media_extraction_configuration() :: #{binary() => any()}.
 
@@ -722,6 +724,13 @@
 
 
 %% Example:
+%% video_extraction_configuration() :: #{
+%%   <<"videoExtractionStatus">> => list(any())
+%% }
+-type video_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_plugin_actions_response() :: #{
 %%   <<"items">> => list(action_summary()()),
 %%   <<"nextToken">> => string()
@@ -941,6 +950,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type index() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_extraction_configuration() :: #{
+%%   <<"audioExtractionStatus">> => list(any())
+%% }
+-type audio_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1311,7 +1327,8 @@
 %%   <<"endOffset">> => integer(),
 %%   <<"mediaId">> => string(),
 %%   <<"mediaMimeType">> => string(),
-%%   <<"snippetExcerpt">> => snippet_excerpt()
+%%   <<"snippetExcerpt">> => snippet_excerpt(),
+%%   <<"sourceDetails">> => list()
 %% }
 -type text_segment() :: #{binary() => any()}.
 
@@ -1601,6 +1618,14 @@
 
 
 %% Example:
+%% image_source_details() :: #{
+%%   <<"mediaId">> => string(),
+%%   <<"mediaMimeType">> => string()
+%% }
+-type image_source_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_source_response() :: #{
 %%   <<"dataSourceArn">> => string(),
 %%   <<"dataSourceId">> => string()
@@ -1823,6 +1848,17 @@
 
 
 %% Example:
+%% video_source_details() :: #{
+%%   <<"endTimeMilliseconds">> => float(),
+%%   <<"mediaId">> => string(),
+%%   <<"mediaMimeType">> => string(),
+%%   <<"startTimeMilliseconds">> => float(),
+%%   <<"videoExtractionType">> => list(any())
+%% }
+-type video_source_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_conversations_response() :: #{
 %%   <<"conversations">> => list(conversation()()),
 %%   <<"nextToken">> => string()
@@ -2032,6 +2068,17 @@
 %%   <<"dataSourceId">> => string()
 %% }
 -type delete_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_source_details() :: #{
+%%   <<"audioExtractionType">> => list(any()),
+%%   <<"endTimeMilliseconds">> => float(),
+%%   <<"mediaId">> => string(),
+%%   <<"mediaMimeType">> => string(),
+%%   <<"startTimeMilliseconds">> => float()
+%% }
+-type audio_source_details() :: #{binary() => any()}.
 
 
 %% Example:

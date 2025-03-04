@@ -9930,6 +9930,7 @@
 %% Example:
 %% create_domain_response() :: #{
 %%   <<"DomainArn">> => string(),
+%%   <<"DomainId">> => string(),
 %%   <<"Url">> => string()
 %% }
 -type create_domain_response() :: #{binary() => any()}.

@@ -30,6 +30,8 @@
          create_app_monitor/3,
          delete_app_monitor/3,
          delete_app_monitor/4,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
          delete_rum_metrics_destination/3,
          delete_rum_metrics_destination/4,
          get_app_monitor/2,
@@ -37,6 +39,9 @@
          get_app_monitor/5,
          get_app_monitor_data/3,
          get_app_monitor_data/4,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          list_app_monitors/2,
          list_app_monitors/3,
          list_rum_metrics_destinations/2,
@@ -45,6 +50,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_resource_policy/3,
+         put_resource_policy/4,
          put_rum_events/3,
          put_rum_events/4,
          put_rum_metrics_destination/3,
@@ -89,7 +96,15 @@
 
 
 %% Example:
+%% delete_resource_policy_response() :: #{
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_rum_events_request() :: #{
+%%   <<"Alias">> => string(),
 %%   <<"AppMonitorDetails">> := app_monitor_details(),
 %%   <<"BatchId">> := [string()],
 %%   <<"RumEvents">> := list(rum_event()()),
@@ -179,6 +194,14 @@
 
 
 %% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"PolicyDocument">> => [string()],
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_app_monitor_request() :: #{
 %%   <<"AppMonitorConfiguration">> => app_monitor_configuration(),
 %%   <<"CustomEvents">> => custom_events(),
@@ -209,6 +232,13 @@
 %%   <<"ValueKey">> => string()
 %% }
 -type metric_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type policy_size_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -289,6 +319,13 @@
 
 
 %% Example:
+%% policy_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type policy_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_create_rum_metric_definitions_error() :: #{
 %%   <<"ErrorCode">> => [string()],
 %%   <<"ErrorMessage">> => [string()],
@@ -304,6 +341,13 @@
 %%   <<"MetricDefinitions">> := list(metric_definition_request()())
 %% }
 -type batch_create_rum_metric_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_policy_revision_id_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_policy_revision_id_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -399,6 +443,10 @@
 -type list_rum_metrics_destinations_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+%% Example:
 %% delete_rum_metrics_destination_response() :: #{}
 -type delete_rum_metrics_destination_response() :: #{}.
 
@@ -427,6 +475,14 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type batch_get_rum_metric_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"PolicyDocument">> := [string()],
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -482,6 +538,13 @@
 
 
 %% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% metric_definition_request() :: #{
 %%   <<"DimensionKeys">> => map(),
 %%   <<"EventPattern">> => string(),
@@ -495,6 +558,21 @@
 %% Example:
 %% update_rum_metric_definition_response() :: #{}
 -type update_rum_metric_definition_response() :: #{}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"PolicyDocument">> => [string()],
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -559,6 +637,16 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_policy_revision_id_exception() | 
+    policy_not_found_exception().
+
 -type delete_rum_metrics_destination_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -581,6 +669,15 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    policy_not_found_exception().
+
 -type list_app_monitors_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -597,6 +694,17 @@
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type put_resource_policy_errors() ::
+    malformed_policy_document_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_policy_revision_id_exception() | 
+    policy_size_limit_exceeded_exception().
 
 -type put_rum_events_errors() ::
     throttling_exception() | 
@@ -926,6 +1034,42 @@ delete_app_monitor(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes the association of a resource-based policy from an app
+%% monitor.
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Name, Input) ->
+    delete_resource_policy(Client, Name, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/appmonitor/", aws_util:encode_uri(Name), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"policyRevisionId">>, <<"PolicyRevisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a destination for CloudWatch RUM extended metrics, so that
 %% the specified app monitor stops
 %% sending extended metrics to that destination.
@@ -1036,6 +1180,44 @@ get_app_monitor_data(Client, Name, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use this operation to retrieve information about a resource-based
+%% policy that is attached to an app monitor.
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Name)
+  when is_map(Client) ->
+    get_resource_policy(Client, Name, #{}, #{}).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, Name, QueryMap, HeadersMap, []).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/appmonitor/", aws_util:encode_uri(Name), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the Amazon CloudWatch RUM app monitors in the
 %% account.
@@ -1157,6 +1339,47 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Use this operation to assign a resource-based policy to a CloudWatch
+%% RUM app monitor to control access to it.
+%%
+%% Each app monitor can
+%% have one resource-based policy. The maximum size of the policy is 4 KB. To
+%% learn more about using resource policies with RUM, see Using
+%% resource-based policies with CloudWatch RUM:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html.
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Name, Input) ->
+    put_resource_policy(Client, Name, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Name, Input0, Options0) ->
+    Method = put,
+    Path = ["/appmonitor/", aws_util:encode_uri(Name), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends telemetry events about your application performance and user
 %% behavior to CloudWatch RUM.

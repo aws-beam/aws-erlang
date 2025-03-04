@@ -13,7 +13,7 @@
 %% about the authentication and authorization of federated users at Adding
 %% user pool sign-in through a third party:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html
-%% and in the User pool federation endpoints and hosted UI reference:
+%% and in the User pool federation endpoints and managed login reference:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html.
 %%
 %% This API reference provides detailed information about API operations and
@@ -38,9 +38,9 @@
 %% A client-side app, like a mobile app, that wants to make unauthenticated
 %% requests to manage, authenticate, or authorize a user.
 %%
-%% For more information, see Using the Amazon Cognito user pools API and user
-%% pool endpoints:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+%% For more information, see Understanding API, OIDC, and managed login pages
+%% authentication:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html#user-pools-API-operations
 %% in the Amazon Cognito Developer Guide.
 %%
 %% With your Amazon Web Services SDK, you can build the logic to support
@@ -49,43 +49,8 @@
 %% Cognito user pools service endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/cognito_identity.html#cognito_identity_your_user_pools_region.
 %% The following links can get you started
-%% with the `CognitoIdentityProvider' client in other supported Amazon
-%% Web Services
-%% SDKs.
-%%
-%% Amazon Web Services
-%% Command Line Interface:
-%% https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/index.html#cli-aws-cognito-idp
-%%
-%% Amazon Web Services SDK for .NET:
-%% https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CognitoIdentityProvider/TCognitoIdentityProviderClient.html
-%%
-%% Amazon Web Services SDK for C++:
-%% https://sdk.amazonaws.com/cpp/api/LATEST/aws-cpp-sdk-cognito-idp/html/class_aws_1_1_cognito_identity_provider_1_1_cognito_identity_provider_client.html
-%%
-%% Amazon Web Services SDK for Go:
-%% https://docs.aws.amazon.com/sdk-for-go/api/service/cognitoidentityprovider/#CognitoIdentityProvider
-%%
-%% Amazon Web Services SDK for Java V2:
-%% https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/cognitoidentityprovider/CognitoIdentityProviderClient.html
-%%
-%% Amazon Web Services
-%% SDK for JavaScript:
-%% https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html
-%%
-%% Amazon Web Services SDK for PHP
-%% V3:
-%% https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-cognito-idp-2016-04-18.html
-%%
-%% Amazon Web Services SDK for Python:
-%% https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html
-%%
-%% Amazon Web Services SDK
-%% for Ruby V3:
-%% https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/CognitoIdentityProvider/Client.html
-%%
-%% Amazon Web Services SDK for Kotlin:
-%% https://sdk.amazonaws.com/kotlin/api/latest/cognitoidentityprovider/aws.sdk.kotlin.services.cognitoidentityprovider/-cognito-identity-provider-client/index.html
+%% with the `CognitoIdentityProvider' client in supported Amazon Web
+%% Services SDKs.
 %%
 %% To get started with an Amazon Web Services SDK, see Tools to Build on
 %% Amazon Web Services: http://aws.amazon.com/developer/tools/. For example
@@ -2708,6 +2673,7 @@
 %% Example:
 %% admin_initiate_auth_response() :: #{
 %%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"AvailableChallenges">> => list(list(any())()),
 %%   <<"ChallengeName">> => list(any()),
 %%   <<"ChallengeParameters">> => map(),
 %%   <<"Session">> => string()
@@ -2888,6 +2854,12 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_password_exception() :: #{binary() => any()}.
+
+%% Example:
+%% device_key_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type device_key_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% update_group_response() :: #{
@@ -3356,6 +3328,7 @@
 
 -type confirm_device_errors() ::
     internal_error_exception() | 
+    device_key_exists_exception() | 
     invalid_password_exception() | 
     username_exists_exception() | 
     invalid_parameter_exception() | 
@@ -4176,12 +4149,6 @@
 %% more information, see Custom attributes:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-custom-attributes.
 %%
-%% You can also create custom attributes in the Schema parameter:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateUserPool.html#CognitoUserPools-CreateUserPool-request-Schema
-%% of `CreateUserPool' and
-%% `UpdateUserPool'. You can't delete custom attributes after you
-%% create them.
-%%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
 %% this operation, you must use IAM credentials to authorize requests, and
@@ -4249,11 +4216,6 @@ admin_add_user_to_group(Client, Input, Options)
 
 %% @doc Confirms user sign-up as an administrator.
 %%
-%% Unlike ConfirmSignUp:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmSignUp.html,
-%% your IAM credentials authorize user account confirmation.
-%% No confirmation code is required.
-%%
 %% This request sets a user account active in a user pool that requires
 %% confirmation of new user accounts:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#signing-up-users-in-your-app-and-confirming-them-as-admin
@@ -4302,6 +4264,29 @@ admin_confirm_sign_up(Client, Input, Options)
 %% message via
 %% email or phone (SMS).
 %%
+%% This message is based on a template that you configured in your call to
+%% create or
+%% update a user pool. This template includes your custom sign-up
+%% instructions and
+%% placeholders for user name and temporary password.
+%%
+%% Alternatively, you can call `AdminCreateUser' with `SUPPRESS'
+%% for the `MessageAction' parameter, and Amazon Cognito won't send
+%% any email.
+%%
+%% In either case, if the user has a password, they will be in the
+%% `FORCE_CHANGE_PASSWORD' state until they sign in and set their
+%% password.
+%% Your invitation message template must have the `{####}' password
+%% placeholder
+%% if your users have passwords. If your template doesn't have this
+%% placeholder, Amazon Cognito
+%% doesn't deliver the invitation message. In this case, you must update
+%% your message
+%% template and resend the password with a new `AdminCreateUser' request
+%% with a
+%% `MessageAction' value of `RESEND'.
+%%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers
 %% require you to register an origination phone number before you can send
@@ -4330,29 +4315,6 @@ admin_confirm_sign_up(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
-%%
-%% This message is based on a template that you configured in your call to
-%% create or
-%% update a user pool. This template includes your custom sign-up
-%% instructions and
-%% placeholders for user name and temporary password.
-%%
-%% Alternatively, you can call `AdminCreateUser' with `SUPPRESS'
-%% for the `MessageAction' parameter, and Amazon Cognito won't send
-%% any email.
-%%
-%% In either case, if the user has a password, they will be in the
-%% `FORCE_CHANGE_PASSWORD' state until they sign in and set their
-%% password.
-%% Your invitation message template must have the `{####}' password
-%% placeholder
-%% if your users have passwords. If your template doesn't have this
-%% placeholder, Amazon Cognito
-%% doesn't deliver the invitation message. In this case, you must update
-%% your message
-%% template and resend the password with a new `AdminCreateUser' request
-%% with a
-%% `MessageAction' value of `RESEND'.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4418,8 +4380,8 @@ admin_delete_user(Client, Input, Options)
 %%
 %% This operation doesn't affect tokens for
 %% existing user sessions. The next ID token that the user receives will no
-%% longer have
-%% this attribute.
+%% longer have the
+%% deleted attributes.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4463,18 +4425,13 @@ admin_delete_user_attributes(Client, Input, Options)
 %% longer
 %% attached to the previously linked `DestinationUser', the user must
 %% create a
-%% new user account. See AdminLinkProviderForUser:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html.
+%% new user account.
 %%
-%% The `ProviderName' must match the value specified when creating an IdP
-%% for
-%% the pool.
+%% The value of `ProviderName' must match the name of a user pool IdP.
 %%
-%% To deactivate a native username + password user, the `ProviderName'
-%% value
-%% must be `Cognito' and the `ProviderAttributeName' must be
-%% `Cognito_Subject'. The `ProviderAttributeValue' must be the
-%% name that is used in the user pool for the user.
+%% To deactivate a local user, set `ProviderName' to `Cognito' and
+%% the `ProviderAttributeName' to `Cognito_Subject'. The
+%% `ProviderAttributeValue' must be user's local username.
 %%
 %% The `ProviderAttributeName' must always be `Cognito_Subject' for
 %% social IdPs. The `ProviderAttributeValue' must always be the exact
@@ -4488,13 +4445,12 @@ admin_delete_user_attributes(Client, Input, Options)
 %% the
 %% `SourceUser' when the identities were originally linked using
 %% ```
-%% AdminLinkProviderForUser''' call. (If the linking was done
-%% with
-%% `ProviderAttributeName' set to `Cognito_Subject', the same
-%% applies here). However, if the user has already signed in, the
-%% `ProviderAttributeName' must be `Cognito_Subject' and
-%% `ProviderAttributeValue' must be the subject of the SAML
-%% assertion.
+%% AdminLinkProviderForUser''' call. This is also true if the
+%% linking was done with
+%% `ProviderAttributeName' set to `Cognito_Subject'. If the user
+%% has already signed in, the `ProviderAttributeName' must be
+%% `Cognito_Subject' and `ProviderAttributeValue' must be the
+%% `NameID' from their SAML assertion.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4562,7 +4518,7 @@ admin_disable_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDisableUser">>, Input, Options).
 
-%% @doc Activate sign-in for a user profile that previously had sign-in
+%% @doc Activates sign-in for a user profile that previously had sign-in
 %% access
 %% disabled.
 %%
@@ -4633,7 +4589,7 @@ admin_forget_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminForgetDevice">>, Input, Options).
 
-%% @doc Given the device key, returns details for a user' device.
+%% @doc Given the device key, returns details for a user's device.
 %%
 %% For more information,
 %% see Working with devices:
@@ -4668,13 +4624,15 @@ admin_get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminGetDevice">>, Input, Options).
 
-%% @doc Given the username, returns details about a user profile in a user
+%% @doc Given a username, returns details about a user profile in a user
 %% pool.
 %%
-%% This
-%% operation contributes to your monthly active user (MAU) count for the
+%% You can specify
+%% alias attributes in the `Username' request parameter.
+%%
+%% This operation contributes to your monthly active user (MAU) count for the
 %% purpose of
-%% billing. You can specify alias attributes in the `Username' parameter.
+%% billing.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4775,33 +4733,30 @@ admin_initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminInitiateAuth">>, Input, Options).
 
-%% @doc Links an existing user account in a user pool (`DestinationUser')
-%% to an
-%% identity from an external IdP (`SourceUser') based on a specified
-%% attribute
-%% name and value from the external IdP.
+%% @doc Links an existing user account in a user pool, or
+%% `DestinationUser', to an
+%% identity from an external IdP, or `SourceUser', based on a specified
+%% attribute name and value from the external IdP.
 %%
-%% This allows you to create a link from the existing
-%% user account to an external federated user identity that has not yet been
-%% used to sign
-%% in. You can then use the federated user identity to sign in as the
-%% existing user
-%% account.
-%%
-%% For example, if there is an existing user with a username and password,
-%% this API
-%% links that user to a federated user identity. When the user signs in with
-%% a federated
-%% user identity, they sign in as the existing user account.
+%% This operation connects a local user profile with a user identity who
+%% hasn't yet
+%% signed in from their third-party IdP. When the user signs in with their
+%% IdP, they get
+%% access-control configuration from the local user profile. Linked local
+%% users can also
+%% sign in with SDK-based API operations like `InitiateAuth' after they
+%% sign in
+%% at least once through their IdP. For more information, see Linking
+%% federated users:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation-consolidate-users.html.
 %%
 %% The maximum number of federated identities linked to a user is five.
 %%
 %% Because this API allows a user with an external federated identity to sign
-%% in as
-%% an existing user in the user pool, it is critical that it only be used
-%% with external
-%% IdPs and provider attributes that have been trusted by the application
-%% owner.
+%% in as a
+%% local user, it is critical that it only be used with external IdPs and
+%% linked
+%% attributes that you trust.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -4946,9 +4901,9 @@ admin_list_user_auth_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListUserAuthEvents">>, Input, Options).
 
-%% @doc Given a username and a group name.
+%% @doc Given a username and a group name, removes them from the group.
 %%
-%% removes them from the group. User pool groups are
+%% User pool groups are
 %% identifiers that you can reference from the contents of ID and access
 %% tokens, and set
 %% preferred IAM roles for identity-pool authentication. For more
@@ -4987,34 +4942,11 @@ admin_remove_user_from_group(Client, Input, Options)
 %% @doc Resets the specified user's password in a user pool.
 %%
 %% This operation doesn't
-%% change the user's password, but sends a password-reset code. This
-%% operation is the
-%% administrative authentication API equivalent to ForgotPassword:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ForgotPassword.html.
-%%
-%% This operation deactivates a user's password, requiring them to change
-%% it. If a user
-%% tries to sign in after the API request, Amazon Cognito responds with a
-%% `PasswordResetRequiredException' error. Your app must then complete
-%% the
-%% forgot-password flow by prompting the user for their code and a new
-%% password, then
-%% submitting those values in a ConfirmForgotPassword:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmForgotPassword.html
-%% request. In addition, if the user
-%% pool has phone verification selected and a verified phone number exists
-%% for the user, or
-%% if email verification is selected and a verified email exists for the
-%% user, calling this
-%% API will also result in sending a message to the end user with the code to
-%% change their
-%% password.
+%% change the user's password, but sends a password-reset code.
 %%
 %% To use this API operation, your user pool must have self-service account
 %% recovery
-%% configured. Use AdminSetUserPassword:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserPassword.html
-%% if you manage passwords as an administrator.
+%% configured.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers
@@ -5158,14 +5090,6 @@ admin_respond_to_auth_challenge(Client, Input, Options)
 %% is set, a
 %% challenge to choose an MFA option will be returned during sign-in.
 %%
-%% This operation doesn't reset an existing TOTP MFA for a user. To
-%% register a new
-%% TOTP factor for a user, make an AssociateSoftwareToken:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html
-%% request. For more information,
-%% see TOTP software token MFA:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa-totp.html.
-%%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
 %% this operation, you must use IAM credentials to authorize requests, and
@@ -5276,9 +5200,7 @@ admin_set_user_password(Client, Input, Options)
 %% You can use it to configure
 %% only SMS MFA. You can't use it to configure time-based one-time
 %% password (TOTP) software
-%% token MFA. To configure either type of MFA, use AdminSetUserMFAPreference:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserMFAPreference.html
-%% instead.
+%% token MFA.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -5309,20 +5231,27 @@ admin_set_user_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserSettings">>, Input, Options).
 
-%% @doc Provides feedback for an authentication event indicating if it was
-%% from a valid user.
+%% @doc Provides the feedback for an authentication event generated by threat
+%% protection
+%% features.
 %%
-%% This feedback is used for improving the risk evaluation decision for the
-%% user pool as
-%% part of Amazon Cognito threat protection. To train the threat-protection
-%% model to recognize
-%% trusted and untrusted sign-in characteristics, configure threat protection
-%% in audit-only
-%% mode and provide a mechanism for users or administrators to submit
-%% feedback. Your
-%% feedback can tell Amazon Cognito that a risk rating was assigned at a
-%% level you don't agree
-%% with.
+%% Your response indicates that you think that the event either was from a
+%% valid
+%% user or was an unwanted authentication attempt. This feedback improves the
+%% risk
+%% evaluation decision for the user pool as part of Amazon Cognito threat
+%% protection.
+%% To activate this setting, your user pool must be on the
+%% Plus tier:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-plus.html.
+%%
+%% To train the threat-protection model to recognize trusted and untrusted
+%% sign-in
+%% characteristics, configure threat protection in audit-only mode and
+%% provide a mechanism
+%% for users or administrators to submit feedback. Your feedback can tell
+%% Amazon Cognito that a risk
+%% rating was assigned at a level you don't agree with.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -5396,10 +5325,38 @@ admin_update_device_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateDeviceStatus">>, Input, Options).
 
-%% @doc
-%% This action might generate an SMS text message.
+%% @doc Updates the specified user's attributes.
 %%
-%% Starting June 1, 2021, US telecom carriers
+%% To delete an attribute from your user,
+%% submit the attribute in your API request with a blank value.
+%%
+%% For custom attributes, you must add a `custom:' prefix to the
+%% attribute
+%% name, for example `custom:department'.
+%%
+%% This operation can set a user's email address or phone number as
+%% verified and
+%% permit immediate sign-in in user pools that require verification of these
+%% attributes. To
+%% do this, set the `email_verified' or `phone_number_verified'
+%% attribute to `true'.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+%%
+%% This action might generate an SMS text message. Starting June 1, 2021, US
+%% telecom carriers
 %% require you to register an origination phone number before you can send
 %% SMS messages
 %% to US phone numbers. If you use SMS text messages in Amazon Cognito, you
@@ -5426,34 +5383,6 @@ admin_update_device_status(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
-%%
-%% Updates the specified user's attributes. To delete an attribute from
-%% your user,
-%% submit the attribute in your API request with a blank value.
-%%
-%% For custom attributes, you must prepend the `custom:' prefix to the
-%% attribute name.
-%%
-%% This operation can set a user's email address or phone number as
-%% verified and
-%% permit immediate sign-in in user pools that require verification of these
-%% attributes. To
-%% do this, set the `email_verified' or `phone_number_verified'
-%% attribute to `true'.
-%%
-%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
-%% requests for this API operation. For
-%% this operation, you must use IAM credentials to authorize requests, and
-%% you must
-%% grant yourself the corresponding IAM permission in a policy.
-%%
-%% == Learn more ==
-%%
-%% Signing Amazon Web Services API Requests:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
-%%
-%% Using the Amazon Cognito user pools API and user pool endpoints:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 -spec admin_update_user_attributes(aws_client:aws_client(), admin_update_user_attributes_request()) ->
     {ok, admin_update_user_attributes_response(), tuple()} |
     {error, any()} |
@@ -5553,24 +5482,6 @@ admin_user_global_sign_out(Client, Input, Options)
 %% that you received
 %% from Amazon Cognito.
 %%
-%% Amazon Cognito disassociates an existing software token when you verify
-%% the new token in a
-%% VerifySoftwareToken:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerifySoftwareToken.html
-%% API request. If you don't verify the software
-%% token and your user pool doesn't require MFA, the user can then
-%% authenticate with
-%% user name and password credentials alone. If your user pool requires TOTP
-%% MFA, Amazon Cognito
-%% generates an `MFA_SETUP' or `SOFTWARE_TOKEN_SETUP' challenge
-%% each time your user signs in. Complete setup with
-%% `AssociateSoftwareToken' and `VerifySoftwareToken'.
-%%
-%% After you set up software token MFA for your user, Amazon Cognito
-%% generates a
-%% `SOFTWARE_TOKEN_MFA' challenge when they authenticate. Respond to
-%% this challenge with your user's TOTP.
-%%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For
 %% this operation, you can't use IAM credentials to authorize requests,
@@ -5599,7 +5510,7 @@ associate_software_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSoftwareToken">>, Input, Options).
 
-%% @doc Changes the password for a specified user in a user pool.
+%% @doc Changes the password for the currently signed-in user.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -5629,14 +5540,9 @@ change_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangePassword">>, Input, Options).
 
-%% @doc Completes registration of a passkey authenticator for the current
+%% @doc Completes registration of a passkey authenticator for the currently
+%% signed-in
 %% user.
-%%
-%% Your
-%% application provides data from a successful registration request with the
-%% data from the
-%% output of a StartWebAuthnRegistration:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_StartWebAuthnRegistration.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -5724,31 +5630,24 @@ confirm_forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmForgotPassword">>, Input, Options).
 
-%% @doc This public API operation submits a code that Amazon Cognito sent to
-%% your user when they signed
-%% up in your user pool via the SignUp:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SignUp.html
-%% API operation.
+%% @doc Confirms the account of a new user.
 %%
-%% After your user enters their code, they confirm ownership of the email
-%% address or phone number that they provided, and their user account becomes
-%% active.
-%% Depending on your user pool configuration, your users will receive their
-%% confirmation
-%% code in an email or SMS message.
+%% This public API operation submits a code that
+%% Amazon Cognito sent to your user when they signed up in your user pool.
+%% After your user enters
+%% their code, they confirm ownership of the email address or phone number
+%% that they
+%% provided, and their user account becomes active. Depending on your user
+%% pool
+%% configuration, your users will receive their confirmation code in an email
+%% or SMS
+%% message.
 %%
 %% Local users who signed up in your user pool are the only type of user who
 %% can confirm
 %% sign-up with a code. Users who federate through an external identity
 %% provider (IdP) have
-%% already been confirmed by their IdP. Administrator-created users, users
-%% created with the
-%% AdminCreateUser:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminCreateUser.html
-%% API operation, confirm their accounts when they respond to
-%% their invitation email message and choose a password. They do not receive
-%% a confirmation
-%% code. Instead, they receive a temporary password.
+%% already been confirmed by their IdP.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For
@@ -5778,7 +5677,7 @@ confirm_sign_up(Client, Input, Options)
 %% @doc Creates a new group in the specified user pool.
 %%
 %% For more information about user pool
-%% groups see Adding groups to a user pool:
+%% groups, see Adding groups to a user pool:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
@@ -5876,15 +5775,6 @@ create_identity_provider(Client, Input, Options)
 %% 2MB, separate it
 %% into multiple requests, each with a size smaller than the limit.
 %%
-%% As a best practice, modify the output of
-%% DescribeManagedLoginBrandingByClient:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeManagedLoginBrandingByClient.html
-%% into the request parameters for this
-%% operation. To get all settings, set `ReturnMergedResources' to
-%% `true'. For more information, see API and SDK operations for managed
-%% login branding:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/managed-login-brandingdesigner.html#branding-designer-api.
-%%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
 %% this operation, you must use IAM credentials to authorize requests, and
@@ -5956,12 +5846,7 @@ create_resource_server(Client, Input, Options)
 %%
 %% You can import users into user pools from a comma-separated
 %% values (CSV) file without adding Amazon Cognito MAU costs to your Amazon
-%% Web Services bill. To generate a
-%% template for your import, see GetCSVHeader:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_GetCSVHeader.html.
-%% To learn more about CSV import, see
-%% Importing users from a CSV file:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html.
+%% Web Services bill.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -5992,10 +5877,16 @@ create_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserImportJob">>, Input, Options).
 
-%% @doc
-%% This action might generate an SMS text message.
+%% @doc Creates a new Amazon Cognito user pool.
 %%
-%% Starting June 1, 2021, US telecom carriers
+%% This operation sets basic and advanced configuration
+%% options.
+%%
+%% If you don't provide a value for an attribute, Amazon Cognito sets it
+%% to its default value.
+%%
+%% This action might generate an SMS text message. Starting June 1, 2021, US
+%% telecom carriers
 %% require you to register an origination phone number before you can send
 %% SMS messages
 %% to US phone numbers. If you use SMS text messages in Amazon Cognito, you
@@ -6022,18 +5913,6 @@ create_user_import_job(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
-%%
-%% Creates a new Amazon Cognito user pool. This operation sets basic and
-%% advanced configuration
-%% options. You can create a user pool in the Amazon Cognito console to your
-%% preferences and use the
-%% output of DescribeUserPool:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html
-%% to generate requests from that
-%% baseline.
-%%
-%% If you don't provide a value for an attribute, Amazon Cognito sets it
-%% to its default value.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -6067,17 +5946,13 @@ create_user_pool(Client, Input, Options)
 %% @doc Creates an app client in a user pool.
 %%
 %% This operation sets basic and advanced
-%% configuration options. You can create an app client in the Amazon Cognito
-%% console to your
-%% preferences and use the output of DescribeUserPoolClient:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPoolClient.html
-%% to generate requests from that
-%% baseline.
+%% configuration options.
 %%
-%% New app clients activate token revocation by default. For more information
-%% about
-%% revoking tokens, see RevokeToken:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_RevokeToken.html.
+%% Unlike app clients created in the console, Amazon Cognito doesn't
+%% automatically assign a
+%% branding style to app clients that you configure with this API operation.
+%% Managed login and classic hosted UI pages aren't
+%% available for your client until after you apply a branding style.
 %%
 %% If you don't provide a value for an attribute, Amazon Cognito sets it
 %% to its default value.
@@ -6115,10 +5990,10 @@ create_user_pool_client(Client, Input, Options)
 %% web server for
 %% authentication in your application.
 %%
-%% This operation creates a new user pool prefix or
-%% custom domain and sets the managed login branding version. Set the
-%% branding version to
-%% `1' for hosted UI (classic) or `2' for managed login. When you
+%% This operation creates a new user pool prefix domain
+%% or custom domain and sets the managed login branding version. Set the
+%% branding version
+%% to `1' for hosted UI (classic) or `2' for managed login. When you
 %% choose a custom domain, you must provide an SSL certificate in the US East
 %% (N. Virginia)
 %% Amazon Web Services Region in your request.
@@ -6318,10 +6193,10 @@ delete_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceServer">>, Input, Options).
 
-%% @doc Self-deletes a user profile.
+%% @doc Deletes the profile of the currently signed-in user.
 %%
-%% A deleted user profile can no longer be used to sign in
-%% and can't be restored.
+%% A deleted user profile can no
+%% longer be used to sign in and can't be restored.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -6351,12 +6226,11 @@ delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
-%% @doc Self-deletes attributes for a user.
+%% @doc Deletes attributes from the currently signed-in user.
 %%
-%% For example, your application can submit a request
-%% to this operation when a user wants to remove their `birthdate'
-%% attribute
-%% value.
+%% For example, your application
+%% can submit a request to this operation when a user wants to remove their
+%% `birthdate' attribute value.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -6390,6 +6264,21 @@ delete_user_attributes(Client, Input, Options)
 %%
 %% After you delete a user pool, users can no longer sign in to any
 %% associated applications.
+%%
+%% When you delete a user pool, it's no longer visible or operational in
+%% your Amazon Web Services account. Amazon Cognito retains deleted user
+%% pools in an inactive state for 14
+%% days, then begins a cleanup process that fully removes them from Amazon
+%% Web Services systems. In case
+%% of accidental deletion, contact Amazon Web Services Support within 14 days
+%% for restoration
+%% assistance.
+%%
+%% Amazon Cognito begins full deletion of all resources from deleted user
+%% pools after 14 days. In
+%% the case of large user pools, the cleanup process might take significant
+%% additional time
+%% before all user data is permanently deleted.
 -spec delete_user_pool(aws_client:aws_client(), delete_user_pool_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6449,7 +6338,7 @@ delete_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolDomain">>, Input, Options).
 
-%% @doc Deletes a registered passkey, or webauthN, authenticator for the
+%% @doc Deletes a registered passkey, or WebAuthn, authenticator for the
 %% currently signed-in
 %% user.
 %%
@@ -6711,10 +6600,12 @@ describe_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserPoolDomain">>, Input, Options).
 
-%% @doc Forgets the specified device.
+%% @doc Given a device key, deletes a remembered device as the currently
+%% signed-in user.
 %%
-%% For more information about device authentication, see
-%% Working with user devices in your user pool:
+%% For
+%% more information about device authentication, see Working with user
+%% devices in your user pool:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
@@ -6745,34 +6636,18 @@ forget_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgetDevice">>, Input, Options).
 
-%% @doc Calling this API causes a message to be sent to the end user with a
-%% confirmation code
-%% that is required to change the user's password.
+%% @doc Sends a password-reset confirmation code for the currently signed-in
+%% user.
 %%
-%% For the `Username' parameter,
-%% you can use the username or user alias. The method used to send the
-%% confirmation code is
-%% sent according to the specified AccountRecoverySetting. For more
-%% information, see Recovering
-%% User Accounts:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html
-%% in the Amazon Cognito Developer Guide. To
-%% use the confirmation code for resetting the password, call
-%% ConfirmForgotPassword:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmForgotPassword.html.
+%% For the `Username' parameter, you can use the username or user
+%% alias.
 %%
-%% If neither a verified phone number nor a verified email exists, this API
+%% If neither a verified phone number nor a verified email exists, Amazon
+%% Cognito responds with an
+%% `InvalidParameterException' error . If your app client has a client
+%% secret and you don't provide a `SECRET_HASH' parameter, this API
 %% returns
-%% `InvalidParameterException'. If your app client has a client secret
-%% and
-%% you don't provide a `SECRET_HASH' parameter, this API returns
 %% `NotAuthorizedException'.
-%%
-%% To use this API operation, your user pool must have self-service account
-%% recovery
-%% configured. Use AdminSetUserPassword:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserPassword.html
-%% if you manage passwords as an administrator.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For
@@ -6828,9 +6703,31 @@ forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgotPassword">>, Input, Options).
 
-%% @doc Gets the header information for the comma-separated value (CSV) file
-%% to be used as
-%% input for the user import job.
+%% @doc Given a user pool ID, generates a comma-separated value (CSV) list
+%% populated with
+%% available user attributes in the user pool.
+%%
+%% This list is the header for the CSV file
+%% that determines the users in a user import job. Save the content of
+%% `CSVHeader' in the response as a `.csv' file and populate it
+%% with the usernames and attributes of users that you want to import. For
+%% more information
+%% about CSV user import, see Importing users from a CSV file:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 -spec get_csv_header(aws_client:aws_client(), get_csv_header_request()) ->
     {ok, get_csv_header_response(), tuple()} |
     {error, any()} |
@@ -6847,7 +6744,9 @@ get_csv_header(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCSVHeader">>, Input, Options).
 
-%% @doc Gets the device.
+%% @doc Given a device key, returns information about a remembered device for
+%% the current
+%% user.
 %%
 %% For more information about device authentication, see Working with user
 %% devices in your user pool:
@@ -6881,9 +6780,27 @@ get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevice">>, Input, Options).
 
-%% @doc Gets a group.
+%% @doc Given a user pool ID and a group name, returns information about the
+%% user
+%% group.
 %%
-%% Calling this action requires developer credentials.
+%% For more information about user pool groups, see Adding groups to a user
+%% pool:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 -spec get_group(aws_client:aws_client(), get_group_request()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
@@ -6900,7 +6817,13 @@ get_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroup">>, Input, Options).
 
-%% @doc Gets the specified IdP.
+%% @doc Given the identifier of an identity provider (IdP), for example
+%% `examplecorp', returns information about the user pool configuration
+%% for
+%% that IdP.
+%%
+%% For more information about IdPs, see Third-party IdP sign-in:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html.
 -spec get_identity_provider_by_identifier(aws_client:aws_client(), get_identity_provider_by_identifier_request()) ->
     {ok, get_identity_provider_by_identifier_response(), tuple()} |
     {error, any()} |
@@ -6917,7 +6840,27 @@ get_identity_provider_by_identifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityProviderByIdentifier">>, Input, Options).
 
-%% @doc Gets the logging configuration of a user pool.
+%% @doc Given a user pool ID, returns the logging configuration.
+%%
+%% User pools can export
+%% message-delivery error and threat-protection activity logs to external
+%% Amazon Web Services services. For more information, see Exporting user
+%% pool logs:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/exporting-quotas-and-usage.html.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 -spec get_log_delivery_configuration(aws_client:aws_client(), get_log_delivery_configuration_request()) ->
     {ok, get_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
@@ -6934,17 +6877,33 @@ get_log_delivery_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogDeliveryConfiguration">>, Input, Options).
 
-%% @doc This method takes a user pool ID, and returns the signing
+%% @doc Given a user pool ID, returns the signing certificate for SAML 2.0
+%% federation.
+%%
+%% Issued certificates are valid for 10 years from the date of issue. Amazon
+%% Cognito issues and
+%% assigns a new signing certificate annually. This renewal process returns a
+%% new value in
+%% the response to `GetSigningCertificate', but doesn't invalidate
+%% the original
 %% certificate.
 %%
-%% The issued
-%% certificate is valid for 10 years from the date of issue.
+%% For more information, see Signing SAML requests:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-SAML-signing-encryption.html#cognito-user-pools-SAML-signing.
 %%
-%% Amazon Cognito issues and assigns a new signing certificate annually. This
-%% process returns a
-%% new value in the response to `GetSigningCertificate', but doesn't
-%% invalidate
-%% the original certificate.
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 -spec get_signing_certificate(aws_client:aws_client(), get_signing_certificate_request()) ->
     {ok, get_signing_certificate_response(), tuple()} |
     {error, any()} |
@@ -6961,15 +6920,17 @@ get_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSigningCertificate">>, Input, Options).
 
-%% @doc Gets the user interface (UI) Customization information for a
-%% particular app client's
-%% app UI, if any such information exists for the client.
+%% @doc Given a user pool ID or app client, returns information about classic
+%% hosted UI
+%% branding that you applied, if any.
 %%
-%% If nothing is set for the
-%% particular client, but there is an existing pool level customization (the
-%% app
-%% `clientId' is `ALL'), then that information is returned. If
-%% nothing is present, then an empty shape is returned.
+%% Returns user-pool level branding information if no
+%% app client branding is applied, or if you don't specify an app client
+%% ID. Returns
+%% an empty object if you haven't applied hosted UI branding to either
+%% the client or
+%% the user pool. For more information, see Hosted UI (classic) branding:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/hosted-ui-classic-branding.html.
 -spec get_ui_customization(aws_client:aws_client(), get_ui_customization_request()) ->
     {ok, get_ui_customization_response(), tuple()} |
     {error, any()} |
@@ -6986,7 +6947,8 @@ get_ui_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUICustomization">>, Input, Options).
 
-%% @doc Gets the user attributes and metadata for a user.
+%% @doc Gets user attributes and and MFA settings for the currently signed-in
+%% user.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -7016,13 +6978,9 @@ get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUser">>, Input, Options).
 
-%% @doc Generates a user attribute verification code for the specified
-%% attribute name.
-%%
-%% Sends a
-%% message to a user with a code that they must return in a
-%% VerifyUserAttribute
-%% request.
+%% @doc Given an attribute name, sends a user attribute verification code for
+%% the specified
+%% attribute name to the currently signed-in user.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -7088,9 +7046,21 @@ get_user_attribute_verification_code(Client, Input, Options)
 %%
 %% The user's multi-factor authentication (MFA) preferences.
 %%
-%% The user's options in the `USER_AUTH' flow that they can
-%% select in a `SELECT_CHALLENGE' response or request in a
-%% `PREFERRED_CHALLENGE'request.
+%% The user's options for choice-based authentication with the
+%% `USER_AUTH' flow.
+%%
+%% Authorize this action with a signed-in user's access token. It must
+%% include the scope `aws.cognito.signin.user.admin'.
+%%
+%% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
+%% policies in requests for this API operation. For
+%% this operation, you can't use IAM credentials to authorize requests,
+%% and you can't
+%% grant IAM permissions in policies. For more information about
+%% authorization models in
+%% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
+%% endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 -spec get_user_auth_factors(aws_client:aws_client(), get_user_auth_factors_request()) ->
     {ok, get_user_auth_factors_response(), tuple()} |
     {error, any()} |
@@ -7107,7 +7077,36 @@ get_user_auth_factors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserAuthFactors">>, Input, Options).
 
-%% @doc Gets the user pool multi-factor authentication (MFA) configuration.
+%% @doc Given a user pool ID, returns configuration for sign-in with WebAuthn
+%% authenticators
+%% and for multi-factor authentication (MFA).
+%%
+%% This operation describes the
+%% following:
+%%
+%% The WebAuthn relying party (RP) ID and user-verification settings.
+%%
+%% The required, optional, or disabled state of MFA for all user pool
+%% users.
+%%
+%% The message templates for email and SMS MFA.
+%%
+%% The enabled or disabled state of time-based one-time password (TOTP)
+%% MFA.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 -spec get_user_pool_mfa_config(aws_client:aws_client(), get_user_pool_mfa_config_request()) ->
     {ok, get_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
@@ -7195,12 +7194,15 @@ global_sign_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GlobalSignOut">>, Input, Options).
 
-%% @doc Initiates sign-in for a user in the Amazon Cognito user directory.
+%% @doc Declares an authentication flow and initiates sign-in for a user in
+%% the Amazon Cognito user
+%% directory.
 %%
-%% You can't sign in a user
-%% with a federated IdP with `InitiateAuth'. For more information, see
-%% Adding user pool sign-in through a third party:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html.
+%% Amazon Cognito might respond with an additional challenge or an
+%% `AuthenticationResult' that contains the outcome of a successful
+%% authentication. You can't sign in a user with a federated IdP with
+%% `InitiateAuth'. For more information, see Authentication:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/authentication.html.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For
@@ -7256,8 +7258,8 @@ initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateAuth">>, Input, Options).
 
-%% @doc Lists the sign-in devices that Amazon Cognito has registered to the
-%% current user.
+%% @doc Lists the devices that Amazon Cognito has registered to the currently
+%% signed-in user.
 %%
 %% For more
 %% information about device authentication, see Working with user devices in
@@ -7292,7 +7294,7 @@ list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevices">>, Input, Options).
 
-%% @doc Lists the groups associated with a user pool.
+%% @doc Given a user pool ID, returns user pool groups and their details.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -7323,7 +7325,11 @@ list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
 
-%% @doc Lists information about all IdPs for a user pool.
+%% @doc Given a user pool ID, returns information about configured identity
+%% providers (IdPs).
+%%
+%% For more information about IdPs, see Third-party IdP sign-in:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -7354,7 +7360,12 @@ list_identity_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityProviders">>, Input, Options).
 
-%% @doc Lists the resource servers for a user pool.
+%% @doc Given a user pool ID, returns all resource servers and their details.
+%%
+%% For more
+%% information about resource servers, see Access control with resource
+%% servers:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-define-resource-servers.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -7387,11 +7398,10 @@ list_resource_servers(Client, Input, Options)
 
 %% @doc Lists the tags that are assigned to an Amazon Cognito user pool.
 %%
-%% A tag is a label that you can apply to user pools to categorize and manage
-%% them in
-%% different ways, such as by purpose, owner, environment, or other criteria.
-%%
-%% You can use this action up to 10 times per second, per account.
+%% For more information, see
+%% Tagging
+%% resources:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/tagging.html.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -7408,7 +7418,14 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Lists user import jobs for a user pool.
+%% @doc Given a user pool ID, returns user import jobs and their details.
+%%
+%% Import jobs are
+%% retained in user pool configuration so that you can stage, stop, start,
+%% review, and
+%% delete them. For more information about user import, see Importing users
+%% from a CSV file:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -7439,7 +7456,12 @@ list_user_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserImportJobs">>, Input, Options).
 
-%% @doc Lists the clients that have been created for the specified user pool.
+%% @doc Given a user pool ID, lists app clients.
+%%
+%% App clients are sets of rules for the access
+%% that you want a user pool to grant to one application. For more
+%% information, see App clients:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -7470,7 +7492,8 @@ list_user_pool_clients(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPoolClients">>, Input, Options).
 
-%% @doc Lists the user pools associated with an Amazon Web Services account.
+%% @doc Lists user pools and their details in the current Amazon Web Services
+%% account.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -7501,7 +7524,9 @@ list_user_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPools">>, Input, Options).
 
-%% @doc Lists users and their basic details in a user pool.
+%% @doc Given a user pool ID, returns a list of users and their basic details
+%% in a user
+%% pool.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -7532,7 +7557,12 @@ list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
 
-%% @doc Lists the users in the specified group.
+%% @doc Given a user pool ID and a group name, returns a list of users in the
+%% group.
+%%
+%% For more
+%% information about user pool groups, see Adding groups to a user pool:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -7563,9 +7593,22 @@ list_users_in_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsersInGroup">>, Input, Options).
 
-%% @doc Generates a list of the current user's registered passkey, or
-%% webauthN,
-%% credentials.
+%% @doc Generates a list of the currently signed-in user's registered
+%% passkey, or
+%% WebAuthn, credentials.
+%%
+%% Authorize this action with a signed-in user's access token. It must
+%% include the scope `aws.cognito.signin.user.admin'.
+%%
+%% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
+%% policies in requests for this API operation. For
+%% this operation, you can't use IAM credentials to authorize requests,
+%% and you can't
+%% grant IAM permissions in policies. For more information about
+%% authorization models in
+%% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
+%% endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 -spec list_web_authn_credentials(aws_client:aws_client(), list_web_authn_credentials_request()) ->
     {ok, list_web_authn_credentials_response(), tuple()} |
     {error, any()} |
@@ -7582,9 +7625,16 @@ list_web_authn_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebAuthnCredentials">>, Input, Options).
 
-%% @doc Resends the confirmation (for confirmation of registration) to a
-%% specific user in the
-%% user pool.
+%% @doc Resends the code that confirms a new account for a user who has
+%% signed up in your user
+%% pool.
+%%
+%% Amazon Cognito sends confirmation codes to the user attribute in the
+%% `AutoVerifiedAttributes' property of your user pool. When you prompt
+%% new
+%% users for the confirmation code, include a &quot;Resend code&quot; option
+%% that generates a call to
+%% this API operation.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For
@@ -7745,7 +7795,10 @@ revoke_token(Client, Input, Options)
 %% @doc Sets up or modifies the logging configuration of a user pool.
 %%
 %% User pools can export
-%% user notification logs and advanced security features user activity logs.
+%% user notification logs and, when threat protection is active,
+%% user-activity logs. For
+%% more information, see Exporting user
+%% pool logs: cognito/latest/developerguide/exporting-quotas-and-usage.html.
 -spec set_log_delivery_configuration(aws_client:aws_client(), set_log_delivery_configuration_request()) ->
     {ok, set_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
@@ -7762,15 +7815,32 @@ set_log_delivery_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLogDeliveryConfiguration">>, Input, Options).
 
-%% @doc Configures actions on detected risks.
+%% @doc Configures threat protection for a user pool or app client.
 %%
-%% To delete the risk configuration for
-%% `UserPoolId' or `ClientId', pass null values for all four
-%% configuration types.
+%% Sets configuration for the
+%% following.
 %%
-%% To activate Amazon Cognito advanced security features, update the user
-%% pool to include the
-%% `UserPoolAddOns' key`AdvancedSecurityMode'.
+%% Responses to risks with adaptive authentication
+%%
+%% Responses to vulnerable passwords with compromised-credentials
+%% detection
+%%
+%% Notifications to users who have had risky activity detected
+%%
+%% IP-address denylist and allowlist
+%%
+%% To set the risk configuration for the user pool to defaults, send this
+%% request with
+%% only the `UserPoolId' parameter. To reset the threat protection
+%% settings of
+%% an app client to be inherited from the user pool, send `UserPoolId'
+%% and
+%% `ClientId' parameters only. To change threat protection to audit-only
+%% or
+%% off, update the value of `UserPoolAddOns' in an `UpdateUserPool'
+%% request. To activate this setting, your user pool must be on the
+%% Plus tier:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-plus.html.
 -spec set_risk_configuration(aws_client:aws_client(), set_risk_configuration_request()) ->
     {ok, set_risk_configuration_response(), tuple()} |
     {error, any()} |
@@ -7787,25 +7857,31 @@ set_risk_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetRiskConfiguration">>, Input, Options).
 
-%% @doc Sets the user interface (UI) customization information for a user
-%% pool's built-in app
-%% UI.
+%% @doc Configures UI branding settings for domains with the hosted UI
+%% (classic) branding
+%% version.
 %%
-%% You can specify app UI customization settings for a single client (with a
-%% specific
-%% `clientId') or for all clients (by setting the `clientId' to
-%% `ALL'). If you specify `ALL', the default configuration is
-%% used for every client that has no previously set UI customization. If you
-%% specify UI
-%% customization settings for a particular client, it will no longer return
-%% to the
+%% Your user pool must have a domain. Configure a domain with .
+%%
+%% Set the default configuration for all clients with a `ClientId' of
+%% `ALL'. When the `ClientId' value is an app client ID, the
+%% settings you pass in this request apply to that app client and override
+%% the default
 %% `ALL' configuration.
 %%
-%% To use this API, your user pool must have a domain associated with it.
-%% Otherwise,
-%% there is no place to host the app's pages, and the service will throw
-%% an
-%% error.
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 -spec set_ui_customization(aws_client:aws_client(), set_ui_customization_request()) ->
     {ok, set_ui_customization_response(), tuple()} |
     {error, any()} |
@@ -7841,14 +7917,6 @@ set_ui_customization(Client, Input, Options)
 %% attempts, deactivate
 %% MFA for users and turn on Adaptive Authentication for the user pool.
 %%
-%% This operation doesn't reset an existing TOTP MFA for a user. To
-%% register a new
-%% TOTP factor for a user, make an AssociateSoftwareToken:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html
-%% request. For more information,
-%% see TOTP software token MFA:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa-totp.html.
-%%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
 %%
@@ -7877,8 +7945,14 @@ set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserMFAPreference">>, Input, Options).
 
-%% @doc Sets the user pool multi-factor authentication (MFA) and passkey
+%% @doc Sets user pool multi-factor authentication (MFA) and passkey
 %% configuration.
+%%
+%% For more
+%% information about user pool MFA, see Adding MFA:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa.html.
+%% For more information about WebAuthn passkeys see Authentication flows:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow-methods.html#amazon-cognito-user-pools-authentication-flow-methods-passkey.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers
@@ -7930,9 +8004,7 @@ set_user_pool_mfa_config(Client, Input, Options)
 %% You can use it to configure
 %% only SMS MFA. You can't use it to configure time-based one-time
 %% password (TOTP) software
-%% token MFA. To configure either type of MFA, use SetUserMFAPreference:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SetUserMFAPreference.html
-%% instead.
+%% token or email MFA.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -7962,9 +8034,9 @@ set_user_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserSettings">>, Input, Options).
 
-%% @doc Registers the user in the specified user pool and creates a user
-%% name, password, and
-%% user attributes.
+%% @doc Registers a user with an app client and requests a user name,
+%% password, and user
+%% attributes in the user pool.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For
@@ -8013,13 +8085,7 @@ set_user_settings(Client, Input, Options)
 %% exception in
 %% the response, the user is successfully created and is in an
 %% `UNCONFIRMED'
-%% state. You can send a new code with the ResendConfirmationCode:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ResendConfirmationCode.html
-%% request, or confirm the user as an administrator
-%% with an
-%% AdminConfirmSignUp:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminConfirmSignUp.html
-%% request.
+%% state.
 -spec sign_up(aws_client:aws_client(), sign_up_request()) ->
     {ok, sign_up_response(), tuple()} |
     {error, any()} |
@@ -8036,7 +8102,13 @@ sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SignUp">>, Input, Options).
 
-%% @doc Starts the user import.
+%% @doc Instructs your user pool to start importing users from a CSV file
+%% that contains their
+%% usernames and attributes.
+%%
+%% For more information about importing users from a CSV file,
+%% see Importing users from a CSV file:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html.
 -spec start_user_import_job(aws_client:aws_client(), start_user_import_job_request()) ->
     {ok, start_user_import_job_response(), tuple()} |
     {error, any()} |
@@ -8053,20 +8125,15 @@ start_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartUserImportJob">>, Input, Options).
 
-%% @doc Requests credential creation options from your user pool for
-%% registration of a passkey
-%% authenticator.
+%% @doc Requests credential creation options from your user pool for the
+%% currently signed-in
+%% user.
 %%
 %% Returns information about the user pool, the user profile, and
-%% authentication requirements. Users must provide this information in their
-%% request to
-%% enroll your application with their passkey provider.
-%%
-%% After users present this data and register with their passkey provider,
-%% return the
-%% response to your user pool in a CompleteWebAuthnRegistration:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CompleteWebAuthnRegistration.html
-%% API request.
+%% authentication
+%% requirements. Users must provide this information in their request to
+%% enroll your
+%% application with their passkey provider.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -8086,7 +8153,13 @@ start_web_authn_registration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWebAuthnRegistration">>, Input, Options).
 
-%% @doc Stops the user import job.
+%% @doc Instructs your user pool to stop a running job that's importing
+%% users from a CSV
+%% file that contains their usernames and attributes.
+%%
+%% For more information about importing
+%% users from a CSV file, see Importing users from a CSV file:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html.
 -spec stop_user_import_job(aws_client:aws_client(), stop_user_import_job_request()) ->
     {ok, stop_user_import_job_response(), tuple()} |
     {error, any()} |
@@ -8147,10 +8220,8 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes the specified tags from an Amazon Cognito user pool.
-%%
-%% You can use this action up to 5
-%% times per second, per account.
+%% @doc Given tag IDs that you previously assigned to a user pool, removes
+%% them.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -8167,13 +8238,31 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Provides the feedback for an authentication event, whether it was
-%% from a valid user or
-%% not.
+%% @doc Provides the feedback for an authentication event generated by threat
+%% protection
+%% features.
 %%
-%% This feedback is used for improving the risk evaluation decision for the
-%% user pool
-%% as part of Amazon Cognito advanced security.
+%% The user's response indicates that you think that the event either was
+%% from a
+%% valid user or was an unwanted authentication attempt. This feedback
+%% improves the risk
+%% evaluation decision for the user pool as part of Amazon Cognito threat
+%% protection.
+%% To activate this setting, your user pool must be on the
+%% Plus tier:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-plus.html.
+%%
+%% This operation requires a `FeedbackToken' that Amazon Cognito
+%% generates and adds to
+%% notification emails when users have potentially suspicious authentication
+%% events. Users
+%% invoke this operation when they select the link that corresponds to
+%% `{one-click-link-valid}' or `{one-click-link-invalid}' in your
+%% notification template. Because `FeedbackToken' is a required
+%% parameter, you
+%% can' make requests to `UpdateAuthEventFeedback' without the
+%% contents of
+%% the notification email message.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For
@@ -8200,10 +8289,19 @@ update_auth_event_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAuthEventFeedback">>, Input, Options).
 
-%% @doc Updates the device status.
+%% @doc Updates the status of a the currently signed-in user's device so
+%% that it is
+%% marked as remembered or not remembered for the purpose of device
+%% authentication.
 %%
-%% For more information about device authentication, see
-%% Working with user devices in your user pool:
+%% Device
+%% authentication is a &quot;remember me&quot; mechanism that silently
+%% completes sign-in from trusted
+%% devices with a device key instead of a user-provided MFA code. This
+%% operation changes
+%% the status of a device without deleting it, so you can enable it again
+%% later. For more
+%% information about device authentication, see Working with devices:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
@@ -8234,7 +8332,13 @@ update_device_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDeviceStatus">>, Input, Options).
 
-%% @doc Updates the specified group with the specified attributes.
+%% @doc Given the name of a user pool group, updates any of the properties
+%% for precedence,
+%% IAM role, or description.
+%%
+%% For more information about user pool groups, see Adding groups to a user
+%% pool:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -8265,7 +8369,15 @@ update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
 
-%% @doc Updates IdP information for a user pool.
+%% @doc Modifies the configuration and trust relationship between a
+%% third-party identity
+%% provider (IdP) and a user pool.
+%%
+%% Amazon Cognito accepts sign-in with third-party identity
+%% providers through managed login and OIDC relying-party libraries. For more
+%% information,
+%% see Third-party IdP sign-in:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -8316,15 +8428,6 @@ update_identity_provider(Client, Input, Options)
 %% 2MB, separate it
 %% into multiple requests, each with a size smaller than the limit.
 %%
-%% As a best practice, modify the output of
-%% DescribeManagedLoginBrandingByClient:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeManagedLoginBrandingByClient.html
-%% into the request parameters for this
-%% operation. To get all settings, set `ReturnMergedResources' to
-%% `true'. For more information, see API and SDK operations for managed
-%% login branding:
-%% https://docs.aws.amazon.com/cognito/latest/developerguide/managed-login-brandingdesigner.html#branding-designer-api
-%%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
 %% this operation, you must use IAM credentials to authorize requests, and
@@ -8354,9 +8457,12 @@ update_managed_login_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateManagedLoginBranding">>, Input, Options).
 
-%% @doc Updates the name and scopes of resource server.
+%% @doc Updates the name and scopes of a resource server.
 %%
-%% All other fields are read-only.
+%% All other fields are read-only. For
+%% more information about resource servers, see Access control with resource
+%% servers:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-define-resource-servers.html.
 %%
 %% If you don't provide a value for an attribute, it is set to the
 %% default
@@ -8391,16 +8497,14 @@ update_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResourceServer">>, Input, Options).
 
-%% @doc With this operation, your users can update one or more of their
-%% attributes with their
-%% own credentials.
+%% @doc Updates the currently signed-in user's attributes.
 %%
-%% You authorize this API request with the user's access token. To delete
-%% an attribute from your user, submit the attribute in your API request with
-%% a blank
-%% value. Custom attribute values in this request must include the
-%% `custom:'
-%% prefix.
+%% To delete an attribute from
+%% the user, submit the attribute in your API request with a blank value.
+%%
+%% For custom attributes, you must add a `custom:' prefix to the
+%% attribute
+%% name, for example `custom:department'.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -8459,10 +8563,18 @@ update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserAttributes">>, Input, Options).
 
-%% @doc
-%% This action might generate an SMS text message.
+%% @doc Updates the configuration of a user pool.
 %%
-%% Starting June 1, 2021, US telecom carriers
+%% To avoid setting parameters to Amazon Cognito
+%% defaults, construct this API request to pass the existing configuration of
+%% your user
+%% pool, modified to include the changes that you want to make.
+%%
+%% If you don't provide a value for an attribute, Amazon Cognito sets it
+%% to its default value.
+%%
+%% This action might generate an SMS text message. Starting June 1, 2021, US
+%% telecom carriers
 %% require you to register an origination phone number before you can send
 %% SMS messages
 %% to US phone numbers. If you use SMS text messages in Amazon Cognito, you
@@ -8489,14 +8601,6 @@ update_user_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
-%%
-%% Updates the specified user pool with the specified attributes. You can get
-%% a list of
-%% the current user pool settings using DescribeUserPool:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html.
-%%
-%% If you don't provide a value for an attribute, Amazon Cognito sets it
-%% to its default value.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -8527,21 +8631,23 @@ update_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPool">>, Input, Options).
 
-%% @doc Updates the specified user pool app client with the specified
-%% attributes.
+%% @doc Given a user pool app client ID, updates the configuration.
 %%
-%% You can get
-%% a list of the current user pool app client settings using
-%% DescribeUserPoolClient:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPoolClient.html.
+%% To avoid setting
+%% parameters to Amazon Cognito defaults, construct this API request to pass
+%% the existing
+%% configuration of your app client, modified to include the changes that you
+%% want to
+%% make.
 %%
 %% If you don't provide a value for an attribute, Amazon Cognito sets it
 %% to its default value.
 %%
-%% You can also use this operation to enable token revocation for user pool
-%% clients. For
-%% more information about revoking tokens, see RevokeToken:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_RevokeToken.html.
+%% Unlike app clients created in the console, Amazon Cognito doesn't
+%% automatically assign a
+%% branding style to app clients that you configure with this API operation.
+%% Managed login and classic hosted UI pages aren't
+%% available for your client until after you apply a branding style.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For
@@ -8637,13 +8743,15 @@ update_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPoolDomain">>, Input, Options).
 
-%% @doc Use this API to register a user's entered time-based one-time
-%% password (TOTP) code and
-%% mark the user's software token MFA status as &quot;verified&quot; if
-%% successful.
+%% @doc Registers the current user's time-based one-time password (TOTP)
+%% authenticator
+%% with a code generated in their authenticator app from a private key
+%% that's supplied
+%% by your user pool.
 %%
-%% The request takes
-%% an access token or a session string, but not both.
+%% Marks the user's software token MFA status as &quot;verified&quot; if
+%% successful. The request takes an access token or a session string, but not
+%% both.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For
@@ -8670,14 +8778,17 @@ verify_software_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifySoftwareToken">>, Input, Options).
 
-%% @doc Verifies the specified user attributes in the user pool.
+%% @doc Submits a verification code for a signed-in user who has added or
+%% changed a value of
+%% an auto-verified attribute.
+%%
+%% When successful, the user's attribute becomes verified
+%% and the attribute `email_verified' or `phone_number_verified'
+%% becomes `true'.
 %%
 %% If your user pool requires verification before Amazon Cognito updates the
 %% attribute value,
-%% VerifyUserAttribute updates the affected attribute to its pending value.
-%% For more
-%% information, see UserAttributeUpdateSettingsType:
-%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserAttributeUpdateSettingsType.html.
+%% this operation updates the affected attribute to its pending value.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.

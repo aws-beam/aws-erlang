@@ -3919,6 +3919,7 @@
 %%   <<"CidrBlock">> => string(),
 %%   <<"CidrBlockAssociationSet">> => list(vpc_cidr_block_association()()),
 %%   <<"DhcpOptionsId">> => string(),
+%%   <<"EncryptionControl">> => vpc_encryption_control(),
 %%   <<"InstanceTenancy">> => list(any()),
 %%   <<"Ipv6CidrBlockAssociationSet">> => list(vpc_ipv6_cidr_block_association()()),
 %%   <<"IsDefault">> => boolean(),
@@ -5069,6 +5070,13 @@
 %%   <<"LoadBalancerPort">> => integer()
 %% }
 -type analysis_load_balancer_listener() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_encryption_control_exclusion() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string()
+%% }
+-type vpc_encryption_control_exclusion() :: #{binary() => any()}.
 
 %% Example:
 %% memory_gi_b_per_v_cpu_request() :: #{
@@ -14926,6 +14934,16 @@
 -type launch_template_spot_market_options() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_encryption_control_exclusions() :: #{
+%%   <<"EgressOnlyInternetGateway">> => vpc_encryption_control_exclusion(),
+%%   <<"InternetGateway">> => vpc_encryption_control_exclusion(),
+%%   <<"NatGateway">> => vpc_encryption_control_exclusion(),
+%%   <<"VirtualPrivateGateway">> => vpc_encryption_control_exclusion(),
+%%   <<"VpcPeering">> => vpc_encryption_control_exclusion()
+%% }
+-type vpc_encryption_control_exclusions() :: #{binary() => any()}.
+
+%% Example:
 %% stale_security_group() :: #{
 %%   <<"Description">> => string(),
 %%   <<"GroupId">> => string(),
@@ -19210,6 +19228,18 @@
 %%   <<"InstanceMonitorings">> => list(instance_monitoring()())
 %% }
 -type monitor_instances_result() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_encryption_control() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"ResourceExclusions">> => vpc_encryption_control_exclusions(),
+%%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcEncryptionControlId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_encryption_control() :: #{binary() => any()}.
 
 %% Example:
 %% volume_status_details() :: #{
