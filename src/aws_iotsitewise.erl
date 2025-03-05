@@ -1180,6 +1180,7 @@
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayName">> => string(),
 %%   <<"gatewayPlatform">> => gateway_platform(),
+%%   <<"gatewayVersion">> => string(),
 %%   <<"lastUpdateDate">> => non_neg_integer()
 %% }
 -type gateway_summary() :: #{binary() => any()}.
@@ -2015,6 +2016,7 @@
 %% create_gateway_request() :: #{
 %%   <<"gatewayName">> := string(),
 %%   <<"gatewayPlatform">> := gateway_platform(),
+%%   <<"gatewayVersion">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_gateway_request() :: #{binary() => any()}.
@@ -2473,6 +2475,7 @@
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayName">> => string(),
 %%   <<"gatewayPlatform">> => gateway_platform(),
+%%   <<"gatewayVersion">> => string(),
 %%   <<"lastUpdateDate">> => non_neg_integer()
 %% }
 -type describe_gateway_response() :: #{binary() => any()}.
@@ -2950,6 +2953,7 @@
 
 %% Example:
 %% greengrass_v2() :: #{
+%%   <<"coreDeviceOperatingSystem">> => list(any()),
 %%   <<"coreDeviceThingName">> => string()
 %% }
 -type greengrass_v2() :: #{binary() => any()}.
