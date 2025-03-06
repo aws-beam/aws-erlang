@@ -1249,6 +1249,7 @@
 %%   <<"DeviceTypeOsx">> => list(any()),
 %%   <<"DeviceTypeWeb">> => list(any()),
 %%   <<"DeviceTypeWindows">> => list(any()),
+%%   <<"DeviceTypeWorkSpacesThinClient">> => list(any()),
 %%   <<"DeviceTypeZeroClient">> => list(any())
 %% }
 -type workspace_access_properties() :: #{binary() => any()}.

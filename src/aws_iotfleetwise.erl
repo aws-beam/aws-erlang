@@ -997,6 +997,7 @@
 %%   <<"messageId">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"offset">> => float(),
+%%   <<"signalValueType">> => list(any()),
 %%   <<"startBit">> => integer()
 %% }
 -type can_signal() :: #{binary() => any()}.
@@ -1206,11 +1207,13 @@
 %%   <<"bitMaskLength">> => integer(),
 %%   <<"bitRightShift">> => integer(),
 %%   <<"byteLength">> => integer(),
+%%   <<"isSigned">> => [boolean()],
 %%   <<"offset">> => float(),
 %%   <<"pid">> => integer(),
 %%   <<"pidResponseLength">> => integer(),
 %%   <<"scaling">> => float(),
 %%   <<"serviceMode">> => integer(),
+%%   <<"signalValueType">> => list(any()),
 %%   <<"startByte">> => integer()
 %% }
 -type obd_signal() :: #{binary() => any()}.

@@ -745,6 +745,7 @@
 %%   <<"LocationArn">> := string(),
 %%   <<"MountOptions">> => smb_mount_options(),
 %%   <<"Password">> => string(),
+%%   <<"ServerHostname">> => string(),
 %%   <<"Subdirectory">> => string(),
 %%   <<"User">> => string()
 %% }
@@ -1399,6 +1400,7 @@
 %%   <<"LocationArn">> := string(),
 %%   <<"MountOptions">> => nfs_mount_options(),
 %%   <<"OnPremConfig">> => on_prem_config(),
+%%   <<"ServerHostname">> => string(),
 %%   <<"Subdirectory">> => string()
 %% }
 -type update_location_nfs_request() :: #{binary() => any()}.
@@ -1494,6 +1496,7 @@
 %%   <<"LocationArn">> := string(),
 %%   <<"SecretKey">> => string(),
 %%   <<"ServerCertificate">> => binary(),
+%%   <<"ServerHostname">> => string(),
 %%   <<"ServerPort">> => integer(),
 %%   <<"ServerProtocol">> => list(any()),
 %%   <<"Subdirectory">> => string()
