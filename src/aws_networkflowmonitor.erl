@@ -412,7 +412,7 @@
 
 %% Example:
 %% update_monitor_input() :: #{
-%%   <<"clientToken">> => [string()],
+%%   <<"clientToken">> => string(),
 %%   <<"localResourcesToAdd">> => list(monitor_local_resource()()),
 %%   <<"localResourcesToRemove">> => list(monitor_local_resource()()),
 %%   <<"remoteResourcesToAdd">> => list(monitor_remote_resource()()),
@@ -434,7 +434,7 @@
 
 %% Example:
 %% create_scope_input() :: #{
-%%   <<"clientToken">> => [string()],
+%%   <<"clientToken">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"targets">> := list(target_resource()())
 %% }
@@ -621,7 +621,7 @@
 
 %% Example:
 %% create_monitor_input() :: #{
-%%   <<"clientToken">> => [string()],
+%%   <<"clientToken">> => string(),
 %%   <<"localResources">> := list(monitor_local_resource()()),
 %%   <<"monitorName">> := string(),
 %%   <<"remoteResources">> => list(monitor_remote_resource()()),
@@ -662,7 +662,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 -type get_monitor_errors() ::
     throttling_exception() | 
@@ -721,7 +722,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 -type list_monitors_errors() ::
     throttling_exception() | 
@@ -814,7 +816,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1077,8 +1080,14 @@ get_query_results_monitor_top_contributors(Client, MonitorName, QueryId, QueryMa
 %%
 %% You specify the query that you want to return results for by providing a
 %% query ID
-%% and a monitor name. This query returns the top contributors for a specific
-%% monitor.
+%% and a monitor name.
+%%
+%% This query returns the top contributors for a scope for workload insights.
+%% Workload
+%% insights provide a high level view of network flow performance data
+%% collected by agents.
+%% To return the data for the top contributors, see
+%% `GetQueryResultsWorkloadInsightsTopContributorsData'.
 %%
 %% Create a query ID for this call by calling the corresponding API call to
 %% start the query,
@@ -1135,11 +1144,14 @@ get_query_results_workload_insights_top_contributors(Client, QueryId, ScopeId, Q
 %%
 %% Specify the query that you want to return results for by providing a query
 %% ID
-%% and a scope ID. This query returns data for the top contributors for
-%% workload insights.
+%% and a scope ID.
+%%
+%% This query returns the data for top contributors for workload insights for
+%% a specific scope.
 %% Workload insights provide a high level view of network flow performance
 %% data collected by agents
-%% for a scope.
+%% for a scope. To return just the top contributors, see
+%% `GetQueryResultsWorkloadInsightsTopContributors'.
 %%
 %% Create a query ID for this call by calling the corresponding API call to
 %% start the query,
@@ -1202,8 +1214,9 @@ get_query_results_workload_insights_top_contributors_data(Client, QueryId, Scope
 %%
 %% When you start a query, use this call to check the status of the query to
 %% make sure that it has
-%% has `SUCCEEDED' before you review the results. Use the same query ID
-%% that you used for
+%% has `SUCCEEDED' before you
+%% reviewStartQueryWorkloadInsightsTopContributorsData the results. Use the
+%% same query ID that you used for
 %% the corresponding API call to start the query,
 %% `StartQueryMonitorTopContributors'.
 %%
@@ -1608,28 +1621,16 @@ start_query_workload_insights_top_contributors(Client, ScopeId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Return the data for a query with the Network Flow Monitor query
+%% @doc Start a query to return the with the Network Flow Monitor query
 %% interface.
 %%
-%% Specify the query that you want to return results for by providing a query
-%% ID
-%% and a scope ID. This query returns data for the top contributors for
+%% Specify the query that you want to start by providing a query ID
+%% and a monitor name. This query returns the data for top contributors for
 %% workload insights.
-%% Workload insights provide a high level view of network flow performance
-%% data collected by agents
-%% for a scope.
-%%
-%% A query ID is returned from an API call to start a query of a specific
-%% type; for
-%% example
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
 %% metric type, related to a scope (for workload insights) or a monitor.
-%%
-%% The top contributor network flows overall for a specific metric type, for
-%% example, the
-%% number of retransmissions.
 -spec start_query_workload_insights_top_contributors_data(aws_client:aws_client(), binary() | list(), start_query_workload_insights_top_contributors_data_input()) ->
     {ok, start_query_workload_insights_top_contributors_data_output(), tuple()} |
     {error, any()} |

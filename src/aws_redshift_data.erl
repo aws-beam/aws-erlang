@@ -294,11 +294,14 @@
 
 %% Example:
 %% list_statements_request() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Database">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"RoleLevel">> => [boolean()],
 %%   <<"StatementName">> => string(),
-%%   <<"Status">> => string()
+%%   <<"Status">> => string(),
+%%   <<"WorkgroupName">> => string()
 %% }
 -type list_statements_request() :: #{binary() => any()}.
 
@@ -903,6 +906,16 @@ list_schemas(Client, Input, Options)
 %%
 %% By default, only finished statements are shown.
 %% A token is returned to page through the statement list.
+%%
+%% When you use identity-enhanced role sessions to list statements, you must
+%% provide either the
+%% `cluster-identifier' or `workgroup-name' parameter. This ensures
+%% that the IdC user
+%% can only access the Amazon Redshift IdC applications they are assigned.
+%% For more information, see
+%%
+%% Trusted identity propagation overview:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html.
 %%
 %% For more information about the Amazon Redshift Data API and CLI usage
 %% examples, see

@@ -301,6 +301,8 @@
 %%   <<"HTTPMethod">> => rate_limit_h_t_t_p_method(),
 %%   <<"Header">> => rate_limit_header(),
 %%   <<"IP">> => rate_limit_ip(),
+%%   <<"JA3Fingerprint">> => rate_limit_j_a3_fingerprint(),
+%%   <<"JA4Fingerprint">> => rate_limit_j_a4_fingerprint(),
 %%   <<"LabelNamespace">> => rate_limit_label_namespace(),
 %%   <<"QueryArgument">> => rate_limit_query_argument(),
 %%   <<"QueryString">> => rate_limit_query_string(),
@@ -383,6 +385,12 @@
 %%   <<"IPAddressVersion">> => list(any())
 %% }
 -type rate_based_statement_managed_keys_ip_set() :: #{binary() => any()}.
+
+%% Example:
+%% j_a4_fingerprint() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type j_a4_fingerprint() :: #{binary() => any()}.
 
 %% Example:
 %% request_inspection_a_c_f_p() :: #{
@@ -471,6 +479,7 @@
 %%   <<"HeaderOrder">> => header_order(),
 %%   <<"Headers">> => headers(),
 %%   <<"JA3Fingerprint">> => j_a3_fingerprint(),
+%%   <<"JA4Fingerprint">> => j_a4_fingerprint(),
 %%   <<"JsonBody">> => json_body(),
 %%   <<"Method">> => method(),
 %%   <<"QueryString">> => query_string(),
@@ -1035,6 +1044,12 @@
 %%   <<"SuccessStrings">> => list(string()())
 %% }
 -type response_inspection_body_contains() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_j_a3_fingerprint() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type rate_limit_j_a3_fingerprint() :: #{binary() => any()}.
 
 %% Example:
 %% rate_limit_query_string() :: #{
@@ -1912,6 +1927,12 @@
 %%   <<"WebACLs">> => list(web_acl_summary()())
 %% }
 -type list_web_acls_response() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_j_a4_fingerprint() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type rate_limit_j_a4_fingerprint() :: #{binary() => any()}.
 
 %% Example:
 %% create_ip_set_response() :: #{

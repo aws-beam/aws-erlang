@@ -565,14 +565,30 @@
 
 %% Example:
 %% conflict_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
 %% resource_not_found_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
@@ -634,7 +650,15 @@
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
@@ -658,6 +682,7 @@
 %% Example:
 %% auto_participant_recording_configuration() :: #{
 %%   <<"mediaTypes">> => list(list(any())()),
+%%   <<"recordingReconnectWindowSeconds">> => integer(),
 %%   <<"storageConfigurationArn">> => string(),
 %%   <<"thumbnailConfiguration">> => participant_thumbnail_configuration()
 %% }
@@ -794,7 +819,15 @@
 
 %% Example:
 %% internal_server_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
@@ -888,7 +921,15 @@
 
 %% Example:
 %% access_denied_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
@@ -940,7 +981,15 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
@@ -1086,7 +1135,15 @@
 
 %% Example:
 %% pending_verification() :: #{
-%%   <<"exceptionMessage">> => string()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type pending_verification() :: #{binary() => any()}.
 

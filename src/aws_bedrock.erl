@@ -25,6 +25,8 @@
          create_model_import_job/3,
          create_model_invocation_job/2,
          create_model_invocation_job/3,
+         create_prompt_router/2,
+         create_prompt_router/3,
          create_provisioned_model_throughput/2,
          create_provisioned_model_throughput/3,
          delete_custom_model/3,
@@ -39,6 +41,8 @@
          delete_marketplace_model_endpoint/4,
          delete_model_invocation_logging_configuration/2,
          delete_model_invocation_logging_configuration/3,
+         delete_prompt_router/3,
+         delete_prompt_router/4,
          delete_provisioned_model_throughput/3,
          delete_provisioned_model_throughput/4,
          deregister_marketplace_model_endpoint/3,
@@ -650,6 +654,10 @@
 %% }
 -type list_inference_profiles_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_prompt_router_request() :: #{}
+-type delete_prompt_router_request() :: #{}.
+
 
 %% Example:
 %% cloud_watch_config() :: #{
@@ -1118,6 +1126,10 @@
 %% }
 -type create_provisioned_model_throughput_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_prompt_router_response() :: #{}
+-type delete_prompt_router_response() :: #{}.
+
 
 %% Example:
 %% teacher_model_config() :: #{
@@ -1318,6 +1330,19 @@
 
 
 %% Example:
+%% create_prompt_router_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"fallbackModel">> := prompt_router_target_model(),
+%%   <<"models">> := list(prompt_router_target_model()()),
+%%   <<"promptRouterName">> := string(),
+%%   <<"routingCriteria">> := routing_criteria(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_prompt_router_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_vector_search_configuration() :: #{
 %%   <<"filter">> => list(),
 %%   <<"numberOfResults">> => [integer()],
@@ -1444,7 +1469,8 @@
 %% Example:
 %% list_prompt_routers_request() :: #{
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => list(any())
 %% }
 -type list_prompt_routers_request() :: #{binary() => any()}.
 
@@ -1558,6 +1584,13 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% create_prompt_router_response() :: #{
+%%   <<"promptRouterArn">> => string()
+%% }
+-type create_prompt_router_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2160,6 +2193,16 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_prompt_router_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_provisioned_model_throughput_errors() ::
     too_many_tags_exception() | 
     throttling_exception() | 
@@ -2212,6 +2255,13 @@
     throttling_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type delete_prompt_router_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type delete_provisioned_model_throughput_errors() ::
     throttling_exception() | 
@@ -2930,6 +2980,41 @@ create_model_invocation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a prompt router that manages the routing of requests between
+%% multiple foundation models based on the routing criteria.
+-spec create_prompt_router(aws_client:aws_client(), create_prompt_router_request()) ->
+    {ok, create_prompt_router_response(), tuple()} |
+    {error, any()} |
+    {error, create_prompt_router_errors(), tuple()}.
+create_prompt_router(Client, Input) ->
+    create_prompt_router(Client, Input, []).
+
+-spec create_prompt_router(aws_client:aws_client(), create_prompt_router_request(), proplists:proplist()) ->
+    {ok, create_prompt_router_response(), tuple()} |
+    {error, any()} |
+    {error, create_prompt_router_errors(), tuple()}.
+create_prompt_router(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prompt-routers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates dedicated throughput for a base or custom model with the
 %% model units and for the duration that you specify.
 %%
@@ -3182,6 +3267,42 @@ delete_model_invocation_logging_configuration(Client, Input) ->
 delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/logging/modelinvocations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a specified prompt router.
+%%
+%% This action cannot be undone.
+-spec delete_prompt_router(aws_client:aws_client(), binary() | list(), delete_prompt_router_request()) ->
+    {ok, delete_prompt_router_response(), tuple()} |
+    {error, any()} |
+    {error, delete_prompt_router_errors(), tuple()}.
+delete_prompt_router(Client, PromptRouterArn, Input) ->
+    delete_prompt_router(Client, PromptRouterArn, Input, []).
+
+-spec delete_prompt_router(aws_client:aws_client(), binary() | list(), delete_prompt_router_request(), proplists:proplist()) ->
+    {ok, delete_prompt_router_response(), tuple()} |
+    {error, any()} |
+    {error, delete_prompt_router_errors(), tuple()}.
+delete_prompt_router(Client, PromptRouterArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prompt-routers/", aws_util:encode_uri(PromptRouterArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4452,7 +4573,8 @@ list_prompt_routers(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

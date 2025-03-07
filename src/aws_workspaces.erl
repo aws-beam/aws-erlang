@@ -161,6 +161,8 @@
          modify_certificate_based_auth_properties/3,
          modify_client_properties/2,
          modify_client_properties/3,
+         modify_endpoint_encryption_mode/2,
+         modify_endpoint_encryption_mode/3,
          modify_saml_properties/2,
          modify_saml_properties/3,
          modify_selfservice_permissions/2,
@@ -1321,6 +1323,13 @@
 -type default_import_client_branding_attributes() :: #{binary() => any()}.
 
 %% Example:
+%% modify_endpoint_encryption_mode_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"EndpointEncryptionMode">> := list(any())
+%% }
+-type modify_endpoint_encryption_mode_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_connection_alias_result() :: #{
 %%   <<"AliasId">> => string()
 %% }
@@ -1691,6 +1700,12 @@
 -type create_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_endpoint_encryption_mode_response() :: #{
+
+%% }
+-type modify_endpoint_encryption_mode_response() :: #{binary() => any()}.
+
+%% Example:
 %% application_settings_request() :: #{
 %%   <<"SettingsGroup">> => string(),
 %%   <<"Status">> => list(any())
@@ -1784,6 +1799,7 @@
 %%   <<"DirectoryName">> => string(),
 %%   <<"DirectoryType">> => list(any()),
 %%   <<"DnsIpAddresses">> => list(string()()),
+%%   <<"EndpointEncryptionMode">> => list(any()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"IDCConfig">> => id_c_config(),
 %%   <<"IamRoleId">> => string(),
@@ -2682,6 +2698,11 @@
     invalid_parameter_values_exception() | 
     resource_not_found_exception().
 
+-type modify_endpoint_encryption_mode_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type modify_saml_properties_errors() ::
     operation_not_supported_exception() | 
     access_denied_exception() | 
@@ -2956,7 +2977,7 @@ authorize_ip_rules(Client, Input, Options)
 %% Region.
 %%
 %% In Amazon Web Services GovCloud (US), to copy images to and from other
-%% Regions, contact Amazon Web Services Support.
+%% Regions, contact Amazon Web ServicesSupport.
 %%
 %% Before copying a shared image, be sure to verify that it has been shared
 %% from the
@@ -4222,6 +4243,25 @@ modify_client_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClientProperties">>, Input, Options).
 
+%% @doc Modifies the endpoint encryption mode that allows you to configure
+%% the specified
+%% directory between Standard TLS and FIPS 140-2 validated mode.
+-spec modify_endpoint_encryption_mode(aws_client:aws_client(), modify_endpoint_encryption_mode_request()) ->
+    {ok, modify_endpoint_encryption_mode_response(), tuple()} |
+    {error, any()} |
+    {error, modify_endpoint_encryption_mode_errors(), tuple()}.
+modify_endpoint_encryption_mode(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_endpoint_encryption_mode(Client, Input, []).
+
+-spec modify_endpoint_encryption_mode(aws_client:aws_client(), modify_endpoint_encryption_mode_request(), proplists:proplist()) ->
+    {ok, modify_endpoint_encryption_mode_response(), tuple()} |
+    {error, any()} |
+    {error, modify_endpoint_encryption_mode_errors(), tuple()}.
+modify_endpoint_encryption_mode(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyEndpointEncryptionMode">>, Input, Options).
+
 %% @doc Modifies multiple properties related to SAML 2.0 authentication,
 %% including the enablement status,
 %% user access URL, and relay state parameter name that are used for
@@ -4608,7 +4648,7 @@ stop_workspaces_pool(Client, Input, Options)
 %% Terminating a WorkSpace is a permanent action and cannot be undone. The
 %% user's data
 %% is destroyed. If you need to archive any user data, contact Amazon Web
-%% Services Support before
+%% ServicesSupport before
 %% terminating the WorkSpace.
 %%
 %% You can terminate a WorkSpace that is in any state except `SUSPENDED'.
@@ -4818,7 +4858,7 @@ update_workspace_bundle(Client, Input, Options)
 %% Region.
 %%
 %% In Amazon Web Services GovCloud (US), to copy images to and from other
-%% Regions, contact Amazon Web Services Support.
+%% Regions, contact Amazon Web ServicesSupport.
 %%
 %% For more information about sharing images, see Share or Unshare a Custom
 %% WorkSpaces Image:
@@ -4833,7 +4873,7 @@ update_workspace_bundle(Client, Input, Options)
 %% isn't supported at this time in Amazon Web Services GovCloud (US). To
 %% share BYOL images
 %% across accounts in Amazon Web Services GovCloud (US), contact Amazon Web
-%% Services Support.
+%% ServicesSupport.
 -spec update_workspace_image_permission(aws_client:aws_client(), update_workspace_image_permission_request()) ->
     {ok, update_workspace_image_permission_result(), tuple()} |
     {error, any()} |
