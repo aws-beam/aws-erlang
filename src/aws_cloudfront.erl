@@ -6601,8 +6601,8 @@ create_key_value_store(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Enables additional CloudWatch metrics for the specified CloudFront
-%% distribution.
+%% @doc Enables or disables additional Amazon CloudWatch metrics for the
+%% specified CloudFront distribution.
 %%
 %% The
 %% additional metrics incur an additional cost.

@@ -17803,6 +17803,7 @@
 %%   <<"PrivateIpAddress">> => string(),
 %%   <<"PublicIp">> => string(),
 %%   <<"PublicIpv4Pool">> => string(),
+%%   <<"ServiceManaged">> => list(any()),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type address() :: #{binary() => any()}.

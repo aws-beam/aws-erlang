@@ -366,6 +366,14 @@
 
 
 %% Example:
+%% context_enrichment_configuration() :: #{
+%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_context_enrichment_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type context_enrichment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% missing_connection_configuration_flow_validation_details() :: #{
 %%   <<"connection">> => string()
 %% }
@@ -1061,6 +1069,14 @@
 
 
 %% Example:
+%% bedrock_foundation_model_context_enrichment_configuration() :: #{
+%%   <<"enrichmentStrategyConfiguration">> => enrichment_strategy_configuration(),
+%%   <<"modelArn">> => string()
+%% }
+-type bedrock_foundation_model_context_enrichment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% redshift_provisioned_auth_configuration() :: #{
 %%   <<"databaseUser">> => [string()],
 %%   <<"type">> => list(any()),
@@ -1676,6 +1692,7 @@
 %% Example:
 %% storage_configuration() :: #{
 %%   <<"mongoDbAtlasConfiguration">> => mongo_db_atlas_configuration(),
+%%   <<"neptuneAnalyticsConfiguration">> => neptune_analytics_configuration(),
 %%   <<"opensearchServerlessConfiguration">> => open_search_serverless_configuration(),
 %%   <<"pineconeConfiguration">> => pinecone_configuration(),
 %%   <<"rdsConfiguration">> => rds_configuration(),
@@ -1992,6 +2009,14 @@
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% neptune_analytics_configuration() :: #{
+%%   <<"fieldMapping">> => neptune_analytics_field_mapping(),
+%%   <<"graphArn">> => string()
+%% }
+-type neptune_analytics_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% missing_ending_nodes_flow_validation_details() :: #{}
 -type missing_ending_nodes_flow_validation_details() :: #{}.
@@ -2259,6 +2284,13 @@
 %%   <<"aliasArn">> => string()
 %% }
 -type agent_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% enrichment_strategy_configuration() :: #{
+%%   <<"method">> => list(any())
+%% }
+-type enrichment_strategy_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2815,6 +2847,14 @@
 
 
 %% Example:
+%% neptune_analytics_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string()
+%% }
+-type neptune_analytics_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% redshift_query_engine_redshift_storage_configuration() :: #{
 %%   <<"databaseName">> => string()
 %% }
@@ -2913,6 +2953,7 @@
 %% Example:
 %% vector_ingestion_configuration() :: #{
 %%   <<"chunkingConfiguration">> => chunking_configuration(),
+%%   <<"contextEnrichmentConfiguration">> => context_enrichment_configuration(),
 %%   <<"customTransformationConfiguration">> => custom_transformation_configuration(),
 %%   <<"parsingConfiguration">> => parsing_configuration()
 %% }

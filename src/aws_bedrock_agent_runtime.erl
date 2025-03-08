@@ -252,6 +252,7 @@
 
 %% Example:
 %% inline_session_state() :: #{
+%%   <<"conversationHistory">> => conversation_history(),
 %%   <<"files">> => list(input_file()()),
 %%   <<"invocationId">> => [string()],
 %%   <<"promptSessionAttributes">> => map(),
@@ -1024,6 +1025,16 @@
 
 
 %% Example:
+%% collaborator_configuration() :: #{
+%%   <<"agentAliasArn">> => string(),
+%%   <<"collaboratorInstruction">> => string(),
+%%   <<"collaboratorName">> => string(),
+%%   <<"relayConversationHistory">> => list(any())
+%% }
+-type collaborator_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieval_result_confluence_location() :: #{
 %%   <<"url">> => [string()]
 %% }
@@ -1340,6 +1351,7 @@
 %%   <<"agentVersion">> => string(),
 %%   <<"callerChain">> => list(list()()),
 %%   <<"collaboratorName">> => string(),
+%%   <<"eventTime">> => non_neg_integer(),
 %%   <<"sessionId">> => string(),
 %%   <<"trace">> => list()
 %% }
@@ -1497,6 +1509,23 @@
 
 
 %% Example:
+%% collaborator() :: #{
+%%   <<"actionGroups">> => list(agent_action_group()()),
+%%   <<"agentCollaboration">> => list(any()),
+%%   <<"agentName">> => string(),
+%%   <<"collaboratorConfigurations">> => list(collaborator_configuration()()),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"foundationModel">> => string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration_with_arn(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"instruction">> => string(),
+%%   <<"knowledgeBases">> => list(knowledge_base()()),
+%%   <<"promptOverrideConfiguration">> => prompt_override_configuration()
+%% }
+-type collaborator() :: #{binary() => any()}.
+
+
+%% Example:
 %% generated_query() :: #{
 %%   <<"sql">> => [string()],
 %%   <<"type">> => list(any())
@@ -1589,7 +1618,10 @@
 %% Example:
 %% invoke_inline_agent_request() :: #{
 %%   <<"actionGroups">> => list(agent_action_group()()),
+%%   <<"agentCollaboration">> => list(any()),
 %%   <<"bedrockModelConfigurations">> => inline_bedrock_model_configurations(),
+%%   <<"collaboratorConfigurations">> => list(collaborator_configuration()()),
+%%   <<"collaborators">> => list(collaborator()()),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"enableTrace">> => [boolean()],
 %%   <<"endSession">> => [boolean()],
@@ -1950,6 +1982,7 @@
 %% prompt_configuration() :: #{
 %%   <<"additionalModelRequestFields">> => [any()],
 %%   <<"basePromptTemplate">> => string(),
+%%   <<"foundationModel">> => string(),
 %%   <<"inferenceConfiguration">> => inference_configuration(),
 %%   <<"parserMode">> => list(any()),
 %%   <<"promptCreationMode">> => list(any()),

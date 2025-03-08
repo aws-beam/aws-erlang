@@ -114,6 +114,8 @@
          get_trust_store_revocation_content/3,
          modify_capacity_reservation/2,
          modify_capacity_reservation/3,
+         modify_ip_pools/2,
+         modify_ip_pools/3,
          modify_listener/2,
          modify_listener/3,
          modify_listener_attributes/2,
@@ -990,6 +992,12 @@
 -type duplicate_target_group_name_exception() :: #{binary() => any()}.
 
 %% Example:
+%% modify_ip_pools_output() :: #{
+%%   <<"IpamPools">> => ipam_pools()
+%% }
+-type modify_ip_pools_output() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_reservation_pending_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1180,6 +1188,14 @@
 -type modify_capacity_reservation_output() :: #{binary() => any()}.
 
 %% Example:
+%% modify_ip_pools_input() :: #{
+%%   <<"IpamPools">> => ipam_pools(),
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"RemoveIpamPools">> => list(list(any())())
+%% }
+-type modify_ip_pools_input() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_decrease_requests_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1203,6 +1219,7 @@
 %%   <<"CustomerOwnedIpv4Pool">> => string(),
 %%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
 %%   <<"IpAddressType">> => list(any()),
+%%   <<"IpamPools">> => ipam_pools(),
 %%   <<"Name">> := string(),
 %%   <<"Scheme">> => list(any()),
 %%   <<"SecurityGroups">> => list(string()()),
@@ -1264,6 +1281,7 @@
 %%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
 %%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => string(),
 %%   <<"IpAddressType">> => list(any()),
+%%   <<"IpamPools">> => ipam_pools(),
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"LoadBalancerName">> => string(),
 %%   <<"Scheme">> => list(any()),
@@ -1417,6 +1435,12 @@
 %%   <<"LoadBalancerArn">> := string()
 %% }
 -type describe_capacity_reservation_input() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_pools() :: #{
+%%   <<"Ipv4IpamPoolId">> => string()
+%% }
+-type ipam_pools() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_ca_certificates_bundle_exception() :: #{
@@ -1846,6 +1870,9 @@
     prior_request_not_complete_exception() | 
     insufficient_capacity_exception() | 
     invalid_configuration_request_exception().
+
+-type modify_ip_pools_errors() ::
+    load_balancer_not_found_exception().
 
 -type modify_listener_errors() ::
     unsupported_protocol_exception() | 
@@ -2808,6 +2835,24 @@ modify_capacity_reservation(Client, Input)
 modify_capacity_reservation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCapacityReservation">>, Input, Options).
+
+%% @doc [Application Load Balancers] Modify the IP pool associated to a load
+%% balancer.
+-spec modify_ip_pools(aws_client:aws_client(), modify_ip_pools_input()) ->
+    {ok, modify_ip_pools_output(), tuple()} |
+    {error, any()} |
+    {error, modify_ip_pools_errors(), tuple()}.
+modify_ip_pools(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_ip_pools(Client, Input, []).
+
+-spec modify_ip_pools(aws_client:aws_client(), modify_ip_pools_input(), proplists:proplist()) ->
+    {ok, modify_ip_pools_output(), tuple()} |
+    {error, any()} |
+    {error, modify_ip_pools_errors(), tuple()}.
+modify_ip_pools(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIpPools">>, Input, Options).
 
 %% @doc Replaces the specified properties of the specified listener.
 %%
