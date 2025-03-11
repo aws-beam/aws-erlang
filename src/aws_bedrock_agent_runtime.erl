@@ -565,6 +565,14 @@
 
 
 %% Example:
+%% image_input() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type image_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% invocation_step() :: #{
 %%   <<"invocationId">> => string(),
 %%   <<"invocationStepId">> => string(),
@@ -653,7 +661,8 @@
 
 %% Example:
 %% content_body() :: #{
-%%   <<"body">> => [string()]
+%%   <<"body">> => [string()],
+%%   <<"images">> => list(image_input()())
 %% }
 -type content_body() :: #{binary() => any()}.
 
@@ -1365,7 +1374,8 @@
 %%   <<"apiSchema">> => list(),
 %%   <<"description">> => string(),
 %%   <<"functionSchema">> => list(),
-%%   <<"parentActionGroupSignature">> => list(any())
+%%   <<"parentActionGroupSignature">> => list(any()),
+%%   <<"parentActionGroupSignatureParams">> => map()
 %% }
 -type agent_action_group() :: #{binary() => any()}.
 
@@ -2334,7 +2344,7 @@ create_invocation(Client, SessionIdentifier, Input0, Options0) ->
 %% context and associates them with the agent-specific sessionId you specify
 %% in the
 %% InvokeAgent:
-%% https://docs.aws.amazon.com/bedrock/latest/API_agent-runtime_InvokeAgent.html
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html
 %% API operation.
 %%
 %% Related APIs:

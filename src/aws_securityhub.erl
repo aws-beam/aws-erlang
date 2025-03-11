@@ -8133,6 +8133,7 @@
 %% Example:
 %% standards_subscription() :: #{
 %%   <<"StandardsArn">> => string(),
+%%   <<"StandardsControlsUpdatable">> => list(any()),
 %%   <<"StandardsInput">> => map(),
 %%   <<"StandardsStatus">> => list(any()),
 %%   <<"StandardsStatusReason">> => standards_status_reason(),
@@ -9673,6 +9674,10 @@ batch_get_security_controls(Client, Input0, Options0) ->
 %% @doc
 %% For a batch of security controls and standards, identifies whether each
 %% control is currently enabled or disabled in a standard.
+%%
+%% Calls to this operation return a `RESOURCE_NOT_FOUND_EXCEPTION' error
+%% when the standard subscription for the association has a
+%% `NOT_READY_FOR_UPDATES' value for `StandardsControlsUpdatable'.
 -spec batch_get_standards_control_associations(aws_client:aws_client(), batch_get_standards_control_associations_request()) ->
     {ok, batch_get_standards_control_associations_response(), tuple()} |
     {error, any()} |
@@ -10743,6 +10748,9 @@ describe_standards(Client, QueryMap, HeadersMap, Options0)
 %% For each control, the results include information about whether it is
 %% currently enabled,
 %% the severity, and a link to remediation information.
+%%
+%% This operation returns an empty list for standard subscriptions where
+%% `StandardsControlsUpdatable' has value `NOT_READY_FOR_UPDATES'.
 -spec describe_standards_controls(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_standards_controls_response(), tuple()} |
     {error, any()} |
@@ -12199,6 +12207,10 @@ list_security_control_definitions(Client, QueryMap, HeadersMap, Options0)
 %% @doc
 %% Specifies whether a control is currently enabled or disabled in each
 %% enabled standard in the calling account.
+%%
+%% This operation omits standards control associations for standard
+%% subscriptions where `StandardsControlsUpdatable' has value
+%% `NOT_READY_FOR_UPDATES'.
 -spec list_standards_control_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_standards_control_associations_response(), tuple()} |
     {error, any()} |
@@ -12742,6 +12754,10 @@ update_security_hub_configuration(Client, Input0, Options0) ->
 %% @doc Used to control whether an individual security standard control is
 %% enabled or
 %% disabled.
+%%
+%% Calls to this operation return a `RESOURCE_NOT_FOUND_EXCEPTION' error
+%% when the standard subscription for the control has
+%% `StandardsControlsUpdatable' value `NOT_READY_FOR_UPDATES'.
 -spec update_standards_control(aws_client:aws_client(), binary() | list(), update_standards_control_request()) ->
     {ok, update_standards_control_response(), tuple()} |
     {error, any()} |

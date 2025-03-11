@@ -5085,6 +5085,8 @@
 %% Example:
 %% ebu_tt_d_destination_settings() :: #{
 %%   <<"CopyrightHolder">> => string(),
+%%   <<"DefaultFontSize">> => integer(),
+%%   <<"DefaultLineHeight">> => integer(),
 %%   <<"FillLineGap">> => list(any()),
 %%   <<"FontFamily">> => string(),
 %%   <<"StyleControl">> => list(any())

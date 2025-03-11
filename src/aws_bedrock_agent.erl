@@ -276,7 +276,8 @@
 %%   <<"apiSchema">> => list(),
 %%   <<"description">> => string(),
 %%   <<"functionSchema">> => list(),
-%%   <<"parentActionGroupSignature">> => list(any())
+%%   <<"parentActionGroupSignature">> => list(any()),
+%%   <<"parentActionGroupSignatureParams">> => map()
 %% }
 -type update_agent_action_group_request() :: #{binary() => any()}.
 
@@ -2188,7 +2189,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"functionSchema">> => list(),
-%%   <<"parentActionGroupSignature">> => list(any())
+%%   <<"parentActionGroupSignature">> => list(any()),
+%%   <<"parentActionGroupSignatureParams">> => map()
 %% }
 -type create_agent_action_group_request() :: #{binary() => any()}.
 
@@ -2333,6 +2335,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"functionSchema">> => list(),
+%%   <<"parentActionGroupSignatureParams">> => map(),
 %%   <<"parentActionSignature">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }

@@ -810,6 +810,7 @@
 
 %% Example:
 %% vpc_information() :: #{
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"SecurityGroupIds">> => list(string()())
 %% }
 -type vpc_information() :: #{binary() => any()}.
