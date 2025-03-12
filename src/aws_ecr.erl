@@ -172,10 +172,12 @@
 %% create_pull_through_cache_rule_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
 %%   <<"ecrRepositoryPrefix">> => string(),
 %%   <<"registryId">> => string(),
 %%   <<"upstreamRegistry">> => list(any()),
-%%   <<"upstreamRegistryUrl">> => string()
+%%   <<"upstreamRegistryUrl">> => string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
 %% }
 -type create_pull_through_cache_rule_response() :: #{binary() => any()}.
 
@@ -352,7 +354,8 @@
 
 %% Example:
 %% update_pull_through_cache_rule_request() :: #{
-%%   <<"credentialArn">> := string(),
+%%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
 %%   <<"ecrRepositoryPrefix">> := string(),
 %%   <<"registryId">> => string()
 %% }
@@ -707,10 +710,12 @@
 %% Example:
 %% create_pull_through_cache_rule_request() :: #{
 %%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
 %%   <<"ecrRepositoryPrefix">> := string(),
 %%   <<"registryId">> => string(),
 %%   <<"upstreamRegistry">> => list(any()),
-%%   <<"upstreamRegistryUrl">> := string()
+%%   <<"upstreamRegistryUrl">> := string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
 %% }
 -type create_pull_through_cache_rule_request() :: #{binary() => any()}.
 
@@ -875,11 +880,13 @@
 %% Example:
 %% validate_pull_through_cache_rule_response() :: #{
 %%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
 %%   <<"ecrRepositoryPrefix">> => string(),
 %%   <<"failure">> => string(),
 %%   <<"isValid">> => boolean(),
 %%   <<"registryId">> => string(),
-%%   <<"upstreamRegistryUrl">> => string()
+%%   <<"upstreamRegistryUrl">> => string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
 %% }
 -type validate_pull_through_cache_rule_response() :: #{binary() => any()}.
 
@@ -1172,9 +1179,11 @@
 %% delete_pull_through_cache_rule_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
 %%   <<"ecrRepositoryPrefix">> => string(),
 %%   <<"registryId">> => string(),
-%%   <<"upstreamRegistryUrl">> => string()
+%%   <<"upstreamRegistryUrl">> => string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
 %% }
 -type delete_pull_through_cache_rule_response() :: #{binary() => any()}.
 
@@ -1224,9 +1233,11 @@
 %% Example:
 %% update_pull_through_cache_rule_response() :: #{
 %%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
 %%   <<"ecrRepositoryPrefix">> => string(),
 %%   <<"registryId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"upstreamRepositoryPrefix">> => string()
 %% }
 -type update_pull_through_cache_rule_response() :: #{binary() => any()}.
 
@@ -1335,11 +1346,13 @@
 %% pull_through_cache_rule() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
 %%   <<"ecrRepositoryPrefix">> => string(),
 %%   <<"registryId">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"upstreamRegistry">> => list(any()),
-%%   <<"upstreamRegistryUrl">> => string()
+%%   <<"upstreamRegistryUrl">> => string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
 %% }
 -type pull_through_cache_rule() :: #{binary() => any()}.
 
