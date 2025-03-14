@@ -20310,8 +20310,8 @@ associate_iam_instance_profile(Client, Input, Options)
 
 %% @doc Associates one or more targets with an event window.
 %%
-%% Only one type of target (instance
-%% IDs, Dedicated Host IDs, or tags) can be specified with an event window.
+%% Only one type of target (instance IDs,
+%% Dedicated Host IDs, or tags) can be specified with an event window.
 %%
 %% For more information, see Define event windows for scheduled
 %% events:
@@ -25251,8 +25251,8 @@ deregister_image(Client, Input, Options)
     request(Client, <<"DeregisterImage">>, Input, Options).
 
 %% @doc Deregisters tag keys to prevent tags that have the specified tag keys
-%% from being
-%% included in scheduled event notifications for resources in the Region.
+%% from being included
+%% in scheduled event notifications for resources in the Region.
 -spec deregister_instance_event_notification_attributes(aws_client:aws_client(), deregister_instance_event_notification_attributes_request()) ->
     {ok, deregister_instance_event_notification_attributes_result(), tuple()} |
     {error, any()}.
@@ -25448,10 +25448,6 @@ describe_aggregate_id_format(Client, Input, Options)
 %% @doc Describes the Availability Zones, Local Zones, and Wavelength Zones
 %% that are available to
 %% you.
-%%
-%% If there is an event impacting a zone, you can use this request to view
-%% the state and any
-%% provided messages for that zone.
 %%
 %% For more information about Availability Zones, Local Zones, and Wavelength
 %% Zones, see
@@ -26489,8 +26485,8 @@ describe_instance_credit_specifications(Client, Input, Options)
     request(Client, <<"DescribeInstanceCreditSpecifications">>, Input, Options).
 
 %% @doc Describes the tag keys that are registered to appear in scheduled
-%% event notifications
-%% for resources in the current Region.
+%% event notifications for
+%% resources in the current Region.
 -spec describe_instance_event_notification_attributes(aws_client:aws_client(), describe_instance_event_notification_attributes_request()) ->
     {ok, describe_instance_event_notification_attributes_result(), tuple()} |
     {error, any()}.
@@ -34055,8 +34051,7 @@ register_image(Client, Input, Options)
     request(Client, <<"RegisterImage">>, Input, Options).
 
 %% @doc Registers a set of tag keys to include in scheduled event
-%% notifications for your
-%% resources.
+%% notifications for your resources.
 %%
 %% To remove tags, use DeregisterInstanceEventNotificationAttributes:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeregisterInstanceEventNotificationAttributes.html.

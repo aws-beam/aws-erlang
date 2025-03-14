@@ -4038,7 +4038,14 @@ disassociate_kms_key(Client, Input, Options)
 %% @doc Lists log events from the specified log group.
 %%
 %% You can list all the log events or filter the results
-%% using a filter pattern, a time range, and the name of the log stream.
+%% using one or more of the following:
+%%
+%% A filter pattern
+%%
+%% A time range
+%%
+%% The log stream name, or a log stream name prefix that matches mutltiple
+%% log streams
 %%
 %% You must have the `logs:FilterLogEvents' permission to perform this
 %% operation.
@@ -4048,15 +4055,30 @@ disassociate_kms_key(Client, Input, Options)
 %% You must include one of these two parameters, but you can't include
 %% both.
 %%
-%% By default, this operation returns as many log events as can fit in 1 MB
-%% (up to 10,000
-%% log events) or all the events found within the specified time range. If
-%% the results include a
-%% token, that means there are more log events available. You can get
-%% additional results by
-%% specifying the token in a subsequent call. This operation can return empty
-%% results while there
-%% are more log events available through the token.
+%% `FilterLogEvents' is a paginated operation. Each page returned can
+%% contain up to 1 MB of log events or up to 10,000 log events. A returned
+%% page might only be partially full, or even empty.
+%% For example, if the result of a query would return 15,000 log events, the
+%% first page isn't guaranteed to have 10,000 log events even if they all
+%% fit into 1 MB.
+%%
+%% Partially full or empty pages
+%% don't necessarily mean that pagination is finished. If the results
+%% include a `nextToken', there might be more log events available. You
+%% can return these additional log events by providing the nextToken in a
+%% subsequent
+%% `FilterLogEvents' operation. If the results don't include a
+%% `nextToken', then pagination is finished.
+%%
+%% If you set `startFromHead' to `true' and you don’t include
+%% `endTime' in your request, you can end up in a situation where the
+%% pagination doesn't terminate.
+%% This can happen when the new log events are being added to the target log
+%% streams
+%% faster than they are being read. This situation is a good use case for the
+%% CloudWatch Logs Live Tail:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs_LiveTail.html
+%% feature.
 %%
 %% The returned log events are sorted by event timestamp, the timestamp when
 %% the event was ingested
@@ -4067,6 +4089,14 @@ disassociate_kms_key(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+%%
+%% If you are using log transformation:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html,
+%% the `FilterLogEvents' operation returns only the original versions of
+%% log events, before they
+%% were transformed. To view the transformed versions, you must use a
+%% CloudWatch Logs query.:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html
 -spec filter_log_events(aws_client:aws_client(), filter_log_events_request()) ->
     {ok, filter_log_events_response(), tuple()} |
     {error, any()} |
@@ -4219,6 +4249,8 @@ get_integration(Client, Input, Options)
 
 %% @doc Retrieves information about the log anomaly detector that you
 %% specify.
+%%
+%% The KMS key ARN detected is valid.
 -spec get_log_anomaly_detector(aws_client:aws_client(), get_log_anomaly_detector_request()) ->
     {ok, get_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
@@ -4240,12 +4272,30 @@ get_log_anomaly_detector(Client, Input, Options)
 %% You can list all of the log events or
 %% filter using a time range.
 %%
-%% By default, this operation returns as many log events as can fit in a
-%% response size of 1MB (up to 10,000 log events).
-%% You can get additional log events by specifying one of the tokens in a
-%% subsequent call.
-%% This operation can return empty results while there are more log events
-%% available through the token.
+%% `GetLogEvents' is a paginated operation. Each page returned can
+%% contain up to 1 MB of log events or up to 10,000 log events. A returned
+%% page might only be partially full, or even empty.
+%% For example, if the result of a query would return 15,000 log events, the
+%% first page isn't guaranteed to have 10,000 log events even if they all
+%% fit into 1 MB.
+%%
+%% Partially full or empty pages
+%% don't necessarily mean that pagination is finished. As long as the
+%% `nextBackwardToken' or `nextForwardToken' returned is NOT equal to
+%% the `nextToken'
+%% that you passed into the API call, there might be more
+%% log events available. The token that you use depends on the direction you
+%% want to move in along the log stream. The returned tokens are never null.
+%%
+%% If you set `startFromHead' to `true' and you don’t include
+%% `endTime' in your request, you can end up in a situation where the
+%% pagination doesn't terminate.
+%% This can happen when the new log events are being added to the target log
+%% streams
+%% faster than they are being read. This situation is a good use case for the
+%% CloudWatch Logs Live Tail:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs_LiveTail.html
+%% feature.
 %%
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account and
@@ -4257,6 +4307,14 @@ get_log_anomaly_detector(Client, Input, Options)
 %% `logGroupIdentifier' or `logGroupName'.
 %% You must include one of these two parameters, but you can't include
 %% both.
+%%
+%% If you are using log transformation:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html,
+%% the `GetLogEvents' operation returns only the original versions of log
+%% events, before they
+%% were transformed. To view the transformed versions, you must use a
+%% CloudWatch Logs query.:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html
 -spec get_log_events(aws_client:aws_client(), get_log_events_request()) ->
     {ok, get_log_events_response(), tuple()} |
     {error, any()} |

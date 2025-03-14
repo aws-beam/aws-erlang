@@ -89,6 +89,10 @@
          put_channel_policy/5,
          put_origin_endpoint_policy/5,
          put_origin_endpoint_policy/6,
+         reset_channel_state/4,
+         reset_channel_state/5,
+         reset_origin_endpoint_state/5,
+         reset_origin_endpoint_state/6,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -259,7 +263,8 @@
 %%   <<"ManifestWindowSeconds">> => [integer()],
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
-%%   <<"StartTag">> => start_tag()
+%%   <<"StartTag">> => start_tag(),
+%%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
 -type create_hls_manifest_configuration() :: #{binary() => any()}.
 
@@ -350,7 +355,8 @@
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
 %%   <<"StartTag">> => start_tag(),
-%%   <<"Url">> => [string()]
+%%   <<"Url">> => [string()],
+%%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
 -type get_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
 
@@ -364,7 +370,8 @@
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
 %%   <<"StartTag">> => start_tag(),
-%%   <<"Url">> => [string()]
+%%   <<"Url">> => [string()],
+%%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
 -type get_hls_manifest_configuration() :: #{binary() => any()}.
 
@@ -498,6 +505,17 @@
 %% Example:
 %% delete_channel_policy_response() :: #{}
 -type delete_channel_policy_response() :: #{}.
+
+
+%% Example:
+%% reset_origin_endpoint_state_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ResetAt">> => [non_neg_integer()]
+%% }
+-type reset_origin_endpoint_state_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -701,6 +719,10 @@
 -type scte_hls() :: #{binary() => any()}.
 
 %% Example:
+%% reset_origin_endpoint_state_request() :: #{}
+-type reset_origin_endpoint_state_request() :: #{}.
+
+%% Example:
 %% get_harvest_job_request() :: #{}
 -type get_harvest_job_request() :: #{}.
 
@@ -805,9 +827,14 @@
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
+%%   <<"ResetAt">> => [non_neg_integer()],
 %%   <<"Tags">> => map()
 %% }
 -type get_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% reset_channel_state_request() :: #{}
+-type reset_channel_state_request() :: #{}.
 
 
 %% Example:
@@ -884,6 +911,16 @@
 
 
 %% Example:
+%% reset_channel_state_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"ChannelName">> => [string()],
+%%   <<"ResetAt">> => [non_neg_integer()]
+%% }
+-type reset_channel_state_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_channel_group_response() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"ChannelGroupName">> => [string()],
@@ -905,7 +942,8 @@
 %%   <<"ManifestWindowSeconds">> => [integer()],
 %%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
 %%   <<"ScteHls">> => scte_hls(),
-%%   <<"StartTag">> => start_tag()
+%%   <<"StartTag">> => start_tag(),
+%%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
 -type create_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
 
@@ -1004,6 +1042,7 @@
 %%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"OriginEndpointName">> => string(),
+%%   <<"ResetAt">> => [non_neg_integer()],
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
 %%   <<"Tags">> => map()
@@ -1169,6 +1208,22 @@
     conflict_exception().
 
 -type put_origin_endpoint_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type reset_channel_state_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type reset_origin_endpoint_state_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1828,9 +1883,8 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves all channel groups that are configured in AWS Elemental
-%% MediaPackage, including the channels and origin endpoints that are
-%% associated with it.
+%% @doc Retrieves all channel groups that are configured in Elemental
+%% MediaPackage.
 -spec list_channel_groups(aws_client:aws_client()) ->
     {ok, list_channel_groups_response(), tuple()} |
     {error, any()} |
@@ -2096,6 +2150,89 @@ put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Resetting the channel can help to clear errors from misconfigurations
+%% in the encoder.
+%%
+%% A reset refreshes the ingest stream and removes previous content.
+%%
+%% Be sure to stop the encoder before you reset the channel, and wait at
+%% least 30 seconds before you restart the encoder.
+-spec reset_channel_state(aws_client:aws_client(), binary() | list(), binary() | list(), reset_channel_state_request()) ->
+    {ok, reset_channel_state_response(), tuple()} |
+    {error, any()} |
+    {error, reset_channel_state_errors(), tuple()}.
+reset_channel_state(Client, ChannelGroupName, ChannelName, Input) ->
+    reset_channel_state(Client, ChannelGroupName, ChannelName, Input, []).
+
+-spec reset_channel_state(aws_client:aws_client(), binary() | list(), binary() | list(), reset_channel_state_request(), proplists:proplist()) ->
+    {ok, reset_channel_state_response(), tuple()} |
+    {error, any()} |
+    {error, reset_channel_state_errors(), tuple()}.
+reset_channel_state(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
+    Method = post,
+    Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/reset"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Resetting the origin endpoint can help to resolve unexpected behavior
+%% and other content packaging issues.
+%%
+%% It also helps to preserve special events when you don't want the
+%% previous content to be available for viewing. A reset clears out all
+%% previous content from the origin endpoint.
+%%
+%% MediaPackage might return old content from this endpoint in the first 30
+%% seconds after the endpoint reset. For best results, when possible, wait 30
+%% seconds from endpoint reset to send playback requests to this endpoint.
+-spec reset_origin_endpoint_state(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), reset_origin_endpoint_state_request()) ->
+    {ok, reset_origin_endpoint_state_response(), tuple()} |
+    {error, any()} |
+    {error, reset_origin_endpoint_state_errors(), tuple()}.
+reset_origin_endpoint_state(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
+    reset_origin_endpoint_state(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
+
+-spec reset_origin_endpoint_state(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), reset_origin_endpoint_state_request(), proplists:proplist()) ->
+    {ok, reset_origin_endpoint_state_response(), tuple()} |
+    {error, any()} |
+    {error, reset_origin_endpoint_state_errors(), tuple()}.
+reset_origin_endpoint_state(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
+    Method = post,
+    Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/reset"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -1992,6 +1992,7 @@
 %% Example:
 %% get_data_access_result() :: #{
 %%   <<"Credentials">> => credentials(),
+%%   <<"Grantee">> => grantee(),
 %%   <<"MatchedGrantTarget">> => string()
 %% }
 -type get_data_access_result() :: #{binary() => any()}.

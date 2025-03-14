@@ -900,6 +900,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"environmentActions">> => list(configurable_environment_action()()),
 %%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentConfigurationId">> => string(),
 %%   <<"environmentProfileId">> => string(),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
@@ -921,7 +922,9 @@
 %%   <<"description">> => string(),
 %%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
 %%   <<"glossaryTerms">> => list(string()()),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"projectProfileVersion">> => [string()],
+%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
 %% }
 -type update_project_input() :: #{binary() => any()}.
 
@@ -1319,6 +1322,7 @@
 %%   <<"createdBy">> => [string()],
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"environmentConfigurationId">> => string(),
 %%   <<"environmentProfileId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -1419,6 +1423,7 @@
 %% Example:
 %% environment_configuration_user_parameter() :: #{
 %%   <<"environmentConfigurationName">> => string(),
+%%   <<"environmentId">> => string(),
 %%   <<"environmentParameters">> => list(environment_parameter()())
 %% }
 -type environment_configuration_user_parameter() :: #{binary() => any()}.
@@ -2407,6 +2412,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"environmentActions">> => list(configurable_environment_action()()),
 %%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentConfigurationId">> => string(),
 %%   <<"environmentProfileId">> => string(),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
@@ -2759,6 +2765,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"environmentActions">> => list(configurable_environment_action()()),
 %%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentConfigurationId">> => string(),
 %%   <<"environmentProfileId">> => string(),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
@@ -3208,9 +3215,11 @@
 
 %% Example:
 %% update_environment_input() :: #{
+%%   <<"blueprintVersion">> => [string()],
 %%   <<"description">> => [string()],
 %%   <<"glossaryTerms">> => list(string()()),
-%%   <<"name">> => [string()]
+%%   <<"name">> => [string()],
+%%   <<"userParameters">> => list(environment_parameter()())
 %% }
 -type update_environment_input() :: #{binary() => any()}.
 

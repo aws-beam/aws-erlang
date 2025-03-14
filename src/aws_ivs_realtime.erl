@@ -243,7 +243,8 @@
 
 %% Example:
 %% recording_configuration() :: #{
-%%   <<"format">> => string()
+%%   <<"format">> => string(),
+%%   <<"hlsConfiguration">> => composition_recording_hls_configuration()
 %% }
 -type recording_configuration() :: #{binary() => any()}.
 
@@ -649,6 +650,13 @@
 
 
 %% Example:
+%% participant_recording_hls_configuration() :: #{
+%%   <<"targetSegmentDurationSeconds">> => integer()
+%% }
+-type participant_recording_hls_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"accessControlAllowOrigin">> => string(),
 %%   <<"accessControlExposeHeaders">> => string(),
@@ -681,6 +689,7 @@
 
 %% Example:
 %% auto_participant_recording_configuration() :: #{
+%%   <<"hlsConfiguration">> => participant_recording_hls_configuration(),
 %%   <<"mediaTypes">> => list(list(any())()),
 %%   <<"recordingReconnectWindowSeconds">> => integer(),
 %%   <<"storageConfigurationArn">> => string(),
@@ -951,6 +960,13 @@
 %%   <<"stageArn">> := string()
 %% }
 -type list_participant_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_recording_hls_configuration() :: #{
+%%   <<"targetSegmentDurationSeconds">> => integer()
+%% }
+-type composition_recording_hls_configuration() :: #{binary() => any()}.
 
 
 %% Example:
