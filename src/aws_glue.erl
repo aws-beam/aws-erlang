@@ -5016,6 +5016,7 @@
 
 %% Example:
 %% catalog_input() :: #{
+%%   <<"AllowFullTableExternalDataAccess">> => list(any()),
 %%   <<"CatalogProperties">> => catalog_properties(),
 %%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()()),
 %%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()()),
@@ -6198,6 +6199,7 @@
 
 %% Example:
 %% catalog() :: #{
+%%   <<"AllowFullTableExternalDataAccess">> => list(any()),
 %%   <<"CatalogId">> => string(),
 %%   <<"CatalogProperties">> => catalog_properties_output(),
 %%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()()),

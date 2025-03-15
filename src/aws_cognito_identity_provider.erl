@@ -6270,7 +6270,7 @@ delete_user_attributes(Client, Input, Options)
 %% pools in an inactive state for 14
 %% days, then begins a cleanup process that fully removes them from Amazon
 %% Web Services systems. In case
-%% of accidental deletion, contact Amazon Web Services Support within 14 days
+%% of accidental deletion, contact Amazon Web ServicesSupport within 14 days
 %% for restoration
 %% assistance.
 %%
@@ -7798,7 +7798,8 @@ revoke_token(Client, Input, Options)
 %% user notification logs and, when threat protection is active,
 %% user-activity logs. For
 %% more information, see Exporting user
-%% pool logs: cognito/latest/developerguide/exporting-quotas-and-usage.html.
+%% pool logs:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/exporting-quotas-and-usage.html.
 -spec set_log_delivery_configuration(aws_client:aws_client(), set_log_delivery_configuration_request()) ->
     {ok, set_log_delivery_configuration_response(), tuple()} |
     {error, any()} |

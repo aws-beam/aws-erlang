@@ -143,6 +143,7 @@
 %% Example:
 %% grant_permissions_request() :: #{
 %%   <<"CatalogId">> => string(),
+%%   <<"Condition">> => condition(),
 %%   <<"Permissions">> := list(list(any())()),
 %%   <<"PermissionsWithGrantOption">> => list(list(any())()),
 %%   <<"Principal">> := data_lake_principal(),
@@ -445,6 +446,7 @@
 
 %% Example:
 %% delete_lake_formation_opt_in_request() :: #{
+%%   <<"Condition">> => condition(),
 %%   <<"Principal">> := data_lake_principal(),
 %%   <<"Resource">> := resource()
 %% }
@@ -649,6 +651,7 @@
 
 %% Example:
 %% create_lake_formation_opt_in_request() :: #{
+%%   <<"Condition">> => condition(),
 %%   <<"Principal">> := data_lake_principal(),
 %%   <<"Resource">> := resource()
 %% }
@@ -818,6 +821,7 @@
 
 %% Example:
 %% batch_permissions_request_entry() :: #{
+%%   <<"Condition">> => condition(),
 %%   <<"Id">> => string(),
 %%   <<"Permissions">> => list(list(any())()),
 %%   <<"PermissionsWithGrantOption">> => list(list(any())()),
@@ -1180,7 +1184,8 @@
 %%   <<"ResourceArn">> := string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"UseServiceLinkedRole">> => boolean(),
-%%   <<"WithFederation">> => boolean()
+%%   <<"WithFederation">> => boolean(),
+%%   <<"WithPrivilegedAccess">> => boolean()
 %% }
 -type register_resource_request() :: #{binary() => any()}.
 
@@ -1380,7 +1385,8 @@
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"WithFederation">> => boolean()
+%%   <<"WithFederation">> => boolean(),
+%%   <<"WithPrivilegedAccess">> => boolean()
 %% }
 -type resource_info() :: #{binary() => any()}.
 
@@ -1438,6 +1444,7 @@
 %% Example:
 %% revoke_permissions_request() :: #{
 %%   <<"CatalogId">> => string(),
+%%   <<"Condition">> => condition(),
 %%   <<"Permissions">> := list(list(any())()),
 %%   <<"PermissionsWithGrantOption">> => list(list(any())()),
 %%   <<"Principal">> := data_lake_principal(),
@@ -1721,6 +1728,7 @@
     concurrent_modification_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
@@ -3775,7 +3783,7 @@ put_data_lake_settings(Client, Input0, Options0) ->
 %% @doc Registers the resource as managed by the Data Catalog.
 %%
 %% To add or update data, Lake Formation needs read/write access to the
-%% chosen Amazon S3 path. Choose a role that you know has permission to do
+%% chosen data location. Choose a role that you know has permission to do
 %% this, or choose the AWSServiceRoleForLakeFormationDataAccess
 %% service-linked role. When you register the first Amazon S3 path, the
 %% service-linked role and a new inline policy are created on your behalf.

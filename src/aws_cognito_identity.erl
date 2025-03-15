@@ -20,16 +20,17 @@
 %% access from your app.
 %% Cognito delivers a unique identifier for each user and acts as an OpenID
 %% token provider
-%% trusted by AWS Security Token Service (STS) to access temporary,
-%% limited-privilege AWS
-%% credentials.
+%% trusted by Security Token Service (STS) to access temporary,
+%% limited-privilege Amazon Web Services credentials.
 %%
 %% For a description of the authentication flow from the Amazon Cognito
 %% Developer Guide
-%% see Authentication Flow:
+%% see Authentication
+%% Flow:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html.
 %%
-%% For more information see Amazon Cognito Federated Identities:
+%% For more information see Amazon Cognito Federated
+%% Identities:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html.
 -module(aws_cognito_identity).
 
@@ -694,12 +695,15 @@
 %% @doc Creates a new identity pool.
 %%
 %% The identity pool is a store of user identity
-%% information that is specific to your AWS account. The keys for
+%% information that is specific to your Amazon Web Services account. The keys
+%% for
 %% `SupportedLoginProviders' are as follows:
 %%
 %% Facebook: `graph.facebook.com'
 %%
 %% Google: `accounts.google.com'
+%%
+%% Sign in With Apple: `appleid.apple.com'
 %%
 %% Amazon: `www.amazon.com'
 %%
@@ -707,7 +711,11 @@
 %%
 %% Digits: `www.digits.com'
 %%
-%% You must use AWS Developer credentials to call this API.
+%% If you don't provide a value for a parameter, Amazon Cognito sets it
+%% to its default value.
+%%
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec create_identity_pool(aws_client:aws_client(), create_identity_pool_input()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
@@ -729,7 +737,8 @@ create_identity_pool(Client, Input, Options)
 %% You can specify a list of 1-60 identities
 %% that you want to delete.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec delete_identities(aws_client:aws_client(), delete_identities_input()) ->
     {ok, delete_identities_response(), tuple()} |
     {error, any()} |
@@ -751,7 +760,8 @@ delete_identities(Client, Input, Options)
 %% Once a pool is deleted, users will not be able to
 %% authenticate with the pool.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec delete_identity_pool(aws_client:aws_client(), delete_identity_pool_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -772,7 +782,8 @@ delete_identity_pool(Client, Input, Options)
 %% identity was
 %% created and any associated linked logins.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec describe_identity(aws_client:aws_client(), describe_identity_input()) ->
     {ok, identity_description(), tuple()} |
     {error, any()} |
@@ -793,7 +804,8 @@ describe_identity(Client, Input, Options)
 %% name, ID
 %% description, creation date, and current number of users.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec describe_identity_pool(aws_client:aws_client(), describe_identity_pool_input()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
@@ -814,9 +826,8 @@ describe_identity_pool(Client, Input, Options)
 %%
 %% Any provided logins will be
 %% validated against supported login providers. If the token is for
-%% cognito-identity.amazonaws.com, it will be passed through to AWS Security
-%% Token Service
-%% with the appropriate role for the token.
+%% `cognito-identity.amazonaws.com', it will be passed through to
+%% Security Token Service with the appropriate role for the token.
 %%
 %% This is a public API. You do not need any credentials to call this API.
 -spec get_credentials_for_identity(aws_client:aws_client(), get_credentials_for_identity_input()) ->
@@ -835,7 +846,7 @@ get_credentials_for_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentialsForIdentity">>, Input, Options).
 
-%% @doc Generates (or retrieves) a Cognito ID.
+%% @doc Generates (or retrieves) IdentityID.
 %%
 %% Supplying multiple logins will create an
 %% implicit linked account.
@@ -859,7 +870,8 @@ get_id(Client, Input, Options)
 
 %% @doc Gets the roles for an identity pool.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec get_identity_pool_roles(aws_client:aws_client(), get_identity_pool_roles_input()) ->
     {ok, get_identity_pool_roles_response(), tuple()} |
     {error, any()} |
@@ -926,7 +938,8 @@ get_open_id_token(Client, Input, Options)
 %% `IdentityId'. This API will create the identity in the specified
 %% `IdentityPoolId'.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec get_open_id_token_for_developer_identity(aws_client:aws_client(), get_open_id_token_for_developer_identity_input()) ->
     {ok, get_open_id_token_for_developer_identity_response(), tuple()} |
     {error, any()} |
@@ -963,7 +976,8 @@ get_principal_tag_attribute_map(Client, Input, Options)
 
 %% @doc Lists the identities in an identity pool.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec list_identities(aws_client:aws_client(), list_identities_input()) ->
     {ok, list_identities_response(), tuple()} |
     {error, any()} |
@@ -982,7 +996,8 @@ list_identities(Client, Input, Options)
 
 %% @doc Lists all of the Cognito identity pools registered for your account.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec list_identity_pools(aws_client:aws_client(), list_identity_pools_input()) ->
     {ok, list_identity_pools_response(), tuple()} |
     {error, any()} |
@@ -1034,7 +1049,7 @@ list_tags_for_resource(Client, Input, Options)
 %% `DeveloperUserIdentifier' will be matched against `IdentityID'. If
 %% the values are verified against the database, the response returns both
 %% values and is the
-%% same as the request. Otherwise a `ResourceConflictException' is
+%% same as the request. Otherwise, a `ResourceConflictException' is
 %% thrown.
 %%
 %% `LookupDeveloperIdentity' is intended for low-throughput control plane
@@ -1045,7 +1060,8 @@ list_tags_for_resource(Client, Input, Options)
 %% are likely to be throttled. `GetOpenIdTokenForDeveloperIdentity' is a
 %% better option for higher-volume operations for user authentication.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec lookup_developer_identity(aws_client:aws_client(), lookup_developer_identity_input()) ->
     {ok, lookup_developer_identity_response(), tuple()} |
     {error, any()} |
@@ -1083,7 +1099,8 @@ lookup_developer_identity(Client, Input, Options)
 %% `DestinationUserIdentifier', together should not be larger than 20.
 %% Otherwise, an exception will be thrown.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec merge_developer_identities(aws_client:aws_client(), merge_developer_identities_input()) ->
     {ok, merge_developer_identities_response(), tuple()} |
     {error, any()} |
@@ -1105,7 +1122,8 @@ merge_developer_identities(Client, Input, Options)
 %% These roles are used when making calls to `GetCredentialsForIdentity'
 %% action.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec set_identity_pool_roles(aws_client:aws_client(), set_identity_pool_roles_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1123,7 +1141,8 @@ set_identity_pool_roles(Client, Input, Options)
     request(Client, <<"SetIdentityPoolRoles">>, Input, Options).
 
 %% @doc You can use this operation to use default (username and clientID)
-%% attribute or custom attribute mappings.
+%% attribute or custom
+%% attribute mappings.
 -spec set_principal_tag_attribute_map(aws_client:aws_client(), set_principal_tag_attribute_map_input()) ->
     {ok, set_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
@@ -1162,8 +1181,7 @@ set_principal_tag_attribute_map(Client, Input, Options)
 %% they appear on the Billing and Cost Management console, where you can
 %% track the costs
 %% associated with your identity pools. In an IAM policy, you can constrain
-%% permissions for
-%% identity pools based on specific tags or tag values.
+%% permissions for identity pools based on specific tags or tag values.
 %%
 %% You can use this action up to 5 times per second, per account. An identity
 %% pool can have
@@ -1193,7 +1211,8 @@ tag_resource(Client, Input, Options)
 %% developer user
 %% identifier, the Cognito identity becomes inaccessible.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec unlink_developer_identity(aws_client:aws_client(), unlink_developer_identity_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1255,9 +1274,13 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates an identity pool.
+%% @doc Updates the configuration of an identity pool.
 %%
-%% You must use AWS Developer credentials to call this API.
+%% If you don't provide a value for a parameter, Amazon Cognito sets it
+%% to its default value.
+%%
+%% You must use Amazon Web Services developer credentials to call this
+%% operation.
 -spec update_identity_pool(aws_client:aws_client(), identity_pool()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
