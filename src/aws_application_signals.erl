@@ -32,6 +32,8 @@
 
 -export([batch_get_service_level_objective_budget_report/2,
          batch_get_service_level_objective_budget_report/3,
+         batch_update_exclusion_windows/2,
+         batch_update_exclusion_windows/3,
          create_service_level_objective/2,
          create_service_level_objective/3,
          delete_service_level_objective/3,
@@ -45,6 +47,9 @@
          list_service_dependencies/3,
          list_service_dependents/2,
          list_service_dependents/3,
+         list_service_level_objective_exclusion_windows/2,
+         list_service_level_objective_exclusion_windows/4,
+         list_service_level_objective_exclusion_windows/5,
          list_service_level_objectives/2,
          list_service_level_objectives/3,
          list_service_operations/2,
@@ -158,6 +163,15 @@
 
 
 %% Example:
+%% batch_update_exclusion_windows_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"SloId">> => string()
+%% }
+-type batch_update_exclusion_windows_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_level_objective_budget_report_error() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ErrorCode">> => string(),
@@ -265,6 +279,14 @@
 
 
 %% Example:
+%% batch_update_exclusion_windows_output() :: #{
+%%   <<"Errors">> => list(batch_update_exclusion_windows_error()()),
+%%   <<"SloIds">> => list([string()]())
+%% }
+-type batch_update_exclusion_windows_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% goal() :: #{
 %%   <<"AttainmentGoal">> => float(),
 %%   <<"Interval">> => list(),
@@ -329,6 +351,14 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_level_objective_exclusion_windows_output() :: #{
+%%   <<"ExclusionWindows">> => list(exclusion_window()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_service_level_objective_exclusion_windows_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -444,6 +474,13 @@
 
 
 %% Example:
+%% recurrence_rule() :: #{
+%%   <<"Expression">> => string()
+%% }
+-type recurrence_rule() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_service_dependents_input() :: #{
 %%   <<"EndTime">> := [non_neg_integer()],
 %%   <<"KeyAttributes">> := map(),
@@ -452,6 +489,15 @@
 %%   <<"StartTime">> := [non_neg_integer()]
 %% }
 -type list_service_dependents_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_exclusion_windows_input() :: #{
+%%   <<"AddExclusionWindows">> => list(exclusion_window()()),
+%%   <<"RemoveExclusionWindows">> => list(exclusion_window()()),
+%%   <<"SloIds">> := list([string()]())
+%% }
+-type batch_update_exclusion_windows_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -537,6 +583,22 @@
 
 
 %% Example:
+%% list_service_level_objective_exclusion_windows_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_service_level_objective_exclusion_windows_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% window() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnit">> => list(any())
+%% }
+-type window() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -610,6 +672,16 @@
 
 
 %% Example:
+%% exclusion_window() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"RecurrenceRule">> => recurrence_rule(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Window">> => window()
+%% }
+-type exclusion_window() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_services_input() :: #{
 %%   <<"AwsAccountId">> => string(),
 %%   <<"EndTime">> := [non_neg_integer()],
@@ -632,6 +704,11 @@
 -type batch_get_service_level_objective_budget_report_errors() ::
     throttling_exception() | 
     validation_exception().
+
+-type batch_update_exclusion_windows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
 
 -type create_service_level_objective_errors() ::
     throttling_exception() | 
@@ -661,6 +738,11 @@
 -type list_service_dependents_errors() ::
     throttling_exception() | 
     validation_exception().
+
+-type list_service_level_objective_exclusion_windows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
 
 -type list_service_level_objectives_errors() ::
     throttling_exception() | 
@@ -734,6 +816,41 @@ batch_get_service_level_objective_budget_report(Client, Input) ->
 batch_get_service_level_objective_budget_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/budget-report"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Add or remove time window exclusions for one or more Service Level
+%% Objectives (SLOs).
+-spec batch_update_exclusion_windows(aws_client:aws_client(), batch_update_exclusion_windows_input()) ->
+    {ok, batch_update_exclusion_windows_output(), tuple()} |
+    {error, any()} |
+    {error, batch_update_exclusion_windows_errors(), tuple()}.
+batch_update_exclusion_windows(Client, Input) ->
+    batch_update_exclusion_windows(Client, Input, []).
+
+-spec batch_update_exclusion_windows(aws_client:aws_client(), batch_update_exclusion_windows_input(), proplists:proplist()) ->
+    {ok, batch_update_exclusion_windows_output(), tuple()} |
+    {error, any()} |
+    {error, batch_update_exclusion_windows_errors(), tuple()}.
+batch_update_exclusion_windows(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/exclusion-windows"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1071,6 +1188,48 @@ list_service_dependents(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves all exclusion windows configured for a specific SLO.
+-spec list_service_level_objective_exclusion_windows(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_service_level_objective_exclusion_windows_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_level_objective_exclusion_windows_errors(), tuple()}.
+list_service_level_objective_exclusion_windows(Client, Id)
+  when is_map(Client) ->
+    list_service_level_objective_exclusion_windows(Client, Id, #{}, #{}).
+
+-spec list_service_level_objective_exclusion_windows(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_service_level_objective_exclusion_windows_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_level_objective_exclusion_windows_errors(), tuple()}.
+list_service_level_objective_exclusion_windows(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_service_level_objective_exclusion_windows(Client, Id, QueryMap, HeadersMap, []).
+
+-spec list_service_level_objective_exclusion_windows(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_service_level_objective_exclusion_windows_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_level_objective_exclusion_windows_errors(), tuple()}.
+list_service_level_objective_exclusion_windows(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/slo/", aws_util:encode_uri(Id), "/exclusion-windows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of SLOs created in this account.
 -spec list_service_level_objectives(aws_client:aws_client(), list_service_level_objectives_input()) ->

@@ -485,6 +485,7 @@
 %%   <<"QueryString">> => query_string(),
 %%   <<"SingleHeader">> => single_header(),
 %%   <<"SingleQueryArgument">> => single_query_argument(),
+%%   <<"UriFragment">> => uri_fragment(),
 %%   <<"UriPath">> => uri_path()
 %% }
 -type field_to_match() :: #{binary() => any()}.
@@ -1212,6 +1213,12 @@
 %%   <<"message">> => string()
 %% }
 -type w_a_f_invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% uri_fragment() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type uri_fragment() :: #{binary() => any()}.
 
 %% Example:
 %% json_body() :: #{

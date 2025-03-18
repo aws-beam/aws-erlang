@@ -1,20 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% Integrate high-quality base map data into your applications using
+%% @doc Integrate high-quality base map data into your applications using
 %% MapLibre: https://maplibre.org.
 %%
 %% Capabilities include:
 %%
 %% Access to comprehensive base map data, allowing you to tailor the map
-%% display to your specific needs.
+%% display to
+%% your specific needs.
 %%
 %% Multiple pre-designed map styles suited for various application types,
-%% such as navigation, logistics, or data visualization.
+%% such as
+%% navigation, logistics, or data visualization.
 %%
 %% Generation of static map images for scenarios where interactive maps
-%% aren't suitable, such as:
+%% aren't
+%% suitable, such as:
 %%
 %% Embedding in emails or documents
 %%
@@ -85,11 +87,17 @@
 %%   <<"BoundedPositions">> => string(),
 %%   <<"BoundingBox">> => string(),
 %%   <<"Center">> => string(),
+%%   <<"ColorScheme">> => string(),
 %%   <<"CompactOverlay">> => string(),
+%%   <<"CropLabels">> => [boolean()],
 %%   <<"GeoJsonOverlay">> => string(),
 %%   <<"Height">> := [integer()],
 %%   <<"Key">> => string(),
+%%   <<"LabelSize">> => string(),
+%%   <<"Language">> => string(),
 %%   <<"Padding">> => [integer()],
+%%   <<"PointsOfInterests">> => string(),
+%%   <<"PoliticalView">> => string(),
 %%   <<"Radius">> => float(),
 %%   <<"ScaleBarUnit">> => string(),
 %%   <<"Style">> => string(),
@@ -193,7 +201,8 @@
 %% API
 %%====================================================================
 
-%% @doc Returns the map's glyphs.
+%% @doc
+%% `GetGlyphs' returns the map's glyphs.
 -spec get_glyphs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_glyphs_response(), tuple()} |
     {error, any()}.
@@ -245,7 +254,8 @@ get_glyphs(Client, FontStack, FontUnicodeRange, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Returns the map's sprites.
+%% @doc
+%% `GetSprites' returns the map's sprites.
 -spec get_sprites(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_sprites_response(), tuple()} |
     {error, any()}.
@@ -297,11 +307,14 @@ get_sprites(Client, ColorScheme, FileName, Style, Variant, QueryMap, HeadersMap,
         Result
     end.
 
-%% @doc Provides high-quality static map images with customizable options.
+%% @doc
+%% `GetStaticMap' provides high-quality static map images with
+%% customizable
+%% options.
 %%
 %% You can modify the map's appearance and overlay additional
-%% information. It's an ideal solution for applications requiring
-%% tailored static map snapshots.
+%% information. It's an
+%% ideal solution for applications requiring tailored static map snapshots.
 -spec get_static_map(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_static_map_response(), tuple()} |
     {error, any()} |
@@ -339,11 +352,17 @@ get_static_map(Client, FileName, Height, Width, QueryMap, HeadersMap, Options0)
         {<<"bounded-positions">>, maps:get(<<"bounded-positions">>, QueryMap, undefined)},
         {<<"bounding-box">>, maps:get(<<"bounding-box">>, QueryMap, undefined)},
         {<<"center">>, maps:get(<<"center">>, QueryMap, undefined)},
+        {<<"color-scheme">>, maps:get(<<"color-scheme">>, QueryMap, undefined)},
         {<<"compact-overlay">>, maps:get(<<"compact-overlay">>, QueryMap, undefined)},
+        {<<"crop-labels">>, maps:get(<<"crop-labels">>, QueryMap, undefined)},
         {<<"geojson-overlay">>, maps:get(<<"geojson-overlay">>, QueryMap, undefined)},
         {<<"height">>, Height},
         {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)},
+        {<<"label-size">>, maps:get(<<"label-size">>, QueryMap, undefined)},
+        {<<"lang">>, maps:get(<<"lang">>, QueryMap, undefined)},
         {<<"padding">>, maps:get(<<"padding">>, QueryMap, undefined)},
+        {<<"pois">>, maps:get(<<"pois">>, QueryMap, undefined)},
+        {<<"political-view">>, maps:get(<<"political-view">>, QueryMap, undefined)},
         {<<"radius">>, maps:get(<<"radius">>, QueryMap, undefined)},
         {<<"scale-unit">>, maps:get(<<"scale-unit">>, QueryMap, undefined)},
         {<<"style">>, maps:get(<<"style">>, QueryMap, undefined)},
@@ -373,7 +392,8 @@ get_static_map(Client, FileName, Height, Width, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Returns information about the style.
+%% @doc
+%% `GetStyleDescriptor' returns information about the style.
 -spec get_style_descriptor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_style_descriptor_response(), tuple()} |
     {error, any()}.
@@ -431,10 +451,13 @@ get_style_descriptor(Client, Style, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Returns a tile.
+%% @doc
+%% `GetTile' returns a tile.
 %%
-%% Map tiles are used by clients to render a map. they're addressed using
-%% a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
+%% Map tiles are used by clients to render a map.
+%% they're addressed using a grid arrangement with an X coordinate, Y
+%% coordinate, and Z (zoom)
+%% level.
 -spec get_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_tile_response(), tuple()} |
     {error, any()} |

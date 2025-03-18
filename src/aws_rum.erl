@@ -206,7 +206,9 @@
 %%   <<"AppMonitorConfiguration">> => app_monitor_configuration(),
 %%   <<"CustomEvents">> => custom_events(),
 %%   <<"CwLogEnabled">> => [boolean()],
-%%   <<"Domain">> => string()
+%%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainList">> => list(string()())
 %% }
 -type update_app_monitor_request() :: #{binary() => any()}.
 
@@ -279,12 +281,22 @@
 
 
 %% Example:
+%% java_script_source_maps() :: #{
+%%   <<"S3Uri">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type java_script_source_maps() :: #{binary() => any()}.
+
+
+%% Example:
 %% app_monitor() :: #{
 %%   <<"AppMonitorConfiguration">> => app_monitor_configuration(),
 %%   <<"Created">> => string(),
 %%   <<"CustomEvents">> => custom_events(),
 %%   <<"DataStorage">> => data_storage(),
+%%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
 %%   <<"Domain">> => string(),
+%%   <<"DomainList">> => list(string()()),
 %%   <<"Id">> => string(),
 %%   <<"LastModified">> => string(),
 %%   <<"Name">> => string(),
@@ -303,7 +315,9 @@
 %%   <<"AppMonitorConfiguration">> => app_monitor_configuration(),
 %%   <<"CustomEvents">> => custom_events(),
 %%   <<"CwLogEnabled">> => [boolean()],
-%%   <<"Domain">> := string(),
+%%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainList">> => list(string()()),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => map()
 %% }
@@ -391,6 +405,13 @@
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% deobfuscation_configuration() :: #{
+%%   <<"JavaScriptSourceMaps">> => java_script_source_maps()
+%% }
+-type deobfuscation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
