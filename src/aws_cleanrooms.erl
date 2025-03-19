@@ -7,8 +7,8 @@
 %% to join
 %% their data together in a secure collaboration workspace. In the
 %% collaboration, members who
-%% can query and receive results can get insights into the collective
-%% datasets without either
+%% can run queries and jobs and receive results can get insights into the
+%% collective datasets without either
 %% party getting access to the other party's raw data.
 %%
 %% To learn more about Clean Rooms concepts, procedures, and best practices,
@@ -119,6 +119,9 @@
          get_privacy_budget_template/3,
          get_privacy_budget_template/5,
          get_privacy_budget_template/6,
+         get_protected_job/3,
+         get_protected_job/5,
+         get_protected_job/6,
          get_protected_query/3,
          get_protected_query/5,
          get_protected_query/6,
@@ -176,6 +179,9 @@
          list_privacy_budgets/3,
          list_privacy_budgets/5,
          list_privacy_budgets/6,
+         list_protected_jobs/2,
+         list_protected_jobs/4,
+         list_protected_jobs/5,
          list_protected_queries/2,
          list_protected_queries/4,
          list_protected_queries/5,
@@ -189,6 +195,8 @@
          populate_id_mapping_table/5,
          preview_privacy_impact/3,
          preview_privacy_impact/4,
+         start_protected_job/3,
+         start_protected_job/4,
          start_protected_query/3,
          start_protected_query/4,
          tag_resource/3,
@@ -217,6 +225,8 @@
          update_membership/4,
          update_privacy_budget_template/4,
          update_privacy_budget_template/5,
+         update_protected_job/4,
+         update_protected_job/5,
          update_protected_query/4,
          update_protected_query/5]).
 
@@ -232,6 +242,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type configured_table_summary() :: #{binary() => any()}.
@@ -256,6 +267,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_audience_model_associations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_jobs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_protected_jobs_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_configured_audience_model_association_output() :: #{}
@@ -331,9 +351,11 @@
 %% Example:
 %% create_membership_input() :: #{
 %%   <<"collaborationIdentifier">> := string(),
+%%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
+%%   <<"jobLogStatus">> => list(any()),
 %%   <<"paymentConfiguration">> => membership_payment_configuration(),
-%%   <<"queryLogStatus">> := string(),
+%%   <<"queryLogStatus">> := list(any()),
 %%   <<"tags">> => map()
 %% }
 -type create_membership_input() :: #{binary() => any()}.
@@ -367,6 +389,7 @@
 %%   <<"analysisMethod">> := list(any()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
 %%   <<"tableReference">> := list(),
 %%   <<"tags">> => map()
 %% }
@@ -376,6 +399,8 @@
 %% Example:
 %% analysis_rule() :: #{
 %%   <<"collaborationId">> => string(),
+%%   <<"collaborationPolicy">> => list(),
+%%   <<"consolidatedPolicy">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"policy">> => list(),
@@ -390,6 +415,15 @@
 %%   <<"protectedQuery">> := protected_query()
 %% }
 -type get_protected_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_template_artifacts() :: #{
+%%   <<"additionalArtifacts">> => list(analysis_template_artifact()()),
+%%   <<"entryPoint">> => analysis_template_artifact(),
+%%   <<"roleArn">> => string()
+%% }
+-type analysis_template_artifacts() :: #{binary() => any()}.
 
 
 %% Example:
@@ -414,6 +448,7 @@
 %%   <<"name">> => string(),
 %%   <<"schema">> => analysis_schema(),
 %%   <<"source">> => list(),
+%%   <<"sourceMetadata">> => list(),
 %%   <<"updateTime">> => [non_neg_integer()],
 %%   <<"validations">> => list(analysis_template_validation_status_detail()())
 %% }
@@ -429,6 +464,22 @@
 %%   <<"accountId">> => string()
 %% }
 -type protected_query_member_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job() :: #{
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"error">> => protected_job_error(),
+%%   <<"id">> => string(),
+%%   <<"jobParameters">> => protected_job_parameters(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"result">> => protected_job_result(),
+%%   <<"resultConfiguration">> => protected_job_result_configuration_output(),
+%%   <<"statistics">> => protected_job_statistics(),
+%%   <<"status">> => list(any())
+%% }
+-type protected_job() :: #{binary() => any()}.
 
 
 %% Example:
@@ -536,6 +587,13 @@
 %% }
 -type id_namespace_association_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% protected_job_s3_output() :: #{
+%%   <<"location">> => [string()]
+%% }
+-type protected_job_s3_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_collaboration_id_namespace_association_input() :: #{}
 -type get_collaboration_id_namespace_association_input() :: #{}.
@@ -570,6 +628,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_memberships_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type protected_job_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -699,6 +765,7 @@
 %%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
+%%   <<"jobLogStatus">> => list(any()),
 %%   <<"memberStatus">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
@@ -751,6 +818,14 @@
 %%   <<"referencedTables">> => list(string()())
 %% }
 -type analysis_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_receiver_configuration() :: #{
+%%   <<"analysisType">> => list(any()),
+%%   <<"configurationDetails">> => list()
+%% }
+-type protected_job_receiver_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -828,6 +903,13 @@
 
 
 %% Example:
+%% protected_job_result_configuration_output() :: #{
+%%   <<"outputConfiguration">> => list()
+%% }
+-type protected_job_result_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% ml_member_abilities() :: #{
 %%   <<"customMLMemberAbilities">> => list(list(any())())
 %% }
@@ -839,6 +921,13 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_compute_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type job_compute_payment_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -889,6 +978,18 @@
 %% Example:
 %% delete_analysis_template_input() :: #{}
 -type delete_analysis_template_input() :: #{}.
+
+
+%% Example:
+%% consolidated_policy_list() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()()),
+%%   <<"allowedJoinOperators">> => list(string()()),
+%%   <<"allowedResultReceivers">> => list(string()()),
+%%   <<"joinColumns">> => list(string()()),
+%%   <<"listColumns">> => list(string()())
+%% }
+-type consolidated_policy_list() :: #{binary() => any()}.
 
 
 %% Example:
@@ -970,6 +1071,13 @@
 
 
 %% Example:
+%% billed_job_resource_utilization() :: #{
+%%   <<"units">> => [float()]
+%% }
+-type billed_job_resource_utilization() :: #{binary() => any()}.
+
+
+%% Example:
 %% privacy_budget_template_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"collaborationArn">> => string(),
@@ -1035,6 +1143,19 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_audience_model_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% consolidated_policy_custom() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()()),
+%%   <<"allowedAnalyses">> => list(string()()),
+%%   <<"allowedAnalysisProviders">> => list(string()()),
+%%   <<"allowedResultReceivers">> => list(string()()),
+%%   <<"differentialPrivacy">> => differential_privacy_configuration(),
+%%   <<"disallowedOutputColumns">> => list(string()())
+%% }
+-type consolidated_policy_custom() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1116,6 +1237,13 @@
 
 
 %% Example:
+%% protected_job_result_configuration_input() :: #{
+%%   <<"outputConfiguration">> => list()
+%% }
+-type protected_job_result_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% id_namespace_association_input_reference_properties() :: #{
 %%   <<"idMappingWorkflowsSupported">> => list([any()]()),
 %%   <<"idNamespaceType">> => list(any())
@@ -1138,10 +1266,25 @@
 
 
 %% Example:
+%% protected_job_result() :: #{
+%%   <<"output">> => list()
+%% }
+-type protected_job_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_configured_table_association_analysis_rule_input() :: #{
 %%   <<"analysisRulePolicy">> := list()
 %% }
 -type update_configured_table_association_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_statistics() :: #{
+%%   <<"billedResourceUtilization">> => billed_job_resource_utilization(),
+%%   <<"totalDurationInMillis">> => [float()]
+%% }
+-type protected_job_statistics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1150,6 +1293,26 @@
 %%   <<"errors">> => list(batch_get_schema_analysis_rule_error()())
 %% }
 -type batch_get_schema_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_s3_output_configuration_input() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"keyPrefix">> => string()
+%% }
+-type protected_job_s3_output_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_summary() :: #{
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"receiverConfigurations">> => list(protected_job_receiver_configuration()()),
+%%   <<"status">> => list(any())
+%% }
+-type protected_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1219,10 +1382,20 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"name">> => string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
 %%   <<"type">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type schema_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_protected_job_input() :: #{
+%%   <<"jobParameters">> := protected_job_parameters(),
+%%   <<"resultConfiguration">> => protected_job_result_configuration_input(),
+%%   <<"type">> := list(any())
+%% }
+-type start_protected_job_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_configured_table_analysis_rule_input() :: #{}
@@ -1286,6 +1459,20 @@
 
 
 %% Example:
+%% hash() :: #{
+%%   <<"sha256">> => [string()]
+%% }
+-type hash() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_single_member_output() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_job_single_member_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_collaboration_configured_audience_model_association_output() :: #{
 %%   <<"collaborationConfiguredAudienceModelAssociation">> => collaboration_configured_audience_model_association()
 %% }
@@ -1331,6 +1518,7 @@
 %%   <<"partitionKeys">> => list(column()()),
 %%   <<"schemaStatusDetails">> => list(schema_status_detail()()),
 %%   <<"schemaTypeProperties">> => list(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
 %%   <<"type">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
@@ -1346,6 +1534,14 @@
 %%   <<"name">> => [string()]
 %% }
 -type differential_privacy_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_protected_job_result_configuration() :: #{
+%%   <<"outputConfiguration">> => list(),
+%%   <<"roleArn">> => string()
+%% }
+-type membership_protected_job_result_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1410,6 +1606,13 @@
 
 
 %% Example:
+%% update_protected_job_output() :: #{
+%%   <<"protectedJob">> => protected_job()
+%% }
+-type update_protected_job_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% membership_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"collaborationArn">> => string(),
@@ -1458,6 +1661,21 @@
 %%   <<"queryConstraints">> => list(list()())
 %% }
 -type analysis_rule_id_mapping_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_direct_analysis_configuration_details() :: #{
+%%   <<"receiverAccountIds">> => list(string()())
+%% }
+-type protected_job_direct_analysis_configuration_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"key">> => [string()]
+%% }
+-type s3_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1593,6 +1811,7 @@
 %%   <<"creatorPaymentConfiguration">> => payment_configuration(),
 %%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
 %%   <<"description">> := string(),
+%%   <<"jobLogStatus">> => list(any()),
 %%   <<"members">> := list(member_specification()()),
 %%   <<"name">> := string(),
 %%   <<"queryLogStatus">> := list(any()),
@@ -1702,11 +1921,26 @@
 
 
 %% Example:
+%% analysis_template_artifact_metadata() :: #{
+%%   <<"additionalArtifactHashes">> => list(hash()()),
+%%   <<"entryPointHash">> => hash()
+%% }
+-type analysis_template_artifact_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_id_namespace_associations_output() :: #{
 %%   <<"idNamespaceAssociationSummaries">> => list(id_namespace_association_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_id_namespace_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_job_compute_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type membership_job_compute_payment_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1718,6 +1952,13 @@
 %% Example:
 %% get_schema_analysis_rule_input() :: #{}
 -type get_schema_analysis_rule_input() :: #{}.
+
+
+%% Example:
+%% protected_job_member_output_configuration_output() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_job_member_output_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1832,6 +2073,7 @@
 %%   <<"name">> => string(),
 %%   <<"schema">> => analysis_schema(),
 %%   <<"source">> => list(),
+%%   <<"sourceMetadata">> => list(),
 %%   <<"updateTime">> => [non_neg_integer()],
 %%   <<"validations">> => list(analysis_template_validation_status_detail()())
 %% }
@@ -1865,8 +2107,10 @@
 
 %% Example:
 %% update_configured_table_input() :: #{
+%%   <<"analysisMethod">> => list(any()),
 %%   <<"description">> => string(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())())
 %% }
 -type update_configured_table_input() :: #{binary() => any()}.
 
@@ -1904,6 +2148,10 @@
 %% }
 -type batch_get_collaboration_analysis_template_error() :: #{binary() => any()}.
 
+%% Example:
+%% get_protected_job_input() :: #{}
+-type get_protected_job_input() :: #{}.
+
 
 %% Example:
 %% list_collaborations_output() :: #{
@@ -1919,6 +2167,7 @@
 
 %% Example:
 %% configured_table_association_summary() :: #{
+%%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"arn">> => string(),
 %%   <<"configuredTableId">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
@@ -2006,6 +2255,21 @@
 
 
 %% Example:
+%% list_protected_jobs_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"protectedJobs">> => list(protected_job_summary()())
+%% }
+-type list_protected_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_protected_job_output() :: #{
+%%   <<"protectedJob">> => protected_job()
+%% }
+-type get_protected_job_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_schema_analysis_rule_output() :: #{
 %%   <<"analysisRule">> := analysis_rule()
 %% }
@@ -2045,6 +2309,20 @@
 %% Example:
 %% get_id_namespace_association_input() :: #{}
 -type get_id_namespace_association_input() :: #{}.
+
+
+%% Example:
+%% update_protected_job_input() :: #{
+%%   <<"targetStatus">> := list(any())
+%% }
+-type update_protected_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_member_output_configuration_input() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_job_member_output_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2102,8 +2380,10 @@
 
 %% Example:
 %% update_membership_input() :: #{
+%%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
-%%   <<"queryLogStatus">> => string()
+%%   <<"jobLogStatus">> => list(any()),
+%%   <<"queryLogStatus">> => list(any())
 %% }
 -type update_membership_input() :: #{binary() => any()}.
 
@@ -2175,6 +2455,7 @@
 
 %% Example:
 %% membership_payment_configuration() :: #{
+%%   <<"jobCompute">> => membership_job_compute_payment_config(),
 %%   <<"machineLearning">> => membership_ml_payment_config(),
 %%   <<"queryCompute">> => membership_query_compute_payment_config()
 %% }
@@ -2183,6 +2464,22 @@
 %% Example:
 %% get_membership_input() :: #{}
 -type get_membership_input() :: #{}.
+
+
+%% Example:
+%% consolidated_policy_aggregation() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
+%%   <<"aggregateColumns">> => list(aggregate_column()()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()()),
+%%   <<"allowedJoinOperators">> => list(string()()),
+%%   <<"allowedResultReceivers">> => list(string()()),
+%%   <<"dimensionColumns">> => list(string()()),
+%%   <<"joinColumns">> => list(string()()),
+%%   <<"joinRequired">> => string(),
+%%   <<"outputConstraints">> => list(aggregation_constraint()()),
+%%   <<"scalarFunctions">> => list(string()())
+%% }
+-type consolidated_policy_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2238,6 +2535,7 @@
 
 %% Example:
 %% payment_configuration() :: #{
+%%   <<"jobCompute">> => job_compute_payment_config(),
 %%   <<"machineLearning">> => ml_payment_config(),
 %%   <<"queryCompute">> => query_compute_payment_config()
 %% }
@@ -2254,6 +2552,7 @@
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
 %%   <<"tableReference">> => list(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
@@ -2273,6 +2572,14 @@
 %%   <<"modelTraining">> => model_training_payment_config()
 %% }
 -type ml_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_s3_output_configuration_output() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"keyPrefix">> => string()
+%% }
+-type protected_job_s3_output_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2319,6 +2626,7 @@
 %%   <<"description">> => string(),
 %%   <<"format">> := list(any()),
 %%   <<"name">> := string(),
+%%   <<"schema">> => analysis_schema(),
 %%   <<"source">> := list(),
 %%   <<"tags">> => map()
 %% }
@@ -2359,6 +2667,13 @@
 %% }
 -type id_namespace_association() :: #{binary() => any()}.
 
+
+%% Example:
+%% protected_job_parameters() :: #{
+%%   <<"analysisTemplateArn">> => string()
+%% }
+-type protected_job_parameters() :: #{binary() => any()}.
+
 %% Example:
 %% get_collaboration_configured_audience_model_association_input() :: #{}
 -type get_collaboration_configured_audience_model_association_input() :: #{}.
@@ -2398,6 +2713,13 @@
 %%   <<"isResponsible">> => [boolean()]
 %% }
 -type membership_model_training_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_protected_job_output() :: #{
+%%   <<"protectedJob">> => protected_job()
+%% }
+-type start_protected_job_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2454,12 +2776,14 @@
 %%   <<"collaborationId">> => string(),
 %%   <<"collaborationName">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
+%%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
 %%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
 %%   <<"id">> => string(),
+%%   <<"jobLogStatus">> => list(any()),
 %%   <<"memberAbilities">> => list(list(any())()),
 %%   <<"mlMemberAbilities">> => ml_member_abilities(),
 %%   <<"paymentConfiguration">> => membership_payment_configuration(),
-%%   <<"queryLogStatus">> => string(),
+%%   <<"queryLogStatus">> => list(any()),
 %%   <<"status">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
@@ -2515,6 +2839,13 @@
 %%   <<"manageResourcePolicies">> => [boolean()]
 %% }
 -type id_mapping_table_input_reference_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_template_artifact() :: #{
+%%   <<"location">> => s3_location()
+%% }
+-type analysis_template_artifact() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2622,6 +2953,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2870,6 +3202,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_protected_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_protected_query_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3000,6 +3339,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_protected_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_protected_queries_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3032,6 +3378,14 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_protected_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type start_protected_query_errors() ::
@@ -3125,6 +3479,14 @@
     conflict_exception().
 
 -type update_privacy_budget_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_protected_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4609,6 +4971,43 @@ get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateI
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns job processing metadata.
+-spec get_protected_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_protected_job_output(), tuple()} |
+    {error, any()} |
+    {error, get_protected_job_errors(), tuple()}.
+get_protected_job(Client, MembershipIdentifier, ProtectedJobIdentifier)
+  when is_map(Client) ->
+    get_protected_job(Client, MembershipIdentifier, ProtectedJobIdentifier, #{}, #{}).
+
+-spec get_protected_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_protected_job_output(), tuple()} |
+    {error, any()} |
+    {error, get_protected_job_errors(), tuple()}.
+get_protected_job(Client, MembershipIdentifier, ProtectedJobIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_protected_job(Client, MembershipIdentifier, ProtectedJobIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_protected_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_protected_job_output(), tuple()} |
+    {error, any()} |
+    {error, get_protected_job_errors(), tuple()}.
+get_protected_job(Client, MembershipIdentifier, ProtectedJobIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/protectedJobs/", aws_util:encode_uri(ProtectedJobIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns query processing metadata.
 -spec get_protected_query(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_protected_query_output(), tuple()} |
@@ -5405,6 +5804,49 @@ list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists protected jobs, sorted by most recent job.
+-spec list_protected_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_protected_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_jobs_errors(), tuple()}.
+list_protected_jobs(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_protected_jobs(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_protected_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_protected_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_jobs_errors(), tuple()}.
+list_protected_jobs(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_protected_jobs(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_protected_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_protected_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_jobs_errors(), tuple()}.
+list_protected_jobs(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/protectedJobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists protected queries, sorted by the most recent query.
 -spec list_protected_queries(aws_client:aws_client(), binary() | list()) ->
     {ok, list_protected_queries_output(), tuple()} |
@@ -5579,6 +6021,40 @@ preview_privacy_impact(Client, MembershipIdentifier, Input) ->
 preview_privacy_impact(Client, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/previewprivacyimpact"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a protected job that is started by Clean Rooms.
+-spec start_protected_job(aws_client:aws_client(), binary() | list(), start_protected_job_input()) ->
+    {ok, start_protected_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_protected_job_errors(), tuple()}.
+start_protected_job(Client, MembershipIdentifier, Input) ->
+    start_protected_job(Client, MembershipIdentifier, Input, []).
+
+-spec start_protected_job(aws_client:aws_client(), binary() | list(), start_protected_job_input(), proplists:proplist()) ->
+    {ok, start_protected_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_protected_job_errors(), tuple()}.
+start_protected_job(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/protectedJobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6060,6 +6536,40 @@ update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTempla
 update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the processing of a currently running job.
+-spec update_protected_job(aws_client:aws_client(), binary() | list(), binary() | list(), update_protected_job_input()) ->
+    {ok, update_protected_job_output(), tuple()} |
+    {error, any()} |
+    {error, update_protected_job_errors(), tuple()}.
+update_protected_job(Client, MembershipIdentifier, ProtectedJobIdentifier, Input) ->
+    update_protected_job(Client, MembershipIdentifier, ProtectedJobIdentifier, Input, []).
+
+-spec update_protected_job(aws_client:aws_client(), binary() | list(), binary() | list(), update_protected_job_input(), proplists:proplist()) ->
+    {ok, update_protected_job_output(), tuple()} |
+    {error, any()} |
+    {error, update_protected_job_errors(), tuple()}.
+update_protected_job(Client, MembershipIdentifier, ProtectedJobIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/protectedJobs/", aws_util:encode_uri(ProtectedJobIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

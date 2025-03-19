@@ -499,7 +499,8 @@
 %% create_domain_name_request() :: #{
 %%   <<"certificateArn">> := string(),
 %%   <<"description">> => string(),
-%%   <<"domainName">> := string()
+%%   <<"domainName">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_domain_name_request() :: #{binary() => any()}.
 
@@ -1371,7 +1372,9 @@
 %%   <<"certificateArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainName">> => string(),
-%%   <<"hostedZoneId">> => string()
+%%   <<"domainNameArn">> => string(),
+%%   <<"hostedZoneId">> => string(),
+%%   <<"tags">> => map()
 %% }
 -type domain_name_config() :: #{binary() => any()}.
 
