@@ -278,6 +278,14 @@
 
 
 %% Example:
+%% evaluation_inference_config_summary() :: #{
+%%   <<"modelConfigSummary">> => evaluation_model_config_summary(),
+%%   <<"ragConfigSummary">> => evaluation_rag_config_summary()
+%% }
+-type evaluation_inference_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_model_invocation_job_response() :: #{
 %%   <<"jobArn">> => string()
 %% }
@@ -632,6 +640,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type marketplace_model_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_model_config_summary() :: #{
+%%   <<"bedrockModelIdentifiers">> => list(string()()),
+%%   <<"precomputedInferenceSourceIdentifiers">> => list(string()())
+%% }
+-type evaluation_model_config_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1116,6 +1132,13 @@
 
 
 %% Example:
+%% evaluation_precomputed_inference_source() :: #{
+%%   <<"inferenceSourceIdentifier">> => string()
+%% }
+-type evaluation_precomputed_inference_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_provisioned_model_throughput_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"commitmentDuration">> => list(any()),
@@ -1415,6 +1438,14 @@
 %%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config()())
 %% }
 -type guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_rag_config_summary() :: #{
+%%   <<"bedrockKnowledgeBaseIdentifiers">> => list(string()()),
+%%   <<"precomputedRagSourceIdentifiers">> => list(string()())
+%% }
+-type evaluation_rag_config_summary() :: #{binary() => any()}.
 
 %% Example:
 %% delete_imported_model_request() :: #{}
@@ -1844,6 +1875,13 @@
 
 
 %% Example:
+%% evaluation_precomputed_retrieve_source_config() :: #{
+%%   <<"ragSourceIdentifier">> => string()
+%% }
+-type evaluation_precomputed_retrieve_source_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_guardrails_request() :: #{
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"maxResults">> => integer(),
@@ -1965,6 +2003,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"evaluationTaskTypes">> => list(list(any())()),
 %%   <<"evaluatorModelIdentifiers">> => list(string()()),
+%%   <<"inferenceConfigSummary">> => evaluation_inference_config_summary(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"jobType">> => list(any()),
@@ -1994,6 +2033,13 @@
 %% Example:
 %% delete_model_invocation_logging_configuration_request() :: #{}
 -type delete_model_invocation_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% evaluation_precomputed_retrieve_and_generate_source_config() :: #{
+%%   <<"ragSourceIdentifier">> => string()
+%% }
+-type evaluation_precomputed_retrieve_and_generate_source_config() :: #{binary() => any()}.
 
 
 %% Example:

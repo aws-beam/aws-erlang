@@ -134,6 +134,8 @@
          describe_firewall/3,
          describe_firewall_policy/2,
          describe_firewall_policy/3,
+         describe_flow_operation/2,
+         describe_flow_operation/3,
          describe_logging_configuration/2,
          describe_logging_configuration/3,
          describe_resource_policy/2,
@@ -154,6 +156,10 @@
          list_firewall_policies/3,
          list_firewalls/2,
          list_firewalls/3,
+         list_flow_operation_results/2,
+         list_flow_operation_results/3,
+         list_flow_operations/2,
+         list_flow_operations/3,
          list_rule_groups/2,
          list_rule_groups/3,
          list_t_l_s_inspection_configurations/2,
@@ -164,6 +170,10 @@
          put_resource_policy/3,
          start_analysis_report/2,
          start_analysis_report/3,
+         start_flow_capture/2,
+         start_flow_capture/3,
+         start_flow_flush/2,
+         start_flow_flush/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -256,6 +266,16 @@
 -type update_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
+%% flow_filter() :: #{
+%%   <<"DestinationAddress">> => address(),
+%%   <<"DestinationPort">> => string(),
+%%   <<"Protocols">> => list(string()()),
+%%   <<"SourceAddress">> => address(),
+%%   <<"SourcePort">> => string()
+%% }
+-type flow_filter() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"Tags">> := list(tag()())
@@ -293,6 +313,36 @@
 %%   <<"RuleGroups">> => list(rule_group_metadata()())
 %% }
 -type list_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_capture_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowFilters">> := list(flow_filter()()),
+%%   <<"MinimumFlowAgeInSeconds">> => integer()
+%% }
+-type start_flow_capture_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flow_operation_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowOperationId">> := string()
+%% }
+-type describe_flow_operation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flow_operation_response() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FlowOperation">> => flow_operation(),
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any()),
+%%   <<"FlowOperationType">> => list(any()),
+%%   <<"FlowRequestTimestamp">> => non_neg_integer(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type describe_flow_operation_response() :: #{binary() => any()}.
 
 %% Example:
 %% associate_subnets_response() :: #{
@@ -599,6 +649,13 @@
 -type delete_firewall_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_flow_operations_response() :: #{
+%%   <<"FlowOperations">> => list(flow_operation_metadata()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flow_operations_response() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -639,6 +696,15 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% flow_operation_metadata() :: #{
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any()),
+%%   <<"FlowOperationType">> => list(any()),
+%%   <<"FlowRequestTimestamp">> => non_neg_integer()
+%% }
+-type flow_operation_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% describe_logging_configuration_request() :: #{
@@ -733,6 +799,16 @@
 -type ip_set() :: #{binary() => any()}.
 
 %% Example:
+%% list_flow_operation_results_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowOperationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flow_operation_results_request() :: #{binary() => any()}.
+
+%% Example:
 %% stateful_rule() :: #{
 %%   <<"Action">> => list(any()),
 %%   <<"Header">> => header(),
@@ -798,6 +874,21 @@
 -type firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% flow_operation() :: #{
+%%   <<"FlowFilters">> => list(flow_filter()()),
+%%   <<"MinimumFlowAgeInSeconds">> => integer()
+%% }
+-type flow_operation() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_capture_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any())
+%% }
+-type start_flow_capture_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_firewall_policy_change_protection_response() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
@@ -820,6 +911,16 @@
 %%   <<"UpdateToken">> => string()
 %% }
 -type update_subnet_change_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_operations_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowOperationType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flow_operations_request() :: #{binary() => any()}.
 
 %% Example:
 %% firewall() :: #{
@@ -885,6 +986,23 @@
 %%   <<"TLSInspectionConfigurations">> => list(t_l_s_inspection_configuration_metadata()())
 %% }
 -type list_t_l_s_inspection_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_flush_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowFilters">> := list(flow_filter()()),
+%%   <<"MinimumFlowAgeInSeconds">> => integer()
+%% }
+-type start_flow_flush_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_flush_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any())
+%% }
+-type start_flow_flush_response() :: #{binary() => any()}.
 
 %% Example:
 %% t_l_s_inspection_configuration_response() :: #{
@@ -1210,6 +1328,19 @@
 -type update_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_flow_operation_results_response() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any()),
+%%   <<"FlowRequestTimestamp">> => non_neg_integer(),
+%%   <<"Flows">> => list(flow()()),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type list_flow_operation_results_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_firewall_delete_protection_request() :: #{
 %%   <<"DeleteProtection">> := boolean(),
 %%   <<"FirewallArn">> => string(),
@@ -1278,6 +1409,19 @@
 %%   <<"AddressDefinition">> => string()
 %% }
 -type address() :: #{binary() => any()}.
+
+%% Example:
+%% flow() :: #{
+%%   <<"Age">> => integer(),
+%%   <<"ByteCount">> => float(),
+%%   <<"DestinationAddress">> => address(),
+%%   <<"DestinationPort">> => string(),
+%%   <<"PacketCount">> => integer(),
+%%   <<"Protocol">> => string(),
+%%   <<"SourceAddress">> => address(),
+%%   <<"SourcePort">> => string()
+%% }
+-type flow() :: #{binary() => any()}.
 
 %% Example:
 %% update_logging_configuration_response() :: #{
@@ -1519,6 +1663,12 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type describe_flow_operation_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type describe_logging_configuration_errors() ::
     throttling_exception() | 
     internal_server_error() | 
@@ -1579,6 +1729,18 @@
     internal_server_error() | 
     invalid_request_exception().
 
+-type list_flow_operation_results_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_flow_operations_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type list_rule_groups_errors() ::
     throttling_exception() | 
     internal_server_error() | 
@@ -1603,6 +1765,18 @@
     resource_not_found_exception().
 
 -type start_analysis_report_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_flow_capture_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_flow_flush_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -2022,6 +2196,23 @@ describe_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFirewallPolicy">>, Input, Options).
 
+%% @doc Returns key information about a specific flow operation.
+-spec describe_flow_operation(aws_client:aws_client(), describe_flow_operation_request()) ->
+    {ok, describe_flow_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_operation_errors(), tuple()}.
+describe_flow_operation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_flow_operation(Client, Input, []).
+
+-spec describe_flow_operation(aws_client:aws_client(), describe_flow_operation_request(), proplists:proplist()) ->
+    {ok, describe_flow_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_operation_errors(), tuple()}.
+describe_flow_operation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFlowOperation">>, Input, Options).
+
 %% @doc Returns the logging configuration for the specified firewall.
 -spec describe_logging_configuration(aws_client:aws_client(), describe_logging_configuration_request()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
@@ -2223,6 +2414,60 @@ list_firewalls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewalls">>, Input, Options).
 
+%% @doc Returns the results of a specific flow operation.
+%%
+%% Flow operations let you manage the flows tracked in the flow table, also
+%% known as the firewall table.
+%%
+%% A flow is network traffic that is monitored by a firewall, either by
+%% stateful or stateless rules.
+%% For traffic to be considered part of a flow, it must share Destination,
+%% DestinationPort, Direction, Protocol, Source, and SourcePort.
+-spec list_flow_operation_results(aws_client:aws_client(), list_flow_operation_results_request()) ->
+    {ok, list_flow_operation_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_operation_results_errors(), tuple()}.
+list_flow_operation_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_flow_operation_results(Client, Input, []).
+
+-spec list_flow_operation_results(aws_client:aws_client(), list_flow_operation_results_request(), proplists:proplist()) ->
+    {ok, list_flow_operation_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_operation_results_errors(), tuple()}.
+list_flow_operation_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFlowOperationResults">>, Input, Options).
+
+%% @doc Returns a list of all flow operations ran in a specific firewall.
+%%
+%% You can optionally narrow the request scope by specifying the operation
+%% type or Availability Zone associated with a firewall's flow
+%% operations.
+%%
+%% Flow operations let you manage the flows tracked in the flow table, also
+%% known as the firewall table.
+%%
+%% A flow is network traffic that is monitored by a firewall, either by
+%% stateful or stateless rules.
+%% For traffic to be considered part of a flow, it must share Destination,
+%% DestinationPort, Direction, Protocol, Source, and SourcePort.
+-spec list_flow_operations(aws_client:aws_client(), list_flow_operations_request()) ->
+    {ok, list_flow_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_operations_errors(), tuple()}.
+list_flow_operations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_flow_operations(Client, Input, []).
+
+-spec list_flow_operations(aws_client:aws_client(), list_flow_operations_request(), proplists:proplist()) ->
+    {ok, list_flow_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_operations_errors(), tuple()}.
+list_flow_operations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFlowOperations">>, Input, Options).
+
 %% @doc Retrieves the metadata for the rule groups that you have defined.
 %%
 %% Depending on your
@@ -2361,6 +2606,67 @@ start_analysis_report(Client, Input)
 start_analysis_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAnalysisReport">>, Input, Options).
+
+%% @doc Begins capturing the flows in a firewall, according to the filters
+%% you define.
+%%
+%% Captures are similar, but not identical to snapshots. Capture operations
+%% provide visibility into flows that are not closed and are tracked by a
+%% firewall's flow table.
+%% Unlike snapshots, captures are a time-boxed view.
+%%
+%% A flow is network traffic that is monitored by a firewall, either by
+%% stateful or stateless rules.
+%% For traffic to be considered part of a flow, it must share Destination,
+%% DestinationPort, Direction, Protocol, Source, and SourcePort.
+%%
+%% To avoid encountering operation limits, you should avoid starting captures
+%% with broad filters, like wide IP ranges.
+%% Instead, we recommend you define more specific criteria with
+%% `FlowFilters', like narrow IP ranges, ports, or protocols.
+-spec start_flow_capture(aws_client:aws_client(), start_flow_capture_request()) ->
+    {ok, start_flow_capture_response(), tuple()} |
+    {error, any()} |
+    {error, start_flow_capture_errors(), tuple()}.
+start_flow_capture(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_flow_capture(Client, Input, []).
+
+-spec start_flow_capture(aws_client:aws_client(), start_flow_capture_request(), proplists:proplist()) ->
+    {ok, start_flow_capture_response(), tuple()} |
+    {error, any()} |
+    {error, start_flow_capture_errors(), tuple()}.
+start_flow_capture(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartFlowCapture">>, Input, Options).
+
+%% @doc Begins the flushing of traffic from the firewall, according to the
+%% filters you define.
+%%
+%% When the operation starts, impacted flows are temporarily marked as timed
+%% out before the Suricata engine prunes,
+%% or flushes, the flows from the firewall table.
+%%
+%% While the flush completes, impacted flows are processed as midstream
+%% traffic. This may result in a
+%% temporary increase in midstream traffic metrics. We recommend that you
+%% double check your stream exception policy
+%% before you perform a flush operation.
+-spec start_flow_flush(aws_client:aws_client(), start_flow_flush_request()) ->
+    {ok, start_flow_flush_response(), tuple()} |
+    {error, any()} |
+    {error, start_flow_flush_errors(), tuple()}.
+start_flow_flush(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_flow_flush(Client, Input, []).
+
+-spec start_flow_flush(aws_client:aws_client(), start_flow_flush_request(), proplists:proplist()) ->
+    {ok, start_flow_flush_response(), tuple()} |
+    {error, any()} |
+    {error, start_flow_flush_errors(), tuple()}.
+start_flow_flush(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartFlowFlush">>, Input, Options).
 
 %% @doc Adds the specified tags to the specified resource.
 %%
