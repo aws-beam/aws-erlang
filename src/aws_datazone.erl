@@ -1381,6 +1381,7 @@
 
 %% Example:
 %% single_sign_on() :: #{
+%%   <<"idcInstanceArn">> => [string()],
 %%   <<"type">> => list(any()),
 %%   <<"userAssignment">> => list(any())
 %% }

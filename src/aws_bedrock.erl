@@ -1566,6 +1566,7 @@
 %% Example:
 %% get_imported_model_response() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customModelUnits">> => custom_model_units(),
 %%   <<"instructSupported">> => boolean(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobName">> => string(),
@@ -1736,6 +1737,14 @@
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_model_units() :: #{
+%%   <<"customModelUnitsPerModelCopy">> => [integer()],
+%%   <<"customModelUnitsVersion">> => string()
+%% }
+-type custom_model_units() :: #{binary() => any()}.
 
 
 %% Example:

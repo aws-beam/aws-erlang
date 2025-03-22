@@ -1705,7 +1705,7 @@
 
 %% Example:
 %% search_training_plan_offerings_request() :: #{
-%%   <<"DurationHours">> => float(),
+%%   <<"DurationHours">> := float(),
 %%   <<"EndTimeBefore">> => non_neg_integer(),
 %%   <<"InstanceCount">> := integer(),
 %%   <<"InstanceType">> := list(any()),

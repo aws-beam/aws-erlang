@@ -58,6 +58,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_cluster/2,
+         update_cluster/3,
          update_control_panel/2,
          update_control_panel/3,
          update_routing_control/2,
@@ -220,6 +222,14 @@
 
 
 %% Example:
+%% update_cluster_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"NetworkType">> := list(any())
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_routing_control_request() :: #{
 %%   <<"RoutingControlArn">> := string(),
 %%   <<"RoutingControlName">> := string()
@@ -235,6 +245,7 @@
 %% create_cluster_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ClusterName">> := string(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
@@ -275,6 +286,7 @@
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterEndpoints">> => list(cluster_endpoint()()),
 %%   <<"Name">> => string(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"Owner">> => string(),
 %%   <<"Status">> => list(any())
 %% }
@@ -563,6 +575,13 @@
 %% }
 -type create_safety_rule_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
+
 -type create_cluster_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -702,6 +721,14 @@
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_cluster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_control_panel_errors() ::
     throttling_exception() | 
@@ -1559,6 +1586,42 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"TagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing cluster.
+%%
+%% You can only update the network type of a cluster.
+-spec update_cluster(aws_client:aws_client(), update_cluster_request()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_errors(), tuple()}.
+update_cluster(Client, Input) ->
+    update_cluster(Client, Input, []).
+
+-spec update_cluster(aws_client:aws_client(), update_cluster_request(), proplists:proplist()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_errors(), tuple()}.
+update_cluster(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/cluster"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a control panel.
