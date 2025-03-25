@@ -722,6 +722,7 @@
     internal_server_exception().
 
 -type tag_resource_errors() ::
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type untag_resource_errors() ::

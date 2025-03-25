@@ -6336,8 +6336,8 @@ query_assistant(Client, AssistantId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the AI Agent that is set for use by defafult on an Amazon Q
-%% in Connect
+%% @doc Removes the AI Agent that is set for use by default on an Amazon Q in
+%% Connect
 %% Assistant.
 -spec remove_assistant_a_i_agent(aws_client:aws_client(), binary() | list(), remove_assistant_a_i_agent_request()) ->
     {ok, remove_assistant_a_i_agent_response(), tuple()} |
@@ -6898,8 +6898,8 @@ update_a_iprompt(Client, AiPromptId, AssistantId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the AI Agent that is set for use by defafult on an Amazon Q
-%% in Connect
+%% @doc Updates the AI Agent that is set for use by default on an Amazon Q in
+%% Connect
 %% Assistant.
 -spec update_assistant_a_i_agent(aws_client:aws_client(), binary() | list(), update_assistant_a_i_agent_request()) ->
     {ok, update_assistant_a_i_agent_response(), tuple()} |

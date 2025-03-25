@@ -30,10 +30,15 @@
 %%
 %% To connect to the AWS IoT Wireless Service, use the Service endpoints as
 %% described in
-%% IoT Wireless Service
-%% endpoints:
-%% https://docs.aws.amazon.com/general/latest/gr/iot-lorawan.html#iot-wireless_region
-%% in the AWS General Reference.
+%% IoT
+%% Wireless Service endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/iot-lorawan.html#iot-wireless_region.
+%% You can use both IPv4 and IPv6 protocols to connect
+%% to the endpoints and send requests to the AWS IoT Wireless service. For
+%% more information,
+%% see Using
+%% IPv6 with AWS IoT Wireless:
+%% https://docs.aws.amazon.com/iot-wireless/latest/developerguide/wireless-ipv6-access.html.
 -module(aws_iot_wireless).
 
 -export([associate_aws_account_with_partner_account/2,
@@ -4475,8 +4480,8 @@ create_wireless_device(Client, Input0, Options0) ->
 %% @doc Provisions a wireless gateway.
 %%
 %% When provisioning a wireless gateway, you might run into duplication
-%% errors
-%% for the following reasons.
+%% errors for
+%% the following reasons.
 %%
 %% If you specify a `GatewayEui' value that already exists.
 %%
@@ -4484,8 +4489,8 @@ create_wireless_device(Client, Input0, Options0) ->
 %% within the last 10 minutes.
 %%
 %% To avoid this error, make sure that you use unique identifiers and
-%% parameters
-%% for each request within the specified time period.
+%% parameters for
+%% each request within the specified time period.
 -spec create_wireless_gateway(aws_client:aws_client(), create_wireless_gateway_request()) ->
     {ok, create_wireless_gateway_response(), tuple()} |
     {error, any()} |
@@ -4689,7 +4694,7 @@ delete_fuota_task(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a multicast group if it is not in use by a fuota task.
+%% @doc Deletes a multicast group if it is not in use by a FUOTA task.
 -spec delete_multicast_group(aws_client:aws_client(), binary() | list(), delete_multicast_group_request()) ->
     {ok, delete_multicast_group_response(), tuple()} |
     {error, any()} |
@@ -4898,7 +4903,8 @@ delete_wireless_device_import_task(Client, Id, Input0, Options0) ->
 %% @doc Deletes a wireless gateway.
 %%
 %% When deleting a wireless gateway, you might run into duplication errors
-%% for the following reasons.
+%% for the
+%% following reasons.
 %%
 %% If you specify a `GatewayEui' value that already exists.
 %%
@@ -4906,8 +4912,8 @@ delete_wireless_device_import_task(Client, Id, Input0, Options0) ->
 %% within the last 10 minutes.
 %%
 %% To avoid this error, make sure that you use unique identifiers and
-%% parameters
-%% for each request within the specified time period.
+%% parameters for
+%% each request within the specified time period.
 -spec delete_wireless_gateway(aws_client:aws_client(), binary() | list(), delete_wireless_gateway_request()) ->
     {ok, delete_wireless_gateway_response(), tuple()} |
     {error, any()} |
@@ -5086,7 +5092,7 @@ disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input0, 
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates a multicast group from a fuota task.
+%% @doc Disassociates a multicast group from a FUOTA task.
 -spec disassociate_multicast_group_from_fuota_task(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_multicast_group_from_fuota_task_request()) ->
     {ok, disassociate_multicast_group_from_fuota_task_response(), tuple()} |
     {error, any()} |
@@ -5441,10 +5447,10 @@ get_fuota_task(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns current default log levels or log levels by resource types.
 %%
-%% Based on resource
-%% types, log levels can be for wireless device log options or wireless
-%% gateway log
-%% options.
+%% Based on the
+%% resource type, log levels can be returned for wireless device, wireless
+%% gateway, or
+%% FUOTA task log options.
 -spec get_log_levels_by_resource_types(aws_client:aws_client()) ->
     {ok, get_log_levels_by_resource_types_response(), tuple()} |
     {error, any()} |
@@ -5882,11 +5888,9 @@ get_resource_event_configuration(Client, Identifier, IdentifierType, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Fetches the log-level override, if any, for a given resource-ID and
-%% resource-type.
-%%
-%% It
-%% can be used for a wireless device, wireless gateway or fuota task.
+%% @doc Fetches the log-level override, if any, for a given resource ID and
+%% resource
+%% type..
 -spec get_resource_log_level(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_resource_log_level_response(), tuple()} |
     {error, any()} |
@@ -6657,7 +6661,7 @@ list_multicast_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all multicast groups associated with a fuota task.
+%% @doc List all multicast groups associated with a FUOTA task.
 -spec list_multicast_groups_by_fuota_task(aws_client:aws_client(), binary() | list()) ->
     {ok, list_multicast_groups_by_fuota_task_response(), tuple()} |
     {error, any()} |
@@ -7176,12 +7180,10 @@ put_position_configuration(Client, ResourceIdentifier, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sets the log-level override for a resource-ID and resource-type.
+%% @doc Sets the log-level override for a resource ID and resource type.
 %%
-%% This option can be
-%% specified for a wireless gateway or a wireless device. A limit of 200 log
-%% level override
-%% can be set per account.
+%% A limit of 200 log
+%% level override can be set per account.
 -spec put_resource_log_level(aws_client:aws_client(), binary() | list(), put_resource_log_level_request()) ->
     {ok, put_resource_log_level_response(), tuple()} |
     {error, any()} |
@@ -7218,7 +7220,7 @@ put_resource_log_level(Client, ResourceIdentifier, Input0, Options0) ->
 
 %% @doc Removes the log-level overrides for all resources; wireless devices,
 %% wireless
-%% gateways, and fuota tasks.
+%% gateways, and FUOTA tasks.
 -spec reset_all_resource_log_levels(aws_client:aws_client(), reset_all_resource_log_levels_request()) ->
     {ok, reset_all_resource_log_levels_response(), tuple()} |
     {error, any()} |
@@ -7252,10 +7254,10 @@ reset_all_resource_log_levels(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the log-level override, if any, for a specific resource-ID
-%% and resource-type.
+%% @doc Removes the log-level override, if any, for a specific resource ID
+%% and resource type.
 %%
-%% It can be used for a wireless device, a wireless gateway, or a fuota task.
+%% It can be used for a wireless device, a wireless gateway, or a FUOTA task.
 -spec reset_resource_log_level(aws_client:aws_client(), binary() | list(), reset_resource_log_level_request()) ->
     {ok, reset_resource_log_level_response(), tuple()} |
     {error, any()} |
@@ -7779,8 +7781,8 @@ update_fuota_task(Client, Id, Input0, Options0) ->
 %% @doc Set default log level, or log levels by resource types.
 %%
 %% This can be for wireless
-%% device log options or wireless gateways log options and is used to control
-%% the log
+%% device, wireless gateway, or FUOTA task log options, and is used to
+%% control the log
 %% messages that'll be displayed in CloudWatch.
 -spec update_log_levels_by_resource_types(aws_client:aws_client(), update_log_levels_by_resource_types_request()) ->
     {ok, update_log_levels_by_resource_types_response(), tuple()} |
