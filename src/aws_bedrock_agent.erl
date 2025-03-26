@@ -437,6 +437,15 @@
 
 
 %% Example:
+%% open_search_managed_cluster_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string(),
+%%   <<"vectorField">> => string()
+%% }
+-type open_search_managed_cluster_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_agents_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1694,6 +1703,7 @@
 %% storage_configuration() :: #{
 %%   <<"mongoDbAtlasConfiguration">> => mongo_db_atlas_configuration(),
 %%   <<"neptuneAnalyticsConfiguration">> => neptune_analytics_configuration(),
+%%   <<"opensearchManagedClusterConfiguration">> => open_search_managed_cluster_configuration(),
 %%   <<"opensearchServerlessConfiguration">> => open_search_serverless_configuration(),
 %%   <<"pineconeConfiguration">> => pinecone_configuration(),
 %%   <<"rdsConfiguration">> => rds_configuration(),
@@ -2293,6 +2303,16 @@
 %%   <<"method">> => list(any())
 %% }
 -type enrichment_strategy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_search_managed_cluster_configuration() :: #{
+%%   <<"domainArn">> => string(),
+%%   <<"domainEndpoint">> => string(),
+%%   <<"fieldMapping">> => open_search_managed_cluster_field_mapping(),
+%%   <<"vectorIndexName">> => string()
+%% }
+-type open_search_managed_cluster_configuration() :: #{binary() => any()}.
 
 
 %% Example:

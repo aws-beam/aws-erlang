@@ -645,6 +645,14 @@
 
 
 %% Example:
+%% invalid_state_exception() :: #{
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_cluster_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"connectorConfig">> := connector_config_request(),
@@ -1636,6 +1644,14 @@
 
 
 %% Example:
+%% throttling_exception() :: #{
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% connector_config_response() :: #{
 %%   <<"activationCode">> => string(),
 %%   <<"activationExpiry">> => non_neg_integer(),
@@ -1982,6 +1998,7 @@
 %% Example:
 %% update_cluster_version_request() :: #{
 %%   <<"clientRequestToken">> => string(),
+%%   <<"force">> => boolean(),
 %%   <<"version">> := string()
 %% }
 -type update_cluster_version_request() :: #{binary() => any()}.
@@ -2055,6 +2072,7 @@
 
 -type associate_encryption_config_errors() ::
     server_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -2063,6 +2081,7 @@
 
 -type associate_identity_provider_config_errors() ::
     server_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -2263,6 +2282,7 @@
 
 -type disassociate_identity_provider_config_errors() ::
     server_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -2378,6 +2398,7 @@
 
 -type update_cluster_config_errors() ::
     server_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -2386,10 +2407,12 @@
 
 -type update_cluster_version_errors() ::
     server_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     client_exception() | 
+    invalid_state_exception() | 
     resource_in_use_exception().
 
 -type update_eks_anywhere_subscription_errors() ::
