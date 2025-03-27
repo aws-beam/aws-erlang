@@ -190,7 +190,9 @@
 
 %% Example:
 %% configure_logs_for_playback_configuration_response() :: #{
+%%   <<"AdsInteractionLog">> => ads_interaction_log(),
 %%   <<"EnabledLoggingStrategies">> => list(list(any())()),
+%%   <<"ManifestServiceInteractionLog">> => manifest_service_interaction_log(),
 %%   <<"PercentEnabled">> := integer(),
 %%   <<"PlaybackConfigurationName">> => string()
 %% }
@@ -350,7 +352,9 @@
 
 %% Example:
 %% configure_logs_for_playback_configuration_request() :: #{
+%%   <<"AdsInteractionLog">> => ads_interaction_log(),
 %%   <<"EnabledLoggingStrategies">> => list(list(any())()),
+%%   <<"ManifestServiceInteractionLog">> => manifest_service_interaction_log(),
 %%   <<"PercentEnabled">> => integer(),
 %%   <<"PlaybackConfigurationName">> => string()
 %% }
@@ -748,9 +752,24 @@
 %% }
 -type create_prefetch_schedule_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% ads_interaction_log() :: #{
+%%   <<"ExcludeEventTypes">> => list(list(any())()),
+%%   <<"PublishOptInEventTypes">> => list(list(any())())
+%% }
+-type ads_interaction_log() :: #{binary() => any()}.
+
 %% Example:
 %% delete_prefetch_schedule_response() :: #{}
 -type delete_prefetch_schedule_response() :: #{}.
+
+
+%% Example:
+%% manifest_service_interaction_log() :: #{
+%%   <<"ExcludeEventTypes">> => list(list(any())())
+%% }
+-type manifest_service_interaction_log() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1267,7 +1286,9 @@
 
 %% Example:
 %% log_configuration() :: #{
+%%   <<"AdsInteractionLog">> => ads_interaction_log(),
 %%   <<"EnabledLoggingStrategies">> => list(list(any())()),
+%%   <<"ManifestServiceInteractionLog">> => manifest_service_interaction_log(),
 %%   <<"PercentEnabled">> => integer()
 %% }
 -type log_configuration() :: #{binary() => any()}.

@@ -712,7 +712,8 @@
 %% Example:
 %% create_direct_connect_gateway_request() :: #{
 %%   <<"amazonSideAsn">> => float(),
-%%   <<"directConnectGatewayName">> := string()
+%%   <<"directConnectGatewayName">> := string(),
+%%   <<"tags">> => list(tag()())
 %% }
 -type create_direct_connect_gateway_request() :: #{binary() => any()}.
 
@@ -1092,7 +1093,8 @@
 %%   <<"directConnectGatewayName">> => string(),
 %%   <<"directConnectGatewayState">> => list(any()),
 %%   <<"ownerAccount">> => string(),
-%%   <<"stateChangeError">> => string()
+%%   <<"stateChangeError">> => string(),
+%%   <<"tags">> => list(tag()())
 %% }
 -type direct_connect_gateway() :: #{binary() => any()}.
 
@@ -2608,6 +2610,16 @@ describe_direct_connect_gateway_association_proposals(Client, Input, Options)
 %%
 %% The response contains the association between the Direct Connect gateway
 %% and transit gateway.
+%%
+%% A Direct Connect gateway and a virtual private gateway
+%%
+%% The response contains the association between the Direct Connect gateway
+%% and virtual private gateway.
+%%
+%% A Direct Connect gateway association to a Cloud WAN core network
+%%
+%% The response contains the Cloud WAN core network ID that the Direct
+%% Connect gateway is associated to.
 -spec describe_direct_connect_gateway_associations(aws_client:aws_client(), describe_direct_connect_gateway_associations_request()) ->
     {ok, describe_direct_connect_gateway_associations_result(), tuple()} |
     {error, any()} |

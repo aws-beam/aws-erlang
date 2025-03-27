@@ -27,9 +27,9 @@
 %% requests that are forwarded to a protected resource. Protected resource
 %% types include Amazon CloudFront distribution, Amazon API Gateway REST API,
 %% Application Load Balancer, AppSync
-%% GraphQL API, Amazon Cognito user pool, App Runner service, and Amazon Web
-%% Services Verified Access instance. WAF also lets you control access to
-%% your content,
+%% GraphQL API, Amazon Cognito user pool, App Runner service, Amplify
+%% application, and Amazon Web Services Verified Access instance. WAF also
+%% lets you control access to your content,
 %% to protect the Amazon Web Services resource that WAF is monitoring. Based
 %% on conditions that
 %% you specify, such as the IP addresses that requests originate from or the
@@ -55,7 +55,8 @@
 %% user pool, an App Runner service, or an Amazon Web Services Verified
 %% Access instance.
 %%
-%% For Amazon CloudFront, you must use the API endpoint listed for
+%% For Amazon CloudFront and Amplify, you must use the API endpoint listed
+%% for
 %% US East (N. Virginia): us-east-1.
 %%
 %% Alternatively, you can use one of the Amazon Web Services SDKs to access
@@ -1980,9 +1981,10 @@
 
 %% Example:
 %% get_web_acl_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any())
+%%   <<"ARN">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Scope">> => list(any())
 %% }
 -type get_web_acl_request() :: #{binary() => any()}.
 
@@ -2767,7 +2769,8 @@ create_rule_group(Client, Input, Options)
 %% Amazon Web Services resources to protect. The resource types include
 %% Amazon CloudFront distribution, Amazon API Gateway REST API, Application
 %% Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
-%% service, and Amazon Web Services Verified Access instance.
+%% service, Amplify application, and Amazon Web Services Verified Access
+%% instance.
 -spec create_web_acl(aws_client:aws_client(), create_web_acl_request()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
@@ -4078,7 +4081,8 @@ update_rule_group(Client, Input, Options)
 %% Amazon Web Services resources to protect. The resource types include
 %% Amazon CloudFront distribution, Amazon API Gateway REST API, Application
 %% Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
-%% service, and Amazon Web Services Verified Access instance.
+%% service, Amplify application, and Amazon Web Services Verified Access
+%% instance.
 %%
 %% Temporary inconsistencies during updates
 %%

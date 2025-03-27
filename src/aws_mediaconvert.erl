@@ -2658,6 +2658,7 @@
 %% Example:
 %% automated_abr_settings() :: #{
 %%   <<"MaxAbrBitrate">> => integer(),
+%%   <<"MaxQualityLevel">> => float(),
 %%   <<"MaxRenditions">> => integer(),
 %%   <<"MinAbrBitrate">> => integer(),
 %%   <<"Rules">> => list(automated_abr_rule()())
@@ -4193,9 +4194,13 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The Probe operation analyzes the provided media file and returns
-%% comprehensive metadata about its container format, tracks, and any
-%% encountered errors.
+%% @doc Use Probe to obtain detailed information about your input media
+%% files.
+%%
+%% Probe returns a JSON that includes container, codec, frame rate,
+%% resolution, track count, audio layout, captions, and more. You can use
+%% this information to learn more about your media files, or to help make
+%% decisions while automating your transcoding workflow.
 -spec probe(aws_client:aws_client(), probe_request()) ->
     {ok, probe_response(), tuple()} |
     {error, any()} |
