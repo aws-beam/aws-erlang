@@ -522,7 +522,8 @@
 %% Example:
 %% get_preferences_response() :: #{
 %%   <<"managementAccountRateTypeSelections">> => list(list(any())()),
-%%   <<"memberAccountRateTypeSelections">> => list(list(any())())
+%%   <<"memberAccountRateTypeSelections">> => list(list(any())()),
+%%   <<"standaloneAccountRateTypeSelections">> => list(list(any())())
 %% }
 -type get_preferences_response() :: #{binary() => any()}.
 
@@ -664,7 +665,8 @@
 %% Example:
 %% update_preferences_request() :: #{
 %%   <<"managementAccountRateTypeSelections">> => list(list(any())()),
-%%   <<"memberAccountRateTypeSelections">> => list(list(any())())
+%%   <<"memberAccountRateTypeSelections">> => list(list(any())()),
+%%   <<"standaloneAccountRateTypeSelections">> => list(list(any())())
 %% }
 -type update_preferences_request() :: #{binary() => any()}.
 
@@ -694,7 +696,8 @@
 %% Example:
 %% update_preferences_response() :: #{
 %%   <<"managementAccountRateTypeSelections">> => list(list(any())()),
-%%   <<"memberAccountRateTypeSelections">> => list(list(any())())
+%%   <<"memberAccountRateTypeSelections">> => list(list(any())()),
+%%   <<"standaloneAccountRateTypeSelections">> => list(list(any())())
 %% }
 -type update_preferences_response() :: #{binary() => any()}.
 
@@ -1782,8 +1785,7 @@ get_bill_scenario(Client, Input, Options)
     request(Client, <<"GetBillScenario">>, Input, Options).
 
 %% @doc
-%% Retrieves the current preferences for the Amazon Web Services Cost
-%% Explorer service.
+%% Retrieves the current preferences for Pricing Calculator.
 -spec get_preferences(aws_client:aws_client(), get_preferences_request()) ->
     {ok, get_preferences_response(), tuple()} |
     {error, any()} |
@@ -2089,7 +2091,7 @@ update_bill_scenario(Client, Input, Options)
     request(Client, <<"UpdateBillScenario">>, Input, Options).
 
 %% @doc
-%% Updates the preferences for the Amazon Web Services Cost Explorer service.
+%% Updates the preferences for Pricing Calculator.
 -spec update_preferences(aws_client:aws_client(), update_preferences_request()) ->
     {ok, update_preferences_response(), tuple()} |
     {error, any()} |

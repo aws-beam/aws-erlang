@@ -190,6 +190,7 @@
 %% Example:
 %% container_properties() :: #{
 %%   <<"command">> => list(string()()),
+%%   <<"enableExecuteCommand">> => boolean(),
 %%   <<"environment">> => list(key_value_pair()()),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
 %%   <<"executionRoleArn">> => string(),
@@ -581,6 +582,7 @@
 %% Example:
 %% ecs_task_properties() :: #{
 %%   <<"containers">> => list(task_container_properties()()),
+%%   <<"enableExecuteCommand">> => boolean(),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"ipcMode">> => string(),
@@ -601,6 +603,7 @@
 %%   <<"environment">> => list(key_value_pair()()),
 %%   <<"essential">> => boolean(),
 %%   <<"exitCode">> => integer(),
+%%   <<"firelensConfiguration">> => firelens_configuration(),
 %%   <<"image">> => string(),
 %%   <<"linuxParameters">> => linux_parameters(),
 %%   <<"logConfiguration">> => log_configuration(),
@@ -756,6 +759,7 @@
 %% ecs_task_details() :: #{
 %%   <<"containerInstanceArn">> => string(),
 %%   <<"containers">> => list(task_container_details()()),
+%%   <<"enableExecuteCommand">> => boolean(),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"ipcMode">> => string(),
@@ -1047,6 +1051,7 @@
 %% container_detail() :: #{
 %%   <<"command">> => list(string()()),
 %%   <<"containerInstanceArn">> => string(),
+%%   <<"enableExecuteCommand">> => boolean(),
 %%   <<"environment">> => list(key_value_pair()()),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
 %%   <<"executionRoleArn">> => string(),
@@ -1572,6 +1577,14 @@
 
 
 %% Example:
+%% firelens_configuration() :: #{
+%%   <<"options">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type firelens_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_state_time_limit_action() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"maxTimeSeconds">> => integer(),
@@ -1688,6 +1701,7 @@
 %%   <<"dependsOn">> => list(task_container_dependency()()),
 %%   <<"environment">> => list(key_value_pair()()),
 %%   <<"essential">> => boolean(),
+%%   <<"firelensConfiguration">> => firelens_configuration(),
 %%   <<"image">> => string(),
 %%   <<"linuxParameters">> => linux_parameters(),
 %%   <<"logConfiguration">> => log_configuration(),
@@ -2846,7 +2860,7 @@ register_job_definition(Client, Input0, Options0) ->
 %% the
 %% `containerOverrides' parameter.
 %%
-%% Job queues with a scheduling policy are limited to 500 active fair share
+%% Job queues with a scheduling policy are limited to 500 active share
 %% identifiers at
 %% a time.
 %%

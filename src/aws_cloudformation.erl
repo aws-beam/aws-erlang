@@ -8,27 +8,27 @@
 %% repeatedly.
 %%
 %% You can use CloudFormation to leverage Amazon Web Services products, such
-%% as Amazon Elastic Compute Cloud, Amazon Elastic Block Store, Amazon Simple
-%% Notification Service,
-%% Elastic Load Balancing, and Amazon EC2 Auto Scaling to build highly
-%% reliable, highly
-%% scalable, cost-effective applications without creating or configuring the
-%% underlying Amazon Web Services
-%% infrastructure.
+%% as Amazon Elastic Compute Cloud, Amazon Elastic Block Store,
+%% Amazon Simple Notification Service, Elastic Load Balancing, and Amazon EC2
+%% Auto Scaling to build highly reliable, highly scalable, cost-effective
+%% applications without creating or configuring the underlying Amazon Web
+%% Services infrastructure.
 %%
 %% With CloudFormation, you declare all your resources and dependencies in a
-%% template file. The template defines a
-%% collection of resources as a single unit called a stack. CloudFormation
-%% creates and deletes all member resources of the stack
-%% together and manages all dependencies between the resources for you.
+%% template file. The
+%% template defines a collection of resources as a single unit called a
+%% stack. CloudFormation creates
+%% and deletes all member resources of the stack together and manages all
+%% dependencies between the
+%% resources for you.
 %%
-%% For more information about CloudFormation, see the CloudFormation
-%% product page: http://aws.amazon.com/cloudformation/.
+%% For more information about CloudFormation, see the CloudFormation product
+%% page: http://aws.amazon.com/cloudformation/.
 %%
 %% CloudFormation makes use of other Amazon Web Services products. If you
-%% need additional technical information about a
-%% specific Amazon Web Services product, you can find the product's
-%% technical documentation at docs.aws.amazon.com:
+%% need additional technical information
+%% about a specific Amazon Web Services product, you can find the
+%% product's technical documentation at docs.aws.amazon.com:
 %% https://docs.aws.amazon.com/.
 -module(aws_cloudformation).
 
@@ -849,7 +849,8 @@
 %% Example:
 %% list_resource_scans_input() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"ScanTypeFilter">> => list(any())
 %% }
 -type list_resource_scans_input() :: #{binary() => any()}.
 
@@ -861,6 +862,7 @@
 %%   <<"ResourceTypes">> => list(string()()),
 %%   <<"ResourcesRead">> => integer(),
 %%   <<"ResourcesScanned">> => integer(),
+%%   <<"ScanFilters">> => list(scan_filter()()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
@@ -1138,6 +1140,12 @@
 %%   <<"StackDriftStatus">> => list(any())
 %% }
 -type stack_drift_information() :: #{binary() => any()}.
+
+%% Example:
+%% scan_filter() :: #{
+%%   <<"Types">> => list(string()())
+%% }
+-type scan_filter() :: #{binary() => any()}.
 
 %% Example:
 %% change_set_hook_target_details() :: #{
@@ -2018,6 +2026,7 @@
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"PercentageCompleted">> => float(),
 %%   <<"ResourceScanId">> => string(),
+%%   <<"ScanType">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
@@ -2064,7 +2073,8 @@
 
 %% Example:
 %% start_resource_scan_input() :: #{
-%%   <<"ClientRequestToken">> => string()
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ScanFilters">> => list(scan_filter()())
 %% }
 -type start_resource_scan_input() :: #{binary() => any()}.
 
@@ -3013,10 +3023,10 @@ cancel_update_stack(Client, Input, Options)
 %% Depending on the cause of
 %% the failure, you can manually fix the error:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed
-%% and continue the rollback. By continuing the rollback, you can
-%% return your stack to a working state (the `UPDATE_ROLLBACK_COMPLETE'
-%% state), and
-%% then try to update the stack again.
+%% and continue the rollback. By continuing the rollback, you can return
+%% your stack to a working state (the `UPDATE_ROLLBACK_COMPLETE' state),
+%% and then try
+%% to update the stack again.
 %%
 %% A stack goes into the `UPDATE_ROLLBACK_FAILED' state when
 %% CloudFormation can't roll
@@ -3173,7 +3183,8 @@ create_stack_instances(Client, Input, Options)
     request(Client, <<"CreateStackInstances">>, Input, Options).
 
 %% @doc Creates a refactor across multiple stacks, with the list of stacks
-%% and resources that are affected.
+%% and resources that are
+%% affected.
 -spec create_stack_refactor(aws_client:aws_client(), create_stack_refactor_input()) ->
     {ok, create_stack_refactor_output(), tuple()} |
     {error, any()}.
@@ -4265,8 +4276,8 @@ list_change_sets(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
 %% function.
 %%
-%% For more information, see Get exported outputs from a deployed
-%% CloudFormation stack:
+%% For more information, see Get exported outputs
+%% from a deployed CloudFormation stack:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html.
 -spec list_exports(aws_client:aws_client(), list_exports_input()) ->
     {ok, list_exports_output(), tuple()} |
@@ -4298,7 +4309,8 @@ list_generated_templates(Client, Input, Options)
     request(Client, <<"ListGeneratedTemplates">>, Input, Options).
 
 %% @doc Returns summaries of invoked Hooks when a change set or Cloud Control
-%% API operation target is provided.
+%% API operation target is
+%% provided.
 -spec list_hook_results(aws_client:aws_client(), list_hook_results_input()) ->
     {ok, list_hook_results_output(), tuple()} |
     {error, any()} |
@@ -4586,13 +4598,14 @@ list_stack_sets(Client, Input, Options)
 
 %% @doc Returns the summary information for stacks whose status matches the
 %% specified
-%% StackStatusFilter.
+%% `StackStatusFilter'.
 %%
-%% Summary information for stacks that have been deleted is kept for 90 days
-%% after the stack is deleted. If no StackStatusFilter is specified, summary
-%% information for all
-%% stacks is returned (including existing stacks and stacks that have been
-%% deleted).
+%% Summary information for stacks that have been deleted is
+%% kept for 90 days after the stack is deleted. If no `StackStatusFilter'
+%% is
+%% specified, summary information for all stacks is returned (including
+%% existing stacks and
+%% stacks that have been deleted).
 -spec list_stacks(aws_client:aws_client(), list_stacks_input()) ->
     {ok, list_stacks_output(), tuple()} |
     {error, any()}.
@@ -5142,8 +5155,8 @@ update_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStackInstances">>, Input, Options).
 
-%% @doc Updates the stack set, and associated stack instances in the
-%% specified accounts and
+%% @doc Updates the stack set and associated stack instances in the specified
+%% accounts and
 %% Amazon Web Services Regions.
 %%
 %% Even if the stack set operation created by updating the stack set fails

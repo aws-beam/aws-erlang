@@ -91,6 +91,13 @@
 
 
 %% Example:
+%% aws_additional_details() :: #{
+%%   <<"identityContext">> => string()
+%% }
+-type aws_additional_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_token_request() :: #{
 %%   <<"clientId">> := string(),
 %%   <<"clientSecret">> := string(),
@@ -136,6 +143,7 @@
 %% Example:
 %% create_token_with_iam_response() :: #{
 %%   <<"accessToken">> => string(),
+%%   <<"awsAdditionalDetails">> => aws_additional_details(),
 %%   <<"expiresIn">> => integer(),
 %%   <<"idToken">> => string(),
 %%   <<"issuedTokenType">> => string(),

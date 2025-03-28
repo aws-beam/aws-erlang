@@ -565,6 +565,17 @@
 
 
 %% Example:
+%% flow_trace_node_action_event() :: #{
+%%   <<"nodeName">> => string(),
+%%   <<"operationName">> => [string()],
+%%   <<"requestId">> => [string()],
+%%   <<"serviceName">> => [string()],
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type flow_trace_node_action_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% image_input() :: #{
 %%   <<"format">> => list(any()),
 %%   <<"source">> => list()
@@ -2689,15 +2700,6 @@ get_session(Client, SessionIdentifier, QueryMap, HeadersMap, Options0)
 %% to the information it processed, the actions it took, and the final result
 %% it yielded. For more information, see Trace enablement:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events.
-%%
-%% To stream agent responses, make sure that only orchestration prompt is
-%% enabled. Agent streaming is not supported for the following steps:
-%%
-%% `Pre-processing'
-%%
-%% `Post-processing'
-%%
-%% Agent with 1 Knowledge base and `User Input' not enabled
 %%
 %% End a conversation by setting `endSession' to `true'.
 %%
