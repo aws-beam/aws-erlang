@@ -8974,6 +8974,13 @@
 -type action_source() :: #{binary() => any()}.
 
 %% Example:
+%% total_hits() :: #{
+%%   <<"Relation">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type total_hits() :: #{binary() => any()}.
+
+%% Example:
 %% f_sx_lustre_file_system_config() :: #{
 %%   <<"FileSystemId">> => string(),
 %%   <<"FileSystemPath">> => string()
@@ -9391,6 +9398,7 @@
 %% transform_resources() :: #{
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"TransformAmiVersion">> => string(),
 %%   <<"VolumeKmsKeyId">> => string()
 %% }
 -type transform_resources() :: #{binary() => any()}.
@@ -10466,7 +10474,8 @@
 %% Example:
 %% search_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(search_record()())
+%%   <<"Results">> => list(search_record()()),
+%%   <<"TotalHits">> => total_hits()
 %% }
 -type search_response() :: #{binary() => any()}.
 
@@ -15570,8 +15579,8 @@ create_training_plan(Client, Input, Options)
 %% `TransformOutput' - Identifies the Amazon S3 location where you want
 %% Amazon SageMaker to save the results from the transform job.
 %%
-%% `TransformResources' - Identifies the ML compute instances for the
-%% transform job.
+%% `TransformResources' - Identifies the ML compute instances and AMI
+%% image versions for the transform job.
 %%
 %% For more information about how batch transformation works, see Batch
 %% Transform:
@@ -18264,8 +18273,8 @@ get_scaling_configuration_recommendation(Client, Input, Options)
 %%
 %% It returns
 %% suggestions of possible matches for the property name to use in
-%% `Search'
-%% queries. Provides suggestions for `HyperParameters', `Tags', and
+%% `Search' queries.
+%% Provides suggestions for `HyperParameters', `Tags', and
 %% `Metrics'.
 -spec get_search_suggestions(aws_client:aws_client(), get_search_suggestions_request()) ->
     {ok, get_search_suggestions_response(), tuple()} |
@@ -19770,18 +19779,18 @@ retry_pipeline_execution(Client, Input, Options)
 
 %% @doc Finds SageMaker resources that match a search query.
 %%
-%% Matching resources are returned
-%% as a list of `SearchRecord' objects in the response. You can sort the
-%% search
-%% results by any resource property in a ascending or descending order.
+%% Matching resources are returned as a list
+%% of `SearchRecord' objects in the response. You can sort the search
+%% results by any
+%% resource property in a ascending or descending order.
 %%
 %% You can query against the following value types: numeric, text, Boolean,
 %% and
 %% timestamp.
 %%
 %% The Search API may provide access to otherwise restricted data. See Amazon
-%% SageMaker
-%% API Permissions: Actions, Permissions, and Resources Reference:
+%% SageMaker API
+%% Permissions: Actions, Permissions, and Resources Reference:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html
 %% for more
 %% information.

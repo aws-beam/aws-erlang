@@ -864,6 +864,13 @@
 
 
 %% Example:
+%% refresh_failure_email_alert() :: #{
+%%   <<"AlertStatus">> => list(any())
+%% }
+-type refresh_failure_email_alert() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter_list_control() :: #{
 %%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
 %%   <<"DisplayOptions">> => list_control_display_options(),
@@ -935,6 +942,13 @@
 
 
 %% Example:
+%% data_stories_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type data_stories_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% template_alias() :: #{
 %%   <<"AliasName">> => string(),
 %%   <<"Arn">> => string(),
@@ -977,6 +991,7 @@
 
 %% Example:
 %% data_set_refresh_properties() :: #{
+%%   <<"FailureConfiguration">> => refresh_failure_configuration(),
 %%   <<"RefreshConfiguration">> => refresh_configuration()
 %% }
 -type data_set_refresh_properties() :: #{binary() => any()}.
@@ -1896,7 +1911,8 @@
 %% table_field_options() :: #{
 %%   <<"Order">> => list(string()()),
 %%   <<"PinnedFieldOptions">> => table_pinned_field_options(),
-%%   <<"SelectedFieldOptions">> => list(table_field_option()())
+%%   <<"SelectedFieldOptions">> => list(table_field_option()()),
+%%   <<"TransposedTableOptions">> => list(transposed_table_option()())
 %% }
 -type table_field_options() :: #{binary() => any()}.
 
@@ -2171,7 +2187,8 @@
 %%   <<"PerformanceConfiguration">> => performance_configuration(),
 %%   <<"PhysicalTableMap">> => map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
-%%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration()
+%%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
+%%   <<"UseAs">> => list(any())
 %% }
 -type data_set() :: #{binary() => any()}.
 
@@ -2491,6 +2508,13 @@
 
 
 %% Example:
+%% amazon_q_in_quick_sight_dashboard_configurations() :: #{
+%%   <<"ExecutiveSummary">> => executive_summary_configurations()
+%% }
+-type amazon_q_in_quick_sight_dashboard_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_source_description() :: #{
 %%   <<"Body">> => string(),
 %%   <<"S3Uri">> => string()
@@ -2739,6 +2763,13 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recent_snapshots_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type recent_snapshots_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4588,6 +4619,13 @@
 
 
 %% Example:
+%% refresh_failure_configuration() :: #{
+%%   <<"EmailAlert">> => refresh_failure_email_alert()
+%% }
+-type refresh_failure_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% mapped_data_set_parameter() :: #{
 %%   <<"DataSetIdentifier">> => string(),
 %%   <<"DataSetParameterName">> => string()
@@ -5096,6 +5134,13 @@
 
 
 %% Example:
+%% data_q_a_enabled_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type data_q_a_enabled_option() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_analyses_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -5317,16 +5362,21 @@
 %%   <<"PhysicalTableMap">> := map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UseAs">> => list(any())
 %% }
 -type create_data_set_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% registered_user_dashboard_feature_configurations() :: #{
+%%   <<"AmazonQInQuickSight">> => amazon_q_in_quick_sight_dashboard_configurations(),
 %%   <<"Bookmarks">> => bookmarks_configurations(),
+%%   <<"RecentSnapshots">> => recent_snapshots_configurations(),
+%%   <<"Schedules">> => schedules_configurations(),
 %%   <<"SharedView">> => shared_view_configurations(),
-%%   <<"StatePersistence">> => state_persistence_configurations()
+%%   <<"StatePersistence">> => state_persistence_configurations(),
+%%   <<"ThresholdAlerts">> => threshold_alerts_configurations()
 %% }
 -type registered_user_dashboard_feature_configurations() :: #{binary() => any()}.
 
@@ -5942,6 +5992,13 @@
 
 
 %% Example:
+%% executive_summary_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type executive_summary_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% plugin_visual_options() :: #{
 %%   <<"VisualProperties">> => list(plugin_visual_property()())
 %% }
@@ -6321,7 +6378,8 @@
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
-%%   <<"RowLevelPermissionTagConfigurationApplied">> => boolean()
+%%   <<"RowLevelPermissionTagConfigurationApplied">> => boolean(),
+%%   <<"UseAs">> => list(any())
 %% }
 -type data_set_summary() :: #{binary() => any()}.
 
@@ -6485,6 +6543,13 @@
 %%   <<"Arn">> => string()
 %% }
 -type template_source_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% threshold_alerts_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type threshold_alerts_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7548,6 +7613,15 @@
 
 
 %% Example:
+%% transposed_table_option() :: #{
+%%   <<"ColumnIndex">> => integer(),
+%%   <<"ColumnType">> => list(any()),
+%%   <<"ColumnWidth">> => string()
+%% }
+-type transposed_table_option() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_default_q_business_application_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -8230,6 +8304,13 @@
 
 
 %% Example:
+%% generative_authoring_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type generative_authoring_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_topic_reviewed_answer() :: #{
 %%   <<"AnswerId">> => string(),
 %%   <<"DatasetArn">> => string(),
@@ -8423,8 +8504,12 @@
 
 %% Example:
 %% registered_user_console_feature_configurations() :: #{
+%%   <<"AmazonQInQuickSight">> => amazon_q_in_quick_sight_console_configurations(),
+%%   <<"RecentSnapshots">> => recent_snapshots_configurations(),
+%%   <<"Schedules">> => schedules_configurations(),
 %%   <<"SharedView">> => shared_view_configurations(),
-%%   <<"StatePersistence">> => state_persistence_configurations()
+%%   <<"StatePersistence">> => state_persistence_configurations(),
+%%   <<"ThresholdAlerts">> => threshold_alerts_configurations()
 %% }
 -type registered_user_console_feature_configurations() :: #{binary() => any()}.
 
@@ -8645,6 +8730,7 @@
 %%   <<"DataPointDrillUpDownOption">> => data_point_drill_up_down_option(),
 %%   <<"DataPointMenuLabelOption">> => data_point_menu_label_option(),
 %%   <<"DataPointTooltipOption">> => data_point_tooltip_option(),
+%%   <<"DataQAEnabledOption">> => data_q_a_enabled_option(),
 %%   <<"ExportToCSVOption">> => export_to_csv_option(),
 %%   <<"ExportWithHiddenFieldsOption">> => export_with_hidden_fields_option(),
 %%   <<"SheetControlsOption">> => sheet_controls_option(),
@@ -9202,6 +9288,8 @@
 
 %% Example:
 %% asset_options() :: #{
+%%   <<"ExcludedDataSetArns">> => list(string()()),
+%%   <<"QBusinessInsightsStatus">> => list(any()),
 %%   <<"Timezone">> => string(),
 %%   <<"WeekStart">> => list(any())
 %% }
@@ -11686,6 +11774,13 @@
 
 
 %% Example:
+%% schedules_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type schedules_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% precondition_not_met_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -11849,6 +11944,16 @@
 
 
 %% Example:
+%% amazon_q_in_quick_sight_console_configurations() :: #{
+%%   <<"DataQnA">> => data_qn_a_configurations(),
+%%   <<"DataStories">> => data_stories_configurations(),
+%%   <<"ExecutiveSummary">> => executive_summary_configurations(),
+%%   <<"GenerativeAuthoring">> => generative_authoring_configurations()
+%% }
+-type amazon_q_in_quick_sight_console_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% comparative_order() :: #{
 %%   <<"SpecifedOrder">> => list(string()()),
 %%   <<"TreatUndefinedSpecifiedValues">> => list(any()),
@@ -11927,7 +12032,8 @@
 %% oracle_parameters() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Host">> => string(),
-%%   <<"Port">> => integer()
+%%   <<"Port">> => integer(),
+%%   <<"UseServiceName">> => boolean()
 %% }
 -type oracle_parameters() :: #{binary() => any()}.
 
@@ -12390,6 +12496,7 @@
 %% Example:
 %% asset_bundle_import_job_data_set_override_parameters() :: #{
 %%   <<"DataSetId">> => string(),
+%%   <<"DataSetRefreshProperties">> => data_set_refresh_properties(),
 %%   <<"Name">> => string()
 %% }
 -type asset_bundle_import_job_data_set_override_parameters() :: #{binary() => any()}.
@@ -12512,6 +12619,13 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_quick_sight_q_search_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_qn_a_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type data_qn_a_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -15216,7 +15330,7 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% Services account. By default, there is a
 %% limit of 100 namespaces per Amazon Web Services account. To increase your
 %% limit, create a ticket with
-%% Amazon Web Services Support.
+%% Amazon Web ServicesSupport.
 -spec create_namespace(aws_client:aws_client(), binary() | list(), create_namespace_request()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
@@ -20590,6 +20704,25 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Predicts existing visuals or generates new visuals to answer a given
 %% query.
+%%
+%% This API uses trusted identity propagation:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation.html
+%% to ensure that an end user is authenticated and receives the embed URL
+%% that is specific to that user. The IAM Identity Center application that
+%% the user has logged into needs to have trusted Identity Propagation
+%% enabled for Amazon QuickSight:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-using-customermanagedapps-specify-trusted-apps.html
+%% with the scope value set to `quicksight:read'. Before you use this
+%% action, make sure that you have configured the relevant Amazon QuickSight
+%% resource and permissions.
+%%
+%% We recommend enabling the `QSearchStatus' API to unlock the full
+%% potential of `PredictQnA'. When `QSearchStatus' is enabled, it
+%% first checks the specified dashboard for any existing visuals that match
+%% the question. If no matching visuals are found, `PredictQnA' uses
+%% generative Q&amp;A to provide an answer. To update the
+%% `QSearchStatus', see UpdateQuickSightQSearchConfiguration:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateQuickSightQSearchConfiguration.html.
 -spec predict_q_a_results(aws_client:aws_client(), binary() | list(), predict_q_a_results_request()) ->
     {ok, predict_q_a_results_response(), tuple()} |
     {error, any()} |

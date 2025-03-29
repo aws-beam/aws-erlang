@@ -218,6 +218,19 @@
 -type get_parameters_for_import_output() :: #{binary() => any()}.
 
 %% Example:
+%% export_diffie_hellman_tr31_key_block() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"DerivationData">> => list(),
+%%   <<"DeriveKeyAlgorithm">> => list(any()),
+%%   <<"KeyBlockHeaders">> => key_block_headers(),
+%%   <<"KeyDerivationFunction">> => list(any()),
+%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
+%%   <<"PrivateKeyIdentifier">> => string(),
+%%   <<"PublicKeyCertificate">> => string()
+%% }
+-type export_diffie_hellman_tr31_key_block() :: #{binary() => any()}.
+
+%% Example:
 %% start_key_usage_output() :: #{
 %%   <<"Key">> => key()
 %% }
@@ -288,6 +301,7 @@
 
 %% Example:
 %% create_key_input() :: #{
+%%   <<"DeriveKeyUsage">> => string(),
 %%   <<"Enabled">> => [boolean()],
 %%   <<"Exportable">> := [boolean()],
 %%   <<"KeyAttributes">> := key_attributes(),
@@ -392,6 +406,19 @@
 -type export_key_input() :: #{binary() => any()}.
 
 %% Example:
+%% import_diffie_hellman_tr31_key_block() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"DerivationData">> => list(),
+%%   <<"DeriveKeyAlgorithm">> => list(any()),
+%%   <<"KeyDerivationFunction">> => list(any()),
+%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
+%%   <<"PrivateKeyIdentifier">> => string(),
+%%   <<"PublicKeyCertificate">> => string(),
+%%   <<"WrappedKeyBlock">> => string()
+%% }
+-type import_diffie_hellman_tr31_key_block() :: #{binary() => any()}.
+
+%% Example:
 %% get_public_key_certificate_input() :: #{
 %%   <<"KeyIdentifier">> := string()
 %% }
@@ -480,6 +507,7 @@
 %%   <<"CreateTimestamp">> => non_neg_integer(),
 %%   <<"DeletePendingTimestamp">> => non_neg_integer(),
 %%   <<"DeleteTimestamp">> => non_neg_integer(),
+%%   <<"DeriveKeyUsage">> => string(),
 %%   <<"Enabled">> => [boolean()],
 %%   <<"Exportable">> => [boolean()],
 %%   <<"KeyArn">> => string(),
@@ -1344,12 +1372,6 @@ get_public_key_certificate(Client, Input, Options)
 %% block. With RSA wrap and unwrap, you can exchange both 3DES and AES-128
 %% keys. The keys are imported in a WrappedKeyCryptogram format and you will
 %% need to specify the key attributes during import.
-%%
-%% You can also import a root public key certificate, used to sign other
-%% public key certificates, or a trusted public key certificate under an
-%% already established root public key certificate.
-%%
-%% To import a public root key certificate
 %%
 %% You can also import a root public key certificate, used to sign other
 %% public key certificates, or a trusted public key certificate under an

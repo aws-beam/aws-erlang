@@ -572,6 +572,7 @@
 
 %% Example:
 %% project_cache() :: #{
+%%   <<"cacheNamespace">> => string(),
 %%   <<"location">> => string(),
 %%   <<"modes">> => list(list(any())()),
 %%   <<"type">> => list(any())
