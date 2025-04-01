@@ -63,6 +63,8 @@
          associate_ipam_resource_discovery/3,
          associate_nat_gateway_address/2,
          associate_nat_gateway_address/3,
+         associate_route_server/2,
+         associate_route_server/3,
          associate_route_table/2,
          associate_route_table/3,
          associate_security_group_vpc/2,
@@ -223,6 +225,12 @@
          create_restore_image_task/3,
          create_route/2,
          create_route/3,
+         create_route_server/2,
+         create_route_server/3,
+         create_route_server_endpoint/2,
+         create_route_server_endpoint/3,
+         create_route_server_peer/2,
+         create_route_server_peer/3,
          create_route_table/2,
          create_route_table/3,
          create_security_group/2,
@@ -379,6 +387,12 @@
          delete_queued_reserved_instances/3,
          delete_route/2,
          delete_route/3,
+         delete_route_server/2,
+         delete_route_server/3,
+         delete_route_server_endpoint/2,
+         delete_route_server_endpoint/3,
+         delete_route_server_peer/2,
+         delete_route_server_peer/3,
          delete_route_table/2,
          delete_route_table/3,
          delete_security_group/2,
@@ -669,6 +683,12 @@
          describe_reserved_instances_modifications/3,
          describe_reserved_instances_offerings/2,
          describe_reserved_instances_offerings/3,
+         describe_route_server_endpoints/2,
+         describe_route_server_endpoints/3,
+         describe_route_server_peers/2,
+         describe_route_server_peers/3,
+         describe_route_servers/2,
+         describe_route_servers/3,
          describe_route_tables/2,
          describe_route_tables/3,
          describe_scheduled_instance_availability/2,
@@ -823,6 +843,8 @@
          disable_image_deregistration_protection/3,
          disable_ipam_organization_admin_account/2,
          disable_ipam_organization_admin_account/3,
+         disable_route_server_propagation/2,
+         disable_route_server_propagation/3,
          disable_serial_console_access/2,
          disable_serial_console_access/3,
          disable_snapshot_block_public_access/2,
@@ -853,6 +875,8 @@
          disassociate_ipam_resource_discovery/3,
          disassociate_nat_gateway_address/2,
          disassociate_nat_gateway_address/3,
+         disassociate_route_server/2,
+         disassociate_route_server/3,
          disassociate_route_table/2,
          disassociate_route_table/3,
          disassociate_security_group_vpc/2,
@@ -893,6 +917,8 @@
          enable_ipam_organization_admin_account/3,
          enable_reachability_analyzer_organization_sharing/2,
          enable_reachability_analyzer_organization_sharing/3,
+         enable_route_server_propagation/2,
+         enable_route_server_propagation/3,
          enable_serial_console_access/2,
          enable_serial_console_access/3,
          enable_snapshot_block_public_access/2,
@@ -985,6 +1011,12 @@
          get_password_data/3,
          get_reserved_instances_exchange_quote/2,
          get_reserved_instances_exchange_quote/3,
+         get_route_server_associations/2,
+         get_route_server_associations/3,
+         get_route_server_propagations/2,
+         get_route_server_propagations/3,
+         get_route_server_routing_database/2,
+         get_route_server_routing_database/3,
          get_security_groups_for_vpc/2,
          get_security_groups_for_vpc/3,
          get_serial_console_access_status/2,
@@ -1109,6 +1141,8 @@
          modify_private_dns_name_options/3,
          modify_reserved_instances/2,
          modify_reserved_instances/3,
+         modify_route_server/2,
+         modify_route_server/3,
          modify_security_group_rules/2,
          modify_security_group_rules/3,
          modify_snapshot_attribute/2,
@@ -1902,6 +1936,12 @@
 -type disable_address_transfer_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_route_server_peer_result() :: #{
+%%   <<"RouteServerPeer">> => route_server_peer()
+%% }
+-type create_route_server_peer_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_coip_pool_result() :: #{
 %%   <<"CoipPool">> => coip_pool()
 %% }
@@ -1930,6 +1970,13 @@
 %%   <<"Force">> => boolean()
 %% }
 -type detach_network_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_route_servers_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RouteServers">> => list(route_server()())
+%% }
+-type describe_route_servers_result() :: #{binary() => any()}.
 
 %% Example:
 %% unmonitor_instances_result() :: #{
@@ -2329,6 +2376,13 @@
 -type describe_instance_status_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_route_server_associations_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerId">> := string()
+%% }
+-type get_route_server_associations_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_transit_gateway_connect_peer_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"TransitGatewayConnectPeerId">> := string()
@@ -2572,6 +2626,16 @@
 %%   <<"PrefixListAssociations">> => list(prefix_list_association()())
 %% }
 -type get_managed_prefix_list_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_route_server_peer_request() :: #{
+%%   <<"BgpOptions">> := route_server_bgp_options_request(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"PeerAddress">> := string(),
+%%   <<"RouteServerEndpointId">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()())
+%% }
+-type create_route_server_peer_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_vpc_cidr_block_request() :: #{
@@ -2899,6 +2963,12 @@
 %%   <<"Message">> => string()
 %% }
 -type unsuccessful_item_error() :: #{binary() => any()}.
+
+%% Example:
+%% delete_route_server_endpoint_result() :: #{
+%%   <<"RouteServerEndpoint">> => route_server_endpoint()
+%% }
+-type delete_route_server_endpoint_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_verified_access_endpoint_port_range() :: #{
@@ -3932,6 +4002,12 @@
 -type vpc() :: #{binary() => any()}.
 
 %% Example:
+%% get_route_server_associations_result() :: #{
+%%   <<"RouteServerAssociations">> => list(route_server_association()())
+%% }
+-type get_route_server_associations_result() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_bundle_task_request() :: #{
 %%   <<"BundleId">> := string(),
 %%   <<"DryRun">> => boolean()
@@ -3950,6 +4026,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_images_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_route_server_result() :: #{
+%%   <<"RouteServerAssociation">> => route_server_association()
+%% }
+-type associate_route_server_result() :: #{binary() => any()}.
 
 %% Example:
 %% active_instance() :: #{
@@ -4190,6 +4272,20 @@
 -type ipv6_prefix_specification() :: #{binary() => any()}.
 
 %% Example:
+%% route_server_endpoint() :: #{
+%%   <<"EniAddress">> => string(),
+%%   <<"EniId">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"RouteServerEndpointId">> => string(),
+%%   <<"RouteServerId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"SubnetId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcId">> => string()
+%% }
+-type route_server_endpoint() :: #{binary() => any()}.
+
+%% Example:
 %% create_local_gateway_route_table_result() :: #{
 %%   <<"LocalGatewayRouteTable">> => local_gateway_route_table()
 %% }
@@ -4323,6 +4419,13 @@
 %%   <<"PurchaseToken">> => string()
 %% }
 -type purchase_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_route_server_endpoint_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerEndpointId">> := string()
+%% }
+-type delete_route_server_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
 %% instance_block_device_mapping() :: #{
@@ -4694,6 +4797,12 @@
 -type create_local_gateway_route_table_vpc_association_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_route_server_endpoint_result() :: #{
+%%   <<"RouteServerEndpoint">> => route_server_endpoint()
+%% }
+-type create_route_server_endpoint_result() :: #{binary() => any()}.
+
+%% Example:
 %% import_image_request() :: #{
 %%   <<"Architecture">> => string(),
 %%   <<"BootMode">> => list(any()),
@@ -4892,6 +5001,16 @@
 %%   <<"State">> => list(any())
 %% }
 -type disassociate_security_group_vpc_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_route_server_endpoints_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RouteServerEndpointIds">> => list(string()())
+%% }
+-type describe_route_server_endpoints_request() :: #{binary() => any()}.
 
 %% Example:
 %% nat_gateway_address() :: #{
@@ -5265,6 +5384,20 @@
 -type describe_traffic_mirror_filters_result() :: #{binary() => any()}.
 
 %% Example:
+%% modify_route_server_result() :: #{
+%%   <<"RouteServer">> => route_server()
+%% }
+-type modify_route_server_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_route_server_propagation_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerId">> := string(),
+%%   <<"RouteTableId">> := string()
+%% }
+-type disable_route_server_propagation_request() :: #{binary() => any()}.
+
+%% Example:
 %% ipam_pool_cidr_failure_reason() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
@@ -5462,6 +5595,16 @@
 %%   <<"Unsuccessful">> => list(unsuccessful_item()())
 %% }
 -type delete_vpc_endpoint_connection_notifications_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_route_servers_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RouteServerIds">> => list(string()())
+%% }
+-type describe_route_servers_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_enclave_certificate_iam_role_result() :: #{
@@ -6137,6 +6280,14 @@
 %%   <<"VerifiedAccessGroupId">> := string()
 %% }
 -type delete_verified_access_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_route_server_propagation_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerId">> := string(),
+%%   <<"RouteTableId">> := string()
+%% }
+-type enable_route_server_propagation_request() :: #{binary() => any()}.
 
 %% Example:
 %% classic_link_instance() :: #{
@@ -7019,6 +7170,16 @@
 -type assign_private_ip_addresses_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_route_server_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"PersistRoutes">> => list(any()),
+%%   <<"PersistRoutesDuration">> => float(),
+%%   <<"RouteServerId">> := string(),
+%%   <<"SnsNotificationsEnabled">> => boolean()
+%% }
+-type modify_route_server_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_classic_link_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()()),
@@ -7274,6 +7435,13 @@
 %%   <<"TransitGatewayRouteTableAnnouncementId">> => string()
 %% }
 -type transit_gateway_route_table_propagation() :: #{binary() => any()}.
+
+%% Example:
+%% describe_route_server_endpoints_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RouteServerEndpoints">> => list(route_server_endpoint()())
+%% }
+-type describe_route_server_endpoints_result() :: #{binary() => any()}.
 
 %% Example:
 %% fleet_launch_template_specification_request() :: #{
@@ -8098,6 +8266,14 @@
 -type create_capacity_reservation_result() :: #{binary() => any()}.
 
 %% Example:
+%% route_server_association() :: #{
+%%   <<"RouteServerId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type route_server_association() :: #{binary() => any()}.
+
+%% Example:
 %% deregister_image_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"ImageId">> := string()
@@ -8198,6 +8374,12 @@
 -type describe_network_interfaces_request() :: #{binary() => any()}.
 
 %% Example:
+%% disable_route_server_propagation_result() :: #{
+%%   <<"RouteServerPropagation">> => route_server_propagation()
+%% }
+-type disable_route_server_propagation_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_verified_access_trust_provider_device_options() :: #{
 %%   <<"PublicSigningKeyUrl">> => string(),
 %%   <<"TenantId">> => string()
@@ -8264,6 +8446,12 @@
 %%   <<"VpnConnectionId">> := string()
 %% }
 -type get_vpn_connection_device_sample_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_route_server_result() :: #{
+%%   <<"RouteServerAssociation">> => route_server_association()
+%% }
+-type disassociate_route_server_result() :: #{binary() => any()}.
 
 %% Example:
 %% network_interface_association() :: #{
@@ -8379,6 +8567,13 @@
 %%   <<"NetworkBorderGroup">> => string()
 %% }
 -type vpc_ipv6_cidr_block_association() :: #{binary() => any()}.
+
+%% Example:
+%% route_server_bgp_options_request() :: #{
+%%   <<"PeerAsn">> => float(),
+%%   <<"PeerLivenessDetection">> => list(any())
+%% }
+-type route_server_bgp_options_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_queued_reserved_instances_request() :: #{
@@ -8936,6 +9131,12 @@
 -type icmp_type_code() :: #{binary() => any()}.
 
 %% Example:
+%% get_route_server_propagations_result() :: #{
+%%   <<"RouteServerPropagations">> => list(route_server_propagation()())
+%% }
+-type get_route_server_propagations_result() :: #{binary() => any()}.
+
+%% Example:
 %% associate_transit_gateway_multicast_domain_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"SubnetIds">> := list(string()()),
@@ -9103,6 +9304,12 @@
 %%   <<"Enabled">> => boolean()
 %% }
 -type launch_template_enclave_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% route_server_bfd_status() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type route_server_bfd_status() :: #{binary() => any()}.
 
 %% Example:
 %% describe_capacity_block_extension_offerings_result() :: #{
@@ -9447,6 +9654,14 @@
 %%   <<"InstanceId">> => string()
 %% }
 -type instance_credit_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_route_server_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerId">> := string(),
+%%   <<"VpcId">> := string()
+%% }
+-type associate_route_server_request() :: #{binary() => any()}.
 
 %% Example:
 %% state_reason() :: #{
@@ -11283,6 +11498,13 @@
 -type scheduled_instance() :: #{binary() => any()}.
 
 %% Example:
+%% delete_route_server_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerId">> := string()
+%% }
+-type delete_route_server_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_stale_security_groups_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxResults">> => integer(),
@@ -11411,6 +11633,16 @@
 %%   <<"Statistic">> => list(any())
 %% }
 -type data_query() :: #{binary() => any()}.
+
+%% Example:
+%% describe_route_server_peers_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RouteServerPeerIds">> => list(string()())
+%% }
+-type describe_route_server_peers_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_verified_access_trust_providers_result() :: #{
@@ -11542,6 +11774,13 @@
 %%   <<"VpcId">> => string()
 %% }
 -type ipam_discovered_public_address() :: #{binary() => any()}.
+
+%% Example:
+%% route_server_bgp_options() :: #{
+%%   <<"PeerAsn">> => float(),
+%%   <<"PeerLivenessDetection">> => list(any())
+%% }
+-type route_server_bgp_options() :: #{binary() => any()}.
 
 %% Example:
 %% key_pair() :: #{
@@ -12446,6 +12685,12 @@
 -type describe_network_acls_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_route_server_result() :: #{
+%%   <<"RouteServer">> => route_server()
+%% }
+-type create_route_server_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_private_dns_name_options_result() :: #{
 %%   <<"Return">> => boolean()
 %% }
@@ -12526,6 +12771,12 @@
 -type spot_placement() :: #{binary() => any()}.
 
 %% Example:
+%% route_server_bgp_status() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type route_server_bgp_status() :: #{binary() => any()}.
+
+%% Example:
 %% describe_flow_logs_result() :: #{
 %%   <<"FlowLogs">> => list(flow_log()()),
 %%   <<"NextToken">> => string()
@@ -12583,6 +12834,19 @@
 %%   <<"PolicyEnabled">> => boolean()
 %% }
 -type get_verified_access_group_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% route_server_route() :: #{
+%%   <<"AsPaths">> => list(string()()),
+%%   <<"Med">> => integer(),
+%%   <<"NextHopIp">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RouteInstallationDetails">> => list(route_server_route_installation_detail()()),
+%%   <<"RouteServerEndpointId">> => string(),
+%%   <<"RouteServerPeerId">> => string(),
+%%   <<"RouteStatus">> => list(any())
+%% }
+-type route_server_route() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_endpoint_service_permissions_request() :: #{
@@ -13384,11 +13648,25 @@
 -type tag_specification() :: #{binary() => any()}.
 
 %% Example:
+%% get_route_server_routing_database_result() :: #{
+%%   <<"AreRoutesPersisted">> => boolean(),
+%%   <<"NextToken">> => string(),
+%%   <<"Routes">> => list(route_server_route()())
+%% }
+-type get_route_server_routing_database_result() :: #{binary() => any()}.
+
+%% Example:
 %% start_vpc_endpoint_service_private_dns_verification_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"ServiceId">> := string()
 %% }
 -type start_vpc_endpoint_service_private_dns_verification_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_route_server_peer_result() :: #{
+%%   <<"RouteServerPeer">> => route_server_peer()
+%% }
+-type delete_route_server_peer_result() :: #{binary() => any()}.
 
 %% Example:
 %% unlock_snapshot_request() :: #{
@@ -14140,6 +14418,19 @@
 -type describe_carrier_gateways_result() :: #{binary() => any()}.
 
 %% Example:
+%% route_server() :: #{
+%%   <<"AmazonSideAsn">> => float(),
+%%   <<"PersistRoutesDuration">> => float(),
+%%   <<"PersistRoutesState">> => list(any()),
+%%   <<"RouteServerId">> => string(),
+%%   <<"SnsNotificationsEnabled">> => boolean(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type route_server() :: #{binary() => any()}.
+
+%% Example:
 %% reserved_instances_listing() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CreateDate">> => non_neg_integer(),
@@ -14427,6 +14718,12 @@
 -type describe_client_vpn_authorization_rules_request() :: #{binary() => any()}.
 
 %% Example:
+%% enable_route_server_propagation_result() :: #{
+%%   <<"RouteServerPropagation">> => route_server_propagation()
+%% }
+-type enable_route_server_propagation_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_local_gateway_route_table_virtual_interface_group_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()()),
@@ -14705,6 +15002,14 @@
 %%   <<"InstanceTags">> => list(tag()())
 %% }
 -type instance_event_window_disassociation_request() :: #{binary() => any()}.
+
+%% Example:
+%% route_server_route_installation_detail() :: #{
+%%   <<"RouteInstallationStatus">> => list(any()),
+%%   <<"RouteInstallationStatusReason">> => string(),
+%%   <<"RouteTableId">> => string()
+%% }
+-type route_server_route_installation_detail() :: #{binary() => any()}.
 
 %% Example:
 %% describe_local_gateway_route_table_virtual_interface_group_associations_result() :: #{
@@ -15292,6 +15597,25 @@
 -type enable_fast_snapshot_restores_result() :: #{binary() => any()}.
 
 %% Example:
+%% route_server_peer() :: #{
+%%   <<"BfdStatus">> => route_server_bfd_status(),
+%%   <<"BgpOptions">> => route_server_bgp_options(),
+%%   <<"BgpStatus">> => route_server_bgp_status(),
+%%   <<"EndpointEniAddress">> => string(),
+%%   <<"EndpointEniId">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"PeerAddress">> => string(),
+%%   <<"RouteServerEndpointId">> => string(),
+%%   <<"RouteServerId">> => string(),
+%%   <<"RouteServerPeerId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"SubnetId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcId">> => string()
+%% }
+-type route_server_peer() :: #{binary() => any()}.
+
+%% Example:
 %% deregister_transit_gateway_multicast_group_members_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupIpAddress">> => string(),
@@ -15414,6 +15738,12 @@
 %%   <<"PrivateDnsOnlyForInboundResolverEndpoint">> => boolean()
 %% }
 -type dns_options_specification() :: #{binary() => any()}.
+
+%% Example:
+%% delete_route_server_result() :: #{
+%%   <<"RouteServer">> => route_server()
+%% }
+-type delete_route_server_result() :: #{binary() => any()}.
 
 %% Example:
 %% ipv4_prefix_specification() :: #{
@@ -15849,6 +16179,14 @@
 -type delete_verified_access_instance_request() :: #{binary() => any()}.
 
 %% Example:
+%% route_server_propagation() :: #{
+%%   <<"RouteServerId">> => string(),
+%%   <<"RouteTableId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type route_server_propagation() :: #{binary() => any()}.
+
+%% Example:
 %% describe_client_vpn_connections_request() :: #{
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"DryRun">> => boolean(),
@@ -15890,6 +16228,13 @@
 %%   <<"NetworkInsightsAnalysis">> => network_insights_analysis()
 %% }
 -type start_network_insights_analysis_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_route_server_peers_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RouteServerPeers">> => list(route_server_peer()())
+%% }
+-type describe_route_server_peers_result() :: #{binary() => any()}.
 
 %% Example:
 %% fleet_capacity_reservation() :: #{
@@ -16078,6 +16423,16 @@
 %%   <<"DryRun">> => boolean()
 %% }
 -type disable_serial_console_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_route_server_endpoint_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerId">> := string(),
+%%   <<"SubnetId">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()())
+%% }
+-type create_route_server_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
 %% enable_fast_snapshot_restore_error_item() :: #{
@@ -16963,6 +17318,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_import_snapshot_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_route_server_request() :: #{
+%%   <<"AmazonSideAsn">> := float(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"PersistRoutes">> => list(any()),
+%%   <<"PersistRoutesDuration">> => float(),
+%%   <<"SnsNotificationsEnabled">> => boolean(),
+%%   <<"TagSpecifications">> => list(tag_specification()())
+%% }
+-type create_route_server_request() :: #{binary() => any()}.
 
 %% Example:
 %% prefix_list_association() :: #{
@@ -18165,6 +18532,14 @@
 -type spot_fleet_request_config_data() :: #{binary() => any()}.
 
 %% Example:
+%% get_route_server_propagations_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerId">> := string(),
+%%   <<"RouteTableId">> => string()
+%% }
+-type get_route_server_propagations_request() :: #{binary() => any()}.
+
+%% Example:
 %% modify_ipam_pool_request() :: #{
 %%   <<"AddAllocationResourceTags">> => list(request_ipam_resource_tag()()),
 %%   <<"AllocationDefaultNetmaskLength">> => integer(),
@@ -18214,6 +18589,14 @@
 %%   <<"TerminatingInstances">> => list(instance_state_change()())
 %% }
 -type terminate_instances_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_route_server_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerId">> := string(),
+%%   <<"VpcId">> := string()
+%% }
+-type disassociate_route_server_request() :: #{binary() => any()}.
 
 %% Example:
 %% instance_ipv6_address() :: #{
@@ -19046,6 +19429,13 @@
 -type describe_ipam_external_resource_verification_tokens_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_route_server_peer_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"RouteServerPeerId">> := string()
+%% }
+-type delete_route_server_peer_request() :: #{binary() => any()}.
+
+%% Example:
 %% fleet_spot_capacity_rebalance() :: #{
 %%   <<"ReplacementStrategy">> => list(any()),
 %%   <<"TerminationDelay">> => integer()
@@ -19487,6 +19877,16 @@
 %%   <<"Value">> => boolean()
 %% }
 -type attribute_boolean_value() :: #{binary() => any()}.
+
+%% Example:
+%% get_route_server_routing_database_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RouteServerId">> := string()
+%% }
+-type get_route_server_routing_database_request() :: #{binary() => any()}.
 
 %% Example:
 %% disk_image_detail() :: #{
@@ -20413,6 +20813,29 @@ associate_nat_gateway_address(Client, Input)
 associate_nat_gateway_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateNatGatewayAddress">>, Input, Options).
+
+%% @doc Associates a route server with a VPC to enable dynamic route updates.
+%%
+%% A route server association is the connection established between a route
+%% server and a VPC. This is a fundamental configuration step that enables
+%% the route server to work with appliances in your VPC.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec associate_route_server(aws_client:aws_client(), associate_route_server_request()) ->
+    {ok, associate_route_server_result(), tuple()} |
+    {error, any()}.
+associate_route_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_route_server(Client, Input, []).
+
+-spec associate_route_server(aws_client:aws_client(), associate_route_server_request(), proplists:proplist()) ->
+    {ok, associate_route_server_result(), tuple()} |
+    {error, any()}.
+associate_route_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateRouteServer">>, Input, Options).
 
 %% @doc Associates a subnet in your VPC or an internet gateway or virtual
 %% private gateway
@@ -22599,6 +23022,91 @@ create_route(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRoute">>, Input, Options).
 
+%% @doc Creates a new route server to manage dynamic routing in a VPC.
+%%
+%% Amazon VPC Route Server simplifies routing for traffic between workloads
+%% that are deployed within a VPC and its internet gateways. With this
+%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
+%% for those workloads. This enables you to automatically reroute traffic
+%% within a VPC, which increases the manageability of VPC routing and
+%% interoperability with third-party workloads.
+%%
+%% Route server supports the follow route table types:
+%%
+%% VPC route tables
+%%
+%% Subnet route tables
+%%
+%% Internet gateway route tables
+%%
+%% Route server does not support route tables associated with virtual private
+%% gateways. To propagate routes into a transit gateway route table, use
+%% Transit Gateway Connect:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec create_route_server(aws_client:aws_client(), create_route_server_request()) ->
+    {ok, create_route_server_result(), tuple()} |
+    {error, any()}.
+create_route_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_route_server(Client, Input, []).
+
+-spec create_route_server(aws_client:aws_client(), create_route_server_request(), proplists:proplist()) ->
+    {ok, create_route_server_result(), tuple()} |
+    {error, any()}.
+create_route_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRouteServer">>, Input, Options).
+
+%% @doc Creates a new endpoint for a route server in a specified subnet.
+%%
+%% A route server endpoint is an Amazon Web Services-managed component inside
+%% a subnet that facilitates BGP (Border Gateway Protocol) connections
+%% between your route server and your BGP peers. Create two endpoints per
+%% subnet for redundancy.
+-spec create_route_server_endpoint(aws_client:aws_client(), create_route_server_endpoint_request()) ->
+    {ok, create_route_server_endpoint_result(), tuple()} |
+    {error, any()}.
+create_route_server_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_route_server_endpoint(Client, Input, []).
+
+-spec create_route_server_endpoint(aws_client:aws_client(), create_route_server_endpoint_request(), proplists:proplist()) ->
+    {ok, create_route_server_endpoint_result(), tuple()} |
+    {error, any()}.
+create_route_server_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRouteServerEndpoint">>, Input, Options).
+
+%% @doc Creates a new BGP peer for a specified route server endpoint.
+%%
+%% A route server peer is a network appliance or function deployed in Amazon
+%% Web Services, such as firewall appliances and other network security
+%% functions, that meet these requirements:
+%%
+%% Have an elastic network interface in the VPC
+%%
+%% Support BGP (Border Gateway Protocol)
+%%
+%% Can initiate BGP sessions
+-spec create_route_server_peer(aws_client:aws_client(), create_route_server_peer_request()) ->
+    {ok, create_route_server_peer_result(), tuple()} |
+    {error, any()}.
+create_route_server_peer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_route_server_peer(Client, Input, []).
+
+-spec create_route_server_peer(aws_client:aws_client(), create_route_server_peer_request(), proplists:proplist()) ->
+    {ok, create_route_server_peer_result(), tuple()} |
+    {error, any()}.
+create_route_server_peer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRouteServerPeer">>, Input, Options).
+
 %% @doc Creates a route table for the specified VPC.
 %%
 %% After you create a route table, you can add routes and associate the table
@@ -24438,6 +24946,91 @@ delete_route(Client, Input)
 delete_route(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRoute">>, Input, Options).
+
+%% @doc Deletes the specified route server.
+%%
+%% Amazon VPC Route Server simplifies routing for traffic between workloads
+%% that are deployed within a VPC and its internet gateways. With this
+%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
+%% for those workloads. This enables you to automatically reroute traffic
+%% within a VPC, which increases the manageability of VPC routing and
+%% interoperability with third-party workloads.
+%%
+%% Route server supports the follow route table types:
+%%
+%% VPC route tables
+%%
+%% Subnet route tables
+%%
+%% Internet gateway route tables
+%%
+%% Route server does not support route tables associated with virtual private
+%% gateways. To propagate routes into a transit gateway route table, use
+%% Transit Gateway Connect:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec delete_route_server(aws_client:aws_client(), delete_route_server_request()) ->
+    {ok, delete_route_server_result(), tuple()} |
+    {error, any()}.
+delete_route_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_route_server(Client, Input, []).
+
+-spec delete_route_server(aws_client:aws_client(), delete_route_server_request(), proplists:proplist()) ->
+    {ok, delete_route_server_result(), tuple()} |
+    {error, any()}.
+delete_route_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRouteServer">>, Input, Options).
+
+%% @doc Deletes the specified route server endpoint.
+%%
+%% A route server endpoint is an Amazon Web Services-managed component inside
+%% a subnet that facilitates BGP (Border Gateway Protocol) connections
+%% between your route server and your BGP peers. Create two endpoints per
+%% subnet for redundancy.
+-spec delete_route_server_endpoint(aws_client:aws_client(), delete_route_server_endpoint_request()) ->
+    {ok, delete_route_server_endpoint_result(), tuple()} |
+    {error, any()}.
+delete_route_server_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_route_server_endpoint(Client, Input, []).
+
+-spec delete_route_server_endpoint(aws_client:aws_client(), delete_route_server_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_route_server_endpoint_result(), tuple()} |
+    {error, any()}.
+delete_route_server_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRouteServerEndpoint">>, Input, Options).
+
+%% @doc Deletes the specified BGP peer from a route server.
+%%
+%% A route server peer is a network appliance or function deployed in Amazon
+%% Web Services, such as firewall appliances and other network security
+%% functions, that meet these requirements:
+%%
+%% Have an elastic network interface in the VPC
+%%
+%% Support BGP (Border Gateway Protocol)
+%%
+%% Can initiate BGP sessions
+-spec delete_route_server_peer(aws_client:aws_client(), delete_route_server_peer_request()) ->
+    {ok, delete_route_server_peer_result(), tuple()} |
+    {error, any()}.
+delete_route_server_peer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_route_server_peer(Client, Input, []).
+
+-spec delete_route_server_peer(aws_client:aws_client(), delete_route_server_peer_request(), proplists:proplist()) ->
+    {ok, delete_route_server_peer_result(), tuple()} |
+    {error, any()}.
+delete_route_server_peer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRouteServerPeer">>, Input, Options).
 
 %% @doc Deletes the specified route table.
 %%
@@ -27613,6 +28206,99 @@ describe_reserved_instances_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedInstancesOfferings">>, Input, Options).
 
+%% @doc Describes one or more route server endpoints.
+%%
+%% A route server endpoint is an Amazon Web Services-managed component inside
+%% a subnet that facilitates BGP (Border Gateway Protocol) connections
+%% between your route server and your BGP peers. Create two endpoints per
+%% subnet for redundancy.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec describe_route_server_endpoints(aws_client:aws_client(), describe_route_server_endpoints_request()) ->
+    {ok, describe_route_server_endpoints_result(), tuple()} |
+    {error, any()}.
+describe_route_server_endpoints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_route_server_endpoints(Client, Input, []).
+
+-spec describe_route_server_endpoints(aws_client:aws_client(), describe_route_server_endpoints_request(), proplists:proplist()) ->
+    {ok, describe_route_server_endpoints_result(), tuple()} |
+    {error, any()}.
+describe_route_server_endpoints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRouteServerEndpoints">>, Input, Options).
+
+%% @doc Describes one or more route server peers.
+%%
+%% A route server peer is a network appliance or function deployed in Amazon
+%% Web Services, such as firewall appliances and other network security
+%% functions, that meet these requirements:
+%%
+%% Have an elastic network interface in the VPC
+%%
+%% Support BGP (Border Gateway Protocol)
+%%
+%% Can initiate BGP sessions
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec describe_route_server_peers(aws_client:aws_client(), describe_route_server_peers_request()) ->
+    {ok, describe_route_server_peers_result(), tuple()} |
+    {error, any()}.
+describe_route_server_peers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_route_server_peers(Client, Input, []).
+
+-spec describe_route_server_peers(aws_client:aws_client(), describe_route_server_peers_request(), proplists:proplist()) ->
+    {ok, describe_route_server_peers_result(), tuple()} |
+    {error, any()}.
+describe_route_server_peers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRouteServerPeers">>, Input, Options).
+
+%% @doc Describes one or more route servers.
+%%
+%% Amazon VPC Route Server simplifies routing for traffic between workloads
+%% that are deployed within a VPC and its internet gateways. With this
+%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
+%% for those workloads. This enables you to automatically reroute traffic
+%% within a VPC, which increases the manageability of VPC routing and
+%% interoperability with third-party workloads.
+%%
+%% Route server supports the follow route table types:
+%%
+%% VPC route tables
+%%
+%% Subnet route tables
+%%
+%% Internet gateway route tables
+%%
+%% Route server does not support route tables associated with virtual private
+%% gateways. To propagate routes into a transit gateway route table, use
+%% Transit Gateway Connect:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec describe_route_servers(aws_client:aws_client(), describe_route_servers_request()) ->
+    {ok, describe_route_servers_result(), tuple()} |
+    {error, any()}.
+describe_route_servers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_route_servers(Client, Input, []).
+
+-spec describe_route_servers(aws_client:aws_client(), describe_route_servers_request(), proplists:proplist()) ->
+    {ok, describe_route_servers_result(), tuple()} |
+    {error, any()}.
+describe_route_servers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRouteServers">>, Input, Options).
+
 %% @doc Describes your route tables.
 %%
 %% The default is to describe all your route tables.
@@ -29361,6 +30047,51 @@ disable_ipam_organization_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableIpamOrganizationAdminAccount">>, Input, Options).
 
+%% @doc Disables route propagation from a route server to a specified route
+%% table.
+%%
+%% When enabled, route server propagation installs the routes in the FIB on
+%% the route table you've specified. Route server supports IPv4 and IPv6
+%% route propagation.
+%%
+%% Amazon VPC Route Server simplifies routing for traffic between workloads
+%% that are deployed within a VPC and its internet gateways. With this
+%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
+%% for those workloads. This enables you to automatically reroute traffic
+%% within a VPC, which increases the manageability of VPC routing and
+%% interoperability with third-party workloads.
+%%
+%% Route server supports the follow route table types:
+%%
+%% VPC route tables
+%%
+%% Subnet route tables
+%%
+%% Internet gateway route tables
+%%
+%% Route server does not support route tables associated with virtual private
+%% gateways. To propagate routes into a transit gateway route table, use
+%% Transit Gateway Connect:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec disable_route_server_propagation(aws_client:aws_client(), disable_route_server_propagation_request()) ->
+    {ok, disable_route_server_propagation_result(), tuple()} |
+    {error, any()}.
+disable_route_server_propagation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_route_server_propagation(Client, Input, []).
+
+-spec disable_route_server_propagation(aws_client:aws_client(), disable_route_server_propagation_request(), proplists:proplist()) ->
+    {ok, disable_route_server_propagation_result(), tuple()} |
+    {error, any()}.
+disable_route_server_propagation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableRouteServerPropagation">>, Input, Options).
+
 %% @doc Disables access to the EC2 serial console of all instances for your
 %% account.
 %%
@@ -29706,6 +30437,29 @@ disassociate_nat_gateway_address(Client, Input)
 disassociate_nat_gateway_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateNatGatewayAddress">>, Input, Options).
+
+%% @doc Disassociates a route server from a VPC.
+%%
+%% A route server association is the connection established between a route
+%% server and a VPC. This is a fundamental configuration step that enables
+%% the route server to work with appliances in your VPC.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec disassociate_route_server(aws_client:aws_client(), disassociate_route_server_request()) ->
+    {ok, disassociate_route_server_result(), tuple()} |
+    {error, any()}.
+disassociate_route_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_route_server(Client, Input, []).
+
+-spec disassociate_route_server(aws_client:aws_client(), disassociate_route_server_request(), proplists:proplist()) ->
+    {ok, disassociate_route_server_result(), tuple()} |
+    {error, any()}.
+disassociate_route_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateRouteServer">>, Input, Options).
 
 %% @doc Disassociates a subnet or gateway from a route table.
 %%
@@ -30199,6 +30953,29 @@ enable_reachability_analyzer_organization_sharing(Client, Input)
 enable_reachability_analyzer_organization_sharing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableReachabilityAnalyzerOrganizationSharing">>, Input, Options).
+
+%% @doc Defines which route tables the route server can update with routes.
+%%
+%% When enabled, route server propagation installs the routes in the FIB on
+%% the route table you've specified. Route server supports IPv4 and IPv6
+%% route propagation.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec enable_route_server_propagation(aws_client:aws_client(), enable_route_server_propagation_request()) ->
+    {ok, enable_route_server_propagation_result(), tuple()} |
+    {error, any()}.
+enable_route_server_propagation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_route_server_propagation(Client, Input, []).
+
+-spec enable_route_server_propagation(aws_client:aws_client(), enable_route_server_propagation_request(), proplists:proplist()) ->
+    {ok, enable_route_server_propagation_result(), tuple()} |
+    {error, any()}.
+enable_route_server_propagation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableRouteServerPropagation">>, Input, Options).
 
 %% @doc Enables access to the EC2 serial console of all instances for your
 %% account.
@@ -31239,6 +32016,116 @@ get_reserved_instances_exchange_quote(Client, Input)
 get_reserved_instances_exchange_quote(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservedInstancesExchangeQuote">>, Input, Options).
+
+%% @doc Gets information about the associations for the specified route
+%% server.
+%%
+%% A route server association is the connection established between a route
+%% server and a VPC. This is a fundamental configuration step that enables
+%% the route server to work with appliances in your VPC.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec get_route_server_associations(aws_client:aws_client(), get_route_server_associations_request()) ->
+    {ok, get_route_server_associations_result(), tuple()} |
+    {error, any()}.
+get_route_server_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_route_server_associations(Client, Input, []).
+
+-spec get_route_server_associations(aws_client:aws_client(), get_route_server_associations_request(), proplists:proplist()) ->
+    {ok, get_route_server_associations_result(), tuple()} |
+    {error, any()}.
+get_route_server_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRouteServerAssociations">>, Input, Options).
+
+%% @doc Gets information about the route propagations for the specified route
+%% server.
+%%
+%% When enabled, route server propagation installs the routes in the FIB on
+%% the route table you've specified. Route server supports IPv4 and IPv6
+%% route propagation.
+%%
+%% Amazon VPC Route Server simplifies routing for traffic between workloads
+%% that are deployed within a VPC and its internet gateways. With this
+%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
+%% for those workloads. This enables you to automatically reroute traffic
+%% within a VPC, which increases the manageability of VPC routing and
+%% interoperability with third-party workloads.
+%%
+%% Route server supports the follow route table types:
+%%
+%% VPC route tables
+%%
+%% Subnet route tables
+%%
+%% Internet gateway route tables
+%%
+%% Route server does not support route tables associated with virtual private
+%% gateways. To propagate routes into a transit gateway route table, use
+%% Transit Gateway Connect:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
+-spec get_route_server_propagations(aws_client:aws_client(), get_route_server_propagations_request()) ->
+    {ok, get_route_server_propagations_result(), tuple()} |
+    {error, any()}.
+get_route_server_propagations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_route_server_propagations(Client, Input, []).
+
+-spec get_route_server_propagations(aws_client:aws_client(), get_route_server_propagations_request(), proplists:proplist()) ->
+    {ok, get_route_server_propagations_result(), tuple()} |
+    {error, any()}.
+get_route_server_propagations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRouteServerPropagations">>, Input, Options).
+
+%% @doc Gets the routing database for the specified route server.
+%%
+%% The Routing Information Base (RIB):
+%% https://en.wikipedia.org/wiki/Routing_table serves as a database that
+%% stores all the routing information and network topology data collected by
+%% a router or routing system, such as routes learned from BGP peers. The RIB
+%% is constantly updated as new routing information is received or existing
+%% routes change. This ensures that the route server always has the most
+%% current view of the network topology and can make optimal routing
+%% decisions.
+%%
+%% Amazon VPC Route Server simplifies routing for traffic between workloads
+%% that are deployed within a VPC and its internet gateways. With this
+%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
+%% for those workloads. This enables you to automatically reroute traffic
+%% within a VPC, which increases the manageability of VPC routing and
+%% interoperability with third-party workloads.
+%%
+%% Route server supports the follow route table types:
+%%
+%% VPC route tables
+%%
+%% Subnet route tables
+%%
+%% Internet gateway route tables
+%%
+%% Route server does not support route tables associated with virtual private
+%% gateways. To propagate routes into a transit gateway route table, use
+%% Transit Gateway Connect:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
+-spec get_route_server_routing_database(aws_client:aws_client(), get_route_server_routing_database_request()) ->
+    {ok, get_route_server_routing_database_result(), tuple()} |
+    {error, any()}.
+get_route_server_routing_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_route_server_routing_database(Client, Input, []).
+
+-spec get_route_server_routing_database(aws_client:aws_client(), get_route_server_routing_database_request(), proplists:proplist()) ->
+    {ok, get_route_server_routing_database_result(), tuple()} |
+    {error, any()}.
+get_route_server_routing_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRouteServerRoutingDatabase">>, Input, Options).
 
 %% @doc Gets security groups that can be associated by the Amazon Web
 %% Services account making the request with network interfaces in the
@@ -32757,6 +33644,46 @@ modify_reserved_instances(Client, Input)
 modify_reserved_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReservedInstances">>, Input, Options).
+
+%% @doc Modifies the configuration of an existing route server.
+%%
+%% Amazon VPC Route Server simplifies routing for traffic between workloads
+%% that are deployed within a VPC and its internet gateways. With this
+%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
+%% for those workloads. This enables you to automatically reroute traffic
+%% within a VPC, which increases the manageability of VPC routing and
+%% interoperability with third-party workloads.
+%%
+%% Route server supports the follow route table types:
+%%
+%% VPC route tables
+%%
+%% Subnet route tables
+%%
+%% Internet gateway route tables
+%%
+%% Route server does not support route tables associated with virtual private
+%% gateways. To propagate routes into a transit gateway route table, use
+%% Transit Gateway Connect:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
+%% the Amazon VPC User Guide.
+-spec modify_route_server(aws_client:aws_client(), modify_route_server_request()) ->
+    {ok, modify_route_server_result(), tuple()} |
+    {error, any()}.
+modify_route_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_route_server(Client, Input, []).
+
+-spec modify_route_server(aws_client:aws_client(), modify_route_server_request(), proplists:proplist()) ->
+    {ok, modify_route_server_result(), tuple()} |
+    {error, any()}.
+modify_route_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyRouteServer">>, Input, Options).
 
 %% @doc Modifies the rules of a security group.
 -spec modify_security_group_rules(aws_client:aws_client(), modify_security_group_rules_request()) ->

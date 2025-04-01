@@ -41,6 +41,8 @@
          delete_access_point_policy/4,
          delete_access_point_policy_for_object_lambda/3,
          delete_access_point_policy_for_object_lambda/4,
+         delete_access_point_scope/3,
+         delete_access_point_scope/4,
          delete_bucket/3,
          delete_bucket/4,
          delete_bucket_lifecycle_configuration/3,
@@ -107,6 +109,9 @@
          get_access_point_policy_status_for_object_lambda/3,
          get_access_point_policy_status_for_object_lambda/5,
          get_access_point_policy_status_for_object_lambda/6,
+         get_access_point_scope/3,
+         get_access_point_scope/5,
+         get_access_point_scope/6,
          get_bucket/3,
          get_bucket/5,
          get_bucket/6,
@@ -167,6 +172,9 @@
          list_access_points/2,
          list_access_points/4,
          list_access_points/5,
+         list_access_points_for_directory_buckets/2,
+         list_access_points_for_directory_buckets/4,
+         list_access_points_for_directory_buckets/5,
          list_access_points_for_object_lambda/2,
          list_access_points_for_object_lambda/4,
          list_access_points_for_object_lambda/5,
@@ -199,6 +207,8 @@
          put_access_point_policy/4,
          put_access_point_policy_for_object_lambda/3,
          put_access_point_policy_for_object_lambda/4,
+         put_access_point_scope/3,
+         put_access_point_scope/4,
          put_bucket_lifecycle_configuration/3,
          put_bucket_lifecycle_configuration/4,
          put_bucket_policy/3,
@@ -711,6 +721,16 @@
 
 
 %% Example:
+%% list_access_points_for_directory_buckets_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"DirectoryBucket">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_for_directory_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_storage_lens_configurations_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"StorageLensConfigurationList">> => list(list_storage_lens_configuration_entry()())
@@ -1111,6 +1131,14 @@
 
 
 %% Example:
+%% put_access_point_scope_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Scope">> := scope()
+%% }
+-type put_access_point_scope_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_operation() :: #{
 %%   <<"LambdaInvoke">> => lambda_invoke_operation(),
 %%   <<"S3DeleteObjectTagging">> => s3_delete_object_tagging_operation(),
@@ -1206,6 +1234,14 @@
 
 
 %% Example:
+%% list_access_points_for_directory_buckets_result() :: #{
+%%   <<"AccessPointList">> => list(access_point()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_for_directory_buckets_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_bucket_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
@@ -1225,6 +1261,7 @@
 %%   <<"Bucket">> := string(),
 %%   <<"BucketAccountId">> => string(),
 %%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration(),
+%%   <<"Scope">> => scope(),
 %%   <<"VpcConfiguration">> => vpc_configuration()
 %% }
 -type create_access_point_request() :: #{binary() => any()}.
@@ -1831,6 +1868,21 @@
 
 
 %% Example:
+%% get_access_point_scope_result() :: #{
+%%   <<"Scope">> => scope()
+%% }
+-type get_access_point_scope_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope() :: #{
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"Prefixes">> => list(string()())
+%% }
+-type scope() :: #{binary() => any()}.
+
+
+%% Example:
 %% storage_lens_aws_org() :: #{
 %%   <<"Arn">> => string()
 %% }
@@ -2401,6 +2453,13 @@
 
 
 %% Example:
+%% delete_access_point_scope_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_scope_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_access_point_policy_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"Policy">> := string()
@@ -2646,6 +2705,13 @@
 %%   <<"AccountId">> := string()
 %% }
 -type delete_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_scope_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_scope_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_job_tagging_result() :: #{}
@@ -2993,14 +3059,15 @@ create_access_grants_location(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This operation is not supported by directory buckets.
+%% @doc Creates an access point and associates it to a specified bucket.
 %%
-%% Creates an access point and associates it with the specified bucket. For
-%% more information, see
+%% For more information, see
 %% Managing
-%% Data Access with Amazon S3 Access Points:
+%% access to shared datasets in general purpose buckets with access points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html
+%% or Managing
+%% access to shared datasets in directory buckets with access points:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
 %%
@@ -3032,6 +3099,9 @@ create_access_grants_location(Client, Input0, Options0) ->
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
+%%
+%% ListAccessPointsForDirectoryBuckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForDirectoryBuckets.html
 -spec create_access_point(aws_client:aws_client(), binary() | list(), create_access_point_request()) ->
     {ok, create_access_point_result(), tuple()} |
     {error, any()}.
@@ -3621,10 +3691,7 @@ delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This operation is not supported by directory buckets.
-%%
-%% Deletes the specified access point.
+%% @doc Deletes the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -3728,10 +3795,7 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This operation is not supported by directory buckets.
-%%
-%% Deletes the access point policy for the specified access point.
+%% @doc Deletes the access point policy for the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -3808,6 +3872,50 @@ delete_access_point_policy_for_object_lambda(Client, Name, Input) ->
 delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Deletes an existing access point scope for a directory bucket.
+%%
+%% When you delete the scope of an access point, all prefixes and permissions
+%% are deleted.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3express:DeleteAccessPointScope' action.
+%%
+%% For information about REST API errors, see REST error responses:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses.
+-spec delete_access_point_scope(aws_client:aws_client(), binary() | list(), delete_access_point_scope_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+delete_access_point_scope(Client, Name, Input) ->
+    delete_access_point_scope(Client, Name, Input, []).
+
+-spec delete_access_point_scope(aws_client:aws_client(), binary() | list(), delete_access_point_scope_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+delete_access_point_scope(Client, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/scope"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4954,10 +5062,7 @@ get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% This operation is not supported by directory buckets.
-%%
-%% Returns configuration information about the specified access point.
+%% @doc Returns configuration information about the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -5116,10 +5221,7 @@ get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% This operation is not supported by directory buckets.
-%%
-%% Returns the access point policy associated with the specified access
+%% @doc Returns the access point policy associated with the specified access
 %% point.
 %%
 %% The following actions are related to `GetAccessPointPolicy':
@@ -5288,6 +5390,51 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policyStatus"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc
+%% Returns the access point scope for a directory bucket.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3express:GetAccessPointScope' action.
+%%
+%% For information about REST API errors, see REST error responses:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses.
+-spec get_access_point_scope(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_point_scope_result(), tuple()} |
+    {error, any()}.
+get_access_point_scope(Client, Name, AccountId)
+  when is_map(Client) ->
+    get_access_point_scope(Client, Name, AccountId, #{}, #{}).
+
+-spec get_access_point_scope(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_point_scope_result(), tuple()} |
+    {error, any()}.
+get_access_point_scope(Client, Name, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_point_scope(Client, Name, AccountId, QueryMap, HeadersMap, []).
+
+-spec get_access_point_scope(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_point_scope_result(), tuple()} |
+    {error, any()}.
+get_access_point_scope(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/scope"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6669,6 +6816,61 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of the access points that are owned by the Amazon Web
+%% Services account and that are associated with the specified directory
+%% bucket.
+%%
+%% To list access points for general purpose buckets, see ListAccesspoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3express:ListAccessPointsForDirectoryBuckets' action.
+%%
+%% For information about REST API errors, see REST error responses:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses.
+-spec list_access_points_for_directory_buckets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_access_points_for_directory_buckets_result(), tuple()} |
+    {error, any()}.
+list_access_points_for_directory_buckets(Client, AccountId)
+  when is_map(Client) ->
+    list_access_points_for_directory_buckets(Client, AccountId, #{}, #{}).
+
+-spec list_access_points_for_directory_buckets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_access_points_for_directory_buckets_result(), tuple()} |
+    {error, any()}.
+list_access_points_for_directory_buckets(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_points_for_directory_buckets(Client, AccountId, QueryMap, HeadersMap, []).
+
+-spec list_access_points_for_directory_buckets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_points_for_directory_buckets_result(), tuple()} |
+    {error, any()}.
+list_access_points_for_directory_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accesspointfordirectory"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"directoryBucket">>, maps:get(<<"directoryBucket">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc
 %% This operation is not supported by directory buckets.
 %%
@@ -7258,11 +7460,9 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This operation is not supported by directory buckets.
+%% @doc Associates an access policy with the specified access point.
 %%
-%% Associates an access policy with the specified access point. Each access
-%% point can have only one policy,
+%% Each access point can have only one policy,
 %% so a request made to this API replaces any existing policy associated with
 %% the specified
 %% access point.
@@ -7345,6 +7545,71 @@ put_access_point_policy_for_object_lambda(Client, Name, Input) ->
 put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or replaces the access point scope for a directory bucket.
+%%
+%% You can use the access point scope to restrict access to specific
+%% prefixes, API operations, or a combination of both.
+%%
+%% You can include one or more of the following API operations as
+%% permissions:
+%%
+%% `PutObjet'
+%%
+%% `GetObject'
+%%
+%% `DeleteObject'
+%%
+%% `ListBucket'
+%%
+%% `GetObjectAttributes'
+%%
+%% `AbortMultipartUpload'
+%%
+%% `ListBucketMultipartUpload'
+%%
+%% `ListMultiPartUploadParts'
+%%
+%% You can specify any amount of prefixes, but the total length of characters
+%% of all prefixes must be less than 512 KB in size.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3express:PutAccessPointScope' action.
+%%
+%% For information about REST API errors, see REST error responses:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses.
+-spec put_access_point_scope(aws_client:aws_client(), binary() | list(), put_access_point_scope_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+put_access_point_scope(Client, Name, Input) ->
+    put_access_point_scope(Client, Name, Input, []).
+
+-spec put_access_point_scope(aws_client:aws_client(), binary() | list(), put_access_point_scope_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+put_access_point_scope(Client, Name, Input0, Options0) ->
+    Method = put,
+    Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/scope"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

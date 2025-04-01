@@ -685,6 +685,7 @@
 %%   <<"AccessEndpoint">> => string(),
 %%   <<"IdentityProviderDetails">> := list(),
 %%   <<"Tags">> => list(tag()()),
+%%   <<"WebAppEndpointPolicy">> => list(any()),
 %%   <<"WebAppUnits">> => list()
 %% }
 -type create_web_app_request() :: #{binary() => any()}.
@@ -1599,6 +1600,7 @@
 %%   <<"DescribedIdentityProviderDetails">> => list(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"WebAppEndpoint">> => string(),
+%%   <<"WebAppEndpointPolicy">> => list(any()),
 %%   <<"WebAppId">> => string(),
 %%   <<"WebAppUnits">> => list()
 %% }

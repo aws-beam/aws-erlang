@@ -447,6 +447,13 @@
 
 
 %% Example:
+%% cache_point_block() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type cache_point_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -598,6 +605,8 @@
 
 %% Example:
 %% token_usage() :: #{
+%%   <<"cacheReadInputTokens">> => [integer()],
+%%   <<"cacheWriteInputTokens">> => [integer()],
 %%   <<"inputTokens">> => [integer()],
 %%   <<"outputTokens">> => [integer()],
 %%   <<"totalTokens">> => [integer()]

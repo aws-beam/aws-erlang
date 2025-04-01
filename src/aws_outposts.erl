@@ -109,6 +109,7 @@
 
 %% Example:
 %% get_outpost_supported_instance_types_input() :: #{
+%%   <<"AssetId">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OrderId">> => string()
@@ -534,6 +535,7 @@
 
 %% Example:
 %% start_capacity_task_output() :: #{
+%%   <<"AssetId">> => string(),
 %%   <<"CapacityTaskId">> => string(),
 %%   <<"CapacityTaskStatus">> => list(any()),
 %%   <<"CompletionDate">> => non_neg_integer(),
@@ -560,6 +562,7 @@
 
 %% Example:
 %% start_capacity_task_input() :: #{
+%%   <<"AssetId">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstancePools">> := list(instance_type_capacity()()),
 %%   <<"InstancesToExclude">> => instances_to_exclude(),
@@ -837,6 +840,7 @@
 
 %% Example:
 %% capacity_task_summary() :: #{
+%%   <<"AssetId">> => string(),
 %%   <<"CapacityTaskId">> => string(),
 %%   <<"CapacityTaskStatus">> => list(any()),
 %%   <<"CompletionDate">> => non_neg_integer(),
@@ -902,6 +906,7 @@
 
 %% Example:
 %% get_capacity_task_output() :: #{
+%%   <<"AssetId">> => string(),
 %%   <<"CapacityTaskId">> => string(),
 %%   <<"CapacityTaskStatus">> => list(any()),
 %%   <<"CompletionDate">> => non_neg_integer(),
@@ -1660,6 +1665,7 @@ get_outpost_supported_instance_types(Client, OutpostIdentifier, QueryMap, Header
 
     Query0_ =
       [
+        {<<"AssetId">>, maps:get(<<"AssetId">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
         {<<"OrderId">>, maps:get(<<"OrderId">>, QueryMap, undefined)}

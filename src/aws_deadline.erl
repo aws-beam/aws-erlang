@@ -794,6 +794,7 @@
 
 %% Example:
 %% search_term_filter_expression() :: #{
+%%   <<"matchType">> => list(any()),
 %%   <<"searchTerm">> => string()
 %% }
 -type search_term_filter_expression() :: #{binary() => any()}.

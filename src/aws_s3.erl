@@ -8361,8 +8361,9 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% the Amazon S3 User Guide.
 %%
 %% Directory buckets -
-%% For directory buckets, only the S3 Express One Zone storage class is
-%% supported to store newly created objects.
+%% Directory buckets only support `EXPRESS_ONEZONE' (the S3 Express One
+%% Zone storage class) in Availability Zones and `ONEZONE_IA' (the S3 One
+%% Zone-Infrequent Access storage class) in Dedicated Local Zones.
 %% Unsupported storage class values won't write a destination object and
 %% will respond with the HTTP status code `400 Bad Request'.
 %%
@@ -14106,14 +14107,11 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% Restoring objects
 %%
-%% Objects that you archive to the S3 Glacier Flexible Retrieval Flexible
-%% Retrieval
-%% or S3 Glacier Deep Archive storage class, and S3 Intelligent-Tiering
-%% Archive or
+%% Objects that you archive to the S3 Glacier Flexible Retrieval or S3
+%% Glacier Deep Archive storage class, and S3 Intelligent-Tiering Archive or
 %% S3 Intelligent-Tiering Deep Archive tiers, are not accessible in real
 %% time. For objects in the
-%% S3 Glacier Flexible Retrieval Flexible Retrieval or S3 Glacier Deep
-%% Archive
+%% S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive
 %% storage classes, you must first initiate a restore request, and then wait
 %% until a
 %% temporary copy of the object is available. If you want a permanent copy of
@@ -14136,9 +14134,8 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% access tier options in the `Tier' element of the request body:
 %%
 %% `Expedited' - Expedited retrievals allow you to quickly access
-%% your data stored in the S3 Glacier Flexible Retrieval Flexible Retrieval
-%% storage class or S3 Intelligent-Tiering Archive tier when occasional
-%% urgent requests
+%% your data stored in the S3 Glacier Flexible Retrieval storage class or S3
+%% Intelligent-Tiering Archive tier when occasional urgent requests
 %% for restoring archives are required. For all but the largest archived
 %% objects (250 MB+), data accessed using Expedited retrievals is typically
 %% made available within 1–5 minutes. Provisioned capacity ensures that
@@ -14152,7 +14149,7 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% your archived objects within several hours. This is the default option for
 %% retrieval requests that do not specify the retrieval option. Standard
 %% retrievals typically finish within 3–5 hours for objects stored in the
-%% S3 Glacier Flexible Retrieval Flexible Retrieval storage class or
+%% S3 Glacier Flexible Retrieval storage class or
 %% S3 Intelligent-Tiering Archive tier. They typically finish within 12 hours
 %% for
 %% objects stored in the S3 Glacier Deep Archive storage class or
@@ -14166,7 +14163,7 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% cost.
 %% Bulk retrievals typically finish within 5–12 hours for objects stored in
 %% the
-%% S3 Glacier Flexible Retrieval Flexible Retrieval storage class or
+%% S3 Glacier Flexible Retrieval storage class or
 %% S3 Intelligent-Tiering Archive tier. Bulk retrievals are also the
 %% lowest-cost
 %% retrieval option when restoring objects from

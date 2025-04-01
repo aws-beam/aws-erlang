@@ -5118,6 +5118,11 @@ list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the contact lists available.
+%%
+%% If your output includes a &quot;NextToken&quot; field with a string value,
+%% this indicates there may be additional
+%% contacts on the filtered list - regardless of the number of contacts
+%% returned.
 -spec list_contact_lists(aws_client:aws_client()) ->
     {ok, list_contact_lists_response(), tuple()} |
     {error, any()} |
