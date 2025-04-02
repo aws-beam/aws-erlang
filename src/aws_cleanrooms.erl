@@ -932,6 +932,7 @@
 
 %% Example:
 %% update_collaboration_input() :: #{
+%%   <<"analyticsEngine">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"name">> => string()
 %% }

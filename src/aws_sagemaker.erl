@@ -5112,7 +5112,8 @@
 %% create_notebook_instance_lifecycle_config_input() :: #{
 %%   <<"NotebookInstanceLifecycleConfigName">> := string(),
 %%   <<"OnCreate">> => list(notebook_instance_lifecycle_hook()()),
-%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook()())
+%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook()()),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type create_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
 
