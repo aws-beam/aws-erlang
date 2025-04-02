@@ -1,5 +1,5 @@
 {"1.2.0",
-[{<<"aws_beam_core">>,{pkg,<<"aws_beam_core">>,<<"1.0.0">>},0},
+[{<<"aws_beam_core">>,{pkg,<<"aws_beam_core">>,<<"1.0.1">>},0},
  {<<"aws_credentials">>,{pkg,<<"aws_credentials">>,<<"0.3.2">>},1},
  {<<"aws_signature">>,{pkg,<<"aws_signature">>,<<"0.3.3">>},0},
  {<<"certifi">>,{pkg,<<"certifi">>,<<"2.5.2">>},1},
@@ -15,7 +15,7 @@
  {<<"unicode_util_compat">>,{pkg,<<"unicode_util_compat">>,<<"0.5.0">>},2}]}.
 [
 {pkg_hash,[
- {<<"aws_beam_core">>, <<"F5BAD0147038A0B921844B530A8D937D8BF569B5E1FD0658FA0A6586EB98375C">>},
+ {<<"aws_beam_core">>, <<"3A4627A2EA82D3FA0AA4AA4A73274A2C84406E25DA98A7C4712DEEDD2606D1A0">>},
  {<<"aws_credentials">>, <<"BA2CCEE4EC6DCB5426CF71830B7AFD73795B1F19655F401D4401015B468FEC6F">>},
  {<<"aws_signature">>, <<"5844BEE0D3CC42EEFD21D236BBFAA8AA9B16E2F2B7EE79EDAECB321DB3FB6ADF">>},
  {<<"certifi">>, <<"B7CFEAE9D2ED395695DD8201C57A2D019C0C43ECAF8B8BCB9320B40D6662F340">>},
@@ -30,7 +30,7 @@
  {<<"ssl_verify_fun">>, <<"CF344F5692C82D2CD7554F5EC8FD961548D4FD09E7D22F5B62482E5AEAEBD4B0">>},
  {<<"unicode_util_compat">>, <<"8516502659002CEC19E244EBD90D312183064BE95025A319A6C7E89F4BCCD65B">>}]},
 {pkg_hash_ext,[
- {<<"aws_beam_core">>, <<"421C24834B210A10698ADB29282FF96777C711D85AC57FE6DF9C39DFB2E1FD58">>},
+ {<<"aws_beam_core">>, <<"555ECC50CC134455EAF3EA8CAF8813EC0036FCA368B37647644B5F51221A1D0F">>},
  {<<"aws_credentials">>, <<"2E748626A935A7A544647FB79D7054F38DB8BF378978542C962CCBEAB387387B">>},
  {<<"aws_signature">>, <<"87E8F42B8E49002AA8D0350A71D13D69EA91B9AFB4CA9B526AE36DB1D585C924">>},
  {<<"certifi">>, <<"3B3B5F36493004AC3455966991EAF6E768CE9884693D9968055AEEEB1E575040">>},
