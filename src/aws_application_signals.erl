@@ -185,7 +185,10 @@
 %% service_level_objective_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"DependencyConfig">> => dependency_config(),
+%%   <<"EvaluationType">> => list(any()),
 %%   <<"KeyAttributes">> => map(),
+%%   <<"MetricSourceType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"OperationName">> => string()
 %% }
@@ -198,6 +201,7 @@
 
 %% Example:
 %% service_level_indicator_metric_config() :: #{
+%%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricDataQueries">> => list(metric_data_query()()),
 %%   <<"MetricType">> => list(any()),
@@ -210,9 +214,11 @@
 
 %% Example:
 %% list_service_level_objectives_input() :: #{
+%%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"IncludeLinkedAccounts">> => [boolean()],
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MaxResults">> => integer(),
+%%   <<"MetricSourceTypes">> => list(list(any())()),
 %%   <<"NextToken">> => string(),
 %%   <<"OperationName">> => string(),
 %%   <<"SloOwnerAwsAccountId">> => string()
@@ -263,6 +269,7 @@
 %%   <<"EvaluationType">> => list(any()),
 %%   <<"Goal">> => goal(),
 %%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"MetricSourceType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"RequestBasedSli">> => request_based_service_level_indicator(),
 %%   <<"Sli">> => service_level_indicator()
@@ -306,6 +313,7 @@
 
 %% Example:
 %% service_level_indicator_metric() :: #{
+%%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricDataQueries">> => list(metric_data_query()()),
 %%   <<"MetricType">> => list(any()),
@@ -316,6 +324,7 @@
 
 %% Example:
 %% request_based_service_level_indicator_metric_config() :: #{
+%%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"MonitoredRequestCountMetric">> => list(),
@@ -548,6 +557,7 @@
 
 %% Example:
 %% request_based_service_level_indicator_metric() :: #{
+%%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"MonitoredRequestCountMetric">> => list(),
@@ -576,6 +586,14 @@
 %%   <<"SliConfig">> => service_level_indicator_config()
 %% }
 -type update_service_level_objective_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_config() :: #{
+%%   <<"DependencyKeyAttributes">> => map(),
+%%   <<"DependencyOperationName">> => string()
+%% }
+-type dependency_config() :: #{binary() => any()}.
 
 %% Example:
 %% start_discovery_input() :: #{}

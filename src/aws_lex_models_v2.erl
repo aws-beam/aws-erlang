@@ -549,6 +549,7 @@
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"outputContexts">> => list(output_context()()),
 %%   <<"parentIntentSignature">> => string(),
+%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
 %%   <<"sampleUtterances">> => list(sample_utterance()()),
 %%   <<"slotPriorities">> => list(slot_priority()())
@@ -629,6 +630,13 @@
 %%   <<"expectedAgentPrompt">> => string()
 %% }
 -type agent_turn_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_log_settings() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type error_log_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1005,6 +1013,7 @@
 %%   <<"botName">> => string(),
 %%   <<"botTags">> => map(),
 %%   <<"dataPrivacy">> => data_privacy(),
+%%   <<"errorLogSettings">> => error_log_settings(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"roleArn">> => string(),
 %%   <<"testBotAliasTags">> => map()
@@ -1700,6 +1709,7 @@
 %%   <<"localeId">> => string(),
 %%   <<"outputContexts">> => list(output_context()()),
 %%   <<"parentIntentSignature">> => string(),
+%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
 %%   <<"sampleUtterances">> => list(sample_utterance()()),
 %%   <<"slotPriorities">> => list(slot_priority()())
@@ -2057,6 +2067,7 @@
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"dataPrivacy">> => data_privacy(),
 %%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
 %%   <<"failureReasons">> => list(string()()),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
@@ -2240,6 +2251,7 @@
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"outputContexts">> => list(output_context()()),
 %%   <<"parentIntentSignature">> => string(),
+%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
 %%   <<"sampleUtterances">> => list(sample_utterance()())
 %% }
@@ -2636,6 +2648,13 @@
 %%   <<"failureResponse">> => response_specification()
 %% }
 -type slot_capture_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_in_connect_intent_configuration() :: #{
+%%   <<"qInConnectAssistantConfiguration">> => q_in_connect_assistant_configuration()
+%% }
+-type q_in_connect_intent_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3466,6 +3485,7 @@
 %%   <<"botType">> => list(any()),
 %%   <<"dataPrivacy">> := data_privacy(),
 %%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
 %%   <<"idleSessionTTLInSeconds">> := integer(),
 %%   <<"roleArn">> := string()
 %% }
@@ -3686,6 +3706,7 @@
 %%   <<"localeId">> => string(),
 %%   <<"outputContexts">> => list(output_context()()),
 %%   <<"parentIntentSignature">> => string(),
+%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
 %%   <<"sampleUtterances">> => list(sample_utterance()())
 %% }
@@ -3740,6 +3761,7 @@
 %%   <<"botType">> => list(any()),
 %%   <<"dataPrivacy">> := data_privacy(),
 %%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
 %%   <<"idleSessionTTLInSeconds">> := integer(),
 %%   <<"roleArn">> := string(),
 %%   <<"testBotAliasTags">> => map()
@@ -3893,6 +3915,7 @@
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"dataPrivacy">> => data_privacy(),
 %%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"roleArn">> => string(),
 %%   <<"testBotAliasTags">> => map()
@@ -4012,6 +4035,13 @@
 %%   <<"lambdaCodeHook">> => lambda_code_hook()
 %% }
 -type code_hook_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_in_connect_assistant_configuration() :: #{
+%%   <<"assistantArn">> => string()
+%% }
+-type q_in_connect_assistant_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4345,6 +4375,7 @@
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"dataPrivacy">> => data_privacy(),
 %%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"roleArn">> => string()
@@ -4453,6 +4484,7 @@
 %%   <<"localeId">> => string(),
 %%   <<"outputContexts">> => list(output_context()()),
 %%   <<"parentIntentSignature">> => string(),
+%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
 %%   <<"sampleUtterances">> => list(sample_utterance()()),
 %%   <<"slotPriorities">> => list(slot_priority()())

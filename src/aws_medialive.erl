@@ -1355,6 +1355,13 @@
 
 
 %% Example:
+%% smpte2110_receiver_group() :: #{
+%%   <<"SdpSettings">> => smpte2110_receiver_group_sdp_settings()
+%% }
+-type smpte2110_receiver_group() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_node_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ChannelPlacementGroups">> => list(string()()),
@@ -1385,6 +1392,13 @@
 %%   <<"State">> => list(any())
 %% }
 -type update_node_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% smpte2110_receiver_group_settings() :: #{
+%%   <<"Smpte2110ReceiverGroups">> => list(smpte2110_receiver_group()())
+%% }
+-type smpte2110_receiver_group_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2128,6 +2142,7 @@
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source_request()()),
 %%   <<"SrtSettings">> => srt_settings_request(),
 %%   <<"Tags">> => map(),
@@ -2293,6 +2308,7 @@
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"SecurityGroups">> => list(string()()),
+%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source()()),
 %%   <<"SrtSettings">> => srt_settings(),
 %%   <<"State">> => list(any()),
@@ -2336,6 +2352,7 @@
 %%   <<"MulticastSettings">> => multicast_settings_update_request(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source_request()()),
 %%   <<"SrtSettings">> => srt_settings_request()
 %% }
@@ -2865,6 +2882,7 @@
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"SecurityGroups">> => list(string()()),
+%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source()()),
 %%   <<"SrtSettings">> => srt_settings(),
 %%   <<"State">> => list(any()),
@@ -4199,6 +4217,15 @@
 
 
 %% Example:
+%% smpte2110_receiver_group_sdp_settings() :: #{
+%%   <<"AncillarySdps">> => list(input_sdp_location()()),
+%%   <<"AudioSdps">> => list(input_sdp_location()()),
+%%   <<"VideoSdp">> => input_sdp_location()
+%% }
+-type smpte2110_receiver_group_sdp_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% cmaf_ingest_group_settings() :: #{
 %%   <<"Destination">> => output_location_ref(),
 %%   <<"Id3Behavior">> => list(any()),
@@ -5241,6 +5268,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_sdp_location() :: #{
+%%   <<"MediaIndex">> => integer(),
+%%   <<"SdpUrl">> => string()
+%% }
+-type input_sdp_location() :: #{binary() => any()}.
 
 
 %% Example:
