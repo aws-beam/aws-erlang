@@ -561,6 +561,7 @@
 %%   <<"IngressPointId">> => string(),
 %%   <<"IngressPointName">> => string(),
 %%   <<"LastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"NetworkConfiguration">> => list(),
 %%   <<"RuleSetId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"TrafficPolicyId">> => string(),
@@ -714,6 +715,12 @@
 -type delete_addon_instance_response() :: #{binary() => any()}.
 
 %% Example:
+%% public_network_configuration() :: #{
+%%   <<"IpType">> => list(any())
+%% }
+-type public_network_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% create_address_list_import_job_response() :: #{
 %%   <<"JobId">> => string(),
 %%   <<"PreSignedUrl">> => string()
@@ -789,6 +796,12 @@
 %%   <<"Relays">> => list(relay()())
 %% }
 -type list_relays_response() :: #{binary() => any()}.
+
+%% Example:
+%% private_network_configuration() :: #{
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type private_network_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_rule_set_request() :: #{
@@ -929,6 +942,14 @@
 %%   <<"TrafficPolicyName">> => string()
 %% }
 -type update_traffic_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% ingress_ipv6_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type ingress_ipv6_expression() :: #{binary() => any()}.
 
 %% Example:
 %% delete_address_list_request() :: #{
@@ -1256,6 +1277,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"IngressPointConfiguration">> => list(),
 %%   <<"IngressPointName">> := string(),
+%%   <<"NetworkConfiguration">> => list(),
 %%   <<"RuleSetId">> := string(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"TrafficPolicyId">> := string(),

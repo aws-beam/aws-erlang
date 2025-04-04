@@ -3610,7 +3610,11 @@ cancel_service_software_update(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an OpenSearch Application.
+%% @doc Creates an OpenSearch UI application.
+%%
+%% For more information, see Using the OpenSearch user interface in Amazon
+%% OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application.html.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
@@ -3794,7 +3798,7 @@ create_vpc_endpoint(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing OpenSearch Application.
+%% @doc Deletes a specified OpenSearch application.
 -spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
@@ -4789,8 +4793,8 @@ dissociate_packages(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Check the configuration and status of an existing OpenSearch
-%% Application.
+%% @doc Retrieves the configuration and status of an existing OpenSearch
+%% application.
 -spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
@@ -5118,7 +5122,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all OpenSearch Applications under your account.
+%% @doc Lists all OpenSearch applications under your account.
 -spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
@@ -5970,7 +5974,8 @@ start_service_software_update(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the OpenSearch Application.
+%% @doc Updates the configuration and settings of an existing OpenSearch
+%% application.
 -spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |

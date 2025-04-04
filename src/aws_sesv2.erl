@@ -714,6 +714,19 @@
 
 
 %% Example:
+%% attachment() :: #{
+%%   <<"ContentDescription">> => string(),
+%%   <<"ContentDisposition">> => list(any()),
+%%   <<"ContentId">> => string(),
+%%   <<"ContentTransferEncoding">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"FileName">> => string(),
+%%   <<"RawContent">> => binary()
+%% }
+-type attachment() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_account_details_request() :: #{
 %%   <<"AdditionalContactEmailAddresses">> => list(string()()),
 %%   <<"ContactLanguage">> => list(any()),
@@ -2201,6 +2214,7 @@
 
 %% Example:
 %% template() :: #{
+%%   <<"Attachments">> => list(attachment()()),
 %%   <<"Headers">> => list(message_header()()),
 %%   <<"TemplateArn">> => string(),
 %%   <<"TemplateContent">> => email_template_content(),
@@ -2533,6 +2547,7 @@
 
 %% Example:
 %% message() :: #{
+%%   <<"Attachments">> => list(attachment()()),
 %%   <<"Body">> => body(),
 %%   <<"Headers">> => list(message_header()()),
 %%   <<"Subject">> => content()

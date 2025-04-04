@@ -3047,6 +3047,7 @@
 %%   <<"endpoint">> => string(),
 %%   <<"endpointServiceName">> => string(),
 %%   <<"fieldMapping">> => mongo_db_atlas_field_mapping(),
+%%   <<"textIndexName">> => string(),
 %%   <<"vectorIndexName">> => string()
 %% }
 -type mongo_db_atlas_configuration() :: #{binary() => any()}.
@@ -3114,6 +3115,7 @@
 
 %% Example:
 %% rds_field_mapping() :: #{
+%%   <<"customMetadataField">> => string(),
 %%   <<"metadataField">> => string(),
 %%   <<"primaryKeyField">> => string(),
 %%   <<"textField">> => string(),
