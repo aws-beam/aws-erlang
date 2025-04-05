@@ -20817,12 +20817,12 @@ associate_nat_gateway_address(Client, Input, Options)
 %% @doc Associates a route server with a VPC to enable dynamic route updates.
 %%
 %% A route server association is the connection established between a route
-%% server and a VPC. This is a fundamental configuration step that enables
-%% the route server to work with appliances in your VPC.
+%% server and a VPC.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec associate_route_server(aws_client:aws_client(), associate_route_server_request()) ->
     {ok, associate_route_server_result(), tuple()} |
     {error, any()}.
@@ -23026,7 +23026,8 @@ create_route(Client, Input, Options)
 %%
 %% Amazon VPC Route Server simplifies routing for traffic between workloads
 %% that are deployed within a VPC and its internet gateways. With this
-%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% feature,
+%% VPC Route Server dynamically updates VPC and internet gateway route tables
 %% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
 %% for those workloads. This enables you to automatically reroute traffic
 %% within a VPC, which increases the manageability of VPC routing and
@@ -23034,7 +23035,7 @@ create_route(Client, Input, Options)
 %%
 %% Route server supports the follow route table types:
 %%
-%% VPC route tables
+%% VPC route tables not associated with subnets
 %%
 %% Subnet route tables
 %%
@@ -23046,8 +23047,9 @@ create_route(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec create_route_server(aws_client:aws_client(), create_route_server_request()) ->
     {ok, create_route_server_result(), tuple()} |
     {error, any()}.
@@ -23065,9 +23067,14 @@ create_route_server(Client, Input, Options)
 %% @doc Creates a new endpoint for a route server in a specified subnet.
 %%
 %% A route server endpoint is an Amazon Web Services-managed component inside
-%% a subnet that facilitates BGP (Border Gateway Protocol) connections
-%% between your route server and your BGP peers. Create two endpoints per
-%% subnet for redundancy.
+%% a subnet that facilitates BGP (Border Gateway Protocol):
+%% https://en.wikipedia.org/wiki/Border_Gateway_Protocol connections between
+%% your route server and your BGP peers.
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec create_route_server_endpoint(aws_client:aws_client(), create_route_server_endpoint_request()) ->
     {ok, create_route_server_endpoint_result(), tuple()} |
     {error, any()}.
@@ -23084,15 +23091,21 @@ create_route_server_endpoint(Client, Input, Options)
 
 %% @doc Creates a new BGP peer for a specified route server endpoint.
 %%
-%% A route server peer is a network appliance or function deployed in Amazon
-%% Web Services, such as firewall appliances and other network security
-%% functions, that meet these requirements:
+%% A route server peer is a session between a route server endpoint and the
+%% device deployed in Amazon Web Services (such as a firewall appliance or
+%% other network security function running on an EC2 instance). The device
+%% must meet these requirements:
 %%
 %% Have an elastic network interface in the VPC
 %%
 %% Support BGP (Border Gateway Protocol)
 %%
 %% Can initiate BGP sessions
+%%
+%% For more information see Dynamic routing in your VPC with VPC Route
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec create_route_server_peer(aws_client:aws_client(), create_route_server_peer_request()) ->
     {ok, create_route_server_peer_result(), tuple()} |
     {error, any()}.
@@ -24951,7 +24964,8 @@ delete_route(Client, Input, Options)
 %%
 %% Amazon VPC Route Server simplifies routing for traffic between workloads
 %% that are deployed within a VPC and its internet gateways. With this
-%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% feature,
+%% VPC Route Server dynamically updates VPC and internet gateway route tables
 %% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
 %% for those workloads. This enables you to automatically reroute traffic
 %% within a VPC, which increases the manageability of VPC routing and
@@ -24959,7 +24973,7 @@ delete_route(Client, Input, Options)
 %%
 %% Route server supports the follow route table types:
 %%
-%% VPC route tables
+%% VPC route tables not associated with subnets
 %%
 %% Subnet route tables
 %%
@@ -24971,8 +24985,9 @@ delete_route(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec delete_route_server(aws_client:aws_client(), delete_route_server_request()) ->
     {ok, delete_route_server_result(), tuple()} |
     {error, any()}.
@@ -24990,9 +25005,9 @@ delete_route_server(Client, Input, Options)
 %% @doc Deletes the specified route server endpoint.
 %%
 %% A route server endpoint is an Amazon Web Services-managed component inside
-%% a subnet that facilitates BGP (Border Gateway Protocol) connections
-%% between your route server and your BGP peers. Create two endpoints per
-%% subnet for redundancy.
+%% a subnet that facilitates BGP (Border Gateway Protocol):
+%% https://en.wikipedia.org/wiki/Border_Gateway_Protocol connections between
+%% your route server and your BGP peers.
 -spec delete_route_server_endpoint(aws_client:aws_client(), delete_route_server_endpoint_request()) ->
     {ok, delete_route_server_endpoint_result(), tuple()} |
     {error, any()}.
@@ -25009,9 +25024,10 @@ delete_route_server_endpoint(Client, Input, Options)
 
 %% @doc Deletes the specified BGP peer from a route server.
 %%
-%% A route server peer is a network appliance or function deployed in Amazon
-%% Web Services, such as firewall appliances and other network security
-%% functions, that meet these requirements:
+%% A route server peer is a session between a route server endpoint and the
+%% device deployed in Amazon Web Services (such as a firewall appliance or
+%% other network security function running on an EC2 instance). The device
+%% must meet these requirements:
 %%
 %% Have an elastic network interface in the VPC
 %%
@@ -25806,29 +25822,39 @@ deprovision_public_ipv4_pool_cidr(Client, Input, Options)
 
 %% @doc Deregisters the specified AMI.
 %%
-%% After you deregister an AMI, it can't be used to launch new
+%% A deregistered AMI can't be used to launch new
 %% instances.
 %%
-%% If you deregister an AMI that matches a Recycle Bin retention rule, the
-%% AMI is retained in
-%% the Recycle Bin for the specified retention period. For more information,
-%% see Recycle Bin:
+%% If a deregistered EBS-backed AMI matches a Recycle Bin retention rule, it
+%% moves to the
+%% Recycle Bin for the specified retention period. It can be restored before
+%% its retention period
+%% expires, after which it is permanently deleted. If the deregistered AMI
+%% doesn't match a
+%% retention rule, it is permanently deleted immediately. For more
+%% information, see Recycle Bin:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
-%% the Amazon EC2 User Guide.
+%% the Amazon EBS User Guide.
 %%
-%% When you deregister an AMI, it doesn't affect any instances that
-%% you've already launched
-%% from the AMI. You'll continue to incur usage costs for those instances
-%% until you terminate
-%% them.
+%% Deregistering an AMI does not delete the following:
 %%
-%% When you deregister an Amazon EBS-backed AMI, it doesn't affect the
-%% snapshot that was created
-%% for the root volume of the instance during the AMI creation process. When
-%% you deregister an
-%% instance store-backed AMI, it doesn't affect the files that you
-%% uploaded to Amazon S3 when you
-%% created the AMI.
+%% Instances already launched from the AMI. You'll continue to incur
+%% usage costs for the
+%% instances until you terminate them.
+%%
+%% For EBS-backed AMIs: The snapshots that were created of the root and data
+%% volumes of
+%% the instance during AMI creation. You'll continue to incur snapshot
+%% storage costs.
+%%
+%% For instance store-backed AMIs: The files uploaded to Amazon S3 during AMI
+%% creation. You'll
+%% continue to incur S3 storage costs.
+%%
+%% For more information, see Deregister an Amazon EC2 AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html in
+%% the
+%% Amazon EC2 User Guide.
 -spec deregister_image(aws_client:aws_client(), deregister_image_request()) ->
     {ok, deregister_image_result(), tuple()} |
     {error, any()}.
@@ -28209,13 +28235,14 @@ describe_reserved_instances_offerings(Client, Input, Options)
 %% @doc Describes one or more route server endpoints.
 %%
 %% A route server endpoint is an Amazon Web Services-managed component inside
-%% a subnet that facilitates BGP (Border Gateway Protocol) connections
-%% between your route server and your BGP peers. Create two endpoints per
-%% subnet for redundancy.
+%% a subnet that facilitates BGP (Border Gateway Protocol):
+%% https://en.wikipedia.org/wiki/Border_Gateway_Protocol connections between
+%% your route server and your BGP peers.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec describe_route_server_endpoints(aws_client:aws_client(), describe_route_server_endpoints_request()) ->
     {ok, describe_route_server_endpoints_result(), tuple()} |
     {error, any()}.
@@ -28232,9 +28259,10 @@ describe_route_server_endpoints(Client, Input, Options)
 
 %% @doc Describes one or more route server peers.
 %%
-%% A route server peer is a network appliance or function deployed in Amazon
-%% Web Services, such as firewall appliances and other network security
-%% functions, that meet these requirements:
+%% A route server peer is a session between a route server endpoint and the
+%% device deployed in Amazon Web Services (such as a firewall appliance or
+%% other network security function running on an EC2 instance). The device
+%% must meet these requirements:
 %%
 %% Have an elastic network interface in the VPC
 %%
@@ -28243,8 +28271,9 @@ describe_route_server_endpoints(Client, Input, Options)
 %% Can initiate BGP sessions
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec describe_route_server_peers(aws_client:aws_client(), describe_route_server_peers_request()) ->
     {ok, describe_route_server_peers_result(), tuple()} |
     {error, any()}.
@@ -28263,7 +28292,8 @@ describe_route_server_peers(Client, Input, Options)
 %%
 %% Amazon VPC Route Server simplifies routing for traffic between workloads
 %% that are deployed within a VPC and its internet gateways. With this
-%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% feature,
+%% VPC Route Server dynamically updates VPC and internet gateway route tables
 %% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
 %% for those workloads. This enables you to automatically reroute traffic
 %% within a VPC, which increases the manageability of VPC routing and
@@ -28271,7 +28301,7 @@ describe_route_server_peers(Client, Input, Options)
 %%
 %% Route server supports the follow route table types:
 %%
-%% VPC route tables
+%% VPC route tables not associated with subnets
 %%
 %% Subnet route tables
 %%
@@ -28283,8 +28313,9 @@ describe_route_server_peers(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec describe_route_servers(aws_client:aws_client(), describe_route_servers_request()) ->
     {ok, describe_route_servers_result(), tuple()} |
     {error, any()}.
@@ -30056,7 +30087,8 @@ disable_ipam_organization_admin_account(Client, Input, Options)
 %%
 %% Amazon VPC Route Server simplifies routing for traffic between workloads
 %% that are deployed within a VPC and its internet gateways. With this
-%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% feature,
+%% VPC Route Server dynamically updates VPC and internet gateway route tables
 %% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
 %% for those workloads. This enables you to automatically reroute traffic
 %% within a VPC, which increases the manageability of VPC routing and
@@ -30064,7 +30096,7 @@ disable_ipam_organization_admin_account(Client, Input, Options)
 %%
 %% Route server supports the follow route table types:
 %%
-%% VPC route tables
+%% VPC route tables not associated with subnets
 %%
 %% Subnet route tables
 %%
@@ -30076,8 +30108,9 @@ disable_ipam_organization_admin_account(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec disable_route_server_propagation(aws_client:aws_client(), disable_route_server_propagation_request()) ->
     {ok, disable_route_server_propagation_result(), tuple()} |
     {error, any()}.
@@ -30441,12 +30474,12 @@ disassociate_nat_gateway_address(Client, Input, Options)
 %% @doc Disassociates a route server from a VPC.
 %%
 %% A route server association is the connection established between a route
-%% server and a VPC. This is a fundamental configuration step that enables
-%% the route server to work with appliances in your VPC.
+%% server and a VPC.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec disassociate_route_server(aws_client:aws_client(), disassociate_route_server_request()) ->
     {ok, disassociate_route_server_result(), tuple()} |
     {error, any()}.
@@ -30961,8 +30994,9 @@ enable_reachability_analyzer_organization_sharing(Client, Input, Options)
 %% route propagation.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec enable_route_server_propagation(aws_client:aws_client(), enable_route_server_propagation_request()) ->
     {ok, enable_route_server_propagation_result(), tuple()} |
     {error, any()}.
@@ -32021,12 +32055,12 @@ get_reserved_instances_exchange_quote(Client, Input, Options)
 %% server.
 %%
 %% A route server association is the connection established between a route
-%% server and a VPC. This is a fundamental configuration step that enables
-%% the route server to work with appliances in your VPC.
+%% server and a VPC.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec get_route_server_associations(aws_client:aws_client(), get_route_server_associations_request()) ->
     {ok, get_route_server_associations_result(), tuple()} |
     {error, any()}.
@@ -32050,7 +32084,8 @@ get_route_server_associations(Client, Input, Options)
 %%
 %% Amazon VPC Route Server simplifies routing for traffic between workloads
 %% that are deployed within a VPC and its internet gateways. With this
-%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% feature,
+%% VPC Route Server dynamically updates VPC and internet gateway route tables
 %% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
 %% for those workloads. This enables you to automatically reroute traffic
 %% within a VPC, which increases the manageability of VPC routing and
@@ -32058,7 +32093,7 @@ get_route_server_associations(Client, Input, Options)
 %%
 %% Route server supports the follow route table types:
 %%
-%% VPC route tables
+%% VPC route tables not associated with subnets
 %%
 %% Subnet route tables
 %%
@@ -32095,7 +32130,8 @@ get_route_server_propagations(Client, Input, Options)
 %%
 %% Amazon VPC Route Server simplifies routing for traffic between workloads
 %% that are deployed within a VPC and its internet gateways. With this
-%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% feature,
+%% VPC Route Server dynamically updates VPC and internet gateway route tables
 %% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
 %% for those workloads. This enables you to automatically reroute traffic
 %% within a VPC, which increases the manageability of VPC routing and
@@ -32103,7 +32139,7 @@ get_route_server_propagations(Client, Input, Options)
 %%
 %% Route server supports the follow route table types:
 %%
-%% VPC route tables
+%% VPC route tables not associated with subnets
 %%
 %% Subnet route tables
 %%
@@ -33649,7 +33685,8 @@ modify_reserved_instances(Client, Input, Options)
 %%
 %% Amazon VPC Route Server simplifies routing for traffic between workloads
 %% that are deployed within a VPC and its internet gateways. With this
-%% feature, VPC Route Server dynamically updates VPC and gateway route tables
+%% feature,
+%% VPC Route Server dynamically updates VPC and internet gateway route tables
 %% with your preferred IPv4 or IPv6 routes to achieve routing fault tolerance
 %% for those workloads. This enables you to automatically reroute traffic
 %% within a VPC, which increases the manageability of VPC routing and
@@ -33657,7 +33694,7 @@ modify_reserved_instances(Client, Input, Options)
 %%
 %% Route server supports the follow route table types:
 %%
-%% VPC route tables
+%% VPC route tables not associated with subnets
 %%
 %% Subnet route tables
 %%
@@ -33669,8 +33706,9 @@ modify_reserved_instances(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html.
 %%
 %% For more information see Dynamic routing in your VPC with VPC Route
-%% Server: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in
-%% the Amazon VPC User Guide.
+%% Server:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/dynamic-routing-route-server.html
+%% in the Amazon VPC User Guide.
 -spec modify_route_server(aws_client:aws_client(), modify_route_server_request()) ->
     {ok, modify_route_server_result(), tuple()} |
     {error, any()}.

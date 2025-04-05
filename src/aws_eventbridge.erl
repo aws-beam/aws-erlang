@@ -626,6 +626,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EventPattern">> => string(),
 %%   <<"EventSourceArn">> := string(),
+%%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"RetentionDays">> => integer()
 %% }
 -type create_archive_request() :: #{binary() => any()}.
@@ -742,6 +743,7 @@
 %%   <<"EventCount">> => float(),
 %%   <<"EventPattern">> => string(),
 %%   <<"EventSourceArn">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"RetentionDays">> => integer(),
 %%   <<"SizeBytes">> => float(),
 %%   <<"State">> => list(any()),
@@ -1419,6 +1421,7 @@
 %%   <<"ArchiveName">> := string(),
 %%   <<"Description">> => string(),
 %%   <<"EventPattern">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"RetentionDays">> => integer()
 %% }
 -type update_archive_request() :: #{binary() => any()}.
@@ -2083,35 +2086,12 @@ create_api_destination(Client, Input, Options)
 %% Replayed events are not
 %% sent to an archive.
 %%
-%% Archives and schema discovery are not supported for event buses encrypted
-%% using a
-%% customer managed key. EventBridge returns an error if:
+%% If you have specified that EventBridge use a customer managed key for
+%% encrypting the source event bus, we strongly recommend you also specify a
+%% customer managed key for any archives for the event bus as well.
 %%
-%% You call
-%% ```
-%% CreateArchive:
-%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateArchive.html
-%% ''' on an event bus set to use a customer managed key for
-%% encryption.
-%%
-%% You call
-%% ```
-%% CreateDiscoverer:
-%% https://docs.aws.amazon.com/eventbridge/latest/schema-reference/v1-discoverers.html#CreateDiscoverer
-%% ''' on an event bus set to use a customer managed key for
-%% encryption.
-%%
-%% You call
-%% ```
-%% UpdatedEventBus:
-%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdatedEventBus.html
-%% ''' to set a customer managed key on an event bus with an
-%% archives or schema discovery enabled.
-%%
-%% To enable archives or schema discovery on an event bus, choose to
-%% use an Amazon Web Services owned key. For more information, see Data
-%% encryption in EventBridge:
-%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-encryption.html
+%% For more information, see Encrypting archives:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html
 %% in the Amazon EventBridge User Guide.
 -spec create_archive(aws_client:aws_client(), create_archive_request()) ->
     {ok, create_archive_response(), tuple()} |
@@ -3006,15 +2986,15 @@ list_targets_by_rule(Client, Input, Options)
 %% @doc Sends custom events to Amazon EventBridge so that they can be matched
 %% to rules.
 %%
-%% The maximum size for a PutEvents event entry is 256 KB. Entry size is
-%% calculated including
-%% the event and any necessary characters and keys of the JSON representation
-%% of the event. To
-%% learn more, see Calculating PutEvents event entry
+%% You can batch multiple event entries into one request for efficiency.
+%% However, the total entry size must be less than 256KB. You can calculate
+%% the entry size before you send the events.
+%% For more information, see Calculating PutEvents event entry
 %% size:
-%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevent-size.html
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevents.html#eb-putevent-size
 %% in the
 %% Amazon EventBridge User Guide
+%% .
 %%
 %% PutEvents accepts the data in JSON format. For the JSON number (integer)
 %% data type, the
