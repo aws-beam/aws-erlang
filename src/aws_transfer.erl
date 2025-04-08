@@ -129,6 +129,10 @@
          start_directory_listing/3,
          start_file_transfer/2,
          start_file_transfer/3,
+         start_remote_delete/2,
+         start_remote_delete/3,
+         start_remote_move/2,
+         start_remote_move/3,
          start_server/2,
          start_server/3,
          stop_server/2,
@@ -474,6 +478,12 @@
 %%   <<"Url">> => string()
 %% }
 -type update_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_remote_delete_response() :: #{
+%%   <<"DeleteId">> => string()
+%% }
+-type start_remote_delete_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_web_app_customization_request() :: #{
@@ -870,6 +880,13 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_remote_delete_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"DeletePath">> := string()
+%% }
+-type start_remote_delete_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_file_transfer_response() :: #{
@@ -1359,6 +1376,14 @@
 -type listed_agreement() :: #{binary() => any()}.
 
 %% Example:
+%% start_remote_move_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"SourcePath">> := string(),
+%%   <<"TargetPath">> := string()
+%% }
+-type start_remote_move_request() :: #{binary() => any()}.
+
+%% Example:
 %% efs_file_location() :: #{
 %%   <<"FileSystemId">> => string(),
 %%   <<"Path">> => string()
@@ -1532,6 +1557,12 @@
 %%   <<"Usage">> => list(any())
 %% }
 -type listed_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% start_remote_move_response() :: #{
+%%   <<"MoveId">> => string()
+%% }
+-type start_remote_move_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_connector_request() :: #{
@@ -2108,6 +2139,20 @@
     resource_not_found_exception().
 
 -type start_file_transfer_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_remote_delete_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_remote_move_errors() ::
     throttling_exception() | 
     internal_service_error() | 
     service_unavailable_exception() | 
@@ -2923,6 +2968,13 @@ describe_workflow(Client, Input, Options)
 %% create local (AS2)
 %% profiles and partner
 %% profiles.
+%%
+%% You can import both the certificate and its chain in the `Certificate'
+%% parameter.
+%%
+%% If you use the `Certificate' parameter to upload both the certificate
+%% and its
+%% chain, don't use the `CertificateChain' parameter.
 -spec import_certificate(aws_client:aws_client(), import_certificate_request()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
@@ -3411,6 +3463,40 @@ start_file_transfer(Client, Input)
 start_file_transfer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFileTransfer">>, Input, Options).
+
+%% @doc Deletes a file or directory on the remote SFTP server.
+-spec start_remote_delete(aws_client:aws_client(), start_remote_delete_request()) ->
+    {ok, start_remote_delete_response(), tuple()} |
+    {error, any()} |
+    {error, start_remote_delete_errors(), tuple()}.
+start_remote_delete(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_remote_delete(Client, Input, []).
+
+-spec start_remote_delete(aws_client:aws_client(), start_remote_delete_request(), proplists:proplist()) ->
+    {ok, start_remote_delete_response(), tuple()} |
+    {error, any()} |
+    {error, start_remote_delete_errors(), tuple()}.
+start_remote_delete(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartRemoteDelete">>, Input, Options).
+
+%% @doc Moves or renames a file or directory on the remote SFTP server.
+-spec start_remote_move(aws_client:aws_client(), start_remote_move_request()) ->
+    {ok, start_remote_move_response(), tuple()} |
+    {error, any()} |
+    {error, start_remote_move_errors(), tuple()}.
+start_remote_move(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_remote_move(Client, Input, []).
+
+-spec start_remote_move(aws_client:aws_client(), start_remote_move_request(), proplists:proplist()) ->
+    {ok, start_remote_move_response(), tuple()} |
+    {error, any()} |
+    {error, start_remote_move_errors(), tuple()}.
+start_remote_move(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartRemoteMove">>, Input, Options).
 
 %% @doc Changes the state of a file transfer protocol-enabled server from
 %% `OFFLINE' to

@@ -48,6 +48,8 @@
          create_node_registration_script/4,
          create_partner_input/3,
          create_partner_input/4,
+         create_sdi_source/2,
+         create_sdi_source/3,
          create_signal_map/2,
          create_signal_map/3,
          create_tags/3,
@@ -82,6 +84,8 @@
          delete_reservation/4,
          delete_schedule/3,
          delete_schedule/4,
+         delete_sdi_source/3,
+         delete_sdi_source/4,
          delete_signal_map/3,
          delete_signal_map/4,
          delete_tags/3,
@@ -131,6 +135,9 @@
          describe_schedule/2,
          describe_schedule/4,
          describe_schedule/5,
+         describe_sdi_source/2,
+         describe_sdi_source/4,
+         describe_sdi_source/5,
          describe_thumbnails/4,
          describe_thumbnails/6,
          describe_thumbnails/7,
@@ -200,6 +207,9 @@
          list_reservations/1,
          list_reservations/3,
          list_reservations/4,
+         list_sdi_sources/1,
+         list_sdi_sources/3,
+         list_sdi_sources/4,
          list_signal_maps/1,
          list_signal_maps/3,
          list_signal_maps/4,
@@ -274,7 +284,9 @@
          update_node_state/4,
          update_node_state/5,
          update_reservation/3,
-         update_reservation/4]).
+         update_reservation/4,
+         update_sdi_source/3,
+         update_sdi_source/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -690,6 +702,15 @@
 %% Example:
 %% get_signal_map_request() :: #{}
 -type get_signal_map_request() :: #{}.
+
+
+%% Example:
+%% sdi_source_mapping() :: #{
+%%   <<"CardNumber">> => integer(),
+%%   <<"ChannelNumber">> => integer(),
+%%   <<"SdiSource">> => string()
+%% }
+-type sdi_source_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1232,6 +1253,13 @@
 
 
 %% Example:
+%% create_sdi_source_response() :: #{
+%%   <<"SdiSource">> => sdi_source()
+%% }
+-type create_sdi_source_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_channel_placement_group_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Channels">> => list(string()()),
@@ -1373,6 +1401,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
 %%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_node_summary() :: #{binary() => any()}.
@@ -1389,6 +1418,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
 %%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
 %%   <<"State">> => list(any())
 %% }
 -type update_node_state_response() :: #{binary() => any()}.
@@ -1674,6 +1704,19 @@
 %% }
 -type timed_metadata_schedule_action_settings() :: #{binary() => any()}.
 
+
+%% Example:
+%% sdi_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Inputs">> => list(string()()),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type sdi_source() :: #{binary() => any()}.
+
 %% Example:
 %% describe_channel_placement_group_request() :: #{}
 -type describe_channel_placement_group_request() :: #{}.
@@ -1709,6 +1752,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
 %%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
 %%   <<"State">> => list(any())
 %% }
 -type update_node_response() :: #{binary() => any()}.
@@ -1761,6 +1805,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
 %%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_node_response() :: #{binary() => any()}.
@@ -1871,6 +1916,10 @@
 %%   <<"Width">> => integer()
 %% }
 -type video_description() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sdi_source_request() :: #{}
+-type delete_sdi_source_request() :: #{}.
 
 
 %% Example:
@@ -2142,6 +2191,7 @@
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"SdiSources">> => list(string()()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source_request()()),
 %%   <<"SrtSettings">> => srt_settings_request(),
@@ -2307,6 +2357,7 @@
 %%   <<"MulticastSettings">> => multicast_settings(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"SdiSources">> => list(string()()),
 %%   <<"SecurityGroups">> => list(string()()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source()()),
@@ -2352,6 +2403,7 @@
 %%   <<"MulticastSettings">> => multicast_settings_update_request(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"SdiSources">> => list(string()()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source_request()()),
 %%   <<"SrtSettings">> => srt_settings_request()
@@ -2754,6 +2806,14 @@
 %% }
 -type describe_thumbnails_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_sdi_sources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sdi_sources_request() :: #{binary() => any()}.
+
 %% Example:
 %% scte20_plus_embedded_destination_settings() :: #{}
 -type scte20_plus_embedded_destination_settings() :: #{}.
@@ -2881,6 +2941,7 @@
 %%   <<"MulticastSettings">> => multicast_settings(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
+%%   <<"SdiSources">> => list(string()()),
 %%   <<"SecurityGroups">> => list(string()()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
 %%   <<"Sources">> => list(input_source()()),
@@ -3185,6 +3246,13 @@
 %%   <<"ArchiveS3Settings">> => archive_s3_settings()
 %% }
 -type archive_cdn_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_sdi_source_response() :: #{
+%%   <<"SdiSource">> => sdi_source()
+%% }
+-type delete_sdi_source_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3593,6 +3661,15 @@
 
 
 %% Example:
+%% update_sdi_source_request() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type update_sdi_source_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% motion_graphics_activate_schedule_action_settings() :: #{
 %%   <<"Duration">> => float(),
 %%   <<"PasswordParam">> => string(),
@@ -3987,6 +4064,17 @@
 %% }
 -type avail_settings() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_sdi_source_request() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
+%% }
+-type create_sdi_source_request() :: #{binary() => any()}.
+
 %% Example:
 %% dolby_vision81_settings() :: #{}
 -type dolby_vision81_settings() :: #{}.
@@ -4166,6 +4254,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
 %%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
 %%   <<"State">> => list(any())
 %% }
 -type create_node_response() :: #{binary() => any()}.
@@ -4201,6 +4290,13 @@
 
 
 %% Example:
+%% update_sdi_source_response() :: #{
+%%   <<"SdiSource">> => sdi_source()
+%% }
+-type update_sdi_source_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiplex() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityZones">> => list(string()()),
@@ -4214,6 +4310,10 @@
 %%   <<"Tags">> => map()
 %% }
 -type multiplex() :: #{binary() => any()}.
+
+%% Example:
+%% describe_sdi_source_request() :: #{}
+-type describe_sdi_source_request() :: #{}.
 
 
 %% Example:
@@ -4283,6 +4383,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
 %%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
 %%   <<"State">> => list(any())
 %% }
 -type delete_node_response() :: #{binary() => any()}.
@@ -4343,6 +4444,19 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% sdi_source_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Inputs">> => list(string()()),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type sdi_source_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4865,10 +4979,27 @@
 
 
 %% Example:
+%% sdi_source_mapping_update_request() :: #{
+%%   <<"CardNumber">> => integer(),
+%%   <<"ChannelNumber">> => integer(),
+%%   <<"SdiSource">> => string()
+%% }
+-type sdi_source_mapping_update_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_schedule_action_delete_request() :: #{
 %%   <<"ActionNames">> => list(string()())
 %% }
 -type batch_schedule_action_delete_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sdi_sources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SdiSources">> => list(sdi_source_summary()())
+%% }
+-type list_sdi_sources_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5296,6 +5427,13 @@
 
 
 %% Example:
+%% describe_sdi_source_response() :: #{
+%%   <<"SdiSource">> => sdi_source()
+%% }
+-type describe_sdi_source_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% cloud_watch_alarm_template_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ComparisonOperator">> => list(any()),
@@ -5373,7 +5511,8 @@
 %% Example:
 %% update_node_request() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Role">> => list(any())
+%%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping_update_request()())
 %% }
 -type update_node_request() :: #{binary() => any()}.
 
@@ -5899,6 +6038,15 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type create_sdi_source_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type create_signal_map_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -6053,6 +6201,16 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type delete_sdi_source_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type delete_signal_map_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -6193,6 +6351,15 @@
     bad_gateway_exception().
 
 -type describe_schedule_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type describe_sdi_source_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
     internal_server_error_exception() | 
@@ -6373,6 +6540,14 @@
     bad_gateway_exception().
 
 -type list_reservations_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_sdi_sources_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
     internal_server_error_exception() | 
@@ -6710,6 +6885,15 @@
     gateway_timeout_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type update_sdi_source_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception() | 
@@ -7499,6 +7683,45 @@ create_partner_input(Client, InputId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create an SdiSource for each video source that uses the SDI protocol.
+%%
+%% You will reference the SdiSource when you create an SDI input in
+%% MediaLive. You will also reference it in an SdiSourceMapping, in order to
+%% create a connection between the logical SdiSource and the physical SDI
+%% card and port that the physical SDI source uses.
+-spec create_sdi_source(aws_client:aws_client(), create_sdi_source_request()) ->
+    {ok, create_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_sdi_source_errors(), tuple()}.
+create_sdi_source(Client, Input) ->
+    create_sdi_source(Client, Input, []).
+
+-spec create_sdi_source(aws_client:aws_client(), create_sdi_source_request(), proplists:proplist()) ->
+    {ok, create_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_sdi_source_errors(), tuple()}.
+create_sdi_source(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/sdiSources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates the creation of a new signal map.
 %%
 %% Will discover a new mediaResourceMap based on the provided
@@ -8079,6 +8302,43 @@ delete_schedule(Client, ChannelId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete an SdiSource.
+%%
+%% The SdiSource must not be part of any SidSourceMapping and must not be
+%% attached to any input.
+-spec delete_sdi_source(aws_client:aws_client(), binary() | list(), delete_sdi_source_request()) ->
+    {ok, delete_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_sdi_source_errors(), tuple()}.
+delete_sdi_source(Client, SdiSourceId, Input) ->
+    delete_sdi_source(Client, SdiSourceId, Input, []).
+
+-spec delete_sdi_source(aws_client:aws_client(), binary() | list(), delete_sdi_source_request(), proplists:proplist()) ->
+    {ok, delete_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_sdi_source_errors(), tuple()}.
+delete_sdi_source(Client, SdiSourceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/sdiSources/", aws_util:encode_uri(SdiSourceId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -8746,6 +9006,43 @@ describe_schedule(Client, ChannelId, QueryMap, HeadersMap, Options0)
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets details about a SdiSource.
+-spec describe_sdi_source(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, describe_sdi_source_errors(), tuple()}.
+describe_sdi_source(Client, SdiSourceId)
+  when is_map(Client) ->
+    describe_sdi_source(Client, SdiSourceId, #{}, #{}).
+
+-spec describe_sdi_source(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, describe_sdi_source_errors(), tuple()}.
+describe_sdi_source(Client, SdiSourceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_sdi_source(Client, SdiSourceId, QueryMap, HeadersMap, []).
+
+-spec describe_sdi_source(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, describe_sdi_source_errors(), tuple()}.
+describe_sdi_source(Client, SdiSourceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/sdiSources/", aws_util:encode_uri(SdiSourceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -9715,6 +10012,48 @@ list_reservations(Client, QueryMap, HeadersMap, Options0)
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
         {<<"specialFeature">>, maps:get(<<"specialFeature">>, QueryMap, undefined)},
         {<<"videoQuality">>, maps:get(<<"videoQuality">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all the SdiSources in the AWS account.
+-spec list_sdi_sources(aws_client:aws_client()) ->
+    {ok, list_sdi_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_sdi_sources_errors(), tuple()}.
+list_sdi_sources(Client)
+  when is_map(Client) ->
+    list_sdi_sources(Client, #{}, #{}).
+
+-spec list_sdi_sources(aws_client:aws_client(), map(), map()) ->
+    {ok, list_sdi_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_sdi_sources_errors(), tuple()}.
+list_sdi_sources(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sdi_sources(Client, QueryMap, HeadersMap, []).
+
+-spec list_sdi_sources(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_sdi_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_sdi_sources_errors(), tuple()}.
+list_sdi_sources(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/sdiSources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -10975,6 +11314,40 @@ update_reservation(Client, ReservationId, Input) ->
 update_reservation(Client, ReservationId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Change some of the settings in an SdiSource.
+-spec update_sdi_source(aws_client:aws_client(), binary() | list(), update_sdi_source_request()) ->
+    {ok, update_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, update_sdi_source_errors(), tuple()}.
+update_sdi_source(Client, SdiSourceId, Input) ->
+    update_sdi_source(Client, SdiSourceId, Input, []).
+
+-spec update_sdi_source(aws_client:aws_client(), binary() | list(), update_sdi_source_request(), proplists:proplist()) ->
+    {ok, update_sdi_source_response(), tuple()} |
+    {error, any()} |
+    {error, update_sdi_source_errors(), tuple()}.
+update_sdi_source(Client, SdiSourceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/prod/sdiSources/", aws_util:encode_uri(SdiSourceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

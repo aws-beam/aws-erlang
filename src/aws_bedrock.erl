@@ -508,7 +508,11 @@
 %% guardrail_topic_config() :: #{
 %%   <<"definition">> => string(),
 %%   <<"examples">> => list(string()()),
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
 %%   <<"name">> => string(),
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_topic_config() :: #{binary() => any()}.
@@ -578,6 +582,8 @@
 
 %% Example:
 %% guardrail_contextual_grounding_filter_config() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"enabled">> => [boolean()],
 %%   <<"threshold">> => [float()],
 %%   <<"type">> => list(any())
 %% }
@@ -797,6 +803,10 @@
 
 %% Example:
 %% guardrail_managed_words_config() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_managed_words_config() :: #{binary() => any()}.
@@ -804,6 +814,10 @@
 
 %% Example:
 %% guardrail_word() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"text">> => [string()]
 %% }
 -type guardrail_word() :: #{binary() => any()}.
@@ -954,8 +968,12 @@
 
 %% Example:
 %% guardrail_content_filter_config() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
 %%   <<"inputModalities">> => list(list(any())()),
 %%   <<"inputStrength">> => list(any()),
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"outputModalities">> => list(list(any())()),
 %%   <<"outputStrength">> => list(any()),
 %%   <<"type">> => list(any())
@@ -1017,8 +1035,12 @@
 
 %% Example:
 %% guardrail_content_filter() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
 %%   <<"inputModalities">> => list(list(any())()),
 %%   <<"inputStrength">> => list(any()),
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"outputModalities">> => list(list(any())()),
 %%   <<"outputStrength">> => list(any()),
 %%   <<"type">> => list(any())
@@ -1096,6 +1118,8 @@
 
 %% Example:
 %% guardrail_contextual_grounding_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"enabled">> => [boolean()],
 %%   <<"threshold">> => [float()],
 %%   <<"type">> => list(any())
 %% }
@@ -1112,6 +1136,10 @@
 
 %% Example:
 %% guardrail_managed_words() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_managed_words() :: #{binary() => any()}.
@@ -1217,6 +1245,10 @@
 %% Example:
 %% guardrail_pii_entity() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_pii_entity() :: #{binary() => any()}.
@@ -1406,6 +1438,10 @@
 
 %% Example:
 %% guardrail_word_config() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"text">> => [string()]
 %% }
 -type guardrail_word_config() :: #{binary() => any()}.
@@ -1514,7 +1550,11 @@
 %% guardrail_regex_config() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"description">> => [string()],
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
 %%   <<"name">> => [string()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"pattern">> => [string()]
 %% }
 -type guardrail_regex_config() :: #{binary() => any()}.
@@ -1719,6 +1759,10 @@
 %% Example:
 %% guardrail_pii_entity_config() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_pii_entity_config() :: #{binary() => any()}.
@@ -1929,7 +1973,11 @@
 %% guardrail_regex() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"description">> => [string()],
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
 %%   <<"name">> => [string()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"pattern">> => [string()]
 %% }
 -type guardrail_regex() :: #{binary() => any()}.
@@ -2090,7 +2138,11 @@
 %% guardrail_topic() :: #{
 %%   <<"definition">> => string(),
 %%   <<"examples">> => list(string()()),
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
 %%   <<"name">> => string(),
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_topic() :: #{binary() => any()}.

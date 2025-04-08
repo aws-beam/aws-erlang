@@ -29,6 +29,8 @@
          batch_get_build_batches/3,
          batch_get_builds/2,
          batch_get_builds/3,
+         batch_get_command_executions/2,
+         batch_get_command_executions/3,
          batch_get_fleets/2,
          batch_get_fleets/3,
          batch_get_projects/2,
@@ -37,6 +39,8 @@
          batch_get_report_groups/3,
          batch_get_reports/2,
          batch_get_reports/3,
+         batch_get_sandboxes/2,
+         batch_get_sandboxes/3,
          create_fleet/2,
          create_fleet/3,
          create_project/2,
@@ -81,6 +85,8 @@
          list_builds/3,
          list_builds_for_project/2,
          list_builds_for_project/3,
+         list_command_executions_for_sandbox/2,
+         list_command_executions_for_sandbox/3,
          list_curated_environment_images/2,
          list_curated_environment_images/3,
          list_fleets/2,
@@ -93,6 +99,10 @@
          list_reports/3,
          list_reports_for_report_group/2,
          list_reports_for_report_group/3,
+         list_sandboxes/2,
+         list_sandboxes/3,
+         list_sandboxes_for_project/2,
+         list_sandboxes_for_project/3,
          list_shared_projects/2,
          list_shared_projects/3,
          list_shared_report_groups/2,
@@ -109,10 +119,18 @@
          start_build/3,
          start_build_batch/2,
          start_build_batch/3,
+         start_command_execution/2,
+         start_command_execution/3,
+         start_sandbox/2,
+         start_sandbox/3,
+         start_sandbox_connection/2,
+         start_sandbox_connection/3,
          stop_build/2,
          stop_build/3,
          stop_build_batch/2,
          stop_build_batch/3,
+         stop_sandbox/2,
+         stop_sandbox/3,
          update_fleet/2,
          update_fleet/3,
          update_project/2,
@@ -148,6 +166,12 @@
 -type phase_context() :: #{binary() => any()}.
 
 %% Example:
+%% batch_get_sandboxes_input() :: #{
+%%   <<"ids">> := list(string()())
+%% }
+-type batch_get_sandboxes_input() :: #{binary() => any()}.
+
+%% Example:
 %% delete_fleet_output() :: #{
 
 %% }
@@ -158,6 +182,15 @@
 
 %% }
 -type list_curated_environment_images_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_command_executions_for_sandbox_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sandboxId">> := string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_command_executions_for_sandbox_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_report_group_input() :: #{
@@ -205,16 +238,47 @@
 -type list_build_batches_for_project_input() :: #{binary() => any()}.
 
 %% Example:
+%% command_execution() :: #{
+%%   <<"command">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"exitCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"logs">> => logs_location(),
+%%   <<"sandboxArn">> => string(),
+%%   <<"sandboxId">> => string(),
+%%   <<"standardErrContent">> => string(),
+%%   <<"standardOutputContent">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"submitTime">> => non_neg_integer(),
+%%   <<"type">> => list(any())
+%% }
+-type command_execution() :: #{binary() => any()}.
+
+%% Example:
 %% delete_build_batch_input() :: #{
 %%   <<"id">> := string()
 %% }
 -type delete_build_batch_input() :: #{binary() => any()}.
 
 %% Example:
+%% batch_get_command_executions_output() :: #{
+%%   <<"commandExecutions">> => list(command_execution()()),
+%%   <<"commandExecutionsNotFound">> => list(string()())
+%% }
+-type batch_get_command_executions_output() :: #{binary() => any()}.
+
+%% Example:
 %% delete_webhook_output() :: #{
 
 %% }
 -type delete_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_sandbox_output() :: #{
+%%   <<"sandbox">> => sandbox()
+%% }
+-type stop_sandbox_output() :: #{binary() => any()}.
 
 %% Example:
 %% git_submodules_config() :: #{
@@ -228,6 +292,12 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_build_batches_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_sandbox_connection_input() :: #{
+%%   <<"sandboxId">> := string()
+%% }
+-type start_sandbox_connection_input() :: #{binary() => any()}.
 
 %% Example:
 %% proxy_configuration() :: #{
@@ -429,6 +499,17 @@
 -type report_with_raw_data() :: #{binary() => any()}.
 
 %% Example:
+%% sandbox_session_phase() :: #{
+%%   <<"contexts">> => list(phase_context()()),
+%%   <<"durationInSeconds">> => float(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"phaseStatus">> => list(any()),
+%%   <<"phaseType">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type sandbox_session_phase() :: #{binary() => any()}.
+
+%% Example:
 %% create_report_group_output() :: #{
 %%   <<"reportGroup">> => report_group()
 %% }
@@ -529,6 +610,12 @@
 -type list_builds_input() :: #{binary() => any()}.
 
 %% Example:
+%% account_suspended_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type account_suspended_exception() :: #{binary() => any()}.
+
+%% Example:
 %% report_export_config() :: #{
 %%   <<"exportConfigType">> => list(any()),
 %%   <<"s3Destination">> => s3_report_export_config()
@@ -578,6 +665,19 @@
 %%   <<"type">> => list(any())
 %% }
 -type project_cache() :: #{binary() => any()}.
+
+%% Example:
+%% start_command_execution_output() :: #{
+%%   <<"commandExecution">> => command_execution()
+%% }
+-type start_command_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_command_executions_for_sandbox_output() :: #{
+%%   <<"commandExecutions">> => list(command_execution()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_command_executions_for_sandbox_output() :: #{binary() => any()}.
 
 %% Example:
 %% build_not_deleted() :: #{
@@ -663,6 +763,14 @@
 %%   <<"webhook">> => webhook()
 %% }
 -type create_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_command_execution_input() :: #{
+%%   <<"command">> := string(),
+%%   <<"sandboxId">> := string(),
+%%   <<"type">> => list(any())
+%% }
+-type start_command_execution_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_report_group_output() :: #{
@@ -840,6 +948,12 @@
 -type list_projects_output() :: #{binary() => any()}.
 
 %% Example:
+%% start_sandbox_output() :: #{
+%%   <<"sandbox">> => sandbox()
+%% }
+-type start_sandbox_output() :: #{binary() => any()}.
+
+%% Example:
 %% project_build_batch_config() :: #{
 %%   <<"batchReportMode">> => list(any()),
 %%   <<"combineArtifacts">> => boolean(),
@@ -867,6 +981,12 @@
 %%   <<"projectName">> := string()
 %% }
 -type invalidate_project_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_sandbox_connection_output() :: #{
+%%   <<"ssmSession">> => s_smsession()
+%% }
+-type start_sandbox_connection_output() :: #{binary() => any()}.
 
 %% Example:
 %% target_tracking_scaling_configuration() :: #{
@@ -980,6 +1100,12 @@
 %%   <<"scopeConfiguration">> => scope_configuration()
 %% }
 -type create_webhook_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_sandbox_input() :: #{
+%%   <<"id">> := string()
+%% }
+-type stop_sandbox_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_report_input() :: #{
@@ -1108,6 +1234,31 @@
 -type build_batch_phase() :: #{binary() => any()}.
 
 %% Example:
+%% sandbox() :: #{
+%%   <<"arn">> => string(),
+%%   <<"currentSession">> => sandbox_session(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"environment">> => project_environment(),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
+%%   <<"id">> => string(),
+%%   <<"logConfig">> => logs_config(),
+%%   <<"projectName">> => string(),
+%%   <<"queuedTimeoutInMinutes">> => integer(),
+%%   <<"requestTime">> => non_neg_integer(),
+%%   <<"secondarySourceVersions">> => list(project_source_version()()),
+%%   <<"secondarySources">> => list(project_source()()),
+%%   <<"serviceRole">> => string(),
+%%   <<"source">> => project_source(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"timeoutInMinutes">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type sandbox() :: #{binary() => any()}.
+
+%% Example:
 %% logs_location() :: #{
 %%   <<"cloudWatchLogs">> => cloud_watch_logs_config(),
 %%   <<"cloudWatchLogsArn">> => string(),
@@ -1141,6 +1292,13 @@
 %%   <<"scope">> => list(any())
 %% }
 -type scope_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_command_executions_input() :: #{
+%%   <<"commandExecutionIds">> := list(string()()),
+%%   <<"sandboxId">> := string()
+%% }
+-type batch_get_command_executions_input() :: #{binary() => any()}.
 
 %% Example:
 %% code_coverage() :: #{
@@ -1201,6 +1359,13 @@
 -type build_batch() :: #{binary() => any()}.
 
 %% Example:
+%% list_sandboxes_for_project_output() :: #{
+%%   <<"ids">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sandboxes_for_project_output() :: #{binary() => any()}.
+
+%% Example:
 %% resolved_artifact() :: #{
 %%   <<"identifier">> => string(),
 %%   <<"location">> => string(),
@@ -1233,6 +1398,21 @@
 -type create_report_group_input() :: #{binary() => any()}.
 
 %% Example:
+%% s_smsession() :: #{
+%%   <<"sessionId">> => string(),
+%%   <<"streamUrl">> => string(),
+%%   <<"tokenValue">> => string()
+%% }
+-type s_smsession() :: #{binary() => any()}.
+
+%% Example:
+%% list_sandboxes_output() :: #{
+%%   <<"ids">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sandboxes_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_build_batches_input() :: #{
 %%   <<"filter">> => build_batch_filter(),
 %%   <<"maxResults">> => integer(),
@@ -1253,6 +1433,13 @@
 %%   <<"resourceArn">> := string()
 %% }
 -type get_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_sandbox_input() :: #{
+%%   <<"idempotencyToken">> => string(),
+%%   <<"projectName">> => string()
+%% }
+-type start_sandbox_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_projects_input() :: #{
@@ -1295,6 +1482,15 @@
 -type report_filter() :: #{binary() => any()}.
 
 %% Example:
+%% list_sandboxes_for_project_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectName">> := string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_sandboxes_for_project_input() :: #{binary() => any()}.
+
+%% Example:
 %% scaling_configuration_input() :: #{
 %%   <<"maxCapacity">> => integer(),
 %%   <<"scalingType">> => list(any()),
@@ -1319,6 +1515,14 @@
 
 %% }
 -type delete_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_sandboxes_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_sandboxes_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_project_input() :: #{
@@ -1431,6 +1635,27 @@
 %%   <<"language">> => list(any())
 %% }
 -type environment_language() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_sandboxes_output() :: #{
+%%   <<"sandboxes">> => list(sandbox()()),
+%%   <<"sandboxesNotFound">> => list(string()())
+%% }
+-type batch_get_sandboxes_output() :: #{binary() => any()}.
+
+%% Example:
+%% sandbox_session() :: #{
+%%   <<"currentPhase">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"logs">> => logs_location(),
+%%   <<"networkInterface">> => network_interface(),
+%%   <<"phases">> => list(sandbox_session_phase()()),
+%%   <<"resolvedSourceVersion">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type sandbox_session() :: #{binary() => any()}.
 
 %% Example:
 %% scaling_configuration_output() :: #{
@@ -1658,6 +1883,9 @@
 -type batch_get_builds_errors() ::
     invalid_input_exception().
 
+-type batch_get_command_executions_errors() ::
+    invalid_input_exception().
+
 -type batch_get_fleets_errors() ::
     invalid_input_exception().
 
@@ -1668,6 +1896,9 @@
     invalid_input_exception().
 
 -type batch_get_reports_errors() ::
+    invalid_input_exception().
+
+-type batch_get_sandboxes_errors() ::
     invalid_input_exception().
 
 -type create_fleet_errors() ::
@@ -1756,6 +1987,10 @@
     invalid_input_exception() | 
     resource_not_found_exception().
 
+-type list_command_executions_for_sandbox_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
 -type list_fleets_errors() ::
     invalid_input_exception().
 
@@ -1769,6 +2004,13 @@
     invalid_input_exception().
 
 -type list_reports_for_report_group_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_sandboxes_errors() ::
+    invalid_input_exception().
+
+-type list_sandboxes_for_project_errors() ::
     invalid_input_exception() | 
     resource_not_found_exception().
 
@@ -1803,11 +2045,28 @@
     invalid_input_exception() | 
     resource_not_found_exception().
 
+-type start_command_execution_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type start_sandbox_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    account_suspended_exception().
+
+-type start_sandbox_connection_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
 -type stop_build_errors() ::
     invalid_input_exception() | 
     resource_not_found_exception().
 
 -type stop_build_batch_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type stop_sandbox_errors() ::
     invalid_input_exception() | 
     resource_not_found_exception().
 
@@ -1888,6 +2147,23 @@ batch_get_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetBuilds">>, Input, Options).
 
+%% @doc Gets information about the command executions.
+-spec batch_get_command_executions(aws_client:aws_client(), batch_get_command_executions_input()) ->
+    {ok, batch_get_command_executions_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_command_executions_errors(), tuple()}.
+batch_get_command_executions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_command_executions(Client, Input, []).
+
+-spec batch_get_command_executions(aws_client:aws_client(), batch_get_command_executions_input(), proplists:proplist()) ->
+    {ok, batch_get_command_executions_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_command_executions_errors(), tuple()}.
+batch_get_command_executions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetCommandExecutions">>, Input, Options).
+
 %% @doc Gets information about one or more compute fleets.
 -spec batch_get_fleets(aws_client:aws_client(), batch_get_fleets_input()) ->
     {ok, batch_get_fleets_output(), tuple()} |
@@ -1957,6 +2233,23 @@ batch_get_reports(Client, Input)
 batch_get_reports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetReports">>, Input, Options).
+
+%% @doc Gets information about the sandbox status.
+-spec batch_get_sandboxes(aws_client:aws_client(), batch_get_sandboxes_input()) ->
+    {ok, batch_get_sandboxes_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_sandboxes_errors(), tuple()}.
+batch_get_sandboxes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_sandboxes(Client, Input, []).
+
+-spec batch_get_sandboxes(aws_client:aws_client(), batch_get_sandboxes_input(), proplists:proplist()) ->
+    {ok, batch_get_sandboxes_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_sandboxes_errors(), tuple()}.
+batch_get_sandboxes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetSandboxes">>, Input, Options).
 
 %% @doc Creates a compute fleet.
 -spec create_fleet(aws_client:aws_client(), create_fleet_input()) ->
@@ -2375,6 +2668,23 @@ list_builds_for_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuildsForProject">>, Input, Options).
 
+%% @doc Gets a list of command executions for a sandbox.
+-spec list_command_executions_for_sandbox(aws_client:aws_client(), list_command_executions_for_sandbox_input()) ->
+    {ok, list_command_executions_for_sandbox_output(), tuple()} |
+    {error, any()} |
+    {error, list_command_executions_for_sandbox_errors(), tuple()}.
+list_command_executions_for_sandbox(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_command_executions_for_sandbox(Client, Input, []).
+
+-spec list_command_executions_for_sandbox(aws_client:aws_client(), list_command_executions_for_sandbox_input(), proplists:proplist()) ->
+    {ok, list_command_executions_for_sandbox_output(), tuple()} |
+    {error, any()} |
+    {error, list_command_executions_for_sandbox_errors(), tuple()}.
+list_command_executions_for_sandbox(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCommandExecutionsForSandbox">>, Input, Options).
+
 %% @doc Gets information about Docker images that are managed by CodeBuild.
 -spec list_curated_environment_images(aws_client:aws_client(), list_curated_environment_images_input()) ->
     {ok, list_curated_environment_images_output(), tuple()} |
@@ -2482,6 +2792,40 @@ list_reports_for_report_group(Client, Input)
 list_reports_for_report_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReportsForReportGroup">>, Input, Options).
+
+%% @doc Gets a list of sandboxes.
+-spec list_sandboxes(aws_client:aws_client(), list_sandboxes_input()) ->
+    {ok, list_sandboxes_output(), tuple()} |
+    {error, any()} |
+    {error, list_sandboxes_errors(), tuple()}.
+list_sandboxes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_sandboxes(Client, Input, []).
+
+-spec list_sandboxes(aws_client:aws_client(), list_sandboxes_input(), proplists:proplist()) ->
+    {ok, list_sandboxes_output(), tuple()} |
+    {error, any()} |
+    {error, list_sandboxes_errors(), tuple()}.
+list_sandboxes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSandboxes">>, Input, Options).
+
+%% @doc Gets a list of sandboxes for a given project.
+-spec list_sandboxes_for_project(aws_client:aws_client(), list_sandboxes_for_project_input()) ->
+    {ok, list_sandboxes_for_project_output(), tuple()} |
+    {error, any()} |
+    {error, list_sandboxes_for_project_errors(), tuple()}.
+list_sandboxes_for_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_sandboxes_for_project(Client, Input, []).
+
+-spec list_sandboxes_for_project(aws_client:aws_client(), list_sandboxes_for_project_input(), proplists:proplist()) ->
+    {ok, list_sandboxes_for_project_output(), tuple()} |
+    {error, any()} |
+    {error, list_sandboxes_for_project_errors(), tuple()}.
+list_sandboxes_for_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSandboxesForProject">>, Input, Options).
 
 %% @doc Gets a list of projects that are shared with other Amazon Web
 %% Services accounts or users.
@@ -2632,6 +2976,57 @@ start_build_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartBuildBatch">>, Input, Options).
 
+%% @doc Starts a command execution.
+-spec start_command_execution(aws_client:aws_client(), start_command_execution_input()) ->
+    {ok, start_command_execution_output(), tuple()} |
+    {error, any()} |
+    {error, start_command_execution_errors(), tuple()}.
+start_command_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_command_execution(Client, Input, []).
+
+-spec start_command_execution(aws_client:aws_client(), start_command_execution_input(), proplists:proplist()) ->
+    {ok, start_command_execution_output(), tuple()} |
+    {error, any()} |
+    {error, start_command_execution_errors(), tuple()}.
+start_command_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartCommandExecution">>, Input, Options).
+
+%% @doc Starts a sandbox.
+-spec start_sandbox(aws_client:aws_client(), start_sandbox_input()) ->
+    {ok, start_sandbox_output(), tuple()} |
+    {error, any()} |
+    {error, start_sandbox_errors(), tuple()}.
+start_sandbox(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_sandbox(Client, Input, []).
+
+-spec start_sandbox(aws_client:aws_client(), start_sandbox_input(), proplists:proplist()) ->
+    {ok, start_sandbox_output(), tuple()} |
+    {error, any()} |
+    {error, start_sandbox_errors(), tuple()}.
+start_sandbox(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSandbox">>, Input, Options).
+
+%% @doc Starts a sandbox connection.
+-spec start_sandbox_connection(aws_client:aws_client(), start_sandbox_connection_input()) ->
+    {ok, start_sandbox_connection_output(), tuple()} |
+    {error, any()} |
+    {error, start_sandbox_connection_errors(), tuple()}.
+start_sandbox_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_sandbox_connection(Client, Input, []).
+
+-spec start_sandbox_connection(aws_client:aws_client(), start_sandbox_connection_input(), proplists:proplist()) ->
+    {ok, start_sandbox_connection_output(), tuple()} |
+    {error, any()} |
+    {error, start_sandbox_connection_errors(), tuple()}.
+start_sandbox_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSandboxConnection">>, Input, Options).
+
 %% @doc Attempts to stop running a build.
 -spec stop_build(aws_client:aws_client(), stop_build_input()) ->
     {ok, stop_build_output(), tuple()} |
@@ -2665,6 +3060,23 @@ stop_build_batch(Client, Input)
 stop_build_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopBuildBatch">>, Input, Options).
+
+%% @doc Stops a sandbox.
+-spec stop_sandbox(aws_client:aws_client(), stop_sandbox_input()) ->
+    {ok, stop_sandbox_output(), tuple()} |
+    {error, any()} |
+    {error, stop_sandbox_errors(), tuple()}.
+stop_sandbox(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_sandbox(Client, Input, []).
+
+-spec stop_sandbox(aws_client:aws_client(), stop_sandbox_input(), proplists:proplist()) ->
+    {ok, stop_sandbox_output(), tuple()} |
+    {error, any()} |
+    {error, stop_sandbox_errors(), tuple()}.
+stop_sandbox(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopSandbox">>, Input, Options).
 
 %% @doc Updates a compute fleet.
 -spec update_fleet(aws_client:aws_client(), update_fleet_input()) ->

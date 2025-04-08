@@ -62,6 +62,7 @@
 %% Example:
 %% apply_guardrail_response() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"actionReason">> => [string()],
 %%   <<"assessments">> => list(guardrail_assessment()()),
 %%   <<"guardrailCoverage">> => guardrail_coverage(),
 %%   <<"outputs">> => list(guardrail_output_content()()),
@@ -109,6 +110,7 @@
 %% Example:
 %% apply_guardrail_request() :: #{
 %%   <<"content">> := list(list()()),
+%%   <<"outputScope">> => list(any()),
 %%   <<"source">> := list(any())
 %% }
 -type apply_guardrail_request() :: #{binary() => any()}.
@@ -132,6 +134,7 @@
 
 %% Example:
 %% guardrail_trace_assessment() :: #{
+%%   <<"actionReason">> => [string()],
 %%   <<"inputAssessment">> => map(),
 %%   <<"modelOutput">> => list(string()()),
 %%   <<"outputAssessments">> => map()
@@ -157,6 +160,7 @@
 %% Example:
 %% guardrail_managed_word() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
 %%   <<"match">> => [string()],
 %%   <<"type">> => list(any())
 %% }
@@ -247,6 +251,7 @@
 %% Example:
 %% guardrail_custom_word() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
 %%   <<"match">> => [string()]
 %% }
 -type guardrail_custom_word() :: #{binary() => any()}.
@@ -391,6 +396,7 @@
 %% guardrail_content_filter() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"confidence">> => list(any()),
+%%   <<"detected">> => [boolean()],
 %%   <<"filterStrength">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
@@ -415,6 +421,7 @@
 %% Example:
 %% guardrail_contextual_grounding_filter() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
 %%   <<"score">> => [float()],
 %%   <<"threshold">> => [float()],
 %%   <<"type">> => list(any())
@@ -691,6 +698,7 @@
 %% Example:
 %% guardrail_regex_filter() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
 %%   <<"match">> => [string()],
 %%   <<"name">> => [string()],
 %%   <<"regex">> => [string()]
@@ -716,6 +724,7 @@
 %% Example:
 %% guardrail_pii_entity_filter() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
 %%   <<"match">> => [string()],
 %%   <<"type">> => list(any())
 %% }
@@ -755,6 +764,7 @@
 %% Example:
 %% guardrail_topic() :: #{
 %%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
 %%   <<"name">> => [string()],
 %%   <<"type">> => list(any())
 %% }

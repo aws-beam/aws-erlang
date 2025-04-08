@@ -555,6 +555,14 @@
 -type list_campaigns_response() :: #{binary() => any()}.
 
 %% Example:
+%% event_parameters() :: #{
+%%   <<"eventType">> => string(),
+%%   <<"eventValueThreshold">> => float(),
+%%   <<"weight">> => float()
+%% }
+-type event_parameters() :: #{binary() => any()}.
+
+%% Example:
 %% create_filter_response() :: #{
 %%   <<"filterArn">> => string()
 %% }
@@ -1140,6 +1148,12 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% events_config() :: #{
+%%   <<"eventParametersList">> => list(event_parameters()())
+%% }
+-type events_config() :: #{binary() => any()}.
+
+%% Example:
 %% integer_hyper_parameter_range() :: #{
 %%   <<"maxValue">> => integer(),
 %%   <<"minValue">> => integer(),
@@ -1375,7 +1389,8 @@
 
 %% Example:
 %% solution_update_config() :: #{
-%%   <<"autoTrainingConfig">> => auto_training_config()
+%%   <<"autoTrainingConfig">> => auto_training_config(),
+%%   <<"eventsConfig">> => events_config()
 %% }
 -type solution_update_config() :: #{binary() => any()}.
 
@@ -1552,6 +1567,7 @@
 %%   <<"autoMLConfig">> => auto_ml_config(),
 %%   <<"autoTrainingConfig">> => auto_training_config(),
 %%   <<"eventValueThreshold">> => string(),
+%%   <<"eventsConfig">> => events_config(),
 %%   <<"featureTransformationParameters">> => map(),
 %%   <<"hpoConfig">> => h_p_o_config(),
 %%   <<"optimizationObjective">> => optimization_objective(),
@@ -3183,9 +3199,10 @@ delete_campaign(Client, Input, Options)
 %%
 %% You can't delete a dataset if an associated
 %% `DatasetImportJob' or `SolutionVersion' is in the
-%% CREATE PENDING or IN PROGRESS state. For more information on datasets, see
-%% CreateDataset:
-%% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
+%% CREATE PENDING or IN PROGRESS state. For more information about deleting
+%% datasets,
+%% see Deleting a dataset:
+%% https://docs.aws.amazon.com/personalize/latest/dg/delete-dataset.html.
 -spec delete_dataset(aws_client:aws_client(), delete_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
