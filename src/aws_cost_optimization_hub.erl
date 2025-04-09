@@ -112,6 +112,13 @@
 -type ec2_auto_scaling_group() :: #{binary() => any()}.
 
 %% Example:
+%% memory_db_reserved_instances() :: #{
+%%   <<"configuration">> => memory_db_reserved_instances_configuration(),
+%%   <<"costCalculation">> => reserved_instances_cost_calculation()
+%% }
+-type memory_db_reserved_instances() :: #{binary() => any()}.
+
+%% Example:
 %% list_enrollment_statuses_response() :: #{
 %%   <<"includeMemberAccounts">> => [boolean()],
 %%   <<"items">> => list(account_enrollment_status()()),
@@ -237,6 +244,20 @@
 %%   <<"status">> => [string()]
 %% }
 -type update_enrollment_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% dynamo_db_reserved_capacity_configuration() :: #{
+%%   <<"accountScope">> => [string()],
+%%   <<"capacityUnits">> => [string()],
+%%   <<"monthlyRecurringCost">> => [string()],
+%%   <<"numberOfCapacityUnitsToPurchase">> => [string()],
+%%   <<"paymentOption">> => [string()],
+%%   <<"reservedInstancesRegion">> => [string()],
+%%   <<"service">> => [string()],
+%%   <<"term">> => [string()],
+%%   <<"upfrontCost">> => [string()]
+%% }
+-type dynamo_db_reserved_capacity_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_preferences_response() :: #{
@@ -385,6 +406,24 @@
 %%   <<"type">> => [string()]
 %% }
 -type storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% memory_db_reserved_instances_configuration() :: #{
+%%   <<"accountScope">> => [string()],
+%%   <<"currentGeneration">> => [string()],
+%%   <<"instanceFamily">> => [string()],
+%%   <<"instanceType">> => [string()],
+%%   <<"monthlyRecurringCost">> => [string()],
+%%   <<"normalizedUnitsToPurchase">> => [string()],
+%%   <<"numberOfInstancesToPurchase">> => [string()],
+%%   <<"paymentOption">> => [string()],
+%%   <<"reservedInstancesRegion">> => [string()],
+%%   <<"service">> => [string()],
+%%   <<"sizeFlexEligible">> => [boolean()],
+%%   <<"term">> => [string()],
+%%   <<"upfrontCost">> => [string()]
+%% }
+-type memory_db_reserved_instances_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% block_storage_performance_configuration() :: #{
@@ -636,6 +675,13 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type get_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% dynamo_db_reserved_capacity() :: #{
+%%   <<"configuration">> => dynamo_db_reserved_capacity_configuration(),
+%%   <<"costCalculation">> => reserved_instances_cost_calculation()
+%% }
+-type dynamo_db_reserved_capacity() :: #{binary() => any()}.
 
 %% Example:
 %% rds_db_instance_storage() :: #{

@@ -975,6 +975,7 @@
 %%   <<"modelManifestArn">> => string(),
 %%   <<"stateTemplatesToAdd">> => list(state_template_association()()),
 %%   <<"stateTemplatesToRemove">> => list(string()()),
+%%   <<"stateTemplatesToUpdate">> => list(state_template_association()()),
 %%   <<"vehicleName">> => string()
 %% }
 -type update_vehicle_request_item() :: #{binary() => any()}.
@@ -1364,7 +1365,8 @@
 %%   <<"decoderManifestArn">> => string(),
 %%   <<"modelManifestArn">> => string(),
 %%   <<"stateTemplatesToAdd">> => list(state_template_association()()),
-%%   <<"stateTemplatesToRemove">> => list(string()())
+%%   <<"stateTemplatesToRemove">> => list(string()()),
+%%   <<"stateTemplatesToUpdate">> => list(state_template_association()())
 %% }
 -type update_vehicle_request() :: #{binary() => any()}.
 
@@ -3322,6 +3324,12 @@ update_state_template(Client, Input, Options)
     request(Client, <<"UpdateStateTemplate">>, Input, Options).
 
 %% @doc Updates a vehicle.
+%%
+%% Access to certain Amazon Web Services IoT FleetWise features is currently
+%% gated. For more information, see Amazon Web Services Region and feature
+%% availability:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 -spec update_vehicle(aws_client:aws_client(), update_vehicle_request()) ->
     {ok, update_vehicle_response(), tuple()} |
     {error, any()} |

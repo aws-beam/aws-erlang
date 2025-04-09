@@ -2974,7 +2974,7 @@ start_commitment_purchase_analysis(Client, Input, Options)
 %%
 %% This will backfill the activation status (either `active' or
 %% `inactive') for all tag keys from `para:BackfillFrom' up to the
-%% when this request is made.
+%% time this request is made.
 %%
 %% You can request a backfill once every 24 hours.
 -spec start_cost_allocation_tag_backfill(aws_client:aws_client(), start_cost_allocation_tag_backfill_request()) ->

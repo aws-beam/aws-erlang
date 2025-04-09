@@ -16,6 +16,8 @@
          get_async_invoke/5,
          invoke_model/3,
          invoke_model/4,
+         invoke_model_with_bidirectional_stream/3,
+         invoke_model_with_bidirectional_stream/4,
          invoke_model_with_response_stream/3,
          invoke_model_with_response_stream/4,
          list_async_invokes/1,
@@ -26,6 +28,13 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% invoke_model_with_bidirectional_stream_response() :: #{
+%%   <<"body">> => list()
+%% }
+-type invoke_model_with_bidirectional_stream_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -258,10 +267,24 @@
 
 
 %% Example:
+%% bidirectional_input_payload_part() :: #{
+%%   <<"bytes">> => binary()
+%% }
+-type bidirectional_input_payload_part() :: #{binary() => any()}.
+
+
+%% Example:
 %% message_start_event() :: #{
 %%   <<"role">> => list(any())
 %% }
 -type message_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_with_bidirectional_stream_request() :: #{
+%%   <<"body">> := list()
+%% }
+-type invoke_model_with_bidirectional_stream_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -687,6 +710,13 @@
 
 
 %% Example:
+%% bidirectional_output_payload_part() :: #{
+%%   <<"bytes">> => binary()
+%% }
+-type bidirectional_output_payload_part() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_configuration() :: #{
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
@@ -838,6 +868,19 @@
     throttling_exception() | 
     validation_exception() | 
     model_timeout_exception() | 
+    access_denied_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    model_not_ready_exception().
+
+-type invoke_model_with_bidirectional_stream_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    model_timeout_exception() | 
+    model_stream_error_exception() | 
     access_denied_exception() | 
     model_error_exception() | 
     internal_server_exception() | 
@@ -1230,6 +1273,51 @@ invoke_model(Client, ModelId, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Invoke the specified Amazon Bedrock model to run inference using the
+%% bidirectional stream.
+%%
+%% The response is returned in a stream that remains open for 8 minutes. A
+%% single session can contain multiple prompts and responses from the model.
+%% The prompts to the model are provided as audio files and the model's
+%% responses are spoken back to the user and transcribed.
+%%
+%% It is possible for users to interrupt the model's response with a new
+%% prompt, which will halt the response speech. The model will retain
+%% contextual awareness of the conversation while pivoting to respond to the
+%% new prompt.
+-spec invoke_model_with_bidirectional_stream(aws_client:aws_client(), binary() | list(), invoke_model_with_bidirectional_stream_request()) ->
+    {ok, invoke_model_with_bidirectional_stream_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_model_with_bidirectional_stream_errors(), tuple()}.
+invoke_model_with_bidirectional_stream(Client, ModelId, Input) ->
+    invoke_model_with_bidirectional_stream(Client, ModelId, Input, []).
+
+-spec invoke_model_with_bidirectional_stream(aws_client:aws_client(), binary() | list(), invoke_model_with_bidirectional_stream_request(), proplists:proplist()) ->
+    {ok, invoke_model_with_bidirectional_stream_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_model_with_bidirectional_stream_errors(), tuple()}.
+invoke_model_with_bidirectional_stream(Client, ModelId, Input0, Options0) ->
+    Method = post,
+    Path = ["/model/", aws_util:encode_uri(ModelId), "/invoke-with-bidirectional-stream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Invoke the specified Amazon Bedrock model to run inference using the
 %% prompt and inference parameters provided in the request body.

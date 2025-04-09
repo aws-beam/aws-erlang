@@ -116,6 +116,7 @@
 %%   <<"spainAdditionalInfo">> => spain_additional_info(),
 %%   <<"turkeyAdditionalInfo">> => turkey_additional_info(),
 %%   <<"ukraineAdditionalInfo">> => ukraine_additional_info(),
+%%   <<"uzbekistanAdditionalInfo">> => uzbekistan_additional_info(),
 %%   <<"vietnamAdditionalInfo">> => vietnam_additional_info()
 %% }
 -type additional_info_response() :: #{binary() => any()}.
@@ -314,6 +315,7 @@
 %%   <<"spainAdditionalInfo">> => spain_additional_info(),
 %%   <<"turkeyAdditionalInfo">> => turkey_additional_info(),
 %%   <<"ukraineAdditionalInfo">> => ukraine_additional_info(),
+%%   <<"uzbekistanAdditionalInfo">> => uzbekistan_additional_info(),
 %%   <<"vietnamAdditionalInfo">> => vietnam_additional_info()
 %% }
 -type additional_info_request() :: #{binary() => any()}.
@@ -510,6 +512,14 @@
 %%   <<"provincialSalesTaxId">> => string()
 %% }
 -type canada_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% uzbekistan_additional_info() :: #{
+%%   <<"taxRegistrationNumberType">> => list(any()),
+%%   <<"vatRegistrationNumber">> => string()
+%% }
+-type uzbekistan_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
