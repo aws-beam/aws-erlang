@@ -103,8 +103,12 @@
 %% Example:
 %% control_summary() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"Behavior">> => list(any()),
+%%   <<"CreateTime">> => [non_neg_integer()],
 %%   <<"Description">> => [string()],
-%%   <<"Name">> => [string()]
+%%   <<"Implementation">> => implementation_summary(),
+%%   <<"Name">> => [string()],
+%%   <<"Severity">> => list(any())
 %% }
 -type control_summary() :: #{binary() => any()}.
 
@@ -138,20 +142,31 @@
 %% get_control_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Behavior">> => list(any()),
+%%   <<"CreateTime">> => [non_neg_integer()],
 %%   <<"Description">> => [string()],
 %%   <<"Implementation">> => implementation_details(),
 %%   <<"Name">> => [string()],
 %%   <<"Parameters">> => list(control_parameter()()),
-%%   <<"RegionConfiguration">> => region_configuration()
+%%   <<"RegionConfiguration">> => region_configuration(),
+%%   <<"Severity">> => list(any())
 %% }
 -type get_control_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% implementation_details() :: #{
+%%   <<"Identifier">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type implementation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% implementation_summary() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type implementation_summary() :: #{binary() => any()}.
 
 
 %% Example:

@@ -127,7 +127,7 @@
 %%   <<"componentType">> => string(),
 %%   <<"dataflowId">> => string(),
 %%   <<"packetsDropped">> => [float()],
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type component_status_data() :: #{binary() => any()}.
 
@@ -216,7 +216,7 @@
 %% Example:
 %% describe_contact_response() :: #{
 %%   <<"contactId">> => string(),
-%%   <<"contactStatus">> => string(),
+%%   <<"contactStatus">> => list(any()),
 %%   <<"dataflowList">> => list(dataflow_detail()()),
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"errorMessage">> => [string()],
@@ -246,14 +246,15 @@
 %% Example:
 %% register_agent_request() :: #{
 %%   <<"agentDetails">> := agent_details(),
-%%   <<"discoveryData">> := discovery_data()
+%%   <<"discoveryData">> := discovery_data(),
+%%   <<"tags">> => map()
 %% }
 -type register_agent_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% tracking_config() :: #{
-%%   <<"autotrack">> => string()
+%%   <<"autotrack">> => list(any())
 %% }
 -type tracking_config() :: #{binary() => any()}.
 
@@ -270,7 +271,7 @@
 %% spectrum_config() :: #{
 %%   <<"bandwidth">> => frequency_bandwidth(),
 %%   <<"centerFrequency">> => frequency(),
-%%   <<"polarization">> => string()
+%%   <<"polarization">> => list(any())
 %% }
 -type spectrum_config() :: #{binary() => any()}.
 
@@ -287,8 +288,8 @@
 %% endpoint_details() :: #{
 %%   <<"awsGroundStationAgentEndpoint">> => aws_ground_station_agent_endpoint(),
 %%   <<"endpoint">> => dataflow_endpoint(),
-%%   <<"healthReasons">> => list(string()()),
-%%   <<"healthStatus">> => string(),
+%%   <<"healthReasons">> => list(list(any())()),
+%%   <<"healthStatus">> => list(any()),
 %%   <<"securityDetails">> => security_details()
 %% }
 -type endpoint_details() :: #{binary() => any()}.
@@ -299,7 +300,7 @@
 %%   <<"configArn">> => string(),
 %%   <<"configData">> => list(),
 %%   <<"configId">> => [string()],
-%%   <<"configType">> => string(),
+%%   <<"configType">> => list(any()),
 %%   <<"name">> => [string()],
 %%   <<"tags">> => map()
 %% }
@@ -314,7 +315,7 @@
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer(),
 %%   <<"sourceS3Object">> => s3_object(),
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type ephemeris_item() :: #{binary() => any()}.
 
@@ -341,7 +342,7 @@
 %%   <<"ephemerisId">> => string(),
 %%   <<"epoch">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"source">> => string()
+%%   <<"source">> => list(any())
 %% }
 -type ephemeris_meta_data() :: #{binary() => any()}.
 
@@ -375,7 +376,7 @@
 %% config_list_item() :: #{
 %%   <<"configArn">> => string(),
 %%   <<"configId">> => [string()],
-%%   <<"configType">> => string(),
+%%   <<"configType">> => list(any()),
 %%   <<"name">> => [string()]
 %% }
 -type config_list_item() :: #{binary() => any()}.
@@ -425,8 +426,8 @@
 
 %% Example:
 %% aws_ground_station_agent_endpoint() :: #{
-%%   <<"agentStatus">> => string(),
-%%   <<"auditResults">> => string(),
+%%   <<"agentStatus">> => list(any()),
+%%   <<"auditResults">> => list(any()),
 %%   <<"egressAddress">> => connection_details(),
 %%   <<"ingressAddress">> => ranged_connection_details(),
 %%   <<"name">> => string()
@@ -461,7 +462,7 @@
 %% config_id_response() :: #{
 %%   <<"configArn">> => string(),
 %%   <<"configId">> => [string()],
-%%   <<"configType">> => string()
+%%   <<"configType">> => list(any())
 %% }
 -type config_id_response() :: #{binary() => any()}.
 
@@ -476,7 +477,7 @@
 
 %% Example:
 %% frequency() :: #{
-%%   <<"units">> => string(),
+%%   <<"units">> => list(any()),
 %%   <<"value">> => [float()]
 %% }
 -type frequency() :: #{binary() => any()}.
@@ -530,7 +531,7 @@
 %% Example:
 %% contact_data() :: #{
 %%   <<"contactId">> => string(),
-%%   <<"contactStatus">> => string(),
+%%   <<"contactStatus">> => list(any()),
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"errorMessage">> => [string()],
 %%   <<"groundStation">> => [string()],
@@ -607,7 +608,7 @@
 %% Example:
 %% aggregate_status() :: #{
 %%   <<"signatureMap">> => map(),
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type aggregate_status() :: #{binary() => any()}.
 
@@ -633,7 +634,7 @@
 %%   <<"address">> => socket_address(),
 %%   <<"mtu">> => [integer()],
 %%   <<"name">> => string(),
-%%   <<"status">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type dataflow_endpoint() :: #{binary() => any()}.
 
@@ -706,7 +707,7 @@
 %% source() :: #{
 %%   <<"configDetails">> => list(),
 %%   <<"configId">> => [string()],
-%%   <<"configType">> => string(),
+%%   <<"configType">> => list(any()),
 %%   <<"dataflowSourceRegion">> => [string()]
 %% }
 -type source() :: #{binary() => any()}.
@@ -721,7 +722,7 @@
 %%   <<"nextToken">> => string(),
 %%   <<"satelliteArn">> => string(),
 %%   <<"startTime">> => [non_neg_integer()],
-%%   <<"statusList">> => list(string()())
+%%   <<"statusList">> => list(list(any())())
 %% }
 -type list_contacts_request() :: #{binary() => any()}.
 
@@ -751,7 +752,7 @@
 %% Example:
 %% uplink_spectrum_config() :: #{
 %%   <<"centerFrequency">> => frequency(),
-%%   <<"polarization">> => string()
+%%   <<"polarization">> => list(any())
 %% }
 -type uplink_spectrum_config() :: #{binary() => any()}.
 
@@ -823,7 +824,7 @@
 %% destination() :: #{
 %%   <<"configDetails">> => list(),
 %%   <<"configId">> => string(),
-%%   <<"configType">> => string(),
+%%   <<"configType">> => list(any()),
 %%   <<"dataflowDestinationRegion">> => [string()]
 %% }
 -type destination() :: #{binary() => any()}.
@@ -862,7 +863,7 @@
 %%   <<"nextToken">> => string(),
 %%   <<"satelliteId">> := string(),
 %%   <<"startTime">> := [non_neg_integer()],
-%%   <<"statusList">> => list(string()())
+%%   <<"statusList">> => list(list(any())())
 %% }
 -type list_ephemerides_request() :: #{binary() => any()}.
 
@@ -893,7 +894,7 @@
 
 %% Example:
 %% frequency_bandwidth() :: #{
-%%   <<"units">> => string(),
+%%   <<"units">> => list(any()),
 %%   <<"value">> => [float()]
 %% }
 -type frequency_bandwidth() :: #{binary() => any()}.
@@ -916,7 +917,7 @@
 
 %% Example:
 %% eirp() :: #{
-%%   <<"units">> => string(),
+%%   <<"units">> => list(any()),
 %%   <<"value">> => [float()]
 %% }
 -type eirp() :: #{binary() => any()}.
@@ -970,11 +971,11 @@
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"ephemerisId">> => string(),
-%%   <<"invalidReason">> => string(),
+%%   <<"invalidReason">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer(),
 %%   <<"satelliteId">> => string(),
-%%   <<"status">> => string(),
+%%   <<"status">> => list(any()),
 %%   <<"suppliedData">> => list(),
 %%   <<"tags">> => map()
 %% }
@@ -1001,7 +1002,7 @@
 
 %% Example:
 %% elevation() :: #{
-%%   <<"unit">> => string(),
+%%   <<"unit">> => list(any()),
 %%   <<"value">> => [float()]
 %% }
 -type elevation() :: #{binary() => any()}.

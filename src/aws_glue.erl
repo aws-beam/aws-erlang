@@ -4133,6 +4133,7 @@
 
 %% Example:
 %% iceberg_orphan_file_deletion_metrics() :: #{
+%%   <<"DpuHours">> => float(),
 %%   <<"JobDurationInHour">> => float(),
 %%   <<"NumberOfDpus">> => integer(),
 %%   <<"NumberOfOrphanFilesDeleted">> => float()
@@ -4200,6 +4201,7 @@
 
 %% Example:
 %% iceberg_retention_metrics() :: #{
+%%   <<"DpuHours">> => float(),
 %%   <<"JobDurationInHour">> => float(),
 %%   <<"NumberOfDataFilesDeleted">> => float(),
 %%   <<"NumberOfDpus">> => integer(),
@@ -6979,6 +6981,7 @@
 
 %% Example:
 %% iceberg_compaction_metrics() :: #{
+%%   <<"DpuHours">> => float(),
 %%   <<"JobDurationInHour">> => float(),
 %%   <<"NumberOfBytesCompacted">> => float(),
 %%   <<"NumberOfDpus">> => integer(),
