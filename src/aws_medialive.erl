@@ -1727,6 +1727,7 @@
 %%   <<"AudioChannelPairs">> => list(input_device_configurable_audio_channel_pair_config()()),
 %%   <<"Codec">> => list(any()),
 %%   <<"ConfiguredInput">> => list(any()),
+%%   <<"InputResolution">> => string(),
 %%   <<"LatencyMs">> => integer(),
 %%   <<"MaxBitrate">> => integer(),
 %%   <<"MediaconnectSettings">> => input_device_media_connect_configurable_settings()
@@ -2548,6 +2549,7 @@
 %%   <<"DeviceState">> => list(any()),
 %%   <<"Framerate">> => float(),
 %%   <<"Height">> => integer(),
+%%   <<"InputResolution">> => string(),
 %%   <<"LatencyMs">> => integer(),
 %%   <<"MaxBitrate">> => integer(),
 %%   <<"MediaconnectSettings">> => input_device_media_connect_settings(),
@@ -4311,6 +4313,14 @@
 %% }
 -type multiplex() :: #{binary() => any()}.
 
+
+%% Example:
+%% cmaf_ingest_caption_language_mapping() :: #{
+%%   <<"CaptionChannel">> => integer(),
+%%   <<"LanguageCode">> => string()
+%% }
+-type cmaf_ingest_caption_language_mapping() :: #{binary() => any()}.
+
 %% Example:
 %% describe_sdi_source_request() :: #{}
 -type describe_sdi_source_request() :: #{}.
@@ -4327,6 +4337,7 @@
 
 %% Example:
 %% cmaf_ingest_group_settings() :: #{
+%%   <<"CaptionLanguageMappings">> => list(cmaf_ingest_caption_language_mapping()()),
 %%   <<"Destination">> => output_location_ref(),
 %%   <<"Id3Behavior">> => list(any()),
 %%   <<"Id3NameModifier">> => string(),
@@ -4338,7 +4349,10 @@
 %%   <<"Scte35Type">> => list(any()),
 %%   <<"SegmentLength">> => integer(),
 %%   <<"SegmentLengthUnits">> => list(any()),
-%%   <<"SendDelayMs">> => integer()
+%%   <<"SendDelayMs">> => integer(),
+%%   <<"TimedMetadataId3Frame">> => list(any()),
+%%   <<"TimedMetadataId3Period">> => integer(),
+%%   <<"TimedMetadataPassthrough">> => list(any())
 %% }
 -type cmaf_ingest_group_settings() :: #{binary() => any()}.
 

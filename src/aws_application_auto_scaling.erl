@@ -15,7 +15,8 @@
 %%
 %% Amazon ECS services
 %%
-%% Amazon ElastiCache for Redis clusters (replication groups)
+%% Amazon ElastiCache replication groups (Redis OSS and Valkey) and Memcached
+%% clusters
 %%
 %% Amazon EMR clusters
 %%
@@ -1026,9 +1027,11 @@ list_tags_for_resource(Client, Input, Options)
 %% to scale out again.
 %%
 %% For more information, see Target tracking scaling policies:
-%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html
-%% and Step scaling policies:
-%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html,
+%% Step scaling policies:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html,
+%% and Predictive scaling policies:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/aas-create-predictive-scaling-policy.html
 %% in the Application Auto Scaling User Guide.
 %%
 %% If a scalable target is deregistered, the scalable target is no longer

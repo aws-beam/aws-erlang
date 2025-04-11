@@ -3276,6 +3276,13 @@
 %% update_dashboard_published_version_request() :: #{}
 -type update_dashboard_published_version_request() :: #{}.
 
+
+%% Example:
+%% visual_highlight_operation() :: #{
+%%   <<"Trigger">> => list(any())
+%% }
+-type visual_highlight_operation() :: #{binary() => any()}.
+
 %% Example:
 %% describe_asset_bundle_import_job_request() :: #{}
 -type describe_asset_bundle_import_job_request() :: #{}.
@@ -3711,6 +3718,7 @@
 %% Example:
 %% sheet_definition() :: #{
 %%   <<"ContentType">> => list(any()),
+%%   <<"CustomActionDefaults">> => visual_custom_action_defaults(),
 %%   <<"Description">> => string(),
 %%   <<"FilterControls">> => list(filter_control()()),
 %%   <<"Images">> => list(sheet_image()()),
@@ -9288,6 +9296,7 @@
 
 %% Example:
 %% asset_options() :: #{
+%%   <<"CustomActionDefaults">> => visual_custom_action_defaults(),
 %%   <<"ExcludedDataSetArns">> => list(string()()),
 %%   <<"QBusinessInsightsStatus">> => list(any()),
 %%   <<"Timezone">> => string(),
@@ -10062,6 +10071,13 @@
 %%   <<"ReserveRange">> => integer()
 %% }
 -type arc_axis_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_custom_action_defaults() :: #{
+%%   <<"highlightOperation">> => visual_highlight_operation()
+%% }
+-type visual_custom_action_defaults() :: #{binary() => any()}.
 
 
 %% Example:

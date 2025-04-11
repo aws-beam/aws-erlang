@@ -1066,6 +1066,7 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"LogDeliveryConfigurations">> => list(pending_log_delivery_configuration()()),
 %%   <<"NumCacheNodes">> => integer(),
+%%   <<"ScaleConfig">> => scale_config(),
 %%   <<"TransitEncryptionEnabled">> => boolean(),
 %%   <<"TransitEncryptionMode">> => list(any())
 %% }
@@ -1351,6 +1352,13 @@
 %%   <<"LogType">> => list(any())
 %% }
 -type pending_log_delivery_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% scale_config() :: #{
+%%   <<"ScaleIntervalMinutes">> => integer(),
+%%   <<"ScalePercentage">> => integer()
+%% }
+-type scale_config() :: #{binary() => any()}.
 
 %% Example:
 %% parameter() :: #{
@@ -2508,6 +2516,7 @@
 %%   <<"NotificationTopicStatus">> => string(),
 %%   <<"NumCacheNodes">> => integer(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ScaleConfig">> => scale_config(),
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"SnapshotWindow">> => string()

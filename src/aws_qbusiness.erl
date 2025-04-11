@@ -473,6 +473,7 @@
 %%   <<"conversationId">> => string(),
 %%   <<"systemMessage">> => string(),
 %%   <<"systemMessageId">> => string(),
+%%   <<"systemMessageType">> => list(any()),
 %%   <<"userMessageId">> => string()
 %% }
 -type text_output_event() :: #{binary() => any()}.
@@ -1702,6 +1703,13 @@
 %% }
 -type auth_challenge_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% hallucination_reduction_configuration() :: #{
+%%   <<"hallucinationReductionControl">> => list(any())
+%% }
+-type hallucination_reduction_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_chat_controls_configuration_request() :: #{}
 -type delete_chat_controls_configuration_request() :: #{}.
@@ -1895,6 +1903,7 @@
 %%   <<"blockedPhrasesConfigurationUpdate">> => blocked_phrases_configuration_update(),
 %%   <<"clientToken">> => string(),
 %%   <<"creatorModeConfiguration">> => creator_mode_configuration(),
+%%   <<"hallucinationReductionConfiguration">> => hallucination_reduction_configuration(),
 %%   <<"orchestrationConfiguration">> => orchestration_configuration(),
 %%   <<"responseScope">> => list(any()),
 %%   <<"topicConfigurationsToCreateOrUpdate">> => list(topic_configuration()()),
@@ -2176,6 +2185,7 @@
 %% get_chat_controls_configuration_response() :: #{
 %%   <<"blockedPhrases">> => blocked_phrases_configuration(),
 %%   <<"creatorModeConfiguration">> => applied_creator_mode_configuration(),
+%%   <<"hallucinationReductionConfiguration">> => hallucination_reduction_configuration(),
 %%   <<"nextToken">> => string(),
 %%   <<"orchestrationConfiguration">> => applied_orchestration_configuration(),
 %%   <<"responseScope">> => list(any()),
@@ -3134,7 +3144,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_web_experience_errors() ::
     throttling_exception() | 

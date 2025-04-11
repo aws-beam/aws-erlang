@@ -18,6 +18,8 @@
          cancel_batch_job_execution/5,
          create_application/2,
          create_application/3,
+         create_data_set_export_task/3,
+         create_data_set_export_task/4,
          create_data_set_import_task/3,
          create_data_set_import_task/4,
          create_deployment/3,
@@ -42,6 +44,9 @@
          get_data_set_details/3,
          get_data_set_details/5,
          get_data_set_details/6,
+         get_data_set_export_task/3,
+         get_data_set_export_task/5,
+         get_data_set_export_task/6,
          get_data_set_import_task/3,
          get_data_set_import_task/5,
          get_data_set_import_task/6,
@@ -69,6 +74,9 @@
          list_batch_job_restart_points/3,
          list_batch_job_restart_points/5,
          list_batch_job_restart_points/6,
+         list_data_set_export_history/2,
+         list_data_set_export_history/4,
+         list_data_set_export_history/5,
          list_data_set_import_history/2,
          list_data_set_import_history/4,
          list_data_set_import_history/5,
@@ -181,6 +189,14 @@
 
 
 %% Example:
+%% list_data_set_export_history_response() :: #{
+%%   <<"dataSetExportTasks">> => list(data_set_export_task()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_set_export_history_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% file_batch_job_identifier() :: #{
 %%   <<"fileName">> => [string()],
 %%   <<"folderPath">> => [string()]
@@ -200,6 +216,9 @@
 %% job_step() :: #{
 %%   <<"procStepName">> => [string()],
 %%   <<"procStepNumber">> => integer(),
+%%   <<"stepCheckpoint">> => integer(),
+%%   <<"stepCheckpointStatus">> => [string()],
+%%   <<"stepCheckpointTime">> => non_neg_integer(),
 %%   <<"stepCondCode">> => [string()],
 %%   <<"stepName">> => [string()],
 %%   <<"stepNumber">> => integer(),
@@ -231,6 +250,8 @@
 %% job_step_restart_marker() :: #{
 %%   <<"fromProcStep">> => [string()],
 %%   <<"fromStep">> => [string()],
+%%   <<"skip">> => boolean(),
+%%   <<"stepCheckpoint">> => integer(),
 %%   <<"toProcStep">> => [string()],
 %%   <<"toStep">> => [string()]
 %% }
@@ -254,6 +275,24 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_set_export_history_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_set_export_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_export_task() :: #{
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => [string()],
+%%   <<"summary">> => data_set_export_summary(),
+%%   <<"taskId">> => string()
+%% }
+-type data_set_export_task() :: #{binary() => any()}.
 
 
 %% Example:
@@ -510,6 +549,17 @@
 
 
 %% Example:
+%% data_set_export_summary() :: #{
+%%   <<"failed">> => integer(),
+%%   <<"inProgress">> => integer(),
+%%   <<"pending">> => integer(),
+%%   <<"succeeded">> => integer(),
+%%   <<"total">> => integer()
+%% }
+-type data_set_export_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_set_summary() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"dataSetName">> => string(),
@@ -618,6 +668,10 @@
 %% }
 -type list_data_set_import_history_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_data_set_export_task_request() :: #{}
+-type get_data_set_export_task_request() :: #{}.
+
 
 %% Example:
 %% create_data_set_import_task_request() :: #{
@@ -699,6 +753,14 @@
 %% delete_environment_request() :: #{}
 -type delete_environment_request() :: #{}.
 
+
+%% Example:
+%% data_set_export_item() :: #{
+%%   <<"datasetName">> => string(),
+%%   <<"externalLocation">> => list()
+%% }
+-type data_set_export_item() :: #{binary() => any()}.
+
 %% Example:
 %% start_application_request() :: #{}
 -type start_application_request() :: #{}.
@@ -769,6 +831,15 @@
 
 
 %% Example:
+%% create_data_set_export_task_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"exportConfig">> := list(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type create_data_set_export_task_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_batch_job_execution_response() :: #{
 %%   <<"applicationId">> := string(),
 %%   <<"batchJobIdentifier">> => list(),
@@ -805,6 +876,17 @@
 %%   <<"mountPoint">> => string()
 %% }
 -type fsx_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_set_export_task_response() :: #{
+%%   <<"kmsKeyArn">> => [string()],
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => [string()],
+%%   <<"summary">> => data_set_export_summary(),
+%%   <<"taskId">> => string()
+%% }
+-type get_data_set_export_task_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1060,6 +1142,13 @@
 
 
 %% Example:
+%% create_data_set_export_task_response() :: #{
+%%   <<"taskId">> => string()
+%% }
+-type create_data_set_export_task_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_job_execution_summary() :: #{
 %%   <<"applicationId">> => string(),
 %%   <<"batchJobIdentifier">> => list(),
@@ -1111,6 +1200,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_data_set_export_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_data_set_import_task_errors() ::
@@ -1192,6 +1290,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_data_set_export_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_data_set_import_task_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1252,6 +1357,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type list_data_set_export_history_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_data_set_import_history_errors() ::
     throttling_exception() | 
@@ -1408,6 +1520,40 @@ create_application(Client, Input) ->
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a data set export task for a specific application.
+-spec create_data_set_export_task(aws_client:aws_client(), binary() | list(), create_data_set_export_task_request()) ->
+    {ok, create_data_set_export_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_set_export_task_errors(), tuple()}.
+create_data_set_export_task(Client, ApplicationId, Input) ->
+    create_data_set_export_task(Client, ApplicationId, Input, []).
+
+-spec create_data_set_export_task(aws_client:aws_client(), binary() | list(), create_data_set_export_task_request(), proplists:proplist()) ->
+    {ok, create_data_set_export_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_set_export_task_errors(), tuple()}.
+create_data_set_export_task(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-export-task"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1784,6 +1930,44 @@ get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap)
 get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/datasets/", aws_util:encode_uri(DataSetName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the status of a data set import task initiated with the
+%% `CreateDataSetExportTask' operation.
+-spec get_data_set_export_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_set_export_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_export_task_errors(), tuple()}.
+get_data_set_export_task(Client, ApplicationId, TaskId)
+  when is_map(Client) ->
+    get_data_set_export_task(Client, ApplicationId, TaskId, #{}, #{}).
+
+-spec get_data_set_export_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_set_export_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_export_task_errors(), tuple()}.
+get_data_set_export_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_set_export_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, []).
+
+-spec get_data_set_export_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_set_export_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_export_task_errors(), tuple()}.
+get_data_set_export_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-export-tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2177,6 +2361,48 @@ list_batch_job_restart_points(Client, ApplicationId, ExecutionId, QueryMap, Head
     Query0_ =
       [
         {<<"authSecretsManagerArn">>, maps:get(<<"authSecretsManagerArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the data set exports for the specified application.
+-spec list_data_set_export_history(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_set_export_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_set_export_history_errors(), tuple()}.
+list_data_set_export_history(Client, ApplicationId)
+  when is_map(Client) ->
+    list_data_set_export_history(Client, ApplicationId, #{}, #{}).
+
+-spec list_data_set_export_history(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_set_export_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_set_export_history_errors(), tuple()}.
+list_data_set_export_history(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_set_export_history(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+-spec list_data_set_export_history(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_set_export_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_set_export_history_errors(), tuple()}.
+list_data_set_export_history(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-export-tasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
