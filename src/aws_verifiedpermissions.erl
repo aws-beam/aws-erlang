@@ -265,6 +265,7 @@
 %% Example:
 %% create_policy_store_input() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"deletionProtection">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"validationSettings">> := validation_settings()
 %% }
@@ -364,6 +365,12 @@
 -type open_id_connect_configuration_detail() :: #{binary() => any()}.
 
 %% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
 %% create_policy_store_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdDate">> => non_neg_integer(),
@@ -448,6 +455,7 @@
 
 %% Example:
 %% update_policy_store_input() :: #{
+%%   <<"deletionProtection">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"policyStoreId">> := string(),
 %%   <<"validationSettings">> := validation_settings()
@@ -787,6 +795,7 @@
 %% get_policy_store_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdDate">> => non_neg_integer(),
+%%   <<"deletionProtection">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"policyStoreId">> => string(),
@@ -1105,6 +1114,9 @@
 -type delete_policy_errors() ::
     resource_not_found_exception() | 
     conflict_exception().
+
+-type delete_policy_store_errors() ::
+    invalid_state_exception().
 
 -type delete_policy_template_errors() ::
     resource_not_found_exception() | 
@@ -1512,14 +1524,16 @@ delete_policy(Client, Input, Options)
 %% response will still return a successful HTTP 200 status code.
 -spec delete_policy_store(aws_client:aws_client(), delete_policy_store_input()) ->
     {ok, delete_policy_store_output(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, delete_policy_store_errors(), tuple()}.
 delete_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_store(Client, Input, []).
 
 -spec delete_policy_store(aws_client:aws_client(), delete_policy_store_input(), proplists:proplist()) ->
     {ok, delete_policy_store_output(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, delete_policy_store_errors(), tuple()}.
 delete_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicyStore">>, Input, Options).

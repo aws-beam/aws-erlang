@@ -2723,6 +2723,9 @@ batch_execute_statement(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations
 %% in the Amazon DynamoDB Developer
 %% Guide.
+%%
+%% `BatchGetItem' will result in a `ValidationException' if the
+%% same key is specified multiple times.
 -spec batch_get_item(aws_client:aws_client(), batch_get_item_input()) ->
     {ok, batch_get_item_output(), tuple()} |
     {error, any()} |
