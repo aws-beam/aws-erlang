@@ -551,7 +551,8 @@
 %%   <<"totalMappedRecords">> => [integer()],
 %%   <<"totalMappedSourceRecords">> => [integer()],
 %%   <<"totalMappedTargetRecords">> => [integer()],
-%%   <<"totalRecordsProcessed">> => [integer()]
+%%   <<"totalRecordsProcessed">> => [integer()],
+%%   <<"uniqueRecordsLoaded">> => [integer()]
 %% }
 -type id_mapping_job_metrics() :: #{binary() => any()}.
 
@@ -1944,7 +1945,13 @@ get_id_namespace(Client, IdNamespaceName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the corresponding Match ID of a customer record if the record
 %% has been
-%% processed.
+%% processed in a
+%% rule-based matching workflow or ML matching workflow.
+%%
+%% You can call this API as a dry run of an incremental load on the
+%% rule-based
+%% matching
+%% workflow.
 -spec get_match_id(aws_client:aws_client(), binary() | list(), get_match_id_input()) ->
     {ok, get_match_id_output(), tuple()} |
     {error, any()} |
