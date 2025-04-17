@@ -27,6 +27,9 @@
          get_cluster/2,
          get_cluster/4,
          get_cluster/5,
+         get_vpc_endpoint_service_name/2,
+         get_vpc_endpoint_service_name/4,
+         get_vpc_endpoint_service_name/5,
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
@@ -146,6 +149,17 @@
 %%   <<"witnessRegion">> => string()
 %% }
 -type get_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_endpoint_service_name_input() :: #{}
+-type get_vpc_endpoint_service_name_input() :: #{}.
+
+
+%% Example:
+%% get_vpc_endpoint_service_name_output() :: #{
+%%   <<"serviceName">> => string()
+%% }
+-type get_vpc_endpoint_service_name_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -290,6 +304,12 @@
 
 -type get_cluster_errors() ::
     resource_not_found_exception().
+
+-type get_vpc_endpoint_service_name_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_clusters_errors() ::
     resource_not_found_exception().
@@ -480,6 +500,43 @@ get_cluster(Client, Identifier, QueryMap, HeadersMap)
 get_cluster(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cluster/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the VPC endpoint service name.
+-spec get_vpc_endpoint_service_name(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_vpc_endpoint_service_name_output(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_endpoint_service_name_errors(), tuple()}.
+get_vpc_endpoint_service_name(Client, Identifier)
+  when is_map(Client) ->
+    get_vpc_endpoint_service_name(Client, Identifier, #{}, #{}).
+
+-spec get_vpc_endpoint_service_name(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_vpc_endpoint_service_name_output(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_endpoint_service_name_errors(), tuple()}.
+get_vpc_endpoint_service_name(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vpc_endpoint_service_name(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_vpc_endpoint_service_name(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_vpc_endpoint_service_name_output(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_endpoint_service_name_errors(), tuple()}.
+get_vpc_endpoint_service_name(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(Identifier), "/vpc-endpoint-service-name"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

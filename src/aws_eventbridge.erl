@@ -165,6 +165,7 @@
 %%   <<"AuthorizationType">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"InvocationConnectivityParameters">> => connectivity_resource_parameters(),
+%%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"Name">> := string()
 %% }
 -type update_connection_request() :: #{binary() => any()}.
@@ -662,6 +663,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"InvocationConnectivityParameters">> => describe_connection_connectivity_parameters(),
+%%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"LastAuthorizedTime">> => non_neg_integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -1585,6 +1587,7 @@
 %%   <<"AuthorizationType">> := list(any()),
 %%   <<"Description">> => string(),
 %%   <<"InvocationConnectivityParameters">> => connectivity_resource_parameters(),
+%%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"Name">> := string()
 %% }
 -type create_connection_request() :: #{binary() => any()}.

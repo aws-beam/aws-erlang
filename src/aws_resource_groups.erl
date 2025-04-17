@@ -130,6 +130,7 @@
 %% start_tag_sync_task_output() :: #{
 %%   <<"GroupArn">> => string(),
 %%   <<"GroupName">> => string(),
+%%   <<"ResourceQuery">> => resource_query(),
 %%   <<"RoleArn">> => string(),
 %%   <<"TagKey">> => string(),
 %%   <<"TagValue">> => string(),
@@ -254,9 +255,10 @@
 %% Example:
 %% start_tag_sync_task_input() :: #{
 %%   <<"Group">> := string(),
+%%   <<"ResourceQuery">> => resource_query(),
 %%   <<"RoleArn">> := string(),
-%%   <<"TagKey">> := string(),
-%%   <<"TagValue">> := string()
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
 %% }
 -type start_tag_sync_task_input() :: #{binary() => any()}.
 
@@ -410,6 +412,7 @@
 %%   <<"ErrorMessage">> => string(),
 %%   <<"GroupArn">> => string(),
 %%   <<"GroupName">> => string(),
+%%   <<"ResourceQuery">> => resource_query(),
 %%   <<"RoleArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"TagKey">> => string(),
@@ -467,6 +470,7 @@
 %%   <<"ErrorMessage">> => string(),
 %%   <<"GroupArn">> => string(),
 %%   <<"GroupName">> => string(),
+%%   <<"ResourceQuery">> => resource_query(),
 %%   <<"RoleArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"TagKey">> => string(),
@@ -1594,6 +1598,19 @@ search_resources(Client, Input0, Options0) ->
 %% @doc Creates a new tag-sync task to onboard and sync resources tagged with
 %% a specific tag key-value pair to an
 %% application.
+%%
+%% To start a tag-sync task, you need a resource tagging role:
+%% https://docs.aws.amazon.com/servicecatalog/latest/arguide/app-tag-sync.html#tag-sync-role.
+%% The resource tagging role grants permissions to tag and untag applications
+%% resources and must include a
+%% trust policy that allows Resource Groups to assume the role and perform
+%% resource tagging tasks on your behalf.
+%%
+%% For instructions on creating a tag-sync task, see Create a tag-sync
+%% using the Resource Groups API:
+%% https://docs.aws.amazon.com/servicecatalog/latest/arguide/app-tag-sync.html#create-tag-sync
+%% in the Amazon Web Services Service Catalog AppRegistry Administrator
+%% Guide.
 %%
 %% Minimum permissions
 %%

@@ -163,6 +163,13 @@
 
 
 %% Example:
+%% sla_content() :: #{
+%%   <<"slaConfiguration">> => sla_configuration()
+%% }
+-type sla_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_related_items_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"relatedItems">> := list(search_related_items_response_item()())
@@ -586,6 +593,17 @@
 %% }
 -type list_case_rules_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% sla_input_configuration() :: #{
+%%   <<"fieldId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"targetFieldValues">> => list(list()()),
+%%   <<"targetSlaMinutes">> => float(),
+%%   <<"type">> => string()
+%% }
+-type sla_input_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_case_rule_response() :: #{}
 -type delete_case_rule_response() :: #{}.
@@ -729,6 +747,14 @@
 
 
 %% Example:
+%% sla_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type sla_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% event_bridge_configuration() :: #{
 %%   <<"enabled">> => [boolean()],
 %%   <<"includedData">> => event_included_data()
@@ -738,6 +764,19 @@
 %% Example:
 %% delete_field_response() :: #{}
 -type delete_field_response() :: #{}.
+
+
+%% Example:
+%% sla_configuration() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"fieldId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"targetFieldValues">> => list(list()()),
+%%   <<"targetTime">> => non_neg_integer(),
+%%   <<"type">> => string()
+%% }
+-type sla_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1304,7 +1343,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type search_cases_errors() ::
     throttling_exception() | 

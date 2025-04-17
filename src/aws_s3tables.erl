@@ -8,10 +8,10 @@
 %% This data is stored inside an S3 table as a subresource. All tables in a
 %% table bucket are stored in the Apache Iceberg:
 %% https://iceberg.apache.org/docs/latest/ table format. Through integration
-%% with the AWS Glue Data Catalog:
+%% with the Amazon Web Services Glue Data Catalog:
 %% https://docs.aws.amazon.com/https:/docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html
-%% you can interact with your tables using AWS analytics services, such as
-%% Amazon Athena:
+%% you can interact with your tables using Amazon Web Services analytics
+%% services, such as Amazon Athena:
 %% https://docs.aws.amazon.com/https:/docs.aws.amazon.com/athena/ and Amazon
 %% Redshift:
 %% https://docs.aws.amazon.com/https:/docs.aws.amazon.com/redshift/. Amazon
@@ -33,6 +33,8 @@
          delete_table/6,
          delete_table_bucket/3,
          delete_table_bucket/4,
+         delete_table_bucket_encryption/3,
+         delete_table_bucket_encryption/4,
          delete_table_bucket_policy/3,
          delete_table_bucket_policy/4,
          delete_table_policy/5,
@@ -46,12 +48,18 @@
          get_table_bucket/2,
          get_table_bucket/4,
          get_table_bucket/5,
+         get_table_bucket_encryption/2,
+         get_table_bucket_encryption/4,
+         get_table_bucket_encryption/5,
          get_table_bucket_maintenance_configuration/2,
          get_table_bucket_maintenance_configuration/4,
          get_table_bucket_maintenance_configuration/5,
          get_table_bucket_policy/2,
          get_table_bucket_policy/4,
          get_table_bucket_policy/5,
+         get_table_encryption/4,
+         get_table_encryption/6,
+         get_table_encryption/7,
          get_table_maintenance_configuration/4,
          get_table_maintenance_configuration/6,
          get_table_maintenance_configuration/7,
@@ -73,6 +81,8 @@
          list_tables/2,
          list_tables/4,
          list_tables/5,
+         put_table_bucket_encryption/3,
+         put_table_bucket_encryption/4,
          put_table_bucket_maintenance_configuration/4,
          put_table_bucket_maintenance_configuration/5,
          put_table_bucket_policy/3,
@@ -108,6 +118,14 @@
 %%   <<"prefix">> => [string()]
 %% }
 -type list_table_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsKeyArn">> => [string()],
+%%   <<"sseAlgorithm">> => list(any())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -154,6 +172,13 @@
 
 
 %% Example:
+%% get_table_encryption_response() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration()
+%% }
+-type get_table_encryption_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_table_request() :: #{
 %%   <<"versionToken">> => string()
 %% }
@@ -168,11 +193,20 @@
 
 
 %% Example:
+%% get_table_bucket_encryption_response() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration()
+%% }
+-type get_table_bucket_encryption_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% namespace_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
 %%   <<"namespace">> => list(string()()),
-%%   <<"ownerAccountId">> => string()
+%%   <<"namespaceId">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"tableBucketId">> => string()
 %% }
 -type namespace_summary() :: #{binary() => any()}.
 
@@ -183,7 +217,9 @@
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"namespace">> => list(string()()),
+%%   <<"namespaceId">> => string(),
 %%   <<"tableARN">> => string(),
+%%   <<"tableBucketId">> => string(),
 %%   <<"type">> => list(any())
 %% }
 -type table_summary() :: #{binary() => any()}.
@@ -214,6 +250,7 @@
 
 %% Example:
 %% create_table_request() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"format">> := list(any()),
 %%   <<"metadata">> => list(),
 %%   <<"name">> := string()
@@ -232,8 +269,10 @@
 %%   <<"modifiedBy">> => string(),
 %%   <<"name">> => string(),
 %%   <<"namespace">> => list(string()()),
+%%   <<"namespaceId">> => string(),
 %%   <<"ownerAccountId">> => string(),
 %%   <<"tableARN">> => string(),
+%%   <<"tableBucketId">> => string(),
 %%   <<"type">> => list(any()),
 %%   <<"versionToken">> => string(),
 %%   <<"warehouseLocation">> => string()
@@ -251,6 +290,10 @@
 %%   <<"tableARN">> => string()
 %% }
 -type get_table_maintenance_job_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_encryption_request() :: #{}
+-type get_table_bucket_encryption_request() :: #{}.
 
 
 %% Example:
@@ -277,7 +320,9 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
 %%   <<"namespace">> => list(string()()),
-%%   <<"ownerAccountId">> => string()
+%%   <<"namespaceId">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"tableBucketId">> => string()
 %% }
 -type get_namespace_response() :: #{binary() => any()}.
 
@@ -326,6 +371,14 @@
 %% delete_table_bucket_policy_request() :: #{}
 -type delete_table_bucket_policy_request() :: #{}.
 
+%% Example:
+%% get_table_encryption_request() :: #{}
+-type get_table_encryption_request() :: #{}.
+
+%% Example:
+%% delete_table_bucket_encryption_request() :: #{}
+-type delete_table_bucket_encryption_request() :: #{}.
+
 
 %% Example:
 %% put_table_bucket_maintenance_configuration_request() :: #{
@@ -358,6 +411,7 @@
 
 %% Example:
 %% create_table_bucket_request() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"name">> := string()
 %% }
 -type create_table_bucket_request() :: #{binary() => any()}.
@@ -494,7 +548,8 @@
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"ownerAccountId">> => string()
+%%   <<"ownerAccountId">> => string(),
+%%   <<"tableBucketId">> => string()
 %% }
 -type get_table_bucket_response() :: #{binary() => any()}.
 
@@ -519,11 +574,19 @@
 
 
 %% Example:
+%% put_table_bucket_encryption_request() :: #{
+%%   <<"encryptionConfiguration">> := encryption_configuration()
+%% }
+-type put_table_bucket_encryption_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% table_bucket_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"ownerAccountId">> => string()
+%%   <<"ownerAccountId">> => string(),
+%%   <<"tableBucketId">> => string()
 %% }
 -type table_bucket_summary() :: #{binary() => any()}.
 
@@ -589,6 +652,14 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type delete_table_bucket_encryption_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type delete_table_bucket_policy_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -632,6 +703,14 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type get_table_bucket_encryption_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type get_table_bucket_maintenance_configuration_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -645,6 +724,14 @@
     internal_server_error_exception() | 
     not_found_exception() | 
     conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_table_encryption_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
 
@@ -699,6 +786,14 @@
     forbidden_exception().
 
 -type list_tables_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type put_table_bucket_encryption_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
@@ -815,8 +910,14 @@ create_namespace(Client, TableBucketARN, Input0, Options0) ->
 %% You must have the `s3tables:CreateTable' permission to use this
 %% operation.
 %%
-%% Additionally, you must have the `s3tables:PutTableData' permission to
-%% use this operation with the optional `metadata' request parameter.
+%% If you use this operation with the optional `metadata' request
+%% parameter you must have the `s3tables:PutTableData' permission.
+%%
+%% If you use this operation with the optional `encryptionConfiguration'
+%% request parameter you must have the `s3tables:PutTableEncryption'
+%% permission.
+%%
+%% Additionally,
 -spec create_table(aws_client:aws_client(), binary() | list(), binary() | list(), create_table_request()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
@@ -860,6 +961,10 @@ create_table(Client, Namespace, TableBucketARN, Input0, Options0) ->
 %%
 %% You must have the `s3tables:CreateTableBucket' permission to use this
 %% operation.
+%%
+%% If you use this operation with the optional `encryptionConfiguration'
+%% parameter you must have the `s3tables:PutTableBucketEncryption'
+%% permission.
 -spec create_table_bucket(aws_client:aws_client(), create_table_bucket_request()) ->
     {ok, create_table_bucket_response(), tuple()} |
     {error, any()} |
@@ -1004,6 +1109,45 @@ delete_table_bucket(Client, TableBucketARN, Input) ->
 delete_table_bucket(Client, TableBucketARN, Input0, Options0) ->
     Method = delete,
     Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the encryption configuration for a table bucket.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:DeleteTableBucketEncryption' permission to
+%% use this operation.
+-spec delete_table_bucket_encryption(aws_client:aws_client(), binary() | list(), delete_table_bucket_encryption_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_table_bucket_encryption_errors(), tuple()}.
+delete_table_bucket_encryption(Client, TableBucketARN, Input) ->
+    delete_table_bucket_encryption(Client, TableBucketARN, Input, []).
+
+-spec delete_table_bucket_encryption(aws_client:aws_client(), binary() | list(), delete_table_bucket_encryption_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_table_bucket_encryption_errors(), tuple()}.
+delete_table_bucket_encryption(Client, TableBucketARN, Input0, Options0) ->
+    Method = delete,
+    Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/encryption"],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1247,6 +1391,48 @@ get_table_bucket(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the encryption configuration for a table bucket.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTableBucketEncryption' permission to
+%% use this operation.
+-spec get_table_bucket_encryption(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_table_bucket_encryption_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_encryption_errors(), tuple()}.
+get_table_bucket_encryption(Client, TableBucketARN)
+  when is_map(Client) ->
+    get_table_bucket_encryption(Client, TableBucketARN, #{}, #{}).
+
+-spec get_table_bucket_encryption(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_table_bucket_encryption_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_encryption_errors(), tuple()}.
+get_table_bucket_encryption(Client, TableBucketARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_table_bucket_encryption(Client, TableBucketARN, QueryMap, HeadersMap, []).
+
+-spec get_table_bucket_encryption(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_table_bucket_encryption_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_encryption_errors(), tuple()}.
+get_table_bucket_encryption(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/encryption"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets details about a maintenance configuration for a given table
 %% bucket.
 %%
@@ -1327,6 +1513,48 @@ get_table_bucket_policy(Client, TableBucketARN, QueryMap, HeadersMap)
 get_table_bucket_policy(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the encryption configuration for a table.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:GetTableEncryption' permission to use this
+%% operation.
+-spec get_table_encryption(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_table_encryption_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_encryption_errors(), tuple()}.
+get_table_encryption(Client, Name, Namespace, TableBucketARN)
+  when is_map(Client) ->
+    get_table_encryption(Client, Name, Namespace, TableBucketARN, #{}, #{}).
+
+-spec get_table_encryption(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_table_encryption_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_encryption_errors(), tuple()}.
+get_table_encryption(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_table_encryption(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, []).
+
+-spec get_table_encryption(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_table_encryption_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_encryption_errors(), tuple()}.
+get_table_encryption(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tables/", aws_util:encode_uri(TableBucketARN), "/", aws_util:encode_uri(Namespace), "/", aws_util:encode_uri(Name), "/encryption"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1676,6 +1904,50 @@ list_tables(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Sets the encryption configuration for a table bucket.
+%%
+%% Permissions
+%%
+%% You must have the `s3tables:PutTableBucketEncryption' permission to
+%% use this operation.
+%%
+%% If you choose SSE-KMS encryption you must grant the S3 Tables maintenance
+%% principal access to your KMS key. For more information, see Permissions
+%% requirements for S3 Tables SSE-KMS encryption:
+%% AmazonS3/latest/userguide/s3-tables-kms-permissions.html
+-spec put_table_bucket_encryption(aws_client:aws_client(), binary() | list(), put_table_bucket_encryption_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_table_bucket_encryption_errors(), tuple()}.
+put_table_bucket_encryption(Client, TableBucketARN, Input) ->
+    put_table_bucket_encryption(Client, TableBucketARN, Input, []).
+
+-spec put_table_bucket_encryption(aws_client:aws_client(), binary() | list(), put_table_bucket_encryption_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_table_bucket_encryption_errors(), tuple()}.
+put_table_bucket_encryption(Client, TableBucketARN, Input0, Options0) ->
+    Method = put,
+    Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/encryption"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new maintenance configuration or replaces an existing
 %% maintenance configuration
