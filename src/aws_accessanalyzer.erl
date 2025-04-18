@@ -453,6 +453,14 @@
 
 
 %% Example:
+%% s3_express_directory_access_point_configuration() :: #{
+%%   <<"accessPointPolicy">> => string(),
+%%   <<"networkOrigin">> => list()
+%% }
+-type s3_express_directory_access_point_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% check_no_new_access_request() :: #{
 %%   <<"existingPolicyDocument">> := string(),
 %%   <<"newPolicyDocument">> := string(),
@@ -944,6 +952,7 @@
 
 %% Example:
 %% s3_express_directory_bucket_configuration() :: #{
+%%   <<"accessPoints">> => map(),
 %%   <<"bucketPolicy">> => string()
 %% }
 -type s3_express_directory_bucket_configuration() :: #{binary() => any()}.

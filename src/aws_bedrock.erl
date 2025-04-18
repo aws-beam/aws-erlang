@@ -498,6 +498,7 @@
 
 %% Example:
 %% automated_evaluation_config() :: #{
+%%   <<"customMetricConfig">> => automated_evaluation_custom_metric_config(),
 %%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()()),
 %%   <<"evaluatorModelConfig">> => list()
 %% }
@@ -649,6 +650,14 @@
 
 
 %% Example:
+%% automated_evaluation_custom_metric_config() :: #{
+%%   <<"customMetrics">> => list(list()()),
+%%   <<"evaluatorModelConfig">> => custom_metric_evaluator_model_config()
+%% }
+-type automated_evaluation_custom_metric_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_model_config_summary() :: #{
 %%   <<"bedrockModelIdentifiers">> => list(string()()),
 %%   <<"precomputedInferenceSourceIdentifiers">> => list(string()())
@@ -712,6 +721,13 @@
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_metric_bedrock_evaluator_model() :: #{
+%%   <<"modelIdentifier">> => string()
+%% }
+-type custom_metric_bedrock_evaluator_model() :: #{binary() => any()}.
 
 
 %% Example:
@@ -990,6 +1006,15 @@
 
 
 %% Example:
+%% custom_metric_definition() :: #{
+%%   <<"instructions">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ratingScale">> => list(rating_scale_item()())
+%% }
+-type custom_metric_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
@@ -1164,6 +1189,14 @@
 %%   <<"inferenceSourceIdentifier">> => string()
 %% }
 -type evaluation_precomputed_inference_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% rating_scale_item() :: #{
+%%   <<"definition">> => string(),
+%%   <<"value">> => list()
+%% }
+-type rating_scale_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1565,6 +1598,13 @@
 %%   <<"loggingConfig">> := logging_config()
 %% }
 -type put_model_invocation_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_metric_evaluator_model_config() :: #{
+%%   <<"bedrockEvaluatorModels">> => list(custom_metric_bedrock_evaluator_model()())
+%% }
+-type custom_metric_evaluator_model_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2058,6 +2098,7 @@
 %% evaluation_summary() :: #{
 %%   <<"applicationType">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customMetricsEvaluatorModelIdentifiers">> => list(string()()),
 %%   <<"evaluationTaskTypes">> => list(list(any())()),
 %%   <<"evaluatorModelIdentifiers">> => list(string()()),
 %%   <<"inferenceConfigSummary">> => evaluation_inference_config_summary(),

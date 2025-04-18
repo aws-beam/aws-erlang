@@ -3510,9 +3510,9 @@ describe_container_instances(Client, Input, Options)
 %%
 %% A service deployment happens when you release a software update for the
 %% service. For
-%% more information, see Amazon ECS service
+%% more information, see View service history using Amazon ECS service
 %% deployments:
-%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-deployments.html.
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-deployment.html.
 -spec describe_service_deployments(aws_client:aws_client(), describe_service_deployments_request()) ->
     {ok, describe_service_deployments_response(), tuple()} |
     {error, any()} |

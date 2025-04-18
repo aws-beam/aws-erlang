@@ -68,6 +68,9 @@
          describe_workspace/2,
          describe_workspace/4,
          describe_workspace/5,
+         describe_workspace_configuration/2,
+         describe_workspace_configuration/4,
+         describe_workspace_configuration/5,
          get_default_scraper_configuration/1,
          get_default_scraper_configuration/3,
          get_default_scraper_configuration/4,
@@ -96,7 +99,9 @@
          update_scraper/3,
          update_scraper/4,
          update_workspace_alias/3,
-         update_workspace_alias/4]).
+         update_workspace_alias/4,
+         update_workspace_configuration/3,
+         update_workspace_configuration/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -115,6 +120,15 @@
 %%   <<"data">> => binary()
 %% }
 -type put_alert_manager_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()()),
+%%   <<"retentionPeriodInDays">> => [integer()]
+%% }
+-type update_workspace_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -217,6 +231,10 @@
 %% }
 -type logging_configuration_metadata() :: #{binary() => any()}.
 
+%% Example:
+%% describe_workspace_configuration_request() :: #{}
+-type describe_workspace_configuration_request() :: #{}.
+
 
 %% Example:
 %% update_logging_configuration_request() :: #{
@@ -286,6 +304,13 @@
 
 
 %% Example:
+%% update_workspace_configuration_response() :: #{
+%%   <<"status">> => workspace_configuration_status()
+%% }
+-type update_workspace_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_workspace_alias_request() :: #{
 %%   <<"alias">> => string(),
 %%   <<"clientToken">> => string()
@@ -302,6 +327,22 @@
 %% Example:
 %% get_default_scraper_configuration_request() :: #{}
 -type get_default_scraper_configuration_request() :: #{}.
+
+
+%% Example:
+%% workspace_configuration_description() :: #{
+%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()()),
+%%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"status">> => workspace_configuration_status()
+%% }
+-type workspace_configuration_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_workspace_configuration_response() :: #{
+%%   <<"workspaceConfiguration">> => workspace_configuration_description()
+%% }
+-type describe_workspace_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -515,6 +556,14 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% workspace_configuration_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type workspace_configuration_status() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -629,6 +678,13 @@
 %% }
 -type describe_alert_manager_definition_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% limits_per_label_set_entry() :: #{
+%%   <<"maxSeries">> => [float()]
+%% }
+-type limits_per_label_set_entry() :: #{binary() => any()}.
+
 %% Example:
 %% describe_scraper_request() :: #{}
 -type describe_scraper_request() :: #{}.
@@ -679,6 +735,14 @@
 %%   <<"statusReason">> => [string()]
 %% }
 -type alert_manager_definition_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% limits_per_label_set() :: #{
+%%   <<"labelSet">> => map(),
+%%   <<"limits">> => limits_per_label_set_entry()
+%% }
+-type limits_per_label_set() :: #{binary() => any()}.
 
 
 %% Example:
@@ -822,6 +886,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type describe_workspace_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_default_scraper_configuration_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -902,6 +973,15 @@
     conflict_exception().
 
 -type update_workspace_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_workspace_configuration_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1516,6 +1596,48 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Use this operation to return information about the configuration of a
+%% workspace.
+%%
+%% The configuration details
+%% returned include workspace configuration status, label set limits, and
+%% retention period.
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_configuration_errors(), tuple()}.
+describe_workspace_configuration(Client, WorkspaceId)
+  when is_map(Client) ->
+    describe_workspace_configuration(Client, WorkspaceId, #{}, #{}).
+
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_configuration_errors(), tuple()}.
+describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_configuration_errors(), tuple()}.
+describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc The `GetDefaultScraperConfiguration' operation returns the
 %% default
 %% scraper configuration used when Amazon EKS creates a scraper for you.
@@ -1998,6 +2120,45 @@ update_workspace_alias(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alias"],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use this operation to create or update the label sets, label set
+%% limits, and retention period of a workspace.
+%%
+%% You must specify at least one of `limitsPerLabelSet' or
+%% `retentionPeriodInDays' for the
+%% request to be valid.
+-spec update_workspace_configuration(aws_client:aws_client(), binary() | list(), update_workspace_configuration_request()) ->
+    {ok, update_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_configuration_errors(), tuple()}.
+update_workspace_configuration(Client, WorkspaceId, Input) ->
+    update_workspace_configuration(Client, WorkspaceId, Input, []).
+
+-spec update_workspace_configuration(aws_client:aws_client(), binary() | list(), update_workspace_configuration_request(), proplists:proplist()) ->
+    {ok, update_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_configuration_errors(), tuple()}.
+update_workspace_configuration(Client, WorkspaceId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/configuration"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

@@ -4,8 +4,8 @@
 %% @doc This is the AWS HealthOmics API Reference.
 %%
 %% For an introduction to the service, see What is AWS HealthOmics?:
-%% https://docs.aws.amazon.com/omics/latest/dev/ in the
-%% AWS HealthOmics User Guide.
+%% https://docs.aws.amazon.com/omics/latest/dev/ in the AWS HealthOmics User
+%% Guide.
 -module(aws_omics).
 
 -export([abort_multipart_read_set_upload/4,
@@ -42,6 +42,8 @@
          create_variant_store/3,
          create_workflow/2,
          create_workflow/3,
+         create_workflow_version/3,
+         create_workflow_version/4,
          delete_annotation_store/3,
          delete_annotation_store/4,
          delete_annotation_store_versions/3,
@@ -66,6 +68,8 @@
          delete_variant_store/4,
          delete_workflow/3,
          delete_workflow/4,
+         delete_workflow_version/4,
+         delete_workflow_version/5,
          get_annotation_import_job/2,
          get_annotation_import_job/4,
          get_annotation_import_job/5,
@@ -132,6 +136,9 @@
          get_workflow/2,
          get_workflow/4,
          get_workflow/5,
+         get_workflow_version/3,
+         get_workflow_version/5,
+         get_workflow_version/6,
          list_annotation_import_jobs/2,
          list_annotation_import_jobs/3,
          list_annotation_store_versions/3,
@@ -179,6 +186,9 @@
          list_variant_import_jobs/3,
          list_variant_stores/2,
          list_variant_stores/3,
+         list_workflow_versions/2,
+         list_workflow_versions/4,
+         list_workflow_versions/5,
          list_workflows/1,
          list_workflows/3,
          list_workflows/4,
@@ -216,6 +226,8 @@
          update_variant_store/4,
          update_workflow/3,
          update_workflow/4,
+         update_workflow_version/4,
+         update_workflow_version/5,
          upload_read_set_part/4,
          upload_read_set_part/5]).
 
@@ -273,6 +285,7 @@
 %%   <<"parameterTemplate">> => map(),
 %%   <<"requestId">> := string(),
 %%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_workflow_request() :: #{binary() => any()}.
@@ -351,6 +364,21 @@
 %%   <<"description">> => string()
 %% }
 -type update_variant_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_version_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"digest">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string(),
+%%   <<"versionName">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type workflow_version_list_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -652,6 +680,32 @@
 
 
 %% Example:
+%% get_workflow_version_response() :: #{
+%%   <<"accelerators">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"definition">> => string(),
+%%   <<"description">> => string(),
+%%   <<"digest">> => string(),
+%%   <<"engine">> => string(),
+%%   <<"main">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"parameterTemplate">> => map(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"uuid">> => string(),
+%%   <<"versionName">> => string(),
+%%   <<"workflowBucketOwnerId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type get_workflow_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_variant_import_jobs_response() :: #{
 %%   <<"nextToken">> => [string()],
 %%   <<"variantImportJobs">> => list(variant_import_job_item()())
@@ -850,7 +904,9 @@
 %% Example:
 %% update_workflow_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string()
 %% }
 -type update_workflow_request() :: #{binary() => any()}.
 
@@ -889,7 +945,8 @@
 %%   <<"stopTime">> => non_neg_integer(),
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"storageType">> => string(),
-%%   <<"workflowId">> => string()
+%%   <<"workflowId">> => string(),
+%%   <<"workflowVersionName">> => string()
 %% }
 -type run_list_item() :: #{binary() => any()}.
 
@@ -1227,6 +1284,10 @@
 %% }
 -type version_delete_error() :: #{binary() => any()}.
 
+%% Example:
+%% delete_workflow_version_request() :: #{}
+-type delete_workflow_version_request() :: #{}.
+
 
 %% Example:
 %% not_supported_operation_exception() :: #{
@@ -1364,6 +1425,25 @@
 %%   <<"status">> => string()
 %% }
 -type create_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workflow_version_request() :: #{
+%%   <<"accelerators">> => string(),
+%%   <<"definitionUri">> => string(),
+%%   <<"definitionZip">> => [binary()],
+%%   <<"description">> => string(),
+%%   <<"engine">> => string(),
+%%   <<"main">> => string(),
+%%   <<"parameterTemplate">> => map(),
+%%   <<"requestId">> := string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"versionName">> := string(),
+%%   <<"workflowBucketOwnerId">> => string()
+%% }
+-type create_workflow_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1552,6 +1632,18 @@
 
 
 %% Example:
+%% create_workflow_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string(),
+%%   <<"versionName">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type create_workflow_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% read_set_files() :: #{
 %%   <<"index">> => file_information(),
 %%   <<"source1">> => file_information(),
@@ -1637,6 +1729,15 @@
 %% }
 -type create_variant_store_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_workflow_version_request() :: #{
+%%   <<"export">> => list(string()()),
+%%   <<"type">> => string(),
+%%   <<"workflowOwnerId">> => string()
+%% }
+-type get_workflow_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_run_cache_request() :: #{}
 -type get_run_cache_request() :: #{}.
@@ -1657,6 +1758,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_run_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"startingToken">> => string(),
+%%   <<"type">> => string(),
+%%   <<"workflowOwnerId">> => string()
+%% }
+-type list_workflow_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1723,6 +1834,14 @@
 %%   <<"status">> => string()
 %% }
 -type start_read_set_export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_versions_response() :: #{
+%%   <<"items">> => list(workflow_version_list_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workflow_versions_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_reference_store_request() :: #{}
@@ -1900,7 +2019,8 @@
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"status">> => string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string()
 %% }
 -type create_workflow_response() :: #{binary() => any()}.
 
@@ -2239,7 +2359,8 @@
 %%   <<"tags">> => map(),
 %%   <<"workflowId">> => string(),
 %%   <<"workflowOwnerId">> => string(),
-%%   <<"workflowType">> => string()
+%%   <<"workflowType">> => string(),
+%%   <<"workflowVersionName">> => string()
 %% }
 -type start_run_request() :: #{binary() => any()}.
 
@@ -2250,6 +2371,15 @@
 %%   <<"versions">> := list(string()())
 %% }
 -type delete_annotation_store_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workflow_version_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string()
+%% }
+-type update_workflow_version_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_share_request() :: #{}
@@ -2396,6 +2526,7 @@
 %%   <<"storageType">> => string(),
 %%   <<"parameters">> => any(),
 %%   <<"stopTime">> => non_neg_integer(),
+%%   <<"workflowVersionName">> => string(),
 %%   <<"resourceDigests">> => map(),
 %%   <<"tags">> => map(),
 %%   <<"storageCapacity">> => [integer()],
@@ -2407,6 +2538,7 @@
 %%   <<"runId">> => string(),
 %%   <<"workflowId">> => string(),
 %%   <<"arn">> => string(),
+%%   <<"workflowUuid">> => string(),
 %%   <<"cacheBehavior">> => string(),
 %%   <<"startedBy">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
@@ -2623,8 +2755,10 @@
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string(),
 %%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"type">> => string()
+%%   <<"type">> => string(),
+%%   <<"uuid">> => string()
 %% }
 -type get_workflow_response() :: #{binary() => any()}.
 
@@ -2788,6 +2922,16 @@
     conflict_exception() | 
     request_timeout_exception().
 
+-type create_workflow_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
 -type delete_annotation_store_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2888,6 +3032,16 @@
     conflict_exception().
 
 -type delete_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type delete_workflow_version_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3084,6 +3238,16 @@
     conflict_exception() | 
     request_timeout_exception().
 
+-type get_workflow_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
 -type list_annotation_import_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3260,6 +3424,16 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_workflow_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
 -type list_workflows_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3412,6 +3586,16 @@
     resource_not_found_exception().
 
 -type update_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_timeout_exception().
+
+-type update_workflow_version_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3708,8 +3892,7 @@ create_annotation_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Creates a new version of an annotation store.
+%% @doc Creates a new version of an annotation store.
 -spec create_annotation_store_version(aws_client:aws_client(), binary() | list(), create_annotation_store_version_request()) ->
     {ok, create_annotation_store_version_response(), tuple()} |
     {error, any()} |
@@ -3815,14 +3998,13 @@ create_reference_store(Client, Input0, Options0) ->
 %% tasks in a run for a private workflow.
 %%
 %% Subsequent runs use the task outputs from the cache, rather than computing
-%% the task outputs again.
-%% You specify an Amazon S3 location where HealthOmics saves the cached data.
-%% This data must be
-%% immediately accessible (not in an archived state).
+%% the task outputs again. You specify an Amazon S3 location where Amazon Web
+%% Services HealthOmics saves the cached data. This data must be immediately
+%% accessible (not in an archived state).
 %%
 %% For more information, see Creating a run cache:
 %% https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-create.html in
-%% the AWS HealthOmics User Guide.
+%% the Amazon Web Services HealthOmics User Guide.
 -spec create_run_cache(aws_client:aws_client(), create_run_cache_request()) ->
     {ok, create_run_cache_response(), tuple()} |
     {error, any()} |
@@ -3927,9 +4109,8 @@ create_sequence_store(Client, Input0, Options0) ->
 
 %% @doc Creates a cross-account shared resource.
 %%
-%% The resource owner makes an offer to share the resource
-%% with the principal subscriber (an AWS user with a different account than
-%% the resource owner).
+%% The resource owner makes an offer to share the resource with the principal
+%% subscriber (an AWS user with a different account than the resource owner).
 %%
 %% The following resources support cross-account sharing:
 %%
@@ -4005,7 +4186,31 @@ create_variant_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a workflow.
+%% @doc Creates a private workflow.Private workflows depend on a variety of
+%% resources that you create and configure before creating the workflow:
+%%
+%% Input data: Input data for the workflow, stored in an S3 bucket or a
+%% Amazon Web Services HealthOmics sequence store.
+%%
+%% Workflow definition files: Define your workflow in one or more workflow
+%% definition files, written in WDL, Nextflow, or CWL. The workflow
+%% definition specifies the inputs and outputs for runs that use the
+%% workflow. It also includes specifications for the runs and run tasks for
+%% your workflow, including compute and memory requirements.
+%%
+%% Parameter template files: Define run parameters using a parameter template
+%% file (written in JSON).
+%%
+%% ECR container images: Create one or more container images for the
+%% workflow. Store the images in a private ECR repository.
+%%
+%% (Optional) Sentieon licenses: Request a Sentieon license if you plan to
+%% use Sentieon software in a private workflow.
+%%
+%% For more information, see Creating or updating a private workflow in
+%% Amazon Web Services HealthOmics:
+%% https://docs.aws.amazon.com/omics/latest/dev/creating-private-workflows.html
+%% in the Amazon Web Services HealthOmics User Guide.
 -spec create_workflow(aws_client:aws_client(), create_workflow_request()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
@@ -4020,6 +4225,56 @@ create_workflow(Client, Input) ->
 create_workflow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workflow"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new workflow version for the workflow that you specify with
+%% the `workflowId' parameter.
+%%
+%% When you create a new version of a workflow, you need to specify the
+%% configuration for the new version. It doesn't inherit any
+%% configuration values from the workflow.
+%%
+%% Provide a version name that is unique for this workflow. You cannot change
+%% the name after HealthOmics creates the version.
+%%
+%% Don’t include any personally identifiable information (PII) in the version
+%% name. Version names appear in the workflow version ARN.
+%%
+%% For more information, see Workflow versioning in Amazon Web Services
+%% HealthOmics:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html in the
+%% Amazon Web Services HealthOmics User Guide.
+-spec create_workflow_version(aws_client:aws_client(), binary() | list(), create_workflow_version_request()) ->
+    {ok, create_workflow_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_workflow_version_errors(), tuple()}.
+create_workflow_version(Client, WorkflowId, Input) ->
+    create_workflow_version(Client, WorkflowId, Input, []).
+
+-spec create_workflow_version(aws_client:aws_client(), binary() | list(), create_workflow_version_request(), proplists:proplist()) ->
+    {ok, create_workflow_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_workflow_version_errors(), tuple()}.
+create_workflow_version(Client, WorkflowId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workflow/", aws_util:encode_uri(WorkflowId), "/version"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4074,8 +4329,7 @@ delete_annotation_store(Client, Name, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes one or multiple versions of an annotation store.
+%% @doc Deletes one or multiple versions of an annotation store.
 -spec delete_annotation_store_versions(aws_client:aws_client(), binary() | list(), delete_annotation_store_versions_request()) ->
     {ok, delete_annotation_store_versions_response(), tuple()} |
     {error, any()} |
@@ -4214,15 +4468,14 @@ delete_run(Client, Id, Input0, Options0) ->
 
 %% @doc Delete a run cache.
 %%
-%% This action removes the cache metadata stored in the service account,
-%% but doesn't delete the data in Amazon S3.
-%% You can access the cache data in Amazon S3, for inspection or to
-%% troubleshoot issues.
-%% You can remove old cache data using standard S3 `Delete' operations.
+%% This action removes the cache metadata stored in the service account, but
+%% doesn't delete the data in Amazon S3. You can access the cache data in
+%% Amazon S3, for inspection or to troubleshoot issues. You can remove old
+%% cache data using standard S3 `Delete' operations.
 %%
 %% For more information, see Deleting a run cache:
 %% https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-delete.html in
-%% the AWS HealthOmics User Guide.
+%% the Amazon Web Services HealthOmics User Guide.
 -spec delete_run_cache(aws_client:aws_client(), binary() | list(), delete_run_cache_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4360,9 +4613,9 @@ delete_sequence_store(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes a resource share.
 %%
-%% If you are the resource owner, the subscriber will no longer have
-%% access to the shared resource. If you are the subscriber, this operation
-%% deletes your access to the share.
+%% If you are the resource owner, the subscriber will no longer have access
+%% to the shared resource. If you are the subscriber, this operation deletes
+%% your access to the share.
 -spec delete_share(aws_client:aws_client(), binary() | list(), delete_share_request()) ->
     {ok, delete_share_response(), tuple()} |
     {error, any()} |
@@ -4465,6 +4718,48 @@ delete_workflow(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a workflow version.
+%%
+%% Deleting a workflow version doesn't affect any ongoing runs that are
+%% using the workflow version.
+%%
+%% For more information, see Workflow versioning in Amazon Web Services
+%% HealthOmics:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html in the
+%% Amazon Web Services HealthOmics User Guide.
+-spec delete_workflow_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workflow_version_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_workflow_version_errors(), tuple()}.
+delete_workflow_version(Client, VersionName, WorkflowId, Input) ->
+    delete_workflow_version(Client, VersionName, WorkflowId, Input, []).
+
+-spec delete_workflow_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workflow_version_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_workflow_version_errors(), tuple()}.
+delete_workflow_version(Client, VersionName, WorkflowId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workflow/", aws_util:encode_uri(WorkflowId), "/version/", aws_util:encode_uri(VersionName), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets information about an annotation import job.
 -spec get_annotation_import_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_annotation_import_response(), tuple()} |
@@ -4539,8 +4834,7 @@ get_annotation_store(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Retrieves the metadata for an annotation store version.
+%% @doc Retrieves the metadata for an annotation store version.
 -spec get_annotation_store_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_annotation_store_version_response(), tuple()} |
     {error, any()} |
@@ -4929,13 +5223,12 @@ get_reference_store(Client, Id, QueryMap, HeadersMap, Options0)
 %% If a workflow is shared with you, you cannot export information about the
 %% run.
 %%
-%% HealthOmics stores a fixed number of runs that are available to the
-%% console and API. If
-%% GetRun doesn't return the requested run, you can find run logs
-%% for all runs in the CloudWatch logs. For more information about viewing
-%% the run logs, see CloudWatch logs:
-%% https://docs.aws.amazon.com/omics/latest/dev/cloudwatch-logs.html
-%% in the AWS HealthOmics User Guide.
+%% Amazon Web Services HealthOmics stores a fixed number of runs that are
+%% available to the console and API. If GetRun doesn't return the
+%% requested run, you can find run logs for all runs in the CloudWatch logs.
+%% For more information about viewing the run logs, see CloudWatch logs:
+%% https://docs.aws.amazon.com/omics/latest/dev/cloudwatch-logs.html in the
+%% in the Amazon Web Services HealthOmics User Guide.
 -spec get_run(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_response(), tuple()} |
     {error, any()} |
@@ -4978,9 +5271,10 @@ get_run(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieve the details for the specified run cache.
 %%
-%% For more information, see Call caching for HealthOmics runs:
+%% For more information, see Call caching for Amazon Web Services HealthOmics
+%% runs:
 %% https://docs.aws.amazon.com/omics/latest/dev/workflow-call-caching.html in
-%% the AWS HealthOmics User Guide.
+%% the Amazon Web Services HealthOmics User Guide.
 -spec get_run_cache(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_cache_response(), tuple()} |
     {error, any()} |
@@ -5321,6 +5615,54 @@ get_workflow(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about a workflow version.
+%%
+%% For more information, see Workflow versioning in Amazon Web Services
+%% HealthOmics:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html in the
+%% Amazon Web Services HealthOmics User Guide.
+-spec get_workflow_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_workflow_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_version_errors(), tuple()}.
+get_workflow_version(Client, VersionName, WorkflowId)
+  when is_map(Client) ->
+    get_workflow_version(Client, VersionName, WorkflowId, #{}, #{}).
+
+-spec get_workflow_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_workflow_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_version_errors(), tuple()}.
+get_workflow_version(Client, VersionName, WorkflowId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_workflow_version(Client, VersionName, WorkflowId, QueryMap, HeadersMap, []).
+
+-spec get_workflow_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_workflow_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_version_errors(), tuple()}.
+get_workflow_version(Client, VersionName, WorkflowId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workflow/", aws_util:encode_uri(WorkflowId), "/version/", aws_util:encode_uri(VersionName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"export">>, maps:get(<<"export">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)},
+        {<<"workflowOwnerId">>, maps:get(<<"workflowOwnerId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of annotation import jobs.
 -spec list_annotation_import_jobs(aws_client:aws_client(), list_annotation_import_jobs_request()) ->
     {ok, list_annotation_import_jobs_response(), tuple()} |
@@ -5357,8 +5699,7 @@ list_annotation_import_jobs(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists the versions of an annotation store.
+%% @doc Lists the versions of an annotation store.
 -spec list_annotation_store_versions(aws_client:aws_client(), binary() | list(), list_annotation_store_versions_request()) ->
     {ok, list_annotation_store_versions_response(), tuple()} |
     {error, any()} |
@@ -5888,14 +6229,13 @@ list_run_tasks(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of runs.
 %%
-%% HealthOmics stores a fixed number of runs that are available to the
-%% console and API. If
-%% the ListRuns response doesn't include specific runs that you expected,
-%% you can find run logs
-%% for all runs in the CloudWatch logs. For more information about viewing
-%% the run logs, see CloudWatch logs:
-%% https://docs.aws.amazon.com/omics/latest/dev/cloudwatch-logs.html
-%% in the AWS HealthOmics User Guide.
+%% Amazon Web Services HealthOmics stores a fixed number of runs that are
+%% available to the console and API. If the ListRuns response doesn't
+%% include specific runs that you expected, you can find run logs for all
+%% runs in the CloudWatch logs. For more information about viewing the run
+%% logs, see CloudWatch logs:
+%% https://docs.aws.amazon.com/omics/latest/dev/cloudwatch-logs.html in the
+%% Amazon Web Services HealthOmics User Guide.
 -spec list_runs(aws_client:aws_client()) ->
     {ok, list_runs_response(), tuple()} |
     {error, any()} |
@@ -5978,8 +6318,7 @@ list_sequence_stores(Client, Input0, Options0) ->
 
 %% @doc Retrieves the resource shares associated with an account.
 %%
-%% Use the filter parameter to
-%% retrieve a specific subset of the shares.
+%% Use the filter parameter to retrieve a specific subset of the shares.
 -spec list_shares(aws_client:aws_client(), list_shares_request()) ->
     {ok, list_shares_response(), tuple()} |
     {error, any()} |
@@ -6124,6 +6463,55 @@ list_variant_stores(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the workflow versions for the specified workflow.
+%%
+%% For more information, see Workflow versioning in Amazon Web Services
+%% HealthOmics:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html in the
+%% Amazon Web Services HealthOmics User Guide.
+-spec list_workflow_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_workflow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_workflow_versions_errors(), tuple()}.
+list_workflow_versions(Client, WorkflowId)
+  when is_map(Client) ->
+    list_workflow_versions(Client, WorkflowId, #{}, #{}).
+
+-spec list_workflow_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_workflow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_workflow_versions_errors(), tuple()}.
+list_workflow_versions(Client, WorkflowId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_workflow_versions(Client, WorkflowId, QueryMap, HeadersMap, []).
+
+-spec list_workflow_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_workflow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_workflow_versions_errors(), tuple()}.
+list_workflow_versions(Client, WorkflowId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workflow/", aws_util:encode_uri(WorkflowId), "/version"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)},
+        {<<"workflowOwnerId">>, maps:get(<<"workflowOwnerId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of workflows.
 -spec list_workflows(aws_client:aws_client()) ->
     {ok, list_workflows_response(), tuple()} |
@@ -6238,8 +6626,8 @@ start_annotation_import_job(Client, Input0, Options0) ->
 
 %% @doc Activates an archived read set.
 %%
-%% To reduce storage charges, Amazon Omics archives unused read
-%% sets after 30 days.
+%% To reduce storage charges, Amazon Omics archives unused read sets after 30
+%% days.
 -spec start_read_set_activation_job(aws_client:aws_client(), binary() | list(), start_read_set_activation_job_request()) ->
     {ok, start_read_set_activation_job_response(), tuple()} |
     {error, any()} |
@@ -6375,30 +6763,19 @@ start_reference_import_job(Client, ReferenceStoreId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a workflow run.
+%% @doc Starts a new run or duplicates an existing run.
 %%
-%% To duplicate a run, specify the run's ID and a role ARN. The
-%% remaining parameters are copied from the previous run.
+%% For a new run, specify a unique `requestId', the `workflowId', and
+%% a role ARN. If you're using static run storage (the default), specify
+%% the required `storageCapacity'.
 %%
-%% StartRun will not support re-run for a workflow that is shared with you.
+%% You duplicate a run by specifing a unique `requestId', the `runID'
+%% of the run to duplicate, and a role ARN.
 %%
-%% HealthOmics stores a fixed number of runs that are available to the
-%% console and API.
-%% By default, HealthOmics doesn't any remove any runs. If HealthOmics
-%% reaches the maximum
-%% number of runs, you must manually remove runs. To have older runs removed
-%% automatically,
-%% set the retention mode to `REMOVE'.
-%%
-%% By default, the run uses STATIC storage. For STATIC storage, set the
-%% `storageCapacity' field.
-%% You can set the storage type to DYNAMIC. You do not set
-%% `storageCapacity',
-%% because HealthOmics dynamically scales the storage up or down as required.
-%% For more information about static and dynamic storage, see Running
-%% workflows:
-%% https://docs.aws.amazon.com/omics/latest/dev/Using-workflows.html
-%% in the AWS HealthOmics User Guide.
+%% For more information about the optional parameters in the StartRun
+%% request, see Starting a run:
+%% https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html in the
+%% Amazon Web Services HealthOmics User Guide.
 -spec start_run(aws_client:aws_client(), start_run_request()) ->
     {ok, start_run_response(), tuple()} |
     {error, any()} |
@@ -6569,8 +6946,7 @@ update_annotation_store(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Updates the description of an annotation store version.
+%% @doc Updates the description of an annotation store version.
 -spec update_annotation_store_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_annotation_store_version_request()) ->
     {ok, update_annotation_store_version_response(), tuple()} |
     {error, any()} |
@@ -6740,7 +7116,11 @@ update_variant_store(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a workflow.
+%% @doc Updates information about a workflow.
+%%
+%% For more information, see Update a private workflow:
+%% https://docs.aws.amazon.com/omics/latest/dev/update-private-workflow.html
+%% in the Amazon Web Services HealthOmics User Guide.
 -spec update_workflow(aws_client:aws_client(), binary() | list(), update_workflow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6774,10 +7154,49 @@ update_workflow(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates information about the workflow version.
+%%
+%% For more information, see Workflow versioning in Amazon Web Services
+%% HealthOmics:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html in the
+%% Amazon Web Services HealthOmics User Guide.
+-spec update_workflow_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_workflow_version_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_workflow_version_errors(), tuple()}.
+update_workflow_version(Client, VersionName, WorkflowId, Input) ->
+    update_workflow_version(Client, VersionName, WorkflowId, Input, []).
+
+-spec update_workflow_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_workflow_version_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_workflow_version_errors(), tuple()}.
+update_workflow_version(Client, VersionName, WorkflowId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workflow/", aws_util:encode_uri(WorkflowId), "/version/", aws_util:encode_uri(VersionName), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This operation uploads a specific part of a read set.
 %%
-%% If you upload a new part using a previously used part number,
-%% the previously uploaded part will be overwritten.
+%% If you upload a new part using a previously used part number, the
+%% previously uploaded part will be overwritten.
 -spec upload_read_set_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_read_set_part_request()) ->
     {ok, upload_read_set_part_response(), tuple()} |
     {error, any()} |
