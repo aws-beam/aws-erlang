@@ -12271,6 +12271,7 @@
 %% model_package_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelLifeCycle">> => model_life_cycle(),
 %%   <<"ModelPackageArn">> => string(),
 %%   <<"ModelPackageDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),

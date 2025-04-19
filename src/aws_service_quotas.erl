@@ -9,6 +9,11 @@
 %% create in your Amazon Web Services account. For more information, see the
 %% Service Quotas User Guide:
 %% https://docs.aws.amazon.com/servicequotas/latest/userguide/.
+%%
+%% You need Amazon Web Services CLI version 2.13.20 or higher to view and
+%% manage resource-level quotas such as
+%% ```
+%% Instances per domain''' for Amazon OpenSearch Service.
 -module(aws_service_quotas).
 
 -export([associate_service_quota_template/2,
@@ -315,7 +320,8 @@
 %%   <<"ContextId">> => string(),
 %%   <<"DesiredValue">> := float(),
 %%   <<"QuotaCode">> := string(),
-%%   <<"ServiceCode">> := string()
+%%   <<"ServiceCode">> := string(),
+%%   <<"SupportCaseAllowed">> => boolean()
 %% }
 -type request_service_quota_increase_request() :: #{binary() => any()}.
 
@@ -386,6 +392,7 @@
 %% Example:
 %% service_quota() :: #{
 %%   <<"Adjustable">> => boolean(),
+%%   <<"Description">> => string(),
 %%   <<"ErrorReason">> => error_reason(),
 %%   <<"GlobalQuota">> => boolean(),
 %%   <<"Period">> => quota_period(),
@@ -814,7 +821,8 @@ get_requested_service_quota_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRequestedServiceQuotaChange">>, Input, Options).
 
-%% @doc Retrieves the applied quota value for the specified quota.
+%% @doc Retrieves the applied quota value for the specified account-level or
+%% resource-level quota.
 %%
 %% For some quotas, only the
 %% default values are available. If the applied quota value is not available
@@ -856,7 +864,7 @@ get_service_quota_increase_request_from_template(Client, Input, Options)
     request(Client, <<"GetServiceQuotaIncreaseRequestFromTemplate">>, Input, Options).
 
 %% @doc Lists the default values for the quotas for the specified Amazon Web
-%% Service.
+%% Services service.
 %%
 %% A default
 %% value does not reflect any quota increases.
@@ -877,7 +885,11 @@ list_aws_default_service_quotas(Client, Input, Options)
     request(Client, <<"ListAWSDefaultServiceQuotas">>, Input, Options).
 
 %% @doc Retrieves the quota increase requests for the specified Amazon Web
-%% Service.
+%% Services service.
+%%
+%% Filter responses to return quota requests at
+%% either the account level, resource level, or all levels. Responses include
+%% any open or closed requests within 90 days.
 -spec list_requested_service_quota_change_history(aws_client:aws_client(), list_requested_service_quota_change_history_request()) ->
     {ok, list_requested_service_quota_change_history_response(), tuple()} |
     {error, any()} |
@@ -895,6 +907,9 @@ list_requested_service_quota_change_history(Client, Input, Options)
     request(Client, <<"ListRequestedServiceQuotaChangeHistory">>, Input, Options).
 
 %% @doc Retrieves the quota increase requests for the specified quota.
+%%
+%% Filter responses to return quota requests at either the
+%% account level, resource level, or all levels.
 -spec list_requested_service_quota_change_history_by_quota(aws_client:aws_client(), list_requested_service_quota_change_history_by_quota_request()) ->
     {ok, list_requested_service_quota_change_history_by_quota_response(), tuple()} |
     {error, any()} |
@@ -929,12 +944,15 @@ list_service_quota_increase_requests_in_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotaIncreaseRequestsInTemplate">>, Input, Options).
 
-%% @doc Lists the applied quota values for the specified Amazon Web Service.
+%% @doc Lists the applied quota values for the specified Amazon Web Services
+%% service.
 %%
 %% For some quotas, only
 %% the default values are available. If the applied quota value is not
 %% available for a
-%% quota, the quota is not retrieved.
+%% quota, the quota is not retrieved. Filter responses to return applied
+%% quota values at either the account level,
+%% resource level, or all levels.
 -spec list_service_quotas(aws_client:aws_client(), list_service_quotas_request()) ->
     {ok, list_service_quotas_response(), tuple()} |
     {error, any()} |
@@ -951,8 +969,8 @@ list_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotas">>, Input, Options).
 
-%% @doc Lists the names and codes for the Amazon Web Services integrated with
-%% Service Quotas.
+%% @doc Lists the names and codes for the Amazon Web Services services
+%% integrated with Service Quotas.
 -spec list_services(aws_client:aws_client(), list_services_request()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
@@ -1003,7 +1021,8 @@ put_service_quota_increase_request_into_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutServiceQuotaIncreaseRequestIntoTemplate">>, Input, Options).
 
-%% @doc Submits a quota increase request for the specified quota.
+%% @doc Submits a quota increase request for the specified quota at the
+%% account or resource level.
 -spec request_service_quota_increase(aws_client:aws_client(), request_service_quota_increase_request()) ->
     {ok, request_service_quota_increase_response(), tuple()} |
     {error, any()} |

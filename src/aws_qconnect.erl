@@ -318,6 +318,13 @@
 
 
 %% Example:
+%% message_configuration() :: #{
+%%   <<"generateFillerMessage">> => [boolean()]
+%% }
+-type message_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_a_i_agents_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -713,6 +720,15 @@
 %% Example:
 %% delete_knowledge_base_response() :: #{}
 -type delete_knowledge_base_response() :: #{}.
+
+
+%% Example:
+%% generative_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string(),
+%%   <<"references">> => list(data_summary()())
+%% }
+-type generative_chunk_data_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1640,6 +1656,7 @@
 %% Example:
 %% get_recommendations_request() :: #{
 %%   <<"maxResults">> => integer(),
+%%   <<"nextChunkToken">> => string(),
 %%   <<"waitTimeSeconds">> => integer()
 %% }
 -type get_recommendations_request() :: #{binary() => any()}.
@@ -1955,6 +1972,7 @@
 %%   <<"description">> => string(),
 %%   <<"integrationConfiguration">> => session_integration_configuration(),
 %%   <<"name">> => string(),
+%%   <<"origin">> => string(),
 %%   <<"sessionArn">> => string(),
 %%   <<"sessionId">> => string(),
 %%   <<"tagFilter">> => list(),
@@ -2580,6 +2598,7 @@
 %% Example:
 %% send_message_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"configuration">> => message_configuration(),
 %%   <<"conversationContext">> => conversation_context(),
 %%   <<"message">> := message_input(),
 %%   <<"type">> := string()
@@ -2810,6 +2829,7 @@
 
 %% Example:
 %% send_message_response() :: #{
+%%   <<"configuration">> => message_configuration(),
 %%   <<"nextMessageToken">> => string(),
 %%   <<"requestMessageId">> => string()
 %% }
@@ -3250,7 +3270,8 @@
 -type delete_content_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_content_association_errors() ::
     validation_exception() | 
@@ -5442,6 +5463,7 @@ get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, Option
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextChunkToken">>, maps:get(<<"nextChunkToken">>, QueryMap, undefined)},
         {<<"waitTimeSeconds">>, maps:get(<<"waitTimeSeconds">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
