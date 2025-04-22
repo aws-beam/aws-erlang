@@ -113,6 +113,14 @@
 -type delete_budget_action_request() :: #{binary() => any()}.
 
 %% Example:
+%% expression_dimension_values() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string()())
+%% }
+-type expression_dimension_values() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"ResourceTags">> := list(resource_tag()())
@@ -187,6 +195,14 @@
 -type update_subscriber_response() :: #{binary() => any()}.
 
 %% Example:
+%% tag_values() :: #{
+%%   <<"Key">> => string(),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string()())
+%% }
+-type tag_values() :: #{binary() => any()}.
+
+%% Example:
 %% action_threshold() :: #{
 %%   <<"ActionThresholdType">> => list(any()),
 %%   <<"ActionThresholdValue">> => float()
@@ -232,7 +248,8 @@
 %% describe_budgets_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"ShowFilterExpression">> => boolean()
 %% }
 -type describe_budgets_request() :: #{binary() => any()}.
 
@@ -465,7 +482,8 @@
 %% Example:
 %% describe_budget_request() :: #{
 %%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string()
+%%   <<"BudgetName">> := string(),
+%%   <<"ShowFilterExpression">> => boolean()
 %% }
 -type describe_budget_request() :: #{binary() => any()}.
 
@@ -508,6 +526,14 @@
 -type action() :: #{binary() => any()}.
 
 %% Example:
+%% cost_category_values() :: #{
+%%   <<"Key">> => string(),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string()())
+%% }
+-type cost_category_values() :: #{binary() => any()}.
+
+%% Example:
 %% budget() :: #{
 %%   <<"AutoAdjustData">> => auto_adjust_data(),
 %%   <<"BudgetLimit">> => spend(),
@@ -516,7 +542,9 @@
 %%   <<"CalculatedSpend">> => calculated_spend(),
 %%   <<"CostFilters">> => map(),
 %%   <<"CostTypes">> => cost_types(),
+%%   <<"FilterExpression">> => expression(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Metrics">> => list(list(any())()),
 %%   <<"PlannedBudgetLimits">> => map(),
 %%   <<"TimePeriod">> => time_period(),
 %%   <<"TimeUnit">> => list(any())
@@ -618,6 +646,17 @@
 %%   <<"SsmActionDefinition">> => ssm_action_definition()
 %% }
 -type definition() :: #{binary() => any()}.
+
+%% Example:
+%% expression() :: #{
+%%   <<"And">> => list(expression()()),
+%%   <<"CostCategories">> => cost_category_values(),
+%%   <<"Dimensions">> => expression_dimension_values(),
+%%   <<"Not">> => expression(),
+%%   <<"Or">> => list(expression()()),
+%%   <<"Tags">> => tag_values()
+%% }
+-type expression() :: #{binary() => any()}.
 
 %% Example:
 %% budgeted_and_actual_amounts() :: #{
@@ -988,11 +1027,22 @@
 %% @doc Creates a budget and, if included, notifications and subscribers.
 %%
 %% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present
-%% in the syntax at one time. Use the syntax that matches your case. The
-%% Request Syntax section shows the `BudgetLimit' syntax. For
-%% `PlannedBudgetLimits', see the Examples:
+%% in
+%% the syntax at one time. Use the syntax that matches your use case. The
+%% Request Syntax
+%% section shows the `BudgetLimit' syntax. For `PlannedBudgetLimits',
+%% see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples
 %% section.
+%%
+%% Similarly, only one set of filter and metric selections can be present in
+%% the syntax
+%% at one time. Either `FilterExpression' and `Metrics' or
+%% `CostFilters' and `CostTypes', not both or a different
+%% combination. We recommend using `FilterExpression' and `Metrics'
+%% as they provide more flexible and powerful filtering capabilities. The
+%% Request Syntax
+%% section shows the `FilterExpression'/`Metrics' syntax.
 -spec create_budget(aws_client:aws_client(), create_budget_request()) ->
     {ok, create_budget_response(), tuple()} |
     {error, any()} |
@@ -1411,11 +1461,22 @@ untag_resource(Client, Input, Options)
 %% usage data to use for forecasting.
 %%
 %% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present
-%% in the syntax at one time. Use the syntax that matches your case. The
-%% Request Syntax section shows the `BudgetLimit' syntax. For
-%% `PlannedBudgetLimits', see the Examples:
+%% in
+%% the syntax at one time. Use the syntax that matches your case. The Request
+%% Syntax
+%% section shows the `BudgetLimit' syntax. For `PlannedBudgetLimits',
+%% see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples
 %% section.
+%%
+%% Similarly, only one set of filter and metric selections can be present in
+%% the syntax
+%% at one time. Either `FilterExpression' and `Metrics' or
+%% `CostFilters' and `CostTypes', not both or a different
+%% combination. We recommend using `FilterExpression' and `Metrics'
+%% as they provide more flexible and powerful filtering capabilities. The
+%% Request Syntax
+%% section shows the `FilterExpression'/`Metrics' syntax.
 -spec update_budget(aws_client:aws_client(), update_budget_request()) ->
     {ok, update_budget_response(), tuple()} |
     {error, any()} |

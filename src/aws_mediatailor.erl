@@ -362,6 +362,13 @@
 
 
 %% Example:
+%% traffic_shaping_retrieval_window() :: #{
+%%   <<"RetrievalWindowDurationSeconds">> => integer()
+%% }
+-type traffic_shaping_retrieval_window() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_source_location_response() :: #{
 %%   <<"AccessConfiguration">> => access_configuration(),
 %%   <<"Arn">> => string(),
@@ -381,6 +388,16 @@
 %%   <<"BaseUrl">> => string()
 %% }
 -type default_segment_delivery_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurring_retrieval() :: #{
+%%   <<"DelayAfterAvailEndSeconds">> => integer(),
+%%   <<"DynamicVariables">> => map(),
+%%   <<"TrafficShapingRetrievalWindow">> => traffic_shaping_retrieval_window(),
+%%   <<"TrafficShapingType">> => list(any())
+%% }
+-type recurring_retrieval() :: #{binary() => any()}.
 
 
 %% Example:
@@ -467,7 +484,9 @@
 %%   <<"Consumption">> => prefetch_consumption(),
 %%   <<"Name">> => string(),
 %%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
 %%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"ScheduleType">> => list(any()),
 %%   <<"StreamId">> => string()
 %% }
 -type get_prefetch_schedule_response() :: #{binary() => any()}.
@@ -605,7 +624,9 @@
 %%   <<"Consumption">> => prefetch_consumption(),
 %%   <<"Name">> => string(),
 %%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
 %%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"ScheduleType">> => list(any()),
 %%   <<"StreamId">> => string()
 %% }
 -type create_prefetch_schedule_response() :: #{binary() => any()}.
@@ -723,7 +744,9 @@
 %% prefetch_retrieval() :: #{
 %%   <<"DynamicVariables">> => map(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TrafficShapingRetrievalWindow">> => traffic_shaping_retrieval_window(),
+%%   <<"TrafficShapingType">> => list(any())
 %% }
 -type prefetch_retrieval() :: #{binary() => any()}.
 
@@ -746,8 +769,10 @@
 
 %% Example:
 %% create_prefetch_schedule_request() :: #{
-%%   <<"Consumption">> := prefetch_consumption(),
-%%   <<"Retrieval">> := prefetch_retrieval(),
+%%   <<"Consumption">> => prefetch_consumption(),
+%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
+%%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"ScheduleType">> => list(any()),
 %%   <<"StreamId">> => string()
 %% }
 -type create_prefetch_schedule_request() :: #{binary() => any()}.
@@ -1126,6 +1151,16 @@
 
 
 %% Example:
+%% recurring_prefetch_configuration() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"RecurringConsumption">> => recurring_consumption(),
+%%   <<"RecurringRetrieval">> => recurring_retrieval(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type recurring_prefetch_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_alerts_response() :: #{
 %%   <<"Items">> => list(alert()()),
 %%   <<"NextToken">> => string()
@@ -1167,6 +1202,7 @@
 %% list_prefetch_schedules_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"ScheduleType">> => list(any()),
 %%   <<"StreamId">> => string()
 %% }
 -type list_prefetch_schedules_request() :: #{binary() => any()}.
@@ -1185,6 +1221,14 @@
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurring_consumption() :: #{
+%%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()()),
+%%   <<"RetrievedAdExpirationSeconds">> => integer()
+%% }
+-type recurring_consumption() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1356,7 +1400,9 @@
 %%   <<"Consumption">> => prefetch_consumption(),
 %%   <<"Name">> => string(),
 %%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
 %%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"ScheduleType">> => list(any()),
 %%   <<"StreamId">> => string()
 %% }
 -type prefetch_schedule() :: #{binary() => any()}.

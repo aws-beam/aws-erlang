@@ -1438,7 +1438,7 @@
 
 %% @doc Creates a Firehose stream.
 %%
-%% By default, you can create up to 50 Firehose streams per Amazon Web
+%% By default, you can create up to 5,000 Firehose streams per Amazon Web
 %% Services
 %% Region.
 %%

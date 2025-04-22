@@ -845,14 +845,6 @@ list_managed_resources(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all active and completed zonal shifts in Amazon Route 53
 %% Application Recovery Controller in your Amazon Web Services account in
 %% this Amazon Web Services Region.
-%%
-%% `ListZonalShifts' returns customer-initiated zonal shifts, as well as
-%% practice run zonal shifts that ARC started on
-%% your behalf for zonal autoshift.
-%%
-%% For more information about listing
-%% autoshifts, see &quot;&gt;ListAutoshifts:
-%% https://docs.aws.amazon.com/arc-zonal-shift/latest/api/API_ListAutoshifts.html.
 -spec list_zonal_shifts(aws_client:aws_client()) ->
     {ok, list_zonal_shifts_response(), tuple()} |
     {error, any()} |

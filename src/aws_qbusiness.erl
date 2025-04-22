@@ -3,37 +3,29 @@
 
 %% @doc This is the Amazon Q Business API Reference.
 %%
-%% Amazon Q Business is a fully
-%% managed, generative-AI powered enterprise chat assistant that you can
-%% deploy within your
-%% organization. Amazon Q Business enhances employee productivity by
-%% supporting key tasks such
-%% as question-answering, knowledge discovery, writing email messages,
-%% summarizing text,
-%% drafting document outlines, and brainstorming ideas. Users ask questions
-%% of
-%% Amazon Q Business and get answers that are presented in a conversational
-%% manner. For an
-%% introduction to the service, see the
-%% Amazon Q Business User Guide
-%% : https://docs.aws.amazon.com/amazonq/latest/business-use-dg/what-is.html.
+%% Amazon Q Business is a fully managed, generative-AI powered enterprise
+%% chat assistant that you can deploy within your organization. Amazon Q
+%% Business enhances employee productivity by supporting key tasks such as
+%% question-answering, knowledge discovery, writing email messages,
+%% summarizing text, drafting document outlines, and brainstorming ideas.
+%% Users ask questions of Amazon Q Business and get answers that are
+%% presented in a conversational manner. For an introduction to the service,
+%% see the Amazon Q Business User Guide :
+%% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/what-is.html.
 %%
 %% For an overview of the Amazon Q Business APIs, see Overview of Amazon Q
 %% Business API operations:
 %% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/api-ref.html#api-overview.
 %%
-%% For information about the IAM access control permissions you need to
-%% use this API, see IAM roles for Amazon Q Business:
+%% For information about the IAM access control permissions you need to use
+%% this API, see IAM roles for Amazon Q Business:
 %% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/iam-roles.html
-%% in the
-%% Amazon Q Business User Guide.
+%% in the Amazon Q Business User Guide.
 %%
 %% The following resources provide additional information about using the
-%% Amazon Q Business
-%% API:
+%% Amazon Q Business API:
 %%
-%% Setting up for
-%% Amazon Q Business:
+%% Setting up for Amazon Q Business:
 %% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/setting-up.html
 %%
 %% Amazon Q Business CLI Reference:
@@ -55,6 +47,9 @@
          chat/4,
          chat_sync/3,
          chat_sync/4,
+         check_document_access/5,
+         check_document_access/7,
+         check_document_access/8,
          create_application/2,
          create_application/3,
          create_data_accessor/3,
@@ -486,6 +481,14 @@
 %% }
 -type conversation_source() :: #{binary() => any()}.
 
+
+%% Example:
+%% document_acl() :: #{
+%%   <<"allowlist">> => document_acl_membership(),
+%%   <<"denyList">> => document_acl_membership()
+%% }
+-type document_acl() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
@@ -778,6 +781,16 @@
 
 
 %% Example:
+%% check_document_access_response() :: #{
+%%   <<"documentAcl">> => document_acl(),
+%%   <<"hasAccess">> => [boolean()],
+%%   <<"userAliases">> => list(associated_user()()),
+%%   <<"userGroups">> => list(associated_group()())
+%% }
+-type check_document_access_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_retriever_request() :: #{
 %%   <<"configuration">> => list(),
 %%   <<"displayName">> => string(),
@@ -833,6 +846,14 @@
 %% Example:
 %% delete_index_response() :: #{}
 -type delete_index_response() :: #{}.
+
+
+%% Example:
+%% document_acl_membership() :: #{
+%%   <<"conditions">> => list(document_acl_condition()()),
+%%   <<"memberRelation">> => list(any())
+%% }
+-type document_acl_membership() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1035,6 +1056,14 @@
 %% }
 -type inline_document_enrichment_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% associated_user() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type associated_user() :: #{binary() => any()}.
+
 %% Example:
 %% get_user_request() :: #{}
 -type get_user_request() :: #{}.
@@ -1227,6 +1256,14 @@
 %% Example:
 %% disassociate_permission_response() :: #{}
 -type disassociate_permission_response() :: #{}.
+
+
+%% Example:
+%% associated_group() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type associated_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1531,6 +1568,15 @@
 %%   <<"policy">> => string()
 %% }
 -type get_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_acl_condition() :: #{
+%%   <<"groups">> => list(document_acl_group()()),
+%%   <<"memberRelation">> => list(any()),
+%%   <<"users">> => list(document_acl_user()())
+%% }
+-type document_acl_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2228,6 +2274,13 @@
 
 
 %% Example:
+%% check_document_access_request() :: #{
+%%   <<"dataSourceId">> => string()
+%% }
+-type check_document_access_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% retriever() :: #{
 %%   <<"applicationId">> => string(),
 %%   <<"displayName">> => string(),
@@ -2373,6 +2426,14 @@
 %% }
 -type get_data_source_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% document_acl_group() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type document_acl_group() :: #{binary() => any()}.
+
 %% Example:
 %% get_application_request() :: #{}
 -type get_application_request() :: #{}.
@@ -2426,6 +2487,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_acl_user() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type document_acl_user() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2613,6 +2682,13 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     license_not_found_exception().
+
+-type check_document_access_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type create_application_errors() ::
     throttling_exception() | 
@@ -3163,9 +3239,9 @@
 %% application, allowing cross-account access for an ISV.
 %%
 %% This operation creates a new policy statement for the specified Amazon Q
-%% Business application.
-%% The policy statement defines the IAM actions that the ISV is allowed to
-%% perform on the Amazon Q Business application's resources.
+%% Business application. The policy statement defines the IAM actions that
+%% the ISV is allowed to perform on the Amazon Q Business application's
+%% resources.
 -spec associate_permission(aws_client:aws_client(), binary() | list(), associate_permission_request()) ->
     {ok, associate_permission_response(), tuple()} |
     {error, any()} |
@@ -3203,8 +3279,7 @@ associate_permission(Client, ApplicationId, Input0, Options0) ->
 %% `BatchPutDocument' API from an Amazon Q Business index.
 %%
 %% You can see the progress of the deletion, and any error messages related
-%% to the
-%% process, by using CloudWatch.
+%% to the process, by using CloudWatch.
 -spec batch_delete_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_document_request()) ->
     {ok, batch_delete_document_response(), tuple()} |
     {error, any()} |
@@ -3243,18 +3318,15 @@ batch_delete_document(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% You use this API to:
 %%
 %% ingest your structured and unstructured documents and documents stored in
-%% an
-%% Amazon S3 bucket into an Amazon Q Business index.
+%% an Amazon S3 bucket into an Amazon Q Business index.
 %%
 %% add custom attributes to documents in an Amazon Q Business index.
 %%
 %% attach an access control list to the documents added to an Amazon Q
-%% Business
-%% index.
+%% Business index.
 %%
 %% You can see the progress of the deletion, and any error messages related
-%% to the
-%% process, by using CloudWatch.
+%% to the process, by using CloudWatch.
 -spec batch_put_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_put_document_request()) ->
     {ok, batch_put_document_response(), tuple()} |
     {error, any()} |
@@ -3289,12 +3361,10 @@ batch_put_document(Client, ApplicationId, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Unsubscribes a user or a group from their pricing tier in an Amazon Q
-%% Business
-%% application.
+%% Business application.
 %%
 %% An unsubscribed user or group loses all Amazon Q Business feature access
-%% at the
-%% start of next month.
+%% at the start of next month.
 -spec cancel_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_subscription_request()) ->
     {ok, cancel_subscription_response(), tuple()} |
     {error, any()} |
@@ -3403,31 +3473,71 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Verifies if a user has access permissions for a specified document
+%% and returns the actual ACL attached to the document.
+%%
+%% Resolves user access on the document via user aliases and groups when
+%% verifying user access.
+-spec check_document_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, check_document_access_response(), tuple()} |
+    {error, any()} |
+    {error, check_document_access_errors(), tuple()}.
+check_document_access(Client, ApplicationId, DocumentId, IndexId, UserId)
+  when is_map(Client) ->
+    check_document_access(Client, ApplicationId, DocumentId, IndexId, UserId, #{}, #{}).
+
+-spec check_document_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, check_document_access_response(), tuple()} |
+    {error, any()} |
+    {error, check_document_access_errors(), tuple()}.
+check_document_access(Client, ApplicationId, DocumentId, IndexId, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    check_document_access(Client, ApplicationId, DocumentId, IndexId, UserId, QueryMap, HeadersMap, []).
+
+-spec check_document_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, check_document_access_response(), tuple()} |
+    {error, any()} |
+    {error, check_document_access_errors(), tuple()}.
+check_document_access(Client, ApplicationId, DocumentId, IndexId, UserId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/index/", aws_util:encode_uri(IndexId), "/users/", aws_util:encode_uri(UserId), "/documents/", aws_util:encode_uri(DocumentId), "/check-document-access"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"dataSourceId">>, maps:get(<<"dataSourceId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Creates an Amazon Q Business application.
 %%
 %% There are new tiers for Amazon Q Business. Not all features in Amazon Q
-%% Business Pro are
-%% also available in Amazon Q Business Lite. For information on what's
-%% included in
-%% Amazon Q Business Lite and what's included in Amazon Q Business Pro,
-%% see Amazon Q Business tiers:
+%% Business Pro are also available in Amazon Q Business Lite. For information
+%% on what's included in Amazon Q Business Lite and what's included
+%% in Amazon Q Business Pro, see Amazon Q Business tiers:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/tiers.html#user-sub-tiers.
-%% You must use the Amazon Q Business console to assign
-%% subscription tiers to users.
+%% You must use the Amazon Q Business console to assign subscription tiers to
+%% users.
 %%
 %% An Amazon Q Apps service linked role will be created if it's absent in
-%% the
-%% Amazon Web Services account when `QAppsConfiguration' is enabled in
-%% the request. For more information, see Using
-%% service-linked roles for Q Apps:
+%% the Amazon Web Services account when `QAppsConfiguration' is enabled
+%% in the request. For more information, see Using service-linked roles for Q
+%% Apps:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/using-service-linked-roles-qapps.html.
 %%
 %% When you create an application, Amazon Q Business may securely transmit
-%% data for
-%% processing from your selected Amazon Web Services region, but within your
-%% geography.
-%% For more information, see Cross region
-%% inference in Amazon Q Business:
+%% data for processing from your selected Amazon Web Services region, but
+%% within your geography. For more information, see Cross region inference in
+%% Amazon Q Business:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/cross-region-inference.html.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
@@ -3466,14 +3576,12 @@ create_application(Client, Input0, Options0) ->
 %% Business application.
 %%
 %% The data accessor is an entity that represents the ISV's access to the
-%% Amazon Q Business application's data.
-%% It includes the IAM role ARN for the ISV, a friendly name, and a set of
-%% action configurations that define the
-%% specific actions the ISV is allowed to perform and any associated data
-%% filters. When the data accessor is created,
-%% an IAM Identity Center application is also created to manage the ISV's
-%% identity and authentication for
-%% accessing the Amazon Q Business application.
+%% Amazon Q Business application's data. It includes the IAM role ARN for
+%% the ISV, a friendly name, and a set of action configurations that define
+%% the specific actions the ISV is allowed to perform and any associated data
+%% filters. When the data accessor is created, an IAM Identity Center
+%% application is also created to manage the ISV's identity and
+%% authentication for accessing the Amazon Q Business application.
 -spec create_data_accessor(aws_client:aws_client(), binary() | list(), create_data_accessor_request()) ->
     {ok, create_data_accessor_response(), tuple()} |
     {error, any()} |
@@ -3510,9 +3618,8 @@ create_data_accessor(Client, ApplicationId, Input0, Options0) ->
 %% @doc Creates a data source connector for an Amazon Q Business application.
 %%
 %% `CreateDataSource' is a synchronous operation. The operation returns
-%% 200 if
-%% the data source was successfully created. Otherwise, an exception is
-%% raised.
+%% 200 if the data source was successfully created. Otherwise, an exception
+%% is raised.
 -spec create_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
@@ -3553,12 +3660,9 @@ create_data_source(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% to `ACTIVE' when the index is ready to use.
 %%
 %% Once the index is active, you can index your documents using the
-%% `BatchPutDocument'
-%% :
+%% `BatchPutDocument' :
 %% https://docs.aws.amazon.com/amazonq/latest/api-reference/API_BatchPutDocument.html
-%% API or the
-%% `CreateDataSource'
-%% :
+%% API or the `CreateDataSource' :
 %% https://docs.aws.amazon.com/amazonq/latest/api-reference/API_CreateDataSource.html
 %% API.
 -spec create_index(aws_client:aws_client(), binary() | list(), create_index_request()) ->
@@ -3663,15 +3767,12 @@ create_retriever(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Subscribes an IAM Identity Center user or a group to a pricing tier
-%% for an
-%% Amazon Q Business application.
+%% for an Amazon Q Business application.
 %%
 %% Amazon Q Business offers two subscription tiers: `Q_LITE' and
 %% `Q_BUSINESS'. Subscription tier determines feature access for the
-%% user.
-%% For more information on subscriptions and pricing tiers, see Amazon Q
-%% Business
-%% pricing: https://aws.amazon.com/q/business/pricing/.
+%% user. For more information on subscriptions and pricing tiers, see Amazon
+%% Q Business pricing: https://aws.amazon.com/q/business/pricing/.
 -spec create_subscription(aws_client:aws_client(), binary() | list(), create_subscription_request()) ->
     {ok, create_subscription_response(), tuple()} |
     {error, any()} |
@@ -3706,8 +3807,7 @@ create_subscription(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a universally unique identifier (UUID) mapped to a list of
-%% local user ids
-%% within an application.
+%% local user ids within an application.
 -spec create_user(aws_client:aws_client(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
@@ -3917,9 +4017,9 @@ delete_conversation(Client, ApplicationId, ConversationId, Input0, Options0) ->
 
 %% @doc Deletes a specified data accessor.
 %%
-%% This operation permanently removes the data accessor
-%% and its associated IAM Identity Center application. Any access granted to
-%% the ISV through this data accessor will be revoked.
+%% This operation permanently removes the data accessor and its associated
+%% IAM Identity Center application. Any access granted to the ISV through
+%% this data accessor will be revoked.
 -spec delete_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_accessor_request()) ->
     {ok, delete_data_accessor_response(), tuple()} |
     {error, any()} |
@@ -3955,9 +4055,8 @@ delete_data_accessor(Client, ApplicationId, DataAccessorId, Input0, Options0) ->
 
 %% @doc Deletes an Amazon Q Business data source connector.
 %%
-%% While the data source is being
-%% deleted, the `Status' field returned by a call to the
-%% `DescribeDataSource' API is set to `DELETING'.
+%% While the data source is being deleted, the `Status' field returned by
+%% a call to the `DescribeDataSource' API is set to `DELETING'.
 -spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
@@ -3992,22 +4091,18 @@ delete_data_source(Client, ApplicationId, DataSourceId, IndexId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a group so that all users and sub groups that belong to the
-%% group can no
-%% longer access documents only available to that group.
+%% group can no longer access documents only available to that group.
 %%
-%% For example, after deleting the
-%% group &quot;Summer Interns&quot;, all interns who belonged to that group
-%% no longer see intern-only
-%% documents in their chat results.
+%% For example, after deleting the group &quot;Summer Interns&quot;, all
+%% interns who belonged to that group no longer see intern-only documents in
+%% their chat results.
 %%
 %% If you want to delete, update, or replace users or sub groups of a group,
-%% you need to
-%% use the `PutGroup' operation. For example, if a user in the group
-%% &quot;Engineering&quot; leaves the engineering team and another user takes
-%% their place, you
-%% provide an updated list of users or sub groups that belong to the
-%% &quot;Engineering&quot; group
-%% when calling `PutGroup'.
+%% you need to use the `PutGroup' operation. For example, if a user in
+%% the group &quot;Engineering&quot; leaves the engineering team and another
+%% user takes their place, you provide an updated list of users or sub groups
+%% that belong to the &quot;Engineering&quot; group when calling
+%% `PutGroup'.
 -spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
@@ -4213,8 +4308,7 @@ delete_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a permission policy from a Amazon Q Business application,
-%% revoking the cross-account access that was
-%% previously granted to an ISV.
+%% revoking the cross-account access that was previously granted to an ISV.
 %%
 %% This operation deletes the specified policy statement from the
 %% application's permission policy.
@@ -4289,8 +4383,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about chat controls configured for an existing
-%% Amazon Q Business
-%% application.
+%% Amazon Q Business application.
 -spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
@@ -4334,13 +4427,11 @@ get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, Opt
 
 %% @doc Retrieves information about a specified data accessor.
 %%
-%% This operation returns details about the
-%% data accessor, including its display name, unique identifier, Amazon
-%% Resource Name (ARN), the associated
-%% Amazon Q Business application and IAM Identity Center application, the IAM
-%% role for the ISV, the
-%% action configurations, and the timestamps for when the data accessor was
-%% created and last updated.
+%% This operation returns details about the data accessor, including its
+%% display name, unique identifier, Amazon Resource Name (ARN), the
+%% associated Amazon Q Business application and IAM Identity Center
+%% application, the IAM role for the ISV, the action configurations, and the
+%% timestamps for when the data accessor was created and last updated.
 -spec get_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_accessor_response(), tuple()} |
     {error, any()} |
@@ -4496,10 +4587,9 @@ get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
 %% @doc Returns the image bytes corresponding to a media object.
 %%
 %% If you have implemented your own application with the Chat and ChatSync
-%% APIs, and
-%% have enabled content extraction from visual data in Amazon Q Business, you
-%% use the GetMedia API operation to download
-%% the images so you can show them in your UI with responses.
+%% APIs, and have enabled content extraction from visual data in Amazon Q
+%% Business, you use the GetMedia API operation to download the images so you
+%% can show them in your UI with responses.
 %%
 %% For more information, see Extracting semantic meaning from images and
 %% visuals:
@@ -4580,9 +4670,8 @@ get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the current permission policy for a Amazon Q Business
 %% application.
 %%
-%% The policy is
-%% returned as a JSON-formatted string and defines the IAM actions that are
-%% allowed or denied for the application's resources.
+%% The policy is returned as a JSON-formatted string and defines the IAM
+%% actions that are allowed or denied for the application's resources.
 -spec get_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
@@ -4620,8 +4709,7 @@ get_policy(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing retriever used by an Amazon Q
-%% Business
-%% application.
+%% Business application.
 -spec get_retriever(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_retriever_response(), tuple()} |
     {error, any()} |
@@ -4659,8 +4747,7 @@ get_retriever(Client, ApplicationId, RetrieverId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the universally unique identifier (UUID) associated with a
-%% local user in a
-%% data source.
+%% local user in a data source.
 -spec get_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
@@ -4737,11 +4824,8 @@ get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap,
 %% @doc Lists Amazon Q Business applications.
 %%
 %% Amazon Q Business applications may securely transmit data for processing
-%% across
-%% Amazon Web Services Regions within your geography. For more information,
-%% see
-%% Cross region
-%% inference in Amazon Q Business:
+%% across Amazon Web Services Regions within your geography. For more
+%% information, see Cross region inference in Amazon Q Business:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/cross-region-inference.html.
 -spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
@@ -4875,11 +4959,9 @@ list_conversations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the data accessors for a Amazon Q Business application.
 %%
-%% This operation returns a paginated
-%% list of data accessor summaries, including the friendly name, unique
-%% identifier, ARN,
-%% associated IAM role, and creation/update timestamps for each data
-%% accessor.
+%% This operation returns a paginated list of data accessor summaries,
+%% including the friendly name, unique identifier, ARN, associated IAM role,
+%% and creation/update timestamps for each data accessor.
 -spec list_data_accessors(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_accessors_response(), tuple()} |
     {error, any()} |
@@ -5439,8 +5521,8 @@ list_subscriptions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a list of tags associated with a specified resource.
 %%
-%% Amazon Q Business applications
-%% and data sources can have tags associated with them.
+%% Amazon Q Business applications and data sources can have tags associated
+%% with them.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -5520,8 +5602,7 @@ list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Enables your end user to provide feedback on their Amazon Q Business
-%% generated chat
-%% responses.
+%% generated chat responses.
 -spec put_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_feedback_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5557,27 +5638,22 @@ put_feedback(Client, ApplicationId, ConversationId, MessageId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create, or updates, a mapping of users—who have access to a
-%% document—to
-%% groups.
+%% document—to groups.
 %%
 %% You can also map sub groups to groups. For example, the group
-%% &quot;Company Intellectual
-%% Property Teams&quot; includes sub groups &quot;Research&quot; and
-%% &quot;Engineering&quot;. These sub groups
-%% include their own list of users or people who work in these teams. Only
-%% users who work
-%% in research and engineering, and therefore belong in the intellectual
-%% property group,
-%% can see top-secret company documents in their Amazon Q Business chat
-%% results.
+%% &quot;Company Intellectual Property Teams&quot; includes sub groups
+%% &quot;Research&quot; and &quot;Engineering&quot;. These sub groups include
+%% their own list of users or people who work in these teams. Only users who
+%% work in research and engineering, and therefore belong in the intellectual
+%% property group, can see top-secret company documents in their Amazon Q
+%% Business chat results.
 %%
 %% There are two options for creating groups, either passing group members
-%% inline or using an S3 file via the
-%% S3PathForGroupMembers field. For inline groups, there is a limit of 1000
-%% members per group and for provided S3 files
-%% there is a limit of 100 thousand members. When creating a group using an
-%% S3 file, you provide both
-%% an S3 file and a `RoleArn' for Amazon Q Buisness to access the file.
+%% inline or using an S3 file via the S3PathForGroupMembers field. For inline
+%% groups, there is a limit of 1000 members per group and for provided S3
+%% files there is a limit of 100 thousand members. When creating a group
+%% using an S3 file, you provide both an S3 file and a `RoleArn' for
+%% Amazon Q Buisness to access the file.
 -spec put_group(aws_client:aws_client(), binary() | list(), binary() | list(), put_group_request()) ->
     {ok, put_group_response(), tuple()} |
     {error, any()} |
@@ -5614,16 +5690,12 @@ put_group(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% @doc Searches for relevant content in a Amazon Q Business application
 %% based on a query.
 %%
-%% This operation takes a
-%% search query text, the Amazon Q Business application identifier, and
-%% optional filters
-%% (such as content source and maximum results) as input. It returns a list
-%% of
-%% relevant content items, where each item includes the content text, the
-%% unique document identifier,
+%% This operation takes a search query text, the Amazon Q Business
+%% application identifier, and optional filters (such as content source and
+%% maximum results) as input. It returns a list of relevant content items,
+%% where each item includes the content text, the unique document identifier,
 %% the document title, the document URI, any relevant document attributes,
-%% and score attributes
-%% indicating the confidence level of the relevance.
+%% and score attributes indicating the confidence level of the relevance.
 -spec search_relevant_content(aws_client:aws_client(), binary() | list(), search_relevant_content_request()) ->
     {ok, search_relevant_content_response(), tuple()} |
     {error, any()} |
@@ -5659,8 +5731,8 @@ search_relevant_content(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Starts a data source connector synchronization job.
 %%
-%% If a synchronization job is
-%% already in progress, Amazon Q Business returns a `ConflictException'.
+%% If a synchronization job is already in progress, Amazon Q Business returns
+%% a `ConflictException'.
 -spec start_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_data_source_sync_job_request()) ->
     {ok, start_data_source_sync_job_response(), tuple()} |
     {error, any()} |
@@ -5695,8 +5767,7 @@ start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops an Amazon Q Business data source connector synchronization job
-%% already in
-%% progress.
+%% already in progress.
 -spec stop_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_data_source_sync_job_request()) ->
     {ok, stop_data_source_sync_job_response(), tuple()} |
     {error, any()} |
@@ -5731,8 +5802,7 @@ stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tag to the specified Amazon Q Business application
-%% or data source
-%% resource.
+%% or data source resource.
 %%
 %% If the tag already exists, the existing value is replaced with the new
 %% value.
@@ -5807,18 +5877,14 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
 %% @doc Updates an existing Amazon Q Business application.
 %%
 %% Amazon Q Business applications may securely transmit data for processing
-%% across
-%% Amazon Web Services Regions within your geography. For more information,
-%% see
-%% Cross region
-%% inference in Amazon Q Business:
+%% across Amazon Web Services Regions within your geography. For more
+%% information, see Cross region inference in Amazon Q Business:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/cross-region-inference.html.
 %%
 %% An Amazon Q Apps service-linked role will be created if it's absent in
-%% the
-%% Amazon Web Services account when `QAppsConfiguration' is enabled in
-%% the request. For more information, see Using
-%% service-linked roles for Q Apps:
+%% the Amazon Web Services account when `QAppsConfiguration' is enabled
+%% in the request. For more information, see Using service-linked roles for Q
+%% Apps:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/using-service-linked-roles-qapps.html.
 -spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
@@ -5854,8 +5920,7 @@ update_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a set of chat controls configured for an existing Amazon Q
-%% Business
-%% application.
+%% Business application.
 -spec update_chat_controls_configuration(aws_client:aws_client(), binary() | list(), update_chat_controls_configuration_request()) ->
     {ok, update_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
@@ -5891,9 +5956,8 @@ update_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Updates an existing data accessor.
 %%
-%% This operation allows modifying the action configurations
-%% (the allowed actions and associated filters) and the display name of the
-%% data accessor.
+%% This operation allows modifying the action configurations (the allowed
+%% actions and associated filters) and the display name of the data accessor.
 %% It does not allow changing the IAM role associated with the data accessor
 %% or other core properties of the data accessor.
 -spec update_data_accessor(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_accessor_request()) ->
@@ -6067,11 +6131,9 @@ update_retriever(Client, ApplicationId, RetrieverId, Input0, Options0) ->
 
 %% @doc Updates the pricing tier for an Amazon Q Business subscription.
 %%
-%% Upgrades are instant.
-%% Downgrades apply at the start of the next month. Subscription tier
-%% determines feature
-%% access for the user. For more information on subscriptions and pricing
-%% tiers, see Amazon Q Business
+%% Upgrades are instant. Downgrades apply at the start of the next month.
+%% Subscription tier determines feature access for the user. For more
+%% information on subscriptions and pricing tiers, see Amazon Q Business
 %% pricing: https://aws.amazon.com/q/business/pricing/.
 -spec update_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), update_subscription_request()) ->
     {ok, update_subscription_response(), tuple()} |
