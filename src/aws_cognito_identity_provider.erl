@@ -196,6 +196,8 @@
          get_log_delivery_configuration/3,
          get_signing_certificate/2,
          get_signing_certificate/3,
+         get_tokens_from_refresh_token/2,
+         get_tokens_from_refresh_token/3,
          get_ui_customization/2,
          get_ui_customization/3,
          get_user/2,
@@ -961,6 +963,12 @@
 -type get_user_attribute_verification_code_request() :: #{binary() => any()}.
 
 %% Example:
+%% refresh_token_reuse_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type refresh_token_reuse_exception() :: #{binary() => any()}.
+
+%% Example:
 %% user_attribute_update_settings_type() :: #{
 %%   <<"AttributesRequireVerificationBeforeUpdate">> => list(list(any())())
 %% }
@@ -1025,6 +1033,7 @@
 %%   <<"LogoutURLs">> => list(string()()),
 %%   <<"PreventUserExistenceErrors">> => list(any()),
 %%   <<"ReadAttributes">> => list(string()()),
+%%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
 %%   <<"RefreshTokenValidity">> => integer(),
 %%   <<"SupportedIdentityProviders">> => list(string()()),
 %%   <<"TokenValidityUnits">> => token_validity_units_type(),
@@ -1517,6 +1526,16 @@
 -type create_user_pool_client_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_tokens_from_refresh_token_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"DeviceKey">> => string(),
+%%   <<"RefreshToken">> := string()
+%% }
+-type get_tokens_from_refresh_token_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_user_pool_response() :: #{
 %%   <<"UserPool">> => user_pool_type()
 %% }
@@ -1602,6 +1621,7 @@
 %%   <<"LogoutURLs">> => list(string()()),
 %%   <<"PreventUserExistenceErrors">> => list(any()),
 %%   <<"ReadAttributes">> => list(string()()),
+%%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
 %%   <<"RefreshTokenValidity">> => integer(),
 %%   <<"SupportedIdentityProviders">> => list(string()()),
 %%   <<"TokenValidityUnits">> => token_validity_units_type(),
@@ -2120,6 +2140,12 @@
 -type admin_list_user_auth_events_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_tokens_from_refresh_token_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type()
+%% }
+-type get_tokens_from_refresh_token_response() :: #{binary() => any()}.
+
+%% Example:
 %% unsupported_identity_provider_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2454,6 +2480,13 @@
 -type get_group_response() :: #{binary() => any()}.
 
 %% Example:
+%% refresh_token_rotation_type() :: #{
+%%   <<"Feature">> => list(any()),
+%%   <<"RetryGracePeriodSeconds">> => integer()
+%% }
+-type refresh_token_rotation_type() :: #{binary() => any()}.
+
+%% Example:
 %% stop_user_import_job_response() :: #{
 %%   <<"UserImportJob">> => user_import_job_type()
 %% }
@@ -2509,6 +2542,7 @@
 %%   <<"LogoutURLs">> => list(string()()),
 %%   <<"PreventUserExistenceErrors">> => list(any()),
 %%   <<"ReadAttributes">> => list(string()()),
+%%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
 %%   <<"RefreshTokenValidity">> => integer(),
 %%   <<"SupportedIdentityProviders">> => list(string()()),
 %%   <<"TokenValidityUnits">> => token_validity_units_type(),
@@ -3138,6 +3172,7 @@
     invalid_sms_role_access_policy_exception() | 
     too_many_requests_exception() | 
     invalid_email_role_access_policy_exception() | 
+    unsupported_operation_exception() | 
     user_not_confirmed_exception().
 
 -type admin_link_provider_for_user_errors() ::
@@ -3442,6 +3477,7 @@
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     invalid_o_auth_flow_exception() | 
+    feature_unavailable_in_tier_exception() | 
     scope_does_not_exist_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3449,6 +3485,7 @@
 -type create_user_pool_domain_errors() ::
     internal_error_exception() | 
     limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     feature_unavailable_in_tier_exception() | 
@@ -3525,6 +3562,7 @@
 
 -type delete_user_pool_domain_errors() ::
     internal_error_exception() | 
+    concurrent_modification_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception().
@@ -3674,6 +3712,19 @@
     invalid_parameter_exception() | 
     resource_not_found_exception().
 
+-type get_tokens_from_refresh_token_errors() ::
+    unexpected_lambda_exception() | 
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    user_lambda_validation_exception() | 
+    invalid_lambda_response_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    refresh_token_reuse_exception() | 
+    forbidden_exception().
+
 -type get_ui_customization_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
@@ -3755,6 +3806,7 @@
     too_many_requests_exception() | 
     forbidden_exception() | 
     invalid_email_role_access_policy_exception() | 
+    unsupported_operation_exception() | 
     user_not_confirmed_exception().
 
 -type list_devices_errors() ::
@@ -4096,12 +4148,14 @@
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     invalid_o_auth_flow_exception() | 
+    feature_unavailable_in_tier_exception() | 
     scope_does_not_exist_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
 
 -type update_user_pool_domain_errors() ::
     internal_error_exception() | 
+    concurrent_modification_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     feature_unavailable_in_tier_exception() | 
@@ -6919,6 +6973,32 @@ get_signing_certificate(Client, Input)
 get_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSigningCertificate">>, Input, Options).
+
+%% @doc Given a refresh token, issues new ID, access, and optionally refresh
+%% tokens for the
+%% user who owns the submitted token.
+%%
+%% This operation issues a new refresh token and
+%% invalidates the original refresh token after an optional grace period when
+%% refresh token
+%% rotation is enabled. If refresh token rotation is disabled, issues new ID
+%% and access
+%% tokens only.
+-spec get_tokens_from_refresh_token(aws_client:aws_client(), get_tokens_from_refresh_token_request()) ->
+    {ok, get_tokens_from_refresh_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_tokens_from_refresh_token_errors(), tuple()}.
+get_tokens_from_refresh_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_tokens_from_refresh_token(Client, Input, []).
+
+-spec get_tokens_from_refresh_token(aws_client:aws_client(), get_tokens_from_refresh_token_request(), proplists:proplist()) ->
+    {ok, get_tokens_from_refresh_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_tokens_from_refresh_token_errors(), tuple()}.
+get_tokens_from_refresh_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTokensFromRefreshToken">>, Input, Options).
 
 %% @doc Given a user pool ID or app client, returns information about classic
 %% hosted UI

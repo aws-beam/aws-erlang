@@ -20,6 +20,8 @@
          create_user/5,
          delete_broker/3,
          delete_broker/4,
+         delete_configuration/3,
+         delete_configuration/4,
          delete_tags/3,
          delete_tags/4,
          delete_user/4,
@@ -313,6 +315,13 @@
 
 
 %% Example:
+%% delete_configuration_response() :: #{
+%%   <<"ConfigurationId">> => string()
+%% }
+-type delete_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_tags_request() :: #{
 %%   <<"Tags">> => map()
 %% }
@@ -341,6 +350,10 @@
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_request() :: #{}
+-type delete_configuration_request() :: #{}.
 
 
 %% Example:
@@ -796,6 +809,13 @@
     not_found_exception() | 
     forbidden_exception().
 
+-type delete_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception().
+
 -type delete_tags_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -1109,6 +1129,40 @@ delete_broker(Client, BrokerId, Input) ->
 delete_broker(Client, BrokerId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified configuration.
+-spec delete_configuration(aws_client:aws_client(), binary() | list(), delete_configuration_request()) ->
+    {ok, delete_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_configuration_errors(), tuple()}.
+delete_configuration(Client, ConfigurationId, Input) ->
+    delete_configuration(Client, ConfigurationId, Input, []).
+
+-spec delete_configuration(aws_client:aws_client(), binary() | list(), delete_configuration_request(), proplists:proplist()) ->
+    {ok, delete_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_configuration_errors(), tuple()}.
+delete_configuration(Client, ConfigurationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -12,6 +12,8 @@
          disable_region/3,
          enable_region/2,
          enable_region/3,
+         get_account_information/2,
+         get_account_information/3,
          get_alternate_contact/2,
          get_alternate_contact/3,
          get_contact_information/2,
@@ -22,6 +24,8 @@
          get_region_opt_status/3,
          list_regions/2,
          list_regions/3,
+         put_account_name/2,
+         put_account_name/3,
          put_alternate_contact/2,
          put_alternate_contact/3,
          put_contact_information/2,
@@ -51,6 +55,7 @@
 
 %% Example:
 %% access_denied_exception() :: #{
+%%   <<"errorType">> => [string()],
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
@@ -69,6 +74,7 @@
 
 %% Example:
 %% conflict_exception() :: #{
+%%   <<"errorType">> => [string()],
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
@@ -114,6 +120,22 @@
 %%   <<"RegionName">> := string()
 %% }
 -type enable_region_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_account_information_request() :: #{
+%%   <<"AccountId">> => string()
+%% }
+-type get_account_information_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_account_information_response() :: #{
+%%   <<"AccountCreatedDate">> => non_neg_integer(),
+%%   <<"AccountId">> => string(),
+%%   <<"AccountName">> => string()
+%% }
+-type get_account_information_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -177,6 +199,7 @@
 
 %% Example:
 %% internal_server_exception() :: #{
+%%   <<"errorType">> => [string()],
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
@@ -198,6 +221,14 @@
 %%   <<"Regions">> => list(region()())
 %% }
 -type list_regions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_name_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountName">> := string()
+%% }
+-type put_account_name_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -230,6 +261,7 @@
 
 %% Example:
 %% resource_not_found_exception() :: #{
+%%   <<"errorType">> => [string()],
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
@@ -252,6 +284,7 @@
 
 %% Example:
 %% too_many_requests_exception() :: #{
+%%   <<"errorType">> => [string()],
 %%   <<"message">> => [string()]
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
@@ -302,6 +335,12 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type get_account_information_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_alternate_contact_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
@@ -335,6 +374,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type put_account_name_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type put_alternate_contact_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
@@ -361,8 +406,7 @@
 
 %% @doc Accepts the request that originated from
 %% `StartPrimaryEmailUpdate' to update the primary email address (also
-%% known
-%% as the root user email address) for the specified account.
+%% known as the root user email address) for the specified account.
 -spec accept_primary_email_update(aws_client:aws_client(), accept_primary_email_update_request()) ->
     {ok, accept_primary_email_update_response(), tuple()} |
     {error, any()} |
@@ -400,14 +444,13 @@ accept_primary_email_update(Client, Input0, Options0) ->
 %% account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or
-%% updating the alternate contacts:
+%% see Access or updating the alternate contacts:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
-%% Before you can update the alternate contact information for an
-%% Amazon Web Services account that is managed by Organizations, you must
-%% first enable integration between Amazon Web Services Account Management
-%% and Organizations. For more information, see Enabling trusted access for
+%% Before you can update the alternate contact information for an Amazon Web
+%% Services account that is managed by Organizations, you must first enable
+%% integration between Amazon Web Services Account Management and
+%% Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 -spec delete_alternate_contact(aws_client:aws_client(), delete_alternate_contact_request()) ->
@@ -446,8 +489,7 @@ delete_alternate_contact(Client, Input0, Options0) ->
 %% @doc Disables (opts-out) a particular Region for an account.
 %%
 %% The act of disabling a Region will remove all IAM access to any resources
-%% that
-%% reside in that Region.
+%% that reside in that Region.
 -spec disable_region(aws_client:aws_client(), disable_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -515,18 +557,55 @@ enable_region(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about the specified account including its
+%% account name, account ID, and account creation date and time.
+%%
+%% To use this API, an IAM user or role must have the
+%% `account:GetAccountInformation' IAM permission.
+-spec get_account_information(aws_client:aws_client(), get_account_information_request()) ->
+    {ok, get_account_information_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_information_errors(), tuple()}.
+get_account_information(Client, Input) ->
+    get_account_information(Client, Input, []).
+
+-spec get_account_information(aws_client:aws_client(), get_account_information_request(), proplists:proplist()) ->
+    {ok, get_account_information_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_information_errors(), tuple()}.
+get_account_information(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/getAccountInformation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the specified alternate contact attached to an Amazon Web
 %% Services account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or
-%% updating the alternate contacts:
+%% see Access or updating the alternate contacts:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
-%% Before you can update the alternate contact information for an
-%% Amazon Web Services account that is managed by Organizations, you must
-%% first enable integration between Amazon Web Services Account Management
-%% and Organizations. For more information, see Enabling trusted access for
+%% Before you can update the alternate contact information for an Amazon Web
+%% Services account that is managed by Organizations, you must first enable
+%% integration between Amazon Web Services Account Management and
+%% Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 -spec get_alternate_contact(aws_client:aws_client(), get_alternate_contact_request()) ->
@@ -566,8 +645,7 @@ get_alternate_contact(Client, Input0, Options0) ->
 %% account.
 %%
 %% For complete details about how to use the primary contact operations, see
-%% Update
-%% the primary and alternate contact information:
+%% Update the primary and alternate contact information:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 -spec get_contact_information(aws_client:aws_client(), get_contact_information_request()) ->
     {ok, get_contact_information_response(), tuple()} |
@@ -674,8 +752,7 @@ get_region_opt_status(Client, Input0, Options0) ->
 %% statuses.
 %%
 %% Optionally, this list can be filtered by the
-%% `region-opt-status-contains'
-%% parameter.
+%% `region-opt-status-contains' parameter.
 -spec list_regions(aws_client:aws_client(), list_regions_request()) ->
     {ok, list_regions_response(), tuple()} |
     {error, any()} |
@@ -709,18 +786,54 @@ list_regions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the account name of the specified account.
+%%
+%% To use this API, IAM principals must have the `account:PutAccountName'
+%% IAM permission.
+-spec put_account_name(aws_client:aws_client(), put_account_name_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_account_name_errors(), tuple()}.
+put_account_name(Client, Input) ->
+    put_account_name(Client, Input, []).
+
+-spec put_account_name(aws_client:aws_client(), put_account_name_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_account_name_errors(), tuple()}.
+put_account_name(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/putAccountName"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Modifies the specified alternate contact attached to an Amazon Web
 %% Services account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or
-%% updating the alternate contacts:
+%% see Access or updating the alternate contacts:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
-%% Before you can update the alternate contact information for an
-%% Amazon Web Services account that is managed by Organizations, you must
-%% first enable integration between Amazon Web Services Account Management
-%% and Organizations. For more information, see Enabling trusted access for
+%% Before you can update the alternate contact information for an Amazon Web
+%% Services account that is managed by Organizations, you must first enable
+%% integration between Amazon Web Services Account Management and
+%% Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 -spec put_alternate_contact(aws_client:aws_client(), put_alternate_contact_request()) ->
@@ -760,8 +873,7 @@ put_alternate_contact(Client, Input0, Options0) ->
 %% account.
 %%
 %% For complete details about how to use the primary contact operations, see
-%% Update
-%% the primary and alternate contact information:
+%% Update the primary and alternate contact information:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 -spec put_contact_information(aws_client:aws_client(), put_contact_information_request()) ->
     {ok, undefined, tuple()} |
@@ -797,8 +909,7 @@ put_contact_information(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts the process to update the primary email address for the
-%% specified
-%% account.
+%% specified account.
 -spec start_primary_email_update(aws_client:aws_client(), start_primary_email_update_request()) ->
     {ok, start_primary_email_update_response(), tuple()} |
     {error, any()} |

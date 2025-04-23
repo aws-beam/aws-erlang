@@ -28,6 +28,8 @@
          create_endpoint_access/3,
          create_namespace/2,
          create_namespace/3,
+         create_reservation/2,
+         create_reservation/3,
          create_scheduled_action/2,
          create_scheduled_action/3,
          create_snapshot/2,
@@ -66,6 +68,10 @@
          get_namespace/3,
          get_recovery_point/2,
          get_recovery_point/3,
+         get_reservation/2,
+         get_reservation/3,
+         get_reservation_offering/2,
+         get_reservation_offering/3,
          get_resource_policy/2,
          get_resource_policy/3,
          get_scheduled_action/2,
@@ -90,6 +96,10 @@
          list_namespaces/3,
          list_recovery_points/2,
          list_recovery_points/3,
+         list_reservation_offerings/2,
+         list_reservation_offerings/3,
+         list_reservations/2,
+         list_reservations/3,
          list_scheduled_actions/2,
          list_scheduled_actions/3,
          list_snapshot_copy_configurations/2,
@@ -174,6 +184,12 @@
 -type get_track_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_reservation_offering_request() :: #{
+%%   <<"offeringId">> := string()
+%% }
+-type get_reservation_offering_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_endpoint_access_request() :: #{
 %%   <<"endpointName">> := [string()],
 %%   <<"vpcSecurityGroupIds">> => list(string()())
@@ -206,6 +222,12 @@
 -type delete_snapshot_copy_configuration_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_reservation_response() :: #{
+%%   <<"reservation">> => reservation()
+%% }
+-type get_reservation_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_usage_limit_response() :: #{
 %%   <<"usageLimit">> => usage_limit()
 %% }
@@ -223,6 +245,12 @@
 %%   <<"tableRestoreRequestId">> := [string()]
 %% }
 -type get_table_restore_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_reservation_request() :: #{
+%%   <<"reservationId">> := string()
+%% }
+-type get_reservation_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_usage_limit_request() :: #{
@@ -292,6 +320,13 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_reservations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_reservations_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_snapshot_copy_configuration_response() :: #{
@@ -417,6 +452,12 @@
 %%   <<"targetAction">> => list()
 %% }
 -type scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_reservation_response() :: #{
+%%   <<"reservation">> => reservation()
+%% }
+-type create_reservation_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_table_restore_status_response() :: #{
@@ -722,6 +763,13 @@
 -type delete_endpoint_access_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_reservation_offerings_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_reservation_offerings_request() :: #{binary() => any()}.
+
+%% Example:
 %% restore_table_from_snapshot_request() :: #{
 %%   <<"activateCaseSensitiveIdentifier">> => [boolean()],
 %%   <<"namespaceName">> := [string()],
@@ -774,6 +822,18 @@
 %%   <<"endpointName">> := [string()]
 %% }
 -type delete_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% reservation() :: #{
+%%   <<"capacity">> => integer(),
+%%   <<"endDate">> => [non_neg_integer()],
+%%   <<"offering">> => reservation_offering(),
+%%   <<"reservationArn">> => string(),
+%%   <<"reservationId">> => string(),
+%%   <<"startDate">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type reservation() :: #{binary() => any()}.
 
 %% Example:
 %% vpc_endpoint() :: #{
@@ -856,6 +916,12 @@
 -type convert_recovery_point_to_snapshot_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_reservation_offering_response() :: #{
+%%   <<"reservationOffering">> => reservation_offering()
+%% }
+-type get_reservation_offering_response() :: #{binary() => any()}.
+
+%% Example:
 %% restore_from_recovery_point_request() :: #{
 %%   <<"namespaceName">> := string(),
 %%   <<"recoveryPointId">> := [string()],
@@ -916,6 +982,13 @@
 %%   <<"resourceArn">> => [string()]
 %% }
 -type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% list_reservation_offerings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reservationOfferingsList">> => list(reservation_offering()())
+%% }
+-type list_reservation_offerings_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_scheduled_action_response() :: #{
@@ -1003,6 +1076,13 @@
 -type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_reservations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reservationsList">> => list(reservation()())
+%% }
+-type list_reservations_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_custom_domain_association_response() :: #{
 %%   <<"customDomainCertificateArn">> => string(),
 %%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
@@ -1068,6 +1148,14 @@
 %%   <<"snapshotName">> => [string()]
 %% }
 -type get_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_reservation_request() :: #{
+%%   <<"capacity">> := integer(),
+%%   <<"clientToken">> => [string()],
+%%   <<"offeringId">> := string()
+%% }
+-type create_reservation_request() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -1318,6 +1406,17 @@
 -type list_workgroups_response() :: #{binary() => any()}.
 
 %% Example:
+%% reservation_offering() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"duration">> => integer(),
+%%   <<"hourlyCharge">> => float(),
+%%   <<"offeringId">> => string(),
+%%   <<"offeringType">> => string(),
+%%   <<"upfrontCharge">> => float()
+%% }
+-type reservation_offering() :: #{binary() => any()}.
+
+%% Example:
 %% get_workgroup_response() :: #{
 %%   <<"workgroup">> => workgroup()
 %% }
@@ -1389,6 +1488,15 @@
     too_many_tags_exception() | 
     validation_exception() | 
     internal_server_exception() | 
+    conflict_exception().
+
+-type create_reservation_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_scheduled_action_errors() ::
@@ -1514,6 +1622,18 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_reservation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_reservation_offering_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_resource_policy_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -1574,6 +1694,16 @@
     internal_server_exception().
 
 -type list_recovery_points_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_reservation_offerings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_reservations_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     internal_server_exception().
 
@@ -1731,7 +1861,7 @@
 %%
 %% For more information about recovery points and snapshots,
 %% see Working with snapshots and recovery points:
-%% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery-points.html.
 -spec convert_recovery_point_to_snapshot(aws_client:aws_client(), convert_recovery_point_to_snapshot_request()) ->
     {ok, convert_recovery_point_to_snapshot_response(), tuple()} |
     {error, any()} |
@@ -1799,6 +1929,26 @@ create_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNamespace">>, Input, Options).
 
+%% @doc Creates an Amazon Redshift Serverless reservation, which gives you
+%% the option to commit to a specified number of Redshift Processing Units
+%% (RPUs)
+%% for a year at a discount from Serverless on-demand (OD) rates.
+-spec create_reservation(aws_client:aws_client(), create_reservation_request()) ->
+    {ok, create_reservation_response(), tuple()} |
+    {error, any()} |
+    {error, create_reservation_errors(), tuple()}.
+create_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_reservation(Client, Input, []).
+
+-spec create_reservation(aws_client:aws_client(), create_reservation_request(), proplists:proplist()) ->
+    {ok, create_reservation_response(), tuple()} |
+    {error, any()} |
+    {error, create_reservation_errors(), tuple()}.
+create_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateReservation">>, Input, Options).
+
 %% @doc Creates a scheduled action.
 %%
 %% A scheduled action contains a schedule and an Amazon Redshift API action.
@@ -1825,7 +1975,7 @@ create_scheduled_action(Client, Input, Options)
 %% For more information about snapshots, see
 %%
 %% Working with snapshots and recovery points:
-%% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery-points.html.
 -spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
@@ -2171,6 +2321,46 @@ get_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecoveryPoint">>, Input, Options).
 
+%% @doc Gets an Amazon Redshift Serverless reservation.
+%%
+%% A reservation gives you the option to commit to a specified number of
+%% Redshift Processing Units (RPUs)
+%% for a year at a discount from Serverless on-demand (OD) rates.
+-spec get_reservation(aws_client:aws_client(), get_reservation_request()) ->
+    {ok, get_reservation_response(), tuple()} |
+    {error, any()} |
+    {error, get_reservation_errors(), tuple()}.
+get_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_reservation(Client, Input, []).
+
+-spec get_reservation(aws_client:aws_client(), get_reservation_request(), proplists:proplist()) ->
+    {ok, get_reservation_response(), tuple()} |
+    {error, any()} |
+    {error, get_reservation_errors(), tuple()}.
+get_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetReservation">>, Input, Options).
+
+%% @doc Returns the reservation offering.
+%%
+%% The offering determines the payment schedule for the reservation.
+-spec get_reservation_offering(aws_client:aws_client(), get_reservation_offering_request()) ->
+    {ok, get_reservation_offering_response(), tuple()} |
+    {error, any()} |
+    {error, get_reservation_offering_errors(), tuple()}.
+get_reservation_offering(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_reservation_offering(Client, Input, []).
+
+-spec get_reservation_offering(aws_client:aws_client(), get_reservation_offering_request(), proplists:proplist()) ->
+    {ok, get_reservation_offering_response(), tuple()} |
+    {error, any()} |
+    {error, get_reservation_offering_errors(), tuple()}.
+get_reservation_offering(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetReservationOffering">>, Input, Options).
+
 %% @doc Returns a resource policy.
 -spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
     {ok, get_resource_policy_response(), tuple()} |
@@ -2376,6 +2566,40 @@ list_recovery_points(Client, Input)
 list_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecoveryPoints">>, Input, Options).
+
+%% @doc Returns the current reservation offerings in your account.
+-spec list_reservation_offerings(aws_client:aws_client(), list_reservation_offerings_request()) ->
+    {ok, list_reservation_offerings_response(), tuple()} |
+    {error, any()} |
+    {error, list_reservation_offerings_errors(), tuple()}.
+list_reservation_offerings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_reservation_offerings(Client, Input, []).
+
+-spec list_reservation_offerings(aws_client:aws_client(), list_reservation_offerings_request(), proplists:proplist()) ->
+    {ok, list_reservation_offerings_response(), tuple()} |
+    {error, any()} |
+    {error, list_reservation_offerings_errors(), tuple()}.
+list_reservation_offerings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReservationOfferings">>, Input, Options).
+
+%% @doc Returns a list of Reservation objects.
+-spec list_reservations(aws_client:aws_client(), list_reservations_request()) ->
+    {ok, list_reservations_response(), tuple()} |
+    {error, any()} |
+    {error, list_reservations_errors(), tuple()}.
+list_reservations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_reservations(Client, Input, []).
+
+-spec list_reservations(aws_client:aws_client(), list_reservations_request(), proplists:proplist()) ->
+    {ok, list_reservations_response(), tuple()} |
+    {error, any()} |
+    {error, list_reservations_errors(), tuple()}.
+list_reservations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReservations">>, Input, Options).
 
 %% @doc Returns a list of scheduled actions.
 %%

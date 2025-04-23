@@ -4155,6 +4155,12 @@
 -type capacity_reservation_commitment_info() :: #{binary() => any()}.
 
 %% Example:
+%% client_route_enforcement_options() :: #{
+%%   <<"Enforced">> => boolean()
+%% }
+-type client_route_enforcement_options() :: #{binary() => any()}.
+
+%% Example:
 %% elastic_gpu_association() :: #{
 %%   <<"ElasticGpuAssociationId">> => string(),
 %%   <<"ElasticGpuAssociationState">> => string(),
@@ -5349,6 +5355,12 @@
 %%   <<"Name">> => string()
 %% }
 -type neuron_device_info() :: #{binary() => any()}.
+
+%% Example:
+%% client_route_enforcement_response_options() :: #{
+%%   <<"Enforced">> => boolean()
+%% }
+-type client_route_enforcement_response_options() :: #{binary() => any()}.
 
 %% Example:
 %% describe_placement_groups_result() :: #{
@@ -13463,6 +13475,7 @@
 %% modify_client_vpn_endpoint_request() :: #{
 %%   <<"ClientConnectOptions">> => client_connect_options(),
 %%   <<"ClientLoginBannerOptions">> => client_login_banner_options(),
+%%   <<"ClientRouteEnforcementOptions">> => client_route_enforcement_options(),
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"ConnectionLogOptions">> => connection_log_options(),
 %%   <<"Description">> => string(),
@@ -14022,6 +14035,7 @@
 %%   <<"ClientCidrBlock">> => string(),
 %%   <<"ClientConnectOptions">> => client_connect_response_options(),
 %%   <<"ClientLoginBannerOptions">> => client_login_banner_response_options(),
+%%   <<"ClientRouteEnforcementOptions">> => client_route_enforcement_response_options(),
 %%   <<"ClientVpnEndpointId">> => string(),
 %%   <<"ConnectionLogOptions">> => connection_log_response_options(),
 %%   <<"CreationTime">> => string(),
@@ -18722,6 +18736,7 @@
 %%   <<"ClientCidrBlock">> := string(),
 %%   <<"ClientConnectOptions">> => client_connect_options(),
 %%   <<"ClientLoginBannerOptions">> => client_login_banner_options(),
+%%   <<"ClientRouteEnforcementOptions">> => client_route_enforcement_options(),
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectionLogOptions">> := connection_log_options(),
 %%   <<"Description">> => string(),
@@ -29510,6 +29525,8 @@ describe_vpc_endpoint_service_configurations(Client, Input, Options)
 %% @doc Describes the principals (service consumers) that are permitted to
 %% discover your VPC
 %% endpoint service.
+%%
+%% Principal ARNs with path components aren't supported.
 -spec describe_vpc_endpoint_service_permissions(aws_client:aws_client(), describe_vpc_endpoint_service_permissions_request()) ->
     {ok, describe_vpc_endpoint_service_permissions_result(), tuple()} |
     {error, any()}.
@@ -34327,7 +34344,8 @@ modify_vpc_endpoint_service_payer_responsibility(Client, Input, Options)
 %% You can add or remove permissions
 %% for service consumers (Amazon Web Services accounts, users, and IAM roles)
 %% to connect to
-%% your endpoint service.
+%% your endpoint service. Principal ARNs with path components aren't
+%% supported.
 %%
 %% If you grant permissions to all principals, the service is public. Any
 %% users who know the name of a

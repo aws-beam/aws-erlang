@@ -1944,13 +1944,11 @@ get_id_namespace(Client, IdNamespaceName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the corresponding Match ID of a customer record if the record
-%% has been
-%% processed in a
-%% rule-based matching workflow or ML matching workflow.
+%% has been processed
+%% in a rule-based matching workflow or ML matching workflow.
 %%
 %% You can call this API as a dry run of an incremental load on the
-%% rule-based
-%% matching
+%% rule-based matching
 %% workflow.
 -spec get_match_id(aws_client:aws_client(), binary() | list(), get_match_id_input()) ->
     {ok, get_match_id_output(), tuple()} |
