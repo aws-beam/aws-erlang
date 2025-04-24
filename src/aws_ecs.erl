@@ -119,6 +119,8 @@
          run_task/3,
          start_task/2,
          start_task/3,
+         stop_service_deployment/2,
+         stop_service_deployment/3,
          stop_task/2,
          stop_task/3,
          submit_attachment_state_changes/2,
@@ -424,6 +426,13 @@
 -type describe_services_request() :: #{binary() => any()}.
 
 %% Example:
+%% stop_service_deployment_request() :: #{
+%%   <<"serviceDeploymentArn">> := string(),
+%%   <<"stopType">> => list(any())
+%% }
+-type stop_service_deployment_request() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_response() :: #{
 
 %% }
@@ -578,6 +587,12 @@
 %%   <<"taskSet">> := string()
 %% }
 -type update_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_deployment_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% execute_command_configuration() :: #{
@@ -2255,6 +2270,12 @@
 -type container_instance() :: #{binary() => any()}.
 
 %% Example:
+%% stop_service_deployment_response() :: #{
+%%   <<"serviceDeploymentArn">> => string()
+%% }
+-type stop_service_deployment_response() :: #{binary() => any()}.
+
+%% Example:
 %% service_connect_tls_certificate_authority() :: #{
 %%   <<"awsPcaAuthorityArn">> => string()
 %% }
@@ -2726,6 +2747,15 @@
     client_exception() | 
     unsupported_feature_exception() | 
     cluster_not_found_exception().
+
+-type stop_service_deployment_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    conflict_exception() | 
+    client_exception() | 
+    unsupported_feature_exception() | 
+    service_deployment_not_found_exception().
 
 -type stop_task_errors() ::
     server_exception() | 
@@ -4277,6 +4307,38 @@ start_task(Client, Input)
 start_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTask">>, Input, Options).
+
+%% @doc Stops an ongoing service deployment.
+%%
+%% The following stop types are avaiable:
+%%
+%% ROLLBACK - This option rolls back the service deployment to the previous
+%% service revision.
+%%
+%% You can use this option even if you didn't configure the service
+%% deployment
+%% for the rollback option.
+%%
+%% For more information, see Stopping Amazon ECS
+%% service deployments:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stop-service-deployment.html
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
+-spec stop_service_deployment(aws_client:aws_client(), stop_service_deployment_request()) ->
+    {ok, stop_service_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, stop_service_deployment_errors(), tuple()}.
+stop_service_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_service_deployment(Client, Input, []).
+
+-spec stop_service_deployment(aws_client:aws_client(), stop_service_deployment_request(), proplists:proplist()) ->
+    {ok, stop_service_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, stop_service_deployment_errors(), tuple()}.
+stop_service_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopServiceDeployment">>, Input, Options).
 
 %% @doc Stops a running task.
 %%

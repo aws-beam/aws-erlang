@@ -1834,6 +1834,7 @@
 %% Example:
 %% compute_configuration() :: #{
 %%   <<"disk">> => float(),
+%%   <<"instanceType">> => string(),
 %%   <<"machineType">> => list(any()),
 %%   <<"memory">> => float(),
 %%   <<"vCpu">> => float()
