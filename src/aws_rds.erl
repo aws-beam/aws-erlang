@@ -758,7 +758,9 @@
 %% create_tenant_database_message() :: #{
 %%   <<"CharacterSetName">> => string(),
 %%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"MasterUserPassword">> := string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"MasterUsername">> := string(),
 %%   <<"NcharCharacterSetName">> => string(),
 %%   <<"Tags">> => list(tag()()),
@@ -997,6 +999,7 @@
 %%   <<"DBInstanceIdentifier">> => string(),
 %%   <<"DbiResourceId">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
+%%   <<"MasterUserSecret">> => master_user_secret(),
 %%   <<"MasterUsername">> => string(),
 %%   <<"NcharCharacterSetName">> => string(),
 %%   <<"PendingModifiedValues">> => tenant_database_pending_modified_values(),
@@ -2953,8 +2956,11 @@
 %% Example:
 %% modify_tenant_database_message() :: #{
 %%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
 %%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"NewTenantDBName">> => string(),
+%%   <<"RotateMasterUserPassword">> => boolean(),
 %%   <<"TenantDBName">> := string()
 %% }
 -type modify_tenant_database_message() :: #{binary() => any()}.
@@ -3265,6 +3271,7 @@
 %%   <<"DomainOu">> => string(),
 %%   <<"EngineLifecycleSupport">> => string(),
 %%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"EnableCustomerOwnedIp">> => boolean(),
 %%   <<"Iops">> => integer(),
 %%   <<"DBSubnetGroupName">> => string(),
@@ -3289,6 +3296,7 @@
 %%   <<"Tags">> => list(tag()()),
 %%   <<"LicenseModel">> => string(),
 %%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"ManageMasterUserPassword">> => boolean(),
 %%   <<"DBParameterGroupName">> => string(),
 %%   <<"SourceDBInstanceAutomatedBackupsArn">> => string(),
 %%   <<"UseLatestRestorableTime">> => boolean(),
@@ -4302,6 +4310,7 @@
 %%   <<"DomainOu">> => string(),
 %%   <<"EngineLifecycleSupport">> => string(),
 %%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"EnableCustomerOwnedIp">> => boolean(),
 %%   <<"Iops">> => integer(),
 %%   <<"DBClusterSnapshotIdentifier">> => string(),
@@ -4325,6 +4334,7 @@
 %%   <<"LicenseModel">> => string(),
 %%   <<"EnableCloudwatchLogsExports">> => list(string()()),
 %%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
 %%   <<"DBParameterGroupName">> => string(),
 %%   <<"ProcessorFeatures">> => list(processor_feature()()),
 %%   <<"TdeCredentialArn">> => string(),
@@ -5851,6 +5861,7 @@
 
 -type create_tenant_database_errors() ::
     invalid_db_instance_state_fault() | 
+    kms_key_not_accessible_fault() | 
     tenant_database_already_exists_fault() | 
     db_instance_not_found_fault() | 
     tenant_database_quota_exceeded_fault().
@@ -6248,6 +6259,7 @@
 -type modify_tenant_database_errors() ::
     invalid_db_instance_state_fault() | 
     tenant_database_not_found_fault() | 
+    kms_key_not_accessible_fault() | 
     tenant_database_already_exists_fault() | 
     db_instance_not_found_fault().
 

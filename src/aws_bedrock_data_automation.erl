@@ -99,6 +99,13 @@
 
 
 %% Example:
+%% image_override_configuration() :: #{
+%%   <<"modalityProcessing">> => modality_processing_configuration()
+%% }
+-type image_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_automation_project_summary() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"projectArn">> => string(),
@@ -137,7 +144,11 @@
 
 %% Example:
 %% override_configuration() :: #{
-%%   <<"document">> => document_override_configuration()
+%%   <<"audio">> => audio_override_configuration(),
+%%   <<"document">> => document_override_configuration(),
+%%   <<"image">> => image_override_configuration(),
+%%   <<"modalityRouting">> => modality_routing_configuration(),
+%%   <<"video">> => video_override_configuration()
 %% }
 -type override_configuration() :: #{binary() => any()}.
 
@@ -183,9 +194,17 @@
 
 %% Example:
 %% document_override_configuration() :: #{
+%%   <<"modalityProcessing">> => modality_processing_configuration(),
 %%   <<"splitter">> => splitter_configuration()
 %% }
 -type document_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_override_configuration() :: #{
+%%   <<"modalityProcessing">> => modality_processing_configuration()
+%% }
+-type video_override_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -370,6 +389,16 @@
 
 
 %% Example:
+%% modality_routing_configuration() :: #{
+%%   <<"jpeg">> => list(any()),
+%%   <<"mov">> => list(any()),
+%%   <<"mp4">> => list(any()),
+%%   <<"png">> => list(any())
+%% }
+-type modality_routing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% blueprint() :: #{
 %%   <<"blueprintArn">> => string(),
 %%   <<"blueprintName">> => string(),
@@ -494,6 +523,13 @@
 
 
 %% Example:
+%% modality_processing_configuration() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type modality_processing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
 %%   <<"message">> => string()
@@ -535,6 +571,13 @@
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_override_configuration() :: #{
+%%   <<"modalityProcessing">> => modality_processing_configuration()
+%% }
+-type audio_override_configuration() :: #{binary() => any()}.
 
 
 %% Example:

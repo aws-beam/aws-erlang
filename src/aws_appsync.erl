@@ -374,6 +374,14 @@
 
 
 %% Example:
+%% integration() :: #{
+%%   <<"dataSourceName">> => string(),
+%%   <<"lambdaConfig">> => lambda_config()
+%% }
+-type integration() :: #{binary() => any()}.
+
+
+%% Example:
 %% lambda_authorizer_config() :: #{
 %%   <<"authorizerResultTtlInSeconds">> => integer(),
 %%   <<"authorizerUri">> => string(),
@@ -562,6 +570,7 @@
 %% Example:
 %% update_channel_namespace_request() :: #{
 %%   <<"codeHandlers">> => string(),
+%%   <<"handlerConfigs">> => handler_configs(),
 %%   <<"publishAuthModes">> => list(auth_mode()()),
 %%   <<"subscribeAuthModes">> => list(auth_mode()())
 %% }
@@ -600,6 +609,14 @@
 %%   <<"schema">> => string()
 %% }
 -type rds_http_endpoint_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% handler_configs() :: #{
+%%   <<"onPublish">> => handler_config(),
+%%   <<"onSubscribe">> => handler_config()
+%% }
+-type handler_configs() :: #{binary() => any()}.
 
 
 %% Example:
@@ -773,6 +790,7 @@
 %% Example:
 %% create_channel_namespace_request() :: #{
 %%   <<"codeHandlers">> => string(),
+%%   <<"handlerConfigs">> => handler_configs(),
 %%   <<"name">> := string(),
 %%   <<"publishAuthModes">> => list(auth_mode()()),
 %%   <<"subscribeAuthModes">> => list(auth_mode()()),
@@ -1064,6 +1082,14 @@
 
 
 %% Example:
+%% handler_config() :: #{
+%%   <<"behavior">> => list(any()),
+%%   <<"integration">> => integration()
+%% }
+-type handler_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% resolver() :: #{
 %%   <<"cachingConfig">> => caching_config(),
 %%   <<"code">> => string(),
@@ -1267,6 +1293,7 @@
 %%   <<"channelNamespaceArn">> => string(),
 %%   <<"codeHandlers">> => string(),
 %%   <<"created">> => non_neg_integer(),
+%%   <<"handlerConfigs">> => handler_configs(),
 %%   <<"lastModified">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"publishAuthModes">> => list(auth_mode()()),
@@ -1455,6 +1482,13 @@
 %%   <<"endpoint">> => string()
 %% }
 -type elasticsearch_data_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_config() :: #{
+%%   <<"invokeType">> => list(any())
+%% }
+-type lambda_config() :: #{binary() => any()}.
 
 
 %% Example:
