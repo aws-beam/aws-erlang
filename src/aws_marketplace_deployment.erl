@@ -6,10 +6,10 @@
 %% products.
 %%
 %% Quick Launch simplifies and reduces the time, resources, and steps
-%% required to configure, deploy, and launch a products. The AWS Marketplace
-%% Deployment Service provides sellers with a secure method for passing
-%% deployment parameters (for example, API keys and external IDs) to buyers
-%% during the Quick Launch experience.
+%% required to configure, deploy, and launch a products.
+%% The AWS Marketplace Deployment Service provides sellers with a secure
+%% method for passing deployment parameters, such as
+%% API keys and external IDs, to buyers during the Quick Launch experience.
 -module(aws_marketplace_deployment).
 
 -export([list_tags_for_resource/2,
