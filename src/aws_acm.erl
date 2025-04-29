@@ -108,6 +108,13 @@
 -type renewal_summary() :: #{binary() => any()}.
 
 %% Example:
+%% http_redirect() :: #{
+%%   <<"RedirectFrom">> => string(),
+%%   <<"RedirectTo">> => string()
+%% }
+-type http_redirect() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_state_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -131,6 +138,7 @@
 %%   <<"DomainValidationOptions">> => list(domain_validation_option()()),
 %%   <<"IdempotencyToken">> => string(),
 %%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"Options">> => certificate_options(),
 %%   <<"SubjectAlternativeNames">> => list(string()()),
 %%   <<"Tags">> => list(tag()()),
@@ -170,6 +178,7 @@
 %%   <<"IssuedAt">> => non_neg_integer(),
 %%   <<"KeyAlgorithm">> => list(any()),
 %%   <<"KeyUsages">> => list(list(any())()),
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"NotAfter">> => non_neg_integer(),
 %%   <<"NotBefore">> => non_neg_integer(),
 %%   <<"RenewalEligibility">> => list(any()),
@@ -331,7 +340,8 @@
 %% filters() :: #{
 %%   <<"extendedKeyUsage">> => list(list(any())()),
 %%   <<"keyTypes">> => list(list(any())()),
-%%   <<"keyUsage">> => list(list(any())())
+%%   <<"keyUsage">> => list(list(any())()),
+%%   <<"managedBy">> => list(any())
 %% }
 -type filters() :: #{binary() => any()}.
 
@@ -351,6 +361,7 @@
 %% Example:
 %% domain_validation() :: #{
 %%   <<"DomainName">> => string(),
+%%   <<"HttpRedirect">> => http_redirect(),
 %%   <<"ResourceRecord">> => resource_record(),
 %%   <<"ValidationDomain">> => string(),
 %%   <<"ValidationEmails">> => list(string()()),
@@ -414,6 +425,7 @@
 %%   <<"Issuer">> => string(),
 %%   <<"KeyAlgorithm">> => list(any()),
 %%   <<"KeyUsages">> => list(key_usage()()),
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"NotAfter">> => non_neg_integer(),
 %%   <<"NotBefore">> => non_neg_integer(),
 %%   <<"Options">> => certificate_options(),
@@ -498,7 +510,8 @@
 
 -type renew_certificate_errors() ::
     resource_not_found_exception() | 
-    invalid_arn_exception().
+    invalid_arn_exception() | 
+    request_in_progress_exception().
 
 -type request_certificate_errors() ::
     too_many_tags_exception() | 
@@ -790,14 +803,12 @@ import_certificate(Client, Input, Options)
 
 %% @doc Retrieves a list of certificate ARNs and domain names.
 %%
-%% By default, the API returns RSA_2048 certificates. To return all
-%% certificates in the account, include the `keyType' filter with the
-%% values `[RSA_1024, RSA_2048, RSA_3072, RSA_4096, EC_prime256v1,
-%% EC_secp384r1, EC_secp521r1]'.
-%%
-%% In addition to `keyType', you can also filter by the
-%% `CertificateStatuses', `keyUsage', and `extendedKeyUsage'
-%% attributes on the certificate. For more information, see `Filters'.
+%% You can request that only
+%% certificates that match a specific status be listed. You can also filter
+%% by specific
+%% attributes of the certificate. Default filtering returns only
+%% `RSA_2048'
+%% certificates. For more information, see `Filters'.
 -spec list_certificates(aws_client:aws_client(), list_certificates_request()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |

@@ -1503,7 +1503,8 @@
 %%   <<"launchTemplateConfigurations">> => list(launch_template_configuration()()),
 %%   <<"licenseConfigurationArns">> => list(string()()),
 %%   <<"region">> => string(),
-%%   <<"s3ExportConfiguration">> => s3_export_configuration()
+%%   <<"s3ExportConfiguration">> => s3_export_configuration(),
+%%   <<"ssmParameterConfigurations">> => list(ssm_parameter_configuration()())
 %% }
 -type distribution() :: #{binary() => any()}.
 
@@ -2226,6 +2227,15 @@
 %%   <<"infrastructureConfigurationArn">> := string()
 %% }
 -type delete_infrastructure_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ssm_parameter_configuration() :: #{
+%%   <<"amiAccountId">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"parameterName">> => string()
+%% }
+-type ssm_parameter_configuration() :: #{binary() => any()}.
 
 
 %% Example:

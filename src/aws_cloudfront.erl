@@ -15,6 +15,10 @@
 
 -export([associate_alias/3,
          associate_alias/4,
+         associate_distribution_tenant_web_acl/3,
+         associate_distribution_tenant_web_acl/4,
+         associate_distribution_web_acl/3,
+         associate_distribution_web_acl/4,
          copy_distribution/3,
          copy_distribution/4,
          create_anycast_ip_list/2,
@@ -23,10 +27,14 @@
          create_cache_policy/3,
          create_cloud_front_origin_access_identity/2,
          create_cloud_front_origin_access_identity/3,
+         create_connection_group/2,
+         create_connection_group/3,
          create_continuous_deployment_policy/2,
          create_continuous_deployment_policy/3,
          create_distribution/2,
          create_distribution/3,
+         create_distribution_tenant/2,
+         create_distribution_tenant/3,
          create_distribution_with_tags/2,
          create_distribution_with_tags/3,
          create_field_level_encryption_config/2,
@@ -37,6 +45,8 @@
          create_function/3,
          create_invalidation/3,
          create_invalidation/4,
+         create_invalidation_for_distribution_tenant/3,
+         create_invalidation_for_distribution_tenant/4,
          create_key_group/2,
          create_key_group/3,
          create_key_value_store/2,
@@ -65,10 +75,14 @@
          delete_cache_policy/4,
          delete_cloud_front_origin_access_identity/3,
          delete_cloud_front_origin_access_identity/4,
+         delete_connection_group/3,
+         delete_connection_group/4,
          delete_continuous_deployment_policy/3,
          delete_continuous_deployment_policy/4,
          delete_distribution/3,
          delete_distribution/4,
+         delete_distribution_tenant/3,
+         delete_distribution_tenant/4,
          delete_field_level_encryption_config/3,
          delete_field_level_encryption_config/4,
          delete_field_level_encryption_profile/3,
@@ -101,6 +115,10 @@
          describe_key_value_store/2,
          describe_key_value_store/4,
          describe_key_value_store/5,
+         disassociate_distribution_tenant_web_acl/3,
+         disassociate_distribution_tenant_web_acl/4,
+         disassociate_distribution_web_acl/3,
+         disassociate_distribution_web_acl/4,
          get_anycast_ip_list/2,
          get_anycast_ip_list/4,
          get_anycast_ip_list/5,
@@ -116,6 +134,12 @@
          get_cloud_front_origin_access_identity_config/2,
          get_cloud_front_origin_access_identity_config/4,
          get_cloud_front_origin_access_identity_config/5,
+         get_connection_group/2,
+         get_connection_group/4,
+         get_connection_group/5,
+         get_connection_group_by_routing_endpoint/2,
+         get_connection_group_by_routing_endpoint/4,
+         get_connection_group_by_routing_endpoint/5,
          get_continuous_deployment_policy/2,
          get_continuous_deployment_policy/4,
          get_continuous_deployment_policy/5,
@@ -128,6 +152,12 @@
          get_distribution_config/2,
          get_distribution_config/4,
          get_distribution_config/5,
+         get_distribution_tenant/2,
+         get_distribution_tenant/4,
+         get_distribution_tenant/5,
+         get_distribution_tenant_by_domain/2,
+         get_distribution_tenant_by_domain/4,
+         get_distribution_tenant_by_domain/5,
          get_field_level_encryption/2,
          get_field_level_encryption/4,
          get_field_level_encryption/5,
@@ -146,12 +176,18 @@
          get_invalidation/3,
          get_invalidation/5,
          get_invalidation/6,
+         get_invalidation_for_distribution_tenant/3,
+         get_invalidation_for_distribution_tenant/5,
+         get_invalidation_for_distribution_tenant/6,
          get_key_group/2,
          get_key_group/4,
          get_key_group/5,
          get_key_group_config/2,
          get_key_group_config/4,
          get_key_group_config/5,
+         get_managed_certificate_details/2,
+         get_managed_certificate_details/4,
+         get_managed_certificate_details/5,
          get_monitoring_subscription/2,
          get_monitoring_subscription/4,
          get_monitoring_subscription/5,
@@ -202,9 +238,15 @@
          list_conflicting_aliases/3,
          list_conflicting_aliases/5,
          list_conflicting_aliases/6,
+         list_connection_groups/2,
+         list_connection_groups/3,
          list_continuous_deployment_policies/1,
          list_continuous_deployment_policies/3,
          list_continuous_deployment_policies/4,
+         list_distribution_tenants/2,
+         list_distribution_tenants/3,
+         list_distribution_tenants_by_customization/2,
+         list_distribution_tenants_by_customization/3,
          list_distributions/1,
          list_distributions/3,
          list_distributions/4,
@@ -214,6 +256,9 @@
          list_distributions_by_cache_policy_id/2,
          list_distributions_by_cache_policy_id/4,
          list_distributions_by_cache_policy_id/5,
+         list_distributions_by_connection_mode/2,
+         list_distributions_by_connection_mode/4,
+         list_distributions_by_connection_mode/5,
          list_distributions_by_key_group/2,
          list_distributions_by_key_group/4,
          list_distributions_by_key_group/5,
@@ -231,6 +276,8 @@
          list_distributions_by_web_acl_id/2,
          list_distributions_by_web_acl_id/4,
          list_distributions_by_web_acl_id/5,
+         list_domain_conflicts/2,
+         list_domain_conflicts/3,
          list_field_level_encryption_configs/1,
          list_field_level_encryption_configs/3,
          list_field_level_encryption_configs/4,
@@ -243,6 +290,9 @@
          list_invalidations/2,
          list_invalidations/4,
          list_invalidations/5,
+         list_invalidations_for_distribution_tenant/2,
+         list_invalidations_for_distribution_tenant/4,
+         list_invalidations_for_distribution_tenant/5,
          list_key_groups/1,
          list_key_groups/3,
          list_key_groups/4,
@@ -285,12 +335,18 @@
          update_cache_policy/4,
          update_cloud_front_origin_access_identity/3,
          update_cloud_front_origin_access_identity/4,
+         update_connection_group/3,
+         update_connection_group/4,
          update_continuous_deployment_policy/3,
          update_continuous_deployment_policy/4,
          update_distribution/3,
          update_distribution/4,
+         update_distribution_tenant/3,
+         update_distribution_tenant/4,
          update_distribution_with_staging_config/3,
          update_distribution_with_staging_config/4,
+         update_domain_association/2,
+         update_domain_association/3,
          update_field_level_encryption_config/3,
          update_field_level_encryption_config/4,
          update_field_level_encryption_profile/3,
@@ -314,7 +370,9 @@
          update_streaming_distribution/3,
          update_streaming_distribution/4,
          update_vpc_origin/3,
-         update_vpc_origin/4]).
+         update_vpc_origin/4,
+         verify_dns_configuration/2,
+         verify_dns_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -325,6 +383,10 @@
 %%   <<"Message">> => string()
 %% }
 -type response_headers_policy_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_tenant_request() :: #{}
+-type get_distribution_tenant_request() :: #{}.
 
 
 %% Example:
@@ -396,6 +458,16 @@
 
 
 %% Example:
+%% update_connection_group_request() :: #{
+%%   <<"AnycastIpListId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IfMatch">> := string(),
+%%   <<"Ipv6Enabled">> => boolean()
+%% }
+-type update_connection_group_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_origin_groups_per_distribution() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -416,6 +488,13 @@
 %%   <<"ResponseHeadersPolicy">> => response_headers_policy()
 %% }
 -type update_response_headers_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_association() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -602,6 +681,13 @@
 
 
 %% Example:
+%% get_distribution_tenant_by_domain_request() :: #{
+%%   <<"Domain">> := string()
+%% }
+-type get_distribution_tenant_by_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% query_arg_profile_empty() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -618,6 +704,23 @@
 %%   <<"Tags">> => tags()
 %% }
 -type distribution_config_with_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_group_summary() :: #{
+%%   <<"AnycastIpListId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"ETag">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoutingEndpoint">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type connection_group_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -652,6 +755,21 @@
 %%   <<"Message">> => string()
 %% }
 -type illegal_origin_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_tenant_request() :: #{
+%%   <<"ConnectionGroupId">> => string(),
+%%   <<"Customizations">> => customizations(),
+%%   <<"DistributionId">> := string(),
+%%   <<"Domains">> := list(domain_item()()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ManagedCertificateRequest">> => managed_certificate_request(),
+%%   <<"Name">> := string(),
+%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Tags">> => tags()
+%% }
+-type create_distribution_tenant_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_field_level_encryption_profile_request() :: #{}
@@ -692,6 +810,14 @@
 %%   <<"Message">> => string()
 %% }
 -type trusted_key_group_does_not_exist() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_resource_id() :: #{
+%%   <<"DistributionId">> => string(),
+%%   <<"DistributionTenantId">> => string()
+%% }
+-type distribution_resource_id() :: #{binary() => any()}.
 
 
 %% Example:
@@ -757,6 +883,15 @@
 
 
 %% Example:
+%% update_domain_association_request() :: #{
+%%   <<"Domain">> := string(),
+%%   <<"IfMatch">> => string(),
+%%   <<"TargetResource">> := distribution_resource_id()
+%% }
+-type update_domain_association_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_monitoring_subscription_result() :: #{
 %%   <<"MonitoringSubscription">> => monitoring_subscription()
 %% }
@@ -813,6 +948,13 @@
 %%   <<"QueryStringsConfig">> => origin_request_policy_query_strings_config()
 %% }
 -type origin_request_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_definition_schema() :: #{
+%%   <<"StringSchema">> => string_schema_config()
+%% }
+-type parameter_definition_schema() :: #{binary() => any()}.
 
 
 %% Example:
@@ -934,11 +1076,32 @@
 
 
 %% Example:
+%% domain_item() :: #{
+%%   <<"Domain">> => string()
+%% }
+-type domain_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_cache_policy_result() :: #{
 %%   <<"CachePolicy">> => cache_policy(),
 %%   <<"ETag">> => string()
 %% }
 -type update_cache_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_tenant_request() :: #{
+%%   <<"ConnectionGroupId">> => string(),
+%%   <<"Customizations">> => customizations(),
+%%   <<"DistributionId">> => string(),
+%%   <<"Domains">> => list(domain_item()()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IfMatch">> := string(),
+%%   <<"ManagedCertificateRequest">> => managed_certificate_request(),
+%%   <<"Parameters">> => list(parameter()())
+%% }
+-type update_distribution_tenant_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -963,6 +1126,13 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_field_level_encryption_content_type_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connection_group_by_routing_endpoint_request() :: #{
+%%   <<"RoutingEndpoint">> := string()
+%% }
+-type get_connection_group_by_routing_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1008,6 +1178,13 @@
 %%   <<"S3CanonicalUserId">> => string()
 %% }
 -type cloud_front_origin_access_identity_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invalidations_for_distribution_tenant_result() :: #{
+%%   <<"InvalidationList">> => invalidation_list()
+%% }
+-type list_invalidations_for_distribution_tenant_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1058,6 +1235,10 @@
 %% }
 -type copy_distribution_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_connection_group_request() :: #{}
+-type get_connection_group_request() :: #{}.
+
 
 %% Example:
 %% test_result() :: #{
@@ -1093,9 +1274,11 @@
 %%   <<"AnycastIpListId">> => string(),
 %%   <<"CacheBehaviors">> => cache_behaviors(),
 %%   <<"Comment">> => string(),
+%%   <<"ConnectionMode">> => list(any()),
 %%   <<"CustomErrorResponses">> => custom_error_responses(),
 %%   <<"DefaultCacheBehavior">> => default_cache_behavior(),
 %%   <<"DomainName">> => string(),
+%%   <<"ETag">> => string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"HttpVersion">> => list(any()),
 %%   <<"Id">> => string(),
@@ -1159,6 +1342,14 @@
 
 
 %% Example:
+%% parameter_definition() :: #{
+%%   <<"Definition">> => parameter_definition_schema(),
+%%   <<"Name">> => string()
+%% }
+-type parameter_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% field_level_encryption_config_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1216,6 +1407,15 @@
 
 
 %% Example:
+%% dns_configuration() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Reason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type dns_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% continuous_deployment_policy_summary() :: #{
 %%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy()
 %% }
@@ -1234,6 +1434,13 @@
 %%   <<"Message">> => string()
 %% }
 -type cloud_front_origin_access_identity_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connection_group_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_connection_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1262,6 +1469,14 @@
 
 
 %% Example:
+%% list_invalidations_for_distribution_tenant_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_invalidations_for_distribution_tenant_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% response_headers_policy() :: #{
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -1275,6 +1490,14 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_t_t_l_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_group_result() :: #{
+%%   <<"ConnectionGroup">> => connection_group(),
+%%   <<"ETag">> => string()
+%% }
+-type update_connection_group_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1375,6 +1598,14 @@
 %%   <<"DistributionConfig">> := distribution_config()
 %% }
 -type create_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_distribution_tenant_by_domain_result() :: #{
+%%   <<"DistributionTenant">> => distribution_tenant(),
+%%   <<"ETag">> => string()
+%% }
+-type get_distribution_tenant_by_domain_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1492,11 +1723,36 @@
 
 
 %% Example:
+%% associate_distribution_web_acl_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"WebACLArn">> => string()
+%% }
+-type associate_distribution_web_acl_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_key_group_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"KeyGroup">> => key_group()
 %% }
 -type get_key_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% geo_restriction_customization() :: #{
+%%   <<"Locations">> => list(string()()),
+%%   <<"RestrictionType">> => list(any())
+%% }
+-type geo_restriction_customization() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_invalidation_for_distribution_tenant_result() :: #{
+%%   <<"Invalidation">> => invalidation(),
+%%   <<"Location">> => string()
+%% }
+-type create_invalidation_for_distribution_tenant_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1588,6 +1844,14 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type key_group_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_distribution_tenant_result() :: #{
+%%   <<"DistributionTenant">> => distribution_tenant(),
+%%   <<"ETag">> => string()
+%% }
+-type get_distribution_tenant_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1751,11 +2015,29 @@
 
 
 %% Example:
+%% list_connection_groups_result() :: #{
+%%   <<"ConnectionGroups">> => list(connection_group_summary()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_connection_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_key_value_store_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"KeyValueStore">> => key_value_store()
 %% }
 -type describe_key_value_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_conflicts_request() :: #{
+%%   <<"Domain">> := string(),
+%%   <<"DomainControlValidationResource">> := distribution_resource_id(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_domain_conflicts_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1845,6 +2127,13 @@
 
 
 %% Example:
+%% get_managed_certificate_details_result() :: #{
+%%   <<"ManagedCertificateDetails">> => managed_certificate_details()
+%% }
+-type get_managed_certificate_details_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% traffic_config() :: #{
 %%   <<"SingleHeaderConfig">> => continuous_deployment_single_header_config(),
 %%   <<"SingleWeightConfig">> => continuous_deployment_single_weight_config(),
@@ -1907,6 +2196,7 @@
 %%   <<"CacheBehaviors">> => cache_behaviors(),
 %%   <<"CallerReference">> => string(),
 %%   <<"Comment">> => string(),
+%%   <<"ConnectionMode">> => list(any()),
 %%   <<"ContinuousDeploymentPolicyId">> => string(),
 %%   <<"CustomErrorResponses">> => custom_error_responses(),
 %%   <<"DefaultCacheBehavior">> => default_cache_behavior(),
@@ -1920,6 +2210,7 @@
 %%   <<"PriceClass">> => list(any()),
 %%   <<"Restrictions">> => restrictions(),
 %%   <<"Staging">> => boolean(),
+%%   <<"TenantConfig">> => tenant_config(),
 %%   <<"ViewerCertificate">> => viewer_certificate(),
 %%   <<"WebACLId">> => string()
 %% }
@@ -2000,6 +2291,22 @@
 
 
 %% Example:
+%% list_connection_groups_request() :: #{
+%%   <<"AssociationFilter">> => connection_group_association_filter(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_connection_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_group_association_filter() :: #{
+%%   <<"AnycastIpListId">> => string()
+%% }
+-type connection_group_association_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% public_key_list() :: #{
 %%   <<"Items">> => list(public_key_summary()()),
 %%   <<"MaxItems">> => integer(),
@@ -2027,6 +2334,13 @@
 %% Example:
 %% get_cache_policy_config_request() :: #{}
 -type get_cache_policy_config_request() :: #{}.
+
+
+%% Example:
+%% list_distributions_by_connection_mode_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_connection_mode_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2087,6 +2401,15 @@
 
 
 %% Example:
+%% list_distribution_tenants_request() :: #{
+%%   <<"AssociationFilter">> => distribution_tenant_association_filter(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distribution_tenants_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% response_headers_policy_access_control_expose_headers() :: #{
 %%   <<"Items">> => list(string()()),
 %%   <<"Quantity">> => integer()
@@ -2131,6 +2454,13 @@
 
 
 %% Example:
+%% disassociate_distribution_web_acl_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type disassociate_distribution_web_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_query_strings_in_origin_request_policy() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2138,10 +2468,36 @@
 
 
 %% Example:
+%% tenant_config() :: #{
+%%   <<"ParameterDefinitions">> => list(parameter_definition()())
+%% }
+-type tenant_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_conflicts_result() :: #{
+%%   <<"DomainConflicts">> => list(domain_conflict()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_domain_conflicts_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_cache_policies() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_cache_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connection_group_request() :: #{
+%%   <<"AnycastIpListId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Ipv6Enabled">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
+%% }
+-type create_connection_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2257,6 +2613,14 @@
 
 
 %% Example:
+%% get_connection_group_result() :: #{
+%%   <<"ConnectionGroup">> => connection_group(),
+%%   <<"ETag">> => string()
+%% }
+-type get_connection_group_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_origin_access_control_request() :: #{
 %%   <<"IfMatch">> => string(),
 %%   <<"OriginAccessControlConfig">> := origin_access_control_config()
@@ -2330,6 +2694,14 @@
 
 
 %% Example:
+%% disassociate_distribution_tenant_web_acl_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type disassociate_distribution_tenant_web_acl_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% field_patterns() :: #{
 %%   <<"Items">> => list(string()()),
 %%   <<"Quantity">> => integer()
@@ -2349,6 +2721,16 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_lambda_function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distribution_tenants_by_customization_request() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"WebACLArn">> => string()
+%% }
+-type list_distribution_tenants_by_customization_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2387,10 +2769,26 @@
 
 
 %% Example:
+%% parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_cache_policy_request() :: #{
 %%   <<"CachePolicyConfig">> := cache_policy_config()
 %% }
 -type create_cache_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distribution_tenants_result() :: #{
+%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_distribution_tenants_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2478,6 +2876,14 @@
 
 
 %% Example:
+%% list_distribution_tenants_by_customization_result() :: #{
+%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_distribution_tenants_by_customization_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_alias_request() :: #{
 %%   <<"Alias">> := string()
 %% }
@@ -2530,6 +2936,14 @@
 %%   <<"VpcOrigin">> => vpc_origin()
 %% }
 -type get_vpc_origin_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_connection_mode_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_connection_mode_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2592,6 +3006,15 @@
 
 
 %% Example:
+%% customizations() :: #{
+%%   <<"Certificate">> => certificate(),
+%%   <<"GeoRestrictions">> => geo_restriction_customization(),
+%%   <<"WebAcl">> => web_acl_customization()
+%% }
+-type customizations() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_domain_name_for_origin_access_control() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2607,12 +3030,32 @@
 
 
 %% Example:
+%% managed_certificate_details() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateStatus">> => list(any()),
+%%   <<"ValidationTokenDetails">> => list(validation_token_detail()()),
+%%   <<"ValidationTokenHost">> => list(any())
+%% }
+-type managed_certificate_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% public_key() :: #{
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
 %%   <<"PublicKeyConfig">> => public_key_config()
 %% }
 -type public_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_conflict() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type domain_conflict() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2813,6 +3256,14 @@
 
 
 %% Example:
+%% distribution_tenant_association_filter() :: #{
+%%   <<"ConnectionGroupId">> => string(),
+%%   <<"DistributionId">> => string()
+%% }
+-type distribution_tenant_association_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_public_key_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"PublicKey">> => public_key()
@@ -2843,6 +3294,14 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_origin_custom_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_distribution_web_acl_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type disassociate_distribution_web_acl_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2948,6 +3407,10 @@
 %% }
 -type no_such_resource() :: #{binary() => any()}.
 
+%% Example:
+%% get_invalidation_for_distribution_tenant_request() :: #{}
+-type get_invalidation_for_distribution_tenant_request() :: #{}.
+
 
 %% Example:
 %% distribution_list() :: #{
@@ -2959,6 +3422,13 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type distribution_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_disabled() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_disabled() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2987,6 +3457,13 @@
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
 
+
+%% Example:
+%% certificate() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type certificate() :: #{binary() => any()}.
+
 %% Example:
 %% get_response_headers_policy_config_request() :: #{}
 -type get_response_headers_policy_config_request() :: #{}.
@@ -2997,6 +3474,14 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_field_level_encryption_encryption_entities() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_distribution_web_acl_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"WebACLArn">> := string()
+%% }
+-type associate_distribution_web_acl_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3026,6 +3511,25 @@
 %%   <<"Enabled">> => boolean()
 %% }
 -type grpc_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_tenant() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConnectionGroupId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Customizations">> => customizations(),
+%%   <<"DistributionId">> => string(),
+%%   <<"Domains">> => list(domain_result()()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => tags()
+%% }
+-type distribution_tenant() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3064,6 +3568,13 @@
 %%   <<"Message">> => string()
 %% }
 -type too_many_realtime_log_configs() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_dns_configuration_result() :: #{
+%%   <<"DnsConfigurationList">> => list(dns_configuration()())
+%% }
+-type verify_dns_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3214,6 +3725,20 @@
 
 
 %% Example:
+%% disassociate_distribution_tenant_web_acl_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type disassociate_distribution_tenant_web_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_distribution_tenant_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_distribution_tenant_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_distributions_by_web_acl_id_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer()
@@ -3267,6 +3792,15 @@
 
 
 %% Example:
+%% update_domain_association_result() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type update_domain_association_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_public_keys_in_key_group() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3287,6 +3821,13 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_distributions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_invalidation_for_distribution_tenant_result() :: #{
+%%   <<"Invalidation">> => invalidation()
+%% }
+-type get_invalidation_for_distribution_tenant_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3334,6 +3875,15 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type function_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_certificate_request() :: #{
+%%   <<"CertificateTransparencyLoggingPreference">> => list(any()),
+%%   <<"PrimaryDomainName">> => string(),
+%%   <<"ValidationTokenHost">> => list(any())
+%% }
+-type managed_certificate_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_cloud_front_origin_access_identity_config_request() :: #{}
@@ -3386,6 +3936,14 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_distributions_by_anycast_ip_list_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_tenant_result() :: #{
+%%   <<"DistributionTenant">> => distribution_tenant(),
+%%   <<"ETag">> => string()
+%% }
+-type update_distribution_tenant_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3510,6 +4068,14 @@
 
 
 %% Example:
+%% associate_distribution_tenant_web_acl_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"WebACLArn">> := string()
+%% }
+-type associate_distribution_tenant_web_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% cname_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3543,6 +4109,14 @@
 %%   <<"ETag">> => string()
 %% }
 -type get_continuous_deployment_policy_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_result() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type domain_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_anycast_ip_list_request() :: #{}
@@ -3622,6 +4196,23 @@
 %%   <<"ResponseHeadersPolicy">> => response_headers_policy()
 %% }
 -type get_response_headers_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_token_detail() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"RedirectFrom">> => string(),
+%%   <<"RedirectTo">> => string()
+%% }
+-type validation_token_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_acl_customization() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Arn">> => string()
+%% }
+-type web_acl_customization() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3726,6 +4317,14 @@
 
 
 %% Example:
+%% verify_dns_configuration_request() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Identifier">> := string()
+%% }
+-type verify_dns_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_origin_access_control_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"Location">> => string(),
@@ -3783,6 +4382,14 @@
 %%   <<"PublicKey">> => public_key()
 %% }
 -type create_public_key_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_tenant_result() :: #{
+%%   <<"DistributionTenant">> => distribution_tenant(),
+%%   <<"ETag">> => string()
+%% }
+-type create_distribution_tenant_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3890,6 +4497,14 @@
 %%   <<"SourceType">> => list(any())
 %% }
 -type import_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connection_group_by_routing_endpoint_result() :: #{
+%%   <<"ConnectionGroup">> => connection_group(),
+%%   <<"ETag">> => string()
+%% }
+-type get_connection_group_by_routing_endpoint_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4063,6 +4678,18 @@
 
 
 %% Example:
+%% create_connection_group_result() :: #{
+%%   <<"ConnectionGroup">> => connection_group(),
+%%   <<"ETag">> => string()
+%% }
+-type create_connection_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_certificate_details_request() :: #{}
+-type get_managed_certificate_details_request() :: #{}.
+
+
+%% Example:
 %% create_distribution_with_tags_request() :: #{
 %%   <<"DistributionConfigWithTags">> := distribution_config_with_tags()
 %% }
@@ -4173,6 +4800,13 @@
 
 
 %% Example:
+%% create_invalidation_for_distribution_tenant_request() :: #{
+%%   <<"InvalidationBatch">> := invalidation_batch()
+%% }
+-type create_invalidation_for_distribution_tenant_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_field_level_encryption_config_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FieldLevelEncryption">> => field_level_encryption()
@@ -4221,6 +4855,15 @@
 
 
 %% Example:
+%% associate_distribution_tenant_web_acl_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"WebACLArn">> => string()
+%% }
+-type associate_distribution_tenant_web_acl_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% function_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -4240,6 +4883,15 @@
 %%   <<"MaxItems">> => integer()
 %% }
 -type list_anycast_ip_lists_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_schema_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"Required">> => boolean()
+%% }
+-type string_schema_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4470,6 +5122,24 @@
 
 
 %% Example:
+%% distribution_tenant_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConnectionGroupId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Customizations">> => customizations(),
+%%   <<"DistributionId">> => string(),
+%%   <<"Domains">> => list(domain_result()()),
+%%   <<"ETag">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type distribution_tenant_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% streaming_distribution_config() :: #{
 %%   <<"Aliases">> => aliases(),
 %%   <<"CallerReference">> => string(),
@@ -4542,6 +5212,24 @@
 %%   <<"Message">> => string()
 %% }
 -type staging_distribution_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_group() :: #{
+%%   <<"AnycastIpListId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"Ipv6Enabled">> => boolean(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoutingEndpoint">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => tags()
+%% }
+-type connection_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4665,6 +5353,20 @@
     access_denied() | 
     illegal_update().
 
+-type associate_distribution_tenant_web_acl_errors() ::
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
+-type associate_distribution_web_acl_errors() ::
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
 -type copy_distribution_errors() ::
     too_many_distributions_associated_to_origin_access_control() | 
     too_many_distributions_associated_to_field_level_encryption_config() | 
@@ -4756,6 +5458,14 @@
     invalid_argument() | 
     cloud_front_origin_access_identity_already_exists().
 
+-type create_connection_group_errors() ::
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_tagging().
+
 -type create_continuous_deployment_policy_errors() ::
     staging_distribution_in_use() | 
     inconsistent_quantities() | 
@@ -4770,6 +5480,7 @@
     invalid_location_code() | 
     invalid_response_code() | 
     too_many_distributions() | 
+    entity_limit_exceeded() | 
     no_such_realtime_log_config() | 
     invalid_function_association() | 
     illegal_field_level_encryption_config_association_with_cache_behavior() | 
@@ -4831,6 +5542,16 @@
     invalid_origin_access_identity() | 
     too_many_function_associations() | 
     too_many_origin_groups_per_distribution().
+
+-type create_distribution_tenant_errors() ::
+    entity_limit_exceeded() | 
+    cname_already_exists() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_tagging() | 
+    invalid_association().
 
 -type create_distribution_with_tags_errors() ::
     too_many_distributions_associated_to_origin_access_control() | 
@@ -4935,6 +5656,15 @@
     batch_too_large() | 
     invalid_argument() | 
     access_denied() | 
+    too_many_invalidations_in_progress().
+
+-type create_invalidation_for_distribution_tenant_errors() ::
+    inconsistent_quantities() | 
+    missing_body() | 
+    batch_too_large() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
     too_many_invalidations_in_progress().
 
 -type create_key_group_errors() ::
@@ -5058,6 +5788,14 @@
     cloud_front_origin_access_identity_in_use() | 
     invalid_if_match_version().
 
+-type delete_connection_group_errors() ::
+    resource_not_disabled() | 
+    cannot_delete_entity_while_in_use() | 
+    precondition_failed() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
 -type delete_continuous_deployment_policy_errors() ::
     continuous_deployment_policy_in_use() | 
     precondition_failed() | 
@@ -5070,8 +5808,16 @@
     no_such_distribution() | 
     precondition_failed() | 
     access_denied() | 
+    resource_in_use() | 
     invalid_if_match_version() | 
     distribution_not_disabled().
+
+-type delete_distribution_tenant_errors() ::
+    resource_not_disabled() | 
+    precondition_failed() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
 
 -type delete_field_level_encryption_config_errors() ::
     precondition_failed() | 
@@ -5177,6 +5923,20 @@
     access_denied() | 
     entity_not_found().
 
+-type disassociate_distribution_tenant_web_acl_errors() ::
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
+-type disassociate_distribution_web_acl_errors() ::
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
 -type get_anycast_ip_list_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
@@ -5199,6 +5959,14 @@
     no_such_cloud_front_origin_access_identity() | 
     access_denied().
 
+-type get_connection_group_errors() ::
+    access_denied() | 
+    entity_not_found().
+
+-type get_connection_group_by_routing_endpoint_errors() ::
+    access_denied() | 
+    entity_not_found().
+
 -type get_continuous_deployment_policy_errors() ::
     access_denied() | 
     no_such_continuous_deployment_policy().
@@ -5214,6 +5982,14 @@
 -type get_distribution_config_errors() ::
     no_such_distribution() | 
     access_denied().
+
+-type get_distribution_tenant_errors() ::
+    access_denied() | 
+    entity_not_found().
+
+-type get_distribution_tenant_by_domain_errors() ::
+    access_denied() | 
+    entity_not_found().
 
 -type get_field_level_encryption_errors() ::
     no_such_field_level_encryption_config() | 
@@ -5240,11 +6016,20 @@
     no_such_distribution() | 
     access_denied().
 
+-type get_invalidation_for_distribution_tenant_errors() ::
+    no_such_invalidation() | 
+    access_denied() | 
+    entity_not_found().
+
 -type get_key_group_errors() ::
     no_such_resource().
 
 -type get_key_group_config_errors() ::
     no_such_resource().
+
+-type get_managed_certificate_details_errors() ::
+    access_denied() | 
+    entity_not_found().
 
 -type get_monitoring_subscription_errors() ::
     no_such_monitoring_subscription() | 
@@ -5321,10 +6106,25 @@
     no_such_distribution() | 
     invalid_argument().
 
+-type list_connection_groups_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 -type list_continuous_deployment_policies_errors() ::
     invalid_argument() | 
     access_denied() | 
     no_such_continuous_deployment_policy().
+
+-type list_distribution_tenants_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
+-type list_distribution_tenants_by_customization_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
 
 -type list_distributions_errors() ::
     invalid_argument().
@@ -5337,6 +6137,10 @@
 
 -type list_distributions_by_cache_policy_id_errors() ::
     no_such_cache_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_distributions_by_connection_mode_errors() ::
     invalid_argument() | 
     access_denied().
 
@@ -5367,6 +6171,11 @@
     invalid_web_acl_id() | 
     invalid_argument().
 
+-type list_domain_conflicts_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 -type list_field_level_encryption_configs_errors() ::
     invalid_argument().
 
@@ -5381,6 +6190,11 @@
     no_such_distribution() | 
     invalid_argument() | 
     access_denied().
+
+-type list_invalidations_for_distribution_tenant_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
 
 -type list_key_groups_errors() ::
     invalid_argument().
@@ -5475,6 +6289,16 @@
     illegal_update() | 
     invalid_if_match_version().
 
+-type update_connection_group_errors() ::
+    entity_limit_exceeded() | 
+    precondition_failed() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    resource_in_use() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
 -type update_continuous_deployment_policy_errors() ::
     staging_distribution_in_use() | 
     inconsistent_quantities() | 
@@ -5553,6 +6377,17 @@
     too_many_function_associations() | 
     too_many_origin_groups_per_distribution().
 
+-type update_distribution_tenant_errors() ::
+    entity_limit_exceeded() | 
+    cname_already_exists() | 
+    precondition_failed() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version() | 
+    invalid_association().
+
 -type update_distribution_with_staging_config_errors() ::
     too_many_distributions_associated_to_origin_access_control() | 
     too_many_distributions_associated_to_field_level_encryption_config() | 
@@ -5616,6 +6451,14 @@
     invalid_origin_access_identity() | 
     too_many_function_associations() | 
     too_many_origin_groups_per_distribution().
+
+-type update_domain_association_errors() ::
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    entity_not_found() | 
+    invalid_if_match_version().
 
 -type update_field_level_encryption_config_errors() ::
     too_many_field_level_encryption_query_arg_profiles() | 
@@ -5746,6 +6589,11 @@
     invalid_if_match_version() | 
     cannot_update_entity_while_in_use().
 
+-type verify_dns_configuration_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -5805,6 +6653,110 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates the WAF web ACL with a distribution tenant.
+-spec associate_distribution_tenant_web_acl(aws_client:aws_client(), binary() | list(), associate_distribution_tenant_web_acl_request()) ->
+    {ok, associate_distribution_tenant_web_acl_result(), tuple()} |
+    {error, any()} |
+    {error, associate_distribution_tenant_web_acl_errors(), tuple()}.
+associate_distribution_tenant_web_acl(Client, Id, Input) ->
+    associate_distribution_tenant_web_acl(Client, Id, Input, []).
+
+-spec associate_distribution_tenant_web_acl(aws_client:aws_client(), binary() | list(), associate_distribution_tenant_web_acl_request(), proplists:proplist()) ->
+    {ok, associate_distribution_tenant_web_acl_result(), tuple()} |
+    {error, any()} |
+    {error, associate_distribution_tenant_web_acl_errors(), tuple()}.
+associate_distribution_tenant_web_acl(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/distribution-tenant/", aws_util:encode_uri(Id), "/associate-web-acl"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Associates the WAF web ACL with a distribution.
+-spec associate_distribution_web_acl(aws_client:aws_client(), binary() | list(), associate_distribution_web_acl_request()) ->
+    {ok, associate_distribution_web_acl_result(), tuple()} |
+    {error, any()} |
+    {error, associate_distribution_web_acl_errors(), tuple()}.
+associate_distribution_web_acl(Client, Id, Input) ->
+    associate_distribution_web_acl(Client, Id, Input, []).
+
+-spec associate_distribution_web_acl(aws_client:aws_client(), binary() | list(), associate_distribution_web_acl_request(), proplists:proplist()) ->
+    {ok, associate_distribution_web_acl_result(), tuple()} |
+    {error, any()} |
+    {error, associate_distribution_web_acl_errors(), tuple()}.
+associate_distribution_web_acl(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/associate-web-acl"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Creates a staging distribution using the configuration of the
 %% provided primary
@@ -6075,6 +7027,56 @@ create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
         Result
     end.
 
+%% @doc Creates a connection group.
+-spec create_connection_group(aws_client:aws_client(), create_connection_group_request()) ->
+    {ok, create_connection_group_result(), tuple()} |
+    {error, any()} |
+    {error, create_connection_group_errors(), tuple()}.
+create_connection_group(Client, Input) ->
+    create_connection_group(Client, Input, []).
+
+-spec create_connection_group(aws_client:aws_client(), create_connection_group_request(), proplists:proplist()) ->
+    {ok, create_connection_group_result(), tuple()} |
+    {error, any()} |
+    {error, create_connection_group_errors(), tuple()}.
+create_connection_group(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/connection-group"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Creates a continuous deployment policy that distributes traffic for a
 %% custom domain
 %% name to two different CloudFront distributions.
@@ -6179,6 +7181,56 @@ create_distribution(Client, Input0, Options0) ->
           [
             {<<"ETag">>, <<"ETag">>},
             {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates a distribution tenant.
+-spec create_distribution_tenant(aws_client:aws_client(), create_distribution_tenant_request()) ->
+    {ok, create_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, create_distribution_tenant_errors(), tuple()}.
+create_distribution_tenant(Client, Input) ->
+    create_distribution_tenant(Client, Input, []).
+
+-spec create_distribution_tenant(aws_client:aws_client(), create_distribution_tenant_request(), proplists:proplist()) ->
+    {ok, create_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, create_distribution_tenant_errors(), tuple()}.
+create_distribution_tenant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/distribution-tenant"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -6441,6 +7493,60 @@ create_invalidation(Client, DistributionId, Input) ->
 create_invalidation(Client, DistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates an invalidation for a distribution tenant.
+%%
+%% For more information, see Invalidating files:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html
+%% in the Amazon CloudFront Developer Guide.
+-spec create_invalidation_for_distribution_tenant(aws_client:aws_client(), binary() | list(), create_invalidation_for_distribution_tenant_request()) ->
+    {ok, create_invalidation_for_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, create_invalidation_for_distribution_tenant_errors(), tuple()}.
+create_invalidation_for_distribution_tenant(Client, Id, Input) ->
+    create_invalidation_for_distribution_tenant(Client, Id, Input, []).
+
+-spec create_invalidation_for_distribution_tenant(aws_client:aws_client(), binary() | list(), create_invalidation_for_distribution_tenant_request(), proplists:proplist()) ->
+    {ok, create_invalidation_for_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, create_invalidation_for_distribution_tenant_errors(), tuple()}.
+create_invalidation_for_distribution_tenant(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/distribution-tenant/", aws_util:encode_uri(Id), "/invalidation"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7255,6 +8361,42 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a connection group.
+-spec delete_connection_group(aws_client:aws_client(), binary() | list(), delete_connection_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_connection_group_errors(), tuple()}.
+delete_connection_group(Client, Id, Input) ->
+    delete_connection_group(Client, Id, Input, []).
+
+-spec delete_connection_group(aws_client:aws_client(), binary() | list(), delete_connection_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_connection_group_errors(), tuple()}.
+delete_connection_group(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/connection-group/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a continuous deployment policy.
 %%
 %% You cannot delete a continuous deployment policy that's attached to a
@@ -7312,6 +8454,48 @@ delete_distribution(Client, Id, Input) ->
 delete_distribution(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a distribution tenant.
+%%
+%% If you use this API operation to delete a distribution tenant that is
+%% currently enabled, the request will fail.
+%%
+%% To delete a distribution tenant, you must first disable the distribution
+%% tenant by using the `UpdateDistributionTenant' API operation.
+-spec delete_distribution_tenant(aws_client:aws_client(), binary() | list(), delete_distribution_tenant_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_distribution_tenant_errors(), tuple()}.
+delete_distribution_tenant(Client, Id, Input) ->
+    delete_distribution_tenant(Client, Id, Input, []).
+
+-spec delete_distribution_tenant(aws_client:aws_client(), binary() | list(), delete_distribution_tenant_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_distribution_tenant_errors(), tuple()}.
+delete_distribution_tenant(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/distribution-tenant/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8044,6 +9228,110 @@ describe_key_value_store(Client, Name, QueryMap, HeadersMap, Options0)
         Result
     end.
 
+%% @doc Disassociates a distribution tenant from the WAF web ACL.
+-spec disassociate_distribution_tenant_web_acl(aws_client:aws_client(), binary() | list(), disassociate_distribution_tenant_web_acl_request()) ->
+    {ok, disassociate_distribution_tenant_web_acl_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_distribution_tenant_web_acl_errors(), tuple()}.
+disassociate_distribution_tenant_web_acl(Client, Id, Input) ->
+    disassociate_distribution_tenant_web_acl(Client, Id, Input, []).
+
+-spec disassociate_distribution_tenant_web_acl(aws_client:aws_client(), binary() | list(), disassociate_distribution_tenant_web_acl_request(), proplists:proplist()) ->
+    {ok, disassociate_distribution_tenant_web_acl_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_distribution_tenant_web_acl_errors(), tuple()}.
+disassociate_distribution_tenant_web_acl(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/distribution-tenant/", aws_util:encode_uri(Id), "/disassociate-web-acl"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Disassociates a distribution from the WAF web ACL.
+-spec disassociate_distribution_web_acl(aws_client:aws_client(), binary() | list(), disassociate_distribution_web_acl_request()) ->
+    {ok, disassociate_distribution_web_acl_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_distribution_web_acl_errors(), tuple()}.
+disassociate_distribution_web_acl(Client, Id, Input) ->
+    disassociate_distribution_web_acl(Client, Id, Input, []).
+
+-spec disassociate_distribution_web_acl(aws_client:aws_client(), binary() | list(), disassociate_distribution_web_acl_request(), proplists:proplist()) ->
+    {ok, disassociate_distribution_web_acl_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_distribution_web_acl_errors(), tuple()}.
+disassociate_distribution_web_acl(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/disassociate-web-acl"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Gets an Anycast static IP list.
 -spec get_anycast_ip_list(aws_client:aws_client(), binary() | list()) ->
     {ok, get_anycast_ip_list_result(), tuple()} |
@@ -8331,6 +9619,117 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, 
         Result
     end.
 
+%% @doc Gets information about a connection group.
+-spec get_connection_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_connection_group_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_group_errors(), tuple()}.
+get_connection_group(Client, Identifier)
+  when is_map(Client) ->
+    get_connection_group(Client, Identifier, #{}, #{}).
+
+-spec get_connection_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_connection_group_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_group_errors(), tuple()}.
+get_connection_group(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connection_group(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_connection_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_connection_group_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_group_errors(), tuple()}.
+get_connection_group(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/connection-group/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets information about a connection group by using the endpoint that
+%% you specify.
+-spec get_connection_group_by_routing_endpoint(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_connection_group_by_routing_endpoint_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_group_by_routing_endpoint_errors(), tuple()}.
+get_connection_group_by_routing_endpoint(Client, RoutingEndpoint)
+  when is_map(Client) ->
+    get_connection_group_by_routing_endpoint(Client, RoutingEndpoint, #{}, #{}).
+
+-spec get_connection_group_by_routing_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_connection_group_by_routing_endpoint_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_group_by_routing_endpoint_errors(), tuple()}.
+get_connection_group_by_routing_endpoint(Client, RoutingEndpoint, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connection_group_by_routing_endpoint(Client, RoutingEndpoint, QueryMap, HeadersMap, []).
+
+-spec get_connection_group_by_routing_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_connection_group_by_routing_endpoint_result(), tuple()} |
+    {error, any()} |
+    {error, get_connection_group_by_routing_endpoint_errors(), tuple()}.
+get_connection_group_by_routing_endpoint(Client, RoutingEndpoint, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/connection-group"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"RoutingEndpoint">>, RoutingEndpoint}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Gets a continuous deployment policy, including metadata (the
 %% policy's identifier and
 %% the date and time when the policy was last modified).
@@ -8526,6 +9925,117 @@ get_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets information about a distribution tenant.
+-spec get_distribution_tenant(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_tenant_errors(), tuple()}.
+get_distribution_tenant(Client, Identifier)
+  when is_map(Client) ->
+    get_distribution_tenant(Client, Identifier, #{}, #{}).
+
+-spec get_distribution_tenant(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_tenant_errors(), tuple()}.
+get_distribution_tenant(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_distribution_tenant(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_distribution_tenant(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_tenant_errors(), tuple()}.
+get_distribution_tenant(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distribution-tenant/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets information about a distribution tenant by the associated
+%% domain.
+-spec get_distribution_tenant_by_domain(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_distribution_tenant_by_domain_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_tenant_by_domain_errors(), tuple()}.
+get_distribution_tenant_by_domain(Client, Domain)
+  when is_map(Client) ->
+    get_distribution_tenant_by_domain(Client, Domain, #{}, #{}).
+
+-spec get_distribution_tenant_by_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_distribution_tenant_by_domain_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_tenant_by_domain_errors(), tuple()}.
+get_distribution_tenant_by_domain(Client, Domain, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_distribution_tenant_by_domain(Client, Domain, QueryMap, HeadersMap, []).
+
+-spec get_distribution_tenant_by_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_distribution_tenant_by_domain_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_tenant_by_domain_errors(), tuple()}.
+get_distribution_tenant_by_domain(Client, Domain, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distribution-tenant"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"domain">>, Domain}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
@@ -8859,6 +10369,44 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about a specific invalidation for a distribution
+%% tenant.
+-spec get_invalidation_for_distribution_tenant(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_invalidation_for_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, get_invalidation_for_distribution_tenant_errors(), tuple()}.
+get_invalidation_for_distribution_tenant(Client, DistributionTenantId, Id)
+  when is_map(Client) ->
+    get_invalidation_for_distribution_tenant(Client, DistributionTenantId, Id, #{}, #{}).
+
+-spec get_invalidation_for_distribution_tenant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_invalidation_for_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, get_invalidation_for_distribution_tenant_errors(), tuple()}.
+get_invalidation_for_distribution_tenant(Client, DistributionTenantId, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_invalidation_for_distribution_tenant(Client, DistributionTenantId, Id, QueryMap, HeadersMap, []).
+
+-spec get_invalidation_for_distribution_tenant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_invalidation_for_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, get_invalidation_for_distribution_tenant_errors(), tuple()}.
+get_invalidation_for_distribution_tenant(Client, DistributionTenantId, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distribution-tenant/", aws_util:encode_uri(DistributionTenantId), "/invalidation/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a key group, including the date and time when the key group was
 %% last
 %% modified.
@@ -8983,6 +10531,43 @@ get_key_group_config(Client, Id, QueryMap, HeadersMap, Options0)
       Result ->
         Result
     end.
+
+%% @doc Gets details about the CloudFront managed ACM certificate.
+-spec get_managed_certificate_details(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_managed_certificate_details_result(), tuple()} |
+    {error, any()} |
+    {error, get_managed_certificate_details_errors(), tuple()}.
+get_managed_certificate_details(Client, Identifier)
+  when is_map(Client) ->
+    get_managed_certificate_details(Client, Identifier, #{}, #{}).
+
+-spec get_managed_certificate_details(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_managed_certificate_details_result(), tuple()} |
+    {error, any()} |
+    {error, get_managed_certificate_details_errors(), tuple()}.
+get_managed_certificate_details(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_managed_certificate_details(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_managed_certificate_details(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_managed_certificate_details_result(), tuple()} |
+    {error, any()} |
+    {error, get_managed_certificate_details_errors(), tuple()}.
+get_managed_certificate_details(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/managed-certificate/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about whether additional CloudWatch metrics are
 %% enabled for the
@@ -9925,6 +11510,40 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the connection groups in your Amazon Web Services account.
+-spec list_connection_groups(aws_client:aws_client(), list_connection_groups_request()) ->
+    {ok, list_connection_groups_result(), tuple()} |
+    {error, any()} |
+    {error, list_connection_groups_errors(), tuple()}.
+list_connection_groups(Client, Input) ->
+    list_connection_groups(Client, Input, []).
+
+-spec list_connection_groups(aws_client:aws_client(), list_connection_groups_request(), proplists:proplist()) ->
+    {ok, list_connection_groups_result(), tuple()} |
+    {error, any()} |
+    {error, list_connection_groups_errors(), tuple()}.
+list_connection_groups(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/connection-groups"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets a list of the continuous deployment policies in your Amazon Web
 %% Services account.
 %%
@@ -9977,6 +11596,77 @@ list_continuous_deployment_policies(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the distribution tenants in your Amazon Web Services account.
+-spec list_distribution_tenants(aws_client:aws_client(), list_distribution_tenants_request()) ->
+    {ok, list_distribution_tenants_result(), tuple()} |
+    {error, any()} |
+    {error, list_distribution_tenants_errors(), tuple()}.
+list_distribution_tenants(Client, Input) ->
+    list_distribution_tenants(Client, Input, []).
+
+-spec list_distribution_tenants(aws_client:aws_client(), list_distribution_tenants_request(), proplists:proplist()) ->
+    {ok, list_distribution_tenants_result(), tuple()} |
+    {error, any()} |
+    {error, list_distribution_tenants_errors(), tuple()}.
+list_distribution_tenants(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/distribution-tenants"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists distribution tenants by the customization that you specify.
+%%
+%% You must specify either the `CertificateArn' parameter or
+%% `WebACLArn' parameter, but not both in the same request.
+-spec list_distribution_tenants_by_customization(aws_client:aws_client(), list_distribution_tenants_by_customization_request()) ->
+    {ok, list_distribution_tenants_by_customization_result(), tuple()} |
+    {error, any()} |
+    {error, list_distribution_tenants_by_customization_errors(), tuple()}.
+list_distribution_tenants_by_customization(Client, Input) ->
+    list_distribution_tenants_by_customization(Client, Input, []).
+
+-spec list_distribution_tenants_by_customization(aws_client:aws_client(), list_distribution_tenants_by_customization_request(), proplists:proplist()) ->
+    {ok, list_distribution_tenants_by_customization_result(), tuple()} |
+    {error, any()} |
+    {error, list_distribution_tenants_by_customization_errors(), tuple()}.
+list_distribution_tenants_by_customization(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/distribution-tenants-by-customization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List CloudFront distributions.
 -spec list_distributions(aws_client:aws_client()) ->
@@ -10099,6 +11789,48 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
 list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByCachePolicyId/", aws_util:encode_uri(CachePolicyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the distributions by the connection mode that you specify.
+-spec list_distributions_by_connection_mode(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_connection_mode_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_connection_mode_errors(), tuple()}.
+list_distributions_by_connection_mode(Client, ConnectionMode)
+  when is_map(Client) ->
+    list_distributions_by_connection_mode(Client, ConnectionMode, #{}, #{}).
+
+-spec list_distributions_by_connection_mode(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_connection_mode_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_connection_mode_errors(), tuple()}.
+list_distributions_by_connection_mode(Client, ConnectionMode, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_connection_mode(Client, ConnectionMode, QueryMap, HeadersMap, []).
+
+-spec list_distributions_by_connection_mode(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_connection_mode_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_connection_mode_errors(), tuple()}.
+list_distributions_by_connection_mode(Client, ConnectionMode, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distributionsByConnectionMode/", aws_util:encode_uri(ConnectionMode), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -10416,6 +12148,45 @@ list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists existing domain associations that conflict with the domain that
+%% you specify.
+%%
+%% You can use this API operation when transferring domains to identify
+%% potential domain conflicts. Domain conflicts must be resolved first before
+%% they can be moved.
+-spec list_domain_conflicts(aws_client:aws_client(), list_domain_conflicts_request()) ->
+    {ok, list_domain_conflicts_result(), tuple()} |
+    {error, any()} |
+    {error, list_domain_conflicts_errors(), tuple()}.
+list_domain_conflicts(Client, Input) ->
+    list_domain_conflicts(Client, Input, []).
+
+-spec list_domain_conflicts(aws_client:aws_client(), list_domain_conflicts_request(), proplists:proplist()) ->
+    {ok, list_domain_conflicts_result(), tuple()} |
+    {error, any()} |
+    {error, list_domain_conflicts_errors(), tuple()}.
+list_domain_conflicts(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/domain-conflicts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc List all field-level encryption configurations that have been created
 %% in CloudFront for this
 %% account.
@@ -10586,6 +12357,48 @@ list_invalidations(Client, DistributionId, QueryMap, HeadersMap)
 list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the invalidations for a distribution tenant.
+-spec list_invalidations_for_distribution_tenant(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_invalidations_for_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, list_invalidations_for_distribution_tenant_errors(), tuple()}.
+list_invalidations_for_distribution_tenant(Client, Id)
+  when is_map(Client) ->
+    list_invalidations_for_distribution_tenant(Client, Id, #{}, #{}).
+
+-spec list_invalidations_for_distribution_tenant(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_invalidations_for_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, list_invalidations_for_distribution_tenant_errors(), tuple()}.
+list_invalidations_for_distribution_tenant(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_invalidations_for_distribution_tenant(Client, Id, QueryMap, HeadersMap, []).
+
+-spec list_invalidations_for_distribution_tenant(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_invalidations_for_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, list_invalidations_for_distribution_tenant_errors(), tuple()}.
+list_invalidations_for_distribution_tenant(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distribution-tenant/", aws_util:encode_uri(Id), "/invalidation"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -11401,6 +13214,58 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
         Result
     end.
 
+%% @doc Updates a connection group.
+-spec update_connection_group(aws_client:aws_client(), binary() | list(), update_connection_group_request()) ->
+    {ok, update_connection_group_result(), tuple()} |
+    {error, any()} |
+    {error, update_connection_group_errors(), tuple()}.
+update_connection_group(Client, Id, Input) ->
+    update_connection_group(Client, Id, Input, []).
+
+-spec update_connection_group(aws_client:aws_client(), binary() | list(), update_connection_group_request(), proplists:proplist()) ->
+    {ok, update_connection_group_result(), tuple()} |
+    {error, any()} |
+    {error, update_connection_group_errors(), tuple()}.
+update_connection_group(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/connection-group/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Updates a continuous deployment policy.
 %%
 %% You can update a continuous deployment policy
@@ -11562,6 +13427,58 @@ update_distribution(Client, Id, Input0, Options0) ->
         Result
     end.
 
+%% @doc Updates a distribution tenant.
+-spec update_distribution_tenant(aws_client:aws_client(), binary() | list(), update_distribution_tenant_request()) ->
+    {ok, update_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, update_distribution_tenant_errors(), tuple()}.
+update_distribution_tenant(Client, Id, Input) ->
+    update_distribution_tenant(Client, Id, Input, []).
+
+-spec update_distribution_tenant(aws_client:aws_client(), binary() | list(), update_distribution_tenant_request(), proplists:proplist()) ->
+    {ok, update_distribution_tenant_result(), tuple()} |
+    {error, any()} |
+    {error, update_distribution_tenant_errors(), tuple()}.
+update_distribution_tenant(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/distribution-tenant/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Copies the staging distribution's configuration to its
 %% corresponding primary
 %% distribution.
@@ -11626,6 +13543,59 @@ update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
                      {<<"StagingDistributionId">>, <<"StagingDistributionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Moves a domain from its current distribution or distribution tenant
+%% to another one.
+-spec update_domain_association(aws_client:aws_client(), update_domain_association_request()) ->
+    {ok, update_domain_association_result(), tuple()} |
+    {error, any()} |
+    {error, update_domain_association_errors(), tuple()}.
+update_domain_association(Client, Input) ->
+    update_domain_association(Client, Input, []).
+
+-spec update_domain_association(aws_client:aws_client(), update_domain_association_request(), proplists:proplist()) ->
+    {ok, update_domain_association_result(), tuple()} |
+    {error, any()} |
+    {error, update_domain_association_errors(), tuple()}.
+update_domain_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/domain-association"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
@@ -12334,6 +14304,45 @@ update_vpc_origin(Client, Id, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Verify the DNS configuration for your domain names.
+%%
+%% This API operation checks whether your domain name points to the correct
+%% routing endpoint of the connection group, such as
+%% d111111abcdef8.cloudfront.net. You can use this API operation to
+%% troubleshoot and resolve DNS configuration issues.
+-spec verify_dns_configuration(aws_client:aws_client(), verify_dns_configuration_request()) ->
+    {ok, verify_dns_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, verify_dns_configuration_errors(), tuple()}.
+verify_dns_configuration(Client, Input) ->
+    verify_dns_configuration(Client, Input, []).
+
+-spec verify_dns_configuration(aws_client:aws_client(), verify_dns_configuration_request(), proplists:proplist()) ->
+    {ok, verify_dns_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, verify_dns_configuration_errors(), tuple()}.
+verify_dns_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/verify-dns-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
