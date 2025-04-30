@@ -5,64 +5,49 @@
 %% Reference.
 %%
 %% This guide provides information about AWS End User Messaging SMS and
-%% Voice, version 2 API
-%% resources, including supported HTTP methods, parameters, and schemas.
+%% Voice, version 2 API resources, including supported HTTP methods,
+%% parameters, and schemas.
 %%
 %% Amazon Pinpoint is an Amazon Web Services service that you can use to
-%% engage with
-%% your recipients across multiple messaging channels. The AWS End User
-%% Messaging SMS and Voice, version 2 API provides programmatic access to
-%% options that are unique to the SMS
-%% and voice channels. AWS End User Messaging SMS and Voice, version 2
-%% resources such as phone numbers, sender IDs, and opt-out lists can be used
-%% by the Amazon Pinpoint API.
+%% engage with your recipients across multiple messaging channels. The AWS
+%% End User Messaging SMS and Voice, version 2 API provides programmatic
+%% access to options that are unique to the SMS and voice channels. AWS End
+%% User Messaging SMS and Voice, version 2 resources such as phone numbers,
+%% sender IDs, and opt-out lists can be used by the Amazon Pinpoint API.
 %%
 %% If you're new to AWS End User Messaging SMS and Voice, it's also
-%% helpful to review the
-%% AWS End User Messaging SMS User Guide:
+%% helpful to review the AWS End User Messaging SMS User Guide:
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-service.html.
-%% The AWS End User Messaging SMS User Guide
-%% provides tutorials, code samples, and procedures that
-%% demonstrate how to use AWS End User Messaging SMS and Voice features
-%% programmatically and how to integrate
-%% functionality into mobile apps and other types of applications.
-%% The guide also provides key information, such as AWS End User Messaging
-%% SMS and Voice integration with
-%% other Amazon Web Services services, and the quotas that apply to use of
-%% the
-%% service.
+%% The AWS End User Messaging SMS User Guide provides tutorials, code
+%% samples, and procedures that demonstrate how to use AWS End User Messaging
+%% SMS and Voice features programmatically and how to integrate functionality
+%% into mobile apps and other types of applications. The guide also provides
+%% key information, such as AWS End User Messaging SMS and Voice integration
+%% with other Amazon Web Services services, and the quotas that apply to use
+%% of the service.
 %%
 %% Regional availability
 %%
 %% The AWS End User Messaging SMS and Voice version 2 API Reference is
 %% available in several Amazon Web Services Regions and it provides an
-%% endpoint for each of
-%% these Regions. For a list of all the Regions and endpoints where the API
-%% is currently
-%% available, see Amazon Web Services Service Endpoints:
+%% endpoint for each of these Regions. For a list of all the Regions and
+%% endpoints where the API is currently available, see Amazon Web Services
+%% Service Endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region
-%% and Amazon Pinpoint
-%% endpoints and quotas:
+%% and Amazon Pinpoint endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/pinpoint.html in the Amazon
-%% Web Services General Reference. To
-%% learn more about Amazon Web Services Regions, see Managing
-%% Amazon Web Services Regions:
+%% Web Services General Reference. To learn more about Amazon Web Services
+%% Regions, see Managing Amazon Web Services Regions:
 %% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html in the
-%% Amazon Web Services General
-%% Reference.
+%% Amazon Web Services General Reference.
 %%
 %% In each Region, Amazon Web Services maintains multiple Availability Zones.
-%% These
-%% Availability Zones are physically isolated from each other, but are united
-%% by private,
-%% low-latency, high-throughput, and highly redundant network connections.
-%% These
-%% Availability Zones enable us to provide very high levels of availability
-%% and redundancy,
-%% while also minimizing latency. To learn more about the number of
-%% Availability Zones that
-%% are available in each Region, see Amazon Web Services
-%% Global Infrastructure.:
+%% These Availability Zones are physically isolated from each other, but are
+%% united by private, low-latency, high-throughput, and highly redundant
+%% network connections. These Availability Zones enable us to provide very
+%% high levels of availability and redundancy, while also minimizing latency.
+%% To learn more about the number of Availability Zones that are available in
+%% each Region, see Amazon Web Services Global Infrastructure.:
 %% https://aws.amazon.com/about-aws/global-infrastructure/
 -module(aws_pinpoint_sms_voice_v2).
 
@@ -2441,7 +2426,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    service_quota_exceeded_exception() | 
+    conflict_exception().
 
 -type create_registration_errors() ::
     throttling_exception() | 
@@ -3061,13 +3047,11 @@
 %% @doc Associates the specified origination identity with a pool.
 %%
 %% If the origination identity is a phone number and is already associated
-%% with another
-%% pool, an error is returned. A sender ID can be associated with multiple
-%% pools.
+%% with another pool, an error is returned. A sender ID can be associated
+%% with multiple pools.
 %%
 %% If the origination identity configuration doesn't match the pool's
-%% configuration, an
-%% error is returned.
+%% configuration, an error is returned.
 -spec associate_origination_identity(aws_client:aws_client(), associate_origination_identity_request()) ->
     {ok, associate_origination_identity_result(), tuple()} |
     {error, any()} |
@@ -3086,11 +3070,10 @@ associate_origination_identity(Client, Input, Options)
 
 %% @doc Associate a protect configuration with a configuration set.
 %%
-%% This replaces the
-%% configuration sets current protect configuration. A configuration set can
-%% only be associated with one protect configuration at a time. A protect
-%% configuration can
-%% be associated with multiple configuration sets.
+%% This replaces the configuration sets current protect configuration. A
+%% configuration set can only be associated with one protect configuration at
+%% a time. A protect configuration can be associated with multiple
+%% configuration sets.
 -spec associate_protect_configuration(aws_client:aws_client(), associate_protect_configuration_request()) ->
     {ok, associate_protect_configuration_result(), tuple()} |
     {error, any()} |
@@ -3109,12 +3092,11 @@ associate_protect_configuration(Client, Input, Options)
 
 %% @doc Creates a new configuration set.
 %%
-%% After you create the configuration set, you can add
-%% one or more event destinations to it.
+%% After you create the configuration set, you can add one or more event
+%% destinations to it.
 %%
 %% A configuration set is a set of rules that you apply to the SMS and voice
-%% messages
-%% that you send.
+%% messages that you send.
 %%
 %% When you send a message, you can optionally specify a single configuration
 %% set.
@@ -3137,19 +3119,20 @@ create_configuration_set(Client, Input, Options)
 %% @doc Creates a new event destination in a configuration set.
 %%
 %% An event destination is a location where you send message events. The
-%% event options
-%% are Amazon CloudWatch, Amazon Data Firehose, or Amazon SNS. For example,
-%% when a message is delivered successfully, you can send information about
-%% that event to
-%% an event destination, or send notifications to endpoints that are
-%% subscribed to an
-%% Amazon SNS topic.
+%% event options are Amazon CloudWatch, Amazon Data Firehose, or Amazon SNS.
+%% For example, when a message is delivered successfully, you can send
+%% information about that event to an event destination, or send
+%% notifications to endpoints that are subscribed to an Amazon SNS topic.
+%%
+%% You can only create one event destination at a time. You must provide a
+%% value for a single event destination using either
+%% `CloudWatchLogsDestination', `KinesisFirehoseDestination' or
+%% `SnsDestination'. If an event destination isn't provided then an
+%% exception is returned.
 %%
 %% Each configuration set can contain between 0 and 5 event destinations.
-%% Each event
-%% destination can contain a reference to a single destination, such as a
-%% CloudWatch
-%% or Firehose destination.
+%% Each event destination can contain a reference to a single destination,
+%% such as a CloudWatch or Firehose destination.
 -spec create_event_destination(aws_client:aws_client(), create_event_destination_request()) ->
     {ok, create_event_destination_result(), tuple()} |
     {error, any()} |
@@ -3171,15 +3154,11 @@ create_event_destination(Client, Input, Options)
 %% If the opt-out list name already exists, an error is returned.
 %%
 %% An opt-out list is a list of phone numbers that are opted out, meaning you
-%% can't send
-%% SMS or voice messages to them. If end user replies with the keyword
-%% &quot;STOP,&quot; an entry for
-%% the phone number is added to the opt-out list. In addition to STOP, your
-%% recipients can
-%% use any supported opt-out keyword, such as CANCEL or OPTOUT. For a list of
-%% supported
-%% opt-out keywords, see
-%% SMS opt out :
+%% can't send SMS or voice messages to them. If end user replies with the
+%% keyword &quot;STOP,&quot; an entry for the phone number is added to the
+%% opt-out list. In addition to STOP, your recipients can use any supported
+%% opt-out keyword, such as CANCEL or OPTOUT. For a list of supported opt-out
+%% keywords, see SMS opt out :
 %% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-manage.html#channels-sms-manage-optout
 %% in the AWS End User Messaging SMS User Guide.
 -spec create_opt_out_list(aws_client:aws_client(), create_opt_out_list_request()) ->
@@ -3201,23 +3180,17 @@ create_opt_out_list(Client, Input, Options)
 %% @doc Creates a new pool and associates the specified origination identity
 %% to the pool.
 %%
-%% A
-%% pool can include one or more phone numbers and SenderIds that are
-%% associated with your
-%% Amazon Web Services account.
+%% A pool can include one or more phone numbers and SenderIds that are
+%% associated with your Amazon Web Services account.
 %%
 %% The new pool inherits its configuration from the specified origination
-%% identity. This
-%% includes keywords, message type, opt-out list, two-way configuration, and
-%% self-managed
-%% opt-out configuration. Deletion protection isn't inherited from the
-%% origination identity
-%% and defaults to false.
+%% identity. This includes keywords, message type, opt-out list, two-way
+%% configuration, and self-managed opt-out configuration. Deletion protection
+%% isn't inherited from the origination identity and defaults to false.
 %%
 %% If the origination identity is a phone number and is already associated
-%% with another
-%% pool, an error is returned. A sender ID can be associated with multiple
-%% pools.
+%% with another pool, an error is returned. A sender ID can be associated
+%% with multiple pools.
 -spec create_pool(aws_client:aws_client(), create_pool_request()) ->
     {ok, create_pool_result(), tuple()} |
     {error, any()} |
@@ -3296,10 +3269,8 @@ create_registration_association(Client, Input, Options)
 %% URL to a file.
 %%
 %% The maximum file size is 500KB and valid file extensions are PDF, JPEG and
-%% PNG. For
-%% example, many sender ID registrations require a signed “letter of
-%% authorization” (LOA)
-%% to be submitted.
+%% PNG. For example, many sender ID registrations require a signed “letter of
+%% authorization” (LOA) to be submitted.
 %%
 %% Use either `AttachmentUrl' or `AttachmentBody' to upload your
 %% attachment. If both are specified then an exception is returned.
@@ -3342,8 +3313,7 @@ create_registration_version(Client, Input, Options)
 %% @doc You can only send messages to verified destination numbers when your
 %% account is in the sandbox.
 %%
-%% You can add up to 10 verified destination
-%% numbers.
+%% You can add up to 10 verified destination numbers.
 -spec create_verified_destination_number(aws_client:aws_client(), create_verified_destination_number_request()) ->
     {ok, create_verified_destination_number_result(), tuple()} |
     {error, any()} |
@@ -3380,10 +3350,9 @@ delete_account_default_protect_configuration(Client, Input, Options)
 %% @doc Deletes an existing configuration set.
 %%
 %% A configuration set is a set of rules that you apply to voice and SMS
-%% messages that
-%% you send. In a configuration set, you can specify a destination for
-%% specific types of
-%% events related to voice and SMS messages.
+%% messages that you send. In a configuration set, you can specify a
+%% destination for specific types of events related to voice and SMS
+%% messages.
 -spec delete_configuration_set(aws_client:aws_client(), delete_configuration_set_request()) ->
     {ok, delete_configuration_set_result(), tuple()} |
     {error, any()} |
@@ -3404,11 +3373,9 @@ delete_configuration_set(Client, Input, Options)
 %%
 %% A message type is a type of messages that you plan to send. If you send
 %% account-related messages or time-sensitive messages such as one-time
-%% passcodes, choose
-%% Transactional. If you plan to send messages that
-%% contain marketing material or other promotional content, choose
-%% Promotional. This setting applies to your entire Amazon Web Services
-%% account.
+%% passcodes, choose Transactional. If you plan to send messages that contain
+%% marketing material or other promotional content, choose Promotional. This
+%% setting applies to your entire Amazon Web Services account.
 -spec delete_default_message_type(aws_client:aws_client(), delete_default_message_type_request()) ->
     {ok, delete_default_message_type_result(), tuple()} |
     {error, any()} |
@@ -3428,10 +3395,8 @@ delete_default_message_type(Client, Input, Options)
 %% @doc Deletes an existing default sender ID on a configuration set.
 %%
 %% A default sender ID is the identity that appears on recipients'
-%% devices when they
-%% receive SMS messages. Support for sender ID capabilities varies by country
-%% or
-%% region.
+%% devices when they receive SMS messages. Support for sender ID capabilities
+%% varies by country or region.
 -spec delete_default_sender_id(aws_client:aws_client(), delete_default_sender_id_request()) ->
     {ok, delete_default_sender_id_result(), tuple()} |
     {error, any()} |
@@ -3451,12 +3416,10 @@ delete_default_sender_id(Client, Input, Options)
 %% @doc Deletes an existing event destination.
 %%
 %% An event destination is a location where you send response information
-%% about the
-%% messages that you send. For example, when a message is delivered
-%% successfully, you can
-%% send information about that event to an Amazon CloudWatch destination, or
-%% send
-%% notifications to endpoints that are subscribed to an Amazon SNS topic.
+%% about the messages that you send. For example, when a message is delivered
+%% successfully, you can send information about that event to an Amazon
+%% CloudWatch destination, or send notifications to endpoints that are
+%% subscribed to an Amazon SNS topic.
 -spec delete_event_destination(aws_client:aws_client(), delete_event_destination_request()) ->
     {ok, delete_event_destination_result(), tuple()} |
     {error, any()} |
@@ -3476,13 +3439,10 @@ delete_event_destination(Client, Input, Options)
 %% @doc Deletes an existing keyword from an origination phone number or pool.
 %%
 %% A keyword is a word that you can search for on a particular phone number
-%% or pool. It
-%% is also a specific word or phrase that an end user can send to your number
-%% to elicit a
-%% response, such as an informational message or a special offer. When your
-%% number receives
-%% a message that begins with a keyword, AWS End User Messaging SMS and Voice
-%% responds with a customizable
+%% or pool. It is also a specific word or phrase that an end user can send to
+%% your number to elicit a response, such as an informational message or a
+%% special offer. When your number receives a message that begins with a
+%% keyword, AWS End User Messaging SMS and Voice responds with a customizable
 %% message.
 %%
 %% Keywords &quot;HELP&quot; and &quot;STOP&quot; can't be deleted or
@@ -3507,12 +3467,11 @@ delete_keyword(Client, Input, Options)
 %% multimedia messages (MMS).
 %%
 %% Deleting a spend limit override will set the `EnforcedLimit' to equal
-%% the
-%% `MaxLimit', which is controlled by Amazon Web Services. For more
+%% the `MaxLimit', which is controlled by Amazon Web Services. For more
 %% information on spend limits (quotas) see Quotas for Server Migration
 %% Service:
-%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html
-%% in the Server Migration Service User Guide.
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html in the
+%% Server Migration Service User Guide.
 -spec delete_media_message_spend_limit_override(aws_client:aws_client(), delete_media_message_spend_limit_override_request()) ->
     {ok, delete_media_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -3531,12 +3490,10 @@ delete_media_message_spend_limit_override(Client, Input, Options)
 
 %% @doc Deletes an existing opt-out list.
 %%
-%% All opted out phone numbers in the opt-out list are
-%% deleted.
+%% All opted out phone numbers in the opt-out list are deleted.
 %%
 %% If the specified opt-out list name doesn't exist or is in-use by an
-%% origination phone
-%% number or pool, an error is returned.
+%% origination phone number or pool, an error is returned.
 -spec delete_opt_out_list(aws_client:aws_client(), delete_opt_out_list_request()) ->
     {ok, delete_opt_out_list_result(), tuple()} |
     {error, any()} |
@@ -3554,14 +3511,12 @@ delete_opt_out_list(Client, Input, Options)
     request(Client, <<"DeleteOptOutList">>, Input, Options).
 
 %% @doc Deletes an existing opted out destination phone number from the
-%% specified opt-out
-%% list.
+%% specified opt-out list.
 %%
 %% Each destination phone number can only be deleted once every 30 days.
 %%
 %% If the specified destination phone number doesn't exist or if the
-%% opt-out list doesn't
-%% exist, an error is returned.
+%% opt-out list doesn't exist, an error is returned.
 -spec delete_opted_out_number(aws_client:aws_client(), delete_opted_out_number_request()) ->
     {ok, delete_opted_out_number_result(), tuple()} |
     {error, any()} |
@@ -3580,18 +3535,14 @@ delete_opted_out_number(Client, Input, Options)
 
 %% @doc Deletes an existing pool.
 %%
-%% Deleting a pool disassociates all origination identities
-%% from that pool.
+%% Deleting a pool disassociates all origination identities from that pool.
 %%
 %% If the pool status isn't active or if deletion protection is enabled,
-%% an error is
-%% returned.
+%% an error is returned.
 %%
 %% A pool is a collection of phone numbers and SenderIds. A pool can include
-%% one or more
-%% phone numbers and SenderIds that are associated with your Amazon Web
-%% Services
-%% account.
+%% one or more phone numbers and SenderIds that are associated with your
+%% Amazon Web Services account.
 -spec delete_pool(aws_client:aws_client(), delete_pool_request()) ->
     {ok, delete_pool_result(), tuple()} |
     {error, any()} |
@@ -3722,11 +3673,10 @@ delete_resource_policy(Client, Input, Options)
 %% text messages.
 %%
 %% Deleting a spend limit override will set the `EnforcedLimit' to equal
-%% the
-%% `MaxLimit', which is controlled by Amazon Web Services. For more
+%% the `MaxLimit', which is controlled by Amazon Web Services. For more
 %% information on spend limits (quotas) see Quotas :
-%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html
-%% in the AWS End User Messaging SMS User Guide.
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html in the
+%% AWS End User Messaging SMS User Guide.
 -spec delete_text_message_spend_limit_override(aws_client:aws_client(), delete_text_message_spend_limit_override_request()) ->
     {ok, delete_text_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -3766,8 +3716,8 @@ delete_verified_destination_number(Client, Input, Options)
 %% Deleting a spend limit override sets the `EnforcedLimit' equal to the
 %% `MaxLimit', which is controlled by Amazon Web Services. For more
 %% information on spending limits (quotas) see Quotas :
-%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html
-%% in the AWS End User Messaging SMS User Guide.
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html in the
+%% AWS End User Messaging SMS User Guide.
 -spec delete_voice_message_spend_limit_override(aws_client:aws_client(), delete_voice_message_spend_limit_override_request()) ->
     {ok, delete_voice_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -3786,18 +3736,14 @@ delete_voice_message_spend_limit_override(Client, Input, Options)
 
 %% @doc Describes attributes of your Amazon Web Services account.
 %%
-%% The supported account
-%% attributes include account tier, which indicates whether your account is
-%% in the sandbox
-%% or production environment. When you're ready to move your account out
-%% of the sandbox,
-%% create an Amazon Web Services Support case for a service limit increase
-%% request.
+%% The supported account attributes include account tier, which indicates
+%% whether your account is in the sandbox or production environment. When
+%% you're ready to move your account out of the sandbox, create an Amazon
+%% Web Services Support case for a service limit increase request.
 %%
-%% New accounts are placed into an SMS or voice sandbox. The sandbox
-%% protects both Amazon Web Services end recipients and SMS or voice
-%% recipients from fraud
-%% and abuse.
+%% New accounts are placed into an SMS or voice sandbox. The sandbox protects
+%% both Amazon Web Services end recipients and SMS or voice recipients from
+%% fraud and abuse.
 -spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_request()) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()} |
@@ -3815,20 +3761,17 @@ describe_account_attributes(Client, Input, Options)
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
 %% @doc Describes the current AWS End User Messaging SMS and Voice SMS Voice
-%% V2 resource quotas for your
-%% account.
+%% V2 resource quotas for your account.
 %%
 %% The description for a quota includes the quota name, current usage toward
-%% that
-%% quota, and the quota's maximum value.
+%% that quota, and the quota's maximum value.
 %%
 %% When you establish an Amazon Web Services account, the account has initial
-%% quotas on
-%% the maximum number of configuration sets, opt-out lists, phone numbers,
-%% and pools that
-%% you can create in a given Region. For more information see Quotas :
-%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html
-%% in the AWS End User Messaging SMS User Guide.
+%% quotas on the maximum number of configuration sets, opt-out lists, phone
+%% numbers, and pools that you can create in a given Region. For more
+%% information see Quotas :
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html in the
+%% AWS End User Messaging SMS User Guide.
 -spec describe_account_limits(aws_client:aws_client(), describe_account_limits_request()) ->
     {ok, describe_account_limits_result(), tuple()} |
     {error, any()} |
@@ -3848,14 +3791,10 @@ describe_account_limits(Client, Input, Options)
 %% @doc Describes the specified configuration sets or all in your account.
 %%
 %% If you specify configuration set names, the output includes information
-%% for only the
-%% specified configuration sets. If you specify filters, the output includes
-%% information
-%% for only those configuration sets that meet the filter criteria. If you
-%% don't specify
-%% configuration set names or filters, the output includes information for
-%% all
-%% configuration sets.
+%% for only the specified configuration sets. If you specify filters, the
+%% output includes information for only those configuration sets that meet
+%% the filter criteria. If you don't specify configuration set names or
+%% filters, the output includes information for all configuration sets.
 %%
 %% If you specify a configuration set name that isn't valid, an error is
 %% returned.
@@ -3876,17 +3815,13 @@ describe_configuration_sets(Client, Input, Options)
     request(Client, <<"DescribeConfigurationSets">>, Input, Options).
 
 %% @doc Describes the specified keywords or all keywords on your origination
-%% phone number or
-%% pool.
+%% phone number or pool.
 %%
 %% A keyword is a word that you can search for on a particular phone number
-%% or pool. It
-%% is also a specific word or phrase that an end user can send to your number
-%% to elicit a
-%% response, such as an informational message or a special offer. When your
-%% number receives
-%% a message that begins with a keyword, AWS End User Messaging SMS and Voice
-%% responds with a customizable
+%% or pool. It is also a specific word or phrase that an end user can send to
+%% your number to elicit a response, such as an informational message or a
+%% special offer. When your number receives a message that begins with a
+%% keyword, AWS End User Messaging SMS and Voice responds with a customizable
 %% message.
 %%
 %% If you specify a keyword that isn't valid, an error is returned.
@@ -3910,12 +3845,9 @@ describe_keywords(Client, Input, Options)
 %% account.
 %%
 %% If you specify opt-out list names, the output includes information for
-%% only the
-%% specified opt-out lists. Opt-out lists include only those that meet the
-%% filter criteria.
-%% If you don't specify opt-out list names or filters, the output
-%% includes information for
-%% all opt-out lists.
+%% only the specified opt-out lists. Opt-out lists include only those that
+%% meet the filter criteria. If you don't specify opt-out list names or
+%% filters, the output includes information for all opt-out lists.
 %%
 %% If you specify an opt-out list name that isn't valid, an error is
 %% returned.
@@ -3936,18 +3868,14 @@ describe_opt_out_lists(Client, Input, Options)
     request(Client, <<"DescribeOptOutLists">>, Input, Options).
 
 %% @doc Describes the specified opted out destination numbers or all opted
-%% out destination
-%% numbers in an opt-out list.
+%% out destination numbers in an opt-out list.
 %%
 %% If you specify opted out numbers, the output includes information for only
-%% the
-%% specified opted out numbers. If you specify filters, the output includes
-%% information for
-%% only those opted out numbers that meet the filter criteria. If you
-%% don't specify opted
-%% out numbers or filters, the output includes information for all opted out
-%% destination
-%% numbers in your opt-out list.
+%% the specified opted out numbers. If you specify filters, the output
+%% includes information for only those opted out numbers that meet the filter
+%% criteria. If you don't specify opted out numbers or filters, the
+%% output includes information for all opted out destination numbers in your
+%% opt-out list.
 %%
 %% If you specify an opted out number that isn't valid, an exception is
 %% returned.
@@ -3968,17 +3896,13 @@ describe_opted_out_numbers(Client, Input, Options)
     request(Client, <<"DescribeOptedOutNumbers">>, Input, Options).
 
 %% @doc Describes the specified origination phone number, or all the phone
-%% numbers in your
-%% account.
+%% numbers in your account.
 %%
 %% If you specify phone number IDs, the output includes information for only
-%% the
-%% specified phone numbers. If you specify filters, the output includes
-%% information for
-%% only those phone numbers that meet the filter criteria. If you don't
-%% specify phone
-%% number IDs or filters, the output includes information for all phone
-%% numbers.
+%% the specified phone numbers. If you specify filters, the output includes
+%% information for only those phone numbers that meet the filter criteria. If
+%% you don't specify phone number IDs or filters, the output includes
+%% information for all phone numbers.
 %%
 %% If you specify a phone number ID that isn't valid, an error is
 %% returned.
@@ -3999,24 +3923,19 @@ describe_phone_numbers(Client, Input, Options)
     request(Client, <<"DescribePhoneNumbers">>, Input, Options).
 
 %% @doc Retrieves the specified pools or all pools associated with your
-%% Amazon Web Services
-%% account.
+%% Amazon Web Services account.
 %%
 %% If you specify pool IDs, the output includes information for only the
-%% specified pools.
-%% If you specify filters, the output includes information for only those
-%% pools that meet
-%% the filter criteria. If you don't specify pool IDs or filters, the
-%% output includes
-%% information for all pools.
+%% specified pools. If you specify filters, the output includes information
+%% for only those pools that meet the filter criteria. If you don't
+%% specify pool IDs or filters, the output includes information for all
+%% pools.
 %%
 %% If you specify a pool ID that isn't valid, an error is returned.
 %%
 %% A pool is a collection of phone numbers and SenderIds. A pool can include
-%% one or more
-%% phone numbers and SenderIds that are associated with your Amazon Web
-%% Services
-%% account.
+%% one or more phone numbers and SenderIds that are associated with your
+%% Amazon Web Services account.
 -spec describe_pools(aws_client:aws_client(), describe_pools_request()) ->
     {ok, describe_pools_result(), tuple()} |
     {error, any()} |
@@ -4186,12 +4105,10 @@ describe_registrations(Client, Input, Options)
 %% your Amazon Web Services account.
 %%
 %% If you specify SenderIds, the output includes information for only the
-%% specified
-%% SenderIds. If you specify filters, the output includes information for
-%% only those
-%% SenderIds that meet the filter criteria. If you don't specify
-%% SenderIds or filters, the
-%% output includes information for all SenderIds.
+%% specified SenderIds. If you specify filters, the output includes
+%% information for only those SenderIds that meet the filter criteria. If you
+%% don't specify SenderIds or filters, the output includes information
+%% for all SenderIds.
 %%
 %% f you specify a sender ID that isn't valid, an error is returned.
 -spec describe_sender_ids(aws_client:aws_client(), describe_sender_ids_request()) ->
@@ -4210,16 +4127,13 @@ describe_sender_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSenderIds">>, Input, Options).
 
-%% @doc Describes the current monthly spend limits for sending voice and
-%% text messages.
+%% @doc Describes the current monthly spend limits for sending voice and text
+%% messages.
 %%
 %% When you establish an Amazon Web Services account, the account has initial
-%% monthly
-%% spend limit in a given Region. For more information on increasing your
-%% monthly spend
-%% limit, see
-%% Requesting increases to your monthly SMS, MMS, or Voice spending quota
-%% :
+%% monthly spend limit in a given Region. For more information on increasing
+%% your monthly spend limit, see Requesting increases to your monthly SMS,
+%% MMS, or Voice spending quota :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/awssupport-spend-threshold.html
 %% in the AWS End User Messaging SMS User Guide.
 -spec describe_spend_limits(aws_client:aws_client(), describe_spend_limits_request()) ->
@@ -4258,8 +4172,7 @@ describe_verified_destination_numbers(Client, Input, Options)
 %% @doc Removes the specified origination identity from an existing pool.
 %%
 %% If the origination identity isn't associated with the specified pool,
-%% an error is
-%% returned.
+%% an error is returned.
 -spec disassociate_origination_identity(aws_client:aws_client(), disassociate_origination_identity_request()) ->
     {ok, disassociate_origination_identity_result(), tuple()} |
     {error, any()} |
@@ -4351,8 +4264,7 @@ get_resource_policy(Client, Input, Options)
 %% @doc Lists all associated origination identities in your pool.
 %%
 %% If you specify filters, the output includes information for only those
-%% origination
-%% identities that meet the filter criteria.
+%% origination identities that meet the filter criteria.
 -spec list_pool_origination_identities(aws_client:aws_client(), list_pool_origination_identities_request()) ->
     {ok, list_pool_origination_identities_result(), tuple()} |
     {error, any()} |
@@ -4423,17 +4335,13 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Creates or updates a keyword configuration on an origination phone
-%% number or
-%% pool.
+%% number or pool.
 %%
 %% A keyword is a word that you can search for on a particular phone number
-%% or pool. It
-%% is also a specific word or phrase that an end user can send to your number
-%% to elicit a
-%% response, such as an informational message or a special offer. When your
-%% number receives
-%% a message that begins with a keyword, AWS End User Messaging SMS and Voice
-%% responds with a customizable
+%% or pool. It is also a specific word or phrase that an end user can send to
+%% your number to elicit a response, such as an informational message or a
+%% special offer. When your number receives a message that begins with a
+%% keyword, AWS End User Messaging SMS and Voice responds with a customizable
 %% message.
 %%
 %% If you specify a keyword that isn't valid, an error is returned.
@@ -4454,16 +4362,13 @@ put_keyword(Client, Input, Options)
     request(Client, <<"PutKeyword">>, Input, Options).
 
 %% @doc Set the MessageFeedbackStatus as `RECEIVED' or `FAILED' for
-%% the
-%% passed in MessageId.
+%% the passed in MessageId.
 %%
 %% If you use message feedback then you must update message feedback record.
 %% When you receive a signal that a user has received the message you must
-%% use
-%% `PutMessageFeedback' to set the message feedback record as
+%% use `PutMessageFeedback' to set the message feedback record as
 %% `RECEIVED'; Otherwise, an hour after the message feedback record is
-%% set
-%% to `FAILED'.
+%% set to `FAILED'.
 -spec put_message_feedback(aws_client:aws_client(), put_message_feedback_request()) ->
     {ok, put_message_feedback_result(), tuple()} |
     {error, any()} |
@@ -4483,8 +4388,7 @@ put_message_feedback(Client, Input, Options)
 %% @doc Creates an opted out destination phone number in the opt-out list.
 %%
 %% If the destination phone number isn't valid or if the specified
-%% opt-out list doesn't
-%% exist, an error is returned.
+%% opt-out list doesn't exist, an error is returned.
 -spec put_opted_out_number(aws_client:aws_client(), put_opted_out_number_request()) ->
     {ok, put_opted_out_number_result(), tuple()} |
     {error, any()} |
@@ -4501,7 +4405,7 @@ put_opted_out_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutOptedOutNumber">>, Input, Options).
 
-%% @doc Create or update a RuleSetNumberOverride and associate it with a
+%% @doc Create or update a phone number rule override and associate it with a
 %% protect configuration.
 -spec put_protect_configuration_rule_set_number_override(aws_client:aws_client(), put_protect_configuration_rule_set_number_override_request()) ->
     {ok, put_protect_configuration_rule_set_number_override_result(), tuple()} |
@@ -4538,12 +4442,11 @@ put_registration_field_value(Client, Input, Options)
 
 %% @doc Attaches a resource-based policy to a AWS End User Messaging SMS and
 %% Voice resource(phone number, sender Id, phone poll, or opt-out list) that
-%% is used for
-%% sharing the resource.
+%% is used for sharing the resource.
 %%
 %% A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
-%% For more information about
-%% resource-based policies, see Working with shared resources:
+%% For more information about resource-based policies, see Working with
+%% shared resources:
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/shared-resources.html
 %% in the AWS End User Messaging SMS User Guide.
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
@@ -4564,12 +4467,10 @@ put_resource_policy(Client, Input, Options)
 
 %% @doc Releases an existing origination phone number in your account.
 %%
-%% Once released, a phone
-%% number is no longer available for sending messages.
+%% Once released, a phone number is no longer available for sending messages.
 %%
 %% If the origination phone number has deletion protection enabled or is
-%% associated with
-%% a pool, an error is returned.
+%% associated with a pool, an error is returned.
 -spec release_phone_number(aws_client:aws_client(), release_phone_number_request()) ->
     {ok, release_phone_number_result(), tuple()} |
     {error, any()} |
@@ -4605,8 +4506,7 @@ release_sender_id(Client, Input, Options)
 
 %% @doc Request an origination phone number for use in your account.
 %%
-%% For more information on
-%% phone number request see Request a phone number:
+%% For more information on phone number request see Request a phone number:
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html
 %% in the AWS End User Messaging SMS User Guide.
 -spec request_phone_number(aws_client:aws_client(), request_phone_number_request()) ->
@@ -4643,13 +4543,12 @@ request_sender_id(Client, Input, Options)
     request(Client, <<"RequestSenderId">>, Input, Options).
 
 %% @doc Before you can send test messages to a verified destination phone
-%% number you need to
-%% opt-in the verified destination phone number.
+%% number you need to opt-in the verified destination phone number.
 %%
-%% Creates a new text message with a
-%% verification code and send it to a verified destination phone number. Once
-%% you have the verification code use `VerifyDestinationNumber' to opt-in
-%% the verified destination phone number to receive messages.
+%% Creates a new text message with a verification code and send it to a
+%% verified destination phone number. Once you have the verification code use
+%% `VerifyDestinationNumber' to opt-in the verified destination phone
+%% number to receive messages.
 -spec send_destination_number_verification_code(aws_client:aws_client(), send_destination_number_verification_code_request()) ->
     {ok, send_destination_number_verification_code_result(), tuple()} |
     {error, any()} |
@@ -4691,12 +4590,10 @@ send_media_message(Client, Input, Options)
 %% invoked.
 %%
 %% SMS throughput limits are measured in Message Parts per Second (MPS). Your
-%% MPS limit
-%% depends on the destination country of your messages, as well as the type
-%% of phone number
-%% (origination number) that you use to send the message. For more
-%% information about MPS, see Message Parts per
-%% Second (MPS) limits:
+%% MPS limit depends on the destination country of your messages, as well as
+%% the type of phone number (origination number) that you use to send the
+%% message. For more information about MPS, see Message Parts per Second
+%% (MPS) limits:
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/sms-limitations-mps.html
 %% in the AWS End User Messaging SMS User Guide.
 -spec send_text_message(aws_client:aws_client(), send_text_message_request()) ->
@@ -4717,8 +4614,8 @@ send_text_message(Client, Input, Options)
 
 %% @doc Allows you to send a request that sends a voice message.
 %%
-%% This operation uses Amazon Polly: http://aws.amazon.com/polly/ to
-%% convert a text script into a voice message.
+%% This operation uses Amazon Polly: http://aws.amazon.com/polly/ to convert
+%% a text script into a voice message.
 -spec send_voice_message(aws_client:aws_client(), send_voice_message_request()) ->
     {ok, send_voice_message_result(), tuple()} |
     {error, any()} |
@@ -4737,9 +4634,9 @@ send_voice_message(Client, Input, Options)
 
 %% @doc Set a protect configuration as your account default.
 %%
-%% You can only have one account
-%% default protect configuration at a time. The current account default
-%% protect configuration is replaced with the provided protect configuration.
+%% You can only have one account default protect configuration at a time. The
+%% current account default protect configuration is replaced with the
+%% provided protect configuration.
 -spec set_account_default_protect_configuration(aws_client:aws_client(), set_account_default_protect_configuration_request()) ->
     {ok, set_account_default_protect_configuration_result(), tuple()} |
     {error, any()} |
@@ -4776,13 +4673,11 @@ set_default_message_feedback_enabled(Client, Input, Options)
 %% @doc Sets the default message type on a configuration set.
 %%
 %% Choose the category of SMS messages that you plan to send from this
-%% account. If you
-%% send account-related messages or time-sensitive messages such as one-time
-%% passcodes,
-%% choose Transactional. If you plan to send messages that
-%% contain marketing material or other promotional content, choose
-%% Promotional. This setting applies to your entire Amazon Web Services
-%% account.
+%% account. If you send account-related messages or time-sensitive messages
+%% such as one-time passcodes, choose Transactional. If you plan to send
+%% messages that contain marketing material or other promotional content,
+%% choose Promotional. This setting applies to your entire Amazon Web
+%% Services account.
 -spec set_default_message_type(aws_client:aws_client(), set_default_message_type_request()) ->
     {ok, set_default_message_type_result(), tuple()} |
     {error, any()} |
@@ -4802,11 +4697,9 @@ set_default_message_type(Client, Input, Options)
 %% @doc Sets default sender ID on a configuration set.
 %%
 %% When sending a text message to a destination country that supports sender
-%% IDs, the
-%% default sender ID on the configuration set specified will be used if no
-%% dedicated
-%% origination phone numbers or registered sender IDs are available in your
-%% account.
+%% IDs, the default sender ID on the configuration set specified will be used
+%% if no dedicated origination phone numbers or registered sender IDs are
+%% available in your account.
 -spec set_default_sender_id(aws_client:aws_client(), set_default_sender_id_request()) ->
     {ok, set_default_sender_id_result(), tuple()} |
     {error, any()} |
@@ -4826,10 +4719,8 @@ set_default_sender_id(Client, Input, Options)
 %% @doc Sets an account level monthly spend limit override for sending MMS
 %% messages.
 %%
-%% The
-%% requested spend limit must be less than or equal to the `MaxLimit',
-%% which is
-%% set by Amazon Web Services.
+%% The requested spend limit must be less than or equal to the
+%% `MaxLimit', which is set by Amazon Web Services.
 -spec set_media_message_spend_limit_override(aws_client:aws_client(), set_media_message_spend_limit_override_request()) ->
     {ok, set_media_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -4849,10 +4740,8 @@ set_media_message_spend_limit_override(Client, Input, Options)
 %% @doc Sets an account level monthly spend limit override for sending text
 %% messages.
 %%
-%% The
-%% requested spend limit must be less than or equal to the `MaxLimit',
-%% which is
-%% set by Amazon Web Services.
+%% The requested spend limit must be less than or equal to the
+%% `MaxLimit', which is set by Amazon Web Services.
 -spec set_text_message_spend_limit_override(aws_client:aws_client(), set_text_message_spend_limit_override_request()) ->
     {ok, set_text_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -4872,10 +4761,8 @@ set_text_message_spend_limit_override(Client, Input, Options)
 %% @doc Sets an account level monthly spend limit override for sending voice
 %% messages.
 %%
-%% The
-%% requested spend limit must be less than or equal to the `MaxLimit',
-%% which is
-%% set by Amazon Web Services.
+%% The requested spend limit must be less than or equal to the
+%% `MaxLimit', which is set by Amazon Web Services.
 -spec set_voice_message_spend_limit_override(aws_client:aws_client(), set_voice_message_spend_limit_override_request()) ->
     {ok, set_voice_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -4912,12 +4799,9 @@ submit_registration_version(Client, Input, Options)
 %% @doc Adds or overwrites only the specified tags for the specified
 %% resource.
 %%
-%% When you specify an existing tag key, the value is
-%% overwritten with the new value. Each resource can have a maximum of 50
-%% tags. Each tag
-%% consists of a key and an optional value. Tag keys must be unique per
-%% resource. For more
-%% information about tags, see Tags :
+%% When you specify an existing tag key, the value is overwritten with the
+%% new value. Each tag consists of a key and an optional value. Tag keys must
+%% be unique per resource. For more information about tags, see Tags :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html
 %% in the AWS End User Messaging SMS User Guide.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
@@ -4936,8 +4820,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes the association of the specified tags from a
-%% resource.
+%% @doc Removes the association of the specified tags from a resource.
 %%
 %% For more information on tags see Tags :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html
@@ -4960,15 +4843,13 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an existing event destination in a configuration set.
 %%
-%% You can update the
-%% IAM role ARN for CloudWatch Logs and Firehose. You can
+%% You can update the IAM role ARN for CloudWatch Logs and Firehose. You can
 %% also enable or disable the event destination.
 %%
 %% You may want to update an event destination to change its matching event
-%% types or
-%% updating the destination resource ARN. You can't change an event
-%% destination's type
-%% between CloudWatch Logs, Firehose, and Amazon SNS.
+%% types or updating the destination resource ARN. You can't change an
+%% event destination's type between CloudWatch Logs, Firehose, and Amazon
+%% SNS.
 -spec update_event_destination(aws_client:aws_client(), update_event_destination_request()) ->
     {ok, update_event_destination_result(), tuple()} |
     {error, any()} |
@@ -4987,11 +4868,9 @@ update_event_destination(Client, Input, Options)
 
 %% @doc Updates the configuration of an existing origination phone number.
 %%
-%% You can update the
-%% opt-out list, enable or disable two-way messaging, change the
-%% TwoWayChannelArn, enable
-%% or disable self-managed opt-outs, and enable or disable deletion
-%% protection.
+%% You can update the opt-out list, enable or disable two-way messaging,
+%% change the TwoWayChannelArn, enable or disable self-managed opt-outs, and
+%% enable or disable deletion protection.
 %%
 %% If the origination phone number is associated with a pool, an error is
 %% returned.
@@ -5013,11 +4892,10 @@ update_phone_number(Client, Input, Options)
 
 %% @doc Updates the configuration of an existing pool.
 %%
-%% You can update the opt-out list, enable
-%% or disable two-way messaging, change the `TwoWayChannelArn', enable or
-%% disable self-managed opt-outs, enable or disable deletion protection, and
-%% enable or
-%% disable shared routes.
+%% You can update the opt-out list, enable or disable two-way messaging,
+%% change the `TwoWayChannelArn', enable or disable self-managed
+%% opt-outs, enable or disable deletion protection, and enable or disable
+%% shared routes.
 -spec update_pool(aws_client:aws_client(), update_pool_request()) ->
     {ok, update_pool_result(), tuple()} |
     {error, any()} |
@@ -5051,8 +4929,8 @@ update_protect_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProtectConfiguration">>, Input, Options).
 
-%% @doc Update a country rule set to `ALLOW' or `BLOCK' messages to
-%% be sent to the specified destination counties.
+%% @doc Update a country rule set to `ALLOW', `BLOCK', `MONITOR',
+%% or `FILTER' messages to be sent to the specified destination counties.
 %%
 %% You can update one or multiple countries at a time. The updates are only
 %% applied to the specified NumberCapability type.

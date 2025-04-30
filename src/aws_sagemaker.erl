@@ -7638,7 +7638,7 @@
 %% create_project_input() :: #{
 %%   <<"ProjectDescription">> => string(),
 %%   <<"ProjectName">> := string(),
-%%   <<"ServiceCatalogProvisioningDetails">> := service_catalog_provisioning_details(),
+%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_project_input() :: #{binary() => any()}.

@@ -50,6 +50,8 @@
          check_document_access/5,
          check_document_access/7,
          check_document_access/8,
+         create_anonymous_web_experience_url/4,
+         create_anonymous_web_experience_url/5,
          create_application/2,
          create_application/3,
          create_data_accessor/3,
@@ -1665,6 +1667,13 @@
 
 
 %% Example:
+%% create_anonymous_web_experience_url_response() :: #{
+%%   <<"anonymousUrl">> => string()
+%% }
+-type create_anonymous_web_experience_url_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% image_source_details() :: #{
 %%   <<"mediaId">> => string(),
 %%   <<"mediaMimeType">> => string()
@@ -2248,6 +2257,13 @@
 
 
 %% Example:
+%% create_anonymous_web_experience_url_request() :: #{
+%%   <<"sessionDurationInMinutes">> => integer()
+%% }
+-type create_anonymous_web_experience_url_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% attachment_input_event() :: #{
 %%   <<"attachment">> => attachment_input()
 %% }
@@ -2688,6 +2704,14 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_anonymous_web_experience_url_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type create_application_errors() ::
@@ -3517,6 +3541,43 @@ check_document_access(Client, ApplicationId, DocumentId, IndexId, UserId, QueryM
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Creates a unique URL for anonymous Amazon Q Business web experience.
+%%
+%% This URL can only be used once and must be used within 5 minutes after
+%% it's generated.
+-spec create_anonymous_web_experience_url(aws_client:aws_client(), binary() | list(), binary() | list(), create_anonymous_web_experience_url_request()) ->
+    {ok, create_anonymous_web_experience_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_anonymous_web_experience_url_errors(), tuple()}.
+create_anonymous_web_experience_url(Client, ApplicationId, WebExperienceId, Input) ->
+    create_anonymous_web_experience_url(Client, ApplicationId, WebExperienceId, Input, []).
+
+-spec create_anonymous_web_experience_url(aws_client:aws_client(), binary() | list(), binary() | list(), create_anonymous_web_experience_url_request(), proplists:proplist()) ->
+    {ok, create_anonymous_web_experience_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_anonymous_web_experience_url_errors(), tuple()}.
+create_anonymous_web_experience_url(Client, ApplicationId, WebExperienceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/experiences/", aws_util:encode_uri(WebExperienceId), "/anonymous-url"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q Business application.
 %%

@@ -174,6 +174,8 @@
          describe_sessions/3,
          disassociate_ops_item_related_item/2,
          disassociate_ops_item_related_item/3,
+         get_access_token/2,
+         get_access_token/3,
          get_automation_execution/2,
          get_automation_execution/3,
          get_calendar_state/2,
@@ -292,6 +294,8 @@
          send_automation_signal/3,
          send_command/2,
          send_command/3,
+         start_access_request/2,
+         start_access_request/3,
          start_associations_once/2,
          start_associations_once/3,
          start_automation_execution/2,
@@ -468,6 +472,13 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_patch_baseline_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_token_response() :: #{
+%%   <<"AccessRequestStatus">> => list(any()),
+%%   <<"Credentials">> => credentials()
+%% }
+-type get_access_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_association() :: #{
@@ -1102,6 +1113,15 @@
 %%   <<"ParameterNames">> => list(string()())
 %% }
 -type resource_policy_invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
 
 %% Example:
 %% non_compliant_summary() :: #{
@@ -2177,6 +2197,14 @@
 -type document_metadata_response_info() :: #{binary() => any()}.
 
 %% Example:
+%% start_access_request_request() :: #{
+%%   <<"Reason">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Targets">> := list(target()())
+%% }
+-type start_access_request_request() :: #{binary() => any()}.
+
+%% Example:
 %% baseline_override() :: #{
 %%   <<"ApprovalRules">> => patch_rule_group(),
 %%   <<"ApprovedPatches">> => list(string()()),
@@ -2539,6 +2567,16 @@
 %%   <<"OpsMetadataArn">> := string()
 %% }
 -type get_ops_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% inventory_deletion_status_item() :: #{
@@ -3859,6 +3897,12 @@
 -type describe_instance_patch_states_for_patch_group_result() :: #{binary() => any()}.
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
 %% target_location() :: #{
 %%   <<"Accounts">> => list(string()()),
 %%   <<"ExcludeAccounts">> => list(string()()),
@@ -4237,6 +4281,14 @@
 -type output_source() :: #{binary() => any()}.
 
 %% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
 %% register_target_with_maintenance_window_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
@@ -4325,6 +4377,12 @@
 %%   <<"VersionName">> => string()
 %% }
 -type document_version_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_token_request() :: #{
+%%   <<"AccessRequestId">> := string()
+%% }
+-type get_access_token_request() :: #{binary() => any()}.
 
 %% Example:
 %% command_invocation() :: #{
@@ -5030,6 +5088,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_documents_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_access_request_response() :: #{
+%%   <<"AccessRequestId">> => string()
+%% }
+-type start_access_request_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_automation_execution_request() :: #{
@@ -5797,6 +5861,13 @@
     ops_item_conflict_exception() | 
     ops_item_not_found_exception().
 
+-type get_access_token_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception().
+
 -type get_automation_execution_errors() ::
     internal_server_error() | 
     automation_execution_not_found_exception().
@@ -6150,6 +6221,14 @@
     invalid_parameters() | 
     invalid_document() | 
     max_document_size_exceeded().
+
+-type start_access_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_error() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 -type start_associations_once_errors() ::
     association_does_not_exist() | 
@@ -7843,6 +7922,23 @@ disassociate_ops_item_related_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateOpsItemRelatedItem">>, Input, Options).
 
+%% @doc Returns a credentials set to be used with just-in-time node access.
+-spec get_access_token(aws_client:aws_client(), get_access_token_request()) ->
+    {ok, get_access_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_access_token_errors(), tuple()}.
+get_access_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_access_token(Client, Input, []).
+
+-spec get_access_token(aws_client:aws_client(), get_access_token_request(), proplists:proplist()) ->
+    {ok, get_access_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_access_token_errors(), tuple()}.
+get_access_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAccessToken">>, Input, Options).
+
 %% @doc Get detailed information about a particular Automation execution.
 -spec get_automation_execution(aws_client:aws_client(), get_automation_execution_request()) ->
     {ok, get_automation_execution_result(), tuple()} |
@@ -9291,6 +9387,23 @@ send_command(Client, Input)
 send_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendCommand">>, Input, Options).
+
+%% @doc Starts the workflow for just-in-time node access sessions.
+-spec start_access_request(aws_client:aws_client(), start_access_request_request()) ->
+    {ok, start_access_request_response(), tuple()} |
+    {error, any()} |
+    {error, start_access_request_errors(), tuple()}.
+start_access_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_access_request(Client, Input, []).
+
+-spec start_access_request(aws_client:aws_client(), start_access_request_request(), proplists:proplist()) ->
+    {ok, start_access_request_response(), tuple()} |
+    {error, any()} |
+    {error, start_access_request_errors(), tuple()}.
+start_access_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartAccessRequest">>, Input, Options).
 
 %% @doc Runs an association immediately and only one time.
 %%

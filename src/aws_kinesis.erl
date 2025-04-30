@@ -46,6 +46,8 @@
          list_stream_consumers/3,
          list_streams/2,
          list_streams/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          list_tags_for_stream/2,
          list_tags_for_stream/3,
          merge_shards/2,
@@ -68,6 +70,10 @@
          stop_stream_encryption/3,
          subscribe_to_shard/2,
          subscribe_to_shard/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_shard_count/2,
          update_shard_count/3,
          update_stream_mode/2,
@@ -272,6 +278,12 @@
 -type delete_resource_policy_input() :: #{binary() => any()}.
 
 %% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
 %% put_records_input() :: #{
 %%   <<"Records">> := list(put_records_request_entry()()),
 %%   <<"StreamARN">> => string(),
@@ -362,7 +374,8 @@
 %% Example:
 %% register_stream_consumer_input() :: #{
 %%   <<"ConsumerName">> := string(),
-%%   <<"StreamARN">> := string()
+%%   <<"StreamARN">> := string(),
+%%   <<"Tags">> => map()
 %% }
 -type register_stream_consumer_input() :: #{binary() => any()}.
 
@@ -420,6 +433,13 @@
 %%   <<"StreamName">> => string()
 %% }
 -type describe_stream_summary_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_stream_consumers_output() :: #{
@@ -516,6 +536,13 @@
 -type stream_mode_details() :: #{binary() => any()}.
 
 %% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_stream_input() :: #{
 %%   <<"ExclusiveStartTagKey">> => string(),
 %%   <<"Limit">> => integer(),
@@ -564,6 +591,12 @@
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% subscribe_to_shard_event() :: #{
@@ -808,6 +841,7 @@
     provisioned_throughput_exceeded_exception() | 
     kms_throttling_exception() | 
     kms_opt_in_required() | 
+    internal_failure_exception() | 
     kms_disabled_exception().
 
 -type get_resource_policy_errors() ::
@@ -821,7 +855,8 @@
     invalid_argument_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    internal_failure_exception().
 
 -type increase_stream_retention_period_errors() ::
     limit_exceeded_exception() | 
@@ -850,6 +885,13 @@
     invalid_argument_exception() | 
     expired_next_token_exception().
 
+-type list_tags_for_resource_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
 -type list_tags_for_stream_errors() ::
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
@@ -874,6 +916,7 @@
     provisioned_throughput_exceeded_exception() | 
     kms_throttling_exception() | 
     kms_opt_in_required() | 
+    internal_failure_exception() | 
     kms_disabled_exception().
 
 -type put_records_errors() ::
@@ -886,6 +929,7 @@
     provisioned_throughput_exceeded_exception() | 
     kms_throttling_exception() | 
     kms_opt_in_required() | 
+    internal_failure_exception() | 
     kms_disabled_exception().
 
 -type put_resource_policy_errors() ::
@@ -937,6 +981,20 @@
     resource_in_use_exception().
 
 -type subscribe_to_shard_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type untag_resource_errors() ::
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
     access_denied_exception() | 
@@ -1059,12 +1117,13 @@ add_tags_to_stream(Client, Input, Options)
 %% account.
 %%
 %% You can add tags to the stream when making a `CreateStream' request by
-%% setting the `Tags' parameter. If you pass `Tags' parameter, in
-%% addition to having `kinesis:createStream' permission, you must also
-%% have
-%% `kinesis:addTagsToStream' permission for the stream that will be
-%% created.
-%% Tags will take effect from the `CREATING' status of the stream.
+%% setting the `Tags' parameter. If you pass the `Tags' parameter, in
+%% addition to having the `kinesis:CreateStream' permission, you must
+%% also have the `kinesis:AddTagsToStream' permission for the stream that
+%% will be created. The `kinesis:TagResource' permission won’t work to
+%% tag streams on creation. Tags will take effect from the `CREATING'
+%% status of the stream, but you can't make any updates to the tags until
+%% the stream is in `ACTIVE' state.
 -spec create_stream(aws_client:aws_client(), create_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1751,6 +1810,30 @@ list_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStreams">>, Input, Options).
 
+%% @doc List all tags added to the specified Kinesis resource.
+%%
+%% Each tag is a label consisting of a user-defined key and value. Tags can
+%% help you manage, identify, organize, search for, and filter resources.
+%%
+%% For more information about tagging Kinesis resources, see Tag your Amazon
+%% Kinesis Data Streams resources:
+%% https://docs.aws.amazon.com/streams/latest/dev/tagging.html.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Lists the tags for the specified Kinesis data stream.
 %%
 %% This operation has a limit of
@@ -2114,6 +2197,14 @@ put_resource_policy(Client, Input, Options)
 %% consumers that
 %% read from the same stream.
 %%
+%% You can add tags to the registered consumer when making a
+%% `RegisterStreamConsumer' request by setting the `Tags' parameter.
+%% If you pass the `Tags' parameter, in addition to having the
+%% `kinesis:RegisterStreamConsumer' permission, you must also have the
+%% `kinesis:TagResource' permission for the consumer that will be
+%% registered. Tags will take effect from the `CREATING' status of the
+%% consumer.
+%%
 %% You can register up to 20 consumers per stream. A given consumer can only
 %% be
 %% registered with one stream at a time.
@@ -2418,6 +2509,47 @@ subscribe_to_shard(Client, Input)
 subscribe_to_shard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubscribeToShard">>, Input, Options).
+
+%% @doc Adds or updates tags for the specified Kinesis resource.
+%%
+%% Each tag is a label consisting of a user-defined key and value. Tags can
+%% help you manage, identify, organize, search for, and filter resources. You
+%% can assign up to 50 tags to a Kinesis resource.
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes tags from the specified Kinesis resource.
+%%
+%% Removed tags are deleted and can't be recovered after this operation
+%% completes successfully.
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates the shard count of the specified stream to the specified
 %% number of shards.
