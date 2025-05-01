@@ -6928,6 +6928,7 @@
 %%   <<"IpamArn">> => string(),
 %%   <<"IpamId">> => string(),
 %%   <<"IpamRegion">> => string(),
+%%   <<"MeteredAccount">> => list(any()),
 %%   <<"OperatingRegions">> => list(ipam_operating_region()()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PrivateDefaultScopeId">> => string(),
@@ -12642,6 +12643,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EnablePrivateGua">> => boolean(),
+%%   <<"MeteredAccount">> => list(any()),
 %%   <<"OperatingRegions">> => list(add_ipam_operating_region()()),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
 %%   <<"Tier">> => list(any())
@@ -16785,6 +16787,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"EnablePrivateGua">> => boolean(),
 %%   <<"IpamId">> := string(),
+%%   <<"MeteredAccount">> => list(any()),
 %%   <<"RemoveOperatingRegions">> => list(remove_ipam_operating_region()()),
 %%   <<"Tier">> => list(any())
 %% }
@@ -26212,13 +26215,7 @@ describe_capacity_block_extension_offerings(Client, Input, Options)
 %%
 %% To search for an available Capacity Block offering, you specify a
 %% reservation duration
-%% and instance count. You must select one of the following options.
-%%
-%% For reservation durations 1-day increments
-%% up 14 days and 7-day increments up to 182 days total
-%%
-%% For instance count 1, 2, 4, 8, 16, 32, or
-%% 64 instances
+%% and instance count.
 -spec describe_capacity_block_offerings(aws_client:aws_client(), describe_capacity_block_offerings_request()) ->
     {ok, describe_capacity_block_offerings_result(), tuple()} |
     {error, any()}.
@@ -36358,71 +36355,60 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 %% Amazon EC2 User
 %% Guide.
 %%
-%% You can use the Stop action to hibernate an instance if the instance is
-%% enabled
-%% for hibernation:
+%% When you stop an instance, we shut it down. You can restart your instance
+%% at any
+%% time.
+%%
+%% You can use the Stop operation together with the Hibernate parameter to
+%% hibernate an
+%% instance if the instance is enabled for
+%% hibernation:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enabling-hibernation.html
-%% and it meets the hibernation
+%% and meets the hibernation
 %% prerequisites:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernating-prerequisites.html.
-%% For more information, see Hibernate your Amazon EC2
+%% Stopping an instance doesn't preserve data stored in RAM,
+%% while hibernation does. If hibernation fails, a normal shutdown occurs.
+%% For more
+%% information, see Hibernate your Amazon EC2
 %% instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html in the
 %% Amazon EC2 User Guide.
 %%
-%% We don't charge usage for a stopped instance, or data transfer fees;
-%% however, your
-%% root partition Amazon EBS volume remains and continues to persist your
-%% data, and you are
-%% charged for Amazon EBS volume usage. Every time you start your instance,
-%% Amazon EC2
-%% charges a one-minute minimum for instance usage, and thereafter charges
-%% per second for
-%% instance usage.
-%%
-%% You can't stop or hibernate instance store-backed instances. You
-%% can't use the Stop
-%% action to hibernate Spot Instances, but you can specify that Amazon EC2
-%% should hibernate
-%% Spot Instances when they are interrupted. For more information, see
-%% Hibernating interrupted Spot Instances:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances
+%% If your instance appears stuck in the `stopping' state, there might be
+%% an
+%% issue with the underlying host computer. You can use the Stop operation
+%% together with
+%% the Force parameter to force stop your instance. For more information, see
+%% Troubleshoot
+%% Amazon EC2 instance stop issues:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html
 %% in the
 %% Amazon EC2 User Guide.
 %%
-%% When you stop or hibernate an instance, we shut it down. You can restart
-%% your instance
-%% at any time. Before stopping or hibernating an instance, make sure it is
-%% in a state from
-%% which it can be restarted. Stopping an instance does not preserve data
-%% stored in RAM,
-%% but hibernating an instance does preserve data stored in RAM. If an
-%% instance cannot
-%% hibernate successfully, a normal shutdown occurs.
-%%
-%% Stopping and hibernating an instance is different to rebooting or
-%% terminating it. For
-%% example, when you stop or hibernate an instance, the root device and any
-%% other devices
-%% attached to the instance persist. When you terminate an instance, the root
-%% device and
-%% any other devices attached during the instance launch are automatically
-%% deleted. For
-%% more information about the differences between rebooting, stopping,
-%% hibernating, and
-%% terminating instances, see Instance lifecycle:
+%% Stopping and hibernating an instance differs from rebooting or terminating
+%% it. For
+%% example, a stopped or hibernated instance retains its root volume and any
+%% data volumes,
+%% unlike terminated instances where these volumes are automatically deleted.
+%% For more
+%% information about the differences between stopping, hibernating,
+%% rebooting, and
+%% terminating instances, see Amazon EC2
+%% instance state changes:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 %% in the Amazon EC2 User Guide.
 %%
-%% When you stop an instance, we attempt to shut it down forcibly after a
-%% short while. If
-%% your instance appears stuck in the stopping state after a period of time,
-%% there may be
-%% an issue with the underlying host computer. For more information, see
-%% Troubleshoot
-%% stopping your instance:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html
-%% in the Amazon EC2 User Guide.
+%% We don't charge for instance usage or data transfer fees when an
+%% instance is stopped.
+%% However, the root volume and any data volumes remain and continue to
+%% persist your data,
+%% and you're charged for volume usage. Every time you start your
+%% instance, Amazon EC2 charges a one-minute minimum for instance usage,
+%% followed by per-second
+%% billing.
+%%
+%% You can't stop or hibernate instance store-backed instances.
 -spec stop_instances(aws_client:aws_client(), stop_instances_request()) ->
     {ok, stop_instances_result(), tuple()} |
     {error, any()}.
@@ -36457,8 +36443,10 @@ terminate_client_vpn_connections(Client, Input, Options)
 
 %% @doc Shuts down the specified instances.
 %%
-%% This operation is idempotent; if you terminate an
-%% instance more than once, each call succeeds.
+%% This operation is idempotent:
+%% https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html;
+%% if you
+%% terminate an instance more than once, each call succeeds.
 %%
 %% If you specify multiple instances and the request fails (for example,
 %% because of a
@@ -36509,7 +36497,7 @@ terminate_client_vpn_connections(Client, Input, Options)
 %% You can stop, start, and terminate EBS-backed instances. You can only
 %% terminate
 %% instance store-backed instances. What happens to an instance differs if
-%% you stop it or
+%% you stop or
 %% terminate it. For example, when you stop an instance, the root device and
 %% any other
 %% devices attached to the instance persist. When you terminate an instance,
@@ -36517,13 +36505,13 @@ terminate_client_vpn_connections(Client, Input, Options)
 %% EBS volumes with the `DeleteOnTermination' block device mapping
 %% parameter set
 %% to `true' are automatically deleted. For more information about the
-%% differences between stopping and terminating instances, see Instance
-%% lifecycle:
+%% differences between stopping and terminating instances, see Amazon EC2
+%% instance state changes:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 %% in the Amazon EC2 User Guide.
 %%
-%% For more information about troubleshooting, see Troubleshooting
-%% terminating your instance:
+%% For information about troubleshooting, see Troubleshooting terminating
+%% your instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html
 %% in the
 %% Amazon EC2 User Guide.

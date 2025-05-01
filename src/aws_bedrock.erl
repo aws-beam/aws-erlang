@@ -166,7 +166,8 @@
 %%   <<"jobArn">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details()
 %% }
 -type model_customization_job_summary() :: #{binary() => any()}.
 
@@ -731,6 +732,15 @@
 
 
 %% Example:
+%% status_details() :: #{
+%%   <<"dataProcessingDetails">> => data_processing_details(),
+%%   <<"trainingDetails">> => training_details(),
+%%   <<"validationDetails">> => validation_details()
+%% }
+-type status_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_inference_profile_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"description">> => string(),
@@ -998,6 +1008,15 @@
 
 
 %% Example:
+%% data_processing_details() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type data_processing_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_guardrails_response() :: #{
 %%   <<"guardrails">> => list(guardrail_summary()()),
 %%   <<"nextToken">> => string()
@@ -1221,6 +1240,15 @@
 %%   <<"teacherModelIdentifier">> => string()
 %% }
 -type teacher_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_details() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1729,6 +1757,15 @@
 
 
 %% Example:
+%% training_details() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type training_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_word_policy_config() :: #{
 %%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()()),
 %%   <<"wordsConfig">> => list(guardrail_word_config()())
@@ -1850,6 +1887,7 @@
 %%   <<"outputModelName">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
 %%   <<"trainingDataConfig">> => training_data_config(),
 %%   <<"trainingMetrics">> => training_metrics(),
 %%   <<"validationDataConfig">> => validation_data_config(),

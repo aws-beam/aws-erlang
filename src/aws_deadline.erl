@@ -804,6 +804,7 @@
 %% customer_managed_fleet_configuration() :: #{
 %%   <<"mode">> => list(any()),
 %%   <<"storageProfileId">> => string(),
+%%   <<"tagPropagationMode">> => list(any()),
 %%   <<"workerCapabilities">> => customer_managed_worker_capabilities()
 %% }
 -type customer_managed_fleet_configuration() :: #{binary() => any()}.
@@ -2839,7 +2840,8 @@
 %% Example:
 %% create_worker_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"hostProperties">> => host_properties_request()
+%%   <<"hostProperties">> => host_properties_request(),
+%%   <<"tags">> => map()
 %% }
 -type create_worker_request() :: #{binary() => any()}.
 

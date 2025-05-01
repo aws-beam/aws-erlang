@@ -76,6 +76,13 @@
 
 
 %% Example:
+%% custom_orchestration() :: #{
+%%   <<"executor">> => list()
+%% }
+-type custom_orchestration() :: #{binary() => any()}.
+
+
+%% Example:
 %% file_part() :: #{
 %%   <<"files">> => list(output_file()())
 %% }
@@ -1640,9 +1647,11 @@
 %% invoke_inline_agent_request() :: #{
 %%   <<"actionGroups">> => list(agent_action_group()()),
 %%   <<"agentCollaboration">> => list(any()),
+%%   <<"agentName">> => string(),
 %%   <<"bedrockModelConfigurations">> => inline_bedrock_model_configurations(),
 %%   <<"collaboratorConfigurations">> => list(collaborator_configuration()()),
 %%   <<"collaborators">> => list(collaborator()()),
+%%   <<"customOrchestration">> => custom_orchestration(),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"enableTrace">> => [boolean()],
 %%   <<"endSession">> => [boolean()],
@@ -1653,6 +1662,7 @@
 %%   <<"inputText">> => string(),
 %%   <<"instruction">> := string(),
 %%   <<"knowledgeBases">> => list(knowledge_base()()),
+%%   <<"orchestrationType">> => list(any()),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
 %%   <<"streamingConfigurations">> => streaming_configurations()
 %% }
@@ -1993,6 +2003,9 @@
 
 %% Example:
 %% inline_agent_trace_part() :: #{
+%%   <<"callerChain">> => list(list()()),
+%%   <<"collaboratorName">> => string(),
+%%   <<"eventTime">> => non_neg_integer(),
 %%   <<"sessionId">> => string(),
 %%   <<"trace">> => list()
 %% }
@@ -2284,8 +2297,7 @@
 %% @doc Creates a new invocation within a session.
 %%
 %% An invocation groups the related invocation steps that store the content
-%% from
-%% a conversation. For more information about sessions, see Store and
+%% from a conversation. For more information about sessions, see Store and
 %% retrieve conversation history and context with Amazon Bedrock sessions:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
 %%
@@ -2333,27 +2345,24 @@ create_invocation(Client, SessionIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a session to temporarily store conversations for generative
-%% AI (GenAI) applications built with open-source
-%% frameworks such as LangGraph and LlamaIndex.
+%% AI (GenAI) applications built with open-source frameworks such as
+%% LangGraph and LlamaIndex.
 %%
-%% Sessions enable you to save the state of
-%% conversations at checkpoints, with the added security and infrastructure
-%% of Amazon Web Services. For more information, see
-%% Store and retrieve conversation history and context with Amazon Bedrock
-%% sessions:
+%% Sessions enable you to save the state of conversations at checkpoints,
+%% with the added security and infrastructure of Amazon Web Services. For
+%% more information, see Store and retrieve conversation history and context
+%% with Amazon Bedrock sessions:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
 %%
 %% By default, Amazon Bedrock uses Amazon Web Services-managed keys for
-%% session encryption, including session metadata,
-%% or you can use your own KMS key. For more information, see Amazon Bedrock
-%% session encryption:
+%% session encryption, including session metadata, or you can use your own
+%% KMS key. For more information, see Amazon Bedrock session encryption:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/session-encryption.html.
 %%
 %% You use a session to store state and conversation history for generative
-%% AI applications built with open-source frameworks.
-%% For Amazon Bedrock Agents, the service automatically manages conversation
-%% context and associates them with the agent-specific sessionId you specify
-%% in the
+%% AI applications built with open-source frameworks. For Amazon Bedrock
+%% Agents, the service automatically manages conversation context and
+%% associates them with the agent-specific sessionId you specify in the
 %% InvokeAgent:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html
 %% API operation.
@@ -2443,12 +2452,10 @@ delete_agent_memory(Client, AgentAliasId, AgentId, Input0, Options0) ->
 %% @doc Deletes a session that you ended.
 %%
 %% You can't delete a session with an `ACTIVE' status. To delete an
-%% active session, you must first end it with the
-%% EndSession:
+%% active session, you must first end it with the EndSession:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_EndSession.html
-%% API operation.
-%% For more information about sessions, see Store and retrieve conversation
-%% history and context with Amazon Bedrock sessions:
+%% API operation. For more information about sessions, see Store and retrieve
+%% conversation history and context with Amazon Bedrock sessions:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
 -spec delete_session(aws_client:aws_client(), binary() | list(), delete_session_request()) ->
     {ok, delete_session_response(), tuple()} |
@@ -2487,9 +2494,9 @@ delete_session(Client, SessionIdentifier, Input0, Options0) ->
 %%
 %% After you end a session, you can still access its content but you can’t
 %% add to it. To delete the session and it's content, you use the
-%% DeleteSession API operation.
-%% For more information about sessions, see Store and retrieve conversation
-%% history and context with Amazon Bedrock sessions:
+%% DeleteSession API operation. For more information about sessions, see
+%% Store and retrieve conversation history and context with Amazon Bedrock
+%% sessions:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html.
 -spec end_session(aws_client:aws_client(), binary() | list(), end_session_request()) ->
     {ok, end_session_response(), tuple()} |
@@ -2836,8 +2843,7 @@ invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
         Result
     end.
 
-%% @doc
-%% Invokes an inline Amazon Bedrock agent using the configurations you
+%% @doc Invokes an inline Amazon Bedrock agent using the configurations you
 %% provide with the request.
 %%
 %% Specify the following fields for security purposes.
@@ -2851,8 +2857,8 @@ invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
 %% session.
 %%
 %% To override the default prompt behavior for agent orchestration and to use
-%% advanced prompts, include a `promptOverrideConfiguration' object.
-%% For more information, see Advanced prompts:
+%% advanced prompts, include a `promptOverrideConfiguration' object. For
+%% more information, see Advanced prompts:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html.
 %%
 %% The agent instructions will not be honored if your agent has only one
