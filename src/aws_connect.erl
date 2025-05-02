@@ -3516,12 +3516,17 @@
 
 %% Example:
 %% agent_info() :: #{
+%%   <<"AfterContactWorkDuration">> => integer(),
+%%   <<"AfterContactWorkEndTimestamp">> => non_neg_integer(),
+%%   <<"AfterContactWorkStartTimestamp">> => non_neg_integer(),
+%%   <<"AgentInitiatedHoldDuration">> => integer(),
 %%   <<"AgentPauseDurationInSeconds">> => integer(),
 %%   <<"Capabilities">> => participant_capabilities(),
 %%   <<"ConnectedToAgentTimestamp">> => non_neg_integer(),
 %%   <<"DeviceInfo">> => device_info(),
 %%   <<"HierarchyGroups">> => hierarchy_groups(),
-%%   <<"Id">> => string()
+%%   <<"Id">> => string(),
+%%   <<"StateTransitions">> => list(state_transition()())
 %% }
 -type agent_info() :: #{binary() => any()}.
 
@@ -4429,6 +4434,22 @@
 
 
 %% Example:
+%% recording_info() :: #{
+%%   <<"DeletionReason">> => string(),
+%%   <<"FragmentStartNumber">> => string(),
+%%   <<"FragmentStopNumber">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"MediaStreamType">> => list(any()),
+%%   <<"ParticipantType">> => list(any()),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StopTimestamp">> => non_neg_integer(),
+%%   <<"StorageType">> => list(any())
+%% }
+-type recording_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_approved_origins_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Origins">> => list(string()())
@@ -4782,17 +4803,21 @@
 %% contact() :: #{
 %%   <<"AdditionalEmailRecipients">> => additional_email_recipients(),
 %%   <<"Campaign">> => campaign(),
+%%   <<"ContactEvaluations">> => map(),
 %%   <<"InitiationMethod">> => list(any()),
 %%   <<"Id">> => string(),
+%%   <<"DisconnectReason">> => string(),
 %%   <<"LastResumedTimestamp">> => non_neg_integer(),
 %%   <<"AnsweringMachineDetectionStatus">> => list(any()),
 %%   <<"LastUpdateTimestamp">> => non_neg_integer(),
 %%   <<"PreviousContactId">> => string(),
 %%   <<"SystemEndpoint">> => endpoint_info(),
 %%   <<"ScheduledTimestamp">> => non_neg_integer(),
+%%   <<"Attributes">> => map(),
 %%   <<"RoutingCriteria">> => routing_criteria(),
 %%   <<"TotalPauseCount">> => integer(),
 %%   <<"InitialContactId">> => string(),
+%%   <<"ContactDetails">> => contact_details(),
 %%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),
 %%   <<"LastPausedTimestamp">> => non_neg_integer(),
 %%   <<"CustomerId">> => string(),
@@ -4806,6 +4831,7 @@
 %%   <<"DisconnectTimestamp">> => non_neg_integer(),
 %%   <<"Tags">> => map(),
 %%   <<"RelatedContactId">> => string(),
+%%   <<"Recordings">> => list(recording_info()()),
 %%   <<"SegmentAttributes">> => map(),
 %%   <<"Name">> => string(),
 %%   <<"DisconnectDetails">> => disconnect_details(),
@@ -4894,6 +4920,15 @@
 %%   <<"Name">> => string()
 %% }
 -type update_contact_flow_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% state_transition() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateEndTimestamp">> => non_neg_integer(),
+%%   <<"StateStartTimestamp">> => non_neg_integer()
+%% }
+-type state_transition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5018,6 +5053,19 @@
 %%   <<"TimeZone">> => string()
 %% }
 -type interval_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_evaluation() :: #{
+%%   <<"DeleteTimestamp">> => non_neg_integer(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"EvaluationArn">> => string(),
+%%   <<"ExportLocation">> => string(),
+%%   <<"FormId">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type contact_evaluation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6874,6 +6922,14 @@
 %%   <<"Start">> => override_time_slice()
 %% }
 -type operational_hour() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_details() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type contact_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11064,9 +11120,10 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 %% @doc
 %% Only the EMAIL and VOICE channels are supported.
 %%
-%% The supported initiation methods for EMAIL are: OUTBOUND,
-%% AGENT_REPLY, and FLOW. For VOICE the supported initiation methods are
-%% TRANSFER and the subtype connect:ExternalAudio.
+%% The supported initiation methods for EMAIL
+%% are: OUTBOUND, AGENT_REPLY, and FLOW. For VOICE the supported initiation
+%% methods are TRANSFER
+%% and the subtype connect:ExternalAudio.
 %%
 %% Creates a new EMAIL or VOICE contact.
 -spec create_contact(aws_client:aws_client(), create_contact_request()) ->
@@ -13348,8 +13405,9 @@ describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, Que
 %%
 %% Describes the specified contact.
 %%
-%% `CustomerEndpoint' and `SystemEndpoint' are only populated for
-%% EMAIL contacts.
+%% `SystemEndpoint' is not populated for contacts with initiation method
+%% of
+%% MONITOR, QUEUE_TRANSFER, or CALLBACK
 %%
 %% Contact information remains available in Amazon Connect for 24 months from
 %% the
@@ -15034,10 +15092,10 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %% @doc Gets the real-time metric data from the specified Amazon Connect
 %% instance.
 %%
-%% For a description of each metric, see Real-time Metrics
-%% Definitions:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html
-%% in the Amazon Connect Administrator Guide.
+%% For a description of each metric, see Metrics definitions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
+%% in the
+%% Amazon Connect Administrator Guide.
 -spec get_current_metric_data(aws_client:aws_client(), binary() | list(), get_current_metric_data_request()) ->
     {ok, get_current_metric_data_response(), tuple()} |
     {error, any()} |
@@ -15244,10 +15302,10 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 %% @doc Gets historical metric data from the specified Amazon Connect
 %% instance.
 %%
-%% For a description of each historical metric, see Historical Metrics
-%% Definitions:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html
-%% in the Amazon Connect Administrator Guide.
+%% For a description of each historical metric, see Metrics definitions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
+%% in the
+%% Amazon Connect Administrator Guide.
 %%
 %% We recommend using the GetMetricDataV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricDataV2.html
@@ -15310,10 +15368,10 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% does not support agent queues.
 %%
 %% For a description of the historical metrics that are supported by
-%% `GetMetricDataV2' and `GetMetricData', see Historical metrics
-%% definitions:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html
-%% in the Amazon Connect Administrator Guide.
+%% `GetMetricDataV2' and `GetMetricData', see Metrics definitions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
+%% in the
+%% Amazon Connect Administrator Guide.
 -spec get_metric_data_v2(aws_client:aws_client(), get_metric_data_v2_request()) ->
     {ok, get_metric_data_v2_response(), tuple()} |
     {error, any()} |
@@ -19699,13 +19757,13 @@ submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 %% recording is enabled, then it would be suspended. For example, you might
 %% suspend the screen
 %% recording while collecting sensitive information, such as a credit card
-%% number. Then use
-%% ResumeContactRecording:
+%% number. Then use ResumeContactRecording:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ResumeContactRecording.html
 %% to restart recording the screen.
 %%
 %% The period of time that the recording is suspended is filled with silence
-%% in the final recording.
+%% in the final
+%% recording.
 %%
 %% Voice (IVR, agent) and screen recordings are supported.
 -spec suspend_contact_recording(aws_client:aws_client(), suspend_contact_recording_request()) ->

@@ -1858,7 +1858,9 @@
 
 %% Example:
 %% update_cluster_software_request() :: #{
-%%   <<"ClusterName">> := string()
+%%   <<"ClusterName">> := string(),
+%%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"InstanceGroups">> => list(update_cluster_software_instance_group_specification()())
 %% }
 -type update_cluster_software_request() :: #{binary() => any()}.
 
@@ -4157,6 +4159,13 @@
 -type describe_edge_packaging_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% scheduled_update_config() :: #{
+%%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"ScheduleExpression">> => string()
+%% }
+-type scheduled_update_config() :: #{binary() => any()}.
+
+%% Example:
 %% monitoring_alert_history_summary() :: #{
 %%   <<"AlertStatus">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -4214,6 +4223,12 @@
 %%   <<"Version">> => integer()
 %% }
 -type image_version() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_software_instance_group_specification() :: #{
+%%   <<"InstanceGroupName">> => string()
+%% }
+-type update_cluster_software_instance_group_specification() :: #{binary() => any()}.
 
 %% Example:
 %% service_catalog_provisioning_details() :: #{
@@ -4588,6 +4603,12 @@
 -type transform_job() :: #{binary() => any()}.
 
 %% Example:
+%% alarm_details() :: #{
+%%   <<"AlarmName">> => string()
+%% }
+-type alarm_details() :: #{binary() => any()}.
+
+%% Example:
 %% suggestion_query() :: #{
 %%   <<"PropertyNameQuery">> => property_name_query()
 %% }
@@ -4794,6 +4815,14 @@
 %%   <<"SecurityConfig">> => model_card_security_config()
 %% }
 -type describe_model_card_response() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_configuration() :: #{
+%%   <<"AutoRollbackConfiguration">> => list(alarm_details()()),
+%%   <<"RollingUpdatePolicy">> => rolling_deployment_policy(),
+%%   <<"WaitIntervalInSeconds">> => integer()
+%% }
+-type deployment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_device_fleet_request() :: #{
@@ -5510,6 +5539,13 @@
 %%   <<"FeatureGroupArn">> => string()
 %% }
 -type create_feature_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_size_config() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type capacity_size_config() :: #{binary() => any()}.
 
 %% Example:
 %% edge_output_config() :: #{
@@ -6684,6 +6720,13 @@
 -type list_training_jobs_response() :: #{binary() => any()}.
 
 %% Example:
+%% rolling_deployment_policy() :: #{
+%%   <<"MaximumBatchSize">> => capacity_size_config(),
+%%   <<"RollbackMaximumBatchSize">> => capacity_size_config()
+%% }
+-type rolling_deployment_policy() :: #{binary() => any()}.
+
+%% Example:
 %% time_series_forecasting_settings() :: #{
 %%   <<"AmazonForecastRoleArn">> => string(),
 %%   <<"Status">> => list(any())
@@ -7074,6 +7117,7 @@
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
 %%   <<"LaunchTime">> => non_neg_integer()
 %% }
 -type cluster_node_summary() :: #{binary() => any()}.
@@ -10408,6 +10452,7 @@
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
 %%   <<"ThreadsPerCore">> => integer(),
 %%   <<"TrainingPlanArn">> => string()
 %% }
@@ -11976,6 +12021,7 @@
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
 %%   <<"Status">> => list(any()),
 %%   <<"TargetCount">> => integer(),
 %%   <<"ThreadsPerCore">> => integer(),
@@ -12228,6 +12274,7 @@
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
 %%   <<"InstanceStorageConfigs">> => list(list()()),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
@@ -14544,12 +14591,13 @@ create_human_task_ui(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/experiments-view-compare.html#experiments-view.
 %%
 %% Do not include any security-sensitive information including account access
-%% IDs,
-%% secrets or tokens in any hyperparameter field. If the use of
-%% security-sensitive
-%% credentials are detected, SageMaker will reject your training job request
-%% and return an
-%% exception error.
+%% IDs, secrets,
+%% or tokens in any hyperparameter fields. As part of the shared
+%% responsibility model,
+%% you are responsible for any potential exposure, unauthorized access, or
+%% compromise of your sensitive data if caused by any security-sensitive
+%% information included
+%% in the request hyperparameter variable or plain text fields..
 -spec create_hyper_parameter_tuning_job(aws_client:aws_client(), create_hyper_parameter_tuning_job_request()) ->
     {ok, create_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
@@ -15420,10 +15468,14 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html.
 %%
 %% Do not include any security-sensitive information including account access
-%% IDs, secrets or tokens in any hyperparameter field. If the use of
-%% security-sensitive credentials are detected, SageMaker will reject your
-%% training
-%% job request and return an exception error.
+%% IDs, secrets,
+%% or tokens in any hyperparameter fields. As part of the shared
+%% responsibility
+%% model, you are responsible for any potential exposure, unauthorized
+%% access, or compromise of
+%% your sensitive data if caused by security-sensitive information included
+%% in the
+%% request hyperparameter variable or plain text fields.
 %%
 %% `InputDataConfig' - Describes the input required by the training
 %% job and the Amazon S3, EFS, or FSx location where it is stored.
@@ -15457,6 +15509,16 @@ create_studio_lifecycle_config(Client, Input, Options)
 %%
 %% `Environment' - The environment variables to set in the Docker
 %% container.
+%%
+%% Do not include any security-sensitive information including account access
+%% IDs, secrets,
+%% or tokens in any environment fields. As part of the shared responsibility
+%% model, you are
+%% responsible for any potential exposure, unauthorized access, or compromise
+%% of your sensitive
+%% data if caused by security-sensitive information included in the request
+%% environment variable
+%% or plain text fields.
 %%
 %% `RetryStrategy' - The number of times to retry the job when the job
 %% fails due to an `InternalServerError'.

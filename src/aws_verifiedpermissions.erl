@@ -4,81 +4,66 @@
 %% @doc Amazon Verified Permissions is a permissions management service from
 %% Amazon Web Services.
 %%
-%% You can use Verified Permissions to manage
-%% permissions for your application, and authorize user access based on those
-%% permissions.
-%% Using Verified Permissions, application developers can grant access based
-%% on information about the
-%% users, resources, and requested actions. You can also evaluate additional
-%% information
-%% like group membership, attributes of the resources, and session context,
-%% such as time of
-%% request and IP addresses. Verified Permissions manages these permissions
-%% by letting you create and
-%% store authorization policies for your applications, such as
-%% consumer-facing web sites
-%% and enterprise business systems.
+%% You can use Verified Permissions to manage permissions for your
+%% application, and authorize user access based on those permissions. Using
+%% Verified Permissions, application developers can grant access based on
+%% information about the users, resources, and requested actions. You can
+%% also evaluate additional information like group membership, attributes of
+%% the resources, and session context, such as time of request and IP
+%% addresses. Verified Permissions manages these permissions by letting you
+%% create and store authorization policies for your applications, such as
+%% consumer-facing web sites and enterprise business systems.
 %%
 %% Verified Permissions uses Cedar as the policy language to express your
-%% permission requirements.
-%% Cedar supports both role-based access control (RBAC) and attribute-based
-%% access
-%% control (ABAC) authorization models.
+%% permission requirements. Cedar supports both role-based access control
+%% (RBAC) and attribute-based access control (ABAC) authorization models.
 %%
 %% For more information about configuring, administering, and using Amazon
-%% Verified Permissions in your
-%% applications, see the Amazon Verified Permissions User Guide:
+%% Verified Permissions in your applications, see the Amazon Verified
+%% Permissions User Guide:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/.
 %%
 %% For more information about the Cedar policy language, see the Cedar Policy
 %% Language Guide: https://docs.cedarpolicy.com/.
 %%
 %% When you write Cedar policies that reference principals, resources and
-%% actions,
-%% you can define the unique identifiers used for each of those elements. We
-%% strongly
-%% recommend that you follow these best practices:
+%% actions, you can define the unique identifiers used for each of those
+%% elements. We strongly recommend that you follow these best practices:
 %%
-%% Use values like universally unique identifiers
-%% (UUIDs) for all principal and resource identifiers.
+%% Use values like universally unique identifiers (UUIDs) for all principal
+%% and resource identifiers.
 %%
-%% For example, if user `jane' leaves the company, and you later
-%% let someone else use the name `jane', then that new user
-%% automatically gets access to everything granted by policies that still
-%% reference `User::&quot;jane&quot;'. Cedar can’t distinguish between
-%% the
-%% new user and the old. This applies to both principal and resource
-%% identifiers. Always use identifiers that are guaranteed unique and never
-%% reused to ensure that you don’t unintentionally grant access because of
-%% the
-%% presence of an old identifier in a policy.
+%% For example, if user `jane' leaves the company, and you later let
+%% someone else use the name `jane', then that new user automatically
+%% gets access to everything granted by policies that still reference
+%% `User::&quot;jane&quot;'. Cedar can’t distinguish between the new user
+%% and the old. This applies to both principal and resource identifiers.
+%% Always use identifiers that are guaranteed unique and never reused to
+%% ensure that you don’t unintentionally grant access because of the presence
+%% of an old identifier in a policy.
 %%
 %% Where you use a UUID for an entity, we recommend that you follow it with
 %% the // comment specifier and the ‘friendly’ name of your entity. This
-%% helps
-%% to make your policies easier to understand. For example: principal ==
-%% User::&quot;a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111&quot;, // alice
+%% helps to make your policies easier to understand. For example: principal
+%% == User::&quot;a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111&quot;, // alice
 %%
-%% Do not include personally identifying, confidential,
-%% or sensitive information as part of the unique identifier for your
-%% principals or resources. These identifiers are included in
-%% log entries shared in CloudTrail trails.
+%% Do not include personally identifying, confidential, or sensitive
+%% information as part of the unique identifier for your principals or
+%% resources. These identifiers are included in log entries shared in
+%% CloudTrail trails.
 %%
 %% Several operations return structures that appear similar, but have
-%% different purposes.
-%% As new functionality is added to the product, the structure used in a
-%% parameter of one
-%% operation might need to change in a way that wouldn't make sense for
-%% the same parameter
-%% in a different operation. To help you understand the purpose of each, the
-%% following
+%% different purposes. As new functionality is added to the product, the
+%% structure used in a parameter of one operation might need to change in a
+%% way that wouldn't make sense for the same parameter in a different
+%% operation. To help you understand the purpose of each, the following
 %% naming convention is used for the structures:
 %%
-%% Parameter type structures that end in `Detail' are used in
-%% `Get' operations.
+%% Parameter type structures that end in `Detail' are used in `Get'
+%% operations.
 %%
-%% Parameter type structures that end in `Item' are used in
-%% `List' operations.
+%% Parameter type structures that end in `Item' are used in `List'
+%% operations.
 %%
 %% Parameter type structures that use neither suffix are used in the mutating
 %% (create and update) operations.
@@ -128,8 +113,14 @@
          list_policy_stores/3,
          list_policy_templates/2,
          list_policy_templates/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          put_schema/2,
          put_schema/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_identity_source/2,
          update_identity_source/3,
          update_policy/2,
@@ -267,6 +258,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"deletionProtection">> => list(any()),
 %%   <<"description">> => string(),
+%%   <<"tags">> => map(),
 %%   <<"validationSettings">> := validation_settings()
 %% }
 -type create_policy_store_input() :: #{binary() => any()}.
@@ -369,6 +361,12 @@
 %%   <<"message">> => [string()]
 %% }
 -type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_policy_store_output() :: #{
@@ -619,7 +617,8 @@
 
 %% Example:
 %% get_policy_store_input() :: #{
-%%   <<"policyStoreId">> := string()
+%%   <<"policyStoreId">> := string(),
+%%   <<"tags">> => [boolean()]
 %% }
 -type get_policy_store_input() :: #{binary() => any()}.
 
@@ -675,6 +674,13 @@
 -type delete_identity_source_input() :: #{binary() => any()}.
 
 %% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
 %% update_open_id_connect_identity_token_configuration() :: #{
 %%   <<"clientIds">> => list(string()()),
 %%   <<"principalIdClaim">> => string()
@@ -704,6 +710,12 @@
 %%   <<"policyStoreId">> := string()
 %% }
 -type list_policies_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% policy_filter() :: #{
@@ -792,13 +804,22 @@
 -type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_policy_store_output() :: #{
 %%   <<"arn">> => string(),
+%%   <<"cedarVersion">> => list(any()),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"deletionProtection">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"policyStoreId">> => string(),
+%%   <<"tags">> => map(),
 %%   <<"validationSettings">> => validation_settings()
 %% }
 -type get_policy_store_output() :: #{binary() => any()}.
@@ -855,6 +876,12 @@
 -type validation_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_policy_template_output() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -885,6 +912,12 @@
 %%   <<"resource">> => entity_identifier()
 %% }
 -type create_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_identity_source_input() :: #{
@@ -1035,6 +1068,13 @@
 -type batch_get_policy_output_item() :: #{binary() => any()}.
 
 %% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
 %% list_policy_stores_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"policyStores">> => list(policy_store_item()())
@@ -1152,10 +1192,29 @@
 -type list_policy_templates_errors() ::
     resource_not_found_exception().
 
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type put_schema_errors() ::
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_identity_source_errors() ::
     resource_not_found_exception() | 
@@ -1182,8 +1241,8 @@
 %%
 %% The `BatchGetPolicy' operation doesn't have its own IAM
 %% permission. To authorize this operation for Amazon Web Services
-%% principals, include the permission
-%% `verifiedpermissions:GetPolicy' in their IAM policies.
+%% principals, include the permission `verifiedpermissions:GetPolicy' in
+%% their IAM policies.
 -spec batch_get_policy(aws_client:aws_client(), batch_get_policy_input()) ->
     {ok, batch_get_policy_output(), tuple()} |
     {error, any()}.
@@ -1199,37 +1258,30 @@ batch_get_policy(Client, Input, Options)
     request(Client, <<"BatchGetPolicy">>, Input, Options).
 
 %% @doc Makes a series of decisions about multiple authorization requests for
-%% one principal or
-%% resource.
+%% one principal or resource.
 %%
 %% Each request contains the equivalent content of an `IsAuthorized'
 %% request: principal, action, resource, and context. Either the
-%% `principal' or
-%% the `resource' parameter must be identical across all requests. For
-%% example,
-%% Verified Permissions won't evaluate a pair of requests where `bob'
-%% views
-%% `photo1' and `alice' views `photo2'. Authorization
-%% of `bob' to view `photo1' and `photo2', or
-%% `bob' and `alice' to view `photo1', are valid
+%% `principal' or the `resource' parameter must be identical across
+%% all requests. For example, Verified Permissions won't evaluate a pair
+%% of requests where `bob' views `photo1' and `alice' views
+%% `photo2'. Authorization of `bob' to view `photo1' and
+%% `photo2', or `bob' and `alice' to view `photo1', are valid
 %% batches.
 %%
 %% The request is evaluated against all policies in the specified policy
-%% store that match the
-%% entities that you declare. The result of the decisions is a series of
-%% `Allow'
-%% or `Deny' responses, along with the IDs of the policies that produced
-%% each
-%% decision.
+%% store that match the entities that you declare. The result of the
+%% decisions is a series of `Allow' or `Deny' responses, along with
+%% the IDs of the policies that produced each decision.
 %%
-%% The `entities' of a `BatchIsAuthorized' API request can contain
-%% up to 100 principals and up to 100 resources. The `requests' of a
+%% The `entities' of a `BatchIsAuthorized' API request can contain up
+%% to 100 principals and up to 100 resources. The `requests' of a
 %% `BatchIsAuthorized' API request can contain up to 30 requests.
 %%
 %% The `BatchIsAuthorized' operation doesn't have its own IAM
 %% permission. To authorize this operation for Amazon Web Services
-%% principals, include the permission
-%% `verifiedpermissions:IsAuthorized' in their IAM policies.
+%% principals, include the permission `verifiedpermissions:IsAuthorized'
+%% in their IAM policies.
 -spec batch_is_authorized(aws_client:aws_client(), batch_is_authorized_input()) ->
     {ok, batch_is_authorized_output(), tuple()} |
     {error, any()} |
@@ -1249,33 +1301,27 @@ batch_is_authorized(Client, Input, Options)
 %% @doc Makes a series of decisions about multiple authorization requests for
 %% one token.
 %%
-%% The
-%% principal in this request comes from an external identity source in the
-%% form of an identity or
-%% access token, formatted as a JSON
-%% web token (JWT): https://wikipedia.org/wiki/JSON_Web_Token. The
-%% information in the parameters can also define
-%% additional context that Verified Permissions can include in the
-%% evaluations.
+%% The principal in this request comes from an external identity source in
+%% the form of an identity or access token, formatted as a JSON web token
+%% (JWT): https://wikipedia.org/wiki/JSON_Web_Token. The information in the
+%% parameters can also define additional context that Verified Permissions
+%% can include in the evaluations.
 %%
 %% The request is evaluated against all policies in the specified policy
-%% store that match the
-%% entities that you provide in the entities declaration and in the token.
-%% The result of
-%% the decisions is a series of `Allow' or `Deny' responses, along
-%% with the IDs of the policies that produced each decision.
+%% store that match the entities that you provide in the entities declaration
+%% and in the token. The result of the decisions is a series of `Allow'
+%% or `Deny' responses, along with the IDs of the policies that produced
+%% each decision.
 %%
 %% The `entities' of a `BatchIsAuthorizedWithToken' API request can
 %% contain up to 100 resources and up to 99 user groups. The `requests'
-%% of a
-%% `BatchIsAuthorizedWithToken' API request can contain up to 30
+%% of a `BatchIsAuthorizedWithToken' API request can contain up to 30
 %% requests.
 %%
 %% The `BatchIsAuthorizedWithToken' operation doesn't have its own
 %% IAM permission. To authorize this operation for Amazon Web Services
-%% principals, include the
-%% permission `verifiedpermissions:IsAuthorizedWithToken' in their IAM
-%% policies.
+%% principals, include the permission
+%% `verifiedpermissions:IsAuthorizedWithToken' in their IAM policies.
 -spec batch_is_authorized_with_token(aws_client:aws_client(), batch_is_authorized_with_token_input()) ->
     {ok, batch_is_authorized_with_token_output(), tuple()} |
     {error, any()} |
@@ -1293,54 +1339,40 @@ batch_is_authorized_with_token(Client, Input, Options)
     request(Client, <<"BatchIsAuthorizedWithToken">>, Input, Options).
 
 %% @doc Adds an identity source to a policy store–an Amazon Cognito user pool
-%% or OpenID Connect
-%% (OIDC) identity provider (IdP).
+%% or OpenID Connect (OIDC) identity provider (IdP).
 %%
 %% After you create an identity source, you can use the identities provided
-%% by the IdP as proxies
-%% for the principal in authorization queries that use the
-%% IsAuthorizedWithToken:
+%% by the IdP as proxies for the principal in authorization queries that use
+%% the IsAuthorizedWithToken:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html
-%% or
-%% BatchIsAuthorizedWithToken:
+%% or BatchIsAuthorizedWithToken:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_BatchIsAuthorizedWithToken.html
-%% API operations. These identities take the form
-%% of tokens that contain claims about the user, such as IDs, attributes and
-%% group
-%% memberships. Identity sources provide identity (ID) tokens and access
-%% tokens. Verified Permissions
-%% derives information about your user and session from token claims. Access
-%% tokens provide
-%% action `context' to your policies, and ID tokens provide principal
-%% `Attributes'.
+%% API operations. These identities take the form of tokens that contain
+%% claims about the user, such as IDs, attributes and group memberships.
+%% Identity sources provide identity (ID) tokens and access tokens. Verified
+%% Permissions derives information about your user and session from token
+%% claims. Access tokens provide action `context' to your policies, and
+%% ID tokens provide principal `Attributes'.
 %%
 %% Tokens from an identity source user continue to be usable until they
-%% expire.
-%% Token revocation and resource deletion have no effect on the validity of a
-%% token in your policy store
+%% expire. Token revocation and resource deletion have no effect on the
+%% validity of a token in your policy store
 %%
 %% To reference a user from this identity source in your Cedar policies,
-%% refer to the
-%% following syntax examples.
+%% refer to the following syntax examples.
 %%
-%% Amazon Cognito user pool:
-%% ```
-%% Namespace::[Entity type]::[User pool ID]|[user principal
-%% attribute]''', for example
+%% Amazon Cognito user pool: `Namespace::[Entity type]::[User pool ID]|[user
+%% principal attribute]', for example
 %% `MyCorp::User::us-east-1_EXAMPLE|a1b2c3d4-5678-90ab-cdef-EXAMPLE11111'.
 %%
-%% OpenID Connect (OIDC) provider:
-%% ```
-%% Namespace::[Entity type]::[entityIdPrefix]|[user principal
-%% attribute]''', for example
+%% OpenID Connect (OIDC) provider: `Namespace::[Entity
+%% type]::[entityIdPrefix]|[user principal attribute]', for example
 %% `MyCorp::User::MyOIDCProvider|a1b2c3d4-5678-90ab-cdef-EXAMPLE22222'.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec create_identity_source(aws_client:aws_client(), create_identity_source_input()) ->
     {ok, create_identity_source_output(), tuple()} |
     {error, any()} |
@@ -1359,33 +1391,27 @@ create_identity_source(Client, Input, Options)
 
 %% @doc Creates a Cedar policy and saves it in the specified policy store.
 %%
-%% You can create either a
-%% static policy or a policy linked to a policy template.
+%% You can create either a static policy or a policy linked to a policy
+%% template.
 %%
 %% To create a static policy, provide the Cedar policy text in the
-%% `StaticPolicy' section of the
-%% `PolicyDefinition'.
+%% `StaticPolicy' section of the `PolicyDefinition'.
 %%
 %% To create a policy that is dynamically linked to a policy template,
-%% specify the policy template ID
-%% and the principal and resource to associate with this policy in the
-%% `templateLinked' section of the `PolicyDefinition'. If the
-%% policy template is ever updated, any policies linked to the policy
-%% template automatically use the
-%% updated template.
+%% specify the policy template ID and the principal and resource to associate
+%% with this policy in the `templateLinked' section of the
+%% `PolicyDefinition'. If the policy template is ever updated, any
+%% policies linked to the policy template automatically use the updated
+%% template.
 %%
 %% Creating a policy causes it to be validated against the schema in the
-%% policy store. If the
-%% policy doesn't pass validation, the operation fails and the policy
-%% isn't
-%% stored.
+%% policy store. If the policy doesn't pass validation, the operation
+%% fails and the policy isn't stored.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec create_policy(aws_client:aws_client(), create_policy_input()) ->
     {ok, create_policy_output(), tuple()} |
     {error, any()} |
@@ -1408,15 +1434,12 @@ create_policy(Client, Input, Options)
 %%
 %% Although Cedar supports multiple namespaces:
 %% https://docs.cedarpolicy.com/schema/schema.html#namespace, Verified
-%% Permissions currently supports only one
-%% namespace per policy store.
+%% Permissions currently supports only one namespace per policy store.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec create_policy_store(aws_client:aws_client(), create_policy_store_input()) ->
     {ok, create_policy_store_output(), tuple()} |
     {error, any()} |
@@ -1435,25 +1458,18 @@ create_policy_store(Client, Input, Options)
 
 %% @doc Creates a policy template.
 %%
-%% A template can use placeholders for the principal and resource. A
-%% template must be instantiated into a policy by associating it with
-%% specific principals
-%% and resources to use for the placeholders. That instantiated policy can
-%% then be
-%% considered in authorization decisions. The instantiated policy works
-%% identically to any
-%% other policy, except that it is dynamically linked to the template. If the
-%% template
-%% changes, then any policies that are linked to that template are
-%% immediately updated as
-%% well.
+%% A template can use placeholders for the principal and resource. A template
+%% must be instantiated into a policy by associating it with specific
+%% principals and resources to use for the placeholders. That instantiated
+%% policy can then be considered in authorization decisions. The instantiated
+%% policy works identically to any other policy, except that it is
+%% dynamically linked to the template. If the template changes, then any
+%% policies that are linked to that template are immediately updated as well.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec create_policy_template(aws_client:aws_client(), create_policy_template_input()) ->
     {ok, create_policy_template_output(), tuple()} |
     {error, any()} |
@@ -1473,11 +1489,9 @@ create_policy_template(Client, Input, Options)
 %% @doc Deletes an identity source that references an identity provider (IdP)
 %% such as Amazon Cognito.
 %%
-%% After
-%% you delete the identity source, you can no longer use tokens for
-%% identities from that identity source to
-%% represent principals in authorization queries made using
-%% IsAuthorizedWithToken:
+%% After you delete the identity source, you can no longer use tokens for
+%% identities from that identity source to represent principals in
+%% authorization queries made using IsAuthorizedWithToken:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html.
 %% operations.
 -spec delete_identity_source(aws_client:aws_client(), delete_identity_source_input()) ->
@@ -1520,8 +1534,8 @@ delete_policy(Client, Input, Options)
 %% @doc Deletes the specified policy store.
 %%
 %% This operation is idempotent. If you specify a policy store that does not
-%% exist, the request
-%% response will still return a successful HTTP 200 status code.
+%% exist, the request response will still return a successful HTTP 200 status
+%% code.
 -spec delete_policy_store(aws_client:aws_client(), delete_policy_store_input()) ->
     {ok, delete_policy_store_output(), tuple()} |
     {error, any()} |
@@ -1541,10 +1555,9 @@ delete_policy_store(Client, Input, Options)
 %% @doc Deletes the specified policy template from the policy store.
 %%
 %% This operation also deletes any policies that were created from the
-%% specified
-%% policy template. Those policies are immediately removed from all future
-%% API responses, and are
-%% asynchronously deleted from the policy store.
+%% specified policy template. Those policies are immediately removed from all
+%% future API responses, and are asynchronously deleted from the policy
+%% store.
 -spec delete_policy_template(aws_client:aws_client(), delete_policy_template_input()) ->
     {ok, delete_policy_template_output(), tuple()} |
     {error, any()} |
@@ -1652,13 +1665,10 @@ get_schema(Client, Input, Options)
 %% the parameters.
 %%
 %% The information in the parameters can also define additional context that
-%% Verified Permissions can
-%% include in the evaluation. The request is evaluated against all matching
-%% policies in the
-%% specified policy store. The result of the decision is either `Allow'
-%% or
-%% `Deny', along with a list of the policies that resulted in the
-%% decision.
+%% Verified Permissions can include in the evaluation. The request is
+%% evaluated against all matching policies in the specified policy store. The
+%% result of the decision is either `Allow' or `Deny', along with a
+%% list of the policies that resulted in the decision.
 -spec is_authorized(aws_client:aws_client(), is_authorized_input()) ->
     {ok, is_authorized_output(), tuple()} |
     {error, any()} |
@@ -1679,25 +1689,20 @@ is_authorized(Client, Input, Options)
 %% the parameters.
 %%
 %% The principal in this request comes from an external identity source in
-%% the form of an identity
-%% token formatted as a JSON web
-%% token (JWT): https://wikipedia.org/wiki/JSON_Web_Token. The information in
-%% the parameters can also define additional
-%% context that Verified Permissions can include in the evaluation. The
-%% request is evaluated against all
+%% the form of an identity token formatted as a JSON web token (JWT):
+%% https://wikipedia.org/wiki/JSON_Web_Token. The information in the
+%% parameters can also define additional context that Verified Permissions
+%% can include in the evaluation. The request is evaluated against all
 %% matching policies in the specified policy store. The result of the
-%% decision is either
-%% `Allow' or `Deny', along with a list of the policies that
-%% resulted in the decision.
+%% decision is either `Allow' or `Deny', along with a list of the
+%% policies that resulted in the decision.
 %%
 %% Verified Permissions validates each token that is specified in a request
-%% by checking its expiration
-%% date and its signature.
+%% by checking its expiration date and its signature.
 %%
 %% Tokens from an identity source user continue to be usable until they
-%% expire.
-%% Token revocation and resource deletion have no effect on the validity of a
-%% token in your policy store
+%% expire. Token revocation and resource deletion have no effect on the
+%% validity of a token in your policy store
 -spec is_authorized_with_token(aws_client:aws_client(), is_authorized_with_token_input()) ->
     {ok, is_authorized_with_token_output(), tuple()} |
     {error, any()} |
@@ -1784,23 +1789,39 @@ list_policy_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicyTemplates">>, Input, Options).
 
+%% @doc Returns the tags associated with the specified Amazon Verified
+%% Permissions resource.
+%%
+%% In Verified Permissions, policy stores can be tagged.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Creates or updates the policy schema in the specified policy store.
 %%
-%% The schema is used to
-%% validate any Cedar policies and policy templates submitted to the policy
-%% store. Any changes to the schema
-%% validate only policies and templates submitted after the schema change.
-%% Existing
+%% The schema is used to validate any Cedar policies and policy templates
+%% submitted to the policy store. Any changes to the schema validate only
+%% policies and templates submitted after the schema change. Existing
 %% policies and templates are not re-evaluated against the changed schema. If
-%% you later
-%% update a policy, then it is evaluated against the new schema at that time.
+%% you later update a policy, then it is evaluated against the new schema at
+%% that time.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec put_schema(aws_client:aws_client(), put_schema_input()) ->
     {ok, put_schema_output(), tuple()} |
     {error, any()} |
@@ -1817,17 +1838,68 @@ put_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSchema">>, Input, Options).
 
-%% @doc Updates the specified identity source to use a new identity provider
-%% (IdP), or to change
-%% the mapping of identities from the IdP to a different principal entity
-%% type.
+%% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
+%% Verified Permissions resource.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Tags can help you organize and categorize your resources. You can also use
+%% them to scope user permissions by granting a user permission to access or
+%% change only resources with certain tag values. In Verified Permissions,
+%% policy stores can be tagged.
+%%
+%% Tags don't have any semantic meaning to Amazon Web Services and are
+%% interpreted strictly as strings of characters.
+%%
+%% You can use the TagResource action with a resource that already has tags.
+%% If you specify a new tag key, this tag is appended to the list of tags
+%% associated with the resource. If you specify a tag key that is already
+%% associated with the resource, the new tag value that you specify replaces
+%% the previous value for that tag.
+%%
+%% You can associate as many as 50 tags with a resource.
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes one or more tags from the specified Amazon Verified
+%% Permissions resource.
+%%
+%% In Verified Permissions, policy stores can be tagged.
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the specified identity source to use a new identity provider
+%% (IdP), or to change the mapping of identities from the IdP to a different
+%% principal entity type.
+%%
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec update_identity_source(aws_client:aws_client(), update_identity_source_input()) ->
     {ok, update_identity_source_output(), tuple()} |
     {error, any()} |
@@ -1846,25 +1918,20 @@ update_identity_source(Client, Input, Options)
 
 %% @doc Modifies a Cedar static policy in the specified policy store.
 %%
-%% You can change only certain elements of
-%% the UpdatePolicyDefinition:
+%% You can change only certain elements of the UpdatePolicyDefinition:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_UpdatePolicyInput.html#amazonverifiedpermissions-UpdatePolicy-request-UpdatePolicyDefinition
-%% parameter. You can directly update only static policies. To
-%% change a template-linked policy, you must update the template instead,
-%% using UpdatePolicyTemplate:
+%% parameter. You can directly update only static policies. To change a
+%% template-linked policy, you must update the template instead, using
+%% UpdatePolicyTemplate:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_UpdatePolicyTemplate.html.
 %%
 %% If policy validation is enabled in the policy store, then updating a
-%% static policy causes
-%% Verified Permissions to validate the policy against the schema in the
-%% policy store. If the updated
-%% static policy doesn't pass validation, the operation fails and the
-%% update isn't
-%% stored.
+%% static policy causes Verified Permissions to validate the policy against
+%% the schema in the policy store. If the updated static policy doesn't
+%% pass validation, the operation fails and the update isn't stored.
 %%
 %% When you edit a static policy, you can change only certain elements of a
-%% static
-%% policy:
+%% static policy:
 %%
 %% The action referenced by the policy.
 %%
@@ -1872,8 +1939,7 @@ update_identity_source(Client, Input, Options)
 %%
 %% You can't change these elements of a static policy:
 %%
-%% Changing a policy from a static policy to a template-linked
-%% policy.
+%% Changing a policy from a static policy to a template-linked policy.
 %%
 %% Changing the effect of a static policy from permit or forbid.
 %%
@@ -1883,12 +1949,10 @@ update_identity_source(Client, Input, Options)
 %%
 %% To update a template-linked policy, you must update the template instead.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec update_policy(aws_client:aws_client(), update_policy_input()) ->
     {ok, update_policy_output(), tuple()} |
     {error, any()} |
@@ -1907,12 +1971,10 @@ update_policy(Client, Input, Options)
 
 %% @doc Modifies the validation setting for a policy store.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec update_policy_store(aws_client:aws_client(), update_policy_store_input()) ->
     {ok, update_policy_store_output(), tuple()} |
     {error, any()} |
@@ -1931,22 +1993,19 @@ update_policy_store(Client, Input, Options)
 
 %% @doc Updates the specified policy template.
 %%
-%% You can update only the description and the some elements
-%% of the policyBody:
+%% You can update only the description and the some elements of the
+%% policyBody:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_UpdatePolicyTemplate.html#amazonverifiedpermissions-UpdatePolicyTemplate-request-policyBody.
 %%
 %% Changes you make to the policy template content are immediately (within
-%% the constraints of
-%% eventual consistency) reflected in authorization decisions that involve
-%% all template-linked policies
-%% instantiated from this template.
+%% the constraints of eventual consistency) reflected in authorization
+%% decisions that involve all template-linked policies instantiated from this
+%% template.
 %%
-%% Verified Permissions is
-%% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
-%% . It can take a few seconds for a new or changed element to propagate
-%% through
-%% the service and be visible in the results of other Verified Permissions
-%% operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 -spec update_policy_template(aws_client:aws_client(), update_policy_template_input()) ->
     {ok, update_policy_template_output(), tuple()} |
     {error, any()} |
