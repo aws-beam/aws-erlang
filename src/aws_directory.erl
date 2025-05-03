@@ -2439,8 +2439,7 @@ cancel_schema_extension(Client, Input, Options)
 %% have been explicitly granted through a policy. For details about what
 %% permissions are required
 %% to run the `ConnectDirectory' operation, see Directory Service API
-%% Permissions: Actions, Resources, and Conditions
-%% Reference:
+%% Permissions: Actions, Resources, and Conditions Reference:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 -spec connect_directory(aws_client:aws_client(), connect_directory_request()) ->
     {ok, connect_directory_result(), tuple()} |
@@ -2528,16 +2527,14 @@ create_conditional_forwarder(Client, Input, Options)
 %%
 %% For more information, see Simple Active Directory:
 %% https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html
-%% in the Directory Service Admin
-%% Guide.
+%% in the Directory Service Admin Guide.
 %%
 %% Before you call `CreateDirectory', ensure that all of the required
 %% permissions
 %% have been explicitly granted through a policy. For details about what
 %% permissions are required
 %% to run the `CreateDirectory' operation, see Directory Service API
-%% Permissions: Actions, Resources, and Conditions
-%% Reference:
+%% Permissions: Actions, Resources, and Conditions Reference:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 -spec create_directory(aws_client:aws_client(), create_directory_request()) ->
     {ok, create_directory_result(), tuple()} |
@@ -2680,8 +2677,7 @@ delete_conditional_forwarder(Client, Input, Options)
 %% have been explicitly granted through a policy. For details about what
 %% permissions are required
 %% to run the `DeleteDirectory' operation, see Directory Service API
-%% Permissions: Actions, Resources, and Conditions
-%% Reference:
+%% Permissions: Actions, Resources, and Conditions Reference:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 -spec delete_directory(aws_client:aws_client(), delete_directory_request()) ->
     {ok, delete_directory_result(), tuple()} |
@@ -2753,7 +2749,8 @@ delete_trust(Client, Input, Options)
     request(Client, <<"DeleteTrust">>, Input, Options).
 
 %% @doc Deletes from the system the certificate that was registered for
-%% secure LDAP or client certificate authentication.
+%% secure LDAP or client
+%% certificate authentication.
 -spec deregister_certificate(aws_client:aws_client(), deregister_certificate_request()) ->
     {ok, deregister_certificate_result(), tuple()} |
     {error, any()} |
@@ -2789,7 +2786,8 @@ deregister_event_topic(Client, Input, Options)
     request(Client, <<"DeregisterEventTopic">>, Input, Options).
 
 %% @doc Displays information about the certificate registered for secure LDAP
-%% or client certificate authentication.
+%% or client
+%% certificate authentication.
 -spec describe_certificate(aws_client:aws_client(), describe_certificate_request()) ->
     {ok, describe_certificate_result(), tuple()} |
     {error, any()} |
@@ -2807,11 +2805,13 @@ describe_certificate(Client, Input, Options)
     request(Client, <<"DescribeCertificate">>, Input, Options).
 
 %% @doc Retrieves information about the type of client authentication for the
-%% specified directory, if the type is specified.
+%% specified directory,
+%% if the type is specified.
 %%
-%% If no type is specified, information about all client authentication types
-%% that are supported for the specified directory is retrieved. Currently,
-%% only `SmartCard' is supported.
+%% If no type is specified, information about all client authentication
+%% types that are supported for the specified directory is retrieved.
+%% Currently, only
+%% `SmartCard' is supported.
 -spec describe_client_authentication_settings(aws_client:aws_client(), describe_client_authentication_settings_request()) ->
     {ok, describe_client_authentication_settings_result(), tuple()} |
     {error, any()} |
@@ -2887,7 +2887,8 @@ describe_directories(Client, Input, Options)
     request(Client, <<"DescribeDirectories">>, Input, Options).
 
 %% @doc Obtains status of directory data access enablement through the
-%% Directory Service Data API for the specified directory.
+%% Directory Service Data API for the
+%% specified directory.
 -spec describe_directory_data_access(aws_client:aws_client(), describe_directory_data_access_request()) ->
     {ok, describe_directory_data_access_result(), tuple()} |
     {error, any()} |
@@ -3065,8 +3066,7 @@ describe_trusts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrusts">>, Input, Options).
 
-%% @doc
-%% Describes the updates of a directory for a particular update type.
+%% @doc Describes the updates of a directory for a particular update type.
 -spec describe_update_directory(aws_client:aws_client(), describe_update_directory_request()) ->
     {ok, describe_update_directory_result(), tuple()} |
     {error, any()} |
@@ -3102,7 +3102,12 @@ disable_client_authentication(Client, Input, Options)
     request(Client, <<"DisableClientAuthentication">>, Input, Options).
 
 %% @doc Deactivates access to directory data via the Directory Service Data
-%% API for the specified directory.
+%% API for the specified
+%% directory.
+%%
+%% For
+%% more information, see Directory Service Data API Reference:
+%% https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html.
 -spec disable_directory_data_access(aws_client:aws_client(), disable_directory_data_access_request()) ->
     {ok, disable_directory_data_access_result(), tuple()} |
     {error, any()} |
@@ -3193,6 +3198,10 @@ enable_client_authentication(Client, Input, Options)
 
 %% @doc Enables access to directory data via the Directory Service Data API
 %% for the specified directory.
+%%
+%% For
+%% more information, see Directory Service Data API Reference:
+%% https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html.
 -spec enable_directory_data_access(aws_client:aws_client(), enable_directory_data_access_request()) ->
     {ok, enable_directory_data_access_result(), tuple()} |
     {error, any()} |
@@ -3303,7 +3312,8 @@ get_snapshot_limits(Client, Input, Options)
     request(Client, <<"GetSnapshotLimits">>, Input, Options).
 
 %% @doc For the specified directory, lists all the certificates registered
-%% for a secure LDAP or client certificate authentication.
+%% for a secure LDAP or
+%% client certificate authentication.
 -spec list_certificates(aws_client:aws_client(), list_certificates_request()) ->
     {ok, list_certificates_result(), tuple()} |
     {error, any()} |
@@ -3508,11 +3518,10 @@ remove_tags_from_resource(Client, Input, Options)
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
 %% @doc Resets the password for any user in your Managed Microsoft AD or
-%% Simple AD
-%% directory.
+%% Simple AD directory.
 %%
-%% Disabled users will become enabled and can be authenticated following the
-%% API call.
+%% Disabled
+%% users will become enabled and can be authenticated following the API call.
 %%
 %% You can reset the password for any user in your directory with the
 %% following
@@ -3524,13 +3533,13 @@ remove_tags_from_resource(Client, Input, Options)
 %% Admins group except for the administrator user.
 %%
 %% For Managed Microsoft AD, you can only reset the password for a user that
-%% is in an
-%% OU based off of the NetBIOS name that you typed when you created your
-%% directory. For
-%% example, you cannot reset the password for a user in the Amazon Web
-%% Services
+%% is in an OU based
+%% off of the NetBIOS name that you typed when you created your directory.
+%% For example, you
+%% cannot reset the password for a user in the Amazon Web Services
 %% Reserved OU. For more information about the OU structure for an Managed
-%% Microsoft AD directory, see What Gets Created:
+%% Microsoft AD
+%% directory, see What Gets Created:
 %% https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html
 %% in the Directory Service Administration
 %% Guide.
@@ -3587,20 +3596,20 @@ restore_from_snapshot(Client, Input, Options)
 %% within an Amazon Web Services Region.
 %%
 %% When you share your Managed Microsoft AD directory, Directory Service
-%% creates a
-%% shared directory in the directory consumer account. This shared directory
-%% contains the
-%% metadata to provide access to the directory within the directory owner
-%% account. The shared
-%% directory is visible in all VPCs in the directory consumer account.
+%% creates a shared directory in the
+%% directory consumer account. This shared directory contains the metadata to
+%% provide access to
+%% the directory within the directory owner account. The shared directory is
+%% visible in all VPCs
+%% in the directory consumer account.
 %%
 %% The `ShareMethod' parameter determines whether the specified directory
 %% can be
 %% shared between Amazon Web Services accounts inside the same Amazon Web
-%% Services organization (`ORGANIZATIONS'). It
-%% also determines whether you can share the directory with any other Amazon
-%% Web Services account either inside
-%% or outside of the organization (`HANDSHAKE').
+%% Services organization (`ORGANIZATIONS').
+%% It also determines whether you can share the directory with any other
+%% Amazon Web Services account either
+%% inside or outside of the organization (`HANDSHAKE').
 %%
 %% The `ShareNotes' parameter is only used when `HANDSHAKE' is
 %% called,
@@ -3675,8 +3684,7 @@ update_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConditionalForwarder">>, Input, Options).
 
-%% @doc
-%% Updates the directory for a particular update type.
+%% @doc Updates the directory for a particular update type.
 -spec update_directory_setup(aws_client:aws_client(), update_directory_setup_request()) ->
     {ok, update_directory_setup_result(), tuple()} |
     {error, any()} |

@@ -436,7 +436,7 @@
 
 %% Example:
 %% tag_resource_input() :: #{
-%%   <<"ResourceARN">> => string(),
+%%   <<"ResourceARN">> := string(),
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
@@ -537,7 +537,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"ResourceARN">> => string(),
+%%   <<"ResourceARN">> := string(),
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
@@ -594,7 +594,7 @@
 
 %% Example:
 %% list_tags_for_resource_input() :: #{
-%%   <<"ResourceARN">> => string()
+%%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_input() :: #{binary() => any()}.
 
