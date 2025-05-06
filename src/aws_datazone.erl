@@ -3255,6 +3255,13 @@
 
 
 %% Example:
+%% use_asset_type_policy_grant_detail() :: #{
+%%   <<"domainUnitId">> => string()
+%% }
+-type use_asset_type_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% not_equal_to_expression() :: #{
 %%   <<"columnName">> => [string()],
 %%   <<"value">> => [string()]

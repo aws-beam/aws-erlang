@@ -978,6 +978,7 @@
 %%   <<"appArn">> => string(),
 %%   <<"configuration">> => schedule_run_configuration(),
 %%   <<"devicePoolArn">> := string(),
+%%   <<"projectArn">> => string(),
 %%   <<"test">> => schedule_run_test(),
 %%   <<"testType">> => list(any())
 %% }

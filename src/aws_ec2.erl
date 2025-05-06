@@ -197,6 +197,10 @@
          create_local_gateway_route_table_virtual_interface_group_association/3,
          create_local_gateway_route_table_vpc_association/2,
          create_local_gateway_route_table_vpc_association/3,
+         create_local_gateway_virtual_interface/2,
+         create_local_gateway_virtual_interface/3,
+         create_local_gateway_virtual_interface_group/2,
+         create_local_gateway_virtual_interface_group/3,
          create_managed_prefix_list/2,
          create_managed_prefix_list/3,
          create_nat_gateway/2,
@@ -359,6 +363,10 @@
          delete_local_gateway_route_table_virtual_interface_group_association/3,
          delete_local_gateway_route_table_vpc_association/2,
          delete_local_gateway_route_table_vpc_association/3,
+         delete_local_gateway_virtual_interface/2,
+         delete_local_gateway_virtual_interface/3,
+         delete_local_gateway_virtual_interface_group/2,
+         delete_local_gateway_virtual_interface_group/3,
          delete_managed_prefix_list/2,
          delete_managed_prefix_list/3,
          delete_nat_gateway/2,
@@ -663,6 +671,8 @@
          describe_network_interface_permissions/3,
          describe_network_interfaces/2,
          describe_network_interfaces/3,
+         describe_outpost_lags/2,
+         describe_outpost_lags/3,
          describe_placement_groups/2,
          describe_placement_groups/3,
          describe_prefix_lists/2,
@@ -703,6 +713,8 @@
          describe_security_group_vpc_associations/3,
          describe_security_groups/2,
          describe_security_groups/3,
+         describe_service_link_virtual_interfaces/2,
+         describe_service_link_virtual_interfaces/3,
          describe_snapshot_attribute/2,
          describe_snapshot_attribute/3,
          describe_snapshot_tier_status/2,
@@ -1868,6 +1880,12 @@
 -type describe_client_vpn_connections_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_local_gateway_virtual_interface_result() :: #{
+%%   <<"LocalGatewayVirtualInterface">> => local_gateway_virtual_interface()
+%% }
+-type create_local_gateway_virtual_interface_result() :: #{binary() => any()}.
+
+%% Example:
 %% subnet_association() :: #{
 %%   <<"State">> => list(any()),
 %%   <<"SubnetId">> => string()
@@ -1946,6 +1964,16 @@
 %%   <<"CoipPool">> => coip_pool()
 %% }
 -type create_coip_pool_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_local_gateway_virtual_interface_group_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"LocalBgpAsn">> => integer(),
+%%   <<"LocalBgpAsnExtended">> => float(),
+%%   <<"LocalGatewayId">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()())
+%% }
+-type create_local_gateway_virtual_interface_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% stop_instances_request() :: #{
@@ -2087,6 +2115,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_address_transfers_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_link_virtual_interfaces_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceLinkVirtualInterfaceIds">> => list(string()())
+%% }
+-type describe_service_link_virtual_interfaces_request() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_spot_fleet_requests_error_item() :: #{
@@ -7767,6 +7805,18 @@
 -type describe_addresses_request() :: #{binary() => any()}.
 
 %% Example:
+%% outpost_lag() :: #{
+%%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()()),
+%%   <<"OutpostArn">> => string(),
+%%   <<"OutpostLagId">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ServiceLinkVirtualInterfaceIds">> => list(string()()),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type outpost_lag() :: #{binary() => any()}.
+
+%% Example:
 %% vpn_connection() :: #{
 %%   <<"Category">> => string(),
 %%   <<"CoreNetworkArn">> => string(),
@@ -8236,6 +8286,13 @@
 %%   <<"TransitGatewayPolicyTableIds">> => list(string()())
 %% }
 -type describe_transit_gateway_policy_tables_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_local_gateway_virtual_interface_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"LocalGatewayVirtualInterfaceId">> := string()
+%% }
+-type delete_local_gateway_virtual_interface_request() :: #{binary() => any()}.
 
 %% Example:
 %% classic_load_balancer() :: #{
@@ -8843,6 +8900,12 @@
 %%   <<"UseLongIds">> => boolean()
 %% }
 -type id_format() :: #{binary() => any()}.
+
+%% Example:
+%% delete_local_gateway_virtual_interface_group_result() :: #{
+%%   <<"LocalGatewayVirtualInterfaceGroup">> => local_gateway_virtual_interface_group()
+%% }
+-type delete_local_gateway_virtual_interface_group_result() :: #{binary() => any()}.
 
 %% Example:
 %% enable_allowed_images_settings_result() :: #{
@@ -11383,13 +11446,18 @@
 
 %% Example:
 %% local_gateway_virtual_interface() :: #{
+%%   <<"ConfigurationState">> => list(any()),
 %%   <<"LocalAddress">> => string(),
 %%   <<"LocalBgpAsn">> => integer(),
 %%   <<"LocalGatewayId">> => string(),
+%%   <<"LocalGatewayVirtualInterfaceArn">> => string(),
+%%   <<"LocalGatewayVirtualInterfaceGroupId">> => string(),
 %%   <<"LocalGatewayVirtualInterfaceId">> => string(),
+%%   <<"OutpostLagId">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PeerAddress">> => string(),
 %%   <<"PeerBgpAsn">> => integer(),
+%%   <<"PeerBgpAsnExtended">> => float(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Vlan">> => integer()
 %% }
@@ -12006,6 +12074,13 @@
 %%   <<"ToPort">> => integer()
 %% }
 -type authorize_security_group_egress_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_outpost_lags_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostLags">> => list(outpost_lag()())
+%% }
+-type describe_outpost_lags_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_endpoint_connections_result() :: #{
@@ -13561,6 +13636,12 @@
 -type modify_local_gateway_route_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_local_gateway_virtual_interface_result() :: #{
+%%   <<"LocalGatewayVirtualInterface">> => local_gateway_virtual_interface()
+%% }
+-type delete_local_gateway_virtual_interface_result() :: #{binary() => any()}.
+
+%% Example:
 %% get_vpn_connection_device_sample_configuration_result() :: #{
 %%   <<"VpnConnectionDeviceSampleConfiguration">> => string()
 %% }
@@ -14327,7 +14408,11 @@
 
 %% Example:
 %% local_gateway_virtual_interface_group() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"LocalBgpAsn">> => integer(),
+%%   <<"LocalBgpAsnExtended">> => float(),
 %%   <<"LocalGatewayId">> => string(),
+%%   <<"LocalGatewayVirtualInterfaceGroupArn">> => string(),
 %%   <<"LocalGatewayVirtualInterfaceGroupId">> => string(),
 %%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()()),
 %%   <<"OwnerId">> => string(),
@@ -14468,6 +14553,13 @@
 %%   <<"TransitGatewayRouteTableId">> := string()
 %% }
 -type delete_transit_gateway_prefix_list_reference_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_link_virtual_interfaces_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceLinkVirtualInterfaces">> => list(service_link_virtual_interface()())
+%% }
+-type describe_service_link_virtual_interfaces_result() :: #{binary() => any()}.
 
 %% Example:
 %% ipam_resource_tag() :: #{
@@ -15452,6 +15544,12 @@
 -type describe_fpga_images_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_local_gateway_virtual_interface_group_result() :: #{
+%%   <<"LocalGatewayVirtualInterfaceGroup">> => local_gateway_virtual_interface_group()
+%% }
+-type create_local_gateway_virtual_interface_group_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_instance_credit_specification_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -15683,6 +15781,16 @@
 %%   <<"Message">> => string()
 %% }
 -type client_vpn_authorization_rule_status() :: #{binary() => any()}.
+
+%% Example:
+%% describe_outpost_lags_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostLagIds">> => list(string()())
+%% }
+-type describe_outpost_lags_request() :: #{binary() => any()}.
 
 %% Example:
 %% address_attribute() :: #{
@@ -16611,6 +16719,13 @@
 -type oidc_options() :: #{binary() => any()}.
 
 %% Example:
+%% delete_local_gateway_virtual_interface_group_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"LocalGatewayVirtualInterfaceGroupId">> := string()
+%% }
+-type delete_local_gateway_virtual_interface_group_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_snapshots_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()()),
@@ -16998,6 +17113,20 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type get_ipam_resource_cidrs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_local_gateway_virtual_interface_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"LocalAddress">> := string(),
+%%   <<"LocalGatewayVirtualInterfaceGroupId">> := string(),
+%%   <<"OutpostLagId">> := string(),
+%%   <<"PeerAddress">> := string(),
+%%   <<"PeerBgpAsn">> => integer(),
+%%   <<"PeerBgpAsnExtended">> => float(),
+%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"Vlan">> := integer()
+%% }
+-type create_local_gateway_virtual_interface_request() :: #{binary() => any()}.
 
 %% Example:
 %% volume_modification() :: #{
@@ -19114,6 +19243,23 @@
 %%   <<"LogOutputFormat">> => string()
 %% }
 -type cloud_watch_log_options() :: #{binary() => any()}.
+
+%% Example:
+%% service_link_virtual_interface() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"LocalAddress">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"OutpostId">> => string(),
+%%   <<"OutpostLagId">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"PeerAddress">> => string(),
+%%   <<"PeerBgpAsn">> => float(),
+%%   <<"ServiceLinkVirtualInterfaceArn">> => string(),
+%%   <<"ServiceLinkVirtualInterfaceId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Vlan">> => integer()
+%% }
+-type service_link_virtual_interface() :: #{binary() => any()}.
 
 %% Example:
 %% local_gateway_route_table_vpc_association() :: #{
@@ -22624,6 +22770,36 @@ create_local_gateway_route_table_vpc_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocalGatewayRouteTableVpcAssociation">>, Input, Options).
 
+%% @doc Create a virtual interface for a local gateway.
+-spec create_local_gateway_virtual_interface(aws_client:aws_client(), create_local_gateway_virtual_interface_request()) ->
+    {ok, create_local_gateway_virtual_interface_result(), tuple()} |
+    {error, any()}.
+create_local_gateway_virtual_interface(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_local_gateway_virtual_interface(Client, Input, []).
+
+-spec create_local_gateway_virtual_interface(aws_client:aws_client(), create_local_gateway_virtual_interface_request(), proplists:proplist()) ->
+    {ok, create_local_gateway_virtual_interface_result(), tuple()} |
+    {error, any()}.
+create_local_gateway_virtual_interface(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLocalGatewayVirtualInterface">>, Input, Options).
+
+%% @doc Create a local gateway virtual interface group.
+-spec create_local_gateway_virtual_interface_group(aws_client:aws_client(), create_local_gateway_virtual_interface_group_request()) ->
+    {ok, create_local_gateway_virtual_interface_group_result(), tuple()} |
+    {error, any()}.
+create_local_gateway_virtual_interface_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_local_gateway_virtual_interface_group(Client, Input, []).
+
+-spec create_local_gateway_virtual_interface_group(aws_client:aws_client(), create_local_gateway_virtual_interface_group_request(), proplists:proplist()) ->
+    {ok, create_local_gateway_virtual_interface_group_result(), tuple()} |
+    {error, any()}.
+create_local_gateway_virtual_interface_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLocalGatewayVirtualInterfaceGroup">>, Input, Options).
+
 %% @doc Creates a managed prefix list.
 %%
 %% You can specify entries for the prefix list.
@@ -24735,6 +24911,36 @@ delete_local_gateway_route_table_vpc_association(Client, Input)
 delete_local_gateway_route_table_vpc_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLocalGatewayRouteTableVpcAssociation">>, Input, Options).
+
+%% @doc Deletes the specified local gateway virtual interface.
+-spec delete_local_gateway_virtual_interface(aws_client:aws_client(), delete_local_gateway_virtual_interface_request()) ->
+    {ok, delete_local_gateway_virtual_interface_result(), tuple()} |
+    {error, any()}.
+delete_local_gateway_virtual_interface(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_local_gateway_virtual_interface(Client, Input, []).
+
+-spec delete_local_gateway_virtual_interface(aws_client:aws_client(), delete_local_gateway_virtual_interface_request(), proplists:proplist()) ->
+    {ok, delete_local_gateway_virtual_interface_result(), tuple()} |
+    {error, any()}.
+delete_local_gateway_virtual_interface(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLocalGatewayVirtualInterface">>, Input, Options).
+
+%% @doc Delete the specified local gateway interface group.
+-spec delete_local_gateway_virtual_interface_group(aws_client:aws_client(), delete_local_gateway_virtual_interface_group_request()) ->
+    {ok, delete_local_gateway_virtual_interface_group_result(), tuple()} |
+    {error, any()}.
+delete_local_gateway_virtual_interface_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_local_gateway_virtual_interface_group(Client, Input, []).
+
+-spec delete_local_gateway_virtual_interface_group(aws_client:aws_client(), delete_local_gateway_virtual_interface_group_request(), proplists:proplist()) ->
+    {ok, delete_local_gateway_virtual_interface_group_result(), tuple()} |
+    {error, any()}.
+delete_local_gateway_virtual_interface_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLocalGatewayVirtualInterfaceGroup">>, Input, Options).
 
 %% @doc Deletes the specified managed prefix list.
 %%
@@ -27961,6 +28167,21 @@ describe_network_interfaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNetworkInterfaces">>, Input, Options).
 
+%% @doc Describes the Outposts link aggregation groups (LAGs).
+-spec describe_outpost_lags(aws_client:aws_client(), describe_outpost_lags_request()) ->
+    {ok, describe_outpost_lags_result(), tuple()} |
+    {error, any()}.
+describe_outpost_lags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_outpost_lags(Client, Input, []).
+
+-spec describe_outpost_lags(aws_client:aws_client(), describe_outpost_lags_request(), proplists:proplist()) ->
+    {ok, describe_outpost_lags_result(), tuple()} |
+    {error, any()}.
+describe_outpost_lags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeOutpostLags">>, Input, Options).
+
 %% @doc Describes the specified placement groups or all of your placement
 %% groups.
 %%
@@ -28476,6 +28697,21 @@ describe_security_groups(Client, Input)
 describe_security_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSecurityGroups">>, Input, Options).
+
+%% @doc Describes the Outpost service link virtual interfaces.
+-spec describe_service_link_virtual_interfaces(aws_client:aws_client(), describe_service_link_virtual_interfaces_request()) ->
+    {ok, describe_service_link_virtual_interfaces_result(), tuple()} |
+    {error, any()}.
+describe_service_link_virtual_interfaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_service_link_virtual_interfaces(Client, Input, []).
+
+-spec describe_service_link_virtual_interfaces(aws_client:aws_client(), describe_service_link_virtual_interfaces_request(), proplists:proplist()) ->
+    {ok, describe_service_link_virtual_interfaces_result(), tuple()} |
+    {error, any()}.
+describe_service_link_virtual_interfaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServiceLinkVirtualInterfaces">>, Input, Options).
 
 %% @doc Describes the specified attribute of the specified snapshot.
 %%
