@@ -10277,6 +10277,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SnapshotId">> => string(),
 %%   <<"Throughput">> => integer(),
+%%   <<"VolumeInitializationRate">> => integer(),
 %%   <<"VolumeSize">> => integer(),
 %%   <<"VolumeType">> => list(any())
 %% }
@@ -11518,6 +11519,7 @@
 %%   <<"OutpostArn">> => string(),
 %%   <<"SnapshotId">> => string(),
 %%   <<"Throughput">> => integer(),
+%%   <<"VolumeInitializationRate">> => integer(),
 %%   <<"VolumeSize">> => integer(),
 %%   <<"VolumeType">> => list(any())
 %% }
@@ -14370,6 +14372,7 @@
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Throughput">> => integer(),
 %%   <<"VolumeId">> => string(),
+%%   <<"VolumeInitializationRate">> => integer(),
 %%   <<"VolumeType">> => list(any())
 %% }
 -type volume() :: #{binary() => any()}.
@@ -14965,6 +14968,7 @@
 %%   <<"SnapshotId">> => string(),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
 %%   <<"Throughput">> => integer(),
+%%   <<"VolumeInitializationRate">> => integer(),
 %%   <<"VolumeType">> => list(any())
 %% }
 -type create_volume_request() :: #{binary() => any()}.
@@ -16494,7 +16498,8 @@
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceId">> := string(),
 %%   <<"SnapshotId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"VolumeInitializationRate">> => float()
 %% }
 -type create_replace_root_volume_task_request() :: #{binary() => any()}.
 
@@ -18857,6 +18862,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SnapshotId">> => string(),
 %%   <<"Throughput">> => integer(),
+%%   <<"VolumeInitializationRate">> => integer(),
 %%   <<"VolumeSize">> => integer(),
 %%   <<"VolumeType">> => list(any())
 %% }

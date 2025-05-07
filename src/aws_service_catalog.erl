@@ -2394,6 +2394,7 @@
     resource_in_use_exception().
 
 -type delete_service_action_errors() ::
+    invalid_parameters_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception().
 
@@ -2480,6 +2481,7 @@
     resource_in_use_exception().
 
 -type disassociate_service_action_from_provisioning_artifact_errors() ::
+    invalid_parameters_exception() | 
     resource_not_found_exception().
 
 -type disassociate_tag_option_from_resource_errors() ::
