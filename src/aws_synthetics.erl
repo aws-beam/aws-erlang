@@ -68,6 +68,8 @@
          list_tags_for_resource/5,
          start_canary/3,
          start_canary/4,
+         start_canary_dry_run/3,
+         start_canary_dry_run/4,
          stop_canary/3,
          stop_canary/4,
          tag_resource/3,
@@ -83,8 +85,10 @@
 
 %% Example:
 %% get_canary_runs_request() :: #{
+%%   <<"DryRunId">> => string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"RunType">> => list(any())
 %% }
 -type get_canary_runs_request() :: #{binary() => any()}.
 
@@ -127,6 +131,13 @@
 %% }
 -type describe_canaries_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% canary_dry_run_config_output() :: #{
+%%   <<"DryRunId">> => string()
+%% }
+-type canary_dry_run_config_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_canary_response() :: #{}
 -type delete_canary_response() :: #{}.
@@ -158,6 +169,23 @@
 %%   <<"BaseScreenshots">> => list(base_screenshot()())
 %% }
 -type visual_reference_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_canary_dry_run_request() :: #{
+%%   <<"ArtifactConfig">> => artifact_config_input(),
+%%   <<"ArtifactS3Location">> => string(),
+%%   <<"Code">> => canary_code_input(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"FailureRetentionPeriodInDays">> => integer(),
+%%   <<"ProvisionedResourceCleanup">> => list(any()),
+%%   <<"RunConfig">> => canary_run_config_input(),
+%%   <<"RuntimeVersion">> => string(),
+%%   <<"SuccessRetentionPeriodInDays">> => integer(),
+%%   <<"VisualReference">> => visual_reference_input(),
+%%   <<"VpcConfig">> => vpc_config_input()
+%% }
+-type start_canary_dry_run_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -235,6 +263,7 @@
 %% Example:
 %% canary_run() :: #{
 %%   <<"ArtifactS3Location">> => string(),
+%%   <<"DryRunConfig">> => canary_dry_run_config_output(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => canary_run_status(),
@@ -284,6 +313,7 @@
 %%   <<"ArtifactConfig">> => artifact_config_input(),
 %%   <<"ArtifactS3Location">> => string(),
 %%   <<"Code">> => canary_code_input(),
+%%   <<"DryRunId">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
 %%   <<"ProvisionedResourceCleanup">> => list(any()),
@@ -449,6 +479,14 @@
 
 
 %% Example:
+%% dry_run_config_output() :: #{
+%%   <<"DryRunId">> => string(),
+%%   <<"LastDryRunExecutionStatus">> => string()
+%% }
+-type dry_run_config_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% visual_reference_input() :: #{
 %%   <<"BaseCanaryRunId">> => string(),
 %%   <<"BaseScreenshots">> => list(base_screenshot()())
@@ -477,6 +515,13 @@
 %% delete_group_response() :: #{}
 -type delete_group_response() :: #{}.
 
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -497,6 +542,7 @@
 %%   <<"ArtifactConfig">> => artifact_config_output(),
 %%   <<"ArtifactS3Location">> => string(),
 %%   <<"Code">> => canary_code_output(),
+%%   <<"DryRunConfig">> => dry_run_config_output(),
 %%   <<"EngineArn">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
@@ -530,6 +576,13 @@
 %%   <<"DeleteLambda">> => boolean()
 %% }
 -type delete_canary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_canary_dry_run_response() :: #{
+%%   <<"DryRunConfig">> => dry_run_config_output()
+%% }
+-type start_canary_dry_run_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -581,9 +634,12 @@
 %% delete_group_request() :: #{}
 -type delete_group_request() :: #{}.
 
+
 %% Example:
-%% get_canary_request() :: #{}
--type get_canary_request() :: #{}.
+%% get_canary_request() :: #{
+%%   <<"DryRunId">> => string()
+%% }
+-type get_canary_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -760,6 +816,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_canary_dry_run_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type stop_canary_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -782,6 +845,7 @@
 
 -type update_canary_errors() ::
     validation_exception() | 
+    access_denied_exception() | 
     request_entity_too_large_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
@@ -1287,7 +1351,11 @@ get_canary(Client, Name, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"dryRunId">>, maps:get(<<"dryRunId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1552,6 +1620,41 @@ start_canary(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Use this operation to start a dry run for a canary that has already
+%% been created
+-spec start_canary_dry_run(aws_client:aws_client(), binary() | list(), start_canary_dry_run_request()) ->
+    {ok, start_canary_dry_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_canary_dry_run_errors(), tuple()}.
+start_canary_dry_run(Client, Name, Input) ->
+    start_canary_dry_run(Client, Name, Input, []).
+
+-spec start_canary_dry_run(aws_client:aws_client(), binary() | list(), start_canary_dry_run_request(), proplists:proplist()) ->
+    {ok, start_canary_dry_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_canary_dry_run_errors(), tuple()}.
+start_canary_dry_run(Client, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/canary/", aws_util:encode_uri(Name), "/dry-run/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops the canary to prevent all future runs.
 %%
 %% If the canary is currently running,the
@@ -1691,6 +1794,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% change the tags of an existing canary, use
 %% TagResource:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html.
+%%
+%% When you use the `dryRunId' field when updating a canary, the only
+%% other field you can provide is the `Schedule'. Adding any other field
+%% will thrown an exception.
 -spec update_canary(aws_client:aws_client(), binary() | list(), update_canary_request()) ->
     {ok, update_canary_response(), tuple()} |
     {error, any()} |

@@ -3512,6 +3512,7 @@
 
 %% Example:
 %% update_channel_request() :: #{
+%%   <<"AnywhereSettings">> => anywhere_settings(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
 %%   <<"Destinations">> => list(output_destination()()),

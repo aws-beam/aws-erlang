@@ -15040,6 +15040,7 @@
 %%   <<"ClientToken">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"FilterInArns">> => list(string()()),
+%%   <<"FilterOutArns">> => list(string()()),
 %%   <<"NetworkInsightsPathId">> := string(),
 %%   <<"TagSpecifications">> => list(tag_specification()())
 %% }
@@ -17439,6 +17440,7 @@
 %%   <<"AlternatePathHints">> => list(alternate_path_hint()()),
 %%   <<"Explanations">> => list(explanation()()),
 %%   <<"FilterInArns">> => list(string()()),
+%%   <<"FilterOutArns">> => list(string()()),
 %%   <<"ForwardPathComponents">> => list(path_component()()),
 %%   <<"NetworkInsightsAnalysisArn">> => string(),
 %%   <<"NetworkInsightsAnalysisId">> => string(),

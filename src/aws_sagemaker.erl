@@ -1708,8 +1708,8 @@
 %% search_training_plan_offerings_request() :: #{
 %%   <<"DurationHours">> := float(),
 %%   <<"EndTimeBefore">> => non_neg_integer(),
-%%   <<"InstanceCount">> := integer(),
-%%   <<"InstanceType">> := list(any()),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
 %%   <<"StartTimeAfter">> => non_neg_integer(),
 %%   <<"TargetResources">> := list(list(any())())
 %% }
@@ -1805,6 +1805,18 @@
 %%   <<"TeamName">> => string()
 %% }
 -type compute_quota_target() :: #{binary() => any()}.
+
+%% Example:
+%% unified_studio_settings() :: #{
+%%   <<"DomainAccountId">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"DomainRegion">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"ProjectS3Path">> => string(),
+%%   <<"StudioWebPortalAccess">> => list(any())
+%% }
+-type unified_studio_settings() :: #{binary() => any()}.
 
 %% Example:
 %% create_studio_lifecycle_config_request() :: #{
@@ -3327,6 +3339,7 @@
 %%   <<"JupyterLabAppSettings">> => space_jupyter_lab_app_settings(),
 %%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
 %%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
+%%   <<"SpaceManagedResources">> => list(any()),
 %%   <<"SpaceStorageSettings">> => space_storage_settings()
 %% }
 -type space_settings() :: #{binary() => any()}.
@@ -6678,7 +6691,8 @@
 %%   <<"DockerSettings">> => docker_settings(),
 %%   <<"ExecutionRoleIdentityConfig">> => list(any()),
 %%   <<"RStudioServerProDomainSettingsForUpdate">> => r_studio_server_pro_domain_settings_for_update(),
-%%   <<"SecurityGroupIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"UnifiedStudioSettings">> => unified_studio_settings()
 %% }
 -type domain_settings_for_update() :: #{binary() => any()}.
 
@@ -7880,7 +7894,8 @@
 %%   <<"DockerSettings">> => docker_settings(),
 %%   <<"ExecutionRoleIdentityConfig">> => list(any()),
 %%   <<"RStudioServerProDomainSettings">> => r_studio_server_pro_domain_settings(),
-%%   <<"SecurityGroupIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"UnifiedStudioSettings">> => unified_studio_settings()
 %% }
 -type domain_settings() :: #{binary() => any()}.
 
