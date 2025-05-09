@@ -548,6 +548,7 @@
 %% Example:
 %% environment_variable() :: #{
 %%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
 %%   <<"value">> => string()
 %% }
 -type environment_variable() :: #{binary() => any()}.
@@ -2704,7 +2705,8 @@ list_rule_executions(Client, Input, Options)
 %% For more information about conditions, see Stage
 %% conditions:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html
-%% and How do stage conditions work?:
+%% and How do
+%% stage conditions work?:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts-how-it-works-conditions.html.For
 %% more information about rules, see the CodePipeline rule reference:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html.
@@ -2772,7 +2774,8 @@ list_webhooks(Client, Input, Options)
 %% For more information about conditions, see Stage
 %% conditions:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html
-%% and How do stage conditions work?:
+%% and How do
+%% stage conditions work?:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts-how-it-works-conditions.html.
 -spec override_stage_condition(aws_client:aws_client(), override_stage_condition_input()) ->
     {ok, undefined, tuple()} |

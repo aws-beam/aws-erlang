@@ -1612,7 +1612,9 @@
 %% Example:
 %% network_interface_attachment_changes() :: #{
 %%   <<"AttachmentId">> => string(),
-%%   <<"DeleteOnTermination">> => boolean()
+%%   <<"DefaultEnaQueueCount">> => boolean(),
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"EnaQueueCount">> => integer()
 %% }
 -type network_interface_attachment_changes() :: #{binary() => any()}.
 
@@ -3357,6 +3359,7 @@
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"DeviceIndex">> => integer(),
+%%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => ena_srd_specification_request(),
 %%   <<"Groups">> => list(string()()),
 %%   <<"InterfaceType">> => string(),
@@ -7631,6 +7634,7 @@
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"DeviceIndex">> => integer(),
+%%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => launch_template_ena_srd_specification(),
 %%   <<"Groups">> => list(string()()),
 %%   <<"InterfaceType">> => string(),
@@ -8886,6 +8890,9 @@
 %% Example:
 %% network_card_info() :: #{
 %%   <<"BaselineBandwidthInGbps">> => float(),
+%%   <<"DefaultEnaQueueCountPerInterface">> => integer(),
+%%   <<"MaximumEnaQueueCount">> => integer(),
+%%   <<"MaximumEnaQueueCountPerInterface">> => integer(),
 %%   <<"MaximumNetworkInterfaces">> => integer(),
 %%   <<"NetworkCardIndex">> => integer(),
 %%   <<"NetworkPerformance">> => string(),
@@ -9935,6 +9942,7 @@
 %%   <<"AttachmentId">> => string(),
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"DeviceIndex">> => integer(),
+%%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => attachment_ena_srd_specification(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceOwnerId">> => string(),
@@ -12353,6 +12361,7 @@
 %%   <<"EnaSrdSupported">> => boolean(),
 %%   <<"EnaSupport">> => list(any()),
 %%   <<"EncryptionInTransitSupported">> => boolean(),
+%%   <<"FlexibleEnaQueuesSupport">> => list(any()),
 %%   <<"Ipv4AddressesPerInterface">> => integer(),
 %%   <<"Ipv6AddressesPerInterface">> => integer(),
 %%   <<"Ipv6Supported">> => boolean(),
@@ -13254,6 +13263,7 @@
 %% attach_network_interface_request() :: #{
 %%   <<"DeviceIndex">> := integer(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => ena_srd_specification(),
 %%   <<"InstanceId">> := string(),
 %%   <<"NetworkCardIndex">> => integer(),
@@ -13333,6 +13343,7 @@
 %%   <<"AttachmentId">> => string(),
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"DeviceIndex">> => integer(),
+%%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => instance_attachment_ena_srd_specification(),
 %%   <<"NetworkCardIndex">> => integer(),
 %%   <<"Status">> => list(any())
@@ -20025,6 +20036,7 @@
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"DeviceIndex">> => integer(),
+%%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => ena_srd_specification_request(),
 %%   <<"Groups">> => list(string()()),
 %%   <<"InterfaceType">> => string(),
@@ -20600,11 +20612,12 @@ apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
 %%
 %% You can
 %% specify specific IPv6 addresses, or you can specify the number of IPv6
-%% addresses to be automatically assigned from the subnet's IPv6 CIDR
-%% block range.
-%% You can assign as many IPv6 addresses to a network interface as you can
-%% assign private
-%% IPv4 addresses, and the limit varies by instance type.
+%% addresses to be
+%% automatically assigned from the subnet's IPv6 CIDR block range. You
+%% can assign as many
+%% IPv6 addresses to a network interface as you can assign private IPv4
+%% addresses, and the
+%% limit varies by instance type.
 %%
 %% You must specify either the IPv6 addresses or the IPv6 address count in
 %% the request.
@@ -20613,8 +20626,8 @@ apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
 %% must specify
 %% either the IPV6 Prefix Delegation prefixes, or the IPv6 Prefix Delegation
 %% count. For
-%% information, see
-%% Assigning prefixes to network interfaces:
+%% information, see Assigning prefixes to network
+%% interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
 %% the Amazon EC2 User Guide.
 -spec assign_ipv6_addresses(aws_client:aws_client(), assign_ipv6_addresses_request()) ->
@@ -20632,27 +20645,30 @@ assign_ipv6_addresses(Client, Input, Options)
     request(Client, <<"AssignIpv6Addresses">>, Input, Options).
 
 %% @doc Assigns the specified secondary private IP addresses to the specified
-%% network interface.
+%% network
+%% interface.
 %%
 %% You can specify specific secondary IP addresses, or you can specify the
-%% number
-%% of secondary IP addresses to be automatically assigned from the
-%% subnet's CIDR block range.
+%% number of
+%% secondary IP addresses to be automatically assigned from the subnet's
+%% CIDR block range.
 %% The number of secondary IP addresses that you can assign to an instance
-%% varies by instance type.
-%% For more information about Elastic IP addresses, see Elastic IP Addresses:
+%% varies by
+%% instance type. For more information about Elastic IP addresses, see
+%% Elastic IP
+%% Addresses:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
 %% in the Amazon EC2 User Guide.
 %%
 %% When you move a secondary private IP address to another network interface,
-%% any Elastic IP address
-%% that is associated with the IP address is also moved.
+%% any Elastic
+%% IP address that is associated with the IP address is also moved.
 %%
 %% Remapping an IP address is an asynchronous operation. When you move an IP
-%% address from one network
-%% interface to another, check `network/interfaces/macs/mac/local-ipv4s'
-%% in the instance
-%% metadata to confirm that the remapping is complete.
+%% address from
+%% one network interface to another, check
+%% `network/interfaces/macs/mac/local-ipv4s' in the instance metadata to
+%% confirm that the remapping is complete.
 %%
 %% You must specify either the IP addresses or the IP address count in the
 %% request.
@@ -20661,8 +20677,8 @@ assign_ipv6_addresses(Client, Input, Options)
 %% must specify
 %% either the IPv4 Prefix Delegation prefixes, or the IPv4 Prefix Delegation
 %% count. For
-%% information, see
-%% Assigning prefixes to network interfaces:
+%% information, see Assigning prefixes to network
+%% interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
 %% the Amazon EC2 User Guide.
 -spec assign_private_ip_addresses(aws_client:aws_client(), assign_private_ip_addresses_request()) ->
@@ -21677,7 +21693,8 @@ cancel_import_task(Client, Input, Options)
     request(Client, <<"CancelImportTask">>, Input, Options).
 
 %% @doc Cancels the specified Reserved Instance listing in the Reserved
-%% Instance Marketplace.
+%% Instance
+%% Marketplace.
 %%
 %% For more information, see Sell in the Reserved Instance
 %% Marketplace:
@@ -22689,8 +22706,8 @@ create_launch_template(Client, Input, Options)
 %% includes the
 %% changes that you require.
 %%
-%% For more information, see Modify a launch template (manage launch template
-%% versions):
+%% For more information, see Modify a launch
+%% template (manage launch template versions):
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-launch-template-versions.html
 %% in the
 %% Amazon EC2 User Guide.
@@ -22990,8 +23007,8 @@ create_network_insights_path(Client, Input, Options)
 %%
 %% For more information about network interfaces, see Elastic network
 %% interfaces:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html
-%% in the Amazon EC2 User Guide.
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html in the
+%% Amazon EC2 User Guide.
 -spec create_network_interface(aws_client:aws_client(), create_network_interface_request()) ->
     {ok, create_network_interface_result(), tuple()} |
     {error, any()}.
@@ -23007,11 +23024,12 @@ create_network_interface(Client, Input, Options)
     request(Client, <<"CreateNetworkInterface">>, Input, Options).
 
 %% @doc Grants an Amazon Web Services-authorized account permission to attach
-%% the specified network interface to
-%% an instance in their account.
+%% the specified
+%% network interface to an instance in their account.
 %%
 %% You can grant permission to a single Amazon Web Services account only, and
-%% only one account at a time.
+%% only one
+%% account at a time.
 -spec create_network_interface_permission(aws_client:aws_client(), create_network_interface_permission_request()) ->
     {ok, create_network_interface_permission_result(), tuple()} |
     {error, any()}.
@@ -23106,12 +23124,11 @@ create_replace_root_volume_task(Client, Input, Options)
     request(Client, <<"CreateReplaceRootVolumeTask">>, Input, Options).
 
 %% @doc Creates a listing for Amazon EC2 Standard Reserved Instances to be
-%% sold in the Reserved Instance
-%% Marketplace.
+%% sold in the Reserved
+%% Instance Marketplace.
 %%
-%% You can submit one Standard Reserved Instance listing at a time. To get a
-%% list of your
-%% Standard Reserved Instances, you can use the
+%% You can submit one Standard Reserved Instance listing at a time. To get
+%% a list of your Standard Reserved Instances, you can use the
 %% `DescribeReservedInstances' operation.
 %%
 %% Only Standard Reserved Instances can be sold in the Reserved Instance
@@ -23119,22 +23136,24 @@ create_replace_root_volume_task(Client, Input, Options)
 %% Convertible Reserved Instances cannot be sold.
 %%
 %% The Reserved Instance Marketplace matches sellers who want to resell
-%% Standard Reserved Instance capacity that they no longer need with buyers
-%% who want to purchase additional capacity. Reserved Instances bought and
-%% sold through the Reserved Instance Marketplace work like any other
-%% Reserved Instances.
+%% Standard Reserved
+%% Instance capacity that they no longer need with buyers who want to
+%% purchase additional
+%% capacity. Reserved Instances bought and sold through the Reserved Instance
+%% Marketplace work
+%% like any other Reserved Instances.
 %%
 %% To sell your Standard Reserved Instances, you must first register as a
-%% seller in the Reserved Instance
-%% Marketplace. After completing the registration process, you can create a
-%% Reserved Instance
-%% Marketplace listing of some or all of your Standard Reserved Instances,
-%% and specify the upfront price
-%% to receive for them. Your Standard Reserved Instance listings then become
-%% available for purchase. To
-%% view the details of your Standard Reserved Instance listing, you can use
-%% the
-%% `DescribeReservedInstancesListings' operation.
+%% seller in the
+%% Reserved Instance Marketplace. After completing the registration process,
+%% you can create a
+%% Reserved Instance Marketplace listing of some or all of your Standard
+%% Reserved Instances, and
+%% specify the upfront price to receive for them. Your Standard Reserved
+%% Instance listings then
+%% become available for purchase. To view the details of your Standard
+%% Reserved Instance listing,
+%% you can use the `DescribeReservedInstancesListings' operation.
 %%
 %% For more information, see Sell in the Reserved Instance
 %% Marketplace:
@@ -25083,7 +25102,8 @@ delete_network_insights_path(Client, Input, Options)
 
 %% @doc Deletes the specified network interface.
 %%
-%% You must detach the network interface before you can delete it.
+%% You must detach the network interface before
+%% you can delete it.
 -spec delete_network_interface(aws_client:aws_client(), delete_network_interface_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -28119,7 +28139,8 @@ describe_network_insights_paths(Client, Input, Options)
 
 %% @doc Describes a network interface attribute.
 %%
-%% You can specify only one attribute at a time.
+%% You can specify only one attribute at a
+%% time.
 -spec describe_network_interface_attribute(aws_client:aws_client(), describe_network_interface_attribute_request()) ->
     {ok, describe_network_interface_attribute_result(), tuple()} |
     {error, any()}.
@@ -28153,10 +28174,11 @@ describe_network_interface_permissions(Client, Input, Options)
 %% interfaces.
 %%
 %% If you have a large number of network interfaces, the operation fails
-%% unless
-%% you use pagination or one of the following filters: `group-id',
-%% `mac-address', `private-dns-name', `private-ip-address',
-%% `subnet-id', or `vpc-id'.
+%% unless you use
+%% pagination or one of the following filters: `group-id',
+%% `mac-address', `private-dns-name',
+%% `private-ip-address', `subnet-id', or
+%% `vpc-id'.
 %%
 %% We strongly recommend using only paginated requests. Unpaginated requests
 %% are
@@ -28348,8 +28370,8 @@ describe_replace_root_volume_tasks(Client, Input, Options)
 %% in the Amazon EC2 User Guide.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures, might vary. Applications should not assume the elements appear
-%% in a
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
 %% particular order.
 -spec describe_reserved_instances(aws_client:aws_client(), describe_reserved_instances_request()) ->
     {ok, describe_reserved_instances_result(), tuple()} |
@@ -28366,25 +28388,32 @@ describe_reserved_instances(Client, Input, Options)
     request(Client, <<"DescribeReservedInstances">>, Input, Options).
 
 %% @doc Describes your account's Reserved Instance listings in the
-%% Reserved Instance Marketplace.
+%% Reserved Instance
+%% Marketplace.
 %%
 %% The Reserved Instance Marketplace matches sellers who want to resell
-%% Reserved Instance capacity that they no longer need with buyers who want
-%% to purchase additional capacity. Reserved Instances bought and sold
-%% through the Reserved Instance Marketplace work like any other Reserved
-%% Instances.
+%% Reserved Instance
+%% capacity that they no longer need with buyers who want to purchase
+%% additional capacity.
+%% Reserved Instances bought and sold through the Reserved Instance
+%% Marketplace work like any
+%% other Reserved Instances.
 %%
 %% As a seller, you choose to list some or all of your Reserved Instances,
-%% and you specify the upfront price to receive for them. Your Reserved
-%% Instances are then listed in the Reserved Instance Marketplace and are
-%% available for purchase.
+%% and you specify
+%% the upfront price to receive for them. Your Reserved Instances are then
+%% listed in the Reserved
+%% Instance Marketplace and are available for purchase.
 %%
 %% As a buyer, you specify the configuration of the Reserved Instance to
-%% purchase, and the Marketplace matches what you're searching for with
-%% what's available. The Marketplace first sells the lowest priced
-%% Reserved Instances to you, and continues to sell available Reserved
+%% purchase, and the
+%% Marketplace matches what you're searching for with what's
+%% available. The Marketplace first
+%% sells the lowest priced Reserved Instances to you, and continues to sell
+%% available Reserved
 %% Instance listings to you until your demand is met. You are charged based
-%% on the total price of all of the listings that you purchase.
+%% on the total price of
+%% all of the listings that you purchase.
 %%
 %% For more information, see Sell in the Reserved Instance
 %% Marketplace:
@@ -28392,8 +28421,8 @@ describe_reserved_instances(Client, Input, Options)
 %% in the Amazon EC2 User Guide.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures, might vary. Applications should not assume the elements appear
-%% in a
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
 %% particular order.
 -spec describe_reserved_instances_listings(aws_client:aws_client(), describe_reserved_instances_listings_request()) ->
     {ok, describe_reserved_instances_listings_result(), tuple()} |
@@ -28411,9 +28440,12 @@ describe_reserved_instances_listings(Client, Input, Options)
 
 %% @doc Describes the modifications made to your Reserved Instances.
 %%
-%% If no parameter is specified, information about all your Reserved
-%% Instances modification requests is returned. If a modification ID is
-%% specified, only information about the specific modification is returned.
+%% If no parameter is specified,
+%% information about all your Reserved Instances modification requests is
+%% returned. If a
+%% modification ID is specified, only information about the specific
+%% modification is
+%% returned.
 %%
 %% For more information, see Modify Reserved Instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html in
@@ -28421,8 +28453,8 @@ describe_reserved_instances_listings(Client, Input, Options)
 %% Amazon EC2 User Guide.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures, might vary. Applications should not assume the elements appear
-%% in a
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
 %% particular order.
 -spec describe_reserved_instances_modifications(aws_client:aws_client(), describe_reserved_instances_modifications_request()) ->
     {ok, describe_reserved_instances_modifications_result(), tuple()} |
@@ -28441,14 +28473,18 @@ describe_reserved_instances_modifications(Client, Input, Options)
 %% @doc Describes Reserved Instance offerings that are available for
 %% purchase.
 %%
-%% With Reserved Instances, you purchase the right to launch instances for a
-%% period of time. During that time period, you do not receive insufficient
-%% capacity errors, and you pay a lower usage rate than the rate charged for
-%% On-Demand instances for the actual time used.
+%% With Reserved
+%% Instances, you purchase the right to launch instances for a period of
+%% time. During that time
+%% period, you do not receive insufficient capacity errors, and you pay a
+%% lower usage rate than
+%% the rate charged for On-Demand instances for the actual time used.
 %%
 %% If you have listed your own Reserved Instances for sale in the Reserved
-%% Instance Marketplace, they will be excluded from these results. This is to
-%% ensure that you do not purchase your own Reserved Instances.
+%% Instance
+%% Marketplace, they will be excluded from these results. This is to ensure
+%% that you do not
+%% purchase your own Reserved Instances.
 %%
 %% For more information, see Sell in the Reserved Instance
 %% Marketplace:
@@ -28456,8 +28492,8 @@ describe_reserved_instances_modifications(Client, Input, Options)
 %% in the Amazon EC2 User Guide.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures, might vary. Applications should not assume the elements appear
-%% in a
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
 %% particular order.
 -spec describe_reserved_instances_offerings(aws_client:aws_client(), describe_reserved_instances_offerings_request()) ->
     {ok, describe_reserved_instances_offerings_result(), tuple()} |
@@ -32167,9 +32203,9 @@ get_ipam_resource_cidrs(Client, Input, Options)
 %% your instance configuration, you may need to allow the following actions
 %% in your IAM
 %% policy: `DescribeSpotInstanceRequests',
-%% `DescribeInstanceCreditSpecifications',
-%% `DescribeVolumes', and `DescribeInstanceAttribute'. Or,
-%% you can allow `describe*' depending on your instance requirements.
+%% `DescribeInstanceCreditSpecifications', `DescribeVolumes', and
+%% `DescribeInstanceAttribute'.
+%% Or, you can allow `describe*' depending on your instance requirements.
 -spec get_launch_template_data(aws_client:aws_client(), get_launch_template_data_request()) ->
     {ok, get_launch_template_data_result(), tuple()} |
     {error, any()}.
@@ -32289,11 +32325,11 @@ get_password_data(Client, Input, Options)
     request(Client, <<"GetPasswordData">>, Input, Options).
 
 %% @doc Returns a quote and exchange information for exchanging one or more
-%% specified
-%% Convertible Reserved Instances for a new Convertible Reserved Instance.
+%% specified Convertible
+%% Reserved Instances for a new Convertible Reserved Instance.
 %%
-%% If the exchange
-%% cannot be performed, the reason is returned in the response. Use
+%% If the exchange cannot be
+%% performed, the reason is returned in the response. Use
 %% `AcceptReservedInstancesExchangeQuote' to perform the exchange.
 -spec get_reserved_instances_exchange_quote(aws_client:aws_client(), get_reserved_instances_exchange_quote_request()) ->
     {ok, get_reserved_instances_exchange_quote_result(), tuple()} |
@@ -33880,10 +33916,10 @@ modify_managed_prefix_list(Client, Input, Options)
 
 %% @doc Modifies the specified network interface attribute.
 %%
-%% You can specify only one
-%% attribute at a time. You can use this action to attach and detach security
-%% groups from
-%% an existing EC2 instance.
+%% You can specify only one attribute
+%% at a time. You can use this action to attach and detach security groups
+%% from an existing
+%% EC2 instance.
 -spec modify_network_interface_attribute(aws_client:aws_client(), modify_network_interface_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -35079,18 +35115,18 @@ purchase_host_reservation(Client, Input, Options)
 
 %% @doc Purchases a Reserved Instance for use with your account.
 %%
-%% With Reserved Instances, you pay a lower
-%% hourly rate compared to On-Demand instance pricing.
+%% With Reserved Instances, you pay
+%% a lower hourly rate compared to On-Demand instance pricing.
 %%
 %% Use `DescribeReservedInstancesOfferings' to get a list of Reserved
-%% Instance offerings
-%% that match your specifications. After you've purchased a Reserved
-%% Instance, you can check for your
-%% new Reserved Instance with `DescribeReservedInstances'.
+%% Instance offerings that match your specifications. After you've
+%% purchased a Reserved Instance,
+%% you can check for your new Reserved Instance with
+%% `DescribeReservedInstances'.
 %%
 %% To queue a purchase for a future date and time, specify a purchase time.
-%% If you do not specify a
-%% purchase time, the default is the current time.
+%% If you do not
+%% specify a purchase time, the default is the current time.
 %%
 %% For more information, see Reserved
 %% Instances:
@@ -35966,7 +36002,8 @@ reset_instance_attribute(Client, Input, Options)
 
 %% @doc Resets a network interface attribute.
 %%
-%% You can specify only one attribute at a time.
+%% You can specify only one attribute at a
+%% time.
 -spec reset_network_interface_attribute(aws_client:aws_client(), reset_network_interface_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -36774,7 +36811,8 @@ terminate_instances(Client, Input, Options)
     request(Client, <<"TerminateInstances">>, Input, Options).
 
 %% @doc Unassigns the specified IPv6 addresses or Prefix Delegation prefixes
-%% from a network interface.
+%% from a network
+%% interface.
 -spec unassign_ipv6_addresses(aws_client:aws_client(), unassign_ipv6_addresses_request()) ->
     {ok, unassign_ipv6_addresses_result(), tuple()} |
     {error, any()}.
@@ -36790,8 +36828,8 @@ unassign_ipv6_addresses(Client, Input, Options)
     request(Client, <<"UnassignIpv6Addresses">>, Input, Options).
 
 %% @doc Unassigns the specified secondary private IP addresses or IPv4 Prefix
-%% Delegation prefixes from a
-%% network interface.
+%% Delegation
+%% prefixes from a network interface.
 -spec unassign_private_ip_addresses(aws_client:aws_client(), unassign_private_ip_addresses_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.

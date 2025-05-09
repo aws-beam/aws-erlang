@@ -608,6 +608,12 @@
 -type catalog_schema_change_policy() :: #{binary() => any()}.
 
 %% Example:
+%% integration_config() :: #{
+%%   <<"RefreshInterval">> => string()
+%% }
+-type integration_config() :: #{binary() => any()}.
+
+%% Example:
 %% get_custom_entity_type_response() :: #{
 %%   <<"ContextWords">> => list(string()()),
 %%   <<"Name">> => string(),
@@ -927,6 +933,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Errors">> => list(integration_error()()),
 %%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"IntegrationName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> => string(),
@@ -1217,6 +1224,7 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"Errors">> => list(integration_error()()),
 %%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"SourceArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"TargetArn">> => string()
@@ -1520,6 +1528,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Errors">> => list(integration_error()()),
 %%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"IntegrationName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> => string(),
@@ -5750,6 +5759,7 @@
 %%   <<"AdditionalEncryptionContext">> => map(),
 %%   <<"DataFilter">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"IntegrationName">> := string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> := string(),

@@ -1,29 +1,33 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc IAM Identity Center (successor to Single Sign-On) helps you securely
-%% create, or connect, your workforce identities and manage
-%% their access centrally across Amazon Web Services accounts and
-%% applications.
+%% @doc IAM Identity Center is the Amazon Web Services solution for
+%% connecting your workforce users to Amazon Web Services managed
+%% applications and other Amazon Web Services resources.
 %%
-%% IAM Identity Center is the recommended
-%% approach for workforce authentication and authorization in Amazon Web
-%% Services, for organizations of
-%% any size and type.
+%% You can connect your existing identity provider
+%% and synchronize users and groups from your directory, or create and manage
+%% your users
+%% directly in IAM Identity Center. You can then use IAM Identity Center for
+%% either or both of the following:
+%%
+%% User access to applications
+%%
+%% User access to Amazon Web Services accounts
+%%
+%% This guide provides information about single sign-on operations that you
+%% can use for access to applications and
+%% Amazon Web Services accounts. For information about IAM Identity Center
+%% features, see the
+%% IAM Identity Center
+%% User Guide:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html.
 %%
 %% IAM Identity Center uses the `sso' and `identitystore' API
 %% namespaces.
 %%
-%% This reference guide provides information on single sign-on operations
-%% which could be
-%% used for access management of Amazon Web Services accounts. For
-%% information about IAM Identity Center features, see
-%% the IAM Identity Center
-%% User Guide:
-%% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html.
-%%
-%% Many operations in the IAM Identity Center APIs rely on identifiers for
-%% users and groups, known as
+%% Many API operations for IAM Identity Center rely on identifiers for users
+%% and groups, known as
 %% principals. For more information about how to work with principals and
 %% principal IDs in
 %% IAM Identity Center, see the Identity Store API
@@ -2214,8 +2218,23 @@ create_account_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccountAssignment">>, Input, Options).
 
-%% @doc Creates an application in IAM Identity Center for the given
+%% @doc Creates an OAuth 2.0 customer managed application in IAM Identity
+%% Center for the given
 %% application provider.
+%%
+%% This API does not support creating SAML 2.0 customer managed applications
+%% or Amazon Web Services
+%% managed applications. To learn how to create an Amazon Web Services
+%% managed application, see the
+%% application user guide. You can create a SAML 2.0 customer managed
+%% application in
+%% the Amazon Web Services Management Console only. See Setting
+%% up customer managed SAML 2.0 applications:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-setup.html.
+%% For more information on these
+%% application types, see Amazon Web Services managed
+%% applications:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/awsapps.html.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
@@ -2254,9 +2273,8 @@ create_application_assignment(Client, Input, Options)
 %% managed by Organizations or a member Amazon Web Services account in an
 %% organization.
 %%
-%% You can
-%% create only one instance per account and across all Amazon Web Services
-%% Regions.
+%% You can create only
+%% one instance per account and across all Amazon Web Services Regions.
 %%
 %% The CreateInstance request is rejected if the following apply:
 %%
@@ -2334,14 +2352,16 @@ create_permission_set(Client, Input, Options)
 %% @doc Creates a connection to a trusted token issuer in an instance of IAM
 %% Identity Center.
 %%
-%% A trusted token issuer enables trusted identity propagation to be used
-%% with applications that authenticate outside of Amazon Web Services.
+%% A trusted token issuer enables trusted
+%% identity propagation to be used with applications that authenticate
+%% outside of
+%% Amazon Web Services.
 %%
-%% This trusted token issuer describes an external identity
-%% provider (IdP) that can generate claims or assertions in the form of
-%% access tokens for a
-%% user. Applications enabled for IAM Identity Center can use these tokens
-%% for authentication.
+%% This trusted token issuer describes an external identity provider (IdP)
+%% that can generate claims or
+%% assertions in the form of access tokens for a user. Applications enabled
+%% for IAM Identity Center
+%% can use these tokens for authentication.
 -spec create_trusted_token_issuer(aws_client:aws_client(), create_trusted_token_issuer_request()) ->
     {ok, create_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
@@ -2577,8 +2597,8 @@ delete_permissions_boundary_from_permission_set(Client, Input, Options)
 %% Identity Center.
 %%
 %% Deleting this trusted token issuer configuration will cause users to lose
-%% access to any applications that are configured to use the trusted token
-%% issuer.
+%% access to any
+%% applications that are configured to use the trusted token issuer.
 -spec delete_trusted_token_issuer(aws_client:aws_client(), delete_trusted_token_issuer_request()) ->
     {ok, delete_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
@@ -2649,10 +2669,13 @@ describe_application(Client, Input, Options)
 
 %% @doc Retrieves a direct assignment of a user or group to an application.
 %%
-%% If the user doesn’t have a direct assignment to the application,
-%% the user may still have access to the application through a group.
-%% Therefore, don’t use this API to test access to an application for a user.
-%% Instead use `ListApplicationAssignmentsForPrincipal'.
+%% If the user
+%% doesn’t have a direct assignment to the application, the user may still
+%% have access to
+%% the application through a group. Therefore, don’t use this API to test
+%% access to an
+%% application for a user. Instead use
+%% `ListApplicationAssignmentsForPrincipal'.
 -spec describe_application_assignment(aws_client:aws_client(), describe_application_assignment_request()) ->
     {ok, describe_application_assignment_response(), tuple()} |
     {error, any()} |
@@ -2670,8 +2693,8 @@ describe_application_assignment(Client, Input, Options)
     request(Client, <<"DescribeApplicationAssignment">>, Input, Options).
 
 %% @doc Retrieves details about a provider that can be used to connect an
-%% Amazon Web Services managed application or customer managed application to
-%% IAM Identity Center.
+%% Amazon Web Services managed
+%% application or customer managed application to IAM Identity Center.
 -spec describe_application_provider(aws_client:aws_client(), describe_application_provider_request()) ->
     {ok, describe_application_provider_response(), tuple()} |
     {error, any()} |
@@ -2690,12 +2713,13 @@ describe_application_provider(Client, Input, Options)
 
 %% @doc Returns the details of an instance of IAM Identity Center.
 %%
-%% The status can be one of the following:
+%% The status can be one of the
+%% following:
 %%
 %% `CREATE_IN_PROGRESS' - The instance is in the process of being
-%% created. When the
-%% instance is ready for use, DescribeInstance returns the status of
-%% `ACTIVE'. While the instance is in the
+%% created. When the instance is ready for use, DescribeInstance returns the
+%% status
+%% of `ACTIVE'. While the instance is in the
 %% `CREATE_IN_PROGRESS' state, you can call only DescribeInstance
 %% and DeleteInstance operations.
 %%
@@ -2784,9 +2808,10 @@ describe_permission_set_provisioning_status(Client, Input, Options)
 %% @doc Retrieves details about a trusted token issuer configuration stored
 %% in an instance of IAM Identity Center.
 %%
-%% Details include the name of the trusted token issuer, the issuer URL, and
-%% the path of the source attribute and the destination attribute for a
-%% trusted token issuer configuration.
+%% Details
+%% include the name of the trusted token issuer, the issuer URL, and the path
+%% of the source attribute and
+%% the destination attribute for a trusted token issuer configuration.
 -spec describe_trusted_token_issuer(aws_client:aws_client(), describe_trusted_token_issuer_request()) ->
     {ok, describe_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
@@ -3005,6 +3030,11 @@ list_account_assignments(Client, Input, Options)
 %% @doc Retrieves a list of the IAM Identity Center associated Amazon Web
 %% Services accounts that the principal has access
 %% to.
+%%
+%% This action must be called from the management account containing your
+%% organization
+%% instance of IAM Identity Center. This action is not valid for account
+%% instances of IAM Identity Center.
 -spec list_account_assignments_for_principal(aws_client:aws_client(), list_account_assignments_for_principal_request()) ->
     {ok, list_account_assignments_for_principal_response(), tuple()} |
     {error, any()} |
@@ -3076,6 +3106,15 @@ list_application_assignments(Client, Input, Options)
     request(Client, <<"ListApplicationAssignments">>, Input, Options).
 
 %% @doc Lists the applications to which a specified principal is assigned.
+%%
+%% You must provide a
+%% filter when calling this action from a member account against your
+%% organization instance
+%% of IAM Identity Center. A filter is not required when called from the
+%% management account against an
+%% organization instance of IAM Identity Center, or from a member account
+%% against an account instance of
+%% IAM Identity Center in the same account.
 -spec list_application_assignments_for_principal(aws_client:aws_client(), list_application_assignments_for_principal_request()) ->
     {ok, list_application_assignments_for_principal_response(), tuple()} |
     {error, any()} |
@@ -3148,11 +3187,13 @@ list_application_providers(Client, Input, Options)
 %% @doc Lists all applications associated with the instance of IAM Identity
 %% Center.
 %%
-%% When listing applications for an instance
-%% in the management account, member accounts must use the
-%% `applicationAccount'
-%% parameter to filter the list to only applications created from that
-%% account.
+%% When listing
+%% applications for an organization instance in the management account,
+%% member accounts
+%% must use the `applicationAccount' parameter to filter the list to only
+%% applications created from that account. When listing applications for an
+%% account
+%% instance in the same member account, a filter is not required.
 -spec list_applications(aws_client:aws_client(), list_applications_request()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
@@ -3354,14 +3395,17 @@ put_application_access_scope(Client, Input, Options)
 
 %% @doc Configure how users gain access to an application.
 %%
-%% If `AssignmentsRequired' is `true' (default value), users don’t
-%% have access to the application unless an assignment is created using the
-%% CreateApplicationAssignment API:
+%% If `AssignmentsRequired'
+%% is `true' (default value), users don’t have access to the application
+%% unless
+%% an assignment is created using the CreateApplicationAssignment API:
 %% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html.
-%% If `false', all users have access to the application.
-%% If an assignment is created using CreateApplicationAssignment:
+%% If `false', all users have
+%% access to the application. If an assignment is created using
+%% CreateApplicationAssignment:
 %% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html.,
-%% the user retains access if `AssignmentsRequired' is set to `true'.
+%% the user retains access if
+%% `AssignmentsRequired' is set to `true'.
 -spec put_application_assignment_configuration(aws_client:aws_client(), put_application_assignment_configuration_request()) ->
     {ok, put_application_assignment_configuration_response(), tuple()} |
     {error, any()} |
@@ -3395,7 +3439,75 @@ put_application_authentication_method(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutApplicationAuthenticationMethod">>, Input, Options).
 
-%% @doc Adds a grant to an application.
+%% @doc Creates a configuration for an application to use grants.
+%%
+%% Conceptually grants are
+%% authorization to request actions related to tokens. This configuration
+%% will be used when
+%% parties are requesting and receiving tokens during the trusted identity
+%% propagation
+%% process. For more information on the IAM Identity Center supported grant
+%% workflows, see SAML 2.0
+%% and OAuth 2.0:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-oauth2.html.
+%%
+%% A grant is created between your applications and Identity Center instance
+%% which
+%% enables an application to use specified mechanisms to obtain tokens. These
+%% tokens are
+%% used by your applications to gain access to Amazon Web Services resources
+%% on behalf of users. The
+%% following elements are within these exchanges:
+%%
+%% Requester - The application requesting access
+%% to Amazon Web Services resources.
+%%
+%% Subject - Typically the user that is
+%% requesting access to Amazon Web Services resources.
+%%
+%% Grant - Conceptually, a grant is
+%% authorization to access Amazon Web Services resources. These grants
+%% authorize token generation
+%% for authenticating access to the requester and for the request to make
+%% requests
+%% on behalf of the subjects. There are four types of grants:
+%%
+%% AuthorizationCode - Allows an
+%% application to request authorization through a series of user-agent
+%% redirects.
+%%
+%% JWT bearer - Authorizes an
+%% application to exchange a JSON Web Token that came from an external
+%% identity provider. To learn more, see RFC
+%% 6479: https://datatracker.ietf.org/doc/html/rfc6749.
+%%
+%% Refresh token - Enables application
+%% to request new access tokens to replace expiring or expired access
+%% tokens.
+%%
+%% Exchange token - A grant that
+%% requests tokens from the authorization server by providing a ‘subject’
+%% token with access scope authorizing trusted identity propagation to this
+%% application. To learn more, see RFC
+%% 8693: https://datatracker.ietf.org/doc/html/rfc8693.
+%%
+%% Authorization server - IAM Identity Center requests
+%% tokens.
+%%
+%% User credentials are never shared directly within these exchanges.
+%% Instead,
+%% applications use grants to request access tokens from IAM Identity Center.
+%% For more
+%% information, see RFC
+%% 6479: https://datatracker.ietf.org/doc/html/rfc6749.
+%%
+%% == Use cases ==
+%%
+%% Connecting to custom applications.
+%%
+%% Configuring an Amazon Web Services service to make calls to another Amazon
+%% Web Services services using JWT
+%% tokens.
 -spec put_application_grant(aws_client:aws_client(), put_application_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3573,12 +3685,12 @@ update_permission_set(Client, Input, Options)
     request(Client, <<"UpdatePermissionSet">>, Input, Options).
 
 %% @doc Updates the name of the trusted token issuer, or the path of a source
-%% attribute or destination attribute for a trusted token issuer
-%% configuration.
+%% attribute or destination
+%% attribute for a trusted token issuer configuration.
 %%
 %% Updating this trusted token issuer configuration might cause users to lose
-%% access to any applications that are configured to use the trusted token
-%% issuer.
+%% access to any
+%% applications that are configured to use the trusted token issuer.
 -spec update_trusted_token_issuer(aws_client:aws_client(), update_trusted_token_issuer_request()) ->
     {ok, update_trusted_token_issuer_response(), tuple()} |
     {error, any()} |

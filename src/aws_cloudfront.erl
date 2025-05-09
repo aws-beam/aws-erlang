@@ -5,11 +5,9 @@
 %%
 %% This is the Amazon CloudFront API Reference.
 %%
-%% This guide is for developers
-%% who need detailed information about CloudFront API actions, data types,
-%% and errors. For
-%% detailed information about CloudFront features, see the
-%% Amazon CloudFront Developer Guide:
+%% This guide is for developers who need detailed information about
+%% CloudFront API actions, data types, and errors. For detailed information
+%% about CloudFront features, see the Amazon CloudFront Developer Guide:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html.
 -module(aws_cloudfront).
 
@@ -6599,25 +6597,19 @@
 %%====================================================================
 
 %% @doc Associates an alias (also known as a CNAME or an alternate domain
-%% name) with a CloudFront
-%% distribution.
+%% name) with a CloudFront distribution.
 %%
 %% With this operation you can move an alias that's already in use on a
-%% CloudFront distribution
-%% to a different distribution in one step. This prevents the downtime that
-%% could occur if
-%% you first remove the alias from one distribution and then separately add
-%% the alias to
-%% another distribution.
+%% CloudFront distribution to a different distribution in one step. This
+%% prevents the downtime that could occur if you first remove the alias from
+%% one distribution and then separately add the alias to another
+%% distribution.
 %%
 %% To use this operation to associate an alias with a distribution, you
-%% provide the alias
-%% and the ID of the target distribution for the alias. For more information,
-%% including how
-%% to set up the target distribution, prerequisites that you must complete,
-%% and other
-%% restrictions, see Moving an alternate domain name to a different
-%% distribution:
+%% provide the alias and the ID of the target distribution for the alias. For
+%% more information, including how to set up the target distribution,
+%% prerequisites that you must complete, and other restrictions, see Moving
+%% an alternate domain name to a different distribution:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move
 %% in the Amazon CloudFront Developer Guide.
 -spec associate_alias(aws_client:aws_client(), binary() | list(), associate_alias_request()) ->
@@ -6759,19 +6751,16 @@ associate_distribution_web_acl(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Creates a staging distribution using the configuration of the
-%% provided primary
-%% distribution.
+%% provided primary distribution.
 %%
 %% A staging distribution is a copy of an existing distribution (called the
 %% primary distribution) that you can use in a continuous deployment
 %% workflow.
 %%
 %% After you create a staging distribution, you can use
-%% `UpdateDistribution'
-%% to modify the staging distribution's configuration. Then you can use
-%% `CreateContinuousDeploymentPolicy' to incrementally move traffic to
-%% the
-%% staging distribution.
+%% `UpdateDistribution' to modify the staging distribution's
+%% configuration. Then you can use `CreateContinuousDeploymentPolicy' to
+%% incrementally move traffic to the staging distribution.
 %%
 %% This API operation requires the following IAM permissions:
 %%
@@ -6889,33 +6878,26 @@ create_anycast_ip_list(Client, Input0, Options0) ->
 %% @doc Creates a cache policy.
 %%
 %% After you create a cache policy, you can attach it to one or more cache
-%% behaviors.
-%% When it's attached to a cache behavior, the cache policy determines
-%% the
-%% following:
+%% behaviors. When it's attached to a cache behavior, the cache policy
+%% determines the following:
 %%
-%% The values that CloudFront includes in the cache key. These
-%% values can include HTTP headers, cookies, and URL query strings.
-%% CloudFront uses the
-%% cache key to find an object in its cache that it can return to the
-%% viewer.
+%% The values that CloudFront includes in the cache key. These values can
+%% include HTTP headers, cookies, and URL query strings. CloudFront uses the
+%% cache key to find an object in its cache that it can return to the viewer.
 %%
 %% The default, minimum, and maximum time to live (TTL) values that you want
 %% objects to stay in the CloudFront cache.
 %%
 %% The headers, cookies, and query strings that are included in the cache key
-%% are also included
-%% in requests that CloudFront sends to the origin. CloudFront sends a
-%% request when it can't find an
-%% object in its cache that matches the request's cache key. If you want
-%% to send values to
+%% are also included in requests that CloudFront sends to the origin.
+%% CloudFront sends a request when it can't find an object in its cache
+%% that matches the request's cache key. If you want to send values to
 %% the origin but not include them in the cache key, use
 %% `OriginRequestPolicy'.
 %%
 %% For more information about cache policies, see Controlling the cache key:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
-%% in the
-%% Amazon CloudFront Developer Guide.
+%% in the Amazon CloudFront Developer Guide.
 -spec create_cache_policy(aws_client:aws_client(), create_cache_policy_request()) ->
     {ok, create_cache_policy_result(), tuple()} |
     {error, any()} |
@@ -6968,13 +6950,10 @@ create_cache_policy(Client, Input0, Options0) ->
 
 %% @doc Creates a new origin access identity.
 %%
-%% If you're using Amazon S3 for your origin, you can
-%% use an origin access identity to require users to access your content
-%% using a CloudFront URL
-%% instead of the Amazon S3 URL. For more information about how to use origin
-%% access identities,
-%% see Serving Private
-%% Content through CloudFront:
+%% If you're using Amazon S3 for your origin, you can use an origin
+%% access identity to require users to access your content using a CloudFront
+%% URL instead of the Amazon S3 URL. For more information about how to use
+%% origin access identities, see Serving Private Content through CloudFront:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html
 %% in the Amazon CloudFront Developer Guide.
 -spec create_cloud_front_origin_access_identity(aws_client:aws_client(), create_cloud_front_origin_access_identity_request()) ->
@@ -7078,21 +7057,17 @@ create_connection_group(Client, Input0, Options0) ->
     end.
 
 %% @doc Creates a continuous deployment policy that distributes traffic for a
-%% custom domain
-%% name to two different CloudFront distributions.
+%% custom domain name to two different CloudFront distributions.
 %%
 %% To use a continuous deployment policy, first use `CopyDistribution' to
 %% create a staging distribution, then use `UpdateDistribution' to modify
-%% the
-%% staging distribution's configuration.
+%% the staging distribution's configuration.
 %%
 %% After you create and update a staging distribution, you can use a
-%% continuous
-%% deployment policy to incrementally move traffic to the staging
-%% distribution. This
-%% workflow enables you to test changes to a distribution's configuration
-%% before moving all
-%% of your domain's production traffic to the new configuration.
+%% continuous deployment policy to incrementally move traffic to the staging
+%% distribution. This workflow enables you to test changes to a
+%% distribution's configuration before moving all of your domain's
+%% production traffic to the new configuration.
 -spec create_continuous_deployment_policy(aws_client:aws_client(), create_continuous_deployment_policy_request()) ->
     {ok, create_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
@@ -7246,8 +7221,7 @@ create_distribution_tenant(Client, Input0, Options0) ->
 
 %% @doc Create a new distribution with tags.
 %%
-%% This API operation requires the following IAM
-%% permissions:
+%% This API operation requires the following IAM permissions:
 %%
 %% CreateDistribution:
 %% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html
@@ -7409,19 +7383,15 @@ create_field_level_encryption_profile(Client, Input0, Options0) ->
 %% @doc Creates a CloudFront function.
 %%
 %% To create a function, you provide the function code and some configuration
-%% information
-%% about the function. The response contains an Amazon Resource Name (ARN)
-%% that uniquely
-%% identifies the function.
+%% information about the function. The response contains an Amazon Resource
+%% Name (ARN) that uniquely identifies the function.
 %%
 %% When you create a function, it's in the `DEVELOPMENT' stage. In
-%% this stage,
-%% you can test the function with `TestFunction', and update it with
-%% `UpdateFunction'.
+%% this stage, you can test the function with `TestFunction', and update
+%% it with `UpdateFunction'.
 %%
 %% When you're ready to use your function with a CloudFront distribution,
-%% use
-%% `PublishFunction' to copy the function from the `DEVELOPMENT'
+%% use `PublishFunction' to copy the function from the `DEVELOPMENT'
 %% stage to `LIVE'. When it's live, you can attach the function to a
 %% distribution's cache behavior, using the function's ARN.
 -spec create_function(aws_client:aws_client(), create_function_request()) ->
@@ -7587,21 +7557,16 @@ create_invalidation_for_distribution_tenant(Client, Id, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html.
 %%
 %% To create a key group, you must specify at least one public key for the
-%% key group.
-%% After you create a key group, you can reference it from one or more cache
-%% behaviors.
-%% When you reference a key group in a cache behavior, CloudFront requires
-%% signed URLs or signed
-%% cookies for all requests that match the cache behavior. The URLs or
-%% cookies must be
-%% signed with a private key whose corresponding public key is in the key
-%% group. The signed
+%% key group. After you create a key group, you can reference it from one or
+%% more cache behaviors. When you reference a key group in a cache behavior,
+%% CloudFront requires signed URLs or signed cookies for all requests that
+%% match the cache behavior. The URLs or cookies must be signed with a
+%% private key whose corresponding public key is in the key group. The signed
 %% URL or cookie contains information about which public key CloudFront
-%% should use to verify the
-%% signature. For more information, see Serving private content:
+%% should use to verify the signature. For more information, see Serving
+%% private content:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html
-%% in the
-%% Amazon CloudFront Developer Guide.
+%% in the Amazon CloudFront Developer Guide.
 -spec create_key_group(aws_client:aws_client(), create_key_group_request()) ->
     {ok, create_key_group_result(), tuple()} |
     {error, any()} |
@@ -7710,14 +7675,12 @@ create_key_value_store(Client, Input0, Options0) ->
 %% @doc Enables or disables additional Amazon CloudWatch metrics for the
 %% specified CloudFront distribution.
 %%
-%% The
-%% additional metrics incur an additional cost.
+%% The additional metrics incur an additional cost.
 %%
 %% For more information, see Viewing additional CloudFront distribution
 %% metrics:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/viewing-cloudfront-metrics.html#monitoring-console.distributions-additional
-%% in
-%% the Amazon CloudFront Developer Guide.
+%% in the Amazon CloudFront Developer Guide.
 -spec create_monitoring_subscription(aws_client:aws_client(), binary() | list(), create_monitoring_subscription_request()) ->
     {ok, create_monitoring_subscription_result(), tuple()} |
     {error, any()} |
@@ -7753,20 +7716,18 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 
 %% @doc Creates a new origin access control in CloudFront.
 %%
-%% After you create an origin access
-%% control, you can add it to an origin in a CloudFront distribution so that
-%% CloudFront sends
-%% authenticated (signed) requests to the origin.
+%% After you create an origin access control, you can add it to an origin in
+%% a CloudFront distribution so that CloudFront sends authenticated (signed)
+%% requests to the origin.
 %%
 %% This makes it possible to block public access to the origin, allowing
-%% viewers (users) to
-%% access the origin's content only through CloudFront.
+%% viewers (users) to access the origin's content only through
+%% CloudFront.
 %%
 %% For more information about using a CloudFront origin access control, see
 %% Restricting access to an Amazon Web Services origin:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-origin.html
-%% in the
-%% Amazon CloudFront Developer Guide.
+%% in the Amazon CloudFront Developer Guide.
 -spec create_origin_access_control(aws_client:aws_client(), create_origin_access_control_request()) ->
     {ok, create_origin_access_control_result(), tuple()} |
     {error, any()} |
@@ -7820,40 +7781,30 @@ create_origin_access_control(Client, Input0, Options0) ->
 %% @doc Creates an origin request policy.
 %%
 %% After you create an origin request policy, you can attach it to one or
-%% more cache
-%% behaviors. When it's attached to a cache behavior, the origin request
-%% policy determines
-%% the values that CloudFront includes in requests that it sends to the
-%% origin. Each request that
-%% CloudFront sends to the origin includes the following:
+%% more cache behaviors. When it's attached to a cache behavior, the
+%% origin request policy determines the values that CloudFront includes in
+%% requests that it sends to the origin. Each request that CloudFront sends
+%% to the origin includes the following:
 %%
 %% The request body and the URL path (without the domain name) from the
-%% viewer
-%% request.
+%% viewer request.
 %%
 %% The headers that CloudFront automatically includes in every origin
-%% request,
-%% including `Host', `User-Agent', and
-%% `X-Amz-Cf-Id'.
+%% request, including `Host', `User-Agent', and `X-Amz-Cf-Id'.
 %%
 %% All HTTP headers, cookies, and URL query strings that are specified in the
 %% cache policy or the origin request policy. These can include items from
-%% the
-%% viewer request and, in the case of headers, additional ones that are added
-%% by
-%% CloudFront.
+%% the viewer request and, in the case of headers, additional ones that are
+%% added by CloudFront.
 %%
 %% CloudFront sends a request when it can't find a valid object in its
-%% cache that matches the
-%% request. If you want to send values to the origin and also include them in
-%% the cache
-%% key, use `CachePolicy'.
+%% cache that matches the request. If you want to send values to the origin
+%% and also include them in the cache key, use `CachePolicy'.
 %%
 %% For more information about origin request policies, see Controlling origin
 %% requests:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
-%% in the
-%% Amazon CloudFront Developer Guide.
+%% in the Amazon CloudFront Developer Guide.
 -spec create_origin_request_policy(aws_client:aws_client(), create_origin_request_policy_request()) ->
     {ok, create_origin_request_policy_result(), tuple()} |
     {error, any()} |
@@ -7962,15 +7913,13 @@ create_public_key(Client, Input0, Options0) ->
 %% @doc Creates a real-time log configuration.
 %%
 %% After you create a real-time log configuration, you can attach it to one
-%% or more cache
-%% behaviors to send real-time log data to the specified Amazon Kinesis data
-%% stream.
+%% or more cache behaviors to send real-time log data to the specified Amazon
+%% Kinesis data stream.
 %%
 %% For more information about real-time log configurations, see Real-time
 %% logs:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html
-%% in the
-%% Amazon CloudFront Developer Guide.
+%% in the Amazon CloudFront Developer Guide.
 -spec create_realtime_log_config(aws_client:aws_client(), create_realtime_log_config_request()) ->
     {ok, create_realtime_log_config_result(), tuple()} |
     {error, any()} |
@@ -8007,26 +7956,20 @@ create_realtime_log_config(Client, Input0, Options0) ->
 %% @doc Creates a response headers policy.
 %%
 %% A response headers policy contains information about a set of HTTP
-%% headers. To create a
-%% response headers policy, you provide some metadata about the policy and a
-%% set of
-%% configurations that specify the headers.
+%% headers. To create a response headers policy, you provide some metadata
+%% about the policy and a set of configurations that specify the headers.
 %%
 %% After you create a response headers policy, you can use its ID to attach
-%% it to one or more
-%% cache behaviors in a CloudFront distribution. When it's attached to a
-%% cache behavior, the
-%% response headers policy affects the HTTP headers that CloudFront includes
-%% in HTTP responses to
-%% requests that match the cache behavior. CloudFront adds or removes
-%% response headers according
-%% to the configuration of the response headers policy.
+%% it to one or more cache behaviors in a CloudFront distribution. When
+%% it's attached to a cache behavior, the response headers policy affects
+%% the HTTP headers that CloudFront includes in HTTP responses to requests
+%% that match the cache behavior. CloudFront adds or removes response headers
+%% according to the configuration of the response headers policy.
 %%
 %% For more information, see Adding or removing HTTP headers in CloudFront
 %% responses:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/modifying-response-headers.html
-%% in the
-%% Amazon CloudFront Developer Guide.
+%% in the Amazon CloudFront Developer Guide.
 -spec create_response_headers_policy(aws_client:aws_client(), create_response_headers_policy_request()) ->
     {ok, create_response_headers_policy_result(), tuple()} |
     {error, any()} |
@@ -8082,8 +8025,7 @@ create_response_headers_policy(Client, Input0, Options0) ->
 %% Amazon CloudFront is deprecating real-time messaging protocol (RTMP)
 %% distributions on December 31, 2020. For more information, read the
 %% announcement: http://forums.aws.amazon.com/ann.jspa?annID=7356 on the
-%% Amazon CloudFront discussion
-%% forum.
+%% Amazon CloudFront discussion forum.
 -spec create_streaming_distribution(aws_client:aws_client(), create_streaming_distribution_request()) ->
     {ok, create_streaming_distribution_result(), tuple()} |
     {error, any()} |
@@ -8139,8 +8081,7 @@ create_streaming_distribution(Client, Input0, Options0) ->
 %% Amazon CloudFront is deprecating real-time messaging protocol (RTMP)
 %% distributions on December 31, 2020. For more information, read the
 %% announcement: http://forums.aws.amazon.com/ann.jspa?annID=7356 on the
-%% Amazon CloudFront discussion
-%% forum.
+%% Amazon CloudFront discussion forum.
 -spec create_streaming_distribution_with_tags(aws_client:aws_client(), create_streaming_distribution_with_tags_request()) ->
     {ok, create_streaming_distribution_with_tags_result(), tuple()} |
     {error, any()} |
@@ -8281,14 +8222,11 @@ delete_anycast_ip_list(Client, Id, Input0, Options0) ->
 %% @doc Deletes a cache policy.
 %%
 %% You cannot delete a cache policy if it's attached to a cache behavior.
-%% First update
-%% your distributions to remove the cache policy from all cache behaviors,
-%% then delete the
-%% cache policy.
+%% First update your distributions to remove the cache policy from all cache
+%% behaviors, then delete the cache policy.
 %%
 %% To delete a cache policy, you must provide the policy's identifier and
-%% version. To get
-%% these values, you can use `ListCachePolicies' or
+%% version. To get these values, you can use `ListCachePolicies' or
 %% `GetCachePolicy'.
 -spec delete_cache_policy(aws_client:aws_client(), binary() | list(), delete_cache_policy_request()) ->
     {ok, undefined, tuple()} |
@@ -8400,10 +8338,8 @@ delete_connection_group(Client, Id, Input0, Options0) ->
 %% @doc Deletes a continuous deployment policy.
 %%
 %% You cannot delete a continuous deployment policy that's attached to a
-%% primary
-%% distribution. First update your distribution to remove the continuous
-%% deployment policy,
-%% then you can delete the policy.
+%% primary distribution. First update your distribution to remove the
+%% continuous deployment policy, then you can delete the policy.
 -spec delete_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), delete_continuous_deployment_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8592,14 +8528,12 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 %% @doc Deletes a CloudFront function.
 %%
 %% You cannot delete a function if it's associated with a cache behavior.
-%% First, update
-%% your distributions to remove the function association from all cache
-%% behaviors, then
-%% delete the function.
+%% First, update your distributions to remove the function association from
+%% all cache behaviors, then delete the function.
 %%
 %% To delete a function, you must provide the function's name and version
-%% (`ETag' value). To get these values, you can use
-%% `ListFunctions' and `DescribeFunction'.
+%% (`ETag' value). To get these values, you can use `ListFunctions'
+%% and `DescribeFunction'.
 -spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8638,15 +8572,12 @@ delete_function(Client, Name, Input0, Options0) ->
 %% @doc Deletes a key group.
 %%
 %% You cannot delete a key group that is referenced in a cache behavior.
-%% First update
-%% your distributions to remove the key group from all cache behaviors, then
-%% delete the key
-%% group.
+%% First update your distributions to remove the key group from all cache
+%% behaviors, then delete the key group.
 %%
 %% To delete a key group, you must provide the key group's identifier and
-%% version. To get
-%% these values, use `ListKeyGroups' followed by `GetKeyGroup' or
-%% `GetKeyGroupConfig'.
+%% version. To get these values, use `ListKeyGroups' followed by
+%% `GetKeyGroup' or `GetKeyGroupConfig'.
 -spec delete_key_group(aws_client:aws_client(), binary() | list(), delete_key_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8756,10 +8687,8 @@ delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 %% @doc Deletes a CloudFront origin access control.
 %%
 %% You cannot delete an origin access control if it's in use. First,
-%% update all
-%% distributions to remove the origin access control from all origins, then
-%% delete the
-%% origin access control.
+%% update all distributions to remove the origin access control from all
+%% origins, then delete the origin access control.
 -spec delete_origin_access_control(aws_client:aws_client(), binary() | list(), delete_origin_access_control_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8798,16 +8727,13 @@ delete_origin_access_control(Client, Id, Input0, Options0) ->
 %% @doc Deletes an origin request policy.
 %%
 %% You cannot delete an origin request policy if it's attached to any
-%% cache behaviors.
-%% First update your distributions to remove the origin request policy from
-%% all cache
-%% behaviors, then delete the origin request policy.
+%% cache behaviors. First update your distributions to remove the origin
+%% request policy from all cache behaviors, then delete the origin request
+%% policy.
 %%
 %% To delete an origin request policy, you must provide the policy's
-%% identifier and
-%% version. To get the identifier, you can use
-%% `ListOriginRequestPolicies' or
-%% `GetOriginRequestPolicy'.
+%% identifier and version. To get the identifier, you can use
+%% `ListOriginRequestPolicies' or `GetOriginRequestPolicy'.
 -spec delete_origin_request_policy(aws_client:aws_client(), binary() | list(), delete_origin_request_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8882,16 +8808,14 @@ delete_public_key(Client, Id, Input0, Options0) ->
 %% @doc Deletes a real-time log configuration.
 %%
 %% You cannot delete a real-time log configuration if it's attached to a
-%% cache behavior.
-%% First update your distributions to remove the real-time log configuration
-%% from all cache
-%% behaviors, then delete the real-time log configuration.
+%% cache behavior. First update your distributions to remove the real-time
+%% log configuration from all cache behaviors, then delete the real-time log
+%% configuration.
 %%
 %% To delete a real-time log configuration, you can provide the
-%% configuration's name or
-%% its Amazon Resource Name (ARN). You must provide at least one. If you
-%% provide both, CloudFront
-%% uses the name to identify the real-time log configuration to delete.
+%% configuration's name or its Amazon Resource Name (ARN). You must
+%% provide at least one. If you provide both, CloudFront uses the name to
+%% identify the real-time log configuration to delete.
 -spec delete_realtime_log_config(aws_client:aws_client(), delete_realtime_log_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8928,16 +8852,13 @@ delete_realtime_log_config(Client, Input0, Options0) ->
 %% @doc Deletes a response headers policy.
 %%
 %% You cannot delete a response headers policy if it's attached to a
-%% cache behavior.
-%% First update your distributions to remove the response headers policy from
-%% all cache
-%% behaviors, then delete the response headers policy.
+%% cache behavior. First update your distributions to remove the response
+%% headers policy from all cache behaviors, then delete the response headers
+%% policy.
 %%
 %% To delete a response headers policy, you must provide the policy's
-%% identifier and
-%% version. To get these values, you can use
-%% `ListResponseHeadersPolicies' or
-%% `GetResponseHeadersPolicy'.
+%% identifier and version. To get these values, you can use
+%% `ListResponseHeadersPolicies' or `GetResponseHeadersPolicy'.
 -spec delete_response_headers_policy(aws_client:aws_client(), binary() | list(), delete_response_headers_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8975,51 +8896,44 @@ delete_response_headers_policy(Client, Id, Input0, Options0) ->
 
 %% @doc Delete a streaming distribution.
 %%
-%% To delete an RTMP distribution using the CloudFront API,
-%% perform the following steps.
+%% To delete an RTMP distribution using the CloudFront API, perform the
+%% following steps.
 %%
-%% To delete an RTMP distribution using the CloudFront
-%% API:
+%% To delete an RTMP distribution using the CloudFront API:
 %%
 %% Disable the RTMP distribution.
 %%
 %% Submit a `GET Streaming Distribution Config' request to get the
 %% current configuration and the `Etag' header for the distribution.
 %%
-%% Update the XML document that was returned in the response to your
-%% ```
-%% GET Streaming Distribution Config''' request to change the
-%% value of
+%% Update the XML document that was returned in the response to your `GET
+%% Streaming Distribution Config' request to change the value of
 %% `Enabled' to `false'.
 %%
 %% Submit a `PUT Streaming Distribution Config' request to update the
 %% configuration for your distribution. In the request body, include the XML
 %% document that you updated in Step 3. Then set the value of the HTTP
-%% `If-Match' header to the value of the `ETag' header
-%% that CloudFront returned when you submitted the
-%% ```
-%% GET Streaming Distribution Config''' request in Step 2.
+%% `If-Match' header to the value of the `ETag' header that
+%% CloudFront returned when you submitted the `GET Streaming Distribution
+%% Config' request in Step 2.
 %%
-%% Review the response to the `PUT Streaming Distribution Config'
-%% request to confirm that the distribution was successfully disabled.
+%% Review the response to the `PUT Streaming Distribution Config' request
+%% to confirm that the distribution was successfully disabled.
 %%
-%% Submit a `GET Streaming Distribution Config' request to confirm
-%% that your changes have propagated. When propagation is complete, the value
-%% of
+%% Submit a `GET Streaming Distribution Config' request to confirm that
+%% your changes have propagated. When propagation is complete, the value of
 %% `Status' is `Deployed'.
 %%
-%% Submit a `DELETE Streaming Distribution' request. Set the value of
-%% the HTTP `If-Match' header to the value of the `ETag'
-%% header that CloudFront returned when you submitted the
-%% ```
-%% GET Streaming Distribution Config''' request in Step 2.
+%% Submit a `DELETE Streaming Distribution' request. Set the value of the
+%% HTTP `If-Match' header to the value of the `ETag' header that
+%% CloudFront returned when you submitted the `GET Streaming Distribution
+%% Config' request in Step 2.
 %%
-%% Review the response to your `DELETE Streaming Distribution' request
-%% to confirm that the distribution was successfully deleted.
+%% Review the response to your `DELETE Streaming Distribution' request to
+%% confirm that the distribution was successfully deleted.
 %%
 %% For information about deleting a distribution using the CloudFront
-%% console, see Deleting a
-%% Distribution:
+%% console, see Deleting a Distribution:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html
 %% in the Amazon CloudFront Developer Guide.
 -spec delete_streaming_distribution(aws_client:aws_client(), binary() | list(), delete_streaming_distribution_request()) ->
@@ -9110,15 +9024,13 @@ delete_vpc_origin(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Gets configuration information and metadata about a CloudFront
-%% function, but not the
-%% function's code.
+%% function, but not the function's code.
 %%
 %% To get a function's code, use `GetFunction'.
 %%
 %% To get configuration information and metadata about a function, you must
-%% provide the
-%% function's name and stage. To get these values, you can use
-%% `ListFunctions'.
+%% provide the function's name and stage. To get these values, you can
+%% use `ListFunctions'.
 -spec describe_function(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_function_result(), tuple()} |
     {error, any()} |
@@ -9392,13 +9304,10 @@ get_anycast_ip_list(Client, Id, QueryMap, HeadersMap, Options0)
 %% The date and time when the policy was last modified.
 %%
 %% To get a cache policy, you must provide the policy's identifier. If
-%% the cache policy
-%% is attached to a distribution's cache behavior, you can get the
-%% policy's identifier
-%% using `ListDistributions' or `GetDistribution'. If the cache
-%% policy is not attached to a cache behavior, you can get the identifier
-%% using
-%% `ListCachePolicies'.
+%% the cache policy is attached to a distribution's cache behavior, you
+%% can get the policy's identifier using `ListDistributions' or
+%% `GetDistribution'. If the cache policy is not attached to a cache
+%% behavior, you can get the identifier using `ListCachePolicies'.
 -spec get_cache_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cache_policy_result(), tuple()} |
     {error, any()} |
@@ -9454,12 +9363,10 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets a cache policy configuration.
 %%
 %% To get a cache policy configuration, you must provide the policy's
-%% identifier. If the
-%% cache policy is attached to a distribution's cache behavior, you can
-%% get the policy's
-%% identifier using `ListDistributions' or `GetDistribution'. If the
-%% cache policy is not attached to a cache behavior, you can get the
-%% identifier using
+%% identifier. If the cache policy is attached to a distribution's cache
+%% behavior, you can get the policy's identifier using
+%% `ListDistributions' or `GetDistribution'. If the cache policy is
+%% not attached to a cache behavior, you can get the identifier using
 %% `ListCachePolicies'.
 -spec get_cache_policy_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cache_policy_config_result(), tuple()} |
@@ -9731,8 +9638,8 @@ get_connection_group_by_routing_endpoint(Client, RoutingEndpoint, QueryMap, Head
     end.
 
 %% @doc Gets a continuous deployment policy, including metadata (the
-%% policy's identifier and
-%% the date and time when the policy was last modified).
+%% policy's identifier and the date and time when the policy was last
+%% modified).
 -spec get_continuous_deployment_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
@@ -10269,12 +10176,11 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Opti
 
 %% @doc Gets the code of a CloudFront function.
 %%
-%% To get configuration information and metadata about
-%% a function, use `DescribeFunction'.
+%% To get configuration information and metadata about a function, use
+%% `DescribeFunction'.
 %%
 %% To get a function's code, you must provide the function's name and
-%% stage. To get these
-%% values, you can use `ListFunctions'.
+%% stage. To get these values, you can use `ListFunctions'.
 -spec get_function(aws_client:aws_client(), binary() | list()) ->
     {ok, get_function_result(), tuple()} |
     {error, any()} |
@@ -10408,16 +10314,13 @@ get_invalidation_for_distribution_tenant(Client, DistributionTenantId, Id, Query
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a key group, including the date and time when the key group was
-%% last
-%% modified.
+%% last modified.
 %%
 %% To get a key group, you must provide the key group's identifier. If
-%% the key group is
-%% referenced in a distribution's cache behavior, you can get the key
-%% group's identifier
-%% using `ListDistributions' or `GetDistribution'. If the key group
-%% is not referenced in a cache behavior, you can get the identifier using
-%% `ListKeyGroups'.
+%% the key group is referenced in a distribution's cache behavior, you
+%% can get the key group's identifier using `ListDistributions' or
+%% `GetDistribution'. If the key group is not referenced in a cache
+%% behavior, you can get the identifier using `ListKeyGroups'.
 -spec get_key_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_key_group_result(), tuple()} |
     {error, any()} |
@@ -10473,12 +10376,10 @@ get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets a key group configuration.
 %%
 %% To get a key group configuration, you must provide the key group's
-%% identifier. If the
-%% key group is referenced in a distribution's cache behavior, you can
-%% get the key group's
-%% identifier using `ListDistributions' or `GetDistribution'. If the
-%% key group is not referenced in a cache behavior, you can get the
-%% identifier using
+%% identifier. If the key group is referenced in a distribution's cache
+%% behavior, you can get the key group's identifier using
+%% `ListDistributions' or `GetDistribution'. If the key group is not
+%% referenced in a cache behavior, you can get the identifier using
 %% `ListKeyGroups'.
 -spec get_key_group_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_key_group_config_result(), tuple()} |
@@ -10570,8 +10471,7 @@ get_managed_certificate_details(Client, Identifier, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about whether additional CloudWatch metrics are
-%% enabled for the
-%% specified CloudFront distribution.
+%% enabled for the specified CloudFront distribution.
 -spec get_monitoring_subscription(aws_client:aws_client(), binary() | list()) ->
     {ok, get_monitoring_subscription_result(), tuple()} |
     {error, any()} |
@@ -10722,14 +10622,11 @@ get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% The date and time when the policy was last modified.
 %%
 %% To get an origin request policy, you must provide the policy's
-%% identifier. If the
-%% origin request policy is attached to a distribution's cache behavior,
-%% you can get the
-%% policy's identifier using `ListDistributions' or
-%% `GetDistribution'. If the origin request policy is not attached to a
-%% cache
-%% behavior, you can get the identifier using
-%% `ListOriginRequestPolicies'.
+%% identifier. If the origin request policy is attached to a
+%% distribution's cache behavior, you can get the policy's identifier
+%% using `ListDistributions' or `GetDistribution'. If the origin
+%% request policy is not attached to a cache behavior, you can get the
+%% identifier using `ListOriginRequestPolicies'.
 -spec get_origin_request_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_origin_request_policy_result(), tuple()} |
     {error, any()} |
@@ -10785,13 +10682,11 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets an origin request policy configuration.
 %%
 %% To get an origin request policy configuration, you must provide the
-%% policy's
-%% identifier. If the origin request policy is attached to a
-%% distribution's cache behavior,
-%% you can get the policy's identifier using `ListDistributions' or
-%% `GetDistribution'. If the origin request policy is not attached to a
-%% cache behavior, you can get the identifier using
-%% `ListOriginRequestPolicies'.
+%% policy's identifier. If the origin request policy is attached to a
+%% distribution's cache behavior, you can get the policy's identifier
+%% using `ListDistributions' or `GetDistribution'. If the origin
+%% request policy is not attached to a cache behavior, you can get the
+%% identifier using `ListOriginRequestPolicies'.
 -spec get_origin_request_policy_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_origin_request_policy_config_result(), tuple()} |
     {error, any()} |
@@ -10953,10 +10848,9 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets a real-time log configuration.
 %%
 %% To get a real-time log configuration, you can provide the
-%% configuration's name or its
-%% Amazon Resource Name (ARN). You must provide at least one. If you provide
-%% both, CloudFront
-%% uses the name to identify the real-time log configuration to get.
+%% configuration's name or its Amazon Resource Name (ARN). You must
+%% provide at least one. If you provide both, CloudFront uses the name to
+%% identify the real-time log configuration to get.
 -spec get_realtime_log_config(aws_client:aws_client(), get_realtime_log_config_request()) ->
     {ok, get_realtime_log_config_result(), tuple()} |
     {error, any()} |
@@ -10991,18 +10885,14 @@ get_realtime_log_config(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a response headers policy, including metadata (the policy's
-%% identifier and the
-%% date and time when the policy was last modified).
+%% identifier and the date and time when the policy was last modified).
 %%
 %% To get a response headers policy, you must provide the policy's
-%% identifier. If the
-%% response headers policy is attached to a distribution's cache
-%% behavior, you can get the
-%% policy's identifier using `ListDistributions' or
-%% `GetDistribution'. If the response headers policy is not attached to a
-%% cache
-%% behavior, you can get the identifier using
-%% `ListResponseHeadersPolicies'.
+%% identifier. If the response headers policy is attached to a
+%% distribution's cache behavior, you can get the policy's identifier
+%% using `ListDistributions' or `GetDistribution'. If the response
+%% headers policy is not attached to a cache behavior, you can get the
+%% identifier using `ListResponseHeadersPolicies'.
 -spec get_response_headers_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_response_headers_policy_result(), tuple()} |
     {error, any()} |
@@ -11058,14 +10948,11 @@ get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets a response headers policy configuration.
 %%
 %% To get a response headers policy configuration, you must provide the
-%% policy's
-%% identifier. If the response headers policy is attached to a
-%% distribution's cache
-%% behavior, you can get the policy's identifier using
-%% `ListDistributions' or
-%% `GetDistribution'. If the response headers policy is not attached to a
-%% cache behavior, you can get the identifier using
-%% `ListResponseHeadersPolicies'.
+%% policy's identifier. If the response headers policy is attached to a
+%% distribution's cache behavior, you can get the policy's identifier
+%% using `ListDistributions' or `GetDistribution'. If the response
+%% headers policy is not attached to a cache behavior, you can get the
+%% identifier using `ListResponseHeadersPolicies'.
 -spec get_response_headers_policy_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_response_headers_policy_config_result(), tuple()} |
     {error, any()} |
@@ -11119,8 +11006,7 @@ get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets information about a specified RTMP distribution, including the
-%% distribution
-%% configuration.
+%% distribution configuration.
 -spec get_streaming_distribution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_streaming_distribution_result(), tuple()} |
     {error, any()} |
@@ -11324,19 +11210,15 @@ list_anycast_ip_lists(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets a list of cache policies.
 %%
 %% You can optionally apply a filter to return only the managed policies
-%% created by
-%% Amazon Web Services, or only the custom policies created in your Amazon
-%% Web Services account.
+%% created by Amazon Web Services, or only the custom policies created in
+%% your Amazon Web Services account.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_cache_policies(aws_client:aws_client()) ->
     {ok, list_cache_policies_result(), tuple()} |
     {error, any()} |
@@ -11422,51 +11304,39 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of aliases (also called CNAMEs or alternate domain names)
-%% that conflict or
-%% overlap with the provided alias, and the associated CloudFront
-%% distributions and Amazon Web Services
-%% accounts for each conflicting alias.
+%% that conflict or overlap with the provided alias, and the associated
+%% CloudFront distributions and Amazon Web Services accounts for each
+%% conflicting alias.
 %%
-%% In the returned list, the distribution and account
-%% IDs are partially hidden, which allows you to identify the distributions
-%% and accounts
-%% that you own, but helps to protect the information of ones that you
-%% don't own.
+%% In the returned list, the distribution and account IDs are partially
+%% hidden, which allows you to identify the distributions and accounts that
+%% you own, but helps to protect the information of ones that you don't
+%% own.
 %%
 %% Use this operation to find aliases that are in use in CloudFront that
-%% conflict or overlap
-%% with the provided alias. For example, if you provide `www.example.com'
-%% as
-%% input, the returned list can include `www.example.com' and the
-%% overlapping
-%% wildcard alternate domain name (`*.example.com'), if they exist. If
-%% you
-%% provide `*.example.com' as input, the returned list can include
-%% `*.example.com' and any alternate domain names covered by that
-%% wildcard
-%% (for example, `www.example.com', `test.example.com',
-%% `dev.example.com', and so on), if they exist.
+%% conflict or overlap with the provided alias. For example, if you provide
+%% `www.example.com' as input, the returned list can include
+%% `www.example.com' and the overlapping wildcard alternate domain name
+%% (`*.example.com'), if they exist. If you provide `*.example.com'
+%% as input, the returned list can include `*.example.com' and any
+%% alternate domain names covered by that wildcard (for example,
+%% `www.example.com', `test.example.com', `dev.example.com', and
+%% so on), if they exist.
 %%
 %% To list conflicting aliases, you provide the alias to search and the ID of
-%% a
-%% distribution in your account that has an attached SSL/TLS certificate that
-%% includes the
-%% provided alias. For more information, including how to set up the
-%% distribution and
-%% certificate, see Moving an alternate domain name to a different
-%% distribution:
+%% a distribution in your account that has an attached SSL/TLS certificate
+%% that includes the provided alias. For more information, including how to
+%% set up the distribution and certificate, see Moving an alternate domain
+%% name to a different distribution:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move
 %% in the Amazon CloudFront Developer Guide.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_conflicting_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_conflicting_aliases_result(), tuple()} |
     {error, any()} |
@@ -11548,14 +11418,11 @@ list_connection_groups(Client, Input0, Options0) ->
 %% Services account.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_continuous_deployment_policies(aws_client:aws_client()) ->
     {ok, list_continuous_deployment_policies_result(), tuple()} |
     {error, any()} |
@@ -11754,18 +11621,14 @@ list_distributions_by_anycast_ip_list_id(Client, AnycastIpListId, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
-%% behavior that's
-%% associated with the specified cache policy.
+%% behavior that's associated with the specified cache policy.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_distributions_by_cache_policy_id(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
     {error, any()} |
@@ -11850,18 +11713,14 @@ list_distributions_by_connection_mode(Client, ConnectionMode, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
-%% behavior that
-%% references the specified key group.
+%% behavior that references the specified key group.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_distributions_by_key_group(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_key_group_result(), tuple()} |
     {error, any()} |
@@ -11904,18 +11763,14 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
-%% behavior that's
-%% associated with the specified origin request policy.
+%% behavior that's associated with the specified origin request policy.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_distributions_by_origin_request_policy_id(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
     {error, any()} |
@@ -11958,24 +11813,19 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distributions that have a cache behavior that's
-%% associated with the
-%% specified real-time log configuration.
+%% associated with the specified real-time log configuration.
 %%
 %% You can specify the real-time log configuration by its name or its Amazon
-%% Resource
-%% Name (ARN). You must provide at least one. If you provide both, CloudFront
-%% uses the name to
-%% identify the real-time log configuration to list distributions for.
+%% Resource Name (ARN). You must provide at least one. If you provide both,
+%% CloudFront uses the name to identify the real-time log configuration to
+%% list distributions for.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_distributions_by_realtime_log_config(aws_client:aws_client(), list_distributions_by_realtime_log_config_request()) ->
     {ok, list_distributions_by_realtime_log_config_result(), tuple()} |
     {error, any()} |
@@ -12010,18 +11860,14 @@ list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
-%% behavior that's
-%% associated with the specified response headers policy.
+%% behavior that's associated with the specified response headers policy.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_distributions_by_response_headers_policy_id(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
     {error, any()} |
@@ -12188,8 +12034,7 @@ list_domain_conflicts(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List all field-level encryption configurations that have been created
-%% in CloudFront for this
-%% account.
+%% in CloudFront for this account.
 -spec list_field_level_encryption_configs(aws_client:aws_client()) ->
     {ok, list_field_level_encryption_configs_result(), tuple()} |
     {error, any()} |
@@ -12232,8 +12077,7 @@ list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Request a list of field-level encryption profiles that have been
-%% created in CloudFront for
-%% this account.
+%% created in CloudFront for this account.
 -spec list_field_level_encryption_profiles(aws_client:aws_client()) ->
     {ok, list_field_level_encryption_profiles_result(), tuple()} |
     {error, any()} |
@@ -12279,18 +12123,14 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% You can optionally apply a filter to return only the functions that are in
-%% the
-%% specified stage, either `DEVELOPMENT' or `LIVE'.
+%% the specified stage, either `DEVELOPMENT' or `LIVE'.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_functions(aws_client:aws_client()) ->
     {ok, list_functions_result(), tuple()} |
     {error, any()} |
@@ -12420,14 +12260,11 @@ list_invalidations_for_distribution_tenant(Client, Id, QueryMap, HeadersMap, Opt
 %% @doc Gets a list of key groups.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_key_groups(aws_client:aws_client()) ->
     {ok, list_key_groups_result(), tuple()} |
     {error, any()} |
@@ -12516,19 +12353,15 @@ list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
 %% Amazon Web Services account.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send another
-%% request that specifies the `NextMarker' value from the current
-%% response as
-%% the `Marker' value in the next request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send another request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the next request.
 %%
 %% If you're not using origin access controls for your Amazon Web
-%% Services account, the
-%% `ListOriginAccessControls' operation doesn't return the
-%% `Items' element in the response.
+%% Services account, the `ListOriginAccessControls' operation doesn't
+%% return the `Items' element in the response.
 -spec list_origin_access_controls(aws_client:aws_client()) ->
     {ok, list_origin_access_controls_result(), tuple()} |
     {error, any()} |
@@ -12573,19 +12406,15 @@ list_origin_access_controls(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets a list of origin request policies.
 %%
 %% You can optionally apply a filter to return only the managed policies
-%% created by
-%% Amazon Web Services, or only the custom policies created in your Amazon
-%% Web Services account.
+%% created by Amazon Web Services, or only the custom policies created in
+%% your Amazon Web Services account.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_origin_request_policies(aws_client:aws_client()) ->
     {ok, list_origin_request_policies_result(), tuple()} |
     {error, any()} |
@@ -12674,14 +12503,11 @@ list_public_keys(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets a list of real-time log configurations.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_realtime_log_configs(aws_client:aws_client()) ->
     {ok, list_realtime_log_configs_result(), tuple()} |
     {error, any()} |
@@ -12726,18 +12552,15 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets a list of response headers policies.
 %%
 %% You can optionally apply a filter to get only the managed policies created
-%% by Amazon Web Services,
-%% or only the custom policies created in your Amazon Web Services account.
+%% by Amazon Web Services, or only the custom policies created in your Amazon
+%% Web Services account.
 %%
 %% You can optionally specify the maximum number of items to receive in the
-%% response. If
-%% the total number of items in the list exceeds the maximum that you
-%% specify, or the
-%% default maximum, the response is paginated. To get the next page of items,
-%% send a
-%% subsequent request that specifies the `NextMarker' value from the
-%% current
-%% response as the `Marker' value in the subsequent request.
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 -spec list_response_headers_policies(aws_client:aws_client()) ->
     {ok, list_response_headers_policies_result(), tuple()} |
     {error, any()} |
@@ -12912,19 +12735,15 @@ list_vpc_origins(Client, QueryMap, HeadersMap, Options0)
 %% @doc Publishes a CloudFront function by copying the function code from the
 %% `DEVELOPMENT' stage to `LIVE'.
 %%
-%% This automatically updates all
-%% cache behaviors that are using this function to use the newly published
-%% copy in the
-%% `LIVE' stage.
+%% This automatically updates all cache behaviors that are using this
+%% function to use the newly published copy in the `LIVE' stage.
 %%
 %% When a function is published to the `LIVE' stage, you can attach the
 %% function to a distribution's cache behavior, using the function's
-%% Amazon Resource Name
-%% (ARN).
+%% Amazon Resource Name (ARN).
 %%
 %% To publish a function, you must provide the function's name and
-%% version
-%% (`ETag' value). To get these values, you can use
+%% version (`ETag' value). To get these values, you can use
 %% `ListFunctions' and `DescribeFunction'.
 -spec publish_function(aws_client:aws_client(), binary() | list(), publish_function_request()) ->
     {ok, publish_function_result(), tuple()} |
@@ -13002,24 +12821,20 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Tests a CloudFront function.
 %%
-%% To test a function, you provide an event object that represents
-%% an HTTP request or response that your CloudFront distribution could
-%% receive in production.
-%% CloudFront runs the function, passing it the event object that you
-%% provided, and returns the
-%% function's result (the modified event object) in the response. The
-%% response also
-%% contains function logs and error messages, if any exist. For more
-%% information about
-%% testing functions, see Testing functions:
+%% To test a function, you provide an event object that represents an HTTP
+%% request or response that your CloudFront distribution could receive in
+%% production. CloudFront runs the function, passing it the event object that
+%% you provided, and returns the function's result (the modified event
+%% object) in the response. The response also contains function logs and
+%% error messages, if any exist. For more information about testing
+%% functions, see Testing functions:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function
 %% in the Amazon CloudFront Developer Guide.
 %%
 %% To test a function, you provide the function's name and version
-%% (`ETag'
-%% value) along with the event object. To get the function's name and
-%% version, you can use
-%% `ListFunctions' and `DescribeFunction'.
+%% (`ETag' value) along with the event object. To get the function's
+%% name and version, you can use `ListFunctions' and
+%% `DescribeFunction'.
 -spec test_function(aws_client:aws_client(), binary() | list(), test_function_request()) ->
     {ok, test_function_result(), tuple()} |
     {error, any()} |
@@ -13097,16 +12912,13 @@ untag_resource(Client, Input0, Options0) ->
 %% @doc Updates a cache policy configuration.
 %%
 %% When you update a cache policy configuration, all the fields are updated
-%% with the
-%% values provided in the request. You cannot update some fields independent
-%% of others. To
-%% update a cache policy configuration:
+%% with the values provided in the request. You cannot update some fields
+%% independent of others. To update a cache policy configuration:
 %%
 %% Use `GetCachePolicyConfig' to get the current configuration.
 %%
 %% Locally modify the fields in the cache policy configuration that you want
-%% to
-%% update.
+%% to update.
 %%
 %% Call `UpdateCachePolicy' by providing the entire cache policy
 %% configuration, including the fields that you modified and those that you
@@ -13268,26 +13080,21 @@ update_connection_group(Client, Id, Input0, Options0) ->
 
 %% @doc Updates a continuous deployment policy.
 %%
-%% You can update a continuous deployment policy
-%% to enable or disable it, to change the percentage of traffic that it sends
-%% to the
-%% staging distribution, or to change the staging distribution that it sends
-%% traffic
+%% You can update a continuous deployment policy to enable or disable it, to
+%% change the percentage of traffic that it sends to the staging
+%% distribution, or to change the staging distribution that it sends traffic
 %% to.
 %%
 %% When you update a continuous deployment policy configuration, all the
-%% fields are
-%% updated with the values that are provided in the request. You cannot
-%% update some fields
-%% independent of others. To update a continuous deployment policy
-%% configuration:
+%% fields are updated with the values that are provided in the request. You
+%% cannot update some fields independent of others. To update a continuous
+%% deployment policy configuration:
 %%
 %% Use `GetContinuousDeploymentPolicyConfig' to get the current
 %% configuration.
 %%
 %% Locally modify the fields in the continuous deployment policy
-%% configuration
-%% that you want to update.
+%% configuration that you want to update.
 %%
 %% Use `UpdateContinuousDeploymentPolicy', providing the entire
 %% continuous deployment policy configuration, including the fields that you
@@ -13346,36 +13153,29 @@ update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
 %% @doc Updates the configuration for a CloudFront distribution.
 %%
 %% The update process includes getting the current distribution
-%% configuration, updating
-%% it to make your changes, and then submitting an `UpdateDistribution'
-%% request
-%% to make the updates.
+%% configuration, updating it to make your changes, and then submitting an
+%% `UpdateDistribution' request to make the updates.
 %%
-%% To update a web distribution using the CloudFront
-%% API
+%% To update a web distribution using the CloudFront API
 %%
 %% Use `GetDistributionConfig' to get the current configuration,
 %% including the version identifier (`ETag').
 %%
 %% Update the distribution configuration that was returned in the response.
-%% Note
-%% the following important requirements and restrictions:
+%% Note the following important requirements and restrictions:
 %%
 %% You must copy the `ETag' field value from the response. (You'll
 %% use it for the `IfMatch' parameter in your request.) Then, remove the
-%% `ETag'
-%% field from the distribution configuration.
+%% `ETag' field from the distribution configuration.
 %%
 %% You can't change the value of `CallerReference'.
 %%
 %% Submit an `UpdateDistribution' request, providing the updated
-%% distribution
-%% configuration. The new configuration replaces the existing configuration.
-%% The
-%% values that you specify in an `UpdateDistribution' request are not
-%% merged into your existing configuration. Make sure to include all fields:
-%% the
-%% ones that you modified and also the ones that you didn't.
+%% distribution configuration. The new configuration replaces the existing
+%% configuration. The values that you specify in an `UpdateDistribution'
+%% request are not merged into your existing configuration. Make sure to
+%% include all fields: the ones that you modified and also the ones that you
+%% didn't.
 -spec update_distribution(aws_client:aws_client(), binary() | list(), update_distribution_request()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
@@ -13480,27 +13280,21 @@ update_distribution_tenant(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Copies the staging distribution's configuration to its
-%% corresponding primary
-%% distribution.
+%% corresponding primary distribution.
 %%
 %% The primary distribution retains its `Aliases' (also known as
 %% alternate domain names or CNAMEs) and `ContinuousDeploymentPolicyId'
-%% value,
-%% but otherwise its configuration is overwritten to match the staging
+%% value, but otherwise its configuration is overwritten to match the staging
 %% distribution.
 %%
 %% You can use this operation in a continuous deployment workflow after you
-%% have tested
-%% configuration changes on the staging distribution. After using a
-%% continuous deployment
-%% policy to move a portion of your domain name's traffic to the staging
-%% distribution and
-%% verifying that it works as intended, you can use this operation to copy
-%% the staging
+%% have tested configuration changes on the staging distribution. After using
+%% a continuous deployment policy to move a portion of your domain name's
+%% traffic to the staging distribution and verifying that it works as
+%% intended, you can use this operation to copy the staging
 %% distribution's configuration to the primary distribution. This action
-%% will disable the
-%% continuous deployment policy and move your domain's traffic back to
-%% the primary distribution.
+%% will disable the continuous deployment policy and move your domain's
+%% traffic back to the primary distribution.
 %%
 %% This API operation requires the following IAM permissions:
 %%
@@ -13721,14 +13515,11 @@ update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 %% @doc Updates a CloudFront function.
 %%
 %% You can update a function's code or the comment that describes the
-%% function. You
-%% cannot update a function's name.
+%% function. You cannot update a function's name.
 %%
 %% To update a function, you provide the function's name and version
-%% (`ETag'
-%% value) along with the updated function code. To get the name and version,
-%% you can use
-%% `ListFunctions' and `DescribeFunction'.
+%% (`ETag' value) along with the updated function code. To get the name
+%% and version, you can use `ListFunctions' and `DescribeFunction'.
 -spec update_function(aws_client:aws_client(), binary() | list(), update_function_request()) ->
     {ok, update_function_result(), tuple()} |
     {error, any()} |
@@ -13783,10 +13574,8 @@ update_function(Client, Name, Input0, Options0) ->
 %% @doc Updates a key group.
 %%
 %% When you update a key group, all the fields are updated with the values
-%% provided in
-%% the request. You cannot update some fields independent of others. To
-%% update a key
-%% group:
+%% provided in the request. You cannot update some fields independent of
+%% others. To update a key group:
 %%
 %% Get the current key group with `GetKeyGroup' or
 %% `GetKeyGroupConfig'.
@@ -13794,8 +13583,8 @@ update_function(Client, Name, Input0, Options0) ->
 %% Locally modify the fields in the key group that you want to update. For
 %% example, add or remove public key IDs.
 %%
-%% Call `UpdateKeyGroup' with the entire key group object, including
-%% the fields that you modified and those that you didn't.
+%% Call `UpdateKeyGroup' with the entire key group object, including the
+%% fields that you modified and those that you didn't.
 -spec update_key_group(aws_client:aws_client(), binary() | list(), update_key_group_request()) ->
     {ok, update_key_group_result(), tuple()} |
     {error, any()} |
@@ -13954,22 +13743,18 @@ update_origin_access_control(Client, Id, Input0, Options0) ->
 %% @doc Updates an origin request policy configuration.
 %%
 %% When you update an origin request policy configuration, all the fields are
-%% updated
-%% with the values provided in the request. You cannot update some fields
-%% independent of
-%% others. To update an origin request policy configuration:
+%% updated with the values provided in the request. You cannot update some
+%% fields independent of others. To update an origin request policy
+%% configuration:
 %%
-%% Use `GetOriginRequestPolicyConfig' to get the current
-%% configuration.
+%% Use `GetOriginRequestPolicyConfig' to get the current configuration.
 %%
 %% Locally modify the fields in the origin request policy configuration that
-%% you
-%% want to update.
+%% you want to update.
 %%
 %% Call `UpdateOriginRequestPolicy' by providing the entire origin
 %% request policy configuration, including the fields that you modified and
-%% those
-%% that you didn't.
+%% those that you didn't.
 -spec update_origin_request_policy(aws_client:aws_client(), binary() | list(), update_origin_request_policy_request()) ->
     {ok, update_origin_request_policy_result(), tuple()} |
     {error, any()} |
@@ -14023,8 +13808,7 @@ update_origin_request_policy(Client, Id, Input0, Options0) ->
 
 %% @doc Update public key information.
 %%
-%% Note that the only value you can change is the
-%% comment.
+%% Note that the only value you can change is the comment.
 -spec update_public_key(aws_client:aws_client(), binary() | list(), update_public_key_request()) ->
     {ok, update_public_key_result(), tuple()} |
     {error, any()} |
@@ -14079,22 +13863,18 @@ update_public_key(Client, Id, Input0, Options0) ->
 %% @doc Updates a real-time log configuration.
 %%
 %% When you update a real-time log configuration, all the parameters are
-%% updated with the
-%% values provided in the request. You cannot update some parameters
-%% independent of others.
-%% To update a real-time log configuration:
+%% updated with the values provided in the request. You cannot update some
+%% parameters independent of others. To update a real-time log configuration:
 %%
 %% Call `GetRealtimeLogConfig' to get the current real-time log
 %% configuration.
 %%
 %% Locally modify the parameters in the real-time log configuration that you
-%% want
-%% to update.
+%% want to update.
 %%
 %% Call this API (`UpdateRealtimeLogConfig') by providing the entire
 %% real-time log configuration, including the parameters that you modified
-%% and
-%% those that you didn't.
+%% and those that you didn't.
 %%
 %% You cannot update a real-time log configuration's `Name' or
 %% `ARN'.
@@ -14134,22 +13914,18 @@ update_realtime_log_config(Client, Input0, Options0) ->
 %% @doc Updates a response headers policy.
 %%
 %% When you update a response headers policy, the entire policy is replaced.
-%% You cannot
-%% update some policy fields independent of others. To update a response
-%% headers policy
-%% configuration:
+%% You cannot update some policy fields independent of others. To update a
+%% response headers policy configuration:
 %%
 %% Use `GetResponseHeadersPolicyConfig' to get the current policy's
 %% configuration.
 %%
 %% Modify the fields in the response headers policy configuration that you
-%% want
-%% to update.
+%% want to update.
 %%
 %% Call `UpdateResponseHeadersPolicy', providing the entire response
 %% headers policy configuration, including the fields that you modified and
-%% those
-%% that you didn't.
+%% those that you didn't.
 -spec update_response_headers_policy(aws_client:aws_client(), binary() | list(), update_response_headers_policy_request()) ->
     {ok, update_response_headers_policy_result(), tuple()} |
     {error, any()} |
