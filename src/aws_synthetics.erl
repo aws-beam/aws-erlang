@@ -266,6 +266,8 @@
 %%   <<"DryRunConfig">> => canary_dry_run_config_output(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"RetryAttempt">> => integer(),
+%%   <<"ScheduledRunId">> => string(),
 %%   <<"Status">> => canary_run_status(),
 %%   <<"Timeline">> => canary_run_timeline()
 %% }
@@ -275,7 +277,8 @@
 %% Example:
 %% canary_schedule_input() :: #{
 %%   <<"DurationInSeconds">> => float(),
-%%   <<"Expression">> => string()
+%%   <<"Expression">> => string(),
+%%   <<"RetryConfig">> => retry_config_input()
 %% }
 -type canary_schedule_input() :: #{binary() => any()}.
 
@@ -337,6 +340,7 @@
 %% Example:
 %% canary_run_timeline() :: #{
 %%   <<"Completed">> => non_neg_integer(),
+%%   <<"MetricTimestampForRunAndRetries">> => non_neg_integer(),
 %%   <<"Started">> => non_neg_integer()
 %% }
 -type canary_run_timeline() :: #{binary() => any()}.
@@ -681,7 +685,8 @@
 %% Example:
 %% canary_schedule_output() :: #{
 %%   <<"DurationInSeconds">> => float(),
-%%   <<"Expression">> => string()
+%%   <<"Expression">> => string(),
+%%   <<"RetryConfig">> => retry_config_output()
 %% }
 -type canary_schedule_output() :: #{binary() => any()}.
 
@@ -692,6 +697,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_config_input() :: #{
+%%   <<"MaxRetries">> => integer()
+%% }
+-type retry_config_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -724,6 +736,13 @@
 %%   <<"Group">> => group()
 %% }
 -type create_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_config_output() :: #{
+%%   <<"MaxRetries">> => integer()
+%% }
+-type retry_config_output() :: #{binary() => any()}.
 
 -type associate_resource_errors() ::
     validation_exception() | 

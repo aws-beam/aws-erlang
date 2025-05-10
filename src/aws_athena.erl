@@ -2178,7 +2178,8 @@ create_capacity_reservation(Client, Input, Options)
 %% Catalogs
 %% created are visible to all users of the same Amazon Web Services account.
 %%
-%% This API operation creates the following resources.
+%% For a `FEDERATED' catalog, this API operation creates the following
+%% resources.
 %%
 %% CFN Stack Name with a maximum length of 128 characters and prefix
 %% `athenafederatedcatalog-CATALOG_NAME_SANITIZED' with length 23

@@ -940,7 +940,6 @@
 %%   <<"DefaultOu">> => string(),
 %%   <<"EnableInternetAccess">> => boolean(),
 %%   <<"EnableMaintenanceMode">> => boolean(),
-%%   <<"EnableWorkDocs">> => boolean(),
 %%   <<"InstanceIamRoleArn">> => string(),
 %%   <<"UserEnabledAsLocalAdministrator">> => boolean()
 %% }
@@ -1164,7 +1163,6 @@
 %%   <<"DefaultOu">> => string(),
 %%   <<"EnableInternetAccess">> => boolean(),
 %%   <<"EnableMaintenanceMode">> => boolean(),
-%%   <<"EnableWorkDocs">> => boolean(),
 %%   <<"InstanceIamRoleArn">> => string(),
 %%   <<"UserEnabledAsLocalAdministrator">> => boolean()
 %% }
@@ -1651,7 +1649,6 @@
 %%   <<"ActiveDirectoryConfig">> => active_directory_config(),
 %%   <<"DirectoryId">> => string(),
 %%   <<"EnableSelfService">> => boolean(),
-%%   <<"EnableWorkDocs">> => boolean(),
 %%   <<"IdcInstanceArn">> => string(),
 %%   <<"MicrosoftEntraConfig">> => microsoft_entra_config(),
 %%   <<"SubnetIds">> => list(string()()),
