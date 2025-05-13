@@ -2228,6 +2228,7 @@
 %%   <<"Actions">> => list(volume_status_action()()),
 %%   <<"AttachmentStatuses">> => list(volume_status_attachment_status()()),
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"Events">> => list(volume_status_event()()),
 %%   <<"OutpostArn">> => string(),
 %%   <<"VolumeId">> => string(),
@@ -4445,6 +4446,7 @@
 %% Example:
 %% capacity_reservation_info() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"InstanceType">> => string(),
 %%   <<"Tenancy">> => list(any())
 %% }
@@ -5591,6 +5593,7 @@
 %%   <<"PacketField">> => string(),
 %%   <<"ElasticLoadBalancerListener">> => analysis_component(),
 %%   <<"VpcPeeringConnection">> => analysis_component(),
+%%   <<"AvailabilityZoneIds">> => list(string()()),
 %%   <<"RouteTableRoute">> => analysis_route_table_route(),
 %%   <<"NatGateway">> => analysis_component(),
 %%   <<"FirewallStatefulRule">> => firewall_stateful_rule(),
@@ -9466,7 +9469,8 @@
 %% allocate_hosts_request() :: #{
 %%   <<"AssetIds">> => list(string()()),
 %%   <<"AutoPlacement">> => list(any()),
-%%   <<"AvailabilityZone">> := string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"HostMaintenance">> => list(any()),
 %%   <<"HostRecovery">> => list(any()),
@@ -10240,6 +10244,7 @@
 %% Example:
 %% reserved_instances() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"CurrencyCode">> => list(any()),
 %%   <<"Duration">> => float(),
 %%   <<"End">> => non_neg_integer(),
@@ -11301,6 +11306,7 @@
 %% Example:
 %% reserved_instances_offering() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"CurrencyCode">> => list(any()),
 %%   <<"Duration">> => float(),
 %%   <<"FixedPrice">> => float(),
@@ -11435,6 +11441,7 @@
 %% analysis_load_balancer_target() :: #{
 %%   <<"Address">> => string(),
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"Instance">> => analysis_component(),
 %%   <<"Port">> => integer()
 %% }
@@ -12406,6 +12413,7 @@
 %% Example:
 %% describe_reserved_instances_offerings_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()()),
 %%   <<"IncludeMarketplace">> => boolean(),
@@ -18097,6 +18105,7 @@
 %% Example:
 %% reserved_instances_configuration() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"Platform">> => string(),
@@ -27486,6 +27495,18 @@ describe_instance_image_metadata(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 %% in the Amazon EC2 User Guide.
 %%
+%% The Amazon EC2 API follows an eventual consistency model. This means that
+%% the result of an
+%% API command you run that creates or modifies resources might not be
+%% immediately
+%% available to all subsequent commands you run. For guidance on how to
+%% manage eventual
+%% consistency, see Eventual consistency in the
+%% Amazon EC2 API:
+%% https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html
+%% in the Amazon EC2 Developer
+%% Guide.
+%%
 %% The order of the elements in the response, including those within nested
 %% structures, might vary. Applications should not assume the elements appear
 %% in a
@@ -27623,6 +27644,18 @@ describe_instance_types(Client, Input, Options)
 %% instances and
 %% specify only instance IDs that are in an unaffected zone, the call works
 %% normally.
+%%
+%% The Amazon EC2 API follows an eventual consistency model. This means that
+%% the result of an
+%% API command you run that creates or modifies resources might not be
+%% immediately
+%% available to all subsequent commands you run. For guidance on how to
+%% manage eventual
+%% consistency, see Eventual consistency in the
+%% Amazon EC2 API:
+%% https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html
+%% in the Amazon EC2 Developer
+%% Guide.
 %%
 %% We strongly recommend using only paginated requests. Unpaginated requests
 %% are

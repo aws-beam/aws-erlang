@@ -2,22 +2,16 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon Web Services Deadline Cloud API provides infrastructure
-%% and centralized management for your
-%% projects.
+%% and centralized management for your projects.
 %%
 %% Use the Deadline Cloud API to onboard users, assign projects, and attach
-%% permissions
-%% specific to their job function.
+%% permissions specific to their job function.
 %%
 %% With Deadline Cloud, content production teams can deploy resources for
-%% their workforce
-%% securely in the cloud, reducing the costs of added physical
-%% infrastructure. Keep your
-%% content production operations secure, while allowing your contributors to
-%% access the tools
-%% they need, such as scalable high-speed storage, licenses, and cost
-%% management
-%% services.
+%% their workforce securely in the cloud, reducing the costs of added
+%% physical infrastructure. Keep your content production operations secure,
+%% while allowing your contributors to access the tools they need, such as
+%% scalable high-speed storage, licenses, and cost management services.
 -module(aws_deadline).
 
 -export([associate_member_to_farm/4,
@@ -314,6 +308,14 @@
 %% Example:
 %% update_queue_fleet_association_response() :: #{}
 -type update_queue_fleet_association_response() :: #{}.
+
+
+%% Example:
+%% host_configuration() :: #{
+%%   <<"scriptBody">> => string(),
+%%   <<"scriptTimeoutSeconds">> => integer()
+%% }
+-type host_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -663,6 +665,7 @@
 %%   <<"configuration">> := list(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
+%%   <<"hostConfiguration">> => host_configuration(),
 %%   <<"maxWorkerCount">> := integer(),
 %%   <<"minWorkerCount">> => integer(),
 %%   <<"roleArn">> := string(),
@@ -1647,6 +1650,7 @@
 %%   <<"configuration">> => list(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
+%%   <<"hostConfiguration">> => host_configuration(),
 %%   <<"maxWorkerCount">> => integer(),
 %%   <<"minWorkerCount">> => integer(),
 %%   <<"roleArn">> => string()
@@ -2774,6 +2778,7 @@
 
 %% Example:
 %% update_worker_response() :: #{
+%%   <<"hostConfiguration">> => host_configuration(),
 %%   <<"log">> => log_configuration()
 %% }
 -type update_worker_response() :: #{binary() => any()}.
@@ -3067,6 +3072,7 @@
 %%   <<"displayName">> => string(),
 %%   <<"farmId">> => string(),
 %%   <<"fleetId">> => string(),
+%%   <<"hostConfiguration">> => host_configuration(),
 %%   <<"maxWorkerCount">> => integer(),
 %%   <<"minWorkerCount">> => integer(),
 %%   <<"roleArn">> => string(),
@@ -4224,8 +4230,8 @@ associate_member_to_queue(Client, FarmId, PrincipalId, QueueId, Input0, Options0
 
 %% @doc Get Amazon Web Services credentials from the fleet role.
 %%
-%% The IAM permissions of the credentials are
-%% scoped down to have read-only access.
+%% The IAM permissions of the credentials are scoped down to have read-only
+%% access.
 -spec assume_fleet_role_for_read(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, assume_fleet_role_for_read_response(), tuple()} |
     {error, any()} |
@@ -4301,8 +4307,8 @@ assume_fleet_role_for_worker(Client, FarmId, FleetId, WorkerId, QueryMap, Header
 
 %% @doc Gets Amazon Web Services credentials from the queue role.
 %%
-%% The IAM permissions of the credentials are
-%% scoped down to have read-only access.
+%% The IAM permissions of the credentials are scoped down to have read-only
+%% access.
 -spec assume_queue_role_for_read(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, assume_queue_role_for_read_response(), tuple()} |
     {error, any()} |
@@ -4524,12 +4530,10 @@ create_budget(Client, FarmId, Input0, Options0) ->
 
 %% @doc Creates a farm to allow space for queues and fleets.
 %%
-%% Farms are the space where the
-%% components of your renders gather and are pieced together in the cloud.
-%% Farms contain
-%% budgets and allow you to enforce permissions. Deadline Cloud farms are a
-%% useful container for
-%% large projects.
+%% Farms are the space where the components of your renders gather and are
+%% pieced together in the cloud. Farms contain budgets and allow you to
+%% enforce permissions. Deadline Cloud farms are a useful container for large
+%% projects.
 -spec create_farm(aws_client:aws_client(), create_farm_request()) ->
     {ok, create_farm_response(), tuple()} |
     {error, any()} |
@@ -4569,8 +4573,7 @@ create_farm(Client, Input0, Options0) ->
 %%
 %% Fleets gather information relating to compute, or capacity, for renders
 %% within your farms. You can choose to manage your own capacity or opt to
-%% have fleets fully
-%% managed by Deadline Cloud.
+%% have fleets fully managed by Deadline Cloud.
 -spec create_fleet(aws_client:aws_client(), binary() | list(), create_fleet_request()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
@@ -4608,9 +4611,8 @@ create_fleet(Client, FarmId, Input0, Options0) ->
 
 %% @doc Creates a job.
 %%
-%% A job is a set of instructions that Deadline Cloud uses to schedule
-%% and run work on available workers. For more information, see Deadline
-%% Cloud
+%% A job is a set of instructions that Deadline Cloud uses to schedule and
+%% run work on available workers. For more information, see Deadline Cloud
 %% jobs:
 %% https://docs.aws.amazon.com/deadline-cloud/latest/userguide/deadline-cloud-jobs.html.
 -spec create_job(aws_client:aws_client(), binary() | list(), binary() | list(), create_job_request()) ->
@@ -4649,8 +4651,7 @@ create_job(Client, FarmId, QueueId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a license endpoint to integrate your various licensed
-%% software used for
-%% rendering on Deadline Cloud.
+%% software used for rendering on Deadline Cloud.
 -spec create_license_endpoint(aws_client:aws_client(), create_license_endpoint_request()) ->
     {ok, create_license_endpoint_response(), tuple()} |
     {error, any()} |
@@ -4687,17 +4688,14 @@ create_license_endpoint(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a limit that manages the distribution of shared resources,
-%% such as floating
-%% licenses.
+%% such as floating licenses.
 %%
 %% A limit can throttle work assignments, help manage workloads, and track
-%% current
-%% usage. Before you use a limit, you must associate the limit with one or
-%% more queues.
+%% current usage. Before you use a limit, you must associate the limit with
+%% one or more queues.
 %%
 %% You must add the `amountRequirementName' to a step in a job template
-%% to
-%% declare the limit requirement.
+%% to declare the limit requirement.
 -spec create_limit(aws_client:aws_client(), binary() | list(), create_limit_request()) ->
     {ok, create_limit_response(), tuple()} |
     {error, any()} |
@@ -4734,12 +4732,10 @@ create_limit(Client, FarmId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Web Services Deadline Cloud monitor that you can
-%% use to view your farms, queues, and
-%% fleets.
+%% use to view your farms, queues, and fleets.
 %%
 %% After you submit a job, you can track the progress of the tasks and steps
-%% that make
-%% up the job, and then download the job's results.
+%% that make up the job, and then download the job's results.
 -spec create_monitor(aws_client:aws_client(), create_monitor_request()) ->
     {ok, create_monitor_response(), tuple()} |
     {error, any()} |
@@ -4777,9 +4773,8 @@ create_monitor(Client, Input0, Options0) ->
 
 %% @doc Creates a queue to coordinate the order in which jobs run on a farm.
 %%
-%% A queue can also
-%% specify where to pull resources and indicate where to output completed
-%% jobs.
+%% A queue can also specify where to pull resources and indicate where to
+%% output completed jobs.
 -spec create_queue(aws_client:aws_client(), binary() | list(), create_queue_request()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
@@ -4888,11 +4883,9 @@ create_queue_fleet_association(Client, FarmId, Input0, Options0) ->
 
 %% @doc Associates a limit with a particular queue.
 %%
-%% After the limit is associated, all workers
-%% for jobs that specify the limit associated with the queue are subject to
-%% the limit. You
-%% can't associate two limits with the same `amountRequirementName'
-%% to the same
+%% After the limit is associated, all workers for jobs that specify the limit
+%% associated with the queue are subject to the limit. You can't
+%% associate two limits with the same `amountRequirementName' to the same
 %% queue.
 -spec create_queue_limit_association(aws_client:aws_client(), binary() | list(), create_queue_limit_association_request()) ->
     {ok, create_queue_limit_association_response(), tuple()} |
@@ -4928,8 +4921,7 @@ create_queue_limit_association(Client, FarmId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a storage profile that specifies the operating system, file
-%% type, and file
-%% location of resources used on a farm.
+%% type, and file location of resources used on a farm.
 -spec create_storage_profile(aws_client:aws_client(), binary() | list(), create_storage_profile_request()) ->
     {ok, create_storage_profile_response(), tuple()} |
     {error, any()} |
@@ -4967,12 +4959,19 @@ create_storage_profile(Client, FarmId, Input0, Options0) ->
 
 %% @doc Creates a worker.
 %%
-%% A worker tells your instance how much processing power (vCPU), and
-%% memory (GiB) you’ll need to assemble the digital assets held within a
-%% particular instance.
-%% You can specify certain instance types to use, or let the worker know
-%% which instances types
-%% to exclude.
+%% A worker tells your instance how much processing power (vCPU), and memory
+%% (GiB) you’ll need to assemble the digital assets held within a particular
+%% instance. You can specify certain instance types to use, or let the worker
+%% know which instances types to exclude.
+%%
+%% Deadline Cloud limits the number of workers to less than or equal to the
+%% fleet's maximum worker count. The service maintains eventual
+%% consistency for the worker count. If you make multiple rapid calls to
+%% `CreateWorker' before the field updates, you might exceed your
+%% fleet's maximum worker count. For example, if your
+%% `maxWorkerCount' is 10 and you currently have 9 workers, making two
+%% quick `CreateWorker' calls might successfully create 2 workers instead
+%% of 1, resulting in 11 total workers.
 -spec create_worker(aws_client:aws_client(), binary() | list(), binary() | list(), create_worker_request()) ->
     {ok, create_worker_response(), tuple()} |
     {error, any()} |
@@ -5150,8 +5149,7 @@ delete_license_endpoint(Client, LicenseEndpointId, Input0, Options0) ->
 %%
 %% Before you delete a limit you must use the
 %% `DeleteQueueLimitAssociation' operation to remove the association with
-%% any
-%% queues.
+%% any queues.
 -spec delete_limit(aws_client:aws_client(), binary() | list(), binary() | list(), delete_limit_request()) ->
     {ok, delete_limit_response(), tuple()} |
     {error, any()} |
@@ -5221,8 +5219,8 @@ delete_metered_product(Client, LicenseEndpointId, ProductId, Input0, Options0) -
 
 %% @doc Removes a Deadline Cloud monitor.
 %%
-%% After you delete a monitor, you can create a new one and
-%% attach farms to the monitor.
+%% After you delete a monitor, you can create a new one and attach farms to
+%% the monitor.
 -spec delete_monitor(aws_client:aws_client(), binary() | list(), delete_monitor_request()) ->
     {ok, delete_monitor_response(), tuple()} |
     {error, any()} |
@@ -5259,8 +5257,7 @@ delete_monitor(Client, MonitorId, Input0, Options0) ->
 %% @doc Deletes a queue.
 %%
 %% You can't recover the jobs in a queue if you delete the queue.
-%% Deleting the queue
-%% also deletes the jobs in that queue.
+%% Deleting the queue also deletes the jobs in that queue.
 -spec delete_queue(aws_client:aws_client(), binary() | list(), binary() | list(), delete_queue_request()) ->
     {ok, delete_queue_response(), tuple()} |
     {error, any()} |
@@ -5364,14 +5361,11 @@ delete_queue_fleet_association(Client, FarmId, FleetId, QueueId, Input0, Options
 
 %% @doc Removes the association between a queue and a limit.
 %%
-%% You must use the
-%% `UpdateQueueLimitAssociation' operation to set the status to
-%% `STOP_LIMIT_USAGE_AND_COMPLETE_TASKS' or
+%% You must use the `UpdateQueueLimitAssociation' operation to set the
+%% status to `STOP_LIMIT_USAGE_AND_COMPLETE_TASKS' or
 %% `STOP_LIMIT_USAGE_AND_CANCEL_TASKS'. The status does not change
-%% immediately.
-%% Use the `GetQueueLimitAssociation' operation to see if the status
-%% changed to
-%% `STOPPED' before deleting the association.
+%% immediately. Use the `GetQueueLimitAssociation' operation to see if
+%% the status changed to `STOPPED' before deleting the association.
 -spec delete_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_queue_limit_association_request()) ->
     {ok, delete_queue_limit_association_response(), tuple()} |
     {error, any()} |
@@ -6093,12 +6087,10 @@ get_session_action(Client, FarmId, JobId, QueueId, SessionActionId, QueryMap, He
 
 %% @doc Gets a set of statistics for queues or farms.
 %%
-%% Before you can call the
-%% `GetSessionStatisticsAggregation' operation, you must first call the
-%% `StartSessionsStatisticsAggregation' operation. Statistics are
-%% available for
-%% 1 hour after you call the `StartSessionsStatisticsAggregation'
-%% operation.
+%% Before you can call the `GetSessionStatisticsAggregation' operation,
+%% you must first call the `StartSessionsStatisticsAggregation'
+%% operation. Statistics are available for 1 hour after you call the
+%% `StartSessionsStatisticsAggregation' operation.
 -spec get_sessions_statistics_aggregation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_sessions_statistics_aggregation_response(), tuple()} |
     {error, any()} |
@@ -7728,14 +7720,11 @@ search_workers(Client, FarmId, Input0, Options0) ->
 %% about queues and farms.
 %%
 %% Get the statistics using the `GetSessionsStatisticsAggregation'
-%% operation. You
-%% can only have one running aggregation for your Deadline Cloud farm. Call
-%% the
-%% `GetSessionsStatisticsAggregation' operation and check the
-%% `status' field to see if an aggregation is running. Statistics are
-%% available
-%% for 1 hour after you call the `StartSessionsStatisticsAggregation'
-%% operation.
+%% operation. You can only have one running aggregation for your Deadline
+%% Cloud farm. Call the `GetSessionsStatisticsAggregation' operation and
+%% check the `status' field to see if an aggregation is running.
+%% Statistics are available for 1 hour after you call the
+%% `StartSessionsStatisticsAggregation' operation.
 -spec start_sessions_statistics_aggregation(aws_client:aws_client(), binary() | list(), start_sessions_statistics_aggregation_request()) ->
     {ok, start_sessions_statistics_aggregation_response(), tuple()} |
     {error, any()} |
@@ -7949,12 +7938,10 @@ update_fleet(Client, FarmId, FleetId, Input0, Options0) ->
 %% @doc Updates a job.
 %%
 %% When you change the status of the job to `ARCHIVED', the job can't
-%% be
-%% scheduled or archived.
+%% be scheduled or archived.
 %%
 %% An archived jobs and its steps and tasks are deleted after 120 days. The
-%% job can't be
-%% recovered.
+%% job can't be recovered.
 -spec update_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_job_request()) ->
     {ok, update_job_response(), tuple()} |
     {error, any()} |
@@ -8026,8 +8013,8 @@ update_limit(Client, FarmId, LimitId, Input0, Options0) ->
 
 %% @doc Modifies the settings for a Deadline Cloud monitor.
 %%
-%% You can modify one or all of the settings
-%% when you call `UpdateMonitor'.
+%% You can modify one or all of the settings when you call
+%% `UpdateMonitor'.
 -spec update_monitor(aws_client:aws_client(), binary() | list(), update_monitor_request()) ->
     {ok, update_monitor_response(), tuple()} |
     {error, any()} |
@@ -8169,9 +8156,8 @@ update_queue_fleet_association(Client, FarmId, FleetId, QueueId, Input0, Options
 
 %% @doc Updates the status of the queue.
 %%
-%% If you set the status to one of the
-%% `STOP_LIMIT_USAGE*' values, there will be a delay before the status
-%% transitions to the `STOPPED' state.
+%% If you set the status to one of the `STOP_LIMIT_USAGE*' values, there
+%% will be a delay before the status transitions to the `STOPPED' state.
 -spec update_queue_limit_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_queue_limit_association_request()) ->
     {ok, update_queue_limit_association_response(), tuple()} |
     {error, any()} |

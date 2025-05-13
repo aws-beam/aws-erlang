@@ -549,6 +549,7 @@
 %% Example:
 %% output_destination() :: #{
 %%   <<"Id">> => string(),
+%%   <<"LogicalInterfaceNames">> => list(string()()),
 %%   <<"MediaPackageSettings">> => list(media_package_output_destination_settings()()),
 %%   <<"MultiplexSettings">> => multiplex_program_channel_destination_settings(),
 %%   <<"Settings">> => list(output_destination_settings()()),
@@ -3566,6 +3567,7 @@
 %% Example:
 %% av1_settings() :: #{
 %%   <<"AfdSignaling">> => list(any()),
+%%   <<"Bitrate">> => integer(),
 %%   <<"BufSize">> => integer(),
 %%   <<"ColorSpaceSettings">> => av1_color_space_settings(),
 %%   <<"FixedAfd">> => list(any()),
@@ -3580,6 +3582,7 @@
 %%   <<"ParDenominator">> => integer(),
 %%   <<"ParNumerator">> => integer(),
 %%   <<"QvbrQualityLevel">> => integer(),
+%%   <<"RateControlMode">> => list(any()),
 %%   <<"SceneChangeDetect">> => list(any()),
 %%   <<"TimecodeBurninSettings">> => timecode_burnin_settings()
 %% }

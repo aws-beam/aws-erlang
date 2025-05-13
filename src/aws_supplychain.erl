@@ -24,32 +24,54 @@
          create_data_integration_flow/5,
          create_data_lake_dataset/5,
          create_data_lake_dataset/6,
+         create_data_lake_namespace/4,
+         create_data_lake_namespace/5,
          create_instance/2,
          create_instance/3,
          delete_data_integration_flow/4,
          delete_data_integration_flow/5,
          delete_data_lake_dataset/5,
          delete_data_lake_dataset/6,
+         delete_data_lake_namespace/4,
+         delete_data_lake_namespace/5,
          delete_instance/3,
          delete_instance/4,
          get_bill_of_materials_import_job/3,
          get_bill_of_materials_import_job/5,
          get_bill_of_materials_import_job/6,
+         get_data_integration_event/3,
+         get_data_integration_event/5,
+         get_data_integration_event/6,
          get_data_integration_flow/3,
          get_data_integration_flow/5,
          get_data_integration_flow/6,
+         get_data_integration_flow_execution/4,
+         get_data_integration_flow_execution/6,
+         get_data_integration_flow_execution/7,
          get_data_lake_dataset/4,
          get_data_lake_dataset/6,
          get_data_lake_dataset/7,
+         get_data_lake_namespace/3,
+         get_data_lake_namespace/5,
+         get_data_lake_namespace/6,
          get_instance/2,
          get_instance/4,
          get_instance/5,
+         list_data_integration_events/2,
+         list_data_integration_events/4,
+         list_data_integration_events/5,
+         list_data_integration_flow_executions/3,
+         list_data_integration_flow_executions/5,
+         list_data_integration_flow_executions/6,
          list_data_integration_flows/2,
          list_data_integration_flows/4,
          list_data_integration_flows/5,
          list_data_lake_datasets/3,
          list_data_lake_datasets/5,
          list_data_lake_datasets/6,
+         list_data_lake_namespaces/2,
+         list_data_lake_namespaces/4,
+         list_data_lake_namespaces/5,
          list_instances/1,
          list_instances/3,
          list_instances/4,
@@ -66,6 +88,8 @@
          update_data_integration_flow/5,
          update_data_lake_dataset/5,
          update_data_lake_dataset/6,
+         update_data_lake_namespace/4,
+         update_data_lake_namespace/5,
          update_instance/3,
          update_instance/4]).
 
@@ -93,6 +117,38 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_data_lake_namespace_response() :: #{
+%%   <<"instanceId">> => string(),
+%%   <<"name">> => string()
+%% }
+-type delete_data_lake_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_integration_flow_execution_request() :: #{}
+-type get_data_integration_flow_execution_request() :: #{}.
+
+
+%% Example:
+%% list_data_lake_namespaces_response() :: #{
+%%   <<"namespaces">> => list(data_lake_namespace()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_lake_namespaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_namespace_request() :: #{}
+-type delete_data_lake_namespace_request() :: #{}.
+
+
+%% Example:
+%% data_integration_event_dataset_target_configuration() :: #{
+%%   <<"datasetIdentifier">> => string(),
+%%   <<"operationType">> => list(any())
+%% }
+-type data_integration_event_dataset_target_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
@@ -108,10 +164,27 @@
 
 
 %% Example:
+%% data_integration_flow_execution_source_info() :: #{
+%%   <<"datasetSource">> => data_integration_flow_dataset_source(),
+%%   <<"s3Source">> => data_integration_flow_s3_source(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type data_integration_flow_execution_source_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_integration_flow_s3_options() :: #{
 %%   <<"fileType">> => list(any())
 %% }
 -type data_integration_flow_s3_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_flow_executions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_flow_executions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -128,6 +201,14 @@
 %% }
 -type list_data_lake_datasets_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% data_lake_dataset_partition_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"transform">> => data_lake_dataset_partition_field_transform()
+%% }
+-type data_lake_dataset_partition_field() :: #{binary() => any()}.
+
 %% Example:
 %% delete_data_integration_flow_request() :: #{}
 -type delete_data_integration_flow_request() :: #{}.
@@ -143,6 +224,7 @@
 %% Example:
 %% create_data_lake_dataset_request() :: #{
 %%   <<"description">> => string(),
+%%   <<"partitionSpec">> => data_lake_dataset_partition_spec(),
 %%   <<"schema">> => data_lake_dataset_schema(),
 %%   <<"tags">> => map()
 %% }
@@ -165,6 +247,21 @@
 
 
 %% Example:
+%% data_integration_flow_dedupe_strategy() :: #{
+%%   <<"fieldPriority">> => data_integration_flow_field_priority_dedupe_strategy_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type data_integration_flow_dedupe_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_dataset_primary_key_field() :: #{
+%%   <<"name">> => string()
+%% }
+-type data_lake_dataset_primary_key_field() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
@@ -179,6 +276,22 @@
 %%   <<"transformation">> := data_integration_flow_transformation()
 %% }
 -type create_data_integration_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_namespace_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_data_lake_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_field_priority_dedupe_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type data_integration_flow_field_priority_dedupe_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -210,6 +323,13 @@
 %%   <<"jobId">> => string()
 %% }
 -type create_bill_of_materials_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_lake_namespace_request() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_data_lake_namespace_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -264,6 +384,13 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_data_lake_namespace_response() :: #{
+%%   <<"namespace">> => data_lake_namespace()
+%% }
+-type update_data_lake_namespace_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_bill_of_materials_import_job_request() :: #{}
 -type get_bill_of_materials_import_job_request() :: #{}.
@@ -279,6 +406,7 @@
 %% Example:
 %% data_integration_flow_dataset_options() :: #{
 %%   <<"dedupeRecords">> => [boolean()],
+%%   <<"dedupeStrategy">> => data_integration_flow_dedupe_strategy(),
 %%   <<"loadType">> => list(any())
 %% }
 -type data_integration_flow_dataset_options() :: #{binary() => any()}.
@@ -289,11 +417,36 @@
 
 
 %% Example:
+%% data_integration_event_dataset_load_execution_details() :: #{
+%%   <<"message">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type data_integration_event_dataset_load_execution_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_instance_request() :: #{
 %%   <<"instanceDescription">> => string(),
 %%   <<"instanceName">> => string()
 %% }
 -type update_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_flow_executions_response() :: #{
+%%   <<"flowExecutions">> => list(data_integration_flow_execution()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_flow_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_event_dataset_target_details() :: #{
+%%   <<"datasetIdentifier">> => string(),
+%%   <<"datasetLoadExecution">> => data_integration_event_dataset_load_execution_details(),
+%%   <<"operationType">> => list(any())
+%% }
+-type data_integration_event_dataset_target_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -306,9 +459,19 @@
 %% Example:
 %% data_lake_dataset_schema() :: #{
 %%   <<"fields">> => list(data_lake_dataset_schema_field()()),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"primaryKeys">> => list(data_lake_dataset_primary_key_field()())
 %% }
 -type data_lake_dataset_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_events_request() :: #{
+%%   <<"eventType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_events_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -316,6 +479,13 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_dataset_partition_field_transform() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type data_lake_dataset_partition_field_transform() :: #{binary() => any()}.
 
 
 %% Example:
@@ -375,6 +545,34 @@
 
 
 %% Example:
+%% get_data_integration_flow_execution_response() :: #{
+%%   <<"flowExecution">> => data_integration_flow_execution()
+%% }
+-type get_data_integration_flow_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_dataset_source() :: #{
+%%   <<"datasetIdentifier">> => string()
+%% }
+-type data_integration_flow_dataset_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_execution_output_metadata() :: #{
+%%   <<"diagnosticReportsRootS3URI">> => string()
+%% }
+-type data_integration_flow_execution_output_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_integration_event_response() :: #{
+%%   <<"event">> => data_integration_event()
+%% }
+-type get_data_integration_event_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_data_integration_flow_response() :: #{
 %%   <<"flow">> => data_integration_flow()
 %% }
@@ -409,6 +607,10 @@
 %% }
 -type instance() :: #{binary() => any()}.
 
+%% Example:
+%% get_data_lake_namespace_request() :: #{}
+-type get_data_lake_namespace_request() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -419,6 +621,21 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_data_integration_events_response() :: #{
+%%   <<"events">> => list(data_integration_event()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_lake_namespace_response() :: #{
+%%   <<"namespace">> => data_lake_namespace()
+%% }
+-type get_data_lake_namespace_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -456,6 +673,10 @@
 %% delete_instance_request() :: #{}
 -type delete_instance_request() :: #{}.
 
+%% Example:
+%% get_data_integration_event_request() :: #{}
+-type get_data_integration_event_request() :: #{}.
+
 
 %% Example:
 %% list_data_integration_flows_response() :: #{
@@ -466,14 +687,53 @@
 
 
 %% Example:
+%% list_data_lake_namespaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_lake_namespaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_field_priority_dedupe_strategy_configuration() :: #{
+%%   <<"fields">> => list(data_integration_flow_field_priority_dedupe_field()())
+%% }
+-type data_integration_flow_field_priority_dedupe_strategy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_s3_source() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"key">> => string()
+%% }
+-type data_integration_flow_s3_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% send_data_integration_event_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"data">> := string(),
+%%   <<"datasetTarget">> => data_integration_event_dataset_target_configuration(),
 %%   <<"eventGroupId">> := string(),
 %%   <<"eventTimestamp">> => [non_neg_integer()],
 %%   <<"eventType">> := list(any())
 %% }
 -type send_data_integration_event_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_execution() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"executionId">> => string(),
+%%   <<"flowName">> => string(),
+%%   <<"instanceId">> => string(),
+%%   <<"message">> => [string()],
+%%   <<"outputMetadata">> => data_integration_flow_execution_output_metadata(),
+%%   <<"sourceInfo">> => data_integration_flow_execution_source_info(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type data_integration_flow_execution() :: #{binary() => any()}.
 
 
 %% Example:
@@ -499,11 +759,42 @@
 
 
 %% Example:
+%% data_lake_dataset_partition_spec() :: #{
+%%   <<"fields">> => list(data_lake_dataset_partition_field()())
+%% }
+-type data_lake_dataset_partition_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_namespace() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"instanceId">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string()
+%% }
+-type data_lake_namespace() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_data_integration_flows_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_integration_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_event() :: #{
+%%   <<"datasetTargetDetails">> => data_integration_event_dataset_target_details(),
+%%   <<"eventGroupId">> => string(),
+%%   <<"eventId">> => string(),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"eventType">> => list(any()),
+%%   <<"instanceId">> => string()
+%% }
+-type data_integration_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -542,6 +833,13 @@
 
 
 %% Example:
+%% create_data_lake_namespace_response() :: #{
+%%   <<"namespace">> => data_lake_namespace()
+%% }
+-type create_data_lake_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_lake_dataset() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdTime">> => [non_neg_integer()],
@@ -550,6 +848,7 @@
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"namespace">> => string(),
+%%   <<"partitionSpec">> => data_lake_dataset_partition_spec(),
 %%   <<"schema">> => data_lake_dataset_schema()
 %% }
 -type data_lake_dataset() :: #{binary() => any()}.
@@ -592,6 +891,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_lake_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type create_instance_errors() ::
@@ -615,6 +923,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type delete_data_lake_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_instance_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -629,7 +944,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_data_integration_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_data_integration_flow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_integration_flow_execution_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -643,7 +972,27 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_data_lake_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_integration_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_data_integration_flow_executions_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -662,6 +1011,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_data_lake_namespaces_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_instances_errors() ::
     throttling_exception() | 
@@ -707,6 +1062,13 @@
     resource_not_found_exception().
 
 -type update_data_lake_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_data_lake_namespace_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -822,6 +1184,43 @@ create_data_lake_dataset(Client, InstanceId, Name, Namespace, Input) ->
 create_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Namespace), "/datasets/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enables you to programmatically create an Amazon Web Services Supply
+%% Chain data lake namespace.
+%%
+%% Developers can create the namespaces for a given instance ID.
+-spec create_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_lake_namespace_request()) ->
+    {ok, create_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_lake_namespace_errors(), tuple()}.
+create_data_lake_namespace(Client, InstanceId, Name, Input) ->
+    create_data_lake_namespace(Client, InstanceId, Name, Input, []).
+
+-spec create_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_lake_namespace_request(), proplists:proplist()) ->
+    {ok, create_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_lake_namespace_errors(), tuple()}.
+create_data_lake_namespace(Client, InstanceId, Name, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -961,6 +1360,44 @@ delete_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables you to programmatically delete an Amazon Web Services Supply
+%% Chain data lake namespace and its underling datasets.
+%%
+%% Developers can delete the existing namespaces for a given instance ID and
+%% namespace name.
+-spec delete_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_lake_namespace_request()) ->
+    {ok, delete_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_lake_namespace_errors(), tuple()}.
+delete_data_lake_namespace(Client, InstanceId, Name, Input) ->
+    delete_data_lake_namespace(Client, InstanceId, Name, Input, []).
+
+-spec delete_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_lake_namespace_request(), proplists:proplist()) ->
+    {ok, delete_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_lake_namespace_errors(), tuple()}.
+delete_data_lake_namespace(Client, InstanceId, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enables you to programmatically delete an Amazon Web Services Supply
 %% Chain instance by deleting the KMS keys and relevant information
 %% associated with the API without using the Amazon Web Services console.
 %%
@@ -1039,6 +1476,47 @@ get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Enables you to programmatically view an Amazon Web Services Supply
+%% Chain Data Integration Event.
+%%
+%% Developers can view the eventType, eventGroupId, eventTimestamp,
+%% datasetTarget, datasetLoadExecution.
+-spec get_data_integration_event(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_integration_event_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_integration_event_errors(), tuple()}.
+get_data_integration_event(Client, EventId, InstanceId)
+  when is_map(Client) ->
+    get_data_integration_event(Client, EventId, InstanceId, #{}, #{}).
+
+-spec get_data_integration_event(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_integration_event_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_integration_event_errors(), tuple()}.
+get_data_integration_event(Client, EventId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_integration_event(Client, EventId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec get_data_integration_event(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_integration_event_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_integration_event_errors(), tuple()}.
+get_data_integration_event(Client, EventId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api-data/data-integration/instance/", aws_util:encode_uri(InstanceId), "/data-integration-events/", aws_util:encode_uri(EventId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Enables you to programmatically view a specific data pipeline for the
 %% provided Amazon Web Services Supply Chain instance and DataIntegrationFlow
 %% name.
@@ -1065,6 +1543,43 @@ get_data_integration_flow(Client, InstanceId, Name, QueryMap, HeadersMap)
 get_data_integration_flow(Client, InstanceId, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/data-integration/instance/", aws_util:encode_uri(InstanceId), "/data-integration-flows/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the flow execution.
+-spec get_data_integration_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_data_integration_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_integration_flow_execution_errors(), tuple()}.
+get_data_integration_flow_execution(Client, ExecutionId, FlowName, InstanceId)
+  when is_map(Client) ->
+    get_data_integration_flow_execution(Client, ExecutionId, FlowName, InstanceId, #{}, #{}).
+
+-spec get_data_integration_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_integration_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_integration_flow_execution_errors(), tuple()}.
+get_data_integration_flow_execution(Client, ExecutionId, FlowName, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_integration_flow_execution(Client, ExecutionId, FlowName, InstanceId, QueryMap, HeadersMap, []).
+
+-spec get_data_integration_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_integration_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_integration_flow_execution_errors(), tuple()}.
+get_data_integration_flow_execution(Client, ExecutionId, FlowName, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api-data/data-integration/instance/", aws_util:encode_uri(InstanceId), "/data-integration-flows/", aws_util:encode_uri(FlowName), "/executions/", aws_util:encode_uri(ExecutionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1119,6 +1634,47 @@ get_data_lake_dataset(Client, InstanceId, Name, Namespace, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Enables you to programmatically view an Amazon Web Services Supply
+%% Chain data lake namespace.
+%%
+%% Developers can view the data lake namespace information such as
+%% description for a given instance ID and namespace name.
+-spec get_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_namespace_errors(), tuple()}.
+get_data_lake_namespace(Client, InstanceId, Name)
+  when is_map(Client) ->
+    get_data_lake_namespace(Client, InstanceId, Name, #{}, #{}).
+
+-spec get_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_namespace_errors(), tuple()}.
+get_data_lake_namespace(Client, InstanceId, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_lake_namespace(Client, InstanceId, Name, QueryMap, HeadersMap, []).
+
+-spec get_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_namespace_errors(), tuple()}.
+get_data_lake_namespace(Client, InstanceId, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Enables you to programmatically retrieve the information related to
 %% an Amazon Web Services Supply Chain instance ID.
 -spec get_instance(aws_client:aws_client(), binary() | list()) ->
@@ -1154,6 +1710,92 @@ get_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Enables you to programmatically list all data integration events for
+%% the provided Amazon Web Services Supply Chain instance.
+-spec list_data_integration_events(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_integration_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_integration_events_errors(), tuple()}.
+list_data_integration_events(Client, InstanceId)
+  when is_map(Client) ->
+    list_data_integration_events(Client, InstanceId, #{}, #{}).
+
+-spec list_data_integration_events(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_integration_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_integration_events_errors(), tuple()}.
+list_data_integration_events(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_integration_events(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_data_integration_events(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_integration_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_integration_events_errors(), tuple()}.
+list_data_integration_events(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api-data/data-integration/instance/", aws_util:encode_uri(InstanceId), "/data-integration-events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"eventType">>, maps:get(<<"eventType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List flow executions.
+-spec list_data_integration_flow_executions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_data_integration_flow_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_integration_flow_executions_errors(), tuple()}.
+list_data_integration_flow_executions(Client, FlowName, InstanceId)
+  when is_map(Client) ->
+    list_data_integration_flow_executions(Client, FlowName, InstanceId, #{}, #{}).
+
+-spec list_data_integration_flow_executions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_data_integration_flow_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_integration_flow_executions_errors(), tuple()}.
+list_data_integration_flow_executions(Client, FlowName, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_integration_flow_executions(Client, FlowName, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_data_integration_flow_executions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_integration_flow_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_integration_flow_executions_errors(), tuple()}.
+list_data_integration_flow_executions(Client, FlowName, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api-data/data-integration/instance/", aws_util:encode_uri(InstanceId), "/data-integration-flows/", aws_util:encode_uri(FlowName), "/executions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1228,6 +1870,53 @@ list_data_lake_datasets(Client, InstanceId, Namespace, QueryMap, HeadersMap)
 list_data_lake_datasets(Client, InstanceId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Namespace), "/datasets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Enables you to programmatically view the list of Amazon Web Services
+%% Supply Chain data lake namespaces.
+%%
+%% Developers can view the namespaces and the corresponding information such
+%% as description for a given instance ID. Note that this API only return
+%% custom namespaces, instance pre-defined namespaces are not included.
+-spec list_data_lake_namespaces(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_lake_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_lake_namespaces_errors(), tuple()}.
+list_data_lake_namespaces(Client, InstanceId)
+  when is_map(Client) ->
+    list_data_lake_namespaces(Client, InstanceId, #{}, #{}).
+
+-spec list_data_lake_namespaces(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_lake_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_lake_namespaces_errors(), tuple()}.
+list_data_lake_namespaces(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_lake_namespaces(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_data_lake_namespaces(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_lake_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_lake_namespaces_errors(), tuple()}.
+list_data_lake_namespaces(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1336,13 +2025,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Send the transactional data payload for the event with real-time data
-%% for analysis or monitoring.
+%% @doc Send the data payload for the event with real-time data for analysis
+%% or monitoring.
 %%
 %% The real-time data events are stored in an Amazon Web Services service
-%% before being processed and stored in data lake. New data events are synced
-%% with data lake at 5 PM GMT everyday. The updated transactional data is
-%% available in data lake after ingestion.
+%% before being processed and stored in data lake.
 -spec send_data_integration_event(aws_client:aws_client(), binary() | list(), send_data_integration_event_request()) ->
     {ok, send_data_integration_event_response(), tuple()} |
     {error, any()} |
@@ -1513,6 +2200,44 @@ update_data_lake_dataset(Client, InstanceId, Name, Namespace, Input) ->
 update_data_lake_dataset(Client, InstanceId, Name, Namespace, Input0, Options0) ->
     Method = patch,
     Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Namespace), "/datasets/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enables you to programmatically update an Amazon Web Services Supply
+%% Chain data lake namespace.
+%%
+%% Developers can update the description of a data lake namespace for a given
+%% instance ID and namespace name.
+-spec update_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_lake_namespace_request()) ->
+    {ok, update_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_lake_namespace_errors(), tuple()}.
+update_data_lake_namespace(Client, InstanceId, Name, Input) ->
+    update_data_lake_namespace(Client, InstanceId, Name, Input, []).
+
+-spec update_data_lake_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_lake_namespace_request(), proplists:proplist()) ->
+    {ok, update_data_lake_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_lake_namespace_errors(), tuple()}.
+update_data_lake_namespace(Client, InstanceId, Name, Input0, Options0) ->
+    Method = patch,
+    Path = ["/api/datalake/instance/", aws_util:encode_uri(InstanceId), "/namespaces/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
