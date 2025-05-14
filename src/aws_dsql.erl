@@ -3,17 +3,18 @@
 
 %% @doc This is an interface reference for Amazon Aurora DSQL.
 %%
-%% It contains documentation for one of the programming or
-%% command line interfaces you can use to manage Amazon Aurora DSQL.
+%% It contains documentation for one of the
+%% programming or command line interfaces you can use to manage Amazon Aurora
+%% DSQL.
 %%
-%% Amazon Aurora DSQL is a serverless, distributed SQL
-%% database suitable for workloads of any size. Aurora DSQL
-%% is available in both single-Region and multi-Region configurations,
-%% so your clusters and databases are always available even if an
-%% Availability Zone or an Amazon Web Services Region are unavailable. Aurora
-%% DSQL
-%% lets you focus on using your data to acquire new insights for your
-%% business and customers.
+%% Amazon Aurora DSQL is a serverless, distributed SQL database suitable for
+%% workloads of any size.
+%% is available in both single-Region and multi-Region configurations, so
+%% your
+%% clusters and databases are always available even if an Availability Zone
+%% or an Amazon Web Services Region are unavailable. lets you focus on using
+%% your data to
+%% acquire new insights for your business and customers.
 -module(aws_dsql).
 
 -export([create_cluster/2,
@@ -75,6 +76,7 @@
 %% create_cluster_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"tags">> => map()
 %% }
 -type create_cluster_input() :: #{binary() => any()}.
@@ -86,6 +88,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"identifier">> => string(),
+%%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any())
 %% }
 -type create_cluster_output() :: #{binary() => any()}.
@@ -145,7 +148,9 @@
 %%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"identifier">> => string(),
 %%   <<"linkedClusterArns">> => list(string()()),
+%%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
 %%   <<"witnessRegion">> => string()
 %% }
 -type get_cluster_output() :: #{binary() => any()}.
@@ -206,6 +211,14 @@
 
 
 %% Example:
+%% multi_region_properties() :: #{
+%%   <<"clusters">> => list(string()()),
+%%   <<"witnessRegion">> => string()
+%% }
+-type multi_region_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"resourceId">> => [string()],
@@ -252,7 +265,8 @@
 %% Example:
 %% update_cluster_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"deletionProtectionEnabled">> => boolean()
+%%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"multiRegionProperties">> => multi_region_properties()
 %% }
 -type update_cluster_input() :: #{binary() => any()}.
 
@@ -287,6 +301,7 @@
 -type validation_exception_field() :: #{binary() => any()}.
 
 -type create_cluster_errors() ::
+    validation_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception().
 
@@ -325,6 +340,7 @@
     resource_not_found_exception().
 
 -type update_cluster_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -332,7 +348,66 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a cluster in Amazon Aurora DSQL.
+%% @doc This operation creates a cluster in Amazon Aurora DSQL.
+%%
+%% You need the following permissions to
+%% use this operation.
+%%
+%% Permission to create a cluster.
+%%
+%% dsql:CreateCluster
+%%
+%% Resources: arn:aws:dsql:region:account-id:cluster/*
+%%
+%% Permission to add tags to a resource.
+%%
+%% dsql:TagResource
+%%
+%% Resources:
+%% arn:aws:dsql:region:account-id:cluster/*
+%%
+%% Permission to configure multi-region properties for
+%% a cluster.
+%%
+%% dsql:PutMultiRegionProperties
+%%
+%% Resources:
+%% arn:aws:dsql:region:account-id:cluster/*
+%%
+%% When specifying multiRegionProperties.clusters.
+%%
+%% dsql:AddPeerCluster
+%%
+%% Permission to add peer clusters.
+%%
+%% Resources:
+%%
+%% Local cluster: arn:aws:dsql:region:account-id:cluster/*
+%%
+%% Each peer cluster: exact ARN of each specified peer cluster
+%%
+%% When specifying multiRegionProperties.witnessRegion.
+%%
+%% dsql:PutWitnessRegion
+%%
+%% Permission to set a witness region.
+%%
+%% Resources: arn:aws:dsql:region:account-id:cluster/*
+%%
+%% Condition Keys: `dsql:WitnessRegion' (matching the specified
+%% witness region)
+%%
+%% This permission is checked both in the cluster Region and in the witness
+%% Region.
+%%
+%% Important Notes for Multi-Region Operations
+%%
+%% The witness region specified in
+%% `multiRegionProperties.witnessRegion' cannot be the same as the
+%% cluster's Region.
+%%
+%% When updating clusters with peer relationships, permissions are checked
+%% for both adding and removing peers.
 -spec create_cluster(aws_client:aws_client(), create_cluster_input()) ->
     {ok, create_cluster_output(), tuple()} |
     {error, any()} |
@@ -368,10 +443,12 @@ create_cluster(Client, Input0, Options0) ->
 
 %% @doc Creates multi-Region clusters in Amazon Aurora DSQL.
 %%
-%% Multi-Region clusters require a linked Region list, which is an array
-%% of the Regions in which you want to create linked clusters.
+%% Multi-Region clusters require a linked
+%% Region list, which is an array of the Regions in which you want to create
+%% linked clusters.
 %% Multi-Region clusters require a witness Region, which participates in
-%% quorum in failure scenarios.
+%% quorum in failure
+%% scenarios.
 -spec create_multi_region_clusters(aws_client:aws_client(), create_multi_region_clusters_input()) ->
     {ok, create_multi_region_clusters_output(), tuple()} |
     {error, any()} |
@@ -699,6 +776,25 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a cluster.
+%%
+%% Example IAM Policy for Multi-Region Operations
+%%
+%% The following IAM policy grants permissions for multi-Region operations.
+%%
+%% The `dsql:RemovePeerCluster' permission uses a wildcard ARN pattern to
+%% simplify permission management during updates.
+%%
+%% Important Notes for Multi-Region Operations
+%%
+%% The witness region specified in
+%% `multiRegionProperties.witnessRegion' cannot be the same as the
+%% cluster's Region.
+%%
+%% When updating clusters with peer relationships, permissions are checked
+%% for both adding and removing peers.
+%%
+%% The `dsql:RemovePeerCluster' permission uses a wildcard ARN pattern to
+%% simplify permission management during updates.
 -spec update_cluster(aws_client:aws_client(), binary() | list(), update_cluster_input()) ->
     {ok, update_cluster_output(), tuple()} |
     {error, any()} |

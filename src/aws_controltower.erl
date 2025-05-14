@@ -2,12 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Web Services Control Tower offers application programming
-%% interface (API)
-%% operations that support programmatic interaction with these types of
-%% resources:
+%% interface (API) operations that support programmatic interaction with
+%% these types of resources:
 %%
-%% Controls
-%% : https://docs.aws.amazon.com/controltower/latest/userguide/controls.html
+%% Controls :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/controls.html
 %%
 %% DisableControl:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_DisableControl.html
@@ -18,18 +17,22 @@
 %% GetEnabledControl:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_GetEnabledControl.html
 %%
+%% GetControlOperation:
+%% https://docs.aws.amazon.com/controltower/latest/APIReference/API_GetControlOperation.html
+%%
 %% ListControlOperations:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_ListControlOperations.html
 %%
 %% ListEnabledControls:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_ListEnabledControls.html
 %%
+%% ResetEnabledControl:
+%% https://docs.aws.amazon.com/controltower/latest/APIReference/API_ResetEnabledControl.html
+%%
 %% UpdateEnabledControl:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_UpdateEnabledControl.html
 %%
-%% Landing
-%% zones
-%% :
+%% Landing zones :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html
 %%
 %% CreateLandingZone:
@@ -56,8 +59,7 @@
 %% UpdateLandingZone:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_UpdateLandingZone.html
 %%
-%% Baselines
-%% :
+%% Baselines :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/types-of-baselines.html
 %%
 %% DisableBaseline:
@@ -87,8 +89,7 @@
 %% UpdateEnabledBaseline:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_UpdateEnabledBaseline.html
 %%
-%% Tagging
-%% :
+%% Tagging :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html
 %%
 %% ListTagsForResource:
@@ -100,17 +101,15 @@
 %% UntagResource:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_UntagResource.html
 %%
-%% For more information about these types of resources, see the
-%% Amazon Web Services Control Tower User Guide
-%% :
+%% For more information about these types of resources, see the Amazon Web
+%% Services Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html.
 %%
 %% About control APIs
 %%
 %% These interfaces allow you to apply the Amazon Web Services library of
-%% pre-defined
-%% controls to your organizational units, programmatically. In Amazon Web
-%% Services Control Tower, the terms &quot;control&quot; and
+%% pre-defined controls to your organizational units, programmatically. In
+%% Amazon Web Services Control Tower, the terms &quot;control&quot; and
 %% &quot;guardrail&quot; are synonyms.
 %%
 %% To call these APIs, you'll need to know:
@@ -119,8 +118,7 @@
 %% targeting.
 %%
 %% the ARN associated with the target organizational unit (OU), which we call
-%% the
-%% `targetIdentifier'.
+%% the `targetIdentifier'.
 %%
 %% the ARN associated with a resource that you wish to tag or untag.
 %%
@@ -128,71 +126,56 @@
 %% Tower control:
 %%
 %% The `controlIdentifier' is an ARN that is specified for each control.
-%% You can
-%% view the `controlIdentifier' in the console on the Control
+%% You can view the `controlIdentifier' in the console on the Control
 %% details page, as well as in the documentation.
 %%
 %% About identifiers for Amazon Web Services Control Tower
 %%
 %% The Amazon Web Services Control Tower `controlIdentifier' is unique in
-%% each Amazon Web Services Region for each
-%% control. You can find the `controlIdentifier' for each Region and
-%% control in the
-%% Tables of control metadata:
+%% each Amazon Web Services Region for each control. You can find the
+%% `controlIdentifier' for each Region and control in the Tables of
+%% control metadata:
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html
-%% or the Control
-%% availability by Region tables:
+%% or the Control availability by Region tables:
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html
-%% in the Amazon Web Services Control Tower
-%% Controls Reference Guide.
+%% in the Amazon Web Services Control Tower Controls Reference Guide.
 %%
 %% A quick-reference list of control identifers for the Amazon Web Services
-%% Control Tower
-%% legacy Strongly recommended and Elective controls
-%% is given in Resource
-%% identifiers for APIs and controls:
+%% Control Tower legacy Strongly recommended and Elective controls is given
+%% in Resource identifiers for APIs and controls:
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html.html
-%% in the
-%% Amazon Web Services Control Tower Controls Reference Guide
-%% :
+%% in the Amazon Web Services Control Tower Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html.
-%% Remember
-%% that Mandatory controls cannot be added or removed.
+%% Remember that Mandatory controls cannot be added or removed.
 %%
 %% Some controls have two identifiers
 %%
-%% ARN format for Amazon Web Services Control
-%% Tower:
+%% ARN format for Amazon Web Services Control Tower:
 %% `arn:aws:controltower:{REGION}::control/{CONTROL_TOWER_OPAQUE_ID}'
 %%
 %% Example:
 %%
 %% `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED'
 %%
-%% ARN format for Amazon Web Services Control
-%% Catalog:
+%% ARN format for Amazon Web Services Control Catalog:
 %% `arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}'
 %%
-%% You can find the `{CONTROL_CATALOG_OPAQUE_ID}' in the
-%% Amazon Web Services Control Tower Controls Reference
-%% Guide
-%% :
+%% You can find the `{CONTROL_CATALOG_OPAQUE_ID}' in the Amazon Web
+%% Services Control Tower Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html,
-%% or in the Amazon Web Services Control Tower console, on the
-%% Control details page.
+%% or in the Amazon Web Services Control Tower console, on the Control
+%% details page.
 %%
 %% The Amazon Web Services Control Tower APIs for enabled controls, such as
-%% `GetEnabledControl' and `ListEnabledControls' always return an
-%% ARN of the same type given when the control was enabled.
+%% `GetEnabledControl' and `ListEnabledControls' always return an ARN
+%% of the same type given when the control was enabled.
 %%
 %% To get the `targetIdentifier':
 %%
 %% The `targetIdentifier' is the ARN for an OU.
 %%
 %% In the Amazon Web Services Organizations console, you can find the ARN for
-%% the OU on the
-%% Organizational unit details page associated with that
-%% OU.
+%% the OU on the Organizational unit details page associated with that OU.
 %%
 %% OU ARN format:
 %%
@@ -201,42 +184,33 @@
 %% About landing zone APIs
 %%
 %% You can configure and launch an Amazon Web Services Control Tower landing
-%% zone with APIs.
-%% For an introduction and steps, see Getting started with
+%% zone with APIs. For an introduction and steps, see Getting started with
 %% Amazon Web Services Control Tower using APIs:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html.
 %%
-%% For an overview of landing zone API operations, see
-%% Amazon Web Services Control Tower supports landing zone APIs:
+%% For an overview of landing zone API operations, see Amazon Web Services
+%% Control Tower supports landing zone APIs:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis.
-%% The individual API
-%% operations for landing zones are detailed in this document, the API
-%% reference
-%% manual:
+%% The individual API operations for landing zones are detailed in this
+%% document, the API reference manual:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html,
 %% in the &quot;Actions&quot; section.
 %%
 %% About baseline APIs
 %%
 %% You can apply the `AWSControlTowerBaseline' baseline to an
-%% organizational
-%% unit (OU) as a way to register the OU with Amazon Web Services Control
-%% Tower,
-%% programmatically. For a general overview of this capability, see Amazon
-%% Web Services Control Tower supports APIs for OU registration and
-%% configuration
-%% with baselines:
+%% organizational unit (OU) as a way to register the OU with Amazon Web
+%% Services Control Tower, programmatically. For a general overview of this
+%% capability, see Amazon Web Services Control Tower supports APIs for OU
+%% registration and configuration with baselines:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/2024-all.html#baseline-apis.
 %%
 %% You can call the baseline API operations to view the baselines that Amazon
-%% Web Services
-%% Control Tower enables for your landing zone, on your behalf, when setting
-%% up the landing
-%% zone. These baselines are read-only baselines.
+%% Web Services Control Tower enables for your landing zone, on your behalf,
+%% when setting up the landing zone. These baselines are read-only baselines.
 %%
 %% The individual API operations for baselines are detailed in this document,
-%% the API
-%% reference manual:
+%% the API reference manual:
 %% https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html,
 %% in the &quot;Actions&quot; section. For usage examples, see Baseline API
 %% input and output examples with CLI:
@@ -244,20 +218,18 @@
 %%
 %% About Amazon Web Services Control Catalog identifiers
 %%
-%% The `EnableControl' and `DisableControl' API operations can
-%% be called by specifying either the Amazon Web Services Control Tower
-%% identifer or the
-%% Amazon Web Services Control Catalog identifier. The API response returns
-%% the same
-%% type of identifier that you specified when calling the API.
+%% The `EnableControl' and `DisableControl' API operations can be
+%% called by specifying either the Amazon Web Services Control Tower
+%% identifer or the Amazon Web Services Control Catalog identifier. The API
+%% response returns the same type of identifier that you specified when
+%% calling the API.
 %%
 %% If you use an Amazon Web Services Control Tower identifier to call the
-%% `EnableControl' API, and then call `EnableControl' again
-%% with an Amazon Web Services Control Catalog identifier, Amazon Web
-%% Services Control
-%% Tower returns an error message stating that the control is already
-%% enabled. Similar
-%% behavior applies to the `DisableControl' API operation.
+%% `EnableControl' API, and then call `EnableControl' again with an
+%% Amazon Web Services Control Catalog identifier, Amazon Web Services
+%% Control Tower returns an error message stating that the control is already
+%% enabled. Similar behavior applies to the `DisableControl' API
+%% operation.
 %%
 %% Mandatory controls and the landing-zone-level Region deny control have
 %% Amazon Web Services Control Tower identifiers only.
@@ -267,41 +239,32 @@
 %% Control API input and output examples with CLI:
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html
 %%
-%% Baseline API input
-%% and output examples with CLI:
+%% Baseline API input and output examples with CLI:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html
 %%
-%% Enable controls
-%% with CloudFormation:
+%% Enable controls with CloudFormation:
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/enable-controls.html
 %%
-%% Launch a landing zone
-%% with CloudFormation:
+%% Launch a landing zone with CloudFormation:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html
 %%
-%% Control
-%% metadata tables (large page):
+%% Control metadata tables (large page):
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html
 %%
-%% Control
-%% availability by Region tables (large page):
+%% Control availability by Region tables (large page):
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html
 %%
-%% List of
-%% identifiers for legacy controls:
+%% List of identifiers for legacy controls:
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html
 %%
-%% Controls reference
-%% guide:
+%% Controls reference guide:
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html
 %%
-%% Controls
-%% library groupings:
+%% Controls library groupings:
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/controls-reference.html
 %%
 %% Creating Amazon Web Services Control Tower resources with Amazon Web
-%% Services
-%% CloudFormation:
+%% Services CloudFormation:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html
 %%
 %% To view the open source resource repository on GitHub, see
@@ -311,24 +274,17 @@
 %% Recording API Requests
 %%
 %% Amazon Web Services Control Tower supports Amazon Web Services CloudTrail,
-%% a service that
-%% records Amazon Web Services API calls for your Amazon Web Services account
-%% and delivers log
-%% files to an Amazon S3 bucket. By using information collected by
-%% CloudTrail, you can
-%% determine which requests the Amazon Web Services Control Tower service
-%% received, who made
-%% the request and when, and so on. For more about Amazon Web Services
-%% Control Tower and its
-%% support for CloudTrail, see Logging Amazon Web Services Control Tower
+%% a service that records Amazon Web Services API calls for your Amazon Web
+%% Services account and delivers log files to an Amazon S3 bucket. By using
+%% information collected by CloudTrail, you can determine which requests the
+%% Amazon Web Services Control Tower service received, who made the request
+%% and when, and so on. For more about Amazon Web Services Control Tower and
+%% its support for CloudTrail, see Logging Amazon Web Services Control Tower
 %% Actions with Amazon Web Services CloudTrail:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html
-%% in the
-%% Amazon Web Services Control Tower User Guide. To learn more about
-%% CloudTrail, including
-%% how to turn it on and find your log files, see the Amazon Web Services
-%% CloudTrail User
-%% Guide.
+%% in the Amazon Web Services Control Tower User Guide. To learn more about
+%% CloudTrail, including how to turn it on and find your log files, see the
+%% Amazon Web Services CloudTrail User Guide.
 -module(aws_controltower).
 
 -export([create_landing_zone/2,
@@ -461,6 +417,13 @@
 
 
 %% Example:
+%% enabled_baseline_drift_status_summary() :: #{
+%%   <<"types">> => enabled_baseline_drift_types()
+%% }
+-type enabled_baseline_drift_status_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% enable_control_input() :: #{
 %%   <<"controlIdentifier">> := string(),
 %%   <<"parameters">> => list(enabled_control_parameter()()),
@@ -536,6 +499,7 @@
 %%   <<"arn">> => string(),
 %%   <<"baselineIdentifier">> => [string()],
 %%   <<"baselineVersion">> => [string()],
+%%   <<"driftStatusSummary">> => enabled_baseline_drift_status_summary(),
 %%   <<"parentIdentifier">> => string(),
 %%   <<"statusSummary">> => enablement_status_summary(),
 %%   <<"targetIdentifier">> => [string()]
@@ -809,7 +773,9 @@
 %% Example:
 %% enabled_baseline_filter() :: #{
 %%   <<"baselineIdentifiers">> => list(string()()),
+%%   <<"inheritanceDriftStatuses">> => list(list(any())()),
 %%   <<"parentIdentifiers">> => list(string()()),
+%%   <<"statuses">> => list(list(any())()),
 %%   <<"targetIdentifiers">> => list(string()())
 %% }
 -type enabled_baseline_filter() :: #{binary() => any()}.
@@ -864,6 +830,13 @@
 
 
 %% Example:
+%% enabled_baseline_drift_types() :: #{
+%%   <<"inheritance">> => enabled_baseline_inheritance_drift()
+%% }
+-type enabled_baseline_drift_types() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_control_operations_input() :: #{
 %%   <<"filter">> => control_operation_filter(),
 %%   <<"maxResults">> => integer(),
@@ -914,6 +887,7 @@
 %%   <<"arn">> => string(),
 %%   <<"baselineIdentifier">> => [string()],
 %%   <<"baselineVersion">> => [string()],
+%%   <<"driftStatusSummary">> => enabled_baseline_drift_status_summary(),
 %%   <<"parameters">> => list(enabled_baseline_parameter_summary()()),
 %%   <<"parentIdentifier">> => string(),
 %%   <<"statusSummary">> => enablement_status_summary(),
@@ -995,6 +969,13 @@
 %%   <<"name">> => [string()]
 %% }
 -type get_baseline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_baseline_inheritance_drift() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type enabled_baseline_inheritance_drift() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1314,8 +1295,8 @@
 %% @doc Creates a new landing zone.
 %%
 %% This API call starts an asynchronous operation that creates and configures
-%% a landing zone,
-%% based on the parameters specified in the manifest JSON file.
+%% a landing zone, based on the parameters specified in the manifest JSON
+%% file.
 -spec create_landing_zone(aws_client:aws_client(), create_landing_zone_input()) ->
     {ok, create_landing_zone_output(), tuple()} |
     {error, any()} |
@@ -1352,9 +1333,8 @@ create_landing_zone(Client, Input0, Options0) ->
 %% @doc Decommissions a landing zone.
 %%
 %% This API call starts an asynchronous operation that deletes Amazon Web
-%% Services Control Tower
-%% resources deployed in accounts managed by Amazon Web Services Control
-%% Tower.
+%% Services Control Tower resources deployed in accounts managed by Amazon
+%% Web Services Control Tower.
 -spec delete_landing_zone(aws_client:aws_client(), delete_landing_zone_input()) ->
     {ok, delete_landing_zone_output(), tuple()} |
     {error, any()} |
@@ -1392,9 +1372,8 @@ delete_landing_zone(Client, Input0, Options0) ->
 %%
 %% This API starts an asynchronous operation to remove all resources deployed
 %% as part of the baseline enablement. The resource will vary depending on
-%% the enabled baseline. For usage examples, see
-%% the Amazon Web Services Control Tower User Guide
-%% :
+%% the enabled baseline. For usage examples, see the Amazon Web Services
+%% Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec disable_baseline(aws_client:aws_client(), disable_baseline_input()) ->
     {ok, disable_baseline_output(), tuple()} |
@@ -1433,11 +1412,8 @@ disable_baseline(Client, Input0, Options0) ->
 %%
 %% It starts an asynchronous operation that deletes Amazon Web Services
 %% resources on the specified organizational unit and the accounts it
-%% contains. The resources
-%% will vary according to the control that you specify. For usage examples,
-%% see the
-%% Controls Reference Guide
-%% :
+%% contains. The resources will vary according to the control that you
+%% specify. For usage examples, see the Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec disable_control(aws_client:aws_client(), disable_control_input()) ->
     {ok, disable_control_output(), tuple()} |
@@ -1475,9 +1451,8 @@ disable_control(Client, Input0, Options0) ->
 %% @doc Enable (apply) a `Baseline' to a Target.
 %%
 %% This API starts an asynchronous operation to deploy resources specified by
-%% the `Baseline' to the specified Target. For usage examples, see
-%% the Amazon Web Services Control Tower User Guide
-%% :
+%% the `Baseline' to the specified Target. For usage examples, see the
+%% Amazon Web Services Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec enable_baseline(aws_client:aws_client(), enable_baseline_input()) ->
     {ok, enable_baseline_output(), tuple()} |
@@ -1516,11 +1491,8 @@ enable_baseline(Client, Input0, Options0) ->
 %%
 %% It starts an asynchronous operation that creates Amazon Web Services
 %% resources on the specified organizational unit and the accounts it
-%% contains. The resources
-%% created will vary according to the control that you specify. For usage
-%% examples, see the
-%% Controls Reference Guide
-%% :
+%% contains. The resources created will vary according to the control that
+%% you specify. For usage examples, see the Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec enable_control(aws_client:aws_client(), enable_control_input()) ->
     {ok, enable_control_output(), tuple()} |
@@ -1558,9 +1530,7 @@ enable_control(Client, Input0, Options0) ->
 %% @doc Retrieve details about an existing `Baseline' resource by
 %% specifying its identifier.
 %%
-%% For usage examples, see
-%% the Amazon Web Services Control Tower User Guide
-%% :
+%% For usage examples, see the Amazon Web Services Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec get_baseline(aws_client:aws_client(), get_baseline_input()) ->
     {ok, get_baseline_output(), tuple()} |
@@ -1601,9 +1571,7 @@ get_baseline(Client, Input0, Options0) ->
 %% `ResetEnabledBaseline'.
 %%
 %% A status message is displayed in case of operation failure. For usage
-%% examples, see
-%% the Amazon Web Services Control Tower User Guide
-%% :
+%% examples, see the Amazon Web Services Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec get_baseline_operation(aws_client:aws_client(), get_baseline_operation_input()) ->
     {ok, get_baseline_operation_output(), tuple()} |
@@ -1641,10 +1609,9 @@ get_baseline_operation(Client, Input0, Options0) ->
 %% @doc Returns the status of a particular `EnableControl' or
 %% `DisableControl' operation.
 %%
-%% Displays a message in case of error. Details for an
-%% operation are available for 90 days. For usage examples, see the
-%% Controls Reference Guide
-%% :
+%% Displays a message in case of error. Details for an operation are
+%% available for 90 days. For usage examples, see the Controls Reference
+%% Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec get_control_operation(aws_client:aws_client(), get_control_operation_input()) ->
     {ok, get_control_operation_output(), tuple()} |
@@ -1716,9 +1683,7 @@ get_enabled_baseline(Client, Input0, Options0) ->
 
 %% @doc Retrieves details about an enabled control.
 %%
-%% For usage examples, see the
-%% Controls Reference Guide
-%% :
+%% For usage examples, see the Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec get_enabled_control(aws_client:aws_client(), get_enabled_control_input()) ->
     {ok, get_enabled_control_output(), tuple()} |
@@ -1791,8 +1756,7 @@ get_landing_zone(Client, Input0, Options0) ->
 
 %% @doc Returns the status of the specified landing zone operation.
 %%
-%% Details for an operation are available for
-%% 90 days.
+%% Details for an operation are available for 90 days.
 -spec get_landing_zone_operation(aws_client:aws_client(), get_landing_zone_operation_input()) ->
     {ok, get_landing_zone_operation_output(), tuple()} |
     {error, any()} |
@@ -1828,9 +1792,7 @@ get_landing_zone_operation(Client, Input0, Options0) ->
 
 %% @doc Returns a summary list of all available baselines.
 %%
-%% For usage examples, see
-%% the Amazon Web Services Control Tower User Guide
-%% :
+%% For usage examples, see the Amazon Web Services Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec list_baselines(aws_client:aws_client(), list_baselines_input()) ->
     {ok, list_baselines_output(), tuple()} |
@@ -1907,9 +1869,7 @@ list_control_operations(Client, Input0, Options0) ->
 %%
 %% You can filter the list by the corresponding `Baseline' or
 %% `Target' of the `EnabledBaseline' resources. For usage examples,
-%% see
-%% the Amazon Web Services Control Tower User Guide
-%% :
+%% see the Amazon Web Services Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec list_enabled_baselines(aws_client:aws_client(), list_enabled_baselines_input()) ->
     {ok, list_enabled_baselines_output(), tuple()} |
@@ -1945,12 +1905,9 @@ list_enabled_baselines(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the controls enabled by Amazon Web Services Control Tower on
-%% the specified organizational unit and
-%% the accounts it contains.
+%% the specified organizational unit and the accounts it contains.
 %%
-%% For usage examples, see the
-%% Controls Reference Guide
-%% :
+%% For usage examples, see the Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec list_enabled_controls(aws_client:aws_client(), list_enabled_controls_input()) ->
     {ok, list_enabled_controls_output(), tuple()} |
@@ -2024,9 +1981,8 @@ list_landing_zone_operations(Client, Input0, Options0) ->
 %% @doc Returns the landing zone ARN for the landing zone deployed in your
 %% managed account.
 %%
-%% This API also
-%% creates an ARN for existing accounts that do not yet have a landing zone
-%% ARN.
+%% This API also creates an ARN for existing accounts that do not yet have a
+%% landing zone ARN.
 %%
 %% Returns one landing zone ARN.
 -spec list_landing_zones(aws_client:aws_client(), list_landing_zones_input()) ->
@@ -2064,9 +2020,7 @@ list_landing_zones(Client, Input0, Options0) ->
 
 %% @doc Returns a list of tags associated with the resource.
 %%
-%% For usage examples, see the
-%% Controls Reference Guide
-%% :
+%% For usage examples, see the Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
@@ -2107,9 +2061,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Re-enables an `EnabledBaseline' resource.
 %%
 %% For example, this API can re-apply the existing `Baseline' after a new
-%% member account is moved to the target OU. For usage examples, see
-%% the Amazon Web Services Control Tower User Guide
-%% :
+%% member account is moved to the target OU. For usage examples, see the
+%% Amazon Web Services Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec reset_enabled_baseline(aws_client:aws_client(), reset_enabled_baseline_input()) ->
     {ok, reset_enabled_baseline_output(), tuple()} |
@@ -2180,14 +2133,12 @@ reset_enabled_control(Client, Input0, Options0) ->
 
 %% @doc This API call resets a landing zone.
 %%
-%% It starts an asynchronous operation that resets the
-%% landing zone to the parameters specified in the original configuration,
-%% which you specified
-%% in the manifest file. Nothing in the manifest file's original landing
-%% zone configuration is changed
-%% during the reset process, by default. This API is not the same as a
-%% rollback of a landing
-%% zone version, which is not a supported operation.
+%% It starts an asynchronous operation that resets the landing zone to the
+%% parameters specified in the original configuration, which you specified in
+%% the manifest file. Nothing in the manifest file's original landing
+%% zone configuration is changed during the reset process, by default. This
+%% API is not the same as a rollback of a landing zone version, which is not
+%% a supported operation.
 -spec reset_landing_zone(aws_client:aws_client(), reset_landing_zone_input()) ->
     {ok, reset_landing_zone_output(), tuple()} |
     {error, any()} |
@@ -2223,9 +2174,7 @@ reset_landing_zone(Client, Input0, Options0) ->
 
 %% @doc Applies tags to a resource.
 %%
-%% For usage examples, see the
-%% Controls Reference Guide
-%% :
+%% For usage examples, see the Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
@@ -2262,9 +2211,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes tags from a resource.
 %%
-%% For usage examples, see the
-%% Controls Reference Guide
-%% :
+%% For usage examples, see the Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
@@ -2303,9 +2250,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates an `EnabledBaseline' resource's applied parameters or
 %% version.
 %%
-%% For usage examples, see
-%% the Amazon Web Services Control Tower User Guide
-%% :
+%% For usage examples, see the Amazon Web Services Control Tower User Guide :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec update_enabled_baseline(aws_client:aws_client(), update_enabled_baseline_input()) ->
     {ok, update_enabled_baseline_output(), tuple()} |
@@ -2340,8 +2285,7 @@ update_enabled_baseline(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Updates the configuration of an already enabled control.
+%% @doc Updates the configuration of an already enabled control.
 %%
 %% If the enabled control shows an `EnablementStatus' of SUCCEEDED,
 %% supply parameters that are different from the currently configured
@@ -2357,9 +2301,7 @@ update_enabled_baseline(Client, Input0, Options0) ->
 %% the `ResetEnabledControl' API. Alternatively, you can call
 %% `DisableControl' and then call `EnableControl' again. Also, you
 %% can run an extending governance operation to repair drift. For usage
-%% examples, see the
-%% Controls Reference Guide
-%% :
+%% examples, see the Controls Reference Guide :
 %% https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html.
 -spec update_enabled_control(aws_client:aws_client(), update_enabled_control_input()) ->
     {ok, update_enabled_control_output(), tuple()} |
@@ -2396,10 +2338,9 @@ update_enabled_control(Client, Input0, Options0) ->
 
 %% @doc This API call updates the landing zone.
 %%
-%% It starts an asynchronous operation that updates the
-%% landing zone based on the new landing zone version, or on the changed
-%% parameters specified in the
-%% updated manifest file.
+%% It starts an asynchronous operation that updates the landing zone based on
+%% the new landing zone version, or on the changed parameters specified in
+%% the updated manifest file.
 -spec update_landing_zone(aws_client:aws_client(), update_landing_zone_input()) ->
     {ok, update_landing_zone_output(), tuple()} |
     {error, any()} |

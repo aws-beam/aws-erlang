@@ -517,6 +517,7 @@
 %%   <<"LicenseName">> := string(),
 %%   <<"ProductName">> := string(),
 %%   <<"ProductSKU">> := string(),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"Validity">> := datetime_range()
 %% }
 -type create_license_request() :: #{binary() => any()}.
@@ -676,7 +677,8 @@
 %%   <<"GrantName">> := string(),
 %%   <<"HomeRegion">> := string(),
 %%   <<"LicenseArn">> := string(),
-%%   <<"Principals">> := list(string()())
+%%   <<"Principals">> := list(string()()),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type create_grant_request() :: #{binary() => any()}.
 
@@ -1782,6 +1784,7 @@
     authorization_exception() | 
     resource_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
+    conflict_exception() | 
     rate_limit_exceeded_exception().
 
 -type update_license_manager_report_generator_errors() ::
@@ -1800,6 +1803,7 @@
     authorization_exception() | 
     invalid_resource_state_exception() | 
     invalid_parameter_value_exception() | 
+    conflict_exception() | 
     license_usage_exception() | 
     rate_limit_exceeded_exception().
 
@@ -2554,7 +2558,12 @@ list_resource_inventory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceInventory">>, Input, Options).
 
-%% @doc Lists the tags for the specified license configuration.
+%% @doc Lists the tags for the specified resource.
+%%
+%% For more information about tagging support in
+%% License Manager, see the TagResource:
+%% https://docs.aws.amazon.com/license-manager/latest/APIReference/API_TagResource.html
+%% operation.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -2627,7 +2636,18 @@ reject_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectGrant">>, Input, Options).
 
-%% @doc Adds the specified tags to the specified license configuration.
+%% @doc Adds the specified tags to the specified resource.
+%%
+%% The following resources support
+%% tagging in License Manager:
+%%
+%% Licenses
+%%
+%% Grants
+%%
+%% License configurations
+%%
+%% Report generators
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -2644,7 +2664,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes the specified tags from the specified license configuration.
+%% @doc Removes the specified tags from the specified resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

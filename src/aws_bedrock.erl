@@ -348,6 +348,7 @@
 %%   <<"contentPolicy">> => guardrail_content_policy(),
 %%   <<"contextualGroundingPolicy">> => guardrail_contextual_grounding_policy(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"crossRegionDetails">> => guardrail_cross_region_details(),
 %%   <<"description">> => string(),
 %%   <<"failureRecommendations">> => list(string()()),
 %%   <<"guardrailArn">> => string(),
@@ -409,6 +410,7 @@
 %%   <<"clientRequestToken">> => string(),
 %%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
 %%   <<"contextualGroundingPolicyConfig">> => guardrail_contextual_grounding_policy_config(),
+%%   <<"crossRegionConfig">> => guardrail_cross_region_config(),
 %%   <<"description">> => string(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),
@@ -443,6 +445,7 @@
 %% guardrail_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"crossRegionDetails">> => guardrail_cross_region_details(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -1260,6 +1263,14 @@
 
 
 %% Example:
+%% guardrail_cross_region_details() :: #{
+%%   <<"guardrailProfileArn">> => string(),
+%%   <<"guardrailProfileId">> => string()
+%% }
+-type guardrail_cross_region_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_sources_retrieve_and_generate_configuration() :: #{
 %%   <<"generationConfiguration">> => external_sources_generation_configuration(),
 %%   <<"modelArn">> => string(),
@@ -1316,6 +1327,13 @@
 
 
 %% Example:
+%% guardrail_cross_region_config() :: #{
+%%   <<"guardrailProfileIdentifier">> => string()
+%% }
+-type guardrail_cross_region_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag()())
 %% }
@@ -1352,6 +1370,7 @@
 %%   <<"blockedOutputsMessaging">> := string(),
 %%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
 %%   <<"contextualGroundingPolicyConfig">> => guardrail_contextual_grounding_policy_config(),
+%%   <<"crossRegionConfig">> => guardrail_cross_region_config(),
 %%   <<"description">> => string(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),

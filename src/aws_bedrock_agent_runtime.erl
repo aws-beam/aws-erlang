@@ -206,7 +206,8 @@
 %%   <<"executionError">> => [string()],
 %%   <<"executionOutput">> => [string()],
 %%   <<"executionTimeout">> => [boolean()],
-%%   <<"files">> => list([string()]())
+%%   <<"files">> => list([string()]()),
+%%   <<"metadata">> => metadata()
 %% }
 -type code_interpreter_invocation_output() :: #{binary() => any()}.
 
@@ -372,6 +373,11 @@
 
 %% Example:
 %% metadata() :: #{
+%%   <<"clientRequestId">> => [string()],
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"operationTotalTimeMs">> => [float()],
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"totalTimeMs">> => [float()],
 %%   <<"usage">> => usage()
 %% }
 -type metadata() :: #{binary() => any()}.
@@ -410,7 +416,9 @@
 
 %% Example:
 %% failure_trace() :: #{
+%%   <<"failureCode">> => [integer()],
 %%   <<"failureReason">> => string(),
+%%   <<"metadata">> => metadata(),
 %%   <<"traceId">> => string()
 %% }
 -type failure_trace() :: #{binary() => any()}.
@@ -918,6 +926,7 @@
 %% agent_collaborator_invocation_output() :: #{
 %%   <<"agentCollaboratorAliasArn">> => string(),
 %%   <<"agentCollaboratorName">> => [string()],
+%%   <<"metadata">> => metadata(),
 %%   <<"output">> => agent_collaborator_output_payload()
 %% }
 -type agent_collaborator_invocation_output() :: #{binary() => any()}.
@@ -1085,6 +1094,7 @@
 
 %% Example:
 %% final_response() :: #{
+%%   <<"metadata">> => metadata(),
 %%   <<"text">> => string()
 %% }
 -type final_response() :: #{binary() => any()}.
@@ -1165,6 +1175,7 @@
 %% guardrail_trace() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"inputAssessments">> => list(guardrail_assessment()()),
+%%   <<"metadata">> => metadata(),
 %%   <<"outputAssessments">> => list(guardrail_assessment()()),
 %%   <<"traceId">> => string()
 %% }
@@ -1671,6 +1682,7 @@
 
 %% Example:
 %% action_group_invocation_output() :: #{
+%%   <<"metadata">> => metadata(),
 %%   <<"text">> => string()
 %% }
 -type action_group_invocation_output() :: #{binary() => any()}.
@@ -1750,6 +1762,7 @@
 
 %% Example:
 %% knowledge_base_lookup_output() :: #{
+%%   <<"metadata">> => metadata(),
 %%   <<"retrievedReferences">> => list(retrieved_reference()())
 %% }
 -type knowledge_base_lookup_output() :: #{binary() => any()}.
