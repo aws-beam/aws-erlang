@@ -166,6 +166,8 @@
          list_integrations/3,
          list_log_anomaly_detectors/2,
          list_log_anomaly_detectors/3,
+         list_log_groups/2,
+         list_log_groups/3,
          list_log_groups_for_query/2,
          list_log_groups_for_query/3,
          list_tags_for_resource/2,
@@ -306,6 +308,7 @@
 %%   <<"includeLinkedAccounts">> => boolean(),
 %%   <<"limit">> => integer(),
 %%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupIdentifiers">> => list(string()()),
 %%   <<"logGroupNamePattern">> => string(),
 %%   <<"logGroupNamePrefix">> => string(),
 %%   <<"nextToken">> => string()
@@ -671,6 +674,13 @@
 -type invalid_operation_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_log_groups_response() :: #{
+%%   <<"logGroups">> => list(log_group_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_groups_response() :: #{binary() => any()}.
+
+%% Example:
 %% put_integration_request() :: #{
 %%   <<"integrationName">> := string(),
 %%   <<"integrationType">> := list(any()),
@@ -905,6 +915,17 @@
 %%   <<"startCharOffset">> => integer()
 %% }
 -type query_compile_error_location() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_groups_request() :: #{
+%%   <<"accountIdentifiers">> => list(string()()),
+%%   <<"includeLinkedAccounts">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupNamePattern">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_groups_request() :: #{binary() => any()}.
 
 %% Example:
 %% operation_aborted_exception() :: #{
@@ -1364,6 +1385,14 @@
 %%   <<"source">> => string()
 %% }
 -type grok() :: #{binary() => any()}.
+
+%% Example:
+%% log_group_summary() :: #{
+%%   <<"logGroupArn">> => string(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupName">> => string()
+%% }
+-type log_group_summary() :: #{binary() => any()}.
 
 %% Example:
 %% service_unavailable_exception() :: #{
@@ -2587,6 +2616,10 @@
     resource_not_found_exception() | 
     operation_aborted_exception().
 
+-type list_log_groups_errors() ::
+    invalid_parameter_exception() | 
+    service_unavailable_exception().
+
 -type list_log_groups_for_query_errors() ::
     invalid_parameter_exception() | 
     access_denied_exception() | 
@@ -3808,9 +3841,9 @@ describe_index_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIndexPolicies">>, Input, Options).
 
-%% @doc Lists the specified log groups.
+%% @doc Returns information about log groups.
 %%
-%% You can list all your log groups or filter the results by prefix.
+%% You can return all your log groups or filter the results by prefix.
 %% The results are ASCII-sorted by log group name.
 %%
 %% CloudWatch Logs doesn't support IAM policies that control access to
@@ -4518,6 +4551,39 @@ list_log_anomaly_detectors(Client, Input)
 list_log_anomaly_detectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogAnomalyDetectors">>, Input, Options).
+
+%% @doc Returns a list of log groups in the Region in your account.
+%%
+%% If you are performing this action in a monitoring account, you can
+%% choose to also return log groups from source accounts that are linked to
+%% the monitoring account. For more information about using cross-account
+%% observability to set up monitoring accounts and source accounts, see
+%%
+%% CloudWatch cross-account observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+%%
+%% You can optionally filter the list by log group class and by using regular
+%% expressions in your request to match strings in the log group names.
+%%
+%% This operation is paginated. By default, your first use of this operation
+%% returns 50 results, and includes a token to use in a subsequent operation
+%% to return
+%% more results.
+-spec list_log_groups(aws_client:aws_client(), list_log_groups_request()) ->
+    {ok, list_log_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_log_groups_errors(), tuple()}.
+list_log_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_log_groups(Client, Input, []).
+
+-spec list_log_groups(aws_client:aws_client(), list_log_groups_request(), proplists:proplist()) ->
+    {ok, list_log_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_log_groups_errors(), tuple()}.
+list_log_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLogGroups">>, Input, Options).
 
 %% @doc Returns a list of the log groups that were analyzed during a single
 %% CloudWatch Logs Insights query.

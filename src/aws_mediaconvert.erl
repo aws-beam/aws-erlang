@@ -89,6 +89,7 @@
 
 %% Example:
 %% video_overlay() :: #{
+%%   <<"Crop">> => video_overlay_crop(),
 %%   <<"EndTimecode">> => string(),
 %%   <<"InitialPosition">> => video_overlay_position(),
 %%   <<"Input">> => video_overlay_input(),
@@ -1522,7 +1523,8 @@
 %%   <<"Framerate">> => caption_source_framerate(),
 %%   <<"SourceFile">> => string(),
 %%   <<"TimeDelta">> => integer(),
-%%   <<"TimeDeltaUnits">> => list(any())
+%%   <<"TimeDeltaUnits">> => list(any()),
+%%   <<"UpconvertSTLToTeletext">> => list(any())
 %% }
 -type file_source_settings() :: #{binary() => any()}.
 
@@ -2424,6 +2426,17 @@
 %%   <<"LanguageDescription">> => string()
 %% }
 -type caption_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_overlay_crop() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Unit">> => list(any()),
+%%   <<"Width">> => integer(),
+%%   <<"X">> => integer(),
+%%   <<"Y">> => integer()
+%% }
+-type video_overlay_crop() :: #{binary() => any()}.
 
 
 %% Example:
