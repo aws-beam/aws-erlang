@@ -1776,6 +1776,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DirectoryId">> => string(),
 %%   <<"PoolId">> := string(),
+%%   <<"RunningMode">> => list(any()),
 %%   <<"TimeoutSettings">> => timeout_settings()
 %% }
 -type update_workspaces_pool_request() :: #{binary() => any()}.
@@ -1923,6 +1924,7 @@
 %%   <<"PoolArn">> => string(),
 %%   <<"PoolId">> => string(),
 %%   <<"PoolName">> => string(),
+%%   <<"RunningMode">> => list(any()),
 %%   <<"State">> => list(any()),
 %%   <<"TimeoutSettings">> => timeout_settings()
 %% }
@@ -1957,6 +1959,7 @@
 %%   <<"Description">> := string(),
 %%   <<"DirectoryId">> := string(),
 %%   <<"PoolName">> := string(),
+%%   <<"RunningMode">> => list(any()),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"TimeoutSettings">> => timeout_settings()
 %% }

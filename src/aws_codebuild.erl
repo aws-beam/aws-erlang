@@ -479,6 +479,13 @@
 -type cloud_watch_logs_config() :: #{binary() => any()}.
 
 %% Example:
+%% docker_server_status() :: #{
+%%   <<"message">> => string(),
+%%   <<"status">> => string()
+%% }
+-type docker_server_status() :: #{binary() => any()}.
+
+%% Example:
 %% network_interface() :: #{
 %%   <<"networkInterfaceId">> => string(),
 %%   <<"subnetId">> => string()
@@ -1808,6 +1815,7 @@
 %%   <<"certificate">> => string(),
 %%   <<"computeConfiguration">> => compute_configuration(),
 %%   <<"computeType">> => list(any()),
+%%   <<"dockerServer">> => docker_server(),
 %%   <<"environmentVariables">> => list(environment_variable()()),
 %%   <<"fleet">> => project_fleet(),
 %%   <<"image">> => string(),
@@ -1817,6 +1825,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type project_environment() :: #{binary() => any()}.
+
+%% Example:
+%% docker_server() :: #{
+%%   <<"computeType">> => list(any()),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"status">> => docker_server_status()
+%% }
+-type docker_server() :: #{binary() => any()}.
 
 %% Example:
 %% list_builds_output() :: #{

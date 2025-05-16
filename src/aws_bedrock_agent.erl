@@ -195,6 +195,13 @@
 
 
 %% Example:
+%% multiple_loop_controller_nodes_flow_validation_details() :: #{
+%%   <<"loopNode">> => string()
+%% }
+-type multiple_loop_controller_nodes_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_configuration() :: #{
 %%   <<"kendraKnowledgeBaseConfiguration">> => kendra_knowledge_base_configuration(),
 %%   <<"sqlKnowledgeBaseConfiguration">> => sql_knowledge_base_configuration(),
@@ -253,6 +260,7 @@
 
 %% Example:
 %% update_flow_alias_request() :: #{
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()())
@@ -331,6 +339,7 @@
 %% Example:
 %% update_flow_alias_response() :: #{
 %%   <<"arn">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"flowId">> => string(),
@@ -509,6 +518,22 @@
 %%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
 %% }
 -type create_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% loop_flow_node_configuration() :: #{
+%%   <<"definition">> => flow_definition()
+%% }
+-type loop_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% loop_incompatible_node_type_flow_validation_details() :: #{
+%%   <<"incompatibleNodeName">> => string(),
+%%   <<"incompatibleNodeType">> => list(any()),
+%%   <<"node">> => string()
+%% }
+-type loop_incompatible_node_type_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -892,6 +917,13 @@
 
 
 %% Example:
+%% missing_loop_controller_node_flow_validation_details() :: #{
+%%   <<"loopNode">> => string()
+%% }
+-type missing_loop_controller_node_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_flow_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -917,11 +949,20 @@
 
 %% Example:
 %% flow_node_input() :: #{
+%%   <<"category">> => list(any()),
 %%   <<"expression">> => string(),
 %%   <<"name">> => string(),
 %%   <<"type">> => list(any())
 %% }
 -type flow_node_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% loop_controller_flow_node_configuration() :: #{
+%%   <<"continueCondition">> => flow_condition(),
+%%   <<"maxIterations">> => [integer()]
+%% }
+-type loop_controller_flow_node_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1106,8 +1147,13 @@
 %% Example:
 %% knowledge_base_flow_node_configuration() :: #{
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"inferenceConfiguration">> => list(),
 %%   <<"knowledgeBaseId">> => string(),
-%%   <<"modelId">> => string()
+%%   <<"modelId">> => string(),
+%%   <<"numberOfResults">> => [integer()],
+%%   <<"orchestrationConfiguration">> => knowledge_base_orchestration_configuration(),
+%%   <<"promptTemplate">> => knowledge_base_prompt_template(),
+%%   <<"rerankingConfiguration">> => vector_search_reranking_configuration()
 %% }
 -type knowledge_base_flow_node_configuration() :: #{binary() => any()}.
 
@@ -1115,6 +1161,7 @@
 %% Example:
 %% create_flow_alias_response() :: #{
 %%   <<"arn">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"flowId">> => string(),
@@ -1156,6 +1203,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_orchestration_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"inferenceConfig">> => list(),
+%%   <<"performanceConfig">> => performance_configuration(),
+%%   <<"promptTemplate">> => knowledge_base_prompt_template()
+%% }
+-type knowledge_base_orchestration_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1392,6 +1449,7 @@
 %% Example:
 %% create_flow_alias_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()()),
@@ -1519,6 +1577,13 @@
 %%   <<"bedrockEmbeddingModelConfiguration">> => bedrock_embedding_model_configuration()
 %% }
 -type embedding_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_for_reranking() :: #{
+%%   <<"fieldName">> => [string()]
+%% }
+-type field_for_reranking() :: #{binary() => any()}.
 
 %% Example:
 %% get_flow_version_request() :: #{}
@@ -1810,6 +1875,7 @@
 %% Example:
 %% get_flow_alias_response() :: #{
 %%   <<"arn">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"flowId">> => string(),
@@ -1886,6 +1952,14 @@
 
 
 %% Example:
+%% vector_search_reranking_configuration() :: #{
+%%   <<"bedrockRerankingConfiguration">> => vector_search_bedrock_reranking_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type vector_search_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% byte_content_doc() :: #{
 %%   <<"data">> => binary(),
 %%   <<"mimeType">> => [string()]
@@ -1953,6 +2027,7 @@
 %% Example:
 %% flow_alias_summary() :: #{
 %%   <<"arn">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"flowId">> => string(),
@@ -2020,6 +2095,13 @@
 %%   <<"id">> => [string()]
 %% }
 -type custom_document_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_prompt_template() :: #{
+%%   <<"textPromptTemplate">> => string()
+%% }
+-type knowledge_base_prompt_template() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2136,6 +2218,15 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_bedrock_reranking_configuration() :: #{
+%%   <<"metadataConfiguration">> => metadata_configuration_for_reranking(),
+%%   <<"modelConfiguration">> => vector_search_bedrock_reranking_model_configuration(),
+%%   <<"numberOfRerankedResults">> => [integer()]
+%% }
+-type vector_search_bedrock_reranking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2314,6 +2405,13 @@
 
 
 %% Example:
+%% missing_loop_input_node_flow_validation_details() :: #{
+%%   <<"loopNode">> => string()
+%% }
+-type missing_loop_input_node_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% open_search_managed_cluster_configuration() :: #{
 %%   <<"domainArn">> => string(),
 %%   <<"domainEndpoint">> => string(),
@@ -2348,6 +2446,13 @@
 %%   <<"node">> => string()
 %% }
 -type unknown_node_input_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiple_loop_input_nodes_flow_validation_details() :: #{
+%%   <<"loopNode">> => string()
+%% }
+-type multiple_loop_input_nodes_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2476,6 +2581,14 @@
 
 
 %% Example:
+%% flow_alias_concurrency_configuration() :: #{
+%%   <<"maxConcurrency">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type flow_alias_concurrency_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_agent_request() :: #{
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
@@ -2514,6 +2627,14 @@
 %%   <<"node">> => string()
 %% }
 -type malformed_condition_expression_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration_for_reranking() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"selectiveModeConfiguration">> => list()
+%% }
+-type metadata_configuration_for_reranking() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2562,6 +2683,15 @@
 %%   <<"startDate">> => non_neg_integer()
 %% }
 -type agent_alias_history_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_loop_boundary_flow_validation_details() :: #{
+%%   <<"connection">> => string(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string()
+%% }
+-type invalid_loop_boundary_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2691,6 +2821,14 @@
 %%   <<"lambdaArn">> => string()
 %% }
 -type lambda_function_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_bedrock_reranking_model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"modelArn">> => string()
+%% }
+-type vector_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% collector_flow_node_configuration() :: #{}
@@ -3131,6 +3269,10 @@
 %% }
 -type rds_field_mapping() :: #{binary() => any()}.
 
+%% Example:
+%% loop_input_flow_node_configuration() :: #{}
+-type loop_input_flow_node_configuration() :: #{}.
+
 
 %% Example:
 %% delete_flow_version_request() :: #{
@@ -3151,6 +3293,13 @@
 %%   <<"promptType">> => list(any())
 %% }
 -type prompt_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_configuration() :: #{
+%%   <<"latency">> => list(any())
+%% }
+-type performance_configuration() :: #{binary() => any()}.
 
 
 %% Example:
