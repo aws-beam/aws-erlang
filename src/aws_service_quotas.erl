@@ -18,6 +18,8 @@
 
 -export([associate_service_quota_template/2,
          associate_service_quota_template/3,
+         create_support_case/2,
+         create_support_case/3,
          delete_service_quota_increase_request_from_template/2,
          delete_service_quota_increase_request_from_template/3,
          disassociate_service_quota_template/2,
@@ -332,6 +334,12 @@
 -type service_exception() :: #{binary() => any()}.
 
 %% Example:
+%% create_support_case_request() :: #{
+%%   <<"RequestId">> := string()
+%% }
+-type create_support_case_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
@@ -445,6 +453,12 @@
 -type service_quota_template_not_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
+%% create_support_case_response() :: #{
+
+%% }
+-type create_support_case_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_service_quota_request() :: #{
 %%   <<"ContextId">> => string(),
 %%   <<"QuotaCode">> := string(),
@@ -536,6 +550,16 @@
     service_exception() | 
     organization_not_in_all_features_mode_exception() | 
     too_many_requests_exception() | 
+    dependency_access_denied_exception().
+
+-type create_support_case_errors() ::
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    invalid_resource_state_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
     dependency_access_denied_exception().
 
 -type delete_service_quota_increase_request_from_template_errors() ::
@@ -723,6 +747,26 @@ associate_service_quota_template(Client, Input)
 associate_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateServiceQuotaTemplate">>, Input, Options).
+
+%% @doc Creates a Support case for an existing quota increase request.
+%%
+%% This call only creates
+%% a Support case if the request has a `Pending' status.
+-spec create_support_case(aws_client:aws_client(), create_support_case_request()) ->
+    {ok, create_support_case_response(), tuple()} |
+    {error, any()} |
+    {error, create_support_case_errors(), tuple()}.
+create_support_case(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_support_case(Client, Input, []).
+
+-spec create_support_case(aws_client:aws_client(), create_support_case_request(), proplists:proplist()) ->
+    {ok, create_support_case_response(), tuple()} |
+    {error, any()} |
+    {error, create_support_case_errors(), tuple()}.
+create_support_case(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSupportCase">>, Input, Options).
 
 %% @doc Deletes the quota increase request for the specified quota from your
 %% quota request

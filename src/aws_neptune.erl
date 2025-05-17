@@ -175,7 +175,9 @@
          start_db_cluster/2,
          start_db_cluster/3,
          stop_db_cluster/2,
-         stop_db_cluster/3]).
+         stop_db_cluster/3,
+         switchover_global_cluster/2,
+         switchover_global_cluster/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -502,6 +504,12 @@
 %%   <<"DBSubnetGroup">> => db_subnet_group()
 %% }
 -type create_db_subnet_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type switchover_global_cluster_result() :: #{binary() => any()}.
 
 %% Example:
 %% cloudwatch_logs_export_configuration() :: #{
@@ -1197,6 +1205,7 @@
 %%   <<"DeletionProtection">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
+%%   <<"FailoverState">> => failover_state(),
 %%   <<"GlobalClusterArn">> => string(),
 %%   <<"GlobalClusterIdentifier">> => string(),
 %%   <<"GlobalClusterMembers">> => list(global_cluster_member()()),
@@ -1250,6 +1259,15 @@
 %%   <<"GlobalClusterIdentifier">> := string()
 %% }
 -type remove_from_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% failover_state() :: #{
+%%   <<"FromDbClusterArn">> => string(),
+%%   <<"IsDataLossAllowed">> => boolean(),
+%%   <<"Status">> => list(any()),
+%%   <<"ToDbClusterArn">> => string()
+%% }
+-type failover_state() :: #{binary() => any()}.
 
 %% Example:
 %% reboot_db_instance_message() :: #{
@@ -1427,6 +1445,13 @@
 %%   <<"Parameters">> := list(parameter()())
 %% }
 -type modify_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_global_cluster_message() :: #{
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"TargetDbClusterIdentifier">> := string()
+%% }
+-type switchover_global_cluster_message() :: #{binary() => any()}.
 
 %% Example:
 %% modify_db_cluster_parameter_group_message() :: #{
@@ -2195,7 +2220,9 @@
 
 %% Example:
 %% failover_global_cluster_message() :: #{
+%%   <<"AllowDataLoss">> => boolean(),
 %%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"Switchover">> => boolean(),
 %%   <<"TargetDbClusterIdentifier">> := string()
 %% }
 -type failover_global_cluster_message() :: #{binary() => any()}.
@@ -2634,6 +2661,12 @@
     invalid_db_instance_state_fault() | 
     db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault().
+
+-type switchover_global_cluster_errors() ::
+    global_cluster_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
+    invalid_global_cluster_state_fault().
 
 %%====================================================================
 %% API
@@ -4288,6 +4321,42 @@ stop_db_cluster(Client, Input)
 stop_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBCluster">>, Input, Options).
+
+%% @doc Switches over the specified secondary DB cluster to be the new
+%% primary DB cluster in the global
+%% database cluster.
+%%
+%% Switchover operations were previously called &quot;managed planned
+%% failovers.&quot;
+%%
+%% Promotes the specified secondary cluster to assume full read/write
+%% capabilities and demotes the current
+%% primary cluster to a secondary (read-only) cluster, maintaining the
+%% original replication topology. All secondary
+%% clusters are synchronized with the primary at the beginning of the process
+%% so the new primary continues operations
+%% for the global database without losing any data. Your database is
+%% unavailable for a short time while the primary
+%% and selected secondary clusters are assuming their new roles.
+%%
+%% This operation is intended for controlled environments, for operations
+%% such as &quot;regional rotation&quot; or
+%% to fall back to the original primary after a global database failover.
+-spec switchover_global_cluster(aws_client:aws_client(), switchover_global_cluster_message()) ->
+    {ok, switchover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, switchover_global_cluster_errors(), tuple()}.
+switchover_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    switchover_global_cluster(Client, Input, []).
+
+-spec switchover_global_cluster(aws_client:aws_client(), switchover_global_cluster_message(), proplists:proplist()) ->
+    {ok, switchover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, switchover_global_cluster_errors(), tuple()}.
+switchover_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SwitchoverGlobalCluster">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

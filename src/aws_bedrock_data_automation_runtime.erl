@@ -25,6 +25,12 @@
 -type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
+%% asset_processing_configuration() :: #{
+%%   <<"video">> => video_asset_processing_configuration()
+%% }
+-type asset_processing_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% blueprint() :: #{
 %%   <<"blueprintArn">> => string(),
 %%   <<"stage">> => list(any()),
@@ -69,6 +75,7 @@
 
 %% Example:
 %% input_configuration() :: #{
+%%   <<"assetProcessingConfiguration">> => asset_processing_configuration(),
 %%   <<"s3Uri">> => string()
 %% }
 -type input_configuration() :: #{binary() => any()}.
@@ -162,6 +169,13 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
+%% timestamp_segment() :: #{
+%%   <<"endTimeMillis">> => [float()],
+%%   <<"startTimeMillis">> => [float()]
+%% }
+-type timestamp_segment() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
 %%   <<"tagKeys">> := list(string()())
@@ -179,6 +193,12 @@
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% video_asset_processing_configuration() :: #{
+%%   <<"segmentConfiguration">> => list()
+%% }
+-type video_asset_processing_configuration() :: #{binary() => any()}.
 
 -type get_data_automation_status_errors() ::
     validation_exception() | 

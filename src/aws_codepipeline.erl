@@ -204,6 +204,8 @@
          list_action_executions/3,
          list_action_types/2,
          list_action_types/3,
+         list_deploy_action_execution_targets/2,
+         list_deploy_action_execution_targets/3,
          list_pipeline_executions/2,
          list_pipeline_executions/3,
          list_pipelines/2,
@@ -708,6 +710,12 @@
 -type put_job_success_result_input() :: #{binary() => any()}.
 
 %% Example:
+%% action_execution_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type action_execution_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
 %% get_pipeline_execution_input() :: #{
 %%   <<"pipelineExecutionId">> := string(),
 %%   <<"pipelineName">> := string()
@@ -720,6 +728,13 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_deploy_action_execution_targets_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"targets">> => list(deploy_action_execution_target()())
+%% }
+-type list_deploy_action_execution_targets_output() :: #{binary() => any()}.
 
 %% Example:
 %% failure_details() :: #{
@@ -890,6 +905,13 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_target_event_context() :: #{
+%%   <<"message">> => string(),
+%%   <<"ssmCommandId">> => string()
+%% }
+-type deploy_target_event_context() :: #{binary() => any()}.
 
 %% Example:
 %% action_declaration() :: #{
@@ -1225,6 +1247,17 @@
 -type git_pull_request_filter() :: #{binary() => any()}.
 
 %% Example:
+%% deploy_action_execution_target() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"events">> => list(deploy_target_event()()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"targetId">> => string(),
+%%   <<"targetType">> => string()
+%% }
+-type deploy_action_execution_target() :: #{binary() => any()}.
+
+%% Example:
 %% job_details() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"data">> => job_data(),
@@ -1387,6 +1420,13 @@
 %%   <<"message">> => string()
 %% }
 -type action_type_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string()())
+%% }
+-type target_filter() :: #{binary() => any()}.
 
 %% Example:
 %% blocker_declaration() :: #{
@@ -1680,6 +1720,16 @@
 -type rule_configuration_property() :: #{binary() => any()}.
 
 %% Example:
+%% list_deploy_action_execution_targets_input() :: #{
+%%   <<"actionExecutionId">> := string(),
+%%   <<"filters">> => list(target_filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineName">> => string()
+%% }
+-type list_deploy_action_execution_targets_input() :: #{binary() => any()}.
+
+%% Example:
 %% before_entry_conditions() :: #{
 %%   <<"conditions">> => list(condition()())
 %% }
@@ -1726,6 +1776,16 @@
 %%   <<"message">> => string()
 %% }
 -type pipeline_version_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_target_event() :: #{
+%%   <<"context">> => deploy_target_event_context(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type deploy_target_event() :: #{binary() => any()}.
 
 %% Example:
 %% artifact() :: #{
@@ -2086,6 +2146,12 @@
 -type list_action_types_errors() ::
     validation_exception() | 
     invalid_next_token_exception().
+
+-type list_deploy_action_execution_targets_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    action_execution_not_found_exception().
 
 -type list_pipeline_executions_errors() ::
     pipeline_not_found_exception() | 
@@ -2640,6 +2706,23 @@ list_action_types(Client, Input)
 list_action_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActionTypes">>, Input, Options).
+
+%% @doc Lists the targets for the deploy action.
+-spec list_deploy_action_execution_targets(aws_client:aws_client(), list_deploy_action_execution_targets_input()) ->
+    {ok, list_deploy_action_execution_targets_output(), tuple()} |
+    {error, any()} |
+    {error, list_deploy_action_execution_targets_errors(), tuple()}.
+list_deploy_action_execution_targets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_deploy_action_execution_targets(Client, Input, []).
+
+-spec list_deploy_action_execution_targets(aws_client:aws_client(), list_deploy_action_execution_targets_input(), proplists:proplist()) ->
+    {ok, list_deploy_action_execution_targets_output(), tuple()} |
+    {error, any()} |
+    {error, list_deploy_action_execution_targets_errors(), tuple()}.
+list_deploy_action_execution_targets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDeployActionExecutionTargets">>, Input, Options).
 
 %% @doc Gets a summary of the most recent executions for a pipeline.
 %%

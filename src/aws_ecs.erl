@@ -4272,6 +4272,14 @@ register_task_definition(Client, Input, Options)
 %%
 %% Run `RunTask' with the `clientToken' and the original
 %% set of parameters
+%%
+%% If you get a `ClientException'error, the `RunTask' could not be
+%% processed because you use managed
+%% scaling and there is a capacity error because the quota of tasks in the
+%% `PROVISIONING' per cluster has been reached. For information
+%% about the service quotas, see Amazon ECS
+%% service quotas:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html.
 -spec run_task(aws_client:aws_client(), run_task_request()) ->
     {ok, run_task_response(), tuple()} |
     {error, any()} |
@@ -4327,7 +4335,20 @@ start_task(Client, Input, Options)
 
 %% @doc Stops an ongoing service deployment.
 %%
-%% StopServiceDeployment isn't currently supported.
+%% The following stop types are avaiable:
+%%
+%% ROLLBACK - This option rolls back the service deployment to the previous
+%% service revision.
+%%
+%% You can use this option even if you didn't configure the service
+%% deployment
+%% for the rollback option.
+%%
+%% For more information, see Stopping Amazon ECS
+%% service deployments:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stop-service-deployment.html
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
 -spec stop_service_deployment(aws_client:aws_client(), stop_service_deployment_request()) ->
     {ok, stop_service_deployment_response(), tuple()} |
     {error, any()} |

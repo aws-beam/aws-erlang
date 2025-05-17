@@ -1689,6 +1689,7 @@
 
 %% Example:
 %% code_gen_configuration_node() :: #{
+%%   <<"S3HyperDirectTarget">> => s3_hyper_direct_target(),
 %%   <<"DynamicTransform">> => dynamic_transform(),
 %%   <<"ConnectorDataSource">> => connector_data_source(),
 %%   <<"AmazonRedshiftSource">> => amazon_redshift_source(),
@@ -1702,6 +1703,7 @@
 %%   <<"EvaluateDataQualityMultiFrame">> => evaluate_data_quality_multi_frame(),
 %%   <<"S3CsvSource">> => s3_csv_source(),
 %%   <<"PostgreSQLCatalogSource">> => postgre_s_q_l_catalog_source(),
+%%   <<"S3ExcelSource">> => s3_excel_source(),
 %%   <<"JDBCConnectorTarget">> => j_db_c_connector_target(),
 %%   <<"RelationalCatalogSource">> => relational_catalog_source(),
 %%   <<"SelectFields">> => select_fields(),
@@ -1748,6 +1750,7 @@
 %%   <<"SparkSQL">> => spark_s_q_l(),
 %%   <<"Join">> => join(),
 %%   <<"SnowflakeSource">> => snowflake_source(),
+%%   <<"S3IcebergDirectTarget">> => s3_iceberg_direct_target(),
 %%   <<"S3DeltaDirectTarget">> => s3_delta_direct_target(),
 %%   <<"CatalogTarget">> => basic_catalog_target(),
 %%   <<"S3HudiCatalogTarget">> => s3_hudi_catalog_target(),
@@ -2317,6 +2320,7 @@
 %%   <<"Format">> => list(any()),
 %%   <<"Inputs">> => list(string()()),
 %%   <<"Name">> => string(),
+%%   <<"NumberTargetPartitions">> => string(),
 %%   <<"PartitionKeys">> => list(list(string()())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
@@ -3677,6 +3681,20 @@
 -type put_workflow_run_properties_response() :: #{binary() => any()}.
 
 %% Example:
+%% s3_iceberg_direct_target() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"Compression">> => list(any()),
+%%   <<"Format">> => list(any()),
+%%   <<"Inputs">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"NumberTargetPartitions">> => string(),
+%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"Path">> => string(),
+%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
+%% }
+-type s3_iceberg_direct_target() :: #{binary() => any()}.
+
+%% Example:
 %% jdbc_target() :: #{
 %%   <<"ConnectionName">> => string(),
 %%   <<"EnableAdditionalMetadata">> => list(list(any())()),
@@ -4112,6 +4130,7 @@
 %%   <<"Format">> => list(any()),
 %%   <<"Inputs">> => list(string()()),
 %%   <<"Name">> => string(),
+%%   <<"NumberTargetPartitions">> => string(),
 %%   <<"PartitionKeys">> => list(list(string()())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
@@ -4574,6 +4593,17 @@
 -type no_schedule_exception() :: #{binary() => any()}.
 
 %% Example:
+%% s3_hyper_direct_target() :: #{
+%%   <<"Compression">> => list(any()),
+%%   <<"Inputs">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"Path">> => string(),
+%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
+%% }
+-type s3_hyper_direct_target() :: #{binary() => any()}.
+
+%% Example:
 %% table_optimizer() :: #{
 %%   <<"configuration">> => table_optimizer_configuration(),
 %%   <<"lastRun">> => table_optimizer_run(),
@@ -4857,6 +4887,7 @@
 %%   <<"Compression">> => list(any()),
 %%   <<"Inputs">> => list(string()()),
 %%   <<"Name">> => string(),
+%%   <<"NumberTargetPartitions">> => string(),
 %%   <<"PartitionKeys">> => list(list(string()())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
@@ -7264,6 +7295,7 @@
 %%   <<"Format">> => list(any()),
 %%   <<"Inputs">> => list(string()()),
 %%   <<"Name">> => string(),
+%%   <<"NumberTargetPartitions">> => string(),
 %%   <<"PartitionKeys">> => list(list(string()())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
@@ -7845,6 +7877,24 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type put_schema_version_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_excel_source() :: #{
+%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"Exclusions">> => list(string()()),
+%%   <<"GroupFiles">> => string(),
+%%   <<"GroupSize">> => string(),
+%%   <<"MaxBand">> => integer(),
+%%   <<"MaxFilesInBand">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NumberRows">> => float(),
+%%   <<"OutputSchemas">> => list(glue_schema()()),
+%%   <<"Paths">> => list(string()()),
+%%   <<"Recurse">> => boolean(),
+%%   <<"SkipFooter">> => integer()
+%% }
+-type s3_excel_source() :: #{binary() => any()}.
 
 %% Example:
 %% get_schema_by_definition_response() :: #{

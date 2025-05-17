@@ -21,6 +21,8 @@
          add_tags/3,
          cancel_steps/2,
          cancel_steps/3,
+         create_persistent_app_ui/2,
+         create_persistent_app_ui/3,
          create_security_configuration/2,
          create_security_configuration/3,
          create_studio/2,
@@ -39,6 +41,8 @@
          describe_job_flows/3,
          describe_notebook_execution/2,
          describe_notebook_execution/3,
+         describe_persistent_app_ui/2,
+         describe_persistent_app_ui/3,
          describe_release_label/2,
          describe_release_label/3,
          describe_security_configuration/2,
@@ -55,6 +59,10 @@
          get_cluster_session_credentials/3,
          get_managed_scaling_policy/2,
          get_managed_scaling_policy/3,
+         get_on_cluster_app_ui_presigned_url/2,
+         get_on_cluster_app_ui_presigned_url/3,
+         get_persistent_app_ui_presigned_url/2,
+         get_persistent_app_ui_presigned_url/3,
          get_studio_session_mapping/2,
          get_studio_session_mapping/3,
          list_bootstrap_actions/2,
@@ -154,6 +162,16 @@
 %%   <<"ClusterId">> := string()
 %% }
 -type get_auto_termination_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_persistent_app_ui_input() :: #{
+%%   <<"EMRContainersConfig">> => emr_containers_config(),
+%%   <<"ProfilerType">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetResourceArn">> := string(),
+%%   <<"XReferer">> => string()
+%% }
+-type create_persistent_app_ui_input() :: #{binary() => any()}.
 
 %% Example:
 %% bootstrap_action_detail() :: #{
@@ -336,6 +354,16 @@
 %%   <<"VolumeType">> => string()
 %% }
 -type volume_specification() :: #{binary() => any()}.
+
+%% Example:
+%% get_persistent_app_ui_presigned_url_input() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"AuthProxyCall">> => boolean(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"PersistentAppUIId">> := string(),
+%%   <<"PersistentAppUIType">> => list(any())
+%% }
+-type get_persistent_app_ui_presigned_url_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_steps_input() :: #{
@@ -623,6 +651,13 @@
 -type cloud_watch_alarm_definition() :: #{binary() => any()}.
 
 %% Example:
+%% create_persistent_app_ui_output() :: #{
+%%   <<"PersistentAppUIId">> => string(),
+%%   <<"RuntimeRoleEnabledCluster">> => boolean()
+%% }
+-type create_persistent_app_ui_output() :: #{binary() => any()}.
+
+%% Example:
 %% modify_cluster_output() :: #{
 %%   <<"StepConcurrencyLevel">> => integer()
 %% }
@@ -636,6 +671,16 @@
 %%   <<"Timeline">> => step_timeline()
 %% }
 -type step_status() :: #{binary() => any()}.
+
+%% Example:
+%% get_on_cluster_app_ui_presigned_url_input() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ClusterId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"OnClusterAppUIType">> => list(any())
+%% }
+-type get_on_cluster_app_ui_presigned_url_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_studio_session_mapping_input() :: #{
@@ -1354,6 +1399,12 @@
 -type instance() :: #{binary() => any()}.
 
 %% Example:
+%% describe_persistent_app_ui_input() :: #{
+%%   <<"PersistentAppUIId">> := string()
+%% }
+-type describe_persistent_app_ui_input() :: #{binary() => any()}.
+
+%% Example:
 %% instance_group_state_change_reason() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
@@ -1453,6 +1504,26 @@
 %%   <<"Timeline">> => cluster_timeline()
 %% }
 -type cluster_status() :: #{binary() => any()}.
+
+%% Example:
+%% get_on_cluster_app_ui_presigned_url_output() :: #{
+%%   <<"PresignedURL">> => string(),
+%%   <<"PresignedURLReady">> => boolean()
+%% }
+-type get_on_cluster_app_ui_presigned_url_output() :: #{binary() => any()}.
+
+%% Example:
+%% persistent_app_ui() :: #{
+%%   <<"AuthorId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastStateChangeReason">> => string(),
+%%   <<"PersistentAppUIId">> => string(),
+%%   <<"PersistentAppUIStatus">> => string(),
+%%   <<"PersistentAppUITypeList">> => list(list(any())()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type persistent_app_ui() :: #{binary() => any()}.
 
 %% Example:
 %% set_unhealthy_node_replacement_input() :: #{
@@ -1708,6 +1779,13 @@
 -type placement_type() :: #{binary() => any()}.
 
 %% Example:
+%% get_persistent_app_ui_presigned_url_output() :: #{
+%%   <<"PresignedURL">> => string(),
+%%   <<"PresignedURLReady">> => boolean()
+%% }
+-type get_persistent_app_ui_presigned_url_output() :: #{binary() => any()}.
+
+%% Example:
 %% set_termination_protection_input() :: #{
 %%   <<"JobFlowIds">> := list(string()()),
 %%   <<"TerminationProtected">> := boolean()
@@ -1805,6 +1883,12 @@
 -type instance_fleet_timeline() :: #{binary() => any()}.
 
 %% Example:
+%% emr_containers_config() :: #{
+%%   <<"JobRunId">> => string()
+%% }
+-type emr_containers_config() :: #{binary() => any()}.
+
+%% Example:
 %% modify_instance_fleet_input() :: #{
 %%   <<"ClusterId">> := string(),
 %%   <<"InstanceFleet">> := instance_fleet_modify_config()
@@ -1842,6 +1926,12 @@
 
 %% }
 -type put_managed_scaling_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_persistent_app_ui_output() :: #{
+%%   <<"PersistentAppUI">> => persistent_app_ui()
+%% }
+-type describe_persistent_app_ui_output() :: #{binary() => any()}.
 
 %% Example:
 %% instance_type_specification() :: #{
@@ -1927,6 +2017,10 @@
     internal_server_error() | 
     invalid_request_exception().
 
+-type create_persistent_app_ui_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
 -type create_security_configuration_errors() ::
     internal_server_exception() | 
     invalid_request_exception().
@@ -1962,6 +2056,10 @@
     internal_server_error() | 
     invalid_request_exception().
 
+-type describe_persistent_app_ui_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception().
+
 -type describe_release_label_errors() ::
     internal_server_exception() | 
     invalid_request_exception().
@@ -1983,6 +2081,14 @@
     invalid_request_exception().
 
 -type get_cluster_session_credentials_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type get_on_cluster_app_ui_presigned_url_errors() ::
+    internal_server_error() | 
+    invalid_request_exception().
+
+-type get_persistent_app_ui_presigned_url_errors() ::
     internal_server_error() | 
     invalid_request_exception().
 
@@ -2237,6 +2343,23 @@ cancel_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelSteps">>, Input, Options).
 
+%% @doc Creates a persistent application user interface.
+-spec create_persistent_app_ui(aws_client:aws_client(), create_persistent_app_ui_input()) ->
+    {ok, create_persistent_app_ui_output(), tuple()} |
+    {error, any()} |
+    {error, create_persistent_app_ui_errors(), tuple()}.
+create_persistent_app_ui(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_persistent_app_ui(Client, Input, []).
+
+-spec create_persistent_app_ui(aws_client:aws_client(), create_persistent_app_ui_input(), proplists:proplist()) ->
+    {ok, create_persistent_app_ui_output(), tuple()} |
+    {error, any()} |
+    {error, create_persistent_app_ui_errors(), tuple()}.
+create_persistent_app_ui(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePersistentAppUI">>, Input, Options).
+
 %% @doc Creates a security configuration, which is stored in the service and
 %% can be specified
 %% when a cluster is created.
@@ -2431,6 +2554,23 @@ describe_notebook_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotebookExecution">>, Input, Options).
 
+%% @doc Describes a persistent application user interface.
+-spec describe_persistent_app_ui(aws_client:aws_client(), describe_persistent_app_ui_input()) ->
+    {ok, describe_persistent_app_ui_output(), tuple()} |
+    {error, any()} |
+    {error, describe_persistent_app_ui_errors(), tuple()}.
+describe_persistent_app_ui(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_persistent_app_ui(Client, Input, []).
+
+-spec describe_persistent_app_ui(aws_client:aws_client(), describe_persistent_app_ui_input(), proplists:proplist()) ->
+    {ok, describe_persistent_app_ui_output(), tuple()} |
+    {error, any()} |
+    {error, describe_persistent_app_ui_errors(), tuple()}.
+describe_persistent_app_ui(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePersistentAppUI">>, Input, Options).
+
 %% @doc Provides Amazon EMR release label details, such as the releases
 %% available the
 %% Region where the API request is run, and the available applications for a
@@ -2586,6 +2726,42 @@ get_managed_scaling_policy(Client, Input)
 get_managed_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetManagedScalingPolicy">>, Input, Options).
+
+%% @doc The presigned URL properties for the cluster's application user
+%% interface.
+-spec get_on_cluster_app_ui_presigned_url(aws_client:aws_client(), get_on_cluster_app_ui_presigned_url_input()) ->
+    {ok, get_on_cluster_app_ui_presigned_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_on_cluster_app_ui_presigned_url_errors(), tuple()}.
+get_on_cluster_app_ui_presigned_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_on_cluster_app_ui_presigned_url(Client, Input, []).
+
+-spec get_on_cluster_app_ui_presigned_url(aws_client:aws_client(), get_on_cluster_app_ui_presigned_url_input(), proplists:proplist()) ->
+    {ok, get_on_cluster_app_ui_presigned_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_on_cluster_app_ui_presigned_url_errors(), tuple()}.
+get_on_cluster_app_ui_presigned_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOnClusterAppUIPresignedURL">>, Input, Options).
+
+%% @doc The presigned URL properties for the cluster's application user
+%% interface.
+-spec get_persistent_app_ui_presigned_url(aws_client:aws_client(), get_persistent_app_ui_presigned_url_input()) ->
+    {ok, get_persistent_app_ui_presigned_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_persistent_app_ui_presigned_url_errors(), tuple()}.
+get_persistent_app_ui_presigned_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_persistent_app_ui_presigned_url(Client, Input, []).
+
+-spec get_persistent_app_ui_presigned_url(aws_client:aws_client(), get_persistent_app_ui_presigned_url_input(), proplists:proplist()) ->
+    {ok, get_persistent_app_ui_presigned_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_persistent_app_ui_presigned_url_errors(), tuple()}.
+get_persistent_app_ui_presigned_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPersistentAppUIPresignedURL">>, Input, Options).
 
 %% @doc Fetches mapping details for the specified Amazon EMR Studio and
 %% identity (user
