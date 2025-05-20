@@ -19,12 +19,8 @@
 
 -export([create_cluster/2,
          create_cluster/3,
-         create_multi_region_clusters/2,
-         create_multi_region_clusters/3,
          delete_cluster/3,
          delete_cluster/4,
-         delete_multi_region_clusters/2,
-         delete_multi_region_clusters/3,
          get_cluster/2,
          get_cluster/4,
          get_cluster/5,
@@ -95,23 +91,6 @@
 
 
 %% Example:
-%% create_multi_region_clusters_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusterProperties">> => map(),
-%%   <<"linkedRegionList">> := list(string()()),
-%%   <<"witnessRegion">> := string()
-%% }
--type create_multi_region_clusters_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_multi_region_clusters_output() :: #{
-%%   <<"linkedClusterArns">> => list(string()())
-%% }
--type create_multi_region_clusters_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% delete_cluster_input() :: #{
 %%   <<"clientToken">> => string()
 %% }
@@ -122,19 +101,10 @@
 %% delete_cluster_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"identifier">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type delete_cluster_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_multi_region_clusters_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"linkedClusterArns">> := list(string()())
-%% }
--type delete_multi_region_clusters_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_cluster_input() :: #{}
@@ -147,11 +117,9 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"identifier">> => string(),
-%%   <<"linkedClusterArns">> => list(string()()),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"witnessRegion">> => string()
+%%   <<"tags">> => map()
 %% }
 -type get_cluster_output() :: #{binary() => any()}.
 
@@ -173,14 +141,6 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% linked_cluster_properties() :: #{
-%%   <<"deletionProtectionEnabled">> => boolean(),
-%%   <<"tags">> => map()
-%% }
--type linked_cluster_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -275,11 +235,8 @@
 %% update_cluster_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"identifier">> => string(),
-%%   <<"linkedClusterArns">> => list(string()()),
-%%   <<"status">> => list(any()),
-%%   <<"witnessRegion">> => string()
+%%   <<"status">> => list(any())
 %% }
 -type update_cluster_output() :: #{binary() => any()}.
 
@@ -305,15 +262,7 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
--type create_multi_region_clusters_errors() ::
-    service_quota_exceeded_exception() | 
-    conflict_exception().
-
 -type delete_cluster_errors() ::
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_multi_region_clusters_errors() ::
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -348,66 +297,67 @@
 %% API
 %%====================================================================
 
-%% @doc This operation creates a cluster in Amazon Aurora DSQL.
+%% @doc The CreateCluster API allows you to create both single-region
+%% clusters and multi-Region
+%% clusters.
 %%
-%% You need the following permissions to
-%% use this operation.
+%% With the addition of the multiRegionProperties parameter,
+%% you can create a cluster with witness Region support and establish peer
+%% relationships with
+%% clusters in other Regions during creation.
 %%
-%% Permission to create a cluster.
+%% Creating multi-Region clusters requires additional IAM permissions beyond
+%% those
+%% needed for single-Region clusters, as detailed in the Required permissions
+%% section
+%% below.
+%%
+%% Required permissions
 %%
 %% dsql:CreateCluster
 %%
-%% Resources: arn:aws:dsql:region:account-id:cluster/*
+%% Required to create a cluster.
 %%
-%% Permission to add tags to a resource.
+%% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
 %% dsql:TagResource
 %%
-%% Resources:
-%% arn:aws:dsql:region:account-id:cluster/*
+%% Permission to add tags to a resource.
 %%
-%% Permission to configure multi-region properties for
-%% a cluster.
+%% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
 %% dsql:PutMultiRegionProperties
 %%
-%% Resources:
-%% arn:aws:dsql:region:account-id:cluster/*
+%% Permission to configure multi-region properties for a cluster.
 %%
-%% When specifying multiRegionProperties.clusters.
+%% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
 %% dsql:AddPeerCluster
 %%
-%% Permission to add peer clusters.
+%% When specifying `multiRegionProperties.clusters', permission to
+%% add peer clusters.
 %%
 %% Resources:
 %%
-%% Local cluster: arn:aws:dsql:region:account-id:cluster/*
+%% Local cluster: `arn:aws:dsql:region:account-id:cluster/*'
 %%
 %% Each peer cluster: exact ARN of each specified peer cluster
 %%
-%% When specifying multiRegionProperties.witnessRegion.
-%%
 %% dsql:PutWitnessRegion
 %%
-%% Permission to set a witness region.
+%% When specifying `multiRegionProperties.witnessRegion', permission
+%% to set a witness Region. This permission is checked both in the cluster
+%% Region and
+%% in the witness Region.
 %%
-%% Resources: arn:aws:dsql:region:account-id:cluster/*
+%% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
-%% Condition Keys: `dsql:WitnessRegion' (matching the specified
-%% witness region)
+%% Condition Keys: `dsql:WitnessRegion' (matching the specified witness
+%% region)
 %%
-%% This permission is checked both in the cluster Region and in the witness
-%% Region.
-%%
-%% Important Notes for Multi-Region Operations
-%%
-%% The witness region specified in
+%% The witness Region specified in
 %% `multiRegionProperties.witnessRegion' cannot be the same as the
 %% cluster's Region.
-%%
-%% When updating clusters with peer relationships, permissions are checked
-%% for both adding and removing peers.
 -spec create_cluster(aws_client:aws_client(), create_cluster_input()) ->
     {ok, create_cluster_output(), tuple()} |
     {error, any()} |
@@ -422,47 +372,6 @@ create_cluster(Client, Input) ->
 create_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cluster"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Creates multi-Region clusters in Amazon Aurora DSQL.
-%%
-%% Multi-Region clusters require a linked
-%% Region list, which is an array of the Regions in which you want to create
-%% linked clusters.
-%% Multi-Region clusters require a witness Region, which participates in
-%% quorum in failure
-%% scenarios.
--spec create_multi_region_clusters(aws_client:aws_client(), create_multi_region_clusters_input()) ->
-    {ok, create_multi_region_clusters_output(), tuple()} |
-    {error, any()} |
-    {error, create_multi_region_clusters_errors(), tuple()}.
-create_multi_region_clusters(Client, Input) ->
-    create_multi_region_clusters(Client, Input, []).
-
--spec create_multi_region_clusters(aws_client:aws_client(), create_multi_region_clusters_input(), proplists:proplist()) ->
-    {ok, create_multi_region_clusters_output(), tuple()} |
-    {error, any()} |
-    {error, create_multi_region_clusters_errors(), tuple()}.
-create_multi_region_clusters(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/multi-region-clusters"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -513,42 +422,6 @@ delete_cluster(Client, Identifier, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"client-token">>, <<"clientToken">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Deletes a multi-Region cluster in Amazon Aurora DSQL.
--spec delete_multi_region_clusters(aws_client:aws_client(), delete_multi_region_clusters_input()) ->
-    {ok, undefined, tuple()} |
-    {error, any()} |
-    {error, delete_multi_region_clusters_errors(), tuple()}.
-delete_multi_region_clusters(Client, Input) ->
-    delete_multi_region_clusters(Client, Input, []).
-
--spec delete_multi_region_clusters(aws_client:aws_client(), delete_multi_region_clusters_input(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
-    {error, any()} |
-    {error, delete_multi_region_clusters_errors(), tuple()}.
-delete_multi_region_clusters(Client, Input0, Options0) ->
-    Method = delete,
-    Path = ["/multi-region-clusters"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    QueryMapping = [
-                     {<<"client-token">>, <<"clientToken">>},
-                     {<<"linked-cluster-arns">>, <<"linkedClusterArns">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -775,16 +648,77 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a cluster.
+%% @doc The UpdateCluster API allows you to modify both single-Region and
+%% multi-Region cluster configurations.
 %%
-%% Example IAM Policy for Multi-Region Operations
+%% With the multiRegionProperties parameter, you can add or modify witness
+%% Region support and manage peer relationships with clusters in other
+%% Regions.
 %%
-%% The following IAM policy grants permissions for multi-Region operations.
+%% Note that updating multi-region clusters requires additional IAM
+%% permissions beyond those needed for standard cluster updates, as detailed
+%% in the Permissions section.
 %%
-%% The `dsql:RemovePeerCluster' permission uses a wildcard ARN pattern to
-%% simplify permission management during updates.
+%% Required permissions
 %%
-%% Important Notes for Multi-Region Operations
+%% dsql:UpdateCluster
+%%
+%% Permission to update a DSQL cluster.
+%%
+%% Resources:
+%% ```
+%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
+%%
+%% dsql:PutMultiRegionProperties
+%%
+%% Permission to configure multi-Region properties for a cluster.
+%%
+%% Resources:
+%% ```
+%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
+%%
+%% dsql:GetCluster
+%%
+%% Permission to retrieve cluster information.
+%%
+%% Resources:
+%% ```
+%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
+%%
+%% dsql:AddPeerCluster
+%%
+%% Permission to add peer clusters.
+%%
+%% Resources:
+%%
+%% Local cluster:
+%% ```
+%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
+%%
+%% Each peer cluster: exact ARN of each specified peer cluster
+%%
+%% dsql:RemovePeerCluster
+%%
+%% Permission to remove peer clusters. The dsql:RemovePeerCluster permission
+%% uses a wildcard ARN pattern to simplify permission management during
+%% updates.
+%%
+%% Resources:
+%% `arn:aws:dsql:*:account-id:cluster/*'
+%%
+%% dsql:PutWitnessRegion
+%%
+%% Permission to set a witness Region.
+%%
+%% Resources:
+%% ```
+%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
+%%
+%% Condition Keys: dsql:WitnessRegion (matching the specified witness
+%% Region)
+%%
+%% This permission is checked both in the cluster Region and in the witness
+%% Region.
 %%
 %% The witness region specified in
 %% `multiRegionProperties.witnessRegion' cannot be the same as the

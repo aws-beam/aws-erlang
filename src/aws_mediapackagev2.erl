@@ -129,6 +129,17 @@
 %% cancel_harvest_job_response() :: #{}
 -type cancel_harvest_job_response() :: #{}.
 
+
+%% Example:
+%% dash_program_information() :: #{
+%%   <<"Copyright">> => [string()],
+%%   <<"LanguageCode">> => [string()],
+%%   <<"MoreInformationUrl">> => [string()],
+%%   <<"Source">> => [string()],
+%%   <<"Title">> => [string()]
+%% }
+-type dash_program_information() :: #{binary() => any()}.
+
 %% Example:
 %% get_channel_request() :: #{}
 -type get_channel_request() :: #{}.
@@ -271,19 +282,34 @@
 
 %% Example:
 %% create_dash_manifest_configuration() :: #{
+%%   <<"BaseUrls">> => list(dash_base_url()()),
+%%   <<"Compactness">> => list(any()),
 %%   <<"DrmSignaling">> => list(any()),
+%%   <<"DvbSettings">> => dash_dvb_settings(),
 %%   <<"FilterConfiguration">> => filter_configuration(),
 %%   <<"ManifestName">> => string(),
 %%   <<"ManifestWindowSeconds">> => [integer()],
 %%   <<"MinBufferTimeSeconds">> => [integer()],
 %%   <<"MinUpdatePeriodSeconds">> => [integer()],
 %%   <<"PeriodTriggers">> => list(list(any())()),
+%%   <<"Profiles">> => list(list(any())()),
+%%   <<"ProgramInformation">> => dash_program_information(),
 %%   <<"ScteDash">> => scte_dash(),
 %%   <<"SegmentTemplateFormat">> => list(any()),
+%%   <<"SubtitleConfiguration">> => dash_subtitle_configuration(),
 %%   <<"SuggestedPresentationDelaySeconds">> => [integer()],
 %%   <<"UtcTiming">> => dash_utc_timing()
 %% }
 -type create_dash_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_dvb_font_download() :: #{
+%%   <<"FontFamily">> => [string()],
+%%   <<"MimeType">> => [string()],
+%%   <<"Url">> => [string()]
+%% }
+-type dash_dvb_font_download() :: #{binary() => any()}.
 
 
 %% Example:
@@ -463,6 +489,13 @@
 
 
 %% Example:
+%% dash_ttml_configuration() :: #{
+%%   <<"TtmlProfile">> => list(any())
+%% }
+-type dash_ttml_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"ConflictExceptionType">> => list(any()),
 %%   <<"Message">> => [string()]
@@ -479,6 +512,13 @@
 
 
 %% Example:
+%% dash_subtitle_configuration() :: #{
+%%   <<"TtmlConfiguration">> => dash_ttml_configuration()
+%% }
+-type dash_subtitle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_channel_group_request() :: #{
 %%   <<"ChannelGroupName">> := string(),
 %%   <<"ClientToken">> => string(),
@@ -489,10 +529,28 @@
 
 
 %% Example:
+%% dash_dvb_metrics_reporting() :: #{
+%%   <<"Probability">> => [integer()],
+%%   <<"ReportingUrl">> => [string()]
+%% }
+-type dash_dvb_metrics_reporting() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_base_url() :: #{
+%%   <<"DvbPriority">> => [integer()],
+%%   <<"DvbWeight">> => [integer()],
+%%   <<"ServiceLocation">> => [string()],
+%%   <<"Url">> => [string()]
+%% }
+-type dash_base_url() :: #{binary() => any()}.
 
 %% Example:
 %% delete_origin_endpoint_policy_response() :: #{}
@@ -516,6 +574,14 @@
 %%   <<"ResetAt">> => [non_neg_integer()]
 %% }
 -type reset_origin_endpoint_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_dvb_settings() :: #{
+%%   <<"ErrorMetrics">> => list(dash_dvb_metrics_reporting()()),
+%%   <<"FontDownload">> => dash_dvb_font_download()
+%% }
+-type dash_dvb_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -601,15 +667,21 @@
 
 %% Example:
 %% get_dash_manifest_configuration() :: #{
+%%   <<"BaseUrls">> => list(dash_base_url()()),
+%%   <<"Compactness">> => list(any()),
 %%   <<"DrmSignaling">> => list(any()),
+%%   <<"DvbSettings">> => dash_dvb_settings(),
 %%   <<"FilterConfiguration">> => filter_configuration(),
 %%   <<"ManifestName">> => string(),
 %%   <<"ManifestWindowSeconds">> => [integer()],
 %%   <<"MinBufferTimeSeconds">> => [integer()],
 %%   <<"MinUpdatePeriodSeconds">> => [integer()],
 %%   <<"PeriodTriggers">> => list(list(any())()),
+%%   <<"Profiles">> => list(list(any())()),
+%%   <<"ProgramInformation">> => dash_program_information(),
 %%   <<"ScteDash">> => scte_dash(),
 %%   <<"SegmentTemplateFormat">> => list(any()),
+%%   <<"SubtitleConfiguration">> => dash_subtitle_configuration(),
 %%   <<"SuggestedPresentationDelaySeconds">> => [integer()],
 %%   <<"Url">> => [string()],
 %%   <<"UtcTiming">> => dash_utc_timing()

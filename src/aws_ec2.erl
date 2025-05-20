@@ -153,6 +153,8 @@
          create_default_subnet/3,
          create_default_vpc/2,
          create_default_vpc/3,
+         create_delegate_mac_volume_ownership_task/2,
+         create_delegate_mac_volume_ownership_task/3,
          create_dhcp_options/2,
          create_dhcp_options/3,
          create_egress_only_internet_gateway/2,
@@ -201,6 +203,8 @@
          create_local_gateway_virtual_interface/3,
          create_local_gateway_virtual_interface_group/2,
          create_local_gateway_virtual_interface_group/3,
+         create_mac_system_integrity_protection_modification_task/2,
+         create_mac_system_integrity_protection_modification_task/3,
          create_managed_prefix_list/2,
          create_managed_prefix_list/3,
          create_nat_gateway/2,
@@ -649,6 +653,8 @@
          describe_locked_snapshots/3,
          describe_mac_hosts/2,
          describe_mac_hosts/3,
+         describe_mac_modification_tasks/2,
+         describe_mac_modification_tasks/3,
          describe_managed_prefix_lists/2,
          describe_managed_prefix_lists/3,
          describe_moving_addresses/2,
@@ -2176,6 +2182,16 @@
 %%   <<"UnusedReservationBillingOwnerId">> => string()
 %% }
 -type capacity_reservation() :: #{binary() => any()}.
+
+%% Example:
+%% create_delegate_mac_volume_ownership_task_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceId">> := string(),
+%%   <<"MacCredentials">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()())
+%% }
+-type create_delegate_mac_volume_ownership_task_request() :: #{binary() => any()}.
 
 %% Example:
 %% move_address_to_vpc_result() :: #{
@@ -5144,6 +5160,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_nat_gateways_result() :: #{binary() => any()}.
+
+%% Example:
+%% mac_modification_task() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"MacModificationTaskId">> => string(),
+%%   <<"MacSystemIntegrityProtectionConfig">> => mac_system_integrity_protection_configuration(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TaskState">> => list(any()),
+%%   <<"TaskType">> => list(any())
+%% }
+-type mac_modification_task() :: #{binary() => any()}.
 
 %% Example:
 %% get_groups_for_capacity_reservation_result() :: #{
@@ -8217,6 +8245,19 @@
 -type disassociate_capacity_reservation_billing_owner_request() :: #{binary() => any()}.
 
 %% Example:
+%% mac_system_integrity_protection_configuration() :: #{
+%%   <<"AppleInternal">> => list(any()),
+%%   <<"BaseSystem">> => list(any()),
+%%   <<"DTraceRestrictions">> => list(any()),
+%%   <<"DebuggingRestrictions">> => list(any()),
+%%   <<"FilesystemProtections">> => list(any()),
+%%   <<"KextSigning">> => list(any()),
+%%   <<"NvramProtections">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type mac_system_integrity_protection_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% create_ipam_resource_discovery_result() :: #{
 %%   <<"IpamResourceDiscovery">> => ipam_resource_discovery()
 %% }
@@ -9009,6 +9050,12 @@
 %%   <<"Vpcs">> => list(classic_link_dns_support()())
 %% }
 -type describe_vpc_classic_link_dns_support_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_delegate_mac_volume_ownership_task_result() :: #{
+%%   <<"MacModificationTask">> => mac_modification_task()
+%% }
+-type create_delegate_mac_volume_ownership_task_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_carrier_gateway_request() :: #{
@@ -12483,6 +12530,16 @@
 -type allocate_hosts_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_mac_modification_tasks_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MacModificationTaskIds">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_mac_modification_tasks_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_verified_access_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()()),
@@ -13198,6 +13255,13 @@
 -type cancel_capacity_reservation_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_mac_modification_tasks_result() :: #{
+%%   <<"MacModificationTasks">> => list(mac_modification_task()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_mac_modification_tasks_result() :: #{binary() => any()}.
+
+%% Example:
 %% export_image_result() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DiskImageFormat">> => list(any()),
@@ -13417,6 +13481,18 @@
 %%   <<"NetworkAclId">> := string()
 %% }
 -type delete_network_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% mac_system_integrity_protection_configuration_request() :: #{
+%%   <<"AppleInternal">> => list(any()),
+%%   <<"BaseSystem">> => list(any()),
+%%   <<"DTraceRestrictions">> => list(any()),
+%%   <<"DebuggingRestrictions">> => list(any()),
+%%   <<"FilesystemProtections">> => list(any()),
+%%   <<"KextSigning">> => list(any()),
+%%   <<"NvramProtections">> => list(any())
+%% }
+-type mac_system_integrity_protection_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_nat_gateway_address_request() :: #{
@@ -15689,6 +15765,12 @@
 -type describe_network_interface_permissions_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_mac_system_integrity_protection_modification_task_result() :: #{
+%%   <<"MacModificationTask">> => mac_modification_task()
+%% }
+-type create_mac_system_integrity_protection_modification_task_result() :: #{binary() => any()}.
+
+%% Example:
 %% start_instances_result() :: #{
 %%   <<"StartingInstances">> => list(instance_state_change()())
 %% }
@@ -16137,6 +16219,18 @@
 %%   <<"S3">> => verified_access_log_s3_destination_options()
 %% }
 -type verified_access_log_options() :: #{binary() => any()}.
+
+%% Example:
+%% create_mac_system_integrity_protection_modification_task_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceId">> := string(),
+%%   <<"MacCredentials">> => string(),
+%%   <<"MacSystemIntegrityProtectionConfiguration">> => mac_system_integrity_protection_configuration_request(),
+%%   <<"MacSystemIntegrityProtectionStatus">> := list(any()),
+%%   <<"TagSpecifications">> => list(tag_specification()())
+%% }
+-type create_mac_system_integrity_protection_modification_task_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_ipam_pool_request() :: #{
@@ -22178,6 +22272,23 @@ create_default_vpc(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDefaultVpc">>, Input, Options).
 
+%% @doc Delegates ownership of the Amazon EBS root volume for an Apple
+%% silicon
+%% Mac instance to an administrative user.
+-spec create_delegate_mac_volume_ownership_task(aws_client:aws_client(), create_delegate_mac_volume_ownership_task_request()) ->
+    {ok, create_delegate_mac_volume_ownership_task_result(), tuple()} |
+    {error, any()}.
+create_delegate_mac_volume_ownership_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_delegate_mac_volume_ownership_task(Client, Input, []).
+
+-spec create_delegate_mac_volume_ownership_task(aws_client:aws_client(), create_delegate_mac_volume_ownership_task_request(), proplists:proplist()) ->
+    {ok, create_delegate_mac_volume_ownership_task_result(), tuple()} |
+    {error, any()}.
+create_delegate_mac_volume_ownership_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDelegateMacVolumeOwnershipTask">>, Input, Options).
+
 %% @doc Creates a custom set of DHCP options.
 %%
 %% After you create a DHCP option set, you associate
@@ -22833,6 +22944,69 @@ create_local_gateway_virtual_interface_group(Client, Input)
 create_local_gateway_virtual_interface_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocalGatewayVirtualInterfaceGroup">>, Input, Options).
+
+%% @doc Creates a System Integrity Protection (SIP) modification task to
+%% configure the SIP settings
+%% for an x86 Mac instance or Apple silicon Mac instance.
+%%
+%% For more information, see
+%%
+%% Configure SIP for Amazon EC2 instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mac-sip-settings.html#mac-sip-configure
+%% in the Amazon EC2 User Guide.
+%%
+%% When you configure the SIP settings for your instance, you can either
+%% enable
+%% or disable all SIP settings, or you can specify a custom SIP configuration
+%% that
+%% selectively enables or disables specific SIP settings.
+%%
+%% If you implement a custom configuration,
+%% connect to the instance and verify the settings:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mac-sip-settings.html#mac-sip-check-settings
+%% to ensure that your
+%% requirements are properly implemented and functioning as intended.
+%%
+%% SIP configurations might change with macOS updates. We recommend that you
+%% review custom SIP settings after any macOS version upgrade to ensure
+%% continued compatibility and proper functionality of your security
+%% configurations.
+%%
+%% To enable or disable all SIP settings, use the
+%% MacSystemIntegrityProtectionStatus
+%% parameter only. For example, to enable all SIP settings, specify the
+%% following:
+%%
+%% `MacSystemIntegrityProtectionStatus=enabled'
+%%
+%% To specify a custom configuration that selectively enables or disables
+%% specific SIP
+%% settings, use the MacSystemIntegrityProtectionStatus
+%% parameter to enable or disable all SIP settings, and then use the
+%% MacSystemIntegrityProtectionConfiguration parameter
+%% to specify exceptions. In this case, the exceptions you specify for
+%% MacSystemIntegrityProtectionConfiguration override the value
+%% you specify for MacSystemIntegrityProtectionStatus.
+%% For example, to enable all SIP settings, except `NvramProtections',
+%% specify the following:
+%%
+%% `MacSystemIntegrityProtectionStatus=enabled'
+%%
+%% `MacSystemIntegrityProtectionConfigurationRequest
+%% &quot;NvramProtections=disabled&quot;'
+-spec create_mac_system_integrity_protection_modification_task(aws_client:aws_client(), create_mac_system_integrity_protection_modification_task_request()) ->
+    {ok, create_mac_system_integrity_protection_modification_task_result(), tuple()} |
+    {error, any()}.
+create_mac_system_integrity_protection_modification_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_mac_system_integrity_protection_modification_task(Client, Input, []).
+
+-spec create_mac_system_integrity_protection_modification_task(aws_client:aws_client(), create_mac_system_integrity_protection_modification_task_request(), proplists:proplist()) ->
+    {ok, create_mac_system_integrity_protection_modification_task_result(), tuple()} |
+    {error, any()}.
+create_mac_system_integrity_protection_modification_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMacSystemIntegrityProtectionModificationTask">>, Input, Options).
 
 %% @doc Creates a managed prefix list.
 %%
@@ -27218,6 +27392,17 @@ describe_image_attribute(Client, Input, Options)
 %% don't meet the criteria. For more information, see
 %% `EnableAllowedImagesSettings'.
 %%
+%% The Amazon EC2 API follows an eventual consistency model. This means that
+%% the result of an API
+%% command you run that creates or modifies resources might not be
+%% immediately available to all
+%% subsequent commands you run. For guidance on how to manage eventual
+%% consistency, see Eventual
+%% consistency in the Amazon EC2 API:
+%% https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html
+%% in the Amazon EC2 Developer
+%% Guide.
+%%
 %% We strongly recommend using only paginated requests. Unpaginated requests
 %% are
 %% susceptible to throttling and timeouts.
@@ -28025,6 +28210,28 @@ describe_mac_hosts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMacHosts">>, Input, Options).
 
+%% @doc Describes a System Integrity Protection (SIP) modification task or
+%% volume ownership delegation
+%% task for an Amazon EC2 Mac instance.
+%%
+%% For more information, see Configure
+%% SIP for Amazon EC2 instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mac-sip-settings.html#mac-sip-configure
+%% in the Amazon EC2 User Guide.
+-spec describe_mac_modification_tasks(aws_client:aws_client(), describe_mac_modification_tasks_request()) ->
+    {ok, describe_mac_modification_tasks_result(), tuple()} |
+    {error, any()}.
+describe_mac_modification_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_mac_modification_tasks(Client, Input, []).
+
+-spec describe_mac_modification_tasks(aws_client:aws_client(), describe_mac_modification_tasks_request(), proplists:proplist()) ->
+    {ok, describe_mac_modification_tasks_result(), tuple()} |
+    {error, any()}.
+describe_mac_modification_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMacModificationTasks">>, Input, Options).
+
 %% @doc Describes your managed prefix lists and any Amazon Web
 %% Services-managed prefix lists.
 %%
@@ -28231,6 +28438,8 @@ describe_network_interfaces(Client, Input, Options)
     request(Client, <<"DescribeNetworkInterfaces">>, Input, Options).
 
 %% @doc Describes the Outposts link aggregation groups (LAGs).
+%%
+%% LAGs are only available for second-generation Outposts racks at this time.
 -spec describe_outpost_lags(aws_client:aws_client(), describe_outpost_lags_request()) ->
     {ok, describe_outpost_lags_result(), tuple()} |
     {error, any()}.
