@@ -1908,7 +1908,8 @@
 
 %% Example:
 %% instance_maintenance_options() :: #{
-%%   <<"AutoRecovery">> => list(any())
+%%   <<"AutoRecovery">> => list(any()),
+%%   <<"RebootMigration">> => list(any())
 %% }
 -type instance_maintenance_options() :: #{binary() => any()}.
 
@@ -7794,7 +7795,8 @@
 %% modify_instance_maintenance_options_request() :: #{
 %%   <<"AutoRecovery">> => list(any()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceId">> := string()
+%%   <<"InstanceId">> := string(),
+%%   <<"RebootMigration">> => list(any())
 %% }
 -type modify_instance_maintenance_options_request() :: #{binary() => any()}.
 
@@ -10109,7 +10111,8 @@
 %% Example:
 %% modify_instance_maintenance_options_result() :: #{
 %%   <<"AutoRecovery">> => list(any()),
-%%   <<"InstanceId">> => string()
+%%   <<"InstanceId">> => string(),
+%%   <<"RebootMigration">> => list(any())
 %% }
 -type modify_instance_maintenance_options_result() :: #{binary() => any()}.
 
@@ -14324,6 +14327,7 @@
 %%   <<"PhcSupport">> => list(any()),
 %%   <<"PlacementGroupInfo">> => placement_group_info(),
 %%   <<"ProcessorInfo">> => processor_info(),
+%%   <<"RebootMigrationSupport">> => list(any()),
 %%   <<"SupportedBootModes">> => list(list(any())()),
 %%   <<"SupportedRootDeviceTypes">> => list(list(any())()),
 %%   <<"SupportedUsageClasses">> => list(list(any())()),
@@ -27729,6 +27733,8 @@ describe_instance_status(Client, Input, Options)
 %%
 %% Supported instance types
 %%
+%% Returns 3 network nodes in the response
+%%
 %% `hpc6a.48xlarge' | `hpc6id.32xlarge' |
 %% `hpc7a.12xlarge' | `hpc7a.24xlarge' |
 %% `hpc7a.48xlarge' | `hpc7a.96xlarge' |
@@ -27742,6 +27748,10 @@ describe_instance_status(Client, Input, Options)
 %% `trn1.2xlarge' | `trn1.32xlarge' |
 %% `trn1n.32xlarge' | `trn2.48xlarge' |
 %% `trn2u.48xlarge'
+%%
+%% Returns 4 network nodes in the response
+%%
+%% `p6-b200.48xlarge'
 %%
 %% For more information, see Amazon EC2 instance
 %% topology:
@@ -33872,6 +33882,12 @@ modify_instance_event_window(Client, Input, Options)
 %% more
 %% information, see Simplified automatic recovery:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery.
+%%
+%% Modifies the reboot migration behavior during a user-initiated reboot of
+%% an instance
+%% that has a pending `system-reboot' event. For more information, see
+%% Enable or disable reboot migration:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/schedevents_actions_reboot.html#reboot-migration.
 -spec modify_instance_maintenance_options(aws_client:aws_client(), modify_instance_maintenance_options_request()) ->
     {ok, modify_instance_maintenance_options_result(), tuple()} |
     {error, any()}.

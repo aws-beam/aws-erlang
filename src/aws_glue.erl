@@ -3085,8 +3085,13 @@
 %% Example:
 %% connection_type_brief() :: #{
 %%   <<"Capabilities">> => capabilities(),
+%%   <<"Categories">> => list([string()]()),
 %%   <<"ConnectionType">> => list(any()),
-%%   <<"Description">> => string()
+%%   <<"ConnectionTypeVariants">> => list(connection_type_variant()()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LogoUrl">> => string(),
+%%   <<"Vendor">> => string()
 %% }
 -type connection_type_brief() :: #{binary() => any()}.
 
@@ -8495,6 +8500,15 @@
 %%   <<"TransformId">> := string()
 %% }
 -type start_ml_labeling_set_generation_task_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% connection_type_variant() :: #{
+%%   <<"ConnectionTypeVariantName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LogoUrl">> => string()
+%% }
+-type connection_type_variant() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_ml_task_run_request() :: #{

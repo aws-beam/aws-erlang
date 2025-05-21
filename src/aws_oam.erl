@@ -2,38 +2,32 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Use Amazon CloudWatch Observability Access Manager to create and
-%% manage links between source accounts and
-%% monitoring accounts by using CloudWatch cross-account observability.
+%% manage links between source accounts and monitoring accounts by using
+%% CloudWatch cross-account observability.
 %%
-%% With
-%% CloudWatch cross-account observability, you can monitor and troubleshoot
-%% applications that span
-%% multiple accounts within a Region. Seamlessly search, visualize, and
-%% analyze your metrics,
-%% logs, traces, Application Signals services, service level objectives
-%% (SLOs), Application Insights applications, and internet monitors in any of
-%% the linked accounts without account boundaries.
+%% With CloudWatch cross-account observability, you can monitor and
+%% troubleshoot applications that span multiple accounts within a Region.
+%% Seamlessly search, visualize, and analyze your metrics, logs, traces,
+%% Application Signals services and service level objectives (SLOs),
+%% Application Insights applications, and internet monitors in any of the
+%% linked accounts without account boundaries.
 %%
-%% Set up one or more Amazon Web Services accounts as monitoring
-%% accounts and link them with multiple source accounts. A
-%% monitoring account is a central Amazon Web Services account that can view
-%% and interact with
-%% observability data generated from source accounts. A source account is an
-%% individual Amazon Web Services account that generates observability data
-%% for the resources that reside in it.
-%% Source accounts share their observability data with the monitoring
-%% account. The shared
-%% observability data can include metrics in Amazon CloudWatch, logs in
-%% Amazon CloudWatch Logs, traces in X-Ray, Application Signals services,
-%% service level objectives (SLOs), applications in Amazon CloudWatch
-%% Application Insights, and internet monitors
-%% in CloudWatch Internet Monitor.
+%% Set up one or more Amazon Web Services accounts as monitoring accounts and
+%% link them with multiple source accounts. A monitoring account is a central
+%% Amazon Web Services account that can view and interact with observability
+%% data generated from source accounts. A source account is an individual
+%% Amazon Web Services account that generates observability data for the
+%% resources that reside in it. Source accounts share their observability
+%% data with the monitoring account. The shared observability data can
+%% include metrics in Amazon CloudWatch, logs in Amazon CloudWatch Logs,
+%% traces in X-Ray, Application Signals services and service level objectives
+%% (SLOs), applications in Amazon CloudWatch Application Insights, and
+%% internet monitors in CloudWatch Internet Monitor.
 %%
 %% When you set up a link, you can choose to share the metrics from all
 %% namespaces with the monitoring account, or filter to a subset of
-%% namespaces.
-%% And for CloudWatch Logs, you can choose to share all log groups with the
-%% monitoring account, or filter to a subset of log groups.
+%% namespaces. And for CloudWatch Logs, you can choose to share all log
+%% groups with the monitoring account, or filter to a subset of log groups.
 -module(aws_oam).
 
 -export([create_link/2,
@@ -246,6 +240,7 @@
 %% Example:
 %% update_link_input() :: #{
 %%   <<"Identifier">> := string(),
+%%   <<"IncludeTags">> => boolean(),
 %%   <<"LinkConfiguration">> => link_configuration(),
 %%   <<"ResourceTypes">> := list(list(any())())
 %% }
@@ -264,7 +259,8 @@
 
 %% Example:
 %% get_sink_input() :: #{
-%%   <<"Identifier">> := string()
+%%   <<"Identifier">> := string(),
+%%   <<"IncludeTags">> => boolean()
 %% }
 -type get_sink_input() :: #{binary() => any()}.
 
@@ -361,7 +357,8 @@
 
 %% Example:
 %% get_link_input() :: #{
-%%   <<"Identifier">> := string()
+%%   <<"Identifier">> := string(),
+%%   <<"IncludeTags">> => boolean()
 %% }
 -type get_link_input() :: #{binary() => any()}.
 
@@ -518,25 +515,20 @@
 %% @doc Creates a link between a source account and a sink that you have
 %% created in a monitoring account.
 %%
-%% After the link is created,
-%% data is sent from the source account to the monitoring account. When you
-%% create a link, you can optionally specify filters
-%% that specify which metric namespaces and which log groups are shared from
-%% the source account to the monitoring account.
+%% After the link is created, data is sent from the source account to the
+%% monitoring account. When you create a link, you can optionally specify
+%% filters that specify which metric namespaces and which log groups are
+%% shared from the source account to the monitoring account.
 %%
 %% Before you create a link, you must create a sink in the monitoring account
-%% and create a
-%% sink policy in that account. The sink policy must permit the source
-%% account to link to it. You
-%% can grant permission to source accounts by granting permission to an
-%% entire organization or to
-%% individual accounts.
+%% and create a sink policy in that account. The sink policy must permit the
+%% source account to link to it. You can grant permission to source accounts
+%% by granting permission to an entire organization or to individual
+%% accounts.
 %%
-%% For more information, see
-%% CreateSink:
+%% For more information, see CreateSink:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_CreateSink.html
-%% and
-%% PutSinkPolicy:
+%% and PutSinkPolicy:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_PutSinkPolicy.html.
 %%
 %% Each monitoring account can be linked to as many as 100,000 source
@@ -579,14 +571,11 @@ create_link(Client, Input0, Options0) ->
 %% @doc Use this to create a sink in the current account, so that it can be
 %% used as a monitoring account in CloudWatch cross-account observability.
 %%
-%% A sink is a resource that
-%% represents an attachment point in a monitoring account. Source accounts
-%% can link to the sink
-%% to send observability data.
+%% A sink is a resource that represents an attachment point in a monitoring
+%% account. Source accounts can link to the sink to send observability data.
 %%
 %% After you create a sink, you must create a sink policy that allows source
-%% accounts to attach to it.
-%% For more information, see PutSinkPolicy:
+%% accounts to attach to it. For more information, see PutSinkPolicy:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_PutSinkPolicy.html.
 %%
 %% Each account can contain one sink per Region. If you delete a sink, you
@@ -627,8 +616,7 @@ create_sink(Client, Input0, Options0) ->
 %% @doc Deletes a link between a monitoring account sink and a source
 %% account.
 %%
-%% You must run this operation
-%% in the source account.
+%% You must run this operation in the source account.
 -spec delete_link(aws_client:aws_client(), delete_link_input()) ->
     {ok, delete_link_output(), tuple()} |
     {error, any()} |
@@ -776,9 +764,8 @@ get_sink(Client, Input0, Options0) ->
 
 %% @doc Returns the current sink policy attached to this sink.
 %%
-%% The sink policy specifies what
-%% accounts can attach to this sink as source accounts, and what types of
-%% data they can share.
+%% The sink policy specifies what accounts can attach to this sink as source
+%% accounts, and what types of data they can share.
 -spec get_sink_policy(aws_client:aws_client(), get_sink_policy_input()) ->
     {ok, get_sink_policy_output(), tuple()} |
     {error, any()} |
@@ -855,8 +842,7 @@ list_attached_links(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation in a source account to return a list of links to
-%% monitoring account sinks that
-%% this source account has.
+%% monitoring account sinks that this source account has.
 %%
 %% To find a list of links for one monitoring account sink, use
 %% ListAttachedLinks:
@@ -970,18 +956,16 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates or updates the resource policy that grants permissions to
-%% source
-%% accounts to link to the monitoring account sink.
+%% source accounts to link to the monitoring account sink.
 %%
-%% When you create a sink policy, you can grant
-%% permissions to all accounts in an organization or to individual accounts.
+%% When you create a sink policy, you can grant permissions to all accounts
+%% in an organization or to individual accounts.
 %%
 %% You can also use a sink policy to limit the types of data that is shared.
-%% The three types that
-%% you can allow or deny are:
+%% The six types of services with their respective resource types that you
+%% can allow or deny are:
 %%
-%% Metrics - Specify with
-%% `AWS::CloudWatch::Metric'
+%% Metrics - Specify with `AWS::CloudWatch::Metric'
 %%
 %% Log groups - Specify with `AWS::Logs::LogGroup'
 %%
@@ -989,6 +973,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% Application Insights - Applications - Specify with
 %% `AWS::ApplicationInsights::Application'
+%%
+%% Internet Monitor - Specify with `AWS::InternetMonitor::Monitor'
+%%
+%% Application Signals - Specify with `AWS::ApplicationSignals::Service'
+%% and `AWS::ApplicationSignals::ServiceLevelObjective'
 %%
 %% See the examples in this section to see how to specify permitted source
 %% accounts and data types.
@@ -1030,28 +1019,24 @@ put_sink_policy(Client, Input0, Options0) ->
 %% Both sinks and links can be tagged.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user
-%% permissions by granting a user
-%% permission to access or change only resources with certain tag values.
+%% them to scope user permissions by granting a user permission to access or
+%% change only resources with certain tag values.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
 %% You can use the `TagResource' action with a resource that already has
-%% tags. If you specify a new tag key for the alarm,
-%% this tag is appended to the list of tags associated
-%% with the alarm. If you specify a tag key that is already associated with
-%% the alarm, the new tag value that you specify replaces
-%% the previous value for that tag.
+%% tags. If you specify a new tag key for the alarm, this tag is appended to
+%% the list of tags associated with the alarm. If you specify a tag key that
+%% is already associated with the alarm, the new tag value that you specify
+%% replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
 %%
 %% Unlike tagging permissions in other Amazon Web Services services, to tag
-%% or untag links and
-%% sinks you must have the `oam:ResourceTag' permission. The
-%% `iam:ResourceTag' permission does not allow you to tag and untag links
-%% and
-%% sinks.
+%% or untag links and sinks you must have the `oam:ResourceTag'
+%% permission. The `iam:ResourceTag' permission does not allow you to tag
+%% and untag links and sinks.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
@@ -1088,11 +1073,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes one or more tags from the specified resource.
 %%
 %% Unlike tagging permissions in other Amazon Web Services services, to tag
-%% or untag links and
-%% sinks you must have the `oam:ResourceTag' permission. The
-%% `iam:TagResource' permission does not allow you to tag and untag links
-%% and
-%% sinks.
+%% or untag links and sinks you must have the `oam:ResourceTag'
+%% permission. The `iam:TagResource' permission does not allow you to tag
+%% and untag links and sinks.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
@@ -1128,18 +1111,16 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to change what types of data are shared from a
-%% source account to its linked
-%% monitoring account sink.
+%% source account to its linked monitoring account sink.
 %%
 %% You can't change the sink or change the monitoring account with this
 %% operation.
 %%
-%% When you update a link, you can optionally specify filters
-%% that specify which metric namespaces and which log groups are shared from
-%% the source account to the monitoring account.
+%% When you update a link, you can optionally specify filters that specify
+%% which metric namespaces and which log groups are shared from the source
+%% account to the monitoring account.
 %%
-%% To update the list of tags associated with the sink, use
-%% TagResource:
+%% To update the list of tags associated with the sink, use TagResource:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_TagResource.html.
 -spec update_link(aws_client:aws_client(), update_link_input()) ->
     {ok, update_link_output(), tuple()} |

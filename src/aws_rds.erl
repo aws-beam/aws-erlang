@@ -208,6 +208,8 @@
          describe_db_instances/3,
          describe_db_log_files/2,
          describe_db_log_files/3,
+         describe_db_major_engine_versions/2,
+         describe_db_major_engine_versions/3,
          describe_db_parameter_groups/2,
          describe_db_parameter_groups/3,
          describe_db_parameters/2,
@@ -498,6 +500,14 @@
 %%   <<"DBSnapshotIdentifier">> := string()
 %% }
 -type delete_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_major_engine_version() :: #{
+%%   <<"Engine">> => string(),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"SupportedEngineLifecycles">> => list(supported_engine_lifecycle()())
+%% }
+-type db_major_engine_version() :: #{binary() => any()}.
 
 %% Example:
 %% delete_db_cluster_snapshot_result() :: #{
@@ -975,6 +985,15 @@
 %%   <<"DbiResourceId">> => string()
 %% }
 -type delete_db_instance_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_major_engine_versions_request() :: #{
+%%   <<"Engine">> => string(),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_major_engine_versions_request() :: #{binary() => any()}.
 
 %% Example:
 %% integration() :: #{
@@ -2776,6 +2795,13 @@
 -type global_clusters_message() :: #{binary() => any()}.
 
 %% Example:
+%% describe_db_major_engine_versions_response() :: #{
+%%   <<"DBMajorEngineVersions">> => list(db_major_engine_version()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_major_engine_versions_response() :: #{binary() => any()}.
+
+%% Example:
 %% deregister_db_proxy_targets_response() :: #{
 
 %% }
@@ -3116,6 +3142,14 @@
 %%   <<"Status">> => string()
 %% }
 -type db_security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% supported_engine_lifecycle() :: #{
+%%   <<"LifecycleSupportEndDate">> => non_neg_integer(),
+%%   <<"LifecycleSupportName">> => list(any()),
+%%   <<"LifecycleSupportStartDate">> => non_neg_integer()
+%% }
+-type supported_engine_lifecycle() :: #{binary() => any()}.
 
 %% Example:
 %% delete_custom_db_engine_version_message() :: #{
@@ -8495,6 +8529,21 @@ describe_db_log_files(Client, Input)
 describe_db_log_files(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBLogFiles">>, Input, Options).
+
+%% @doc Describes the properties of specific major versions of DB engines.
+-spec describe_db_major_engine_versions(aws_client:aws_client(), describe_db_major_engine_versions_request()) ->
+    {ok, describe_db_major_engine_versions_response(), tuple()} |
+    {error, any()}.
+describe_db_major_engine_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_db_major_engine_versions(Client, Input, []).
+
+-spec describe_db_major_engine_versions(aws_client:aws_client(), describe_db_major_engine_versions_request(), proplists:proplist()) ->
+    {ok, describe_db_major_engine_versions_response(), tuple()} |
+    {error, any()}.
+describe_db_major_engine_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDBMajorEngineVersions">>, Input, Options).
 
 %% @doc Returns a list of `DBParameterGroup' descriptions.
 %%

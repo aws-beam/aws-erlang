@@ -4,10 +4,9 @@
 %% @doc DataSync
 %%
 %% DataSync is an online data movement and discovery service that simplifies
-%% data migration
-%% and helps you quickly, easily, and securely transfer your file or object
-%% data to, from, and
-%% between Amazon Web Services storage services.
+%% data migration and helps you quickly, easily, and securely transfer your
+%% file or object data
+%% to, from, and between Amazon Web Services storage services.
 %%
 %% This API interface reference includes documentation for using DataSync
 %% programmatically. For complete information, see the
@@ -17,9 +16,7 @@
 %% .
 -module(aws_datasync).
 
--export([add_storage_system/2,
-         add_storage_system/3,
-         cancel_task_execution/2,
+-export([cancel_task_execution/2,
          cancel_task_execution/3,
          create_agent/2,
          create_agent/3,
@@ -55,8 +52,6 @@
          delete_task/3,
          describe_agent/2,
          describe_agent/3,
-         describe_discovery_job/2,
-         describe_discovery_job/3,
          describe_location_azure_blob/2,
          describe_location_azure_blob/3,
          describe_location_efs/2,
@@ -79,48 +74,28 @@
          describe_location_s3/3,
          describe_location_smb/2,
          describe_location_smb/3,
-         describe_storage_system/2,
-         describe_storage_system/3,
-         describe_storage_system_resource_metrics/2,
-         describe_storage_system_resource_metrics/3,
-         describe_storage_system_resources/2,
-         describe_storage_system_resources/3,
          describe_task/2,
          describe_task/3,
          describe_task_execution/2,
          describe_task_execution/3,
-         generate_recommendations/2,
-         generate_recommendations/3,
          list_agents/2,
          list_agents/3,
-         list_discovery_jobs/2,
-         list_discovery_jobs/3,
          list_locations/2,
          list_locations/3,
-         list_storage_systems/2,
-         list_storage_systems/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_task_executions/2,
          list_task_executions/3,
          list_tasks/2,
          list_tasks/3,
-         remove_storage_system/2,
-         remove_storage_system/3,
-         start_discovery_job/2,
-         start_discovery_job/3,
          start_task_execution/2,
          start_task_execution/3,
-         stop_discovery_job/2,
-         stop_discovery_job/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
          update_agent/2,
          update_agent/3,
-         update_discovery_job/2,
-         update_discovery_job/3,
          update_location_azure_blob/2,
          update_location_azure_blob/3,
          update_location_efs/2,
@@ -143,8 +118,6 @@
          update_location_s3/3,
          update_location_smb/2,
          update_location_smb/3,
-         update_storage_system/2,
-         update_storage_system/3,
          update_task/2,
          update_task/3,
          update_task_execution/2,
@@ -194,19 +167,6 @@
 %%   <<"Tags">> => list(tag_list_entry()())
 %% }
 -type create_location_object_storage_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_storage_system_request() :: #{
-%%   <<"AgentArns">> := list(string()()),
-%%   <<"ClientToken">> := string(),
-%%   <<"CloudWatchLogGroupArn">> => string(),
-%%   <<"Credentials">> := credentials(),
-%%   <<"Name">> => string(),
-%%   <<"ServerConfiguration">> := discovery_server_configuration(),
-%%   <<"SystemType">> := list(any()),
-%%   <<"Tags">> => list(tag_list_entry()())
-%% }
--type add_storage_system_request() :: #{binary() => any()}.
 
 %% Example:
 %% task_execution_files_failed_detail() :: #{
@@ -328,28 +288,6 @@
 -type list_agents_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_storage_system_response() :: #{
-%%   <<"AgentArns">> => list(string()()),
-%%   <<"CloudWatchLogGroupArn">> => string(),
-%%   <<"ConnectivityStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SecretsManagerArn">> => string(),
-%%   <<"ServerConfiguration">> => discovery_server_configuration(),
-%%   <<"StorageSystemArn">> => string(),
-%%   <<"SystemType">> => list(any())
-%% }
--type describe_storage_system_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_storage_system_resources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceDetails">> => resource_details()
-%% }
--type describe_storage_system_resources_response() :: #{binary() => any()}.
-
-%% Example:
 %% filter_rule() :: #{
 %%   <<"FilterType">> => list(any()),
 %%   <<"Value">> => string()
@@ -366,38 +304,6 @@
 %%   <<"VpcEndpointId">> => string()
 %% }
 -type create_agent_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_storage_system_response() :: #{
-
-%% }
--type remove_storage_system_response() :: #{binary() => any()}.
-
-%% Example:
-%% generate_recommendations_response() :: #{
-
-%% }
--type generate_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% net_app_o_n_t_a_p_volume() :: #{
-%%   <<"CapacityProvisioned">> => float(),
-%%   <<"CapacityUsed">> => float(),
-%%   <<"CifsShareCount">> => float(),
-%%   <<"LogicalCapacityUsed">> => float(),
-%%   <<"LunCount">> => float(),
-%%   <<"MaxP95Performance">> => max_p95_performance(),
-%%   <<"NfsExported">> => boolean(),
-%%   <<"RecommendationStatus">> => list(any()),
-%%   <<"Recommendations">> => list(recommendation()()),
-%%   <<"ResourceId">> => string(),
-%%   <<"SecurityStyle">> => string(),
-%%   <<"SnapshotCapacityUsed">> => float(),
-%%   <<"SvmName">> => string(),
-%%   <<"SvmUuid">> => string(),
-%%   <<"VolumeName">> => string()
-%% }
--type net_app_o_n_t_a_p_volume() :: #{binary() => any()}.
 
 %% Example:
 %% report_destination() :: #{
@@ -420,13 +326,6 @@
 %%   <<"LocationArn">> := string()
 %% }
 -type describe_location_fsx_ontap_request() :: #{binary() => any()}.
-
-%% Example:
-%% credentials() :: #{
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
-%% }
--type credentials() :: #{binary() => any()}.
 
 %% Example:
 %% update_location_hdfs_request() :: #{
@@ -514,24 +413,10 @@
 -type describe_location_object_storage_request() :: #{binary() => any()}.
 
 %% Example:
-%% discovery_job_list_entry() :: #{
-%%   <<"DiscoveryJobArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type discovery_job_list_entry() :: #{binary() => any()}.
-
-%% Example:
 %% update_location_nfs_response() :: #{
 
 %% }
 -type update_location_nfs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_storage_system_resource_metrics_response() :: #{
-%%   <<"Metrics">> => list(resource_metrics()()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_storage_system_resource_metrics_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_location_fsx_lustre_response() :: #{
@@ -576,23 +461,6 @@
 -type describe_location_efs_response() :: #{binary() => any()}.
 
 %% Example:
-%% p95_metrics() :: #{
-%%   <<"IOPS">> => i_o_p_s(),
-%%   <<"Latency">> => latency(),
-%%   <<"Throughput">> => throughput()
-%% }
--type p95_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% capacity() :: #{
-%%   <<"ClusterCloudStorageUsed">> => float(),
-%%   <<"LogicalUsed">> => float(),
-%%   <<"Provisioned">> => float(),
-%%   <<"Used">> => float()
-%% }
--type capacity() :: #{binary() => any()}.
-
-%% Example:
 %% qop_configuration() :: #{
 %%   <<"DataTransferProtection">> => list(any()),
 %%   <<"RpcProtection">> => list(any())
@@ -613,12 +481,6 @@
 -type fsx_protocol() :: #{binary() => any()}.
 
 %% Example:
-%% describe_storage_system_request() :: #{
-%%   <<"StorageSystemArn">> := string()
-%% }
--type describe_storage_system_request() :: #{binary() => any()}.
-
-%% Example:
 %% report_overrides() :: #{
 %%   <<"Deleted">> => report_override(),
 %%   <<"Skipped">> => report_override(),
@@ -626,13 +488,6 @@
 %%   <<"Verified">> => report_override()
 %% }
 -type report_overrides() :: #{binary() => any()}.
-
-%% Example:
-%% update_discovery_job_request() :: #{
-%%   <<"CollectionDurationMinutes">> := integer(),
-%%   <<"DiscoveryJobArn">> := string()
-%% }
--type update_discovery_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% agent_list_entry() :: #{
@@ -700,29 +555,10 @@
 -type task_report_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_storage_systems_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_storage_systems_request() :: #{binary() => any()}.
-
-%% Example:
 %% update_location_fsx_lustre_response() :: #{
 
 %% }
 -type update_location_fsx_lustre_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_storage_system_resource_metrics_request() :: #{
-%%   <<"DiscoveryJobArn">> := string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type describe_storage_system_resource_metrics_request() :: #{binary() => any()}.
 
 %% Example:
 %% s3_manifest_config() :: #{
@@ -879,32 +715,10 @@
 -type create_location_fsx_ontap_request() :: #{binary() => any()}.
 
 %% Example:
-%% discovery_server_configuration() :: #{
-%%   <<"ServerHostname">> => string(),
-%%   <<"ServerPort">> => integer()
-%% }
--type discovery_server_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"EstimatedMonthlyStorageCost">> => string(),
-%%   <<"StorageConfiguration">> => map(),
-%%   <<"StorageType">> => string()
-%% }
--type recommendation() :: #{binary() => any()}.
-
-%% Example:
 %% create_location_hdfs_response() :: #{
 %%   <<"LocationArn">> => string()
 %% }
 -type create_location_hdfs_response() :: #{binary() => any()}.
-
-%% Example:
-%% storage_system_list_entry() :: #{
-%%   <<"Name">> => string(),
-%%   <<"StorageSystemArn">> => string()
-%% }
--type storage_system_list_entry() :: #{binary() => any()}.
 
 %% Example:
 %% describe_task_response() :: #{
@@ -964,29 +778,6 @@
 -type update_location_fsx_open_zfs_response() :: #{binary() => any()}.
 
 %% Example:
-%% net_app_o_n_t_a_p_cluster() :: #{
-%%   <<"CifsShareCount">> => float(),
-%%   <<"ClusterBlockStorageLogicalUsed">> => float(),
-%%   <<"ClusterBlockStorageSize">> => float(),
-%%   <<"ClusterBlockStorageUsed">> => float(),
-%%   <<"ClusterCloudStorageUsed">> => float(),
-%%   <<"ClusterName">> => string(),
-%%   <<"LunCount">> => float(),
-%%   <<"MaxP95Performance">> => max_p95_performance(),
-%%   <<"NfsExportedVolumes">> => float(),
-%%   <<"RecommendationStatus">> => list(any()),
-%%   <<"Recommendations">> => list(recommendation()()),
-%%   <<"ResourceId">> => string()
-%% }
--type net_app_o_n_t_a_p_cluster() :: #{binary() => any()}.
-
-%% Example:
-%% stop_discovery_job_request() :: #{
-%%   <<"DiscoveryJobArn">> := string()
-%% }
--type stop_discovery_job_request() :: #{binary() => any()}.
-
-%% Example:
 %% update_location_object_storage_response() :: #{
 
 %% }
@@ -1010,28 +801,6 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_discovery_job_response() :: #{
-
-%% }
--type update_discovery_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% max_p95_performance() :: #{
-%%   <<"IopsOther">> => float(),
-%%   <<"IopsRead">> => float(),
-%%   <<"IopsTotal">> => float(),
-%%   <<"IopsWrite">> => float(),
-%%   <<"LatencyOther">> => float(),
-%%   <<"LatencyRead">> => float(),
-%%   <<"LatencyWrite">> => float(),
-%%   <<"ThroughputOther">> => float(),
-%%   <<"ThroughputRead">> => float(),
-%%   <<"ThroughputTotal">> => float(),
-%%   <<"ThroughputWrite">> => float()
-%% }
--type max_p95_performance() :: #{binary() => any()}.
-
-%% Example:
 %% describe_location_fsx_open_zfs_response() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"LocationArn">> => string(),
@@ -1048,21 +817,6 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_locations_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_storage_system_request() :: #{
-%%   <<"StorageSystemArn">> := string()
-%% }
--type remove_storage_system_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_discovery_job_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"CollectionDurationMinutes">> := integer(),
-%%   <<"StorageSystemArn">> := string(),
-%%   <<"Tags">> => list(tag_list_entry()())
-%% }
--type start_discovery_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_location_s3_request() :: #{
@@ -1184,31 +938,6 @@
 -type create_location_fsx_windows_response() :: #{binary() => any()}.
 
 %% Example:
-%% latency() :: #{
-%%   <<"Other">> => float(),
-%%   <<"Read">> => float(),
-%%   <<"Write">> => float()
-%% }
--type latency() :: #{binary() => any()}.
-
-%% Example:
-%% describe_discovery_job_response() :: #{
-%%   <<"CollectionDurationMinutes">> => integer(),
-%%   <<"DiscoveryJobArn">> => string(),
-%%   <<"JobEndTime">> => non_neg_integer(),
-%%   <<"JobStartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StorageSystemArn">> => string()
-%% }
--type describe_discovery_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_storage_system_response() :: #{
-
-%% }
--type update_storage_system_response() :: #{binary() => any()}.
-
-%% Example:
 %% create_location_fsx_windows_request() :: #{
 %%   <<"Domain">> => string(),
 %%   <<"FsxFilesystemArn">> := string(),
@@ -1272,23 +1001,6 @@
 -type report_destination_s3() :: #{binary() => any()}.
 
 %% Example:
-%% describe_discovery_job_request() :: #{
-%%   <<"DiscoveryJobArn">> := string()
-%% }
--type describe_discovery_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_storage_system_resources_request() :: #{
-%%   <<"DiscoveryJobArn">> := string(),
-%%   <<"Filter">> => map(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceIds">> => list(string()()),
-%%   <<"ResourceType">> := list(any())
-%% }
--type describe_storage_system_resources_request() :: #{binary() => any()}.
-
-%% Example:
 %% update_location_efs_request() :: #{
 %%   <<"AccessPointArn">> => string(),
 %%   <<"FileSystemAccessRoleArn">> => string(),
@@ -1329,22 +1041,6 @@
 %%   <<"LocationArn">> := string()
 %% }
 -type describe_location_s3_request() :: #{binary() => any()}.
-
-%% Example:
-%% throughput() :: #{
-%%   <<"Other">> => float(),
-%%   <<"Read">> => float(),
-%%   <<"Total">> => float(),
-%%   <<"Write">> => float()
-%% }
--type throughput() :: #{binary() => any()}.
-
-%% Example:
-%% list_storage_systems_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StorageSystems">> => list(storage_system_list_entry()())
-%% }
--type list_storage_systems_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -1406,15 +1102,6 @@
 -type update_location_nfs_request() :: #{binary() => any()}.
 
 %% Example:
-%% i_o_p_s() :: #{
-%%   <<"Other">> => float(),
-%%   <<"Read">> => float(),
-%%   <<"Total">> => float(),
-%%   <<"Write">> => float()
-%% }
--type i_o_p_s() :: #{binary() => any()}.
-
-%% Example:
 %% create_location_fsx_lustre_request() :: #{
 %%   <<"FsxFilesystemArn">> := string(),
 %%   <<"SecurityGroupArns">> := list(string()()),
@@ -1463,33 +1150,6 @@
 -type update_location_fsx_windows_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_metrics() :: #{
-%%   <<"Capacity">> => capacity(),
-%%   <<"P95Metrics">> => p95_metrics(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type resource_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% update_storage_system_request() :: #{
-%%   <<"AgentArns">> => list(string()()),
-%%   <<"CloudWatchLogGroupArn">> => string(),
-%%   <<"Credentials">> => credentials(),
-%%   <<"Name">> => string(),
-%%   <<"ServerConfiguration">> => discovery_server_configuration(),
-%%   <<"StorageSystemArn">> := string()
-%% }
--type update_storage_system_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_discovery_job_response() :: #{
-%%   <<"DiscoveryJobArn">> => string()
-%% }
--type start_discovery_job_response() :: #{binary() => any()}.
-
-%% Example:
 %% update_location_object_storage_request() :: #{
 %%   <<"AccessKey">> => string(),
 %%   <<"AgentArns">> => list(string()()),
@@ -1502,25 +1162,6 @@
 %%   <<"Subdirectory">> => string()
 %% }
 -type update_location_object_storage_request() :: #{binary() => any()}.
-
-%% Example:
-%% net_app_o_n_t_a_p_s_v_m() :: #{
-%%   <<"CifsShareCount">> => float(),
-%%   <<"ClusterUuid">> => string(),
-%%   <<"EnabledProtocols">> => list(string()()),
-%%   <<"LunCount">> => float(),
-%%   <<"MaxP95Performance">> => max_p95_performance(),
-%%   <<"NfsExportedVolumes">> => float(),
-%%   <<"RecommendationStatus">> => list(any()),
-%%   <<"Recommendations">> => list(recommendation()()),
-%%   <<"ResourceId">> => string(),
-%%   <<"SvmName">> => string(),
-%%   <<"TotalCapacityProvisioned">> => float(),
-%%   <<"TotalCapacityUsed">> => float(),
-%%   <<"TotalLogicalCapacityUsed">> => float(),
-%%   <<"TotalSnapshotCapacityUsed">> => float()
-%% }
--type net_app_o_n_t_a_p_s_v_m() :: #{binary() => any()}.
 
 %% Example:
 %% list_tasks_request() :: #{
@@ -1538,12 +1179,6 @@
 %%   <<"User">> => string()
 %% }
 -type fsx_protocol_smb() :: #{binary() => any()}.
-
-%% Example:
-%% add_storage_system_response() :: #{
-%%   <<"StorageSystemArn">> => string()
-%% }
--type add_storage_system_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_task_execution_request() :: #{
@@ -1572,14 +1207,6 @@
 -type list_locations_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_discovery_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StorageSystemArn">> => string()
-%% }
--type list_discovery_jobs_request() :: #{binary() => any()}.
-
-%% Example:
 %% describe_location_hdfs_request() :: #{
 %%   <<"LocationArn">> := string()
 %% }
@@ -1590,14 +1217,6 @@
 %%   <<"LocationArn">> := string()
 %% }
 -type describe_location_efs_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_details() :: #{
-%%   <<"NetAppONTAPClusters">> => list(net_app_o_n_t_a_p_cluster()()),
-%%   <<"NetAppONTAPSVMs">> => list(net_app_o_n_t_a_p_s_v_m()()),
-%%   <<"NetAppONTAPVolumes">> => list(net_app_o_n_t_a_p_volume()())
-%% }
--type resource_details() :: #{binary() => any()}.
 
 %% Example:
 %% list_tasks_response() :: #{
@@ -1677,21 +1296,6 @@
 -type describe_location_fsx_windows_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_discovery_jobs_response() :: #{
-%%   <<"DiscoveryJobs">> => list(discovery_job_list_entry()()),
-%%   <<"NextToken">> => string()
-%% }
--type list_discovery_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% generate_recommendations_request() :: #{
-%%   <<"DiscoveryJobArn">> := string(),
-%%   <<"ResourceIds">> := list(string()()),
-%%   <<"ResourceType">> := list(any())
-%% }
--type generate_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
 %% create_location_object_storage_response() :: #{
 %%   <<"LocationArn">> => string()
 %% }
@@ -1751,12 +1355,6 @@
 -type describe_location_s3_response() :: #{binary() => any()}.
 
 %% Example:
-%% stop_discovery_job_response() :: #{
-
-%% }
--type stop_discovery_job_response() :: #{binary() => any()}.
-
-%% Example:
 %% start_task_execution_request() :: #{
 %%   <<"Excludes">> => list(filter_rule()()),
 %%   <<"Includes">> => list(filter_rule()()),
@@ -1773,10 +1371,6 @@
 %%   <<"LocationArn">> => string()
 %% }
 -type create_location_fsx_ontap_response() :: #{binary() => any()}.
-
--type add_storage_system_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
 
 -type cancel_task_execution_errors() ::
     internal_exception() | 
@@ -1850,10 +1444,6 @@
     internal_exception() | 
     invalid_request_exception().
 
--type describe_discovery_job_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
 -type describe_location_azure_blob_errors() ::
     internal_exception() | 
     invalid_request_exception().
@@ -1898,18 +1488,6 @@
     internal_exception() | 
     invalid_request_exception().
 
--type describe_storage_system_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
--type describe_storage_system_resource_metrics_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
--type describe_storage_system_resources_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
 -type describe_task_errors() ::
     internal_exception() | 
     invalid_request_exception().
@@ -1918,23 +1496,11 @@
     internal_exception() | 
     invalid_request_exception().
 
--type generate_recommendations_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
 -type list_agents_errors() ::
     internal_exception() | 
     invalid_request_exception().
 
--type list_discovery_jobs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
 -type list_locations_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
--type list_storage_systems_errors() ::
     internal_exception() | 
     invalid_request_exception().
 
@@ -1950,19 +1516,7 @@
     internal_exception() | 
     invalid_request_exception().
 
--type remove_storage_system_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
--type start_discovery_job_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
 -type start_task_execution_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
--type stop_discovery_job_errors() ::
     internal_exception() | 
     invalid_request_exception().
 
@@ -1975,10 +1529,6 @@
     invalid_request_exception().
 
 -type update_agent_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
--type update_discovery_job_errors() ::
     internal_exception() | 
     invalid_request_exception().
 
@@ -2026,10 +1576,6 @@
     internal_exception() | 
     invalid_request_exception().
 
--type update_storage_system_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
-
 -type update_task_errors() ::
     internal_exception() | 
     invalid_request_exception().
@@ -2041,25 +1587,6 @@
 %%====================================================================
 %% API
 %%====================================================================
-
-%% @doc Creates an Amazon Web Services resource for an on-premises storage
-%% system that you want DataSync Discovery to collect
-%% information about.
--spec add_storage_system(aws_client:aws_client(), add_storage_system_request()) ->
-    {ok, add_storage_system_response(), tuple()} |
-    {error, any()} |
-    {error, add_storage_system_errors(), tuple()}.
-add_storage_system(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    add_storage_system(Client, Input, []).
-
--spec add_storage_system(aws_client:aws_client(), add_storage_system_request(), proplists:proplist()) ->
-    {ok, add_storage_system_response(), tuple()} |
-    {error, any()} |
-    {error, add_storage_system_errors(), tuple()}.
-add_storage_system(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"AddStorageSystem">>, Input, Options).
 
 %% @doc Stops an DataSync task execution that's in progress.
 %%
@@ -2098,7 +1625,8 @@ cancel_task_execution(Client, Input, Options)
 %% The activation process associates the agent with your Amazon Web Services
 %% account.
 %%
-%% If you haven't deployed an agent yet, see Do I need a DataSync agent?:
+%% If you haven't deployed an agent yet, see Do I need a DataSync
+%% agent?:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/do-i-need-datasync-agent.html
 -spec create_agent(aws_client:aws_client(), create_agent_request()) ->
     {ok, create_agent_response(), tuple()} |
@@ -2174,10 +1702,11 @@ create_location_efs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationEfs">>, Input, Options).
 
-%% @doc Creates a transfer location for an Amazon FSx for Lustre file system.
+%% @doc Creates a transfer location for an Amazon FSx for Lustre file
+%% system.
 %%
-%% DataSync can use this location as a source or destination for transferring
-%% data.
+%% DataSync can use this location as a source or destination for
+%% transferring data.
 %%
 %% Before you begin, make sure that you understand how DataSync
 %% accesses FSx for Lustre file systems:
@@ -2226,11 +1755,12 @@ create_location_fsx_ontap(Client, Input, Options)
 %% @doc Creates a transfer location for an Amazon FSx for OpenZFS file
 %% system.
 %%
-%% DataSync can use this location as a source or destination for transferring
-%% data.
+%% DataSync can use this location as a source or destination for
+%% transferring data.
 %%
 %% Before you begin, make sure that you understand how DataSync
-%% accesses FSx for OpenZFS file systems:
+%% accesses
+%% FSx for OpenZFS file systems:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-openzfs-location.html#create-openzfs-access.
 %%
 %% Request parameters related to `SMB' aren't supported with the
@@ -2285,8 +1815,8 @@ create_location_fsx_windows(Client, Input, Options)
 %% transferring data.
 %%
 %% Before you begin, make sure that you understand how DataSync
-%% accesses
-%% HDFS clusters:
+%% accesses HDFS
+%% clusters:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-hdfs-location.html#accessing-hdfs.
 -spec create_location_hdfs(aws_client:aws_client(), create_location_hdfs_request()) ->
     {ok, create_location_hdfs_response(), tuple()} |
@@ -2311,8 +1841,8 @@ create_location_hdfs(Client, Input, Options)
 %% transferring data.
 %%
 %% Before you begin, make sure that you understand how DataSync
-%% accesses
-%% NFS file servers:
+%% accesses NFS file
+%% servers:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#accessing-nfs.
 -spec create_location_nfs(aws_client:aws_client(), create_location_nfs_request()) ->
     {ok, create_location_nfs_response(), tuple()} |
@@ -2368,7 +1898,8 @@ create_location_object_storage(Client, Input, Options)
 %% Evaluating S3 request costs when using DataSync:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#create-s3-location-s3-requests
 %%
-%% For more information, see Configuring transfers with Amazon S3:
+%% For more information, see Configuring
+%% transfers with Amazon S3:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html.
 -spec create_location_s3(aws_client:aws_client(), create_location_s3_request()) ->
     {ok, create_location_s3_response(), tuple()} |
@@ -2412,12 +1943,12 @@ create_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationSmb">>, Input, Options).
 
-%% @doc Configures a task, which defines where and how DataSync transfers
-%% your
-%% data.
+%% @doc Configures a task, which defines where and how DataSync
+%% transfers your data.
 %%
 %% A task includes a source location, destination location, and transfer
-%% options (such as bandwidth limits, scheduling, and more).
+%% options (such as
+%% bandwidth limits, scheduling, and more).
 %%
 %% If you're planning to transfer data to or from an Amazon S3 location,
 %% review
@@ -2505,8 +2036,8 @@ delete_task(Client, Input, Options)
     request(Client, <<"DeleteTask">>, Input, Options).
 
 %% @doc Returns information about an DataSync agent, such as its name,
-%% service endpoint
-%% type, and status.
+%% service
+%% endpoint type, and status.
 -spec describe_agent(aws_client:aws_client(), describe_agent_request()) ->
     {ok, describe_agent_response(), tuple()} |
     {error, any()} |
@@ -2523,25 +2054,9 @@ describe_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgent">>, Input, Options).
 
-%% @doc Returns information about a DataSync discovery job.
--spec describe_discovery_job(aws_client:aws_client(), describe_discovery_job_request()) ->
-    {ok, describe_discovery_job_response(), tuple()} |
-    {error, any()} |
-    {error, describe_discovery_job_errors(), tuple()}.
-describe_discovery_job(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    describe_discovery_job(Client, Input, []).
-
--spec describe_discovery_job(aws_client:aws_client(), describe_discovery_job_request(), proplists:proplist()) ->
-    {ok, describe_discovery_job_response(), tuple()} |
-    {error, any()} |
-    {error, describe_discovery_job_errors(), tuple()}.
-describe_discovery_job(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DescribeDiscoveryJob">>, Input, Options).
-
 %% @doc Provides details about how an DataSync transfer location for
-%% Microsoft Azure Blob Storage is configured.
+%% Microsoft Azure
+%% Blob Storage is configured.
 -spec describe_location_azure_blob(aws_client:aws_client(), describe_location_azure_blob_request()) ->
     {ok, describe_location_azure_blob_response(), tuple()} |
     {error, any()} |
@@ -2748,63 +2263,6 @@ describe_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationSmb">>, Input, Options).
 
-%% @doc Returns information about an on-premises storage system that
-%% you're using with
-%% DataSync Discovery.
--spec describe_storage_system(aws_client:aws_client(), describe_storage_system_request()) ->
-    {ok, describe_storage_system_response(), tuple()} |
-    {error, any()} |
-    {error, describe_storage_system_errors(), tuple()}.
-describe_storage_system(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    describe_storage_system(Client, Input, []).
-
--spec describe_storage_system(aws_client:aws_client(), describe_storage_system_request(), proplists:proplist()) ->
-    {ok, describe_storage_system_response(), tuple()} |
-    {error, any()} |
-    {error, describe_storage_system_errors(), tuple()}.
-describe_storage_system(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DescribeStorageSystem">>, Input, Options).
-
-%% @doc Returns information, including performance data and capacity usage,
-%% which DataSync Discovery
-%% collects about a specific resource in your-premises storage system.
--spec describe_storage_system_resource_metrics(aws_client:aws_client(), describe_storage_system_resource_metrics_request()) ->
-    {ok, describe_storage_system_resource_metrics_response(), tuple()} |
-    {error, any()} |
-    {error, describe_storage_system_resource_metrics_errors(), tuple()}.
-describe_storage_system_resource_metrics(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    describe_storage_system_resource_metrics(Client, Input, []).
-
--spec describe_storage_system_resource_metrics(aws_client:aws_client(), describe_storage_system_resource_metrics_request(), proplists:proplist()) ->
-    {ok, describe_storage_system_resource_metrics_response(), tuple()} |
-    {error, any()} |
-    {error, describe_storage_system_resource_metrics_errors(), tuple()}.
-describe_storage_system_resource_metrics(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DescribeStorageSystemResourceMetrics">>, Input, Options).
-
-%% @doc Returns information that DataSync Discovery collects about resources
-%% in your on-premises storage
-%% system.
--spec describe_storage_system_resources(aws_client:aws_client(), describe_storage_system_resources_request()) ->
-    {ok, describe_storage_system_resources_response(), tuple()} |
-    {error, any()} |
-    {error, describe_storage_system_resources_errors(), tuple()}.
-describe_storage_system_resources(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    describe_storage_system_resources(Client, Input, []).
-
--spec describe_storage_system_resources(aws_client:aws_client(), describe_storage_system_resources_request(), proplists:proplist()) ->
-    {ok, describe_storage_system_resources_response(), tuple()} |
-    {error, any()} |
-    {error, describe_storage_system_resources_errors(), tuple()}.
-describe_storage_system_resources(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DescribeStorageSystemResources">>, Input, Options).
-
 %% @doc Provides information about a task, which defines where and how
 %% DataSync transfers your data.
 -spec describe_task(aws_client:aws_client(), describe_task_request()) ->
@@ -2853,36 +2311,6 @@ describe_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTaskExecution">>, Input, Options).
 
-%% @doc Creates recommendations about where to migrate your data to in Amazon
-%% Web Services.
-%%
-%% Recommendations are generated based on information that DataSync Discovery
-%% collects about your
-%% on-premises storage system's resources. For more information, see
-%% Recommendations
-%% provided by DataSync Discovery:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/discovery-understand-recommendations.html.
-%%
-%% Once generated, you can view your recommendations by using the
-%% DescribeStorageSystemResources:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/API_DescribeStorageSystemResources.html
-%% operation.
--spec generate_recommendations(aws_client:aws_client(), generate_recommendations_request()) ->
-    {ok, generate_recommendations_response(), tuple()} |
-    {error, any()} |
-    {error, generate_recommendations_errors(), tuple()}.
-generate_recommendations(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    generate_recommendations(Client, Input, []).
-
--spec generate_recommendations(aws_client:aws_client(), generate_recommendations_request(), proplists:proplist()) ->
-    {ok, generate_recommendations_response(), tuple()} |
-    {error, any()} |
-    {error, generate_recommendations_errors(), tuple()}.
-generate_recommendations(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GenerateRecommendations">>, Input, Options).
-
 %% @doc Returns a list of DataSync agents that belong to an Amazon Web
 %% Services account in the Amazon Web Services Region specified in the
 %% request.
@@ -2922,25 +2350,6 @@ list_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAgents">>, Input, Options).
 
-%% @doc Provides a list of the existing discovery jobs in the Amazon Web
-%% Services Region and
-%% Amazon Web Services account where you're using DataSync Discovery.
--spec list_discovery_jobs(aws_client:aws_client(), list_discovery_jobs_request()) ->
-    {ok, list_discovery_jobs_response(), tuple()} |
-    {error, any()} |
-    {error, list_discovery_jobs_errors(), tuple()}.
-list_discovery_jobs(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    list_discovery_jobs(Client, Input, []).
-
--spec list_discovery_jobs(aws_client:aws_client(), list_discovery_jobs_request(), proplists:proplist()) ->
-    {ok, list_discovery_jobs_response(), tuple()} |
-    {error, any()} |
-    {error, list_discovery_jobs_errors(), tuple()}.
-list_discovery_jobs(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"ListDiscoveryJobs">>, Input, Options).
-
 %% @doc Returns a list of source and destination locations.
 %%
 %% If you have more locations than are returned in a response (that is, the
@@ -2963,24 +2372,6 @@ list_locations(Client, Input)
 list_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocations">>, Input, Options).
-
-%% @doc Lists the on-premises storage systems that you're using with
-%% DataSync Discovery.
--spec list_storage_systems(aws_client:aws_client(), list_storage_systems_request()) ->
-    {ok, list_storage_systems_response(), tuple()} |
-    {error, any()} |
-    {error, list_storage_systems_errors(), tuple()}.
-list_storage_systems(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    list_storage_systems(Client, Input, []).
-
--spec list_storage_systems(aws_client:aws_client(), list_storage_systems_request(), proplists:proplist()) ->
-    {ok, list_storage_systems_response(), tuple()} |
-    {error, any()} |
-    {error, list_storage_systems_errors(), tuple()}.
-list_storage_systems(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"ListStorageSystems">>, Input, Options).
 
 %% @doc Returns all the tags associated with an Amazon Web Services resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
@@ -3033,48 +2424,6 @@ list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
 
-%% @doc Permanently removes a storage system resource from DataSync
-%% Discovery, including the associated
-%% discovery jobs, collected data, and recommendations.
--spec remove_storage_system(aws_client:aws_client(), remove_storage_system_request()) ->
-    {ok, remove_storage_system_response(), tuple()} |
-    {error, any()} |
-    {error, remove_storage_system_errors(), tuple()}.
-remove_storage_system(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    remove_storage_system(Client, Input, []).
-
--spec remove_storage_system(aws_client:aws_client(), remove_storage_system_request(), proplists:proplist()) ->
-    {ok, remove_storage_system_response(), tuple()} |
-    {error, any()} |
-    {error, remove_storage_system_errors(), tuple()}.
-remove_storage_system(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"RemoveStorageSystem">>, Input, Options).
-
-%% @doc Runs a DataSync discovery job on your on-premises storage system.
-%%
-%% If you haven't added the
-%% storage system to DataSync Discovery yet, do this first by using the
-%% AddStorageSystem:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/API_AddStorageSystem.html
-%% operation.
--spec start_discovery_job(aws_client:aws_client(), start_discovery_job_request()) ->
-    {ok, start_discovery_job_response(), tuple()} |
-    {error, any()} |
-    {error, start_discovery_job_errors(), tuple()}.
-start_discovery_job(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    start_discovery_job(Client, Input, []).
-
--spec start_discovery_job(aws_client:aws_client(), start_discovery_job_request(), proplists:proplist()) ->
-    {ok, start_discovery_job_response(), tuple()} |
-    {error, any()} |
-    {error, start_discovery_job_errors(), tuple()}.
-start_discovery_job(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"StartDiscoveryJob">>, Input, Options).
-
 %% @doc Starts an DataSync transfer task.
 %%
 %% For each task, you can only run one task
@@ -3107,32 +2456,6 @@ start_task_execution(Client, Input)
 start_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTaskExecution">>, Input, Options).
-
-%% @doc Stops a running DataSync discovery job.
-%%
-%% You can stop a discovery job anytime. A job that's stopped before
-%% it's scheduled to end
-%% likely will provide you some information about your on-premises storage
-%% system resources. To
-%% get recommendations for a stopped job, you must use the
-%% GenerateRecommendations:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/API_GenerateRecommendations.html
-%% operation.
--spec stop_discovery_job(aws_client:aws_client(), stop_discovery_job_request()) ->
-    {ok, stop_discovery_job_response(), tuple()} |
-    {error, any()} |
-    {error, stop_discovery_job_errors(), tuple()}.
-stop_discovery_job(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    stop_discovery_job(Client, Input, []).
-
--spec stop_discovery_job(aws_client:aws_client(), stop_discovery_job_request(), proplists:proplist()) ->
-    {ok, stop_discovery_job_response(), tuple()} |
-    {error, any()} |
-    {error, stop_discovery_job_errors(), tuple()}.
-stop_discovery_job(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"StopDiscoveryJob">>, Input, Options).
 
 %% @doc Applies a tag to an Amazon Web Services resource.
 %%
@@ -3192,25 +2515,9 @@ update_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAgent">>, Input, Options).
 
-%% @doc Edits a DataSync discovery job configuration.
--spec update_discovery_job(aws_client:aws_client(), update_discovery_job_request()) ->
-    {ok, update_discovery_job_response(), tuple()} |
-    {error, any()} |
-    {error, update_discovery_job_errors(), tuple()}.
-update_discovery_job(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    update_discovery_job(Client, Input, []).
-
--spec update_discovery_job(aws_client:aws_client(), update_discovery_job_request(), proplists:proplist()) ->
-    {ok, update_discovery_job_response(), tuple()} |
-    {error, any()} |
-    {error, update_discovery_job_errors(), tuple()}.
-update_discovery_job(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"UpdateDiscoveryJob">>, Input, Options).
-
 %% @doc Modifies the following configurations of the Microsoft Azure Blob
-%% Storage transfer location that you're using with DataSync.
+%% Storage transfer
+%% location that you're using with DataSync.
 %%
 %% For more information, see Configuring DataSync transfers with Azure Blob
 %% Storage:
@@ -3232,9 +2539,11 @@ update_location_azure_blob(Client, Input, Options)
     request(Client, <<"UpdateLocationAzureBlob">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Amazon EFS
-%% transfer location that you're using with DataSync.
+%% transfer
+%% location that you're using with DataSync.
 %%
-%% For more information, see Configuring DataSync transfers with Amazon EFS:
+%% For more information, see Configuring DataSync
+%% transfers with Amazon EFS:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html.
 -spec update_location_efs(aws_client:aws_client(), update_location_efs_request()) ->
     {ok, update_location_efs_response(), tuple()} |
@@ -3253,10 +2562,11 @@ update_location_efs(Client, Input, Options)
     request(Client, <<"UpdateLocationEfs">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Amazon FSx for
-%% Lustre transfer location that you're using with DataSync.
+%% Lustre
+%% transfer location that you're using with DataSync.
 %%
-%% For more information, see Configuring DataSync transfers with FSx for
-%% Lustre:
+%% For more information, see Configuring DataSync
+%% transfers with FSx for Lustre:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-lustre-location.html.
 -spec update_location_fsx_lustre(aws_client:aws_client(), update_location_fsx_lustre_request()) ->
     {ok, update_location_fsx_lustre_response(), tuple()} |
@@ -3275,10 +2585,11 @@ update_location_fsx_lustre(Client, Input, Options)
     request(Client, <<"UpdateLocationFsxLustre">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Amazon FSx for
-%% NetApp ONTAP transfer location that you're using with DataSync.
+%% NetApp ONTAP
+%% transfer location that you're using with DataSync.
 %%
-%% For more information, see Configuring DataSync transfers with FSx for
-%% ONTAP:
+%% For more information, see Configuring DataSync
+%% transfers with FSx for ONTAP:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-ontap-location.html.
 -spec update_location_fsx_ontap(aws_client:aws_client(), update_location_fsx_ontap_request()) ->
     {ok, update_location_fsx_ontap_response(), tuple()} |
@@ -3297,10 +2608,11 @@ update_location_fsx_ontap(Client, Input, Options)
     request(Client, <<"UpdateLocationFsxOntap">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Amazon FSx for
-%% OpenZFS transfer location that you're using with DataSync.
+%% OpenZFS
+%% transfer location that you're using with DataSync.
 %%
-%% For more information, see Configuring DataSync transfers with FSx for
-%% OpenZFS:
+%% For more information, see Configuring DataSync
+%% transfers with FSx for OpenZFS:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-openzfs-location.html.
 %%
 %% Request parameters related to `SMB' aren't supported with the
@@ -3322,10 +2634,11 @@ update_location_fsx_open_zfs(Client, Input, Options)
     request(Client, <<"UpdateLocationFsxOpenZfs">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Amazon FSx for
-%% Windows File Server transfer location that you're using with DataSync.
+%% Windows File Server
+%% transfer location that you're using with DataSync.
 %%
-%% For more information, see Configuring DataSync transfers with FSx for
-%% Windows File Server:
+%% For more information, see Configuring DataSync
+%% transfers with FSx for Windows File Server:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-fsx-location.html.
 -spec update_location_fsx_windows(aws_client:aws_client(), update_location_fsx_windows_request()) ->
     {ok, update_location_fsx_windows_response(), tuple()} |
@@ -3344,11 +2657,11 @@ update_location_fsx_windows(Client, Input, Options)
     request(Client, <<"UpdateLocationFsxWindows">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Hadoop
-%% Distributed File
-%% System (HDFS) transfer location that you're using with DataSync.
+%% Distributed File System
+%% (HDFS) transfer location that you're using with DataSync.
 %%
-%% For more information, see Configuring DataSync transfers with an HDFS
-%% cluster:
+%% For more information, see Configuring DataSync
+%% transfers with an HDFS cluster:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-hdfs-location.html.
 -spec update_location_hdfs(aws_client:aws_client(), update_location_hdfs_request()) ->
     {ok, update_location_hdfs_response(), tuple()} |
@@ -3367,10 +2680,11 @@ update_location_hdfs(Client, Input, Options)
     request(Client, <<"UpdateLocationHdfs">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Network File
-%% System (NFS) transfer location that you're using with DataSync.
+%% System (NFS) transfer
+%% location that you're using with DataSync.
 %%
-%% For more information, see Configuring transfers with an
-%% NFS file server:
+%% For more information, see Configuring transfers with an NFS
+%% file server:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html.
 -spec update_location_nfs(aws_client:aws_client(), update_location_nfs_request()) ->
     {ok, update_location_nfs_response(), tuple()} |
@@ -3389,10 +2703,11 @@ update_location_nfs(Client, Input, Options)
     request(Client, <<"UpdateLocationNfs">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the object storage
-%% transfer location that you're using with DataSync.
+%% transfer location
+%% that you're using with DataSync.
 %%
-%% For more information, see Configuring DataSync transfers with an object
-%% storage system:
+%% For more information, see Configuring DataSync
+%% transfers with an object storage system:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html.
 -spec update_location_object_storage(aws_client:aws_client(), update_location_object_storage_request()) ->
     {ok, update_location_object_storage_response(), tuple()} |
@@ -3411,7 +2726,8 @@ update_location_object_storage(Client, Input, Options)
     request(Client, <<"UpdateLocationObjectStorage">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Amazon S3
-%% transfer location that you're using with DataSync.
+%% transfer location
+%% that you're using with DataSync.
 %%
 %% Before you begin, make sure that you read the following topics:
 %%
@@ -3438,11 +2754,11 @@ update_location_s3(Client, Input, Options)
     request(Client, <<"UpdateLocationS3">>, Input, Options).
 
 %% @doc Modifies the following configuration parameters of the Server Message
-%% Block
-%% (SMB) transfer location that you're using with DataSync.
+%% Block (SMB) transfer
+%% location that you're using with DataSync.
 %%
-%% For more information, see Configuring DataSync transfers with an SMB file
-%% server:
+%% For more information, see Configuring DataSync
+%% transfers with an SMB file server:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html.
 -spec update_location_smb(aws_client:aws_client(), update_location_smb_request()) ->
     {ok, update_location_smb_response(), tuple()} |
@@ -3459,25 +2775,6 @@ update_location_smb(Client, Input)
 update_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationSmb">>, Input, Options).
-
-%% @doc Modifies some configurations of an on-premises storage system
-%% resource that you're using
-%% with DataSync Discovery.
--spec update_storage_system(aws_client:aws_client(), update_storage_system_request()) ->
-    {ok, update_storage_system_response(), tuple()} |
-    {error, any()} |
-    {error, update_storage_system_errors(), tuple()}.
-update_storage_system(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    update_storage_system(Client, Input, []).
-
--spec update_storage_system(aws_client:aws_client(), update_storage_system_request(), proplists:proplist()) ->
-    {ok, update_storage_system_response(), tuple()} |
-    {error, any()} |
-    {error, update_storage_system_errors(), tuple()}.
-update_storage_system(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"UpdateStorageSystem">>, Input, Options).
 
 %% @doc Updates the configuration of a task, which defines where and how
 %% DataSync transfers your data.
@@ -3504,8 +2801,8 @@ update_task(Client, Input, Options)
 %% ```
 %% BytesPerSecond:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond
-%% ''', which throttles bandwidth for a running or queued
-%% task execution.
+%% ''', which throttles bandwidth for a running or queued task
+%% execution.
 -spec update_task_execution(aws_client:aws_client(), update_task_execution_request()) ->
     {ok, update_task_execution_response(), tuple()} |
     {error, any()} |

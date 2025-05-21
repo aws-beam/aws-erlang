@@ -53,6 +53,8 @@
          get_cis_scan_report/3,
          get_cis_scan_result_details/2,
          get_cis_scan_result_details/3,
+         get_clusters_for_image/2,
+         get_clusters_for_image/3,
          get_configuration/2,
          get_configuration/3,
          get_delegated_admin_account/2,
@@ -365,6 +367,7 @@
 %%   <<"vulnerabilitySource">> => list(string_filter()()),
 %%   <<"findingArn">> => list(string_filter()()),
 %%   <<"codeVulnerabilityDetectorTags">> => list(string_filter()()),
+%%   <<"ecrImageInUseCount">> => list(number_filter()()),
 %%   <<"ec2InstanceImageId">> => list(string_filter()()),
 %%   <<"ecrImagePushedAt">> => list(date_filter()()),
 %%   <<"ecrImageRepositoryName">> => list(string_filter()()),
@@ -380,6 +383,7 @@
 %%   <<"resourceType">> => list(string_filter()()),
 %%   <<"fixAvailable">> => list(string_filter()()),
 %%   <<"severity">> => list(string_filter()()),
+%%   <<"ecrImageLastInUseAt">> => list(date_filter()()),
 %%   <<"exploitAvailable">> => list(string_filter()()),
 %%   <<"title">> => list(string_filter()())
 %% }
@@ -600,9 +604,18 @@
 %% Example:
 %% ecr_configuration() :: #{
 %%   <<"pullDateRescanDuration">> => string(),
+%%   <<"pullDateRescanMode">> => string(),
 %%   <<"rescanDuration">> => string()
 %% }
 -type ecr_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_ecs_metadata_details() :: #{
+%%   <<"detailsGroup">> => [string()],
+%%   <<"taskDefinitionArn">> => [string()]
+%% }
+-type aws_ecs_metadata_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -750,6 +763,14 @@
 
 
 %% Example:
+%% coverage_number_filter() :: #{
+%%   <<"lowerInclusive">> => [float()],
+%%   <<"upperInclusive">> => [float()]
+%% }
+-type coverage_number_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_ec2_deep_inspection_configuration_response() :: #{
 %%   <<"errorMessage">> => string(),
 %%   <<"orgPackagePaths">> => list(string()()),
@@ -853,6 +874,13 @@
 %%   <<"sortOrder">> => string()
 %% }
 -type ec2_instance_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_for_image_filter_criteria() :: #{
+%%   <<"resourceId">> => [string()]
+%% }
+-type cluster_for_image_filter_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1192,6 +1220,16 @@
 
 
 %% Example:
+%% cluster_details() :: #{
+%%   <<"clusterMetadata">> => list(),
+%%   <<"lastInUse">> => [non_neg_integer()],
+%%   <<"runningUnitCount">> => [float()],
+%%   <<"stoppedUnitCount">> => [float()]
+%% }
+-type cluster_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% cvss_score_details() :: #{
 %%   <<"adjustments">> => list(cvss_score_adjustment()()),
 %%   <<"cvssSource">> => string(),
@@ -1448,6 +1486,14 @@
 
 
 %% Example:
+%% cluster_information() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"clusterDetails">> => list(cluster_details()())
+%% }
+-type cluster_information() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter() :: #{
 %%   <<"action">> => string(),
 %%   <<"arn">> => string(),
@@ -1533,6 +1579,7 @@
 %% Example:
 %% ecr_rescan_duration_state() :: #{
 %%   <<"pullDateRescanDuration">> => string(),
+%%   <<"pullDateRescanMode">> => string(),
 %%   <<"rescanDuration">> => string(),
 %%   <<"status">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1564,6 +1611,8 @@
 %% Example:
 %% ecr_container_image_metadata() :: #{
 %%   <<"imagePulledAt">> => non_neg_integer(),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer(),
 %%   <<"tags">> => list([string()]())
 %% }
 -type ecr_container_image_metadata() :: #{binary() => any()}.
@@ -2028,6 +2077,8 @@
 %% coverage_filter_criteria() :: #{
 %%   <<"accountId">> => list(coverage_string_filter()()),
 %%   <<"ec2InstanceTags">> => list(coverage_map_filter()()),
+%%   <<"ecrImageInUseCount">> => list(coverage_number_filter()()),
+%%   <<"ecrImageLastInUseAt">> => list(coverage_date_filter()()),
 %%   <<"ecrImageTags">> => list(coverage_string_filter()()),
 %%   <<"ecrRepositoryName">> => list(coverage_string_filter()()),
 %%   <<"imagePulledAt">> => list(coverage_date_filter()()),
@@ -2057,6 +2108,14 @@
 %%   <<"accountIds">> => list(string()())
 %% }
 -type batch_get_account_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_clusters_for_image_response() :: #{
+%%   <<"cluster">> => list(cluster_information()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_clusters_for_image_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2216,6 +2275,8 @@
 %%   <<"architectures">> => list(string_filter()()),
 %%   <<"imageShas">> => list(string_filter()()),
 %%   <<"imageTags">> => list(string_filter()()),
+%%   <<"inUseCount">> => list(number_filter()()),
+%%   <<"lastInUseAt">> => list(date_filter()()),
 %%   <<"repositories">> => list(string_filter()()),
 %%   <<"resourceIds">> => list(string_filter()()),
 %%   <<"sortBy">> => string(),
@@ -2336,6 +2397,15 @@
 
 
 %% Example:
+%% get_clusters_for_image_request() :: #{
+%%   <<"filter">> := cluster_for_image_filter_criteria(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type get_clusters_for_image_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% send_cis_session_telemetry_request() :: #{
 %%   <<"messages">> := list(cis_session_message()()),
 %%   <<"scanJobId">> := string(),
@@ -2380,6 +2450,8 @@
 %%   <<"author">> => [string()],
 %%   <<"imageHash">> => string(),
 %%   <<"imageTags">> => list(string()()),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer(),
 %%   <<"platform">> => string(),
 %%   <<"pushedAt">> => non_neg_integer(),
 %%   <<"registry">> => string(),
@@ -2409,6 +2481,14 @@
 %% Example:
 %% update_org_ec2_deep_inspection_configuration_response() :: #{}
 -type update_org_ec2_deep_inspection_configuration_response() :: #{}.
+
+
+%% Example:
+%% aws_eks_metadata_details() :: #{
+%%   <<"namespace">> => [string()],
+%%   <<"workloadInfoList">> => list(aws_eks_workload_info()())
+%% }
+-type aws_eks_metadata_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2481,6 +2561,14 @@
 
 
 %% Example:
+%% aws_eks_workload_info() :: #{
+%%   <<"name">> => [string()],
+%%   <<"type">> => [string()]
+%% }
+-type aws_eks_workload_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% permission() :: #{
 %%   <<"operation">> => string(),
 %%   <<"service">> => string()
@@ -2524,6 +2612,8 @@
 %%   <<"architecture">> => [string()],
 %%   <<"imageSha">> => [string()],
 %%   <<"imageTags">> => list(string()()),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer(),
 %%   <<"repository">> => [string()],
 %%   <<"resourceId">> => string(),
 %%   <<"severityCounts">> => severity_counts()
@@ -2769,6 +2859,12 @@
     resource_not_found_exception().
 
 -type get_cis_scan_result_details_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_clusters_for_image_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3801,6 +3897,40 @@ get_cis_scan_result_details(Client, Input) ->
 get_cis_scan_result_details(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cis/scan-result/details/get"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of clusters and metadata associated with an image.
+-spec get_clusters_for_image(aws_client:aws_client(), get_clusters_for_image_request()) ->
+    {ok, get_clusters_for_image_response(), tuple()} |
+    {error, any()} |
+    {error, get_clusters_for_image_errors(), tuple()}.
+get_clusters_for_image(Client, Input) ->
+    get_clusters_for_image(Client, Input, []).
+
+-spec get_clusters_for_image(aws_client:aws_client(), get_clusters_for_image_request(), proplists:proplist()) ->
+    {ok, get_clusters_for_image_response(), tuple()} |
+    {error, any()} |
+    {error, get_clusters_for_image_errors(), tuple()}.
+get_clusters_for_image(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cluster/get"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
