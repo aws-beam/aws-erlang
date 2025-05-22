@@ -20,6 +20,12 @@
          get_agent_memory/5,
          get_agent_memory/7,
          get_agent_memory/8,
+         get_execution_flow_snapshot/4,
+         get_execution_flow_snapshot/6,
+         get_execution_flow_snapshot/7,
+         get_flow_execution/4,
+         get_flow_execution/6,
+         get_flow_execution/7,
          get_invocation_step/4,
          get_invocation_step/5,
          get_session/2,
@@ -31,6 +37,12 @@
          invoke_flow/5,
          invoke_inline_agent/3,
          invoke_inline_agent/4,
+         list_flow_execution_events/5,
+         list_flow_execution_events/7,
+         list_flow_execution_events/8,
+         list_flow_executions/2,
+         list_flow_executions/4,
+         list_flow_executions/5,
          list_invocation_steps/3,
          list_invocation_steps/4,
          list_invocations/3,
@@ -52,6 +64,10 @@
          retrieve_and_generate/3,
          retrieve_and_generate_stream/2,
          retrieve_and_generate_stream/3,
+         start_flow_execution/4,
+         start_flow_execution/5,
+         stop_flow_execution/5,
+         stop_flow_execution/6,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -146,6 +162,14 @@
 
 
 %% Example:
+%% stop_flow_execution_response() :: #{
+%%   <<"executionArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type stop_flow_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% session_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
@@ -185,10 +209,31 @@
 
 
 %% Example:
+%% flow_execution_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"executionArn">> => string(),
+%%   <<"flowAliasIdentifier">> => string(),
+%%   <<"flowIdentifier">> => string(),
+%%   <<"flowVersion">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type flow_execution_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% optimize_prompt_response() :: #{
 %%   <<"optimizedPrompt">> => list()
 %% }
 -type optimize_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_execution_events_response() :: #{
+%%   <<"flowExecutionEvents">> => list(list()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_execution_events_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -210,6 +255,14 @@
 %%   <<"metadata">> => metadata()
 %% }
 -type code_interpreter_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_output_field() :: #{
+%%   <<"content">> => list(),
+%%   <<"name">> => string()
+%% }
+-type node_output_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -372,6 +425,15 @@
 
 
 %% Example:
+%% node_input_event() :: #{
+%%   <<"fields">> => list(node_input_field()()),
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type node_input_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% metadata() :: #{
 %%   <<"clientRequestId">> => [string()],
 %%   <<"endTime">> => non_neg_integer(),
@@ -505,6 +567,15 @@
 
 
 %% Example:
+%% flow_execution_input_event() :: #{
+%%   <<"fields">> => list(flow_input_field()()),
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type flow_execution_input_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_and_generate_session_configuration() :: #{
 %%   <<"kmsKeyArn">> => string()
 %% }
@@ -570,6 +641,10 @@
 %% }
 -type retrieval_result_s3_location() :: #{binary() => any()}.
 
+%% Example:
+%% get_flow_execution_request() :: #{}
+-type get_flow_execution_request() :: #{}.
+
 
 %% Example:
 %% bedrock_reranking_model_configuration() :: #{
@@ -615,6 +690,16 @@
 %%   <<"responseStream">> => list()
 %% }
 -type invoke_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_failure_event() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type node_failure_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -699,6 +784,18 @@
 %%   <<"textToSqlConfiguration">> => text_to_sql_configuration()
 %% }
 -type transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_execution_flow_snapshot_response() :: #{
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => [string()],
+%%   <<"executionRoleArn">> => string(),
+%%   <<"flowAliasIdentifier">> => string(),
+%%   <<"flowIdentifier">> => string(),
+%%   <<"flowVersion">> => string()
+%% }
+-type get_execution_flow_snapshot_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -802,6 +899,15 @@
 
 
 %% Example:
+%% flow_execution_output_event() :: #{
+%%   <<"fields">> => list(flow_output_field()()),
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type flow_execution_output_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% pre_processing_parsed_response() :: #{
 %%   <<"isValid">> => [boolean()],
 %%   <<"rationale">> => string()
@@ -867,6 +973,15 @@
 %% Example:
 %% delete_session_response() :: #{}
 -type delete_session_response() :: #{}.
+
+
+%% Example:
+%% list_flow_execution_events_request() :: #{
+%%   <<"eventType">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_execution_events_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -989,6 +1104,15 @@
 
 
 %% Example:
+%% condition_result_event() :: #{
+%%   <<"nodeName">> => string(),
+%%   <<"satisfiedConditions">> => list(satisfied_condition()()),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type condition_result_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_and_generate_output_event() :: #{
 %%   <<"text">> => [string()]
 %% }
@@ -1106,6 +1230,10 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+%% Example:
+%% stop_flow_execution_request() :: #{}
+-type stop_flow_execution_request() :: #{}.
+
 
 %% Example:
 %% api_result() :: #{
@@ -1154,6 +1282,15 @@
 
 
 %% Example:
+%% start_flow_execution_request() :: #{
+%%   <<"flowExecutionName">> => string(),
+%%   <<"inputs">> := list(flow_input()()),
+%%   <<"modelPerformanceConfiguration">> => model_performance_configuration()
+%% }
+-type start_flow_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_sources_generation_configuration() :: #{
 %%   <<"additionalModelRequestFields">> => map(),
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
@@ -1194,12 +1331,29 @@
 
 
 %% Example:
+%% node_input_field() :: #{
+%%   <<"content">> => list(),
+%%   <<"name">> => string()
+%% }
+-type node_input_field() :: #{binary() => any()}.
+
+
+%% Example:
 %% rerank_result() :: #{
 %%   <<"document">> => rerank_document(),
 %%   <<"index">> => [integer()],
 %%   <<"relevanceScore">> => [float()]
 %% }
 -type rerank_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_executions_request() :: #{
+%%   <<"flowAliasIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_executions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1344,6 +1498,10 @@
 %%   <<"invocationIdentifier">> := string()
 %% }
 -type get_invocation_step_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_execution_flow_snapshot_request() :: #{}
+-type get_execution_flow_snapshot_request() :: #{}.
 
 
 %% Example:
@@ -1573,6 +1731,20 @@
 
 
 %% Example:
+%% get_flow_execution_response() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"errors">> => list(flow_execution_error()()),
+%%   <<"executionArn">> => string(),
+%%   <<"flowAliasIdentifier">> => string(),
+%%   <<"flowIdentifier">> => string(),
+%%   <<"flowVersion">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type get_flow_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% query_generation_input() :: #{
 %%   <<"text">> => [string()],
 %%   <<"type">> => list(any())
@@ -1600,6 +1772,23 @@
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_output_field() :: #{
+%%   <<"content">> => list(),
+%%   <<"name">> => string()
+%% }
+-type flow_output_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_execution_error() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"message">> => [string()],
+%%   <<"nodeName">> => string()
+%% }
+-type flow_execution_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1655,6 +1844,14 @@
 
 
 %% Example:
+%% list_flow_executions_response() :: #{
+%%   <<"flowExecutionSummaries">> => list(flow_execution_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_inline_agent_request() :: #{
 %%   <<"actionGroups">> => list(agent_action_group()()),
 %%   <<"agentCollaboration">> => list(any()),
@@ -1704,6 +1901,14 @@
 
 
 %% Example:
+%% flow_input_field() :: #{
+%%   <<"content">> => list(),
+%%   <<"name">> => string()
+%% }
+-type flow_input_field() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_configuration() :: #{
 %%   <<"guardrailId">> => [string()],
 %%   <<"guardrailVersion">> => [string()]
@@ -1750,6 +1955,15 @@
 %% Example:
 %% end_session_request() :: #{}
 -type end_session_request() :: #{}.
+
+
+%% Example:
+%% flow_failure_event() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type flow_failure_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1972,6 +2186,13 @@
 
 
 %% Example:
+%% satisfied_condition() :: #{
+%%   <<"conditionName">> => [string()]
+%% }
+-type satisfied_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_lookup_input() :: #{
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"text">> => string()
@@ -2056,6 +2277,15 @@
 
 
 %% Example:
+%% node_output_event() :: #{
+%%   <<"fields">> => list(node_output_field()()),
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type node_output_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% rerank_document() :: #{
 %%   <<"jsonDocument">> => [any()],
 %%   <<"textDocument">> => rerank_text_document(),
@@ -2070,6 +2300,13 @@
 %%   <<"role">> => list(any())
 %% }
 -type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_flow_execution_response() :: #{
+%%   <<"executionArn">> => string()
+%% }
+-type start_flow_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2144,6 +2381,20 @@
     dependency_failed_exception() | 
     bad_gateway_exception().
 
+-type get_execution_flow_snapshot_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_flow_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_invocation_step_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2191,6 +2442,20 @@
     conflict_exception() | 
     dependency_failed_exception() | 
     bad_gateway_exception().
+
+-type list_flow_execution_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_flow_executions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_invocation_steps_errors() ::
     throttling_exception() | 
@@ -2275,6 +2540,27 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type start_flow_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type stop_flow_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
     dependency_failed_exception() | 
@@ -2626,6 +2912,91 @@ get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the flow definition snapshot used for an asynchronous
+%% execution.
+%%
+%% The snapshot represents the flow metadata and definition as it existed at
+%% the time the asynchronous execution was started. Note that even if the
+%% flow is edited after an execution starts, the snapshot connected to the
+%% execution remains unchanged.
+%%
+%% Asynchronous flows is in preview release for Amazon Bedrock and is subject
+%% to change.
+-spec get_execution_flow_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_execution_flow_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, get_execution_flow_snapshot_errors(), tuple()}.
+get_execution_flow_snapshot(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier)
+  when is_map(Client) ->
+    get_execution_flow_snapshot(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, #{}, #{}).
+
+-spec get_execution_flow_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_execution_flow_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, get_execution_flow_snapshot_errors(), tuple()}.
+get_execution_flow_snapshot(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_execution_flow_snapshot(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_execution_flow_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_execution_flow_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, get_execution_flow_snapshot_errors(), tuple()}.
+get_execution_flow_snapshot(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(FlowAliasIdentifier), "/executions/", aws_util:encode_uri(ExecutionIdentifier), "/flowsnapshot"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves details about a specific asynchronous execution of a flow,
+%% including its status, start and end times, and any errors that occurred
+%% during execution.
+-spec get_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_execution_errors(), tuple()}.
+get_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier)
+  when is_map(Client) ->
+    get_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, #{}, #{}).
+
+-spec get_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_execution_errors(), tuple()}.
+get_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_execution_errors(), tuple()}.
+get_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(FlowAliasIdentifier), "/executions/", aws_util:encode_uri(ExecutionIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the details of a specific invocation step within an
 %% invocation in a session.
 %%
@@ -2926,6 +3297,107 @@ invoke_inline_agent(Client, SessionId, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Lists events that occurred during an asynchronous execution of a
+%% flow.
+%%
+%% Events provide detailed information about the execution progress,
+%% including node inputs and outputs, flow inputs and outputs, condition
+%% results, and failure events.
+%%
+%% Asynchronous flows is in preview release for Amazon Bedrock and is subject
+%% to change.
+-spec list_flow_execution_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_flow_execution_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_execution_events_errors(), tuple()}.
+list_flow_execution_events(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, EventType)
+  when is_map(Client) ->
+    list_flow_execution_events(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, EventType, #{}, #{}).
+
+-spec list_flow_execution_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_flow_execution_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_execution_events_errors(), tuple()}.
+list_flow_execution_events(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, EventType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_flow_execution_events(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, EventType, QueryMap, HeadersMap, []).
+
+-spec list_flow_execution_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_flow_execution_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_execution_events_errors(), tuple()}.
+list_flow_execution_events(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, EventType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(FlowAliasIdentifier), "/executions/", aws_util:encode_uri(ExecutionIdentifier), "/events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"eventType">>, EventType},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all asynchronous executions for a flow.
+%%
+%% Results can be paginated and include summary information about each
+%% execution, such as status, start and end times, and the execution's
+%% Amazon Resource Name (ARN).
+%%
+%% Asynchronous flows is in preview release for Amazon Bedrock and is subject
+%% to change.
+-spec list_flow_executions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_flow_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_executions_errors(), tuple()}.
+list_flow_executions(Client, FlowIdentifier)
+  when is_map(Client) ->
+    list_flow_executions(Client, FlowIdentifier, #{}, #{}).
+
+-spec list_flow_executions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_flow_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_executions_errors(), tuple()}.
+list_flow_executions(Client, FlowIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_flow_executions(Client, FlowIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_flow_executions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_flow_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_executions_errors(), tuple()}.
+list_flow_executions(Client, FlowIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/executions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"flowAliasIdentifier">>, maps:get(<<"flowAliasIdentifier">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all invocation steps associated with a session and optionally,
 %% an invocation within the session.
@@ -3345,6 +3817,87 @@ retrieve_and_generate_stream(Client, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Starts an asynchronous execution of an Amazon Bedrock flow.
+%%
+%% Unlike synchronous flows that run until completion or time out after five
+%% minutes, you can run asynchronous flows for longer durations. Asynchronous
+%% flows also yield control so that your application can perform other tasks.
+%%
+%% This operation returns an Amazon Resource Name (ARN) that you can use to
+%% track and manage your flow's async execution.
+%%
+%% Asynchronous flows is in preview release for Amazon Bedrock and is subject
+%% to change.
+-spec start_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), start_flow_execution_request()) ->
+    {ok, start_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_flow_execution_errors(), tuple()}.
+start_flow_execution(Client, FlowAliasIdentifier, FlowIdentifier, Input) ->
+    start_flow_execution(Client, FlowAliasIdentifier, FlowIdentifier, Input, []).
+
+-spec start_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), start_flow_execution_request(), proplists:proplist()) ->
+    {ok, start_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_flow_execution_errors(), tuple()}.
+start_flow_execution(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(FlowAliasIdentifier), "/executions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops an Amazon Bedrock flow's asynchronous execution.
+%%
+%% This operation prevents further processing of the flow and changes the
+%% execution status to `Aborted'.
+-spec stop_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_flow_execution_request()) ->
+    {ok, stop_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, stop_flow_execution_errors(), tuple()}.
+stop_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, Input) ->
+    stop_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, Input, []).
+
+-spec stop_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_flow_execution_request(), proplists:proplist()) ->
+    {ok, stop_flow_execution_response(), tuple()} |
+    {error, any()} |
+    {error, stop_flow_execution_errors(), tuple()}.
+stop_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(FlowAliasIdentifier), "/executions/", aws_util:encode_uri(ExecutionIdentifier), "/stop"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associate tags with a resource.
 %%

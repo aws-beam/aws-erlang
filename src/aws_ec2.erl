@@ -1157,6 +1157,8 @@
          modify_network_interface_attribute/3,
          modify_private_dns_name_options/2,
          modify_private_dns_name_options/3,
+         modify_public_ip_dns_name_options/2,
+         modify_public_ip_dns_name_options/3,
          modify_reserved_instances/2,
          modify_reserved_instances/3,
          modify_route_server/2,
@@ -4995,6 +4997,8 @@
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateIpAddress">> => string(),
 %%   <<"PrivateIpAddresses">> => list(network_interface_private_ip_address()()),
+%%   <<"PublicDnsName">> => string(),
+%%   <<"PublicIpDnsNameOptions">> => public_ip_dns_name_options(),
 %%   <<"RequesterId">> => string(),
 %%   <<"RequesterManaged">> => boolean(),
 %%   <<"SourceDestCheck">> => boolean(),
@@ -8445,6 +8449,12 @@
 -type client_vpn_authentication_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_public_ip_dns_name_options_result() :: #{
+%%   <<"Successful">> => boolean()
+%% }
+-type modify_public_ip_dns_name_options_result() :: #{binary() => any()}.
+
+%% Example:
 %% attach_internet_gateway_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"InternetGatewayId">> := string(),
@@ -9824,6 +9834,14 @@
 %%   <<"CapacityReservationResourceGroupArn">> => string()
 %% }
 -type capacity_reservation_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_public_ip_dns_name_options_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"HostnameType">> := list(any()),
+%%   <<"NetworkInterfaceId">> := string()
+%% }
+-type modify_public_ip_dns_name_options_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_description() :: #{
@@ -12030,6 +12048,15 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type local_gateway_route_table_virtual_interface_group_association() :: #{binary() => any()}.
+
+%% Example:
+%% public_ip_dns_name_options() :: #{
+%%   <<"DnsHostnameType">> => string(),
+%%   <<"PublicDualStackDnsName">> => string(),
+%%   <<"PublicIpv4DnsName">> => string(),
+%%   <<"PublicIpv6DnsName">> => string()
+%% }
+-type public_ip_dns_name_options() :: #{binary() => any()}.
 
 %% Example:
 %% service_type_detail() :: #{
@@ -20029,7 +20056,8 @@
 %% Example:
 %% network_interface_ipv6_address() :: #{
 %%   <<"Ipv6Address">> => string(),
-%%   <<"IsPrimaryIpv6">> => boolean()
+%%   <<"IsPrimaryIpv6">> => boolean(),
+%%   <<"PublicIpv6DnsName">> => string()
 %% }
 -type network_interface_ipv6_address() :: #{binary() => any()}.
 
@@ -30816,6 +30844,15 @@ disable_vpc_classic_link_dns_support(Client, Input, Options)
 %%
 %% This is an idempotent operation. If you perform the operation more than
 %% once, Amazon EC2 doesn't return an error.
+%%
+%% An address cannot be disassociated if the all of the following conditions
+%% are met:
+%%
+%% Network interface has a `publicDualStackDnsName' publicDnsName
+%%
+%% Public IPv4 address is the primary public IPv4 address
+%%
+%% Network interface only has one remaining public IPv4 address
 -spec disassociate_address(aws_client:aws_client(), disassociate_address_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -34208,6 +34245,25 @@ modify_private_dns_name_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyPrivateDnsNameOptions">>, Input, Options).
 
+%% @doc Modify public hostname options for a network interface.
+%%
+%% For more information, see EC2 instance hostnames, DNS names, and domains:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-naming.html
+%% in the Amazon EC2 User Guide.
+-spec modify_public_ip_dns_name_options(aws_client:aws_client(), modify_public_ip_dns_name_options_request()) ->
+    {ok, modify_public_ip_dns_name_options_result(), tuple()} |
+    {error, any()}.
+modify_public_ip_dns_name_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_public_ip_dns_name_options(Client, Input, []).
+
+-spec modify_public_ip_dns_name_options(aws_client:aws_client(), modify_public_ip_dns_name_options_request(), proplists:proplist()) ->
+    {ok, modify_public_ip_dns_name_options_result(), tuple()} |
+    {error, any()}.
+modify_public_ip_dns_name_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyPublicIpDnsNameOptions">>, Input, Options).
+
 %% @doc Modifies the configuration of your Reserved Instances, such as the
 %% Availability Zone,
 %% instance count, or instance type.
@@ -37044,13 +37100,13 @@ terminate_client_vpn_connections(Client, Input, Options)
 %% EBS volumes with the `DeleteOnTermination' block device mapping
 %% parameter set
 %% to `true' are automatically deleted. For more information about the
-%% differences between stopping and terminating instances, see Amazon EC2
-%% instance state changes:
+%% differences between stopping and terminating instances, see Instance
+%% lifecycle:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 %% in the Amazon EC2 User Guide.
 %%
-%% For information about troubleshooting, see Troubleshooting terminating
-%% your instance:
+%% For more information about troubleshooting, see Troubleshooting
+%% terminating your instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html
 %% in the
 %% Amazon EC2 User Guide.
