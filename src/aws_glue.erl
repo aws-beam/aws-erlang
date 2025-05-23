@@ -4955,6 +4955,7 @@
 
 %% Example:
 %% integration_partition() :: #{
+%%   <<"ConversionSpec">> => string(),
 %%   <<"FieldName">> => string(),
 %%   <<"FunctionSpec">> => string()
 %% }

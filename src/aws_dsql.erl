@@ -72,6 +72,7 @@
 %% create_cluster_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"kmsEncryptionKey">> => string(),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"tags">> => map()
 %% }
@@ -83,6 +84,7 @@
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"encryptionDetails">> => encryption_details(),
 %%   <<"identifier">> => string(),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any())
@@ -106,6 +108,15 @@
 %% }
 -type delete_cluster_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% encryption_details() :: #{
+%%   <<"encryptionStatus">> => list(any()),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type encryption_details() :: #{binary() => any()}.
+
 %% Example:
 %% get_cluster_input() :: #{}
 -type get_cluster_input() :: #{}.
@@ -116,6 +127,7 @@
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"encryptionDetails">> => encryption_details(),
 %%   <<"identifier">> => string(),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any()),
@@ -226,6 +238,7 @@
 %% update_cluster_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"kmsEncryptionKey">> => string(),
 %%   <<"multiRegionProperties">> => multi_region_properties()
 %% }
 -type update_cluster_input() :: #{binary() => any()}.

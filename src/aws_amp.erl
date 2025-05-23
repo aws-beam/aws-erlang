@@ -2,18 +2,14 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Managed Service for Prometheus is a serverless,
-%% Prometheus-compatible monitoring service for
-%% container metrics that makes it easier to securely monitor container
-%% environments at
-%% scale.
+%% Prometheus-compatible monitoring service for container metrics that makes
+%% it easier to securely monitor container environments at scale.
 %%
 %% With Amazon Managed Service for Prometheus, you can use the same
-%% open-source Prometheus data
-%% model and query language that you use today to monitor the performance of
-%% your
-%% containerized workloads, and also enjoy improved scalability,
-%% availability, and security
-%% without having to manage the underlying infrastructure.
+%% open-source Prometheus data model and query language that you use today to
+%% monitor the performance of your containerized workloads, and also enjoy
+%% improved scalability, availability, and security without having to manage
+%% the underlying infrastructure.
 %%
 %% For more information about Amazon Managed Service for Prometheus, see the
 %% Amazon Managed Service for Prometheus:
@@ -24,19 +20,19 @@
 %%
 %% Use the Amazon Web Services API described in this guide to manage Amazon
 %% Managed Service for Prometheus resources, such as workspaces, rule groups,
-%% and alert
-%% managers.
+%% and alert managers.
 %%
 %% Use the Prometheus-compatible API:
 %% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-APIReference.html#AMP-APIReference-Prometheus-Compatible-Apis
-%% to work within your Prometheus
-%% workspace.
+%% to work within your Prometheus workspace.
 -module(aws_amp).
 
 -export([create_alert_manager_definition/3,
          create_alert_manager_definition/4,
          create_logging_configuration/3,
          create_logging_configuration/4,
+         create_query_logging_configuration/3,
+         create_query_logging_configuration/4,
          create_rule_groups_namespace/3,
          create_rule_groups_namespace/4,
          create_scraper/2,
@@ -47,6 +43,8 @@
          delete_alert_manager_definition/4,
          delete_logging_configuration/3,
          delete_logging_configuration/4,
+         delete_query_logging_configuration/3,
+         delete_query_logging_configuration/4,
          delete_rule_groups_namespace/4,
          delete_rule_groups_namespace/5,
          delete_scraper/3,
@@ -59,6 +57,9 @@
          describe_logging_configuration/2,
          describe_logging_configuration/4,
          describe_logging_configuration/5,
+         describe_query_logging_configuration/2,
+         describe_query_logging_configuration/4,
+         describe_query_logging_configuration/5,
          describe_rule_groups_namespace/3,
          describe_rule_groups_namespace/5,
          describe_rule_groups_namespace/6,
@@ -96,6 +97,8 @@
          untag_resource/4,
          update_logging_configuration/3,
          update_logging_configuration/4,
+         update_query_logging_configuration/3,
+         update_query_logging_configuration/4,
          update_scraper/3,
          update_scraper/4,
          update_workspace_alias/3,
@@ -105,6 +108,17 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% query_logging_configuration_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"destinations">> => list(logging_destination()()),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"status">> => query_logging_configuration_status(),
+%%   <<"workspace">> => string()
+%% }
+-type query_logging_configuration_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -129,6 +143,13 @@
 %%   <<"retentionPeriodInDays">> => [integer()]
 %% }
 -type update_workspace_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_query_logging_configuration_response() :: #{
+%%   <<"queryLoggingConfiguration">> => query_logging_configuration_metadata()
+%% }
+-type describe_query_logging_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -164,11 +185,22 @@
 
 
 %% Example:
+%% create_query_logging_configuration_response() :: #{
+%%   <<"status">> => query_logging_configuration_status()
+%% }
+-type create_query_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% rule_groups_namespace_status() :: #{
 %%   <<"statusCode">> => string(),
 %%   <<"statusReason">> => [string()]
 %% }
 -type rule_groups_namespace_status() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_logging_configuration_request() :: #{}
+-type describe_query_logging_configuration_request() :: #{}.
 
 
 %% Example:
@@ -245,6 +277,14 @@
 
 
 %% Example:
+%% query_logging_configuration_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type query_logging_configuration_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_rule_groups_namespace_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"name">> => string(),
@@ -291,6 +331,13 @@
 %%   <<"tags">> => map()
 %% }
 -type put_rule_groups_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_log_destination() :: #{
+%%   <<"logGroupArn">> => string()
+%% }
+-type cloud_watch_log_destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -386,6 +433,14 @@
 
 
 %% Example:
+%% logging_destination() :: #{
+%%   <<"cloudWatchLogs">> => cloud_watch_log_destination(),
+%%   <<"filters">> => logging_filter()
+%% }
+-type logging_destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% logging_configuration_status() :: #{
 %%   <<"statusCode">> => string(),
 %%   <<"statusReason">> => [string()]
@@ -409,6 +464,13 @@
 %%   <<"scraper">> => scraper_description()
 %% }
 -type describe_scraper_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_query_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_query_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -444,6 +506,14 @@
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_query_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"destinations">> := list(logging_destination()())
+%% }
+-type update_query_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -525,6 +595,13 @@
 
 
 %% Example:
+%% update_query_logging_configuration_response() :: #{
+%%   <<"status">> => query_logging_configuration_status()
+%% }
+-type update_query_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_default_scraper_configuration_response() :: #{
 %%   <<"configuration">> => [binary()]
 %% }
@@ -582,6 +659,13 @@
 %%   <<"status">> => alert_manager_definition_status()
 %% }
 -type put_alert_manager_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_filter() :: #{
+%%   <<"qspThreshold">> => [float()]
+%% }
+-type logging_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -706,6 +790,14 @@
 
 
 %% Example:
+%% create_query_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"destinations">> := list(logging_destination()())
+%% }
+-type create_query_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_scrapers_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"scrapers">> => list(scraper_summary()())
@@ -787,6 +879,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_query_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_rule_groups_namespace_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -828,6 +926,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_query_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_rule_groups_namespace_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -860,6 +965,12 @@
     resource_not_found_exception().
 
 -type describe_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_query_logging_configuration_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -963,6 +1074,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_query_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_scraper_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -995,12 +1113,10 @@
 %%====================================================================
 
 %% @doc The `CreateAlertManagerDefinition' operation creates the alert
-%% manager
-%% definition in a workspace.
+%% manager definition in a workspace.
 %%
-%% If a workspace already has an alert manager definition, don't
-%% use this operation to update it. Instead, use
-%% `PutAlertManagerDefinition'.
+%% If a workspace already has an alert manager definition, don't use this
+%% operation to update it. Instead, use `PutAlertManagerDefinition'.
 -spec create_alert_manager_definition(aws_client:aws_client(), binary() | list(), create_alert_manager_definition_request()) ->
     {ok, create_alert_manager_definition_response(), tuple()} |
     {error, any()} |
@@ -1034,12 +1150,13 @@ create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The `CreateLoggingConfiguration' operation creates a logging
-%% configuration
-%% for the workspace.
+%% @doc The `CreateLoggingConfiguration' operation creates rules and
+%% alerting logging configuration for the workspace.
 %%
-%% Use this operation to set the CloudWatch log group to which
-%% the logs will be published to.
+%% Use this operation to set the CloudWatch log group to which the logs will
+%% be published to.
+%%
+%% These logging configurations are only for rules and alerting logs.
 -spec create_logging_configuration(aws_client:aws_client(), binary() | list(), create_logging_configuration_request()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
@@ -1073,16 +1190,51 @@ create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a query logging configuration for the specified workspace.
+%%
+%% This operation enables logging of queries that exceed the specified QSP
+%% threshold.
+-spec create_query_logging_configuration(aws_client:aws_client(), binary() | list(), create_query_logging_configuration_request()) ->
+    {ok, create_query_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_query_logging_configuration_errors(), tuple()}.
+create_query_logging_configuration(Client, WorkspaceId, Input) ->
+    create_query_logging_configuration(Client, WorkspaceId, Input, []).
+
+-spec create_query_logging_configuration(aws_client:aws_client(), binary() | list(), create_query_logging_configuration_request(), proplists:proplist()) ->
+    {ok, create_query_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_query_logging_configuration_errors(), tuple()}.
+create_query_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging/query"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc The `CreateRuleGroupsNamespace' operation creates a rule groups
-%% namespace
-%% within a workspace.
+%% namespace within a workspace.
 %%
 %% A rule groups namespace is associated with exactly one rules file. A
 %% workspace can have multiple rule groups namespaces.
 %%
 %% Use this operation only to create new rule groups namespaces. To update an
-%% existing
-%% rule groups namespace, use `PutRuleGroupsNamespace'.
+%% existing rule groups namespace, use `PutRuleGroupsNamespace'.
 -spec create_rule_groups_namespace(aws_client:aws_client(), binary() | list(), create_rule_groups_namespace_request()) ->
     {ok, create_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
@@ -1119,35 +1271,32 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 %% @doc The `CreateScraper' operation creates a scraper to collect
 %% metrics.
 %%
-%% A
-%% scraper pulls metrics from Prometheus-compatible sources within an Amazon
-%% EKS
-%% cluster, and sends them to your Amazon Managed Service for Prometheus
-%% workspace. Scrapers are
-%% flexible, and can be configured to control what metrics are collected, the
-%% frequency of collection, what transformations are applied to the metrics,
-%% and more.
+%% A scraper pulls metrics from Prometheus-compatible sources within an
+%% Amazon EKS cluster, and sends them to your Amazon Managed Service for
+%% Prometheus workspace. Scrapers are flexible, and can be configured to
+%% control what metrics are collected, the frequency of collection, what
+%% transformations are applied to the metrics, and more.
 %%
 %% An IAM role will be created for you that Amazon Managed Service for
-%% Prometheus uses
-%% to access the metrics in your cluster. You must configure this role with a
-%% policy that
-%% allows it to scrape metrics from your cluster. For more information, see
-%% Configuring your Amazon EKS cluster:
+%% Prometheus uses to access the metrics in your cluster. You must configure
+%% this role with a policy that allows it to scrape metrics from your
+%% cluster. For more information, see Configuring your Amazon EKS cluster:
 %% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-eks-setup
 %% in the Amazon Managed Service for Prometheus User Guide.
 %%
 %% The `scrapeConfiguration' parameter contains the base-64 encoded YAML
 %% configuration for the scraper.
 %%
+%% When creating a scraper, the service creates a `Network Interface' in
+%% each Availability Zone that are passed into `CreateScraper' through
+%% subnets. These network interfaces are used to connect to the Amazon EKS
+%% cluster within the VPC for scraping metrics.
+%%
 %% For more information about collectors, including what metrics are
-%% collected, and
-%% how to configure the scraper, see Using an
-%% Amazon Web Services managed
-%% collector:
+%% collected, and how to configure the scraper, see Using an Amazon Web
+%% Services managed collector:
 %% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html
-%% in the Amazon Managed Service for Prometheus User
-%% Guide.
+%% in the Amazon Managed Service for Prometheus User Guide.
 -spec create_scraper(aws_client:aws_client(), create_scraper_request()) ->
     {ok, create_scraper_response(), tuple()} |
     {error, any()} |
@@ -1183,10 +1332,9 @@ create_scraper(Client, Input0, Options0) ->
 
 %% @doc Creates a Prometheus workspace.
 %%
-%% A workspace is a logical space dedicated to the
-%% storage and querying of Prometheus metrics. You can have one or more
-%% workspaces in each
-%% Region in your account.
+%% A workspace is a logical space dedicated to the storage and querying of
+%% Prometheus metrics. You can have one or more workspaces in each Region in
+%% your account.
 -spec create_workspace(aws_client:aws_client(), create_workspace_request()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
@@ -1255,7 +1403,9 @@ delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the logging configuration for a workspace.
+%% @doc Deletes the rules and alerting logging configuration for a workspace.
+%%
+%% These logging configurations are only for rules and alerting logs.
 -spec delete_logging_configuration(aws_client:aws_client(), binary() | list(), delete_logging_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1270,6 +1420,41 @@ delete_logging_configuration(Client, WorkspaceId, Input) ->
 delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the query logging configuration for the specified workspace.
+-spec delete_query_logging_configuration(aws_client:aws_client(), binary() | list(), delete_query_logging_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_query_logging_configuration_errors(), tuple()}.
+delete_query_logging_configuration(Client, WorkspaceId, Input) ->
+    delete_query_logging_configuration(Client, WorkspaceId, Input, []).
+
+-spec delete_query_logging_configuration(aws_client:aws_client(), binary() | list(), delete_query_logging_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_query_logging_configuration_errors(), tuple()}.
+delete_query_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging/query"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1327,8 +1512,7 @@ delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `DeleteScraper' operation deletes one scraper, and stops any
-%% metrics
-%% collection that the scraper performs.
+%% metrics collection that the scraper performs.
 -spec delete_scraper(aws_client:aws_client(), binary() | list(), delete_scraper_request()) ->
     {ok, delete_scraper_response(), tuple()} |
     {error, any()} |
@@ -1366,8 +1550,7 @@ delete_scraper(Client, ScraperId, Input0, Options0) ->
 %% @doc Deletes an existing workspace.
 %%
 %% When you delete a workspace, the data that has been ingested into it is
-%% not
-%% immediately deleted. It will be permanently deleted within one month.
+%% not immediately deleted. It will be permanently deleted within one month.
 -spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1403,8 +1586,7 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the full information about the alert manager definition for
-%% a
-%% workspace.
+%% a workspace.
 -spec describe_alert_manager_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_alert_manager_definition_response(), tuple()} |
     {error, any()} |
@@ -1441,9 +1623,10 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns complete information about the current logging configuration
-%% of the
-%% workspace.
+%% @doc Returns complete information about the current rules and alerting
+%% logging configuration of the workspace.
+%%
+%% These logging configurations are only for rules and alerting logs.
 -spec describe_logging_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
@@ -1480,10 +1663,48 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the details of the query logging configuration for the
+%% specified workspace.
+-spec describe_query_logging_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_query_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_query_logging_configuration_errors(), tuple()}.
+describe_query_logging_configuration(Client, WorkspaceId)
+  when is_map(Client) ->
+    describe_query_logging_configuration(Client, WorkspaceId, #{}, #{}).
+
+-spec describe_query_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_query_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_query_logging_configuration_errors(), tuple()}.
+describe_query_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_query_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+-spec describe_query_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_query_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_query_logging_configuration_errors(), tuple()}.
+describe_query_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging/query"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns complete information about one rule groups namespace.
 %%
-%% To retrieve a list of
-%% rule groups namespaces, use `ListRuleGroupsNamespaces'.
+%% To retrieve a list of rule groups namespaces, use
+%% `ListRuleGroupsNamespaces'.
 -spec describe_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
@@ -1521,8 +1742,7 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `DescribeScraper' operation displays information about an
-%% existing
-%% scraper.
+%% existing scraper.
 -spec describe_scraper(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_scraper_response(), tuple()} |
     {error, any()} |
@@ -1599,9 +1819,8 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %% @doc Use this operation to return information about the configuration of a
 %% workspace.
 %%
-%% The configuration details
-%% returned include workspace configuration status, label set limits, and
-%% retention period.
+%% The configuration details returned include workspace configuration status,
+%% label set limits, and retention period.
 -spec describe_workspace_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_workspace_configuration_response(), tuple()} |
     {error, any()} |
@@ -1639,8 +1858,8 @@ describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `GetDefaultScraperConfiguration' operation returns the
-%% default
-%% scraper configuration used when Amazon EKS creates a scraper for you.
+%% default scraper configuration used when Amazon EKS creates a scraper for
+%% you.
 -spec get_default_scraper_configuration(aws_client:aws_client()) ->
     {ok, get_default_scraper_configuration_response(), tuple()} |
     {error, any()} |
@@ -1720,11 +1939,11 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The `ListScrapers' operation lists all of the scrapers in
-%% your account.
+%% @doc The `ListScrapers' operation lists all of the scrapers in your
+%% account.
 %%
-%% This includes scrapers being created or deleted. You can optionally
-%% filter the returned list.
+%% This includes scrapers being created or deleted. You can optionally filter
+%% the returned list.
 -spec list_scrapers(aws_client:aws_client()) ->
     {ok, list_scrapers_response(), tuple()} |
     {error, any()} |
@@ -1768,11 +1987,10 @@ list_scrapers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `ListTagsForResource' operation returns the tags that are
-%% associated
-%% with an Amazon Managed Service for Prometheus resource.
+%% associated with an Amazon Managed Service for Prometheus resource.
 %%
-%% Currently, the only resources that can be
-%% tagged are scrapers, workspaces, and rule groups namespaces.
+%% Currently, the only resources that can be tagged are scrapers, workspaces,
+%% and rule groups namespaces.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1812,8 +2030,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists all of the Amazon Managed Service for Prometheus workspaces in
 %% your account.
 %%
-%% This includes
-%% workspaces being created or deleted.
+%% This includes workspaces being created or deleted.
 -spec list_workspaces(aws_client:aws_client()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
@@ -1858,10 +2075,9 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Updates an existing alert manager definition in a workspace.
 %%
-%% If the workspace does not
-%% already have an alert manager definition, don't use this operation to
-%% create it.
-%% Instead, use `CreateAlertManagerDefinition'.
+%% If the workspace does not already have an alert manager definition,
+%% don't use this operation to create it. Instead, use
+%% `CreateAlertManagerDefinition'.
 -spec put_alert_manager_definition(aws_client:aws_client(), binary() | list(), put_alert_manager_definition_request()) ->
     {ok, put_alert_manager_definition_response(), tuple()} |
     {error, any()} |
@@ -1897,18 +2113,14 @@ put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 
 %% @doc Updates an existing rule groups namespace within a workspace.
 %%
-%% A rule groups namespace
-%% is associated with exactly one rules file. A workspace can have multiple
-%% rule groups
-%% namespaces.
+%% A rule groups namespace is associated with exactly one rules file. A
+%% workspace can have multiple rule groups namespaces.
 %%
 %% Use this operation only to update existing rule groups namespaces. To
-%% create a new
-%% rule groups namespace, use `CreateRuleGroupsNamespace'.
+%% create a new rule groups namespace, use `CreateRuleGroupsNamespace'.
 %%
 %% You can't use this operation to add tags to an existing rule groups
-%% namespace.
-%% Instead, use `TagResource'.
+%% namespace. Instead, use `TagResource'.
 -spec put_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), put_rule_groups_namespace_request()) ->
     {ok, put_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
@@ -1943,20 +2155,16 @@ put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `TagResource' operation associates tags with an Amazon
-%% Managed Service for Prometheus
-%% resource.
+%% Managed Service for Prometheus resource.
 %%
 %% The only resources that can be tagged are rule groups namespaces,
-%% scrapers,
-%% and workspaces.
+%% scrapers, and workspaces.
 %%
 %% If you specify a new tag key for the resource, this tag is appended to the
-%% list of
-%% tags associated with the resource. If you specify a tag key that is
-%% already associated
-%% with the resource, the new tag value that you specify replaces the
-%% previous value for
-%% that tag. To remove a tag, use `UntagResource'.
+%% list of tags associated with the resource. If you specify a tag key that
+%% is already associated with the resource, the new tag value that you
+%% specify replaces the previous value for that tag. To remove a tag, use
+%% `UntagResource'.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1993,8 +2201,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes the specified tags from an Amazon Managed Service for
 %% Prometheus resource.
 %%
-%% The only resources
-%% that can be tagged are rule groups namespaces, scrapers, and workspaces.
+%% The only resources that can be tagged are rule groups namespaces,
+%% scrapers, and workspaces.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -2029,8 +2237,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the log group ARN or the workspace ID of the current logging
-%% configuration.
+%% @doc Updates the log group ARN or the workspace ID of the current rules
+%% and alerting logging configuration.
+%%
+%% These logging configurations are only for rules and alerting logs.
 -spec update_logging_configuration(aws_client:aws_client(), binary() | list(), update_logging_configuration_request()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
@@ -2064,13 +2274,45 @@ update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the query logging configuration for the specified workspace.
+-spec update_query_logging_configuration(aws_client:aws_client(), binary() | list(), update_query_logging_configuration_request()) ->
+    {ok, update_query_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_query_logging_configuration_errors(), tuple()}.
+update_query_logging_configuration(Client, WorkspaceId, Input) ->
+    update_query_logging_configuration(Client, WorkspaceId, Input, []).
+
+-spec update_query_logging_configuration(aws_client:aws_client(), binary() | list(), update_query_logging_configuration_request(), proplists:proplist()) ->
+    {ok, update_query_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_query_logging_configuration_errors(), tuple()}.
+update_query_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging/query"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing scraper.
 %%
 %% You can't use this function to update the source from which the
-%% scraper is
-%% collecting metrics. To change the source, delete the scraper and create a
-%% new
-%% one.
+%% scraper is collecting metrics. To change the source, delete the scraper
+%% and create a new one.
 -spec update_scraper(aws_client:aws_client(), binary() | list(), update_scraper_request()) ->
     {ok, update_scraper_response(), tuple()} |
     {error, any()} |
@@ -2142,8 +2384,7 @@ update_workspace_alias(Client, WorkspaceId, Input0, Options0) ->
 %% limits, and retention period of a workspace.
 %%
 %% You must specify at least one of `limitsPerLabelSet' or
-%% `retentionPeriodInDays' for the
-%% request to be valid.
+%% `retentionPeriodInDays' for the request to be valid.
 -spec update_workspace_configuration(aws_client:aws_client(), binary() | list(), update_workspace_configuration_request()) ->
     {ok, update_workspace_configuration_response(), tuple()} |
     {error, any()} |
