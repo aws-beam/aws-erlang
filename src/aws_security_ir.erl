@@ -1263,10 +1263,8 @@ update_case_comment(Client, CaseId, CommentId, Input0, Options0) ->
 
 %% @doc Grants permission to update the status for a designated cases.
 %%
-%% Options include
-%% ```
-%% Submitted | Detection and Analysis | Eradication, Containment and Recovery
-%% | Post-Incident Activities | Closed'''.
+%% Options include `Submitted | Detection and Analysis | Eradication,
+%% Containment and Recovery | Post-Incident Activities | Closed'.
 -spec update_case_status(aws_client:aws_client(), binary() | list(), update_case_status_request()) ->
     {ok, update_case_status_response(), tuple()} |
     {error, any()}.
