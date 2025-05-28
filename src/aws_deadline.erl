@@ -824,7 +824,8 @@
 %% Example:
 %% service_managed_ec2_fleet_configuration() :: #{
 %%   <<"instanceCapabilities">> => service_managed_ec2_instance_capabilities(),
-%%   <<"instanceMarketOptions">> => service_managed_ec2_instance_market_options()
+%%   <<"instanceMarketOptions">> => service_managed_ec2_instance_market_options(),
+%%   <<"storageProfileId">> => string()
 %% }
 -type service_managed_ec2_fleet_configuration() :: #{binary() => any()}.
 

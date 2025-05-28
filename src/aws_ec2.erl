@@ -961,6 +961,8 @@
          export_transit_gateway_routes/3,
          export_verified_access_instance_client_configuration/2,
          export_verified_access_instance_client_configuration/3,
+         get_active_vpn_tunnel_status/2,
+         get_active_vpn_tunnel_status/3,
          get_allowed_images_settings/2,
          get_allowed_images_settings/3,
          get_associated_enclave_certificate_iam_roles/2,
@@ -3085,6 +3087,20 @@
 %%   <<"PublicIpv4Pool">> => string()
 %% }
 -type allocate_address_result() :: #{binary() => any()}.
+
+%% Example:
+%% active_vpn_tunnel_status() :: #{
+%%   <<"IkeVersion">> => string(),
+%%   <<"Phase1DHGroup">> => integer(),
+%%   <<"Phase1EncryptionAlgorithm">> => string(),
+%%   <<"Phase1IntegrityAlgorithm">> => string(),
+%%   <<"Phase2DHGroup">> => integer(),
+%%   <<"Phase2EncryptionAlgorithm">> => string(),
+%%   <<"Phase2IntegrityAlgorithm">> => string(),
+%%   <<"ProvisioningStatus">> => list(any()),
+%%   <<"ProvisioningStatusReason">> => string()
+%% }
+-type active_vpn_tunnel_status() :: #{binary() => any()}.
 
 %% Example:
 %% create_coip_pool_request() :: #{
@@ -7866,6 +7882,7 @@
 %%   <<"CustomerGatewayId">> => string(),
 %%   <<"GatewayAssociationState">> => list(any()),
 %%   <<"Options">> => vpn_connection_options(),
+%%   <<"PreSharedKeyArn">> => string(),
 %%   <<"Routes">> => list(vpn_static_route()()),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => list(tag()()),
@@ -7882,6 +7899,12 @@
 %%   <<"Data">> => string()
 %% }
 -type user_data() :: #{binary() => any()}.
+
+%% Example:
+%% get_active_vpn_tunnel_status_result() :: #{
+%%   <<"ActiveVpnTunnelStatus">> => active_vpn_tunnel_status()
+%% }
+-type get_active_vpn_tunnel_status_result() :: #{binary() => any()}.
 
 %% Example:
 %% available_capacity() :: #{
@@ -8572,6 +8595,7 @@
 %% get_vpn_connection_device_sample_configuration_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"InternetKeyExchangeVersion">> => string(),
+%%   <<"SampleType">> => string(),
 %%   <<"VpnConnectionDeviceTypeId">> := string(),
 %%   <<"VpnConnectionId">> := string()
 %% }
@@ -13432,6 +13456,7 @@
 %% Example:
 %% modify_vpn_tunnel_options_request() :: #{
 %%   <<"DryRun">> => boolean(),
+%%   <<"PreSharedKeyStorage">> => string(),
 %%   <<"SkipTunnelReplacement">> => boolean(),
 %%   <<"TunnelOptions">> := modify_vpn_tunnel_options_specification(),
 %%   <<"VpnConnectionId">> := string(),
@@ -18571,6 +18596,14 @@
 -type delete_vpn_connection_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_active_vpn_tunnel_status_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"VpnConnectionId">> := string(),
+%%   <<"VpnTunnelOutsideIpAddress">> := string()
+%% }
+-type get_active_vpn_tunnel_status_request() :: #{binary() => any()}.
+
+%% Example:
 %% release_ipam_pool_allocation_request() :: #{
 %%   <<"Cidr">> := string(),
 %%   <<"DryRun">> => boolean(),
@@ -19284,6 +19317,7 @@
 %%   <<"CustomerGatewayId">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> => vpn_connection_options_specification(),
+%%   <<"PreSharedKeyStorage">> => string(),
 %%   <<"TagSpecifications">> => list(tag_specification()()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"Type">> := string(),
@@ -31860,6 +31894,23 @@ export_verified_access_instance_client_configuration(Client, Input)
 export_verified_access_instance_client_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportVerifiedAccessInstanceClientConfiguration">>, Input, Options).
+
+%% @doc Returns the currently negotiated security parameters for an active
+%% VPN tunnel, including IKE version, DH groups, encryption algorithms, and
+%% integrity algorithms.
+-spec get_active_vpn_tunnel_status(aws_client:aws_client(), get_active_vpn_tunnel_status_request()) ->
+    {ok, get_active_vpn_tunnel_status_result(), tuple()} |
+    {error, any()}.
+get_active_vpn_tunnel_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_active_vpn_tunnel_status(Client, Input, []).
+
+-spec get_active_vpn_tunnel_status(aws_client:aws_client(), get_active_vpn_tunnel_status_request(), proplists:proplist()) ->
+    {ok, get_active_vpn_tunnel_status_result(), tuple()} |
+    {error, any()}.
+get_active_vpn_tunnel_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetActiveVpnTunnelStatus">>, Input, Options).
 
 %% @doc Gets the current state of the Allowed AMIs setting and the list of
 %% Allowed AMIs criteria

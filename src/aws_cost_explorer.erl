@@ -48,10 +48,14 @@
          get_commitment_purchase_analysis/3,
          get_cost_and_usage/2,
          get_cost_and_usage/3,
+         get_cost_and_usage_comparisons/2,
+         get_cost_and_usage_comparisons/3,
          get_cost_and_usage_with_resources/2,
          get_cost_and_usage_with_resources/3,
          get_cost_categories/2,
          get_cost_categories/3,
+         get_cost_comparison_drivers/2,
+         get_cost_comparison_drivers/3,
          get_cost_forecast/2,
          get_cost_forecast/3,
          get_dimension_values/2,
@@ -384,6 +388,13 @@
 -type savings_plans_purchase_recommendation_summary() :: #{binary() => any()}.
 
 %% Example:
+%% get_cost_comparison_drivers_response() :: #{
+%%   <<"CostComparisonDrivers">> => list(cost_comparison_driver()()),
+%%   <<"NextPageToken">> => string()
+%% }
+-type get_cost_comparison_drivers_response() :: #{binary() => any()}.
+
+%% Example:
 %% tag_values() :: #{
 %%   <<"Key">> => string(),
 %%   <<"MatchOptions">> => list(list(any())()),
@@ -430,6 +441,13 @@
 %%   <<"MonitorArn">> => string()
 %% }
 -type update_anomaly_monitor_response() :: #{binary() => any()}.
+
+%% Example:
+%% cost_and_usage_comparison() :: #{
+%%   <<"CostAndUsageSelector">> => expression(),
+%%   <<"Metrics">> => map()
+%% }
+-type cost_and_usage_comparison() :: #{binary() => any()}.
 
 %% Example:
 %% get_savings_plans_utilization_details_request() :: #{
@@ -696,6 +714,14 @@
 %%   <<"EstimatedCompletionTime">> => string()
 %% }
 -type start_commitment_purchase_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% cost_comparison_driver() :: #{
+%%   <<"CostDrivers">> => list(cost_driver()()),
+%%   <<"CostSelector">> => expression(),
+%%   <<"Metrics">> => map()
+%% }
+-type cost_comparison_driver() :: #{binary() => any()}.
 
 %% Example:
 %% get_rightsizing_recommendation_request() :: #{
@@ -1126,6 +1152,19 @@
 -type ec2_resource_details() :: #{binary() => any()}.
 
 %% Example:
+%% get_cost_comparison_drivers_request() :: #{
+%%   <<"BaselineTimePeriod">> := date_interval(),
+%%   <<"BillingViewArn">> => string(),
+%%   <<"ComparisonTimePeriod">> := date_interval(),
+%%   <<"Filter">> => expression(),
+%%   <<"GroupBy">> => list(group_definition()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricForComparison">> := string(),
+%%   <<"NextPageToken">> => string()
+%% }
+-type get_cost_comparison_drivers_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_cost_allocation_tags_status_request() :: #{
 %%   <<"CostAllocationTagsStatus">> := list(cost_allocation_tag_status_entry()())
 %% }
@@ -1158,6 +1197,15 @@
 %%   <<"RecommendationId">> => string()
 %% }
 -type savings_plans_purchase_recommendation_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% comparison_metric_value() :: #{
+%%   <<"BaselineTimePeriodAmount">> => string(),
+%%   <<"ComparisonTimePeriodAmount">> => string(),
+%%   <<"Difference">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type comparison_metric_value() :: #{binary() => any()}.
 
 %% Example:
 %% update_cost_category_definition_request() :: #{
@@ -1423,6 +1471,14 @@
 -type get_anomalies_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_cost_and_usage_comparisons_response() :: #{
+%%   <<"CostAndUsageComparisons">> => list(cost_and_usage_comparison()()),
+%%   <<"NextPageToken">> => string(),
+%%   <<"TotalCostAndUsage">> => map()
+%% }
+-type get_cost_and_usage_comparisons_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_commitment_purchase_analysis_request() :: #{
 %%   <<"AnalysisId">> := string()
 %% }
@@ -1465,6 +1521,14 @@
 %%   <<"NetworkPacketsOutPerSecond">> => string()
 %% }
 -type network_resource_utilization() :: #{binary() => any()}.
+
+%% Example:
+%% cost_driver() :: #{
+%%   <<"Metrics">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type cost_driver() :: #{binary() => any()}.
 
 %% Example:
 %% get_savings_plans_purchase_recommendation_response() :: #{
@@ -1661,6 +1725,19 @@
 %%   <<"TimePeriod">> => date_interval()
 %% }
 -type savings_plans_coverage() :: #{binary() => any()}.
+
+%% Example:
+%% get_cost_and_usage_comparisons_request() :: #{
+%%   <<"BaselineTimePeriod">> := date_interval(),
+%%   <<"BillingViewArn">> => string(),
+%%   <<"ComparisonTimePeriod">> := date_interval(),
+%%   <<"Filter">> => expression(),
+%%   <<"GroupBy">> => list(group_definition()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricForComparison">> := string(),
+%%   <<"NextPageToken">> => string()
+%% }
+-type get_cost_and_usage_comparisons_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_cost_category_definition_response() :: #{
@@ -1938,6 +2015,12 @@
     request_changed_exception() | 
     resource_not_found_exception().
 
+-type get_cost_and_usage_comparisons_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
 -type get_cost_and_usage_with_resources_errors() ::
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
@@ -1952,6 +2035,12 @@
     data_unavailable_exception() | 
     invalid_next_token_exception() | 
     request_changed_exception() | 
+    resource_not_found_exception().
+
+-type get_cost_comparison_drivers_errors() ::
+    limit_exceeded_exception() | 
+    data_unavailable_exception() | 
+    invalid_next_token_exception() | 
     resource_not_found_exception().
 
 -type get_cost_forecast_errors() ::
@@ -2369,6 +2458,29 @@ get_cost_and_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostAndUsage">>, Input, Options).
 
+%% @doc Retrieves cost and usage comparisons for your account between two
+%% periods within the last
+%% 13 months.
+%%
+%% If you have enabled multi-year data at monthly granularity, you can go
+%% back up to
+%% 38 months.
+-spec get_cost_and_usage_comparisons(aws_client:aws_client(), get_cost_and_usage_comparisons_request()) ->
+    {ok, get_cost_and_usage_comparisons_response(), tuple()} |
+    {error, any()} |
+    {error, get_cost_and_usage_comparisons_errors(), tuple()}.
+get_cost_and_usage_comparisons(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_cost_and_usage_comparisons(Client, Input, []).
+
+-spec get_cost_and_usage_comparisons(aws_client:aws_client(), get_cost_and_usage_comparisons_request(), proplists:proplist()) ->
+    {ok, get_cost_and_usage_comparisons_response(), tuple()} |
+    {error, any()} |
+    {error, get_cost_and_usage_comparisons_errors(), tuple()}.
+get_cost_and_usage_comparisons(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCostAndUsageComparisons">>, Input, Options).
+
 %% @doc Retrieves cost and usage metrics with resources for your account.
 %%
 %% You can specify which
@@ -2431,6 +2543,30 @@ get_cost_categories(Client, Input)
 get_cost_categories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCostCategories">>, Input, Options).
+
+%% @doc Retrieves key factors driving cost changes between two time periods
+%% within the last 13
+%% months, such as usage changes, discount changes, and commitment-based
+%% savings.
+%%
+%% If you have
+%% enabled multi-year data at monthly granularity, you can go back up to 38
+%% months.
+-spec get_cost_comparison_drivers(aws_client:aws_client(), get_cost_comparison_drivers_request()) ->
+    {ok, get_cost_comparison_drivers_response(), tuple()} |
+    {error, any()} |
+    {error, get_cost_comparison_drivers_errors(), tuple()}.
+get_cost_comparison_drivers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_cost_comparison_drivers(Client, Input, []).
+
+-spec get_cost_comparison_drivers(aws_client:aws_client(), get_cost_comparison_drivers_request(), proplists:proplist()) ->
+    {ok, get_cost_comparison_drivers_response(), tuple()} |
+    {error, any()} |
+    {error, get_cost_comparison_drivers_errors(), tuple()}.
+get_cost_comparison_drivers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCostComparisonDrivers">>, Input, Options).
 
 %% @doc Retrieves a forecast for how much Amazon Web Services predicts that
 %% you will spend over
