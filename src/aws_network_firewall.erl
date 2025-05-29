@@ -89,12 +89,13 @@
 %% endpoint, create a
 %% subnet for the sole use of Network Firewall.
 %%
-%% In Network Firewall, create stateless and stateful rule groups,
+%% In Network Firewall, define the firewall behavior as follows:
+%%
+%% Create stateless and stateful rule groups,
 %% to define the components of the network traffic filtering behavior that
 %% you want your firewall to have.
 %%
-%% In Network Firewall, create a firewall policy that uses your rule groups
-%% and
+%% Create a firewall policy that uses your rule groups and
 %% specifies additional default traffic filtering behavior.
 %%
 %% In Network Firewall, create a firewall and specify your new firewall
@@ -106,6 +107,14 @@
 %% In Amazon VPC, use ingress routing enhancements to route traffic through
 %% the new firewall
 %% endpoints.
+%%
+%% After your firewall is established, you can add firewall endpoints for new
+%% Availability Zones by following the prior steps for the Amazon VPC setup
+%% and
+%% firewall subnet definitions. You can also add endpoints to Availability
+%% Zones that you're using in the firewall, either for the same VPC
+%% or for another VPC, by following the prior steps for the Amazon VPC setup,
+%% and defining the new VPC subnets as VPC endpoint associations.
 -module(aws_network_firewall).
 
 -export([associate_firewall_policy/2,
@@ -120,6 +129,8 @@
          create_rule_group/3,
          create_t_l_s_inspection_configuration/2,
          create_t_l_s_inspection_configuration/3,
+         create_vpc_endpoint_association/2,
+         create_vpc_endpoint_association/3,
          delete_firewall/2,
          delete_firewall/3,
          delete_firewall_policy/2,
@@ -130,8 +141,12 @@
          delete_rule_group/3,
          delete_t_l_s_inspection_configuration/2,
          delete_t_l_s_inspection_configuration/3,
+         delete_vpc_endpoint_association/2,
+         delete_vpc_endpoint_association/3,
          describe_firewall/2,
          describe_firewall/3,
+         describe_firewall_metadata/2,
+         describe_firewall_metadata/3,
          describe_firewall_policy/2,
          describe_firewall_policy/3,
          describe_flow_operation/2,
@@ -146,6 +161,8 @@
          describe_rule_group_metadata/3,
          describe_t_l_s_inspection_configuration/2,
          describe_t_l_s_inspection_configuration/3,
+         describe_vpc_endpoint_association/2,
+         describe_vpc_endpoint_association/3,
          disassociate_subnets/2,
          disassociate_subnets/3,
          get_analysis_report_results/2,
@@ -166,6 +183,8 @@
          list_t_l_s_inspection_configurations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_vpc_endpoint_associations/2,
+         list_vpc_endpoint_associations/3,
          put_resource_policy/2,
          put_resource_policy/3,
          start_analysis_report/2,
@@ -233,6 +252,12 @@
 %%   <<"Masks">> => list(list(any())())
 %% }
 -type t_c_p_flag_field() :: #{binary() => any()}.
+
+%% Example:
+%% a_z_sync_state() :: #{
+%%   <<"Attachment">> => attachment()
+%% }
+-type a_z_sync_state() :: #{binary() => any()}.
 
 %% Example:
 %% analysis_result() :: #{
@@ -319,7 +344,9 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowFilters">> := list(flow_filter()()),
-%%   <<"MinimumFlowAgeInSeconds">> => integer()
+%%   <<"MinimumFlowAgeInSeconds">> => integer(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
 %% }
 -type start_flow_capture_request() :: #{binary() => any()}.
 
@@ -327,7 +354,9 @@
 %% describe_flow_operation_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"FirewallArn">> := string(),
-%%   <<"FlowOperationId">> := string()
+%%   <<"FlowOperationId">> := string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
 %% }
 -type describe_flow_operation_request() :: #{binary() => any()}.
 
@@ -340,7 +369,9 @@
 %%   <<"FlowOperationStatus">> => list(any()),
 %%   <<"FlowOperationType">> => list(any()),
 %%   <<"FlowRequestTimestamp">> => non_neg_integer(),
-%%   <<"StatusMessage">> => string()
+%%   <<"StatusMessage">> => string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
 %% }
 -type describe_flow_operation_response() :: #{binary() => any()}.
 
@@ -410,6 +441,13 @@
 %%   <<"Type">> => list(any())
 %% }
 -type describe_rule_group_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_endpoint_association_response() :: #{
+%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
+%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
+%% }
+-type delete_vpc_endpoint_association_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_analysis_report_results_response() :: #{
@@ -520,6 +558,16 @@
 -type header() :: #{binary() => any()}.
 
 %% Example:
+%% describe_firewall_metadata_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SupportedAvailabilityZones">> => map()
+%% }
+-type describe_firewall_metadata_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_firewall_policy_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -538,6 +586,13 @@
 %%   <<"UpdateToken">> => string()
 %% }
 -type associate_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_endpoint_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association_metadata()())
+%% }
+-type list_vpc_endpoint_associations_response() :: #{binary() => any()}.
 
 %% Example:
 %% logging_configuration() :: #{
@@ -567,6 +622,13 @@
 %%   <<"TLSInspectionConfigurationArn">> => string()
 %% }
 -type firewall_policy() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_endpoint_association_response() :: #{
+%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
+%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
+%% }
+-type describe_vpc_endpoint_association_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_analysis_report_results_request() :: #{
@@ -642,6 +704,13 @@
 -type firewall_status() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_endpoint_association_status() :: #{
+%%   <<"AssociationSyncState">> => map(),
+%%   <<"Status">> => list(any())
+%% }
+-type vpc_endpoint_association_status() :: #{binary() => any()}.
+
+%% Example:
 %% delete_firewall_response() :: #{
 %%   <<"Firewall">> => firewall(),
 %%   <<"FirewallStatus">> => firewall_status()
@@ -656,6 +725,12 @@
 -type list_flow_operations_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_vpc_endpoint_association_request() :: #{
+%%   <<"VpcEndpointAssociationArn">> := string()
+%% }
+-type describe_vpc_endpoint_association_request() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -666,6 +741,12 @@
 %%   <<"FirewallPolicyResponse">> => firewall_policy_response()
 %% }
 -type delete_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint_association_metadata() :: #{
+%%   <<"VpcEndpointAssociationArn">> => string()
+%% }
+-type vpc_endpoint_association_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% create_firewall_policy_response() :: #{
@@ -750,6 +831,18 @@
 -type per_object_status() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_endpoint_association() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"SubnetMapping">> => subnet_mapping(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointAssociationId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_endpoint_association() :: #{binary() => any()}.
+
+%% Example:
 %% describe_firewall_request() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string()
@@ -804,7 +897,9 @@
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowOperationId">> := string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
 %% }
 -type list_flow_operation_results_request() :: #{binary() => any()}.
 
@@ -815,6 +910,13 @@
 %%   <<"RuleOptions">> => list(rule_option()())
 %% }
 -type stateful_rule() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_endpoint_association_response() :: #{
+%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
+%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
+%% }
+-type create_vpc_endpoint_association_response() :: #{binary() => any()}.
 
 %% Example:
 %% stateful_rule_group_reference() :: #{
@@ -918,7 +1020,9 @@
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowOperationType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
 %% }
 -type list_flow_operations_request() :: #{binary() => any()}.
 
@@ -933,6 +1037,7 @@
 %%   <<"FirewallName">> => string(),
 %%   <<"FirewallPolicyArn">> => string(),
 %%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"NumberOfAssociations">> => integer(),
 %%   <<"SubnetChangeProtection">> => boolean(),
 %%   <<"SubnetMappings">> => list(subnet_mapping()()),
 %%   <<"Tags">> => list(tag()()),
@@ -992,7 +1097,9 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowFilters">> := list(flow_filter()()),
-%%   <<"MinimumFlowAgeInSeconds">> => integer()
+%%   <<"MinimumFlowAgeInSeconds">> => integer(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
 %% }
 -type start_flow_flush_request() :: #{binary() => any()}.
 
@@ -1278,6 +1385,12 @@
 -type log_destination_permission_exception() :: #{binary() => any()}.
 
 %% Example:
+%% availability_zone_metadata() :: #{
+%%   <<"IPAddressType">> => list(any())
+%% }
+-type availability_zone_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% delete_firewall_policy_request() :: #{
 %%   <<"FirewallPolicyArn">> => string(),
 %%   <<"FirewallPolicyName">> => string()
@@ -1295,6 +1408,16 @@
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_endpoint_association_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"SubnetMapping">> := subnet_mapping(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcId">> := string()
+%% }
+-type create_vpc_endpoint_association_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_analysis_report_request() :: #{
@@ -1336,7 +1459,9 @@
 %%   <<"FlowRequestTimestamp">> => non_neg_integer(),
 %%   <<"Flows">> => list(flow()()),
 %%   <<"NextToken">> => string(),
-%%   <<"StatusMessage">> => string()
+%%   <<"StatusMessage">> => string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
 %% }
 -type list_flow_operation_results_response() :: #{binary() => any()}.
 
@@ -1411,6 +1536,12 @@
 -type address() :: #{binary() => any()}.
 
 %% Example:
+%% describe_firewall_metadata_request() :: #{
+%%   <<"FirewallArn">> => string()
+%% }
+-type describe_firewall_metadata_request() :: #{binary() => any()}.
+
+%% Example:
 %% flow() :: #{
 %%   <<"Age">> => integer(),
 %%   <<"ByteCount">> => float(),
@@ -1473,6 +1604,12 @@
 %%   <<"FirewallName">> => string()
 %% }
 -type firewall_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_endpoint_association_request() :: #{
+%%   <<"VpcEndpointAssociationArn">> := string()
+%% }
+-type delete_vpc_endpoint_association_request() :: #{binary() => any()}.
 
 %% Example:
 %% c_id_r_summary() :: #{
@@ -1560,6 +1697,14 @@
 -type describe_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_vpc_endpoint_associations_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_endpoint_associations_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_firewall_policy_response() :: #{
 %%   <<"FirewallPolicy">> => firewall_policy(),
 %%   <<"FirewallPolicyResponse">> => firewall_policy_response(),
@@ -1613,6 +1758,15 @@
     invalid_request_exception() | 
     insufficient_capacity_exception().
 
+-type create_vpc_endpoint_association_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    insufficient_capacity_exception() | 
+    invalid_operation_exception().
+
 -type delete_firewall_errors() ::
     throttling_exception() | 
     internal_server_error() | 
@@ -1651,7 +1805,20 @@
     resource_not_found_exception() | 
     invalid_operation_exception().
 
+-type delete_vpc_endpoint_association_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
 -type describe_firewall_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_firewall_metadata_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -1694,6 +1861,12 @@
     resource_not_found_exception().
 
 -type describe_t_l_s_inspection_configuration_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_vpc_endpoint_association_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -1756,6 +1929,11 @@
     internal_server_error() | 
     invalid_request_exception() | 
     resource_not_found_exception().
+
+-type list_vpc_endpoint_associations_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception().
 
 -type put_resource_policy_errors() ::
     throttling_exception() | 
@@ -2057,6 +2235,29 @@ create_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTLSInspectionConfiguration">>, Input, Options).
 
+%% @doc Creates a firewall endpoint for an Network Firewall firewall.
+%%
+%% This type of firewall endpoint is independent of the firewall endpoints
+%% that you specify in the `Firewall' itself, and you define it in
+%% addition to those endpoints after the firewall has been created. You can
+%% define a VPC endpoint association using a different VPC than the one you
+%% used in the firewall specifications.
+-spec create_vpc_endpoint_association(aws_client:aws_client(), create_vpc_endpoint_association_request()) ->
+    {ok, create_vpc_endpoint_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_endpoint_association_errors(), tuple()}.
+create_vpc_endpoint_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_vpc_endpoint_association(Client, Input, []).
+
+-spec create_vpc_endpoint_association(aws_client:aws_client(), create_vpc_endpoint_association_request(), proplists:proplist()) ->
+    {ok, create_vpc_endpoint_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_endpoint_association_errors(), tuple()}.
+create_vpc_endpoint_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVpcEndpointAssociation">>, Input, Options).
+
 %% @doc Deletes the specified `Firewall' and its `FirewallStatus'.
 %%
 %% This operation requires the firewall's `DeleteProtection' flag to
@@ -2162,6 +2363,34 @@ delete_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTLSInspectionConfiguration">>, Input, Options).
 
+%% @doc Deletes the specified `VpcEndpointAssociation'.
+%%
+%% You can check whether an endpoint association is
+%% in use by reviewing the route tables for the Availability Zones where you
+%% have the endpoint subnet mapping.
+%% You can retrieve the subnet mapping by calling
+%% `DescribeVpcEndpointAssociation'.
+%% You define and update the route tables through Amazon VPC. As needed,
+%% update the route tables for the
+%% Availability Zone to remove the firewall endpoint for the association.
+%% When the route tables no longer use the firewall endpoint,
+%% you can remove the endpoint association safely.
+-spec delete_vpc_endpoint_association(aws_client:aws_client(), delete_vpc_endpoint_association_request()) ->
+    {ok, delete_vpc_endpoint_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_endpoint_association_errors(), tuple()}.
+delete_vpc_endpoint_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_vpc_endpoint_association(Client, Input, []).
+
+-spec delete_vpc_endpoint_association(aws_client:aws_client(), delete_vpc_endpoint_association_request(), proplists:proplist()) ->
+    {ok, delete_vpc_endpoint_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_endpoint_association_errors(), tuple()}.
+delete_vpc_endpoint_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVpcEndpointAssociation">>, Input, Options).
+
 %% @doc Returns the data objects for the specified firewall.
 -spec describe_firewall(aws_client:aws_client(), describe_firewall_request()) ->
     {ok, describe_firewall_response(), tuple()} |
@@ -2178,6 +2407,25 @@ describe_firewall(Client, Input)
 describe_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFirewall">>, Input, Options).
+
+%% @doc Returns the high-level information about a firewall, including the
+%% Availability Zones where the Firewall is
+%% currently in use.
+-spec describe_firewall_metadata(aws_client:aws_client(), describe_firewall_metadata_request()) ->
+    {ok, describe_firewall_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, describe_firewall_metadata_errors(), tuple()}.
+describe_firewall_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_firewall_metadata(Client, Input, []).
+
+-spec describe_firewall_metadata(aws_client:aws_client(), describe_firewall_metadata_request(), proplists:proplist()) ->
+    {ok, describe_firewall_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, describe_firewall_metadata_errors(), tuple()}.
+describe_firewall_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFirewallMetadata">>, Input, Options).
 
 %% @doc Returns the data objects for the specified firewall policy.
 -spec describe_firewall_policy(aws_client:aws_client(), describe_firewall_policy_request()) ->
@@ -2305,6 +2553,23 @@ describe_t_l_s_inspection_configuration(Client, Input)
 describe_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTLSInspectionConfiguration">>, Input, Options).
+
+%% @doc Returns the data object for the specified VPC endpoint association.
+-spec describe_vpc_endpoint_association(aws_client:aws_client(), describe_vpc_endpoint_association_request()) ->
+    {ok, describe_vpc_endpoint_association_response(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_endpoint_association_errors(), tuple()}.
+describe_vpc_endpoint_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vpc_endpoint_association(Client, Input, []).
+
+-spec describe_vpc_endpoint_association(aws_client:aws_client(), describe_vpc_endpoint_association_request(), proplists:proplist()) ->
+    {ok, describe_vpc_endpoint_association_response(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_endpoint_association_errors(), tuple()}.
+describe_vpc_endpoint_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVpcEndpointAssociation">>, Input, Options).
 
 %% @doc Removes the specified subnet associations from the firewall.
 %%
@@ -2541,22 +2806,52 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Creates or updates an IAM policy for your rule group or firewall
-%% policy.
+%% @doc Retrieves the metadata for the VPC endpoint associations that you
+%% have defined.
 %%
-%% Use this to share rule groups and firewall policies between accounts. This
-%% operation works in conjunction with the Amazon Web Services Resource
-%% Access Manager (RAM) service
-%% to manage resource sharing for Network Firewall.
+%% If you specify a fireawll,
+%% this returns only the endpoint associations for that firewall.
 %%
-%% Use this operation to create or update a resource policy for your rule
-%% group or firewall policy. In the policy, you specify the accounts that you
-%% want to share the resource with and the operations that you want the
-%% accounts to be able to perform.
+%% Depending on your setting for max results and the number of associations,
+%% a single call
+%% might not return the full list.
+-spec list_vpc_endpoint_associations(aws_client:aws_client(), list_vpc_endpoint_associations_request()) ->
+    {ok, list_vpc_endpoint_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_endpoint_associations_errors(), tuple()}.
+list_vpc_endpoint_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_vpc_endpoint_associations(Client, Input, []).
+
+-spec list_vpc_endpoint_associations(aws_client:aws_client(), list_vpc_endpoint_associations_request(), proplists:proplist()) ->
+    {ok, list_vpc_endpoint_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_endpoint_associations_errors(), tuple()}.
+list_vpc_endpoint_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVpcEndpointAssociations">>, Input, Options).
+
+%% @doc Creates or updates an IAM policy for your rule group, firewall
+%% policy, or firewall.
+%%
+%% Use this to share these resources between accounts. This operation works
+%% in conjunction with the Amazon Web Services Resource Access Manager (RAM)
+%% service to manage resource sharing for Network Firewall.
+%%
+%% For information about using sharing with Network Firewall resources, see
+%% Sharing Network Firewall resources:
+%% https://docs.aws.amazon.com/network-firewall/latest/developerguide/sharing.html
+%% in the Network Firewall Developer Guide.
+%%
+%% Use this operation to create or update a resource policy for your Network
+%% Firewall rule group, firewall policy, or firewall. In the resource policy,
+%% you specify the accounts that you want to share the Network Firewall
+%% resource with and the operations that you want the accounts to be able to
+%% perform.
 %%
 %% When you add an account in the resource policy, you then run the following
 %% Resource Access Manager (RAM) operations to access and accept the shared
-%% rule group or firewall policy.
+%% resource.
 %%
 %% GetResourceShareInvitations:
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_GetResourceShareInvitations.html

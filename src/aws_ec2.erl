@@ -5395,7 +5395,8 @@
 
 %% Example:
 %% deregister_image_result() :: #{
-
+%%   <<"DeleteSnapshotResults">> => list(delete_snapshot_return_code()()),
+%%   <<"Return">> => boolean()
 %% }
 -type deregister_image_result() :: #{binary() => any()}.
 
@@ -8422,6 +8423,7 @@
 
 %% Example:
 %% deregister_image_request() :: #{
+%%   <<"DeleteAssociatedSnapshots">> => boolean(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"ImageId">> := string()
 %% }
@@ -18655,6 +18657,13 @@
 -type describe_snapshot_attribute_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_snapshot_return_code() :: #{
+%%   <<"ReturnCode">> => list(any()),
+%%   <<"SnapshotId">> => string()
+%% }
+-type delete_snapshot_return_code() :: #{binary() => any()}.
+
+%% Example:
 %% describe_transit_gateway_multicast_domains_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayMulticastDomains">> => list(transit_gateway_multicast_domain()())
@@ -21992,8 +22001,9 @@ copy_fpga_image(Client, Input, Options)
 %% snapshots.
 %%
 %% For information about the prerequisites when copying an AMI, see Copy an
-%% AMI: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html
-%% in the
+%% Amazon EC2 AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html in
+%% the
 %% Amazon EC2 User Guide.
 -spec copy_image(aws_client:aws_client(), copy_image_request()) ->
     {ok, copy_image_result(), tuple()} |
@@ -22551,10 +22561,10 @@ create_fpga_image(Client, Input, Options)
 %% automatically launches
 %% with those additional volumes.
 %%
-%% For more information, see Create an Amazon EBS-backed Linux
-%% AMI:
+%% For more information, see Create an Amazon EBS-backed AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% in
+%% the Amazon Elastic Compute Cloud User Guide.
 -spec create_image(aws_client:aws_client(), create_image_request()) ->
     {ok, create_image_result(), tuple()} |
     {error, any()}.
@@ -23428,14 +23438,13 @@ create_reserved_instances_listing(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html.
 %%
 %% To use this API, you must have the required permissions. For more
-%% information, see Permissions for storing and restoring AMIs using Amazon
-%% S3:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions
+%% information, see Permissions for storing and restoring AMIs using S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-ami-store-restore.html#ami-s3-permissions
 %% in the
 %% Amazon EC2 User Guide.
 %%
 %% For more information, see Store and restore an AMI using
-%% Amazon S3:
+%% S3:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
 %% in the Amazon EC2 User Guide.
 -spec create_restore_image_task(aws_client:aws_client(), create_restore_image_task_request()) ->
@@ -23795,14 +23804,13 @@ create_spot_datafeed_subscription(Client, Input, Options)
 %% @doc Stores an AMI as a single object in an Amazon S3 bucket.
 %%
 %% To use this API, you must have the required permissions. For more
-%% information, see Permissions for storing and restoring AMIs using Amazon
-%% S3:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions
+%% information, see Permissions for storing and restoring AMIs using S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-ami-store-restore.html#ami-s3-permissions
 %% in the
 %% Amazon EC2 User Guide.
 %%
 %% For more information, see Store and restore an AMI using
-%% Amazon S3:
+%% S3:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
 %% in the Amazon EC2 User Guide.
 -spec create_store_image_task(aws_client:aws_client(), create_store_image_task_request()) ->
@@ -26333,9 +26341,18 @@ deprovision_public_ipv4_pool_cidr(Client, Input, Options)
 %% expires, after which it is permanently deleted. If the deregistered AMI
 %% doesn't match a
 %% retention rule, it is permanently deleted immediately. For more
-%% information, see Recycle Bin:
+%% information, see Recover deleted Amazon EBS
+%% snapshots and EBS-backed AMIs with Recycle Bin:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
-%% the Amazon EBS User Guide.
+%% the Amazon EBS User
+%% Guide.
+%%
+%% When deregistering an EBS-backed AMI, you can optionally delete its
+%% associated snapshots
+%% at the same time. However, if a snapshot is associated with multiple AMIs,
+%% it won't be deleted
+%% even if specified for deletion, although the AMI will still be
+%% deregistered.
 %%
 %% Deregistering an AMI does not delete the following:
 %%
@@ -26343,10 +26360,9 @@ deprovision_public_ipv4_pool_cidr(Client, Input, Options)
 %% usage costs for the
 %% instances until you terminate them.
 %%
-%% For EBS-backed AMIs: The snapshots that were created of the root and data
-%% volumes of
-%% the instance during AMI creation. You'll continue to incur snapshot
-%% storage costs.
+%% For EBS-backed AMIs: Snapshots that are associated with multiple AMIs.
+%% You'll continue
+%% to incur snapshot storage costs.
 %%
 %% For instance store-backed AMIs: The files uploaded to Amazon S3 during AMI
 %% creation. You'll
@@ -29388,14 +29404,13 @@ describe_stale_security_groups(Client, Input, Options)
 %% days can be viewed.
 %%
 %% To use this API, you must have the required permissions. For more
-%% information, see Permissions for storing and restoring AMIs using Amazon
-%% S3:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions
+%% information, see Permissions for storing and restoring AMIs using S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-ami-store-restore.html#ami-s3-permissions
 %% in the
 %% Amazon EC2 User Guide.
 %%
 %% For more information, see Store and restore an AMI using
-%% Amazon S3:
+%% S3:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
 %% in the Amazon EC2 User Guide.
 -spec describe_store_image_tasks(aws_client:aws_client(), describe_store_image_tasks_request()) ->
@@ -30602,7 +30617,7 @@ disable_image(Client, Input, Options)
 %%
 %% For more information, see Block
 %% public access to your AMIs:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-to-amis.html
 %% in the Amazon EC2 User Guide.
 -spec disable_image_block_public_access(aws_client:aws_client(), disable_image_block_public_access_request()) ->
     {ok, disable_image_block_public_access_result(), tuple()} |
@@ -30620,7 +30635,7 @@ disable_image_block_public_access(Client, Input, Options)
 
 %% @doc Cancels the deprecation of the specified AMI.
 %%
-%% For more information, see Deprecate an AMI:
+%% For more information, see Deprecate an Amazon EC2 AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html in
 %% the
 %% Amazon EC2 User Guide.
@@ -30649,9 +30664,9 @@ disable_image_deprecation(Client, Input, Options)
 %% you won’t
 %% immediately be able to deregister the AMI.
 %%
-%% For more information, see Protect an
-%% AMI from deregistration:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html#ami-deregistration-protection
+%% For more information, see Protect an Amazon EC2 AMI from
+%% deregistration:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deregistration-protection.html
 %% in the Amazon EC2 User Guide.
 -spec disable_image_deregistration_protection(aws_client:aws_client(), disable_image_deregistration_protection_request()) ->
     {ok, disable_image_deregistration_protection_result(), tuple()} |
@@ -31461,10 +31476,9 @@ enable_fast_snapshot_restores(Client, Input, Options)
 %%
 %% Only the AMI owner can re-enable a disabled AMI.
 %%
-%% For more information, see Disable an AMI:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/disable-an-ami.html in
-%% the
-%% Amazon EC2 User Guide.
+%% For more information, see Disable an Amazon EC2 AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/disable-an-ami.html
+%% in the Amazon EC2 User Guide.
 -spec enable_image(aws_client:aws_client(), enable_image_request()) ->
     {ok, enable_image_result(), tuple()} |
     {error, any()}.
@@ -31495,7 +31509,7 @@ enable_image(Client, Input, Options)
 %%
 %% For more information, see Block
 %% public access to your AMIs:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-to-amis.html
 %% in the Amazon EC2 User Guide.
 -spec enable_image_block_public_access(aws_client:aws_client(), enable_image_block_public_access_request()) ->
     {ok, enable_image_block_public_access_result(), tuple()} |
@@ -31542,8 +31556,8 @@ enable_image_deprecation(Client, Input, Options)
 %% using `DisableImageDeregistrationProtection'.
 %%
 %% For more information, see Protect an
-%% AMI from deregistration:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html#ami-deregistration-protection
+%% Amazon EC2 AMI from deregistration:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deregistration-protection.html
 %% in the Amazon EC2 User Guide.
 -spec enable_image_deregistration_protection(aws_client:aws_client(), enable_image_deregistration_protection_request()) ->
     {ok, enable_image_deregistration_protection_result(), tuple()} |
@@ -32261,7 +32275,7 @@ get_host_reservation_purchase_preview(Client, Input, Options)
 %%
 %% For more information, see Block
 %% public access to your AMIs:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-to-amis.html
 %% in the Amazon EC2 User Guide.
 -spec get_image_block_public_access_state(aws_client:aws_client(), get_image_block_public_access_state_request()) ->
     {ok, get_image_block_public_access_state_result(), tuple()} |
@@ -35615,10 +35629,9 @@ reboot_instances(Client, Input, Options)
 %%
 %% For more information, see Create an AMI from a snapshot:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot
-%% and Use encryption with Amazon EBS-backed
-%% AMIs:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html in
-%% the Amazon EC2 User Guide.
+%% and Use encryption with EBS-backed AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html
+%% in the Amazon EC2 User Guide.
 %%
 %% Amazon Web Services Marketplace product codes
 %%
@@ -36427,9 +36440,11 @@ restore_address_to_classic(Client, Input, Options)
 
 %% @doc Restores an AMI from the Recycle Bin.
 %%
-%% For more information, see Recycle Bin:
+%% For more information, see Recover deleted Amazon EBS
+%% snapshots and EBS-back AMIs with Recycle Bin:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
-%% the Amazon EC2 User Guide.
+%% the
+%% Amazon EC2 User Guide.
 -spec restore_image_from_recycle_bin(aws_client:aws_client(), restore_image_from_recycle_bin_request()) ->
     {ok, restore_image_from_recycle_bin_result(), tuple()} |
     {error, any()}.

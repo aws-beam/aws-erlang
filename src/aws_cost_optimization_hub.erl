@@ -2,10 +2,9 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc You can use the Cost Optimization Hub API to programmatically
-%% identify, filter, aggregate,
-%% and quantify savings for your cost optimization recommendations across
-%% multiple Amazon Web Services Regions and Amazon Web Services accounts in
-%% your organization.
+%% identify, filter, aggregate, and quantify savings for your cost
+%% optimization recommendations across multiple Amazon Web Services Regions
+%% and Amazon Web Services accounts in your organization.
 %%
 %% The Cost Optimization Hub API provides the following endpoint:
 %%
@@ -186,6 +185,13 @@
 -type get_recommendation_request() :: #{binary() => any()}.
 
 %% Example:
+%% preferred_commitment() :: #{
+%%   <<"paymentOption">> => list(any()),
+%%   <<"term">> => list(any())
+%% }
+-type preferred_commitment() :: #{binary() => any()}.
+
+%% Example:
 %% redshift_reserved_instances() :: #{
 %%   <<"configuration">> => redshift_reserved_instances_configuration(),
 %%   <<"costCalculation">> => reserved_instances_cost_calculation()
@@ -262,6 +268,7 @@
 %% Example:
 %% get_preferences_response() :: #{
 %%   <<"memberAccountDiscountVisibility">> => list(any()),
+%%   <<"preferredCommitment">> => preferred_commitment(),
 %%   <<"savingsEstimationMode">> => list(any())
 %% }
 -type get_preferences_response() :: #{binary() => any()}.
@@ -389,6 +396,7 @@
 %% Example:
 %% update_preferences_request() :: #{
 %%   <<"memberAccountDiscountVisibility">> => list(any()),
+%%   <<"preferredCommitment">> => preferred_commitment(),
 %%   <<"savingsEstimationMode">> => list(any())
 %% }
 -type update_preferences_request() :: #{binary() => any()}.
@@ -396,6 +404,7 @@
 %% Example:
 %% update_preferences_response() :: #{
 %%   <<"memberAccountDiscountVisibility">> => list(any()),
+%%   <<"preferredCommitment">> => preferred_commitment(),
 %%   <<"savingsEstimationMode">> => list(any())
 %% }
 -type update_preferences_response() :: #{binary() => any()}.
@@ -757,14 +766,11 @@
 %%====================================================================
 
 %% @doc Returns a set of preferences for an account in order to add
-%% account-specific preferences
-%% into the service.
+%% account-specific preferences into the service.
 %%
 %% These preferences impact how the savings associated with recommendations
-%% are
-%% presented—estimated savings after discounts or estimated savings before
-%% discounts, for
-%% example.
+%% are presented—estimated savings after discounts or estimated savings
+%% before discounts, for example.
 -spec get_preferences(aws_client:aws_client(), get_preferences_request()) ->
     {ok, get_preferences_response(), tuple()} |
     {error, any()} |
@@ -782,14 +788,11 @@ get_preferences(Client, Input, Options)
     request(Client, <<"GetPreferences">>, Input, Options).
 
 %% @doc Returns both the current and recommended resource configuration and
-%% the estimated cost
-%% impact for a recommendation.
+%% the estimated cost impact for a recommendation.
 %%
 %% The `recommendationId' is only valid for up to a maximum of 24 hours
-%% as
-%% recommendations are refreshed daily. To retrieve the
-%% `recommendationId', use the
-%% `ListRecommendations' API.
+%% as recommendations are refreshed daily. To retrieve the
+%% `recommendationId', use the `ListRecommendations' API.
 -spec get_recommendation(aws_client:aws_client(), get_recommendation_request()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
@@ -808,8 +811,8 @@ get_recommendation(Client, Input, Options)
 
 %% @doc Retrieves the enrollment status for an account.
 %%
-%% It can also return the list of accounts
-%% that are enrolled under the organization.
+%% It can also return the list of accounts that are enrolled under the
+%% organization.
 -spec list_enrollment_statuses(aws_client:aws_client(), list_enrollment_statuses_request()) ->
     {ok, list_enrollment_statuses_response(), tuple()} |
     {error, any()} |
@@ -828,12 +831,10 @@ list_enrollment_statuses(Client, Input, Options)
 
 %% @doc Returns a concise representation of savings estimates for resources.
 %%
-%% Also returns de-duped
-%% savings across different types of recommendations.
+%% Also returns de-duped savings across different types of recommendations.
 %%
 %% The following filters are not supported for this API:
-%% `recommendationIds',
-%% `resourceArns', and `resourceIds'.
+%% `recommendationIds', `resourceArns', and `resourceIds'.
 -spec list_recommendation_summaries(aws_client:aws_client(), list_recommendation_summaries_request()) ->
     {ok, list_recommendation_summaries_response(), tuple()} |
     {error, any()} |
@@ -868,18 +869,16 @@ list_recommendations(Client, Input, Options)
     request(Client, <<"ListRecommendations">>, Input, Options).
 
 %% @doc Updates the enrollment (opt in and opt out) status of an account to
-%% the Cost Optimization
-%% Hub service.
+%% the Cost Optimization Hub service.
 %%
 %% If the account is a management account or delegated administrator of an
-%% organization, this
-%% action can also be used to enroll member accounts of the organization.
+%% organization, this action can also be used to enroll member accounts of
+%% the organization.
 %%
 %% You must have the appropriate permissions to opt in to Cost Optimization
-%% Hub and to view
-%% its recommendations. When you opt in, Cost Optimization Hub automatically
-%% creates a
-%% service-linked role in your account to access its data.
+%% Hub and to view its recommendations. When you opt in, Cost Optimization
+%% Hub automatically creates a service-linked role in your account to access
+%% its data.
 -spec update_enrollment_status(aws_client:aws_client(), update_enrollment_status_request()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
@@ -897,12 +896,10 @@ update_enrollment_status(Client, Input, Options)
     request(Client, <<"UpdateEnrollmentStatus">>, Input, Options).
 
 %% @doc Updates a set of preferences for an account in order to add
-%% account-specific preferences
-%% into the service.
+%% account-specific preferences into the service.
 %%
 %% These preferences impact how the savings associated with recommendations
-%% are
-%% presented.
+%% are presented.
 -spec update_preferences(aws_client:aws_client(), update_preferences_request()) ->
     {ok, update_preferences_response(), tuple()} |
     {error, any()} |

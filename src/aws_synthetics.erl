@@ -208,6 +208,7 @@
 %% Example:
 %% canary_run_config_output() :: #{
 %%   <<"ActiveTracing">> => boolean(),
+%%   <<"EphemeralStorage">> => integer(),
 %%   <<"MemoryInMB">> => integer(),
 %%   <<"TimeoutInSeconds">> => integer()
 %% }
@@ -298,6 +299,7 @@
 %% canary_run_config_input() :: #{
 %%   <<"ActiveTracing">> => boolean(),
 %%   <<"EnvironmentVariables">> => map(),
+%%   <<"EphemeralStorage">> => integer(),
 %%   <<"MemoryInMB">> => integer(),
 %%   <<"TimeoutInSeconds">> => integer()
 %% }
@@ -361,7 +363,8 @@
 %% canary_run_status() :: #{
 %%   <<"State">> => list(any()),
 %%   <<"StateReason">> => string(),
-%%   <<"StateReasonCode">> => list(any())
+%%   <<"StateReasonCode">> => list(any()),
+%%   <<"TestResult">> => list(any())
 %% }
 -type canary_run_status() :: #{binary() => any()}.
 
