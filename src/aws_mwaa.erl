@@ -237,7 +237,8 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Error">> => update_error(),
 %%   <<"Source">> => string(),
-%%   <<"Status">> => string()
+%%   <<"Status">> => string(),
+%%   <<"WorkerReplacementStrategy">> => string()
 %% }
 -type last_update() :: #{binary() => any()}.
 
@@ -316,7 +317,8 @@
 %%   <<"StartupScriptS3ObjectVersion">> => string(),
 %%   <<"StartupScriptS3Path">> => string(),
 %%   <<"WebserverAccessMode">> => string(),
-%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%%   <<"WeeklyMaintenanceWindowStart">> => string(),
+%%   <<"WorkerReplacementStrategy">> => string()
 %% }
 -type update_environment_input() :: #{binary() => any()}.
 

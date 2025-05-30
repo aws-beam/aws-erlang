@@ -74,6 +74,8 @@
          get_channel/3,
          get_dashboard/2,
          get_dashboard/3,
+         get_event_configuration/2,
+         get_event_configuration/3,
          get_event_data_store/2,
          get_event_data_store/3,
          get_event_selectors/2,
@@ -112,6 +114,8 @@
          list_trails/3,
          lookup_events/2,
          lookup_events/3,
+         put_event_configuration/2,
+         put_event_configuration/3,
          put_event_selectors/2,
          put_event_selectors/3,
          put_insight_selectors/2,
@@ -496,6 +500,12 @@
 -type lookup_events_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_event_configuration_request() :: #{
+%%   <<"EventDataStore">> => string()
+%% }
+-type get_event_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_event_data_store_response() :: #{
 %%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
 %%   <<"BillingMode">> => list(any()),
@@ -776,6 +786,14 @@
 -type invalid_query_status_exception() :: #{binary() => any()}.
 
 %% Example:
+%% put_event_configuration_response() :: #{
+%%   <<"ContextKeySelectors">> => list(context_key_selector()()),
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"MaxEventSize">> => list(any())
+%% }
+-type put_event_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_source_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -799,6 +817,14 @@
 %%   <<"Message">> => string()
 %% }
 -type account_has_ongoing_import_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_event_configuration_request() :: #{
+%%   <<"ContextKeySelectors">> := list(context_key_selector()()),
+%%   <<"EventDataStore">> => string(),
+%%   <<"MaxEventSize">> := list(any())
+%% }
+-type put_event_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_logging_request() :: #{
@@ -882,6 +908,12 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_iam_access_permission_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_iam_access_permission_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_event_data_store_category_exception() :: #{
@@ -1342,6 +1374,14 @@
 %%   <<"TrailARN">> => string()
 %% }
 -type get_insight_selectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_configuration_response() :: #{
+%%   <<"ContextKeySelectors">> => list(context_key_selector()()),
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"MaxEventSize">> => list(any())
+%% }
+-type get_event_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_insight_selectors_response() :: #{
@@ -1871,6 +1911,13 @@
 -type get_trail_status_response() :: #{binary() => any()}.
 
 %% Example:
+%% context_key_selector() :: #{
+%%   <<"Equals">> => list(string()()),
+%%   <<"Type">> => list(any())
+%% }
+-type context_key_selector() :: #{binary() => any()}.
+
+%% Example:
 %% start_import_request() :: #{
 %%   <<"Destinations">> => list(string()()),
 %%   <<"EndEventTime">> => non_neg_integer(),
@@ -2194,6 +2241,18 @@
     resource_not_found_exception() | 
     unsupported_operation_exception().
 
+-type get_event_configuration_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    invalid_event_data_store_status_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_event_data_store_category_exception() | 
+    invalid_parameter_combination_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
 -type get_event_data_store_errors() ::
     event_data_store_not_found_exception() | 
     invalid_parameter_exception() | 
@@ -2342,6 +2401,24 @@
     unsupported_operation_exception() | 
     invalid_max_results_exception().
 
+-type put_event_configuration_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    invalid_event_data_store_status_exception() | 
+    event_data_store_not_found_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_event_data_store_category_exception() | 
+    insufficient_iam_access_permission_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    conflict_exception() | 
+    invalid_parameter_combination_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
 -type put_event_selectors_errors() ::
     cloud_trail_arn_invalid_exception() | 
     throttling_exception() | 
@@ -2390,6 +2467,7 @@
     operation_not_permitted_exception() | 
     organizations_not_in_use_exception() | 
     account_not_found_exception() | 
+    insufficient_iam_access_permission_exception() | 
     insufficient_dependency_service_access_permission_exception() | 
     organization_not_in_all_features_mode_exception() | 
     conflict_exception() | 
@@ -2450,6 +2528,7 @@
     operation_not_permitted_exception() | 
     invalid_event_data_store_category_exception() | 
     insufficient_dependency_service_access_permission_exception() | 
+    conflict_exception() | 
     no_management_account_s_l_r_exists_exception() | 
     event_data_store_arn_invalid_exception() | 
     unsupported_operation_exception().
@@ -2505,6 +2584,7 @@
     operation_not_permitted_exception() | 
     invalid_event_data_store_category_exception() | 
     insufficient_dependency_service_access_permission_exception() | 
+    conflict_exception() | 
     no_management_account_s_l_r_exists_exception() | 
     event_data_store_arn_invalid_exception() | 
     unsupported_operation_exception().
@@ -3099,6 +3179,26 @@ get_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDashboard">>, Input, Options).
 
+%% @doc Retrieves the current event configuration settings for the specified
+%% event data store, including details
+%% about maximum event size and context key selectors configured for the
+%% event data store.
+-spec get_event_configuration(aws_client:aws_client(), get_event_configuration_request()) ->
+    {ok, get_event_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_configuration_errors(), tuple()}.
+get_event_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_event_configuration(Client, Input, []).
+
+-spec get_event_configuration(aws_client:aws_client(), get_event_configuration_request(), proplists:proplist()) ->
+    {ok, get_event_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_configuration_errors(), tuple()}.
+get_event_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEventConfiguration">>, Input, Options).
+
 %% @doc Returns information about an event data store specified as either an
 %% ARN or the ID
 %% portion of the ARN.
@@ -3586,6 +3686,26 @@ lookup_events(Client, Input)
 lookup_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LookupEvents">>, Input, Options).
+
+%% @doc Updates the event configuration settings for the specified event data
+%% store.
+%%
+%% You can update the maximum event size and context key selectors.
+-spec put_event_configuration(aws_client:aws_client(), put_event_configuration_request()) ->
+    {ok, put_event_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_event_configuration_errors(), tuple()}.
+put_event_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_event_configuration(Client, Input, []).
+
+-spec put_event_configuration(aws_client:aws_client(), put_event_configuration_request(), proplists:proplist()) ->
+    {ok, put_event_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_event_configuration_errors(), tuple()}.
+put_event_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutEventConfiguration">>, Input, Options).
 
 %% @doc Configures event selectors (also referred to as basic event
 %% selectors) or advanced event selectors for your trail.

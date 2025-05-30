@@ -988,6 +988,7 @@
 %%   <<"CopyTagsToBackups">> => boolean(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DataCompressionType">> => list(any()),
+%%   <<"DataReadCacheConfiguration">> => lustre_read_cache_configuration(),
 %%   <<"DeploymentType">> => list(any()),
 %%   <<"DriveCacheType">> => list(any()),
 %%   <<"EfaEnabled">> => boolean(),
@@ -998,6 +999,7 @@
 %%   <<"MetadataConfiguration">> => create_file_system_lustre_metadata_configuration(),
 %%   <<"PerUnitStorageThroughput">> => integer(),
 %%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
+%%   <<"ThroughputCapacity">> => integer(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
 %% }
 -type create_file_system_lustre_configuration() :: #{binary() => any()}.
@@ -1071,10 +1073,12 @@
 %%   <<"AutomaticBackupRetentionDays">> => integer(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DataCompressionType">> => list(any()),
+%%   <<"DataReadCacheConfiguration">> => lustre_read_cache_configuration(),
 %%   <<"LogConfiguration">> => lustre_log_create_configuration(),
 %%   <<"MetadataConfiguration">> => update_file_system_lustre_metadata_configuration(),
 %%   <<"PerUnitStorageThroughput">> => integer(),
 %%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
+%%   <<"ThroughputCapacity">> => integer(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
 %% }
 -type update_file_system_lustre_configuration() :: #{binary() => any()}.
@@ -1209,6 +1213,7 @@
 %%   <<"CopyTagsToBackups">> => boolean(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DataCompressionType">> => list(any()),
+%%   <<"DataReadCacheConfiguration">> => lustre_read_cache_configuration(),
 %%   <<"DataRepositoryConfiguration">> => data_repository_configuration(),
 %%   <<"DeploymentType">> => list(any()),
 %%   <<"DriveCacheType">> => list(any()),
@@ -1218,6 +1223,7 @@
 %%   <<"MountName">> => string(),
 %%   <<"PerUnitStorageThroughput">> => integer(),
 %%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
+%%   <<"ThroughputCapacity">> => integer(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
 %% }
 -type lustre_file_system_configuration() :: #{binary() => any()}.
@@ -1242,6 +1248,13 @@
 %%   <<"VolumeId">> => string()
 %% }
 -type restore_volume_from_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% lustre_read_cache_configuration() :: #{
+%%   <<"SizeGiB">> => integer(),
+%%   <<"SizingMode">> => list(any())
+%% }
+-type lustre_read_cache_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% file_system_not_found() :: #{
@@ -3845,6 +3858,8 @@ update_file_cache(Client, Input, Options)
 %%
 %% `DailyAutomaticBackupStartTime'
 %%
+%% `DiskIopsConfiguration'
+%%
 %% `SelfManagedActiveDirectoryConfiguration'
 %%
 %% `StorageCapacity'
@@ -3852,8 +3867,6 @@ update_file_cache(Client, Input, Options)
 %% `StorageType'
 %%
 %% `ThroughputCapacity'
-%%
-%% `DiskIopsConfiguration'
 %%
 %% `WeeklyMaintenanceStartTime'
 %%
@@ -3872,6 +3885,8 @@ update_file_cache(Client, Input, Options)
 %%
 %% `LogConfiguration'
 %%
+%% `LustreReadCacheConfiguration'
+%%
 %% `LustreRootSquashConfiguration'
 %%
 %% `MetadataConfiguration'
@@ -3879,6 +3894,8 @@ update_file_cache(Client, Input, Options)
 %% `PerUnitStorageThroughput'
 %%
 %% `StorageCapacity'
+%%
+%% `ThroughputCapacity'
 %%
 %% `WeeklyMaintenanceStartTime'
 %%

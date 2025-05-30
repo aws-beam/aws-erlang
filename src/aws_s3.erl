@@ -2369,6 +2369,7 @@
 
 %% Example:
 %% put_bucket_ownership_controls_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
 %%   <<"ContentMD5">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"OwnershipControls">> := ownership_controls()
@@ -8661,7 +8662,7 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Retrieves all the metadata from an object without returning the
+%% @doc Retrieves all of the metadata from an object without returning the
 %% object itself.
 %%
 %% This
@@ -8669,7 +8670,7 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% metadata.
 %%
 %% `GetObjectAttributes' combines the functionality of `HeadObject'
-%% and `ListParts'. All of the data returned with each of those
+%% and `ListParts'. All of the data returned with both of those
 %% individual calls
 %% can be returned with a single call to `GetObjectAttributes'.
 %%
@@ -8693,18 +8694,27 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% Permissions
 %%
 %% General purpose bucket permissions - To
-%% use `GetObjectAttributes', you must have READ access to the
-%% object. The permissions that you need to use this operation depend on
-%% whether the bucket is versioned. If the bucket is versioned, you need both
-%% the `s3:GetObjectVersion' and
-%% `s3:GetObjectVersionAttributes' permissions for this
-%% operation. If the bucket is not versioned, you need the
+%% use `GetObjectAttributes', you must have READ access to the object.
+%%
+%% The other permissions that you need to use this operation depend on
+%% whether the bucket is versioned and if a version ID is passed in the
+%% `GetObjectAttributes' request.
+%%
+%% If you pass a version ID in your request, you need both the
+%% `s3:GetObjectVersion' and
+%% `s3:GetObjectVersionAttributes' permissions.
+%%
+%% If you do not pass a version ID in your request, you need the
 %% `s3:GetObject' and `s3:GetObjectAttributes'
-%% permissions. For more information, see Specifying
+%% permissions.
+%%
+%% For more information, see Specifying
 %% Permissions in a Policy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html
 %% in the
-%% Amazon S3 User Guide. If the object that you request does
+%% Amazon S3 User Guide.
+%%
+%% If the object that you request does
 %% not exist, the error Amazon S3 returns depends on whether you also have
 %% the
 %% `s3:ListBucket' permission.
@@ -8758,13 +8768,12 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% you retrieve
 %% the object.
 %%
-%% If you encrypt an object by using server-side encryption with
-%% customer-provided
-%% encryption keys (SSE-C) when you store the object in Amazon S3, then when
-%% you retrieve
-%% the metadata from the object, you must use the following headers to
-%% provide the
-%% encryption key for the server to be able to retrieve the object's
+%% If you encrypted an object when you stored the object in Amazon S3 by
+%% using server-side encryption with customer-provided
+%% encryption keys (SSE-C), then when you retrieve
+%% the metadata from the object, you must use the following headers. These
+%% headers provide the
+%% server with the encryption key required to retrieve the object's
 %% metadata. The
 %% headers are:
 %%
@@ -12512,6 +12521,7 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
                | Options2],
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],

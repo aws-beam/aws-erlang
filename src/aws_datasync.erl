@@ -3,10 +3,10 @@
 
 %% @doc DataSync
 %%
-%% DataSync is an online data movement and discovery service that simplifies
-%% data migration and helps you quickly, easily, and securely transfer your
-%% file or object data
-%% to, from, and between Amazon Web Services storage services.
+%% DataSync is an online data movement service that simplifies data
+%% migration and helps you quickly, easily, and securely transfer your file
+%% or object data to,
+%% from, and between Amazon Web Services storage services.
 %%
 %% This API interface reference includes documentation for using DataSync
 %% programmatically. For complete information, see the
@@ -132,6 +132,8 @@
 %%   <<"AgentArns">> => list(string()()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlobType">> => list(any()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"LocationArn">> := string(),
 %%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
 %%   <<"Subdirectory">> => string()
@@ -156,8 +158,10 @@
 %% Example:
 %% create_location_object_storage_request() :: #{
 %%   <<"AccessKey">> => string(),
-%%   <<"AgentArns">> := list(string()()),
+%%   <<"AgentArns">> => list(string()()),
 %%   <<"BucketName">> := string(),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"SecretKey">> => string(),
 %%   <<"ServerCertificate">> => binary(),
 %%   <<"ServerHostname">> := string(),
@@ -279,6 +283,13 @@
 %%   <<"LocationArn">> := string()
 %% }
 -type describe_location_nfs_request() :: #{binary() => any()}.
+
+%% Example:
+%% cmk_secret_config() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"SecretArn">> => string()
+%% }
+-type cmk_secret_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_agents_response() :: #{
@@ -461,6 +472,12 @@
 -type describe_location_efs_response() :: #{binary() => any()}.
 
 %% Example:
+%% managed_secret_config() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type managed_secret_config() :: #{binary() => any()}.
+
+%% Example:
 %% qop_configuration() :: #{
 %%   <<"DataTransferProtection">> => list(any()),
 %%   <<"RpcProtection">> => list(any())
@@ -501,10 +518,12 @@
 %% Example:
 %% create_location_azure_blob_request() :: #{
 %%   <<"AccessTier">> => list(any()),
-%%   <<"AgentArns">> := list(string()()),
+%%   <<"AgentArns">> => list(string()()),
 %%   <<"AuthenticationType">> := list(any()),
 %%   <<"BlobType">> => list(any()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"ContainerUrl">> := string(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
 %%   <<"Subdirectory">> => string(),
 %%   <<"Tags">> => list(tag_list_entry()())
@@ -901,6 +920,7 @@
 %%   <<"BytesCompressed">> => float(),
 %%   <<"BytesTransferred">> => float(),
 %%   <<"BytesWritten">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
 %%   <<"EstimatedBytesToTransfer">> => float(),
 %%   <<"EstimatedFilesToDelete">> => float(),
 %%   <<"EstimatedFilesToTransfer">> => float(),
@@ -913,6 +933,7 @@
 %%   <<"FilesTransferred">> => float(),
 %%   <<"FilesVerified">> => float(),
 %%   <<"Includes">> => list(filter_rule()()),
+%%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"ManifestConfig">> => manifest_config(),
 %%   <<"Options">> => options(),
 %%   <<"ReportResult">> => report_result(),
@@ -1153,6 +1174,8 @@
 %% update_location_object_storage_request() :: #{
 %%   <<"AccessKey">> => string(),
 %%   <<"AgentArns">> => list(string()()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"LocationArn">> := string(),
 %%   <<"SecretKey">> => string(),
 %%   <<"ServerCertificate">> => binary(),
@@ -1237,9 +1260,12 @@
 %%   <<"AgentArns">> => list(string()()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlobType">> => list(any()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string()
+%%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config()
 %% }
 -type describe_location_azure_blob_response() :: #{binary() => any()}.
 
@@ -1305,9 +1331,12 @@
 %% describe_location_object_storage_response() :: #{
 %%   <<"AccessKey">> => string(),
 %%   <<"AgentArns">> => list(string()()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
 %%   <<"ServerCertificate">> => binary(),
 %%   <<"ServerPort">> => integer(),
 %%   <<"ServerProtocol">> => list(any())
@@ -1342,6 +1371,13 @@
 
 %% }
 -type delete_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_secret_config() :: #{
+%%   <<"SecretAccessRoleArn">> => string(),
+%%   <<"SecretArn">> => string()
+%% }
+-type custom_secret_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_location_s3_response() :: #{
@@ -1647,8 +1683,11 @@ create_agent(Client, Input, Options)
 %% @doc Creates a transfer location for a Microsoft Azure Blob Storage
 %% container.
 %%
-%% DataSync can use this location as a transfer source or
-%% destination.
+%% DataSync can use this location as a transfer source or destination.
+%% You can make transfers with or without a DataSync agent:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#azure-blob-creating-agent
+%% that connects to your
+%% container.
 %%
 %% Before you begin, make sure you know how DataSync accesses Azure Blob
 %% Storage:
@@ -1657,10 +1696,6 @@ create_agent(Client, Input, Options)
 %% https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#azure-blob-access-tiers
 %% and blob types:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#blob-types.
-%% You also need a DataSync agent:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#azure-blob-creating-agent
-%% that can connect to your
-%% container.
 -spec create_location_azure_blob(aws_client:aws_client(), create_location_azure_blob_request()) ->
     {ok, create_location_azure_blob_response(), tuple()} |
     {error, any()} |
@@ -1863,7 +1898,10 @@ create_location_nfs(Client, Input, Options)
 %% @doc Creates a transfer location for an object storage system.
 %%
 %% DataSync can use this location as a source or destination for transferring
-%% data.
+%% data. You
+%% can make transfers with or without a DataSync
+%% agent:
+%% https://docs.aws.amazon.com/datasync/latest/userguide/do-i-need-datasync-agent.html#when-agent-required.
 %%
 %% Before you begin, make sure that you understand the prerequisites:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html#create-object-location-prerequisites

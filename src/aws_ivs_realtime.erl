@@ -34,6 +34,21 @@
 %% Composition — Controls the look of the outputs,
 %% including how participants are positioned in the video.
 %%
+%% For participant replication:
+%%
+%% Source stage — The stage where the participant originally joined, which is
+%% used as the source for
+%% replication.
+%%
+%% Destination stage — The stage to which the participant is replicated.
+%%
+%% Replicated participant — A participant in a stage that is replicated to
+%% one or more destination stages.
+%%
+%% Replica participant — A participant in a destination stage that is
+%% replicated from another stage
+%% (the source stage).
+%%
 %% For more information about your IVS live stream, also see Getting Started
 %% with Amazon IVS Real-Time Streaming:
 %% https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html.
@@ -113,6 +128,8 @@
          list_ingest_configurations/3,
          list_participant_events/2,
          list_participant_events/3,
+         list_participant_replicas/2,
+         list_participant_replicas/3,
          list_participants/2,
          list_participants/3,
          list_public_keys/2,
@@ -128,8 +145,12 @@
          list_tags_for_resource/5,
          start_composition/2,
          start_composition/3,
+         start_participant_replication/2,
+         start_participant_replication/3,
          stop_composition/2,
          stop_composition/3,
+         stop_participant_replication/2,
+         stop_participant_replication/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -160,6 +181,14 @@
 %%   <<"name">> => string()
 %% }
 -type update_stage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_participant_replicas_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"replicas">> => list(participant_replica()())
+%% }
+-type list_participant_replicas_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -264,7 +293,11 @@
 %%   <<"recordingS3BucketName">> => string(),
 %%   <<"recordingS3Prefix">> => string(),
 %%   <<"recordingState">> => string(),
+%%   <<"replicationState">> => string(),
+%%   <<"replicationType">> => string(),
 %%   <<"sdkVersion">> => string(),
+%%   <<"sourceSessionId">> => string(),
+%%   <<"sourceStageArn">> => string(),
 %%   <<"state">> => string(),
 %%   <<"userId">> => string()
 %% }
@@ -276,6 +309,18 @@
 %%   <<"ingestConfiguration">> => ingest_configuration()
 %% }
 -type create_ingest_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_replica() :: #{
+%%   <<"destinationSessionId">> => string(),
+%%   <<"destinationStageArn">> => string(),
+%%   <<"participantId">> => string(),
+%%   <<"replicationState">> => string(),
+%%   <<"sourceSessionId">> => string(),
+%%   <<"sourceStageArn">> => string()
+%% }
+-type participant_replica() :: #{binary() => any()}.
 
 
 %% Example:
@@ -378,6 +423,10 @@
 %%   <<"participantId">> => string(),
 %%   <<"published">> => boolean(),
 %%   <<"recordingState">> => string(),
+%%   <<"replicationState">> => string(),
+%%   <<"replicationType">> => string(),
+%%   <<"sourceSessionId">> => string(),
+%%   <<"sourceStageArn">> => string(),
 %%   <<"state">> => string(),
 %%   <<"userId">> => string()
 %% }
@@ -419,6 +468,16 @@
 %%   <<"stageSession">> => stage_session()
 %% }
 -type get_stage_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_participant_replicas_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"participantId">> := string(),
+%%   <<"sourceStageArn">> := string()
+%% }
+-type list_participant_replicas_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -547,6 +606,19 @@
 %%   <<"stageArn">> := string()
 %% }
 -type disconnect_participant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_participant_replication_response() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type start_participant_replication_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -691,6 +763,7 @@
 %% auto_participant_recording_configuration() :: #{
 %%   <<"hlsConfiguration">> => participant_recording_hls_configuration(),
 %%   <<"mediaTypes">> => list(list(any())()),
+%%   <<"recordParticipantReplicas">> => boolean(),
 %%   <<"recordingReconnectWindowSeconds">> => integer(),
 %%   <<"storageConfigurationArn">> => string(),
 %%   <<"thumbnailConfiguration">> => participant_thumbnail_configuration()
@@ -888,11 +961,14 @@
 
 %% Example:
 %% event() :: #{
+%%   <<"destinationSessionId">> => string(),
+%%   <<"destinationStageArn">> => string(),
 %%   <<"errorCode">> => list(any()),
 %%   <<"eventTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"participantId">> => string(),
-%%   <<"remoteParticipantId">> => string()
+%%   <<"remoteParticipantId">> => string(),
+%%   <<"replica">> => boolean()
 %% }
 -type event() :: #{binary() => any()}.
 
@@ -946,6 +1022,15 @@
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
 
+
+%% Example:
+%% stop_participant_replication_request() :: #{
+%%   <<"destinationStageArn">> := string(),
+%%   <<"participantId">> := string(),
+%%   <<"sourceStageArn">> := string()
+%% }
+-type stop_participant_replication_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_storage_configuration_response() :: #{}
 -type delete_storage_configuration_response() :: #{}.
@@ -960,6 +1045,19 @@
 %%   <<"stageArn">> := string()
 %% }
 -type list_participant_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_participant_replication_response() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type stop_participant_replication_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1041,6 +1139,17 @@
 %% Example:
 %% stop_composition_response() :: #{}
 -type stop_composition_response() :: #{}.
+
+
+%% Example:
+%% start_participant_replication_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"destinationStageArn">> := string(),
+%%   <<"participantId">> := string(),
+%%   <<"reconnectWindowSeconds">> => integer(),
+%%   <<"sourceStageArn">> := string()
+%% }
+-type start_participant_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1342,6 +1451,10 @@
     validation_exception() | 
     access_denied_exception().
 
+-type list_participant_replicas_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
 -type list_participants_errors() ::
     validation_exception() | 
     access_denied_exception().
@@ -1380,6 +1493,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_participant_replication_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type stop_composition_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1387,6 +1509,12 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type stop_participant_replication_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
@@ -2284,6 +2412,40 @@ list_participant_events(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all the replicas for a participant from a source stage.
+-spec list_participant_replicas(aws_client:aws_client(), list_participant_replicas_request()) ->
+    {ok, list_participant_replicas_response(), tuple()} |
+    {error, any()} |
+    {error, list_participant_replicas_errors(), tuple()}.
+list_participant_replicas(Client, Input) ->
+    list_participant_replicas(Client, Input, []).
+
+-spec list_participant_replicas(aws_client:aws_client(), list_participant_replicas_request(), proplists:proplist()) ->
+    {ok, list_participant_replicas_response(), tuple()} |
+    {error, any()} |
+    {error, list_participant_replicas_errors(), tuple()}.
+list_participant_replicas(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListParticipantReplicas"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all participants in a specified stage session.
 -spec list_participants(aws_client:aws_client(), list_participants_request()) ->
     {ok, list_participants_response(), tuple()} |
@@ -2549,6 +2711,63 @@ start_composition(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts replicating a publishing participant from a source stage to a
+%% destination stage.
+-spec start_participant_replication(aws_client:aws_client(), start_participant_replication_request()) ->
+    {ok, start_participant_replication_response(), tuple()} |
+    {error, any()} |
+    {error, start_participant_replication_errors(), tuple()}.
+start_participant_replication(Client, Input) ->
+    start_participant_replication(Client, Input, []).
+
+-spec start_participant_replication(aws_client:aws_client(), start_participant_replication_request(), proplists:proplist()) ->
+    {ok, start_participant_replication_response(), tuple()} |
+    {error, any()} |
+    {error, start_participant_replication_errors(), tuple()}.
+start_participant_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartParticipantReplication"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Access-Control-Allow-Origin">>, <<"accessControlAllowOrigin">>},
+            {<<"Access-Control-Expose-Headers">>, <<"accessControlExposeHeaders">>},
+            {<<"Cache-Control">>, <<"cacheControl">>},
+            {<<"Content-Security-Policy">>, <<"contentSecurityPolicy">>},
+            {<<"Strict-Transport-Security">>, <<"strictTransportSecurity">>},
+            {<<"X-Content-Type-Options">>, <<"xContentTypeOptions">>},
+            {<<"X-Frame-Options">>, <<"xFrameOptions">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Stops and deletes a Composition resource.
 %%
 %% Any broadcast from the Composition resource
@@ -2585,6 +2804,62 @@ stop_composition(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a replicated participant session.
+-spec stop_participant_replication(aws_client:aws_client(), stop_participant_replication_request()) ->
+    {ok, stop_participant_replication_response(), tuple()} |
+    {error, any()} |
+    {error, stop_participant_replication_errors(), tuple()}.
+stop_participant_replication(Client, Input) ->
+    stop_participant_replication(Client, Input, []).
+
+-spec stop_participant_replication(aws_client:aws_client(), stop_participant_replication_request(), proplists:proplist()) ->
+    {ok, stop_participant_replication_response(), tuple()} |
+    {error, any()} |
+    {error, stop_participant_replication_errors(), tuple()}.
+stop_participant_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopParticipantReplication"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Access-Control-Allow-Origin">>, <<"accessControlAllowOrigin">>},
+            {<<"Access-Control-Expose-Headers">>, <<"accessControlExposeHeaders">>},
+            {<<"Cache-Control">>, <<"cacheControl">>},
+            {<<"Content-Security-Policy">>, <<"contentSecurityPolicy">>},
+            {<<"Strict-Transport-Security">>, <<"strictTransportSecurity">>},
+            {<<"X-Content-Type-Options">>, <<"xContentTypeOptions">>},
+            {<<"X-Frame-Options">>, <<"xFrameOptions">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Adds or updates tags for the AWS resource with the specified ARN.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->

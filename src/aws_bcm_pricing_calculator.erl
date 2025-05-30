@@ -1,13 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% You can use the Pricing Calculator API to programmatically create
+%% @doc You can use the Pricing Calculator API to programmatically create
 %% estimates for your planned cloud use.
 %%
-%% You can model usage and commitments such as Savings Plans and
-%% Reserved Instances, and generate estimated costs using your discounts and
-%% benefit sharing preferences.
+%% You can model usage and commitments such as Savings Plans and Reserved
+%% Instances, and generate estimated costs using your discounts and benefit
+%% sharing preferences.
 %%
 %% The Pricing Calculator API provides the following endpoint:
 %%
@@ -1370,14 +1369,12 @@
 %% API
 %%====================================================================
 
-%% @doc
-%% Create Compute Savings Plans, EC2 Instance Savings Plans, or EC2 Reserved
-%% Instances commitments that you want to model in a Bill Scenario.
+%% @doc Create Compute Savings Plans, EC2 Instance Savings Plans, or EC2
+%% Reserved Instances commitments that you want to model in a Bill Scenario.
 %%
 %% The `BatchCreateBillScenarioCommitmentModification' operation
 %% doesn't have its own IAM permission. To authorize this operation for
-%% Amazon Web Services principals,
-%% include the permission
+%% Amazon Web Services principals, include the permission
 %% `bcm-pricing-calculator:CreateBillScenarioCommitmentModification' in
 %% your policies.
 -spec batch_create_bill_scenario_commitment_modification(aws_client:aws_client(), batch_create_bill_scenario_commitment_modification_request()) ->
@@ -1396,14 +1393,12 @@ batch_create_bill_scenario_commitment_modification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCreateBillScenarioCommitmentModification">>, Input, Options).
 
-%% @doc
-%% Create Amazon Web Services service usage that you want to model in a Bill
-%% Scenario.
+%% @doc Create Amazon Web Services service usage that you want to model in a
+%% Bill Scenario.
 %%
 %% The `BatchCreateBillScenarioUsageModification' operation doesn't
 %% have its own IAM permission. To authorize this operation for Amazon Web
-%% Services principals,
-%% include the permission
+%% Services principals, include the permission
 %% `bcm-pricing-calculator:CreateBillScenarioUsageModification' in your
 %% policies.
 -spec batch_create_bill_scenario_usage_modification(aws_client:aws_client(), batch_create_bill_scenario_usage_modification_request()) ->
@@ -1422,14 +1417,12 @@ batch_create_bill_scenario_usage_modification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCreateBillScenarioUsageModification">>, Input, Options).
 
-%% @doc
-%% Create Amazon Web Services service usage that you want to model in a
+%% @doc Create Amazon Web Services service usage that you want to model in a
 %% Workload Estimate.
 %%
 %% The `BatchCreateWorkloadEstimateUsage' operation doesn't have its
 %% own IAM permission. To authorize this operation for Amazon Web Services
-%% principals,
-%% include the permission
+%% principals, include the permission
 %% `bcm-pricing-calculator:CreateWorkloadEstimateUsage' in your policies.
 -spec batch_create_workload_estimate_usage(aws_client:aws_client(), batch_create_workload_estimate_usage_request()) ->
     {ok, batch_create_workload_estimate_usage_response(), tuple()} |
@@ -1447,25 +1440,20 @@ batch_create_workload_estimate_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCreateWorkloadEstimateUsage">>, Input, Options).
 
-%% @doc
-%% Delete commitment that you have created in a Bill Scenario.
+%% @doc Delete commitment that you have created in a Bill Scenario.
 %%
-%% You can only delete a commitment that you had
-%% added and cannot model deletion (or removal) of a existing commitment. If
-%% you want model deletion of an existing
-%% commitment, see the negate
+%% You can only delete a commitment that you had added and cannot model
+%% deletion (or removal) of a existing commitment. If you want model deletion
+%% of an existing commitment, see the negate
 %% BillScenarioCommitmentModificationAction:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillScenarioCommitmentModificationAction.html
-%% of
-%%
-%% BatchCreateBillScenarioCommitmentModification:
+%% of BatchCreateBillScenarioCommitmentModification:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioUsageModification.html
 %% operation.
 %%
 %% The `BatchDeleteBillScenarioCommitmentModification' operation
 %% doesn't have its own IAM permission. To authorize this operation for
-%% Amazon Web Services principals,
-%% include the permission
+%% Amazon Web Services principals, include the permission
 %% `bcm-pricing-calculator:DeleteBillScenarioCommitmentModification' in
 %% your policies.
 -spec batch_delete_bill_scenario_commitment_modification(aws_client:aws_client(), batch_delete_bill_scenario_commitment_modification_request()) ->
@@ -1484,20 +1472,16 @@ batch_delete_bill_scenario_commitment_modification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteBillScenarioCommitmentModification">>, Input, Options).
 
-%% @doc
-%% Delete usage that you have created in a Bill Scenario.
+%% @doc Delete usage that you have created in a Bill Scenario.
 %%
-%% You can only delete usage that you had added and cannot model
-%% deletion (or removal) of a existing usage. If you want model removal of an
-%% existing usage, see
-%%
-%% BatchUpdateBillScenarioUsageModification:
+%% You can only delete usage that you had added and cannot model deletion (or
+%% removal) of a existing usage. If you want model removal of an existing
+%% usage, see BatchUpdateBillScenarioUsageModification:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioUsageModification.html.
 %%
 %% The `BatchDeleteBillScenarioUsageModification' operation doesn't
 %% have its own IAM permission. To authorize this operation for Amazon Web
-%% Services principals,
-%% include the permission
+%% Services principals, include the permission
 %% `bcm-pricing-calculator:DeleteBillScenarioUsageModification' in your
 %% policies.
 -spec batch_delete_bill_scenario_usage_modification(aws_client:aws_client(), batch_delete_bill_scenario_usage_modification_request()) ->
@@ -1516,20 +1500,16 @@ batch_delete_bill_scenario_usage_modification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteBillScenarioUsageModification">>, Input, Options).
 
-%% @doc
-%% Delete usage that you have created in a Workload estimate.
+%% @doc Delete usage that you have created in a Workload estimate.
 %%
-%% You can only delete usage that you had added and cannot model deletion
-%% (or removal) of a existing usage. If you want model removal of an existing
-%% usage, see
-%%
-%% BatchUpdateWorkloadEstimateUsage:
+%% You can only delete usage that you had added and cannot model deletion (or
+%% removal) of a existing usage. If you want model removal of an existing
+%% usage, see BatchUpdateWorkloadEstimateUsage:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateWorkloadEstimateUsage.html.
 %%
 %% The `BatchDeleteWorkloadEstimateUsage' operation doesn't have its
 %% own IAM permission. To authorize this operation for Amazon Web Services
-%% principals,
-%% include the permission
+%% principals, include the permission
 %% `bcm-pricing-calculator:DeleteWorkloadEstimateUsage' in your policies.
 -spec batch_delete_workload_estimate_usage(aws_client:aws_client(), batch_delete_workload_estimate_usage_request()) ->
     {ok, batch_delete_workload_estimate_usage_response(), tuple()} |
@@ -1547,16 +1527,14 @@ batch_delete_workload_estimate_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteWorkloadEstimateUsage">>, Input, Options).
 
-%% @doc
-%% Update a newly added or existing commitment.
+%% @doc Update a newly added or existing commitment.
 %%
 %% You can update the commitment group based on a commitment ID and a Bill
 %% scenario ID.
 %%
 %% The `BatchUpdateBillScenarioCommitmentModification' operation
 %% doesn't have its own IAM permission. To authorize this operation for
-%% Amazon Web Services principals,
-%% include the permission
+%% Amazon Web Services principals, include the permission
 %% `bcm-pricing-calculator:UpdateBillScenarioCommitmentModification' in
 %% your policies.
 -spec batch_update_bill_scenario_commitment_modification(aws_client:aws_client(), batch_update_bill_scenario_commitment_modification_request()) ->
@@ -1575,16 +1553,14 @@ batch_update_bill_scenario_commitment_modification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchUpdateBillScenarioCommitmentModification">>, Input, Options).
 
-%% @doc
-%% Update a newly added or existing usage lines.
+%% @doc Update a newly added or existing usage lines.
 %%
 %% You can update the usage amounts, usage hour, and usage group based on a
 %% usage ID and a Bill scenario ID.
 %%
 %% The `BatchUpdateBillScenarioUsageModification' operation doesn't
 %% have its own IAM permission. To authorize this operation for Amazon Web
-%% Services principals,
-%% include the permission
+%% Services principals, include the permission
 %% `bcm-pricing-calculator:UpdateBillScenarioUsageModification' in your
 %% policies.
 -spec batch_update_bill_scenario_usage_modification(aws_client:aws_client(), batch_update_bill_scenario_usage_modification_request()) ->
@@ -1603,16 +1579,14 @@ batch_update_bill_scenario_usage_modification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchUpdateBillScenarioUsageModification">>, Input, Options).
 
-%% @doc
-%% Update a newly added or existing usage lines.
+%% @doc Update a newly added or existing usage lines.
 %%
 %% You can update the usage amounts and usage group based on a usage ID and a
 %% Workload estimate ID.
 %%
 %% The `BatchUpdateWorkloadEstimateUsage' operation doesn't have its
 %% own IAM permission. To authorize this operation for Amazon Web Services
-%% principals,
-%% include the permission
+%% principals, include the permission
 %% `bcm-pricing-calculator:UpdateWorkloadEstimateUsage' in your policies.
 -spec batch_update_workload_estimate_usage(aws_client:aws_client(), batch_update_workload_estimate_usage_request()) ->
     {ok, batch_update_workload_estimate_usage_response(), tuple()} |
@@ -1630,8 +1604,7 @@ batch_update_workload_estimate_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchUpdateWorkloadEstimateUsage">>, Input, Options).
 
-%% @doc
-%% Create a Bill estimate from a Bill scenario.
+%% @doc Create a Bill estimate from a Bill scenario.
 %%
 %% In the Bill scenario you can model usage addition, usage changes, and
 %% usage removal. You can also model commitment addition and commitment
@@ -1657,8 +1630,7 @@ create_bill_estimate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBillEstimate">>, Input, Options).
 
-%% @doc
-%% Creates a new bill scenario to model potential changes to Amazon Web
+%% @doc Creates a new bill scenario to model potential changes to Amazon Web
 %% Services usage and costs.
 -spec create_bill_scenario(aws_client:aws_client(), create_bill_scenario_request()) ->
     {ok, create_bill_scenario_response(), tuple()} |
@@ -1676,8 +1648,8 @@ create_bill_scenario(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBillScenario">>, Input, Options).
 
-%% @doc
-%% Creates a new workload estimate to model costs for a specific workload.
+%% @doc Creates a new workload estimate to model costs for a specific
+%% workload.
 -spec create_workload_estimate(aws_client:aws_client(), create_workload_estimate_request()) ->
     {ok, create_workload_estimate_response(), tuple()} |
     {error, any()} |
@@ -1694,8 +1666,7 @@ create_workload_estimate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkloadEstimate">>, Input, Options).
 
-%% @doc
-%% Deletes an existing bill estimate.
+%% @doc Deletes an existing bill estimate.
 -spec delete_bill_estimate(aws_client:aws_client(), delete_bill_estimate_request()) ->
     {ok, delete_bill_estimate_response(), tuple()} |
     {error, any()} |
@@ -1712,8 +1683,7 @@ delete_bill_estimate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBillEstimate">>, Input, Options).
 
-%% @doc
-%% Deletes an existing bill scenario.
+%% @doc Deletes an existing bill scenario.
 -spec delete_bill_scenario(aws_client:aws_client(), delete_bill_scenario_request()) ->
     {ok, delete_bill_scenario_response(), tuple()} |
     {error, any()} |
@@ -1730,8 +1700,7 @@ delete_bill_scenario(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBillScenario">>, Input, Options).
 
-%% @doc
-%% Deletes an existing workload estimate.
+%% @doc Deletes an existing workload estimate.
 -spec delete_workload_estimate(aws_client:aws_client(), delete_workload_estimate_request()) ->
     {ok, delete_workload_estimate_response(), tuple()} |
     {error, any()} |
@@ -1748,8 +1717,7 @@ delete_workload_estimate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkloadEstimate">>, Input, Options).
 
-%% @doc
-%% Retrieves details of a specific bill estimate.
+%% @doc Retrieves details of a specific bill estimate.
 -spec get_bill_estimate(aws_client:aws_client(), get_bill_estimate_request()) ->
     {ok, get_bill_estimate_response(), tuple()} |
     {error, any()} |
@@ -1766,8 +1734,7 @@ get_bill_estimate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBillEstimate">>, Input, Options).
 
-%% @doc
-%% Retrieves details of a specific bill scenario.
+%% @doc Retrieves details of a specific bill scenario.
 -spec get_bill_scenario(aws_client:aws_client(), get_bill_scenario_request()) ->
     {ok, get_bill_scenario_response(), tuple()} |
     {error, any()} |
@@ -1784,8 +1751,7 @@ get_bill_scenario(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBillScenario">>, Input, Options).
 
-%% @doc
-%% Retrieves the current preferences for Pricing Calculator.
+%% @doc Retrieves the current preferences for Pricing Calculator.
 -spec get_preferences(aws_client:aws_client(), get_preferences_request()) ->
     {ok, get_preferences_response(), tuple()} |
     {error, any()} |
@@ -1802,8 +1768,7 @@ get_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPreferences">>, Input, Options).
 
-%% @doc
-%% Retrieves details of a specific workload estimate.
+%% @doc Retrieves details of a specific workload estimate.
 -spec get_workload_estimate(aws_client:aws_client(), get_workload_estimate_request()) ->
     {ok, get_workload_estimate_response(), tuple()} |
     {error, any()} |
@@ -1820,8 +1785,7 @@ get_workload_estimate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkloadEstimate">>, Input, Options).
 
-%% @doc
-%% Lists the commitments associated with a bill estimate.
+%% @doc Lists the commitments associated with a bill estimate.
 -spec list_bill_estimate_commitments(aws_client:aws_client(), list_bill_estimate_commitments_request()) ->
     {ok, list_bill_estimate_commitments_response(), tuple()} |
     {error, any()} |
@@ -1838,8 +1802,8 @@ list_bill_estimate_commitments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillEstimateCommitments">>, Input, Options).
 
-%% @doc
-%% Lists the input commitment modifications associated with a bill estimate.
+%% @doc Lists the input commitment modifications associated with a bill
+%% estimate.
 -spec list_bill_estimate_input_commitment_modifications(aws_client:aws_client(), list_bill_estimate_input_commitment_modifications_request()) ->
     {ok, list_bill_estimate_input_commitment_modifications_response(), tuple()} |
     {error, any()} |
@@ -1856,8 +1820,7 @@ list_bill_estimate_input_commitment_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillEstimateInputCommitmentModifications">>, Input, Options).
 
-%% @doc
-%% Lists the input usage modifications associated with a bill estimate.
+%% @doc Lists the input usage modifications associated with a bill estimate.
 -spec list_bill_estimate_input_usage_modifications(aws_client:aws_client(), list_bill_estimate_input_usage_modifications_request()) ->
     {ok, list_bill_estimate_input_usage_modifications_response(), tuple()} |
     {error, any()} |
@@ -1874,8 +1837,7 @@ list_bill_estimate_input_usage_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillEstimateInputUsageModifications">>, Input, Options).
 
-%% @doc
-%% Lists the line items associated with a bill estimate.
+%% @doc Lists the line items associated with a bill estimate.
 -spec list_bill_estimate_line_items(aws_client:aws_client(), list_bill_estimate_line_items_request()) ->
     {ok, list_bill_estimate_line_items_response(), tuple()} |
     {error, any()} |
@@ -1892,8 +1854,7 @@ list_bill_estimate_line_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillEstimateLineItems">>, Input, Options).
 
-%% @doc
-%% Lists all bill estimates for the account.
+%% @doc Lists all bill estimates for the account.
 -spec list_bill_estimates(aws_client:aws_client(), list_bill_estimates_request()) ->
     {ok, list_bill_estimates_response(), tuple()} |
     {error, any()} |
@@ -1910,8 +1871,7 @@ list_bill_estimates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillEstimates">>, Input, Options).
 
-%% @doc
-%% Lists the commitment modifications associated with a bill scenario.
+%% @doc Lists the commitment modifications associated with a bill scenario.
 -spec list_bill_scenario_commitment_modifications(aws_client:aws_client(), list_bill_scenario_commitment_modifications_request()) ->
     {ok, list_bill_scenario_commitment_modifications_response(), tuple()} |
     {error, any()} |
@@ -1928,8 +1888,7 @@ list_bill_scenario_commitment_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillScenarioCommitmentModifications">>, Input, Options).
 
-%% @doc
-%% Lists the usage modifications associated with a bill scenario.
+%% @doc Lists the usage modifications associated with a bill scenario.
 -spec list_bill_scenario_usage_modifications(aws_client:aws_client(), list_bill_scenario_usage_modifications_request()) ->
     {ok, list_bill_scenario_usage_modifications_response(), tuple()} |
     {error, any()} |
@@ -1946,8 +1905,7 @@ list_bill_scenario_usage_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillScenarioUsageModifications">>, Input, Options).
 
-%% @doc
-%% Lists all bill scenarios for the account.
+%% @doc Lists all bill scenarios for the account.
 -spec list_bill_scenarios(aws_client:aws_client(), list_bill_scenarios_request()) ->
     {ok, list_bill_scenarios_response(), tuple()} |
     {error, any()} |
@@ -1964,8 +1922,7 @@ list_bill_scenarios(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillScenarios">>, Input, Options).
 
-%% @doc
-%% Lists all tags associated with a specified resource.
+%% @doc Lists all tags associated with a specified resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1982,8 +1939,7 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc
-%% Lists the usage associated with a workload estimate.
+%% @doc Lists the usage associated with a workload estimate.
 -spec list_workload_estimate_usage(aws_client:aws_client(), list_workload_estimate_usage_request()) ->
     {ok, list_workload_estimate_usage_response(), tuple()} |
     {error, any()} |
@@ -2000,8 +1956,7 @@ list_workload_estimate_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkloadEstimateUsage">>, Input, Options).
 
-%% @doc
-%% Lists all workload estimates for the account.
+%% @doc Lists all workload estimates for the account.
 -spec list_workload_estimates(aws_client:aws_client(), list_workload_estimates_request()) ->
     {ok, list_workload_estimates_response(), tuple()} |
     {error, any()} |
@@ -2018,8 +1973,7 @@ list_workload_estimates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkloadEstimates">>, Input, Options).
 
-%% @doc
-%% Adds one or more tags to a specified resource.
+%% @doc Adds one or more tags to a specified resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -2036,8 +1990,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc
-%% Removes one or more tags from a specified resource.
+%% @doc Removes one or more tags from a specified resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -2054,8 +2007,7 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc
-%% Updates an existing bill estimate.
+%% @doc Updates an existing bill estimate.
 -spec update_bill_estimate(aws_client:aws_client(), update_bill_estimate_request()) ->
     {ok, update_bill_estimate_response(), tuple()} |
     {error, any()} |
@@ -2072,8 +2024,7 @@ update_bill_estimate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBillEstimate">>, Input, Options).
 
-%% @doc
-%% Updates an existing bill scenario.
+%% @doc Updates an existing bill scenario.
 -spec update_bill_scenario(aws_client:aws_client(), update_bill_scenario_request()) ->
     {ok, update_bill_scenario_response(), tuple()} |
     {error, any()} |
@@ -2090,8 +2041,7 @@ update_bill_scenario(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBillScenario">>, Input, Options).
 
-%% @doc
-%% Updates the preferences for Pricing Calculator.
+%% @doc Updates the preferences for Pricing Calculator.
 -spec update_preferences(aws_client:aws_client(), update_preferences_request()) ->
     {ok, update_preferences_response(), tuple()} |
     {error, any()} |
@@ -2108,8 +2058,7 @@ update_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePreferences">>, Input, Options).
 
-%% @doc
-%% Updates an existing workload estimate.
+%% @doc Updates an existing workload estimate.
 -spec update_workload_estimate(aws_client:aws_client(), update_workload_estimate_request()) ->
     {ok, update_workload_estimate_response(), tuple()} |
     {error, any()} |

@@ -337,7 +337,8 @@
 %% Example:
 %% create_event_action_request() :: #{
 %%   <<"Action">> := action(),
-%%   <<"Event">> := event()
+%%   <<"Event">> := event(),
+%%   <<"Tags">> => map()
 %% }
 -type create_event_action_request() :: #{binary() => any()}.
 
@@ -738,6 +739,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Event">> => event(),
 %%   <<"Id">> => string(),
+%%   <<"Tags">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type get_event_action_response() :: #{binary() => any()}.
@@ -1471,6 +1473,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Event">> => event(),
 %%   <<"Id">> => string(),
+%%   <<"Tags">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type create_event_action_response() :: #{binary() => any()}.

@@ -8692,6 +8692,7 @@
 %%   <<"MlflowVersion">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"TrackingServerArn">> => string(),
+%%   <<"TrackingServerMaintenanceStatus">> => list(any()),
 %%   <<"TrackingServerName">> => string(),
 %%   <<"TrackingServerSize">> => list(any()),
 %%   <<"TrackingServerStatus">> => list(any()),
