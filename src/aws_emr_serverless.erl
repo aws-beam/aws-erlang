@@ -4,12 +4,10 @@
 %% @doc Amazon EMR Serverless is a new deployment option for Amazon EMR.
 %%
 %% Amazon EMR Serverless provides a serverless runtime environment that
-%% simplifies running
-%% analytics applications using the latest open source frameworks such as
-%% Apache Spark and
-%% Apache Hive. With Amazon EMR Serverless, you don’t have to configure,
-%% optimize,
-%% secure, or operate clusters to run applications with these frameworks.
+%% simplifies running analytics applications using the latest open source
+%% frameworks such as Apache Spark and Apache Hive. With Amazon EMR
+%% Serverless, you don’t have to configure, optimize, secure, or operate
+%% clusters to run applications with these frameworks.
 %%
 %% The API reference to Amazon EMR Serverless is `emr-serverless'. The
 %% `emr-serverless' prefix is used in the following scenarios:
@@ -19,8 +17,8 @@
 %%
 %% It is the prefix before IAM policy actions for Amazon EMR Serverless. For
 %% example, `&quot;Action&quot;:
-%% [&quot;emr-serverless:StartJobRun&quot;]'. For more information,
-%% see Policy actions for Amazon EMR Serverless:
+%% [&quot;emr-serverless:StartJobRun&quot;]'. For more information, see
+%% Policy actions for Amazon EMR Serverless:
 %% https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions.
 %%
 %% It is the prefix used in Amazon EMR Serverless service endpoints. For
@@ -300,6 +298,14 @@
 
 
 %% Example:
+%% job_run_execution_iam_policy() :: #{
+%%   <<"policy">> => string(),
+%%   <<"policyArns">> => list(string()())
+%% }
+-type job_run_execution_iam_policy() :: #{binary() => any()}.
+
+
+%% Example:
 %% spark_submit() :: #{
 %%   <<"entryPoint">> => string(),
 %%   <<"entryPointArguments">> => list(string()()),
@@ -521,6 +527,7 @@
 %% start_job_run_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"executionIamPolicy">> => job_run_execution_iam_policy(),
 %%   <<"executionRoleArn">> := string(),
 %%   <<"executionTimeoutMinutes">> => float(),
 %%   <<"jobDriver">> => list(),
@@ -825,8 +832,8 @@ create_application(Client, Input0, Options0) ->
 
 %% @doc Deletes an application.
 %%
-%% An application has to be in a stopped or created state in order
-%% to be deleted.
+%% An application has to be in a stopped or created state in order to be
+%% deleted.
 -spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
@@ -898,19 +905,16 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates and returns a URL that you can use to access the application
-%% UIs for a job
-%% run.
+%% UIs for a job run.
 %%
 %% For jobs in a running state, the application UI is a live user interface
-%% such as the
-%% Spark or Tez web UI. For completed jobs, the application UI is a
-%% persistent application
-%% user interface such as the Spark History Server or persistent Tez UI.
+%% such as the Spark or Tez web UI. For completed jobs, the application UI is
+%% a persistent application user interface such as the Spark History Server
+%% or persistent Tez UI.
 %%
 %% The URL is valid for one hour after you generate it. To access the
-%% application UI
-%% after that hour elapses, you must invoke the API again to generate a new
-%% URL.
+%% application UI after that hour elapses, you must invoke the API again to
+%% generate a new URL.
 -spec get_dashboard_for_job_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_dashboard_for_job_run_response(), tuple()} |
     {error, any()} |
@@ -1233,9 +1237,8 @@ start_job_run(Client, ApplicationId, Input0, Options0) ->
 %% @doc Stops a specified application and releases initial capacity if
 %% configured.
 %%
-%% All scheduled
-%% and running jobs must be completed or cancelled before stopping an
-%% application.
+%% All scheduled and running jobs must be completed or cancelled before
+%% stopping an application.
 -spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
@@ -1271,14 +1274,12 @@ stop_application(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Assigns tags to resources.
 %%
-%% A tag is a label that you assign to an Amazon Web Services
-%% resource. Each tag consists of a key and an optional value, both of which
-%% you define. Tags
-%% enable you to categorize your Amazon Web Services resources by attributes
-%% such as purpose,
-%% owner, or environment. When you have many resources of the same type, you
-%% can quickly
-%% identify a specific resource based on the tags you've assigned to it.
+%% A tag is a label that you assign to an Amazon Web Services resource. Each
+%% tag consists of a key and an optional value, both of which you define.
+%% Tags enable you to categorize your Amazon Web Services resources by
+%% attributes such as purpose, owner, or environment. When you have many
+%% resources of the same type, you can quickly identify a specific resource
+%% based on the tags you've assigned to it.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1349,8 +1350,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates a specified application.
 %%
-%% An application has to be in a stopped or created state
-%% in order to be updated.
+%% An application has to be in a stopped or created state in order to be
+%% updated.
 -spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |

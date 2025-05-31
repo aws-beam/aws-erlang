@@ -830,6 +830,17 @@
 -type stop_inference_experiment_response() :: #{binary() => any()}.
 
 %% Example:
+%% production_variant_capacity_reservation_summary() :: #{
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"Ec2CapacityReservations">> => list(ec2_capacity_reservation()()),
+%%   <<"MlReservationArn">> => string(),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UsedByCurrentEndpoint">> => integer()
+%% }
+-type production_variant_capacity_reservation_summary() :: #{binary() => any()}.
+
+%% Example:
 %% best_objective_not_improving() :: #{
 %%   <<"MaxNumberOfTrainingJobsNotImproving">> => integer()
 %% }
@@ -1812,6 +1823,7 @@
 %%   <<"EnvironmentId">> => string(),
 %%   <<"ProjectId">> => string(),
 %%   <<"ProjectS3Path">> => string(),
+%%   <<"SingleSignOnApplicationArn">> => string(),
 %%   <<"StudioWebPortalAccess">> => list(any())
 %% }
 -type unified_studio_settings() :: #{binary() => any()}.
@@ -4149,6 +4161,7 @@
 
 %% Example:
 %% production_variant_summary() :: #{
+%%   <<"CapacityReservationConfig">> => production_variant_capacity_reservation_summary(),
 %%   <<"CurrentInstanceCount">> => integer(),
 %%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),
 %%   <<"CurrentWeight">> => float(),
@@ -5147,6 +5160,15 @@
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_capacity_reservation() :: #{
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"Ec2CapacityReservationId">> => string(),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UsedByCurrentEndpoint">> => integer()
+%% }
+-type ec2_capacity_reservation() :: #{binary() => any()}.
 
 %% Example:
 %% create_notebook_instance_lifecycle_config_input() :: #{
@@ -6269,6 +6291,7 @@
 %% Example:
 %% production_variant() :: #{
 %%   <<"AcceleratorType">> => list(any()),
+%%   <<"CapacityReservationConfig">> => production_variant_capacity_reservation_config(),
 %%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
 %%   <<"CoreDumpConfig">> => production_variant_core_dump_config(),
 %%   <<"EnableSSMAccess">> => boolean(),
@@ -11289,6 +11312,13 @@
 %%   <<"DefaultResourceSpec">> => resource_spec()
 %% }
 -type space_jupyter_lab_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_capacity_reservation_config() :: #{
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"MlReservationArn">> => string()
+%% }
+-type production_variant_capacity_reservation_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_flow_definitions_response() :: #{
