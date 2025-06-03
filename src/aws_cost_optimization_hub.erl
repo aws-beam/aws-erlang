@@ -38,6 +38,12 @@
 -type ebs_volume_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% aurora_db_cluster_storage_configuration() :: #{
+%%   <<"storageType">> => [string()]
+%% }
+-type aurora_db_cluster_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% summary_metrics_result() :: #{
 %%   <<"savingsPercentage">> => [string()]
 %% }
@@ -483,6 +489,13 @@
 %%   <<"pricing">> => savings_plans_pricing()
 %% }
 -type savings_plans_cost_calculation() :: #{binary() => any()}.
+
+%% Example:
+%% aurora_db_cluster_storage() :: #{
+%%   <<"configuration">> => aurora_db_cluster_storage_configuration(),
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type aurora_db_cluster_storage() :: #{binary() => any()}.
 
 %% Example:
 %% filter() :: #{

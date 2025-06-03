@@ -131,6 +131,7 @@
 %%   <<"currentDBInstanceClass">> => string(),
 %%   <<"currentInstancePerformanceRisk">> => list(any()),
 %%   <<"currentStorageConfiguration">> => db_storage_configuration(),
+%%   <<"currentStorageEstimatedMonthlyVolumeIOPsCostVariation">> => list(any()),
 %%   <<"dbClusterIdentifier">> => string(),
 %%   <<"effectiveRecommendationPreferences">> => rds_effective_recommendation_preferences(),
 %%   <<"engine">> => string(),
@@ -991,6 +992,7 @@
 
 %% Example:
 %% rds_db_storage_recommendation_option() :: #{
+%%   <<"estimatedMonthlyVolumeIOPsCostVariation">> => list(any()),
 %%   <<"rank">> => integer(),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
 %%   <<"savingsOpportunityAfterDiscounts">> => rds_storage_savings_opportunity_after_discounts(),
@@ -2087,8 +2089,8 @@ export_license_recommendations(Client, Input, Options)
     request(Client, <<"ExportLicenseRecommendations">>, Input, Options).
 
 %% @doc
-%% Export optimization recommendations for your Amazon Relational Database
-%% Service (Amazon RDS).
+%% Export optimization recommendations for your Amazon Aurora and Amazon
+%% Relational Database Service (Amazon RDS) databases.
 %%
 %% Recommendations are exported in a comma-separated values (CSV) file, and
 %% its metadata
@@ -2100,8 +2102,8 @@ export_license_recommendations(Client, Input, Options)
 %% in the Compute Optimizer User
 %% Guide.
 %%
-%% You can have only one Amazon RDS export job in progress per Amazon Web
-%% Services Region.
+%% You can have only one Amazon Aurora or RDS export job in progress per
+%% Amazon Web Services Region.
 -spec export_rds_database_recommendations(aws_client:aws_client(), export_rds_database_recommendations_request()) ->
     {ok, export_rds_database_recommendations_response(), tuple()} |
     {error, any()} |
@@ -2416,7 +2418,7 @@ get_license_recommendations(Client, Input, Options)
     request(Client, <<"GetLicenseRecommendations">>, Input, Options).
 
 %% @doc
-%% Returns the projected metrics of Amazon RDS recommendations.
+%% Returns the projected metrics of Aurora and RDS database recommendations.
 -spec get_rds_database_recommendation_projected_metrics(aws_client:aws_client(), get_rds_database_recommendation_projected_metrics_request()) ->
     {ok, get_rds_database_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
@@ -2434,9 +2436,10 @@ get_rds_database_recommendation_projected_metrics(Client, Input, Options)
     request(Client, <<"GetRDSDatabaseRecommendationProjectedMetrics">>, Input, Options).
 
 %% @doc
-%% Returns Amazon RDS recommendations.
+%% Returns Amazon Aurora and RDS database recommendations.
 %%
-%% Compute Optimizer generates recommendations for Amazon RDS that
+%% Compute Optimizer generates recommendations for Amazon Aurora and RDS
+%% databases that
 %% meet a specific set of requirements. For more
 %% information, see the Supported resources and
 %% requirements:
@@ -2498,7 +2501,7 @@ get_recommendation_preferences(Client, Input, Options)
 %% `Underprovisioned', `Overprovisioned', or
 %% `Optimized'.
 %%
-%% Auto Scaling groups in an account that are `NotOptimized', or
+%% EC2Auto Scaling groups in an account that are `NotOptimized', or
 %% `Optimized'.
 %%
 %% Amazon EBS volumes in an account that are `NotOptimized',
@@ -2509,6 +2512,14 @@ get_recommendation_preferences(Client, Input, Options)
 %%
 %% Amazon ECS services in an account that are `Underprovisioned',
 %% `Overprovisioned', or `Optimized'.
+%%
+%% Commercial software licenses in an account that are
+%% `InsufficientMetrics',
+%% `NotOptimized' or `Optimized'.
+%%
+%% Amazon Aurora and Amazon RDS databases in an account that are
+%% `Underprovisioned',
+%% `Overprovisioned', `Optimized', or `NotOptimized'.
 -spec get_recommendation_summaries(aws_client:aws_client(), get_recommendation_summaries_request()) ->
     {ok, get_recommendation_summaries_response(), tuple()} |
     {error, any()} |

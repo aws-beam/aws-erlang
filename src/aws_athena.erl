@@ -203,6 +203,13 @@
 -type data_catalog_summary() :: #{binary() => any()}.
 
 %% Example:
+%% managed_query_results_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionConfiguration">> => managed_query_results_encryption_configuration()
+%% }
+-type managed_query_results_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% delete_data_catalog_input() :: #{
 %%   <<"DeleteCatalogOnly">> => boolean(),
 %%   <<"Name">> := string()
@@ -800,6 +807,14 @@
 -type list_sessions_response() :: #{binary() => any()}.
 
 %% Example:
+%% managed_query_results_configuration_updates() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionConfiguration">> => managed_query_results_encryption_configuration(),
+%%   <<"RemoveEncryptionConfiguration">> => boolean()
+%% }
+-type managed_query_results_configuration_updates() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ResourceName">> => string()
@@ -955,6 +970,7 @@
 %% query_execution() :: #{
 %%   <<"EngineVersion">> => engine_version(),
 %%   <<"ExecutionParameters">> => list(string()()),
+%%   <<"ManagedQueryResultsConfiguration">> => managed_query_results_configuration(),
 %%   <<"Query">> => string(),
 %%   <<"QueryExecutionContext">> => query_execution_context(),
 %%   <<"QueryExecutionId">> => string(),
@@ -1188,6 +1204,7 @@
 %%   <<"EngineVersion">> => engine_version(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
+%%   <<"ManagedQueryResultsConfiguration">> => managed_query_results_configuration(),
 %%   <<"PublishCloudWatchMetricsEnabled">> => boolean(),
 %%   <<"QueryResultsS3AccessGrantsConfiguration">> => query_results_s3_access_grants_configuration(),
 %%   <<"RequesterPaysEnabled">> => boolean(),
@@ -1210,6 +1227,7 @@
 %%   <<"EnforceWorkGroupConfiguration">> => boolean(),
 %%   <<"EngineVersion">> => engine_version(),
 %%   <<"ExecutionRole">> => string(),
+%%   <<"ManagedQueryResultsConfigurationUpdates">> => managed_query_results_configuration_updates(),
 %%   <<"PublishCloudWatchMetricsEnabled">> => boolean(),
 %%   <<"QueryResultsS3AccessGrantsConfiguration">> => query_results_s3_access_grants_configuration(),
 %%   <<"RemoveBytesScannedCutoffPerQuery">> => boolean(),
@@ -1370,7 +1388,8 @@
 %% get_query_results_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"QueryExecutionId">> := string()
+%%   <<"QueryExecutionId">> := string(),
+%%   <<"QueryResultType">> => list(any())
 %% }
 -type get_query_results_input() :: #{binary() => any()}.
 
@@ -1526,6 +1545,12 @@
 
 %% }
 -type cancel_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% managed_query_results_encryption_configuration() :: #{
+%%   <<"KmsKey">> => string()
+%% }
+-type managed_query_results_encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_query_executions_output() :: #{

@@ -731,6 +731,7 @@
 %% Example:
 %% update_agent_alias_request() :: #{
 %%   <<"agentAliasName">> := string(),
+%%   <<"aliasInvocationState">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()())
 %% }
@@ -1917,6 +1918,7 @@
 %%   <<"agentAliasId">> => string(),
 %%   <<"agentAliasName">> => string(),
 %%   <<"agentAliasStatus">> => list(any()),
+%%   <<"aliasInvocationState">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()()),
@@ -2210,6 +2212,7 @@
 %%   <<"agentAliasName">> => string(),
 %%   <<"agentAliasStatus">> => list(any()),
 %%   <<"agentId">> => string(),
+%%   <<"aliasInvocationState">> => list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),

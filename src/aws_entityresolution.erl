@@ -4,24 +4,19 @@
 %% @doc Welcome to the Entity Resolution API Reference.
 %%
 %% Entity Resolution is an Amazon Web Services service that provides
-%% pre-configured entity
-%% resolution capabilities that enable developers and analysts at advertising
-%% and marketing
-%% companies to build an accurate and complete view of their consumers.
+%% pre-configured entity resolution capabilities that enable developers and
+%% analysts at advertising and marketing companies to build an accurate and
+%% complete view of their consumers.
 %%
 %% With Entity Resolution, you can match source records containing consumer
-%% identifiers,
-%% such as name, email address, and phone number. This is true even when
-%% these records have
-%% incomplete or conflicting identifiers. For example, Entity Resolution can
-%% effectively match
-%% a source record from a customer relationship management (CRM) system with
-%% a source record
-%% from a marketing system containing campaign information.
+%% identifiers, such as name, email address, and phone number. This is true
+%% even when these records have incomplete or conflicting identifiers. For
+%% example, Entity Resolution can effectively match a source record from a
+%% customer relationship management (CRM) system with a source record from a
+%% marketing system containing campaign information.
 %%
 %% To learn more about Entity Resolution concepts, procedures, and best
-%% practices, see the
-%% Entity Resolution User Guide:
+%% practices, see the Entity Resolution User Guide:
 %% https://docs.aws.amazon.com/entityresolution/latest/userguide/what-is-service.html.
 -module(aws_entityresolution).
 
@@ -47,6 +42,8 @@
          delete_policy_statement/5,
          delete_schema_mapping/3,
          delete_schema_mapping/4,
+         generate_match_id/3,
+         generate_match_id/4,
          get_id_mapping_job/3,
          get_id_mapping_job/5,
          get_id_mapping_job/6,
@@ -144,6 +141,15 @@
 %%   <<"ruleBasedProperties">> => id_mapping_rule_based_properties()
 %% }
 -type id_mapping_techniques() :: #{binary() => any()}.
+
+
+%% Example:
+%% record() :: #{
+%%   <<"inputSourceARN">> => [string()],
+%%   <<"recordAttributeMap">> => map(),
+%%   <<"uniqueId">> => string()
+%% }
+-type record() :: #{binary() => any()}.
 
 
 %% Example:
@@ -392,6 +398,15 @@
 
 
 %% Example:
+%% failed_record() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"inputSourceARN">> => [string()],
+%%   <<"uniqueId">> => [string()]
+%% }
+-type failed_record() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_id_namespaces_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
@@ -534,6 +549,14 @@
 %% Example:
 %% delete_id_namespace_input() :: #{}
 -type delete_id_namespace_input() :: #{}.
+
+
+%% Example:
+%% generate_match_id_input() :: #{
+%%   <<"processingType">> => list(any()),
+%%   <<"records">> := list(record()())
+%% }
+-type generate_match_id_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -724,6 +747,15 @@
 
 
 %% Example:
+%% match_group() :: #{
+%%   <<"matchId">> => [string()],
+%%   <<"matchRule">> => [string()],
+%%   <<"records">> => list(matched_record()())
+%% }
+-type match_group() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -836,6 +868,14 @@
 
 
 %% Example:
+%% generate_match_id_output() :: #{
+%%   <<"failedRecords">> => list(failed_record()()),
+%%   <<"matchGroups">> => list(match_group()())
+%% }
+-type generate_match_id_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_id_namespace_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
@@ -854,6 +894,14 @@
 %% Example:
 %% delete_policy_statement_input() :: #{}
 -type delete_policy_statement_input() :: #{}.
+
+
+%% Example:
+%% matched_record() :: #{
+%%   <<"inputSourceARN">> => [string()],
+%%   <<"recordId">> => [string()]
+%% }
+-type matched_record() :: #{binary() => any()}.
 
 %% Example:
 %% get_matching_job_input() :: #{}
@@ -1233,6 +1281,13 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type generate_match_id_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_id_mapping_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1415,8 +1470,8 @@
 
 %% @doc Adds a policy statement object.
 %%
-%% To retrieve a list of existing policy statements, use
-%% the `GetPolicy' API.
+%% To retrieve a list of existing policy statements, use the `GetPolicy'
+%% API.
 -spec add_policy_statement(aws_client:aws_client(), binary() | list(), binary() | list(), add_policy_statement_input()) ->
     {ok, add_policy_statement_output(), tuple()} |
     {error, any()} |
@@ -1488,13 +1543,10 @@ batch_delete_unique_id(Client, WorkflowName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an `IdMappingWorkflow' object which stores the
-%% configuration of the
-%% data processing job to be run.
+%% configuration of the data processing job to be run.
 %%
-%% Each `IdMappingWorkflow' must have a unique
-%% workflow name. To modify an existing workflow, use the
-%% `UpdateIdMappingWorkflow'
-%% API.
+%% Each `IdMappingWorkflow' must have a unique workflow name. To modify
+%% an existing workflow, use the `UpdateIdMappingWorkflow' API.
 -spec create_id_mapping_workflow(aws_client:aws_client(), create_id_mapping_workflow_input()) ->
     {ok, create_id_mapping_workflow_output(), tuple()} |
     {error, any()} |
@@ -1529,11 +1581,10 @@ create_id_mapping_workflow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an ID namespace object which will help customers provide
-%% metadata explaining
-%% their dataset and how to use it.
+%% metadata explaining their dataset and how to use it.
 %%
-%% Each ID namespace must have a unique name. To modify an
-%% existing ID namespace, use the `UpdateIdNamespace' API.
+%% Each ID namespace must have a unique name. To modify an existing ID
+%% namespace, use the `UpdateIdNamespace' API.
 -spec create_id_namespace(aws_client:aws_client(), create_id_namespace_input()) ->
     {ok, create_id_namespace_output(), tuple()} |
     {error, any()} |
@@ -1568,13 +1619,11 @@ create_id_namespace(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a `MatchingWorkflow' object which stores the
-%% configuration of the
-%% data processing job to be run.
+%% configuration of the data processing job to be run.
 %%
-%% It is important to note that there should not be a
-%% pre-existing `MatchingWorkflow' with the same name. To modify an
-%% existing
-%% workflow, utilize the `UpdateMatchingWorkflow' API.
+%% It is important to note that there should not be a pre-existing
+%% `MatchingWorkflow' with the same name. To modify an existing workflow,
+%% utilize the `UpdateMatchingWorkflow' API.
 -spec create_matching_workflow(aws_client:aws_client(), create_matching_workflow_input()) ->
     {ok, create_matching_workflow_output(), tuple()} |
     {error, any()} |
@@ -1612,9 +1661,8 @@ create_matching_workflow(Client, Input0, Options0) ->
 %% customer records table.
 %%
 %% The `SchemaMapping' also provides Entity Resolution with some metadata
-%% about the
-%% table, such as the attribute types of the columns and which columns to
-%% match on.
+%% about the table, such as the attribute types of the columns and which
+%% columns to match on.
 -spec create_schema_mapping(aws_client:aws_client(), create_schema_mapping_input()) ->
     {ok, create_schema_mapping_output(), tuple()} |
     {error, any()} |
@@ -1650,8 +1698,8 @@ create_schema_mapping(Client, Input0, Options0) ->
 
 %% @doc Deletes the `IdMappingWorkflow' with a given name.
 %%
-%% This operation will
-%% succeed even if a workflow with the given name does not exist.
+%% This operation will succeed even if a workflow with the given name does
+%% not exist.
 -spec delete_id_mapping_workflow(aws_client:aws_client(), binary() | list(), delete_id_mapping_workflow_input()) ->
     {ok, delete_id_mapping_workflow_output(), tuple()} |
     {error, any()} |
@@ -1721,8 +1769,8 @@ delete_id_namespace(Client, IdNamespaceName, Input0, Options0) ->
 
 %% @doc Deletes the `MatchingWorkflow' with a given name.
 %%
-%% This operation will succeed
-%% even if a workflow with the given name does not exist.
+%% This operation will succeed even if a workflow with the given name does
+%% not exist.
 -spec delete_matching_workflow(aws_client:aws_client(), binary() | list(), delete_matching_workflow_input()) ->
     {ok, delete_matching_workflow_output(), tuple()} |
     {error, any()} |
@@ -1792,11 +1840,10 @@ delete_policy_statement(Client, Arn, StatementId, Input0, Options0) ->
 
 %% @doc Deletes the `SchemaMapping' with a given name.
 %%
-%% This operation will succeed
-%% even if a schema with the given name does not exist. This operation will
-%% fail if there is a
-%% `MatchingWorkflow' object that references the `SchemaMapping' in
-%% the workflow's `InputSourceConfig'.
+%% This operation will succeed even if a schema with the given name does not
+%% exist. This operation will fail if there is a `MatchingWorkflow'
+%% object that references the `SchemaMapping' in the workflow's
+%% `InputSourceConfig'.
 -spec delete_schema_mapping(aws_client:aws_client(), binary() | list(), delete_schema_mapping_input()) ->
     {ok, delete_schema_mapping_output(), tuple()} |
     {error, any()} |
@@ -1830,9 +1877,55 @@ delete_schema_mapping(Client, SchemaName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the status, metrics, and errors (if there are any) that are
-%% associated with a
-%% job.
+%% @doc Generates or retrieves Match IDs for records using a rule-based
+%% matching workflow.
+%%
+%% When you call this operation, it processes your records against the
+%% workflow's matching rules to identify potential matches. For existing
+%% records, it retrieves their Match IDs and associated rules. For records
+%% without matches, it generates new Match IDs. The operation saves results
+%% to Amazon S3.
+%%
+%% The processing type (`processingType') you choose affects both the
+%% accuracy and response time of the operation. Additional charges apply for
+%% each API call, whether made through the Entity Resolution console or
+%% directly via the API. The rule-based matching workflow must exist and be
+%% active before calling this operation.
+-spec generate_match_id(aws_client:aws_client(), binary() | list(), generate_match_id_input()) ->
+    {ok, generate_match_id_output(), tuple()} |
+    {error, any()} |
+    {error, generate_match_id_errors(), tuple()}.
+generate_match_id(Client, WorkflowName, Input) ->
+    generate_match_id(Client, WorkflowName, Input, []).
+
+-spec generate_match_id(aws_client:aws_client(), binary() | list(), generate_match_id_input(), proplists:proplist()) ->
+    {ok, generate_match_id_output(), tuple()} |
+    {error, any()} |
+    {error, generate_match_id_errors(), tuple()}.
+generate_match_id(Client, WorkflowName, Input0, Options0) ->
+    Method = post,
+    Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), "/generateMatches"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the status, metrics, and errors (if there are any) that are
+%% associated with a job.
 -spec get_id_mapping_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_id_mapping_job_output(), tuple()} |
     {error, any()} |
@@ -1944,12 +2037,11 @@ get_id_namespace(Client, IdNamespaceName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the corresponding Match ID of a customer record if the record
-%% has been processed
-%% in a rule-based matching workflow or ML matching workflow.
+%% has been processed in a rule-based matching workflow or ML matching
+%% workflow.
 %%
 %% You can call this API as a dry run of an incremental load on the
-%% rule-based matching
-%% workflow.
+%% rule-based matching workflow.
 -spec get_match_id(aws_client:aws_client(), binary() | list(), get_match_id_input()) ->
     {ok, get_match_id_output(), tuple()} |
     {error, any()} |
@@ -1983,9 +2075,8 @@ get_match_id(Client, WorkflowName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the status, metrics, and errors (if there are any) that are
-%% associated with a
-%% job.
+%% @doc Returns the status, metrics, and errors (if there are any) that are
+%% associated with a job.
 -spec get_matching_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_matching_job_output(), tuple()} |
     {error, any()} |
@@ -2213,8 +2304,7 @@ list_id_mapping_jobs(Client, WorkflowName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `IdMappingWorkflows' that have been
-%% created for an
-%% Amazon Web Services account.
+%% created for an Amazon Web Services account.
 -spec list_id_mapping_workflows(aws_client:aws_client()) ->
     {ok, list_id_mapping_workflows_output(), tuple()} |
     {error, any()} |
@@ -2341,8 +2431,7 @@ list_matching_jobs(Client, WorkflowName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `MatchingWorkflows' that have been
-%% created for an
-%% Amazon Web Services account.
+%% created for an Amazon Web Services account.
 -spec list_matching_workflows(aws_client:aws_client()) ->
     {ok, list_matching_workflows_output(), tuple()} |
     {error, any()} |
@@ -2385,8 +2474,7 @@ list_matching_workflows(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `ProviderServices' that are available
-%% in this
-%% Amazon Web Services Region.
+%% in this Amazon Web Services Region.
 -spec list_provider_services(aws_client:aws_client()) ->
     {ok, list_provider_services_output(), tuple()} |
     {error, any()} |
@@ -2430,8 +2518,7 @@ list_provider_services(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `SchemaMappings' that have been created
-%% for an
-%% Amazon Web Services account.
+%% for an Amazon Web Services account.
 -spec list_schema_mappings(aws_client:aws_client()) ->
     {ok, list_schema_mappings_output(), tuple()} |
     {error, any()} |
@@ -2475,8 +2562,8 @@ list_schema_mappings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Displays the tags associated with an Entity Resolution resource.
 %%
-%% In Entity Resolution,
-%% `SchemaMapping', and `MatchingWorkflow' can be tagged.
+%% In Entity Resolution, `SchemaMapping', and `MatchingWorkflow' can
+%% be tagged.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
@@ -2549,8 +2636,8 @@ put_policy(Client, Arn, Input0, Options0) ->
 
 %% @doc Starts the `IdMappingJob' of a workflow.
 %%
-%% The workflow must have previously
-%% been created using the `CreateIdMappingWorkflow' endpoint.
+%% The workflow must have previously been created using the
+%% `CreateIdMappingWorkflow' endpoint.
 -spec start_id_mapping_job(aws_client:aws_client(), binary() | list(), start_id_mapping_job_input()) ->
     {ok, start_id_mapping_job_output(), tuple()} |
     {error, any()} |
@@ -2586,8 +2673,8 @@ start_id_mapping_job(Client, WorkflowName, Input0, Options0) ->
 
 %% @doc Starts the `MatchingJob' of a workflow.
 %%
-%% The workflow must have previously
-%% been created using the `CreateMatchingWorkflow' endpoint.
+%% The workflow must have previously been created using the
+%% `CreateMatchingWorkflow' endpoint.
 -spec start_matching_job(aws_client:aws_client(), binary() | list(), start_matching_job_input()) ->
     {ok, start_matching_job_output(), tuple()} |
     {error, any()} |
@@ -2625,21 +2712,16 @@ start_matching_job(Client, WorkflowName, Input0, Options0) ->
 %% Resolution resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope
-%% user permissions by granting a user permission to access or change only
-%% resources with
-%% certain tag values. In Entity Resolution, `SchemaMapping' and
-%% `MatchingWorkflow' can be tagged. Tags don't have any semantic
-%% meaning to
-%% Amazon Web Services and are interpreted strictly as strings of characters.
-%% You can use
-%% the `TagResource' action with a resource that already has tags. If you
-%% specify a
-%% new tag key, this tag is appended to the list of tags associated with the
-%% resource. If you
-%% specify a tag key that is already associated with the resource, the new
-%% tag value that you
-%% specify replaces the previous value for that tag.
+%% them to scope user permissions by granting a user permission to access or
+%% change only resources with certain tag values. In Entity Resolution,
+%% `SchemaMapping' and `MatchingWorkflow' can be tagged. Tags
+%% don't have any semantic meaning to Amazon Web Services and are
+%% interpreted strictly as strings of characters. You can use the
+%% `TagResource' action with a resource that already has tags. If you
+%% specify a new tag key, this tag is appended to the list of tags associated
+%% with the resource. If you specify a tag key that is already associated
+%% with the resource, the new tag value that you specify replaces the
+%% previous value for that tag.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
@@ -2677,8 +2759,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% resource.
 %%
 %% In Entity Resolution, `SchemaMapping', and `MatchingWorkflow' can
-%% be
-%% tagged.
+%% be tagged.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
@@ -2715,11 +2796,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an existing `IdMappingWorkflow'.
 %%
-%% This method is identical to
-%% `CreateIdMappingWorkflow', except it uses an HTTP `PUT' request
-%% instead of a `POST' request, and the `IdMappingWorkflow' must
-%% already
-%% exist for the method to succeed.
+%% This method is identical to `CreateIdMappingWorkflow', except it uses
+%% an HTTP `PUT' request instead of a `POST' request, and the
+%% `IdMappingWorkflow' must already exist for the method to succeed.
 -spec update_id_mapping_workflow(aws_client:aws_client(), binary() | list(), update_id_mapping_workflow_input()) ->
     {ok, update_id_mapping_workflow_output(), tuple()} |
     {error, any()} |
@@ -2789,11 +2868,9 @@ update_id_namespace(Client, IdNamespaceName, Input0, Options0) ->
 
 %% @doc Updates an existing `MatchingWorkflow'.
 %%
-%% This method is identical to
-%% `CreateMatchingWorkflow', except it uses an HTTP `PUT' request
-%% instead of a `POST' request, and the `MatchingWorkflow' must
-%% already
-%% exist for the method to succeed.
+%% This method is identical to `CreateMatchingWorkflow', except it uses
+%% an HTTP `PUT' request instead of a `POST' request, and the
+%% `MatchingWorkflow' must already exist for the method to succeed.
 -spec update_matching_workflow(aws_client:aws_client(), binary() | list(), update_matching_workflow_input()) ->
     {ok, update_matching_workflow_output(), tuple()} |
     {error, any()} |
@@ -2830,8 +2907,7 @@ update_matching_workflow(Client, WorkflowName, Input0, Options0) ->
 %% @doc Updates a schema mapping.
 %%
 %% A schema is immutable if it is being used by a workflow. Therefore, you
-%% can't update
-%% a schema mapping if it's associated with a workflow.
+%% can't update a schema mapping if it's associated with a workflow.
 -spec update_schema_mapping(aws_client:aws_client(), binary() | list(), update_schema_mapping_input()) ->
     {ok, update_schema_mapping_output(), tuple()} |
     {error, any()} |
