@@ -638,9 +638,12 @@
 %% }
 -type managed_persistence_monitoring_configuration() :: #{binary() => any()}.
 
+
 %% Example:
-%% cancel_job_run_request() :: #{}
--type cancel_job_run_request() :: #{}.
+%% cancel_job_run_request() :: #{
+%%   <<"shutdownGracePeriodInSeconds">> => integer()
+%% }
+-type cancel_job_run_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -791,9 +794,10 @@ cancel_job_run(Client, ApplicationId, JobRunId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"shutdownGracePeriodInSeconds">>, <<"shutdownGracePeriodInSeconds">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an application.

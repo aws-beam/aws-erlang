@@ -24,6 +24,8 @@
          create_route/4,
          create_route_response/4,
          create_route_response/5,
+         create_routing_rule/3,
+         create_routing_rule/4,
          create_stage/3,
          create_stage/4,
          create_vpc_link/2,
@@ -56,6 +58,8 @@
          delete_route_response/6,
          delete_route_settings/5,
          delete_route_settings/6,
+         delete_routing_rule/4,
+         delete_routing_rule/5,
          delete_stage/4,
          delete_stage/5,
          delete_vpc_link/3,
@@ -126,6 +130,9 @@
          get_routes/2,
          get_routes/4,
          get_routes/5,
+         get_routing_rule/3,
+         get_routing_rule/5,
+         get_routing_rule/6,
          get_stage/3,
          get_stage/5,
          get_stage/6,
@@ -143,6 +150,11 @@
          get_vpc_links/4,
          import_api/2,
          import_api/3,
+         list_routing_rules/2,
+         list_routing_rules/4,
+         list_routing_rules/5,
+         put_routing_rule/4,
+         put_routing_rule/5,
          reimport_api/3,
          reimport_api/4,
          reset_authorizers_cache/4,
@@ -277,6 +289,13 @@
 %% }
 -type tls_config_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_routing_rule_request() :: #{
+%%   <<"DomainNameId">> => string()
+%% }
+-type delete_routing_rule_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_vpc_link_response() :: #{}
 -type delete_vpc_link_response() :: #{}.
@@ -342,6 +361,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_vpc_links_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_action() :: #{
+%%   <<"InvokeApi">> => routing_rule_action_invoke_api()
+%% }
+-type routing_rule_action() :: #{binary() => any()}.
 
 %% Example:
 %% get_tags_request() :: #{}
@@ -476,6 +502,14 @@
 
 
 %% Example:
+%% list_routing_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingRules">> => list(routing_rule()())
+%% }
+-type list_routing_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_route_responses_response() :: #{
 %%   <<"Items">> => list(route_response()()),
 %%   <<"NextToken">> => string()
@@ -584,6 +618,17 @@
 
 
 %% Example:
+%% put_routing_rule_response() :: #{
+%%   <<"Actions">> => list(routing_rule_action()()),
+%%   <<"Conditions">> => list(routing_rule_condition()()),
+%%   <<"Priority">> => integer(),
+%%   <<"RoutingRuleArn">> => string(),
+%%   <<"RoutingRuleId">> => string()
+%% }
+-type put_routing_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_model_request() :: #{
 %%   <<"ContentType">> => string(),
 %%   <<"Description">> => string(),
@@ -611,6 +656,7 @@
 %%   <<"DomainName">> := string(),
 %%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
+%%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type create_domain_name_request() :: #{binary() => any()}.
@@ -661,6 +707,14 @@
 %%   <<"Description">> => string()
 %% }
 -type create_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_condition() :: #{
+%%   <<"MatchBasePaths">> => routing_rule_match_base_paths(),
+%%   <<"MatchHeaders">> => routing_rule_match_headers()
+%% }
+-type routing_rule_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -790,6 +844,16 @@
 
 
 %% Example:
+%% put_routing_rule_request() :: #{
+%%   <<"Actions">> := list(routing_rule_action()()),
+%%   <<"Conditions">> := list(routing_rule_condition()()),
+%%   <<"DomainNameId">> => string(),
+%%   <<"Priority">> := integer()
+%% }
+-type put_routing_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_authorizers_request() :: #{
 %%   <<"MaxResults">> => string(),
 %%   <<"NextToken">> => string()
@@ -890,6 +954,13 @@
 
 
 %% Example:
+%% routing_rule_match_headers() :: #{
+%%   <<"AnyOf">> => list(routing_rule_match_header_value()())
+%% }
+-type routing_rule_match_headers() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_vpc_link_response() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -975,8 +1046,10 @@
 %% update_domain_name_response() :: #{
 %%   <<"ApiMappingSelectionExpression">> => string(),
 %%   <<"DomainName">> => string(),
+%%   <<"DomainNameArn">> => string(),
 %%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type update_domain_name_response() :: #{binary() => any()}.
@@ -1127,7 +1200,8 @@
 %% Example:
 %% update_domain_name_request() :: #{
 %%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
-%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input()
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
+%%   <<"RoutingMode">> => list(any())
 %% }
 -type update_domain_name_request() :: #{binary() => any()}.
 
@@ -1144,8 +1218,10 @@
 %% domain_name() :: #{
 %%   <<"ApiMappingSelectionExpression">> => string(),
 %%   <<"DomainName">> => string(),
+%%   <<"DomainNameArn">> => string(),
 %%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type domain_name() :: #{binary() => any()}.
@@ -1366,9 +1442,27 @@
 %% }
 -type update_vpc_link_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_routing_rule_response() :: #{
+%%   <<"Actions">> => list(routing_rule_action()()),
+%%   <<"Conditions">> => list(routing_rule_condition()()),
+%%   <<"Priority">> => integer(),
+%%   <<"RoutingRuleArn">> => string(),
+%%   <<"RoutingRuleId">> => string()
+%% }
+-type create_routing_rule_response() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% get_routing_rule_request() :: #{
+%%   <<"DomainNameId">> => string()
+%% }
+-type get_routing_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_domain_name_request() :: #{}
@@ -1535,6 +1629,14 @@
 
 
 %% Example:
+%% routing_rule_match_header_value() :: #{
+%%   <<"Header">> => string(),
+%%   <<"ValueGlob">> => string()
+%% }
+-type routing_rule_match_header_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_model_response() :: #{
 %%   <<"ContentType">> => string(),
 %%   <<"Description">> => string(),
@@ -1543,6 +1645,15 @@
 %%   <<"Schema">> => string()
 %% }
 -type get_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_action_invoke_api() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"Stage">> => string(),
+%%   <<"StripBasePath">> => boolean()
+%% }
+-type routing_rule_action_invoke_api() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1578,8 +1689,10 @@
 %% create_domain_name_response() :: #{
 %%   <<"ApiMappingSelectionExpression">> => string(),
 %%   <<"DomainName">> => string(),
+%%   <<"DomainNameArn">> => string(),
 %%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type create_domain_name_response() :: #{binary() => any()}.
@@ -1665,6 +1778,16 @@
 
 
 %% Example:
+%% create_routing_rule_request() :: #{
+%%   <<"Actions">> := list(routing_rule_action()()),
+%%   <<"Conditions">> := list(routing_rule_condition()()),
+%%   <<"DomainNameId">> => string(),
+%%   <<"Priority">> := integer()
+%% }
+-type create_routing_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_apis_response() :: #{
 %%   <<"Items">> => list(api()()),
 %%   <<"NextToken">> => string()
@@ -1693,6 +1816,37 @@
 %%   <<"Schema">> => string()
 %% }
 -type model() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_rules_request() :: #{
+%%   <<"DomainNameId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routing_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule() :: #{
+%%   <<"Actions">> => list(routing_rule_action()()),
+%%   <<"Conditions">> => list(routing_rule_condition()()),
+%%   <<"Priority">> => integer(),
+%%   <<"RoutingRuleArn">> => string(),
+%%   <<"RoutingRuleId">> => string()
+%% }
+-type routing_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_routing_rule_response() :: #{
+%%   <<"Actions">> => list(routing_rule_action()()),
+%%   <<"Conditions">> => list(routing_rule_condition()()),
+%%   <<"Priority">> => integer(),
+%%   <<"RoutingRuleArn">> => string(),
+%%   <<"RoutingRuleId">> => string()
+%% }
+-type get_routing_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1730,8 +1884,10 @@
 %% get_domain_name_response() :: #{
 %%   <<"ApiMappingSelectionExpression">> => string(),
 %%   <<"DomainName">> => string(),
+%%   <<"DomainNameArn">> => string(),
 %%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type get_domain_name_response() :: #{binary() => any()}.
@@ -1785,6 +1941,13 @@
 %% Example:
 %% delete_api_request() :: #{}
 -type delete_api_request() :: #{}.
+
+
+%% Example:
+%% routing_rule_match_base_paths() :: #{
+%%   <<"AnyOf">> => list(string()())
+%% }
+-type routing_rule_match_base_paths() :: #{binary() => any()}.
 
 %% Example:
 %% get_route_request() :: #{}
@@ -1862,6 +2025,12 @@
     conflict_exception() | 
     too_many_requests_exception().
 
+-type create_routing_rule_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
 -type create_stage_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
@@ -1926,6 +2095,11 @@
     too_many_requests_exception().
 
 -type delete_route_settings_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_routing_rule_errors() ::
+    bad_request_exception() | 
     not_found_exception() | 
     too_many_requests_exception().
 
@@ -2037,6 +2211,11 @@
     not_found_exception() | 
     too_many_requests_exception().
 
+-type get_routing_rule_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
 -type get_stage_errors() ::
     not_found_exception() | 
     too_many_requests_exception().
@@ -2061,6 +2240,17 @@
     too_many_requests_exception().
 
 -type import_api_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type list_routing_rules_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_routing_rule_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
     conflict_exception() | 
@@ -2501,6 +2691,41 @@ create_route_response(Client, ApiId, RouteId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a RoutingRule
+-spec create_routing_rule(aws_client:aws_client(), binary() | list(), create_routing_rule_request()) ->
+    {ok, create_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_routing_rule_errors(), tuple()}.
+create_routing_rule(Client, DomainName, Input) ->
+    create_routing_rule(Client, DomainName, Input, []).
+
+-spec create_routing_rule(aws_client:aws_client(), binary() | list(), create_routing_rule_request(), proplists:proplist()) ->
+    {ok, create_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_routing_rule_errors(), tuple()}.
+create_routing_rule(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/routingrules"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domainNameId">>, <<"DomainNameId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Stage for an API.
@@ -3049,6 +3274,41 @@ delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a routing rule.
+-spec delete_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_routing_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_routing_rule_errors(), tuple()}.
+delete_routing_rule(Client, DomainName, RoutingRuleId, Input) ->
+    delete_routing_rule(Client, DomainName, RoutingRuleId, Input, []).
+
+-spec delete_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_routing_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_routing_rule_errors(), tuple()}.
+delete_routing_rule(Client, DomainName, RoutingRuleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/routingrules/", aws_util:encode_uri(RoutingRuleId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domainNameId">>, <<"DomainNameId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Stage.
@@ -3990,6 +4250,47 @@ get_routes(Client, ApiId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a routing rule.
+-spec get_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_routing_rule_errors(), tuple()}.
+get_routing_rule(Client, DomainName, RoutingRuleId)
+  when is_map(Client) ->
+    get_routing_rule(Client, DomainName, RoutingRuleId, #{}, #{}).
+
+-spec get_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_routing_rule_errors(), tuple()}.
+get_routing_rule(Client, DomainName, RoutingRuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_routing_rule(Client, DomainName, RoutingRuleId, QueryMap, HeadersMap, []).
+
+-spec get_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_routing_rule_errors(), tuple()}.
+get_routing_rule(Client, DomainName, RoutingRuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/routingrules/", aws_util:encode_uri(RoutingRuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"domainNameId">>, maps:get(<<"domainNameId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a Stage.
 -spec get_stage(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_stage_response(), tuple()} |
@@ -4217,6 +4518,84 @@ import_api(Client, Input0, Options0) ->
     QueryMapping = [
                      {<<"basepath">>, <<"Basepath">>},
                      {<<"failOnWarnings">>, <<"FailOnWarnings">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists routing rules.
+-spec list_routing_rules(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_routing_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_routing_rules_errors(), tuple()}.
+list_routing_rules(Client, DomainName)
+  when is_map(Client) ->
+    list_routing_rules(Client, DomainName, #{}, #{}).
+
+-spec list_routing_rules(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_routing_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_routing_rules_errors(), tuple()}.
+list_routing_rules(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_routing_rules(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_routing_rules(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_routing_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_routing_rules_errors(), tuple()}.
+list_routing_rules(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/routingrules"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"domainNameId">>, maps:get(<<"domainNameId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Updates a routing rule.
+-spec put_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), put_routing_rule_request()) ->
+    {ok, put_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, put_routing_rule_errors(), tuple()}.
+put_routing_rule(Client, DomainName, RoutingRuleId, Input) ->
+    put_routing_rule(Client, DomainName, RoutingRuleId, Input, []).
+
+-spec put_routing_rule(aws_client:aws_client(), binary() | list(), binary() | list(), put_routing_rule_request(), proplists:proplist()) ->
+    {ok, put_routing_rule_response(), tuple()} |
+    {error, any()} |
+    {error, put_routing_rule_errors(), tuple()}.
+put_routing_rule(Client, DomainName, RoutingRuleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/routingrules/", aws_util:encode_uri(RoutingRuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domainNameId">>, <<"DomainNameId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).

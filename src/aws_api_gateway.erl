@@ -763,6 +763,7 @@
 %%   <<"policy">> => string(),
 %%   <<"regionalCertificateArn">> => string(),
 %%   <<"regionalCertificateName">> => string(),
+%%   <<"routingMode">> => list(any()),
 %%   <<"securityPolicy">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -1319,6 +1320,7 @@
 %%   <<"regionalCertificateName">> => string(),
 %%   <<"regionalDomainName">> => string(),
 %%   <<"regionalHostedZoneId">> => string(),
+%%   <<"routingMode">> => list(any()),
 %%   <<"securityPolicy">> => list(any()),
 %%   <<"tags">> => map()
 %% }
