@@ -511,6 +511,7 @@
 
 %% Example:
 %% update_logging_configuration_request() :: #{
+%%   <<"EnableMonitoringDashboard">> => boolean(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
 %%   <<"LoggingConfiguration">> => logging_configuration()
@@ -1358,6 +1359,7 @@
 
 %% Example:
 %% describe_logging_configuration_response() :: #{
+%%   <<"EnableMonitoringDashboard">> => boolean(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"LoggingConfiguration">> => logging_configuration()
 %% }
@@ -1556,6 +1558,7 @@
 
 %% Example:
 %% update_logging_configuration_response() :: #{
+%%   <<"EnableMonitoringDashboard">> => boolean(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
 %%   <<"LoggingConfiguration">> => logging_configuration()

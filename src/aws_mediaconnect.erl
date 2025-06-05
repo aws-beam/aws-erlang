@@ -4,25 +4,22 @@
 %% @doc Welcome to the Elemental MediaConnect API reference.
 %%
 %% MediaConnect is a service that lets you ingest live video content into the
-%% cloud
-%% and distribute it to destinations all over the world, both inside and
-%% outside the Amazon Web Services cloud. This API reference provides
-%% descriptions, syntax, and usage examples
-%% for each of the actions and data types that are supported by MediaConnect.
+%% cloud and distribute it to destinations all over the world, both inside
+%% and outside the Amazon Web Services cloud. This API reference provides
+%% descriptions, syntax, and usage examples for each of the actions and data
+%% types that are supported by MediaConnect.
 %%
 %% Use the following links to get started with the MediaConnect API:
 %%
 %% Actions:
 %% https://docs.aws.amazon.com/mediaconnect/latest/api/API_Operations.html:
-%% An
-%% alphabetical list of all MediaConnect API operations.
+%% An alphabetical list of all MediaConnect API operations.
 %%
 %% Data types:
 %% https://docs.aws.amazon.com/mediaconnect/latest/api/API_Types.html: An
 %% alphabetical list of all MediaConnect data types.
 %%
-%% Common
-%% parameters:
+%% Common parameters:
 %% https://docs.aws.amazon.com/mediaconnect/latest/api/CommonParameters.html:
 %% Parameters that all operations can use.
 %%
@@ -1194,6 +1191,7 @@
 %%   <<"IngestPort">> => [integer()],
 %%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration()()),
 %%   <<"Name">> => [string()],
+%%   <<"PeerIpAddress">> => [string()],
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SourceArn">> => [string()],
@@ -1865,6 +1863,7 @@
 %%   <<"Name">> => [string()],
 %%   <<"OutputArn">> => [string()],
 %%   <<"OutputStatus">> => list(any()),
+%%   <<"PeerIpAddress">> => [string()],
 %%   <<"Port">> => [integer()],
 %%   <<"Transport">> => transport(),
 %%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
@@ -2867,9 +2866,8 @@ describe_bridge(Client, BridgeArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Displays the details of a flow.
 %%
-%% The response includes the flow Amazon Resource Name (ARN),
-%% name, and Availability Zone, as well as details about the source, outputs,
-%% and
+%% The response includes the flow Amazon Resource Name (ARN), name, and
+%% Availability Zone, as well as details about the source, outputs, and
 %% entitlements.
 -spec describe_flow(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_flow_response(), tuple()} |
@@ -2907,9 +2905,8 @@ describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% The `DescribeFlowSourceMetadata' API is used to view information about
-%% the flow's source transport stream and programs.
+%% @doc The `DescribeFlowSourceMetadata' API is used to view information
+%% about the flow's source transport stream and programs.
 %%
 %% This API displays status messages about the flow's source as well as
 %% details about the program's video, audio, and other data.
@@ -2949,8 +2946,7 @@ describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Describes the thumbnail for the flow source.
+%% @doc Describes the thumbnail for the flow source.
 -spec describe_flow_source_thumbnail(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_flow_source_thumbnail_response(), tuple()} |
     {error, any()} |
@@ -2989,8 +2985,8 @@ describe_flow_source_thumbnail(Client, FlowArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Displays the details of a gateway.
 %%
-%% The response includes the gateway Amazon Resource Name
-%% (ARN), name, and CIDR blocks, as well as details about the networks.
+%% The response includes the gateway Amazon Resource Name (ARN), name, and
+%% CIDR blocks, as well as details about the networks.
 -spec describe_gateway(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
@@ -3027,8 +3023,7 @@ describe_gateway(Client, GatewayArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Displays the details of an instance.
+%% @doc Displays the details of an instance.
 -spec describe_gateway_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_gateway_instance_response(), tuple()} |
     {error, any()} |
@@ -3181,8 +3176,7 @@ grant_flow_entitlements(Client, FlowArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays a list of bridges that are associated with this account and
-%% an optionally
-%% specified Amazon Resource Name (ARN).
+%% an optionally specified Amazon Resource Name (ARN).
 %%
 %% This request returns a paginated result.
 -spec list_bridges(aws_client:aws_client()) ->
@@ -3904,10 +3898,8 @@ stop_flow(Client, FlowArn, Input0, Options0) ->
 %% `resourceArn'.
 %%
 %% If existing tags on a resource are not specified in the request
-%% parameters, they are not
-%% changed. When a resource is deleted, the tags associated with that
-%% resource are deleted as
-%% well.
+%% parameters, they are not changed. When a resource is deleted, the tags
+%% associated with that resource are deleted as well.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

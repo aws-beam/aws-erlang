@@ -1,16 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% Amazon Web Services Invoice Configuration
+%% @doc Amazon Web Services Invoice Configuration
 %%
 %% You can use Amazon Web Services Invoice Configuration APIs to
-%% programmatically create,
-%% update, delete, get, and list invoice units.
+%% programmatically create, update, delete, get, and list invoice units.
 %%
-%% You can also programmatically fetch the
-%% information of the invoice receiver. For example, business legal name,
-%% address, and invoicing
+%% You can also programmatically fetch the information of the invoice
+%% receiver. For example, business legal name, address, and invoicing
 %% contacts.
 %%
 %% You can use Amazon Web Services Invoice Configuration to receive separate
@@ -40,6 +37,8 @@
          delete_invoice_unit/3,
          get_invoice_unit/2,
          get_invoice_unit/3,
+         list_invoice_summaries/2,
+         list_invoice_summaries/3,
          list_invoice_units/2,
          list_invoice_units/3,
          list_tags_for_resource/2,
@@ -55,67 +54,17 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourceTags">> := list(resource_tag()())
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_invoice_profile_request() :: #{
-%%   <<"AccountIds">> := list(string()())
-%% }
--type batch_get_invoice_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_invoice_profile_response() :: #{
-%%   <<"Profiles">> => list(invoice_profile()())
-%% }
--type batch_get_invoice_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_invoice_unit_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InvoiceReceiver">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"ResourceTags">> => list(resource_tag()()),
-%%   <<"Rule">> := invoice_unit_rule(),
-%%   <<"TaxInheritanceDisabled">> => boolean()
-%% }
--type create_invoice_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_invoice_unit_response() :: #{
-%%   <<"InvoiceUnitArn">> => string()
-%% }
--type create_invoice_unit_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_invoice_unit_request() :: #{
-%%   <<"InvoiceUnitArn">> := string()
-%% }
--type delete_invoice_unit_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_invoice_unit_response() :: #{
 %%   <<"InvoiceUnitArn">> => string()
 %% }
 -type delete_invoice_unit_response() :: #{binary() => any()}.
-
-%% Example:
-%% filters() :: #{
-%%   <<"Accounts">> => list(string()()),
-%%   <<"InvoiceReceivers">> => list(string()()),
-%%   <<"Names">> => list(string()())
-%% }
--type filters() :: #{binary() => any()}.
-
-%% Example:
-%% get_invoice_unit_request() :: #{
-%%   <<"AsOf">> => non_neg_integer(),
-%%   <<"InvoiceUnitArn">> := string()
-%% }
--type get_invoice_unit_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_invoice_unit_response() :: #{
@@ -130,11 +79,39 @@
 -type get_invoice_unit_response() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => [integer()]
+%% untag_resource_response() :: #{
+
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"InvoicingEntity">> => string()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% discounts_breakdown_amount() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Rate">> => string()
+%% }
+-type discounts_breakdown_amount() :: #{binary() => any()}.
+
+%% Example:
+%% date_interval() :: #{
+%%   <<"EndDate">> => [non_neg_integer()],
+%%   <<"StartDate">> => [non_neg_integer()]
+%% }
+-type date_interval() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_summaries_filter() :: #{
+%%   <<"BillingPeriod">> => billing_period(),
+%%   <<"InvoicingEntity">> => string(),
+%%   <<"TimeInterval">> => date_interval()
+%% }
+-type invoice_summaries_filter() :: #{binary() => any()}.
 
 %% Example:
 %% invoice_profile() :: #{
@@ -148,50 +125,17 @@
 -type invoice_profile() :: #{binary() => any()}.
 
 %% Example:
-%% invoice_unit() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InvoiceReceiver">> => string(),
-%%   <<"InvoiceUnitArn">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Rule">> => invoice_unit_rule(),
-%%   <<"TaxInheritanceDisabled">> => boolean()
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourceTagKeys">> := list(string()())
 %% }
--type invoice_unit() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% invoice_unit_rule() :: #{
-%%   <<"LinkedAccounts">> => list(string()())
+%% update_invoice_unit_response() :: #{
+%%   <<"InvoiceUnitArn">> => string()
 %% }
--type invoice_unit_rule() :: #{binary() => any()}.
-
-%% Example:
-%% list_invoice_units_request() :: #{
-%%   <<"AsOf">> => non_neg_integer(),
-%%   <<"Filters">> => filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_invoice_units_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_invoice_units_response() :: #{
-%%   <<"InvoiceUnits">> => list(invoice_unit()()),
-%%   <<"NextToken">> => string()
-%% }
--type list_invoice_units_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"ResourceTags">> => list(resource_tag()())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type update_invoice_unit_response() :: #{binary() => any()}.
 
 %% Example:
 %% receiver_address() :: #{
@@ -208,11 +152,130 @@
 -type receiver_address() :: #{binary() => any()}.
 
 %% Example:
+%% list_invoice_units_response() :: #{
+%%   <<"InvoiceUnits">> => list(invoice_unit()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invoice_units_response() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceName">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_invoice_unit_request() :: #{
+%%   <<"InvoiceUnitArn">> := string()
+%% }
+-type delete_invoice_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% taxes_breakdown_amount() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Rate">> => string()
+%% }
+-type taxes_breakdown_amount() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BaseCurrencyAmount">> => invoice_currency_amount(),
+%%   <<"BillingPeriod">> => billing_period(),
+%%   <<"DueDate">> => [non_neg_integer()],
+%%   <<"Entity">> => entity(),
+%%   <<"InvoiceId">> => string(),
+%%   <<"InvoiceType">> => list(any()),
+%%   <<"IssuedDate">> => [non_neg_integer()],
+%%   <<"OriginalInvoiceId">> => string(),
+%%   <<"PaymentCurrencyAmount">> => invoice_currency_amount(),
+%%   <<"PurchaseOrderNumber">> => string(),
+%%   <<"TaxCurrencyAmount">> => invoice_currency_amount()
+%% }
+-type invoice_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceTags">> => list(resource_tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% currency_exchange_details() :: #{
+%%   <<"Rate">> => string(),
+%%   <<"SourceCurrencyCode">> => string(),
+%%   <<"TargetCurrencyCode">> => string()
+%% }
+-type currency_exchange_details() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_invoice_profile_request() :: #{
+%%   <<"AccountIds">> := list(string()())
+%% }
+-type batch_get_invoice_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_currency_amount() :: #{
+%%   <<"AmountBreakdown">> => amount_breakdown(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"CurrencyExchangeDetails">> => currency_exchange_details(),
+%%   <<"TotalAmount">> => string(),
+%%   <<"TotalAmountBeforeTax">> => string()
+%% }
+-type invoice_currency_amount() :: #{binary() => any()}.
+
+%% Example:
+%% discounts_breakdown() :: #{
+%%   <<"Breakdown">> => list(discounts_breakdown_amount()()),
+%%   <<"TotalAmount">> => string()
+%% }
+-type discounts_breakdown() :: #{binary() => any()}.
+
+%% Example:
+%% billing_period() :: #{
+%%   <<"Month">> => integer(),
+%%   <<"Year">> => integer()
+%% }
+-type billing_period() :: #{binary() => any()}.
+
+%% Example:
+%% fees_breakdown_amount() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Rate">> => string()
+%% }
+-type fees_breakdown_amount() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_invoice_units_request() :: #{
+%%   <<"AsOf">> => non_neg_integer(),
+%%   <<"Filters">> => filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invoice_units_request() :: #{binary() => any()}.
 
 %% Example:
 %% resource_tag() :: #{
@@ -222,17 +285,11 @@
 -type resource_tag() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTags">> := list(resource_tag()())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -241,38 +298,23 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
+%% invoice_unit_rule() :: #{
+%%   <<"LinkedAccounts">> => list(string()())
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type invoice_unit_rule() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTagKeys">> := list(string()())
+%% batch_get_invoice_profile_response() :: #{
+%%   <<"Profiles">> => list(invoice_profile()())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type batch_get_invoice_profile_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% invoice_summaries_selector() :: #{
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_invoice_unit_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InvoiceUnitArn">> := string(),
-%%   <<"Rule">> => invoice_unit_rule(),
-%%   <<"TaxInheritanceDisabled">> => boolean()
-%% }
--type update_invoice_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_invoice_unit_response() :: #{
-%%   <<"InvoiceUnitArn">> => string()
-%% }
--type update_invoice_unit_response() :: #{binary() => any()}.
+-type invoice_summaries_selector() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -284,73 +326,177 @@
 -type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_invoice_unit_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InvoiceReceiver">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"Rule">> := invoice_unit_rule(),
+%%   <<"TaxInheritanceDisabled">> => boolean()
+%% }
+-type create_invoice_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_invoice_unit_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InvoiceUnitArn">> := string(),
+%%   <<"Rule">> => invoice_unit_rule(),
+%%   <<"TaxInheritanceDisabled">> => boolean()
+%% }
+-type update_invoice_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% amount_breakdown() :: #{
+%%   <<"Discounts">> => discounts_breakdown(),
+%%   <<"Fees">> => fees_breakdown(),
+%%   <<"SubTotalAmount">> => string(),
+%%   <<"Taxes">> => taxes_breakdown()
+%% }
+-type amount_breakdown() :: #{binary() => any()}.
+
+%% Example:
+%% filters() :: #{
+%%   <<"Accounts">> => list(string()()),
+%%   <<"InvoiceReceivers">> => list(string()()),
+%%   <<"Names">> => list(string()())
+%% }
+-type filters() :: #{binary() => any()}.
+
+%% Example:
+%% list_invoice_summaries_response() :: #{
+%%   <<"InvoiceSummaries">> => list(invoice_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invoice_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_invoice_unit_response() :: #{
+%%   <<"InvoiceUnitArn">> => string()
+%% }
+-type create_invoice_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% fees_breakdown() :: #{
+%%   <<"Breakdown">> => list(fees_breakdown_amount()()),
+%%   <<"TotalAmount">> => string()
+%% }
+-type fees_breakdown() :: #{binary() => any()}.
+
+%% Example:
+%% get_invoice_unit_request() :: #{
+%%   <<"AsOf">> => non_neg_integer(),
+%%   <<"InvoiceUnitArn">> := string()
+%% }
+-type get_invoice_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_unit() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InvoiceReceiver">> => string(),
+%%   <<"InvoiceUnitArn">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Rule">> => invoice_unit_rule(),
+%%   <<"TaxInheritanceDisabled">> => boolean()
+%% }
+-type invoice_unit() :: #{binary() => any()}.
+
+%% Example:
+%% list_invoice_summaries_request() :: #{
+%%   <<"Filter">> => invoice_summaries_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Selector">> := invoice_summaries_selector()
+%% }
+-type list_invoice_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% taxes_breakdown() :: #{
+%%   <<"Breakdown">> => list(taxes_breakdown_amount()()),
+%%   <<"TotalAmount">> => string()
+%% }
+-type taxes_breakdown() :: #{binary() => any()}.
 
 -type batch_get_invoice_profile_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type create_invoice_unit_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    access_denied_exception().
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type delete_invoice_unit_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type get_invoice_unit_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
+
+-type list_invoice_summaries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_invoice_units_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    access_denied_exception().
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type tag_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 -type untag_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type update_invoice_unit_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -427,6 +573,24 @@ get_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInvoiceUnit">>, Input, Options).
 
+%% @doc Retrieves your invoice details programmatically, without line item
+%% details.
+-spec list_invoice_summaries(aws_client:aws_client(), list_invoice_summaries_request()) ->
+    {ok, list_invoice_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_invoice_summaries_errors(), tuple()}.
+list_invoice_summaries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_invoice_summaries(Client, Input, []).
+
+-spec list_invoice_summaries(aws_client:aws_client(), list_invoice_summaries_request(), proplists:proplist()) ->
+    {ok, list_invoice_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_invoice_summaries_errors(), tuple()}.
+list_invoice_summaries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInvoiceSummaries">>, Input, Options).
+
 %% @doc This fetches a list of all invoice unit definitions for a given
 %% account, as of the provided `AsOf' date.
 -spec list_invoice_units(aws_client:aws_client(), list_invoice_units_request()) ->
@@ -479,8 +643,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc
-%% Removes a tag from a resource.
+%% @doc Removes a tag from a resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

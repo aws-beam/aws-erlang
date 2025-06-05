@@ -127,11 +127,14 @@
 %% Example:
 %% mp4_settings() :: #{
 %%   <<"AudioDuration">> => list(any()),
+%%   <<"C2paManifest">> => list(any()),
+%%   <<"CertificateSecret">> => string(),
 %%   <<"CslgAtom">> => list(any()),
 %%   <<"CttsVersion">> => integer(),
 %%   <<"FreeSpaceBox">> => list(any()),
 %%   <<"MoovPlacement">> => list(any()),
-%%   <<"Mp4MajorBrand">> => string()
+%%   <<"Mp4MajorBrand">> => string(),
+%%   <<"SigningKmsKey">> => string()
 %% }
 -type mp4_settings() :: #{binary() => any()}.
 
