@@ -415,7 +415,8 @@
 %% encrypt_response() :: #{
 %%   <<"CiphertextBlob">> => binary(),
 %%   <<"EncryptionAlgorithm">> => list(any()),
-%%   <<"KeyId">> => string()
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string()
 %% }
 -type encrypt_response() :: #{binary() => any()}.
 
@@ -458,6 +459,13 @@
 %%   <<"KeyId">> := string()
 %% }
 -type revoke_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_imported_key_material_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string()
+%% }
+-type delete_imported_key_material_response() :: #{binary() => any()}.
 
 %% Example:
 %% encrypt_request() :: #{
@@ -668,6 +676,7 @@
 %% generate_data_key_pair_response() :: #{
 %%   <<"CiphertextForRecipient">> => binary(),
 %%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string(),
 %%   <<"KeyPairSpec">> => list(any()),
 %%   <<"PrivateKeyCiphertextBlob">> => binary(),
 %%   <<"PrivateKeyPlaintext">> => binary(),
@@ -783,7 +792,10 @@
 %%   <<"EncryptedKeyMaterial">> := binary(),
 %%   <<"ExpirationModel">> => list(any()),
 %%   <<"ImportToken">> := binary(),
+%%   <<"ImportType">> => list(any()),
 %%   <<"KeyId">> := string(),
+%%   <<"KeyMaterialDescription">> => string(),
+%%   <<"KeyMaterialId">> => string(),
 %%   <<"ValidTo">> => non_neg_integer()
 %% }
 -type import_key_material_request() :: #{binary() => any()}.
@@ -797,7 +809,8 @@
 %% Example:
 %% generate_data_key_without_plaintext_response() :: #{
 %%   <<"CiphertextBlob">> => binary(),
-%%   <<"KeyId">> => string()
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string()
 %% }
 -type generate_data_key_without_plaintext_response() :: #{binary() => any()}.
 
@@ -830,6 +843,7 @@
 %% Example:
 %% generate_data_key_pair_without_plaintext_response() :: #{
 %%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string(),
 %%   <<"KeyPairSpec">> => list(any()),
 %%   <<"PrivateKeyCiphertextBlob">> => binary(),
 %%   <<"PublicKey">> => binary()
@@ -844,6 +858,7 @@
 
 %% Example:
 %% list_key_rotations_request() :: #{
+%%   <<"IncludeKeyMaterial">> => list(any()),
 %%   <<"KeyId">> := string(),
 %%   <<"Limit">> => integer(),
 %%   <<"Marker">> => string()
@@ -877,6 +892,7 @@
 %%   <<"CiphertextBlob">> => binary(),
 %%   <<"CiphertextForRecipient">> => binary(),
 %%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string(),
 %%   <<"Plaintext">> => binary()
 %% }
 -type generate_data_key_response() :: #{binary() => any()}.
@@ -889,7 +905,8 @@
 
 %% Example:
 %% import_key_material_response() :: #{
-
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string()
 %% }
 -type import_key_material_response() :: #{binary() => any()}.
 
@@ -971,6 +988,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CloudHsmClusterId">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CurrentKeyMaterialId">> => string(),
 %%   <<"CustomKeyStoreId">> => string(),
 %%   <<"CustomerMasterKeySpec">> => list(any()),
 %%   <<"DeletionDate">> => non_neg_integer(),
@@ -1166,9 +1184,11 @@
 %% re_encrypt_response() :: #{
 %%   <<"CiphertextBlob">> => binary(),
 %%   <<"DestinationEncryptionAlgorithm">> => list(any()),
+%%   <<"DestinationKeyMaterialId">> => string(),
 %%   <<"KeyId">> => string(),
 %%   <<"SourceEncryptionAlgorithm">> => list(any()),
-%%   <<"SourceKeyId">> => string()
+%%   <<"SourceKeyId">> => string(),
+%%   <<"SourceKeyMaterialId">> => string()
 %% }
 -type re_encrypt_response() :: #{binary() => any()}.
 
@@ -1226,7 +1246,8 @@
 
 %% Example:
 %% delete_imported_key_material_request() :: #{
-%%   <<"KeyId">> := string()
+%%   <<"KeyId">> := string(),
+%%   <<"KeyMaterialId">> => string()
 %% }
 -type delete_imported_key_material_request() :: #{binary() => any()}.
 
@@ -1290,6 +1311,7 @@
 %%   <<"CiphertextForRecipient">> => binary(),
 %%   <<"EncryptionAlgorithm">> => list(any()),
 %%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string(),
 %%   <<"Plaintext">> => binary()
 %% }
 -type decrypt_response() :: #{binary() => any()}.
@@ -1314,9 +1336,15 @@
 
 %% Example:
 %% rotations_list_entry() :: #{
+%%   <<"ExpirationModel">> => list(any()),
+%%   <<"ImportState">> => list(any()),
 %%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialDescription">> => string(),
+%%   <<"KeyMaterialId">> => string(),
+%%   <<"KeyMaterialState">> => list(any()),
 %%   <<"RotationDate">> => non_neg_integer(),
-%%   <<"RotationType">> => list(any())
+%%   <<"RotationType">> => list(any()),
+%%   <<"ValidTo">> => non_neg_integer()
 %% }
 -type rotations_list_entry() :: #{binary() => any()}.
 
@@ -1942,7 +1970,7 @@
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec cancel_key_deletion(aws_client:aws_client(), cancel_key_deletion_request()) ->
     {ok, cancel_key_deletion_response(), tuple()} |
     {error, any()} |
@@ -1960,7 +1988,7 @@ cancel_key_deletion(Client, Input, Options)
     request(Client, <<"CancelKeyDeletion">>, Input, Options).
 
 %% @doc Connects or reconnects a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html
 %% to its backing key store.
 %%
 %% For an CloudHSM key
@@ -1988,9 +2016,7 @@ cancel_key_deletion(Client, Input, Options)
 %% is connected. To get the connection state of the custom key store, use the
 %% `DescribeCustomKeyStores' operation.
 %%
-%% This operation is part of the custom key stores:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
-%% feature in KMS, which
+%% This operation is part of the custom key stores feature in KMS, which
 %% combines the convenience and extensive integration of KMS with the
 %% isolation and control of a
 %% key store that you own and manage.
@@ -2027,7 +2053,7 @@ cancel_key_deletion(Client, Input, Options)
 %% operation. Also, the
 %% `kmsuser' crypto
 %% user:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser
+%% https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html#concept-kmsuser
 %% (CU) must not be logged into the cluster. This prevents KMS from using
 %% this
 %% account to log in.
@@ -2090,7 +2116,7 @@ cancel_key_deletion(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec connect_custom_key_store(aws_client:aws_client(), connect_custom_key_store_request()) ->
     {ok, connect_custom_key_store_response(), tuple()} |
     {error, any()} |
@@ -2116,7 +2142,7 @@ connect_custom_key_store(Client, Input, Options)
 %%
 %% You can use an alias to identify a KMS key in the KMS console, in the
 %% `DescribeKey' operation and in cryptographic operations:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations,
 %% such as `Encrypt' and
 %% `GenerateDataKey'. You can also change the KMS key that's
 %% associated with
@@ -2133,7 +2159,7 @@ connect_custom_key_store(Client, Input, Options)
 %% The alias must be unique in the account and Region, but you can have
 %% aliases with the same
 %% name in different Regions. For detailed information about aliases, see
-%% Using aliases:
+%% Aliases in KMS:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html in
 %% the
 %% Key Management Service Developer Guide.
@@ -2164,9 +2190,8 @@ connect_custom_key_store(Client, Input, Options)
 %% the KMS key (key policy).
 %%
 %% For details, see Controlling access to aliases:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access
-%% in the
-%% Key Management Service Developer Guide.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/alias-access.html in
+%% the Key Management Service Developer Guide.
 %%
 %% Related operations:
 %%
@@ -2178,7 +2203,7 @@ connect_custom_key_store(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec create_alias(aws_client:aws_client(), create_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2196,7 +2221,7 @@ create_alias(Client, Input, Options)
     request(Client, <<"CreateAlias">>, Input, Options).
 
 %% @doc Creates a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html
 %% backed by a key store that you own and manage.
 %%
 %% When you use a
@@ -2213,9 +2238,7 @@ create_alias(Client, Input, Options)
 %% backed by an external key store proxy and external key manager outside of
 %% Amazon Web Services.
 %%
-%% This operation is part of the custom key stores:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
-%% feature in KMS, which
+%% This operation is part of the custom key stores feature in KMS, which
 %% combines the convenience and extensive integration of KMS with the
 %% isolation and control of a
 %% key store that you own and manage.
@@ -2289,11 +2312,6 @@ create_alias(Client, Input, Options)
 %% disconnect it until
 %% you are ready to use it.
 %%
-%% For help with failures, see Troubleshooting a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html in
-%% the
-%% Key Management Service Developer Guide.
-%%
 %% Cross-account use: No. You cannot perform this operation on a custom key
 %% store in a different Amazon Web Services account.
 %%
@@ -2315,7 +2333,7 @@ create_alias(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec create_custom_key_store(aws_client:aws_client(), create_custom_key_store_request()) ->
     {ok, create_custom_key_store_response(), tuple()} |
     {error, any()} |
@@ -2350,9 +2368,10 @@ create_custom_key_store(Client, Input, Options)
 %% https://docs.aws.amazon.com/kms/latest/developerguide/grants.html in the
 %%
 %% Key Management Service Developer Guide
-%% . For examples of working with grants in several
-%% programming languages, see Programming grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html.
+%% . For examples of creating grants in several
+%% programming languages, see Use CreateGrant with an Amazon Web Services SDK
+%% or CLI:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/example_kms_CreateGrant_section.html.
 %%
 %% The `CreateGrant' operation returns a `GrantToken' and a
 %% `GrantId'.
@@ -2366,8 +2385,9 @@ create_custom_key_store(Client, Input, Options)
 %%
 %% However, to use the permissions in the grant immediately, use the
 %% `GrantToken' that `CreateGrant' returns. For details, see Using a
-%% grant token:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token
+%% grant
+%% token:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html
 %% in the
 %% Key Management Service Developer Guide
 %% .
@@ -2404,7 +2424,7 @@ create_custom_key_store(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec create_grant(aws_client:aws_client(), create_grant_request()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
@@ -2435,11 +2455,7 @@ create_grant(Client, Input, Options)
 %% to the key
 %% material used in cryptographic operations, a KMS key includes metadata,
 %% such as the key ID,
-%% key policy, creation date, description, and key state. For details, see
-%% Managing keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html
-%% in the
-%% Key Management Service Developer Guide
+%% key policy, creation date, description, and key state.
 %%
 %% Use the parameters of `CreateKey' to specify the type of KMS key, the
 %% source of
@@ -2494,17 +2510,20 @@ create_grant(Client, Input, Options)
 %% key never leaves
 %% KMS unencrypted. However, you can use the `GetPublicKey' operation to
 %% download the public key so it can be used outside of KMS. Each KMS key can
-%% have only one key usage. KMS keys with RSA key
-%% pairs can be used to encrypt and decrypt data or sign and verify messages
-%% (but not both).
-%% KMS keys with NIST-recommended ECC key pairs can be used to sign and
-%% verify messages or
-%% derive shared secrets (but not both). KMS keys with `ECC_SECG_P256K1'
-%% can be used only to sign and verify messages. KMS keys with SM2 key pairs
-%% (China Regions only)
-%% can be used to either encrypt and decrypt data, sign and verify messages,
-%% or derive shared secrets (you must choose one key usage type). For
-%% information about asymmetric KMS keys, see Asymmetric KMS keys:
+%% have only
+%% one key usage. KMS keys with RSA key pairs can be used to encrypt and
+%% decrypt data or
+%% sign and verify messages (but not both). KMS keys with NIST-recommended
+%% ECC key pairs
+%% can be used to sign and verify messages or derive shared secrets (but not
+%% both). KMS
+%% keys with `ECC_SECG_P256K1' can be used only to sign and verify
+%% messages. KMS
+%% keys with SM2 key pairs (China Regions only) can be used to either encrypt
+%% and decrypt
+%% data, sign and verify messages, or derive shared secrets (you must choose
+%% one key usage
+%% type). For information about asymmetric KMS keys, see Asymmetric KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html
 %% in the
 %% Key Management Service Developer Guide.
@@ -2585,9 +2604,9 @@ create_grant(Client, Input, Options)
 %% `EXTERNAL' and the `MultiRegion' parameter with a value of
 %% `True'. To create replicas of the multi-Region primary key, use the
 %% `ReplicateKey' operation. For instructions, see Importing key material
-%% into
-%% multi-Region keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-import.html
+%% step
+%% 1:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-create-cmk.html
 %% . For more information about multi-Region keys, see Multi-Region keys in
 %% KMS:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
@@ -2596,7 +2615,7 @@ create_grant(Client, Input, Options)
 %% Custom key store
 %%
 %% A custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html
 %% lets you protect your Amazon Web Services resources using keys in a
 %% backing key
 %% store that you own and manage. When you request a cryptographic operation
@@ -2637,7 +2656,7 @@ create_grant(Client, Input, Options)
 %% encryption key. No other key type is supported in a custom key store.
 %%
 %% To create a KMS key in an CloudHSM key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/create-cmk-keystore.html,
 %% use the
 %% `Origin' parameter with a value of `AWS_CLOUDHSM'. The CloudHSM
 %% cluster that is associated with the custom key store must have at least
@@ -2645,7 +2664,7 @@ create_grant(Client, Input, Options)
 %% in different Availability Zones in the Amazon Web Services Region.
 %%
 %% To create a KMS key in an external key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keys.html,
 %% use the
 %% `Origin' parameter with a value of `EXTERNAL_KEY_STORE' and an
 %% `XksKeyId' parameter that identifies an existing external key.
@@ -2664,9 +2683,9 @@ create_grant(Client, Input, Options)
 %% `Tags' parameter, kms:TagResource:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html
 %% (IAM policy). For examples and information about related
-%% permissions, see Allow a user to create
-%% KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policy-example-create-key
+%% permissions, see Allow a user
+%% to create KMS keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/customer-managed-policies.html#iam-policy-example-create-key
 %% in the Key Management Service Developer Guide.
 %%
 %% Related operations:
@@ -2679,7 +2698,7 @@ create_grant(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec create_key(aws_client:aws_client(), create_key_request()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
@@ -2750,9 +2769,9 @@ create_key(Client, Input, Options)
 %% you intend.
 %%
 %% Whenever possible, use key policies to give users permission to call the
-%% `Decrypt' operation on a particular KMS key, instead of using
-%% &amp;IAM; policies.
-%% Otherwise, you might create an &amp;IAM; policy that gives the user
+%% `Decrypt' operation on a particular KMS key, instead of using IAM
+%% policies.
+%% Otherwise, you might create an IAM policy that gives the user
 %% `Decrypt'
 %% permission on all KMS keys. This user could decrypt ciphertext that was
 %% encrypted by KMS keys
@@ -2810,7 +2829,7 @@ create_key(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec decrypt(aws_client:aws_client(), decrypt_request()) ->
     {ok, decrypt_response(), tuple()} |
     {error, any()} |
@@ -2876,7 +2895,7 @@ decrypt(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec delete_alias(aws_client:aws_client(), delete_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2894,7 +2913,7 @@ delete_alias(Client, Input, Options)
     request(Client, <<"DeleteAlias">>, Input, Options).
 
 %% @doc Deletes a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html.
 %%
 %% This operation does not affect any backing elements of the
 %% custom key store. It does not delete the CloudHSM cluster that is
@@ -2904,9 +2923,7 @@ delete_alias(Client, Input, Options)
 %% affect the external key store proxy, external key manager, or any external
 %% keys.
 %%
-%% This operation is part of the custom key stores:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
-%% feature in KMS, which
+%% This operation is part of the custom key stores feature in KMS, which
 %% combines the convenience and extensive integration of KMS with the
 %% isolation and control of a
 %% key store that you own and manage.
@@ -2917,7 +2934,7 @@ delete_alias(Client, Input, Options)
 %% verify that you will never need to use any of the KMS keys in the key
 %% store for any
 %% cryptographic operations:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations.
 %% Then, use `ScheduleKeyDeletion' to delete the KMS keys from the
 %% key store. After the required waiting period expires and all KMS keys are
 %% deleted from the
@@ -2970,7 +2987,7 @@ delete_alias(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec delete_custom_key_store(aws_client:aws_client(), delete_custom_key_store_request()) ->
     {ok, delete_custom_key_store_response(), tuple()} |
     {error, any()} |
@@ -3020,13 +3037,15 @@ delete_custom_key_store(Client, Input, Options)
 %%
 %% `GetParametersForImport'
 %%
+%% `ListKeyRotations'
+%%
 %% `ImportKeyMaterial'
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec delete_imported_key_material(aws_client:aws_client(), delete_imported_key_material_request()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_imported_key_material_response(), tuple()} |
     {error, any()} |
     {error, delete_imported_key_material_errors(), tuple()}.
 delete_imported_key_material(Client, Input)
@@ -3034,7 +3053,7 @@ delete_imported_key_material(Client, Input)
     delete_imported_key_material(Client, Input, []).
 
 -spec delete_imported_key_material(aws_client:aws_client(), delete_imported_key_material_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_imported_key_material_response(), tuple()} |
     {error, any()} |
     {error, delete_imported_key_material_errors(), tuple()}.
 delete_imported_key_material(Client, Input, Options)
@@ -3044,73 +3063,81 @@ delete_imported_key_material(Client, Input, Options)
 %% @doc Derives a shared secret using a key agreement algorithm.
 %%
 %% You must use an asymmetric NIST-recommended elliptic curve (ECC) or SM2
-%% (China Regions only)
-%% KMS key pair with a `KeyUsage' value of `KEY_AGREEMENT' to call
+%% (China Regions
+%% only) KMS key pair with a `KeyUsage' value of `KEY_AGREEMENT' to
+%% call
 %% DeriveSharedSecret.
 %%
 %% DeriveSharedSecret uses the Elliptic Curve Cryptography Cofactor
 %% Diffie-Hellman Primitive:
 %% https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-56Ar3.pdf#page=60
-%% (ECDH) to
-%% establish a key agreement between two peers by deriving a shared secret
-%% from their elliptic curve
+%% (ECDH) to establish a
+%% key agreement between two peers by deriving a shared secret from their
+%% elliptic curve
 %% public-private key pairs. You can use the raw shared secret that
-%% DeriveSharedSecret returns to derive
-%% a symmetric key that can encrypt and decrypt data that is sent between the
-%% two peers, or that can
-%% generate and verify HMACs. KMS recommends that you follow NIST
+%% DeriveSharedSecret returns to
+%% derive a symmetric key that can encrypt and decrypt data that is sent
+%% between the two peers,
+%% or that can generate and verify HMACs. KMS recommends that you follow NIST
 %% recommendations for key derivation:
 %% https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-56Cr2.pdf
 %% when using the raw shared secret to derive a
 %% symmetric key.
 %%
 %% The following workflow demonstrates how to establish key agreement over an
-%% insecure communication
-%% channel using DeriveSharedSecret.
+%% insecure
+%% communication channel using DeriveSharedSecret.
 %%
-%% Alice calls `CreateKey' to create an asymmetric
-%% KMS key pair with a `KeyUsage' value of `KEY_AGREEMENT'.
+%% Alice calls `CreateKey' to create an
+%% asymmetric KMS key pair with a `KeyUsage' value of
+%% `KEY_AGREEMENT'.
 %%
 %% The asymmetric KMS key must use a NIST-recommended elliptic curve (ECC) or
-%% SM2 (China Regions only) key spec.
+%% SM2 (China
+%% Regions only) key spec.
 %%
 %% Bob creates an elliptic curve key pair.
 %%
-%% Bob can call `CreateKey' to create an asymmetric KMS key
-%% pair or generate a key pair outside of KMS. Bob's key pair must use
-%% the same NIST-recommended elliptic curve (ECC)
-%% or SM2 (China Regions ony) curve as Alice.
+%% Bob can call `CreateKey' to create an asymmetric KMS key pair or
+%% generate a key pair outside of KMS. Bob's key pair must use the same
+%% NIST-recommended
+%% elliptic curve (ECC) or SM2 (China Regions ony) curve as Alice.
 %%
-%% Alice and Bob exchange their public keys
-%% through an insecure communication channel (like the internet).
+%% Alice and Bob exchange their public keys through an
+%% insecure communication channel (like the internet).
 %%
 %% Use `GetPublicKey' to download the public key of your asymmetric KMS
 %% key pair.
 %%
 %% KMS strongly recommends verifying that the public key you receive came
-%% from the expected
-%% party before using it to derive a shared secret.
+%% from the
+%% expected party before using it to derive a shared secret.
 %%
 %% Alice calls DeriveSharedSecret.
 %%
 %% KMS uses the private key from the KMS key pair generated in Step 1,
 %% Bob's public key, and the Elliptic Curve Cryptography Cofactor
-%% Diffie-Hellman Primitive to derive the
-%% shared secret. The private key in your KMS key pair never leaves KMS
-%% unencrypted. DeriveSharedSecret
-%% returns the raw shared secret.
+%% Diffie-Hellman Primitive to derive the shared secret. The private key in
+%% your KMS key pair
+%% never leaves KMS unencrypted. DeriveSharedSecret returns the raw shared
+%% secret.
 %%
-%% Bob uses the Elliptic Curve Cryptography Cofactor Diffie-Hellman
-%% Primitive to calculate the same raw secret using his private key and
+%% Bob uses the Elliptic Curve Cryptography Cofactor
+%% Diffie-Hellman Primitive to calculate the same raw secret using his
+%% private key and
 %% Alice's public key.
 %%
 %% To derive a shared secret you must provide a key agreement algorithm, the
-%% private key of the caller's asymmetric NIST-recommended
-%% elliptic curve or SM2 (China Regions only) KMS key pair, and the public
-%% key from your peer's NIST-recommended elliptic curve
-%% or SM2 (China Regions only) key pair. The public key can be from another
-%% asymmetric KMS key pair or from a key pair generated outside
-%% of KMS, but both key pairs must be on the same elliptic curve.
+%% private key of
+%% the caller's asymmetric NIST-recommended elliptic curve or SM2 (China
+%% Regions only) KMS key
+%% pair, and the public key from your peer's NIST-recommended elliptic
+%% curve or SM2 (China
+%% Regions only) key pair. The public key can be from another asymmetric KMS
+%% key pair or from a
+%% key pair generated outside of KMS, but both key pairs must be on the same
+%% elliptic
+%% curve.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For
@@ -3136,7 +3163,7 @@ delete_imported_key_material(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec derive_shared_secret(aws_client:aws_client(), derive_shared_secret_request()) ->
     {ok, derive_shared_secret_response(), tuple()} |
     {error, any()} |
@@ -3154,12 +3181,10 @@ derive_shared_secret(Client, Input, Options)
     request(Client, <<"DeriveSharedSecret">>, Input, Options).
 
 %% @doc Gets information about custom key stores:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html
 %% in the account and Region.
 %%
-%% This operation is part of the custom key stores:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
-%% feature in KMS, which
+%% This operation is part of the custom key stores feature in KMS, which
 %% combines the convenience and extensive integration of KMS with the
 %% isolation and control of a
 %% key store that you own and manage.
@@ -3226,7 +3251,7 @@ derive_shared_secret(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec describe_custom_key_stores(aws_client:aws_client(), describe_custom_key_stores_request()) ->
     {ok, describe_custom_key_stores_response(), tuple()} |
     {error, any()} |
@@ -3281,8 +3306,8 @@ describe_custom_key_stores(Client, Input, Options)
 %% Whether automatic key rotation is enabled on the KMS key. To get this
 %% information, use
 %% `GetKeyRotationStatus'. Also, some key states prevent a KMS key from
-%% being automatically rotated. For details, see How Automatic Key Rotation
-%% Works:
+%% being automatically rotated. For details, see How key rotation
+%% works:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-how-it-works
 %% in the Key Management Service Developer Guide.
 %%
@@ -3327,7 +3352,7 @@ describe_custom_key_stores(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec describe_key(aws_client:aws_client(), describe_key_request()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
@@ -3348,20 +3373,17 @@ describe_key(Client, Input, Options)
 %%
 %% This change temporarily prevents use of the KMS
 %% key for cryptographic operations:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations.
-%%
-%% For more information about how key state affects the use of a KMS key, see
-%% Key states of KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html in
-%% the
-%% Key Management Service Developer Guide
-%% .
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
-%% state. For
-%% details, see Key states of KMS keys:
+%% state. For more
+%% information about how key state affects the use of a KMS key, see Key
+%% states of KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html in
-%% the Key Management Service Developer Guide.
+%% the
+%%
+%% Key Management Service Developer Guide
+%% .
 %%
 %% Cross-account use: No. You cannot perform this operation on a KMS key in a
 %% different Amazon Web Services account.
@@ -3374,7 +3396,7 @@ describe_key(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec disable_key(aws_client:aws_client(), disable_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3391,10 +3413,10 @@ disable_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKey">>, Input, Options).
 
-%% @doc Disables automatic
-%% rotation of the key material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html of
-%% the specified symmetric encryption KMS key.
+%% @doc Disables automatic rotation of the key material:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys-enable-disable.html
+%% of the specified symmetric encryption KMS
+%% key.
 %%
 %% Automatic key rotation is supported only on symmetric encryption KMS keys.
 %% You cannot enable automatic rotation of asymmetric KMS keys:
@@ -3404,10 +3426,10 @@ disable_key(Client, Input, Options)
 %% with imported key material:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html,
 %% or KMS keys in a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html.
 %% To enable or disable automatic rotation of a set of related multi-Region
 %% keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate,
 %% set the property on the primary key.
 %%
 %% You can enable (`EnableKeyRotation') and disable automatic rotation of
@@ -3452,7 +3474,7 @@ disable_key(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec disable_key_rotation(aws_client:aws_client(), disable_key_rotation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3470,7 +3492,7 @@ disable_key_rotation(Client, Input, Options)
     request(Client, <<"DisableKeyRotation">>, Input, Options).
 
 %% @doc Disconnects the custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html
 %% from its backing key store.
 %%
 %% This operation disconnects an
@@ -3479,9 +3501,7 @@ disable_key_rotation(Client, Input, Options)
 %% the external key store proxy that communicates with your external key
 %% manager.
 %%
-%% This operation is part of the custom key stores:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
-%% feature in KMS, which
+%% This operation is part of the custom key stores feature in KMS, which
 %% combines the convenience and extensive integration of KMS with the
 %% isolation and control of a
 %% key store that you own and manage.
@@ -3495,7 +3515,7 @@ disable_key_rotation(Client, Input, Options)
 %% While a custom key store is disconnected, all attempts to create KMS keys
 %% in the custom key store or to use existing KMS keys in cryptographic
 %% operations:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations
 %% will
 %% fail. This action can prevent users from storing and accessing sensitive
 %% data.
@@ -3531,7 +3551,7 @@ disable_key_rotation(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec disconnect_custom_key_store(aws_client:aws_client(), disconnect_custom_key_store_request()) ->
     {ok, disconnect_custom_key_store_response(), tuple()} |
     {error, any()} |
@@ -3552,7 +3572,7 @@ disconnect_custom_key_store(Client, Input, Options)
 %%
 %% This allows you to use the KMS key for
 %% cryptographic operations:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For
@@ -3571,7 +3591,7 @@ disconnect_custom_key_store(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec enable_key(aws_client:aws_client(), enable_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3588,10 +3608,10 @@ enable_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableKey">>, Input, Options).
 
-%% @doc Enables automatic rotation
-%% of the key material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable
-%% of the specified symmetric encryption KMS key.
+%% @doc Enables automatic rotation of the key material:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys-enable-disable.html
+%% of the specified symmetric encryption KMS
+%% key.
 %%
 %% By default, when you enable automatic rotation of a customer managed KMS
 %% key:
@@ -3607,18 +3627,16 @@ enable_key(Client, Input, Options)
 %% previously
 %% enabled automatic key rotation on.
 %%
-%% You can monitor rotation of the key material
-%% for your KMS keys in CloudTrail and Amazon CloudWatch. To disable rotation
-%% of the key
-%% material in a customer managed KMS key, use the `DisableKeyRotation'
-%% operation. You can use the `GetKeyRotationStatus' operation to
-%% identify any in progress
-%% rotations. You can use the `ListKeyRotations' operation to view the
-%% details of
-%% completed rotations.
+%% You can monitor rotation of the key material for your KMS keys in
+%% CloudTrail and Amazon CloudWatch. To disable rotation of the key material
+%% in a customer managed KMS key, use
+%% the `DisableKeyRotation' operation. You can use the
+%% `GetKeyRotationStatus' operation to identify any in progress
+%% rotations. You can
+%% use the `ListKeyRotations' operation to view the details of completed
+%% rotations.
 %%
-%% Automatic key rotation is supported only on symmetric encryption KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks.
+%% Automatic key rotation is supported only on symmetric encryption KMS keys.
 %% You cannot enable automatic rotation of asymmetric KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html,
 %% HMAC KMS keys:
@@ -3626,10 +3644,10 @@ enable_key(Client, Input, Options)
 %% with imported key material:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html,
 %% or KMS keys in a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html.
 %% To enable or disable automatic rotation of a set of related multi-Region
 %% keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate,
 %% set the property on the primary key.
 %%
 %% You cannot enable or disable automatic rotation of Amazon Web Services
@@ -3677,13 +3695,14 @@ enable_key(Client, Input, Options)
 %%
 %% `RotateKeyOnDemand'
 %%
-%% You can perform on-demand (`RotateKeyOnDemand') rotation of the
-%% key material in customer managed KMS keys, regardless of whether or not
-%% automatic key rotation is enabled.
+%% You can perform on-demand (`RotateKeyOnDemand') rotation of the key
+%% material in customer managed KMS keys, regardless of whether or not
+%% automatic key
+%% rotation is enabled.
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec enable_key_rotation(aws_client:aws_client(), enable_key_rotation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3725,7 +3744,7 @@ enable_key_rotation(Client, Input, Options)
 %% information, see
 %% Encryption
 %% Context:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context
+%% https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html
 %% in the Key Management Service Developer Guide.
 %%
 %% If you specify an asymmetric KMS key, you must also specify the encryption
@@ -3796,7 +3815,7 @@ enable_key_rotation(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec encrypt(aws_client:aws_client(), encrypt_request()) ->
     {ok, encrypt_response(), tuple()} |
     {error, any()} |
@@ -3859,7 +3878,7 @@ encrypt(Client, Input, Options)
 %% Otherwise, the request to decrypt fails with an
 %% `InvalidCiphertextException'. For more information, see Encryption
 %% Context:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context
+%% https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html
 %% in the
 %% Key Management Service Developer Guide.
 %%
@@ -3948,7 +3967,7 @@ encrypt(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec generate_data_key(aws_client:aws_client(), generate_data_key_request()) ->
     {ok, generate_data_key_response(), tuple()} |
     {error, any()} |
@@ -4059,7 +4078,7 @@ generate_data_key(Client, Input, Options)
 %% Otherwise, the request to decrypt fails with an
 %% `InvalidCiphertextException'. For more information, see Encryption
 %% Context:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context
+%% https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html
 %% in the
 %% Key Management Service Developer Guide.
 %%
@@ -4091,7 +4110,7 @@ generate_data_key(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec generate_data_key_pair(aws_client:aws_client(), generate_data_key_pair_request()) ->
     {ok, generate_data_key_pair_response(), tuple()} |
     {error, any()} |
@@ -4161,7 +4180,7 @@ generate_data_key_pair(Client, Input, Options)
 %% Otherwise, the request to decrypt fails with an
 %% `InvalidCiphertextException'. For more information, see Encryption
 %% Context:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context
+%% https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html
 %% in the
 %% Key Management Service Developer Guide.
 %%
@@ -4194,7 +4213,7 @@ generate_data_key_pair(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec generate_data_key_pair_without_plaintext(aws_client:aws_client(), generate_data_key_pair_without_plaintext_request()) ->
     {ok, generate_data_key_pair_without_plaintext_response(), tuple()} |
     {error, any()} |
@@ -4279,7 +4298,7 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 %% Otherwise, the request to decrypt fails with an
 %% `InvalidCiphertextException'. For more information, see Encryption
 %% Context:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context
+%% https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html
 %% in the
 %% Key Management Service Developer Guide.
 %%
@@ -4312,7 +4331,7 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec generate_data_key_without_plaintext(aws_client:aws_client(), generate_data_key_without_plaintext_request()) ->
     {ok, generate_data_key_without_plaintext_response(), tuple()} |
     {error, any()} |
@@ -4380,7 +4399,7 @@ generate_data_key_without_plaintext(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec generate_mac(aws_client:aws_client(), generate_mac_request()) ->
     {ok, generate_mac_response(), tuple()} |
     {error, any()} |
@@ -4428,8 +4447,9 @@ generate_mac(Client, Input, Options)
 %% in the Key Management Service Developer Guide.
 %%
 %% For more information about entropy and random number generation, see
-%% Key Management Service Cryptographic Details:
-%% https://docs.aws.amazon.com/kms/latest/cryptographic-details/.
+%% Entropy and random number generation:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#entropy-and-random-numbers
+%% in the Key Management Service Developer Guide.
 %%
 %% Cross-account use: Not applicable.
 %% `GenerateRandom' does not use any account-specific resources, such as
@@ -4442,7 +4462,7 @@ generate_mac(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec generate_random(aws_client:aws_client(), generate_random_request()) ->
     {ok, generate_random_response(), tuple()} |
     {error, any()} |
@@ -4473,7 +4493,7 @@ generate_random(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec get_key_policy(aws_client:aws_client(), get_key_policy_request()) ->
     {ok, get_key_policy_response(), tuple()} |
     {error, any()} |
@@ -4491,17 +4511,16 @@ get_key_policy(Client, Input, Options)
     request(Client, <<"GetKeyPolicy">>, Input, Options).
 
 %% @doc Provides detailed information about the rotation status for a KMS
-%% key, including
-%% whether automatic rotation of the key material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html is
-%% enabled for the specified KMS key, the
-%% rotation period:
+%% key, including whether
+%% automatic
+%% rotation of the key material:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys-enable-disable.html
+%% is enabled for the specified KMS key, the rotation
+%% period:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period,
-%% and the next scheduled
-%% rotation date.
+%% and the next scheduled rotation date.
 %%
-%% Automatic key rotation is supported only on symmetric encryption KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks.
+%% Automatic key rotation is supported only on symmetric encryption KMS keys.
 %% You cannot enable automatic rotation of asymmetric KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html,
 %% HMAC KMS keys:
@@ -4509,11 +4528,11 @@ get_key_policy(Client, Input, Options)
 %% with imported key material:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html,
 %% or KMS keys in a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html.
 %% To enable or disable automatic rotation of a set of related multi-Region
 %% keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate,
-%% set the property on the primary key..
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate,
+%% set the property on the primary key.
 %%
 %% You can enable (`EnableKeyRotation') and disable automatic rotation
 %% (`DisableKeyRotation') of the key material in customer managed KMS
@@ -4526,13 +4545,14 @@ get_key_policy(Client, Input, Options)
 %% key rotation status for Amazon Web Services managed KMS keys is always
 %% `true'.
 %%
-%% You can perform on-demand (`RotateKeyOnDemand') rotation of the
-%% key material in customer managed KMS keys, regardless of whether or not
-%% automatic key rotation is enabled.
-%% You can use GetKeyRotationStatus to identify the date and time that an in
-%% progress on-demand rotation
-%% was initiated. You can use `ListKeyRotations' to view the details of
-%% completed rotations.
+%% You can perform on-demand (`RotateKeyOnDemand') rotation of the key
+%% material in customer managed KMS keys, regardless of whether or not
+%% automatic key rotation is
+%% enabled. You can use GetKeyRotationStatus to identify the date and time
+%% that an in progress
+%% on-demand rotation was initiated. You can use `ListKeyRotations' to
+%% view the
+%% details of completed rotations.
 %%
 %% In May 2022, KMS changed the rotation schedule for Amazon Web Services
 %% managed keys from every three
@@ -4581,7 +4601,7 @@ get_key_policy(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec get_key_rotation_status(aws_client:aws_client(), get_key_rotation_status_request()) ->
     {ok, get_key_rotation_status_response(), tuple()} |
     {error, any()} |
@@ -4608,12 +4628,7 @@ get_key_rotation_status(Client, Input, Options)
 %% material:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html,
 %% an advanced feature that lets you generate and import the cryptographic
-%% key material for a KMS key. For more information about importing key
-%% material into KMS, see
-%% Importing key
-%% material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html
-%% in the Key Management Service Developer Guide.
+%% key material for a KMS key.
 %%
 %% Before calling `GetParametersForImport', use the `CreateKey'
 %% operation with an `Origin' value of `EXTERNAL' to create a KMS key
@@ -4625,13 +4640,15 @@ get_key_rotation_status(Client, Input, Options)
 %% into a multi-Region key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
 %% of any supported type. However, you can't import key material into
-%% a KMS key in a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html.
-%% You can also use `GetParametersForImport' to get a
-%% public key and import token to reimport the original key
-%% material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material
-%% into a KMS key whose key material expired or was deleted.
+%% a KMS key in a custom
+%% key store:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html.
+%% You can also use `GetParametersForImport' to get a public key
+%% and import token to reimport
+%% the original key material:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html#reimport-key-material
+%% into a KMS key whose key material expired or was
+%% deleted.
 %%
 %% `GetParametersForImport' returns the items that you need to import
 %% your key
@@ -4697,7 +4714,7 @@ get_key_rotation_status(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_request()) ->
     {ok, get_parameters_for_import_response(), tuple()} |
     {error, any()} |
@@ -4747,15 +4764,17 @@ get_parameters_for_import(Client, Input, Options)
 %%
 %% KeyUsage:
 %% https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-KeyUsage:
-%% Whether the key is used for encryption, signing, or
-%% deriving a shared secret.
+%% Whether the key is used for encryption, signing, or deriving a shared
+%% secret.
 %%
 %% EncryptionAlgorithms:
-%% https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-EncryptionAlgorithms
+%% https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-EncryptionAlgorithms,
+%% KeyAgreementAlgorithms:
+%% https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-KeyAgreementAlgorithms,
 %% or SigningAlgorithms:
 %% https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-SigningAlgorithms:
-%% A list of the encryption algorithms or the signing
-%% algorithms for the key.
+%% A list of the encryption algorithms, key agreement
+%% algorithms, or signing algorithms for the key.
 %%
 %% Although KMS cannot enforce these restrictions on external operations, it
 %% is crucial
@@ -4775,7 +4794,7 @@ get_parameters_for_import(Client, Input, Options)
 %% `1234567812345678' as
 %% the distinguishing ID. For more information, see Offline
 %% verification with SM2 key pairs:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/asymmetric-key-specs.html#key-spec-sm-offline-verification.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/offline-operations.html#key-spec-sm-offline-verification.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For
@@ -4795,7 +4814,7 @@ get_parameters_for_import(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec get_public_key(aws_client:aws_client(), get_public_key_request()) ->
     {ok, get_public_key_response(), tuple()} |
     {error, any()} |
@@ -4816,30 +4835,34 @@ get_public_key(Client, Input, Options)
 %% created without key
 %% material.
 %%
-%% `ImportKeyMaterial' also sets the expiration model and expiration date
-%% of
+%% You can also use this operation to set or update the expiration model and
+%% expiration date of
 %% the imported key material.
 %%
-%% By default, KMS keys are created with key material that KMS generates.
-%% This operation
-%% supports Importing key
-%% material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html,
-%% an advanced feature that lets you generate and import the cryptographic
-%% key material for a KMS key. For more information about importing key
-%% material into KMS, see
+%% By default, KMS creates KMS keys with key material that it generates. You
+%% can also generate and
+%% import your own key material. For more information about importing key
+%% material, see
 %% Importing key
 %% material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html
-%% in the Key Management Service Developer Guide.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html.
 %%
-%% After you successfully import key material into a KMS key, you can
-%% reimport
+%% For asymmetric, HMAC and multi-Region keys, you cannot change the key
+%% material after the initial import.
+%% You can import multiple key materials into single-Region, symmetric
+%% encryption keys and rotate the key material
+%% on demand using `RotateKeyOnDemand'.
+%%
+%% After you import key material, you can reimport
 %% the same key material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material
-%% into that KMS key, but you cannot import different key
-%% material. You might reimport key material to replace key material that
-%% expired or key material
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html#reimport-key-material
+%% into that KMS key or, if the key supports on-demand rotation,
+%% import new key material. You can use the `ImportType' parameter to
+%% indicate
+%% whether you are importing new key material or re-importing previously
+%% imported key material.
+%% You might reimport key material to replace key material that expired or
+%% key material
 %% that you deleted. You might also reimport key material to change the
 %% expiration model or
 %% expiration date of the key material.
@@ -4850,35 +4873,28 @@ get_public_key(Client, Input, Options)
 %% change the expiration of your key material, you must import it again,
 %% either by calling
 %% `ImportKeyMaterial' or using the import features:
-%% kms/latest/developerguide/importing-keys-import-key-material.html#importing-keys-import-key-material-console
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html#importing-keys-import-key-material-console
 %% of the KMS console.
 %%
-%% Before calling `ImportKeyMaterial':
+%% Before you call `ImportKeyMaterial', complete these steps:
 %%
-%% Create or identify a KMS key with no key material. The KMS key must have
-%% an
-%% `Origin' value of `EXTERNAL', which indicates that the KMS key is
+%% Create or identify a KMS key with `EXTERNAL' origin, which indicates
+%% that the KMS key is
 %% designed for imported key material.
 %%
-%% To create an new KMS key for imported key material, call the
+%% To create a new KMS key for imported key material, call the
 %% `CreateKey' operation with an `Origin' value of `EXTERNAL'.
 %% You can create a
 %% symmetric encryption KMS key, HMAC KMS key, asymmetric encryption KMS key,
-%% or asymmetric
-%% signing KMS key. You can also import key material into a multi-Region key:
-%% kms/latest/developerguide/multi-region-keys-overview.html of any
+%% asymmetric key agreement key,
+%% or asymmetric signing KMS key. You can also import key material into a
+%% multi-Region key:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
+%% of any
 %% supported type. However, you can't import key material into a KMS key
-%% in a custom key store:
-%% kms/latest/developerguide/custom-key-store-overview.html.
-%%
-%% Use the `DescribeKey' operation to verify that the
-%% `KeyState' of the KMS key is `PendingImport', which indicates that
-%% the KMS key has no key material.
-%%
-%% If you are reimporting the same key material into an existing KMS key, you
-%% might need
-%% to call the `DeleteImportedKeyMaterial' to delete its existing key
-%% material.
+%% in a
+%% custom key store:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html.
 %%
 %% Call the `GetParametersForImport' operation to get a public key and
 %% import token set for importing key material.
@@ -4896,10 +4912,9 @@ get_public_key(Client, Input, Options)
 %% `Origin' must be `EXTERNAL' and its `KeyState' must be
 %% `PendingImport'. You cannot perform this operation on a KMS key in a
 %% custom key store:
-%% kms/latest/developerguide/custom-key-store-overview.html, or on a KMS
-%% key in a different Amazon Web Services account. To get the `Origin'
-%% and `KeyState'
-%% of a KMS key, call `DescribeKey'.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html,
+%% or on a KMS key in a different Amazon Web Services account. To get the
+%% `Origin' and `KeyState' of a KMS key, call `DescribeKey'.
 %%
 %% The encrypted key material.
 %%
@@ -4910,7 +4925,7 @@ get_public_key(Client, Input, Options)
 %% Whether the key material expires (`ExpirationModel') and, if so, when
 %% (`ValidTo'). For help with this choice, see Setting an expiration
 %% time:
-%% https://docs.aws.amazon.com/en_us/kms/latest/developerguide/importing-keys.html#importing-keys-expiration
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html#importing-keys-expiration
 %% in the Key Management Service Developer Guide.
 %%
 %% If you set an expiration date, KMS deletes the key material from the KMS
@@ -4926,16 +4941,23 @@ get_public_key(Client, Input, Options)
 %% When this operation is successful, the key state of the KMS key changes
 %% from
 %% `PendingImport' to `Enabled', and you can use the KMS key in
-%% cryptographic operations.
+%% cryptographic operations. For single-Region, symmetric encryption keys,
+%% you will need to
+%% import all of the key materials associated with the KMS key to change its
+%% state to `Enabled'.
+%% Use the `ListKeyRotations' operation to list the ID and import state
+%% of each key material
+%% associated with a KMS key.
 %%
 %% If this operation fails, use the exception to help determine the problem.
 %% If the error is
 %% related to the key material, the import token, or wrapping key, use
 %% `GetParametersForImport' to get a new public key and import token for
 %% the KMS key
-%% and repeat the import procedure. For help, see How To Import Key
-%% Material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#importing-keys-overview
+%% and repeat the import procedure. For help, see Create a KMS key with
+%% imported key
+%% material:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-conceptual.html
 %% in the Key Management Service Developer Guide.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
@@ -4957,9 +4979,13 @@ get_public_key(Client, Input, Options)
 %%
 %% `GetParametersForImport'
 %%
+%% `ListKeyRotations'
+%%
+%% `RotateKeyOnDemand'
+%%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec import_key_material(aws_client:aws_client(), import_key_material_request()) ->
     {ok, import_key_material_response(), tuple()} |
     {error, any()} |
@@ -5002,9 +5028,9 @@ import_key_material(Client, Input, Options)
 %% yet associated with a KMS key.
 %% Aliases that Amazon Web Services creates in your account, including
 %% predefined aliases, do not count against
-%% your KMS aliases
-%% quota:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit.
+%% your KMS
+%% aliases quota:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/resource-limits.html#aliases-per-key.
 %%
 %% Cross-account use: No. `ListAliases' does not
 %% return aliases in other Amazon Web Services accounts.
@@ -5014,9 +5040,8 @@ import_key_material(Client, Input, Options)
 %% (IAM policy)
 %%
 %% For details, see Controlling access to aliases:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access
-%% in the
-%% Key Management Service Developer Guide.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/alias-access.html in
+%% the Key Management Service Developer Guide.
 %%
 %% Related operations:
 %%
@@ -5028,7 +5053,7 @@ import_key_material(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec list_aliases(aws_client:aws_client(), list_aliases_request()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
@@ -5056,9 +5081,10 @@ list_aliases(Client, Input, Options)
 %% https://docs.aws.amazon.com/kms/latest/developerguide/grants.html in the
 %%
 %% Key Management Service Developer Guide
-%% . For examples of working with grants in several
-%% programming languages, see Programming grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html.
+%% . For examples of creating grants in several
+%% programming languages, see Use CreateGrant with an Amazon Web Services SDK
+%% or CLI:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/example_kms_CreateGrant_section.html.
 %%
 %% The `GranteePrincipal' field in the `ListGrants' response usually
 %% contains the
@@ -5091,7 +5117,7 @@ list_aliases(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec list_grants(aws_client:aws_client(), list_grants_request()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
@@ -5131,7 +5157,7 @@ list_grants(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec list_key_policies(aws_client:aws_client(), list_key_policies_request()) ->
     {ok, list_key_policies_response(), tuple()} |
     {error, any()} |
@@ -5148,16 +5174,20 @@ list_key_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeyPolicies">>, Input, Options).
 
-%% @doc Returns information about all completed key material rotations for
-%% the specified KMS
+%% @doc Returns information about the key materials associated with the
+%% specified KMS
 %% key.
+%%
+%% You can use the optional `IncludeKeyMaterial' parameter to control
+%% which key materials
+%% are included in the response.
 %%
 %% You must specify the KMS key in all requests. You can refine the key
 %% rotations list by
 %% limiting the number of rotations returned.
 %%
 %% For detailed information about automatic and on-demand key rotations, see
-%% Rotating KMS keys:
+%% Rotate KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html in
 %% the
 %% Key Management Service Developer Guide.
@@ -5173,15 +5203,19 @@ list_key_policies(Client, Input, Options)
 %%
 %% `EnableKeyRotation'
 %%
+%% `DeleteImportedKeyMaterial'
+%%
 %% `DisableKeyRotation'
 %%
 %% `GetKeyRotationStatus'
+%%
+%% `ImportKeyMaterial'
 %%
 %% `RotateKeyOnDemand'
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec list_key_rotations(aws_client:aws_client(), list_key_rotations_request()) ->
     {ok, list_key_rotations_response(), tuple()} |
     {error, any()} |
@@ -5220,7 +5254,7 @@ list_key_rotations(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec list_keys(aws_client:aws_client(), list_keys_request()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
@@ -5243,8 +5277,8 @@ list_keys(Client, Input, Options)
 %% Tagging Amazon Web Services resources:
 %% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html in
 %% the Amazon Web Services General Reference. For information about using
-%% tags in KMS, see Tagging
-%% keys:
+%% tags in KMS, see Tags in
+%% KMS:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html.
 %%
 %% Cross-account use: No. You cannot perform this operation on a KMS key in a
@@ -5266,7 +5300,7 @@ list_keys(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec list_resource_tags(aws_client:aws_client(), list_resource_tags_request()) ->
     {ok, list_resource_tags_response(), tuple()} |
     {error, any()} |
@@ -5299,9 +5333,10 @@ list_resource_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/kms/latest/developerguide/grants.html in the
 %%
 %% Key Management Service Developer Guide
-%% . For examples of working with grants in several
-%% programming languages, see Programming grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html.
+%% . For examples of creating grants in several
+%% programming languages, see Use CreateGrant with an Amazon Web Services SDK
+%% or CLI:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/example_kms_CreateGrant_section.html.
 %%
 %% Cross-account use: You must specify a principal in your
 %% Amazon Web Services account. This operation returns a list of grants where
@@ -5340,7 +5375,7 @@ list_resource_tags(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec list_retirable_grants(aws_client:aws_client(), list_retirable_grants_request()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
@@ -5368,8 +5403,9 @@ list_retirable_grants(Client, Input, Options)
 %% in the
 %% Identity and Access Management User Guide
 %% . For examples of adding a key policy in multiple programming languages,
-%% see Setting a key policy:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-key-policies.html#put-policy
+%% see Use
+%% PutKeyPolicy with an Amazon Web Services SDK or CLI:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/example_kms_PutKeyPolicy_section.html
 %% in the Key Management Service Developer Guide.
 %%
 %% Cross-account use: No. You cannot perform this operation on a KMS key in a
@@ -5383,7 +5419,7 @@ list_retirable_grants(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec put_key_policy(aws_client:aws_client(), put_key_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5404,15 +5440,14 @@ put_key_policy(Client, Input, Options)
 %%
 %% You can use this
 %% operation to change the KMS key under which data is encrypted, such as
-%% when you manually
-%% rotate:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-manually
-%% a KMS key or change the KMS key that protects a ciphertext. You can also
-%% use
-%% it to reencrypt ciphertext under the same KMS key, such as to change the
-%% encryption
+%% when you manually rotate:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys-manually.html
+%% a
+%% KMS key or change the KMS key that protects a ciphertext. You can also use
+%% it to reencrypt
+%% ciphertext under the same KMS key, such as to change the encryption
 %% context:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context
+%% https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html
 %% of a ciphertext.
 %%
 %% The `ReEncrypt' operation can decrypt ciphertext that was encrypted by
@@ -5421,16 +5456,14 @@ put_key_policy(Client, Input, Options)
 %% `GenerateDataKey'. It can also decrypt ciphertext that was encrypted
 %% by using the
 %% public key of an asymmetric KMS key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks
-%% outside of KMS. However, it cannot decrypt ciphertext produced by other
-%% libraries, such as
-%% the Amazon Web Services Encryption SDK:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html
+%% outside of KMS. However, it cannot decrypt ciphertext produced
+%% by other libraries, such as the Amazon Web Services
+%% Encryption SDK:
 %% https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/ or
-%% Amazon S3
-%% client-side encryption:
+%% Amazon S3 client-side encryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html.
-%% These libraries return a ciphertext format that is
-%% incompatible with KMS.
+%% These libraries return a ciphertext format that is incompatible with KMS.
 %%
 %% When you use the `ReEncrypt' operation, you need to provide
 %% information for the
@@ -5524,7 +5557,7 @@ put_key_policy(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec re_encrypt(aws_client:aws_client(), re_encrypt_request()) ->
     {ok, re_encrypt_response(), tuple()} |
     {error, any()} |
@@ -5570,31 +5603,20 @@ re_encrypt(Client, Input, Options)
 %% properties that make them interoperable. They have the same key ID:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-id
 %% and key material. They also
-%% have the same key
-%% spec:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec,
-%% key
-%% usage:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage,
-%% key
-%% material origin:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin,
-%% and automatic key rotation status:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html.
-%% KMS automatically synchronizes these shared
-%% properties among related multi-Region keys. All other properties of a
-%% replica key can differ,
-%% including its key
-%% policy:
+%% have the same key spec, key usage, key material origin, and automatic key
+%% rotation status.
+%% KMS automatically synchronizes these shared properties among related
+%% multi-Region keys. All
+%% other properties of a replica key can differ, including its key policy:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html,
 %% tags:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html,
 %% aliases:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html, and
-%% Key states of KMS keys:
+%% key state:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html. KMS
-%% pricing and quotas for KMS keys apply to each
-%% primary key and replica key.
+%% pricing and quotas for KMS keys
+%% apply to each primary key and replica key.
 %%
 %% When this operation completes, the new replica key has a transient key
 %% state of
@@ -5634,10 +5656,7 @@ re_encrypt(Client, Input, Options)
 %% the replica key is
 %% created with no key material. You must import the same key material that
 %% you imported into the
-%% primary key. For details, see Importing key material into multi-Region
-%% keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-import.html
-%% in the Key Management Service Developer Guide.
+%% primary key.
 %%
 %% To convert a replica key to a primary key, use the
 %% `UpdatePrimaryRegion'
@@ -5670,7 +5689,7 @@ re_encrypt(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec replicate_key(aws_client:aws_client(), replicate_key_request()) ->
     {ok, replicate_key_response(), tuple()} |
     {error, any()} |
@@ -5701,20 +5720,17 @@ replicate_key(Client, Input, Options)
 %% by the grantee principal if the grant allows the `RetireGrant'
 %% operation, and by the Amazon Web Services account in which the grant is
 %% created. It can also be called by
-%% principals to whom permission for retiring a grant is delegated. For
-%% details, see Retiring and revoking
-%% grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete
-%% in the Key Management Service Developer Guide.
+%% principals to whom permission for retiring a grant is delegated.
 %%
 %% For detailed information about grants, including grant terminology, see
 %% Grants in KMS:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/grants.html in the
 %%
 %% Key Management Service Developer Guide
-%% . For examples of working with grants in several
-%% programming languages, see Programming grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html.
+%% . For examples of creating grants in several
+%% programming languages, see Use CreateGrant with an Amazon Web Services SDK
+%% or CLI:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/example_kms_CreateGrant_section.html.
 %%
 %% Cross-account use: Yes. You can retire a grant on a KMS
 %% key in a different Amazon Web Services account.
@@ -5722,9 +5738,9 @@ replicate_key(Client, Input, Options)
 %% Required permissions: Permission to retire a grant is
 %% determined primarily by the grant. For details, see Retiring and revoking
 %% grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete
-%% in
-%% the Key Management Service Developer Guide.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html in
+%% the
+%% Key Management Service Developer Guide.
 %%
 %% Related operations:
 %%
@@ -5738,7 +5754,7 @@ replicate_key(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec retire_grant(aws_client:aws_client(), retire_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5759,9 +5775,9 @@ retire_grant(Client, Input, Options)
 %%
 %% You revoke a grant to terminate the permissions that the
 %% grant allows. For more information, see Retiring and revoking grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete
-%% in
+%% https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html in
 %% the
+%%
 %% Key Management Service Developer Guide
 %% .
 %%
@@ -5780,9 +5796,10 @@ retire_grant(Client, Input, Options)
 %% https://docs.aws.amazon.com/kms/latest/developerguide/grants.html in the
 %%
 %% Key Management Service Developer Guide
-%% . For examples of working with grants in several
-%% programming languages, see Programming grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html.
+%% . For examples of creating grants in several
+%% programming languages, see Use CreateGrant with an Amazon Web Services SDK
+%% or CLI:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/example_kms_CreateGrant_section.html.
 %%
 %% Cross-account use: Yes. To perform this operation on a KMS key in a
 %% different Amazon Web Services account, specify the key
@@ -5804,7 +5821,7 @@ retire_grant(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec revoke_grant(aws_client:aws_client(), revoke_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5826,44 +5843,54 @@ revoke_grant(Client, Input, Options)
 %% KMS key.
 %%
 %% You can perform on-demand rotation:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-on-demand
-%% of the key material in customer managed KMS keys,
-%% regardless of whether or not automatic key rotation:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable
-%% is enabled.
-%% On-demand rotations do not change existing automatic rotation schedules.
-%% For example, consider a KMS key that
-%% has automatic key rotation enabled with a rotation period of 730 days. If
-%% the key is scheduled to
-%% automatically rotate on April 14, 2024, and you perform an on-demand
-%% rotation on April 10, 2024, the key will automatically rotate,
-%% as scheduled, on April 14, 2024 and every 730 days thereafter.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys-on-demand.html
+%% of
+%% the key material in customer managed KMS keys, regardless of whether or
+%% not automatic key
+%% rotation:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys-enable-disable.html
+%% is enabled. On-demand rotations do not change existing automatic rotation
+%% schedules. For example, consider a KMS key that has automatic key rotation
+%% enabled with a
+%% rotation period of 730 days. If the key is scheduled to automatically
+%% rotate on April 14,
+%% 2024, and you perform an on-demand rotation on April 10, 2024, the key
+%% will automatically
+%% rotate, as scheduled, on April 14, 2024 and every 730 days thereafter.
 %%
-%% You can perform on-demand key rotation a maximum of 10 times
-%% per KMS key. You can use the KMS console
-%% to view the number of remaining on-demand rotations available for a KMS
-%% key.
+%% You can perform on-demand key rotation a maximum of 10
+%% times per KMS key. You can use the KMS console to view the number of
+%% remaining on-demand rotations available for a KMS key.
 %%
 %% You can use `GetKeyRotationStatus' to identify any in progress
-%% on-demand rotations. You can use `ListKeyRotations' to identify the
-%% date that
-%% completed on-demand rotations were performed. You can monitor rotation of
-%% the key material
-%% for your KMS keys in CloudTrail and Amazon CloudWatch.
+%% on-demand
+%% rotations. You can use `ListKeyRotations' to identify the date that
+%% completed
+%% on-demand rotations were performed. You can monitor rotation of the key
+%% material for your KMS
+%% keys in CloudTrail and Amazon CloudWatch.
 %%
-%% On-demand key rotation is supported only on symmetric encryption KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks.
-%% You cannot perform on-demand rotation of asymmetric KMS keys:
+%% On-demand key rotation is supported only on symmetric encryption KMS keys.
+%% You cannot
+%% perform on-demand rotation of asymmetric KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html,
 %% HMAC KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html,
-%% KMS keys with imported key material:
+%% multi-Region KMS keys
+%% with imported key material:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html,
 %% or KMS keys in a custom key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html.
-%% To perform
-%% on-demand rotation of a set of related multi-Region keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html.
+%% When you initiate on-demand key rotation on a symmetric encryption KMS key
+%% with imported key material, you must have already imported
+%% new key material:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html
+%% and that key material's state should be `PENDING_ROTATION'. Use
+%% the `ListKeyRotations'
+%% operation to check the state of all key materials associated with a KMS
+%% key. To perform on-demand rotation of
+%% a set of related multi-Region keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate,
 %% invoke the on-demand rotation on the primary key.
 %%
 %% You cannot initiate on-demand rotation of Amazon Web Services managed KMS
@@ -5897,11 +5924,13 @@ revoke_grant(Client, Input, Options)
 %%
 %% `GetKeyRotationStatus'
 %%
+%% `ImportKeyMaterial'
+%%
 %% `ListKeyRotations'
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec rotate_key_on_demand(aws_client:aws_client(), rotate_key_on_demand_request()) ->
     {ok, rotate_key_on_demand_response(), tuple()} |
     {error, any()} |
@@ -5941,11 +5970,11 @@ rotate_key_on_demand(Client, Input, Options)
 %% unrecoverable. (The only
 %% exception is a multi-Region replica key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-delete.html,
-%% or an asymmetric or HMAC KMS
-%% key with imported key material:
-%% kms/latest/developerguide/importing-keys-managing.html#import-delete-key.)
-%% To prevent the use of a KMS key without deleting
-%% it, use `DisableKey'.
+%% or an asymmetric or HMAC KMS key with
+%% imported key material:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#import-delete-key.)
+%% To prevent the use of a KMS key without deleting it, use
+%% `DisableKey'.
 %%
 %% You can schedule the deletion of a multi-Region primary key and its
 %% replica keys at any
@@ -5960,29 +5989,29 @@ rotate_key_on_demand(Client, Input, Options)
 %% deleted (not just scheduled), the key state of the primary key changes to
 %% `PendingDeletion' and its waiting period (`PendingWindowInDays')
 %% begins. For details, see Deleting multi-Region keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-delete.html
-%% in the
-%% Key Management Service Developer Guide.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#deleting-mrks
+%% in
+%% the Key Management Service Developer Guide.
 %%
-%% When KMS deletes
-%% a KMS key from an CloudHSM key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/delete-cmk-keystore.html,
-%% it makes a best effort to delete the associated
-%% key material from the associated CloudHSM cluster. However, you might need
-%% to manually delete
-%% the orphaned key material:
+%% When KMS deletes a KMS key from an CloudHSM
+%% key store:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#delete-cmk-keystore,
+%% it makes a best effort to delete the associated key material from the
+%% associated CloudHSM cluster. However, you might need to manually delete
+%% the orphaned key
+%% material:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key
-%% from the cluster and its backups. Deleting a KMS key from an
-%% external key store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/delete-xks-key.html
-%% has no effect on the associated external key. However, for both
-%% types of custom key stores, deleting a KMS key is destructive and
-%% irreversible. You cannot
-%% decrypt ciphertext encrypted under the KMS key by using only its
-%% associated external key or
-%% CloudHSM key. Also, you cannot recreate a KMS key in an external key store
-%% by creating a new KMS
-%% key with the same key material.
+%% from the cluster and its backups. Deleting a KMS key from an external key
+%% store:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#delete-xks-key
+%% has no effect on the associated external key. However, for both types of
+%% custom key stores, deleting a KMS key is destructive and irreversible. You
+%% cannot decrypt
+%% ciphertext encrypted under the KMS key by using only its associated
+%% external key or CloudHSM key.
+%% Also, you cannot recreate a KMS key in an external key store by creating a
+%% new KMS key with
+%% the same key material.
 %%
 %% For more information about scheduling a KMS key for deletion, see Deleting
 %% KMS keys:
@@ -6010,7 +6039,7 @@ rotate_key_on_demand(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec schedule_key_deletion(aws_client:aws_client(), schedule_key_deletion_request()) ->
     {ok, schedule_key_deletion_response(), tuple()} |
     {error, any()} |
@@ -6105,7 +6134,7 @@ schedule_key_deletion(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec sign(aws_client:aws_client(), sign_request()) ->
     {ok, sign_response(), tuple()} |
     {error, any()} |
@@ -6144,11 +6173,10 @@ sign(Client, Input, Options)
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk,
 %% an Amazon Web Services owned key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk,
-%% a custom key
-%% store:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#keystore-concept,
+%% a custom key store:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html,
 %% or an alias:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#alias-concept.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html.
 %%
 %% You can also add tags to a KMS key while creating it (`CreateKey') or
 %% replicating it (`ReplicateKey').
@@ -6186,7 +6214,7 @@ sign(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6254,7 +6282,7 @@ tag_resource(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6346,7 +6374,7 @@ untag_resource(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec update_alias(aws_client:aws_client(), update_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6375,9 +6403,7 @@ update_alias(Client, Input, Options)
 %% any property values. To verify the updated property values, use the
 %% `DescribeCustomKeyStores' operation.
 %%
-%% This operation is part of the custom key stores:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html
-%% feature in KMS, which
+%% This operation is part of the custom key stores feature in KMS, which
 %% combines the convenience and extensive integration of KMS with the
 %% isolation and control of a
 %% key store that you own and manage.
@@ -6484,7 +6510,7 @@ update_alias(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec update_custom_key_store(aws_client:aws_client(), update_custom_key_store_request()) ->
     {ok, update_custom_key_store_response(), tuple()} |
     {error, any()} |
@@ -6526,7 +6552,7 @@ update_custom_key_store(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec update_key_description(aws_client:aws_client(), update_key_description_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6553,9 +6579,9 @@ update_key_description(Client, Input, Options)
 %% `UpdatePrimaryRegion' with a `PrimaryRegion' value of
 %% `eu-west-2', the primary key is now the key in `eu-west-2', and
 %% the
-%% key in `us-east-1' becomes a replica key. For details, see Updating
-%% the primary Region:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-update
+%% key in `us-east-1' becomes a replica key. For details, see Change the
+%% primary key in a set of multi-Region keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html
 %% in the Key Management Service Developer Guide.
 %%
 %% This operation supports multi-Region keys, an KMS feature that lets you
@@ -6648,7 +6674,7 @@ update_key_description(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec update_primary_region(aws_client:aws_client(), update_primary_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6715,7 +6741,7 @@ update_primary_region(Client, Input, Options)
 %% `1234567812345678' as
 %% the distinguishing ID. For more information, see Offline
 %% verification with SM2 key pairs:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/asymmetric-key-specs.html#key-spec-sm-offline-verification.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/offline-operations.html#key-spec-sm-offline-verification.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For
@@ -6735,7 +6761,7 @@ update_primary_region(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec verify(aws_client:aws_client(), verify_request()) ->
     {ok, verify_response(), tuple()} |
     {error, any()} |
@@ -6793,7 +6819,7 @@ verify(Client, Input, Options)
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/accessing-kms.html#programming-eventual-consistency.
 -spec verify_mac(aws_client:aws_client(), verify_mac_request()) ->
     {ok, verify_mac_response(), tuple()} |
     {error, any()} |

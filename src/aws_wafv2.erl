@@ -297,6 +297,7 @@
 
 %% Example:
 %% rate_based_statement_custom_key() :: #{
+%%   <<"ASN">> => rate_limit_asn(),
 %%   <<"Cookie">> => rate_limit_cookie(),
 %%   <<"ForwardedIP">> => rate_limit_forwarded_ip(),
 %%   <<"HTTPMethod">> => rate_limit_h_t_t_p_method(),
@@ -619,6 +620,7 @@
 %% Example:
 %% statement() :: #{
 %%   <<"AndStatement">> => and_statement(),
+%%   <<"AsnMatchStatement">> => asn_match_statement(),
 %%   <<"ByteMatchStatement">> => byte_match_statement(),
 %%   <<"GeoMatchStatement">> => geo_match_statement(),
 %%   <<"IPSetReferenceStatement">> => ip_set_reference_statement(),
@@ -1046,6 +1048,12 @@
 %%   <<"SuccessStrings">> => list(string()())
 %% }
 -type response_inspection_body_contains() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_asn() :: #{
+
+%% }
+-type rate_limit_asn() :: #{binary() => any()}.
 
 %% Example:
 %% rate_limit_j_a3_fingerprint() :: #{
@@ -1598,6 +1606,13 @@
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% asn_match_statement() :: #{
+%%   <<"AsnList">> => list(float()()),
+%%   <<"ForwardedIPConfig">> => forwarded_ip_config()
+%% }
+-type asn_match_statement() :: #{binary() => any()}.
 
 %% Example:
 %% regex_pattern_set() :: #{
