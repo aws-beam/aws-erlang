@@ -415,8 +415,7 @@
 %% encrypt_response() :: #{
 %%   <<"CiphertextBlob">> => binary(),
 %%   <<"EncryptionAlgorithm">> => list(any()),
-%%   <<"KeyId">> => string(),
-%%   <<"KeyMaterialId">> => string()
+%%   <<"KeyId">> => string()
 %% }
 -type encrypt_response() :: #{binary() => any()}.
 

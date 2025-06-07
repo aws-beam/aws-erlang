@@ -4078,6 +4078,7 @@
 %%   <<"DomainMemberships">> => list(domain_membership()()),
 %%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
 %%   <<"CharacterSetName">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string(),
 %%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"PendingModifiedValues">> => cluster_pending_modified_values(),
 %%   <<"DBClusterInstanceClass">> => string(),
@@ -9226,6 +9227,13 @@ disable_http_endpoint(Client, Input, Options)
 %% size.
 %%
 %% This command doesn't apply to RDS Custom.
+%%
+%% This operation uses resources on database instances. Because of this, we
+%% recommend publishing database logs to CloudWatch and then
+%% using the GetLogEvents operation. For more information,
+%% see GetLogEvents:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogEvents.html
+%% in the Amazon CloudWatch Logs API Reference.
 -spec download_db_log_file_portion(aws_client:aws_client(), download_db_log_file_portion_message()) ->
     {ok, download_db_log_file_portion_details(), tuple()} |
     {error, any()} |

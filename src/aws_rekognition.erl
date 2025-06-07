@@ -389,6 +389,7 @@
 %% Example:
 %% create_face_liveness_session_request_settings() :: #{
 %%   <<"AuditImagesLimit">> => integer(),
+%%   <<"ChallengePreferences">> => list(challenge_preference()()),
 %%   <<"OutputConfig">> => liveness_output_config()
 %% }
 -type create_face_liveness_session_request_settings() :: #{binary() => any()}.
@@ -738,6 +739,13 @@
 %%   <<"KVSStreamStartSelector">> => kinesis_video_stream_start_selector()
 %% }
 -type stream_processing_start_selector() :: #{binary() => any()}.
+
+%% Example:
+%% versions() :: #{
+%%   <<"Maximum">> => string(),
+%%   <<"Minimum">> => string()
+%% }
+-type versions() :: #{binary() => any()}.
 
 %% Example:
 %% smile() :: #{
@@ -1804,6 +1812,13 @@
 -type get_celebrity_recognition_request() :: #{binary() => any()}.
 
 %% Example:
+%% challenge_preference() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Versions">> => versions()
+%% }
+-type challenge_preference() :: #{binary() => any()}.
+
+%% Example:
 %% celebrity_recognition() :: #{
 %%   <<"Celebrity">> => celebrity_detail(),
 %%   <<"Timestamp">> => float()
@@ -1817,6 +1832,13 @@
 %%   <<"UnrecognizedFaces">> => list(compared_face()())
 %% }
 -type recognize_celebrities_response() :: #{binary() => any()}.
+
+%% Example:
+%% challenge() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type challenge() :: #{binary() => any()}.
 
 %% Example:
 %% face_search_settings() :: #{
@@ -2270,6 +2292,7 @@
 %% Example:
 %% get_face_liveness_session_results_response() :: #{
 %%   <<"AuditImages">> => list(audit_image()()),
+%%   <<"Challenge">> => challenge(),
 %%   <<"Confidence">> => float(),
 %%   <<"ReferenceImage">> => audit_image(),
 %%   <<"SessionId">> => string(),
@@ -3678,9 +3701,15 @@
 %%
 %% Takes an array of
 %% `FaceIds'. Each `FaceId' that are present in the `FaceIds'
-%% list is associated with the provided UserID. The maximum number of total
-%% `FaceIds'
-%% per UserID is 100.
+%% list is associated with the provided UserID. The number of FaceIds that
+%% can be used as input
+%% in a single request is limited to 100.
+%%
+%% Note that the total number of faces that can be associated with a single
+%% `UserID' is also limited to 100. Once a `UserID' has 100 faces
+%% associated with it, no additional faces can be added. If more API calls
+%% are made after the
+%% limit is reached, a `ServiceQuotaExceededException' will result.
 %%
 %% The `UserMatchThreshold' parameter specifies the minimum user match
 %% confidence
@@ -4544,14 +4573,12 @@ describe_stream_processor(Client, Input, Options)
 %%
 %% For each object that the model version detects on an image, the API
 %% returns a
-%% (`CustomLabel') object in an array (`CustomLabels'). Each
-%% `CustomLabel' object provides the label name (`Name'), the level
+%% (`CustomLabel') object in an array (`CustomLabels').
+%% Each `CustomLabel' object provides the label name (`Name'), the
+%% level
 %% of confidence that the image contains the object (`Confidence'), and
-%% object
-%% location information, if it exists, for the label on the image
+%% object location information, if it exists, for the label on the image
 %% (`Geometry').
-%% Note that for the `DetectCustomLabelsLabels' operation, `Polygons'
-%% are not returned in the `Geometry' section of the response.
 %%
 %% To filter labels that are returned, specify a value for
 %% `MinConfidence'.
@@ -5483,7 +5510,18 @@ get_media_analysis_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMediaAnalysisJob">>, Input, Options).
 
-%% @doc Gets the path tracking results of a Amazon Rekognition Video analysis
+%% @doc
+%%
+%% End of support notice: On October 31, 2025, AWS will discontinue
+%% support for Amazon Rekognition People Pathing.
+%%
+%% After October 31, 2025, you will no
+%% longer be able to use the Rekognition People Pathing capability. For more
+%% information,
+%% visit this blog post:
+%% https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/.
+%%
+%% Gets the path tracking results of a Amazon Rekognition Video analysis
 %% started by `StartPersonTracking'.
 %%
 %% The person path tracking operation is started by a call to
@@ -6550,8 +6588,18 @@ start_media_analysis_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMediaAnalysisJob">>, Input, Options).
 
-%% @doc Starts the asynchronous tracking of a person's path in a stored
-%% video.
+%% @doc
+%%
+%% End of support notice: On October 31, 2025, AWS will discontinue
+%% support for Amazon Rekognition People Pathing.
+%%
+%% After October 31, 2025, you will no
+%% longer be able to use the Rekognition People Pathing capability. For more
+%% information,
+%% visit this blog post:
+%% https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/.
+%%
+%% Starts the asynchronous tracking of a person's path in a stored video.
 %%
 %% Amazon Rekognition Video can track the path of people in a video stored in
 %% an Amazon S3 bucket. Use `Video' to specify the bucket name

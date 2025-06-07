@@ -42,9 +42,9 @@
          get_namespace/3,
          get_namespace/5,
          get_namespace/6,
+         get_table/1,
+         get_table/3,
          get_table/4,
-         get_table/6,
-         get_table/7,
          get_table_bucket/2,
          get_table_bucket/4,
          get_table_bucket/5,
@@ -224,9 +224,15 @@
 %% }
 -type table_summary() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_table_request() :: #{}
--type get_table_request() :: #{}.
+%% get_table_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"tableArn">> => string(),
+%%   <<"tableBucketARN">> => string()
+%% }
+-type get_table_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -861,10 +867,8 @@
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace-create.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:CreateNamespace' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:CreateNamespace' permission to
+%% use this operation.
 -spec create_namespace(aws_client:aws_client(), binary() | list(), create_namespace_request()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
@@ -905,10 +909,8 @@ create_namespace(Client, TableBucketARN, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-create.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:CreateTable' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:CreateTable' permission to use
+%% this operation.
 %%
 %% If you use this operation with the optional `metadata' request
 %% parameter you must have the `s3tables:PutTableData' permission.
@@ -917,7 +919,10 @@ create_namespace(Client, TableBucketARN, Input0, Options0) ->
 %% request parameter you must have the `s3tables:PutTableEncryption'
 %% permission.
 %%
-%% Additionally,
+%% Additionally, If you choose SSE-KMS encryption you must grant the S3
+%% Tables maintenance principal access to your KMS key. For more information,
+%% see Permissions requirements for S3 Tables SSE-KMS encryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-kms-permissions.html.
 -spec create_table(aws_client:aws_client(), binary() | list(), binary() | list(), create_table_request()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
@@ -957,10 +962,8 @@ create_table(Client, Namespace, TableBucketARN, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-create.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:CreateTableBucket' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:CreateTableBucket' permission
+%% to use this operation.
 %%
 %% If you use this operation with the optional `encryptionConfiguration'
 %% parameter you must have the `s3tables:PutTableBucketEncryption'
@@ -1004,10 +1007,8 @@ create_table_bucket(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace-delete.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:DeleteNamespace' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:DeleteNamespace' permission to
+%% use this operation.
 -spec delete_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_namespace_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1047,10 +1048,8 @@ delete_namespace(Client, Namespace, TableBucketARN, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-delete.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:DeleteTable' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:DeleteTable' permission to use
+%% this operation.
 -spec delete_table(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_table_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1091,10 +1090,8 @@ delete_table(Client, Name, Namespace, TableBucketARN, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-delete.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:DeleteTableBucket' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:DeleteTableBucket' permission
+%% to use this operation.
 -spec delete_table_bucket(aws_client:aws_client(), binary() | list(), delete_table_bucket_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1130,10 +1127,8 @@ delete_table_bucket(Client, TableBucketARN, Input0, Options0) ->
 
 %% @doc Deletes the encryption configuration for a table bucket.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:DeleteTableBucketEncryption' permission to
-%% use this operation.
+%% Permissions You must have the `s3tables:DeleteTableBucketEncryption'
+%% permission to use this operation.
 -spec delete_table_bucket_encryption(aws_client:aws_client(), binary() | list(), delete_table_bucket_encryption_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1173,10 +1168,8 @@ delete_table_bucket_encryption(Client, TableBucketARN, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-delete
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:DeleteTableBucketPolicy' permission to use
-%% this operation.
+%% Permissions You must have the `s3tables:DeleteTableBucketPolicy'
+%% permission to use this operation.
 -spec delete_table_bucket_policy(aws_client:aws_client(), binary() | list(), delete_table_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1216,10 +1209,8 @@ delete_table_bucket_policy(Client, TableBucketARN, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-delete
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:DeleteTablePolicy' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:DeleteTablePolicy' permission
+%% to use this operation.
 -spec delete_table_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_table_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1259,10 +1250,8 @@ delete_table_policy(Client, Name, Namespace, TableBucketARN, Input0, Options0) -
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetNamespace' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:GetNamespace' permission to
+%% use this operation.
 -spec get_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
@@ -1305,33 +1294,31 @@ get_namespace(Client, Namespace, TableBucketARN, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-tables.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTable' permission to use this
-%% operation.
--spec get_table(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+%% Permissions You must have the `s3tables:GetTable' permission to use
+%% this operation.
+-spec get_table(aws_client:aws_client()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
-get_table(Client, Name, Namespace, TableBucketARN)
+get_table(Client)
   when is_map(Client) ->
-    get_table(Client, Name, Namespace, TableBucketARN, #{}, #{}).
+    get_table(Client, #{}, #{}).
 
--spec get_table(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_table(aws_client:aws_client(), map(), map()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
-get_table(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap)
+get_table(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_table(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, []).
+    get_table(Client, QueryMap, HeadersMap, []).
 
--spec get_table(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_table(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
-get_table(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, Options0)
+get_table(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/tables/", aws_util:encode_uri(TableBucketARN), "/", aws_util:encode_uri(Namespace), "/", aws_util:encode_uri(Name), ""],
+    Path = ["/get-table"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1341,7 +1328,14 @@ get_table(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, Options
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"tableArn">>, maps:get(<<"tableArn">>, QueryMap, undefined)},
+        {<<"tableBucketARN">>, maps:get(<<"tableBucketARN">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1351,10 +1345,8 @@ get_table(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, Options
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-details.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTableBucket' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:GetTableBucket' permission to
+%% use this operation.
 -spec get_table_bucket(aws_client:aws_client(), binary() | list()) ->
     {ok, get_table_bucket_response(), tuple()} |
     {error, any()} |
@@ -1393,10 +1385,8 @@ get_table_bucket(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the encryption configuration for a table bucket.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTableBucketEncryption' permission to
-%% use this operation.
+%% Permissions You must have the `s3tables:GetTableBucketEncryption'
+%% permission to use this operation.
 -spec get_table_bucket_encryption(aws_client:aws_client(), binary() | list()) ->
     {ok, get_table_bucket_encryption_response(), tuple()} |
     {error, any()} |
@@ -1440,10 +1430,9 @@ get_table_bucket_encryption(Client, TableBucketARN, QueryMap, HeadersMap, Option
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-table-buckets-maintenance.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTableBucketMaintenanceConfiguration'
-%% permission to use this operation.
+%% Permissions You must have the
+%% `s3tables:GetTableBucketMaintenanceConfiguration' permission to use
+%% this operation.
 -spec get_table_bucket_maintenance_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_table_bucket_maintenance_configuration_response(), tuple()} |
     {error, any()} |
@@ -1486,10 +1475,8 @@ get_table_bucket_maintenance_configuration(Client, TableBucketARN, QueryMap, Hea
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-get
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTableBucketPolicy' permission to use
-%% this operation.
+%% Permissions You must have the `s3tables:GetTableBucketPolicy'
+%% permission to use this operation.
 -spec get_table_bucket_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_table_bucket_policy_response(), tuple()} |
     {error, any()} |
@@ -1528,10 +1515,8 @@ get_table_bucket_policy(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the encryption configuration for a table.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTableEncryption' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:GetTableEncryption' permission
+%% to use this operation.
 -spec get_table_encryption(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_encryption_response(), tuple()} |
     {error, any()} |
@@ -1574,10 +1559,9 @@ get_table_encryption(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersM
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-maintenance.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTableMaintenanceConfiguration'
-%% permission to use this operation.
+%% Permissions You must have the
+%% `s3tables:GetTableMaintenanceConfiguration' permission to use this
+%% operation.
 -spec get_table_maintenance_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_maintenance_configuration_response(), tuple()} |
     {error, any()} |
@@ -1620,10 +1604,8 @@ get_table_maintenance_configuration(Client, Name, Namespace, TableBucketARN, Que
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-maintenance.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTableMaintenanceJobStatus' permission
-%% to use this operation.
+%% Permissions You must have the `s3tables:GetTableMaintenanceJobStatus'
+%% permission to use this operation.
 -spec get_table_maintenance_job_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_maintenance_job_status_response(), tuple()} |
     {error, any()} |
@@ -1662,10 +1644,8 @@ get_table_maintenance_job_status(Client, Name, Namespace, TableBucketARN, QueryM
 
 %% @doc Gets the location of the table metadata.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTableMetadataLocation' permission to
-%% use this operation.
+%% Permissions You must have the `s3tables:GetTableMetadataLocation'
+%% permission to use this operation.
 -spec get_table_metadata_location(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_metadata_location_response(), tuple()} |
     {error, any()} |
@@ -1708,10 +1688,8 @@ get_table_metadata_location(Client, Name, Namespace, TableBucketARN, QueryMap, H
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-get
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:GetTablePolicy' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:GetTablePolicy' permission to
+%% use this operation.
 -spec get_table_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_policy_response(), tuple()} |
     {error, any()} |
@@ -1754,10 +1732,8 @@ get_table_policy(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersMap, 
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-namespace.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:ListNamespaces' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:ListNamespaces' permission to
+%% use this operation.
 -spec list_namespaces(aws_client:aws_client(), binary() | list()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
@@ -1806,10 +1782,8 @@ list_namespaces(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:ListTableBuckets' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:ListTableBuckets' permission
+%% to use this operation.
 -spec list_table_buckets(aws_client:aws_client()) ->
     {ok, list_table_buckets_response(), tuple()} |
     {error, any()} |
@@ -1858,10 +1832,8 @@ list_table_buckets(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-tables.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:ListTables' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:ListTables' permission to use
+%% this operation.
 -spec list_tables(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
@@ -1907,15 +1879,14 @@ list_tables(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
 
 %% @doc Sets the encryption configuration for a table bucket.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:PutTableBucketEncryption' permission to
-%% use this operation.
+%% Permissions You must have the `s3tables:PutTableBucketEncryption'
+%% permission to use this operation.
 %%
 %% If you choose SSE-KMS encryption you must grant the S3 Tables maintenance
 %% principal access to your KMS key. For more information, see Permissions
 %% requirements for S3 Tables SSE-KMS encryption:
-%% AmazonS3/latest/userguide/s3-tables-kms-permissions.html
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-kms-permissions.html
+%% in the Amazon Simple Storage Service User Guide.
 -spec put_table_bucket_encryption(aws_client:aws_client(), binary() | list(), put_table_bucket_encryption_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1950,17 +1921,15 @@ put_table_bucket_encryption(Client, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new maintenance configuration or replaces an existing
-%% maintenance configuration
-%% for a table bucket.
+%% maintenance configuration for a table bucket.
 %%
 %% For more information, see Amazon S3 table bucket maintenance:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-table-buckets-maintenance.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:PutTableBucketMaintenanceConfiguration'
-%% permission to use this operation.
+%% Permissions You must have the
+%% `s3tables:PutTableBucketMaintenanceConfiguration' permission to use
+%% this operation.
 -spec put_table_bucket_maintenance_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_table_bucket_maintenance_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1995,17 +1964,14 @@ put_table_bucket_maintenance_configuration(Client, TableBucketARN, Type, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new maintenance configuration or replaces an existing table
-%% bucket policy for a
-%% table bucket.
+%% bucket policy for a table bucket.
 %%
 %% For more information, see Adding a table bucket policy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-bucket-policy.html#table-bucket-policy-add
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:PutTableBucketPolicy' permission to use
-%% this operation.
+%% Permissions You must have the `s3tables:PutTableBucketPolicy'
+%% permission to use this operation.
 -spec put_table_bucket_policy(aws_client:aws_client(), binary() | list(), put_table_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2040,17 +2006,15 @@ put_table_bucket_policy(Client, TableBucketARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new maintenance configuration or replaces an existing
-%% maintenance configuration
-%% for a table.
+%% maintenance configuration for a table.
 %%
 %% For more information, see S3 Tables maintenance:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-maintenance.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:PutTableMaintenanceConfiguration'
-%% permission to use this operation.
+%% Permissions You must have the
+%% `s3tables:PutTableMaintenanceConfiguration' permission to use this
+%% operation.
 -spec put_table_maintenance_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_table_maintenance_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2091,10 +2055,8 @@ put_table_maintenance_configuration(Client, Name, Namespace, TableBucketARN, Typ
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-add
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:PutTablePolicy' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:PutTablePolicy' permission to
+%% use this operation.
 -spec put_table_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_table_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2134,10 +2096,8 @@ put_table_policy(Client, Name, Namespace, TableBucketARN, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-tables.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:RenameTable' permission to use this
-%% operation.
+%% Permissions You must have the `s3tables:RenameTable' permission to use
+%% this operation.
 -spec rename_table(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), rename_table_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2178,10 +2138,8 @@ rename_table(Client, Name, Namespace, TableBucketARN, Input0, Options0) ->
 %% Iceberg table must end with `.metadata.json', or if the metadata file
 %% is Gzip-compressed, `.metadata.json.gz'.
 %%
-%% Permissions
-%%
-%% You must have the `s3tables:UpdateTableMetadataLocation' permission to
-%% use this operation.
+%% Permissions You must have the `s3tables:UpdateTableMetadataLocation'
+%% permission to use this operation.
 -spec update_table_metadata_location(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_table_metadata_location_request()) ->
     {ok, update_table_metadata_location_response(), tuple()} |
     {error, any()} |

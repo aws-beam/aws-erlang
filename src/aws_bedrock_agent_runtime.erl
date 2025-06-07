@@ -1731,6 +1731,14 @@
 
 
 %% Example:
+%% prompt_creation_configurations() :: #{
+%%   <<"excludePreviousThinkingSteps">> => [boolean()],
+%%   <<"previousConversationTurnsToInclude">> => [integer()]
+%% }
+-type prompt_creation_configurations() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_flow_execution_response() :: #{
 %%   <<"endedAt">> => non_neg_integer(),
 %%   <<"errors">> => list(flow_execution_error()()),
@@ -1871,6 +1879,7 @@
 %%   <<"instruction">> := string(),
 %%   <<"knowledgeBases">> => list(knowledge_base()()),
 %%   <<"orchestrationType">> => list(any()),
+%%   <<"promptCreationConfigurations">> => prompt_creation_configurations(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
 %%   <<"streamingConfigurations">> => streaming_configurations()
 %% }
@@ -2048,6 +2057,7 @@
 %%   <<"endSession">> => [boolean()],
 %%   <<"inputText">> => string(),
 %%   <<"memoryId">> => string(),
+%%   <<"promptCreationConfigurations">> => prompt_creation_configurations(),
 %%   <<"sessionState">> => session_state(),
 %%   <<"sourceArn">> => string(),
 %%   <<"streamingConfigurations">> => streaming_configurations()
@@ -2912,16 +2922,15 @@ get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the flow definition snapshot used for an asynchronous
-%% execution.
+%% @doc Retrieves the flow definition snapshot used for a flow execution.
 %%
 %% The snapshot represents the flow metadata and definition as it existed at
-%% the time the asynchronous execution was started. Note that even if the
-%% flow is edited after an execution starts, the snapshot connected to the
-%% execution remains unchanged.
+%% the time the execution was started. Note that even if the flow is edited
+%% after an execution starts, the snapshot connected to the execution remains
+%% unchanged.
 %%
-%% Asynchronous flows is in preview release for Amazon Bedrock and is subject
-%% to change.
+%% Flow executions is in preview release for Amazon Bedrock and is subject to
+%% change.
 -spec get_execution_flow_snapshot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_execution_flow_snapshot_response(), tuple()} |
     {error, any()} |
@@ -2958,9 +2967,9 @@ get_execution_flow_snapshot(Client, ExecutionIdentifier, FlowAliasIdentifier, Fl
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves details about a specific asynchronous execution of a flow,
-%% including its status, start and end times, and any errors that occurred
-%% during execution.
+%% @doc Retrieves details about a specific flow execution, including its
+%% status, start and end times, and any errors that occurred during
+%% execution.
 -spec get_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_flow_execution_response(), tuple()} |
     {error, any()} |
@@ -3298,15 +3307,14 @@ invoke_inline_agent(Client, SessionId, Input0, Options0) ->
         Result
     end.
 
-%% @doc Lists events that occurred during an asynchronous execution of a
-%% flow.
+%% @doc Lists events that occurred during a flow execution.
 %%
 %% Events provide detailed information about the execution progress,
 %% including node inputs and outputs, flow inputs and outputs, condition
 %% results, and failure events.
 %%
-%% Asynchronous flows is in preview release for Amazon Bedrock and is subject
-%% to change.
+%% Flow executions is in preview release for Amazon Bedrock and is subject to
+%% change.
 -spec list_flow_execution_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_flow_execution_events_response(), tuple()} |
     {error, any()} |
@@ -3349,14 +3357,14 @@ list_flow_execution_events(Client, ExecutionIdentifier, FlowAliasIdentifier, Flo
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all asynchronous executions for a flow.
+%% @doc Lists all executions of a flow.
 %%
 %% Results can be paginated and include summary information about each
 %% execution, such as status, start and end times, and the execution's
 %% Amazon Resource Name (ARN).
 %%
-%% Asynchronous flows is in preview release for Amazon Bedrock and is subject
-%% to change.
+%% Flow executions is in preview release for Amazon Bedrock and is subject to
+%% change.
 -spec list_flow_executions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_flow_executions_response(), tuple()} |
     {error, any()} |
@@ -3818,17 +3826,18 @@ retrieve_and_generate_stream(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Starts an asynchronous execution of an Amazon Bedrock flow.
+%% @doc Starts an execution of an Amazon Bedrock flow.
 %%
-%% Unlike synchronous flows that run until completion or time out after five
-%% minutes, you can run asynchronous flows for longer durations. Asynchronous
-%% flows also yield control so that your application can perform other tasks.
+%% Unlike flows that run until completion or time out after five minutes,
+%% flow executions let you run flows asynchronously for longer durations.
+%% Flow executions also yield control so that your application can perform
+%% other tasks.
 %%
 %% This operation returns an Amazon Resource Name (ARN) that you can use to
-%% track and manage your flow's async execution.
+%% track and manage your flow execution.
 %%
-%% Asynchronous flows is in preview release for Amazon Bedrock and is subject
-%% to change.
+%% Flow executions is in preview release for Amazon Bedrock and is subject to
+%% change.
 -spec start_flow_execution(aws_client:aws_client(), binary() | list(), binary() | list(), start_flow_execution_request()) ->
     {ok, start_flow_execution_response(), tuple()} |
     {error, any()} |
@@ -3862,7 +3871,7 @@ start_flow_execution(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops an Amazon Bedrock flow's asynchronous execution.
+%% @doc Stops an Amazon Bedrock flow's execution.
 %%
 %% This operation prevents further processing of the flow and changes the
 %% execution status to `Aborted'.
