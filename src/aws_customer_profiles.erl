@@ -35,6 +35,8 @@
          create_calculated_attribute_definition/5,
          create_domain/3,
          create_domain/4,
+         create_domain_layout/4,
+         create_domain_layout/5,
          create_event_stream/4,
          create_event_stream/5,
          create_event_trigger/4,
@@ -53,6 +55,8 @@
          delete_calculated_attribute_definition/5,
          delete_domain/3,
          delete_domain/4,
+         delete_domain_layout/4,
+         delete_domain_layout/5,
          delete_event_stream/4,
          delete_event_stream/5,
          delete_event_trigger/4,
@@ -84,6 +88,9 @@
          get_domain/2,
          get_domain/4,
          get_domain/5,
+         get_domain_layout/3,
+         get_domain_layout/5,
+         get_domain_layout/6,
          get_event_stream/3,
          get_event_stream/5,
          get_event_stream/6,
@@ -131,6 +138,9 @@
          list_calculated_attributes_for_profile/3,
          list_calculated_attributes_for_profile/5,
          list_calculated_attributes_for_profile/6,
+         list_domain_layouts/2,
+         list_domain_layouts/4,
+         list_domain_layouts/5,
          list_domains/1,
          list_domains/3,
          list_domains/4,
@@ -189,6 +199,8 @@
          update_calculated_attribute_definition/5,
          update_domain/3,
          update_domain/4,
+         update_domain_layout/4,
+         update_domain_layout/5,
          update_event_trigger/4,
          update_event_trigger/5,
          update_profile/3,
@@ -196,6 +208,22 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_domain_layout_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Layout">> => string(),
+%%   <<"LayoutDefinitionName">> => string(),
+%%   <<"LayoutType">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string()
+%% }
+-type get_domain_layout_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -284,8 +312,11 @@
 %%   <<"DisplayName">> => string(),
 %%   <<"Filter">> => filter(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Readiness">> => readiness(),
 %%   <<"Statistic">> => list(any()),
-%%   <<"Tags">> => map()
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
 %% }
 -type create_calculated_attribute_definition_response() :: #{binary() => any()}.
 
@@ -406,8 +437,11 @@
 
 %% Example:
 %% range() :: #{
+%%   <<"TimestampFormat">> => string(),
+%%   <<"TimestampSource">> => string(),
 %%   <<"Unit">> => list(any()),
-%%   <<"Value">> => integer()
+%%   <<"Value">> => integer(),
+%%   <<"ValueRange">> => value_range()
 %% }
 -type range() :: #{binary() => any()}.
 
@@ -474,6 +508,10 @@
 %%   <<"Object">> => string()
 %% }
 -type marketo_source_properties() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_layout_request() :: #{}
+-type get_domain_layout_request() :: #{}.
 
 
 %% Example:
@@ -672,10 +710,18 @@
 %%   <<"CalculatedAttributeName">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"IsDataPartial">> => string(),
+%%   <<"LastObjectTimestamp">> => non_neg_integer(),
 %%   <<"ProfileId">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type calculated_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_layout_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_domain_layout_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -720,6 +766,22 @@
 %%   <<"Uri">> => string()
 %% }
 -type put_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_layout_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Layout">> => string(),
+%%   <<"LayoutDefinitionName">> => string(),
+%%   <<"LayoutType">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string()
+%% }
+-type create_domain_layout_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -923,7 +985,8 @@
 %%   <<"DisplayName">> => string(),
 %%   <<"Filter">> => filter(),
 %%   <<"Statistic">> := list(any()),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
 %% }
 -type create_calculated_attribute_definition_request() :: #{binary() => any()}.
 
@@ -935,7 +998,9 @@
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Tags">> => map()
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
 %% }
 -type list_calculated_attribute_definition_item() :: #{binary() => any()}.
 
@@ -1142,8 +1207,11 @@
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Readiness">> => readiness(),
 %%   <<"Statistic">> => list(any()),
-%%   <<"Tags">> => map()
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
 %% }
 -type update_calculated_attribute_definition_response() :: #{binary() => any()}.
 
@@ -1234,6 +1302,7 @@
 %%   <<"CalculatedAttributeName">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"IsDataPartial">> => string(),
+%%   <<"LastObjectTimestamp">> => non_neg_integer(),
 %%   <<"Value">> => string()
 %% }
 -type get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
@@ -1426,6 +1495,22 @@
 
 
 %% Example:
+%% update_domain_layout_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Layout">> => string(),
+%%   <<"LayoutDefinitionName">> => string(),
+%%   <<"LayoutType">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string()
+%% }
+-type update_domain_layout_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_event_stream_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DestinationDetails">> => event_stream_destination_details(),
@@ -1538,6 +1623,17 @@
 %%   <<"MatchingAttributesList">> => list(list(string()())())
 %% }
 -type consolidation() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_layout_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Layout">> => string(),
+%%   <<"LayoutType">> => list(any())
+%% }
+-type update_domain_layout_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1793,6 +1889,14 @@
 %% }
 -type object_attribute() :: #{binary() => any()}.
 
+
+%% Example:
+%% value_range() :: #{
+%%   <<"End">> => integer(),
+%%   <<"Start">> => integer()
+%% }
+-type value_range() :: #{binary() => any()}.
+
 %% Example:
 %% get_segment_snapshot_request() :: #{}
 -type get_segment_snapshot_request() :: #{}.
@@ -1815,6 +1919,18 @@
 %%   <<"WorkflowType">> => list(any())
 %% }
 -type get_workflow_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_layout_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"DisplayName">> := string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Layout">> := string(),
+%%   <<"LayoutType">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_layout_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2169,6 +2285,20 @@
 
 
 %% Example:
+%% layout_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"LayoutDefinitionName">> => string(),
+%%   <<"LayoutType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type layout_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% appflow_integration() :: #{
 %%   <<"Batches">> => list(batch()()),
 %%   <<"FlowDefinition">> => flow_definition()
@@ -2177,10 +2307,19 @@
 
 
 %% Example:
+%% list_domain_layouts_response() :: #{
+%%   <<"Items">> => list(layout_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_layouts_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_calculated_attribute_for_profile_item() :: #{
 %%   <<"CalculatedAttributeName">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"IsDataPartial">> => string(),
+%%   <<"LastObjectTimestamp">> => non_neg_integer(),
 %%   <<"Value">> => string()
 %% }
 -type list_calculated_attribute_for_profile_item() :: #{binary() => any()}.
@@ -2247,6 +2386,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% readiness() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ProgressPercentage">> => integer()
+%% }
+-type readiness() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2336,6 +2483,14 @@
 
 
 %% Example:
+%% list_domain_layouts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_layouts_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_event_stream_response() :: #{
 %%   <<"EventStreamArn">> => string(),
 %%   <<"Tags">> => map()
@@ -2407,8 +2562,11 @@
 %%   <<"DisplayName">> => string(),
 %%   <<"Filter">> => filter(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Readiness">> => readiness(),
 %%   <<"Statistic">> => list(any()),
-%%   <<"Tags">> => map()
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
 %% }
 -type get_calculated_attribute_definition_response() :: #{binary() => any()}.
 
@@ -2428,6 +2586,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_profile_object_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_layout_request() :: #{}
+-type delete_domain_layout_request() :: #{}.
 
 
 %% Example:
@@ -2499,6 +2661,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_domain_layout_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_event_stream_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -2556,6 +2725,13 @@
     resource_not_found_exception().
 
 -type delete_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_domain_layout_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -2654,6 +2830,13 @@
     resource_not_found_exception().
 
 -type get_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_domain_layout_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -2773,6 +2956,13 @@
     resource_not_found_exception().
 
 -type list_calculated_attributes_for_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_domain_layouts_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -2927,6 +3117,13 @@
     resource_not_found_exception().
 
 -type update_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_domain_layout_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3153,6 +3350,43 @@ create_domain(Client, DomainName, Input) ->
 create_domain(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates the layout to view data for a specific domain.
+%%
+%% This API can only be invoked from
+%% the Amazon Connect admin website.
+-spec create_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list(), create_domain_layout_request()) ->
+    {ok, create_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, create_domain_layout_errors(), tuple()}.
+create_domain_layout(Client, DomainName, LayoutDefinitionName, Input) ->
+    create_domain_layout(Client, DomainName, LayoutDefinitionName, Input, []).
+
+-spec create_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list(), create_domain_layout_request(), proplists:proplist()) ->
+    {ok, create_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, create_domain_layout_errors(), tuple()}.
+create_domain_layout(Client, DomainName, LayoutDefinitionName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/layouts/", aws_util:encode_uri(LayoutDefinitionName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3488,6 +3722,43 @@ delete_domain(Client, DomainName, Input) ->
 delete_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the layout used to view data for a specific domain.
+%%
+%% This API can only be invoked
+%% from the Amazon Connect admin website.
+-spec delete_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list(), delete_domain_layout_request()) ->
+    {ok, delete_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_layout_errors(), tuple()}.
+delete_domain_layout(Client, DomainName, LayoutDefinitionName, Input) ->
+    delete_domain_layout(Client, DomainName, LayoutDefinitionName, Input, []).
+
+-spec delete_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list(), delete_domain_layout_request(), proplists:proplist()) ->
+    {ok, delete_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_layout_errors(), tuple()}.
+delete_domain_layout(Client, DomainName, LayoutDefinitionName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/layouts/", aws_util:encode_uri(LayoutDefinitionName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4017,6 +4288,46 @@ get_domain(Client, DomainName, QueryMap, HeadersMap)
 get_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the layout to view data for a specific domain.
+%%
+%% This API can only be invoked from
+%% the Amazon Connect admin website.
+-spec get_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_layout_errors(), tuple()}.
+get_domain_layout(Client, DomainName, LayoutDefinitionName)
+  when is_map(Client) ->
+    get_domain_layout(Client, DomainName, LayoutDefinitionName, #{}, #{}).
+
+-spec get_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_layout_errors(), tuple()}.
+get_domain_layout(Client, DomainName, LayoutDefinitionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_layout(Client, DomainName, LayoutDefinitionName, QueryMap, HeadersMap, []).
+
+-spec get_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_layout_errors(), tuple()}.
+get_domain_layout(Client, DomainName, LayoutDefinitionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/layouts/", aws_util:encode_uri(LayoutDefinitionName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4725,6 +5036,52 @@ list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, 
 list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the existing layouts that can be used to view data for a
+%% specific domain.
+%%
+%% This API
+%% can only be invoked from the Amazon Connect admin website.
+-spec list_domain_layouts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_domain_layouts_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_layouts_errors(), tuple()}.
+list_domain_layouts(Client, DomainName)
+  when is_map(Client) ->
+    list_domain_layouts(Client, DomainName, #{}, #{}).
+
+-spec list_domain_layouts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_domain_layouts_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_layouts_errors(), tuple()}.
+list_domain_layouts(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_layouts(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_domain_layouts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_domain_layouts_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_layouts_errors(), tuple()}.
+list_domain_layouts(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/layouts"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5741,6 +6098,43 @@ update_domain(Client, DomainName, Input) ->
 update_domain(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the layout used to view data for a specific domain.
+%%
+%% This API can only be invoked
+%% from the Amazon Connect admin website.
+-spec update_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list(), update_domain_layout_request()) ->
+    {ok, update_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, update_domain_layout_errors(), tuple()}.
+update_domain_layout(Client, DomainName, LayoutDefinitionName, Input) ->
+    update_domain_layout(Client, DomainName, LayoutDefinitionName, Input, []).
+
+-spec update_domain_layout(aws_client:aws_client(), binary() | list(), binary() | list(), update_domain_layout_request(), proplists:proplist()) ->
+    {ok, update_domain_layout_response(), tuple()} |
+    {error, any()} |
+    {error, update_domain_layout_errors(), tuple()}.
+update_domain_layout(Client, DomainName, LayoutDefinitionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/layouts/", aws_util:encode_uri(LayoutDefinitionName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

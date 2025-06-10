@@ -4992,6 +4992,7 @@
 
 %% Example:
 %% network_interface() :: #{
+%%   <<"AssociatedSubnets">> => list(string()()),
 %%   <<"Association">> => network_interface_association(),
 %%   <<"Attachment">> => network_interface_attachment(),
 %%   <<"AvailabilityZone">> => string(),
@@ -5155,6 +5156,7 @@
 %%   <<"SubnetArn">> => string(),
 %%   <<"SubnetId">> => string(),
 %%   <<"Tags">> => list(tag()()),
+%%   <<"Type">> => string(),
 %%   <<"VpcId">> => string()
 %% }
 -type subnet() :: #{binary() => any()}.
@@ -6438,6 +6440,7 @@
 %% Example:
 %% modify_network_interface_attribute_request() :: #{
 %%   <<"AssociatePublicIpAddress">> => boolean(),
+%%   <<"AssociatedSubnetIds">> => list(string()()),
 %%   <<"Attachment">> => network_interface_attachment_changes(),
 %%   <<"ConnectionTrackingSpecification">> => connection_tracking_specification_request(),
 %%   <<"Description">> => attribute_value(),
@@ -18497,6 +18500,7 @@
 %%   <<"PublicIp">> => string(),
 %%   <<"PublicIpv4Pool">> => string(),
 %%   <<"ServiceManaged">> => list(any()),
+%%   <<"SubnetId">> => string(),
 %%   <<"Tags">> => list(tag()())
 %% }
 -type address() :: #{binary() => any()}.
@@ -21475,19 +21479,23 @@ attach_verified_access_trust_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachVerifiedAccessTrustProvider">>, Input, Options).
 
-%% @doc Attaches an EBS volume to a running or stopped instance and exposes
-%% it to the instance
-%% with the specified device name.
+%% @doc Attaches an Amazon EBS volume to a `running' or `stopped'
+%% instance, and exposes it to the instance with the specified device name.
 %%
-%% Encrypted EBS volumes must be attached to instances that support Amazon
-%% EBS encryption. For
-%% more information, see Amazon EBS encryption:
-%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html in
-%% the Amazon EBS User Guide.
+%% The maximum number of Amazon EBS volumes that you can attach to an
+%% instance depends on the
+%% instance type. If you exceed the volume attachment limit for an instance
+%% type, the attachment
+%% request fails with the `AttachmentLimitExceeded' error. For more
+%% information,
+%% see Instance
+%% volume limits:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html.
 %%
-%% After you attach an EBS volume, you must make it available. For more
-%% information, see
-%% Make an EBS volume available for use:
+%% After you attach an EBS volume, you must make it available for use. For
+%% more information,
+%% see Make an
+%% EBS volume available for use:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-using-volumes.html.
 %%
 %% If a volume has an Amazon Web Services Marketplace product code:

@@ -174,6 +174,13 @@
 
 
 %% Example:
+%% machine_learning_product_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type machine_learning_product_entity_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -268,6 +275,7 @@
 %%   <<"EntityId">> => string(),
 %%   <<"EntityType">> => string(),
 %%   <<"LastModifiedDate">> => string(),
+%%   <<"MachineLearningProductSummary">> => machine_learning_product_summary(),
 %%   <<"Name">> => string(),
 %%   <<"OfferSummary">> => offer_summary(),
 %%   <<"ResaleAuthorizationSummary">> => resale_authorization_summary(),
@@ -402,6 +410,14 @@
 
 
 %% Example:
+%% machine_learning_product_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type machine_learning_product_sort() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_product_visibility_filter() :: #{
 %%   <<"ValueList">> => list(list(any())())
 %% }
@@ -485,6 +501,14 @@
 
 
 %% Example:
+%% machine_learning_product_title_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type machine_learning_product_title_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% container_product_last_modified_date_filter() :: #{
 %%   <<"DateRange">> => container_product_last_modified_date_filter_date_range()
 %% }
@@ -504,6 +528,14 @@
 %%   <<"ValueList">> => list(list(any())())
 %% }
 -type ami_product_visibility_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% machine_learning_product_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type machine_learning_product_last_modified_date_filter_date_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -762,6 +794,14 @@
 
 
 %% Example:
+%% machine_learning_product_summary() :: #{
+%%   <<"ProductTitle">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type machine_learning_product_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% offer_sort() :: #{
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any())
@@ -896,6 +936,13 @@
 
 
 %% Example:
+%% machine_learning_product_visibility_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type machine_learning_product_visibility_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_entities_response() :: #{
 %%   <<"EntitySummaryList">> => list(entity_summary()()),
 %%   <<"NextToken">> => string()
@@ -974,6 +1021,13 @@
 
 
 %% Example:
+%% machine_learning_product_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => machine_learning_product_last_modified_date_filter_date_range()
+%% }
+-type machine_learning_product_last_modified_date_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_product_last_modified_date_filter() :: #{
 %%   <<"DateRange">> => data_product_last_modified_date_filter_date_range()
 %% }
@@ -993,6 +1047,16 @@
 %%   <<"DateRange">> => offer_availability_end_date_filter_date_range()
 %% }
 -type offer_availability_end_date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% machine_learning_product_filters() :: #{
+%%   <<"EntityId">> => machine_learning_product_entity_id_filter(),
+%%   <<"LastModifiedDate">> => machine_learning_product_last_modified_date_filter(),
+%%   <<"ProductTitle">> => machine_learning_product_title_filter(),
+%%   <<"Visibility">> => machine_learning_product_visibility_filter()
+%% }
+-type machine_learning_product_filters() :: #{binary() => any()}.
 
 -type batch_describe_entities_errors() ::
     throttling_exception() | 
@@ -1519,6 +1583,12 @@ put_resource_policy(Client, Input0, Options0) ->
 %% types available for container-based products, see Working with container
 %% products:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/container-products.html#working-with-container-products.
+%%
+%% To download &quot;DetailsDocument&quot; shapes, see Python:
+%% https://github.com/awslabs/aws-marketplace-catalog-api-shapes-for-python
+%% and Java:
+%% https://github.com/awslabs/aws-marketplace-catalog-api-shapes-for-java/tree/main
+%% shapes on GitHub.
 -spec start_change_set(aws_client:aws_client(), start_change_set_request()) ->
     {ok, start_change_set_response(), tuple()} |
     {error, any()} |
