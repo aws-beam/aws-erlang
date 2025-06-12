@@ -853,6 +853,7 @@
 %%   <<"LabelNamespace">> => string(),
 %%   <<"ManagedByFirewallManager">> => boolean(),
 %%   <<"Name">> => string(),
+%%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
 %%   <<"PostProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()()),
 %%   <<"PreProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()()),
 %%   <<"RetrofittedByFirewallManager">> => boolean(),
@@ -1010,6 +1011,14 @@
 -type data_protection_config() :: #{binary() => any()}.
 
 %% Example:
+%% client_side_action() :: #{
+%%   <<"ExemptUriRegularExpressions">> => list(regex()()),
+%%   <<"Sensitivity">> => list(any()),
+%%   <<"UsageOfAction">> => list(any())
+%% }
+-type client_side_action() :: #{binary() => any()}.
+
+%% Example:
 %% rate_limit_forwarded_ip() :: #{
 
 %% }
@@ -1048,6 +1057,13 @@
 %%   <<"SuccessStrings">> => list(string()())
 %% }
 -type response_inspection_body_contains() :: #{binary() => any()}.
+
+%% Example:
+%% aws_managed_rules_anti_d_do_s_rule_set() :: #{
+%%   <<"ClientSideActionConfig">> => client_side_action_config(),
+%%   <<"SensitivityToBlock">> => list(any())
+%% }
+-type aws_managed_rules_anti_d_do_s_rule_set() :: #{binary() => any()}.
 
 %% Example:
 %% rate_limit_asn() :: #{
@@ -1195,6 +1211,7 @@
 %%   <<"Id">> := string(),
 %%   <<"LockToken">> := string(),
 %%   <<"Name">> := string(),
+%%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
 %%   <<"Rules">> => list(rule()()),
 %%   <<"Scope">> := list(any()),
 %%   <<"TokenDomains">> => list(string()()),
@@ -1538,6 +1555,7 @@
 %%   <<"DefaultAction">> := default_action(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
 %%   <<"Rules">> => list(rule()()),
 %%   <<"Scope">> := list(any()),
 %%   <<"Tags">> => list(tag()()),
@@ -1707,6 +1725,12 @@
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% on_source_d_do_s_protection_config() :: #{
+%%   <<"ALBLowReputationMode">> => list(any())
+%% }
+-type on_source_d_do_s_protection_config() :: #{binary() => any()}.
 
 %% Example:
 %% firewall_manager_statement() :: #{
@@ -1906,6 +1930,7 @@
 %% managed_rule_group_config() :: #{
 %%   <<"AWSManagedRulesACFPRuleSet">> => aws_managed_rules_a_c_f_p_rule_set(),
 %%   <<"AWSManagedRulesATPRuleSet">> => aws_managed_rules_a_t_p_rule_set(),
+%%   <<"AWSManagedRulesAntiDDoSRuleSet">> => aws_managed_rules_anti_d_do_s_rule_set(),
 %%   <<"AWSManagedRulesBotControlRuleSet">> => aws_managed_rules_bot_control_rule_set(),
 %%   <<"LoginPath">> => string(),
 %%   <<"PasswordField">> => password_field(),
@@ -2183,6 +2208,12 @@
 %%   <<"RequestBody">> => map()
 %% }
 -type association_config() :: #{binary() => any()}.
+
+%% Example:
+%% client_side_action_config() :: #{
+%%   <<"Challenge">> => client_side_action()
+%% }
+-type client_side_action_config() :: #{binary() => any()}.
 
 -type associate_web_acl_errors() ::
     w_a_f_invalid_operation_exception() | 

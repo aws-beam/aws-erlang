@@ -1107,12 +1107,15 @@
 %%   <<"Asn">> => float(),
 %%   <<"Cidr">> => string(),
 %%   <<"DestinationIdentifier">> => string(),
+%%   <<"DnsSupport">> => boolean(),
 %%   <<"EdgeLocations">> => list(string()()),
 %%   <<"InsideCidrBlocks">> => list(string()()),
 %%   <<"NetworkFunctionGroupName">> => string(),
+%%   <<"SecurityGroupReferencingSupport">> => boolean(),
 %%   <<"SegmentName">> => string(),
 %%   <<"ServiceInsertionActions">> => list(service_insertion_action()()),
-%%   <<"SharedSegments">> => list(string()())
+%%   <<"SharedSegments">> => list(string()()),
+%%   <<"VpnEcmpSupport">> => boolean()
 %% }
 -type core_network_change_values() :: #{binary() => any()}.
 
@@ -1996,7 +1999,9 @@
 %% Example:
 %% vpc_options() :: #{
 %%   <<"ApplianceModeSupport">> => boolean(),
-%%   <<"Ipv6Support">> => boolean()
+%%   <<"DnsSupport">> => boolean(),
+%%   <<"Ipv6Support">> => boolean(),
+%%   <<"SecurityGroupReferencingSupport">> => boolean()
 %% }
 -type vpc_options() :: #{binary() => any()}.
 

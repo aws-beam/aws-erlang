@@ -426,12 +426,15 @@
 %%   <<"associationId">> => string(),
 %%   <<"clusterName">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"disableSessionTags">> => boolean(),
+%%   <<"externalId">> => string(),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"namespace">> => string(),
 %%   <<"ownerArn">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"serviceAccount">> => string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"targetRoleArn">> => string()
 %% }
 -type pod_identity_association() :: #{binary() => any()}.
 
@@ -1043,7 +1046,9 @@
 %% Example:
 %% update_pod_identity_association_request() :: #{
 %%   <<"clientRequestToken">> => string(),
-%%   <<"roleArn">> => string()
+%%   <<"disableSessionTags">> => boolean(),
+%%   <<"roleArn">> => string(),
+%%   <<"targetRoleArn">> => string()
 %% }
 -type update_pod_identity_association_request() :: #{binary() => any()}.
 
@@ -1942,10 +1947,12 @@
 %% Example:
 %% create_pod_identity_association_request() :: #{
 %%   <<"clientRequestToken">> => string(),
+%%   <<"disableSessionTags">> => boolean(),
 %%   <<"namespace">> := string(),
 %%   <<"roleArn">> := string(),
 %%   <<"serviceAccount">> := string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"targetRoleArn">> => string()
 %% }
 -type create_pod_identity_association_request() :: #{binary() => any()}.
 
@@ -2702,8 +2709,10 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% `endpointPrivateAccess' parameters to enable or disable public and
 %% private access to your cluster's Kubernetes API server endpoint. By
 %% default, public access is
-%% enabled, and private access is disabled. For more information, see Amazon
-%% EKS Cluster
+%% enabled, and private access is disabled. The
+%% endpoint domain name and IP address family depends on the value of the
+%% `ipFamily' for the cluster. For more information, see Amazon EKS
+%% Cluster
 %% Endpoint Access Control:
 %% https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html in
 %% the
@@ -2969,24 +2978,47 @@ create_nodegroup(Client, ClusterName, Input0, Options0) ->
 %% with EKS Pod Identity.
 %%
 %% Use EKS Pod Identity to give temporary IAM credentials to
-%% pods and the credentials are rotated automatically.
+%% Pods and the credentials are rotated automatically.
 %%
 %% Amazon EKS Pod Identity associations provide the ability to manage
 %% credentials for your applications, similar to the way that Amazon EC2
 %% instance profiles provide credentials to Amazon EC2 instances.
 %%
-%% If a pod uses a service account that has an association, Amazon EKS sets
+%% If a Pod uses a service account that has an association, Amazon EKS sets
 %% environment variables
-%% in the containers of the pod. The environment variables configure the
+%% in the containers of the Pod. The environment variables configure the
 %% Amazon Web Services SDKs,
 %% including the Command Line Interface, to use the EKS Pod Identity
 %% credentials.
 %%
-%% Pod Identity is a simpler method than IAM roles for service
+%% EKS Pod Identity is a simpler method than IAM roles for service
 %% accounts, as this method doesn't use OIDC identity providers.
-%% Additionally, you can configure a role for Pod Identity once, and reuse it
-%% across
+%% Additionally, you can configure a role for EKS Pod Identity once, and
+%% reuse it across
 %% clusters.
+%%
+%% Similar to Amazon Web Services IAM behavior, EKS Pod Identity associations
+%% are eventually consistent,
+%% and may take several seconds to be effective after the initial API call
+%% returns
+%% successfully. You must design your applications to account for these
+%% potential delays.
+%% We recommend that you don’t include association create/updates in the
+%% critical, high-availability code paths of your application. Instead, make
+%% changes in a
+%% separate initialization or setup routine that you run less frequently.
+%%
+%% You can set a target IAM role in the same or a different
+%% account for advanced scenarios. With a target role, EKS Pod Identity
+%% automatically performs two
+%% role assumptions in sequence: first assuming the role in the association
+%% that is in this
+%% account, then using those credentials to assume the target IAM role. This
+%% process
+%% provides your Pod with temporary credentials that have the permissions
+%% defined in the
+%% target role, allowing secure access to resources in another Amazon Web
+%% Services account.
 -spec create_pod_identity_association(aws_client:aws_client(), binary() | list(), create_pod_identity_association_request()) ->
     {ok, create_pod_identity_association_response(), tuple()} |
     {error, any()} |
@@ -4774,9 +4806,8 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% private
 %% access to your cluster's Kubernetes API server endpoint. By default,
 %% public access is
-%% enabled, and private access is disabled. For more information, see Amazon
-%% EKS
-%% cluster endpoint access control:
+%% enabled, and private access is disabled. For more information, see
+%% Cluster API server endpoint:
 %% https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html in
 %% the
 %%
@@ -5073,12 +5104,38 @@ update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options0) -
 
 %% @doc Updates a EKS Pod Identity association.
 %%
-%% Only the IAM role can be changed; an association can't be moved
+%% In an update, you can change the IAM role, the target IAM role, or
+%% `disableSessionTags'.
+%% You must change at least one of these in an update. An association
+%% can't be moved
 %% between clusters, namespaces, or service accounts. If you need to edit the
 %% namespace
 %% or service account, you need to delete the association and then create a
 %% new
 %% association with your desired settings.
+%%
+%% Similar to Amazon Web Services IAM behavior, EKS Pod Identity associations
+%% are eventually consistent,
+%% and may take several seconds to be effective after the initial API call
+%% returns
+%% successfully. You must design your applications to account for these
+%% potential delays.
+%% We recommend that you don’t include association create/updates in the
+%% critical, high-availability code paths of your application. Instead, make
+%% changes in a
+%% separate initialization or setup routine that you run less frequently.
+%%
+%% You can set a target IAM role in the same or a different
+%% account for advanced scenarios. With a target role, EKS Pod Identity
+%% automatically performs two
+%% role assumptions in sequence: first assuming the role in the association
+%% that is in this
+%% account, then using those credentials to assume the target IAM role. This
+%% process
+%% provides your Pod with temporary credentials that have the permissions
+%% defined in the
+%% target role, allowing secure access to resources in another Amazon Web
+%% Services account.
 -spec update_pod_identity_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_pod_identity_association_request()) ->
     {ok, update_pod_identity_association_response(), tuple()} |
     {error, any()} |

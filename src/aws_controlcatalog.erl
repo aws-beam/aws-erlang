@@ -1,32 +1,25 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the Amazon Web Services Control Catalog API reference.
+%% @doc Welcome to the Control Catalog API reference.
 %%
-%% This guide is for
-%% developers who need detailed information about how to programmatically
-%% identify and filter
-%% the common controls and related metadata that are available to Amazon Web
-%% Services customers. This API reference provides
-%% descriptions, syntax, and usage examples for each of the actions and data
-%% types that are
-%% supported by Amazon Web Services Control Catalog.
+%% This guide is for developers who need detailed information about how to
+%% programmatically identify and filter the common controls and related
+%% metadata that are available to Amazon Web Services customers. This API
+%% reference provides descriptions, syntax, and usage examples for each of
+%% the actions and data types that are supported by Control Catalog.
 %%
-%% Use the following links to get started with the Amazon Web Services
-%% Control Catalog API:
+%% Use the following links to get started with the Control Catalog API:
 %%
 %% Actions:
 %% https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_Operations.html:
-%% An
-%% alphabetical list of all Control Catalog API operations.
+%% An alphabetical list of all Control Catalog API operations.
 %%
 %% Data types:
 %% https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_Types.html:
-%% An
-%% alphabetical list of all Control Catalog data types.
+%% An alphabetical list of all Control Catalog data types.
 %%
-%% Common
-%% parameters:
+%% Common parameters:
 %% https://docs.aws.amazon.com/controlcatalog/latest/APIReference/CommonParameters.html:
 %% Parameters that all operations can use.
 %%
@@ -39,6 +32,8 @@
          get_control/3,
          list_common_controls/2,
          list_common_controls/3,
+         list_control_mappings/2,
+         list_control_mappings/3,
          list_controls/2,
          list_controls/3,
          list_domains/2,
@@ -51,10 +46,176 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
+%% control_mapping() :: #{
+%%   <<"ControlArn">> => string(),
+%%   <<"Mapping">> => list(),
+%%   <<"MappingType">> => list(any())
+%% }
+-type control_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% common_control_filter() :: #{
+%%   <<"Objectives">> => list(objective_resource_filter()())
+%% }
+-type common_control_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_mappings_response() :: #{
+%%   <<"ControlMappings">> => list(control_mapping()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_control_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateTime">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"LastUpdateTime">> => [non_neg_integer()],
+%%   <<"Name">> => [string()]
+%% }
+-type domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objectives_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Objectives">> => list(objective_summary()())
+%% }
+-type list_objectives_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_control_request() :: #{
+%%   <<"ControlArn">> := string()
+%% }
+-type get_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% objective_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateTime">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"Domain">> => associated_domain_summary(),
+%%   <<"LastUpdateTime">> => [non_neg_integer()],
+%%   <<"Name">> => [string()]
+%% }
+-type objective_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_mapping_filter() :: #{
+%%   <<"CommonControlArns">> => list(string()()),
+%%   <<"ControlArns">> => list(string()()),
+%%   <<"MappingTypes">> => list(list(any())())
+%% }
+-type control_mapping_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_controls_response() :: #{
+%%   <<"Controls">> => list(control_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_controls_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_mappings_request() :: #{
+%%   <<"Filter">> => control_mapping_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_control_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"Domains">> => list(domain_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% objective_resource_filter() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type objective_resource_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_controls_request() :: #{
+%%   <<"Filter">> => control_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_summary() :: #{
+%%   <<"Aliases">> => list(string()()),
+%%   <<"Arn">> => string(),
+%%   <<"Behavior">> => list(any()),
+%%   <<"CreateTime">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"GovernedResources">> => list(string()()),
+%%   <<"Implementation">> => implementation_summary(),
+%%   <<"Name">> => [string()],
+%%   <<"Severity">> => list(any())
+%% }
+-type control_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% implementation_details() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type implementation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_common_controls_response() :: #{
+%%   <<"CommonControls">> => list(common_control_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_common_controls_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% region_configuration() :: #{
+%%   <<"DeployableRegions">> => list(string()()),
+%%   <<"Scope">> => list(any())
+%% }
+-type region_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -66,6 +227,51 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objectives_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectiveFilter">> => objective_filter()
+%% }
+-type list_objectives_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% objective_filter() :: #{
+%%   <<"Domains">> => list(domain_resource_filter()())
+%% }
+-type objective_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% framework_mapping_details() :: #{
+%%   <<"Item">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type framework_mapping_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% associated_objective_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Name">> => [string()]
@@ -74,10 +280,57 @@
 
 
 %% Example:
-%% common_control_filter() :: #{
-%%   <<"Objectives">> => list(objective_resource_filter()())
+%% implementation_filter() :: #{
+%%   <<"Identifiers">> => list(string()()),
+%%   <<"Types">> => list(string()())
 %% }
--type common_control_filter() :: #{binary() => any()}.
+-type implementation_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_filter() :: #{
+%%   <<"Implementations">> => implementation_filter()
+%% }
+-type control_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_control_response() :: #{
+%%   <<"Aliases">> => list(string()()),
+%%   <<"Arn">> => string(),
+%%   <<"Behavior">> => list(any()),
+%%   <<"CreateTime">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"GovernedResources">> => list(string()()),
+%%   <<"Implementation">> => implementation_details(),
+%%   <<"Name">> => [string()],
+%%   <<"Parameters">> => list(control_parameter()()),
+%%   <<"RegionConfiguration">> => region_configuration(),
+%%   <<"Severity">> => list(any())
+%% }
+-type get_control_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% common_control_mapping_details() :: #{
+%%   <<"CommonControlArn">> => string()
+%% }
+-type common_control_mapping_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% implementation_summary() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type implementation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_parameter() :: #{
+%%   <<"Name">> => [string()]
+%% }
+-type control_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -94,86 +347,10 @@
 
 
 %% Example:
-%% control_parameter() :: #{
-%%   <<"Name">> => [string()]
-%% }
--type control_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Behavior">> => list(any()),
-%%   <<"CreateTime">> => [non_neg_integer()],
-%%   <<"Description">> => [string()],
-%%   <<"Implementation">> => implementation_summary(),
-%%   <<"Name">> => [string()],
-%%   <<"Severity">> => list(any())
-%% }
--type control_summary() :: #{binary() => any()}.
-
-
-%% Example:
 %% domain_resource_filter() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type domain_resource_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateTime">> => [non_neg_integer()],
-%%   <<"Description">> => [string()],
-%%   <<"LastUpdateTime">> => [non_neg_integer()],
-%%   <<"Name">> => [string()]
-%% }
--type domain_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_control_request() :: #{
-%%   <<"ControlArn">> := string()
-%% }
--type get_control_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_control_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Behavior">> => list(any()),
-%%   <<"CreateTime">> => [non_neg_integer()],
-%%   <<"Description">> => [string()],
-%%   <<"Implementation">> => implementation_details(),
-%%   <<"Name">> => [string()],
-%%   <<"Parameters">> => list(control_parameter()()),
-%%   <<"RegionConfiguration">> => region_configuration(),
-%%   <<"Severity">> => list(any())
-%% }
--type get_control_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% implementation_details() :: #{
-%%   <<"Identifier">> => string(),
-%%   <<"Type">> => string()
-%% }
--type implementation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% implementation_summary() :: #{
-%%   <<"Identifier">> => string(),
-%%   <<"Type">> => string()
-%% }
--type implementation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -184,148 +361,42 @@
 %% }
 -type list_common_controls_request() :: #{binary() => any()}.
 
-
-%% Example:
-%% list_common_controls_response() :: #{
-%%   <<"CommonControls">> => list(common_control_summary()()),
-%%   <<"NextToken">> => string()
-%% }
--type list_common_controls_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_controls_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_controls_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_controls_response() :: #{
-%%   <<"Controls">> => list(control_summary()()),
-%%   <<"NextToken">> => string()
-%% }
--type list_controls_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_response() :: #{
-%%   <<"Domains">> => list(domain_summary()()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_objectives_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectiveFilter">> => objective_filter()
-%% }
--type list_objectives_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_objectives_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Objectives">> => list(objective_summary()())
-%% }
--type list_objectives_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% objective_filter() :: #{
-%%   <<"Domains">> => list(domain_resource_filter()())
-%% }
--type objective_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% objective_resource_filter() :: #{
-%%   <<"Arn">> => string()
-%% }
--type objective_resource_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% objective_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateTime">> => [non_neg_integer()],
-%%   <<"Description">> => [string()],
-%%   <<"Domain">> => associated_domain_summary(),
-%%   <<"LastUpdateTime">> => [non_neg_integer()],
-%%   <<"Name">> => [string()]
-%% }
--type objective_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% region_configuration() :: #{
-%%   <<"DeployableRegions">> => list(string()()),
-%%   <<"Scope">> => list(any())
-%% }
--type region_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
 -type get_control_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type list_common_controls_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    access_denied_exception().
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_control_mappings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_controls_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    access_denied_exception().
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_domains_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    access_denied_exception().
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_objectives_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    access_denied_exception().
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -377,12 +448,11 @@ get_control(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of common controls from the Amazon Web
-%% Services Control
-%% Catalog.
+%% Services Control Catalog.
 %%
 %% You can apply an optional filter to see common controls that have a
-%% specific objective. If
-%% you don’t provide a filter, the operation returns all common controls.
+%% specific objective. If you don’t provide a filter, the operation returns
+%% all common controls.
 -spec list_common_controls(aws_client:aws_client(), list_common_controls_request()) ->
     {ok, list_common_controls_response(), tuple()} |
     {error, any()} |
@@ -418,8 +488,48 @@ list_common_controls(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of all available controls in the Amazon Web
-%% Services Control Catalog library.
+%% @doc Returns a paginated list of control mappings from the Control
+%% Catalog.
+%%
+%% Control mappings show relationships between controls and other entities,
+%% such as common controls or compliance frameworks.
+-spec list_control_mappings(aws_client:aws_client(), list_control_mappings_request()) ->
+    {ok, list_control_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_control_mappings_errors(), tuple()}.
+list_control_mappings(Client, Input) ->
+    list_control_mappings(Client, Input, []).
+
+-spec list_control_mappings(aws_client:aws_client(), list_control_mappings_request(), proplists:proplist()) ->
+    {ok, list_control_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_control_mappings_errors(), tuple()}.
+list_control_mappings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-control-mappings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of all available controls in the Control
+%% Catalog library.
 %%
 %% Allows you to discover available controls. The list of controls is given
 %% as structures of type controlSummary. The ARN is returned in the global
@@ -459,8 +569,7 @@ list_controls(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of domains from the Amazon Web Services
-%% Control Catalog.
+%% @doc Returns a paginated list of domains from the Control Catalog.
 -spec list_domains(aws_client:aws_client(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
@@ -496,12 +605,11 @@ list_domains(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of objectives from the Amazon Web Services
-%% Control Catalog.
+%% @doc Returns a paginated list of objectives from the Control Catalog.
 %%
 %% You can apply an optional filter to see the objectives that belong to a
-%% specific domain.
-%% If you don’t provide a filter, the operation returns all objectives.
+%% specific domain. If you don’t provide a filter, the operation returns all
+%% objectives.
 -spec list_objectives(aws_client:aws_client(), list_objectives_request()) ->
     {ok, list_objectives_response(), tuple()} |
     {error, any()} |

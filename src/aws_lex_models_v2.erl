@@ -875,6 +875,7 @@
 
 %% Example:
 %% runtime_settings() :: #{
+%%   <<"nluImprovement">> => nlu_improvement_specification(),
 %%   <<"slotResolutionImprovement">> => slot_resolution_improvement_specification()
 %% }
 -type runtime_settings() :: #{binary() => any()}.
@@ -3788,6 +3789,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_recommended_intents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% nlu_improvement_specification() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type nlu_improvement_specification() :: #{binary() => any()}.
 
 
 %% Example:
