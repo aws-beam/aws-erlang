@@ -2693,7 +2693,7 @@ create_route_response(Client, ApiId, RouteId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a RoutingRule
+%% @doc Creates a RoutingRule.
 -spec create_routing_rule(aws_client:aws_client(), binary() | list(), create_routing_rule_request()) ->
     {ok, create_routing_rule_response(), tuple()} |
     {error, any()} |

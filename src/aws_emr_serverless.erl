@@ -160,6 +160,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"endedAt">> => non_neg_integer(),
+%%   <<"executionIamPolicy">> => job_run_execution_iam_policy(),
 %%   <<"executionRole">> => string(),
 %%   <<"executionTimeoutMinutes">> => float(),
 %%   <<"jobDriver">> => list(),

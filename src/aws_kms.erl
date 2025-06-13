@@ -2504,28 +2504,31 @@ create_grant(Client, Input, Options)
 %% You can't change these properties after the KMS key is created.
 %%
 %% Asymmetric KMS keys contain an RSA key pair, Elliptic Curve (ECC) key
-%% pair, or an
-%% SM2 key pair (China Regions only). The private key in an asymmetric KMS
-%% key never leaves
-%% KMS unencrypted. However, you can use the `GetPublicKey' operation to
-%% download the public key so it can be used outside of KMS. Each KMS key can
-%% have only
-%% one key usage. KMS keys with RSA key pairs can be used to encrypt and
-%% decrypt data or
-%% sign and verify messages (but not both). KMS keys with NIST-recommended
-%% ECC key pairs
-%% can be used to sign and verify messages or derive shared secrets (but not
-%% both). KMS
-%% keys with `ECC_SECG_P256K1' can be used only to sign and verify
-%% messages. KMS
-%% keys with SM2 key pairs (China Regions only) can be used to either encrypt
-%% and decrypt
-%% data, sign and verify messages, or derive shared secrets (you must choose
-%% one key usage
-%% type). For information about asymmetric KMS keys, see Asymmetric KMS keys:
+%% pair, ML-DSA
+%% key pair or an SM2 key pair (China Regions only). The private key in an
+%% asymmetric KMS
+%% key never leaves KMS unencrypted. However, you can use the
+%% `GetPublicKey' operation to download the public key so it can be used
+%% outside of KMS. Each KMS key can have only one key usage. KMS keys with
+%% RSA key pairs
+%% can be used to encrypt and decrypt data or sign and verify messages (but
+%% not both). KMS
+%% keys with NIST-recommended ECC key pairs can be used to sign and verify
+%% messages or
+%% derive shared secrets (but not both). KMS keys with `ECC_SECG_P256K1'
+%% can be
+%% used only to sign and verify messages. KMS keys with ML-DSA key pairs can
+%% be used to
+%% sign and verify messages. KMS keys with SM2 key pairs (China Regions only)
+%% can be used
+%% to either encrypt and decrypt data, sign and verify messages, or derive
+%% shared secrets
+%% (you must choose one key usage type). For information about asymmetric KMS
+%% keys, see
+%% Asymmetric
+%% KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html
-%% in the
-%% Key Management Service Developer Guide.
+%% in the Key Management Service Developer Guide.
 %%
 %% HMAC KMS key
 %%
@@ -5843,9 +5846,9 @@ revoke_grant(Client, Input, Options)
 %%
 %% You can perform on-demand rotation:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys-on-demand.html
-%% of
-%% the key material in customer managed KMS keys, regardless of whether or
-%% not automatic key
+%% of the key
+%% material in customer managed KMS keys, regardless of whether or not
+%% automatic key
 %% rotation:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys-enable-disable.html
 %% is enabled. On-demand rotations do not change existing automatic rotation
@@ -6067,14 +6070,14 @@ schedule_key_deletion(Client, Input, Options)
 %% in the Key Management Service Developer Guide.
 %%
 %% Digital signatures are generated and verified by using asymmetric key
-%% pair, such as an RSA
-%% or ECC pair that is represented by an asymmetric KMS key. The key owner
-%% (or an authorized
-%% user) uses their private key to sign a message. Anyone with the public key
-%% can verify that the
-%% message was signed with that particular private key and that the message
-%% hasn't changed since
-%% it was signed.
+%% pair, such as an
+%% RSA, ECC, or ML-DSA pair that is represented by an asymmetric KMS key. The
+%% key owner (or an
+%% authorized user) uses their private key to sign a message. Anyone with the
+%% public key can
+%% verify that the message was signed with that particular private key and
+%% that the message
+%% hasn't changed since it was signed.
 %%
 %% To use the `Sign' operation, provide the following information:
 %%
@@ -6089,9 +6092,9 @@ schedule_key_deletion(Client, Input, Options)
 %% message, generate a
 %% hash digest of the message, and then provide the hash digest in the
 %% `Message'
-%% parameter. To indicate whether the message is a full message or a digest,
-%% use the
-%% `MessageType' parameter.
+%% parameter. To indicate whether the message is a full message, a digest, or
+%% an ML-DSA
+%% EXTERNAL_MU, use the `MessageType' parameter.
 %%
 %% Choose a signing algorithm that is compatible with the KMS key.
 %%
@@ -6579,7 +6582,8 @@ update_key_description(Client, Input, Options)
 %% `eu-west-2', the primary key is now the key in `eu-west-2', and
 %% the
 %% key in `us-east-1' becomes a replica key. For details, see Change the
-%% primary key in a set of multi-Region keys:
+%% primary key in a
+%% set of multi-Region keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html
 %% in the Key Management Service Developer Guide.
 %%

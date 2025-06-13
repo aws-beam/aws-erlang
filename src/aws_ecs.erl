@@ -4869,20 +4869,6 @@ update_container_instances_state(Client, Input, Options)
 %% on the previous steps), favoring container instances with the largest
 %% number of
 %% running tasks for this service.
-%%
-%% You must have a service-linked role when you update any of the following
-%% service
-%% properties:
-%%
-%% `loadBalancers',
-%%
-%% `serviceRegistries'
-%%
-%% For more information about the role see the `CreateService' request
-%% parameter
-%% `role'
-%% :
-%% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html#ECS-CreateService-request-role.
 -spec update_service(aws_client:aws_client(), update_service_request()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |

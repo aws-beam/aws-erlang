@@ -31,6 +31,9 @@
          get_connect_instance_config/2,
          get_connect_instance_config/4,
          get_connect_instance_config/5,
+         get_instance_communication_limits/2,
+         get_instance_communication_limits/4,
+         get_instance_communication_limits/5,
          get_instance_onboarding_job_status/2,
          get_instance_onboarding_job_status/4,
          get_instance_onboarding_job_status/5,
@@ -46,6 +49,8 @@
          pause_campaign/4,
          put_connect_instance_integration/3,
          put_connect_instance_integration/4,
+         put_instance_communication_limits/3,
+         put_instance_communication_limits/4,
          put_outbound_request_batch/3,
          put_outbound_request_batch/4,
          put_profile_outbound_request_batch/3,
@@ -186,6 +191,13 @@
 %%   <<"campaignDeletionPolicy">> => string()
 %% }
 -type delete_connect_instance_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_communication_limits_config() :: #{
+%%   <<"allChannelSubtypes">> => list()
+%% }
+-type instance_communication_limits_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -406,6 +418,13 @@
 %% }
 -type time_window() :: #{binary() => any()}.
 
+
+%% Example:
+%% put_instance_communication_limits_request() :: #{
+%%   <<"communicationLimitsConfig">> := instance_communication_limits_config()
+%% }
+-type put_instance_communication_limits_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_campaign_state_request() :: #{}
 -type get_campaign_state_request() :: #{}.
@@ -468,6 +487,10 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_instance_communication_limits_request() :: #{}
+-type get_instance_communication_limits_request() :: #{}.
+
 
 %% Example:
 %% list_connect_instance_integrations_response() :: #{
@@ -514,7 +537,8 @@
 
 %% Example:
 %% communication_limits_config() :: #{
-%%   <<"allChannelSubtypes">> => list()
+%%   <<"allChannelSubtypes">> => list(),
+%%   <<"instanceLimitsHandling">> => string()
 %% }
 -type communication_limits_config() :: #{binary() => any()}.
 
@@ -785,6 +809,13 @@
 
 
 %% Example:
+%% get_instance_communication_limits_response() :: #{
+%%   <<"communicationLimitsConfig">> => instance_communication_limits_config()
+%% }
+-type get_instance_communication_limits_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% campaign_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"channelSubtypes">> => list(string()()),
@@ -916,6 +947,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_instance_communication_limits_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_instance_onboarding_job_status_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -952,6 +989,13 @@
 
 -type put_connect_instance_integration_errors() ::
     throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_instance_communication_limits_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1513,6 +1557,43 @@ get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get the instance communication limits.
+-spec get_instance_communication_limits(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_instance_communication_limits_response(), tuple()} |
+    {error, any()} |
+    {error, get_instance_communication_limits_errors(), tuple()}.
+get_instance_communication_limits(Client, ConnectInstanceId)
+  when is_map(Client) ->
+    get_instance_communication_limits(Client, ConnectInstanceId, #{}, #{}).
+
+-spec get_instance_communication_limits(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_instance_communication_limits_response(), tuple()} |
+    {error, any()} |
+    {error, get_instance_communication_limits_errors(), tuple()}.
+get_instance_communication_limits(Client, ConnectInstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_instance_communication_limits(Client, ConnectInstanceId, QueryMap, HeadersMap, []).
+
+-spec get_instance_communication_limits(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_instance_communication_limits_response(), tuple()} |
+    {error, any()} |
+    {error, get_instance_communication_limits_errors(), tuple()}.
+get_instance_communication_limits(Client, ConnectInstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/connect-instance/", aws_util:encode_uri(ConnectInstanceId), "/communication-limits"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Get the specific instance onboarding job status.
 -spec get_instance_onboarding_job_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_instance_onboarding_job_status_response(), tuple()} |
@@ -1715,6 +1796,42 @@ put_connect_instance_integration(Client, ConnectInstanceId, Input) ->
 put_connect_instance_integration(Client, ConnectInstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/v2/connect-instance/", aws_util:encode_uri(ConnectInstanceId), "/integrations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Put the instance communication limits.
+%%
+%% This API is idempotent.
+-spec put_instance_communication_limits(aws_client:aws_client(), binary() | list(), put_instance_communication_limits_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_instance_communication_limits_errors(), tuple()}.
+put_instance_communication_limits(Client, ConnectInstanceId, Input) ->
+    put_instance_communication_limits(Client, ConnectInstanceId, Input, []).
+
+-spec put_instance_communication_limits(aws_client:aws_client(), binary() | list(), put_instance_communication_limits_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_instance_communication_limits_errors(), tuple()}.
+put_instance_communication_limits(Client, ConnectInstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/connect-instance/", aws_util:encode_uri(ConnectInstanceId), "/communication-limits"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
