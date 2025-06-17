@@ -117,7 +117,11 @@
 %% and defining the new VPC subnets as VPC endpoint associations.
 -module(aws_network_firewall).
 
--export([associate_firewall_policy/2,
+-export([accept_network_firewall_transit_gateway_attachment/2,
+         accept_network_firewall_transit_gateway_attachment/3,
+         associate_availability_zones/2,
+         associate_availability_zones/3,
+         associate_firewall_policy/2,
          associate_firewall_policy/3,
          associate_subnets/2,
          associate_subnets/3,
@@ -135,6 +139,8 @@
          delete_firewall/3,
          delete_firewall_policy/2,
          delete_firewall_policy/3,
+         delete_network_firewall_transit_gateway_attachment/2,
+         delete_network_firewall_transit_gateway_attachment/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
          delete_rule_group/2,
@@ -163,6 +169,8 @@
          describe_t_l_s_inspection_configuration/3,
          describe_vpc_endpoint_association/2,
          describe_vpc_endpoint_association/3,
+         disassociate_availability_zones/2,
+         disassociate_availability_zones/3,
          disassociate_subnets/2,
          disassociate_subnets/3,
          get_analysis_report_results/2,
@@ -187,6 +195,8 @@
          list_vpc_endpoint_associations/3,
          put_resource_policy/2,
          put_resource_policy/3,
+         reject_network_firewall_transit_gateway_attachment/2,
+         reject_network_firewall_transit_gateway_attachment/3,
          start_analysis_report/2,
          start_analysis_report/3,
          start_flow_capture/2,
@@ -197,6 +207,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_availability_zone_change_protection/2,
+         update_availability_zone_change_protection/3,
          update_firewall_analysis_settings/2,
          update_firewall_analysis_settings/3,
          update_firewall_delete_protection/2,
@@ -361,6 +373,15 @@
 -type describe_flow_operation_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_availability_zone_change_protection_response() :: #{
+%%   <<"AvailabilityZoneChangeProtection">> => boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_availability_zone_change_protection_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_flow_operation_response() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"FirewallArn">> => string(),
@@ -383,6 +404,15 @@
 %%   <<"UpdateToken">> => string()
 %% }
 -type associate_subnets_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_availability_zones_response() :: #{
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_availability_zones_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_firewall_policy_change_protection_request() :: #{
@@ -564,9 +594,17 @@
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallPolicyArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"SupportedAvailabilityZones">> => map()
+%%   <<"SupportedAvailabilityZones">> => map(),
+%%   <<"TransitGatewayAttachmentId">> => string()
 %% }
 -type describe_firewall_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_network_firewall_transit_gateway_attachment_response() :: #{
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayAttachmentStatus">> => list(any())
+%% }
+-type delete_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_firewall_policy_request() :: #{
@@ -642,6 +680,13 @@
 -type get_analysis_report_results_request() :: #{binary() => any()}.
 
 %% Example:
+%% reject_network_firewall_transit_gateway_attachment_response() :: #{
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayAttachmentStatus">> => list(any())
+%% }
+-type reject_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_firewall_policy_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -700,7 +745,8 @@
 %%   <<"CapacityUsageSummary">> => capacity_usage_summary(),
 %%   <<"ConfigurationSyncStateSummary">> => list(any()),
 %%   <<"Status">> => list(any()),
-%%   <<"SyncStates">> => map()
+%%   <<"SyncStates">> => map(),
+%%   <<"TransitGatewayAttachmentSyncState">> => transit_gateway_attachment_sync_state()
 %% }
 -type firewall_status() :: #{binary() => any()}.
 
@@ -724,6 +770,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_flow_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% accept_network_firewall_transit_gateway_attachment_response() :: #{
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayAttachmentStatus">> => list(any())
+%% }
+-type accept_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_endpoint_association_request() :: #{
@@ -787,6 +840,12 @@
 %%   <<"FlowRequestTimestamp">> => non_neg_integer()
 %% }
 -type flow_operation_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone_mapping() :: #{
+%%   <<"AvailabilityZone">> => string()
+%% }
+-type availability_zone_mapping() :: #{binary() => any()}.
 
 %% Example:
 %% describe_logging_configuration_request() :: #{
@@ -905,6 +964,12 @@
 -type list_flow_operation_results_request() :: #{binary() => any()}.
 
 %% Example:
+%% accept_network_firewall_transit_gateway_attachment_request() :: #{
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type accept_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
+
+%% Example:
 %% stateful_rule() :: #{
 %%   <<"Action">> => list(any()),
 %%   <<"Header">> => header(),
@@ -1016,6 +1081,12 @@
 -type update_subnet_change_protection_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_network_firewall_transit_gateway_attachment_request() :: #{
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type delete_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_flow_operations_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"FirewallArn">> := string(),
@@ -1029,6 +1100,8 @@
 
 %% Example:
 %% firewall() :: #{
+%%   <<"AvailabilityZoneChangeProtection">> => boolean(),
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()()),
 %%   <<"DeleteProtection">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"EnabledAnalysisTypes">> => list(list(any())()),
@@ -1042,6 +1115,8 @@
 %%   <<"SubnetChangeProtection">> => boolean(),
 %%   <<"SubnetMappings">> => list(subnet_mapping()()),
 %%   <<"Tags">> => list(tag()()),
+%%   <<"TransitGatewayId">> => string(),
+%%   <<"TransitGatewayOwnerAccountId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
 -type firewall() :: #{binary() => any()}.
@@ -1054,6 +1129,8 @@
 
 %% Example:
 %% create_firewall_request() :: #{
+%%   <<"AvailabilityZoneChangeProtection">> => boolean(),
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()()),
 %%   <<"DeleteProtection">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"EnabledAnalysisTypes">> => list(list(any())()),
@@ -1064,6 +1141,7 @@
 %%   <<"SubnetChangeProtection">> => boolean(),
 %%   <<"SubnetMappings">> => list(subnet_mapping()()),
 %%   <<"Tags">> => list(tag()()),
+%%   <<"TransitGatewayId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
 -type create_firewall_request() :: #{binary() => any()}.
@@ -1179,6 +1257,15 @@
 -type list_firewall_policies_request() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_availability_zones_request() :: #{
+%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type disassociate_availability_zones_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_firewall_policies_response() :: #{
 %%   <<"FirewallPolicies">> => list(firewall_policy_metadata()()),
 %%   <<"NextToken">> => string()
@@ -1205,6 +1292,14 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_attachment_sync_state() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TransitGatewayAttachmentStatus">> => list(any())
+%% }
+-type transit_gateway_attachment_sync_state() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_usage_summary() :: #{
@@ -1430,6 +1525,12 @@
 -type start_analysis_report_request() :: #{binary() => any()}.
 
 %% Example:
+%% reject_network_firewall_transit_gateway_attachment_request() :: #{
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type reject_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
+
+%% Example:
 %% dimension() :: #{
 %%   <<"Value">> => string()
 %% }
@@ -1440,6 +1541,15 @@
 %%   <<"ResourceArn">> := string()
 %% }
 -type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_availability_zones_request() :: #{
+%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_availability_zones_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_t_l_s_inspection_configuration_request() :: #{
@@ -1604,7 +1714,8 @@
 %% Example:
 %% firewall_metadata() :: #{
 %%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string()
+%%   <<"FirewallName">> => string(),
+%%   <<"TransitGatewayAttachmentId">> => string()
 %% }
 -type firewall_metadata() :: #{binary() => any()}.
 
@@ -1644,6 +1755,15 @@
 %%   <<"Settings">> => list(string()())
 %% }
 -type rule_option() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_availability_zones_response() :: #{
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type disassociate_availability_zones_response() :: #{binary() => any()}.
 
 %% Example:
 %% check_certificate_revocation_status_actions() :: #{
@@ -1715,6 +1835,30 @@
 %% }
 -type describe_firewall_policy_response() :: #{binary() => any()}.
 
+%% Example:
+%% update_availability_zone_change_protection_request() :: #{
+%%   <<"AvailabilityZoneChangeProtection">> := boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_availability_zone_change_protection_request() :: #{binary() => any()}.
+
+-type accept_network_firewall_transit_gateway_attachment_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type associate_availability_zones_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    insufficient_capacity_exception() | 
+    invalid_operation_exception().
+
 -type associate_firewall_policy_errors() ::
     invalid_token_exception() | 
     throttling_exception() | 
@@ -1785,6 +1929,12 @@
     resource_not_found_exception() | 
     invalid_operation_exception() | 
     unsupported_operation_exception().
+
+-type delete_network_firewall_transit_gateway_attachment_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 -type delete_resource_policy_errors() ::
     throttling_exception() | 
@@ -1875,6 +2025,14 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type disassociate_availability_zones_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
+
 -type disassociate_subnets_errors() ::
     invalid_token_exception() | 
     throttling_exception() | 
@@ -1945,6 +2103,12 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type reject_network_firewall_transit_gateway_attachment_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type start_analysis_report_errors() ::
     throttling_exception() | 
     internal_server_error() | 
@@ -1974,6 +2138,14 @@
     internal_server_error() | 
     invalid_request_exception() | 
     resource_not_found_exception().
+
+-type update_availability_zone_change_protection_errors() ::
+    invalid_token_exception() | 
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_owner_check_exception().
 
 -type update_firewall_analysis_settings_errors() ::
     throttling_exception() | 
@@ -2052,6 +2224,64 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Accepts a transit gateway attachment request for Network Firewall.
+%%
+%% When you accept the attachment request, Network Firewall creates the
+%% necessary routing components to enable traffic flow between the transit
+%% gateway and firewall endpoints.
+%%
+%% You must accept a transit gateway attachment to complete the creation of a
+%% transit gateway-attached firewall, unless auto-accept is enabled on the
+%% transit gateway. After acceptance, use `DescribeFirewall' to verify
+%% the firewall status.
+%%
+%% To reject an attachment instead of accepting it, use
+%% `RejectNetworkFirewallTransitGatewayAttachment'.
+%%
+%% It can take several minutes for the attachment acceptance to complete and
+%% the firewall to become available.
+-spec accept_network_firewall_transit_gateway_attachment(aws_client:aws_client(), accept_network_firewall_transit_gateway_attachment_request()) ->
+    {ok, accept_network_firewall_transit_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, accept_network_firewall_transit_gateway_attachment_errors(), tuple()}.
+accept_network_firewall_transit_gateway_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    accept_network_firewall_transit_gateway_attachment(Client, Input, []).
+
+-spec accept_network_firewall_transit_gateway_attachment(aws_client:aws_client(), accept_network_firewall_transit_gateway_attachment_request(), proplists:proplist()) ->
+    {ok, accept_network_firewall_transit_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, accept_network_firewall_transit_gateway_attachment_errors(), tuple()}.
+accept_network_firewall_transit_gateway_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcceptNetworkFirewallTransitGatewayAttachment">>, Input, Options).
+
+%% @doc Associates the specified Availability Zones with a transit
+%% gateway-attached firewall.
+%%
+%% For each Availability Zone, Network Firewall creates a firewall endpoint
+%% to process traffic. You can specify one or more Availability Zones where
+%% you want to deploy the firewall.
+%%
+%% After adding Availability Zones, you must update your transit gateway
+%% route tables to direct traffic through the new firewall endpoints. Use
+%% `DescribeFirewall' to monitor the status of the new endpoints.
+-spec associate_availability_zones(aws_client:aws_client(), associate_availability_zones_request()) ->
+    {ok, associate_availability_zones_response(), tuple()} |
+    {error, any()} |
+    {error, associate_availability_zones_errors(), tuple()}.
+associate_availability_zones(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_availability_zones(Client, Input, []).
+
+-spec associate_availability_zones(aws_client:aws_client(), associate_availability_zones_request(), proplists:proplist()) ->
+    {ok, associate_availability_zones_response(), tuple()} |
+    {error, any()} |
+    {error, associate_availability_zones_errors(), tuple()}.
+associate_availability_zones(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateAvailabilityZones">>, Input, Options).
 
 %% @doc Associates a `FirewallPolicy' to a `Firewall'.
 %%
@@ -2314,6 +2544,32 @@ delete_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallPolicy">>, Input, Options).
 
+%% @doc Deletes a transit gateway attachment from a Network Firewall.
+%%
+%% Either the firewall owner or the transit gateway owner can delete the
+%% attachment.
+%%
+%% After you delete a transit gateway attachment, traffic will no longer flow
+%% through the firewall endpoints.
+%%
+%% After you initiate the delete operation, use `DescribeFirewall' to
+%% monitor the deletion status.
+-spec delete_network_firewall_transit_gateway_attachment(aws_client:aws_client(), delete_network_firewall_transit_gateway_attachment_request()) ->
+    {ok, delete_network_firewall_transit_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_network_firewall_transit_gateway_attachment_errors(), tuple()}.
+delete_network_firewall_transit_gateway_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_network_firewall_transit_gateway_attachment(Client, Input, []).
+
+-spec delete_network_firewall_transit_gateway_attachment(aws_client:aws_client(), delete_network_firewall_transit_gateway_attachment_request(), proplists:proplist()) ->
+    {ok, delete_network_firewall_transit_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_network_firewall_transit_gateway_attachment_errors(), tuple()}.
+delete_network_firewall_transit_gateway_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteNetworkFirewallTransitGatewayAttachment">>, Input, Options).
+
 %% @doc Deletes a resource policy that you created in a
 %% `PutResourcePolicy' request.
 -spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
@@ -2573,6 +2829,35 @@ describe_vpc_endpoint_association(Client, Input)
 describe_vpc_endpoint_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcEndpointAssociation">>, Input, Options).
+
+%% @doc Removes the specified Availability Zone associations from a transit
+%% gateway-attached firewall.
+%%
+%% This removes the firewall endpoints from these Availability Zones and
+%% stops traffic filtering in those zones. Before removing an Availability
+%% Zone, ensure you've updated your transit gateway route tables to
+%% redirect traffic appropriately.
+%%
+%% If `AvailabilityZoneChangeProtection' is enabled, you must first
+%% disable it using `UpdateAvailabilityZoneChangeProtection'.
+%%
+%% To verify the status of your Availability Zone changes, use
+%% `DescribeFirewall'.
+-spec disassociate_availability_zones(aws_client:aws_client(), disassociate_availability_zones_request()) ->
+    {ok, disassociate_availability_zones_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_availability_zones_errors(), tuple()}.
+disassociate_availability_zones(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_availability_zones(Client, Input, []).
+
+-spec disassociate_availability_zones(aws_client:aws_client(), disassociate_availability_zones_request(), proplists:proplist()) ->
+    {ok, disassociate_availability_zones_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_availability_zones_errors(), tuple()}.
+disassociate_availability_zones(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateAvailabilityZones">>, Input, Options).
 
 %% @doc Removes the specified subnet associations from the firewall.
 %%
@@ -2884,6 +3169,37 @@ put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
+%% @doc Rejects a transit gateway attachment request for Network Firewall.
+%%
+%% When you reject the attachment request, Network Firewall cancels the
+%% creation of routing components between the transit gateway and firewall
+%% endpoints.
+%%
+%% Only the transit gateway owner can reject the attachment. After rejection,
+%% no traffic will flow through the firewall endpoints for this attachment.
+%%
+%% Use `DescribeFirewall' to monitor the rejection status. To accept the
+%% attachment instead of rejecting it, use
+%% `AcceptNetworkFirewallTransitGatewayAttachment'.
+%%
+%% Once rejected, you cannot reverse this action. To establish connectivity,
+%% you must create a new transit gateway-attached firewall.
+-spec reject_network_firewall_transit_gateway_attachment(aws_client:aws_client(), reject_network_firewall_transit_gateway_attachment_request()) ->
+    {ok, reject_network_firewall_transit_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, reject_network_firewall_transit_gateway_attachment_errors(), tuple()}.
+reject_network_firewall_transit_gateway_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reject_network_firewall_transit_gateway_attachment(Client, Input, []).
+
+-spec reject_network_firewall_transit_gateway_attachment(aws_client:aws_client(), reject_network_firewall_transit_gateway_attachment_request(), proplists:proplist()) ->
+    {ok, reject_network_firewall_transit_gateway_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, reject_network_firewall_transit_gateway_attachment_errors(), tuple()}.
+reject_network_firewall_transit_gateway_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RejectNetworkFirewallTransitGatewayAttachment">>, Input, Options).
+
 %% @doc Generates a traffic analysis report for the timeframe and traffic
 %% type you specify.
 %%
@@ -3024,6 +3340,32 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Modifies the `AvailabilityZoneChangeProtection' setting for a
+%% transit gateway-attached firewall.
+%%
+%% When enabled, this setting prevents accidental changes to the
+%% firewall's Availability Zone configuration. This helps protect against
+%% disrupting traffic flow in production environments.
+%%
+%% When enabled, you must disable this protection before using
+%% `AssociateAvailabilityZones' or `DisassociateAvailabilityZones' to
+%% modify the firewall's Availability Zone configuration.
+-spec update_availability_zone_change_protection(aws_client:aws_client(), update_availability_zone_change_protection_request()) ->
+    {ok, update_availability_zone_change_protection_response(), tuple()} |
+    {error, any()} |
+    {error, update_availability_zone_change_protection_errors(), tuple()}.
+update_availability_zone_change_protection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_availability_zone_change_protection(Client, Input, []).
+
+-spec update_availability_zone_change_protection(aws_client:aws_client(), update_availability_zone_change_protection_request(), proplists:proplist()) ->
+    {ok, update_availability_zone_change_protection_response(), tuple()} |
+    {error, any()} |
+    {error, update_availability_zone_change_protection_errors(), tuple()}.
+update_availability_zone_change_protection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAvailabilityZoneChangeProtection">>, Input, Options).
 
 %% @doc Enables specific types of firewall analysis on a specific firewall
 %% you define.
