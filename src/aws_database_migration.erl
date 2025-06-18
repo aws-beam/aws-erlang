@@ -366,7 +366,8 @@
 %%   <<"DataProviderName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Engine">> => string(),
-%%   <<"Settings">> => list()
+%%   <<"Settings">> => list(),
+%%   <<"Virtual">> => boolean()
 %% }
 -type data_provider() :: #{binary() => any()}.
 
@@ -436,6 +437,8 @@
 %%   <<"CertificateArn">> => string(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
 %%   <<"SecretsManagerOracleAsmAccessRoleArn">> => string(),
 %%   <<"SecretsManagerOracleAsmSecretId">> => string(),
 %%   <<"SecretsManagerSecurityDbEncryptionAccessRoleArn">> => string(),
@@ -973,6 +976,8 @@
 %%   <<"CertificateArn">> => string(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
 %%   <<"ServerName">> => string(),
 %%   <<"SslMode">> => list(any())
 %% }
@@ -1501,6 +1506,8 @@
 %%   <<"CertificateArn">> => string(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
 %%   <<"ServerName">> => string(),
 %%   <<"SslMode">> => list(any())
 %% }
@@ -1597,7 +1604,8 @@
 %%   <<"Description">> => string(),
 %%   <<"Engine">> := string(),
 %%   <<"Settings">> := list(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Virtual">> => boolean()
 %% }
 -type create_data_provider_message() :: #{binary() => any()}.
 
@@ -1612,6 +1620,8 @@
 %%   <<"CertificateArn">> => string(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
 %%   <<"ServerName">> => string(),
 %%   <<"SslMode">> => list(any())
 %% }
@@ -1730,7 +1740,8 @@
 %%   <<"Description">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"ExactSettings">> => boolean(),
-%%   <<"Settings">> => list()
+%%   <<"Settings">> => list(),
+%%   <<"Virtual">> => boolean()
 %% }
 -type modify_data_provider_message() :: #{binary() => any()}.
 
@@ -2234,6 +2245,8 @@
 %% redshift_data_provider_settings() :: #{
 %%   <<"DatabaseName">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
 %%   <<"ServerName">> => string()
 %% }
 -type redshift_data_provider_settings() :: #{binary() => any()}.
@@ -2809,6 +2822,8 @@
 %% maria_db_data_provider_settings() :: #{
 %%   <<"CertificateArn">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
 %%   <<"ServerName">> => string(),
 %%   <<"SslMode">> => list(any())
 %% }
@@ -2992,6 +3007,8 @@
 %%   <<"CertificateArn">> => string(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
 %%   <<"ServerName">> => string(),
 %%   <<"SslMode">> => list(any())
 %% }
@@ -3423,6 +3440,8 @@
 %% my_sql_data_provider_settings() :: #{
 %%   <<"CertificateArn">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
 %%   <<"ServerName">> => string(),
 %%   <<"SslMode">> => list(any())
 %% }
@@ -4151,11 +4170,20 @@ apply_pending_maintenance_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
 
-%% @doc Starts the analysis of up to 20 source databases to recommend target
-%% engines for each
-%% source database.
+%% @doc
 %%
-%% This is a batch version of StartRecommendations:
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Starts the analysis of up to 20 source databases to recommend target
+%% engines for each
+%% source database. This is a batch version of StartRecommendations:
 %% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartRecommendations.html.
 %%
 %% The result of analysis of each source database is reported individually in
@@ -4311,7 +4339,18 @@ create_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventSubscription">>, Input, Options).
 
-%% @doc Creates a Fleet Advisor collector using the specified parameters.
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Creates a Fleet Advisor collector using the specified parameters.
 -spec create_fleet_advisor_collector(aws_client:aws_client(), create_fleet_advisor_collector_request()) ->
     {ok, create_fleet_advisor_collector_response(), tuple()} |
     {error, any()} |
@@ -4588,7 +4627,18 @@ delete_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventSubscription">>, Input, Options).
 
-%% @doc Deletes the specified Fleet Advisor collector.
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Deletes the specified Fleet Advisor collector.
 -spec delete_fleet_advisor_collector(aws_client:aws_client(), delete_collector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4605,7 +4655,18 @@ delete_fleet_advisor_collector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleetAdvisorCollector">>, Input, Options).
 
-%% @doc Deletes the specified Fleet Advisor collector databases.
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Deletes the specified Fleet Advisor collector databases.
 -spec delete_fleet_advisor_databases(aws_client:aws_client(), delete_fleet_advisor_databases_request()) ->
     {ok, delete_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
@@ -5090,7 +5151,18 @@ describe_extension_pack_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExtensionPackAssociations">>, Input, Options).
 
-%% @doc Returns a list of the Fleet Advisor collectors in your account.
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Returns a list of the Fleet Advisor collectors in your account.
 -spec describe_fleet_advisor_collectors(aws_client:aws_client(), describe_fleet_advisor_collectors_request()) ->
     {ok, describe_fleet_advisor_collectors_response(), tuple()} |
     {error, any()} |
@@ -5107,7 +5179,18 @@ describe_fleet_advisor_collectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorCollectors">>, Input, Options).
 
-%% @doc Returns a list of Fleet Advisor databases in your account.
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Returns a list of Fleet Advisor databases in your account.
 -spec describe_fleet_advisor_databases(aws_client:aws_client(), describe_fleet_advisor_databases_request()) ->
     {ok, describe_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
@@ -5124,8 +5207,19 @@ describe_fleet_advisor_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorDatabases">>, Input, Options).
 
-%% @doc Provides descriptions of large-scale assessment (LSA) analyses
-%% produced by your Fleet
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Provides descriptions of large-scale assessment (LSA) analyses produced by
+%% your Fleet
 %% Advisor collectors.
 -spec describe_fleet_advisor_lsa_analysis(aws_client:aws_client(), describe_fleet_advisor_lsa_analysis_request()) ->
     {ok, describe_fleet_advisor_lsa_analysis_response(), tuple()} |
@@ -5143,7 +5237,18 @@ describe_fleet_advisor_lsa_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorLsaAnalysis">>, Input, Options).
 
-%% @doc Provides descriptions of the schemas discovered by your Fleet Advisor
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Provides descriptions of the schemas discovered by your Fleet Advisor
 %% collectors.
 -spec describe_fleet_advisor_schema_object_summary(aws_client:aws_client(), describe_fleet_advisor_schema_object_summary_request()) ->
     {ok, describe_fleet_advisor_schema_object_summary_response(), tuple()} |
@@ -5161,8 +5266,19 @@ describe_fleet_advisor_schema_object_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorSchemaObjectSummary">>, Input, Options).
 
-%% @doc Returns a list of schemas detected by Fleet Advisor Collectors in
-%% your account.
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Returns a list of schemas detected by Fleet Advisor Collectors in your
+%% account.
 -spec describe_fleet_advisor_schemas(aws_client:aws_client(), describe_fleet_advisor_schemas_request()) ->
     {ok, describe_fleet_advisor_schemas_response(), tuple()} |
     {error, any()} |
@@ -5341,7 +5457,18 @@ describe_pending_maintenance_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePendingMaintenanceActions">>, Input, Options).
 
-%% @doc Returns a paginated list of limitations for recommendations of target
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Returns a paginated list of limitations for recommendations of target
 %% Amazon Web Services
 %% engines.
 -spec describe_recommendation_limitations(aws_client:aws_client(), describe_recommendation_limitations_request()) ->
@@ -5360,8 +5487,18 @@ describe_recommendation_limitations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecommendationLimitations">>, Input, Options).
 
-%% @doc Returns a paginated list of target engine recommendations for your
-%% source
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Returns a paginated list of target engine recommendations for your source
 %% databases.
 -spec describe_recommendations(aws_client:aws_client(), describe_recommendations_request()) ->
     {ok, describe_recommendations_response(), tuple()} |
@@ -6081,7 +6218,18 @@ remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
-%% @doc Runs large-scale assessment (LSA) analysis on every Fleet Advisor
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Runs large-scale assessment (LSA) analysis on every Fleet Advisor
 %% collector in your account.
 -spec run_fleet_advisor_lsa_analysis(aws_client:aws_client(), #{}) ->
     {ok, run_fleet_advisor_lsa_analysis_response(), tuple()} |
@@ -6238,8 +6386,19 @@ start_metadata_model_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelImport">>, Input, Options).
 
-%% @doc Starts the analysis of your source database to provide
-%% recommendations of target
+%% @doc
+%%
+%% End of support notice: On May 20, 2026, Amazon Web Services will end
+%% support for Amazon Web Services DMS Fleet Advisor;.
+%%
+%% After May 20, 2026, you will no longer be able to access the Amazon Web
+%% Services DMS Fleet Advisor; console or Amazon Web Services DMS Fleet
+%% Advisor; resources. For more information, see Amazon Web Services DMS
+%% Fleet Advisor end of support:
+%% https://docs.aws.amazon.com/dms/latest/userguide/dms_fleet.advisor-end-of-support.html.
+%%
+%% Starts the analysis of your source database to provide recommendations of
+%% target
 %% engines.
 %%
 %% You can create recommendations for multiple source databases using

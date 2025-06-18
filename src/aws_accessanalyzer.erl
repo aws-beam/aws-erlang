@@ -2,50 +2,38 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Identity and Access Management Access Analyzer helps you to set,
-%% verify, and refine your IAM policies by providing
-%% a suite of capabilities.
+%% verify, and refine your IAM policies by providing a suite of capabilities.
 %%
-%% Its features include findings for external and unused access,
-%% basic and custom policy checks for validating policies, and policy
-%% generation to generate
-%% fine-grained policies. To start using IAM Access Analyzer to identify
-%% external or unused access,
-%% you first need to create an analyzer.
+%% Its features include findings for external and unused access, basic and
+%% custom policy checks for validating policies, and policy generation to
+%% generate fine-grained policies. To start using IAM Access Analyzer to
+%% identify external or unused access, you first need to create an analyzer.
 %%
-%% External access analyzers help identify potential risks
-%% of accessing resources by enabling you to identify any resource policies
-%% that grant access
-%% to an external principal. It does this by using logic-based reasoning to
-%% analyze
-%% resource-based policies in your Amazon Web Services environment. An
-%% external principal can be another
-%% Amazon Web Services account, a root user, an IAM user or role, a federated
-%% user, an Amazon Web Services service, or an
-%% anonymous user. You can also use IAM Access Analyzer to preview public and
-%% cross-account access
-%% to your resources before deploying permissions changes.
+%% External access analyzers help identify potential risks of accessing
+%% resources by enabling you to identify any resource policies that grant
+%% access to an external principal. It does this by using logic-based
+%% reasoning to analyze resource-based policies in your Amazon Web Services
+%% environment. An external principal can be another Amazon Web Services
+%% account, a root user, an IAM user or role, a federated user, an Amazon Web
+%% Services service, or an anonymous user. You can also use IAM Access
+%% Analyzer to preview public and cross-account access to your resources
+%% before deploying permissions changes.
 %%
-%% Unused access analyzers help identify potential
-%% identity access risks by enabling you to identify unused IAM roles, unused
-%% access keys,
-%% unused console passwords, and IAM principals with unused service and
-%% action-level
+%% Unused access analyzers help identify potential identity access risks by
+%% enabling you to identify unused IAM roles, unused access keys, unused
+%% console passwords, and IAM principals with unused service and action-level
 %% permissions.
 %%
 %% Beyond findings, IAM Access Analyzer provides basic and custom policy
-%% checks to validate IAM
-%% policies before deploying permissions changes. You can use policy
-%% generation to refine
-%% permissions by attaching a policy generated using access activity logged
-%% in CloudTrail logs.
+%% checks to validate IAM policies before deploying permissions changes. You
+%% can use policy generation to refine permissions by attaching a policy
+%% generated using access activity logged in CloudTrail logs.
 %%
 %% This guide describes the IAM Access Analyzer operations that you can call
-%% programmatically.
-%% For general information about IAM Access Analyzer, see Identity and Access
-%% Management Access Analyzer:
+%% programmatically. For general information about IAM Access Analyzer, see
+%% Identity and Access Management Access Analyzer:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html
-%% in the
-%% IAM User Guide.
+%% in the IAM User Guide.
 -module(aws_accessanalyzer).
 
 -export([apply_archive_rule/2,
@@ -387,6 +375,15 @@
 
 
 %% Example:
+%% internal_access_analysis_rule_criteria() :: #{
+%%   <<"accountIds">> => list([string()]()),
+%%   <<"resourceArns">> => list([string()]()),
+%%   <<"resourceTypes">> => list(string()())
+%% }
+-type internal_access_analysis_rule_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_findings_response() :: #{
 %%   <<"findings">> => list(finding_summary()()),
 %%   <<"nextToken">> => string()
@@ -508,6 +505,13 @@
 %%   <<"result">> => string()
 %% }
 -type check_access_not_granted_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_access_configuration() :: #{
+%%   <<"analysisRule">> => internal_access_analysis_rule()
+%% }
+-type internal_access_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_policy_generation_response() :: #{}
@@ -658,6 +662,13 @@
 
 
 %% Example:
+%% internal_access_analysis_rule() :: #{
+%%   <<"inclusions">> => list(internal_access_analysis_rule_criteria()())
+%% }
+-type internal_access_analysis_rule() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_generated_policy_response() :: #{
 %%   <<"generatedPolicyResult">> := generated_policy_result(),
 %%   <<"jobDetails">> := job_details()
@@ -784,6 +795,21 @@
 %%   <<"principalArn">> => string()
 %% }
 -type list_policy_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_access_details() :: #{
+%%   <<"accessType">> => string(),
+%%   <<"action">> => list([string()]()),
+%%   <<"condition">> => map(),
+%%   <<"principal">> => map(),
+%%   <<"principalOwnerAccount">> => [string()],
+%%   <<"principalType">> => string(),
+%%   <<"resourceControlPolicyRestriction">> => string(),
+%%   <<"serviceControlPolicyRestriction">> => string(),
+%%   <<"sources">> => list(finding_source()())
+%% }
+-type internal_access_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1140,6 +1166,15 @@
 
 
 %% Example:
+%% internal_access_resource_type_details() :: #{
+%%   <<"totalActiveFindings">> => [integer()],
+%%   <<"totalArchivedFindings">> => [integer()],
+%%   <<"totalResolvedFindings">> => [integer()]
+%% }
+-type internal_access_resource_type_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_access_preview_request() :: #{
 %%   <<"analyzerArn">> := string()
 %% }
@@ -1278,6 +1313,16 @@
 %%   <<"statusReason">> => access_preview_status_reason()
 %% }
 -type access_preview_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_access_findings_statistics() :: #{
+%%   <<"resourceTypeStatistics">> => map(),
+%%   <<"totalActiveFindings">> => [integer()],
+%%   <<"totalArchivedFindings">> => [integer()],
+%%   <<"totalResolvedFindings">> => [integer()]
+%% }
+-type internal_access_findings_statistics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1700,8 +1745,7 @@
 %%====================================================================
 
 %% @doc Retroactively applies the archive rule to existing findings that meet
-%% the archive rule
-%% criteria.
+%% the archive rule criteria.
 -spec apply_archive_rule(aws_client:aws_client(), apply_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1804,17 +1848,14 @@ check_access_not_granted(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Checks whether new access is allowed for an updated policy when
-%% compared to the existing
-%% policy.
+%% compared to the existing policy.
 %%
 %% You can find examples for reference policies and learn how to set up and
-%% run a custom
-%% policy check for new access in the IAM Access Analyzer custom policy
-%% checks samples:
+%% run a custom policy check for new access in the IAM Access Analyzer custom
+%% policy checks samples:
 %% https://github.com/aws-samples/iam-access-analyzer-custom-policy-check-samples
-%% repository on GitHub. The reference
-%% policies in this repository are meant to be passed to the
-%% `existingPolicyDocument' request parameter.
+%% repository on GitHub. The reference policies in this repository are meant
+%% to be passed to the `existingPolicyDocument' request parameter.
 -spec check_no_new_access(aws_client:aws_client(), check_no_new_access_request()) ->
     {ok, check_no_new_access_response(), tuple()} |
     {error, any()} |
@@ -1849,8 +1890,7 @@ check_no_new_access(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Checks whether a resource policy can grant public access to the
-%% specified resource
-%% type.
+%% specified resource type.
 -spec check_no_public_access(aws_client:aws_client(), check_no_public_access_request()) ->
     {ok, check_no_public_access_response(), tuple()} |
     {error, any()} |
@@ -1885,8 +1925,7 @@ check_no_public_access(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an access preview that allows you to preview IAM Access
-%% Analyzer findings for your
-%% resource before deploying resource permissions.
+%% Analyzer findings for your resource before deploying resource permissions.
 -spec create_access_preview(aws_client:aws_client(), create_access_preview_request()) ->
     {ok, create_access_preview_response(), tuple()} |
     {error, any()} |
@@ -1956,8 +1995,8 @@ create_analyzer(Client, Input0, Options0) ->
 
 %% @doc Creates an archive rule for the specified analyzer.
 %%
-%% Archive rules automatically archive
-%% new findings that meet the criteria you define when you create the rule.
+%% Archive rules automatically archive new findings that meet the criteria
+%% you define when you create the rule.
 %%
 %% To learn about filter keys that you can use to create an archive rule, see
 %% IAM Access Analyzer filter keys:
@@ -1998,10 +2037,10 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
 
 %% @doc Deletes the specified analyzer.
 %%
-%% When you delete an analyzer, IAM Access Analyzer is disabled
-%% for the account or organization in the current or specific Region. All
-%% findings that were
-%% generated by the analyzer are deleted. You cannot undo this action.
+%% When you delete an analyzer, IAM Access Analyzer is disabled for the
+%% account or organization in the current or specific Region. All findings
+%% that were generated by the analyzer are deleted. You cannot undo this
+%% action.
 -spec delete_analyzer(aws_client:aws_client(), binary() | list(), delete_analyzer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2271,10 +2310,9 @@ get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the specified finding.
 %%
-%% GetFinding and GetFindingV2 both use
-%% `access-analyzer:GetFinding' in the `Action' element of an IAM
-%% policy statement. You must have permission to perform the
-%% `access-analyzer:GetFinding' action.
+%% GetFinding and GetFindingV2 both use `access-analyzer:GetFinding' in
+%% the `Action' element of an IAM policy statement. You must have
+%% permission to perform the `access-analyzer:GetFinding' action.
 -spec get_finding(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_finding_response(), tuple()} |
     {error, any()} |
@@ -2361,10 +2399,9 @@ get_finding_recommendation(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Option
 
 %% @doc Retrieves information about the specified finding.
 %%
-%% GetFinding and GetFindingV2 both use
-%% `access-analyzer:GetFinding' in the `Action' element of an IAM
-%% policy statement. You must have permission to perform the
-%% `access-analyzer:GetFinding' action.
+%% GetFinding and GetFindingV2 both use `access-analyzer:GetFinding' in
+%% the `Action' element of an IAM policy statement. You must have
+%% permission to perform the `access-analyzer:GetFinding' action.
 -spec get_finding_v2(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_finding_v2_response(), tuple()} |
     {error, any()} |
@@ -2408,8 +2445,7 @@ get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of aggregated finding statistics for an external
-%% access or unused
-%% access analyzer.
+%% access or unused access analyzer.
 -spec get_findings_statistics(aws_client:aws_client(), get_findings_statistics_request()) ->
     {ok, get_findings_statistics_response(), tuple()} |
     {error, any()} |
@@ -2487,8 +2523,7 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of access preview findings generated by the
-%% specified access
-%% preview.
+%% specified access preview.
 -spec list_access_preview_findings(aws_client:aws_client(), binary() | list(), list_access_preview_findings_request()) ->
     {ok, list_access_preview_findings_response(), tuple()} |
     {error, any()} |
@@ -2566,8 +2601,7 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of resources of the specified type that have been
-%% analyzed by the
-%% specified analyzer.
+%% analyzed by the specified analyzer.
 -spec list_analyzed_resources(aws_client:aws_client(), list_analyzed_resources_request()) ->
     {ok, list_analyzed_resources_response(), tuple()} |
     {error, any()} |
@@ -2688,11 +2722,10 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of findings generated by the specified analyzer.
 %%
-%% ListFindings and
-%% ListFindingsV2 both use `access-analyzer:ListFindings' in the
-%% `Action' element of an IAM policy statement. You must have permission
-%% to
-%% perform the `access-analyzer:ListFindings' action.
+%% ListFindings and ListFindingsV2 both use
+%% `access-analyzer:ListFindings' in the `Action' element of an IAM
+%% policy statement. You must have permission to perform the
+%% `access-analyzer:ListFindings' action.
 %%
 %% To learn about filter keys that you can use to retrieve a list of
 %% findings, see IAM Access Analyzer filter keys:
@@ -2733,11 +2766,10 @@ list_findings(Client, Input0, Options0) ->
 
 %% @doc Retrieves a list of findings generated by the specified analyzer.
 %%
-%% ListFindings and
-%% ListFindingsV2 both use `access-analyzer:ListFindings' in the
-%% `Action' element of an IAM policy statement. You must have permission
-%% to
-%% perform the `access-analyzer:ListFindings' action.
+%% ListFindings and ListFindingsV2 both use
+%% `access-analyzer:ListFindings' in the `Action' element of an IAM
+%% policy statement. You must have permission to perform the
+%% `access-analyzer:ListFindings' action.
 %%
 %% To learn about filter keys that you can use to retrieve a list of
 %% findings, see IAM Access Analyzer filter keys:
@@ -3098,10 +3130,9 @@ update_findings(Client, Input0, Options0) ->
 
 %% @doc Requests the validation of a policy and returns a list of findings.
 %%
-%% The findings help
-%% you identify issues and provide actionable recommendations to resolve the
-%% issue and enable
-%% you to author functional policies that meet security best practices.
+%% The findings help you identify issues and provide actionable
+%% recommendations to resolve the issue and enable you to author functional
+%% policies that meet security best practices.
 -spec validate_policy(aws_client:aws_client(), validate_policy_request()) ->
     {ok, validate_policy_response(), tuple()} |
     {error, any()} |

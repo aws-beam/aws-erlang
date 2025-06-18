@@ -165,6 +165,8 @@
          describe_rule_group/3,
          describe_rule_group_metadata/2,
          describe_rule_group_metadata/3,
+         describe_rule_group_summary/2,
+         describe_rule_group_summary/3,
          describe_t_l_s_inspection_configuration/2,
          describe_t_l_s_inspection_configuration/3,
          describe_vpc_endpoint_association/2,
@@ -716,6 +718,7 @@
 %%   <<"RuleGroupName">> := string(),
 %%   <<"Rules">> => string(),
 %%   <<"SourceMetadata">> => source_metadata(),
+%%   <<"SummaryConfiguration">> => summary_configuration(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Type">> := list(any())
 %% }
@@ -779,6 +782,14 @@
 -type accept_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_rule_group_summary_request() :: #{
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_rule_group_summary_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_vpc_endpoint_association_request() :: #{
 %%   <<"VpcEndpointAssociationArn">> := string()
 %% }
@@ -801,6 +812,14 @@
 %%   <<"VpcEndpointAssociationArn">> => string()
 %% }
 -type vpc_endpoint_association_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_summary_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Summary">> => summary()
+%% }
+-type describe_rule_group_summary_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_firewall_policy_response() :: #{
@@ -931,6 +950,7 @@
 %%   <<"RuleGroupStatus">> => list(any()),
 %%   <<"SnsTopic">> => string(),
 %%   <<"SourceMetadata">> => source_metadata(),
+%%   <<"SummaryConfiguration">> => summary_configuration(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Type">> => list(any())
 %% }
@@ -986,6 +1006,7 @@
 
 %% Example:
 %% stateful_rule_group_reference() :: #{
+%%   <<"DeepThreatInspection">> => boolean(),
 %%   <<"Override">> => stateful_rule_group_override(),
 %%   <<"Priority">> => integer(),
 %%   <<"ResourceArn">> => string()
@@ -1165,6 +1186,14 @@
 -type delete_firewall_request() :: #{binary() => any()}.
 
 %% Example:
+%% rule_summary() :: #{
+%%   <<"Metadata">> => string(),
+%%   <<"Msg">> => string(),
+%%   <<"SID">> => string()
+%% }
+-type rule_summary() :: #{binary() => any()}.
+
+%% Example:
 %% list_t_l_s_inspection_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TLSInspectionConfigurations">> => list(t_l_s_inspection_configuration_metadata()())
@@ -1333,6 +1362,7 @@
 %%   <<"RuleGroupName">> => string(),
 %%   <<"Rules">> => string(),
 %%   <<"SourceMetadata">> => source_metadata(),
+%%   <<"SummaryConfiguration">> => summary_configuration(),
 %%   <<"Type">> => list(any()),
 %%   <<"UpdateToken">> := string()
 %% }
@@ -1543,6 +1573,12 @@
 -type delete_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% summary_configuration() :: #{
+%%   <<"RuleOptions">> => list(list(any())())
+%% }
+-type summary_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% associate_availability_zones_request() :: #{
 %%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()()),
 %%   <<"FirewallArn">> => string(),
@@ -1724,6 +1760,12 @@
 %%   <<"VpcEndpointAssociationArn">> := string()
 %% }
 -type delete_vpc_endpoint_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% summary() :: #{
+%%   <<"RuleSummaries">> => list(rule_summary()())
+%% }
+-type summary() :: #{binary() => any()}.
 
 %% Example:
 %% c_id_r_summary() :: #{
@@ -2008,6 +2050,12 @@
     resource_not_found_exception().
 
 -type describe_rule_group_metadata_errors() ::
+    throttling_exception() | 
+    internal_server_error() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_rule_group_summary_errors() ::
     throttling_exception() | 
     internal_server_error() | 
     invalid_request_exception() | 
@@ -2549,7 +2597,7 @@ delete_firewall_policy(Client, Input, Options)
 %% Either the firewall owner or the transit gateway owner can delete the
 %% attachment.
 %%
-%% After you delete a transit gateway attachment, traffic will no longer flow
+%% After you delete a transit gateway attachment, raffic will no longer flow
 %% through the firewall endpoints.
 %%
 %% After you initiate the delete operation, use `DescribeFirewall' to
@@ -2794,6 +2842,32 @@ describe_rule_group_metadata(Client, Input)
 describe_rule_group_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuleGroupMetadata">>, Input, Options).
+
+%% @doc Returns detailed information for a stateful rule group.
+%%
+%% For active threat defense Amazon Web Services managed rule groups, this
+%% operation provides insight into the protections enabled by the rule group,
+%% based on Suricata rule metadata fields. Summaries are available for rule
+%% groups you manage and for active threat defense Amazon Web Services
+%% managed rule groups.
+%%
+%% To modify how threat information appears in summaries, use the
+%% `SummaryConfiguration' parameter in `UpdateRuleGroup'.
+-spec describe_rule_group_summary(aws_client:aws_client(), describe_rule_group_summary_request()) ->
+    {ok, describe_rule_group_summary_response(), tuple()} |
+    {error, any()} |
+    {error, describe_rule_group_summary_errors(), tuple()}.
+describe_rule_group_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_rule_group_summary(Client, Input, []).
+
+-spec describe_rule_group_summary(aws_client:aws_client(), describe_rule_group_summary_request(), proplists:proplist()) ->
+    {ok, describe_rule_group_summary_response(), tuple()} |
+    {error, any()} |
+    {error, describe_rule_group_summary_errors(), tuple()}.
+describe_rule_group_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRuleGroupSummary">>, Input, Options).
 
 %% @doc Returns the data objects for the specified TLS inspection
 %% configuration.
@@ -3175,8 +3249,8 @@ put_resource_policy(Client, Input, Options)
 %% creation of routing components between the transit gateway and firewall
 %% endpoints.
 %%
-%% Only the transit gateway owner can reject the attachment. After rejection,
-%% no traffic will flow through the firewall endpoints for this attachment.
+%% Only the firewall owner can reject the attachment. After rejection, no
+%% traffic will flow through the firewall endpoints for this attachment.
 %%
 %% Use `DescribeFirewall' to monitor the rejection status. To accept the
 %% attachment instead of rejecting it, use

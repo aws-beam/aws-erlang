@@ -11,7 +11,9 @@
 %% auditing.
 -module(aws_backup).
 
--export([cancel_legal_hold/3,
+-export([associate_backup_vault_mpa_approval_team/3,
+         associate_backup_vault_mpa_approval_team/4,
+         cancel_legal_hold/3,
          cancel_legal_hold/4,
          create_backup_plan/2,
          create_backup_plan/3,
@@ -27,6 +29,8 @@
          create_logically_air_gapped_backup_vault/4,
          create_report_plan/2,
          create_report_plan/3,
+         create_restore_access_backup_vault/2,
+         create_restore_access_backup_vault/3,
          create_restore_testing_plan/2,
          create_restore_testing_plan/3,
          create_restore_testing_selection/3,
@@ -86,6 +90,8 @@
          describe_restore_job/2,
          describe_restore_job/4,
          describe_restore_job/5,
+         disassociate_backup_vault_mpa_approval_team/3,
+         disassociate_backup_vault_mpa_approval_team/4,
          disassociate_recovery_point/4,
          disassociate_recovery_point/5,
          disassociate_recovery_point_from_parent/4,
@@ -191,6 +197,9 @@
          list_report_plans/1,
          list_report_plans/3,
          list_report_plans/4,
+         list_restore_access_backup_vaults/2,
+         list_restore_access_backup_vaults/4,
+         list_restore_access_backup_vaults/5,
          list_restore_job_summaries/1,
          list_restore_job_summaries/3,
          list_restore_job_summaries/4,
@@ -217,6 +226,8 @@
          put_backup_vault_notifications/4,
          put_restore_validation_result/3,
          put_restore_validation_result/4,
+         revoke_restore_access_backup_vault/4,
+         revoke_restore_access_backup_vault/5,
          start_backup_job/2,
          start_backup_job/3,
          start_copy_job/2,
@@ -510,6 +521,7 @@
 %%   <<"IamRoleArn">> => string(),
 %%   <<"IndexStatus">> => list(any()),
 %%   <<"IndexStatusMessage">> => string(),
+%%   <<"InitiationDate">> => non_neg_integer(),
 %%   <<"IsEncrypted">> => boolean(),
 %%   <<"IsParent">> => boolean(),
 %%   <<"LastRestoreTime">> => non_neg_integer(),
@@ -825,11 +837,15 @@
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"CreatorRequestId">> => string(),
 %%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LatestMpaApprovalTeamUpdate">> => latest_mpa_approval_team_update(),
 %%   <<"LockDate">> => non_neg_integer(),
 %%   <<"Locked">> => boolean(),
 %%   <<"MaxRetentionDays">> => float(),
 %%   <<"MinRetentionDays">> => float(),
+%%   <<"MpaApprovalTeamArn">> => string(),
+%%   <<"MpaSessionArn">> => string(),
 %%   <<"NumberOfRecoveryPoints">> => float(),
+%%   <<"SourceBackupVaultArn">> => string(),
 %%   <<"VaultState">> => list(any()),
 %%   <<"VaultType">> => list(any())
 %% }
@@ -864,6 +880,16 @@
 %% }
 -type put_backup_vault_notifications_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_restore_access_backup_vault_output() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"RestoreAccessBackupVaultArn">> => string(),
+%%   <<"RestoreAccessBackupVaultName">> => string(),
+%%   <<"VaultState">> => list(any())
+%% }
+-type create_restore_access_backup_vault_output() :: #{binary() => any()}.
+
 %% Example:
 %% describe_protected_resource_input() :: #{}
 -type describe_protected_resource_input() :: #{}.
@@ -896,6 +922,13 @@
 %%   <<"Title">> => string()
 %% }
 -type get_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_backup_vault_mpa_approval_team_input() :: #{
+%%   <<"RequesterComment">> => string()
+%% }
+-type disassociate_backup_vault_mpa_approval_team_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -991,6 +1024,13 @@
 
 
 %% Example:
+%% revoke_restore_access_backup_vault_input() :: #{
+%%   <<"RequesterComment">> => string()
+%% }
+-type revoke_restore_access_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_recovery_points_by_legal_hold_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1050,6 +1090,17 @@
 %%   <<"IdempotencyToken">> => string()
 %% }
 -type update_framework_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% latest_mpa_approval_team_update() :: #{
+%%   <<"ExpiryDate">> => non_neg_integer(),
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"MpaSessionArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type latest_mpa_approval_team_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1136,6 +1187,14 @@
 %% }
 -type copy_job_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% associate_backup_vault_mpa_approval_team_input() :: #{
+%%   <<"MpaApprovalTeamArn">> := string(),
+%%   <<"RequesterComment">> => string()
+%% }
+-type associate_backup_vault_mpa_approval_team_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_restore_testing_selection_input() :: #{}
 -type delete_restore_testing_selection_input() :: #{}.
@@ -1157,6 +1216,17 @@
 %%   <<"Type">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_access_backup_vault_list_member() :: #{
+%%   <<"ApprovalDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LatestRevokeRequest">> => latest_revoke_request(),
+%%   <<"RestoreAccessBackupVaultArn">> => string(),
+%%   <<"VaultState">> => list(any())
+%% }
+-type restore_access_backup_vault_list_member() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1876,6 +1946,14 @@
 %% }
 -type list_restore_jobs_by_protected_resource_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_restore_access_backup_vaults_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_restore_access_backup_vaults_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_backup_vault_notifications_input() :: #{}
 -type get_backup_vault_notifications_input() :: #{}.
@@ -2255,6 +2333,7 @@
 %%   <<"IamRoleArn">> => string(),
 %%   <<"IndexStatus">> => list(any()),
 %%   <<"IndexStatusMessage">> => string(),
+%%   <<"InitiationDate">> => non_neg_integer(),
 %%   <<"IsEncrypted">> => boolean(),
 %%   <<"IsParent">> => boolean(),
 %%   <<"LastRestoreTime">> => non_neg_integer(),
@@ -2271,6 +2350,17 @@
 %%   <<"VaultType">> => list(any())
 %% }
 -type describe_recovery_point_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% latest_revoke_request() :: #{
+%%   <<"ExpiryDate">> => non_neg_integer(),
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"MpaSessionArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type latest_revoke_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2307,6 +2397,17 @@
 %% Example:
 %% get_legal_hold_input() :: #{}
 -type get_legal_hold_input() :: #{}.
+
+
+%% Example:
+%% create_restore_access_backup_vault_input() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"BackupVaultTags">> => map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"RequesterComment">> => string(),
+%%   <<"SourceBackupVaultArn">> := string()
+%% }
+-type create_restore_access_backup_vault_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2446,11 +2547,26 @@
 
 
 %% Example:
+%% list_restore_access_backup_vaults_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RestoreAccessBackupVaults">> => list(restore_access_backup_vault_list_member()())
+%% }
+-type list_restore_access_backup_vaults_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_restore_validation_result_input() :: #{
 %%   <<"ValidationStatus">> := list(any()),
 %%   <<"ValidationStatusMessage">> => string()
 %% }
 -type put_restore_validation_result_input() :: #{binary() => any()}.
+
+-type associate_backup_vault_mpa_approval_team_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
 
 -type cancel_legal_hold_errors() ::
     invalid_resource_state_exception() | 
@@ -2505,6 +2621,15 @@
     limit_exceeded_exception() | 
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_restore_access_backup_vault_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     already_exists_exception() | 
     missing_parameter_value_exception().
 
@@ -2652,6 +2777,13 @@
     service_unavailable_exception() | 
     dependency_failure_exception() | 
     invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type disassociate_backup_vault_mpa_approval_team_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     missing_parameter_value_exception().
 
@@ -2848,6 +2980,12 @@
     service_unavailable_exception() | 
     invalid_parameter_value_exception().
 
+-type list_restore_access_backup_vaults_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
 -type list_restore_job_summaries_errors() ::
     service_unavailable_exception() | 
     invalid_parameter_value_exception().
@@ -2899,6 +3037,13 @@
     missing_parameter_value_exception().
 
 -type put_restore_validation_result_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type revoke_restore_access_backup_vault_errors() ::
     service_unavailable_exception() | 
     invalid_parameter_value_exception() | 
     invalid_request_exception() | 
@@ -3018,6 +3163,40 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates an MPA approval team with a backup vault.
+-spec associate_backup_vault_mpa_approval_team(aws_client:aws_client(), binary() | list(), associate_backup_vault_mpa_approval_team_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_backup_vault_mpa_approval_team_errors(), tuple()}.
+associate_backup_vault_mpa_approval_team(Client, BackupVaultName, Input) ->
+    associate_backup_vault_mpa_approval_team(Client, BackupVaultName, Input, []).
+
+-spec associate_backup_vault_mpa_approval_team(aws_client:aws_client(), binary() | list(), associate_backup_vault_mpa_approval_team_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_backup_vault_mpa_approval_team_errors(), tuple()}.
+associate_backup_vault_mpa_approval_team(Client, BackupVaultName, Input0, Options0) ->
+    Method = put,
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/mpaApprovalTeam"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified legal hold on a recovery point.
 %%
@@ -3329,6 +3508,42 @@ create_report_plan(Client, Input) ->
 create_report_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/report-plans"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a restore access backup vault that provides temporary access
+%% to recovery points in a logically air-gapped backup vault, subject to MPA
+%% approval.
+-spec create_restore_access_backup_vault(aws_client:aws_client(), create_restore_access_backup_vault_input()) ->
+    {ok, create_restore_access_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, create_restore_access_backup_vault_errors(), tuple()}.
+create_restore_access_backup_vault(Client, Input) ->
+    create_restore_access_backup_vault(Client, Input, []).
+
+-spec create_restore_access_backup_vault(aws_client:aws_client(), create_restore_access_backup_vault_input(), proplists:proplist()) ->
+    {ok, create_restore_access_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, create_restore_access_backup_vault_errors(), tuple()}.
+create_restore_access_backup_vault(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/restore-access-backup-vaults"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4305,6 +4520,41 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Removes the association between an MPA approval team and a backup
+%% vault, disabling the MPA approval workflow for restore operations.
+-spec disassociate_backup_vault_mpa_approval_team(aws_client:aws_client(), binary() | list(), disassociate_backup_vault_mpa_approval_team_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_backup_vault_mpa_approval_team_errors(), tuple()}.
+disassociate_backup_vault_mpa_approval_team(Client, BackupVaultName, Input) ->
+    disassociate_backup_vault_mpa_approval_team(Client, BackupVaultName, Input, []).
+
+-spec disassociate_backup_vault_mpa_approval_team(aws_client:aws_client(), binary() | list(), disassociate_backup_vault_mpa_approval_team_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_backup_vault_mpa_approval_team_errors(), tuple()}.
+disassociate_backup_vault_mpa_approval_team(Client, BackupVaultName, Input0, Options0) ->
+    Method = post,
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/mpaApprovalTeam?delete"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified continuous backup recovery point from Backup
 %% and
@@ -5881,6 +6131,49 @@ list_report_plans(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of restore access backup vaults associated with a
+%% specified backup vault.
+-spec list_restore_access_backup_vaults(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_restore_access_backup_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_access_backup_vaults_errors(), tuple()}.
+list_restore_access_backup_vaults(Client, BackupVaultName)
+  when is_map(Client) ->
+    list_restore_access_backup_vaults(Client, BackupVaultName, #{}, #{}).
+
+-spec list_restore_access_backup_vaults(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_restore_access_backup_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_access_backup_vaults_errors(), tuple()}.
+list_restore_access_backup_vaults(Client, BackupVaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_restore_access_backup_vaults(Client, BackupVaultName, QueryMap, HeadersMap, []).
+
+-spec list_restore_access_backup_vaults(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_restore_access_backup_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_access_backup_vaults_errors(), tuple()}.
+list_restore_access_backup_vaults(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/logically-air-gapped-backup-vaults/", aws_util:encode_uri(BackupVaultName), "/restore-access-backup-vaults"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This request obtains a summary of restore jobs created
 %% or running within the the most recent 30 days.
 %%
@@ -6358,6 +6651,42 @@ put_restore_validation_result(Client, RestoreJobId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Revokes access to a restore access backup vault, removing the ability
+%% to restore from its recovery points and permanently deleting the vault.
+-spec revoke_restore_access_backup_vault(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_restore_access_backup_vault_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_restore_access_backup_vault_errors(), tuple()}.
+revoke_restore_access_backup_vault(Client, BackupVaultName, RestoreAccessBackupVaultArn, Input) ->
+    revoke_restore_access_backup_vault(Client, BackupVaultName, RestoreAccessBackupVaultArn, Input, []).
+
+-spec revoke_restore_access_backup_vault(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_restore_access_backup_vault_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_restore_access_backup_vault_errors(), tuple()}.
+revoke_restore_access_backup_vault(Client, BackupVaultName, RestoreAccessBackupVaultArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/logically-air-gapped-backup-vaults/", aws_util:encode_uri(BackupVaultName), "/restore-access-backup-vaults/", aws_util:encode_uri(RestoreAccessBackupVaultArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"requesterComment">>, <<"RequesterComment">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an on-demand backup job for the specified resource.

@@ -1938,9 +1938,12 @@ accept_handshake(Client, Input, Options)
 %% AISERVICES_OPT_OUT_POLICY:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html
 %%
+%% SECURITYHUB_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html
+%%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec attach_policy(aws_client:aws_client(), attach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2444,7 +2447,7 @@ create_organizational_unit(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec create_policy(aws_client:aws_client(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
@@ -2544,7 +2547,7 @@ delete_organizational_unit(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec delete_policy(aws_client:aws_client(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2563,7 +2566,7 @@ delete_policy(Client, Input, Options)
 
 %% @doc Deletes the resource policy from your organization.
 %%
-%% You can only call this operation from the organization's management
+%% This operation can be called only from the organization's management
 %% account.
 -spec delete_resource_policy(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
@@ -2625,7 +2628,7 @@ deregister_delegated_administrator(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec describe_account(aws_client:aws_client(), describe_account_request()) ->
     {ok, describe_account_response(), tuple()} |
     {error, any()} |
@@ -2647,7 +2650,7 @@ describe_account(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec describe_create_account_status(aws_client:aws_client(), describe_create_account_status_request()) ->
     {ok, describe_create_account_status_response(), tuple()} |
     {error, any()} |
@@ -2759,7 +2762,7 @@ describe_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec describe_organizational_unit(aws_client:aws_client(), describe_organizational_unit_request()) ->
     {ok, describe_organizational_unit_response(), tuple()} |
     {error, any()} |
@@ -2780,7 +2783,7 @@ describe_organizational_unit(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec describe_policy(aws_client:aws_client(), describe_policy_request()) ->
     {ok, describe_policy_response(), tuple()} |
     {error, any()} |
@@ -2801,7 +2804,7 @@ describe_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec describe_resource_policy(aws_client:aws_client(), #{}) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -2847,7 +2850,7 @@ describe_resource_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec detach_policy(aws_client:aws_client(), detach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2987,7 +2990,7 @@ disable_aws_service_access(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 %%
 %% To view the status of available policy types in the organization, use
 %% `DescribeOrganization'.
@@ -3105,11 +3108,8 @@ enable_all_features(Client, Input, Options)
 %% in the
 %% Organizations User Guide.
 %%
-%% You can only call this operation from the organization's management
-%% account and only
-%% if the organization has enabled all
-%% features:
-%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html.
+%% This operation can be called only from the organization's management
+%% account.
 -spec enable_aws_service_access(aws_client:aws_client(), enable_aws_service_access_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3141,7 +3141,7 @@ enable_aws_service_access(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 %%
 %% You can enable a policy type in a root only if that policy type is
 %% available in the
@@ -3172,20 +3172,6 @@ enable_policy_type(Client, Input, Options)
 %% other account's owner. The invitation is implemented as a
 %% `Handshake'
 %% whose details are in the response.
-%%
-%% You can invite Amazon Web Services accounts only from the same seller as
-%% the management
-%% account. For example, if your organization's management account was
-%% created
-%% by Amazon Internet Services Pvt. Ltd (AISPL), an Amazon Web Services
-%% seller in India, you
-%% can invite only other AISPL accounts to your organization. You can't
-%% combine
-%% accounts from AISPL and Amazon Web Services or from any other Amazon Web
-%% Services seller. For more
-%% information, see Consolidated
-%% billing in India:
-%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-India.html.
 %%
 %% If you receive an exception that indicates that you exceeded your account
 %% limits for the organization or that the operation failed because your
@@ -3266,13 +3252,6 @@ invite_account_to_organization(Client, Input, Options)
 %% administrator account to another account that is remaining in the
 %% organization.
 %%
-%% You can leave an organization only after you enable IAM user access to
-%% billing in your account. For more information, see About IAM access to the
-%% Billing and Cost Management console:
-%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate
-%% in the
-%% Amazon Web Services Billing and Cost Management User Guide.
-%%
 %% After the account leaves the organization, all tags that were attached to
 %% the account object in the organization are deleted. Amazon Web Services
 %% accounts outside
@@ -3319,7 +3298,7 @@ leave_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_accounts(aws_client:aws_client(), list_accounts_request()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
@@ -3358,7 +3337,7 @@ list_accounts(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_accounts_for_parent(aws_client:aws_client(), list_accounts_for_parent_request()) ->
     {ok, list_accounts_for_parent_response(), tuple()} |
     {error, any()} |
@@ -3393,7 +3372,7 @@ list_accounts_for_parent(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_aws_service_access_for_organization(aws_client:aws_client(), list_aws_service_access_for_organization_request()) ->
     {ok, list_aws_service_access_for_organization_response(), tuple()} |
     {error, any()} |
@@ -3428,7 +3407,7 @@ list_aws_service_access_for_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_children(aws_client:aws_client(), list_children_request()) ->
     {ok, list_children_response(), tuple()} |
     {error, any()} |
@@ -3460,7 +3439,7 @@ list_children(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_create_account_status(aws_client:aws_client(), list_create_account_status_request()) ->
     {ok, list_create_account_status_response(), tuple()} |
     {error, any()} |
@@ -3483,7 +3462,7 @@ list_create_account_status(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_delegated_administrators(aws_client:aws_client(), list_delegated_administrators_request()) ->
     {ok, list_delegated_administrators_response(), tuple()} |
     {error, any()} |
@@ -3506,7 +3485,7 @@ list_delegated_administrators(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_delegated_services_for_account(aws_client:aws_client(), list_delegated_services_for_account_request()) ->
     {ok, list_delegated_services_for_account_response(), tuple()} |
     {error, any()} |
@@ -3585,7 +3564,7 @@ list_handshakes_for_account(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_handshakes_for_organization(aws_client:aws_client(), list_handshakes_for_organization_request()) ->
     {ok, list_handshakes_for_organization_response(), tuple()} |
     {error, any()} |
@@ -3616,7 +3595,7 @@ list_handshakes_for_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_organizational_units_for_parent(aws_client:aws_client(), list_organizational_units_for_parent_request()) ->
     {ok, list_organizational_units_for_parent_response(), tuple()} |
     {error, any()} |
@@ -3651,7 +3630,7 @@ list_organizational_units_for_parent(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 %%
 %% In the current release, a child can have only a single parent.
 -spec list_parents(aws_client:aws_client(), list_parents_request()) ->
@@ -3684,7 +3663,7 @@ list_parents(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_policies(aws_client:aws_client(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
@@ -3719,7 +3698,7 @@ list_policies(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_policies_for_target(aws_client:aws_client(), list_policies_for_target_request()) ->
     {ok, list_policies_for_target_response(), tuple()} |
     {error, any()} |
@@ -3749,7 +3728,7 @@ list_policies_for_target(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 %%
 %% Policy types can be enabled and disabled in roots. This is distinct from
 %% whether
@@ -3790,7 +3769,7 @@ list_roots(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -3822,7 +3801,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec list_targets_for_policy(aws_client:aws_client(), list_targets_for_policy_request()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
@@ -3863,8 +3842,8 @@ move_account(Client, Input, Options)
 
 %% @doc Creates or updates a resource policy.
 %%
-%% You can only call this operation from the organization's management
-%% account.
+%% This operation can be called only from the organization's management
+%% account..
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -3986,7 +3965,7 @@ remove_account_from_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4017,7 +3996,7 @@ tag_resource(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4068,7 +4047,7 @@ update_organizational_unit(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
-%% administrator for an Amazon Web Services service.
+%% administrator.
 -spec update_policy(aws_client:aws_client(), update_policy_request()) ->
     {ok, update_policy_response(), tuple()} |
     {error, any()} |

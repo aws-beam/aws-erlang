@@ -773,6 +773,13 @@
 -type logging_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% application_attribute() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type application_attribute() :: #{binary() => any()}.
+
+%% Example:
 %% rate_limit_cookie() :: #{
 %%   <<"Name">> => string(),
 %%   <<"TextTransformations">> => list(text_transformation()())
@@ -841,6 +848,7 @@
 %% Example:
 %% web_acl() :: #{
 %%   <<"ARN">> => string(),
+%%   <<"ApplicationConfig">> => application_config(),
 %%   <<"AssociationConfig">> => association_config(),
 %%   <<"Capacity">> => float(),
 %%   <<"CaptchaConfig">> => captcha_config(),
@@ -1547,6 +1555,7 @@
 
 %% Example:
 %% create_web_acl_request() :: #{
+%%   <<"ApplicationConfig">> => application_config(),
 %%   <<"AssociationConfig">> => association_config(),
 %%   <<"CaptchaConfig">> => captcha_config(),
 %%   <<"ChallengeConfig">> => challenge_config(),
@@ -1938,6 +1947,12 @@
 %%   <<"UsernameField">> => username_field()
 %% }
 -type managed_rule_group_config() :: #{binary() => any()}.
+
+%% Example:
+%% application_config() :: #{
+%%   <<"Attributes">> => list(application_attribute()())
+%% }
+-type application_config() :: #{binary() => any()}.
 
 %% Example:
 %% w_a_f_configuration_warning_exception() :: #{

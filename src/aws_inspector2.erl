@@ -9,6 +9,10 @@
 
 -export([associate_member/2,
          associate_member/3,
+         batch_associate_code_security_scan_configuration/2,
+         batch_associate_code_security_scan_configuration/3,
+         batch_disassociate_code_security_scan_configuration/2,
+         batch_disassociate_code_security_scan_configuration/3,
          batch_get_account_status/2,
          batch_get_account_status/3,
          batch_get_code_snippet/2,
@@ -27,6 +31,10 @@
          cancel_sbom_export/3,
          create_cis_scan_configuration/2,
          create_cis_scan_configuration/3,
+         create_code_security_integration/2,
+         create_code_security_integration/3,
+         create_code_security_scan_configuration/2,
+         create_code_security_scan_configuration/3,
          create_filter/2,
          create_filter/3,
          create_findings_report/2,
@@ -35,6 +43,10 @@
          create_sbom_export/3,
          delete_cis_scan_configuration/2,
          delete_cis_scan_configuration/3,
+         delete_code_security_integration/2,
+         delete_code_security_integration/3,
+         delete_code_security_scan_configuration/2,
+         delete_code_security_scan_configuration/3,
          delete_filter/2,
          delete_filter/3,
          describe_organization_configuration/2,
@@ -55,6 +67,12 @@
          get_cis_scan_result_details/3,
          get_clusters_for_image/2,
          get_clusters_for_image/3,
+         get_code_security_integration/2,
+         get_code_security_integration/3,
+         get_code_security_scan/2,
+         get_code_security_scan/3,
+         get_code_security_scan_configuration/2,
+         get_code_security_scan_configuration/3,
          get_configuration/2,
          get_configuration/3,
          get_delegated_admin_account/2,
@@ -80,6 +98,12 @@
          list_cis_scan_results_aggregated_by_target_resource/3,
          list_cis_scans/2,
          list_cis_scans/3,
+         list_code_security_integrations/2,
+         list_code_security_integrations/3,
+         list_code_security_scan_configuration_associations/2,
+         list_code_security_scan_configuration_associations/3,
+         list_code_security_scan_configurations/2,
+         list_code_security_scan_configurations/3,
          list_coverage/2,
          list_coverage/3,
          list_coverage_statistics/2,
@@ -109,6 +133,8 @@
          send_cis_session_telemetry/3,
          start_cis_session/2,
          start_cis_session/3,
+         start_code_security_scan/2,
+         start_code_security_scan/3,
          stop_cis_session/2,
          stop_cis_session/3,
          tag_resource/3,
@@ -117,6 +143,10 @@
          untag_resource/4,
          update_cis_scan_configuration/2,
          update_cis_scan_configuration/3,
+         update_code_security_integration/2,
+         update_code_security_integration/3,
+         update_code_security_scan_configuration/2,
+         update_code_security_scan_configuration/3,
          update_configuration/2,
          update_configuration/3,
          update_ec2_deep_inspection_configuration/2,
@@ -140,6 +170,13 @@
 %%   <<"packagePaths">> => list(string()())
 %% }
 -type update_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_code_security_scan_configuration_request() :: #{
+%%   <<"disassociateConfigurationRequests">> := list(disassociate_configuration_request()())
+%% }
+-type batch_disassociate_code_security_scan_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -182,6 +219,14 @@
 
 
 %% Example:
+%% create_git_lab_self_managed_integration_detail() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"instanceUrl">> => string()
+%% }
+-type create_git_lab_self_managed_integration_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_path() :: #{
 %%   <<"steps">> => list(step()())
 %% }
@@ -218,6 +263,14 @@
 %%   <<"sortOrder">> => string()
 %% }
 -type repository_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_code_security_scan_configuration() :: #{
+%%   <<"continuousIntegrationScanConfigurations">> => list(project_continuous_integration_scan_configuration()()),
+%%   <<"periodicScanConfigurations">> => list(project_periodic_scan_configuration()())
+%% }
+-type project_code_security_scan_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -276,9 +329,32 @@
 %% }
 -type create_sbom_export_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_code_security_integration_request() :: #{
+%%   <<"integrationArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type get_code_security_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_security_scan_request() :: #{
+%%   <<"resource">> := list(),
+%%   <<"scanId">> := string()
+%% }
+-type get_code_security_scan_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_organization_configuration_request() :: #{}
 -type describe_organization_configuration_request() :: #{}.
+
+
+%% Example:
+%% update_git_lab_self_managed_integration_detail() :: #{
+%%   <<"authCode">> => string()
+%% }
+-type update_git_lab_self_managed_integration_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -313,10 +389,31 @@
 
 
 %% Example:
+%% code_security_integration_summary() :: #{
+%%   <<"createdOn">> => [non_neg_integer()],
+%%   <<"integrationArn">> => string(),
+%%   <<"lastUpdateOn">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type code_security_integration_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_findings_report_response() :: #{
 %%   <<"reportId">> => string()
 %% }
 -type create_findings_report_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_integration_scan_configuration() :: #{
+%%   <<"supportedEvents">> => list(list(any())())
+%% }
+-type continuous_integration_scan_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -349,6 +446,7 @@
 %%   <<"awsAccountId">> => list(string_filter()()),
 %%   <<"inspectorScore">> => list(number_filter()()),
 %%   <<"ecrImageArchitecture">> => list(string_filter()()),
+%%   <<"codeRepositoryProjectName">> => list(string_filter()()),
 %%   <<"codeVulnerabilityFilePath">> => list(string_filter()()),
 %%   <<"epssScore">> => list(number_filter()()),
 %%   <<"ec2InstanceVpcId">> => list(string_filter()()),
@@ -359,6 +457,7 @@
 %%   <<"componentType">> => list(string_filter()()),
 %%   <<"componentId">> => list(string_filter()()),
 %%   <<"ec2InstanceSubnetId">> => list(string_filter()()),
+%%   <<"codeRepositoryProviderType">> => list(string_filter()()),
 %%   <<"portRange">> => list(port_range_filter()()),
 %%   <<"vulnerablePackages">> => list(package_filter()()),
 %%   <<"ecrImageRegistry">> => list(string_filter()()),
@@ -478,6 +577,14 @@
 
 
 %% Example:
+%% list_code_security_scan_configurations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_security_scan_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% member_account_ec2_deep_inspection_status_state() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"errorMessage">> => string(),
@@ -507,6 +614,7 @@
 
 %% Example:
 %% resource_state() :: #{
+%%   <<"codeRepository">> => state(),
 %%   <<"ec2">> => state(),
 %%   <<"ecr">> => state(),
 %%   <<"lambda">> => state(),
@@ -583,6 +691,14 @@
 %%   <<"value">> => string()
 %% }
 -type coverage_string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_configuration_request() :: #{
+%%   <<"resource">> => list(),
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type associate_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -663,6 +779,7 @@
 
 %% Example:
 %% resource_status() :: #{
+%%   <<"codeRepository">> => string(),
 %%   <<"ec2">> => string(),
 %%   <<"ecr">> => string(),
 %%   <<"lambda">> => string(),
@@ -681,6 +798,7 @@
 
 %% Example:
 %% resource_scan_metadata() :: #{
+%%   <<"codeRepository">> => code_repository_metadata(),
 %%   <<"ec2">> => ec2_metadata(),
 %%   <<"ecrImage">> => ecr_container_image_metadata(),
 %%   <<"ecrRepository">> => ecr_repository_metadata(),
@@ -705,6 +823,14 @@
 
 
 %% Example:
+%% update_git_hub_integration_detail() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => string()
+%% }
+-type update_git_hub_integration_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_cis_scan_configuration_request() :: #{
 %%   <<"scanConfigurationArn">> := string(),
 %%   <<"scanName">> => string(),
@@ -721,6 +847,13 @@
 %%   <<"scanType">> := string()
 %% }
 -type reset_encryption_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_security_integration_response() :: #{
+%%   <<"integrationArn">> => string()
+%% }
+-type delete_code_security_integration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -741,6 +874,23 @@
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_security_integration_request() :: #{
+%%   <<"details">> => list(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any())
+%% }
+-type create_code_security_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_security_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type delete_code_security_scan_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -787,6 +937,13 @@
 %%   <<"errorMessage">> => string()
 %% }
 -type failed_member_account_ec2_deep_inspection_status_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_security_scan_configuration_association_summary() :: #{
+%%   <<"resource">> => list()
+%% }
+-type code_security_scan_configuration_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -902,6 +1059,14 @@
 
 
 %% Example:
+%% list_code_security_scan_configuration_associations_response() :: #{
+%%   <<"associations">> => list(code_security_scan_configuration_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_security_scan_configuration_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_cis_scan_results_aggregated_by_checks_response() :: #{
 %%   <<"checkAggregations">> => list(cis_check_aggregation()()),
 %%   <<"nextToken">> => string()
@@ -910,11 +1075,26 @@
 
 
 %% Example:
+%% delete_code_security_integration_request() :: #{
+%%   <<"integrationArn">> := string()
+%% }
+-type delete_code_security_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% cis_target_status_reason_filter() :: #{
 %%   <<"comparison">> => list(any()),
 %%   <<"value">> => list(any())
 %% }
 -type cis_target_status_reason_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% periodic_scan_configuration() :: #{
+%%   <<"frequency">> => list(any()),
+%%   <<"frequencyExpression">> => string()
+%% }
+-type periodic_scan_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1026,6 +1206,28 @@
 
 
 %% Example:
+%% list_code_security_scan_configurations_response() :: #{
+%%   <<"configurations">> => list(code_security_scan_configuration_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_security_scan_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_security_scan_response() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastCommitId">> => [string()],
+%%   <<"resource">> => list(),
+%%   <<"scanId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_code_security_scan_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% compute_platform() :: #{
 %%   <<"product">> => string(),
 %%   <<"vendor">> => string(),
@@ -1063,6 +1265,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_delegated_admin_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_security_integrations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_code_security_integrations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1220,6 +1430,21 @@
 
 
 %% Example:
+%% code_security_scan_configuration_summary() :: #{
+%%   <<"continuousIntegrationScanSupportedEvents">> => list(list(any())()),
+%%   <<"frequencyExpression">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"periodicScanFrequency">> => list(any()),
+%%   <<"ruleSetCategories">> => list(list(any())()),
+%%   <<"scanConfigurationArn">> => string(),
+%%   <<"scopeSettings">> => scope_settings(),
+%%   <<"tags">> => map()
+%% }
+-type code_security_scan_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% cluster_details() :: #{
 %%   <<"clusterMetadata">> => list(),
 %%   <<"lastInUse">> => [non_neg_integer()],
@@ -1239,6 +1464,15 @@
 %%   <<"version">> => string()
 %% }
 -type cvss_score_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_security_scan_configuration() :: #{
+%%   <<"continuousIntegrationScanConfiguration">> => continuous_integration_scan_configuration(),
+%%   <<"periodicScanConfiguration">> => periodic_scan_configuration(),
+%%   <<"ruleSetCategories">> => list(list(any())())
+%% }
+-type code_security_scan_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% stop_cis_session_response() :: #{}
@@ -1324,6 +1558,21 @@
 
 
 %% Example:
+%% get_code_security_integration_response() :: #{
+%%   <<"authorizationUrl">> => string(),
+%%   <<"createdOn">> => [non_neg_integer()],
+%%   <<"integrationArn">> => string(),
+%%   <<"lastUpdateOn">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type get_code_security_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
@@ -1362,6 +1611,13 @@
 %%   <<"totals">> => list(usage_total()())
 %% }
 -type list_usage_totals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_security_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type create_code_security_scan_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1464,6 +1720,14 @@
 
 
 %% Example:
+%% start_code_security_scan_response() :: #{
+%%   <<"scanId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_code_security_scan_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% cis_security_level_filter() :: #{
 %%   <<"comparison">> => list(any()),
 %%   <<"value">> => list(any())
@@ -1491,6 +1755,17 @@
 %%   <<"clusterDetails">> => list(cluster_details()())
 %% }
 -type cluster_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_repository_aggregation() :: #{
+%%   <<"projectNames">> => list(string_filter()()),
+%%   <<"providerTypes">> => list(string_filter()()),
+%%   <<"resourceIds">> => list(string_filter()()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type code_repository_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1577,6 +1852,14 @@
 
 
 %% Example:
+%% update_code_security_integration_request() :: #{
+%%   <<"details">> := list(),
+%%   <<"integrationArn">> := string()
+%% }
+-type update_code_security_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% ecr_rescan_duration_state() :: #{
 %%   <<"pullDateRescanDuration">> => string(),
 %%   <<"pullDateRescanMode">> => string(),
@@ -1606,6 +1889,13 @@
 %% Example:
 %% update_configuration_response() :: #{}
 -type update_configuration_response() :: #{}.
+
+
+%% Example:
+%% get_code_security_scan_configuration_request() :: #{
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type get_code_security_scan_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1646,6 +1936,27 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_repository_metadata() :: #{
+%%   <<"integrationArn">> => string(),
+%%   <<"lastScannedCommitId">> => string(),
+%%   <<"onDemandScan">> => code_repository_on_demand_scan(),
+%%   <<"projectName">> => [string()],
+%%   <<"providerType">> => [string()],
+%%   <<"providerTypeVisibility">> => [string()],
+%%   <<"scanConfiguration">> => project_code_security_scan_configuration()
+%% }
+-type code_repository_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_security_integrations_response() :: #{
+%%   <<"integrations">> => list(code_security_integration_summary()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_code_security_integrations_response() :: #{binary() => any()}.
 
 %% Example:
 %% send_cis_session_health_response() :: #{}
@@ -1758,6 +2069,14 @@
 
 
 %% Example:
+%% update_code_security_scan_configuration_request() :: #{
+%%   <<"configuration">> := code_security_scan_configuration(),
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type update_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_reachability_details() :: #{
 %%   <<"networkPath">> => network_path(),
 %%   <<"openPortRange">> => port_range(),
@@ -1807,6 +2126,14 @@
 %%   <<"findingArn">> => string()
 %% }
 -type finding_details_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_code_security_scan_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resource">> := list()
+%% }
+-type start_code_security_scan_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1872,6 +2199,17 @@
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_security_scan_configuration_request() :: #{
+%%   <<"configuration">> := code_security_scan_configuration(),
+%%   <<"level">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"scopeSettings">> => scope_settings(),
+%%   <<"tags">> => map()
+%% }
+-type create_code_security_scan_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1943,6 +2281,14 @@
 
 
 %% Example:
+%% project_continuous_integration_scan_configuration() :: #{
+%%   <<"ruleSetCategories">> => list(list(any())()),
+%%   <<"supportedEvent">> => list(any())
+%% }
+-type project_continuous_integration_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% free_trial_info() :: #{
 %%   <<"end">> => [non_neg_integer()],
 %%   <<"start">> => [non_neg_integer()],
@@ -1963,6 +2309,13 @@
 %%   <<"targetAccounts">> => list(string()())
 %% }
 -type get_cis_scan_report_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope_settings() :: #{
+%%   <<"projectSelectionScope">> => list(any())
+%% }
+-type scope_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2076,6 +2429,9 @@
 %% Example:
 %% coverage_filter_criteria() :: #{
 %%   <<"accountId">> => list(coverage_string_filter()()),
+%%   <<"codeRepositoryProjectName">> => list(coverage_string_filter()()),
+%%   <<"codeRepositoryProviderType">> => list(coverage_string_filter()()),
+%%   <<"codeRepositoryProviderTypeVisibility">> => list(coverage_string_filter()()),
 %%   <<"ec2InstanceTags">> => list(coverage_map_filter()()),
 %%   <<"ecrImageInUseCount">> => list(coverage_number_filter()()),
 %%   <<"ecrImageLastInUseAt">> => list(coverage_date_filter()()),
@@ -2086,6 +2442,7 @@
 %%   <<"lambdaFunctionRuntime">> => list(coverage_string_filter()()),
 %%   <<"lambdaFunctionTags">> => list(coverage_map_filter()()),
 %%   <<"lastScannedAt">> => list(coverage_date_filter()()),
+%%   <<"lastScannedCommitId">> => list(coverage_string_filter()()),
 %%   <<"resourceId">> => list(coverage_string_filter()()),
 %%   <<"resourceType">> => list(coverage_string_filter()()),
 %%   <<"scanMode">> => list(coverage_string_filter()()),
@@ -2116,6 +2473,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_clusters_for_image_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_security_integration_response() :: #{
+%%   <<"authorizationUrl">> => string(),
+%%   <<"integrationArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_code_security_integration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2170,6 +2536,35 @@
 
 
 %% Example:
+%% list_code_security_scan_configuration_associations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type list_code_security_scan_configuration_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_repository_aggregation_response() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"exploitAvailableActiveFindingsCount">> => [float()],
+%%   <<"fixAvailableActiveFindingsCount">> => [float()],
+%%   <<"projectNames">> => [string()],
+%%   <<"providerType">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type code_repository_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_security_scan_configuration_request() :: #{
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type delete_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% package_aggregation() :: #{
 %%   <<"packageNames">> => list(string_filter()()),
 %%   <<"sortBy">> => string(),
@@ -2216,6 +2611,25 @@
 
 
 %% Example:
+%% code_repository_on_demand_scan() :: #{
+%%   <<"lastScanAt">> => non_neg_integer(),
+%%   <<"lastScannedCommitId">> => string(),
+%%   <<"scanStatus">> => scan_status()
+%% }
+-type code_repository_on_demand_scan() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_association_result() :: #{
+%%   <<"resource">> => list(),
+%%   <<"scanConfigurationArn">> => string(),
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusMessage">> => string()
+%% }
+-type failed_association_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% cis_result_status_filter() :: #{
 %%   <<"comparison">> => list(any()),
 %%   <<"value">> => list(any())
@@ -2239,6 +2653,20 @@
 
 
 %% Example:
+%% get_code_security_scan_configuration_response() :: #{
+%%   <<"configuration">> => code_security_scan_configuration(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"level">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"scanConfigurationArn">> => string(),
+%%   <<"scopeSettings">> => scope_settings(),
+%%   <<"tags">> => map()
+%% }
+-type get_code_security_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -2259,6 +2687,13 @@
 
 
 %% Example:
+%% batch_associate_code_security_scan_configuration_request() :: #{
+%%   <<"associateConfigurationRequests">> := list(associate_configuration_request()())
+%% }
+-type batch_associate_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_cis_scan_results_aggregated_by_target_resource_request() :: #{
 %%   <<"filterCriteria">> => cis_scan_results_aggregated_by_target_resource_filter_criteria(),
 %%   <<"maxResults">> => integer(),
@@ -2268,6 +2703,14 @@
 %%   <<"sortOrder">> => list(any())
 %% }
 -type list_cis_scan_results_aggregated_by_target_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_code_security_scan_configuration_response() :: #{
+%%   <<"failedAssociations">> => list(failed_association_result()()),
+%%   <<"successfulAssociations">> => list(successful_association_result()())
+%% }
+-type batch_disassociate_code_security_scan_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2336,7 +2779,8 @@
 %% resource_details() :: #{
 %%   <<"awsEc2Instance">> => aws_ec2_instance_details(),
 %%   <<"awsEcrContainerImage">> => aws_ecr_container_image_details(),
-%%   <<"awsLambdaFunction">> => aws_lambda_function_details()
+%%   <<"awsLambdaFunction">> => aws_lambda_function_details(),
+%%   <<"codeRepository">> => code_repository_details()
 %% }
 -type resource_details() :: #{binary() => any()}.
 
@@ -2362,6 +2806,7 @@
 
 %% Example:
 %% auto_enable() :: #{
+%%   <<"codeRepository">> => [boolean()],
 %%   <<"ec2">> => [boolean()],
 %%   <<"ecr">> => [boolean()],
 %%   <<"lambda">> => [boolean()],
@@ -2386,6 +2831,15 @@
 %%   <<"title">> => [string()]
 %% }
 -type cis_scan_result_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_repository_details() :: #{
+%%   <<"integrationArn">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"providerType">> => string()
+%% }
+-type code_repository_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2445,6 +2899,14 @@
 
 
 %% Example:
+%% update_code_security_integration_response() :: #{
+%%   <<"integrationArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_code_security_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% aws_ecr_container_image_details() :: #{
 %%   <<"architecture">> => string(),
 %%   <<"author">> => [string()],
@@ -2465,6 +2927,13 @@
 %%   <<"accountId">> := string()
 %% }
 -type disassociate_member_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_security_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type update_code_security_scan_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2542,6 +3011,14 @@
 
 
 %% Example:
+%% batch_associate_code_security_scan_configuration_response() :: #{
+%%   <<"failedAssociations">> => list(failed_association_result()()),
+%%   <<"successfulAssociations">> => list(successful_association_result()())
+%% }
+-type batch_associate_code_security_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% cis_scan_result_details_filter_criteria() :: #{
 %%   <<"checkIdFilters">> => list(cis_string_filter()()),
 %%   <<"findingArnFilters">> => list(cis_string_filter()()),
@@ -2574,6 +3051,14 @@
 %%   <<"service">> => string()
 %% }
 -type permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_configuration_request() :: #{
+%%   <<"resource">> => list(),
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type disassociate_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2674,6 +3159,14 @@
 
 
 %% Example:
+%% project_periodic_scan_configuration() :: #{
+%%   <<"frequencyExpression">> => string(),
+%%   <<"ruleSetCategories">> => list(list(any())())
+%% }
+-type project_periodic_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_finding_details_response() :: #{
 %%   <<"errors">> => list(finding_details_error()()),
 %%   <<"findingDetails">> => list(finding_detail()())
@@ -2691,6 +3184,14 @@
 %%   <<"type">> => string()
 %% }
 -type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_association_result() :: #{
+%%   <<"resource">> => list(),
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type successful_association_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2715,6 +3216,22 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception().
+
+-type batch_associate_code_security_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_disassociate_code_security_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type batch_get_account_status_errors() ::
     throttling_exception() | 
@@ -2773,6 +3290,22 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type create_code_security_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_code_security_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_filter_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -2796,6 +3329,20 @@
     resource_not_found_exception().
 
 -type delete_cis_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_code_security_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_code_security_scan_configuration_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2869,6 +3416,28 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type get_code_security_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_code_security_scan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_code_security_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_configuration_errors() ::
     throttling_exception() | 
@@ -2945,6 +3514,26 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_code_security_integrations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_code_security_scan_configuration_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_code_security_scan_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_coverage_errors() ::
     throttling_exception() | 
@@ -3030,6 +3619,14 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type start_code_security_scan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type stop_cis_session_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3056,6 +3653,22 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_code_security_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_code_security_scan_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_configuration_errors() ::
     throttling_exception() | 
@@ -3102,11 +3715,14 @@
 %% @doc Associates an Amazon Web Services account with an Amazon Inspector
 %% delegated administrator.
 %%
-%% An HTTP 200 response indicates the association was successfully started,
-%% but doesn’t indicate whether it was completed. You can check if the
-%% association completed by using ListMembers:
+%% An HTTP 200 response
+%% indicates the association was successfully started, but doesn’t indicate
+%% whether it was
+%% completed. You can check if the association completed by using
+%% ListMembers:
 %% https://docs.aws.amazon.com/inspector/v2/APIReference/API_ListMembers.html
-%% for multiple accounts or GetMembers:
+%% for multiple
+%% accounts or GetMembers:
 %% https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html
 %% for a single account.
 -spec associate_member(aws_client:aws_client(), associate_member_request()) ->
@@ -3123,6 +3739,78 @@ associate_member(Client, Input) ->
 associate_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/associate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates multiple code repositories with an Amazon Inspector code
+%% security scan
+%% configuration.
+-spec batch_associate_code_security_scan_configuration(aws_client:aws_client(), batch_associate_code_security_scan_configuration_request()) ->
+    {ok, batch_associate_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, batch_associate_code_security_scan_configuration_errors(), tuple()}.
+batch_associate_code_security_scan_configuration(Client, Input) ->
+    batch_associate_code_security_scan_configuration(Client, Input, []).
+
+-spec batch_associate_code_security_scan_configuration(aws_client:aws_client(), batch_associate_code_security_scan_configuration_request(), proplists:proplist()) ->
+    {ok, batch_associate_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, batch_associate_code_security_scan_configuration_errors(), tuple()}.
+batch_associate_code_security_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan-configuration/batch/associate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates multiple code repositories from an Amazon Inspector
+%% code security scan
+%% configuration.
+-spec batch_disassociate_code_security_scan_configuration(aws_client:aws_client(), batch_disassociate_code_security_scan_configuration_request()) ->
+    {ok, batch_disassociate_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_code_security_scan_configuration_errors(), tuple()}.
+batch_disassociate_code_security_scan_configuration(Client, Input) ->
+    batch_disassociate_code_security_scan_configuration(Client, Input, []).
+
+-spec batch_disassociate_code_security_scan_configuration(aws_client:aws_client(), batch_disassociate_code_security_scan_configuration_request(), proplists:proplist()) ->
+    {ok, batch_disassociate_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_code_security_scan_configuration_errors(), tuple()}.
+batch_disassociate_code_security_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan-configuration/batch/disassociate"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3178,7 +3866,8 @@ batch_get_account_status(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves code snippets from findings that Amazon Inspector detected
-%% code vulnerabilities in.
+%% code vulnerabilities
+%% in.
 -spec batch_get_code_snippet(aws_client:aws_client(), batch_get_code_snippet_request()) ->
     {ok, batch_get_code_snippet_response(), tuple()} |
     {error, any()} |
@@ -3281,10 +3970,12 @@ batch_get_free_trial_info(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves Amazon Inspector deep inspection activation status of
-%% multiple member accounts within your organization.
+%% multiple member accounts within
+%% your organization.
 %%
 %% You must be the delegated administrator of an organization in Amazon
-%% Inspector to use this API.
+%% Inspector to
+%% use this API.
 -spec batch_get_member_ec2_deep_inspection_status(aws_client:aws_client(), batch_get_member_ec2_deep_inspection_status_request()) ->
     {ok, batch_get_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
@@ -3319,10 +4010,12 @@ batch_get_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Activates or deactivates Amazon Inspector deep inspection for the
-%% provided member accounts in your organization.
+%% provided member accounts in your
+%% organization.
 %%
 %% You must be the delegated administrator of an organization in Amazon
-%% Inspector to use this API.
+%% Inspector to use
+%% this API.
 -spec batch_update_member_ec2_deep_inspection_status(aws_client:aws_client(), batch_update_member_ec2_deep_inspection_status_request()) ->
     {ok, batch_update_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
@@ -3458,10 +4151,85 @@ create_cis_scan_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a code security integration with a source code repository
+%% provider.
+%%
+%% After calling the `CreateCodeSecurityIntegration' operation, you
+%% complete
+%% authentication and authorization with your provider. Next you call the
+%% `UpdateCodeSecurityIntegration' operation to provide the `details'
+%% to complete the integration setup
+-spec create_code_security_integration(aws_client:aws_client(), create_code_security_integration_request()) ->
+    {ok, create_code_security_integration_response(), tuple()} |
+    {error, any()} |
+    {error, create_code_security_integration_errors(), tuple()}.
+create_code_security_integration(Client, Input) ->
+    create_code_security_integration(Client, Input, []).
+
+-spec create_code_security_integration(aws_client:aws_client(), create_code_security_integration_request(), proplists:proplist()) ->
+    {ok, create_code_security_integration_response(), tuple()} |
+    {error, any()} |
+    {error, create_code_security_integration_errors(), tuple()}.
+create_code_security_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/integration/create"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a scan configuration for code security scanning.
+-spec create_code_security_scan_configuration(aws_client:aws_client(), create_code_security_scan_configuration_request()) ->
+    {ok, create_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_code_security_scan_configuration_errors(), tuple()}.
+create_code_security_scan_configuration(Client, Input) ->
+    create_code_security_scan_configuration(Client, Input, []).
+
+-spec create_code_security_scan_configuration(aws_client:aws_client(), create_code_security_scan_configuration_request(), proplists:proplist()) ->
+    {ok, create_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_code_security_scan_configuration_errors(), tuple()}.
+create_code_security_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan-configuration/create"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a filter resource using specified filter criteria.
 %%
-%% When the filter action is set to `SUPPRESS' this action creates a
-%% suppression rule.
+%% When the filter action is set
+%% to `SUPPRESS' this action creates a suppression rule.
 -spec create_filter(aws_client:aws_client(), create_filter_request()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
@@ -3497,9 +4265,10 @@ create_filter(Client, Input0, Options0) ->
 
 %% @doc Creates a finding report.
 %%
-%% By default only `ACTIVE' findings are returned in the report. To see
-%% `SUPRESSED' or `CLOSED' findings you must specify a value for the
-%% `findingStatus' filter criteria.
+%% By default only `ACTIVE' findings are returned in
+%% the report. To see `SUPRESSED' or `CLOSED' findings you must
+%% specify
+%% a value for the `findingStatus' filter criteria.
 -spec create_findings_report(aws_client:aws_client(), create_findings_report_request()) ->
     {ok, create_findings_report_response(), tuple()} |
     {error, any()} |
@@ -3601,6 +4370,74 @@ delete_cis_scan_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a code security integration.
+-spec delete_code_security_integration(aws_client:aws_client(), delete_code_security_integration_request()) ->
+    {ok, delete_code_security_integration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_code_security_integration_errors(), tuple()}.
+delete_code_security_integration(Client, Input) ->
+    delete_code_security_integration(Client, Input, []).
+
+-spec delete_code_security_integration(aws_client:aws_client(), delete_code_security_integration_request(), proplists:proplist()) ->
+    {ok, delete_code_security_integration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_code_security_integration_errors(), tuple()}.
+delete_code_security_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/integration/delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a code security scan configuration.
+-spec delete_code_security_scan_configuration(aws_client:aws_client(), delete_code_security_scan_configuration_request()) ->
+    {ok, delete_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_code_security_scan_configuration_errors(), tuple()}.
+delete_code_security_scan_configuration(Client, Input) ->
+    delete_code_security_scan_configuration(Client, Input, []).
+
+-spec delete_code_security_scan_configuration(aws_client:aws_client(), delete_code_security_scan_configuration_request(), proplists:proplist()) ->
+    {ok, delete_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_code_security_scan_configuration_errors(), tuple()}.
+delete_code_security_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan-configuration/delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a filter resource.
 -spec delete_filter(aws_client:aws_client(), delete_filter_request()) ->
     {ok, delete_filter_response(), tuple()} |
@@ -3673,8 +4510,8 @@ describe_organization_configuration(Client, Input0, Options0) ->
 %% @doc Disables Amazon Inspector scans for one or more Amazon Web Services
 %% accounts.
 %%
-%% Disabling all scan types in an account
-%% disables the Amazon Inspector service.
+%% Disabling all scan types in an
+%% account disables the Amazon Inspector service.
 -spec disable(aws_client:aws_client(), disable_request()) ->
     {ok, disable_response(), tuple()} |
     {error, any()} |
@@ -3950,6 +4787,108 @@ get_clusters_for_image(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a code security integration.
+-spec get_code_security_integration(aws_client:aws_client(), get_code_security_integration_request()) ->
+    {ok, get_code_security_integration_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_security_integration_errors(), tuple()}.
+get_code_security_integration(Client, Input) ->
+    get_code_security_integration(Client, Input, []).
+
+-spec get_code_security_integration(aws_client:aws_client(), get_code_security_integration_request(), proplists:proplist()) ->
+    {ok, get_code_security_integration_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_security_integration_errors(), tuple()}.
+get_code_security_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/integration/get"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specific code security scan.
+-spec get_code_security_scan(aws_client:aws_client(), get_code_security_scan_request()) ->
+    {ok, get_code_security_scan_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_security_scan_errors(), tuple()}.
+get_code_security_scan(Client, Input) ->
+    get_code_security_scan(Client, Input, []).
+
+-spec get_code_security_scan(aws_client:aws_client(), get_code_security_scan_request(), proplists:proplist()) ->
+    {ok, get_code_security_scan_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_security_scan_errors(), tuple()}.
+get_code_security_scan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan/get"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a code security scan configuration.
+-spec get_code_security_scan_configuration(aws_client:aws_client(), get_code_security_scan_configuration_request()) ->
+    {ok, get_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_security_scan_configuration_errors(), tuple()}.
+get_code_security_scan_configuration(Client, Input) ->
+    get_code_security_scan_configuration(Client, Input, []).
+
+-spec get_code_security_scan_configuration(aws_client:aws_client(), get_code_security_scan_configuration_request(), proplists:proplist()) ->
+    {ok, get_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_security_scan_configuration_errors(), tuple()}.
+get_code_security_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan-configuration/get"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves setting configurations for Inspector scans.
 -spec get_configuration(aws_client:aws_client(), get_configuration_request()) ->
     {ok, get_configuration_response(), tuple()} |
@@ -4021,7 +4960,8 @@ get_delegated_admin_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the activation status of Amazon Inspector deep inspection
-%% and custom paths associated with your account.
+%% and custom paths associated
+%% with your account.
 -spec get_ec2_deep_inspection_configuration(aws_client:aws_client(), get_ec2_deep_inspection_configuration_request()) ->
     {ok, get_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
@@ -4369,6 +5309,116 @@ list_cis_scans(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all code security integrations in your account.
+-spec list_code_security_integrations(aws_client:aws_client(), list_code_security_integrations_request()) ->
+    {ok, list_code_security_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_security_integrations_errors(), tuple()}.
+list_code_security_integrations(Client, Input) ->
+    list_code_security_integrations(Client, Input, []).
+
+-spec list_code_security_integrations(aws_client:aws_client(), list_code_security_integrations_request(), proplists:proplist()) ->
+    {ok, list_code_security_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_security_integrations_errors(), tuple()}.
+list_code_security_integrations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/integration/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the associations between code repositories and Amazon Inspector
+%% code security scan
+%% configurations.
+-spec list_code_security_scan_configuration_associations(aws_client:aws_client(), list_code_security_scan_configuration_associations_request()) ->
+    {ok, list_code_security_scan_configuration_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_security_scan_configuration_associations_errors(), tuple()}.
+list_code_security_scan_configuration_associations(Client, Input) ->
+    list_code_security_scan_configuration_associations(Client, Input, []).
+
+-spec list_code_security_scan_configuration_associations(aws_client:aws_client(), list_code_security_scan_configuration_associations_request(), proplists:proplist()) ->
+    {ok, list_code_security_scan_configuration_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_security_scan_configuration_associations_errors(), tuple()}.
+list_code_security_scan_configuration_associations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan-configuration/associations/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all code security scan configurations in your account.
+-spec list_code_security_scan_configurations(aws_client:aws_client(), list_code_security_scan_configurations_request()) ->
+    {ok, list_code_security_scan_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_security_scan_configurations_errors(), tuple()}.
+list_code_security_scan_configurations(Client, Input) ->
+    list_code_security_scan_configurations(Client, Input, []).
+
+-spec list_code_security_scan_configurations(aws_client:aws_client(), list_code_security_scan_configurations_request(), proplists:proplist()) ->
+    {ok, list_code_security_scan_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_security_scan_configurations_errors(), tuple()}.
+list_code_security_scan_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan-configuration/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists coverage details for your environment.
 -spec list_coverage(aws_client:aws_client(), list_coverage_request()) ->
     {ok, list_coverage_response(), tuple()} |
@@ -4438,8 +5488,7 @@ list_coverage_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists information about the Amazon Inspector delegated administrator
-%% of your
-%% organization.
+%% of your organization.
 -spec list_delegated_admin_accounts(aws_client:aws_client(), list_delegated_admin_accounts_request()) ->
     {ok, list_delegated_admin_accounts_response(), tuple()} |
     {error, any()} |
@@ -4685,8 +5734,8 @@ list_usage_totals(Client, Input0, Options0) ->
 
 %% @doc Resets an encryption key.
 %%
-%% After the key is reset your resources will be encrypted by an Amazon Web
-%% Services owned key.
+%% After the key is reset your resources will be encrypted by an
+%% Amazon Web Services owned key.
 -spec reset_encryption_key(aws_client:aws_client(), reset_encryption_key_request()) ->
     {ok, reset_encryption_key_response(), tuple()} |
     {error, any()} |
@@ -4754,13 +5803,13 @@ search_vulnerabilities(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Sends a CIS session health.
+%% @doc Sends a CIS session health.
 %%
-%% This API is used by the Amazon Inspector SSM plugin to communicate with
-%% the Amazon Inspector service.
-%% The Amazon Inspector SSM plugin calls this API to start a CIS scan session
-%% for the scan ID supplied by the service.
+%% This API is used by the Amazon Inspector SSM plugin to
+%% communicate with the Amazon Inspector service. The Amazon Inspector SSM
+%% plugin calls
+%% this API to start a CIS scan session for the scan ID supplied by the
+%% service.
 -spec send_cis_session_health(aws_client:aws_client(), send_cis_session_health_request()) ->
     {ok, send_cis_session_health_response(), tuple()} |
     {error, any()} |
@@ -4794,13 +5843,13 @@ send_cis_session_health(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Sends a CIS session telemetry.
+%% @doc Sends a CIS session telemetry.
 %%
-%% This API is used by the Amazon Inspector SSM plugin to communicate with
-%% the Amazon Inspector service.
-%% The Amazon Inspector SSM plugin calls this API to start a CIS scan session
-%% for the scan ID supplied by the service.
+%% This API is used by the Amazon Inspector SSM plugin to
+%% communicate with the Amazon Inspector service. The Amazon Inspector SSM
+%% plugin calls
+%% this API to start a CIS scan session for the scan ID supplied by the
+%% service.
 -spec send_cis_session_telemetry(aws_client:aws_client(), send_cis_session_telemetry_request()) ->
     {ok, send_cis_session_telemetry_response(), tuple()} |
     {error, any()} |
@@ -4834,13 +5883,13 @@ send_cis_session_telemetry(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Starts a CIS session.
+%% @doc Starts a CIS session.
 %%
-%% This API is used by the Amazon Inspector SSM plugin to communicate with
-%% the Amazon Inspector service.
-%% The Amazon Inspector SSM plugin calls this API to start a CIS scan session
-%% for the scan ID supplied by the service.
+%% This API is used by the Amazon Inspector SSM plugin to
+%% communicate with the Amazon Inspector service. The Amazon Inspector SSM
+%% plugin calls
+%% this API to start a CIS scan session for the scan ID supplied by the
+%% service.
 -spec start_cis_session(aws_client:aws_client(), start_cis_session_request()) ->
     {ok, start_cis_session_response(), tuple()} |
     {error, any()} |
@@ -4874,13 +5923,47 @@ start_cis_session(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Stops a CIS session.
+%% @doc Initiates a code security scan on a specified repository.
+-spec start_code_security_scan(aws_client:aws_client(), start_code_security_scan_request()) ->
+    {ok, start_code_security_scan_response(), tuple()} |
+    {error, any()} |
+    {error, start_code_security_scan_errors(), tuple()}.
+start_code_security_scan(Client, Input) ->
+    start_code_security_scan(Client, Input, []).
+
+-spec start_code_security_scan(aws_client:aws_client(), start_code_security_scan_request(), proplists:proplist()) ->
+    {ok, start_code_security_scan_response(), tuple()} |
+    {error, any()} |
+    {error, start_code_security_scan_errors(), tuple()}.
+start_code_security_scan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a CIS session.
 %%
-%% This API is used by the Amazon Inspector SSM plugin to communicate with
-%% the Amazon Inspector service.
-%% The Amazon Inspector SSM plugin calls this API to stop a CIS scan session
-%% for the scan ID supplied by the service.
+%% This API is used by the Amazon Inspector SSM plugin to
+%% communicate with the Amazon Inspector service. The Amazon Inspector SSM
+%% plugin calls
+%% this API to stop a CIS scan session for the scan ID supplied by the
+%% service.
 -spec stop_cis_session(aws_client:aws_client(), stop_cis_session_request()) ->
     {ok, stop_cis_session_response(), tuple()} |
     {error, any()} |
@@ -5017,11 +6100,86 @@ update_cis_scan_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an existing code security integration.
+%%
+%% After calling the `CreateCodeSecurityIntegration' operation, you
+%% complete
+%% authentication and authorization with your provider. Next you call the
+%% `UpdateCodeSecurityIntegration' operation to provide the `details'
+%% to complete the integration setup
+-spec update_code_security_integration(aws_client:aws_client(), update_code_security_integration_request()) ->
+    {ok, update_code_security_integration_response(), tuple()} |
+    {error, any()} |
+    {error, update_code_security_integration_errors(), tuple()}.
+update_code_security_integration(Client, Input) ->
+    update_code_security_integration(Client, Input, []).
+
+-spec update_code_security_integration(aws_client:aws_client(), update_code_security_integration_request(), proplists:proplist()) ->
+    {ok, update_code_security_integration_response(), tuple()} |
+    {error, any()} |
+    {error, update_code_security_integration_errors(), tuple()}.
+update_code_security_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/integration/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing code security scan configuration.
+-spec update_code_security_scan_configuration(aws_client:aws_client(), update_code_security_scan_configuration_request()) ->
+    {ok, update_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_code_security_scan_configuration_errors(), tuple()}.
+update_code_security_scan_configuration(Client, Input) ->
+    update_code_security_scan_configuration(Client, Input, []).
+
+-spec update_code_security_scan_configuration(aws_client:aws_client(), update_code_security_scan_configuration_request(), proplists:proplist()) ->
+    {ok, update_code_security_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_code_security_scan_configuration_errors(), tuple()}.
+update_code_security_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesecurity/scan-configuration/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates setting configurations for your Amazon Inspector account.
 %%
-%% When you use this API as an Amazon Inspector delegated administrator this
-%% updates the setting for all accounts you manage. Member accounts in an
-%% organization cannot update this setting.
+%% When you use this API as an Amazon Inspector
+%% delegated administrator this updates the setting for all accounts you
+%% manage. Member
+%% accounts in an organization cannot update this setting.
 -spec update_configuration(aws_client:aws_client(), update_configuration_request()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
@@ -5092,8 +6250,8 @@ update_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates an encryption key.
 %%
-%% A `ResourceNotFoundException' means that an Amazon Web Services owned
-%% key is being used for encryption.
+%% A `ResourceNotFoundException' means that an
+%% Amazon Web Services owned key is being used for encryption.
 -spec update_encryption_key(aws_client:aws_client(), update_encryption_key_request()) ->
     {ok, update_encryption_key_response(), tuple()} |
     {error, any()} |
@@ -5165,7 +6323,8 @@ update_filter(Client, Input0, Options0) ->
 %% @doc Updates the Amazon Inspector deep inspection custom paths for your
 %% organization.
 %%
-%% You must be an Amazon Inspector delegated administrator to use this API.
+%% You must be an
+%% Amazon Inspector delegated administrator to use this API.
 -spec update_org_ec2_deep_inspection_configuration(aws_client:aws_client(), update_org_ec2_deep_inspection_configuration_request()) ->
     {ok, update_org_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |

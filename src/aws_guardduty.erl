@@ -226,8 +226,11 @@
 %% Example:
 %% resource_data() :: #{
 %%   <<"AccessKey">> => access_key(),
+%%   <<"Container">> => container_finding_resource(),
 %%   <<"Ec2Instance">> => ec2_instance(),
 %%   <<"Ec2NetworkInterface">> => ec2_network_interface(),
+%%   <<"EksCluster">> => eks_cluster(),
+%%   <<"KubernetesWorkload">> => kubernetes_workload(),
 %%   <<"S3Bucket">> => s3_bucket(),
 %%   <<"S3Object">> => s3_object()
 %% }
@@ -511,6 +514,7 @@
 %% Example:
 %% sequence() :: #{
 %%   <<"Actors">> => list(actor()()),
+%%   <<"AdditionalSequenceTypes">> => list(string()()),
 %%   <<"Description">> => string(),
 %%   <<"Endpoints">> => list(network_endpoint()()),
 %%   <<"Resources">> => list(resource_v2()()),
@@ -1737,6 +1741,17 @@
 %% delete_detector_response() :: #{}
 -type delete_detector_response() :: #{}.
 
+
+%% Example:
+%% eks_cluster() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Ec2InstanceUids">> => list(string()()),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type eks_cluster() :: #{binary() => any()}.
+
 %% Example:
 %% describe_publishing_destination_request() :: #{}
 -type describe_publishing_destination_request() :: #{}.
@@ -1957,6 +1972,14 @@
 
 
 %% Example:
+%% container_finding_resource() :: #{
+%%   <<"Image">> => string(),
+%%   <<"ImageUid">> => string()
+%% }
+-type container_finding_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% lineage_object() :: #{
 %%   <<"Euid">> => integer(),
 %%   <<"ExecutablePath">> => string(),
@@ -2141,6 +2164,15 @@
 %%   <<"VpcId">> => string()
 %% }
 -type eks_cluster_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% kubernetes_workload() :: #{
+%%   <<"ContainerUids">> => list(string()()),
+%%   <<"KubernetesResourcesTypes">> => list(any()),
+%%   <<"Namespace">> => string()
+%% }
+-type kubernetes_workload() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2366,6 +2398,15 @@
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
 %% }
 -type delete_invitations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor_process() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Sha256">> => string()
+%% }
+-type actor_process() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2833,6 +2874,7 @@
 %% Example:
 %% actor() :: #{
 %%   <<"Id">> => string(),
+%%   <<"Process">> => actor_process(),
 %%   <<"Session">> => session(),
 %%   <<"User">> => user()
 %% }
@@ -4898,9 +4940,19 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% associated with the current
 %% GuardDuty member account.
 %%
-%% If the organization's management account or a delegated administrator
-%% runs this API,
-%% it will return success (`HTTP 200') but no content.
+%% Based on the type of account that runs this API, the following list shows
+%% how the API behavior varies:
+%%
+%% When the GuardDuty administrator account runs this API, it will return
+%% success (`HTTP 200') but no content.
+%%
+%% When a member account runs this API, it will return the details of the
+%% GuardDuty administrator account that is associated
+%% with this calling member account.
+%%
+%% When an individual account (not associated with an organization) runs this
+%% API, it will return success (`HTTP 200')
+%% but no content.
 -spec get_administrator_account(aws_client:aws_client(), binary() | list()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
