@@ -3,6 +3,15 @@
 
 %% @doc Amazon EC2 Auto Scaling
 %%
+%% The DescribeAutoScalingGroups:
+%% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAutoScalingGroups.html
+%% API operation might be throttled when retrieving details for an Auto
+%% Scaling group that contains many instances.
+%%
+%% By default, this operation returns details for all instances in the group.
+%% To help prevent throttling, you can set the `IncludeInstances'
+%% parameter to `false' to exclude instance details from the response.
+%%
 %% Amazon EC2 Auto Scaling is designed to automatically launch and terminate
 %% EC2 instances
 %% based on user-defined scaling policies, scheduled actions, and health
@@ -656,6 +665,7 @@
 %% auto_scaling_group_names_type() :: #{
 %%   <<"AutoScalingGroupNames">> => list(string()()),
 %%   <<"Filters">> => list(filter()()),
+%%   <<"IncludeInstances">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }

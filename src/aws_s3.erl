@@ -232,6 +232,8 @@
          put_object_tagging/5,
          put_public_access_block/3,
          put_public_access_block/4,
+         rename_object/4,
+         rename_object/5,
          restore_object/4,
          restore_object/5,
          select_object_content/4,
@@ -748,6 +750,7 @@
 %%   <<"ReplicationStatus">> => list(any()),
 %%   <<"Expires">> => non_neg_integer(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"TagCount">> => integer(),
 %%   <<"ChecksumCRC64NVME">> => string(),
 %%   <<"ArchiveStatus">> => list(any()),
 %%   <<"Restore">> => string(),
@@ -1021,6 +1024,10 @@
 %%   <<"BytesScanned">> => float()
 %% }
 -type progress() :: #{binary() => any()}.
+
+%% Example:
+%% idempotency_parameter_mismatch() :: #{}
+-type idempotency_parameter_mismatch() :: #{}.
 
 %% Example:
 %% too_many_parts() :: #{}
@@ -1582,6 +1589,7 @@
 
 %% Example:
 %% get_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
 -type get_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
@@ -1713,6 +1721,7 @@
 
 %% Example:
 %% delete_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
 -type delete_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
@@ -1969,6 +1978,10 @@
 %% }
 -type server_side_encryption_by_default() :: #{binary() => any()}.
 
+%% Example:
+%% rename_object_output() :: #{}
+-type rename_object_output() :: #{}.
+
 
 %% Example:
 %% website_configuration() :: #{
@@ -2208,6 +2221,22 @@
 %%   <<"Rule">> => object_lock_rule()
 %% }
 -type object_lock_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rename_object_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationIfMatch">> => string(),
+%%   <<"DestinationIfModifiedSince">> => non_neg_integer(),
+%%   <<"DestinationIfNoneMatch">> => string(),
+%%   <<"DestinationIfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"RenameSource">> := string(),
+%%   <<"SourceIfMatch">> => string(),
+%%   <<"SourceIfModifiedSince">> => non_neg_integer(),
+%%   <<"SourceIfNoneMatch">> => string(),
+%%   <<"SourceIfUnmodifiedSince">> => non_neg_integer()
+%% }
+-type rename_object_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2686,6 +2715,7 @@
 
 %% Example:
 %% put_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string(),
 %%   <<"IntelligentTieringConfiguration">> := intelligent_tiering_configuration()
 %% }
@@ -3243,7 +3273,8 @@
 
 %% Example:
 %% list_bucket_intelligent_tiering_configurations_request() :: #{
-%%   <<"ContinuationToken">> => string()
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
 %% }
 -type list_bucket_intelligent_tiering_configurations_request() :: #{binary() => any()}.
 
@@ -3379,6 +3410,9 @@
 
 -type put_object_acl_errors() ::
     no_such_key().
+
+-type rename_object_errors() ::
+    idempotency_parameter_mismatch().
 
 -type restore_object_errors() ::
     object_already_in_active_tier_error().
@@ -3789,7 +3823,24 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
         Result
     end.
 
-%% @doc Creates a copy of an object that is already stored in Amazon S3.
+%% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will
+%% discontinue support for creating new Email Grantee Access Control Lists
+%% (ACL).
+%%
+%% Email Grantee ACLs created prior to this date will continue to work and
+%% remain accessible through the Amazon Web Services Management Console,
+%% Command Line Interface (CLI), SDKs,
+%% and REST API. However, you will no longer be able to create new Email
+%% Grantee ACLs.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
+%% Creates a copy of an object that is already stored in Amazon S3.
 %%
 %% You can store individual objects of up to 5 TB in Amazon S3. You create a
 %% copy of your
@@ -4104,9 +4155,37 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
     end.
 
 %% @doc
-%% This action creates an Amazon S3 bucket.
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will
+%% discontinue support for creating new Email Grantee Access Control Lists
+%% (ACL).
 %%
-%% To create an Amazon S3 on Outposts bucket, see
+%% Email Grantee ACLs created prior to this date will continue to work and
+%% remain accessible through the Amazon Web Services Management Console,
+%% Command Line Interface (CLI), SDKs,
+%% and REST API. However, you will no longer be able to create new Email
+%% Grantee ACLs.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% returning `DisplayName'. Update your applications to use canonical IDs
+%% (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
+%% This action creates an Amazon S3 bucket. To create an Amazon S3 on
+%% Outposts bucket, see
 %% `CreateBucket'
 %% :
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html.
@@ -4405,9 +4484,25 @@ create_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
-%% @doc This action initiates a multipart upload and returns an upload ID.
+%% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will
+%% discontinue support for creating new Email Grantee Access Control Lists
+%% (ACL).
 %%
-%% This upload ID is
+%% Email Grantee ACLs created prior to this date will continue to work and
+%% remain accessible through the Amazon Web Services Management Console,
+%% Command Line Interface (CLI), SDKs,
+%% and REST API. However, you will no longer be able to create new Email
+%% Grantee ACLs.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
+%% This action initiates a multipart upload and returns an upload ID. This
+%% upload ID is
 %% used to associate all of the parts in the specific multipart upload. You
 %% specify this
 %% upload ID in each of your subsequent upload part requests (see UploadPart:
@@ -5417,8 +5512,10 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -6701,6 +6798,20 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
     end.
 
 %% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
+%%
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% This implementation of the `GET' action uses the `acl' subresource
@@ -7087,7 +7198,11 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
                {receive_body_as_binary, ReceiveBodyAsBinary}
                | Options2],
 
-    Headers = [],
+    Headers0 =
+      [
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
@@ -7402,6 +7517,20 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
+%%
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns the logging status of a bucket and the permissions users have to
@@ -7685,6 +7814,18 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Opti
 %% about Amazon S3 permissions, see Specifying permissions in a
 %% policy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html.
+%%
+%% A bucket doesn't have `OwnershipControls' settings in the
+%% following cases:
+%%
+%% The bucket was created before the `BucketOwnerEnforced' ownership
+%% setting was introduced and you've never explicitly applied this value
+%%
+%% You've manually deleted the bucket ownership control value using the
+%% `DeleteBucketOwnershipControls' API operation.
+%%
+%% By default, Amazon S3 sets `OwnershipControls' for all newly created
+%% buckets.
 %%
 %% For information about Amazon S3 Object Ownership, see Using Object
 %% Ownership:
@@ -9755,6 +9896,7 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"Last-Modified">>, <<"LastModified">>},
             {<<"Content-Range">>, <<"ContentRange">>},
             {<<"Expires">>, <<"Expires">>},
+            {<<"x-amz-tagging-count">>, <<"TagCount">>},
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
@@ -9938,7 +10080,11 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
                {receive_body_as_binary, ReceiveBodyAsBinary}
                | Options2],
 
-    Headers = [],
+    Headers0 =
+      [
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
     Query0_ =
       [
@@ -10128,6 +10274,20 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
+%%
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns a list of all buckets owned by the authenticated sender of the
@@ -10271,9 +10431,23 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
-%% @doc This operation lists in-progress multipart uploads in a bucket.
+%% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
 %%
-%% An in-progress multipart
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
+%% This operation lists in-progress multipart uploads in a bucket. An
+%% in-progress multipart
 %% upload is a multipart upload that has been initiated by the
 %% `CreateMultipartUpload' request, but has not yet been completed or
 %% aborted.
@@ -10472,6 +10646,20 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
+%%
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns metadata about all versions of the objects in a bucket. You can
@@ -10569,6 +10757,20 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
+%%
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns some or all (up to 1,000) of the objects in a bucket. You can use
@@ -10844,8 +11046,22 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Lists the parts that have been uploaded for a specific multipart
-%% upload.
+%% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
+%%
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
+%% Lists the parts that have been uploaded for a specific multipart upload.
 %%
 %% To use this operation, you must provide the `upload ID' in the
 %% request. You
@@ -11106,6 +11322,22 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will
+%% discontinue support for creating new Email Grantee Access Control Lists
+%% (ACL).
+%%
+%% Email Grantee ACLs created prior to this date will continue to work and
+%% remain accessible through the Amazon Web Services Management Console,
+%% Command Line Interface (CLI), SDKs,
+%% and REST API. However, you will no longer be able to create new Email
+%% Grantee ACLs.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% Sets the permissions on an existing bucket using access control lists
@@ -11229,7 +11461,13 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% You can specify the person (grantee) to whom you're assigning access
 %% rights
-%% (using request elements) in the following ways:
+%% (using request elements) in the following ways. For examples of how to
+%% specify these
+%% grantee values in JSON format, see the Amazon Web Services CLI example in
+%% Enabling Amazon S3 server access logging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html
+%% in the
+%% Amazon S3 User Guide.
 %%
 %% By the person's ID:
 %%
@@ -11809,8 +12047,10 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -12156,6 +12396,22 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     end.
 
 %% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will
+%% discontinue support for creating new Email Grantee Access Control Lists
+%% (ACL).
+%%
+%% Email Grantee ACLs created prior to this date will continue to work and
+%% remain accessible through the Amazon Web Services Management Console,
+%% Command Line Interface (CLI), SDKs,
+%% and REST API. However, you will no longer be able to create new Email
+%% Grantee ACLs.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% Set the logging parameters for a bucket and to specify permissions for who
@@ -12188,7 +12444,13 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% You can specify the person (grantee) to whom you're assigning access
 %% rights (by
-%% using request elements) in the following ways:
+%% using request elements) in the following ways. For examples of how to
+%% specify these
+%% grantee values in JSON format, see the Amazon Web Services CLI example in
+%% Enabling Amazon S3 server access logging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html
+%% in the
+%% Amazon S3 User Guide.
 %%
 %% By the person's ID:
 %%
@@ -13177,7 +13439,24 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
-%% @doc Adds an object to a bucket.
+%% @doc
+%% End of support notice: Beginning October 1, 2025, Amazon S3 will
+%% discontinue support for creating new Email Grantee Access Control Lists
+%% (ACL).
+%%
+%% Email Grantee ACLs created prior to this date will continue to work and
+%% remain accessible through the Amazon Web Services Management Console,
+%% Command Line Interface (CLI), SDKs,
+%% and REST API. However, you will no longer be able to create new Email
+%% Grantee ACLs.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
+%% Adds an object to a bucket.
 %%
 %% Amazon S3 never adds partial objects; if you receive a success response,
 %% Amazon S3 added
@@ -13557,7 +13836,13 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% You can specify the person (grantee) to whom you're assigning access
 %% rights
-%% (using request elements) in the following ways:
+%% (using request elements) in the following ways. For examples of how to
+%% specify these
+%% grantee values in JSON format, see the Amazon Web Services CLI example in
+%% Enabling Amazon S3 server access logging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html
+%% in the
+%% Amazon S3 User Guide.
 %%
 %% By the person's ID:
 %%
@@ -14063,6 +14348,118 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
+
+%% @doc Renames an existing object in a directory bucket that uses the S3
+%% Express One Zone
+%% storage class.
+%%
+%% You can use `RenameObject' by specifying an existing object’s
+%% name as the source and the new name of the object as the destination
+%% within the same
+%% directory bucket.
+%%
+%% `RenameObject' is only supported for objects stored in the S3 Express
+%% One Zone
+%% storage class.
+%%
+%% To prevent overwriting an object, you can use the `If-None-Match'
+%% conditional header.
+%%
+%% If-None-Match - Renames the object only if
+%% an object with the specified name does not already exist in the directory
+%% bucket. If
+%% you don't want to overwrite an existing object, you can add the
+%% `If-None-Match' conditional header with the value `‘*’' in
+%% the `RenameObject' request. Amazon S3 then returns a
+%% ```
+%% 412 Precondition Failed''' error if the object with the
+%% specified name already exists.
+%% For more information, see RFC 7232:
+%% https://datatracker.ietf.org/doc/rfc7232/.
+%%
+%% Permissions
+%%
+%% To grant access to the `RenameObject' operation on a directory bucket,
+%% we recommend that you
+%% use the `CreateSession' operation for session-based authorization.
+%% Specifically, you grant the `s3express:CreateSession' permission to
+%% the
+%% directory bucket in a bucket policy or an IAM identity-based policy. Then,
+%% you
+%% make the `CreateSession' API call on the directory bucket to obtain a
+%% session token. With the session token in your request header, you can make
+%% API
+%% requests to this operation. After the session token expires, you make
+%% another
+%% `CreateSession' API call to generate a new session token for use.
+%% The Amazon Web Services CLI and SDKs will create and manage your session
+%% including refreshing
+%% the session token automatically to avoid service interruptions when a
+%% session
+%% expires. In your bucket policy, you can specify the
+%% `s3express:SessionMode' condition key to control who can create a
+%% `ReadWrite' or `ReadOnly' session. A
+%% `ReadWrite' session is required for executing all the Zonal endpoint
+%% API operations, including `RenameObject'. For more information about
+%% authorization, see
+%% `CreateSession'
+%% : https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
+%% To learn more about Zonal endpoint APT operations, see Authorizing Zonal
+%% endpoint API
+%% operations with CreateSession:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-create-session.html
+%% in the Amazon S3 User
+%% Guide.
+%%
+%% HTTP Host header syntax
+%%
+%% Directory buckets - The HTTP Host header syntax is
+%% ```
+%% Bucket-name.s3express-zone-id.region-code.amazonaws.com'''.
+-spec rename_object(aws_client:aws_client(), binary() | list(), binary() | list(), rename_object_request()) ->
+    {ok, rename_object_output(), tuple()} |
+    {error, any()} |
+    {error, rename_object_errors(), tuple()}.
+rename_object(Client, Bucket, Key, Input) ->
+    rename_object(Client, Bucket, Key, Input, []).
+
+-spec rename_object(aws_client:aws_client(), binary() | list(), binary() | list(), rename_object_request(), proplists:proplist()) ->
+    {ok, rename_object_output(), tuple()} |
+    {error, any()} |
+    {error, rename_object_errors(), tuple()}.
+rename_object(Client, Bucket, Key, Input0, Options0) ->
+    Method = put,
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?renameObject"],
+
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-client-token">>, <<"ClientToken">>},
+                       {<<"If-Match">>, <<"DestinationIfMatch">>},
+                       {<<"If-Modified-Since">>, <<"DestinationIfModifiedSince">>},
+                       {<<"If-None-Match">>, <<"DestinationIfNoneMatch">>},
+                       {<<"If-Unmodified-Since">>, <<"DestinationIfUnmodifiedSince">>},
+                       {<<"x-amz-rename-source">>, <<"RenameSource">>},
+                       {<<"x-amz-rename-source-if-match">>, <<"SourceIfMatch">>},
+                       {<<"x-amz-rename-source-if-modified-since">>, <<"SourceIfModifiedSince">>},
+                       {<<"x-amz-rename-source-if-none-match">>, <<"SourceIfNoneMatch">>},
+                       {<<"x-amz-rename-source-if-unmodified-since">>, <<"SourceIfUnmodifiedSince">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
