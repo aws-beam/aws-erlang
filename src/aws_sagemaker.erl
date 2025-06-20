@@ -1497,6 +1497,15 @@
 -type capture_option() :: #{binary() => any()}.
 
 %% Example:
+%% cfn_create_template_provider() :: #{
+%%   <<"Parameters">> => list(cfn_stack_create_parameter()()),
+%%   <<"RoleARN">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type cfn_create_template_provider() :: #{binary() => any()}.
+
+%% Example:
 %% update_inference_component_output() :: #{
 %%   <<"InferenceComponentArn">> => string()
 %% }
@@ -1919,7 +1928,8 @@
 %%   <<"ProjectDescription">> => string(),
 %%   <<"ProjectName">> := string(),
 %%   <<"ServiceCatalogProvisioningUpdateDetails">> => service_catalog_provisioning_update_details(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TemplateProvidersToUpdate">> => list(update_template_provider()())
 %% }
 -type update_project_input() :: #{binary() => any()}.
 
@@ -4333,7 +4343,8 @@
 %%   <<"ProjectName">> => string(),
 %%   <<"ProjectStatus">> => list(any()),
 %%   <<"ServiceCatalogProvisionedProductDetails">> => service_catalog_provisioned_product_details(),
-%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details()
+%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
+%%   <<"TemplateProviderDetails">> => list(template_provider_detail()())
 %% }
 -type describe_project_output() :: #{binary() => any()}.
 
@@ -5664,7 +5675,8 @@
 %%   <<"ProjectStatus">> => list(any()),
 %%   <<"ServiceCatalogProvisionedProductDetails">> => service_catalog_provisioned_product_details(),
 %%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TemplateProviderDetails">> => list(template_provider_detail()())
 %% }
 -type project() :: #{binary() => any()}.
 
@@ -6195,6 +6207,13 @@
 -type trial_component_artifact() :: #{binary() => any()}.
 
 %% Example:
+%% cfn_stack_create_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cfn_stack_create_parameter() :: #{binary() => any()}.
+
+%% Example:
 %% update_workteam_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"MemberDefinitions">> => list(member_definition()()),
@@ -6557,6 +6576,13 @@
 %%   <<"VpcConfig">> => optimization_vpc_config()
 %% }
 -type describe_optimization_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_stack_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cfn_stack_parameter() :: #{binary() => any()}.
 
 %% Example:
 %% list_endpoints_output() :: #{
@@ -7424,6 +7450,12 @@
 -type lambda_step_metadata() :: #{binary() => any()}.
 
 %% Example:
+%% create_template_provider() :: #{
+%%   <<"CfnTemplateProvider">> => cfn_create_template_provider()
+%% }
+-type create_template_provider() :: #{binary() => any()}.
+
+%% Example:
 %% experiment_config() :: #{
 %%   <<"ExperimentName">> => string(),
 %%   <<"RunName">> => string(),
@@ -7718,7 +7750,8 @@
 %%   <<"ProjectDescription">> => string(),
 %%   <<"ProjectName">> := string(),
 %%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TemplateProviders">> => list(create_template_provider()())
 %% }
 -type create_project_input() :: #{binary() => any()}.
 
@@ -8499,6 +8532,14 @@
 -type objective_status_counters() :: #{binary() => any()}.
 
 %% Example:
+%% cfn_update_template_provider() :: #{
+%%   <<"Parameters">> => list(cfn_stack_update_parameter()()),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type cfn_update_template_provider() :: #{binary() => any()}.
+
+%% Example:
 %% parent_hyper_parameter_tuning_job() :: #{
 %%   <<"HyperParameterTuningJobName">> => string()
 %% }
@@ -8920,6 +8961,13 @@
 %%   <<"Type">> := list(any())
 %% }
 -type create_partner_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_stack_update_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cfn_stack_update_parameter() :: #{binary() => any()}.
 
 %% Example:
 %% model_compilation_config() :: #{
@@ -9718,6 +9766,12 @@
 %%   <<"SelectiveExecutionConfig">> => selective_execution_config()
 %% }
 -type describe_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% template_provider_detail() :: #{
+%%   <<"CfnTemplateProviderDetail">> => cfn_template_provider_detail()
+%% }
+-type template_provider_detail() :: #{binary() => any()}.
 
 %% Example:
 %% create_hyper_parameter_tuning_job_request() :: #{
@@ -10767,6 +10821,12 @@
 -type user_context() :: #{binary() => any()}.
 
 %% Example:
+%% update_template_provider() :: #{
+%%   <<"CfnTemplateProvider">> => cfn_update_template_provider()
+%% }
+-type update_template_provider() :: #{binary() => any()}.
+
+%% Example:
 %% delete_model_package_group_input() :: #{
 %%   <<"ModelPackageGroupName">> := string()
 %% }
@@ -10788,6 +10848,14 @@
 %%   <<"MonitoringType">> => list(any())
 %% }
 -type model_dashboard_monitoring_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_stack_detail() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type cfn_stack_detail() :: #{binary() => any()}.
 
 %% Example:
 %% stop_compilation_job_request() :: #{
@@ -12128,6 +12196,16 @@
 %%   <<"VpcId">> => string()
 %% }
 -type workforce_vpc_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_template_provider_detail() :: #{
+%%   <<"Parameters">> => list(cfn_stack_parameter()()),
+%%   <<"RoleARN">> => string(),
+%%   <<"StackDetail">> => cfn_stack_detail(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type cfn_template_provider_detail() :: #{binary() => any()}.
 
 %% Example:
 %% stop_auto_ml_job_request() :: #{

@@ -345,6 +345,7 @@
 
 %% Example:
 %% update_event_source_mapping_request() :: #{
+%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
 %%   <<"BatchSize">> => integer(),
 %%   <<"BisectBatchOnFunctionError">> => boolean(),
 %%   <<"DestinationConfig">> => destination_config(),
@@ -361,6 +362,7 @@
 %%   <<"ParallelizationFactor">> => integer(),
 %%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
 %%   <<"ScalingConfig">> => scaling_config(),
+%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
 %%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
 %%   <<"TumblingWindowInSeconds">> => integer()
 %% }
@@ -402,6 +404,13 @@
 %% Example:
 %% delete_function_code_signing_config_request() :: #{}
 -type delete_function_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% kafka_schema_validation_config() :: #{
+%%   <<"Attribute">> => list(any())
+%% }
+-type kafka_schema_validation_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -476,7 +485,8 @@
 
 %% Example:
 %% amazon_managed_kafka_event_source_config() :: #{
-%%   <<"ConsumerGroupId">> => string()
+%%   <<"ConsumerGroupId">> => string(),
+%%   <<"SchemaRegistryConfig">> => kafka_schema_registry_config()
 %% }
 -type amazon_managed_kafka_event_source_config() :: #{binary() => any()}.
 
@@ -681,7 +691,8 @@
 
 %% Example:
 %% self_managed_kafka_event_source_config() :: #{
-%%   <<"ConsumerGroupId">> => string()
+%%   <<"ConsumerGroupId">> => string(),
+%%   <<"SchemaRegistryConfig">> => kafka_schema_registry_config()
 %% }
 -type self_managed_kafka_event_source_config() :: #{binary() => any()}.
 
@@ -1418,6 +1429,14 @@
 
 
 %% Example:
+%% kafka_schema_registry_access_config() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type kafka_schema_registry_access_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% invocation_request() :: #{
 %%   <<"ClientContext">> => string(),
 %%   <<"InvocationType">> => list(any()),
@@ -1722,6 +1741,16 @@
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type update_function_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_schema_registry_config() :: #{
+%%   <<"AccessConfigs">> => list(kafka_schema_registry_access_config()()),
+%%   <<"EventRecordFormat">> => list(any()),
+%%   <<"SchemaRegistryURI">> => string(),
+%%   <<"SchemaValidationConfigs">> => list(kafka_schema_validation_config()())
+%% }
+-type kafka_schema_registry_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2807,9 +2836,10 @@ create_code_signing_config(Client, Input0, Options0) ->
 %% For stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache
 %% Kafka), the following option is also available:
 %%
-%% `DestinationConfig' – Send discarded records to an Amazon SQS queue,
-%% Amazon SNS topic, or
-%% Amazon S3 bucket.
+%% `OnFailure' – Send discarded records to an Amazon SQS queue, Amazon
+%% SNS topic, or
+%% Amazon S3 bucket. For more information, see Adding a destination:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations.
 %%
 %% For information about which configuration parameters apply to each event
 %% source, see the following topics.
@@ -5565,9 +5595,10 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% For stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache
 %% Kafka), the following option is also available:
 %%
-%% `DestinationConfig' – Send discarded records to an Amazon SQS queue,
-%% Amazon SNS topic, or
-%% Amazon S3 bucket.
+%% `OnFailure' – Send discarded records to an Amazon SQS queue, Amazon
+%% SNS topic, or
+%% Amazon S3 bucket. For more information, see Adding a destination:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html#invocation-async-destinations.
 %%
 %% For information about which configuration parameters apply to each event
 %% source, see the following topics.

@@ -277,6 +277,13 @@
 
 
 %% Example:
+%% identity_center_configuration_input() :: #{
+%%   <<"identityCenterInstanceArn">> => string()
+%% }
+-type identity_center_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% auto_start_config() :: #{
 %%   <<"enabled">> => [boolean()]
 %% }
@@ -387,6 +394,7 @@
 %%   <<"autoStartConfiguration">> => auto_start_config(),
 %%   <<"autoStopConfiguration">> => auto_stop_config(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"identityCenterConfiguration">> => identity_center_configuration(),
 %%   <<"imageConfiguration">> => image_configuration(),
 %%   <<"initialCapacity">> => map(),
 %%   <<"interactiveConfiguration">> => interactive_configuration(),
@@ -420,6 +428,7 @@
 %%   <<"autoStartConfiguration">> => auto_start_config(),
 %%   <<"autoStopConfiguration">> => auto_stop_config(),
 %%   <<"clientToken">> := string(),
+%%   <<"identityCenterConfiguration">> => identity_center_configuration_input(),
 %%   <<"imageConfiguration">> => image_configuration_input(),
 %%   <<"initialCapacity">> => map(),
 %%   <<"interactiveConfiguration">> => interactive_configuration(),
@@ -484,6 +493,7 @@
 %%   <<"autoStartConfiguration">> => auto_start_config(),
 %%   <<"autoStopConfiguration">> => auto_stop_config(),
 %%   <<"clientToken">> := string(),
+%%   <<"identityCenterConfiguration">> => identity_center_configuration_input(),
 %%   <<"imageConfiguration">> => image_configuration_input(),
 %%   <<"initialCapacity">> => map(),
 %%   <<"interactiveConfiguration">> => interactive_configuration(),
@@ -589,6 +599,14 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% identity_center_configuration() :: #{
+%%   <<"identityCenterApplicationArn">> => string(),
+%%   <<"identityCenterInstanceArn">> => string()
+%% }
+-type identity_center_configuration() :: #{binary() => any()}.
 
 
 %% Example:

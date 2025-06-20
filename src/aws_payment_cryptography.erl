@@ -853,17 +853,34 @@ create_alias(Client, Input, Options)
 %% and cryptographic operations that you can perform using the key, for
 %% example key class (example: `SYMMETRIC_KEY'), key algorithm (example:
 %% `TDES_2KEY'), key usage (example: `TR31_P0_PIN_ENCRYPTION_KEY')
-%% and key modes of use (example: `Encrypt'). For information about valid
-%% combinations of key attributes, see Understanding key attributes:
+%% and key modes of use (example: `Encrypt'). Amazon Web Services Payment
+%% Cryptography binds key attributes to keys using key blocks when you store
+%% or export them. Amazon Web Services Payment Cryptography stores the key
+%% contents wrapped and never stores or transmits them in the clear.
+%%
+%% For information about valid combinations of key attributes, see
+%% Understanding key attributes:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
 %% in the Amazon Web Services Payment Cryptography User Guide. The mutable
 %% data contained within a key includes usage timestamp and key deletion
 %% timestamp and can be modified after creation.
 %%
-%% Amazon Web Services Payment Cryptography binds key attributes to keys
-%% using key blocks when you store or export them. Amazon Web Services
-%% Payment Cryptography stores the key contents wrapped and never stores or
-%% transmits them in the clear.
+%% You can use the `CreateKey' operation to generate an ECC (Elliptic
+%% Curve Cryptography) key pair used for establishing an ECDH (Elliptic Curve
+%% Diffie-Hellman) key agreement between two parties. In the ECDH key
+%% agreement process, both parties generate their own ECC key pair with key
+%% usage K3 and exchange the public keys. Each party then use their private
+%% key, the received public key from the other party, and the key derivation
+%% parameters including key derivation function, hash algorithm, derivation
+%% data, and key algorithm to derive a shared key.
+%%
+%% To maintain the single-use principle of cryptographic keys in payments,
+%% ECDH derived keys should not be used for multiple purposes, such as a
+%% `TR31_P0_PIN_ENCRYPTION_KEY' and
+%% `TR31_K1_KEY_BLOCK_PROTECTION_KEY'. When creating ECC key pairs in
+%% Amazon Web Services Payment Cryptography you can optionally set the
+%% `DeriveKeyUsage' parameter, which defines the key usage bound to the
+%% symmetric key that will be derived using the ECC key pair.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -1001,19 +1018,22 @@ delete_key(Client, Input, Options)
 %% For symmetric key exchange, Amazon Web Services Payment Cryptography uses
 %% the ANSI X9 TR-31 norm in accordance with PCI PIN guidelines. And for
 %% asymmetric key exchange, Amazon Web Services Payment Cryptography supports
-%% ANSI X9 TR-34 norm and RSA wrap and unwrap key exchange mechanism.
-%% Asymmetric key exchange methods are typically used to establish
-%% bi-directional trust between the two parties exhanging keys and are used
-%% for initial key exchange such as Key Encryption Key (KEK). After which you
-%% can export working keys using symmetric method to perform various
-%% cryptographic operations within Amazon Web Services Payment Cryptography.
+%% ANSI X9 TR-34 norm, RSA unwrap, and ECDH (Elliptic Curve Diffie-Hellman)
+%% key exchange mechanisms. Asymmetric key exchange methods are typically
+%% used to establish bi-directional trust between the two parties exhanging
+%% keys and are used for initial key exchange such as Key Encryption Key
+%% (KEK). After which you can export working keys using symmetric method to
+%% perform various cryptographic operations within Amazon Web Services
+%% Payment Cryptography.
 %%
-%% The TR-34 norm is intended for exchanging 3DES keys only and keys are
-%% imported in a WrappedKeyBlock format. Key attributes (such as KeyUsage,
-%% KeyAlgorithm, KeyModesOfUse, Exportability) are contained within the key
-%% block. With RSA wrap and unwrap, you can exchange both 3DES and AES-128
-%% keys. The keys are imported in a WrappedKeyCryptogram format and you will
-%% need to specify the key attributes during import.
+%% PCI requires specific minimum key strength of wrapping keys used to
+%% protect the keys being exchanged electronically. These requirements can
+%% change when PCI standards are revised. The rules specify that wrapping
+%% keys used for transport must be at least as strong as the key being
+%% protected. For more information on recommended key strength of wrapping
+%% keys and key exchange mechanism, see Importing and exporting keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-importexport.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% You can also use `ExportKey' functionality to generate and export an
 %% IPEK (Initial Pin Encryption Key) from Amazon Web Services Payment
@@ -1061,7 +1081,7 @@ delete_key(Client, Input, Options)
 %% certificate is provided to KRD to verify the signature. The KRD can import
 %% the root certificate into its Hardware Security Module (HSM), as required.
 %% The export token and the associated KDH signing certificate expires after
-%% 7 days.
+%% 30 days.
 %%
 %% Next the KRD generates a key pair for the the purpose of encrypting the
 %% KDH key and provides the public key cerificate (also known as KRD wrapping
@@ -1149,8 +1169,37 @@ delete_key(Client, Input, Options)
 %%
 %% `KeyMaterial': Use `Tr31KeyBlock' parameters.
 %%
+%% To export working keys using ECDH
+%%
+%% You can also use ECDH key agreement to export working keys in a TR-31
+%% keyblock, where the wrapping key is an ECDH derived key.
+%%
+%% To initiate a TR-31 key export using ECDH, both sides must create an ECC
+%% key pair with key usage K3 and exchange public key certificates. In Amazon
+%% Web Services Payment Cryptography, you can do this by calling
+%% `CreateKey'. If you have not already done so, you must import the CA
+%% chain that issued the receiving public key certificate by calling
+%% `ImportKey' with input `RootCertificatePublicKey' for root CA or
+%% `TrustedPublicKey' for intermediate CA. You can then complete a TR-31
+%% key export by deriving a shared wrapping key using the service ECC key
+%% pair, public certificate of your ECC key pair outside of Amazon Web
+%% Services Payment Cryptography, and the key derivation parameters including
+%% key derivation function, hash algorithm, derivation data, key algorithm.
+%%
+%% `KeyMaterial': Use `DiffieHellmanTr31KeyBlock' parameters.
+%%
+%% `PrivateKeyIdentifier': The `KeyArn' of the ECC key pair created
+%% within Amazon Web Services Payment Cryptography to derive a shared KEK.
+%%
+%% `PublicKeyCertificate': The public key certificate of the receiving
+%% ECC key pair in PEM format (base64 encoded) to derive a shared KEK.
+%%
+%% `CertificateAuthorityPublicKeyIdentifier': The `keyARN' of the CA
+%% that signed the public key certificate of the receiving ECC key pair.
+%%
 %% When this operation is successful, Amazon Web Services Payment
-%% Cryptography returns the working key or IPEK as a TR-31 WrappedKeyBlock.
+%% Cryptography returns the working key as a TR-31 WrappedKeyBlock, where the
+%% wrapping key is the ECDH derived key.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -1253,7 +1302,7 @@ get_key(Client, Input, Options)
 %% TR-34 key payload. The export token and signing key certificate must be in
 %% place and operational before calling ExportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ExportKey.html.
-%% The export token expires in 7 days. You can use the same export token to
+%% The export token expires in 30 days. You can use the same export token to
 %% export multiple keys from your service account.
 %%
 %% Cross-account use: This operation can't be used across different
@@ -1290,7 +1339,7 @@ get_parameters_for_export(Client, Input, Options)
 %% and wrapping key certificate must be in place and operational before
 %% calling ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
-%% The import token expires in 7 days. You can use the same import token to
+%% The import token expires in 30 days. You can use the same import token to
 %% import multiple keys into your service account.
 %%
 %% Cross-account use: This operation can't be used across different
@@ -1358,20 +1407,22 @@ get_public_key_certificate(Client, Input, Options)
 %% For symmetric key exchange, Amazon Web Services Payment Cryptography uses
 %% the ANSI X9 TR-31 norm in accordance with PCI PIN guidelines. And for
 %% asymmetric key exchange, Amazon Web Services Payment Cryptography supports
-%% ANSI X9 TR-34 norm and RSA wrap and unwrap key exchange mechanisms.
-%% Asymmetric key exchange methods are typically used to establish
-%% bi-directional trust between the two parties exhanging keys and are used
-%% for initial key exchange such as Key Encryption Key (KEK) or Zone Master
-%% Key (ZMK). After which you can import working keys using symmetric method
-%% to perform various cryptographic operations within Amazon Web Services
-%% Payment Cryptography.
+%% ANSI X9 TR-34 norm, RSA unwrap, and ECDH (Elliptic Curve Diffie-Hellman)
+%% key exchange mechanisms. Asymmetric key exchange methods are typically
+%% used to establish bi-directional trust between the two parties exhanging
+%% keys and are used for initial key exchange such as Key Encryption Key
+%% (KEK) or Zone Master Key (ZMK). After which you can import working keys
+%% using symmetric method to perform various cryptographic operations within
+%% Amazon Web Services Payment Cryptography.
 %%
-%% The TR-34 norm is intended for exchanging 3DES keys only and keys are
-%% imported in a WrappedKeyBlock format. Key attributes (such as KeyUsage,
-%% KeyAlgorithm, KeyModesOfUse, Exportability) are contained within the key
-%% block. With RSA wrap and unwrap, you can exchange both 3DES and AES-128
-%% keys. The keys are imported in a WrappedKeyCryptogram format and you will
-%% need to specify the key attributes during import.
+%% PCI requires specific minimum key strength of wrapping keys used to
+%% protect the keys being exchanged electronically. These requirements can
+%% change when PCI standards are revised. The rules specify that wrapping
+%% keys used for transport must be at least as strong as the key being
+%% protected. For more information on recommended key strength of wrapping
+%% keys and key exchange mechanism, see Importing and exporting keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-importexport.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% You can also import a root public key certificate, used to sign other
 %% public key certificates, or a trusted public key certificate under an
@@ -1432,7 +1483,8 @@ get_public_key_certificate(Client, Input, Options)
 %% known as KRD wrapping certificate) and the root certificate chain. The KDH
 %% must trust and install the KRD wrapping certificate on its HSM and use it
 %% to encrypt (wrap) the KDH key during TR-34 WrappedKeyBlock generation. The
-%% import token and associated KRD wrapping certificate expires after 7 days.
+%% import token and associated KRD wrapping certificate expires after 30
+%% days.
 %%
 %% Next the KDH generates a key pair for the purpose of signing the encrypted
 %% KDH key and provides the public certificate of the signing key to Amazon
@@ -1474,7 +1526,7 @@ get_public_key_certificate(Client, Input, Options)
 %% token. This operation also generates an encryption keypair for the purpose
 %% of key import, signs the key and returns back the wrapping key certificate
 %% in PEM format (base64 encoded) and its root certificate chain. The import
-%% token and associated KRD wrapping certificate expires after 7 days.
+%% token and associated KRD wrapping certificate expires after 30 days.
 %%
 %% You must trust and install the wrapping certificate and its certificate
 %% chain on the sending HSM and use it to wrap the key under export for
@@ -1500,6 +1552,39 @@ get_public_key_certificate(Client, Input, Options)
 %% `WrappingKeyIdentifier': The `KeyArn' of the KEK that Amazon Web
 %% Services Payment Cryptography uses to decrypt or unwrap the key under
 %% import.
+%%
+%% To import working keys using ECDH
+%%
+%% You can also use ECDH key agreement to import working keys as a TR-31
+%% keyblock, where the wrapping key is an ECDH derived key.
+%%
+%% To initiate a TR-31 key import using ECDH, both sides must create an ECC
+%% key pair with key usage K3 and exchange public key certificates. In Amazon
+%% Web Services Payment Cryptography, you can do this by calling
+%% `CreateKey' and then `GetPublicKeyCertificate' to retrieve its
+%% public key certificate. Next, you can then generate a TR-31
+%% WrappedKeyBlock using your own ECC key pair, the public certificate of the
+%% service's ECC key pair, and the key derivation parameters including
+%% key derivation function, hash algorithm, derivation data, and key
+%% algorithm. If you have not already done so, you must import the CA chain
+%% that issued the receiving public key certificate by calling
+%% `ImportKey' with input `RootCertificatePublicKey' for root CA or
+%% `TrustedPublicKey' for intermediate CA. To complete the TR-31 key
+%% import, you can use the following parameters. It is important that the
+%% ECDH key derivation parameters you use should match those used during
+%% import to derive the same shared wrapping key within Amazon Web Services
+%% Payment Cryptography.
+%%
+%% `KeyMaterial': Use `DiffieHellmanTr31KeyBlock' parameters.
+%%
+%% `PrivateKeyIdentifier': The `KeyArn' of the ECC key pair created
+%% within Amazon Web Services Payment Cryptography to derive a shared KEK.
+%%
+%% `PublicKeyCertificate': The public key certificate of the receiving
+%% ECC key pair in PEM format (base64 encoded) to derive a shared KEK.
+%%
+%% `CertificateAuthorityPublicKeyIdentifier': The `keyARN' of the CA
+%% that signed the public key certificate of the receiving ECC key pair.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -1537,10 +1622,10 @@ import_key(Client, Input, Options)
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a subset of all the aliases. When the response contains only
-%% a subset of aliases, it includes a `NextToken' value.
-%% Use this value in a subsequent `ListAliases' request to get more
-%% aliases. When you receive a response with no NextToken (or an empty or
-%% null value), that means there are no more aliases to get.
+%% a subset of aliases, it includes a `NextToken' value. Use this value
+%% in a subsequent `ListAliases' request to get more aliases. When you
+%% receive a response with no NextToken (or an empty or null value), that
+%% means there are no more aliases to get.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -1580,12 +1665,11 @@ list_aliases(Client, Input, Options)
 %% You can filter the list of keys.
 %%
 %% This is a paginated operation, which means that each response might
-%% contain only a subset of all the keys.
-%% When the response contains only a subset of keys, it includes a
-%% `NextToken' value. Use this value in a subsequent `ListKeys'
-%% request to get more keys.
-%% When you receive a response with no NextToken (or an empty or null value),
-%% that means there are no more keys to get.
+%% contain only a subset of all the keys. When the response contains only a
+%% subset of keys, it includes a `NextToken' value. Use this value in a
+%% subsequent `ListKeys' request to get more keys. When you receive a
+%% response with no NextToken (or an empty or null value), that means there
+%% are no more keys to get.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -1619,12 +1703,11 @@ list_keys(Client, Input, Options)
 %% @doc Lists the tags for an Amazon Web Services resource.
 %%
 %% This is a paginated operation, which means that each response might
-%% contain only a subset of all the tags.
-%% When the response contains only a subset of tags, it includes a
-%% `NextToken' value. Use this value in a subsequent
-%% `ListTagsForResource' request to get more tags.
-%% When you receive a response with no NextToken (or an empty or null value),
-%% that means there are no more tags to get.
+%% contain only a subset of all the tags. When the response contains only a
+%% subset of tags, it includes a `NextToken' value. Use this value in a
+%% subsequent `ListTagsForResource' request to get more tags. When you
+%% receive a response with no NextToken (or an empty or null value), that
+%% means there are no more tags to get.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -1658,9 +1741,9 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% During the waiting period, the `KeyState' is `DELETE_PENDING' and
 %% `deletePendingTimestamp' contains the date and time after which the
-%% `Key' will be deleted.
-%% After `Key' is restored, the `KeyState' is `CREATE_COMPLETE',
-%% and the value for `deletePendingTimestamp' is removed.
+%% `Key' will be deleted. After `Key' is restored, the `KeyState'
+%% is `CREATE_COMPLETE', and the value for `deletePendingTimestamp'
+%% is removed.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
