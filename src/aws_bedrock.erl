@@ -259,6 +259,13 @@
 
 
 %% Example:
+%% guardrail_content_filters_tier_config() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_content_filters_tier_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
 %%   <<"tags">> := list(tag()())
@@ -387,6 +394,7 @@
 
 %% Example:
 %% guardrail_topic_policy_config() :: #{
+%%   <<"tierConfig">> => guardrail_topics_tier_config(),
 %%   <<"topicsConfig">> => list(guardrail_topic_config()())
 %% }
 -type guardrail_topic_policy_config() :: #{binary() => any()}.
@@ -542,6 +550,13 @@
 
 
 %% Example:
+%% guardrail_topics_tier() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_topics_tier() :: #{binary() => any()}.
+
+
+%% Example:
 %% human_workflow_config() :: #{
 %%   <<"flowDefinitionArn">> => string(),
 %%   <<"instructions">> => string()
@@ -551,7 +566,8 @@
 
 %% Example:
 %% guardrail_content_policy() :: #{
-%%   <<"filters">> => list(guardrail_content_filter()())
+%%   <<"filters">> => list(guardrail_content_filter()()),
+%%   <<"tier">> => guardrail_content_filters_tier()
 %% }
 -type guardrail_content_policy() :: #{binary() => any()}.
 
@@ -586,6 +602,13 @@
 %%   <<"statusEquals">> => list(any())
 %% }
 -type list_model_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topics_tier_config() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_topics_tier_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1106,6 +1129,13 @@
 
 
 %% Example:
+%% guardrail_content_filters_tier() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_content_filters_tier() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_provisioned_model_throughput_response() :: #{
 %%   <<"provisionedModelArn">> => string()
 %% }
@@ -1206,7 +1236,8 @@
 
 %% Example:
 %% guardrail_content_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_content_filter_config()())
+%%   <<"filtersConfig">> => list(guardrail_content_filter_config()()),
+%%   <<"tierConfig">> => guardrail_content_filters_tier_config()
 %% }
 -type guardrail_content_policy_config() :: #{binary() => any()}.
 
@@ -1983,6 +2014,7 @@
 
 %% Example:
 %% guardrail_topic_policy() :: #{
+%%   <<"tier">> => guardrail_topics_tier(),
 %%   <<"topics">> => list(guardrail_topic()())
 %% }
 -type guardrail_topic_policy() :: #{binary() => any()}.

@@ -1,10 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% The Places API enables powerful location search and geocoding capabilities
-%% for your applications, offering global coverage with rich, detailed
-%% information.
+%% @doc The Places API enables powerful location search and geocoding
+%% capabilities for your applications, offering global coverage with rich,
+%% detailed information.
 %%
 %% Key features include:
 %%
@@ -53,26 +52,46 @@
 %% reverse_geocode_result_item() :: #{
 %%   <<"AccessPoints">> => list(access_point()()),
 %%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => [boolean()],
+%%   <<"AddressNumberCorrected">> => boolean(),
 %%   <<"Categories">> => list(category()()),
 %%   <<"Distance">> => float(),
 %%   <<"FoodTypes">> => list(food_type()()),
+%%   <<"Intersections">> => list(intersection()()),
 %%   <<"MapView">> => list([float()]()),
-%%   <<"PlaceId">> => [string()],
+%%   <<"PlaceId">> => string(),
 %%   <<"PlaceType">> => string(),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Position">> => list([float()]()),
 %%   <<"PostalCodeDetails">> => list(postal_code_details()()),
 %%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => [string()]
+%%   <<"Title">> => string()
 %% }
 -type reverse_geocode_result_item() :: #{binary() => any()}.
 
 
 %% Example:
+%% geocode_parsed_query_address_components() :: #{
+%%   <<"AddressNumber">> => list(parsed_query_component()()),
+%%   <<"Block">> => list(parsed_query_component()()),
+%%   <<"Building">> => list(parsed_query_component()()),
+%%   <<"Country">> => list(parsed_query_component()()),
+%%   <<"District">> => list(parsed_query_component()()),
+%%   <<"Locality">> => list(parsed_query_component()()),
+%%   <<"PostalCode">> => list(parsed_query_component()()),
+%%   <<"Region">> => list(parsed_query_component()()),
+%%   <<"SecondaryAddressComponents">> => list(parsed_query_secondary_address_component()()),
+%%   <<"Street">> => list(parsed_query_component()()),
+%%   <<"SubBlock">> => list(parsed_query_component()()),
+%%   <<"SubDistrict">> => list(parsed_query_component()()),
+%%   <<"SubRegion">> => list(parsed_query_component()())
+%% }
+-type geocode_parsed_query_address_components() :: #{binary() => any()}.
+
+
+%% Example:
 %% sub_region() :: #{
-%%   <<"Code">> => [string()],
-%%   <<"Name">> => [string()]
+%%   <<"Code">> => string(),
+%%   <<"Name">> => string()
 %% }
 -type sub_region() :: #{binary() => any()}.
 
@@ -113,7 +132,7 @@
 %%   <<"AccessPoints">> => list(access_point()()),
 %%   <<"AccessRestrictions">> => list(access_restriction()()),
 %%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => [boolean()],
+%%   <<"AddressNumberCorrected">> => boolean(),
 %%   <<"BusinessChains">> => list(business_chain()()),
 %%   <<"Categories">> => list(category()()),
 %%   <<"Contacts">> => contacts(),
@@ -122,12 +141,12 @@
 %%   <<"MapView">> => list([float()]()),
 %%   <<"OpeningHours">> => list(opening_hours()()),
 %%   <<"Phonemes">> => phoneme_details(),
-%%   <<"PlaceId">> => [string()],
+%%   <<"PlaceId">> => string(),
 %%   <<"PlaceType">> => string(),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Position">> => list([float()]()),
 %%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => [string()]
+%%   <<"Title">> => string()
 %% }
 -type search_text_result_item() :: #{binary() => any()}.
 
@@ -151,7 +170,7 @@
 %% highlight() :: #{
 %%   <<"EndIndex">> => [integer()],
 %%   <<"StartIndex">> => [integer()],
-%%   <<"Value">> => [string()]
+%%   <<"Value">> => string()
 %% }
 -type highlight() :: #{binary() => any()}.
 
@@ -168,13 +187,13 @@
 %% Example:
 %% search_nearby_filter() :: #{
 %%   <<"BoundingBox">> => list([float()]()),
-%%   <<"ExcludeBusinessChains">> => list([string()]()),
-%%   <<"ExcludeCategories">> => list([string()]()),
-%%   <<"ExcludeFoodTypes">> => list([string()]()),
-%%   <<"IncludeBusinessChains">> => list([string()]()),
-%%   <<"IncludeCategories">> => list([string()]()),
+%%   <<"ExcludeBusinessChains">> => list(string()()),
+%%   <<"ExcludeCategories">> => list(string()()),
+%%   <<"ExcludeFoodTypes">> => list(string()()),
+%%   <<"IncludeBusinessChains">> => list(string()()),
+%%   <<"IncludeCategories">> => list(string()()),
 %%   <<"IncludeCountries">> => list(string()()),
-%%   <<"IncludeFoodTypes">> => list([string()]())
+%%   <<"IncludeFoodTypes">> => list(string()())
 %% }
 -type search_nearby_filter() :: #{binary() => any()}.
 
@@ -234,7 +253,7 @@
 %%   <<"FoodTypes">> => list(food_type()()),
 %%   <<"MapView">> => list([float()]()),
 %%   <<"Phonemes">> => phoneme_details(),
-%%   <<"PlaceId">> => [string()],
+%%   <<"PlaceId">> => string(),
 %%   <<"PlaceType">> => string(),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Position">> => list([float()]()),
@@ -245,9 +264,9 @@
 
 %% Example:
 %% food_type() :: #{
-%%   <<"Id">> => [string()],
-%%   <<"LocalizedName">> => [string()],
-%%   <<"Primary">> => [boolean()]
+%%   <<"Id">> => string(),
+%%   <<"LocalizedName">> => string(),
+%%   <<"Primary">> => boolean()
 %% }
 -type food_type() :: #{binary() => any()}.
 
@@ -264,14 +283,14 @@
 %% country() :: #{
 %%   <<"Code2">> => string(),
 %%   <<"Code3">> => string(),
-%%   <<"Name">> => [string()]
+%%   <<"Name">> => string()
 %% }
 -type country() :: #{binary() => any()}.
 
 
 %% Example:
 %% suggest_query_result() :: #{
-%%   <<"QueryId">> => [string()],
+%%   <<"QueryId">> => string(),
 %%   <<"QueryType">> => string()
 %% }
 -type suggest_query_result() :: #{binary() => any()}.
@@ -299,10 +318,10 @@
 %%   <<"Distance">> => float(),
 %%   <<"Highlights">> => autocomplete_highlights(),
 %%   <<"Language">> => string(),
-%%   <<"PlaceId">> => [string()],
+%%   <<"PlaceId">> => string(),
 %%   <<"PlaceType">> => string(),
 %%   <<"PoliticalView">> => string(),
-%%   <<"Title">> => [string()]
+%%   <<"Title">> => string()
 %% }
 -type autocomplete_result_item() :: #{binary() => any()}.
 
@@ -331,21 +350,29 @@
 
 
 %% Example:
+%% geocode_parsed_query() :: #{
+%%   <<"Address">> => geocode_parsed_query_address_components(),
+%%   <<"Title">> => list(parsed_query_component()())
+%% }
+-type geocode_parsed_query() :: #{binary() => any()}.
+
+
+%% Example:
 %% region() :: #{
-%%   <<"Code">> => [string()],
-%%   <<"Name">> => [string()]
+%%   <<"Code">> => string(),
+%%   <<"Name">> => string()
 %% }
 -type region() :: #{binary() => any()}.
 
 
 %% Example:
 %% street_components() :: #{
-%%   <<"BaseName">> => [string()],
-%%   <<"Direction">> => [string()],
+%%   <<"BaseName">> => string(),
+%%   <<"Direction">> => string(),
 %%   <<"Language">> => string(),
-%%   <<"Prefix">> => [string()],
-%%   <<"Suffix">> => [string()],
-%%   <<"Type">> => [string()],
+%%   <<"Prefix">> => string(),
+%%   <<"Suffix">> => string(),
+%%   <<"Type">> => string(),
 %%   <<"TypePlacement">> => string(),
 %%   <<"TypeSeparator">> => string()
 %% }
@@ -370,8 +397,8 @@
 
 %% Example:
 %% business_chain() :: #{
-%%   <<"Id">> => [string()],
-%%   <<"Name">> => [string()]
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
 %% }
 -type business_chain() :: #{binary() => any()}.
 
@@ -396,7 +423,7 @@
 %% Example:
 %% access_restriction() :: #{
 %%   <<"Categories">> => list(category()()),
-%%   <<"Restricted">> => [boolean()]
+%%   <<"Restricted">> => boolean()
 %% }
 -type access_restriction() :: #{binary() => any()}.
 
@@ -412,9 +439,9 @@
 
 %% Example:
 %% opening_hours_components() :: #{
-%%   <<"OpenDuration">> => [string()],
-%%   <<"OpenTime">> => [string()],
-%%   <<"Recurrence">> => [string()]
+%%   <<"OpenDuration">> => string(),
+%%   <<"OpenTime">> => string(),
+%%   <<"Recurrence">> => string()
 %% }
 -type opening_hours_components() :: #{binary() => any()}.
 
@@ -422,12 +449,22 @@
 %% Example:
 %% postal_code_details() :: #{
 %%   <<"PostalAuthority">> => string(),
-%%   <<"PostalCode">> => [string()],
+%%   <<"PostalCode">> => string(),
 %%   <<"PostalCodeType">> => string(),
 %%   <<"UspsZip">> => usps_zip(),
 %%   <<"UspsZipPlus4">> => usps_zip_plus4()
 %% }
 -type postal_code_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsed_query_component() :: #{
+%%   <<"EndIndex">> => [integer()],
+%%   <<"QueryComponent">> => string(),
+%%   <<"StartIndex">> => [integer()],
+%%   <<"Value">> => string()
+%% }
+-type parsed_query_component() :: #{binary() => any()}.
 
 
 %% Example:
@@ -451,18 +488,29 @@
 
 %% Example:
 %% time_zone() :: #{
-%%   <<"Name">> => [string()],
-%%   <<"Offset">> => [string()],
+%%   <<"Name">> => string(),
+%%   <<"Offset">> => string(),
 %%   <<"OffsetSeconds">> => float()
 %% }
 -type time_zone() :: #{binary() => any()}.
 
 
 %% Example:
+%% parsed_query_secondary_address_component() :: #{
+%%   <<"Designator">> => string(),
+%%   <<"EndIndex">> => [integer()],
+%%   <<"Number">> => string(),
+%%   <<"StartIndex">> => [integer()],
+%%   <<"Value">> => string()
+%% }
+-type parsed_query_secondary_address_component() :: #{binary() => any()}.
+
+
+%% Example:
 %% query_refinement() :: #{
 %%   <<"EndIndex">> => [integer()],
-%%   <<"OriginalTerm">> => [string()],
-%%   <<"RefinedTerm">> => [string()],
+%%   <<"OriginalTerm">> => string(),
+%%   <<"RefinedTerm">> => string(),
 %%   <<"StartIndex">> => [integer()]
 %% }
 -type query_refinement() :: #{binary() => any()}.
@@ -507,6 +555,13 @@
 
 
 %% Example:
+%% secondary_address_component() :: #{
+%%   <<"Number">> => string()
+%% }
+-type secondary_address_component() :: #{binary() => any()}.
+
+
+%% Example:
 %% geocode_response() :: #{
 %%   <<"PricingBucket">> => [string()],
 %%   <<"ResultItems">> => list(geocode_result_item()())
@@ -515,11 +570,32 @@
 
 
 %% Example:
+%% secondary_address_component_match_score() :: #{
+%%   <<"Number">> => float()
+%% }
+-type secondary_address_component_match_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% intersection() :: #{
+%%   <<"AccessPoints">> => list(access_point()()),
+%%   <<"Address">> => address(),
+%%   <<"Distance">> => float(),
+%%   <<"MapView">> => list([float()]()),
+%%   <<"PlaceId">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"RouteDistance">> => float(),
+%%   <<"Title">> => string()
+%% }
+-type intersection() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_nearby_result_item() :: #{
 %%   <<"AccessPoints">> => list(access_point()()),
 %%   <<"AccessRestrictions">> => list(access_restriction()()),
 %%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => [boolean()],
+%%   <<"AddressNumberCorrected">> => boolean(),
 %%   <<"BusinessChains">> => list(business_chain()()),
 %%   <<"Categories">> => list(category()()),
 %%   <<"Contacts">> => contacts(),
@@ -528,12 +604,12 @@
 %%   <<"MapView">> => list([float()]()),
 %%   <<"OpeningHours">> => list(opening_hours()()),
 %%   <<"Phonemes">> => phoneme_details(),
-%%   <<"PlaceId">> => [string()],
+%%   <<"PlaceId">> => string(),
 %%   <<"PlaceType">> => string(),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Position">> => list([float()]()),
 %%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => [string()]
+%%   <<"Title">> => string()
 %% }
 -type search_nearby_result_item() :: #{binary() => any()}.
 
@@ -559,22 +635,24 @@
 %%   <<"AccessPoints">> => list(access_point()()),
 %%   <<"AccessRestrictions">> => list(access_restriction()()),
 %%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => [boolean()],
+%%   <<"AddressNumberCorrected">> => boolean(),
 %%   <<"BusinessChains">> => list(business_chain()()),
 %%   <<"Categories">> => list(category()()),
 %%   <<"Contacts">> => contacts(),
 %%   <<"FoodTypes">> => list(food_type()()),
+%%   <<"MainAddress">> => related_place(),
 %%   <<"MapView">> => list([float()]()),
 %%   <<"OpeningHours">> => list(opening_hours()()),
 %%   <<"Phonemes">> => phoneme_details(),
-%%   <<"PlaceId">> => [string()],
+%%   <<"PlaceId">> => string(),
 %%   <<"PlaceType">> => string(),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Position">> => list([float()]()),
 %%   <<"PostalCodeDetails">> => list(postal_code_details()()),
 %%   <<"PricingBucket">> => [string()],
+%%   <<"SecondaryAddresses">> => list(related_place()()),
 %%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => [string()]
+%%   <<"Title">> => string()
 %% }
 -type get_place_response() :: #{binary() => any()}.
 
@@ -584,6 +662,18 @@
 %%   <<"Message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_place() :: #{
+%%   <<"AccessPoints">> => list(access_point()()),
+%%   <<"Address">> => address(),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"Title">> => string()
+%% }
+-type related_place() :: #{binary() => any()}.
 
 
 %% Example:
@@ -612,6 +702,7 @@
 %%   <<"Locality">> => float(),
 %%   <<"PostalCode">> => float(),
 %%   <<"Region">> => float(),
+%%   <<"SecondaryAddressComponents">> => list(secondary_address_component_match_score()()),
 %%   <<"SubBlock">> => float(),
 %%   <<"SubDistrict">> => float(),
 %%   <<"SubRegion">> => float()
@@ -621,10 +712,10 @@
 
 %% Example:
 %% category() :: #{
-%%   <<"Id">> => [string()],
-%%   <<"LocalizedName">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"Primary">> => [boolean()]
+%%   <<"Id">> => string(),
+%%   <<"LocalizedName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Primary">> => boolean()
 %% }
 -type category() :: #{binary() => any()}.
 
@@ -632,8 +723,8 @@
 %% Example:
 %% contact_details() :: #{
 %%   <<"Categories">> => list(category()()),
-%%   <<"Label">> => [string()],
-%%   <<"Value">> => [string()]
+%%   <<"Label">> => string(),
+%%   <<"Value">> => string()
 %% }
 -type contact_details() :: #{binary() => any()}.
 
@@ -658,7 +749,7 @@
 %%   <<"Place">> => suggest_place_result(),
 %%   <<"Query">> => suggest_query_result(),
 %%   <<"SuggestResultItemType">> => string(),
-%%   <<"Title">> => [string()]
+%%   <<"Title">> => string()
 %% }
 -type suggest_result_item() :: #{binary() => any()}.
 
@@ -683,19 +774,23 @@
 %% geocode_result_item() :: #{
 %%   <<"AccessPoints">> => list(access_point()()),
 %%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => [boolean()],
+%%   <<"AddressNumberCorrected">> => boolean(),
 %%   <<"Categories">> => list(category()()),
 %%   <<"Distance">> => float(),
 %%   <<"FoodTypes">> => list(food_type()()),
+%%   <<"Intersections">> => list(intersection()()),
+%%   <<"MainAddress">> => related_place(),
 %%   <<"MapView">> => list([float()]()),
 %%   <<"MatchScores">> => match_score_details(),
-%%   <<"PlaceId">> => [string()],
+%%   <<"ParsedQuery">> => geocode_parsed_query(),
+%%   <<"PlaceId">> => string(),
 %%   <<"PlaceType">> => string(),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Position">> => list([float()]()),
 %%   <<"PostalCodeDetails">> => list(postal_code_details()()),
+%%   <<"SecondaryAddresses">> => list(related_place()()),
 %%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => [string()]
+%%   <<"Title">> => string()
 %% }
 -type geocode_result_item() :: #{binary() => any()}.
 
@@ -710,8 +805,8 @@
 %% Example:
 %% phoneme_transcription() :: #{
 %%   <<"Language">> => string(),
-%%   <<"Preferred">> => [boolean()],
-%%   <<"Value">> => [string()]
+%%   <<"Preferred">> => boolean(),
+%%   <<"Value">> => string()
 %% }
 -type phoneme_transcription() :: #{binary() => any()}.
 
@@ -737,20 +832,21 @@
 
 %% Example:
 %% address() :: #{
-%%   <<"AddressNumber">> => [string()],
-%%   <<"Block">> => [string()],
-%%   <<"Building">> => [string()],
+%%   <<"AddressNumber">> => string(),
+%%   <<"Block">> => string(),
+%%   <<"Building">> => string(),
 %%   <<"Country">> => country(),
-%%   <<"District">> => [string()],
+%%   <<"District">> => string(),
 %%   <<"Intersection">> => list(string()()),
-%%   <<"Label">> => [string()],
-%%   <<"Locality">> => [string()],
-%%   <<"PostalCode">> => [string()],
+%%   <<"Label">> => string(),
+%%   <<"Locality">> => string(),
+%%   <<"PostalCode">> => string(),
 %%   <<"Region">> => region(),
-%%   <<"Street">> => [string()],
+%%   <<"SecondaryAddressComponents">> => list(secondary_address_component()()),
+%%   <<"Street">> => string(),
 %%   <<"StreetComponents">> => list(street_components()()),
-%%   <<"SubBlock">> => [string()],
-%%   <<"SubDistrict">> => [string()],
+%%   <<"SubBlock">> => string(),
+%%   <<"SubDistrict">> => string(),
 %%   <<"SubRegion">> => sub_region()
 %% }
 -type address() :: #{binary() => any()}.
@@ -761,7 +857,7 @@
 %%   <<"Categories">> => list(category()()),
 %%   <<"Components">> => list(opening_hours_components()()),
 %%   <<"Display">> => list(string()()),
-%%   <<"OpenNow">> => [boolean()]
+%%   <<"OpenNow">> => boolean()
 %% }
 -type opening_hours() :: #{binary() => any()}.
 
@@ -862,13 +958,15 @@
 %% API
 %%====================================================================
 
-%% @doc The autocomplete operation speeds up and increases the accuracy of
-%% entering addresses by providing a list of address candidates matching a
-%% partially entered address.
+%% @doc `Autocomplete' completes potential places and addresses as the
+%% user types, based on the partial input.
 %%
-%% Results are sorted from most to least matching. Filtering and biasing can
-%% be used to increase the relevance of the results if additional search
-%% context is known
+%% The API enhances the efficiency and accuracy of address by completing
+%% query based on a few entered keystrokes. It helps you by completing
+%% partial queries with valid address completion. Also, the API supports the
+%% filtering of results based on geographic location, country, or specific
+%% place types, and can be tailored using optional parameters like language
+%% and political views.
 -spec autocomplete(aws_client:aws_client(), autocomplete_request()) ->
     {ok, autocomplete_response(), tuple()} |
     {error, any()} |
@@ -919,9 +1017,14 @@ autocomplete(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc The `Geocode' action allows you to obtain coordinates, addresses,
-%% and other
-%% information about places.
+%% @doc `Geocode' converts a textual address or place into geographic
+%% coordinates.
+%%
+%% You can obtain geographic coordinates, address component, and other
+%% related information. It supports flexible queries, including free-form
+%% text or structured queries with components like street names, postal
+%% codes, and regions. The Geocode API can also provide additional features
+%% such as time zone information and the inclusion of political views.
 -spec geocode(aws_client:aws_client(), geocode_request()) ->
     {ok, geocode_response(), tuple()} |
     {error, any()} |
@@ -972,10 +1075,9 @@ geocode(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Finds a place by its unique ID.
+%% @doc `GetPlace' finds a place by its unique ID.
 %%
-%% A `PlaceId' is returned by other place
-%% operations.
+%% A `PlaceId' is returned by other place operations.
 -spec get_place(aws_client:aws_client(), binary() | list()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
@@ -1036,9 +1138,14 @@ get_place(Client, PlaceId, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc The `ReverseGeocode' operation allows you to retrieve addresses
-%% and place
-%% information from coordinates.
+%% @doc `ReverseGeocode' converts geographic coordinates into a
+%% human-readable address or place.
+%%
+%% You can obtain address component, and other related information such as
+%% place type, category, street information. The Reverse Geocode API supports
+%% filtering to on place type so that you can refine result based on your
+%% need. Also, The Reverse Geocode API can also provide additional features
+%% such as time zone information and the inclusion of political views.
 -spec reverse_geocode(aws_client:aws_client(), reverse_geocode_request()) ->
     {ok, reverse_geocode_response(), tuple()} |
     {error, any()} |
@@ -1089,7 +1196,13 @@ reverse_geocode(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Search nearby a specified location.
+%% @doc `SearchNearby' queries for points of interest within a radius
+%% from a central coordinates, returning place results with optional filters
+%% such as categories, business chains, food types and more.
+%%
+%% The API returns details such as a place name, address, phone, category,
+%% food type, contact, opening hours. Also, the API can return phonemes, time
+%% zones and more based on requested parameters.
 -spec search_nearby(aws_client:aws_client(), search_nearby_request()) ->
     {ok, search_nearby_response(), tuple()} |
     {error, any()} |
@@ -1140,12 +1253,10 @@ search_nearby(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Use the `SearchText' operation to search for geocode and place
-%% information.
+%% @doc `SearchText' searches for geocode and place information.
 %%
 %% You can then complete a follow-up query suggested from the `Suggest'
-%% API via a
-%% query id.
+%% API via a query id.
 -spec search_text(aws_client:aws_client(), search_text_request()) ->
     {ok, search_text_response(), tuple()} |
     {error, any()} |
@@ -1196,12 +1307,18 @@ search_text(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc The `Suggest' operation finds addresses or place candidates based
-%% on
-%% incomplete or misspelled queries.
+%% @doc `Suggest' provides intelligent predictions or recommendations
+%% based on the user's input or context, such as relevant places, points
+%% of interest, query terms or search category.
 %%
-%% You then select the best query to submit based on the
-%% returned results.
+%% It is designed to help users find places or point of interests candidates
+%% or identify a follow on query based on incomplete or misspelled queries.
+%% It returns a list of possible matches or refinements that can be used to
+%% formulate a more accurate query. Users can select the most appropriate
+%% suggestion and use it for further searching. The API provides options for
+%% filtering results by location and other attributes, and allows for
+%% additional features like phonemes and timezones. The response includes
+%% refined query terms and detailed place information.
 -spec suggest(aws_client:aws_client(), suggest_request()) ->
     {ok, suggest_response(), tuple()} |
     {error, any()} |

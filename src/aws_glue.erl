@@ -1396,6 +1396,7 @@
 
 %% Example:
 %% get_data_quality_result_response() :: #{
+%%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
 %%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()()),
 %%   <<"CompletedOn">> => non_neg_integer(),
 %%   <<"DataSource">> => data_source(),
@@ -2626,6 +2627,17 @@
 %%   <<"Status">> => list(any())
 %% }
 -type last_crawl_info() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_aggregated_metrics() :: #{
+%%   <<"TotalRowsFailed">> => float(),
+%%   <<"TotalRowsPassed">> => float(),
+%%   <<"TotalRowsProcessed">> => float(),
+%%   <<"TotalRulesFailed">> => float(),
+%%   <<"TotalRulesPassed">> => float(),
+%%   <<"TotalRulesProcessed">> => float()
+%% }
+-type data_quality_aggregated_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% code_gen_node() :: #{
@@ -3969,7 +3981,8 @@
 %%   <<"EvaluatedRule">> => string(),
 %%   <<"EvaluationMessage">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Result">> => list(any())
+%%   <<"Result">> => list(any()),
+%%   <<"RuleMetrics">> => map()
 %% }
 -type data_quality_rule_result() :: #{binary() => any()}.
 
@@ -6665,6 +6678,7 @@
 
 %% Example:
 %% data_quality_result() :: #{
+%%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
 %%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()()),
 %%   <<"CompletedOn">> => non_neg_integer(),
 %%   <<"DataSource">> => data_source(),

@@ -2974,7 +2974,7 @@ create_cluster(Client, Input, Options)
 %% volume when creating or
 %% updating a service. `volumeConfigurations' is only supported for
 %% REPLICA
-%% service and not DAEMON service. For more infomation, see Amazon EBS
+%% service and not DAEMON service. For more information, see Amazon EBS
 %% volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
 %% in the Amazon Elastic Container Service Developer Guide.
@@ -4223,7 +4223,7 @@ register_task_definition(Client, Input, Options)
 %%
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
 %% volume when creating or
-%% updating a service. For more infomation, see Amazon EBS volumes:
+%% updating a service. For more information, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
 %% in the Amazon Elastic Container Service Developer Guide.
 %%
@@ -4314,7 +4314,7 @@ run_task(Client, Input, Options)
 %%
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
 %% volume when creating or
-%% updating a service. For more infomation, see Amazon EBS volumes:
+%% updating a service. For more information, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
 %% in the Amazon Elastic Container Service Developer Guide.
 -spec start_task(aws_client:aws_client(), start_task_request()) ->
@@ -4722,13 +4722,13 @@ update_container_instances_state(Client, Input, Options)
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
 %% volume when starting or
 %% running a task, or when creating or updating a service. For more
-%% infomation, see Amazon EBS volumes:
+%% information, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
 %% in the Amazon Elastic Container Service Developer Guide. You can update
 %% your volume configurations and trigger a new deployment.
 %% `volumeConfigurations' is only supported for REPLICA service and not
 %% DAEMON service. If you leave `volumeConfigurations'
-%% `null', it doesn't trigger a new deployment. For more infomation
+%% `null', it doesn't trigger a new deployment. For more information
 %% on volumes,
 %% see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
@@ -4767,7 +4767,7 @@ update_container_instances_state(Client, Input, Options)
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
 %% volume when starting or
 %% running a task, or when creating or updating a service. For more
-%% infomation, see Amazon EBS volumes:
+%% information, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
 %% in the Amazon Elastic Container Service Developer Guide.
 %%
