@@ -493,6 +493,7 @@
 
 %% Example:
 %% iceberg_compaction_settings() :: #{
+%%   <<"strategy">> => list(any()),
 %%   <<"targetFileSizeMB">> => integer()
 %% }
 -type iceberg_compaction_settings() :: #{binary() => any()}.
@@ -1562,6 +1563,9 @@ get_table_encryption(Client, Name, Namespace, TableBucketARN, QueryMap, HeadersM
 %% Permissions You must have the
 %% `s3tables:GetTableMaintenanceConfiguration' permission to use this
 %% operation.
+%%
+%% You must have the `s3tables:GetTableData' permission to use set the
+%% compaction strategy to `sort' or `zorder'.
 -spec get_table_maintenance_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_table_maintenance_configuration_response(), tuple()} |
     {error, any()} |

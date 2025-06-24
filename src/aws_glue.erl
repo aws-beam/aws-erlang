@@ -1473,6 +1473,7 @@
 
 %% Example:
 %% table_optimizer_configuration() :: #{
+%%   <<"compactionConfiguration">> => compaction_configuration(),
 %%   <<"enabled">> => boolean(),
 %%   <<"orphanFileDeletionConfiguration">> => orphan_file_deletion_configuration(),
 %%   <<"retentionConfiguration">> => retention_configuration(),
@@ -1902,6 +1903,7 @@
 %% Example:
 %% table_optimizer_run() :: #{
 %%   <<"compactionMetrics">> => compaction_metrics(),
+%%   <<"compactionStrategy">> => list(any()),
 %%   <<"endTimestamp">> => non_neg_integer(),
 %%   <<"error">> => string(),
 %%   <<"eventType">> => list(any()),
@@ -5142,6 +5144,12 @@
 -type update_workflow_response() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_compaction_configuration() :: #{
+%%   <<"strategy">> => list(any())
+%% }
+-type iceberg_compaction_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% create_csv_classifier_request() :: #{
 %%   <<"AllowSingleColumn">> => boolean(),
 %%   <<"ContainsHeader">> => list(any()),
@@ -7122,6 +7130,12 @@
 %%   <<"SchemaId">> := schema_id()
 %% }
 -type list_schema_versions_input() :: #{binary() => any()}.
+
+%% Example:
+%% compaction_configuration() :: #{
+%%   <<"icebergConfiguration">> => iceberg_compaction_configuration()
+%% }
+-type compaction_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_unfiltered_partitions_metadata_response() :: #{
