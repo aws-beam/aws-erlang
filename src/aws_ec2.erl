@@ -9444,6 +9444,7 @@
 %%   <<"InstanceId">> := string(),
 %%   <<"Name">> := string(),
 %%   <<"NoReboot">> => boolean(),
+%%   <<"SnapshotLocation">> => list(any()),
 %%   <<"TagSpecifications">> => list(tag_specification()())
 %% }
 -type create_image_request() :: #{binary() => any()}.
@@ -11624,6 +11625,8 @@
 
 %% Example:
 %% ebs_block_device() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"Encrypted">> => boolean(),
 %%   <<"Iops">> => integer(),
@@ -21705,8 +21708,8 @@ cancel_bundle_task(Client, Input, Options)
     request(Client, <<"CancelBundleTask">>, Input, Options).
 
 %% @doc Cancels the specified Capacity Reservation, releases the reserved
-%% capacity, and changes
-%% the Capacity Reservation's state to `cancelled'.
+%% capacity, and
+%% changes the Capacity Reservation's state to `cancelled'.
 %%
 %% You can cancel a Capacity Reservation that is in the following states:
 %%
@@ -21714,24 +21717,27 @@ cancel_bundle_task(Client, Input, Options)
 %%
 %% `active' and there is no commitment duration or the commitment
 %% duration has elapsed. You can't cancel a future-dated Capacity
-%% Reservation during the commitment duration.
+%% Reservation
+%% during the commitment duration.
 %%
 %% You can't modify or cancel a Capacity Block. For more information, see
 %% Capacity Blocks for ML:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html.
 %%
 %% If a future-dated Capacity Reservation enters the `delayed' state, the
-%% commitment
-%% duration is waived, and you can cancel it as soon as it enters the
+%% commitment duration is waived, and you can cancel it as soon as it enters
+%% the
 %% `active' state.
 %%
 %% Instances running in the reserved capacity continue running until you stop
-%% them. Stopped
-%% instances that target the Capacity Reservation can no longer launch.
-%% Modify these instances to either
-%% target a different Capacity Reservation, launch On-Demand Instance
-%% capacity, or run in any open Capacity Reservation
-%% that has matching attributes and sufficient capacity.
+%% them.
+%% Stopped instances that target the Capacity Reservation can no longer
+%% launch. Modify
+%% these instances to either target a different Capacity Reservation, launch
+%% On-Demand
+%% Instance capacity, or run in any open Capacity Reservation that has
+%% matching attributes
+%% and sufficient capacity.
 -spec cancel_capacity_reservation(aws_client:aws_client(), cancel_capacity_reservation_request()) ->
     {ok, cancel_capacity_reservation_result(), tuple()} |
     {error, any()}.
@@ -22085,39 +22091,41 @@ copy_snapshot(Client, Input, Options)
 
 %% @doc Creates a new Capacity Reservation with the specified attributes.
 %%
-%% Capacity Reservations enable
-%% you to reserve capacity for your Amazon EC2 instances in a specific
-%% Availability Zone for any
-%% duration.
+%% Capacity
+%% Reservations enable you to reserve capacity for your Amazon EC2 instances
+%% in a specific
+%% Availability Zone for any duration.
 %%
 %% You can create a Capacity Reservation at any time, and you can choose when
-%% it starts. You can create a
-%% Capacity Reservation for immediate use or you can request a Capacity
+%% it starts.
+%% You can create a Capacity Reservation for immediate use or you can request
+%% a Capacity
 %% Reservation for a future date.
 %%
-%% For more information, see
-%% Reserve compute capacity with On-Demand Capacity Reservations:
+%% For more information, see Reserve compute
+%% capacity with On-Demand Capacity Reservations:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html
-%% in the Amazon EC2 User Guide.
+%% in the
+%% Amazon EC2 User Guide.
 %%
 %% Your request to create a Capacity Reservation could fail if:
 %%
-%% Amazon EC2 does not have sufficient capacity. In this case, try again at a
-%% later
-%% time, try in a different Availability Zone, or request a smaller Capacity
-%% Reservation. If
-%% your workload is flexible across instance types and sizes, try with
-%% different instance
-%% attributes.
+%% Amazon EC2 does not have sufficient capacity. In this case, try again
+%% at a later time, try in a different Availability Zone, or request a
+%% smaller
+%% Capacity Reservation. If your workload is flexible across instance types
+%% and
+%% sizes, try with different instance attributes.
 %%
 %% The requested quantity exceeds your On-Demand Instance quota. In this
-%% case, increase your
-%% On-Demand Instance quota for the requested instance type and try again.
-%% For more information,
-%% see
+%% case,
+%% increase your On-Demand Instance quota for the requested instance type and
+%% try
+%% again. For more information, see
 %% Amazon EC2 Service Quotas:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html
-%% in the Amazon EC2 User Guide.
+%% in the
+%% Amazon EC2 User Guide.
 -spec create_capacity_reservation(aws_client:aws_client(), create_capacity_reservation_request()) ->
     {ok, create_capacity_reservation_result(), tuple()} |
     {error, any()}.
@@ -22569,6 +22577,18 @@ create_fpga_image(Client, Input, Options)
 %% automatically launches
 %% with those additional volumes.
 %%
+%% The location of the source instance determines where you can create the
+%% snapshots of the
+%% AMI:
+%%
+%% If the source instance is in a Region, you must create the snapshots in
+%% the same
+%% Region as the instance.
+%%
+%% If the source instance is in a Local Zone, you can create the snapshots in
+%% the same
+%% Local Zone or in its parent Region.
+%%
 %% For more information, see Create an Amazon EBS-backed AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html
 %% in
@@ -22592,11 +22612,11 @@ create_image(Client, Input, Options)
 %% An EC2 Instance Connect Endpoint allows you to connect to an instance,
 %% without
 %% requiring the instance to have a public IPv4 address. For more
-%% information, see Connect to your instances without requiring a public IPv4
-%% address using EC2
-%% Instance Connect Endpoint:
+%% information, see Connect to your instances using EC2 Instance Connect
+%% Endpoint:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect-Endpoint.html
-%% in the Amazon EC2 User Guide.
+%% in the
+%% Amazon EC2 User Guide.
 -spec create_instance_connect_endpoint(aws_client:aws_client(), create_instance_connect_endpoint_request()) ->
     {ok, create_instance_connect_endpoint_result(), tuple()} |
     {error, any()}.
@@ -26698,8 +26718,8 @@ describe_capacity_block_extension_history(Client, Input, Options)
     request(Client, <<"DescribeCapacityBlockExtensionHistory">>, Input, Options).
 
 %% @doc Describes Capacity Block extension offerings available for purchase
-%% in the Amazon Web Services Region
-%% that you're currently using.
+%% in the Amazon Web Services
+%% Region that you're currently using.
 -spec describe_capacity_block_extension_offerings(aws_client:aws_client(), describe_capacity_block_extension_offerings_request()) ->
     {ok, describe_capacity_block_extension_offerings_result(), tuple()} |
     {error, any()}.
@@ -33419,38 +33439,40 @@ modify_availability_zone_group(Client, Input, Options)
     request(Client, <<"ModifyAvailabilityZoneGroup">>, Input, Options).
 
 %% @doc Modifies a Capacity Reservation's capacity, instance eligibility,
-%% and the conditions under
-%% which it is to be released.
+%% and the conditions
+%% under which it is to be released.
 %%
-%% You can't modify a Capacity Reservation's instance type, EBS
-%% optimization, platform, instance store settings, Availability Zone, or
-%% tenancy. If you need
-%% to modify any of these attributes, we recommend that you cancel the
-%% Capacity Reservation,
-%% and then create a new one with the required attributes. For more
-%% information, see
-%%
-%% Modify an active Capacity Reservation:
+%% You can't modify a Capacity Reservation's instance
+%% type, EBS optimization, platform, instance store settings, Availability
+%% Zone, or
+%% tenancy. If you need to modify any of these attributes, we recommend that
+%% you cancel the
+%% Capacity Reservation, and then create a new one with the required
+%% attributes. For more
+%% information, see Modify an active
+%% Capacity Reservation:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html.
 %%
 %% The allowed modifications depend on the state of the Capacity Reservation:
 %%
-%% `assessing' or `scheduled' state - You can modify the tags only.
+%% `assessing' or `scheduled' state - You can modify the
+%% tags only.
 %%
 %% `pending' state - You can't modify the Capacity Reservation in any
 %% way.
 %%
 %% `active' state but still within the commitment duration - You
-%% can't decrease the instance
-%% count or set an end date that is within the commitment duration. All other
-%% modifications are allowed.
+%% can't
+%% decrease the instance count or set an end date that is within the
+%% commitment
+%% duration. All other modifications are allowed.
 %%
 %% `active' state with no commitment duration or elapsed commitment
-%% duration - All modifications
-%% are allowed.
+%% duration - All modifications are allowed.
 %%
-%% `expired', `cancelled', `unsupported', or `failed' state -
-%% You can't modify the Capacity Reservation in any way.
+%% `expired', `cancelled', `unsupported', or
+%% `failed' state - You can't modify the Capacity Reservation in any
+%% way.
 -spec modify_capacity_reservation(aws_client:aws_client(), modify_capacity_reservation_request()) ->
     {ok, modify_capacity_reservation_result(), tuple()} |
     {error, any()}.
@@ -36870,7 +36892,8 @@ send_diagnostic_interrupt(Client, Input, Options)
 %% report
 %% generation request is made, and it must have an appropriate bucket policy.
 %% For a
-%% sample S3 policy, see Sample Amazon S3 policy under .
+%% sample S3 policy, see Sample Amazon S3 policy under Examples:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartDeclarativePoliciesReport.html#API_StartDeclarativePoliciesReport_Examples.
 %%
 %% Trusted access must be enabled for the service for which the declarative
 %% policy will enforce a baseline configuration. If you use the Amazon Web
@@ -37018,15 +37041,15 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 
 %% @doc Stops an Amazon EBS-backed instance.
 %%
-%% For more information, see Stop and start
-%% Amazon EC2 instances:
+%% You can restart your instance at any time using
+%% the StartInstances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html
+%% API. For more information, see Stop and start Amazon EC2
+%% instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html in the
-%% Amazon EC2 User
-%% Guide.
+%% Amazon EC2 User Guide.
 %%
-%% When you stop an instance, we shut it down. You can restart your instance
-%% at any
-%% time.
+%% When you stop an instance, we shut it down.
 %%
 %% You can use the Stop operation together with the Hibernate parameter to
 %% hibernate an

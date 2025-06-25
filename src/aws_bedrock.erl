@@ -11,6 +11,8 @@
          create_custom_model/3,
          create_evaluation_job/2,
          create_evaluation_job/3,
+         create_foundation_model_agreement/2,
+         create_foundation_model_agreement/3,
          create_guardrail/2,
          create_guardrail/3,
          create_guardrail_version/3,
@@ -33,6 +35,8 @@
          create_provisioned_model_throughput/3,
          delete_custom_model/3,
          delete_custom_model/4,
+         delete_foundation_model_agreement/2,
+         delete_foundation_model_agreement/3,
          delete_guardrail/3,
          delete_guardrail/4,
          delete_imported_model/3,
@@ -58,6 +62,9 @@
          get_foundation_model/2,
          get_foundation_model/4,
          get_foundation_model/5,
+         get_foundation_model_availability/2,
+         get_foundation_model_availability/4,
+         get_foundation_model_availability/5,
          get_guardrail/2,
          get_guardrail/4,
          get_guardrail/5,
@@ -91,12 +98,18 @@
          get_provisioned_model_throughput/2,
          get_provisioned_model_throughput/4,
          get_provisioned_model_throughput/5,
+         get_use_case_for_model_access/1,
+         get_use_case_for_model_access/3,
+         get_use_case_for_model_access/4,
          list_custom_models/1,
          list_custom_models/3,
          list_custom_models/4,
          list_evaluation_jobs/1,
          list_evaluation_jobs/3,
          list_evaluation_jobs/4,
+         list_foundation_model_agreement_offers/2,
+         list_foundation_model_agreement_offers/4,
+         list_foundation_model_agreement_offers/5,
          list_foundation_models/1,
          list_foundation_models/3,
          list_foundation_models/4,
@@ -134,6 +147,8 @@
          list_tags_for_resource/3,
          put_model_invocation_logging_configuration/2,
          put_model_invocation_logging_configuration/3,
+         put_use_case_for_model_access/2,
+         put_use_case_for_model_access/3,
          register_marketplace_model_endpoint/3,
          register_marketplace_model_endpoint/4,
          stop_evaluation_job/3,
@@ -320,9 +335,22 @@
 %% }
 -type batch_delete_evaluation_job_error() :: #{binary() => any()}.
 
+
+%% Example:
+%% offer() :: #{
+%%   <<"offerId">> => string(),
+%%   <<"offerToken">> => string(),
+%%   <<"termDetails">> => term_details()
+%% }
+-type offer() :: #{binary() => any()}.
+
 %% Example:
 %% get_evaluation_job_request() :: #{}
 -type get_evaluation_job_request() :: #{}.
+
+%% Example:
+%% get_foundation_model_availability_request() :: #{}
+-type get_foundation_model_availability_request() :: #{}.
 
 %% Example:
 %% stop_evaluation_job_response() :: #{}
@@ -636,6 +664,14 @@
 
 
 %% Example:
+%% list_foundation_model_agreement_offers_response() :: #{
+%%   <<"modelId">> => string(),
+%%   <<"offers">> => list(offer()())
+%% }
+-type list_foundation_model_agreement_offers_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_provisioned_model_throughputs_request() :: #{
 %%   <<"creationTimeAfter">> => non_neg_integer(),
 %%   <<"creationTimeBefore">> => non_neg_integer(),
@@ -648,6 +684,13 @@
 %%   <<"statusEquals">> => list(any())
 %% }
 -type list_provisioned_model_throughputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pricing_term() :: #{
+%%   <<"rateCard">> => list(dimensional_price_rate()())
+%% }
+-type pricing_term() :: #{binary() => any()}.
 
 
 %% Example:
@@ -706,6 +749,21 @@
 %% Example:
 %% get_prompt_router_request() :: #{}
 -type get_prompt_router_request() :: #{}.
+
+
+%% Example:
+%% agreement_availability() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type agreement_availability() :: #{binary() => any()}.
+
+
+%% Example:
+%% support_term() :: #{
+%%   <<"refundPolicyDescription">> => [string()]
+%% }
+-type support_term() :: #{binary() => any()}.
 
 
 %% Example:
@@ -955,6 +1013,13 @@
 %%   <<"modelIdentifier">> => string()
 %% }
 -type bedrock_evaluator_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_use_case_for_model_access_response() :: #{
+%%   <<"formData">> => binary()
+%% }
+-type get_use_case_for_model_access_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1281,6 +1346,13 @@
 
 
 %% Example:
+%% delete_foundation_model_agreement_request() :: #{
+%%   <<"modelId">> := string()
+%% }
+-type delete_foundation_model_agreement_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% teacher_model_config() :: #{
 %%   <<"maxResponseLengthForInference">> => [integer()],
 %%   <<"teacherModelIdentifier">> => string()
@@ -1406,6 +1478,10 @@
 %% }
 -type training_metrics() :: #{binary() => any()}.
 
+%% Example:
+%% put_use_case_for_model_access_response() :: #{}
+-type put_use_case_for_model_access_response() :: #{}.
+
 
 %% Example:
 %% update_guardrail_request() :: #{
@@ -1467,6 +1543,13 @@
 %%   <<"identifier">> => string()
 %% }
 -type byte_content_doc() :: #{binary() => any()}.
+
+
+%% Example:
+%% legal_term() :: #{
+%%   <<"url">> => [string()]
+%% }
+-type legal_term() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1600,6 +1683,13 @@
 
 
 %% Example:
+%% put_use_case_for_model_access_request() :: #{
+%%   <<"formData">> := binary()
+%% }
+-type put_use_case_for_model_access_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_rag_config_summary() :: #{
 %%   <<"bedrockKnowledgeBaseIdentifiers">> => list(string()()),
 %%   <<"precomputedRagSourceIdentifiers">> => list(string()())
@@ -1616,6 +1706,13 @@
 %%   <<"teacherModelConfig">> => teacher_model_config()
 %% }
 -type distillation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_foundation_model_agreement_offers_request() :: #{
+%%   <<"offerType">> => list(any())
+%% }
+-type list_foundation_model_agreement_offers_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1698,6 +1795,14 @@
 
 
 %% Example:
+%% create_foundation_model_agreement_request() :: #{
+%%   <<"modelId">> := string(),
+%%   <<"offerToken">> := string()
+%% }
+-type create_foundation_model_agreement_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_model_customization_jobs_response() :: #{
 %%   <<"modelCustomizationJobSummaries">> => list(model_customization_job_summary()()),
 %%   <<"nextToken">> => string()
@@ -1710,6 +1815,17 @@
 %%   <<"modelSummaries">> => list(foundation_model_summary()())
 %% }
 -type list_foundation_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_foundation_model_availability_response() :: #{
+%%   <<"agreementAvailability">> => agreement_availability(),
+%%   <<"authorizationStatus">> => list(any()),
+%%   <<"entitlementAvailability">> => list(any()),
+%%   <<"modelId">> => string(),
+%%   <<"regionAvailability">> => list(any())
+%% }
+-type get_foundation_model_availability_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1782,6 +1898,10 @@
 %%   <<"promptTemplate">> => prompt_template()
 %% }
 -type generation_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_use_case_for_model_access_request() :: #{}
+-type get_use_case_for_model_access_request() :: #{}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -2095,6 +2215,33 @@
 %% }
 -type list_guardrails_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% term_details() :: #{
+%%   <<"legalTerm">> => legal_term(),
+%%   <<"supportTerm">> => support_term(),
+%%   <<"usageBasedPricingTerm">> => pricing_term(),
+%%   <<"validityTerm">> => validity_term()
+%% }
+-type term_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% validity_term() :: #{
+%%   <<"agreementDuration">> => [string()]
+%% }
+-type validity_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% dimensional_price_rate() :: #{
+%%   <<"description">> => [string()],
+%%   <<"dimension">> => [string()],
+%%   <<"price">> => [string()],
+%%   <<"unit">> => [string()]
+%% }
+-type dimensional_price_rate() :: #{binary() => any()}.
+
 %% Example:
 %% put_model_invocation_logging_configuration_response() :: #{}
 -type put_model_invocation_logging_configuration_response() :: #{}.
@@ -2106,6 +2253,13 @@
 %%   <<"guardrailVersion">> => [string()]
 %% }
 -type guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_foundation_model_agreement_response() :: #{
+%%   <<"modelId">> => string()
+%% }
+-type create_foundation_model_agreement_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2329,6 +2483,10 @@
 %% delete_marketplace_model_endpoint_request() :: #{}
 -type delete_marketplace_model_endpoint_request() :: #{}.
 
+%% Example:
+%% delete_foundation_model_agreement_response() :: #{}
+-type delete_foundation_model_agreement_response() :: #{}.
+
 
 %% Example:
 %% get_model_invocation_job_response() :: #{
@@ -2389,6 +2547,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_foundation_model_agreement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2492,6 +2658,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_foundation_model_agreement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_guardrail_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2566,6 +2740,13 @@
     resource_not_found_exception().
 
 -type get_foundation_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_foundation_model_availability_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2647,6 +2828,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_use_case_for_model_access_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_custom_models_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2658,6 +2845,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_foundation_model_agreement_offers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_foundation_models_errors() ::
     throttling_exception() | 
@@ -2736,6 +2930,12 @@
     resource_not_found_exception().
 
 -type put_model_invocation_logging_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type put_use_case_for_model_access_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2934,6 +3134,40 @@ create_evaluation_job(Client, Input) ->
 create_evaluation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/evaluation-jobs"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Request a model access agreement for the specified model.
+-spec create_foundation_model_agreement(aws_client:aws_client(), create_foundation_model_agreement_request()) ->
+    {ok, create_foundation_model_agreement_response(), tuple()} |
+    {error, any()} |
+    {error, create_foundation_model_agreement_errors(), tuple()}.
+create_foundation_model_agreement(Client, Input) ->
+    create_foundation_model_agreement(Client, Input, []).
+
+-spec create_foundation_model_agreement(aws_client:aws_client(), create_foundation_model_agreement_request(), proplists:proplist()) ->
+    {ok, create_foundation_model_agreement_response(), tuple()} |
+    {error, any()} |
+    {error, create_foundation_model_agreement_errors(), tuple()}.
+create_foundation_model_agreement(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/create-foundation-model-agreement"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3422,6 +3656,40 @@ delete_custom_model(Client, ModelIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete the model access agreement for the specified model.
+-spec delete_foundation_model_agreement(aws_client:aws_client(), delete_foundation_model_agreement_request()) ->
+    {ok, delete_foundation_model_agreement_response(), tuple()} |
+    {error, any()} |
+    {error, delete_foundation_model_agreement_errors(), tuple()}.
+delete_foundation_model_agreement(Client, Input) ->
+    delete_foundation_model_agreement(Client, Input, []).
+
+-spec delete_foundation_model_agreement(aws_client:aws_client(), delete_foundation_model_agreement_request(), proplists:proplist()) ->
+    {ok, delete_foundation_model_agreement_response(), tuple()} |
+    {error, any()} |
+    {error, delete_foundation_model_agreement_errors(), tuple()}.
+delete_foundation_model_agreement(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-foundation-model-agreement"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a guardrail.
 %%
 %% To delete a guardrail, only specify the ARN of the guardrail in the
@@ -3829,6 +4097,43 @@ get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap)
 get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/foundation-models/", aws_util:encode_uri(ModelIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get information about the Foundation model availability.
+-spec get_foundation_model_availability(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_foundation_model_availability_response(), tuple()} |
+    {error, any()} |
+    {error, get_foundation_model_availability_errors(), tuple()}.
+get_foundation_model_availability(Client, ModelId)
+  when is_map(Client) ->
+    get_foundation_model_availability(Client, ModelId, #{}, #{}).
+
+-spec get_foundation_model_availability(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_foundation_model_availability_response(), tuple()} |
+    {error, any()} |
+    {error, get_foundation_model_availability_errors(), tuple()}.
+get_foundation_model_availability(Client, ModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_foundation_model_availability(Client, ModelId, QueryMap, HeadersMap, []).
+
+-spec get_foundation_model_availability(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_foundation_model_availability_response(), tuple()} |
+    {error, any()} |
+    {error, get_foundation_model_availability_errors(), tuple()}.
+get_foundation_model_availability(Client, ModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/foundation-model-availability/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4287,6 +4592,43 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get usecase for model access.
+-spec get_use_case_for_model_access(aws_client:aws_client()) ->
+    {ok, get_use_case_for_model_access_response(), tuple()} |
+    {error, any()} |
+    {error, get_use_case_for_model_access_errors(), tuple()}.
+get_use_case_for_model_access(Client)
+  when is_map(Client) ->
+    get_use_case_for_model_access(Client, #{}, #{}).
+
+-spec get_use_case_for_model_access(aws_client:aws_client(), map(), map()) ->
+    {ok, get_use_case_for_model_access_response(), tuple()} |
+    {error, any()} |
+    {error, get_use_case_for_model_access_errors(), tuple()}.
+get_use_case_for_model_access(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_use_case_for_model_access(Client, QueryMap, HeadersMap, []).
+
+-spec get_use_case_for_model_access(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_use_case_for_model_access_response(), tuple()} |
+    {error, any()} |
+    {error, get_use_case_for_model_access_errors(), tuple()}.
+get_use_case_for_model_access(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/use-case-for-model-access"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of the custom models that you have created with the
 %% `CreateModelCustomizationJob' operation.
 %%
@@ -4388,6 +4730,47 @@ list_evaluation_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
         {<<"statusEquals">>, maps:get(<<"statusEquals">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the offers associated with the specified model.
+-spec list_foundation_model_agreement_offers(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_foundation_model_agreement_offers_response(), tuple()} |
+    {error, any()} |
+    {error, list_foundation_model_agreement_offers_errors(), tuple()}.
+list_foundation_model_agreement_offers(Client, ModelId)
+  when is_map(Client) ->
+    list_foundation_model_agreement_offers(Client, ModelId, #{}, #{}).
+
+-spec list_foundation_model_agreement_offers(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_foundation_model_agreement_offers_response(), tuple()} |
+    {error, any()} |
+    {error, list_foundation_model_agreement_offers_errors(), tuple()}.
+list_foundation_model_agreement_offers(Client, ModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_foundation_model_agreement_offers(Client, ModelId, QueryMap, HeadersMap, []).
+
+-spec list_foundation_model_agreement_offers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_foundation_model_agreement_offers_response(), tuple()} |
+    {error, any()} |
+    {error, list_foundation_model_agreement_offers_errors(), tuple()}.
+list_foundation_model_agreement_offers(Client, ModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/list-foundation-model-agreement-offers/", aws_util:encode_uri(ModelId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"offerType">>, maps:get(<<"offerType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -5008,6 +5391,40 @@ put_model_invocation_logging_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging/modelinvocations"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Put usecase for model access.
+-spec put_use_case_for_model_access(aws_client:aws_client(), put_use_case_for_model_access_request()) ->
+    {ok, put_use_case_for_model_access_response(), tuple()} |
+    {error, any()} |
+    {error, put_use_case_for_model_access_errors(), tuple()}.
+put_use_case_for_model_access(Client, Input) ->
+    put_use_case_for_model_access(Client, Input, []).
+
+-spec put_use_case_for_model_access(aws_client:aws_client(), put_use_case_for_model_access_request(), proplists:proplist()) ->
+    {ok, put_use_case_for_model_access_response(), tuple()} |
+    {error, any()} |
+    {error, put_use_case_for_model_access_errors(), tuple()}.
+put_use_case_for_model_access(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/use-case-for-model-access"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

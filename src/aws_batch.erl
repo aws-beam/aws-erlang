@@ -1232,6 +1232,7 @@
 %%   <<"launchTemplateId">> => string(),
 %%   <<"launchTemplateName">> => string(),
 %%   <<"targetInstanceTypes">> => list(string()()),
+%%   <<"userdataType">> => list(any()),
 %%   <<"version">> => string()
 %% }
 -type launch_template_specification_override() :: #{binary() => any()}.
@@ -1368,6 +1369,7 @@
 %%   <<"launchTemplateId">> => string(),
 %%   <<"launchTemplateName">> => string(),
 %%   <<"overrides">> => list(launch_template_specification_override()()),
+%%   <<"userdataType">> => list(any()),
 %%   <<"version">> => string()
 %% }
 -type launch_template_specification() :: #{binary() => any()}.

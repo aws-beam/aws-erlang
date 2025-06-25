@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon GameLift provides solutions for hosting session-based
+%% @doc Amazon GameLift Servers provides solutions for hosting session-based
 %% multiplayer game servers in the
 %% cloud, including tools for deploying, operating, and scaling game servers.
 %%
@@ -12,14 +12,14 @@
 %% resource usage to
 %% meet player demand.
 %%
-%% About Amazon GameLift solutions
+%% About Amazon GameLift Servers solutions
 %%
-%% Get more information on these Amazon GameLift solutions in the Amazon
-%% GameLift Developer Guide:
+%% Get more information on these Amazon GameLift Servers solutions in the
+%% Amazon GameLift Servers Developer Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/.
 %%
-%% Amazon GameLift managed hosting -- Amazon GameLift offers a fully managed
-%% service to set up
+%% Amazon GameLift Servers managed hosting -- Amazon GameLift Servers offers
+%% a fully managed service to set up
 %% and maintain computing machines for hosting, manage game session and
 %% player
 %% session life cycle, and handle security, storage, and performance
@@ -29,45 +29,46 @@
 %% configure your game session management to minimize player latency, and add
 %% FlexMatch for matchmaking.
 %%
-%% Managed hosting with Amazon GameLift Realtime -- With Amazon GameLift
-%% Amazon GameLift Realtime, you can quickly configure
-%% and set up ready-to-go game servers for your game. Amazon GameLift
+%% Managed hosting with Amazon GameLift Servers Realtime -- With Amazon
+%% GameLift Servers Amazon GameLift Servers Realtime, you can quickly
+%% configure
+%% and set up ready-to-go game servers for your game. Amazon GameLift Servers
 %% Realtime provides a game server
-%% framework with core Amazon GameLift infrastructure already built in. Then
-%% use the full
-%% range of Amazon GameLift managed hosting features, including FlexMatch,
-%% for your
+%% framework with core Amazon GameLift Servers infrastructure already built
+%% in. Then use the full
+%% range of Amazon GameLift Servers managed hosting features, including
+%% FlexMatch, for your
 %% game.
 %%
-%% Amazon GameLift FleetIQ -- Use Amazon GameLift FleetIQ as a standalone
-%% service while hosting your games using EC2
-%% instances and Auto Scaling groups. Amazon GameLift FleetIQ provides
-%% optimizations for game
+%% Amazon GameLift Servers FleetIQ -- Use Amazon GameLift Servers FleetIQ as
+%% a standalone service while hosting your games using EC2
+%% instances and Auto Scaling groups. Amazon GameLift Servers FleetIQ
+%% provides optimizations for game
 %% hosting, including boosting the viability of low-cost Spot Instances
 %% gaming. For
-%% a complete solution, pair the Amazon GameLift FleetIQ and FlexMatch
-%% standalone services.
+%% a complete solution, pair the Amazon GameLift Servers FleetIQ and
+%% FlexMatch standalone services.
 %%
-%% Amazon GameLift FlexMatch -- Add matchmaking to your game hosting
+%% Amazon GameLift Servers FlexMatch -- Add matchmaking to your game hosting
 %% solution. FlexMatch is a
 %% customizable matchmaking service for multiplayer games. Use FlexMatch as
-%% integrated with Amazon GameLift managed hosting or incorporate FlexMatch
-%% as a standalone
+%% integrated with Amazon GameLift Servers managed hosting or incorporate
+%% FlexMatch as a standalone
 %% service into your own hosting solution.
 %%
 %% About this API Reference
 %%
 %% This reference guide describes the low-level service API for Amazon
-%% GameLift. With each topic
+%% GameLift Servers. With each topic
 %% in this guide, you can find links to language-specific SDK guides and the
 %% Amazon Web Services CLI
 %% reference. Useful links:
 %%
-%% Amazon GameLift API
+%% Amazon GameLift Servers API
 %% operations listed by tasks:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html
 %%
-%% Amazon GameLift tools
+%% Amazon GameLift Servers tools
 %% and resources:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-components.html
 -module(aws_gamelift).
@@ -812,6 +813,12 @@
 %%   <<"RuleSetName">> => string()
 %% }
 -type matchmaking_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% ping_beacon() :: #{
+%%   <<"UDPEndpoint">> => u_d_p_endpoint()
+%% }
+-type ping_beacon() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_peering_authorizations_output() :: #{
@@ -2134,7 +2141,8 @@
 %% Example:
 %% location_model() :: #{
 %%   <<"LocationArn">> => string(),
-%%   <<"LocationName">> => string()
+%%   <<"LocationName">> => string(),
+%%   <<"PingBeacon">> => ping_beacon()
 %% }
 -type location_model() :: #{binary() => any()}.
 
@@ -2165,6 +2173,13 @@
 %%   <<"GameServer">> => game_server()
 %% }
 -type describe_game_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% u_d_p_endpoint() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type u_d_p_endpoint() :: #{binary() => any()}.
 
 %% Example:
 %% create_vpc_peering_authorization_input() :: #{
@@ -3888,8 +3903,8 @@
 %%
 %% To register acceptance, specify the ticket ID, one or more players, and an
 %% acceptance response.
-%% When all players have accepted, Amazon GameLift advances the matchmaking
-%% tickets to status
+%% When all players have accepted, Amazon GameLift Servers advances the
+%% matchmaking tickets to status
 %% `PLACING', and attempts to create a new game session for the match.
 %%
 %% If any player rejects the match, or if acceptances are not received before
@@ -3929,15 +3944,15 @@ accept_match(Client, Input, Options)
     request(Client, <<"AcceptMatch">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Locates an available game server and
 %% temporarily reserves it to host gameplay and players. This operation is
 %% called from a
 %% game client or client service (such as a matchmaker) to request hosting
 %% resources for a
-%% new game session. In response, Amazon GameLift FleetIQ locates an
+%% new game session. In response, Amazon GameLift Servers FleetIQ locates an
 %% available game server, places it in
 %% `CLAIMED' status for 60 seconds, and returns connection information
 %% that
@@ -3945,7 +3960,7 @@ accept_match(Client, Input, Options)
 %%
 %% To claim a game server, identify a game server group. You can also specify
 %% a game
-%% server ID, although this approach bypasses Amazon GameLift FleetIQ
+%% server ID, although this approach bypasses Amazon GameLift Servers FleetIQ
 %% placement optimization. Optionally,
 %% include game data to pass to the game server at the start of a game
 %% session, such as a
@@ -3983,7 +3998,7 @@ accept_match(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec claim_game_server(aws_client:aws_client(), claim_game_server_input()) ->
@@ -4011,8 +4026,8 @@ claim_game_server(Client, Input, Options)
 %% updating your game
 %% build.
 %%
-%% Amazon GameLift supports two types of routing strategies for aliases:
-%% simple and terminal. A
+%% Amazon GameLift Servers supports two types of routing strategies for
+%% aliases: simple and terminal. A
 %% simple alias points to an active fleet. A terminal alias is used to
 %% display messaging or
 %% link to a URL instead of routing players to an active fleet. For example,
@@ -4050,19 +4065,19 @@ create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
 
-%% @doc Creates a new Amazon GameLift build resource for your game server
-%% binary files.
+%% @doc Creates a new Amazon GameLift Servers build resource for your game
+%% server binary files.
 %%
 %% Combine game
-%% server binaries into a zip file for use with Amazon GameLift.
+%% server binaries into a zip file for use with Amazon GameLift Servers.
 %%
-%% When setting up a new game build for Amazon GameLift, we recommend using
-%% the CLI command
+%% When setting up a new game build for Amazon GameLift Servers, we recommend
+%% using the CLI command
 %% upload-build:
 %% https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html
 %% . This helper command combines two tasks: (1) it
 %% uploads your build files from a file directory to an Amazon GameLift
-%% Amazon S3 location, and (2)
+%% Servers Amazon S3 location, and (2)
 %% it creates a new build resource.
 %%
 %% You can use the `CreateBuild' operation in the following scenarios:
@@ -4070,13 +4085,13 @@ create_alias(Client, Input, Options)
 %% Create a new game build with build files that are in an Amazon S3 location
 %% under an
 %% Amazon Web Services account that you control. To use this option, you give
-%% Amazon GameLift access to
+%% Amazon GameLift Servers access to
 %% the Amazon S3 bucket. With permissions in place, specify a build name,
 %% operating
 %% system, and the Amazon S3 storage location of your game build.
 %%
-%% Upload your build files to a Amazon GameLift Amazon S3 location. To use
-%% this option,
+%% Upload your build files to a Amazon GameLift Servers Amazon S3 location.
+%% To use this option,
 %% specify a build name and operating system. This operation creates a new
 %% build
 %% resource and also returns an Amazon S3 location with temporary access
@@ -4086,7 +4101,7 @@ create_alias(Client, Input, Options)
 %% location. For more information, see Uploading Objects:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html in
 %% the Amazon S3 Developer Guide. After you upload build files to
-%% the Amazon GameLift Amazon S3 location, you can't update them.
+%% the Amazon GameLift Servers Amazon S3 location, you can't update them.
 %%
 %% If successful, this operation creates a new build resource with a unique
 %% build ID and
@@ -4128,7 +4143,7 @@ create_build(Client, Input, Options)
 %% each
 %% fleet instance and configure fleet settings. You can create a container
 %% fleet in any
-%% Amazon Web Services Regions that Amazon GameLift supports for
+%% Amazon Web Services Regions that Amazon GameLift Servers supports for
 %% multi-location fleets. A container fleet can be
 %% deployed to a single location or multiple locations. Container fleets are
 %% deployed with
@@ -4139,7 +4154,7 @@ create_build(Client, Input, Options)
 %% fleet can have one of the following container group types:
 %%
 %% The game server container group runs your game server build and dependent
-%% software. Amazon GameLift
+%% software. Amazon GameLift Servers
 %% deploys one or more replicas of this container group to each fleet
 %% instance. The
 %% number of replicas depends on the computing capabilities of the fleet
@@ -4229,16 +4244,17 @@ create_container_fleet(Client, Input, Options)
 
 %% @doc Creates a `ContainerGroupDefinition' that describes a set of
 %% containers for
-%% hosting your game server with Amazon GameLift managed containers hosting.
+%% hosting your game server with Amazon GameLift Servers managed containers
+%% hosting.
 %%
-%% An Amazon GameLift container group
+%% An Amazon GameLift Servers container group
 %% is similar to a container task or pod. Use container group definitions
 %% when you create a
 %% container fleet with CreateContainerFleet:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateContainerFleet.html.
 %%
-%% A container group definition determines how Amazon GameLift deploys your
-%% containers to each
+%% A container group definition determines how Amazon GameLift Servers
+%% deploys your containers to each
 %% instance in a container fleet. You can maintain multiple versions of a
 %% container group
 %% definition.
@@ -4284,7 +4300,7 @@ create_container_fleet(Client, Input, Options)
 %% This operation requires Identity and Access Management (IAM) permissions
 %% to access container images in
 %% Amazon ECR repositories. See IAM permissions
-%% for Amazon GameLift:
+%% for Amazon GameLift Servers:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-iam-policy-examples.html
 %% for help setting the appropriate permissions.
 %%
@@ -4371,8 +4387,8 @@ create_container_group_definition(Client, Input, Options)
 %%
 %% An EC2 fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2)
 %% instances. Your game server build is
-%% deployed to each fleet instance. Amazon GameLift manages the fleet's
-%% instances and controls the
+%% deployed to each fleet instance. Amazon GameLift Servers manages the
+%% fleet's instances and controls the
 %% lifecycle of game server processes, which host game sessions for players.
 %% EC2 fleets can
 %% have instances in multiple locations. Each instance in the fleet is
@@ -4398,8 +4414,8 @@ create_container_group_definition(Client, Input, Options)
 %%
 %% If successful, this operation creates a new fleet resource and places it
 %% in
-%% `NEW' status while Amazon GameLift initiates the fleet creation
-%% workflow:
+%% `NEW' status while Amazon GameLift Servers initiates the fleet
+%% creation workflow:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-all.html#fleets-creation-workflow.
 %% To debug your fleet, fetch logs, view performance
 %% metrics or other actions on the fleet, create a development fleet with
@@ -4416,8 +4432,8 @@ create_container_group_definition(Client, Input, Options)
 %%
 %% An Anywhere fleet represents compute resources that are not owned or
 %% managed by
-%% Amazon GameLift. You might create an Anywhere fleet with your local
-%% machine for testing, or use
+%% Amazon GameLift Servers. You might create an Anywhere fleet with your
+%% local machine for testing, or use
 %% one to host game servers with on-premises hardware or other game hosting
 %% solutions.
 %%
@@ -4481,8 +4497,8 @@ create_fleet(Client, Input, Options)
 %%
 %% If successful, this operation returns the list of added locations with
 %% their status
-%% set to `NEW'. Amazon GameLift initiates the process of starting an
-%% instance in each
+%% set to `NEW'. Amazon GameLift Servers initiates the process of
+%% starting an instance in each
 %% added location. You can track the status of each new location by
 %% monitoring location
 %% creation events using DescribeFleetEvents:
@@ -4497,7 +4513,7 @@ create_fleet(Client, Input, Options)
 %% Update fleet locations:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-editing.html#fleets-update-locations
 %%
-%% Amazon GameLift service locations:
+%% Amazon GameLift Servers service locations:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
 %% for managed hosting.
 -spec create_fleet_locations(aws_client:aws_client(), create_fleet_locations_input()) ->
@@ -4517,18 +4533,18 @@ create_fleet_locations(Client, Input, Options)
     request(Client, <<"CreateFleetLocations">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
-%% Creates a Amazon GameLift FleetIQ game server
+%% Creates a Amazon GameLift Servers FleetIQ game server
 %% group for managing game hosting on a collection of Amazon Elastic Compute
 %% Cloud instances for game hosting.
 %% This operation creates the game server group, creates an Auto Scaling
 %% group in your
 %% Amazon Web Services account, and establishes a link between the two
 %% groups. You can view the status of
-%% your game server groups in the Amazon GameLift console. Game server group
-%% metrics and events are
+%% your game server groups in the Amazon GameLift Servers console. Game
+%% server group metrics and events are
 %% emitted to Amazon CloudWatch.
 %%
 %% Before creating a new game server group, you must have the following:
@@ -4542,13 +4558,13 @@ create_fleet_locations(Client, Input, Options)
 %% Amazon Elastic Compute Cloud User Guide.
 %%
 %% An IAM role that extends limited access to your Amazon Web Services
-%% account to allow Amazon GameLift FleetIQ
+%% account to allow Amazon GameLift Servers FleetIQ
 %% to create and interact with the Auto Scaling group. For more information,
 %% see
 %% Create IAM
 %% roles for cross-service interaction:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-iam-permissions-roles.html
-%% in the Amazon GameLift FleetIQ Developer
+%% in the Amazon GameLift Servers FleetIQ Developer
 %% Guide.
 %%
 %% To create a new game server group, specify a unique group name, IAM role
@@ -4558,7 +4574,7 @@ create_fleet_locations(Client, Input, Options)
 %% must also set initial maximum and minimum limits on the group's
 %% instance count. You can
 %% optionally set an Auto Scaling policy with target tracking based on a
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% metric.
 %%
 %% Once the game server group and corresponding Auto Scaling group are
@@ -4571,12 +4587,12 @@ create_fleet_locations(Client, Input, Options)
 %% Auto Scaling
 %% group. Keep in mind that some Auto Scaling group properties are
 %% periodically updated by
-%% Amazon GameLift FleetIQ as part of its balancing activities to optimize
-%% for availability and cost.
+%% Amazon GameLift Servers FleetIQ as part of its balancing activities to
+%% optimize for availability and cost.
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec create_game_server_group(aws_client:aws_client(), create_game_server_group_input()) ->
@@ -4603,7 +4619,7 @@ create_game_server_group(Client, Input, Options)
 %% retrieves
 %% connection information for the new game session. As an alternative,
 %% consider using the
-%% Amazon GameLift game session placement feature with
+%% Amazon GameLift Servers game session placement feature with
 %% StartGameSessionPlacement:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html,
 %% which uses the FleetIQ algorithm and queues to
@@ -4629,8 +4645,8 @@ create_game_server_group(Client, Input, Options)
 %% To create a game session on an instance in an Anywhere fleet, specify the
 %% fleet's custom location.
 %%
-%% If successful, Amazon GameLift initiates a workflow to start a new game
-%% session and returns a
+%% If successful, Amazon GameLift Servers initiates a workflow to start a new
+%% game session and returns a
 %% `GameSession' object containing the game session configuration and
 %% status. When the game session status is `ACTIVE', it is updated with
 %% connection information and you can create player sessions for the game
@@ -4642,12 +4658,12 @@ create_game_server_group(Client, Input, Options)
 %% to change the game session's player session creation
 %% policy.
 %%
-%% Amazon GameLift retains logs for active for 14 days. To access the logs,
-%% call GetGameSessionLogUrl:
+%% Amazon GameLift Servers retains logs for active for 14 days. To access the
+%% logs, call GetGameSessionLogUrl:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_GetGameSessionLogUrl.html
 %% to download the log files.
 %%
-%% Available in Amazon GameLift Local.
+%% Available in Amazon GameLift Servers Local.
 %%
 %% Learn more
 %%
@@ -4682,7 +4698,7 @@ create_game_session(Client, Input, Options)
 %% session.
 %%
 %% A game session queue is configured with a set of destinations (Amazon
-%% GameLift fleets or
+%% GameLift Servers fleets or
 %% aliases) that determine where the queue can place new game sessions. These
 %% destinations
 %% can span multiple Amazon Web Services Regions, can use different instance
@@ -4807,12 +4823,12 @@ create_location(Client, Input, Options)
 %% @doc Defines a new matchmaking configuration for use with FlexMatch.
 %%
 %% Whether your are using
-%% FlexMatch with Amazon GameLift hosting or as a standalone matchmaking
-%% service, the matchmaking
+%% FlexMatch with Amazon GameLift Servers hosting or as a standalone
+%% matchmaking service, the matchmaking
 %% configuration sets out rules for matching players and forming teams. If
 %% you're also
-%% using Amazon GameLift hosting, it defines how to start game sessions for
-%% each match. Your
+%% using Amazon GameLift Servers hosting, it defines how to start game
+%% sessions for each match. Your
 %% matchmaking system can use multiple configurations to handle different
 %% game scenarios.
 %% All matchmaking requests identify the matchmaking configuration to use and
@@ -4821,12 +4837,12 @@ create_location(Client, Input, Options)
 %%
 %% To create a matchmaking configuration, you must provide the following:
 %% configuration
-%% name and FlexMatch mode (with or without Amazon GameLift hosting); a rule
-%% set that specifies how
+%% name and FlexMatch mode (with or without Amazon GameLift Servers hosting);
+%% a rule set that specifies how
 %% to evaluate players and find acceptable matches; whether player acceptance
 %% is required;
 %% and the maximum time allowed for a matchmaking attempt. When using
-%% FlexMatch with Amazon GameLift
+%% FlexMatch with Amazon GameLift Servers
 %% hosting, you also need to identify the game session queue to use when
 %% starting a game
 %% session for the match.
@@ -4930,7 +4946,7 @@ create_matchmaking_rule_set(Client, Input, Options)
 %% references the player session ID when sending a connection request to the
 %% game session,
 %% and the game server can use it to validate the player reservation with the
-%% Amazon GameLift
+%% Amazon GameLift Servers
 %% service. Player sessions cannot be updated.
 %%
 %% The maximum number of players per game session is 200. It is not
@@ -4978,7 +4994,7 @@ create_player_session(Client, Input, Options)
 %% the game
 %% session, and the game server can use it to validate the player reservation
 %% with the
-%% Amazon GameLift service. Player sessions cannot be updated.
+%% Amazon GameLift Servers service. Player sessions cannot be updated.
 %%
 %% The maximum number of players per game session is 200. It is not
 %% adjustable.
@@ -5003,13 +5019,14 @@ create_player_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlayerSessions">>, Input, Options).
 
-%% @doc Creates a new script record for your Amazon GameLift Realtime script.
+%% @doc Creates a new script record for your Amazon GameLift Servers Realtime
+%% script.
 %%
 %% Realtime scripts are JavaScript that
 %% provide configuration settings and optional custom game logic for your
 %% game. The script
-%% is deployed when you create a Amazon GameLift Realtime fleet to host your
-%% game sessions. Script logic is
+%% is deployed when you create a Amazon GameLift Servers Realtime fleet to
+%% host your game sessions. Script logic is
 %% executed during an active game session.
 %%
 %% To create a new script record, specify a script name and provide the
@@ -5025,25 +5042,25 @@ create_player_sessions(Client, Input, Options)
 %% Services account. Use the
 %% StorageLocation parameter for this option. You'll need
 %% to have an Identity Access Management (IAM) role that allows the Amazon
-%% GameLift service
+%% GameLift Servers service
 %% to access your S3 bucket.
 %%
 %% If the call is successful, a new script record is created with a unique
 %% script ID. If
 %% the script file is provided as a local file, the file is uploaded to an
-%% Amazon GameLift-owned S3
+%% Amazon GameLift Servers-owned S3
 %% bucket and the script record's storage location reflects this
 %% location. If the script
-%% file is provided as an S3 bucket, Amazon GameLift accesses the file at
-%% this storage location as
+%% file is provided as an S3 bucket, Amazon GameLift Servers accesses the
+%% file at this storage location as
 %% needed for deployment.
 %%
 %% Learn more
 %%
-%% Amazon GameLift Amazon GameLift Realtime:
+%% Amazon GameLift Servers Amazon GameLift Servers Realtime:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
-%% Set Up a Role for Amazon GameLift Access:
+%% Set Up a Role for Amazon GameLift Servers Access:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html
 %%
 %% Related actions
@@ -5068,8 +5085,8 @@ create_script(Client, Input, Options)
 
 %% @doc Requests authorization to create or delete a peer connection between
 %% the VPC for your
-%% Amazon GameLift fleet and a virtual private cloud (VPC) in your Amazon Web
-%% Services account.
+%% Amazon GameLift Servers fleet and a virtual private cloud (VPC) in your
+%% Amazon Web Services account.
 %%
 %% VPC peering enables the game servers on
 %% your fleet to communicate directly with other Amazon Web Services
@@ -5077,35 +5094,36 @@ create_script(Client, Input, Options)
 %% authorization, use CreateVpcPeeringConnection:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringConnection.html
 %% to establish the peering connection. For more
-%% information, see VPC Peering with Amazon GameLift
+%% information, see VPC Peering with Amazon GameLift Servers
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html.
 %%
 %% You can peer with VPCs that are owned by any Amazon Web Services account
 %% you have access to,
-%% including the account that you use to manage your Amazon GameLift fleets.
-%% You cannot peer with
+%% including the account that you use to manage your Amazon GameLift Servers
+%% fleets. You cannot peer with
 %% VPCs that are in different Regions.
 %%
 %% To request authorization to create a connection, call this operation from
 %% the Amazon Web Services
-%% account with the VPC that you want to peer to your Amazon GameLift fleet.
-%% For example, to enable
+%% account with the VPC that you want to peer to your Amazon GameLift Servers
+%% fleet. For example, to enable
 %% your game servers to retrieve data from a DynamoDB table, use the account
 %% that manages
 %% that DynamoDB resource. Identify the following values: (1) The ID of the
 %% VPC that you
 %% want to peer with, and (2) the ID of the Amazon Web Services account that
-%% you use to manage Amazon GameLift. If
+%% you use to manage Amazon GameLift Servers. If
 %% successful, VPC peering is authorized for the specified VPC.
 %%
 %% To request authorization to delete a connection, call this operation from
 %% the Amazon Web Services
-%% account with the VPC that is peered with your Amazon GameLift fleet.
-%% Identify the following
+%% account with the VPC that is peered with your Amazon GameLift Servers
+%% fleet. Identify the following
 %% values: (1) VPC ID that you want to delete the peering connection for, and
 %% (2) ID of the
-%% Amazon Web Services account that you use to manage Amazon GameLift.
+%% Amazon Web Services account that you use to manage Amazon GameLift
+%% Servers.
 %%
 %% The authorization remains valid for 24 hours unless it is canceled. You
 %% must create or
@@ -5133,16 +5151,16 @@ create_vpc_peering_authorization(Client, Input, Options)
 
 %% @doc Establishes a VPC peering connection between a virtual private cloud
 %% (VPC) in an Amazon Web Services account with the VPC
-%% for your Amazon GameLift fleet.
+%% for your Amazon GameLift Servers fleet.
 %%
 %% VPC peering enables the game servers on your fleet to communicate
 %% directly with other Amazon Web Services resources. You can peer with VPCs
 %% in any Amazon Web Services account that
 %% you have access to, including the account that you use to manage your
-%% Amazon GameLift fleets. You
+%% Amazon GameLift Servers fleets. You
 %% cannot peer with VPCs that are in different Regions. For more information,
 %% see VPC
-%% Peering with Amazon GameLift Fleets:
+%% Peering with Amazon GameLift Servers Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html.
 %%
 %% Before calling this operation to establish the peering connection, you
@@ -5158,8 +5176,8 @@ create_vpc_peering_authorization(Client, Input, Options)
 %%
 %% To establish the connection, call this operation from the Amazon Web
 %% Services account that is used
-%% to manage the Amazon GameLift fleets. Identify the following values: (1)
-%% The ID of the fleet you
+%% to manage the Amazon GameLift Servers fleets. Identify the following
+%% values: (1) The ID of the fleet you
 %% want to be enable a VPC peering connection for; (2) The Amazon Web
 %% Services account with the VPC that
 %% you want to peer with; and (3) The ID of the VPC you want to peer with.
@@ -5268,7 +5286,7 @@ delete_build(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec delete_container_fleet(aws_client:aws_client(), delete_container_fleet_input()) ->
@@ -5308,8 +5326,8 @@ delete_container_fleet(Client, Input, Options)
 %%
 %% Result
 %%
-%% If successful, Amazon GameLift removes the container group definition
-%% versions that you request deletion for.
+%% If successful, Amazon GameLift Servers removes the container group
+%% definition versions that you request deletion for.
 %% This request will fail for any requested versions if the following is
 %% true:
 %%
@@ -5361,7 +5379,7 @@ delete_container_group_definition(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec delete_fleet(aws_client:aws_client(), delete_fleet_input()) ->
@@ -5398,7 +5416,7 @@ delete_fleet(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec delete_fleet_locations(aws_client:aws_client(), delete_fleet_locations_input()) ->
@@ -5418,8 +5436,8 @@ delete_fleet_locations(Client, Input, Options)
     request(Client, <<"DeleteFleetLocations">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Terminates a game server group
 %% and permanently deletes the game server group record. You have several
@@ -5446,16 +5464,16 @@ delete_fleet_locations(Client, Input, Options)
 %% new game
 %% servers from being registered and stops automatic scaling activity. Once
 %% all game
-%% servers in the game server group are deregistered, Amazon GameLift FleetIQ
-%% can begin deleting resources.
+%% servers in the game server group are deregistered, Amazon GameLift Servers
+%% FleetIQ can begin deleting resources.
 %% If any of the delete operations fail, the game server group is placed in
 %% `ERROR' status.
 %%
-%% Amazon GameLift FleetIQ emits delete events to Amazon CloudWatch.
+%% Amazon GameLift Servers FleetIQ emits delete events to Amazon CloudWatch.
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec delete_game_server_group(aws_client:aws_client(), delete_game_server_group_input()) ->
@@ -5573,8 +5591,8 @@ delete_matchmaking_rule_set(Client, Input, Options)
 %% @doc Deletes a fleet scaling policy.
 %%
 %% Once deleted, the policy is no longer in force and
-%% Amazon GameLift removes all record of it. To delete a scaling policy,
-%% specify both the scaling
+%% Amazon GameLift Servers removes all record of it. To delete a scaling
+%% policy, specify both the scaling
 %% policy name and the fleet ID it is associated with.
 %%
 %% To temporarily suspend scaling policies, use StopFleetActions:
@@ -5614,7 +5632,7 @@ delete_scaling_policy(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift Amazon GameLift Realtime:
+%% Amazon GameLift Servers Amazon GameLift Servers Realtime:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
 %% Related actions
@@ -5670,8 +5688,8 @@ delete_vpc_peering_authorization(Client, Input, Options)
 %%
 %% Once a valid authorization exists, call this operation from the Amazon Web
 %% Services account that is
-%% used to manage the Amazon GameLift fleets. Identify the connection to
-%% delete by the connection ID
+%% used to manage the Amazon GameLift Servers fleets. Identify the connection
+%% to delete by the connection ID
 %% and fleet ID. If successful, the connection is removed.
 %%
 %% Related actions
@@ -5697,10 +5715,10 @@ delete_vpc_peering_connection(Client, Input, Options)
 %% @doc Removes a compute resource from an Anywhere fleet.
 %%
 %% Deregistered computes can no longer
-%% host game sessions through Amazon GameLift. Use this operation with an
-%% Anywhere fleet that
-%% doesn't use the Amazon GameLift Agent For Anywhere fleets with the
-%% Agent, the Agent handles all
+%% host game sessions through Amazon GameLift Servers. Use this operation
+%% with an Anywhere fleet that
+%% doesn't use the Amazon GameLift Servers Agent For Anywhere fleets with
+%% the Agent, the Agent handles all
 %% compute registry tasks for you.
 %%
 %% To deregister a compute, call this operation from the compute that's
@@ -5723,8 +5741,8 @@ deregister_compute(Client, Input, Options)
     request(Client, <<"DeregisterCompute">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Removes the game server from a
 %% game server group. As a result of this operation, the deregistered game
@@ -5740,7 +5758,7 @@ deregister_compute(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec deregister_game_server(aws_client:aws_client(), deregister_game_server_input()) ->
@@ -5820,7 +5838,7 @@ describe_build(Client, Input, Options)
     request(Client, <<"DescribeBuild">>, Input, Options).
 
 %% @doc Retrieves properties for a specific compute resource in an Amazon
-%% GameLift fleet.
+%% GameLift Servers fleet.
 %%
 %% You can list
 %% all computes in a fleet by calling ListCompute:
@@ -5964,9 +5982,9 @@ describe_container_group_definition(Client, Input, Options)
 %% returned includes the maximum number of instances allowed and your
 %% account's current
 %% usage across all fleets. This information can affect your ability to scale
-%% your Amazon GameLift
+%% your Amazon GameLift Servers
 %% fleets. You can request a limit increase for your account by using the
-%% Service limits page in the Amazon GameLift console.
+%% Service limits page in the Amazon GameLift Servers console.
 %%
 %% Instance limits differ based on whether the instances are deployed in a
 %% fleet's home
@@ -6016,7 +6034,7 @@ describe_container_group_definition(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets:
+%% Setting up Amazon GameLift Servers fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec describe_ec2_instance_limits(aws_client:aws_client(), describe_ec2_instance_limits_input()) ->
     {ok, describe_ec2_instance_limits_output(), tuple()} |
@@ -6062,7 +6080,7 @@ describe_ec2_instance_limits(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec describe_fleet_attributes(aws_client:aws_client(), describe_fleet_attributes_input()) ->
@@ -6118,7 +6136,7 @@ describe_fleet_attributes(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
@@ -6189,7 +6207,7 @@ describe_fleet_deployment(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec describe_fleet_events(aws_client:aws_client(), describe_fleet_events_input()) ->
@@ -6237,10 +6255,10 @@ describe_fleet_events(Client, Input, Options)
 %% Learn more
 %%
 %% Setting
-%% up Amazon GameLift fleets:
+%% up Amazon GameLift Servers fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% Amazon GameLift service locations:
+%% Amazon GameLift Servers service locations:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
 %% for managed hosting
 -spec describe_fleet_location_attributes(aws_client:aws_client(), describe_fleet_location_attributes_input()) ->
@@ -6281,11 +6299,11 @@ describe_fleet_location_attributes(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% Amazon GameLift service locations:
+%% Amazon GameLift Servers service locations:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
 %% for managed hosting
 %%
@@ -6325,11 +6343,11 @@ describe_fleet_location_capacity(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% Amazon GameLift service locations:
+%% Amazon GameLift Servers service locations:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
 %% for managed hosting
 %%
@@ -6378,7 +6396,7 @@ describe_fleet_location_utilization(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec describe_fleet_port_settings(aws_client:aws_client(), describe_fleet_port_settings_input()) ->
@@ -6434,7 +6452,7 @@ describe_fleet_port_settings(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
@@ -6457,8 +6475,8 @@ describe_fleet_utilization(Client, Input, Options)
     request(Client, <<"DescribeFleetUtilization">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Retrieves information for a
 %% registered game server. Information includes game server status, health
@@ -6471,7 +6489,7 @@ describe_fleet_utilization(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec describe_game_server(aws_client:aws_client(), describe_game_server_input()) ->
@@ -6491,12 +6509,12 @@ describe_game_server(Client, Input, Options)
     request(Client, <<"DescribeGameServer">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Retrieves information on a
 %% game server group. This operation returns only properties related to
-%% Amazon GameLift FleetIQ. To view or
+%% Amazon GameLift Servers FleetIQ. To view or
 %% update properties for the corresponding Auto Scaling group, such as launch
 %% template,
 %% auto scaling policies, and maximum/minimum group size, access the Auto
@@ -6509,7 +6527,7 @@ describe_game_server(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec describe_game_server_group(aws_client:aws_client(), describe_game_server_group_input()) ->
@@ -6529,12 +6547,12 @@ describe_game_server_group(Client, Input, Options)
     request(Client, <<"DescribeGameServerGroup">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Retrieves status
 %% information about the Amazon EC2 instances associated with a Amazon
-%% GameLift FleetIQ game server group.
+%% GameLift Servers FleetIQ game server group.
 %% Use this operation to detect when instances are active or not available to
 %% host new game
 %% servers.
@@ -6559,7 +6577,7 @@ describe_game_server_group(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec describe_game_server_instances(aws_client:aws_client(), describe_game_server_instances_input()) ->
@@ -6741,7 +6759,7 @@ describe_game_session_queues(Client, Input, Options)
 %% be used
 %% for games in development with low game session usage.
 %%
-%% Available in Amazon GameLift Local.
+%% Available in Amazon GameLift Servers Local.
 %%
 %% Learn more
 %%
@@ -6767,7 +6785,7 @@ describe_game_sessions(Client, Input, Options)
     request(Client, <<"DescribeGameSessions">>, Input, Options).
 
 %% @doc Retrieves information about the EC2 instances in an Amazon GameLift
-%% managed fleet, including
+%% Servers managed fleet, including
 %% instance ID, connection data, and status.
 %%
 %% You can use this operation with a
@@ -6962,7 +6980,7 @@ describe_matchmaking_rule_sets(Client, Input, Options)
 %% player ID. You can filter this request by player session status. If you
 %% provide
 %% a specific `PlayerSessionId' or `PlayerId', Amazon GameLift
-%% ignores the filter criteria.
+%% Servers ignores the filter criteria.
 %% Use the pagination parameters to retrieve results as a set of sequential
 %% pages.
 %%
@@ -7012,7 +7030,7 @@ describe_player_sessions(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
@@ -7072,7 +7090,7 @@ describe_scaling_policies(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift Amazon GameLift Realtime:
+%% Amazon GameLift Servers Amazon GameLift Servers Realtime:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
 %% Related actions
@@ -7129,8 +7147,8 @@ describe_vpc_peering_authorizations(Client, Input, Options)
 %%
 %% To retrieve connection information, call this operation from the Amazon
 %% Web Services account that is
-%% used to manage the Amazon GameLift fleets. Specify a fleet ID or leave the
-%% parameter empty to
+%% used to manage the Amazon GameLift Servers fleets. Specify a fleet ID or
+%% leave the parameter empty to
 %% retrieve all connection records. If successful, the retrieved information
 %% includes both
 %% active and pending connections. Active connections identify the IpV4 CIDR
@@ -7158,10 +7176,10 @@ describe_vpc_peering_connections(Client, Input, Options)
     request(Client, <<"DescribeVpcPeeringConnections">>, Input, Options).
 
 %% @doc Requests authorization to remotely connect to a hosting resource in a
-%% Amazon GameLift managed
+%% Amazon GameLift Servers managed
 %% fleet.
 %%
-%% This operation is not used with Amazon GameLift Anywhere fleets.
+%% This operation is not used with Amazon GameLift Servers Anywhere fleets.
 %%
 %% Request options
 %%
@@ -7206,13 +7224,13 @@ get_compute_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComputeAccess">>, Input, Options).
 
-%% @doc Requests an authentication token from Amazon GameLift for a compute
-%% resource in an Amazon GameLift
+%% @doc Requests an authentication token from Amazon GameLift Servers for a
+%% compute resource in an Amazon GameLift Servers
 %% fleet.
 %%
 %% Game servers that are running on the compute use this token to communicate
-%% with the Amazon GameLift service, such as when calling the Amazon GameLift
-%% server SDK action
+%% with the Amazon GameLift Servers service, such as when calling the Amazon
+%% GameLift Servers server SDK action
 %% . Authentication tokens are valid for a limited time span, so
 %% you need to request a fresh token before the current token expires.
 %%
@@ -7224,7 +7242,7 @@ get_compute_access(Client, Input, Options)
 %% fleet instances have access to a valid auth token.
 %%
 %% For Anywhere fleets (compute type `ANYWHERE'), if you're using the
-%% Amazon GameLift Agent, auth token retrieval and refresh is handled
+%% Amazon GameLift Servers Agent, auth token retrieval and refresh is handled
 %% automatically for any
 %% compute where the Agent is running. If you're not using
 %% the Agent, create a mechanism to retrieve and refresh auth tokens for
@@ -7263,9 +7281,10 @@ get_compute_auth_token(Client, Input, Options)
 
 %% @doc Retrieves the location of stored game session logs for a specified
 %% game session on
-%% Amazon GameLift managed fleets.
+%% Amazon GameLift Servers managed fleets.
 %%
-%% When a game session is terminated, Amazon GameLift automatically stores
+%% When a game session is terminated, Amazon GameLift Servers automatically
+%% stores
 %% the logs in Amazon S3 and retains them for 14 days. Use this URL to
 %% download the logs.
 %%
@@ -7294,10 +7313,10 @@ get_game_session_log_url(Client, Input, Options)
     request(Client, <<"GetGameSessionLogUrl">>, Input, Options).
 
 %% @doc Requests authorization to remotely connect to an instance in an
-%% Amazon GameLift managed fleet.
+%% Amazon GameLift Servers managed fleet.
 %%
 %% Use this operation to connect to instances with game servers that use
-%% Amazon GameLift server SDK
+%% Amazon GameLift Servers server SDK
 %% 4.x or earlier. To connect to instances with game servers that use server
 %% SDK 5.x or
 %% later, call
@@ -7422,7 +7441,7 @@ list_builds(Client, Input, Options)
     request(Client, <<"ListBuilds">>, Input, Options).
 
 %% @doc Retrieves information on the compute resources in an Amazon GameLift
-%% fleet.
+%% Servers fleet.
 %%
 %% Use the pagination
 %% parameters to retrieve results in a set of sequential pages.
@@ -7484,8 +7503,8 @@ list_compute(Client, Input, Options)
 %% Get a list of fleets filtered by container group definition. Provide the
 %% container group definition name or ARN value.
 %%
-%% To get a list of all Amazon GameLift Realtime fleets with a specific
-%% configuration script,
+%% To get a list of all Amazon GameLift Servers Realtime fleets with a
+%% specific configuration script,
 %% provide the script ID.
 %%
 %% Use the pagination parameters to retrieve results as a set of sequential
@@ -7660,8 +7679,8 @@ list_fleet_deployments(Client, Input, Options)
 %% provide
 %% the build ID.
 %%
-%% To get a list of all Amazon GameLift Realtime fleets with a specific
-%% configuration script,
+%% To get a list of all Amazon GameLift Servers Realtime fleets with a
+%% specific configuration script,
 %% provide the script ID.
 %%
 %% Use the pagination parameters to retrieve results as a set of sequential
@@ -7708,8 +7727,8 @@ list_game_server_groups(Client, Input, Options)
     request(Client, <<"ListGameServerGroups">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Retrieves information on all game
 %% servers that are currently active in a specified game server group. You
@@ -7720,7 +7739,7 @@ list_game_server_groups(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec list_game_servers(aws_client:aws_client(), list_game_servers_input()) ->
@@ -7739,7 +7758,26 @@ list_game_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGameServers">>, Input, Options).
 
-%% @doc Lists all custom and Amazon Web Services locations.
+%% @doc Lists all custom and Amazon Web Services locations where Amazon
+%% GameLift Servers can host game servers.
+%%
+%% Note that if you call this API using a location that doesn't have a
+%% service endpoint,
+%% such as one that can only be a remote location in a multi-location fleet,
+%% the API
+%% returns an error.
+%%
+%% Consult the table of supported locations in Amazon GameLift Servers
+%% service
+%% locations:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
+%% to identify home Regions that support single and multi-location
+%% fleets.
+%%
+%% Learn more
+%%
+%% Service locations:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html
 -spec list_locations(aws_client:aws_client(), list_locations_input()) ->
     {ok, list_locations_output(), tuple()} |
     {error, any()} |
@@ -7762,7 +7800,7 @@ list_locations(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift Amazon GameLift Realtime:
+%% Amazon GameLift Servers Amazon GameLift Servers Realtime:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
 %% Related actions
@@ -7785,12 +7823,12 @@ list_scripts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListScripts">>, Input, Options).
 
-%% @doc Retrieves all tags assigned to a Amazon GameLift resource.
+%% @doc Retrieves all tags assigned to a Amazon GameLift Servers resource.
 %%
 %% Use resource tags to organize Amazon Web Services
 %% resources for a range of purposes. This operation handles the permissions
 %% necessary to
-%% manage tags for Amazon GameLift resources that support tagging.
+%% manage tags for Amazon GameLift Servers resources that support tagging.
 %%
 %% To list tags for a resource, specify the unique ARN value for the
 %% resource.
@@ -7829,8 +7867,8 @@ list_tags_for_resource(Client, Input, Options)
 %% Scaling policies are used to
 %% automatically scale a fleet's hosting capacity to meet player demand.
 %% An active scaling
-%% policy instructs Amazon GameLift to track a fleet metric and automatically
-%% change the fleet's
+%% policy instructs Amazon GameLift Servers to track a fleet metric and
+%% automatically change the fleet's
 %% capacity when a certain threshold is reached. There are two types of
 %% scaling policies:
 %% target-based and rule-based. Use a target-based policy to quickly and
@@ -7861,18 +7899,18 @@ list_tags_for_resource(Client, Input, Options)
 %% the additional
 %% player demand that the fleet could handle at current capacity. With a
 %% target-based
-%% policy, you set your ideal buffer size and leave it to Amazon GameLift to
-%% take whatever action is
+%% policy, you set your ideal buffer size and leave it to Amazon GameLift
+%% Servers to take whatever action is
 %% needed to maintain that target.
 %%
 %% For example, you might choose to maintain a 10% buffer for a fleet that
 %% has the
 %% capacity to host 100 simultaneous game sessions. This policy tells Amazon
-%% GameLift to take action
+%% GameLift Servers to take action
 %% whenever the fleet's available capacity falls below or rises above 10
 %% game sessions.
-%% Amazon GameLift will start new instances or stop unused instances in order
-%% to return to the 10%
+%% Amazon GameLift Servers will start new instances or stop unused instances
+%% in order to return to the 10%
 %% buffer.
 %%
 %% To create or update a target-based policy, specify a fleet ID and name,
@@ -7945,10 +7983,11 @@ put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
 
-%% @doc Registers a compute resource in an Amazon GameLift Anywhere fleet.
+%% @doc Registers a compute resource in an Amazon GameLift Servers Anywhere
+%% fleet.
 %%
-%% For an Anywhere fleet that's running the Amazon GameLift Agent, the
-%% Agent
+%% For an Anywhere fleet that's running the Amazon GameLift Servers
+%% Agent, the Agent
 %% handles all compute registry tasks for you. For an Anywhere fleet that
 %% doesn't use the
 %% Agent, call this operation to register fleet computes.
@@ -7961,12 +8000,12 @@ put_scaling_policy(Client, Input, Options)
 %% optionally include the path to a TLS certificate on the compute resource.
 %%
 %% If successful, this operation returns compute details, including an Amazon
-%% GameLift SDK
+%% GameLift Servers SDK
 %% endpoint or Agent endpoint. Game server processes running on the compute
 %% can use this
-%% endpoint to communicate with the Amazon GameLift service. Each server
-%% process includes the SDK
-%% endpoint in its call to the Amazon GameLift server SDK action .
+%% endpoint to communicate with the Amazon GameLift Servers service. Each
+%% server process includes the SDK
+%% endpoint in its call to the Amazon GameLift Servers server SDK action .
 %%
 %% To view compute details, call DescribeCompute:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeCompute.html
@@ -8003,16 +8042,16 @@ register_compute(Client, Input, Options)
     request(Client, <<"RegisterCompute">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Creates a new game server
-%% resource and notifies Amazon GameLift FleetIQ that the game server is
-%% ready to host gameplay and players.
+%% resource and notifies Amazon GameLift Servers FleetIQ that the game server
+%% is ready to host gameplay and players.
 %% This operation is called by a game server process that is running on an
 %% instance in a
 %% game server group. Registering game servers enables Amazon GameLift
-%% FleetIQ to track available game
+%% Servers FleetIQ to track available game
 %% servers and enables game clients and services to claim a game server for a
 %% new game
 %% session.
@@ -8032,7 +8071,7 @@ register_compute(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec register_game_server(aws_client:aws_client(), register_game_server_input()) ->
@@ -8053,7 +8092,7 @@ register_game_server(Client, Input, Options)
 
 %% @doc Retrieves a fresh set of credentials for use when uploading a new set
 %% of game build
-%% files to Amazon GameLift's Amazon S3.
+%% files to Amazon GameLift Servers's Amazon S3.
 %%
 %% This is done as part of the build creation process; see
 %% CreateBuild:
@@ -8092,8 +8131,8 @@ request_upload_credentials(Client, Input, Options)
 %% Specify a unique
 %% alias identifier.
 %%
-%% If the alias has a `SIMPLE' routing strategy, Amazon GameLift returns
-%% a fleet ID.
+%% If the alias has a `SIMPLE' routing strategy, Amazon GameLift Servers
+%% returns a fleet ID.
 %% If the alias has a `TERMINAL' routing strategy, the result is a
 %% `TerminalRoutingStrategyException'.
 %%
@@ -8118,8 +8157,8 @@ resolve_alias(Client, Input, Options)
     request(Client, <<"ResolveAlias">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Reinstates activity on a game
 %% server group after it has been suspended. A game server group might be
@@ -8143,7 +8182,7 @@ resolve_alias(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec resume_game_server_group(aws_client:aws_client(), resume_game_server_group_input()) ->
@@ -8295,15 +8334,15 @@ search_game_sessions(Client, Input, Options)
 %% locations,
 %% provide a fleet ID, a location name, and the type of actions to resume.
 %%
-%% If successful, Amazon GameLift once again initiates scaling events as
-%% triggered by the fleet's
+%% If successful, Amazon GameLift Servers once again initiates scaling events
+%% as triggered by the fleet's
 %% scaling policies. If actions on the fleet location were never stopped,
 %% this operation
 %% will have no effect.
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec start_fleet_actions(aws_client:aws_client(), start_fleet_actions_input()) ->
@@ -8326,12 +8365,12 @@ start_fleet_actions(Client, Input, Options)
 %% queue.
 %%
 %% When
-%% processing a placement request, Amazon GameLift looks for the best
+%% processing a placement request, Amazon GameLift Servers looks for the best
 %% possible available resource to
 %% host the game session, based on how the queue is configured to prioritize
 %% factors such
 %% as resource cost, latency, and location. After selecting an available
-%% resource, Amazon GameLift
+%% resource, Amazon GameLift Servers
 %% prompts the resource to start a game session. A placement request can
 %% include a list of
 %% players to create a set of player sessions. The request can also include
@@ -8364,13 +8403,12 @@ start_fleet_actions(Client, Input, Options)
 %%
 %% `PlayerLatencies'. Include a set of latency values for
 %% destinations in the queue. When a request includes latency data, Amazon
-%% GameLift
+%% GameLift Servers
 %% automatically reorder the queue's locations priority list based on
 %% lowest available latency values. If a request includes latency data for
-%% multiple players, Amazon GameLift calculates each location's average
-%% latency for
-%% all players and reorders to find the lowest latency across all
-%% players.
+%% multiple players, Amazon GameLift Servers calculates each location's
+%% average latency for
+%% all players and reorders to find the lowest latency across all players.
 %%
 %% Don't include `PriorityConfigurationOverride'.
 %%
@@ -8381,10 +8419,11 @@ start_fleet_actions(Client, Input, Options)
 %% for game session queues), you can
 %% optionally use the PriorityConfigurationOverride
 %% parameter to substitute a different location priority list for this
-%% placement request. Amazon GameLift searches each location on the priority
+%% placement request. Amazon GameLift Servers searches each location on the
+%% priority
 %% override list to find an available hosting resource for the new game
 %% session. Specify a fallback strategy to use in the event that Amazon
-%% GameLift
+%% GameLift Servers
 %% fails to place the game session in any of the locations on the override
 %% list.
 %%
@@ -8409,7 +8448,7 @@ start_fleet_actions(Client, Input, Options)
 %% placement request is updated with connection information for the game
 %% session (IP
 %% address and port). If the request included player session data, Amazon
-%% GameLift creates a player
+%% GameLift Servers creates a player
 %% session for each player ID in the request.
 %%
 %% The request results in a `InvalidRequestException' in the following
@@ -8421,8 +8460,8 @@ start_fleet_actions(Client, Input, Options)
 %% If the request includes the PriorityConfigurationOverride
 %% parameter and specifies a queue that doesn't prioritize locations.
 %%
-%% Amazon GameLift continues to retry each placement request until it reaches
-%% the queue's timeout
+%% Amazon GameLift Servers continues to retry each placement request until it
+%% reaches the queue's timeout
 %% setting. If a request times out, you can resubmit the request to the same
 %% queue or try a
 %% different queue.
@@ -8456,8 +8495,8 @@ start_game_session_placement(Client, Input, Options)
 %% to meet the
 %% original match requirements.
 %%
-%% When using FlexMatch with Amazon GameLift managed hosting, you can request
-%% a backfill match from
+%% When using FlexMatch with Amazon GameLift Servers managed hosting, you can
+%% request a backfill match from
 %% a client service by calling this operation with a `GameSessions' ID.
 %% You also
 %% have the option of making backfill requests directly from your game
@@ -8501,7 +8540,7 @@ start_game_session_placement(Client, Input, Options)
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html
 %% (reference)
 %%
-%% How Amazon GameLift FlexMatch works:
+%% How Amazon GameLift Servers FlexMatch works:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html
 -spec start_match_backfill(aws_client:aws_client(), start_match_backfill_input()) ->
     {ok, start_match_backfill_output(), tuple()} |
@@ -8523,8 +8562,8 @@ start_match_backfill(Client, Input, Options)
 %% custom matchmaking
 %% rules.
 %%
-%% With games that use Amazon GameLift managed hosting, this operation also
-%% triggers Amazon GameLift
+%% With games that use Amazon GameLift Servers managed hosting, this
+%% operation also triggers Amazon GameLift Servers
 %% to find hosting resources and start a new game session for the new match.
 %% Each
 %% matchmaking request includes information on one or more players and
@@ -8560,7 +8599,7 @@ start_match_backfill(Client, Input, Options)
 %% notification:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html
 %%
-%% How Amazon GameLift FlexMatch works:
+%% How Amazon GameLift Servers FlexMatch works:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html
 -spec start_matchmaking(aws_client:aws_client(), start_matchmaking_input()) ->
     {ok, start_matchmaking_output(), tuple()} |
@@ -8603,8 +8642,8 @@ start_matchmaking(Client, Input, Options)
 %% provide a
 %% fleet ID, a location name, and the type of actions to suspend.
 %%
-%% If successful, Amazon GameLift no longer initiates scaling events except
-%% in response to manual
+%% If successful, Amazon GameLift Servers no longer initiates scaling events
+%% except in response to manual
 %% changes using UpdateFleetCapacity:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateFleetCapacity.html.
 %% To restart fleet actions again, call
@@ -8613,7 +8652,7 @@ start_matchmaking(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec stop_fleet_actions(aws_client:aws_client(), stop_fleet_actions_input()) ->
@@ -8707,8 +8746,8 @@ stop_matchmaking(Client, Input, Options)
     request(Client, <<"StopMatchmaking">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Temporarily stops activity on
 %% a game server group without terminating instances or the game server
@@ -8738,7 +8777,7 @@ stop_matchmaking(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec suspend_game_server_group(aws_client:aws_client(), suspend_game_server_group_input()) ->
@@ -8757,14 +8796,14 @@ suspend_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SuspendGameServerGroup">>, Input, Options).
 
-%% @doc Assigns a tag to an Amazon GameLift resource.
+%% @doc Assigns a tag to an Amazon GameLift Servers resource.
 %%
 %% You can use tags to organize resources, create
 %% IAM permissions policies to manage access to groups of resources,
 %% customize Amazon Web Services cost
 %% breakdowns, and more. This operation handles the permissions necessary to
 %% manage tags
-%% for Amazon GameLift resources that support tagging.
+%% for Amazon GameLift Servers resources that support tagging.
 %%
 %% To add a tag to a resource, specify the unique ARN value for the resource
 %% and provide
@@ -8810,11 +8849,11 @@ tag_resource(Client, Input, Options)
 %% game session that's
 %% in a bad state or not ending properly. You can use this action to
 %% terminate a game
-%% session that's being hosted on any type of Amazon GameLift fleet
-%% compute, including computes for
+%% session that's being hosted on any type of Amazon GameLift Servers
+%% fleet compute, including computes for
 %% managed EC2, managed container, and Anywhere fleets. The game server must
 %% be integrated
-%% with Amazon GameLift server SDK 5.x or greater.
+%% with Amazon GameLift Servers server SDK 5.x or greater.
 %%
 %% Request options
 %%
@@ -8824,8 +8863,8 @@ tag_resource(Client, Input, Options)
 %% session:
 %%
 %% Initiate a graceful termination using the normal game session shutdown
-%% sequence. With this mode, the Amazon GameLift service prompts the server
-%% process that's
+%% sequence. With this mode, the Amazon GameLift Servers service prompts the
+%% server process that's
 %% hosting the game session by calling the server SDK callback method
 %% . The callback implementation is part of
 %% the custom game server code. It might involve a variety of actions to
@@ -8834,7 +8873,7 @@ tag_resource(Client, Input, Options)
 %% process.
 %%
 %% Force an immediate game session termination. With this mode, the Amazon
-%% GameLift
+%% GameLift Servers
 %% service takes action to stop the server process, which ends the game
 %% session
 %% without the normal game session shutdown sequence.
@@ -8854,10 +8893,10 @@ tag_resource(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Add Amazon GameLift to your game server:
+%% Add Amazon GameLift Servers to your game server:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html
 %%
-%% Amazon GameLift server SDK 5 reference guide for
+%% Amazon GameLift Servers server SDK 5 reference guide for
 %% (C++:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/integration-server-sdk5-cpp-initsdk.html)
 %% (C#:
@@ -8882,13 +8921,13 @@ terminate_game_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateGameSession">>, Input, Options).
 
-%% @doc Removes a tag assigned to a Amazon GameLift resource.
+%% @doc Removes a tag assigned to a Amazon GameLift Servers resource.
 %%
 %% You can use resource tags to organize
 %% Amazon Web Services resources for a range of purposes. This operation
 %% handles the permissions
-%% necessary to manage tags for Amazon GameLift resources that support
-%% tagging.
+%% necessary to manage tags for Amazon GameLift Servers resources that
+%% support tagging.
 %%
 %% To remove a tag from a resource, specify the unique ARN value for the
 %% resource and
@@ -9128,12 +9167,12 @@ update_container_group_definition(Client, Input, Options)
 %%
 %% To update fleet attributes, specify the fleet ID and the property values
 %% that you want
-%% to change. If successful, Amazon GameLift returns the identifiers for the
-%% updated fleet.
+%% to change. If successful, Amazon GameLift Servers returns the identifiers
+%% for the updated fleet.
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec update_fleet_attributes(aws_client:aws_client(), update_fleet_attributes_input()) ->
@@ -9167,7 +9206,7 @@ update_fleet_attributes(Client, Input, Options)
 %% Use this operation to set these fleet capacity properties:
 %%
 %% Minimum/maximum size: Set hard limits on the number of Amazon EC2
-%% instances allowed. If Amazon GameLift receives a
+%% instances allowed. If Amazon GameLift Servers receives a
 %% request--either through manual update or automatic scaling--it won't
 %% change the capacity
 %% to a value outside of this range.
@@ -9190,8 +9229,8 @@ update_fleet_attributes(Client, Input, Options)
 %% in
 %% `ACTIVE' status.
 %%
-%% If successful, Amazon GameLift updates the capacity settings and returns
-%% the identifiers for
+%% If successful, Amazon GameLift Servers updates the capacity settings and
+%% returns the identifiers for
 %% the updated fleet and/or location. If a requested change to desired
 %% capacity exceeds the
 %% instance type's limit, the `LimitExceeded' exception occurs.
@@ -9200,8 +9239,8 @@ update_fleet_attributes(Client, Input, Options)
 %% current
 %% capacity is different than the new desired capacity or outside the new
 %% limits. In this
-%% scenario, Amazon GameLift automatically initiates steps to add or remove
-%% instances in the fleet
+%% scenario, Amazon GameLift Servers automatically initiates steps to add or
+%% remove instances in the fleet
 %% location. You can track a fleet's current capacity by calling
 %% DescribeFleetCapacity:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetCapacity.html
@@ -9250,7 +9289,7 @@ update_fleet_capacity(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec update_fleet_port_settings(aws_client:aws_client(), update_fleet_port_settings_input()) ->
@@ -9270,11 +9309,11 @@ update_fleet_port_settings(Client, Input, Options)
     request(Client, <<"UpdateFleetPortSettings">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
 %% Updates information about a registered game server to help Amazon GameLift
-%% FleetIQ track game server
+%% Servers FleetIQ track game server
 %% availability. This operation is called by a game server process that is
 %% running on an
 %% instance in a game server group.
@@ -9309,7 +9348,7 @@ update_fleet_port_settings(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec update_game_server(aws_client:aws_client(), update_game_server_input()) ->
@@ -9329,10 +9368,10 @@ update_game_server(Client, Input, Options)
     request(Client, <<"UpdateGameServer">>, Input, Options).
 
 %% @doc
-%% This operation is used with the Amazon GameLift FleetIQ solution and game
-%% server groups.
+%% This operation is used with the Amazon GameLift Servers FleetIQ solution
+%% and game server groups.
 %%
-%% Updates Amazon GameLift FleetIQ-specific
+%% Updates Amazon GameLift Servers FleetIQ-specific
 %% properties for a game server group. Many Auto Scaling group properties are
 %% updated on
 %% the Auto Scaling group directly, including the launch template, Auto
@@ -9343,13 +9382,13 @@ update_game_server(Client, Input, Options)
 %% provide the
 %% updated values. Before applying the updates, the new values are validated
 %% to ensure that
-%% Amazon GameLift FleetIQ can continue to perform instance balancing
+%% Amazon GameLift Servers FleetIQ can continue to perform instance balancing
 %% activity. If successful, a
 %% `GameServerGroup' object is returned.
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ
+%% Amazon GameLift Servers FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 -spec update_game_server_group(aws_client:aws_client(), update_game_server_group_input()) ->
@@ -9454,8 +9493,8 @@ update_matchmaking_configuration(Client, Input, Options)
 %% @doc Updates the runtime configuration for the specified fleet.
 %%
 %% The runtime configuration
-%% tells Amazon GameLift how to launch server processes on computes in
-%% managed EC2 and Anywhere fleets. You
+%% tells Amazon GameLift Servers how to launch server processes on computes
+%% in managed EC2 and Anywhere fleets. You
 %% can update a fleet's runtime configuration at any time after the fleet
 %% is created; it
 %% does not need to be in `ACTIVE' status.
@@ -9478,7 +9517,7 @@ update_matchmaking_configuration(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift
+%% Setting up Amazon GameLift Servers
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 -spec update_runtime_configuration(aws_client:aws_client(), update_runtime_configuration_input()) ->
@@ -9512,14 +9551,14 @@ update_runtime_configuration(Client, Input, Options)
 %%
 %% If the call is successful, the updated metadata is stored in the script
 %% record and a
-%% revised script is uploaded to the Amazon GameLift service. Once the script
-%% is updated and
+%% revised script is uploaded to the Amazon GameLift Servers service. Once
+%% the script is updated and
 %% acquired by a fleet instance, the new version is used for all new game
 %% sessions.
 %%
 %% Learn more
 %%
-%% Amazon GameLift Amazon GameLift Realtime:
+%% Amazon GameLift Servers Amazon GameLift Servers Realtime:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
 %% Related actions

@@ -1987,12 +1987,12 @@
 %% successful but the
 %% certificate is not added again.
 %%
-%% For more information, see HTTPS
-%% listeners:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html
-%% in the Application Load Balancers Guide or TLS
-%% listeners:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html
+%% For more information, see SSL
+%% certificates:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/https-listener-certificates.html
+%% in the Application Load Balancers Guide or Server
+%% certificates:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/tls-listener-certificates.html
 %% in the Network Load Balancers Guide.
 -spec add_listener_certificates(aws_client:aws_client(), add_listener_certificates_input()) ->
     {ok, add_listener_certificates_output(), tuple()} |
@@ -2197,6 +2197,9 @@ create_target_group(Client, Input, Options)
     request(Client, <<"CreateTargetGroup">>, Input, Options).
 
 %% @doc Creates a trust store.
+%%
+%% For more information, see Mutual TLS for Application Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html.
 -spec create_trust_store(aws_client:aws_client(), create_trust_store_input()) ->
     {ok, create_trust_store_output(), tuple()} |
     {error, any()} |
@@ -2358,15 +2361,15 @@ delete_trust_store(Client, Input, Options)
 %% For more information, see the following:
 %%
 %% Deregistration delay:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#deregistration-delay
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#deregistration-delay
 %% in the Application Load Balancers User Guide
 %%
 %% Deregistration delay:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/edit-target-group-attributes.html#deregistration-delay
 %% in the Network Load Balancers User Guide
 %%
 %% Deregistration delay:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#deregistration-delay
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/edit-target-group-attributes.html#deregistration-delay
 %% in the Gateway Load Balancers User Guide
 %%
 %% Note: If the specified target does not exist, the action returns
@@ -2464,10 +2467,10 @@ describe_listener_attributes(Client, Input, Options)
 %% to false).
 %%
 %% For more information, see SSL certificates:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/https-listener-certificates.html
 %% in the Application Load Balancers Guide or
 %% Server certificates:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/tls-listener-certificates.html
 %% in the Network Load Balancers
 %% Guide.
 -spec describe_listener_certificates(aws_client:aws_client(), describe_listener_certificates_input()) ->
@@ -2586,10 +2589,10 @@ describe_rules(Client, Input, Options)
 %% negotiation.
 %%
 %% For more information, see Security policies:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies
-%% in the Application Load Balancers Guide or
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/describe-ssl-policies.html
+%% in the Application Load Balancers Guide and
 %% Security policies:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/describe-ssl-policies.html
 %% in the Network Load Balancers Guide.
 -spec describe_ssl_policies(aws_client:aws_client(), describe_ssl_policies_input()) ->
     {ok, describe_ssl_policies_output(), tuple()} |
@@ -3020,11 +3023,19 @@ modify_trust_store(Client, Input, Options)
 %% same target group
 %% multiple times using different ports.
 %%
-%% With a Network Load Balancer, you can't register instances by instance
-%% ID if they have
-%% the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2,
-%% HI1, HS1, M1, M2, M3,
-%% and T1. You can register instances of these types by IP address.
+%% For more information, see the following:
+%%
+%% Register
+%% targets for your Application Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-register-targets.html
+%%
+%% Register targets
+%% for your Network Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/target-group-register-targets.html
+%%
+%% Register targets for your
+%% Gateway Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-group-register-targets.html
 -spec register_targets(aws_client:aws_client(), register_targets_input()) ->
     {ok, register_targets_output(), tuple()} |
     {error, any()} |

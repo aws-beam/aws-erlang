@@ -808,6 +808,7 @@
 
 %% Example:
 %% license_conversion_context() :: #{
+%%   <<"ProductCodes">> => list(product_code_list_item()()),
 %%   <<"UsageOperation">> => string()
 %% }
 -type license_conversion_context() :: #{binary() => any()}.
@@ -932,6 +933,13 @@
 %%   <<"Type">> := list(list(any())())
 %% }
 -type create_license_manager_report_generator_request() :: #{binary() => any()}.
+
+%% Example:
+%% product_code_list_item() :: #{
+%%   <<"ProductCodeId">> => string(),
+%%   <<"ProductCodeType">> => list(any())
+%% }
+-type product_code_list_item() :: #{binary() => any()}.
 
 %% Example:
 %% get_license_configuration_response() :: #{

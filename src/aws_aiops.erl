@@ -1,9 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Amazon Q Developer operational investigations feature is a
-%% generative AI-powered assistant that can help you respond to incidents in
-%% your system.
+%% @doc The CloudWatch investigations feature is a generative AI-powered
+%% assistant that can help you respond to incidents in your system.
 %%
 %% It uses generative AI to scan your system's telemetry and quickly
 %% surface suggestions that might be related to your issue. These suggestions
@@ -62,6 +61,7 @@
 %% Example:
 %% create_investigation_group_input() :: #{
 %%   <<"chatbotNotificationChannel">> => map(),
+%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"isCloudTrailEventHistoryEnabled">> => [boolean()],
 %%   <<"name">> := string(),
@@ -78,6 +78,13 @@
 %%   <<"arn">> => string()
 %% }
 -type create_investigation_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_account_configuration() :: #{
+%%   <<"sourceRoleArn">> => string()
+%% }
+-type cross_account_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_investigation_group_policy_output() :: #{}
@@ -129,6 +136,7 @@
 %%   <<"chatbotNotificationChannel">> => map(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
+%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"isCloudTrailEventHistoryEnabled">> => [boolean()],
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
@@ -251,6 +259,7 @@
 %% Example:
 %% update_investigation_group_request() :: #{
 %%   <<"chatbotNotificationChannel">> => map(),
+%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"isCloudTrailEventHistoryEnabled">> => [boolean()],
 %%   <<"roleArn">> => string(),
@@ -369,10 +378,10 @@
 %% account. Each investigation in a Region is a part of the investigation
 %% group in that Region
 %%
-%% To create an investigation group and set up Amazon Q Developer operational
-%% investigations, you must be signed in to an IAM principal that has the
-%% either the `AIOpsConsoleAdminPolicy' or the `AdministratorAccess'
-%% IAM policy attached, or to an account that has similar permissions.
+%% To create an investigation group and set up CloudWatch investigations, you
+%% must be signed in to an IAM principal that has the either the
+%% `AIOpsConsoleAdminPolicy' or the `AdministratorAccess' IAM policy
+%% attached, or to an account that has similar permissions.
 %%
 %% You can configure CloudWatch alarms to start investigations and add events
 %% to investigations. If you create your investigation group with
@@ -383,7 +392,7 @@
 %% alarms.
 %%
 %% For more information about configuring CloudWatch alarms to work with
-%% Amazon Q Developer operational investigations, see
+%% CloudWatch investigations, see
 -spec create_investigation_group(aws_client:aws_client(), create_investigation_group_input()) ->
     {ok, create_investigation_group_output(), tuple()} |
     {error, any()} |
@@ -608,8 +617,8 @@ list_investigation_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Displays the tags associated with a Amazon Q Developer operational
-%% investigations resource.
+%% @doc Displays the tags associated with a CloudWatch investigations
+%% resource.
 %%
 %% Currently, investigation groups support tagging.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->

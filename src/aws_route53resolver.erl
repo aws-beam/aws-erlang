@@ -837,6 +837,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => string(),
 %%   <<"CreatorRequestId">> => string(),
+%%   <<"DelegationRecord">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"ModificationTime">> => string(),
@@ -1079,6 +1080,7 @@
 %% Example:
 %% create_resolver_rule_request() :: #{
 %%   <<"CreatorRequestId">> := string(),
+%%   <<"DelegationRecord">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ResolverEndpointId">> => string(),
