@@ -2252,6 +2252,8 @@
 %%   <<"Alias">> => string(),
 %%   <<"Bucket">> => string(),
 %%   <<"BucketAccountId">> => string(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceType">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"NetworkOrigin">> => list(any()),
 %%   <<"VpcConfiguration">> => vpc_configuration()
@@ -2375,6 +2377,8 @@
 %%   <<"Bucket">> => string(),
 %%   <<"BucketAccountId">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceType">> => string(),
 %%   <<"Endpoints">> => map(),
 %%   <<"Name">> => string(),
 %%   <<"NetworkOrigin">> => list(any()),
@@ -2514,6 +2518,8 @@
 %% list_access_points_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"Bucket">> => string(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceType">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3063,13 +3069,19 @@ create_access_grants_location(Client, Input0, Options0) ->
 %%
 %% For more information, see
 %% Managing
-%% access to shared datasets in general purpose buckets with access points:
+%% access to shared datasets with access points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html
-%% or Managing
-%% access to shared datasets in directory buckets with access points:
+%% or Managing access to
+%% shared datasets in directory buckets with access points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
+%%
+%% To create an access point and attach it to a volume on an Amazon FSx file
+%% system, see CreateAndAttachS3AccessPoint:
+%% https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateAndAttachS3AccessPoint.html
+%% in the Amazon FSx API
+%% Reference.
 %%
 %% S3 on Outposts only supports VPC-style access points.
 %%
@@ -6741,17 +6753,17 @@ list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% @doc
 %% This operation is not supported by directory buckets.
 %%
-%% Returns a list of the access points
-%% that are
-%% owned by the current account
-%% that's
-%% associated with the specified bucket. You can retrieve up to 1000 access
-%% points
-%% per call. If the specified bucket has more than 1,000 access points (or
-%% the number specified in
-%% `maxResults', whichever is less), the response will include a
-%% continuation
-%% token that you can use to list the additional access points.
+%% Returns a list of the access points. You can retrieve up to 1,000 access
+%% points per call. If the call
+%% returns more than 1,000 access points (or the number specified in
+%% `maxResults',
+%% whichever is less), the response will include a continuation token that
+%% you can use to list
+%% the additional access points.
+%%
+%% Returns only access points attached to S3 buckets by default. To return
+%% all access points specify
+%% `DataSourceType' as `ALL'.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -6809,6 +6821,8 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"bucket">>, maps:get(<<"bucket">>, QueryMap, undefined)},
+        {<<"dataSourceId">>, maps:get(<<"dataSourceId">>, QueryMap, undefined)},
+        {<<"dataSourceType">>, maps:get(<<"dataSourceType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],

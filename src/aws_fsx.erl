@@ -14,6 +14,8 @@
          copy_backup/3,
          copy_snapshot_and_update_volume/2,
          copy_snapshot_and_update_volume/3,
+         create_and_attach_s3_access_point/2,
+         create_and_attach_s3_access_point/3,
          create_backup/2,
          create_backup/3,
          create_data_repository_association/2,
@@ -60,6 +62,8 @@
          describe_file_system_aliases/3,
          describe_file_systems/2,
          describe_file_systems/3,
+         describe_s3_access_point_attachments/2,
+         describe_s3_access_point_attachments/3,
          describe_shared_vpc_configuration/2,
          describe_shared_vpc_configuration/3,
          describe_snapshots/2,
@@ -68,6 +72,8 @@
          describe_storage_virtual_machines/3,
          describe_volumes/2,
          describe_volumes/3,
+         detach_and_delete_s3_access_point/2,
+         detach_and_delete_s3_access_point/3,
          disassociate_file_system_aliases/2,
          disassociate_file_system_aliases/3,
          list_tags_for_resource/2,
@@ -178,6 +184,12 @@
 -type delete_snapshot_request() :: #{binary() => any()}.
 
 %% Example:
+%% s3_access_point_vpc_configuration() :: #{
+%%   <<"VpcId">> => string()
+%% }
+-type s3_access_point_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"Tags">> := list(tag()())
@@ -227,6 +239,13 @@
 %%   <<"Options">> => list(string()())
 %% }
 -type open_z_f_s_client_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_access_points() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type too_many_access_points() :: #{binary() => any()}.
 
 %% Example:
 %% storage_virtual_machine_not_found() :: #{
@@ -489,6 +508,16 @@
 -type delete_volume_ontap_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% create_and_attach_s3_access_point_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"OpenZFSConfiguration">> => create_and_attach_s3_access_point_open_z_f_s_configuration(),
+%%   <<"S3AccessPoint">> => create_and_attach_s3_access_point_s3_configuration(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_and_attach_s3_access_point_request() :: #{binary() => any()}.
+
+%% Example:
 %% missing_volume_configuration() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -499,6 +528,13 @@
 %%   <<"Message">> => string()
 %% }
 -type data_repository_task_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_open_z_f_s_configuration() :: #{
+%%   <<"FileSystemIdentity">> => open_z_f_s_file_system_identity(),
+%%   <<"VolumeId">> => string()
+%% }
+-type create_and_attach_s3_access_point_open_z_f_s_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% backup_in_progress() :: #{
@@ -527,6 +563,13 @@
 %%   <<"FileShareAccessAuditLogLevel">> => list(any())
 %% }
 -type windows_audit_log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point_attachments_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type s3_access_point_attachments_filter() :: #{binary() => any()}.
 
 %% Example:
 %% administrative_action() :: #{
@@ -1097,6 +1140,13 @@
 -type svm_endpoint() :: #{binary() => any()}.
 
 %% Example:
+%% detach_and_delete_s3_access_point_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type detach_and_delete_s3_access_point_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_backup_response() :: #{
 %%   <<"BackupId">> => string(),
 %%   <<"Lifecycle">> => list(any())
@@ -1130,6 +1180,15 @@
 %%   <<"SvmAdminPassword">> => string()
 %% }
 -type update_storage_virtual_machine_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_s3_access_point_attachments_request() :: #{
+%%   <<"Filters">> => list(s3_access_point_attachments_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_s3_access_point_attachments_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_data_repository_association_request() :: #{
@@ -1170,10 +1229,23 @@
 -type create_volume_response() :: #{binary() => any()}.
 
 %% Example:
+%% s3_access_point_open_z_f_s_configuration() :: #{
+%%   <<"FileSystemIdentity">> => open_z_f_s_file_system_identity(),
+%%   <<"VolumeId">> => string()
+%% }
+-type s3_access_point_open_z_f_s_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% update_storage_virtual_machine_response() :: #{
 %%   <<"StorageVirtualMachine">> => storage_virtual_machine()
 %% }
 -type update_storage_virtual_machine_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_response() :: #{
+%%   <<"S3AccessPointAttachment">> => s3_access_point_attachment()
+%% }
+-type create_and_attach_s3_access_point_response() :: #{binary() => any()}.
 
 %% Example:
 %% missing_file_cache_configuration() :: #{
@@ -1189,6 +1261,13 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% open_z_f_s_file_system_identity() :: #{
+%%   <<"PosixUser">> => open_z_f_s_posix_file_system_user(),
+%%   <<"Type">> => list(any())
+%% }
+-type open_z_f_s_file_system_identity() :: #{binary() => any()}.
+
+%% Example:
 %% update_file_cache_lustre_configuration() :: #{
 %%   <<"WeeklyMaintenanceStartTime">> => string()
 %% }
@@ -1200,6 +1279,14 @@
 %%   <<"Level">> => list(any())
 %% }
 -type lustre_log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"VpcConfiguration">> => s3_access_point_vpc_configuration()
+%% }
+-type s3_access_point() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_destination_kms_key() :: #{
@@ -1269,6 +1356,13 @@
 -type file_cache_not_found() :: #{binary() => any()}.
 
 %% Example:
+%% detach_and_delete_s3_access_point_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type detach_and_delete_s3_access_point_response() :: #{binary() => any()}.
+
+%% Example:
 %% missing_file_system_configuration() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1322,6 +1416,13 @@
 %%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota()())
 %% }
 -type create_open_z_f_s_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% access_point_already_owned_by_you() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type access_point_already_owned_by_you() :: #{binary() => any()}.
 
 %% Example:
 %% active_directory_backup_attributes() :: #{
@@ -1704,6 +1805,14 @@
 -type describe_data_repository_associations_request() :: #{binary() => any()}.
 
 %% Example:
+%% open_z_f_s_posix_file_system_user() :: #{
+%%   <<"Gid">> => float(),
+%%   <<"SecondaryGids">> => list(float()()),
+%%   <<"Uid">> => float()
+%% }
+-type open_z_f_s_posix_file_system_user() :: #{binary() => any()}.
+
+%% Example:
 %% data_repository_task() :: #{
 %%   <<"CapacityToRelease">> => float(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -1778,6 +1887,32 @@
 %%   <<"EnableFsxRouteTableUpdatesFromParticipantAccounts">> => string()
 %% }
 -type describe_shared_vpc_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_access_point() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_access_point() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point_attachment() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
+%%   <<"Name">> => string(),
+%%   <<"OpenZFSConfiguration">> => s3_access_point_open_z_f_s_configuration(),
+%%   <<"S3AccessPoint">> => s3_access_point(),
+%%   <<"Type">> => list(any())
+%% }
+-type s3_access_point_attachment() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_s3_configuration() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"VpcConfiguration">> => s3_access_point_vpc_configuration()
+%% }
+-type create_and_attach_s3_access_point_s3_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% data_repository_task_filter() :: #{
@@ -1913,6 +2048,12 @@
 -type incompatible_parameter_error() :: #{binary() => any()}.
 
 %% Example:
+%% s3_access_point_attachment_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type s3_access_point_attachment_not_found() :: #{binary() => any()}.
+
+%% Example:
 %% backup_being_copied() :: #{
 %%   <<"BackupId">> => string(),
 %%   <<"Message">> => string()
@@ -1938,6 +2079,13 @@
 %%   <<"FileSystemId">> := string()
 %% }
 -type disassociate_file_system_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_storage_virtual_machine_request() :: #{
@@ -2044,6 +2192,13 @@
 -type update_volume_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_s3_access_point_attachments_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"S3AccessPointAttachments">> => list(s3_access_point_attachment()())
+%% }
+-type describe_s3_access_point_attachments_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_storage_virtual_machines_request() :: #{
 %%   <<"Filters">> => list(storage_virtual_machine_filter()()),
 %%   <<"MaxResults">> => integer(),
@@ -2148,6 +2303,17 @@
     service_limit_exceeded() | 
     internal_server_error() | 
     bad_request().
+
+-type create_and_attach_s3_access_point_errors() ::
+    invalid_request() | 
+    incompatible_parameter_error() | 
+    volume_not_found() | 
+    invalid_access_point() | 
+    internal_server_error() | 
+    bad_request() | 
+    access_point_already_owned_by_you() | 
+    unsupported_operation() | 
+    too_many_access_points().
 
 -type create_backup_errors() ::
     incompatible_parameter_error() | 
@@ -2326,6 +2492,12 @@
     bad_request() | 
     file_system_not_found().
 
+-type describe_s3_access_point_attachments_errors() ::
+    s3_access_point_attachment_not_found() | 
+    internal_server_error() | 
+    bad_request() | 
+    unsupported_operation().
+
 -type describe_shared_vpc_configuration_errors() ::
     internal_server_error() | 
     bad_request().
@@ -2344,6 +2516,13 @@
     volume_not_found() | 
     internal_server_error() | 
     bad_request().
+
+-type detach_and_delete_s3_access_point_errors() ::
+    s3_access_point_attachment_not_found() | 
+    incompatible_parameter_error() | 
+    internal_server_error() | 
+    bad_request() | 
+    unsupported_operation().
 
 -type disassociate_file_system_aliases_errors() ::
     internal_server_error() | 
@@ -2596,6 +2775,48 @@ copy_snapshot_and_update_volume(Client, Input)
 copy_snapshot_and_update_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshotAndUpdateVolume">>, Input, Options).
+
+%% @doc Creates an S3 access point and attaches it to an Amazon FSx volume.
+%%
+%% For FSx for OpenZFS file systems, the
+%% volume must be hosted on a high-availability file system, either Single-AZ
+%% or Multi-AZ. For more information,
+%% see Accessing your data using access points:
+%% fsx/latest/OpenZFSGuide/s3accesspoints-for-FSx.html
+%% in the Amazon FSx for OpenZFS User Guide.
+%%
+%% The requester requires the following permissions to perform these actions:
+%%
+%% `fsx:CreateAndAttachS3AccessPoint'
+%%
+%% `s3:CreateAccessPoint'
+%%
+%% `s3:GetAccessPoint'
+%%
+%% `s3:PutAccessPointPolicy'
+%%
+%% `s3:DeleteAccessPoint'
+%%
+%% The following actions are related to `CreateAndAttachS3AccessPoint':
+%%
+%% `DescribeS3AccessPointAttachments'
+%%
+%% `DetachAndDeleteS3AccessPoint'
+-spec create_and_attach_s3_access_point(aws_client:aws_client(), create_and_attach_s3_access_point_request()) ->
+    {ok, create_and_attach_s3_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, create_and_attach_s3_access_point_errors(), tuple()}.
+create_and_attach_s3_access_point(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_and_attach_s3_access_point(Client, Input, []).
+
+-spec create_and_attach_s3_access_point(aws_client:aws_client(), create_and_attach_s3_access_point_request(), proplists:proplist()) ->
+    {ok, create_and_attach_s3_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, create_and_attach_s3_access_point_errors(), tuple()}.
+create_and_attach_s3_access_point(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAndAttachS3AccessPoint">>, Input, Options).
 
 %% @doc Creates a backup of an existing Amazon FSx for Windows File Server
 %% file
@@ -3141,6 +3362,17 @@ delete_file_cache(Client, Input, Options)
 %% provide a
 %% `FileSystemId' value to the `DeleteFileSystem' operation.
 %%
+%% Before deleting an Amazon FSx for OpenZFS file system, make sure that
+%% there aren't
+%% any Amazon S3 access points attached to any volume. For more information
+%% on how to list S3
+%% access points that are attached to volumes, see
+%% Listing S3 access point attachments:
+%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/access-points-list.
+%% For more information on how to delete S3 access points, see
+%% Deleting an S3 access point attachment:
+%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/delete-points-list.
+%%
 %% By default, when you delete an Amazon FSx for Windows File Server file
 %% system,
 %% a final backup is created upon deletion. This final backup isn't
@@ -3527,6 +3759,28 @@ describe_file_systems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystems">>, Input, Options).
 
+%% @doc Describes one or more S3 access points attached to Amazon FSx
+%% volumes.
+%%
+%% The requester requires the following permission to perform this action:
+%%
+%% `fsx:DescribeS3AccessPointAttachments'
+-spec describe_s3_access_point_attachments(aws_client:aws_client(), describe_s3_access_point_attachments_request()) ->
+    {ok, describe_s3_access_point_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_s3_access_point_attachments_errors(), tuple()}.
+describe_s3_access_point_attachments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_s3_access_point_attachments(Client, Input, []).
+
+-spec describe_s3_access_point_attachments(aws_client:aws_client(), describe_s3_access_point_attachments_request(), proplists:proplist()) ->
+    {ok, describe_s3_access_point_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_s3_access_point_attachments_errors(), tuple()}.
+describe_s3_access_point_attachments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeS3AccessPointAttachments">>, Input, Options).
+
 %% @doc Indicates whether participant accounts in your organization can
 %% create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that
 %% are shared by a virtual
@@ -3637,6 +3891,30 @@ describe_volumes(Client, Input)
 describe_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVolumes">>, Input, Options).
+
+%% @doc Detaches an S3 access point from an Amazon FSx volume and deletes the
+%% S3 access point.
+%%
+%% The requester requires the following permission to perform this action:
+%%
+%% `fsx:DetachAndDeleteS3AccessPoint'
+%%
+%% `s3:DeleteAccessPoint'
+-spec detach_and_delete_s3_access_point(aws_client:aws_client(), detach_and_delete_s3_access_point_request()) ->
+    {ok, detach_and_delete_s3_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, detach_and_delete_s3_access_point_errors(), tuple()}.
+detach_and_delete_s3_access_point(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detach_and_delete_s3_access_point(Client, Input, []).
+
+-spec detach_and_delete_s3_access_point(aws_client:aws_client(), detach_and_delete_s3_access_point_request(), proplists:proplist()) ->
+    {ok, detach_and_delete_s3_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, detach_and_delete_s3_access_point_errors(), tuple()}.
+detach_and_delete_s3_access_point(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetachAndDeleteS3AccessPoint">>, Input, Options).
 
 %% @doc Use this action to disassociate, or remove, one or more Domain Name
 %% Service (DNS) aliases

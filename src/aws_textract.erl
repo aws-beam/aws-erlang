@@ -140,7 +140,8 @@
 %% Example:
 %% geometry() :: #{
 %%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point()())
+%%   <<"Polygon">> => list(point()()),
+%%   <<"RotationAngle">> => float()
 %% }
 -type geometry() :: #{binary() => any()}.
 
@@ -1937,7 +1938,7 @@ start_document_analysis(Client, Input, Options)
 %% specify the bucket name and file name
 %% of the document.
 %%
-%% `StartTextDetection' returns a job identifier
+%% `StartDocumentTextDetection' returns a job identifier
 %% (`JobId') that you use to get the results of the operation. When text
 %% detection is finished, Amazon Textract publishes a completion status to
 %% the Amazon Simple Notification Service (Amazon SNS)

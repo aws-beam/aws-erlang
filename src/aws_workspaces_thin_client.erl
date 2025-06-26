@@ -184,7 +184,6 @@
 %%   <<"releasedAt">> => non_neg_integer(),
 %%   <<"software">> => list(software()()),
 %%   <<"supportedUntil">> => non_neg_integer(),
-%%   <<"tags">> => map(),
 %%   <<"validationStatus">> => list(any()),
 %%   <<"version">> => [string()]
 %% }
@@ -236,7 +235,6 @@
 %%   <<"softwareSetComplianceStatus">> => list(any()),
 %%   <<"softwareSetUpdateMode">> => list(any()),
 %%   <<"softwareSetUpdateSchedule">> => list(any()),
-%%   <<"tags">> => map(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type environment() :: #{binary() => any()}.
@@ -434,7 +432,6 @@
 %%   <<"softwareSetUpdateSchedule">> => list(any()),
 %%   <<"softwareSetUpdateStatus">> => list(any()),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type device() :: #{binary() => any()}.
