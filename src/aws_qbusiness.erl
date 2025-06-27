@@ -275,6 +275,7 @@
 %% Example:
 %% update_data_accessor_request() :: #{
 %%   <<"actionConfigurations">> := list(action_configuration()()),
+%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
 %%   <<"displayName">> => string()
 %% }
 -type update_data_accessor_request() :: #{binary() => any()}.
@@ -446,6 +447,7 @@
 %% get_data_accessor_response() :: #{
 %%   <<"actionConfigurations">> => list(action_configuration()()),
 %%   <<"applicationId">> => string(),
+%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dataAccessorArn">> => string(),
 %%   <<"dataAccessorId">> => string(),
@@ -643,6 +645,7 @@
 %% Example:
 %% create_data_accessor_request() :: #{
 %%   <<"actionConfigurations">> := list(action_configuration()()),
+%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"principal">> := string(),
@@ -1846,6 +1849,13 @@
 
 
 %% Example:
+%% data_accessor_idc_trusted_token_issuer_configuration() :: #{
+%%   <<"idcTrustedTokenIssuerArn">> => string()
+%% }
+-type data_accessor_idc_trusted_token_issuer_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% orchestration_configuration() :: #{
 %%   <<"control">> => list(any())
 %% }
@@ -2148,6 +2158,7 @@
 %% Example:
 %% associate_permission_request() :: #{
 %%   <<"actions">> := list(string()()),
+%%   <<"conditions">> => list(permission_condition()()),
 %%   <<"principal">> := string(),
 %%   <<"statementId">> := string()
 %% }
@@ -2210,6 +2221,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_accessor_authentication_detail() :: #{
+%%   <<"authenticationConfiguration">> => list(),
+%%   <<"authenticationType">> => list(any()),
+%%   <<"externalIds">> => list(string()())
+%% }
+-type data_accessor_authentication_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2297,6 +2317,15 @@
 
 
 %% Example:
+%% permission_condition() :: #{
+%%   <<"conditionKey">> => string(),
+%%   <<"conditionOperator">> => list(any()),
+%%   <<"conditionValues">> => list(string()())
+%% }
+-type permission_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% retriever() :: #{
 %%   <<"applicationId">> => string(),
 %%   <<"displayName">> => string(),
@@ -2372,6 +2401,7 @@
 
 %% Example:
 %% data_accessor() :: #{
+%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dataAccessorArn">> => string(),
 %%   <<"dataAccessorId">> => string(),

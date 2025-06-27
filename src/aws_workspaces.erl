@@ -539,6 +539,13 @@
 -type describe_connection_aliases_result() :: #{binary() => any()}.
 
 %% Example:
+%% access_endpoint_config() :: #{
+%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"InternetFallbackProtocols">> => list(list(any())())
+%% }
+-type access_endpoint_config() :: #{binary() => any()}.
+
+%% Example:
 %% describe_workspace_image_permissions_result() :: #{
 %%   <<"ImageId">> => string(),
 %%   <<"ImagePermissions">> => list(image_permission()()),
@@ -643,6 +650,13 @@
 -type modify_workspace_creation_properties_result() :: #{binary() => any()}.
 
 %% Example:
+%% access_endpoint() :: #{
+%%   <<"AccessEndpointType">> => list(any()),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type access_endpoint() :: #{binary() => any()}.
+
+%% Example:
 %% capacity() :: #{
 %%   <<"DesiredUserSessions">> => integer()
 %% }
@@ -698,6 +712,12 @@
 %%   <<"UserVolumeSizeGib">> => integer()
 %% }
 -type workspace_properties() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_account_link_invitation_request() :: #{
@@ -1242,6 +1262,7 @@
 
 %% Example:
 %% workspace_access_properties() :: #{
+%%   <<"AccessEndpointConfig">> => access_endpoint_config(),
 %%   <<"DeviceTypeAndroid">> => list(any()),
 %%   <<"DeviceTypeChromeOs">> => list(any()),
 %%   <<"DeviceTypeIos">> => list(any()),
@@ -2722,8 +2743,11 @@
     resource_not_found_exception().
 
 -type modify_workspace_access_properties_errors() ::
+    operation_not_supported_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_combination_exception().
 
 -type modify_workspace_creation_properties_errors() ::
     operation_not_supported_exception() | 
