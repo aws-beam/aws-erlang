@@ -14099,6 +14099,13 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the specified routing profile.
+%%
+%% `DescribeRoutingProfile' does not populate AssociatedQueueIds in its
+%% response.
+%% The example Response Syntax shown on this page is incorrect; we are
+%% working to update it. SearchRoutingProfiles:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchRoutingProfiles.html
+%% does include AssociatedQueueIds.
 -spec describe_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_routing_profile_response(), tuple()} |
     {error, any()} |
@@ -18644,6 +18651,13 @@ search_resource_tags(Client, Input0, Options0) ->
 
 %% @doc Searches routing profiles in an Amazon Connect instance, with
 %% optional filtering.
+%%
+%% `SearchRoutingProfiles' does not populate LastModifiedRegion,
+%% LastModifiedTime,
+%% MediaConcurrencies.CrossChannelBehavior, and AgentAvailabilityTimer in its
+%% response, but DescribeRoutingProfile:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeRoutingProfile.html
+%% does.
 -spec search_routing_profiles(aws_client:aws_client(), search_routing_profiles_request()) ->
     {ok, search_routing_profiles_response(), tuple()} |
     {error, any()} |

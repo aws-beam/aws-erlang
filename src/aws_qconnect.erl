@@ -1,14 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%%
-%% Amazon Q
-%% actions:
+%% @doc Amazon Q actions:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Q_Connect.html
 %%
-%% Amazon Q data
-%% types:
+%% Amazon Q data types:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Q_Connect.html
 %%
 %% Powered by Amazon Bedrock: Amazon Web Services implements automated abuse
@@ -16,36 +12,28 @@
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/abuse-detection.html.
 %%
 %% Because Amazon Q in Connect is built on Amazon Bedrock, users can take
-%% full advantage of
-%% the controls implemented in Amazon Bedrock to enforce safety, security,
-%% and the responsible use of
-%% artificial intelligence (AI).
+%% full advantage of the controls implemented in Amazon Bedrock to enforce
+%% safety, security, and the responsible use of artificial intelligence (AI).
 %%
 %% Amazon Q in Connect is a generative AI customer service assistant. It is
-%% an LLM-enhanced
-%% evolution of Amazon Connect Wisdom that delivers real-time recommendations
-%% to help contact
-%% center agents resolve customer issues quickly and accurately.
+%% an LLM-enhanced evolution of Amazon Connect Wisdom that delivers real-time
+%% recommendations to help contact center agents resolve customer issues
+%% quickly and accurately.
 %%
 %% Amazon Q in Connect automatically detects customer intent during calls and
-%% chats using conversational
-%% analytics and natural language understanding (NLU). It then provides
-%% agents with immediate,
-%% real-time generative responses and suggested actions, and links to
-%% relevant documents and
+%% chats using conversational analytics and natural language understanding
+%% (NLU). It then provides agents with immediate, real-time generative
+%% responses and suggested actions, and links to relevant documents and
 %% articles. Agents can also query Amazon Q in Connect directly using natural
-%% language or keywords to answer
-%% customer requests.
+%% language or keywords to answer customer requests.
 %%
 %% Use the Amazon Q in Connect APIs to create an assistant and a knowledge
-%% base, for example, or
-%% manage content by uploading custom files.
+%% base, for example, or manage content by uploading custom files.
 %%
 %% For more information, see Use Amazon Q in Connect for generative AI
 %% powered agent assistance in real-time:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-q-connect.html
-%% in the Amazon Connect
-%% Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 -module(aws_qconnect).
 
 -export([activate_message_template/4,
@@ -391,6 +379,13 @@
 %%   <<"origin">> => string()
 %% }
 -type list_a_i_agent_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
 
 %% Example:
 %% delete_a_i_guardrail_version_response() :: #{}
@@ -3097,7 +3092,8 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_a_i_agent_version_errors() ::
     throttling_exception() | 
@@ -3105,7 +3101,8 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_a_i_guardrail_errors() ::
     throttling_exception() | 
@@ -3113,7 +3110,8 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_a_i_guardrail_version_errors() ::
     throttling_exception() | 
@@ -3121,7 +3119,8 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_a_iprompt_errors() ::
     throttling_exception() | 
@@ -3129,7 +3128,8 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_a_iprompt_version_errors() ::
     throttling_exception() | 
@@ -3137,13 +3137,15 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_assistant_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_assistant_association_errors() ::
     validation_exception() | 
@@ -3157,7 +3159,8 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_content_association_errors() ::
     throttling_exception() | 
@@ -3165,13 +3168,15 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_knowledge_base_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_message_template_errors() ::
     throttling_exception() | 
@@ -3187,7 +3192,8 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_message_template_version_errors() ::
     throttling_exception() | 
@@ -3202,13 +3208,15 @@
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_session_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type deactivate_message_template_errors() ::
     throttling_exception() | 
@@ -3221,74 +3229,86 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type delete_a_i_agent_version_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type delete_a_i_guardrail_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type delete_a_i_guardrail_version_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type delete_a_iprompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type delete_a_iprompt_version_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type delete_assistant_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type delete_assistant_association_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type delete_content_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type delete_content_association_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type delete_import_job_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type delete_knowledge_base_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type delete_message_template_errors() ::
     throttling_exception() | 
@@ -3307,50 +3327,59 @@
 -type delete_quick_response_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_a_i_agent_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_a_i_guardrail_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_a_iprompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_assistant_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_assistant_association_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_content_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_content_association_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_content_summary_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_import_job_errors() ::
     validation_exception() | 
@@ -3360,13 +3389,15 @@
 -type get_knowledge_base_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_message_template_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_next_message_errors() ::
     validation_exception() | 
@@ -3376,7 +3407,8 @@
 -type get_quick_response_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type get_recommendations_errors() ::
     validation_exception() | 
@@ -3386,43 +3418,50 @@
 -type get_session_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_a_i_agent_versions_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_a_i_agents_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_a_i_guardrail_versions_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_a_i_guardrails_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_a_iprompt_versions_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_a_iprompts_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_assistant_associations_errors() ::
     validation_exception() | 
@@ -3431,12 +3470,14 @@
 
 -type list_assistants_errors() ::
     validation_exception() | 
-    access_denied_exception().
+    access_denied_exception() | 
+    unauthorized_exception().
 
 -type list_content_associations_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type list_contents_errors() ::
     validation_exception() | 
@@ -3512,24 +3553,28 @@
 -type search_content_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type search_message_templates_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type search_quick_responses_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    unauthorized_exception().
 
 -type search_sessions_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type send_message_errors() ::
     throttling_exception() | 
@@ -3542,14 +3587,16 @@
 -type start_content_upload_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type start_import_job_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
@@ -3563,21 +3610,24 @@
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type update_a_i_guardrail_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type update_a_iprompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type update_assistant_a_i_agent_errors() ::
     throttling_exception() | 
@@ -3589,7 +3639,8 @@
     precondition_failed_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type update_knowledge_base_template_uri_errors() ::
     validation_exception() | 
@@ -3615,17 +3666,20 @@
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type update_session_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type update_session_data_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 %%====================================================================
 %% API
@@ -3634,12 +3688,9 @@
 %% @doc Activates a specific version of the Amazon Q in Connect message
 %% template.
 %%
-%% After the
-%% version is activated, the previous active version will be deactivated
-%% automatically. You can
-%% use the `$ACTIVE_VERSION' qualifier later to reference the version
-%% that is in
-%% active status.
+%% After the version is activated, the previous active version will be
+%% deactivated automatically. You can use the `$ACTIVE_VERSION' qualifier
+%% later to reference the version that is in active status.
 -spec activate_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), activate_message_template_request()) ->
     {ok, activate_message_template_response(), tuple()} |
     {error, any()} |
@@ -3914,10 +3965,8 @@ create_assistant(Client, Input0, Options0) ->
 %% @doc Creates an association between an Amazon Q in Connect assistant and
 %% another resource.
 %%
-%% Currently, the
-%% only supported association is with a knowledge base. An assistant can have
-%% only a single
-%% association.
+%% Currently, the only supported association is with a knowledge base. An
+%% assistant can have only a single association.
 -spec create_assistant_association(aws_client:aws_client(), binary() | list(), create_assistant_association_request()) ->
     {ok, create_assistant_association_response(), tuple()} |
     {error, any()} |
@@ -3993,31 +4042,26 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %% and step-by-step guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/step-by-step-guided-experiences.html.
 %%
-%% Step-by-step guides offer instructions to agents for resolving
-%% common customer issues. You create a content association to integrate
-%% Amazon Q in Connect and
-%% step-by-step guides.
+%% Step-by-step guides offer instructions to agents for resolving common
+%% customer issues. You create a content association to integrate Amazon Q in
+%% Connect and step-by-step guides.
 %%
 %% After you integrate Amazon Q and step-by-step guides, when Amazon Q
-%% provides a
-%% recommendation to an agent based on the intent that it's detected, it
-%% also provides them with
-%% the option to start the step-by-step guide that you have associated with
-%% the content.
+%% provides a recommendation to an agent based on the intent that it's
+%% detected, it also provides them with the option to start the step-by-step
+%% guide that you have associated with the content.
 %%
 %% Note the following limitations:
 %%
 %% You can create only one content association for each content resource in a
-%% knowledge
-%% base.
+%% knowledge base.
 %%
 %% You can associate a step-by-step guide with multiple content resources.
 %%
-%% For more information, see Integrate Amazon Q in Connect with
-%% step-by-step guides:
+%% For more information, see Integrate Amazon Q in Connect with step-by-step
+%% guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
-%% in the Amazon Connect Administrator
-%% Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec create_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), create_content_association_request()) ->
     {ok, create_content_association_response(), tuple()} |
     {error, any()} |
@@ -4056,14 +4100,12 @@ create_content_association(Client, ContentId, KnowledgeBaseId, Input0, Options0)
 %% When using this API, you cannot reuse Amazon AppIntegrations:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/Welcome.html
 %% DataIntegrations with external knowledge bases such as Salesforce and
-%% ServiceNow. If you do,
-%% you'll get an `InvalidRequestException' error.
+%% ServiceNow. If you do, you'll get an `InvalidRequestException'
+%% error.
 %%
 %% For example, you're programmatically managing your external knowledge
-%% base, and you want
-%% to add or remove one of the fields that is being ingested from Salesforce.
-%% Do the
-%% following:
+%% base, and you want to add or remove one of the fields that is being
+%% ingested from Salesforce. Do the following:
 %%
 %% Call DeleteKnowledgeBase:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_DeleteKnowledgeBase.html.
@@ -4073,8 +4115,7 @@ create_content_association(Client, ContentId, KnowledgeBaseId, Input0, Options0)
 %%
 %% Call CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
-%% to recreate the DataIntegration or a create different
-%% one.
+%% to recreate the DataIntegration or a create different one.
 %%
 %% Call CreateKnowledgeBase.
 -spec create_knowledge_base(aws_client:aws_client(), create_knowledge_base_request()) ->
@@ -4112,12 +4153,10 @@ create_knowledge_base(Client, Input0, Options0) ->
 
 %% @doc Creates an Amazon Q in Connect message template.
 %%
-%% The name of the message template has to
-%% be unique for each knowledge base. The channel subtype of the message
-%% template is immutable
-%% and cannot be modified after creation. After the message template is
-%% created, you can use the
-%% `$LATEST' qualifier to reference the created message template.
+%% The name of the message template has to be unique for each knowledge base.
+%% The channel subtype of the message template is immutable and cannot be
+%% modified after creation. After the message template is created, you can
+%% use the `$LATEST' qualifier to reference the created message template.
 -spec create_message_template(aws_client:aws_client(), binary() | list(), create_message_template_request()) ->
     {ok, create_message_template_response(), tuple()} |
     {error, any()} |
@@ -4154,14 +4193,11 @@ create_message_template(Client, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Uploads an attachment file to the specified Amazon Q in Connect
 %% message template.
 %%
-%% The name
-%% of the message template attachment has to be unique for each message
-%% template referenced by
-%% the `$LATEST' qualifier. The body of the attachment file should be
-%% encoded using
-%% base64 encoding. After the file is uploaded, you can use the pre-signed
-%% Amazon S3 URL returned
-%% in response to download the uploaded file.
+%% The name of the message template attachment has to be unique for each
+%% message template referenced by the `$LATEST' qualifier. The body of
+%% the attachment file should be encoded using base64 encoding. After the
+%% file is uploaded, you can use the pre-signed Amazon S3 URL returned in
+%% response to download the uploaded file.
 -spec create_message_template_attachment(aws_client:aws_client(), binary() | list(), binary() | list(), create_message_template_attachment_request()) ->
     {ok, create_message_template_attachment_response(), tuple()} |
     {error, any()} |
@@ -4196,24 +4232,18 @@ create_message_template_attachment(Client, KnowledgeBaseId, MessageTemplateId, I
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Amazon Q in Connect message template version from the
-%% current content and
-%% configuration of a message template.
+%% current content and configuration of a message template.
 %%
-%% Versions are immutable and monotonically increasing. Once
-%% a version is created, you can reference a specific version of the message
-%% template by passing
-%% in `&lt;message-template-id&gt;:&lt;versionNumber&gt;' as the message
-%% template
-%% identifier. An error is displayed if the supplied
-%% `messageTemplateContentSha256' is
-%% different from the `messageTemplateContentSha256' of the message
-%% template with
+%% Versions are immutable and monotonically increasing. Once a version is
+%% created, you can reference a specific version of the message template by
+%% passing in `&lt;message-template-id&gt;:&lt;versionNumber&gt;' as the
+%% message template identifier. An error is displayed if the supplied
+%% `messageTemplateContentSha256' is different from the
+%% `messageTemplateContentSha256' of the message template with
 %% `$LATEST' qualifier. If multiple `CreateMessageTemplateVersion'
 %% requests are made while the message template remains the same, only the
-%% first invocation
-%% creates a new version and the succeeding requests will return the same
-%% response as the first
-%% invocation.
+%% first invocation creates a new version and the succeeding requests will
+%% return the same response as the first invocation.
 -spec create_message_template_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_message_template_version_request()) ->
     {ok, create_message_template_version_response(), tuple()} |
     {error, any()} |
@@ -4283,10 +4313,9 @@ create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
 
 %% @doc Creates a session.
 %%
-%% A session is a contextual container used for generating
-%% recommendations. Amazon Connect creates a new Amazon Q in Connect session
-%% for each contact on which
-%% Amazon Q in Connect is enabled.
+%% A session is a contextual container used for generating recommendations.
+%% Amazon Connect creates a new Amazon Q in Connect session for each contact
+%% on which Amazon Q in Connect is enabled.
 -spec create_session(aws_client:aws_client(), binary() | list(), create_session_request()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
@@ -4323,10 +4352,8 @@ create_session(Client, AssistantId, Input0, Options0) ->
 %% @doc Deactivates a specific version of the Amazon Q in Connect message
 %% template .
 %%
-%% After the
-%% version is deactivated, you can no longer use the `$ACTIVE_VERSION'
-%% qualifier to
-%% reference the version in active status.
+%% After the version is deactivated, you can no longer use the
+%% `$ACTIVE_VERSION' qualifier to reference the version in active status.
 -spec deactivate_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), deactivate_message_template_request()) ->
     {ok, deactivate_message_template_response(), tuple()} |
     {error, any()} |
@@ -4669,11 +4696,9 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Deletes the content association.
 %%
 %% For more information about content associations--what they are and when
-%% they are used--see
-%% Integrate Amazon Q in Connect with step-by-step guides:
+%% they are used--see Integrate Amazon Q in Connect with step-by-step guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
-%% in the Amazon Connect
-%% Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec delete_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_content_association_request()) ->
     {ok, delete_content_association_response(), tuple()} |
     {error, any()} |
@@ -4744,19 +4769,15 @@ delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Deletes the knowledge base.
 %%
 %% When you use this API to delete an external knowledge base such as
-%% Salesforce or
-%% ServiceNow, you must also delete the Amazon AppIntegrations:
+%% Salesforce or ServiceNow, you must also delete the Amazon AppIntegrations:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/Welcome.html
 %% DataIntegration. This is because you can't reuse the DataIntegration
-%% after it's been
-%% associated with an external knowledge base. However, you can delete and
-%% recreate it. See
-%% DeleteDataIntegration:
+%% after it's been associated with an external knowledge base. However,
+%% you can delete and recreate it. See DeleteDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html
 %% and CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
-%% in the Amazon AppIntegrations API
-%% Reference.
+%% in the Amazon AppIntegrations API Reference.
 -spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), delete_knowledge_base_request()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
@@ -4791,15 +4812,13 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q in Connect message template entirely or a
-%% specific version of the
-%% message template if version is supplied in the request.
+%% specific version of the message template if version is supplied in the
+%% request.
 %%
-%% You can provide the message template
-%% identifier as `&lt;message-template-id&gt;:&lt;versionNumber&gt;' to
-%% delete a
+%% You can provide the message template identifier as
+%% `&lt;message-template-id&gt;:&lt;versionNumber&gt;' to delete a
 %% specific version of the message template. If it is not supplied, the
-%% message template and all
-%% available versions will be deleted.
+%% message template and all available versions will be deleted.
 -spec delete_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_message_template_request()) ->
     {ok, delete_message_template_response(), tuple()} |
     {error, any()} |
@@ -4834,11 +4853,9 @@ delete_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Opti
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the attachment file from the Amazon Q in Connect message
-%% template that is
-%% referenced by `$LATEST' qualifier.
+%% template that is referenced by `$LATEST' qualifier.
 %%
-%% Attachments on available message template
-%% versions will remain unchanged.
+%% Attachments on available message template versions will remain unchanged.
 -spec delete_message_template_attachment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_message_template_attachment_request()) ->
     {ok, delete_message_template_attachment_response(), tuple()} |
     {error, any()} |
@@ -5132,11 +5149,9 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 %% @doc Returns the content association.
 %%
 %% For more information about content associations--what they are and when
-%% they are used--see
-%% Integrate Amazon Q in Connect with step-by-step guides:
+%% they are used--see Integrate Amazon Q in Connect with step-by-step guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
-%% in the Amazon Connect
-%% Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec get_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_content_association_response(), tuple()} |
     {error, any()} |
@@ -5286,14 +5301,11 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the Amazon Q in Connect message template.
 %%
-%% The message template identifier can
-%% contain an optional qualifier, for example,
-%% `&lt;message-template-id&gt;:&lt;qualifier&gt;', which is either an
-%% actual
-%% version number or an Amazon Q Connect managed qualifier
-%% `$ACTIVE_VERSION' |
-%% `$LATEST'. If it is not supplied, then `$LATEST' is assumed
-%% implicitly.
+%% The message template identifier can contain an optional qualifier, for
+%% example, `&lt;message-template-id&gt;:&lt;qualifier&gt;', which is
+%% either an actual version number or an Amazon Q Connect managed qualifier
+%% `$ACTIVE_VERSION' | `$LATEST'. If it is not supplied, then
+%% `$LATEST' is assumed implicitly.
 -spec get_message_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_message_template_response(), tuple()} |
     {error, any()} |
@@ -5408,23 +5420,19 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% This API will be discontinued starting June 1, 2024.
+%% @doc This API will be discontinued starting June 1, 2024.
 %%
-%% To receive generative responses
-%% after March 1, 2024, you will need to create a new Assistant in the Amazon
-%% Connect
-%% console and integrate the Amazon Q in Connect JavaScript library
-%% (amazon-q-connectjs) into
-%% your applications.
+%% To receive generative responses after March 1, 2024, you will need to
+%% create a new Assistant in the Amazon Connect console and integrate the
+%% Amazon Q in Connect JavaScript library (amazon-q-connectjs) into your
+%% applications.
 %%
 %% Retrieves recommendations for the specified session. To avoid retrieving
-%% the same
-%% recommendations in subsequent calls, use NotifyRecommendationsReceived:
+%% the same recommendations in subsequent calls, use
+%% NotifyRecommendationsReceived:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_NotifyRecommendationsReceived.html.
-%% This API supports long-polling behavior with the
-%% `waitTimeSeconds' parameter. Short poll is the default behavior and
-%% only returns
+%% This API supports long-polling behavior with the `waitTimeSeconds'
+%% parameter. Short poll is the default behavior and only returns
 %% recommendations already available. To perform a manual query against an
 %% assistant, use QueryAssistant:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_QueryAssistant.html.
@@ -5851,11 +5859,9 @@ list_assistants(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the content associations.
 %%
 %% For more information about content associations--what they are and when
-%% they are used--see
-%% Integrate Amazon Q in Connect with step-by-step guides:
+%% they are used--see Integrate Amazon Q in Connect with step-by-step guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
-%% in the Amazon Connect
-%% Administrator Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec list_content_associations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_content_associations_response(), tuple()} |
     {error, any()} |
@@ -6024,8 +6030,7 @@ list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the available versions for the specified Amazon Q in
-%% Connect message
-%% template.
+%% Connect message template.
 -spec list_message_template_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_message_template_versions_response(), tuple()} |
     {error, any()} |
@@ -6068,8 +6073,7 @@ list_message_template_versions(Client, KnowledgeBaseId, MessageTemplateId, Query
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the available Amazon Q in Connect message templates for the
-%% specified knowledge
-%% base.
+%% specified knowledge base.
 -spec list_message_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_message_templates_response(), tuple()} |
     {error, any()} |
@@ -6233,13 +6237,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Removes the specified recommendations from the specified
-%% assistant's queue of newly
-%% available recommendations.
+%% assistant's queue of newly available recommendations.
 %%
 %% You can use this API in conjunction with GetRecommendations:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_GetRecommendations.html
-%% and a `waitTimeSeconds' input for long-polling
-%% behavior and avoiding duplicate recommendations.
+%% and a `waitTimeSeconds' input for long-polling behavior and avoiding
+%% duplicate recommendations.
 -spec notify_recommendations_received(aws_client:aws_client(), binary() | list(), binary() | list(), notify_recommendations_received_request()) ->
     {ok, notify_recommendations_received_response(), tuple()} |
     {error, any()} |
@@ -6276,8 +6279,7 @@ notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0
 %% @doc Provides feedback against the specified assistant for the specified
 %% target.
 %%
-%% This API only
-%% supports generative targets.
+%% This API only supports generative targets.
 -spec put_feedback(aws_client:aws_client(), binary() | list(), put_feedback_request()) ->
     {ok, put_feedback_response(), tuple()} |
     {error, any()} |
@@ -6311,19 +6313,15 @@ put_feedback(Client, AssistantId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This API will be discontinued starting June 1, 2024.
+%% @doc This API will be discontinued starting June 1, 2024.
 %%
-%% To receive generative responses
-%% after March 1, 2024, you will need to create a new Assistant in the Amazon
-%% Connect
-%% console and integrate the Amazon Q in Connect JavaScript library
-%% (amazon-q-connectjs) into
-%% your applications.
+%% To receive generative responses after March 1, 2024, you will need to
+%% create a new Assistant in the Amazon Connect console and integrate the
+%% Amazon Q in Connect JavaScript library (amazon-q-connectjs) into your
+%% applications.
 %%
 %% Performs a manual search against the specified assistant. To retrieve
-%% recommendations for
-%% an assistant, use GetRecommendations:
+%% recommendations for an assistant, use GetRecommendations:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_GetRecommendations.html.
 -spec query_assistant(aws_client:aws_client(), binary() | list(), query_assistant_request()) ->
     {ok, query_assistant_response(), tuple()} |
@@ -6359,8 +6357,7 @@ query_assistant(Client, AssistantId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the AI Agent that is set for use by default on an Amazon Q in
-%% Connect
-%% Assistant.
+%% Connect Assistant.
 -spec remove_assistant_a_i_agent(aws_client:aws_client(), binary() | list(), remove_assistant_a_i_agent_request()) ->
     {ok, remove_assistant_a_i_agent_response(), tuple()} |
     {error, any()} |
@@ -6430,15 +6427,13 @@ remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Renders the Amazon Q in Connect message template based on the
-%% attribute values provided
-%% and generates the message content.
+%% attribute values provided and generates the message content.
 %%
-%% For any variable present in the message template, if the
-%% attribute value is neither provided in the attribute request parameter nor
-%% the default
+%% For any variable present in the message template, if the attribute value
+%% is neither provided in the attribute request parameter nor the default
 %% attribute of the message template, the rendered message content will keep
-%% the variable
-%% placeholder as it is and return the attribute keys that are missing.
+%% the variable placeholder as it is and return the attribute keys that are
+%% missing.
 -spec render_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), render_message_template_request()) ->
     {ok, render_message_template_response(), tuple()} |
     {error, any()} |
@@ -6474,8 +6469,7 @@ render_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Opti
 
 %% @doc Searches for content in a specified knowledge base.
 %%
-%% Can be used to get a specific content
-%% resource by its name.
+%% Can be used to get a specific content resource by its name.
 -spec search_content(aws_client:aws_client(), binary() | list(), search_content_request()) ->
     {ok, search_content_response(), tuple()} |
     {error, any()} |
@@ -6657,18 +6651,13 @@ send_message(Client, AssistantId, SessionId, Input0, Options0) ->
 
 %% @doc Get a URL to upload content to a knowledge base.
 %%
-%% To upload content, first make a PUT
-%% request to the returned URL with your file, making sure to include the
-%% required headers. Then
-%% use CreateContent:
+%% To upload content, first make a PUT request to the returned URL with your
+%% file, making sure to include the required headers. Then use CreateContent:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_CreateContent.html
-%% to
-%% finalize the content creation process or UpdateContent:
+%% to finalize the content creation process or UpdateContent:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_UpdateContent.html
-%% to
-%% modify an existing resource. You can only upload content to a knowledge
-%% base of type
-%% CUSTOM.
+%% to modify an existing resource. You can only upload content to a knowledge
+%% base of type CUSTOM.
 -spec start_content_upload(aws_client:aws_client(), binary() | list(), start_content_upload_request()) ->
     {ok, start_content_upload_response(), tuple()} |
     {error, any()} |
@@ -6707,14 +6696,12 @@ start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% Before calling this API, use StartContentUpload:
 %% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_StartContentUpload.html
-%% to
-%% upload an asset that contains the resource data.
+%% to upload an asset that contains the resource data.
 %%
 %% For importing Amazon Q in Connect quick responses, you need to upload a
-%% csv file including the
-%% quick responses. For information about how to format the csv file for
-%% importing quick
-%% responses, see Import quick responses:
+%% csv file including the quick responses. For information about how to
+%% format the csv file for importing quick responses, see Import quick
+%% responses:
 %% https://docs.aws.amazon.com/console/connect/quick-responses/add-data.
 -spec start_import_job(aws_client:aws_client(), binary() | list(), start_import_job_request()) ->
     {ok, start_import_job_response(), tuple()} |
@@ -6921,8 +6908,7 @@ update_a_iprompt(Client, AiPromptId, AssistantId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the AI Agent that is set for use by default on an Amazon Q in
-%% Connect
-%% Assistant.
+%% Connect Assistant.
 -spec update_assistant_a_i_agent(aws_client:aws_client(), binary() | list(), update_assistant_a_i_agent_request()) ->
     {ok, update_assistant_a_i_agent_response(), tuple()} |
     {error, any()} |
@@ -6992,11 +6978,9 @@ update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 
 %% @doc Updates the template URI of a knowledge base.
 %%
-%% This is only supported for knowledge bases
-%% of type EXTERNAL. Include a single variable in `${variable}' format;
-%% this
-%% interpolated by Amazon Q in Connect using ingested content. For example,
-%% if you ingest a Salesforce
+%% This is only supported for knowledge bases of type EXTERNAL. Include a
+%% single variable in `${variable}' format; this interpolated by Amazon Q
+%% in Connect using ingested content. For example, if you ingest a Salesforce
 %% article, it has an `Id' value, and you can set the template URI to
 %% `https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view'.
 -spec update_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), update_knowledge_base_template_uri_request()) ->
@@ -7034,13 +7018,10 @@ update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
 
 %% @doc Updates the Amazon Q in Connect message template.
 %%
-%% Partial update is supported. If any
-%% field is not supplied, it will remain unchanged for the message template
-%% that is referenced by
-%% the `$LATEST' qualifier. Any modification will only apply to the
-%% message template
-%% that is referenced by the `$LATEST' qualifier. The fields for all
-%% available
+%% Partial update is supported. If any field is not supplied, it will remain
+%% unchanged for the message template that is referenced by the `$LATEST'
+%% qualifier. Any modification will only apply to the message template that
+%% is referenced by the `$LATEST' qualifier. The fields for all available
 %% versions will remain unchanged.
 -spec update_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_message_template_request()) ->
     {ok, update_message_template_response(), tuple()} |
@@ -7077,13 +7058,10 @@ update_message_template(Client, KnowledgeBaseId, MessageTemplateId, Input0, Opti
 
 %% @doc Updates the Amazon Q in Connect message template metadata.
 %%
-%% Note that any modification to
-%% the message template’s name, description and grouping configuration will
-%% applied to the
-%% message template pointed by the `$LATEST' qualifier and all available
-%% versions.
-%% Partial update is supported. If any field is not supplied, it will remain
-%% unchanged for the
+%% Note that any modification to the message template’s name, description and
+%% grouping configuration will applied to the message template pointed by the
+%% `$LATEST' qualifier and all available versions. Partial update is
+%% supported. If any field is not supplied, it will remain unchanged for the
 %% message template.
 -spec update_message_template_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_message_template_metadata_request()) ->
     {ok, update_message_template_metadata_response(), tuple()} |
@@ -7154,10 +7132,9 @@ update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
 
 %% @doc Updates a session.
 %%
-%% A session is a contextual container used for generating
-%% recommendations. Amazon Connect updates the existing Amazon Q in Connect
-%% session for each contact on
-%% which Amazon Q in Connect is enabled.
+%% A session is a contextual container used for generating recommendations.
+%% Amazon Connect updates the existing Amazon Q in Connect session for each
+%% contact on which Amazon Q in Connect is enabled.
 -spec update_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_session_request()) ->
     {ok, update_session_response(), tuple()} |
     {error, any()} |

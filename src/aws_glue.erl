@@ -699,6 +699,12 @@
 -type list_schemas_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_iceberg_input() :: #{
+%%   <<"UpdateIcebergTableInput">> => update_iceberg_table_input()
+%% }
+-type update_iceberg_input() :: #{binary() => any()}.
+
+%% Example:
 %% create_workflow_request() :: #{
 %%   <<"DefaultRunProperties">> => map(),
 %%   <<"Description">> => string(),
@@ -944,6 +950,16 @@
 -type create_integration_response() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_struct_field() :: #{
+%%   <<"Doc">> => string(),
+%%   <<"Id">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"Required">> => boolean(),
+%%   <<"Type">> => any()
+%% }
+-type iceberg_struct_field() :: #{binary() => any()}.
+
+%% Example:
 %% supported_dialect() :: #{
 %%   <<"Dialect">> => list(any()),
 %%   <<"DialectVersion">> => string()
@@ -1117,6 +1133,13 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type remove_schema_version_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_partition_spec() :: #{
+%%   <<"Fields">> => list(iceberg_partition_field()()),
+%%   <<"SpecId">> => integer()
+%% }
+-type iceberg_partition_spec() :: #{binary() => any()}.
 
 %% Example:
 %% entity_not_found_exception() :: #{
@@ -1302,9 +1325,11 @@
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"Force">> => boolean(),
+%%   <<"Name">> => string(),
 %%   <<"SkipArchive">> => boolean(),
-%%   <<"TableInput">> := table_input(),
+%%   <<"TableInput">> => table_input(),
 %%   <<"TransactionId">> => string(),
+%%   <<"UpdateOpenTableFormatInput">> => update_open_table_format_input(),
 %%   <<"VersionId">> => string(),
 %%   <<"ViewUpdateAction">> => list(any())
 %% }
@@ -1549,6 +1574,7 @@
 %% Example:
 %% federated_database() :: #{
 %%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => string(),
 %%   <<"Identifier">> => string()
 %% }
 -type federated_database() :: #{binary() => any()}.
@@ -2162,6 +2188,13 @@
 -type create_custom_entity_type_response() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_sort_order() :: #{
+%%   <<"Fields">> => list(iceberg_sort_field()()),
+%%   <<"OrderId">> => integer()
+%% }
+-type iceberg_sort_order() :: #{binary() => any()}.
+
+%% Example:
 %% update_x_ml_classifier_request() :: #{
 %%   <<"Classification">> => string(),
 %%   <<"Name">> => string(),
@@ -2184,6 +2217,7 @@
 %% Example:
 %% federated_catalog() :: #{
 %%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => string(),
 %%   <<"Identifier">> => string()
 %% }
 -type federated_catalog() :: #{binary() => any()}.
@@ -2355,6 +2389,7 @@
 %% create_table_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
+%%   <<"Name">> => string(),
 %%   <<"OpenTableFormatInput">> => open_table_format_input(),
 %%   <<"PartitionIndexes">> => list(partition_index()()),
 %%   <<"TableInput">> := table_input(),
@@ -4047,6 +4082,12 @@
 -type create_schema_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_iceberg_table_input() :: #{
+%%   <<"Updates">> => list(iceberg_table_update()())
+%% }
+-type update_iceberg_table_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_dev_endpoint_response() :: #{
 %%   <<"DevEndpoint">> => dev_endpoint()
 %% }
@@ -4458,6 +4499,7 @@
 %% Example:
 %% federated_table() :: #{
 %%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => string(),
 %%   <<"DatabaseIdentifier">> => string(),
 %%   <<"Identifier">> => string()
 %% }
@@ -5222,6 +5264,15 @@
 -type start_workflow_run_response() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_sort_field() :: #{
+%%   <<"Direction">> => list(any()),
+%%   <<"NullOrder">> => list(any()),
+%%   <<"SourceId">> => integer(),
+%%   <<"Transform">> => string()
+%% }
+-type iceberg_sort_field() :: #{binary() => any()}.
+
+%% Example:
 %% compute_environment_configuration() :: #{
 %%   <<"ComputeEnvironment">> => list(any()),
 %%   <<"ConnectionOptionNameOverrides">> => map(),
@@ -5600,6 +5651,15 @@
 %%   <<"Name">> := string()
 %% }
 -type get_usage_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_partition_field() :: #{
+%%   <<"FieldId">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"SourceId">> => integer(),
+%%   <<"Transform">> => string()
+%% }
+-type iceberg_partition_field() :: #{binary() => any()}.
 
 %% Example:
 %% create_classifier_response() :: #{
@@ -6613,6 +6673,16 @@
 -type describe_integrations_response() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_table_update() :: #{
+%%   <<"Location">> => string(),
+%%   <<"PartitionSpec">> => iceberg_partition_spec(),
+%%   <<"Properties">> => map(),
+%%   <<"Schema">> => iceberg_schema(),
+%%   <<"SortOrder">> => iceberg_sort_order()
+%% }
+-type iceberg_table_update() :: #{binary() => any()}.
+
+%% Example:
 %% delete_job_request() :: #{
 %%   <<"JobName">> := string()
 %% }
@@ -6938,6 +7008,7 @@
 
 %% Example:
 %% iceberg_input() :: #{
+%%   <<"CreateIcebergTableInput">> => create_iceberg_table_input(),
 %%   <<"MetadataOperation">> => list(any()),
 %%   <<"Version">> => string()
 %% }
@@ -7355,6 +7426,15 @@
 %%   <<"RunId">> := string()
 %% }
 -type cancel_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_schema() :: #{
+%%   <<"Fields">> => list(iceberg_struct_field()()),
+%%   <<"IdentifierFieldIds">> => list(integer()()),
+%%   <<"SchemaId">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type iceberg_schema() :: #{binary() => any()}.
 
 %% Example:
 %% create_connection_response() :: #{
@@ -8122,6 +8202,12 @@
 -type resource_not_ready_exception() :: #{binary() => any()}.
 
 %% Example:
+%% update_open_table_format_input() :: #{
+%%   <<"UpdateIcebergInput">> => update_iceberg_input()
+%% }
+-type update_open_table_format_input() :: #{binary() => any()}.
+
+%% Example:
 %% start_ml_labeling_set_generation_task_run_response() :: #{
 %%   <<"TaskRunId">> => string()
 %% }
@@ -8611,6 +8697,16 @@
 %%   <<"Username">> => string()
 %% }
 -type basic_authentication_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% create_iceberg_table_input() :: #{
+%%   <<"Location">> => string(),
+%%   <<"PartitionSpec">> => iceberg_partition_spec(),
+%%   <<"Properties">> => map(),
+%%   <<"Schema">> => iceberg_schema(),
+%%   <<"WriteOrder">> => iceberg_sort_order()
+%% }
+-type create_iceberg_table_input() :: #{binary() => any()}.
 
 %% Example:
 %% iceberg_retention_configuration() :: #{
@@ -14676,6 +14772,11 @@ start_ml_evaluation_task_run(Client, Input, Options)
 %% all future runs of the machine learning transform will use the new and
 %% improved labels and
 %% perform a higher-quality transformation.
+%%
+%% Note: The role used to write the generated labeling set to the
+%% `OutputS3Path' is the role
+%% associated with the Machine Learning Transform, specified in the
+%% `CreateMLTransform' API.
 -spec start_ml_labeling_set_generation_task_run(aws_client:aws_client(), start_ml_labeling_set_generation_task_run_request()) ->
     {ok, start_ml_labeling_set_generation_task_run_response(), tuple()} |
     {error, any()} |
