@@ -10,8 +10,9 @@
 %% This reference is intended to be used with the Amazon Web Services Systems
 %% Manager User Guide:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/. To get
-%% started, see Setting up Amazon Web Services Systems Manager:
-%% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html.
+%% started, see Setting up
+%% Amazon Web Services Systems Manager:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-console.html.
 %%
 %% == Related resources ==
 %%
@@ -3246,6 +3247,7 @@
 
 %% Example:
 %% session() :: #{
+%%   <<"AccessType">> => list(any()),
 %%   <<"Details">> => string(),
 %%   <<"DocumentName">> => string(),
 %%   <<"EndDate">> => non_neg_integer(),
@@ -5579,6 +5581,7 @@
 
 -type create_document_errors() ::
     document_limit_exceeded() | 
+    too_many_updates() | 
     internal_server_error() | 
     document_already_exists() | 
     invalid_document_schema_version() | 
@@ -5631,6 +5634,7 @@
 -type delete_document_errors() ::
     invalid_document_operation() | 
     associated_instances() | 
+    too_many_updates() | 
     internal_server_error() | 
     invalid_document().
 
@@ -6318,6 +6322,7 @@
 
 -type update_document_metadata_errors() ::
     invalid_document_operation() | 
+    too_many_updates() | 
     internal_server_error() | 
     invalid_document_version() | 
     invalid_document().

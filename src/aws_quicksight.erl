@@ -1884,6 +1884,7 @@
 %% Example:
 %% sheet_text_box() :: #{
 %%   <<"Content">> => string(),
+%%   <<"Interactions">> => text_box_interaction_options(),
 %%   <<"SheetTextBoxId">> => string()
 %% }
 -type sheet_text_box() :: #{binary() => any()}.
@@ -2524,6 +2525,7 @@
 
 %% Example:
 %% athena_parameters() :: #{
+%%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
 %%   <<"RoleArn">> => string(),
 %%   <<"WorkGroup">> => string()
 %% }
@@ -9385,6 +9387,13 @@
 
 
 %% Example:
+%% text_box_menu_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type text_box_menu_option() :: #{binary() => any()}.
+
+
+%% Example:
 %% plugin_visual_property() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
@@ -12213,6 +12222,13 @@
 
 
 %% Example:
+%% text_box_interaction_options() :: #{
+%%   <<"TextBoxMenuOption">> => text_box_menu_option()
+%% }
+-type text_box_interaction_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_role_custom_permission_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -12468,7 +12484,13 @@
 %%   <<"CreateSPICEDataset">> => list(any()),
 %%   <<"CreateSharedFolders">> => list(any()),
 %%   <<"ExportToCsv">> => list(any()),
+%%   <<"ExportToCsvInScheduledReports">> => list(any()),
 %%   <<"ExportToExcel">> => list(any()),
+%%   <<"ExportToExcelInScheduledReports">> => list(any()),
+%%   <<"ExportToPdf">> => list(any()),
+%%   <<"ExportToPdfInScheduledReports">> => list(any()),
+%%   <<"IncludeContentInScheduledReportsEmail">> => list(any()),
+%%   <<"PrintReports">> => list(any()),
 %%   <<"RenameSharedFolders">> => list(any()),
 %%   <<"ShareAnalyses">> => list(any()),
 %%   <<"ShareDashboards">> => list(any()),

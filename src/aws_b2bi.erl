@@ -7,20 +7,16 @@
 %% each of the B2BI API actions.
 %%
 %% B2BI enables automated exchange of EDI (electronic data interchange) based
-%% business-critical transactions at cloud
-%% scale, with elasticity and pay-as-you-go pricing. Businesses use EDI
-%% documents to exchange
+%% business-critical transactions at cloud scale, with elasticity and
+%% pay-as-you-go pricing. Businesses use EDI documents to exchange
 %% transactional data with trading partners, such as suppliers and end
-%% customers, using
-%% standardized formats such as X12.
+%% customers, using standardized formats such as X12.
 %%
 %% Rather than actually running a command, you can use the
 %% `--generate-cli-skeleton' parameter with any API call to generate and
-%% display
-%% a parameter template. You can then use the generated template to customize
-%% and use as input
-%% on a later command. For details, see Generate and use a parameter skeleton
-%% file:
+%% display a parameter template. You can then use the generated template to
+%% customize and use as input on a later command. For details, see Generate
+%% and use a parameter skeleton file:
 %% https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-skeleton.html#cli-usage-skeleton-generate.
 -module(aws_b2bi).
 
@@ -101,6 +97,14 @@
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% wrap_options() :: #{
+%%   <<"lineLength">> => integer(),
+%%   <<"lineTerminator">> => list(any()),
+%%   <<"wrapBy">> => list(any())
+%% }
+-type wrap_options() :: #{binary() => any()}.
 
 %% Example:
 %% x12_details() :: #{
@@ -210,6 +214,12 @@
 -type get_capability_response() :: #{binary() => any()}.
 
 %% Example:
+%% x12_split_options() :: #{
+%%   <<"splitBy">> => list(any())
+%% }
+-type x12_split_options() :: #{binary() => any()}.
+
+%% Example:
 %% test_conversion_request() :: #{
 %%   <<"source">> := conversion_source(),
 %%   <<"target">> := conversion_target()
@@ -233,6 +243,7 @@
 
 %% Example:
 %% input_conversion() :: #{
+%%   <<"advancedOptions">> => advanced_options(),
 %%   <<"formatOptions">> => list(),
 %%   <<"fromFormat">> => list(any())
 %% }
@@ -437,7 +448,8 @@
 
 %% Example:
 %% x12_envelope() :: #{
-%%   <<"common">> => x12_outbound_edi_headers()
+%%   <<"common">> => x12_outbound_edi_headers(),
+%%   <<"wrapOptions">> => wrap_options()
 %% }
 -type x12_envelope() :: #{binary() => any()}.
 
@@ -508,6 +520,12 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% inbound_edi_options() :: #{
+%%   <<"x12">> => x12_inbound_edi_options()
+%% }
+-type inbound_edi_options() :: #{binary() => any()}.
 
 %% Example:
 %% edi_configuration() :: #{
@@ -614,7 +632,8 @@
 
 %% Example:
 %% test_parsing_response() :: #{
-%%   <<"parsedFileContent">> => [string()]
+%%   <<"parsedFileContent">> => [string()],
+%%   <<"parsedSplitFileContents">> => list([string()]())
 %% }
 -type test_parsing_response() :: #{binary() => any()}.
 
@@ -624,6 +643,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_capabilities_response() :: #{binary() => any()}.
+
+%% Example:
+%% x12_acknowledgment_options() :: #{
+%%   <<"functionalAcknowledgment">> => list(any()),
+%%   <<"technicalAcknowledgment">> => list(any())
+%% }
+-type x12_acknowledgment_options() :: #{binary() => any()}.
 
 %% Example:
 %% delete_partnership_request() :: #{
@@ -714,9 +740,19 @@
 -type update_partnership_response() :: #{binary() => any()}.
 
 %% Example:
+%% x12_control_numbers() :: #{
+%%   <<"startingFunctionalGroupControlNumber">> => integer(),
+%%   <<"startingInterchangeControlNumber">> => integer(),
+%%   <<"startingTransactionSetControlNumber">> => integer()
+%% }
+-type x12_control_numbers() :: #{binary() => any()}.
+
+%% Example:
 %% x12_outbound_edi_headers() :: #{
+%%   <<"controlNumbers">> => x12_control_numbers(),
 %%   <<"delimiters">> => x12_delimiters(),
 %%   <<"functionalGroupHeaders">> => x12_functional_group_headers(),
+%%   <<"gs05TimeFormat">> => list(any()),
 %%   <<"interchangeControlHeaders">> => x12_interchange_control_headers(),
 %%   <<"validateEdi">> => boolean()
 %% }
@@ -753,9 +789,16 @@
 
 %% Example:
 %% capability_options() :: #{
+%%   <<"inboundEdi">> => inbound_edi_options(),
 %%   <<"outboundEdi">> => list()
 %% }
 -type capability_options() :: #{binary() => any()}.
+
+%% Example:
+%% x12_advanced_options() :: #{
+%%   <<"splitOptions">> => x12_split_options()
+%% }
+-type x12_advanced_options() :: #{binary() => any()}.
 
 %% Example:
 %% mapping() :: #{
@@ -781,6 +824,7 @@
 
 %% Example:
 %% test_parsing_request() :: #{
+%%   <<"advancedOptions">> => advanced_options(),
 %%   <<"ediType">> := list(),
 %%   <<"fileFormat">> := list(any()),
 %%   <<"inputFile">> := s3_location()
@@ -802,6 +846,12 @@
 -type conversion_target() :: #{binary() => any()}.
 
 %% Example:
+%% advanced_options() :: #{
+%%   <<"x12">> => x12_advanced_options()
+%% }
+-type advanced_options() :: #{binary() => any()}.
+
+%% Example:
 %% test_mapping_response() :: #{
 %%   <<"mappedFileContent">> => [string()]
 %% }
@@ -818,6 +868,12 @@
 %%   <<"profileId">> => string()
 %% }
 -type profile_summary() :: #{binary() => any()}.
+
+%% Example:
+%% x12_inbound_edi_options() :: #{
+%%   <<"acknowledgmentOptions">> => x12_acknowledgment_options()
+%% }
+-type x12_inbound_edi_options() :: #{binary() => any()}.
 
 %% Example:
 %% start_transformer_job_response() :: #{
@@ -1074,8 +1130,7 @@ create_capability(Client, Input, Options)
 %% on the supplied parameters.
 %%
 %% A partnership represents the connection between you and your trading
-%% partner. It ties
-%% together a profile and one or more trading capabilities.
+%% partner. It ties together a profile and one or more trading capabilities.
 -spec create_partnership(aws_client:aws_client(), create_partnership_request()) ->
     {ok, create_partnership_response(), tuple()} |
     {error, any()} |
@@ -1119,11 +1174,9 @@ create_profile(Client, Input, Options)
 %%
 %% If you provide a sample EDI file with the same structure as the EDI files
 %% that you wish to generate, then the service can generate a mapping
-%% template.
-%% The starter template contains placeholder values which you can replace
-%% with JSONata or XSLT expressions to take data from your input file and
-%% insert it
-%% into the JSON or XML file that is used to generate the EDI.
+%% template. The starter template contains placeholder values which you can
+%% replace with JSONata or XSLT expressions to take data from your input file
+%% and insert it into the JSON or XML file that is used to generate the EDI.
 %%
 %% If you do not provide a sample EDI file, then the service can generate a
 %% mapping template based on the EDI settings in the `templateDetails'
@@ -1152,22 +1205,21 @@ create_starter_mapping_template(Client, Input, Options)
 %% Amazon Web Services B2B Data Interchange currently supports two scenarios:
 %%
 %% Inbound EDI: the Amazon Web Services customer receives an EDI file from
-%% their trading partner. Amazon Web Services B2B Data Interchange
-%% converts this EDI file into a JSON or XML file with a service-defined
-%% structure. A mapping template provided by the customer,
-%% in JSONata or XSLT format, is optionally applied to this file to produce a
-%% JSON or XML file with the structure the customer requires.
+%% their trading partner. Amazon Web Services B2B Data Interchange converts
+%% this EDI file into a JSON or XML file with a service-defined structure. A
+%% mapping template provided by the customer, in JSONata or XSLT format, is
+%% optionally applied to this file to produce a JSON or XML file with the
+%% structure the customer requires.
 %%
 %% Outbound EDI: the Amazon Web Services customer has a JSON or XML file
-%% containing data that they wish to use
-%% in an EDI file. A mapping template, provided by the customer (in either
-%% JSONata or XSLT format) is applied to this file to generate
-%% a JSON or XML file in the service-defined structure. This file is then
-%% converted to an EDI file.
+%% containing data that they wish to use in an EDI file. A mapping template,
+%% provided by the customer (in either JSONata or XSLT format) is applied to
+%% this file to generate a JSON or XML file in the service-defined structure.
+%% This file is then converted to an EDI file.
 %%
 %% The following fields are provided for backwards compatibility only:
-%% `fileFormat',
-%% `mappingTemplate', `ediType', and `sampleDocument'.
+%% `fileFormat', `mappingTemplate', `ediType', and
+%% `sampleDocument'.
 %%
 %% Use the `mapping' data type in place of `mappingTemplate' and
 %% `fileFormat'
@@ -1215,8 +1267,7 @@ delete_capability(Client, Input, Options)
 %% @doc Deletes the specified partnership.
 %%
 %% A partnership represents the connection between you and your trading
-%% partner. It ties
-%% together a profile and one or more trading capabilities.
+%% partner. It ties together a profile and one or more trading capabilities.
 -spec delete_partnership(aws_client:aws_client(), delete_partnership_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1235,8 +1286,8 @@ delete_partnership(Client, Input, Options)
 
 %% @doc Deletes the specified profile.
 %%
-%% A profile is the mechanism used to create the concept of
-%% a private network.
+%% A profile is the mechanism used to create the concept of a private
+%% network.
 -spec delete_profile(aws_client:aws_client(), delete_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1256,9 +1307,8 @@ delete_profile(Client, Input, Options)
 %% @doc Deletes the specified transformer.
 %%
 %% A transformer can take an EDI file as input and transform it into a
-%% JSON-or XML-formatted document. Alternatively,
-%% a transformer can take a JSON-or XML-formatted document as input and
-%% transform it into an EDI file.
+%% JSON-or XML-formatted document. Alternatively, a transformer can take a
+%% JSON-or XML-formatted document as input and transform it into an EDI file.
 -spec delete_transformer(aws_client:aws_client(), delete_transformer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1285,8 +1335,16 @@ delete_transformer(Client, Input, Options)
 %% Data Interchange you must enable models in Amazon Bedrock. For details,
 %% see AI-assisted template mapping prerequisites:
 %% https://docs.aws.amazon.com/b2bi/latest/userguide/ai-assisted-mapping.html#ai-assist-prereq
-%% in
-%% the Amazon Web Services B2B Data Interchange User guide.
+%% in the Amazon Web Services B2B Data Interchange User guide.
+%%
+%% To generate a mapping, perform the following steps:
+%%
+%% Start with an X12 EDI document to use as the input.
+%%
+%% Call `TestMapping' using your EDI document.
+%%
+%% Use the output from the `TestMapping' operation as either input or
+%% output for your GenerateMapping call, along with your sample file.
 -spec generate_mapping(aws_client:aws_client(), generate_mapping_request()) ->
     {ok, generate_mapping_response(), tuple()} |
     {error, any()} |
@@ -1327,8 +1385,7 @@ get_capability(Client, Input, Options)
 %% profile IDs specified.
 %%
 %% A partnership represents the connection between you and your trading
-%% partner. It ties
-%% together a profile and one or more trading capabilities.
+%% partner. It ties together a profile and one or more trading capabilities.
 -spec get_partnership(aws_client:aws_client(), get_partnership_request()) ->
     {ok, get_partnership_response(), tuple()} |
     {error, any()} |
@@ -1347,8 +1404,8 @@ get_partnership(Client, Input, Options)
 
 %% @doc Retrieves the details for the profile specified by the profile ID.
 %%
-%% A profile is the mechanism used to create the concept of
-%% a private network.
+%% A profile is the mechanism used to create the concept of a private
+%% network.
 -spec get_profile(aws_client:aws_client(), get_profile_request()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
@@ -1369,9 +1426,8 @@ get_profile(Client, Input, Options)
 %% transformer ID.
 %%
 %% A transformer can take an EDI file as input and transform it into a
-%% JSON-or XML-formatted document. Alternatively,
-%% a transformer can take a JSON-or XML-formatted document as input and
-%% transform it into an EDI file.
+%% JSON-or XML-formatted document. Alternatively, a transformer can take a
+%% JSON-or XML-formatted document as input and transform it into an EDI file.
 -spec get_transformer(aws_client:aws_client(), get_transformer_request()) ->
     {ok, get_transformer_response(), tuple()} |
     {error, any()} |
@@ -1390,6 +1446,11 @@ get_transformer(Client, Input, Options)
 
 %% @doc Returns the details of the transformer run, based on the Transformer
 %% job ID.
+%%
+%% If 30 days have elapsed since your transformer job was started, the system
+%% deletes it. So, if you run `GetTransformerJob' and supply a
+%% `transformerId' and `transformerJobId' for a job that was started
+%% more than 30 days previously, you receive a 404 response.
 -spec get_transformer_job(aws_client:aws_client(), get_transformer_job_request()) ->
     {ok, get_transformer_job_response(), tuple()} |
     {error, any()} |
@@ -1431,8 +1492,7 @@ list_capabilities(Client, Input, Options)
 %% account for your current or specified region.
 %%
 %% A partnership represents the connection between you and your trading
-%% partner. It ties
-%% together a profile and one or more trading capabilities.
+%% partner. It ties together a profile and one or more trading capabilities.
 -spec list_partnerships(aws_client:aws_client(), list_partnerships_request()) ->
     {ok, list_partnerships_response(), tuple()} |
     {error, any()} |
@@ -1452,8 +1512,8 @@ list_partnerships(Client, Input, Options)
 %% @doc Lists the profiles associated with your Amazon Web Services account
 %% for your current or specified region.
 %%
-%% A profile is the mechanism used to create the concept of
-%% a private network.
+%% A profile is the mechanism used to create the concept of a private
+%% network.
 -spec list_profiles(aws_client:aws_client(), list_profiles_request()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()} |
@@ -1493,9 +1553,8 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Lists the available transformers.
 %%
 %% A transformer can take an EDI file as input and transform it into a
-%% JSON-or XML-formatted document. Alternatively,
-%% a transformer can take a JSON-or XML-formatted document as input and
-%% transform it into an EDI file.
+%% JSON-or XML-formatted document. Alternatively, a transformer can take a
+%% JSON-or XML-formatted document as input and transform it into an EDI file.
 -spec list_transformers(aws_client:aws_client(), list_transformers_request()) ->
     {ok, list_transformers_response(), tuple()} |
     {error, any()} |
@@ -1520,6 +1579,12 @@ list_transformers(Client, Input, Options)
 %% you don't need to create profiles, partnerships or capabilities. Just
 %% create and configure a transformer, and then run the
 %% `StartTransformerJob' API to process your files.
+%%
+%% The system stores transformer jobs for 30 days. During that period, you
+%% can run GetTransformerJob:
+%% https://docs.aws.amazon.com/b2bi/latest/APIReference/API_GetTransformerJob.html
+%% and supply its `transformerId' and `transformerJobId' to return
+%% details of the job.
 -spec start_transformer_job(aws_client:aws_client(), start_transformer_job_request()) ->
     {ok, start_transformer_job_response(), tuple()} |
     {error, any()} |
@@ -1666,8 +1731,7 @@ update_capability(Client, Input, Options)
 %% and trading partner.
 %%
 %% A partnership represents the connection between you and your trading
-%% partner. It ties
-%% together a profile and one or more trading capabilities.
+%% partner. It ties together a profile and one or more trading capabilities.
 -spec update_partnership(aws_client:aws_client(), update_partnership_request()) ->
     {ok, update_partnership_response(), tuple()} |
     {error, any()} |
@@ -1686,8 +1750,8 @@ update_partnership(Client, Input, Options)
 
 %% @doc Updates the specified parameters for a profile.
 %%
-%% A profile is the mechanism used to create the concept of
-%% a private network.
+%% A profile is the mechanism used to create the concept of a private
+%% network.
 -spec update_profile(aws_client:aws_client(), update_profile_request()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
@@ -1707,9 +1771,8 @@ update_profile(Client, Input, Options)
 %% @doc Updates the specified parameters for a transformer.
 %%
 %% A transformer can take an EDI file as input and transform it into a
-%% JSON-or XML-formatted document. Alternatively,
-%% a transformer can take a JSON-or XML-formatted document as input and
-%% transform it into an EDI file.
+%% JSON-or XML-formatted document. Alternatively, a transformer can take a
+%% JSON-or XML-formatted document as input and transform it into an EDI file.
 -spec update_transformer(aws_client:aws_client(), update_transformer_request()) ->
     {ok, update_transformer_response(), tuple()} |
     {error, any()} |

@@ -942,6 +942,20 @@
 
 
 %% Example:
+%% chat_contact_metrics() :: #{
+%%   <<"AgentFirstResponseTimeInMillis">> => float(),
+%%   <<"AgentFirstResponseTimestamp">> => non_neg_integer(),
+%%   <<"ConversationCloseTimeInMillis">> => float(),
+%%   <<"ConversationTurnCount">> => integer(),
+%%   <<"MultiParty">> => boolean(),
+%%   <<"TotalBotMessageLengthInChars">> => integer(),
+%%   <<"TotalBotMessages">> => integer(),
+%%   <<"TotalMessages">> => integer()
+%% }
+-type chat_contact_metrics() :: #{binary() => any()}.
+
+
+%% Example:
 %% traffic_distribution_group_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -1623,6 +1637,21 @@
 %% Example:
 %% delete_contact_flow_version_request() :: #{}
 -type delete_contact_flow_version_request() :: #{}.
+
+
+%% Example:
+%% participant_metrics() :: #{
+%%   <<"ConversationAbandon">> => boolean(),
+%%   <<"LastMessageTimestamp">> => non_neg_integer(),
+%%   <<"MaxResponseTimeInMillis">> => float(),
+%%   <<"MessageLengthInChars">> => integer(),
+%%   <<"MessagesSent">> => integer(),
+%%   <<"NumResponses">> => integer(),
+%%   <<"ParticipantId">> => string(),
+%%   <<"ParticipantType">> => list(any()),
+%%   <<"TotalResponseTimeInMillis">> => float()
+%% }
+-type participant_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4820,6 +4849,7 @@
 %%   <<"ContactDetails">> => contact_details(),
 %%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),
 %%   <<"LastPausedTimestamp">> => non_neg_integer(),
+%%   <<"ChatMetrics">> => chat_metrics(),
 %%   <<"CustomerId">> => string(),
 %%   <<"CustomerVoiceActivity">> => customer_voice_activity(),
 %%   <<"QualityMetrics">> => quality_metrics(),
@@ -6898,6 +6928,15 @@
 %%   <<"Status">> := list(any())
 %% }
 -type update_queue_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_metrics() :: #{
+%%   <<"AgentMetrics">> => participant_metrics(),
+%%   <<"ChatContactMetrics">> => chat_contact_metrics(),
+%%   <<"CustomerMetrics">> => participant_metrics()
+%% }
+-type chat_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11118,14 +11157,30 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% Only the EMAIL and VOICE channels are supported.
+%% Only the VOICE, EMAIL, and TASK channels are supported.
 %%
-%% The supported initiation methods for EMAIL
-%% are: OUTBOUND, AGENT_REPLY, and FLOW. For VOICE the supported initiation
-%% methods are TRANSFER
-%% and the subtype connect:ExternalAudio.
+%% For VOICE: The supported initiation method is `TRANSFER'. The contacts
+%% created
+%% with this initiation method have a subtype `connect:ExternalAudio'.
 %%
-%% Creates a new EMAIL or VOICE contact.
+%% For EMAIL: The supported initiation methods are `OUTBOUND',
+%% `AGENT_REPLY', and `FLOW'.
+%%
+%% For TASK: The supported initiation method is `API'. Contacts created
+%% with this
+%% API have a sub-type of `connect:ExternalTask'.
+%%
+%% Creates a new VOICE, EMAIL, or TASK contact.
+%%
+%% After a contact is created, you can move it to the desired state by using
+%% the
+%% `InitiateAs' parameter. While you can use API to create task contacts
+%% that are in the
+%% `COMPLETED' state, you must contact Amazon Web Services Support before
+%% using it for
+%% bulk import use cases. Bulk import causes your requests to be throttled or
+%% fail if your
+%% CreateContact limits aren't high enough.
 -spec create_contact(aws_client:aws_client(), create_contact_request()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |

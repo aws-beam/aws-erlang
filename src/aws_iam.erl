@@ -915,6 +915,9 @@
 
 %% Example:
 %% list_service_specific_credentials_request() :: #{
+%%   <<"AllUsers">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
 %%   <<"ServiceName">> => string(),
 %%   <<"UserName">> => string()
 %% }
@@ -1096,6 +1099,8 @@
 
 %% Example:
 %% list_service_specific_credentials_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
 %%   <<"ServiceSpecificCredentials">> => list(service_specific_credential_metadata()())
 %% }
 -type list_service_specific_credentials_response() :: #{binary() => any()}.
@@ -1208,6 +1213,8 @@
 %% Example:
 %% service_specific_credential_metadata() :: #{
 %%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"ServiceCredentialAlias">> => string(),
 %%   <<"ServiceName">> => string(),
 %%   <<"ServiceSpecificCredentialId">> => string(),
 %%   <<"ServiceUserName">> => string(),
@@ -1672,6 +1679,9 @@
 %% Example:
 %% service_specific_credential() :: #{
 %%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"ServiceCredentialAlias">> => string(),
+%%   <<"ServiceCredentialSecret">> => string(),
 %%   <<"ServiceName">> => string(),
 %%   <<"ServicePassword">> => string(),
 %%   <<"ServiceSpecificCredentialId">> => string(),
@@ -1973,6 +1983,7 @@
 
 %% Example:
 %% create_service_specific_credential_request() :: #{
+%%   <<"CredentialAgeDays">> => integer(),
 %%   <<"ServiceName">> := string(),
 %%   <<"UserName">> := string()
 %% }
@@ -3670,6 +3681,7 @@
 
 -type update_access_key_errors() ::
     limit_exceeded_exception() | 
+    invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
 
@@ -3731,10 +3743,12 @@
 
 -type update_signing_certificate_errors() ::
     limit_exceeded_exception() | 
+    invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
 
 -type update_ssh_public_key_errors() ::
+    invalid_input_exception() | 
     no_such_entity_exception().
 
 -type update_user_errors() ::
@@ -3995,14 +4009,15 @@ attach_user_policy(Client, Input, Options)
 %% The Amazon Web Services account root user password is
 %% not affected by this operation.
 %%
-%% Use `UpdateLoginProfile' to use the CLI, the Amazon Web Services API,
-%% or the
-%% Users page in the IAM console to change the
-%% password for any IAM user. For more information about modifying passwords,
-%% see Managing
-%% passwords:
+%% Use UpdateLoginProfile:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_UpdateLoginProfile.html
+%% to use the CLI, the Amazon Web Services API, or the Users page in
+%% the IAM console to change the password for any IAM user. For more
+%% information about
+%% modifying passwords, see Managing passwords:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
-%% in the IAM User Guide.
+%% in the
+%% IAM User Guide.
 -spec change_password(aws_client:aws_client(), change_password_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4148,8 +4163,10 @@ create_instance_profile(Client, Input, Options)
 %%
 %% You can use the CLI, the Amazon Web Services API, or the Users
 %% page in the IAM console to create a password for any IAM user. Use
-%% `ChangePassword' to update your own existing password in the My
-%% Security Credentials page in the Amazon Web Services Management Console.
+%% ChangePassword:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ChangePassword.html
+%% to update your own existing password in the My Security Credentials page
+%% in the Amazon Web Services Management Console.
 %%
 %% For more information about managing passwords, see Managing passwords:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
@@ -4222,7 +4239,9 @@ create_login_profile(Client, Input, Options)
 %%
 %% The trust for the OIDC provider is derived from the IAM provider that this
 %% operation creates. Therefore, it is best to limit access to the
-%% `CreateOpenIDConnectProvider' operation to highly privileged
+%% CreateOpenIDConnectProvider:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateOpenIDConnectProvider.html
+%% operation to highly privileged
 %% users.
 -spec create_open_id_connect_provider(aws_client:aws_client(), create_open_id_connect_provider_request()) ->
     {ok, create_open_id_connect_provider_response(), tuple()} |
@@ -4283,7 +4302,9 @@ create_policy(Client, Input, Options)
 %% create a new policy version. A managed policy can have up to five
 %% versions. If the
 %% policy has five versions, you must delete an existing version using
-%% `DeletePolicyVersion' before you create a new version.
+%% DeletePolicyVersion:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeletePolicyVersion.html
+%% before you create a new version.
 %%
 %% Optionally, you can set the new version as the policy's default
 %% version. The default
@@ -4434,17 +4455,16 @@ create_service_linked_role(Client, Input, Options)
 %% each supported
 %% service per user.
 %%
-%% You can create service-specific credentials for CodeCommit and Amazon
-%% Keyspaces (for Apache
-%% Cassandra).
+%% You can create service-specific credentials for Amazon Bedrock, CodeCommit
+%% and Amazon Keyspaces (for Apache Cassandra).
 %%
 %% You can reset the password to a new service-generated value by calling
-%% `ResetServiceSpecificCredential'.
+%% ResetServiceSpecificCredential:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ResetServiceSpecificCredential.html.
 %%
-%% For more information about service-specific credentials, see Using IAM
-%% with CodeCommit: Git credentials, SSH keys, and Amazon Web Services access
-%% keys:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html
+%% For more information about service-specific credentials, see
+%% Service-specific credentials for IAM users:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_bedrock.html
 %% in the
 %% IAM User Guide.
 -spec create_service_specific_credential(aws_client:aws_client(), create_service_specific_credential_request()) ->
@@ -4489,12 +4509,15 @@ create_user(Client, Input, Options)
 %% @doc Creates a new virtual MFA device for the Amazon Web Services account.
 %%
 %% After creating the virtual
-%% MFA, use `EnableMFADevice' to attach the MFA device to an IAM user.
-%% For more information about creating and working with virtual MFA devices,
-%% see Using a virtual MFA
-%% device:
+%% MFA, use EnableMFADevice:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_EnableMFADevice.html
+%% to
+%% attach the MFA device to an IAM user. For more information about creating
+%% and working
+%% with virtual MFA devices, see Using a virtual MFA device:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html in
-%% the IAM User Guide.
+%% the
+%% IAM User Guide.
 %%
 %% For information about the maximum number of MFA devices you can create,
 %% see IAM and STS
@@ -4648,8 +4671,9 @@ delete_group(Client, Input, Options)
 %%
 %% A group can also have managed policies attached to it. To detach a managed
 %% policy from
-%% a group, use `DetachGroupPolicy'. For more information about policies,
-%% refer to Managed policies and inline
+%% a group, use DetachGroupPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DetachGroupPolicy.html.
+%% For more information about policies, refer to Managed policies and inline
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
@@ -4702,14 +4726,17 @@ delete_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceProfile">>, Input, Options).
 
-%% @doc Deletes the password for the specified IAM user, For more
-%% information, see Managing
+%% @doc Deletes the password for the specified IAM user or root user, For
+%% more information, see
+%% Managing
 %% passwords for IAM users:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html.
 %%
 %% You can use the CLI, the Amazon Web Services API, or the Users
 %% page in the IAM console to delete a password for any IAM user. You can use
-%% `ChangePassword' to update, but not delete, your own password in the
+%% ChangePassword:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ChangePassword.html
+%% to update, but not delete, your own password in the
 %% My Security Credentials page in the
 %% Amazon Web Services Management Console.
 %%
@@ -4719,8 +4746,10 @@ delete_instance_profile(Client, Input, Options)
 %% must also
 %% either make any access keys inactive or delete them. For more information
 %% about
-%% making keys inactive or deleting them, see `UpdateAccessKey' and
-%% `DeleteAccessKey'.
+%% making keys inactive or deleting them, see UpdateAccessKey:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_UpdateAccessKey.html
+%% and DeleteAccessKey:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteAccessKey.html.
 -spec delete_login_profile(aws_client:aws_client(), delete_login_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4776,17 +4805,26 @@ delete_open_id_connect_provider(Client, Input, Options)
 %% policy:
 %%
 %% Detach the policy from all users, groups, and roles that the policy is
-%% attached to, using `DetachUserPolicy', `DetachGroupPolicy', or
-%% `DetachRolePolicy'. To
-%% list all the users, groups, and roles that a policy is attached to, use
-%% `ListEntitiesForPolicy'.
+%% attached to, using DetachUserPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DetachUserPolicy.html,
+%% DetachGroupPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DetachGroupPolicy.html,
+%% or DetachRolePolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DetachRolePolicy.html.
+%% To list all the users, groups, and roles that a
+%% policy is attached to, use ListEntitiesForPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListEntitiesForPolicy.html.
 %%
-%% Delete all versions of the policy using `DeletePolicyVersion'.
-%% To list the policy's versions, use `ListPolicyVersions'. You
-%% cannot use `DeletePolicyVersion' to delete the version that is
-%% marked as the default version. You delete the policy's default version
-%% in the
-%% next step of the process.
+%% Delete all versions of the policy using DeletePolicyVersion:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeletePolicyVersion.html.
+%% To list the policy's versions, use ListPolicyVersions:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListPolicyVersions.html.
+%% You cannot use DeletePolicyVersion:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeletePolicyVersion.html
+%% to delete the version that is marked as the
+%% default version. You delete the policy's default version in the next
+%% step of the
+%% process.
 %%
 %% Delete the policy (this automatically deletes the policy's default
 %% version)
@@ -4816,10 +4854,12 @@ delete_policy(Client, Input, Options)
 %%
 %% You cannot delete the default version from a policy using this operation.
 %% To delete
-%% the default version from a policy, use `DeletePolicy'. To find out
-%% which
-%% version of a policy is marked as the default version, use
-%% `ListPolicyVersions'.
+%% the default version from a policy, use DeletePolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeletePolicy.html.
+%% To find
+%% out which version of a policy is marked as the default version, use
+%% ListPolicyVersions:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListPolicyVersions.html.
 %%
 %% For information about versions for managed policies, see Versioning for
 %% managed
@@ -4852,14 +4892,18 @@ delete_policy_version(Client, Input, Options)
 %% Before attempting to delete a role, remove the
 %% following attached items:
 %%
-%% Inline policies (`DeleteRolePolicy')
+%% Inline policies (DeleteRolePolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteRolePolicy.html)
 %%
-%% Attached managed policies (`DetachRolePolicy')
+%% Attached managed policies (DetachRolePolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DetachRolePolicy.html)
 %%
-%% Instance profile (`RemoveRoleFromInstanceProfile')
+%% Instance profile (RemoveRoleFromInstanceProfile:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_RemoveRoleFromInstanceProfile.html)
 %%
 %% Optional – Delete instance profile after detaching from role for
-%% resource clean up (`DeleteInstanceProfile')
+%% resource clean up (DeleteInstanceProfile:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteInstanceProfile.html)
 %%
 %% Make sure that you do not have any Amazon EC2 instances running with the
 %% role you are
@@ -4913,8 +4957,9 @@ delete_role_permissions_boundary(Client, Input, Options)
 %%
 %% A role can also have managed policies attached to it. To detach a managed
 %% policy from
-%% a role, use `DetachRolePolicy'. For more information about policies,
-%% refer to Managed policies and inline
+%% a role, use DetachRolePolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DetachRolePolicy.html.
+%% For more information about policies, refer to Managed policies and inline
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
@@ -5018,8 +5063,9 @@ delete_server_certificate(Client, Input, Options)
 %% If you submit a deletion request for a service-linked role whose linked
 %% service is
 %% still accessing a resource, then the deletion task fails. If it fails, the
-%% `GetServiceLinkedRoleDeletionStatus' operation returns the reason for
-%% the
+%% GetServiceLinkedRoleDeletionStatus:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetServiceLinkedRoleDeletionStatus.html
+%% operation returns the reason for the
 %% failure, usually including the resources that must be deleted. To delete
 %% the
 %% service-linked role, you must first remove those resources from the linked
@@ -5132,24 +5178,34 @@ delete_ssh_public_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli.
 %% Before attempting to delete a user, remove the following items:
 %%
-%% Password (`DeleteLoginProfile')
+%% Password (DeleteLoginProfile:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteLoginProfile.html)
 %%
-%% Access keys (`DeleteAccessKey')
+%% Access keys (DeleteAccessKey:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteAccessKey.html)
 %%
-%% Signing certificate (`DeleteSigningCertificate')
+%% Signing certificate (DeleteSigningCertificate:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteSigningCertificate.html)
 %%
-%% SSH public key (`DeleteSSHPublicKey')
+%% SSH public key (DeleteSSHPublicKey:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteSSHPublicKey.html)
 %%
-%% Git credentials (`DeleteServiceSpecificCredential')
+%% Git credentials (DeleteServiceSpecificCredential:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteServiceSpecificCredential.html)
 %%
-%% Multi-factor authentication (MFA) device (`DeactivateMFADevice',
-%% `DeleteVirtualMFADevice')
+%% Multi-factor authentication (MFA) device (DeactivateMFADevice:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeactivateMFADevice.html,
+%% DeleteVirtualMFADevice:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteVirtualMFADevice.html)
 %%
-%% Inline policies (`DeleteUserPolicy')
+%% Inline policies (DeleteUserPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteUserPolicy.html)
 %%
-%% Attached managed policies (`DetachUserPolicy')
+%% Attached managed policies (DetachUserPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DetachUserPolicy.html)
 %%
-%% Group memberships (`RemoveUserFromGroup')
+%% Group memberships (RemoveUserFromGroup:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_RemoveUserFromGroup.html)
 -spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5194,8 +5250,9 @@ delete_user_permissions_boundary(Client, Input, Options)
 %%
 %% A user can also have managed policies attached to it. To detach a managed
 %% policy from
-%% a user, use `DetachUserPolicy'. For more information about policies,
-%% refer to Managed policies and inline
+%% a user, use DetachUserPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DetachUserPolicy.html.
+%% For more information about policies, refer to Managed policies and inline
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
@@ -5219,7 +5276,8 @@ delete_user_policy(Client, Input, Options)
 %%
 %% You must deactivate a user's virtual MFA device before you can delete
 %% it. For
-%% information about deactivating MFA devices, see `DeactivateMFADevice'.
+%% information about deactivating MFA devices, see DeactivateMFADevice:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeactivateMFADevice.html.
 -spec delete_virtual_mfa_device(aws_client:aws_client(), delete_virtual_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5240,7 +5298,9 @@ delete_virtual_mfa_device(Client, Input, Options)
 %%
 %% A group can also have inline policies embedded with it. To delete an
 %% inline policy,
-%% use `DeleteGroupPolicy'. For information about policies, see Managed
+%% use DeleteGroupPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteGroupPolicy.html.
+%% For information about policies, see Managed
 %% policies and inline policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
@@ -5265,7 +5325,9 @@ detach_group_policy(Client, Input, Options)
 %%
 %% A role can also have inline policies embedded with it. To delete an inline
 %% policy, use
-%% `DeleteRolePolicy'. For information about policies, see Managed
+%% DeleteRolePolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteRolePolicy.html.
+%% For information about policies, see Managed
 %% policies and inline policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
@@ -5290,7 +5352,9 @@ detach_role_policy(Client, Input, Options)
 %%
 %% A user can also have inline policies embedded with it. To delete an inline
 %% policy, use
-%% `DeleteUserPolicy'. For information about policies, see Managed
+%% DeleteUserPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteUserPolicy.html.
+%% For information about policies, see Managed
 %% policies and inline policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
@@ -5548,16 +5612,18 @@ generate_credential_report(Client, Input, Options)
 %%
 %% This operation returns a `JobId'. Use this parameter in the
 %% ```
-%% `GetOrganizationsAccessReport' ''' operation to check the
-%% status of
+%% GetOrganizationsAccessReport:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetOrganizationsAccessReport.html
+%% ''' operation to check the status of
 %% the report generation. To check the status of this request, use the
 %% `JobId'
 %% parameter in the
 %% ```
-%% `GetOrganizationsAccessReport' ''' operation
-%% and test the `JobStatus' response parameter. When the job is complete,
-%% you
-%% can retrieve the report.
+%% GetOrganizationsAccessReport:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetOrganizationsAccessReport.html
+%% ''' operation and test the
+%% `JobStatus' response parameter. When the job is complete, you can
+%% retrieve the report.
 %%
 %% To generate a service last accessed data report for entities, specify an
 %% entity path
@@ -5726,19 +5792,23 @@ generate_organizations_access_report(Client, Input, Options)
 %% the
 %% following details from your report:
 %%
-%% `GetServiceLastAccessedDetails' – Use this operation
-%% for users, groups, roles, or policies to list every Amazon Web Services
-%% service that the
-%% resource could access using permissions policies. For each service, the
-%% response
-%% includes information about the most recent access attempt.
+%% GetServiceLastAccessedDetails:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetServiceLastAccessedDetails.html
+%% – Use this operation for
+%% users, groups, roles, or policies to list every Amazon Web Services
+%% service that the resource
+%% could access using permissions policies. For each service, the response
+%% includes
+%% information about the most recent access attempt.
 %%
 %% The `JobId' returned by
 %% `GenerateServiceLastAccessedDetail' must be used by the same role
 %% within a session, or by the same user when used to call
 %% `GetServiceLastAccessedDetail'.
 %%
-%% `GetServiceLastAccessedDetailsWithEntities' – Use this
+%% GetServiceLastAccessedDetailsWithEntities:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetServiceLastAccessedDetailsWithEntities.html
+%% – Use this
 %% operation for groups and policies to list information about the associated
 %% entities (users or roles) that attempted to access a specific Amazon Web
 %% Services service.
@@ -5751,7 +5821,9 @@ generate_organizations_access_report(Client, Input, Options)
 %% For additional information about the permissions policies that allow an
 %% identity
 %% (user, group, or role) to access specific services, use the
-%% `ListPoliciesGrantingServiceAccess' operation.
+%% ListPoliciesGrantingServiceAccess:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListPoliciesGrantingServiceAccess.html
+%% operation.
 %%
 %% Service last accessed data does not use other policy types when
 %% determining
@@ -5824,7 +5896,9 @@ get_access_key_last_used(Client, Input, Options)
 %% example, if you use Java, you
 %% can use the `decode' method of the `java.net.URLDecoder' utility
 %% class in
-%% the Java SDK. Other languages and SDKs provide similar functionality.
+%% the Java SDK. Other languages and SDKs provide similar functionality, and
+%% some SDKs do this decoding
+%% automatically.
 %%
 %% You can optionally filter the results using the `Filter' parameter.
 %% You can
@@ -5902,7 +5976,8 @@ get_account_summary(Client, Input, Options)
 %% are supplied as a list of one or more strings. To get the context keys
 %% from policies
 %% associated with an IAM user, group, or role, use
-%% `GetContextKeysForPrincipalPolicy'.
+%% GetContextKeysForPrincipalPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetContextKeysForPrincipalPolicy.html.
 %%
 %% Context keys are variables maintained by Amazon Web Services and its
 %% services that provide details
@@ -5911,10 +5986,12 @@ get_account_summary(Client, Input, Options)
 %% against a value specified in an IAM policy. Use
 %% `GetContextKeysForCustomPolicy' to understand what key names and
 %% values
-%% you must supply when you call `SimulateCustomPolicy'. Note that all
-%% parameters are shown in unencoded form here for clarity but must be URL
-%% encoded to be
-%% included as a part of a real HTML request.
+%% you must supply when you call SimulateCustomPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_SimulateCustomPolicy.html.
+%% Note that all parameters are shown in unencoded form
+%% here for clarity but must be URL encoded to be included as a part of a
+%% real HTML
+%% request.
 -spec get_context_keys_for_custom_policy(aws_client:aws_client(), get_context_keys_for_custom_policy_request()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
@@ -5943,21 +6020,27 @@ get_context_keys_for_custom_policy(Client, Input, Options)
 %% You can optionally include a list of one or more additional policies,
 %% specified as
 %% strings. If you want to include only a list of policies by string,
-%% use `GetContextKeysForCustomPolicy' instead.
+%% use GetContextKeysForCustomPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetContextKeysForCustomPolicy.html
+%% instead.
 %%
 %% Note: This operation discloses information about the
 %% permissions granted to other users. If you do not want users to see other
 %% user's
 %% permissions, then consider allowing them to use
-%% `GetContextKeysForCustomPolicy' instead.
+%% GetContextKeysForCustomPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetContextKeysForCustomPolicy.html
+%% instead.
 %%
 %% Context keys are variables maintained by Amazon Web Services and its
 %% services that provide details
 %% about the context of an API query request. Context keys can be evaluated
 %% by testing
-%% against a value in an IAM policy. Use
-%% `GetContextKeysForPrincipalPolicy' to understand what key names and
-%% values you must supply when you call `SimulatePrincipalPolicy'.
+%% against a value in an IAM policy. Use GetContextKeysForPrincipalPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetContextKeysForPrincipalPolicy.html
+%% to understand what key names and values
+%% you must supply when you call SimulatePrincipalPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_SimulatePrincipalPolicy.html.
 -spec get_context_keys_for_principal_policy(aws_client:aws_client(), get_context_keys_for_principal_policy_request()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
@@ -6027,13 +6110,18 @@ get_group(Client, Input, Options)
 %% example, if you use Java, you
 %% can use the `decode' method of the `java.net.URLDecoder' utility
 %% class in
-%% the Java SDK. Other languages and SDKs provide similar functionality.
+%% the Java SDK. Other languages and SDKs provide similar functionality, and
+%% some SDKs do this decoding
+%% automatically.
 %%
 %% An IAM group can also have managed policies attached to it. To retrieve a
 %% managed
-%% policy document that is attached to a group, use `GetPolicy' to
-%% determine the policy's default version, then use
-%% `GetPolicyVersion' to
+%% policy document that is attached to a group, use GetPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetPolicy.html to
+%% determine the
+%% policy's default version, then use GetPolicyVersion:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetPolicyVersion.html
+%% to
 %% retrieve the policy document.
 %%
 %% For more information about policies, see Managed policies and inline
@@ -6157,16 +6245,18 @@ get_open_id_connect_provider(Client, Input, Options)
 %% that was previously
 %% generated using the
 %% ```
-%% `GenerateOrganizationsAccessReport' '''
-%% operation.
+%% GenerateOrganizationsAccessReport:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GenerateOrganizationsAccessReport.html
+%% ''' operation.
 %%
-%% This operation retrieves the status of your report job and the report
-%% contents.
+%% This operation
+%% retrieves the status of your report job and the report contents.
 %%
 %% Depending on the parameters that you passed when you generated the report,
 %% the data
 %% returned could include different information. For details, see
-%% `GenerateOrganizationsAccessReport'.
+%% GenerateOrganizationsAccessReport:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GenerateOrganizationsAccessReport.html.
 %%
 %% To call this operation, you must be signed in to the management account in
 %% your
@@ -6213,15 +6303,23 @@ get_organizations_access_report(Client, Input, Options)
 %% policy is attached.
 %%
 %% To retrieve the list of the specific users, groups, and roles that
-%% the policy is attached to, use `ListEntitiesForPolicy'. This operation
-%% returns metadata about the policy. To retrieve the actual policy document
-%% for a specific
-%% version of the policy, use `GetPolicyVersion'.
+%% the policy is attached to, use ListEntitiesForPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListEntitiesForPolicy.html.
+%% This operation returns metadata about the policy. To
+%% retrieve the actual policy document for a specific version of the policy,
+%% use GetPolicyVersion:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetPolicyVersion.html.
 %%
 %% This operation retrieves information about managed policies. To retrieve
 %% information
 %% about an inline policy that is embedded with an IAM user, group, or role,
-%% use `GetUserPolicy', `GetGroupPolicy', or `GetRolePolicy'.
+%% use GetUserPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetUserPolicy.html,
+%% GetGroupPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetGroupPolicy.html,
+%% or
+%% GetRolePolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetRolePolicy.html.
 %%
 %% For more information about policies, see Managed policies and inline
 %% policies:
@@ -6253,14 +6351,23 @@ get_policy(Client, Input, Options)
 %% example, if you use Java, you
 %% can use the `decode' method of the `java.net.URLDecoder' utility
 %% class in
-%% the Java SDK. Other languages and SDKs provide similar functionality.
+%% the Java SDK. Other languages and SDKs provide similar functionality, and
+%% some SDKs do this decoding
+%% automatically.
 %%
-%% To list the available versions for a policy, use `ListPolicyVersions'.
+%% To list the available versions for a policy, use ListPolicyVersions:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListPolicyVersions.html.
 %%
 %% This operation retrieves information about managed policies. To retrieve
 %% information
 %% about an inline policy that is embedded in a user, group, or role, use
-%% `GetUserPolicy', `GetGroupPolicy', or `GetRolePolicy'.
+%% GetUserPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetUserPolicy.html,
+%% GetGroupPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetGroupPolicy.html,
+%% or
+%% GetRolePolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetRolePolicy.html.
 %%
 %% For more information about the types of policies, see Managed policies and
 %% inline
@@ -6304,7 +6411,9 @@ get_policy_version(Client, Input, Options)
 %% example, if you use Java, you
 %% can use the `decode' method of the `java.net.URLDecoder' utility
 %% class in
-%% the Java SDK. Other languages and SDKs provide similar functionality.
+%% the Java SDK. Other languages and SDKs provide similar functionality, and
+%% some SDKs do this decoding
+%% automatically.
 -spec get_role(aws_client:aws_client(), get_role_request()) ->
     {ok, get_role_response(), tuple()} |
     {error, any()} |
@@ -6331,15 +6440,19 @@ get_role(Client, Input, Options)
 %% example, if you use Java, you
 %% can use the `decode' method of the `java.net.URLDecoder' utility
 %% class in
-%% the Java SDK. Other languages and SDKs provide similar functionality.
+%% the Java SDK. Other languages and SDKs provide similar functionality, and
+%% some SDKs do this decoding
+%% automatically.
 %%
 %% An IAM role can also have managed policies attached to it. To retrieve a
 %% managed
-%% policy document that is attached to a role, use `GetPolicy' to
-%% determine
-%% the policy's default version, then use `GetPolicyVersion' to
-%% retrieve
-%% the policy document.
+%% policy document that is attached to a role, use GetPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetPolicy.html to
+%% determine the
+%% policy's default version, then use GetPolicyVersion:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetPolicyVersion.html
+%% to
+%% retrieve the policy document.
 %%
 %% For more information about policies, see Managed policies and inline
 %% policies:
@@ -6547,9 +6660,10 @@ get_service_last_accessed_details_with_entities(Client, Input, Options)
 
 %% @doc Retrieves the status of your service-linked role deletion.
 %%
-%% After you use `DeleteServiceLinkedRole' to submit a service-linked
-%% role for deletion,
-%% you can use the `DeletionTaskId' parameter in
+%% After you use DeleteServiceLinkedRole:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteServiceLinkedRole.html
+%% to submit a service-linked role for deletion, you
+%% can use the `DeletionTaskId' parameter in
 %% `GetServiceLinkedRoleDeletionStatus' to check the status of the
 %% deletion.
 %% If the deletion fails, this operation returns the reason that it failed,
@@ -6632,15 +6746,19 @@ get_user(Client, Input, Options)
 %% example, if you use Java, you
 %% can use the `decode' method of the `java.net.URLDecoder' utility
 %% class in
-%% the Java SDK. Other languages and SDKs provide similar functionality.
+%% the Java SDK. Other languages and SDKs provide similar functionality, and
+%% some SDKs do this decoding
+%% automatically.
 %%
 %% An IAM user can also have managed policies attached to it. To retrieve a
 %% managed
-%% policy document that is attached to a user, use `GetPolicy' to
-%% determine
-%% the policy's default version. Then use `GetPolicyVersion' to
-%% retrieve
-%% the policy document.
+%% policy document that is attached to a user, use GetPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetPolicy.html to
+%% determine the
+%% policy's default version. Then use GetPolicyVersion:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetPolicyVersion.html
+%% to
+%% retrieve the policy document.
 %%
 %% For more information about policies, see Managed policies and inline
 %% policies:
@@ -6735,8 +6853,9 @@ list_account_aliases(Client, Input, Options)
 %%
 %% An IAM group can also have inline policies embedded with it. To list the
 %% inline
-%% policies for a group, use `ListGroupPolicies'. For information about
-%% policies, see Managed policies and inline
+%% policies for a group, use ListGroupPolicies:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListGroupPolicies.html.
+%% For information about policies, see Managed policies and inline
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
@@ -6770,8 +6889,9 @@ list_attached_group_policies(Client, Input, Options)
 %%
 %% An IAM role can also have inline policies embedded with it. To list the
 %% inline
-%% policies for a role, use `ListRolePolicies'. For information about
-%% policies, see Managed policies and inline
+%% policies for a role, use ListRolePolicies:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListRolePolicies.html.
+%% For information about policies, see Managed policies and inline
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
@@ -6805,8 +6925,9 @@ list_attached_role_policies(Client, Input, Options)
 %%
 %% An IAM user can also have inline policies embedded with it. To list the
 %% inline
-%% policies for a user, use `ListUserPolicies'. For information about
-%% policies, see Managed policies and inline
+%% policies for a user, use ListUserPolicies:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListUserPolicies.html.
+%% For information about policies, see Managed policies and inline
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
@@ -6870,12 +6991,13 @@ list_entities_for_policy(Client, Input, Options)
 %%
 %% An IAM group can also have managed policies attached to it. To list the
 %% managed
-%% policies that are attached to a group, use
-%% `ListAttachedGroupPolicies'.
-%% For more information about policies, see Managed policies and inline
-%% policies:
+%% policies that are attached to a group, use ListAttachedGroupPolicies:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListAttachedGroupPolicies.html.
+%% For more information about policies, see Managed
+%% policies and inline policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
-%% in the IAM User Guide.
+%% in the
+%% IAM User Guide.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters. If there are no inline policies embedded with the specified
@@ -6974,7 +7096,8 @@ list_instance_profile_tags(Client, Input, Options)
 %% attributes for the resource. For example, this operation does not return
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for an instance profile, see
-%% `GetInstanceProfile'.
+%% GetInstanceProfile:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetInstanceProfile.html.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
@@ -7109,8 +7232,8 @@ list_open_id_connect_provider_tags(Client, Input, Options)
 %% IAM resource-listing operations return a subset of the available
 %% attributes for the resource. For example, this operation does not return
 %% tags, even though they are an attribute of the returned object. To view
-%% all of the information for an OIDC provider, see
-%% `GetOpenIDConnectProvider'.
+%% all of the information for an OIDC provider, see GetOpenIDConnectProvider:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetOpenIDConnectProvider.html.
 -spec list_open_id_connect_providers(aws_client:aws_client(), list_open_id_connect_providers_request()) ->
     {ok, list_open_id_connect_providers_response(), tuple()} |
     {error, any()} |
@@ -7175,7 +7298,8 @@ list_organizations_features(Client, Input, Options)
 %% attributes for the resource. For example, this operation does not return
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for a customer manged policy, see
-%% `GetPolicy'.
+%% GetPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetPolicy.html.
 -spec list_policies(aws_client:aws_client(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
@@ -7242,7 +7366,10 @@ list_policies(Client, Input, Options)
 %% are not
 %% returned. To view which managed policy is currently used to set the
 %% permissions boundary
-%% for a user or role, use the `GetUser' or `GetRole'
+%% for a user or role, use the GetUser:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetUser.html or
+%% GetRole:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetRole.html
 %% operations.
 -spec list_policies_granting_service_access(aws_client:aws_client(), list_policies_granting_service_access_request()) ->
     {ok, list_policies_granting_service_access_response(), tuple()} |
@@ -7314,11 +7441,13 @@ list_policy_versions(Client, Input, Options)
 %%
 %% An IAM role can also have managed policies attached to it. To list the
 %% managed
-%% policies that are attached to a role, use `ListAttachedRolePolicies'.
-%% For more information about policies, see Managed policies and inline
-%% policies:
+%% policies that are attached to a role, use ListAttachedRolePolicies:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListAttachedRolePolicies.html.
+%% For more information about policies, see Managed
+%% policies and inline policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
-%% in the IAM User Guide.
+%% in the
+%% IAM User Guide.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters. If there are no inline policies embedded with the specified
@@ -7381,7 +7510,8 @@ list_role_tags(Client, Input, Options)
 %%
 %% Tags
 %%
-%% To view all of the information for a role, see `GetRole'.
+%% To view all of the information for a role, see GetRole:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetRole.html.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
@@ -7435,7 +7565,8 @@ list_saml_provider_tags(Client, Input, Options)
 %% IAM resource-listing operations return a subset of the available
 %% attributes for the resource. For example, this operation does not return
 %% tags, even though they are an attribute of the returned object. To view
-%% all of the information for a SAML provider, see `GetSAMLProvider'.
+%% all of the information for a SAML provider, see GetSAMLProvider:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetSAMLProvider.html.
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
@@ -7510,7 +7641,8 @@ list_server_certificate_tags(Client, Input, Options)
 %% attributes for the resource. For example, this operation does not return
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for a servercertificate, see
-%% `GetServerCertificate'.
+%% GetServerCertificate:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetServerCertificate.html.
 -spec list_server_certificates(aws_client:aws_client(), list_server_certificates_request()) ->
     {ok, list_server_certificates_response(), tuple()} |
     {error, any()} |
@@ -7630,11 +7762,13 @@ list_ssh_public_keys(Client, Input, Options)
 %%
 %% An IAM user can also have managed policies attached to it. To list the
 %% managed
-%% policies that are attached to a user, use `ListAttachedUserPolicies'.
-%% For more information about policies, see Managed policies and inline
-%% policies:
+%% policies that are attached to a user, use ListAttachedUserPolicies:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListAttachedUserPolicies.html.
+%% For more information about policies, see Managed
+%% policies and inline policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
-%% in the IAM User Guide.
+%% in the
+%% IAM User Guide.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters. If there are no inline policies embedded with the specified
@@ -7693,7 +7827,8 @@ list_user_tags(Client, Input, Options)
 %%
 %% Tags
 %%
-%% To view all of the information for a user, see `GetUser'.
+%% To view all of the information for a user, see GetUser:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetUser.html.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
@@ -7725,7 +7860,8 @@ list_users(Client, Input, Options)
 %% IAM resource-listing operations return a subset of the available
 %% attributes for the resource. For example, this operation does not return
 %% tags, even though they are an attribute of the returned object. To view
-%% tag information for a virtual MFA device, see `ListMFADeviceTags'.
+%% tag information for a virtual MFA device, see ListMFADeviceTags:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListMFADeviceTags.html.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
@@ -8115,7 +8251,8 @@ resync_mfa_device(Client, Input, Options)
 %% This operation affects all users, groups, and roles that the policy is
 %% attached to. To
 %% list the users, groups, and roles that the policy is attached to, use
-%% `ListEntitiesForPolicy'.
+%% ListEntitiesForPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListEntitiesForPolicy.html.
 %%
 %% For information about managed policies, see Managed policies and inline
 %% policies:
@@ -8174,7 +8311,9 @@ set_default_policy_version(Client, Input, Options)
 %%
 %% To view the current session token version, see the
 %% `GlobalEndpointTokenVersion' entry in the response of the
-%% `GetAccountSummary' operation.
+%% GetAccountSummary:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetAccountSummary.html
+%% operation.
 -spec set_security_token_service_preferences(aws_client:aws_client(), set_security_token_service_preferences_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8207,14 +8346,17 @@ set_security_token_service_preferences(Client, Input, Options)
 %%
 %% If you want to simulate existing policies that are attached to an IAM
 %% user, group,
-%% or role, use `SimulatePrincipalPolicy' instead.
+%% or role, use SimulatePrincipalPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_SimulatePrincipalPolicy.html
+%% instead.
 %%
 %% Context keys are variables that are maintained by Amazon Web Services and
 %% its services and which
 %% provide details about the context of an API query request. You can use the
 %% `Condition' element of an IAM policy to evaluate context keys. To get
 %% the list of context keys that the policies require for correct simulation,
-%% use `GetContextKeysForCustomPolicy'.
+%% use GetContextKeysForCustomPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetContextKeysForCustomPolicy.html.
 %%
 %% If the output is long, you can use `MaxItems' and `Marker'
 %% parameters to paginate the results.
@@ -8266,7 +8408,9 @@ simulate_custom_policy(Client, Input, Options)
 %% specified as
 %% strings to include in the simulation. If you want to simulate only
 %% policies specified as
-%% strings, use `SimulateCustomPolicy' instead.
+%% strings, use SimulateCustomPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_SimulateCustomPolicy.html
+%% instead.
 %%
 %% You can also optionally include one resource-based policy to be evaluated
 %% with each of
@@ -8279,7 +8423,8 @@ simulate_custom_policy(Client, Input, Options)
 %% Note: This operation discloses information about the
 %% permissions granted to other users. If you do not want users to see other
 %% user's
-%% permissions, then consider allowing them to use `SimulateCustomPolicy'
+%% permissions, then consider allowing them to use SimulateCustomPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_SimulateCustomPolicy.html
 %% instead.
 %%
 %% Context keys are variables maintained by Amazon Web Services and its
@@ -8288,7 +8433,8 @@ simulate_custom_policy(Client, Input, Options)
 %% element of an IAM policy to evaluate context keys. To get the list of
 %% context keys
 %% that the policies require for correct simulation, use
-%% `GetContextKeysForPrincipalPolicy'.
+%% GetContextKeysForPrincipalPolicy:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetContextKeysForPrincipalPolicy.html.
 %%
 %% If the output is long, you can use the `MaxItems' and `Marker'
 %% parameters to paginate the results.
@@ -9123,9 +9269,11 @@ update_group(Client, Input, Options)
 %%
 %% You can use the CLI, the Amazon Web Services
 %% API, or the Users page in the IAM console to change
-%% the password for any IAM user. Use `ChangePassword' to change your own
-%% password in the My Security Credentials page in the
-%% Amazon Web Services Management Console.
+%% the password for any IAM user. Use ChangePassword:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_ChangePassword.html
+%% to
+%% change your own password in the My Security Credentials
+%% page in the Amazon Web Services Management Console.
 %%
 %% For more information about modifying passwords, see Managing passwords:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
@@ -9211,7 +9359,9 @@ update_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRole">>, Input, Options).
 
-%% @doc Use `UpdateRole' instead.
+%% @doc Use UpdateRole:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_UpdateRole.html
+%% instead.
 %%
 %% Modifies only the description of a role. This operation performs the same
 %% function as

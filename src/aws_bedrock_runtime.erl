@@ -53,6 +53,15 @@
 
 
 %% Example:
+%% document_char_location() :: #{
+%%   <<"documentIndex">> => [integer()],
+%%   <<"end">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type document_char_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_content_policy_assessment() :: #{
 %%   <<"filters">> => list(guardrail_content_filter()())
 %% }
@@ -61,6 +70,8 @@
 
 %% Example:
 %% document_block() :: #{
+%%   <<"citations">> => citations_config(),
+%%   <<"context">> => [string()],
 %%   <<"format">> => list(any()),
 %%   <<"name">> => [string()],
 %%   <<"source">> => list()
@@ -149,6 +160,23 @@
 %%   <<"outputAssessments">> => map()
 %% }
 -type guardrail_trace_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation() :: #{
+%%   <<"location">> => list(),
+%%   <<"sourceContent">> => list(list()()),
+%%   <<"title">> => [string()]
+%% }
+-type citation() :: #{binary() => any()}.
+
+
+%% Example:
+%% citations_content_block() :: #{
+%%   <<"citations">> => list(citation()()),
+%%   <<"content">> => list(list()())
+%% }
+-type citations_content_block() :: #{binary() => any()}.
 
 
 %% Example:
@@ -484,6 +512,15 @@
 
 
 %% Example:
+%% document_page_location() :: #{
+%%   <<"documentIndex">> => [integer()],
+%%   <<"end">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type document_page_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -503,6 +540,15 @@
 %%   <<"submitTime">> => non_neg_integer()
 %% }
 -type get_async_invoke_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_chunk_location() :: #{
+%%   <<"documentIndex">> => [integer()],
+%%   <<"end">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type document_chunk_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -710,6 +756,13 @@
 
 
 %% Example:
+%% citation_source_content_delta() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type citation_source_content_delta() :: #{binary() => any()}.
+
+
+%% Example:
 %% bidirectional_output_payload_part() :: #{
 %%   <<"bytes">> => binary()
 %% }
@@ -749,6 +802,13 @@
 %%   <<"text">> => string()
 %% }
 -type guardrail_output_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% citations_config() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type citations_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -806,6 +866,15 @@
 %%   <<"latency">> => list(any())
 %% }
 -type performance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% citations_delta() :: #{
+%%   <<"location">> => list(),
+%%   <<"sourceContent">> => list(citation_source_content_delta()()),
+%%   <<"title">> => [string()]
+%% }
+-type citations_delta() :: #{binary() => any()}.
 
 
 %% Example:
@@ -925,8 +994,8 @@
 %% @doc The action to apply a guardrail.
 %%
 %% For troubleshooting some of the common errors you might encounter when
-%% using the `ApplyGuardrail' API,
-%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% using the `ApplyGuardrail' API, see Troubleshooting Amazon Bedrock API
+%% Error Codes:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
 %% in the Amazon Bedrock User Guide
 -spec apply_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), apply_guardrail_request()) ->
@@ -964,13 +1033,10 @@ apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0)
 
 %% @doc Sends messages to the specified Amazon Bedrock model.
 %%
-%% `Converse' provides
-%% a consistent interface that works with all models that
-%% support messages. This allows you to write code once and use it with
-%% different models.
-%% If a model has unique inference parameters, you can also pass those unique
-%% parameters
-%% to the model.
+%% `Converse' provides a consistent interface that works with all models
+%% that support messages. This allows you to write code once and use it with
+%% different models. If a model has unique inference parameters, you can also
+%% pass those unique parameters to the model.
 %%
 %% Amazon Bedrock doesn't store any text, images, or documents that you
 %% provide as content. The data is only used to generate the response.
@@ -991,11 +1057,9 @@ apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0)
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-use.html.
 %%
 %% For information about the Converse API, see Use the Converse API in the
-%% Amazon Bedrock User Guide.
-%% To use a guardrail, see Use a guardrail with the Converse API in the
-%% Amazon Bedrock User Guide.
-%% To use a tool with a model, see Tool use (Function calling) in the Amazon
-%% Bedrock User Guide
+%% Amazon Bedrock User Guide. To use a guardrail, see Use a guardrail with
+%% the Converse API in the Amazon Bedrock User Guide. To use a tool with a
+%% model, see Tool use (Function calling) in the Amazon Bedrock User Guide
 %%
 %% For example code, see Converse API examples in the Amazon Bedrock User
 %% Guide.
@@ -1004,11 +1068,10 @@ apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0)
 %% action.
 %%
 %% To deny all inference access to resources that you specify in the modelId
-%% field, you
-%% need to deny access to the `bedrock:InvokeModel' and
+%% field, you need to deny access to the `bedrock:InvokeModel' and
 %% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
-%% denies
-%% access to the resource through the base inference actions (InvokeModel:
+%% denies access to the resource through the base inference actions
+%% (InvokeModel:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModel.html
 %% and InvokeModelWithResponseStream:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithResponseStream.html).
@@ -1016,8 +1079,8 @@ apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0)
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
 %%
 %% For troubleshooting some of the common errors you might encounter when
-%% using the `Converse' API,
-%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% using the `Converse' API, see Troubleshooting Amazon Bedrock API Error
+%% Codes:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
 %% in the Amazon Bedrock User Guide
 -spec converse(aws_client:aws_client(), binary() | list(), converse_request()) ->
@@ -1053,16 +1116,13 @@ converse(Client, ModelId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends messages to the specified Amazon Bedrock model and returns
-%% the response in a stream.
+%% @doc Sends messages to the specified Amazon Bedrock model and returns the
+%% response in a stream.
 %%
-%% `ConverseStream' provides a consistent API
-%% that works with all Amazon Bedrock models that support messages.
-%% This allows you to write code once and use it with different models.
-%% Should a
-%% model have unique inference parameters, you can also pass those unique
-%% parameters to the
-%% model.
+%% `ConverseStream' provides a consistent API that works with all Amazon
+%% Bedrock models that support messages. This allows you to write code once
+%% and use it with different models. Should a model have unique inference
+%% parameters, you can also pass those unique parameters to the model.
 %%
 %% To find out if a model supports streaming, call GetFoundationModel:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html
@@ -1090,11 +1150,9 @@ converse(Client, ModelId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-use.html.
 %%
 %% For information about the Converse API, see Use the Converse API in the
-%% Amazon Bedrock User Guide.
-%% To use a guardrail, see Use a guardrail with the Converse API in the
-%% Amazon Bedrock User Guide.
-%% To use a tool with a model, see Tool use (Function calling) in the Amazon
-%% Bedrock User Guide
+%% Amazon Bedrock User Guide. To use a guardrail, see Use a guardrail with
+%% the Converse API in the Amazon Bedrock User Guide. To use a tool with a
+%% model, see Tool use (Function calling) in the Amazon Bedrock User Guide
 %%
 %% For example code, see Conversation streaming example in the Amazon Bedrock
 %% User Guide.
@@ -1103,11 +1161,10 @@ converse(Client, ModelId, Input0, Options0) ->
 %% `bedrock:InvokeModelWithResponseStream' action.
 %%
 %% To deny all inference access to resources that you specify in the modelId
-%% field, you
-%% need to deny access to the `bedrock:InvokeModel' and
+%% field, you need to deny access to the `bedrock:InvokeModel' and
 %% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
-%% denies
-%% access to the resource through the base inference actions (InvokeModel:
+%% denies access to the resource through the base inference actions
+%% (InvokeModel:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModel.html
 %% and InvokeModelWithResponseStream:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithResponseStream.html).
@@ -1115,8 +1172,8 @@ converse(Client, ModelId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
 %%
 %% For troubleshooting some of the common errors you might encounter when
-%% using the `ConverseStream' API,
-%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% using the `ConverseStream' API, see Troubleshooting Amazon Bedrock API
+%% Error Codes:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
 %% in the Amazon Bedrock User Guide
 -spec converse_stream(aws_client:aws_client(), binary() | list(), converse_stream_request()) ->
@@ -1201,11 +1258,9 @@ get_async_invoke(Client, InvocationArn, QueryMap, HeadersMap, Options0)
 %% action.
 %%
 %% To deny all inference access to resources that you specify in the modelId
-%% field, you
-%% need to deny access to the `bedrock:InvokeModel' and
+%% field, you need to deny access to the `bedrock:InvokeModel' and
 %% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
-%% denies
-%% access to the resource through the Converse API actions (Converse:
+%% denies access to the resource through the Converse API actions (Converse:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html
 %% and ConverseStream:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html).
@@ -1213,8 +1268,8 @@ get_async_invoke(Client, InvocationArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
 %%
 %% For troubleshooting some of the common errors you might encounter when
-%% using the `InvokeModel' API,
-%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% using the `InvokeModel' API, see Troubleshooting Amazon Bedrock API
+%% Error Codes:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
 %% in the Amazon Bedrock User Guide
 -spec invoke_model(aws_client:aws_client(), binary() | list(), invoke_model_request()) ->
@@ -1331,18 +1386,16 @@ invoke_model_with_bidirectional_stream(Client, ModelId, Input0, Options0) ->
 %% The CLI doesn't support streaming operations in Amazon Bedrock,
 %% including `InvokeModelWithResponseStream'.
 %%
-%% For example code, see Invoke model with streaming code
-%% example in the Amazon Bedrock User Guide.
+%% For example code, see Invoke model with streaming code example in the
+%% Amazon Bedrock User Guide.
 %%
 %% This operation requires permissions to perform the
 %% `bedrock:InvokeModelWithResponseStream' action.
 %%
 %% To deny all inference access to resources that you specify in the modelId
-%% field, you
-%% need to deny access to the `bedrock:InvokeModel' and
+%% field, you need to deny access to the `bedrock:InvokeModel' and
 %% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
-%% denies
-%% access to the resource through the Converse API actions (Converse:
+%% denies access to the resource through the Converse API actions (Converse:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html
 %% and ConverseStream:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html).
@@ -1350,8 +1403,8 @@ invoke_model_with_bidirectional_stream(Client, ModelId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference.
 %%
 %% For troubleshooting some of the common errors you might encounter when
-%% using the `InvokeModelWithResponseStream' API,
-%% see Troubleshooting Amazon Bedrock API Error Codes:
+%% using the `InvokeModelWithResponseStream' API, see Troubleshooting
+%% Amazon Bedrock API Error Codes:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html
 %% in the Amazon Bedrock User Guide
 -spec invoke_model_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_model_with_response_stream_request()) ->
@@ -1464,11 +1517,9 @@ list_async_invokes(Client, QueryMap, HeadersMap, Options0)
 %% action.
 %%
 %% To deny all inference access to resources that you specify in the modelId
-%% field, you
-%% need to deny access to the `bedrock:InvokeModel' and
+%% field, you need to deny access to the `bedrock:InvokeModel' and
 %% `bedrock:InvokeModelWithResponseStream' actions. Doing this also
-%% denies
-%% access to the resource through the Converse API actions (Converse:
+%% denies access to the resource through the Converse API actions (Converse:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html
 %% and ConverseStream:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html).

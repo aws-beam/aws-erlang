@@ -609,7 +609,8 @@
 
 %% Example:
 %% integration_config() :: #{
-%%   <<"RefreshInterval">> => string()
+%%   <<"RefreshInterval">> => string(),
+%%   <<"SourceProperties">> => map()
 %% }
 -type integration_config() :: #{binary() => any()}.
 

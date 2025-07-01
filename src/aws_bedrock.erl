@@ -274,6 +274,15 @@
 
 
 %% Example:
+%% metadata_attribute_schema() :: #{
+%%   <<"description">> => [string()],
+%%   <<"key">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type metadata_attribute_schema() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_content_filters_tier_config() :: #{
 %%   <<"tierName">> => list(any())
 %% }
@@ -1135,6 +1144,13 @@
 
 
 %% Example:
+%% field_for_reranking() :: #{
+%%   <<"fieldName">> => [string()]
+%% }
+-type field_for_reranking() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
@@ -1537,6 +1553,14 @@
 
 
 %% Example:
+%% vector_search_reranking_configuration() :: #{
+%%   <<"bedrockRerankingConfiguration">> => vector_search_bedrock_reranking_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type vector_search_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% byte_content_doc() :: #{
 %%   <<"contentType">> => string(),
 %%   <<"data">> => binary(),
@@ -1606,8 +1630,10 @@
 %% Example:
 %% knowledge_base_vector_search_configuration() :: #{
 %%   <<"filter">> => list(),
+%%   <<"implicitFilterConfiguration">> => implicit_filter_configuration(),
 %%   <<"numberOfResults">> => [integer()],
-%%   <<"overrideSearchType">> => list(any())
+%%   <<"overrideSearchType">> => list(any()),
+%%   <<"rerankingConfiguration">> => vector_search_reranking_configuration()
 %% }
 -type knowledge_base_vector_search_configuration() :: #{binary() => any()}.
 
@@ -1662,6 +1688,14 @@
 
 
 %% Example:
+%% implicit_filter_configuration() :: #{
+%%   <<"metadataAttributes">> => list(metadata_attribute_schema()()),
+%%   <<"modelArn">> => string()
+%% }
+-type implicit_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% foundation_model_lifecycle() :: #{
 %%   <<"status">> => list(any())
 %% }
@@ -1706,6 +1740,15 @@
 %%   <<"teacherModelConfig">> => teacher_model_config()
 %% }
 -type distillation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_bedrock_reranking_configuration() :: #{
+%%   <<"metadataConfiguration">> => metadata_configuration_for_reranking(),
+%%   <<"modelConfiguration">> => vector_search_bedrock_reranking_model_configuration(),
+%%   <<"numberOfRerankedResults">> => [integer()]
+%% }
+-type vector_search_bedrock_reranking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1995,6 +2038,14 @@
 
 
 %% Example:
+%% metadata_configuration_for_reranking() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"selectiveModeConfiguration">> => list()
+%% }
+-type metadata_configuration_for_reranking() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_guardrail_version_response() :: #{
 %%   <<"guardrailId">> => string(),
 %%   <<"version">> => string()
@@ -2130,6 +2181,14 @@
 %%   <<"promptRouterSummaries">> => list(prompt_router_summary()())
 %% }
 -type list_prompt_routers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_bedrock_reranking_model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"modelArn">> => string()
+%% }
+-type vector_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
 
 
 %% Example:

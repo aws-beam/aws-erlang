@@ -161,6 +161,7 @@
 %%   <<"DeletionProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_description()()),
 %%   <<"GlobalTableVersion">> => string(),
+%%   <<"GlobalTableWitnesses">> => list(global_table_witness_description()()),
 %%   <<"ItemCount">> => float(),
 %%   <<"KeySchema">> => list(key_schema_element()()),
 %%   <<"LatestStreamArn">> => string(),
@@ -1424,6 +1425,12 @@
 -type endpoint() :: #{binary() => any()}.
 
 %% Example:
+%% create_global_table_witness_group_member_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type create_global_table_witness_group_member_action() :: #{binary() => any()}.
+
+%% Example:
 %% update_item_output() :: #{
 %%   <<"Attributes">> => map(),
 %%   <<"ConsumedCapacity">> => consumed_capacity(),
@@ -1479,6 +1486,13 @@
 %%   <<"Update">> => update_global_secondary_index_action()
 %% }
 -type global_secondary_index_update() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_witness_description() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"WitnessStatus">> => list(any())
+%% }
+-type global_table_witness_description() :: #{binary() => any()}.
 
 %% Example:
 %% create_backup_output() :: #{
@@ -1977,6 +1991,12 @@
 -type list_tables_output() :: #{binary() => any()}.
 
 %% Example:
+%% delete_global_table_witness_group_member_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type delete_global_table_witness_group_member_action() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_export_time_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2066,6 +2086,7 @@
 %%   <<"BillingMode">> => list(any()),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_update()()),
+%%   <<"GlobalTableWitnessUpdates">> => list(global_table_witness_group_update()()),
 %%   <<"MultiRegionConsistency">> => list(any()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
@@ -2097,6 +2118,13 @@
 %%   <<"Statement">> => string()
 %% }
 -type batch_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_witness_group_update() :: #{
+%%   <<"Create">> => create_global_table_witness_group_member_action(),
+%%   <<"Delete">> => delete_global_table_witness_group_member_action()
+%% }
+-type global_table_witness_group_update() :: #{binary() => any()}.
 
 %% Example:
 %% replica_not_found_exception() :: #{
@@ -2253,6 +2281,7 @@
     internal_server_error() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
+    replicated_write_conflict_exception() | 
     invalid_endpoint_exception() | 
     item_collection_size_limit_exceeded_exception().
 
@@ -3161,9 +3190,6 @@ delete_resource_policy(Client, Input, Options)
 %% returns a `ResourceNotFoundException'. If table is already in the
 %% `DELETING' state, no error is returned.
 %%
-%% For global tables, this operation only applies to
-%% global tables using Version 2019.11.21 (Current version).
-%%
 %% DynamoDB might continue to accept data read and write operations, such as
 %% `GetItem' and `PutItem', on a table in the
 %% `DELETING' state until the table deletion is complete. For the full
@@ -3507,10 +3533,6 @@ describe_limits(Client, Input, Options)
 %% the table, when
 %% it was created, the primary key schema, and any indexes on the table.
 %%
-%% For global tables, this operation only applies to global tables using
-%% Version
-%% 2019.11.21 (Current version).
-%%
 %% If you issue a `DescribeTable' request immediately after a
 %% `CreateTable' request, DynamoDB might return a
 %% `ResourceNotFoundException'. This is because
@@ -3536,10 +3558,6 @@ describe_table(Client, Input, Options)
 
 %% @doc Describes auto scaling settings across replicas of the global table
 %% at once.
-%%
-%% For global tables, this operation only applies to global tables using
-%% Version
-%% 2019.11.21 (Current version).
 -spec describe_table_replica_auto_scaling(aws_client:aws_client(), describe_table_replica_auto_scaling_input()) ->
     {ok, describe_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
@@ -4665,12 +4683,10 @@ update_contributor_insights(Client, Input, Options)
 %% version 2019.11.21 (Current), see Upgrading global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 %%
-%% For global tables, this operation only applies to global tables using
-%% Version
-%% 2019.11.21 (Current version). If you are using global tables Version
+%% If you are using global tables Version
 %% 2019.11.21:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html
-%% you can use UpdateTable:
+%% (Current) you can use UpdateTable:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateTable.html
 %% instead.
 %%
@@ -4789,10 +4805,6 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% indexes, or DynamoDB
 %% Streams settings for a given table.
 %%
-%% For global tables, this operation only applies to global tables using
-%% Version
-%% 2019.11.21 (Current version).
-%%
 %% You can only perform one of the following operations at once:
 %%
 %% Modify the provisioned throughput settings of the table.
@@ -4826,10 +4838,6 @@ update_table(Client, Input, Options)
     request(Client, <<"UpdateTable">>, Input, Options).
 
 %% @doc Updates auto scaling settings on your global tables at once.
-%%
-%% For global tables, this operation only applies to global tables using
-%% Version
-%% 2019.11.21 (Current version).
 -spec update_table_replica_auto_scaling(aws_client:aws_client(), update_table_replica_auto_scaling_input()) ->
     {ok, update_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |

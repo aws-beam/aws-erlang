@@ -663,7 +663,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_monitor_errors() ::
     throttling_exception() | 
@@ -817,7 +818,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1033,7 +1035,11 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 -spec get_query_results_monitor_top_contributors(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_query_results_monitor_top_contributors_output(), tuple()} |
     {error, any()} |
@@ -1097,7 +1103,11 @@ get_query_results_monitor_top_contributors(Client, MonitorName, QueryId, QueryMa
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 -spec get_query_results_workload_insights_top_contributors(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_query_results_workload_insights_top_contributors_output(), tuple()} |
     {error, any()} |
@@ -1161,10 +1171,14 @@ get_query_results_workload_insights_top_contributors(Client, QueryId, ScopeId, Q
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 %%
-%% The top contributor network flows overall for a specific metric type, for
-%% example, the
+%% The top contributor network flows overall are for a specific metric type,
+%% for example, the
 %% number of retransmissions.
 -spec get_query_results_workload_insights_top_contributors_data(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_query_results_workload_insights_top_contributors_data_output(), tuple()} |
@@ -1212,12 +1226,11 @@ get_query_results_workload_insights_top_contributors_data(Client, QueryId, Scope
 %%
 %% This call returns the query status for the top contributors for a monitor.
 %%
-%% When you start a query, use this call to check the status of the query to
+%% When you create a query, use this call to check the status of the query to
 %% make sure that it has
-%% has `SUCCEEDED' before you
-%% reviewStartQueryWorkloadInsightsTopContributorsData the results. Use the
-%% same query ID that you used for
-%% the corresponding API call to start the query,
+%% has `SUCCEEDED' before you review the results. Use the same query ID
+%% that you used for
+%% the corresponding API call to start (create) the query,
 %% `StartQueryMonitorTopContributors'.
 %%
 %% When you run a query, use this call to check the status of the query to
@@ -1276,7 +1289,11 @@ get_query_status_monitor_top_contributors(Client, MonitorName, QueryId, QueryMap
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 -spec get_query_status_workload_insights_top_contributors(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_query_status_workload_insights_top_contributors_output(), tuple()} |
     {error, any()} |
@@ -1328,10 +1345,14 @@ get_query_status_workload_insights_top_contributors(Client, QueryId, ScopeId, Qu
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 %%
-%% The top contributor network flows overall for a specific metric type, for
-%% example, the
+%% The top contributor network flows overall are for a specific metric type,
+%% for example, the
 %% number of retransmissions.
 -spec get_query_status_workload_insights_top_contributors_data(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_query_status_workload_insights_top_contributors_data_output(), tuple()} |
@@ -1534,17 +1555,25 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Start a query to return the data with the Network Flow Monitor query
-%% interface.
+%% @doc Create a query that you can use with the Network Flow Monitor query
+%% interface to return the top
+%% contributors for a monitor.
 %%
-%% Specify the query that you want to return results for by providing a query
-%% ID
-%% and a monitor name. This query returns the top contributors for a specific
-%% monitor.
+%% Specify the monitor that you want to create the query for.
+%%
+%% The call returns a query ID that you can use with
+%%
+%% GetQueryResultsMonitorTopContributors:
+%% https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsMonitorTopContributors.html
+%% to run the query and return the top contributors for a specific monitor.
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable APIs for the top contributors that
+%% you want to be
+%% returned.
 -spec start_query_monitor_top_contributors(aws_client:aws_client(), binary() | list(), start_query_monitor_top_contributors_input()) ->
     {ok, start_query_monitor_top_contributors_output(), tuple()} |
     {error, any()} |
@@ -1578,16 +1607,25 @@ start_query_monitor_top_contributors(Client, MonitorName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Start a query to return the data with the Network Flow Monitor query
-%% interface.
+%% @doc Create a query with the Network Flow Monitor query interface that you
+%% can run to return workload insights top contributors.
 %%
-%% Specify the query that you want to start by providing a query ID
-%% and a monitor name. This query returns the top contributors for a specific
-%% monitor.
+%% Specify the scope that you want to create a query for.
+%%
+%% The call returns a query ID that you can use with
+%%
+%% GetQueryResultsWorkloadInsightsTopContributors:
+%% https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsWorkloadInsightsTopContributors.html
+%% to run the query and return the top contributors for the workload insights
+%% for a scope.
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable APIs for the top contributors that
+%% you want to be
+%% returned.
 -spec start_query_workload_insights_top_contributors(aws_client:aws_client(), binary() | list(), start_query_workload_insights_top_contributors_input()) ->
     {ok, start_query_workload_insights_top_contributors_output(), tuple()} |
     {error, any()} |
@@ -1621,16 +1659,26 @@ start_query_workload_insights_top_contributors(Client, ScopeId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Start a query to return the with the Network Flow Monitor query
-%% interface.
+%% @doc Create a query with the Network Flow Monitor query interface that you
+%% can run to return data for
+%% workload insights top contributors.
 %%
-%% Specify the query that you want to start by providing a query ID
-%% and a monitor name. This query returns the data for top contributors for
-%% workload insights.
+%% Specify the scope that you want to create a query for.
+%%
+%% The call returns a query ID that you can use with
+%%
+%% GetQueryResultsWorkloadInsightsTopContributorsData:
+%% https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsWorkloadInsightsTopContributorsData.html
+%% to run the query and return the data for the top contributors for the
+%% workload insights for a scope.
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 -spec start_query_workload_insights_top_contributors_data(aws_client:aws_client(), binary() | list(), start_query_workload_insights_top_contributors_data_input()) ->
     {ok, start_query_workload_insights_top_contributors_data_output(), tuple()} |
     {error, any()} |
@@ -1664,15 +1712,18 @@ start_query_workload_insights_top_contributors_data(Client, ScopeId, Input0, Opt
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stop a query with the Network Flow Monitor query interface.
+%% @doc Stop a top contributors query for a monitor.
 %%
 %% Specify the query that you want to stop by providing a query ID
-%% and a monitor name. This query returns the top contributors for a specific
-%% monitor.
+%% and a monitor name.
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 -spec stop_query_monitor_top_contributors(aws_client:aws_client(), binary() | list(), binary() | list(), stop_query_monitor_top_contributors_input()) ->
     {ok, stop_query_monitor_top_contributors_output(), tuple()} |
     {error, any()} |
@@ -1706,15 +1757,18 @@ stop_query_monitor_top_contributors(Client, MonitorName, QueryId, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stop a query with the Network Flow Monitor query interface.
+%% @doc Stop a top contributors query for workload insights.
 %%
 %% Specify the query that you want to stop by providing a query ID
-%% and a monitor name. This query returns the top contributors for a specific
-%% monitor.
+%% and a scope ID.
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 -spec stop_query_workload_insights_top_contributors(aws_client:aws_client(), binary() | list(), binary() | list(), stop_query_workload_insights_top_contributors_input()) ->
     {ok, stop_query_workload_insights_top_contributors_output(), tuple()} |
     {error, any()} |
@@ -1748,24 +1802,18 @@ stop_query_workload_insights_top_contributors(Client, QueryId, ScopeId, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Return the data for a query with the Network Flow Monitor query
-%% interface.
+%% @doc Stop a top contributors data query for workload insights.
 %%
-%% Specify the query that you want to return results for by providing a query
-%% ID
-%% and a scope ID. This query returns data for the top contributors for
-%% workload insights.
-%% Workload insights provide a high level view of network flow performance
-%% data collected by agents
-%% for a scope.
+%% Specify the query that you want to stop by providing a query ID
+%% and a scope ID.
 %%
 %% Top contributors in Network Flow Monitor are network flows with the
 %% highest values for a specific
-%% metric type, related to a scope (for workload insights) or a monitor.
-%%
-%% The top contributor network flows overall for a specific metric type, for
-%% example, the
-%% number of retransmissions.
+%% metric type. Top contributors can be across all workload insights, for a
+%% given scope, or for
+%% a specific monitor. Use the applicable call for the top contributors that
+%% you want to be
+%% returned.
 -spec stop_query_workload_insights_top_contributors_data(aws_client:aws_client(), binary() | list(), binary() | list(), stop_query_workload_insights_top_contributors_data_input()) ->
     {ok, stop_query_workload_insights_top_contributors_data_output(), tuple()} |
     {error, any()} |

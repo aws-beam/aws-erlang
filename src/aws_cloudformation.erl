@@ -1964,6 +1964,7 @@
 %% Example:
 %% stack_resource_drift() :: #{
 %%   <<"ActualProperties">> => string(),
+%%   <<"DriftStatusReason">> => string(),
 %%   <<"ExpectedProperties">> => string(),
 %%   <<"LogicalResourceId">> => string(),
 %%   <<"ModuleInfo">> => module_info(),
@@ -3166,6 +3167,19 @@ create_stack(Client, Input, Options)
 %% one value for either `Accounts' or `DeploymentTargets', and you
 %% must
 %% specify at least one value for `Regions'.
+%%
+%% The maximum number of organizational unit (OUs) supported by a
+%% `CreateStackInstances' operation is 50.
+%%
+%% If you need more than 50, consider the following options:
+%%
+%% Batch processing: If you don't want to expose your OU
+%% hierarchy, split up the operations into multiple calls with less than 50
+%% OUs
+%% each.
+%%
+%% Parent OU strategy: If you don't mind exposing the OU
+%% hierarchy, target a parent OU that contains all desired child OUs.
 -spec create_stack_instances(aws_client:aws_client(), create_stack_instances_input()) ->
     {ok, create_stack_instances_output(), tuple()} |
     {error, any()} |
@@ -3341,6 +3355,19 @@ delete_stack(Client, Input, Options)
 
 %% @doc Deletes stack instances for the specified accounts, in the specified
 %% Amazon Web Services Regions.
+%%
+%% The maximum number of organizational unit (OUs) supported by a
+%% `DeleteStackInstances' operation is 50.
+%%
+%% If you need more than 50, consider the following options:
+%%
+%% Batch processing: If you don't want to expose your OU
+%% hierarchy, split up the operations into multiple calls with less than 50
+%% OUs
+%% each.
+%%
+%% Parent OU strategy: If you don't mind exposing the OU
+%% hierarchy, target a parent OU that contains all desired child OUs.
 -spec delete_stack_instances(aws_client:aws_client(), delete_stack_instances_input()) ->
     {ok, delete_stack_instances_output(), tuple()} |
     {error, any()} |
@@ -3788,6 +3815,9 @@ describe_stack_resources(Client, Input, Options)
     request(Client, <<"DescribeStackResources">>, Input, Options).
 
 %% @doc Returns the description of the specified StackSet.
+%%
+%% This API provides strongly consistent reads meaning it will always
+%% return the most up-to-date data.
 -spec describe_stack_set(aws_client:aws_client(), describe_stack_set_input()) ->
     {ok, describe_stack_set_output(), tuple()} |
     {error, any()} |
@@ -3805,6 +3835,9 @@ describe_stack_set(Client, Input, Options)
     request(Client, <<"DescribeStackSet">>, Input, Options).
 
 %% @doc Returns the description of the specified StackSet operation.
+%%
+%% This API provides strongly consistent reads meaning it will always
+%% return the most up-to-date data.
 -spec describe_stack_set_operation(aws_client:aws_client(), describe_stack_set_operation_input()) ->
     {ok, describe_stack_set_operation_output(), tuple()} |
     {error, any()} |
@@ -4531,6 +4564,9 @@ list_stack_set_auto_deployment_targets(Client, Input, Options)
 
 %% @doc Returns summary information about the results of a stack set
 %% operation.
+%%
+%% This API provides eventually consistent reads meaning it may take
+%% some time but will eventually return the most up-to-date data.
 -spec list_stack_set_operation_results(aws_client:aws_client(), list_stack_set_operation_results_input()) ->
     {ok, list_stack_set_operation_results_output(), tuple()} |
     {error, any()} |
@@ -4549,6 +4585,9 @@ list_stack_set_operation_results(Client, Input, Options)
 
 %% @doc Returns summary information about operations performed on a stack
 %% set.
+%%
+%% This API provides eventually consistent reads meaning it may take
+%% some time but will eventually return the most up-to-date data.
 -spec list_stack_set_operations(aws_client:aws_client(), list_stack_set_operations_input()) ->
     {ok, list_stack_set_operations_output(), tuple()} |
     {error, any()} |
@@ -4567,6 +4606,9 @@ list_stack_set_operations(Client, Input, Options)
 
 %% @doc Returns summary information about stack sets that are associated with
 %% the user.
+%%
+%% This API provides strongly consistent reads meaning it will always
+%% return the most up-to-date data.
 %%
 %% [Self-managed permissions] If you set the `CallAs' parameter to
 %% `SELF' while signed in to your Amazon Web Services account,
@@ -5139,6 +5181,19 @@ update_stack(Client, Input, Options)
 %% updated with the
 %% new parameter, you can then override the parameter value using
 %% `UpdateStackInstances'.
+%%
+%% The maximum number of organizational unit (OUs) supported by a
+%% `UpdateStackInstances' operation is 50.
+%%
+%% If you need more than 50, consider the following options:
+%%
+%% Batch processing: If you don't want to expose your OU
+%% hierarchy, split up the operations into multiple calls with less than 50
+%% OUs
+%% each.
+%%
+%% Parent OU strategy: If you don't mind exposing the OU
+%% hierarchy, target a parent OU that contains all desired child OUs.
 -spec update_stack_instances(aws_client:aws_client(), update_stack_instances_input()) ->
     {ok, update_stack_instances_output(), tuple()} |
     {error, any()} |
@@ -5166,6 +5221,19 @@ update_stack_instances(Client, Input, Options)
 %% changes. Subsequent `CreateStackInstances' calls on the specified
 %% stack set
 %% use the updated stack set.
+%%
+%% The maximum number of organizational unit (OUs) supported by a
+%% `UpdateStackSet' operation is 50.
+%%
+%% If you need more than 50, consider the following options:
+%%
+%% Batch processing: If you don't want to expose your OU
+%% hierarchy, split up the operations into multiple calls with less than 50
+%% OUs
+%% each.
+%%
+%% Parent OU strategy: If you don't mind exposing the OU
+%% hierarchy, target a parent OU that contains all desired child OUs.
 -spec update_stack_set(aws_client:aws_client(), update_stack_set_input()) ->
     {ok, update_stack_set_output(), tuple()} |
     {error, any()} |
