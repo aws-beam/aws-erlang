@@ -4077,7 +4077,7 @@
 %% Example:
 %% update_cluster_request() :: #{
 %%   <<"ClusterName">> := string(),
-%%   <<"InstanceGroups">> := list(cluster_instance_group_specification()()),
+%%   <<"InstanceGroups">> => list(cluster_instance_group_specification()()),
 %%   <<"InstanceGroupsToDelete">> => list(string()()),
 %%   <<"NodeRecovery">> => list(any())
 %% }
@@ -5164,7 +5164,7 @@
 %% Example:
 %% create_cluster_request() :: #{
 %%   <<"ClusterName">> := string(),
-%%   <<"InstanceGroups">> := list(cluster_instance_group_specification()()),
+%%   <<"InstanceGroups">> => list(cluster_instance_group_specification()()),
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"Tags">> => list(tag()()),

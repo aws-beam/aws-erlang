@@ -5999,6 +5999,7 @@
 %% Example:
 %% get_instance_types_from_instance_requirements_request() :: #{
 %%   <<"ArchitectureTypes">> := list(list(any())()),
+%%   <<"Context">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceRequirements">> := instance_requirements_request(),
 %%   <<"MaxResults">> => integer(),

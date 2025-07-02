@@ -12,13 +12,11 @@
 %% (lookalike segment) that resembles the training data.
 %%
 %% To learn more about Amazon Web Services Clean Rooms ML concepts,
-%% procedures, and best practices, see the
-%% Clean Rooms User Guide:
+%% procedures, and best practices, see the Clean Rooms User Guide:
 %% https://docs.aws.amazon.com/clean-rooms/latest/userguide/machine-learning.html.
 %%
 %% To learn more about SQL commands, functions, and conditions supported in
-%% Clean Rooms, see the
-%% Clean Rooms SQL Reference:
+%% Clean Rooms, see the Clean Rooms SQL Reference:
 %% https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html.
 -module(aws_cleanroomsml).
 
@@ -144,6 +142,9 @@
          list_trained_model_inference_jobs/2,
          list_trained_model_inference_jobs/4,
          list_trained_model_inference_jobs/5,
+         list_trained_model_versions/3,
+         list_trained_model_versions/5,
+         list_trained_model_versions/6,
          list_trained_models/2,
          list_trained_models/4,
          list_trained_models/5,
@@ -184,7 +185,8 @@
 %% list_trained_model_inference_jobs_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"trainedModelArn">> => string()
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string()
 %% }
 -type list_trained_model_inference_jobs_request() :: #{binary() => any()}.
 
@@ -195,11 +197,13 @@
 %%   <<"configuredModelAlgorithmAssociationArn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()()),
 %%   <<"membershipIdentifier">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"trainedModelArn">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"versionIdentifier">> => string()
 %% }
 -type trained_model_summary() :: #{binary() => any()}.
 
@@ -313,9 +317,12 @@
 %% }
 -type create_ml_input_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_trained_model_request() :: #{}
--type get_trained_model_request() :: #{}.
+%% get_trained_model_request() :: #{
+%%   <<"versionIdentifier">> => string()
+%% }
+-type get_trained_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -336,7 +343,8 @@
 %% Example:
 %% trained_models_configuration_policy() :: #{
 %%   <<"containerLogs">> => list(logs_configuration_policy()()),
-%%   <<"containerMetrics">> => metrics_configuration_policy()
+%%   <<"containerMetrics">> => metrics_configuration_policy(),
+%%   <<"maxArtifactSize">> => trained_model_artifact_max_size()
 %% }
 -type trained_models_configuration_policy() :: #{binary() => any()}.
 
@@ -357,6 +365,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"trainedModelArn">> => string(),
 %%   <<"trainedModelInferenceJobArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type trained_model_inference_job_summary() :: #{binary() => any()}.
@@ -489,6 +498,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()()),
 %%   <<"logsStatus">> => list(any()),
 %%   <<"logsStatusDetails">> => [string()],
 %%   <<"membershipIdentifier">> => string(),
@@ -501,7 +511,9 @@
 %%   <<"stoppingCondition">> => stopping_condition(),
 %%   <<"trainedModelArn">> => string(),
 %%   <<"trainingContainerImageDigest">> => [string()],
-%%   <<"updateTime">> => [non_neg_integer()]
+%%   <<"trainingInputMode">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"versionIdentifier">> => string()
 %% }
 -type get_collaboration_trained_model_response() :: #{binary() => any()}.
 
@@ -579,9 +591,17 @@
 %% Example:
 %% list_collaboration_trained_model_export_jobs_request() :: #{
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string()
 %% }
 -type list_collaboration_trained_model_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -601,6 +621,7 @@
 %%   <<"description">> => string(),
 %%   <<"environment">> => map(),
 %%   <<"hyperparameters">> => map(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"logsStatus">> => list(any()),
 %%   <<"logsStatusDetails">> => [string()],
@@ -615,7 +636,9 @@
 %%   <<"tags">> => map(),
 %%   <<"trainedModelArn">> => string(),
 %%   <<"trainingContainerImageDigest">> => [string()],
-%%   <<"updateTime">> => [non_neg_integer()]
+%%   <<"trainingInputMode">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"versionIdentifier">> => string()
 %% }
 -type get_trained_model_response() :: #{binary() => any()}.
 
@@ -639,9 +662,18 @@
 %%   <<"status">> => list(any()),
 %%   <<"statusDetails">> => status_details(),
 %%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type collaboration_trained_model_export_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trained_model_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModels">> => list(trained_model_summary()())
+%% }
+-type list_trained_model_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -742,7 +774,8 @@
 %% Example:
 %% model_training_data_channel() :: #{
 %%   <<"channelName">> => string(),
-%%   <<"mlInputChannelArn">> => string()
+%%   <<"mlInputChannelArn">> => string(),
+%%   <<"s3DataDistributionType">> => list(any())
 %% }
 -type model_training_data_channel() :: #{binary() => any()}.
 
@@ -830,15 +863,27 @@
 
 
 %% Example:
+%% incremental_training_data_channel() :: #{
+%%   <<"channelName">> => string(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"versionIdentifier">> => string()
+%% }
+-type incremental_training_data_channel() :: #{binary() => any()}.
+
+
+%% Example:
 %% trained_model_inference_max_output_size() :: #{
 %%   <<"unit">> => list(any()),
 %%   <<"value">> => float()
 %% }
 -type trained_model_inference_max_output_size() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_collaboration_trained_model_request() :: #{}
--type get_collaboration_trained_model_request() :: #{}.
+%% get_collaboration_trained_model_request() :: #{
+%%   <<"versionIdentifier">> => string()
+%% }
+-type get_collaboration_trained_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -851,7 +896,9 @@
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
+%%   <<"message">> => [string()],
+%%   <<"quotaName">> => [string()],
+%%   <<"quotaValue">> => [float()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
@@ -932,11 +979,13 @@
 %%   <<"description">> => string(),
 %%   <<"environment">> => map(),
 %%   <<"hyperparameters">> => map(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel()()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"resourceConfig">> := resource_config(),
 %%   <<"stoppingCondition">> => stopping_condition(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"trainingInputMode">> => list(any())
 %% }
 -type create_trained_model_request() :: #{binary() => any()}.
 
@@ -956,11 +1005,13 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()()),
 %%   <<"membershipIdentifier">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"trainedModelArn">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"versionIdentifier">> => string()
 %% }
 -type collaboration_trained_model_summary() :: #{binary() => any()}.
 
@@ -1075,9 +1126,18 @@
 %%   <<"outputConfiguration">> := inference_output_configuration(),
 %%   <<"resourceConfig">> := inference_resource_config(),
 %%   <<"tags">> => map(),
-%%   <<"trainedModelArn">> := string()
+%%   <<"trainedModelArn">> := string(),
+%%   <<"trainedModelVersionIdentifier">> => string()
 %% }
 -type start_trained_model_inference_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_artifact_max_size() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type trained_model_artifact_max_size() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1167,6 +1227,15 @@
 %% }
 -type list_audience_export_jobs_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% incremental_training_data_channel_output() :: #{
+%%   <<"channelName">> => string(),
+%%   <<"modelName">> => string(),
+%%   <<"versionIdentifier">> => string()
+%% }
+-type incremental_training_data_channel_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_ml_input_channel_data_request() :: #{}
 -type delete_ml_input_channel_data_request() :: #{}.
@@ -1194,7 +1263,8 @@
 
 %% Example:
 %% create_trained_model_response() :: #{
-%%   <<"trainedModelArn">> => string()
+%%   <<"trainedModelArn">> => string(),
+%%   <<"versionIdentifier">> => string()
 %% }
 -type create_trained_model_response() :: #{binary() => any()}.
 
@@ -1203,7 +1273,8 @@
 %% start_trained_model_export_job_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"outputConfiguration">> := trained_model_export_output_configuration()
+%%   <<"outputConfiguration">> := trained_model_export_output_configuration(),
+%%   <<"trainedModelVersionIdentifier">> => string()
 %% }
 -type start_trained_model_export_job_request() :: #{binary() => any()}.
 
@@ -1231,9 +1302,21 @@
 %% cancel_trained_model_inference_job_request() :: #{}
 -type cancel_trained_model_inference_job_request() :: #{}.
 
+
 %% Example:
-%% cancel_trained_model_request() :: #{}
--type cancel_trained_model_request() :: #{}.
+%% cancel_trained_model_request() :: #{
+%%   <<"versionIdentifier">> => string()
+%% }
+-type cancel_trained_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trained_model_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_trained_model_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1311,6 +1394,13 @@
 
 
 %% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% glue_data_source() :: #{
 %%   <<"catalogId">> => string(),
 %%   <<"databaseName">> => string(),
@@ -1345,6 +1435,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"trainedModelArn">> => string(),
 %%   <<"trainedModelInferenceJobArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type collaboration_trained_model_inference_job_summary() :: #{binary() => any()}.
@@ -1526,6 +1617,7 @@
 %%   <<"tags">> => map(),
 %%   <<"trainedModelArn">> => string(),
 %%   <<"trainedModelInferenceJobArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type get_trained_model_inference_job_response() :: #{binary() => any()}.
@@ -1645,9 +1737,12 @@
 %% }
 -type update_configured_audience_model_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_trained_model_output_request() :: #{}
--type delete_trained_model_output_request() :: #{}.
+%% delete_trained_model_output_request() :: #{
+%%   <<"versionIdentifier">> => string()
+%% }
+-type delete_trained_model_output_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_audience_generation_job_request() :: #{}
@@ -1658,17 +1753,20 @@
 %% list_collaboration_trained_model_inference_jobs_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"trainedModelArn">> => string()
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string()
 %% }
 -type list_collaboration_trained_model_inference_jobs_request() :: #{binary() => any()}.
 
 -type cancel_trained_model_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
 -type cancel_trained_model_inference_job_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
@@ -1695,6 +1793,7 @@
     conflict_exception().
 
 -type create_configured_model_algorithm_association_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
@@ -1702,6 +1801,7 @@
     conflict_exception().
 
 -type create_ml_input_channel_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
@@ -1709,11 +1809,13 @@
     conflict_exception().
 
 -type create_trained_model_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    internal_service_exception().
 
 -type create_training_dataset_errors() ::
     validation_exception() | 
@@ -1750,23 +1852,27 @@
     conflict_exception().
 
 -type delete_configured_model_algorithm_association_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_ml_configuration_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
 
 -type delete_ml_input_channel_data_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_trained_model_output_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
@@ -1789,16 +1895,19 @@
     resource_not_found_exception().
 
 -type get_collaboration_configured_model_algorithm_association_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
 
 -type get_collaboration_ml_input_channel_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
 
 -type get_collaboration_trained_model_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -1819,26 +1928,31 @@
     resource_not_found_exception().
 
 -type get_configured_model_algorithm_association_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
 
 -type get_ml_configuration_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
 
 -type get_ml_input_channel_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
 
 -type get_trained_model_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
 
 -type get_trained_model_inference_job_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -1861,22 +1975,27 @@
     access_denied_exception().
 
 -type list_collaboration_configured_model_algorithm_associations_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
 -type list_collaboration_ml_input_channels_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
 -type list_collaboration_trained_model_export_jobs_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
 -type list_collaboration_trained_model_inference_jobs_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
 -type list_collaboration_trained_models_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
@@ -1885,6 +2004,7 @@
     access_denied_exception().
 
 -type list_configured_model_algorithm_associations_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
@@ -1893,6 +2013,7 @@
     access_denied_exception().
 
 -type list_ml_input_channels_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
@@ -1902,10 +2023,18 @@
     resource_not_found_exception().
 
 -type list_trained_model_inference_jobs_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
+-type list_trained_model_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type list_trained_models_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
@@ -1919,6 +2048,7 @@
     resource_not_found_exception().
 
 -type put_ml_configuration_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception().
 
@@ -1930,6 +2060,7 @@
     conflict_exception().
 
 -type start_audience_generation_job_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
@@ -1937,12 +2068,14 @@
     conflict_exception().
 
 -type start_trained_model_export_job_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
 -type start_trained_model_inference_job_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     service_quota_exceeded_exception() | 
@@ -1998,9 +2131,10 @@ cancel_trained_model(Client, MembershipIdentifier, TrainedModelArn, Input0, Opti
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"versionIdentifier">>, <<"versionIdentifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Submits a request to cancel a trained model inference job.
@@ -2571,7 +2705,7 @@ delete_ml_input_channel_data(Client, MembershipIdentifier, MlInputChannelArn, In
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the output of a trained model.
+%% @doc Deletes the model artifacts stored by the service.
 -spec delete_trained_model_output(aws_client:aws_client(), binary() | list(), binary() | list(), delete_trained_model_output_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2600,9 +2734,10 @@ delete_trained_model_output(Client, MembershipIdentifier, TrainedModelArn, Input
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"versionIdentifier">>, <<"versionIdentifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Specifies a training dataset that you want to delete.
@@ -2828,7 +2963,11 @@ get_collaboration_trained_model(Client, CollaborationIdentifier, TrainedModelArn
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"versionIdentifier">>, maps:get(<<"versionIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3087,7 +3226,11 @@ get_trained_model(Client, MembershipIdentifier, TrainedModelArn, QueryMap, Heade
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"versionIdentifier">>, maps:get(<<"versionIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3416,7 +3559,8 @@ list_collaboration_trained_model_export_jobs(Client, CollaborationIdentifier, Tr
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"trainedModelVersionIdentifier">>, maps:get(<<"trainedModelVersionIdentifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3460,7 +3604,8 @@ list_collaboration_trained_model_inference_jobs(Client, CollaborationIdentifier,
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"trainedModelArn">>, maps:get(<<"trainedModelArn">>, QueryMap, undefined)}
+        {<<"trainedModelArn">>, maps:get(<<"trainedModelArn">>, QueryMap, undefined)},
+        {<<"trainedModelVersionIdentifier">>, maps:get(<<"trainedModelVersionIdentifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3751,7 +3896,57 @@ list_trained_model_inference_jobs(Client, MembershipIdentifier, QueryMap, Header
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"trainedModelArn">>, maps:get(<<"trainedModelArn">>, QueryMap, undefined)}
+        {<<"trainedModelArn">>, maps:get(<<"trainedModelArn">>, QueryMap, undefined)},
+        {<<"trainedModelVersionIdentifier">>, maps:get(<<"trainedModelVersionIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of trained model versions for a specified trained
+%% model.
+%%
+%% This operation allows you to view all versions of a trained model,
+%% including information about their status and creation details. You can use
+%% this to track the evolution of your trained models and select specific
+%% versions for inference or further training.
+-spec list_trained_model_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_trained_model_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_model_versions_errors(), tuple()}.
+list_trained_model_versions(Client, MembershipIdentifier, TrainedModelArn)
+  when is_map(Client) ->
+    list_trained_model_versions(Client, MembershipIdentifier, TrainedModelArn, #{}, #{}).
+
+-spec list_trained_model_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_trained_model_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_model_versions_errors(), tuple()}.
+list_trained_model_versions(Client, MembershipIdentifier, TrainedModelArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_trained_model_versions(Client, MembershipIdentifier, TrainedModelArn, QueryMap, HeadersMap, []).
+
+-spec list_trained_model_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_trained_model_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_trained_model_versions_errors(), tuple()}.
+list_trained_model_versions(Client, MembershipIdentifier, TrainedModelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/trained-models/", aws_util:encode_uri(TrainedModelArn), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

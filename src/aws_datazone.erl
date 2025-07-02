@@ -920,6 +920,7 @@
 %% Example:
 %% update_project_input() :: #{
 %%   <<"description">> => string(),
+%%   <<"domainUnitId">> => string(),
 %%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"name">> => string(),

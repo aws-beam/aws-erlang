@@ -54,6 +54,8 @@
          create_anonymous_web_experience_url/5,
          create_application/2,
          create_application/3,
+         create_chat_response_configuration/3,
+         create_chat_response_configuration/4,
          create_data_accessor/3,
          create_data_accessor/4,
          create_data_source/4,
@@ -76,6 +78,8 @@
          delete_attachment/6,
          delete_chat_controls_configuration/3,
          delete_chat_controls_configuration/4,
+         delete_chat_response_configuration/4,
+         delete_chat_response_configuration/5,
          delete_conversation/4,
          delete_conversation/5,
          delete_data_accessor/4,
@@ -102,6 +106,9 @@
          get_chat_controls_configuration/2,
          get_chat_controls_configuration/4,
          get_chat_controls_configuration/5,
+         get_chat_response_configuration/3,
+         get_chat_response_configuration/5,
+         get_chat_response_configuration/6,
          get_data_accessor/3,
          get_data_accessor/5,
          get_data_accessor/6,
@@ -138,6 +145,9 @@
          list_attachments/2,
          list_attachments/4,
          list_attachments/5,
+         list_chat_response_configurations/2,
+         list_chat_response_configurations/4,
+         list_chat_response_configurations/5,
          list_conversations/2,
          list_conversations/4,
          list_conversations/5,
@@ -204,6 +214,8 @@
          update_application/4,
          update_chat_controls_configuration/3,
          update_chat_controls_configuration/4,
+         update_chat_response_configuration/4,
+         update_chat_response_configuration/5,
          update_data_accessor/4,
          update_data_accessor/5,
          update_data_source/5,
@@ -245,6 +257,20 @@
 %%   <<"instructionExample">> => string()
 %% }
 -type action_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% instruction_collection() :: #{
+%%   <<"customInstructions">> => string(),
+%%   <<"examples">> => string(),
+%%   <<"identity">> => string(),
+%%   <<"outputStyle">> => string(),
+%%   <<"perspective">> => string(),
+%%   <<"responseLength">> => string(),
+%%   <<"targetAudience">> => string(),
+%%   <<"tone">> => string()
+%% }
+-type instruction_collection() :: #{binary() => any()}.
 
 
 %% Example:
@@ -542,6 +568,10 @@
 -type member_group() :: #{binary() => any()}.
 
 %% Example:
+%% get_chat_response_configuration_request() :: #{}
+-type get_chat_response_configuration_request() :: #{}.
+
+%% Example:
 %% delete_index_request() :: #{}
 -type delete_index_request() :: #{}.
 
@@ -740,6 +770,18 @@
 
 
 %% Example:
+%% list_chat_response_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_chat_response_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_chat_response_configuration_response() :: #{}
+-type update_chat_response_configuration_response() :: #{}.
+
+
+%% Example:
 %% list_plugin_actions_response() :: #{
 %%   <<"items">> => list(action_summary()()),
 %%   <<"nextToken">> => string()
@@ -919,6 +961,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_plugin_type_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_chat_response_configuration_response() :: #{
+%%   <<"chatResponseConfigurationArn">> => string(),
+%%   <<"chatResponseConfigurationId">> => string()
+%% }
+-type create_chat_response_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1190,6 +1240,17 @@
 
 
 %% Example:
+%% chat_response_configuration_detail() :: #{
+%%   <<"error">> => error_detail(),
+%%   <<"responseConfigurationSummary">> => string(),
+%%   <<"responseConfigurations">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type chat_response_configuration_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_attachment_request() :: #{
 %%   <<"userId">> => string()
 %% }
@@ -1327,6 +1388,10 @@
 %%   <<"status">> => list(any())
 %% }
 -type group_status_detail() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chat_response_configuration_request() :: #{}
+-type delete_chat_response_configuration_request() :: #{}.
 
 
 %% Example:
@@ -1769,6 +1834,10 @@
 -type hallucination_reduction_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% delete_chat_response_configuration_response() :: #{}
+-type delete_chat_response_configuration_response() :: #{}.
+
+%% Example:
 %% delete_chat_controls_configuration_request() :: #{}
 -type delete_chat_controls_configuration_request() :: #{}.
 
@@ -1826,6 +1895,18 @@
 %%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration()())
 %% }
 -type update_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_chat_response_configuration_response() :: #{
+%%   <<"chatResponseConfigurationArn">> => string(),
+%%   <<"chatResponseConfigurationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"inUseConfiguration">> => chat_response_configuration_detail(),
+%%   <<"lastUpdateConfiguration">> => chat_response_configuration_detail()
+%% }
+-type get_chat_response_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2084,7 +2165,8 @@
 %% Example:
 %% native_index_configuration() :: #{
 %%   <<"boostingOverride">> => map(),
-%%   <<"indexId">> => string()
+%%   <<"indexId">> => string(),
+%%   <<"version">> => float()
 %% }
 -type native_index_configuration() :: #{binary() => any()}.
 
@@ -2138,6 +2220,13 @@
 
 
 %% Example:
+%% response_configuration() :: #{
+%%   <<"instructionCollection">> => instruction_collection()
+%% }
+-type response_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_group_request() :: #{
 %%   <<"dataSourceId">> => string()
 %% }
@@ -2186,6 +2275,37 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_chat_controls_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_chat_response_configurations_response() :: #{
+%%   <<"chatResponseConfigurations">> => list(chat_response_configuration()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_chat_response_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_response_configuration() :: #{
+%%   <<"chatResponseConfigurationArn">> => string(),
+%%   <<"chatResponseConfigurationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"responseConfigurationSummary">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type chat_response_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_chat_response_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"responseConfigurations">> := map(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_chat_response_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2415,6 +2535,15 @@
 %% Example:
 %% update_index_response() :: #{}
 -type update_index_response() :: #{}.
+
+
+%% Example:
+%% update_chat_response_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"responseConfigurations">> := map()
+%% }
+-type update_chat_response_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2753,6 +2882,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_chat_response_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_data_accessor_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2846,6 +2984,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type delete_chat_response_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_conversation_errors() ::
     throttling_exception() | 
@@ -2941,6 +3087,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_chat_response_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_data_accessor_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3028,6 +3181,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     license_not_found_exception().
+
+-type list_chat_response_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_conversations_errors() ::
     throttling_exception() | 
@@ -3214,6 +3374,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_chat_response_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -3663,6 +3831,44 @@ create_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new chat response configuration for an Amazon Q Business
+%% application.
+%%
+%% This operation establishes a set of parameters that define how the system
+%% generates and formats responses to user queries in chat interactions.
+-spec create_chat_response_configuration(aws_client:aws_client(), binary() | list(), create_chat_response_configuration_request()) ->
+    {ok, create_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_chat_response_configuration_errors(), tuple()}.
+create_chat_response_configuration(Client, ApplicationId, Input) ->
+    create_chat_response_configuration(Client, ApplicationId, Input, []).
+
+-spec create_chat_response_configuration(aws_client:aws_client(), binary() | list(), create_chat_response_configuration_request(), proplists:proplist()) ->
+    {ok, create_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_chat_response_configuration_errors(), tuple()}.
+create_chat_response_configuration(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatresponseconfigurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new data accessor for an ISV to access data from a Amazon Q
 %% Business application.
 %%
@@ -4052,6 +4258,41 @@ delete_chat_controls_configuration(Client, ApplicationId, Input) ->
 delete_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatcontrols"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a specified chat response configuration from an Amazon Q
+%% Business application.
+-spec delete_chat_response_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_chat_response_configuration_request()) ->
+    {ok, delete_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_chat_response_configuration_errors(), tuple()}.
+delete_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, Input) ->
+    delete_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, Input, []).
+
+-spec delete_chat_response_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_chat_response_configuration_request(), proplists:proplist()) ->
+    {ok, delete_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_chat_response_configuration_errors(), tuple()}.
+delete_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatresponseconfigurations/", aws_util:encode_uri(ChatResponseConfigurationId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4513,6 +4754,46 @@ get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, Opt
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific chat response
+%% configuration from an Amazon Q Business application.
+%%
+%% This operation returns the complete configuration settings and metadata.
+-spec get_chat_response_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_response_configuration_errors(), tuple()}.
+get_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId)
+  when is_map(Client) ->
+    get_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, #{}, #{}).
+
+-spec get_chat_response_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_response_configuration_errors(), tuple()}.
+get_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, QueryMap, HeadersMap, []).
+
+-spec get_chat_response_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_response_configuration_errors(), tuple()}.
+get_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatresponseconfigurations/", aws_util:encode_uri(ChatResponseConfigurationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5000,6 +5281,52 @@ list_attachments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"userId">>, maps:get(<<"userId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of all chat response configurations available in a
+%% specified Amazon Q Business application.
+%%
+%% This operation returns summary information about each configuration to
+%% help administrators manage and select appropriate response settings.
+-spec list_chat_response_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_chat_response_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_chat_response_configurations_errors(), tuple()}.
+list_chat_response_configurations(Client, ApplicationId)
+  when is_map(Client) ->
+    list_chat_response_configurations(Client, ApplicationId, #{}, #{}).
+
+-spec list_chat_response_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_chat_response_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_chat_response_configurations_errors(), tuple()}.
+list_chat_response_configurations(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_chat_response_configurations(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+-spec list_chat_response_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_chat_response_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_chat_response_configurations_errors(), tuple()}.
+list_chat_response_configurations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatresponseconfigurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -6026,6 +6353,45 @@ update_chat_controls_configuration(Client, ApplicationId, Input) ->
 update_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatcontrols"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing chat response configuration in an Amazon Q
+%% Business application.
+%%
+%% This operation allows administrators to modify configuration settings,
+%% display name, and response parameters to refine how the system generates
+%% responses.
+-spec update_chat_response_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_chat_response_configuration_request()) ->
+    {ok, update_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_chat_response_configuration_errors(), tuple()}.
+update_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, Input) ->
+    update_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, Input, []).
+
+-spec update_chat_response_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_chat_response_configuration_request(), proplists:proplist()) ->
+    {ok, update_chat_response_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_chat_response_configuration_errors(), tuple()}.
+update_chat_response_configuration(Client, ApplicationId, ChatResponseConfigurationId, Input0, Options0) ->
+    Method = put,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatresponseconfigurations/", aws_util:encode_uri(ChatResponseConfigurationId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
