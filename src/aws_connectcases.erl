@@ -1,24 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%%
-%% Cases
-%% actions:
+%% @doc Cases actions:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Cases.html
 %%
-%% Cases data
-%% types:
+%% Cases data types:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Cases.html
 %%
 %% With Amazon Connect Cases, your agents can track and manage customer
-%% issues that require
-%% multiple interactions, follow-up tasks, and teams in your contact center.
+%% issues that require multiple interactions, follow-up tasks, and teams in
+%% your contact center.
 %%
-%% A case represents a
-%% customer issue. It records the issue, the steps and interactions taken to
-%% resolve the issue,
-%% and the outcome. For more information, see Amazon Connect Cases:
+%% A case represents a customer issue. It records the issue, the steps and
+%% interactions taken to resolve the issue, and the outcome. For more
+%% information, see Amazon Connect Cases:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/cases.html in the
 %% Amazon Connect Administrator Guide.
 -module(aws_connectcases).
@@ -43,6 +38,8 @@
          create_related_item/5,
          create_template/3,
          create_template/4,
+         delete_case/4,
+         delete_case/5,
          delete_case_rule/4,
          delete_case_rule/5,
          delete_domain/3,
@@ -51,6 +48,8 @@
          delete_field/5,
          delete_layout/4,
          delete_layout/5,
+         delete_related_item/5,
+         delete_related_item/6,
          delete_template/4,
          delete_template/5,
          get_case/4,
@@ -286,6 +285,10 @@
 %%   <<"templateId">> := string()
 %% }
 -type get_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_related_item_request() :: #{}
+-type delete_related_item_request() :: #{}.
 
 
 %% Example:
@@ -639,6 +642,10 @@
 %% }
 -type list_fields_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_case_response() :: #{}
+-type delete_case_response() :: #{}.
+
 
 %% Example:
 %% sort() :: #{
@@ -700,6 +707,14 @@
 %%   <<"type">> => string()
 %% }
 -type field_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_case_request() :: #{}
+-type delete_case_request() :: #{}.
+
+%% Example:
+%% delete_related_item_response() :: #{}
+-type delete_related_item_response() :: #{}.
 
 
 %% Example:
@@ -1201,6 +1216,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_case_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_case_rule_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -1232,6 +1254,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type delete_related_item_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type delete_template_errors() ::
     throttling_exception() | 
@@ -1421,10 +1450,8 @@
 %% @doc Gets a batch of case rules.
 %%
 %% In the Amazon Connect admin website, case rules are known as case field
-%% conditions. For more
-%% information about case field conditions, see Add case field conditions to
-%% a
-%% case template:
+%% conditions. For more information about case field conditions, see Add case
+%% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
 -spec batch_get_case_rule(aws_client:aws_client(), binary() | list(), batch_get_case_rule_request()) ->
     {ok, batch_get_case_rule_response(), tuple()} |
@@ -1495,8 +1522,7 @@ batch_get_field(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and updates a set of field options for a single select field
-%% in a Cases
-%% domain.
+%% in a Cases domain.
 -spec batch_put_field_options(aws_client:aws_client(), binary() | list(), binary() | list(), batch_put_field_options_request()) ->
     {ok, batch_put_field_options_response(), tuple()} |
     {error, any()} |
@@ -1530,25 +1556,21 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% If you provide a value for `PerformedBy.UserArn' you must also have
-%% connect:DescribeUser:
+%% @doc If you provide a value for `PerformedBy.UserArn' you must also
+%% have connect:DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the User ARN resource that you provide
 %%
 %% Creates a case in the specified Cases domain.
 %%
-%% Case system and custom fields are taken
-%% as an array id/value pairs with a declared data types.
+%% Case system and custom fields are taken as an array id/value pairs with a
+%% declared data types.
 %%
 %% The following fields are required when creating a case:
 %%
 %% `customer_id' - You must provide the full customer profile ARN in this
-%% format:
-%%
-%% ```
-%% arn:aws:profile:your_AWS_Region:your_AWS_account
-%% ID:domains/your_profiles_domain_name/profiles/profile_ID'''
+%% format: `arn:aws:profile:your_AWS_Region:your_AWS_account
+%% ID:domains/your_profiles_domain_name/profiles/profile_ID'
 %%
 %% `title'
 -spec create_case(aws_client:aws_client(), binary() | list(), create_case_request()) ->
@@ -1587,10 +1609,8 @@ create_case(Client, DomainId, Input0, Options0) ->
 %% @doc Creates a new case rule.
 %%
 %% In the Amazon Connect admin website, case rules are known as case field
-%% conditions. For more
-%% information about case field conditions, see Add case field conditions to
-%% a
-%% case template:
+%% conditions. For more information about case field conditions, see Add case
+%% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
 -spec create_case_rule(aws_client:aws_client(), binary() | list(), create_case_rule_request()) ->
     {ok, create_case_rule_response(), tuple()} |
@@ -1626,21 +1646,15 @@ create_case_rule(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a domain, which is a container for all case data, such as
-%% cases, fields, templates
-%% and layouts.
+%% cases, fields, templates and layouts.
 %%
-%% Each Amazon Connect instance can be associated with only one Cases
-%% domain.
+%% Each Amazon Connect instance can be associated with only one Cases domain.
 %%
 %% This will not associate your connect instance to Cases domain. Instead,
-%% use the
-%% Amazon Connect
-%% CreateIntegrationAssociation:
+%% use the Amazon Connect CreateIntegrationAssociation:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateIntegrationAssociation.html
-%% API. You need specific IAM
-%% permissions to successfully associate the Cases domain. For more
-%% information, see
-%% Onboard to Cases:
+%% API. You need specific IAM permissions to successfully associate the Cases
+%% domain. For more information, see Onboard to Cases:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/required-permissions-iam-cases.html#onboard-cases-iam.
 -spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
@@ -1677,9 +1691,8 @@ create_domain(Client, Input0, Options0) ->
 
 %% @doc Creates a field in the Cases domain.
 %%
-%% This field is used to define the case object
-%% model (that is, defines what data can be captured on cases) in a Cases
-%% domain.
+%% This field is used to define the case object model (that is, defines what
+%% data can be captured on cases) in a Cases domain.
 -spec create_field(aws_client:aws_client(), binary() | list(), create_field_request()) ->
     {ok, create_field_response(), tuple()} |
     {error, any()} |
@@ -1715,8 +1728,8 @@ create_field(Client, DomainId, Input0, Options0) ->
 
 %% @doc Creates a layout in the Cases domain.
 %%
-%% Layouts define the following configuration in
-%% the top section and More Info tab of the Cases user interface:
+%% Layouts define the following configuration in the top section and More
+%% Info tab of the Cases user interface:
 %%
 %% Fields to display to the users
 %%
@@ -1758,16 +1771,13 @@ create_layout(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a related item (comments, tasks, and contacts) and associates
-%% it with a
-%% case.
+%% it with a case.
 %%
 %% A Related Item is a resource that is associated with a case. It may or may
-%% not have
-%% an external identifier linking it to an external resource (for example, a
-%% `contactArn'). All Related Items have their own internal identifier,
-%% the
-%% `relatedItemArn'. Examples of related items include `comments'
-%% and `contacts'.
+%% not have an external identifier linking it to an external resource (for
+%% example, a `contactArn'). All Related Items have their own internal
+%% identifier, the `relatedItemArn'. Examples of related items include
+%% `comments' and `contacts'.
 %%
 %% If you provide a value for `performedBy.userArn' you must also have
 %% DescribeUser:
@@ -1810,16 +1820,13 @@ create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
 
 %% @doc Creates a template in the Cases domain.
 %%
-%% This template is used to define the case object
-%% model (that is, to define what data can be captured on cases) in a Cases
-%% domain. A template
-%% must have a unique name within a domain, and it must reference existing
-%% field IDs and layout
-%% IDs. Additionally, multiple fields with same IDs are not allowed within
-%% the same Template. A
-%% template can be either Active or Inactive, as indicated by its status.
-%% Inactive templates
-%% cannot be used to create cases.
+%% This template is used to define the case object model (that is, to define
+%% what data can be captured on cases) in a Cases domain. A template must
+%% have a unique name within a domain, and it must reference existing field
+%% IDs and layout IDs. Additionally, multiple fields with same IDs are not
+%% allowed within the same Template. A template can be either Active or
+%% Inactive, as indicated by its status. Inactive templates cannot be used to
+%% create cases.
 %%
 %% Other template APIs are:
 %%
@@ -1867,13 +1874,57 @@ create_template(Client, DomainId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc The DeleteCase API permanently deletes a case and all its associated
+%% resources from the cases data store.
+%%
+%% After a successful deletion, you cannot:
+%%
+%% Retrieve related items
+%%
+%% Access audit history
+%%
+%% Perform any operations that require the CaseID
+%%
+%% This action is irreversible. Once you delete a case, you cannot recover
+%% its data.
+-spec delete_case(aws_client:aws_client(), binary() | list(), binary() | list(), delete_case_request()) ->
+    {ok, delete_case_response(), tuple()} |
+    {error, any()} |
+    {error, delete_case_errors(), tuple()}.
+delete_case(Client, CaseId, DomainId, Input) ->
+    delete_case(Client, CaseId, DomainId, Input, []).
+
+-spec delete_case(aws_client:aws_client(), binary() | list(), binary() | list(), delete_case_request(), proplists:proplist()) ->
+    {ok, delete_case_response(), tuple()} |
+    {error, any()} |
+    {error, delete_case_errors(), tuple()}.
+delete_case(Client, CaseId, DomainId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a case rule.
 %%
 %% In the Amazon Connect admin website, case rules are known as case field
-%% conditions. For more
-%% information about case field conditions, see Add case field conditions to
-%% a
-%% case template:
+%% conditions. For more information about case field conditions, see Add case
+%% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
 -spec delete_case_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_case_rule_request()) ->
     {ok, delete_case_rule_response(), tuple()} |
@@ -1912,8 +1963,8 @@ delete_case_rule(Client, CaseRuleId, DomainId, Input0, Options0) ->
 %%
 %% After deleting your domain you must disassociate the deleted domain from
 %% your Amazon Connect instance with another API call before being able to
-%% use Cases again with this
-%% Amazon Connect instance. See DeleteIntegrationAssociation:
+%% use Cases again with this Amazon Connect instance. See
+%% DeleteIntegrationAssociation:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html.
 -spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
@@ -1957,34 +2008,28 @@ delete_domain(Client, DomainId, Input0, Options0) ->
 %% You can still retrieve the field by calling `BatchGetField'.
 %%
 %% You cannot update a deleted field by calling `UpdateField'; it throws
-%% a
-%% `ValidationException'.
+%% a `ValidationException'.
 %%
 %% Deleted fields are not included in the `ListFields' response.
 %%
 %% Calling `CreateCase' with a deleted field throws a
 %% `ValidationException' denoting which field IDs in the request have
-%% been
-%% deleted.
+%% been deleted.
 %%
 %% Calling `GetCase' with a deleted field ID returns the deleted
-%% field's value
-%% if one exists.
+%% field's value if one exists.
 %%
 %% Calling `UpdateCase' with a deleted field ID throws a
 %% `ValidationException' if the case does not already contain a value for
-%% the
-%% deleted field. Otherwise it succeeds, allowing you to update or remove
-%% (using
-%% `emptyValue: {}') the field's value from the case.
+%% the deleted field. Otherwise it succeeds, allowing you to update or remove
+%% (using `emptyValue: {}') the field's value from the case.
 %%
 %% `GetTemplate' does not return field IDs for deleted fields.
 %%
 %% `GetLayout' does not return field IDs for deleted fields.
 %%
 %% Calling `SearchCases' with the deleted field ID as a filter returns
-%% any
-%% cases that have a value for the deleted field that matches the filter
+%% any cases that have a value for the deleted field that matches the filter
 %% criteria.
 %%
 %% Calling `SearchCases' with a `searchTerm' value that matches a
@@ -1994,8 +2039,7 @@ delete_domain(Client, DomainId, Input0, Options0) ->
 %% `ValidationException'.
 %%
 %% Calling `GetCaseEventConfiguration' does not return field IDs for
-%% deleted
-%% fields.
+%% deleted fields.
 -spec delete_field(aws_client:aws_client(), binary() | list(), binary() | list(), delete_field_request()) ->
     {ok, delete_field_response(), tuple()} |
     {error, any()} |
@@ -2031,16 +2075,14 @@ delete_field(Client, DomainId, FieldId, Input0, Options0) ->
 
 %% @doc Deletes a layout from a cases template.
 %%
-%% You can delete up to 100 layouts per
-%% domain.
+%% You can delete up to 100 layouts per domain.
 %%
 %% After a layout is deleted:
 %%
 %% You can still retrieve the layout by calling `GetLayout'.
 %%
 %% You cannot update a deleted layout by calling `UpdateLayout'; it
-%% throws a
-%% `ValidationException'.
+%% throws a `ValidationException'.
 %%
 %% Deleted layouts are not included in the `ListLayouts' response.
 -spec delete_layout(aws_client:aws_client(), binary() | list(), binary() | list(), delete_layout_request()) ->
@@ -2057,6 +2099,45 @@ delete_layout(Client, DomainId, LayoutId, Input) ->
 delete_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the related item resource under a case.
+%%
+%% This API cannot be used on a FILE type related attachment. To delete this
+%% type of file, use the DeleteAttachedFile:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteAttachedFile.html
+%% API
+-spec delete_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_related_item_request()) ->
+    {ok, delete_related_item_response(), tuple()} |
+    {error, any()} |
+    {error, delete_related_item_errors(), tuple()}.
+delete_related_item(Client, CaseId, DomainId, RelatedItemId, Input) ->
+    delete_related_item(Client, CaseId, DomainId, RelatedItemId, Input, []).
+
+-spec delete_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_related_item_request(), proplists:proplist()) ->
+    {ok, delete_related_item_response(), tuple()} |
+    {error, any()} |
+    {error, delete_related_item_errors(), tuple()}.
+delete_related_item(Client, CaseId, DomainId, RelatedItemId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/related-items/", aws_util:encode_uri(RelatedItemId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2343,10 +2424,8 @@ get_template(Client, DomainId, TemplateId, Input0, Options0) ->
 %% @doc Lists all case rules in a Cases domain.
 %%
 %% In the Amazon Connect admin website, case rules are known as case field
-%% conditions. For more
-%% information about case field conditions, see Add case field conditions to
-%% a
-%% case template:
+%% conditions. For more information about case field conditions, see Add case
+%% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
 -spec list_case_rules(aws_client:aws_client(), binary() | list(), list_case_rules_request()) ->
     {ok, list_case_rules_response(), tuple()} |
@@ -2419,8 +2498,7 @@ list_cases_for_contact(Client, DomainId, Input0, Options0) ->
 
 %% @doc Lists all cases domains in the Amazon Web Services account.
 %%
-%% Each list item is a condensed
-%% summary object of the domain.
+%% Each list item is a condensed summary object of the domain.
 -spec list_domains(aws_client:aws_client(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
@@ -2531,8 +2609,7 @@ list_fields(Client, DomainId, Input0, Options0) ->
 
 %% @doc Lists all layouts in the given cases domain.
 %%
-%% Each list item is a condensed summary object
-%% of the layout.
+%% Each list item is a condensed summary object of the layout.
 -spec list_layouts(aws_client:aws_client(), binary() | list(), list_layouts_request()) ->
     {ok, list_layouts_response(), tuple()} |
     {error, any()} |
@@ -2607,8 +2684,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all of the templates in a Cases domain.
 %%
-%% Each list item is a condensed summary
-%% object of the template.
+%% Each list item is a condensed summary object of the template.
 %%
 %% Other template APIs are:
 %%
@@ -2661,11 +2737,10 @@ list_templates(Client, DomainId, Input0, Options0) ->
 
 %% @doc Adds case event publishing configuration.
 %%
-%% For a complete list of fields you can add to the
-%% event message, see Create case fields:
+%% For a complete list of fields you can add to the event message, see Create
+%% case fields:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html in
-%% the
-%% Amazon Connect Administrator Guide
+%% the Amazon Connect Administrator Guide
 -spec put_case_event_configuration(aws_client:aws_client(), binary() | list(), put_case_event_configuration_request()) ->
     {ok, put_case_event_configuration_response(), tuple()} |
     {error, any()} |
@@ -2701,15 +2776,12 @@ put_case_event_configuration(Client, DomainId, Input0, Options0) ->
 
 %% @doc Searches for cases within their associated Cases domain.
 %%
-%% Search results are returned
-%% as a paginated list of abridged case documents.
+%% Search results are returned as a paginated list of abridged case
+%% documents.
 %%
 %% For `customer_id' you must provide the full customer profile ARN in
-%% this
-%% format:
-%% ```
-%% arn:aws:profile:your AWS Region:your AWS account ID:domains/profiles
-%% domain name/profiles/profile ID'''.
+%% this format: ` arn:aws:profile:your AWS Region:your AWS account
+%% ID:domains/profiles domain name/profiles/profile ID'.
 -spec search_cases(aws_client:aws_client(), binary() | list(), search_cases_request()) ->
     {ok, search_cases_response(), tuple()} |
     {error, any()} |
@@ -2746,8 +2818,7 @@ search_cases(Client, DomainId, Input0, Options0) ->
 %% @doc Searches for related items that are associated with a case.
 %%
 %% If no filters are provided, this returns all related items associated with
-%% a
-%% case.
+%% a case.
 -spec search_related_items(aws_client:aws_client(), binary() | list(), binary() | list(), search_related_items_request()) ->
     {ok, search_related_items_response(), tuple()} |
     {error, any()} |
@@ -2850,20 +2921,18 @@ untag_resource(Client, Arn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% If you provide a value for `PerformedBy.UserArn' you must also have
-%% connect:DescribeUser:
+%% @doc If you provide a value for `PerformedBy.UserArn' you must also
+%% have connect:DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the User ARN resource that you provide
 %%
 %% Updates the values of fields on a case.
 %%
-%% Fields to be updated are received as an array of
-%% id/value pairs identical to the `CreateCase' input .
+%% Fields to be updated are received as an array of id/value pairs identical
+%% to the `CreateCase' input .
 %%
 %% If the action is successful, the service sends back an HTTP 200 response
-%% with an empty
-%% HTTP body.
+%% with an empty HTTP body.
 -spec update_case(aws_client:aws_client(), binary() | list(), binary() | list(), update_case_request()) ->
     {ok, update_case_response(), tuple()} |
     {error, any()} |
@@ -2900,10 +2969,8 @@ update_case(Client, CaseId, DomainId, Input0, Options0) ->
 %% @doc Updates a case rule.
 %%
 %% In the Amazon Connect admin website, case rules are known as case field
-%% conditions. For more
-%% information about case field conditions, see Add case field conditions to
-%% a
-%% case template:
+%% conditions. For more information about case field conditions, see Add case
+%% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
 -spec update_case_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_case_rule_request()) ->
     {ok, update_case_rule_response(), tuple()} |
@@ -2975,8 +3042,7 @@ update_field(Client, DomainId, FieldId, Input0, Options0) ->
 %% @doc Updates the attributes of an existing layout.
 %%
 %% If the action is successful, the service sends back an HTTP 200 response
-%% with an empty
-%% HTTP body.
+%% with an empty HTTP body.
 %%
 %% A `ValidationException' is returned when you add non-existent
 %% `fieldIds' to a layout.
@@ -3018,12 +3084,11 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 
 %% @doc Updates the attributes of an existing template.
 %%
-%% The template attributes that can be
-%% modified include `name', `description',
-%% `layoutConfiguration', `requiredFields', and `status'. At
-%% least one of these attributes must not be null. If a null value is
-%% provided for a given
-%% attribute, that attribute is ignored and its current value is preserved.
+%% The template attributes that can be modified include `name',
+%% `description', `layoutConfiguration', `requiredFields', and
+%% `status'. At least one of these attributes must not be null. If a null
+%% value is provided for a given attribute, that attribute is ignored and its
+%% current value is preserved.
 %%
 %% Other template APIs are:
 %%

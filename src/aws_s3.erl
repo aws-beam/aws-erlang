@@ -657,6 +657,7 @@
 %% Example:
 %% head_bucket_output() :: #{
 %%   <<"AccessPointAlias">> => boolean(),
+%%   <<"BucketArn">> => string(),
 %%   <<"BucketLocationName">> => string(),
 %%   <<"BucketLocationType">> => list(any()),
 %%   <<"BucketRegion">> => string()
@@ -1805,7 +1806,8 @@
 %% create_bucket_configuration() :: #{
 %%   <<"Bucket">> => bucket_info(),
 %%   <<"Location">> => location_info(),
-%%   <<"LocationConstraint">> => list(any())
+%%   <<"LocationConstraint">> => list(any()),
+%%   <<"Tags">> => list(tag()())
 %% }
 -type create_bucket_configuration() :: #{binary() => any()}.
 
@@ -2450,6 +2452,7 @@
 
 %% Example:
 %% bucket() :: #{
+%%   <<"BucketArn">> => string(),
 %%   <<"BucketRegion">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"Name">> => string()
@@ -2708,6 +2711,7 @@
 
 %% Example:
 %% create_bucket_output() :: #{
+%%   <<"BucketArn">> => string(),
 %%   <<"Location">> => string()
 %% }
 -type create_bucket_output() :: #{binary() => any()}.
@@ -4389,6 +4393,7 @@ create_bucket(Client, Bucket, Input0, Options0) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amz-bucket-arn">>, <<"BucketArn">>},
             {<<"Location">>, <<"Location">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -9629,6 +9634,7 @@ head_bucket(Client, Bucket, Input0, Options0) ->
         ResponseHeadersParams =
           [
             {<<"x-amz-access-point-alias">>, <<"AccessPointAlias">>},
+            {<<"x-amz-bucket-arn">>, <<"BucketArn">>},
             {<<"x-amz-bucket-location-name">>, <<"BucketLocationName">>},
             {<<"x-amz-bucket-location-type">>, <<"BucketLocationType">>},
             {<<"x-amz-bucket-region">>, <<"BucketRegion">>}
