@@ -165,6 +165,7 @@
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
 %%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
+%%   <<"MssManifests">> => list(create_mss_manifest_configuration()()),
 %%   <<"OriginEndpointName">> := string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
@@ -258,6 +259,7 @@
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MssManifests">> => list(get_mss_manifest_configuration()()),
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
@@ -321,6 +323,7 @@
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
 %%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
+%%   <<"MssManifests">> => list(create_mss_manifest_configuration()()),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()]
 %% }
@@ -370,6 +373,17 @@
 %% Example:
 %% delete_origin_endpoint_request() :: #{}
 -type delete_origin_endpoint_request() :: #{}.
+
+
+%% Example:
+%% get_mss_manifest_configuration() :: #{
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestLayout">> => list(any()),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"Url">> => [string()]
+%% }
+-type get_mss_manifest_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -489,6 +503,14 @@
 
 
 %% Example:
+%% list_mss_manifest_configuration() :: #{
+%%   <<"ManifestName">> => string(),
+%%   <<"Url">> => [string()]
+%% }
+-type list_mss_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% dash_ttml_configuration() :: #{
 %%   <<"TtmlProfile">> => list(any())
 %% }
@@ -605,6 +627,7 @@
 
 %% Example:
 %% encryption() :: #{
+%%   <<"CmafExcludeSegmentDrmMetadata">> => [boolean()],
 %%   <<"ConstantInitializationVector">> => [string()],
 %%   <<"EncryptionMethod">> => encryption_method(),
 %%   <<"KeyRotationIntervalSeconds">> => [integer()],
@@ -702,6 +725,16 @@
 
 
 %% Example:
+%% create_mss_manifest_configuration() :: #{
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestLayout">> => list(any()),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()]
+%% }
+-type create_mss_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_channel_group_response() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"ChannelGroupName">> => [string()],
@@ -779,6 +812,7 @@
 %% Example:
 %% encryption_method() :: #{
 %%   <<"CmafEncryptionMethod">> => list(any()),
+%%   <<"IsmEncryptionMethod">> => list(any()),
 %%   <<"TsEncryptionMethod">> => list(any())
 %% }
 -type encryption_method() :: #{binary() => any()}.
@@ -973,6 +1007,7 @@
 %%   <<"HlsManifests">> => list(list_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MssManifests">> => list(list_mss_manifest_configuration()()),
 %%   <<"OriginEndpointName">> => string()
 %% }
 -type origin_endpoint_list_configuration() :: #{binary() => any()}.
@@ -1057,6 +1092,7 @@
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MssManifests">> => list(get_mss_manifest_configuration()()),
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
@@ -1113,6 +1149,7 @@
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MssManifests">> => list(get_mss_manifest_configuration()()),
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"ResetAt">> => [non_neg_integer()],
 %%   <<"Segment">> => segment(),

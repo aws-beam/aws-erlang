@@ -72,6 +72,8 @@
          create_flow_definition/3,
          create_hub/2,
          create_hub/3,
+         create_hub_content_presigned_urls/2,
+         create_hub_content_presigned_urls/3,
          create_hub_content_reference/2,
          create_hub_content_reference/3,
          create_human_task_ui/2,
@@ -610,6 +612,8 @@
          start_notebook_instance/3,
          start_pipeline_execution/2,
          start_pipeline_execution/3,
+         start_session/2,
+         start_session/3,
          stop_auto_ml_job/2,
          stop_auto_ml_job/3,
          stop_compilation_job/2,
@@ -1838,6 +1842,12 @@
 -type unified_studio_settings() :: #{binary() => any()}.
 
 %% Example:
+%% start_session_request() :: #{
+%%   <<"ResourceIdentifier">> := string()
+%% }
+-type start_session_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_studio_lifecycle_config_request() :: #{
 %%   <<"StudioLifecycleConfigAppType">> := list(any()),
 %%   <<"StudioLifecycleConfigContent">> := string(),
@@ -2112,6 +2122,18 @@
 %%   <<"VolumeSizeInGB">> => integer()
 %% }
 -type hyper_parameter_tuning_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_hub_content_presigned_urls_request() :: #{
+%%   <<"AccessConfig">> => presigned_url_access_config(),
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type create_hub_content_presigned_urls_request() :: #{binary() => any()}.
 
 %% Example:
 %% s3_presign() :: #{
@@ -3359,6 +3381,7 @@
 %%   <<"JupyterLabAppSettings">> => space_jupyter_lab_app_settings(),
 %%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
 %%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
+%%   <<"RemoteAccess">> => list(any()),
 %%   <<"SpaceManagedResources">> => list(any()),
 %%   <<"SpaceStorageSettings">> => space_storage_settings()
 %% }
@@ -4388,6 +4411,13 @@
 %%   <<"LineageGroupName">> => string()
 %% }
 -type describe_lineage_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% authorized_url() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type authorized_url() :: #{binary() => any()}.
 
 %% Example:
 %% list_endpoint_configs_output() :: #{
@@ -5450,6 +5480,7 @@
 %% Example:
 %% space_settings_summary() :: #{
 %%   <<"AppType">> => list(any()),
+%%   <<"RemoteAccess">> => list(any()),
 %%   <<"SpaceStorageSettings">> => space_storage_settings()
 %% }
 -type space_settings_summary() :: #{binary() => any()}.
@@ -5493,10 +5524,10 @@
 %%   <<"DomainSettings">> => domain_settings(),
 %%   <<"HomeEfsFileSystemKmsKeyId">> => string(),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"SubnetIds">> := list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
 %%   <<"TagPropagation">> => list(any()),
 %%   <<"Tags">> => list(tag()()),
-%%   <<"VpcId">> := string()
+%%   <<"VpcId">> => string()
 %% }
 -type create_domain_request() :: #{binary() => any()}.
 
@@ -5995,6 +6026,13 @@
 %%   <<"RoleArn">> => string()
 %% }
 -type update_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% presigned_url_access_config() :: #{
+%%   <<"AcceptEula">> => boolean(),
+%%   <<"ExpectedS3Url">> => string()
+%% }
+-type presigned_url_access_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_studio_lifecycle_config_response() :: #{
@@ -7880,6 +7918,13 @@
 -type list_clusters_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_hub_content_presigned_urls_response() :: #{
+%%   <<"AuthorizedUrlConfigs">> => list(authorized_url()()),
+%%   <<"NextToken">> => string()
+%% }
+-type create_hub_content_presigned_urls_response() :: #{binary() => any()}.
+
+%% Example:
 %% schedule_config() :: #{
 %%   <<"DataAnalysisEndTime">> => string(),
 %%   <<"DataAnalysisStartTime">> => string(),
@@ -8664,6 +8709,14 @@
 %%   <<"Unlabeled">> => integer()
 %% }
 -type label_counters() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_response() :: #{
+%%   <<"SessionId">> => string(),
+%%   <<"StreamUrl">> => string(),
+%%   <<"TokenValue">> => string()
+%% }
+-type start_session_response() :: #{binary() => any()}.
 
 %% Example:
 %% drift_check_model_quality() :: #{
@@ -13337,6 +13390,10 @@
     conflict_exception() | 
     resource_not_found().
 
+-type start_session_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
 -type stop_auto_ml_job_errors() ::
     resource_not_found().
 
@@ -14518,6 +14575,26 @@ create_hub(Client, Input)
 create_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHub">>, Input, Options).
+
+%% @doc Creates presigned URLs for accessing hub content artifacts.
+%%
+%% This operation generates time-limited, secure URLs that allow direct
+%% download of model artifacts and associated files from Amazon SageMaker hub
+%% content, including gated models that require end-user license agreement
+%% acceptance.
+-spec create_hub_content_presigned_urls(aws_client:aws_client(), create_hub_content_presigned_urls_request()) ->
+    {ok, create_hub_content_presigned_urls_response(), tuple()} |
+    {error, any()}.
+create_hub_content_presigned_urls(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_hub_content_presigned_urls(Client, Input, []).
+
+-spec create_hub_content_presigned_urls(aws_client:aws_client(), create_hub_content_presigned_urls_request(), proplists:proplist()) ->
+    {ok, create_hub_content_presigned_urls_response(), tuple()} |
+    {error, any()}.
+create_hub_content_presigned_urls(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateHubContentPresignedUrls">>, Input, Options).
 
 %% @doc Create a hub content reference in order to add a model in the
 %% JumpStart public hub to a private hub.
@@ -19823,6 +19900,24 @@ start_pipeline_execution(Client, Input)
 start_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPipelineExecution">>, Input, Options).
+
+%% @doc Initiates a remote connection session between a local integrated
+%% development environments (IDEs) and a remote SageMaker space.
+-spec start_session(aws_client:aws_client(), start_session_request()) ->
+    {ok, start_session_response(), tuple()} |
+    {error, any()} |
+    {error, start_session_errors(), tuple()}.
+start_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_session(Client, Input, []).
+
+-spec start_session(aws_client:aws_client(), start_session_request(), proplists:proplist()) ->
+    {ok, start_session_response(), tuple()} |
+    {error, any()} |
+    {error, start_session_errors(), tuple()}.
+start_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSession">>, Input, Options).
 
 %% @doc A method for forcing a running job to shut down.
 -spec stop_auto_ml_job(aws_client:aws_client(), stop_auto_ml_job_request()) ->

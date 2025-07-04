@@ -51,6 +51,8 @@
          create_segment_estimate/4,
          create_segment_snapshot/4,
          create_segment_snapshot/5,
+         create_upload_job/3,
+         create_upload_job/4,
          delete_calculated_attribute_definition/4,
          delete_calculated_attribute_definition/5,
          delete_domain/3,
@@ -124,6 +126,12 @@
          get_segment_snapshot/7,
          get_similar_profiles/3,
          get_similar_profiles/4,
+         get_upload_job/3,
+         get_upload_job/5,
+         get_upload_job/6,
+         get_upload_job_path/3,
+         get_upload_job_path/5,
+         get_upload_job_path/6,
          get_workflow/3,
          get_workflow/5,
          get_workflow/6,
@@ -179,6 +187,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_upload_jobs/2,
+         list_upload_jobs/4,
+         list_upload_jobs/5,
          list_workflows/3,
          list_workflows/4,
          merge_profiles/3,
@@ -191,6 +202,10 @@
          put_profile_object_type/5,
          search_profiles/3,
          search_profiles/4,
+         start_upload_job/4,
+         start_upload_job/5,
+         stop_upload_job/4,
+         stop_upload_job/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -515,6 +530,14 @@
 
 
 %% Example:
+%% list_upload_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_upload_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_profile_object_type_response() :: #{
 %%   <<"AllowProfileCreation">> => boolean(),
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -769,6 +792,22 @@
 
 
 %% Example:
+%% get_upload_job_response() :: #{
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataExpiry">> => integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Fields">> => map(),
+%%   <<"JobId">> => string(),
+%%   <<"ResultsSummary">> => results_summary(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"UniqueKey">> => string()
+%% }
+-type get_upload_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_domain_layout_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -950,6 +989,10 @@
 %%   <<"Scheduled">> => scheduled_trigger_properties()
 %% }
 -type trigger_properties() :: #{binary() => any()}.
+
+%% Example:
+%% get_upload_job_path_request() :: #{}
+-type get_upload_job_path_request() :: #{}.
 
 
 %% Example:
@@ -1254,6 +1297,10 @@
 %% }
 -type delete_integration_request() :: #{binary() => any()}.
 
+%% Example:
+%% stop_upload_job_request() :: #{}
+-type stop_upload_job_request() :: #{}.
+
 
 %% Example:
 %% create_domain_request() :: #{
@@ -1420,6 +1467,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_domains_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_upload_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type create_upload_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1595,6 +1649,10 @@
 %% }
 -type source_connector_properties() :: #{binary() => any()}.
 
+%% Example:
+%% start_upload_job_response() :: #{}
+-type start_upload_job_response() :: #{}.
+
 
 %% Example:
 %% get_integration_request() :: #{
@@ -1665,6 +1723,10 @@
 %%   <<"PotentialMatches">> => integer()
 %% }
 -type get_matches_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_upload_job_request() :: #{}
+-type start_upload_job_request() :: #{}.
 
 
 %% Example:
@@ -2060,10 +2122,32 @@
 
 
 %% Example:
+%% upload_job_item() :: #{
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataExpiry">> => integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any())
+%% }
+-type upload_job_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_profile_response() :: #{
 %%   <<"ProfileId">> => string()
 %% }
 -type update_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_upload_job_path_response() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"ValidUntil">> => non_neg_integer()
+%% }
+-type get_upload_job_path_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2163,6 +2247,16 @@
 
 
 %% Example:
+%% create_upload_job_request() :: #{
+%%   <<"DataExpiry">> => integer(),
+%%   <<"DisplayName">> := string(),
+%%   <<"Fields">> := map(),
+%%   <<"UniqueKey">> := string()
+%% }
+-type create_upload_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_profile_object_type_templates_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -2205,6 +2299,14 @@
 %%   <<"SourceLastUpdatedTimestampFormat">> => string()
 %% }
 -type detected_profile_object_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_upload_jobs_response() :: #{
+%%   <<"Items">> => list(upload_job_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_upload_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2403,6 +2505,15 @@
 %% }
 -type extra_length_value_profile_dimension() :: #{binary() => any()}.
 
+
+%% Example:
+%% results_summary() :: #{
+%%   <<"CreatedRecords">> => float(),
+%%   <<"FailedRecords">> => float(),
+%%   <<"UpdatedRecords">> => float()
+%% }
+-type results_summary() :: #{binary() => any()}.
+
 %% Example:
 %% get_segment_definition_request() :: #{}
 -type get_segment_definition_request() :: #{}.
@@ -2465,6 +2576,10 @@
 %% }
 -type workflow_metrics() :: #{binary() => any()}.
 
+%% Example:
+%% stop_upload_job_response() :: #{}
+-type stop_upload_job_response() :: #{}.
+
 
 %% Example:
 %% incremental_pull_config() :: #{
@@ -2496,6 +2611,10 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_event_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_upload_job_request() :: #{}
+-type get_upload_job_request() :: #{}.
 
 
 %% Example:
@@ -2717,6 +2836,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_upload_job_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_calculated_attribute_definition_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -2927,6 +3053,20 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_upload_job_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_upload_job_path_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_workflow_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3058,6 +3198,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_upload_jobs_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_workflows_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3093,6 +3240,20 @@
     resource_not_found_exception().
 
 -type search_profiles_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_upload_job_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type stop_upload_job_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -3646,6 +3807,43 @@ create_segment_snapshot(Client, DomainName, SegmentDefinitionName, Input) ->
 create_segment_snapshot(Client, DomainName, SegmentDefinitionName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/segments/", aws_util:encode_uri(SegmentDefinitionName), "/snapshots"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Upload job to ingest data for segment imports.
+%%
+%% The metadata is created for
+%% the job with the provided field mapping and unique key.
+-spec create_upload_job(aws_client:aws_client(), binary() | list(), create_upload_job_request()) ->
+    {ok, create_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_upload_job_errors(), tuple()}.
+create_upload_job(Client, DomainName, Input) ->
+    create_upload_job(Client, DomainName, Input, []).
+
+-spec create_upload_job(aws_client:aws_client(), binary() | list(), create_upload_job_request(), proplists:proplist()) ->
+    {ok, create_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_upload_job_errors(), tuple()}.
+create_upload_job(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/upload-jobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4853,6 +5051,82 @@ get_similar_profiles(Client, DomainName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This API retrieves the details of a specific upload job.
+-spec get_upload_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_upload_job_errors(), tuple()}.
+get_upload_job(Client, DomainName, JobId)
+  when is_map(Client) ->
+    get_upload_job(Client, DomainName, JobId, #{}, #{}).
+
+-spec get_upload_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_upload_job_errors(), tuple()}.
+get_upload_job(Client, DomainName, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_upload_job(Client, DomainName, JobId, QueryMap, HeadersMap, []).
+
+-spec get_upload_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_upload_job_errors(), tuple()}.
+get_upload_job(Client, DomainName, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/upload-jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API retrieves the pre-signed URL and client token for uploading
+%% the file associated
+%% with the upload job.
+-spec get_upload_job_path(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_upload_job_path_response(), tuple()} |
+    {error, any()} |
+    {error, get_upload_job_path_errors(), tuple()}.
+get_upload_job_path(Client, DomainName, JobId)
+  when is_map(Client) ->
+    get_upload_job_path(Client, DomainName, JobId, #{}, #{}).
+
+-spec get_upload_job_path(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_upload_job_path_response(), tuple()} |
+    {error, any()} |
+    {error, get_upload_job_path_errors(), tuple()}.
+get_upload_job_path(Client, DomainName, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_upload_job_path(Client, DomainName, JobId, QueryMap, HeadersMap, []).
+
+-spec get_upload_job_path(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_upload_job_path_response(), tuple()} |
+    {error, any()} |
+    {error, get_upload_job_path_errors(), tuple()}.
+get_upload_job_path(Client, DomainName, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/upload-jobs/", aws_util:encode_uri(JobId), "/path"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Get details of specified workflow.
 -spec get_workflow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
@@ -5641,6 +5915,48 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This API retrieves a list of upload jobs for the specified domain.
+-spec list_upload_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_upload_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_upload_jobs_errors(), tuple()}.
+list_upload_jobs(Client, DomainName)
+  when is_map(Client) ->
+    list_upload_jobs(Client, DomainName, #{}, #{}).
+
+-spec list_upload_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_upload_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_upload_jobs_errors(), tuple()}.
+list_upload_jobs(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_upload_jobs(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec list_upload_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_upload_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_upload_jobs_errors(), tuple()}.
+list_upload_jobs(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/upload-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Query to list all workflows.
 -spec list_workflows(aws_client:aws_client(), binary() | list(), list_workflows_request()) ->
     {ok, list_workflows_response(), tuple()} |
@@ -5922,6 +6238,75 @@ search_profiles(Client, DomainName, Input0, Options0) ->
                      {<<"next-token">>, <<"NextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API starts the processing of an upload job to ingest profile
+%% data.
+-spec start_upload_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_upload_job_request()) ->
+    {ok, start_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_upload_job_errors(), tuple()}.
+start_upload_job(Client, DomainName, JobId, Input) ->
+    start_upload_job(Client, DomainName, JobId, Input, []).
+
+-spec start_upload_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_upload_job_request(), proplists:proplist()) ->
+    {ok, start_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_upload_job_errors(), tuple()}.
+start_upload_job(Client, DomainName, JobId, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/upload-jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API stops the processing of an upload job.
+-spec stop_upload_job(aws_client:aws_client(), binary() | list(), binary() | list(), stop_upload_job_request()) ->
+    {ok, stop_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_upload_job_errors(), tuple()}.
+stop_upload_job(Client, DomainName, JobId, Input) ->
+    stop_upload_job(Client, DomainName, JobId, Input, []).
+
+-spec stop_upload_job(aws_client:aws_client(), binary() | list(), binary() | list(), stop_upload_job_request(), proplists:proplist()) ->
+    {ok, stop_upload_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_upload_job_errors(), tuple()}.
+stop_upload_job(Client, DomainName, JobId, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/upload-jobs/", aws_util:encode_uri(JobId), "/stop"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified Amazon

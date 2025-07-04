@@ -477,6 +477,7 @@
 
 %% Example:
 %% task_run_session_action_definition_summary() :: #{
+%%   <<"parameters">> => map(),
 %%   <<"stepId">> => string(),
 %%   <<"taskId">> => string()
 %% }
@@ -610,6 +611,7 @@
 %% updated_session_action_info() :: #{
 %%   <<"completedStatus">> => list(any()),
 %%   <<"endedAt">> => non_neg_integer(),
+%%   <<"manifests">> => list(task_run_manifest_properties_request()()),
 %%   <<"processExitCode">> => integer(),
 %%   <<"progressMessage">> => string(),
 %%   <<"progressPercent">> => float(),
@@ -745,6 +747,14 @@
 %% disassociate_member_from_fleet_response() :: #{}
 -type disassociate_member_from_fleet_response() :: #{}.
 
+
+%% Example:
+%% task_run_manifest_properties_request() :: #{
+%%   <<"outputManifestHash">> => string(),
+%%   <<"outputManifestPath">> => string()
+%% }
+-type task_run_manifest_properties_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_worker_request() :: #{}
 -type get_worker_request() :: #{}.
@@ -837,6 +847,14 @@
 %%   <<"value">> => string()
 %% }
 -type string_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_run_manifest_properties_response() :: #{
+%%   <<"outputManifestHash">> => string(),
+%%   <<"outputManifestPath">> => string()
+%% }
+-type task_run_manifest_properties_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1622,6 +1640,7 @@
 %%   <<"acquiredLimits">> => list(acquired_limit()()),
 %%   <<"definition">> => list(),
 %%   <<"endedAt">> => non_neg_integer(),
+%%   <<"manifests">> => list(task_run_manifest_properties_response()()),
 %%   <<"processExitCode">> => integer(),
 %%   <<"progressMessage">> => string(),
 %%   <<"progressPercent">> => float(),
@@ -1737,6 +1756,7 @@
 %% session_action_summary() :: #{
 %%   <<"definition">> => list(),
 %%   <<"endedAt">> => non_neg_integer(),
+%%   <<"manifests">> => list(task_run_manifest_properties_response()()),
 %%   <<"progressPercent">> => float(),
 %%   <<"sessionActionId">> => string(),
 %%   <<"startedAt">> => non_neg_integer(),
