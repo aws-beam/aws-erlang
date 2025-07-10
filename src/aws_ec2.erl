@@ -517,6 +517,10 @@
          describe_capacity_block_extension_offerings/3,
          describe_capacity_block_offerings/2,
          describe_capacity_block_offerings/3,
+         describe_capacity_block_status/2,
+         describe_capacity_block_status/3,
+         describe_capacity_blocks/2,
+         describe_capacity_blocks/3,
          describe_capacity_reservation_billing_requests/2,
          describe_capacity_reservation_billing_requests/3,
          describe_capacity_reservation_fleets/2,
@@ -2067,6 +2071,13 @@
 -type delete_instance_event_window_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_block_status_result() :: #{
+%%   <<"CapacityBlockStatuses">> => list(capacity_block_status()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_block_status_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_transit_gateway_route_tables_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayRouteTables">> => list(transit_gateway_route_table()())
@@ -2162,6 +2173,7 @@
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"AvailableInstanceCount">> => integer(),
 %%   <<"CapacityAllocations">> => list(capacity_allocation()()),
+%%   <<"CapacityBlockId">> => string(),
 %%   <<"CapacityReservationArn">> => string(),
 %%   <<"CapacityReservationFleetId">> => string(),
 %%   <<"CapacityReservationId">> => string(),
@@ -3123,6 +3135,16 @@
 %%   <<"VolumeId">> := string()
 %% }
 -type delete_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_block_status_request() :: #{
+%%   <<"CapacityBlockIds">> => list(string()()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_block_status_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_dhcp_options_request() :: #{
@@ -5444,6 +5466,17 @@
 -type create_flow_logs_result() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_block_status() :: #{
+%%   <<"CapacityBlockId">> => string(),
+%%   <<"CapacityReservationStatuses">> => list(capacity_reservation_status()()),
+%%   <<"InterconnectStatus">> => list(any()),
+%%   <<"TotalAvailableCapacity">> => integer(),
+%%   <<"TotalCapacity">> => integer(),
+%%   <<"TotalUnavailableCapacity">> => integer()
+%% }
+-type capacity_block_status() :: #{binary() => any()}.
+
+%% Example:
 %% neuron_device_info() :: #{
 %%   <<"CoreInfo">> => neuron_device_core_info(),
 %%   <<"Count">> => integer(),
@@ -6483,6 +6516,21 @@
 -type traffic_mirror_filter() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_block() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CapacityBlockId">> => string(),
+%%   <<"CapacityReservationIds">> => list(string()()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UltraserverType">> => string()
+%% }
+-type capacity_block() :: #{binary() => any()}.
+
+%% Example:
 %% modify_security_group_rules_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupId">> := string(),
@@ -6824,6 +6872,7 @@
 %% Example:
 %% instance_topology() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"CapacityBlockId">> => string(),
 %%   <<"GroupName">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceType">> => string(),
@@ -10338,6 +10387,8 @@
 %%   <<"InstanceType">> => string(),
 %%   <<"StartDate">> => non_neg_integer(),
 %%   <<"Tenancy">> => list(any()),
+%%   <<"UltraserverCount">> => integer(),
+%%   <<"UltraserverType">> => string(),
 %%   <<"UpfrontFee">> => string()
 %% }
 -type capacity_block_offering() :: #{binary() => any()}.
@@ -14464,6 +14515,7 @@
 %%   <<"OutpostArn">> => string(),
 %%   <<"HibernationOptions">> => hibernation_options(),
 %%   <<"UsageOperationUpdateTime">> => non_neg_integer(),
+%%   <<"CapacityBlockId">> => string(),
 %%   <<"Platform">> => list(any()),
 %%   <<"CapacityReservationId">> => string(),
 %%   <<"ElasticInferenceAcceleratorAssociations">> => list(elastic_inference_accelerator_association()()),
@@ -16515,7 +16567,9 @@
 %%   <<"InstanceType">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"StartDateRange">> => non_neg_integer()
+%%   <<"StartDateRange">> => non_neg_integer(),
+%%   <<"UltraserverCount">> => integer(),
+%%   <<"UltraserverType">> => string()
 %% }
 -type describe_capacity_block_offerings_request() :: #{binary() => any()}.
 
@@ -18061,6 +18115,13 @@
 -type describe_elastic_gpus_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_blocks_result() :: #{
+%%   <<"CapacityBlocks">> => list(capacity_block()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_blocks_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_verified_access_endpoint_load_balancer_options() :: #{
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"Port">> => integer(),
@@ -18116,6 +18177,7 @@
 
 %% Example:
 %% purchase_capacity_block_result() :: #{
+%%   <<"CapacityBlocks">> => list(capacity_block()()),
 %%   <<"CapacityReservation">> => capacity_reservation()
 %% }
 -type purchase_capacity_block_result() :: #{binary() => any()}.
@@ -19214,6 +19276,15 @@
 %%   <<"State">> := list(any())
 %% }
 -type enable_snapshot_block_public_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_status() :: #{
+%%   <<"CapacityReservationId">> => string(),
+%%   <<"TotalAvailableCapacity">> => integer(),
+%%   <<"TotalCapacity">> => integer(),
+%%   <<"TotalUnavailableCapacity">> => integer()
+%% }
+-type capacity_reservation_status() :: #{binary() => any()}.
 
 %% Example:
 %% delete_transit_gateway_vpc_attachment_request() :: #{
@@ -20330,6 +20401,16 @@
 %%   <<"Statistic">> => list(any())
 %% }
 -type data_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_blocks_request() :: #{
+%%   <<"CapacityBlockIds">> => list(string()()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_blocks_request() :: #{binary() => any()}.
 
 %% Example:
 %% vpn_tunnel_log_options() :: #{
@@ -26742,8 +26823,9 @@ describe_capacity_block_extension_offerings(Client, Input, Options)
 %% @doc Describes Capacity Block offerings available for purchase in the
 %% Amazon Web Services Region that you're currently using.
 %%
-%% With Capacity Blocks, you purchase a
-%% specific instance type for a period of time.
+%% With Capacity Blocks, you can
+%% purchase a specific GPU instance type or EC2 UltraServer for a period of
+%% time.
 %%
 %% To search for an available Capacity Block offering, you specify a
 %% reservation duration
@@ -26761,6 +26843,38 @@ describe_capacity_block_offerings(Client, Input)
 describe_capacity_block_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCapacityBlockOfferings">>, Input, Options).
+
+%% @doc Describes the availability of capacity for the specified Capacity
+%% blocks, or all of your Capacity Blocks.
+-spec describe_capacity_block_status(aws_client:aws_client(), describe_capacity_block_status_request()) ->
+    {ok, describe_capacity_block_status_result(), tuple()} |
+    {error, any()}.
+describe_capacity_block_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_block_status(Client, Input, []).
+
+-spec describe_capacity_block_status(aws_client:aws_client(), describe_capacity_block_status_request(), proplists:proplist()) ->
+    {ok, describe_capacity_block_status_result(), tuple()} |
+    {error, any()}.
+describe_capacity_block_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityBlockStatus">>, Input, Options).
+
+%% @doc Describes details about Capacity Blocks in the Amazon Web Services
+%% Region that you're currently using.
+-spec describe_capacity_blocks(aws_client:aws_client(), describe_capacity_blocks_request()) ->
+    {ok, describe_capacity_blocks_result(), tuple()} |
+    {error, any()}.
+describe_capacity_blocks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_blocks(Client, Input, []).
+
+-spec describe_capacity_blocks(aws_client:aws_client(), describe_capacity_blocks_request(), proplists:proplist()) ->
+    {ok, describe_capacity_blocks_result(), tuple()} |
+    {error, any()}.
+describe_capacity_blocks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityBlocks">>, Input, Options).
 
 %% @doc Describes a request to assign the billing of the unused capacity of a
 %% Capacity
@@ -27834,35 +27948,26 @@ describe_instance_status(Client, Input, Options)
 %% Web Services network to
 %% support your tightly coupled workloads.
 %%
-%% == Limitations ==
+%% Instance topology is supported for specific instance types only. For more
+%% information,
+%% see
+%% Prerequisites for Amazon EC2 instance topology:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-topology-prerequisites.html
+%% in the Amazon EC2 User Guide.
 %%
-%% Supported zones
-%%
-%% Availability Zone
-%%
-%% Local Zone
-%%
-%% Supported instance types
-%%
-%% Returns 3 network nodes in the response
-%%
-%% `hpc6a.48xlarge' | `hpc6id.32xlarge' |
-%% `hpc7a.12xlarge' | `hpc7a.24xlarge' |
-%% `hpc7a.48xlarge' | `hpc7a.96xlarge' |
-%% `hpc7g.4xlarge' | `hpc7g.8xlarge' |
-%% `hpc7g.16xlarge'
-%%
-%% `p3dn.24xlarge' | `p4d.24xlarge' |
-%% `p4de.24xlarge' | `p5.48xlarge' |
-%% `p5e.48xlarge' | `p5en.48xlarge'
-%%
-%% `trn1.2xlarge' | `trn1.32xlarge' |
-%% `trn1n.32xlarge' | `trn2.48xlarge' |
-%% `trn2u.48xlarge'
-%%
-%% Returns 4 network nodes in the response
-%%
-%% `p6-b200.48xlarge'
+%% The Amazon EC2 API follows an eventual consistency model due to the
+%% distributed nature of the system supporting it. As a result, when you call
+%% the
+%% DescribeInstanceTopology API command immediately after launching
+%% instances, the
+%% response might return a `null' value for `capacityBlockId'
+%% because the data might not have fully propagated across all subsystems.
+%% For more
+%% information, see Eventual consistency in the
+%% Amazon EC2 API:
+%% https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html
+%% in the Amazon EC2 Developer
+%% Guide.
 %%
 %% For more information, see Amazon EC2 instance
 %% topology:
@@ -30399,11 +30504,9 @@ detach_verified_access_trust_provider(Client, Input, Options)
 %% product code is no longer associated with the instance.
 %%
 %% You can't detach or force detach volumes that are attached to Amazon
-%% ECS or
-%% Fargate tasks. Attempting to do this results in the
-%% `UnsupportedOperationException'
-%% exception with the `Unable to detach volume attached to ECS tasks'
-%% error message.
+%% Web Services-managed resources.
+%% Attempting to do this results in the `UnsupportedOperationException'
+%% exception.
 %%
 %% For more information, see Detach an Amazon EBS volume:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html

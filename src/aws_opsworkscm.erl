@@ -1,15 +1,21 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS OpsWorks CM
+%% @doc OpsWorks CM
 %%
-%% AWS OpsWorks for configuration management (CM) is a service that runs and
-%% manages
-%% configuration management servers.
+%% The OpsWorks services have reached end of life and have been disabled for
+%% both new and existing customers.
 %%
-%% You can use AWS OpsWorks CM to create and manage AWS
-%% OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise servers,
-%% and add or remove
+%% We strongly recommend customers migrate their workloads to other solutions
+%% as soon as possible. If you have questions about migration, reach out to
+%% the Amazon Web ServicesSupport Team on Amazon Web Services re:Post:
+%% https://repost.aws/ or through Amazon Web Services Premium Support:
+%% https://aws.amazon.com/support.
+%%
+%% OpsWorks CM is a service that runs and manages
+%% configuration management servers. You can use OpsWorks CM to create and
+%% manage OpsWorks for Chef Automate and
+%% OpsWorks for Puppet Enterprise servers, and add or remove
 %% nodes for the servers to manage.
 %%
 %% Glossary of terms
@@ -17,11 +23,11 @@
 %% Server: A configuration management server that can be
 %% highly-available. The configuration management server runs on
 %% an Amazon Elastic Compute Cloud (EC2) instance, and may use various other
-%% AWS services, such as Amazon Relational
-%% Database Service (RDS) and Elastic Load Balancing. A server is a generic
-%% abstraction over the configuration
-%% manager that you want to use, much like Amazon RDS. In AWS OpsWorks CM,
-%% you do not start
+%% Amazon Web Services services, such as Amazon Relational Database Service
+%% (RDS) and Elastic Load Balancing. A server is a generic abstraction over
+%% the configuration
+%% manager that you want to use, much like Amazon RDS. In OpsWorks CM, you do
+%% not start
 %% or stop servers. After you create servers, they continue to run until they
 %% are deleted.
 %%
@@ -31,7 +37,7 @@
 %%
 %% Backup: This
 %% is an application-level backup of the data that the configuration manager
-%% stores. AWS OpsWorks CM
+%% stores. OpsWorks CM
 %% creates an S3 bucket for backups when you launch the first
 %% server. A backup maintains a snapshot of a server's
 %% configuration-related
@@ -45,15 +51,16 @@
 %% also deleted.
 %%
 %% Account attributes:
-%% Every account has attributes that are assigned in the AWS OpsWorks CM
+%% Every account has attributes that are assigned in the OpsWorks CM
 %% database. These attributes store information about configuration limits
 %% (servers,
 %% backups, etc.) and your customer account.
 %%
 %% Endpoints
 %%
-%% AWS OpsWorks CM supports the following endpoints, all HTTPS. You must
-%% connect to one of the following endpoints. Your servers
+%% OpsWorks CM supports the following endpoints, all HTTPS. You must connect
+%% to one of the following endpoints.
+%% Your servers
 %% can only be accessed or managed within the endpoint in which they are
 %% created.
 %%
@@ -75,9 +82,9 @@
 %%
 %% opsworks-cm.eu-west-1.amazonaws.com
 %%
-%% For more information, see AWS OpsWorks endpoints and quotas:
+%% For more information, see OpsWorks endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/opsworks-service.html in the
-%% AWS General Reference.
+%% Amazon Web Services General Reference.
 %%
 %% Throttling limits
 %%
@@ -640,7 +647,7 @@
 %% Example (Chef): `aws opsworks-cm associate-node --server-name MyServer
 %% --node-name MyManagedNode --engine-attributes
 %% &quot;Name=CHEF_ORGANIZATION,Value=default&quot;
-%% &quot;Name=CHEF_NODE_PUBLIC_KEY,Value=public-key-pem&quot;'
+%% &quot;Name=CHEF_AUTOMATE_NODE_PUBLIC_KEY,Value=public-key-pem&quot;'
 %%
 %% On a Puppet server, this command is an alternative to the `puppet cert
 %% sign' command that signs a Puppet node CSR.
@@ -655,8 +662,8 @@
 %% exist. A `ValidationException' is raised when parameters of the
 %% request are not valid.
 %% The AssociateNode API call can be integrated into Auto Scaling
-%% configurations, AWS Cloudformation templates, or the user data of a
-%% server's instance.
+%% configurations, CloudFormation templates, or the user data
+%% of a server's instance.
 -spec associate_node(aws_client:aws_client(), associate_node_request()) ->
     {ok, associate_node_response(), tuple()} |
     {error, any()} |
@@ -681,7 +688,8 @@ associate_node(Client, Input, Options)
 %% changed, and no additional backup can be created.
 %%
 %% Backups can be created for servers in `RUNNING', `HEALTHY', and
-%% `UNHEALTHY' states. By default, you can create a maximum of 50
+%% `UNHEALTHY' states.
+%% By default, you can create a maximum of 50
 %% manual backups.
 %%
 %% This operation is asynchronous.
@@ -718,23 +726,27 @@ create_backup(Client, Input, Options)
 %% This operation is asynchronous.
 %%
 %% A `LimitExceededException' is thrown when you have created the maximum
-%% number of servers (10). A `ResourceAlreadyExistsException'
+%% number of servers (10). A
+%% `ResourceAlreadyExistsException'
 %% is thrown when a server with the same name already exists in the account.
-%% A `ResourceNotFoundException' is thrown when you
+%% A `ResourceNotFoundException' is thrown when
+%% you
 %% specify a backup ID that is not valid or is for a backup that does not
-%% exist. A `ValidationException' is thrown when parameters
+%% exist. A `ValidationException' is thrown when
+%% parameters
 %% of the request are not valid.
 %%
 %% If you do not specify a security group by adding the
-%% `SecurityGroupIds' parameter, AWS OpsWorks creates a new security
-%% group.
+%% `SecurityGroupIds' parameter, OpsWorks creates a new
+%% security group.
 %%
 %% Chef Automate: The default security group opens the Chef server to the
-%% world on TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH
-%% access. SSH is also open to the world on TCP port 22.
+%% world on TCP port 443. If
+%% a KeyName is present, OpsWorks enables SSH access. SSH is also open to the
+%% world on TCP port 22.
 %%
 %% Puppet Enterprise: The default security group opens TCP ports 22, 443,
-%% 4433, 8140, 8142, 8143, and 8170. If a KeyName is present, AWS OpsWorks
+%% 4433, 8140, 8142, 8143, and 8170. If a KeyName is present, OpsWorks
 %% enables SSH access. SSH is also open to the world on TCP port 22.
 %%
 %% By default, your server is accessible from any IP address. We
@@ -744,8 +756,8 @@ create_backup(Client, Input, Options)
 %% in the navigation pane of the EC2 management console.
 %%
 %% To specify your own domain for a server, and provide your own self-signed
-%% or CA-signed certificate and private key, specify values for
-%% `CustomDomain',
+%% or CA-signed certificate and private key,
+%% specify values for `CustomDomain',
 %% `CustomCertificate', and `CustomPrivateKey'.
 -spec create_server(aws_client:aws_client(), create_server_request()) ->
     {ok, create_server_response(), tuple()} |
@@ -792,13 +804,13 @@ delete_backup(Client, Input, Options)
     request(Client, <<"DeleteBackup">>, Input, Options).
 
 %% @doc
-%% Deletes the server and the underlying AWS CloudFormation stacks
+%% Deletes the server and the underlying CloudFormation stacks
 %% (including the server's EC2 instance).
 %%
 %% When you run this command, the server state is updated
 %% to `DELETING'. After the server is deleted, it is no longer returned
 %% by
-%% `DescribeServer' requests. If the AWS CloudFormation stack cannot be
+%% `DescribeServer' requests. If the CloudFormation stack cannot be
 %% deleted, the server cannot be deleted.
 %%
 %% This operation is asynchronous.
@@ -826,7 +838,7 @@ delete_server(Client, Input, Options)
     request(Client, <<"DeleteServer">>, Input, Options).
 
 %% @doc
-%% Describes your OpsWorks-CM account attributes.
+%% Describes your OpsWorks CM account attributes.
 %%
 %% This operation is synchronous.
 -spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_request()) ->
@@ -928,7 +940,7 @@ describe_node_association_status(Client, Input, Options)
 %% account.
 %%
 %% Only the stored results from Amazon DynamoDB
-%% are returned. AWS OpsWorks CM does not query other services.
+%% are returned. OpsWorks CM does not query other services.
 %%
 %% This operation is synchronous.
 %%
@@ -953,8 +965,8 @@ describe_servers(Client, Input, Options)
     request(Client, <<"DescribeServers">>, Input, Options).
 
 %% @doc
-%% Disassociates a node from an AWS OpsWorks CM server, and removes the node
-%% from the server's managed nodes.
+%% Disassociates a node from an OpsWorks CM server, and removes the node from
+%% the server's managed nodes.
 %%
 %% After a node is disassociated,
 %% the node key pair is no longer valid for accessing the configuration
@@ -986,8 +998,8 @@ disassociate_node(Client, Input, Options)
 %% @doc
 %% Exports a specified server engine attribute as a base64-encoded string.
 %%
-%% For example, you can export user data that you can use in EC2 to associate
-%% nodes with a server.
+%% For example, you can export user data that you can
+%% use in EC2 to associate nodes with a server.
 %%
 %% This operation is synchronous.
 %%
@@ -1014,9 +1026,9 @@ export_server_engine_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportServerEngineAttribute">>, Input, Options).
 
-%% @doc Returns a list of tags that are applied to the specified AWS OpsWorks
-%% for Chef Automate or
-%% AWS OpsWorks for Puppet Enterprise servers or backups.
+%% @doc Returns a list of tags that are applied to the specified OpsWorks for
+%% Chef Automate or
+%% OpsWorks for Puppet Enterprise servers or backups.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1044,8 +1056,8 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% Restoring from a backup is performed by creating a new EC2 instance. If
 %% restoration is successful, and the server is in a `HEALTHY' state,
-%% AWS OpsWorks CM switches traffic over to the new instance. After
-%% restoration is finished, the old EC2 instance is maintained in a
+%% OpsWorks CM switches traffic over to the new instance. After restoration
+%% is finished, the old EC2 instance is maintained in a
 %% `Running' or `Stopped' state, but is eventually terminated.
 %%
 %% This operation is asynchronous.
@@ -1100,8 +1112,8 @@ start_maintenance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMaintenance">>, Input, Options).
 
-%% @doc Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
-%% Puppet Enterprise server, or to server backups.
+%% @doc Applies tags to an OpsWorks for Chef Automate or OpsWorks for Puppet
+%% Enterprise server, or to server backups.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1118,7 +1130,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes specified tags from an AWS OpsWorks-CM server or backup.
+%% @doc Removes specified tags from an OpsWorks CM server or backup.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -1168,11 +1180,11 @@ update_server(Client, Input, Options)
 %% This operation is asynchronous.
 %%
 %% This operation can only be called for servers in `HEALTHY' or
-%% `UNHEALTHY' states. Otherwise, an `InvalidStateException' is
-%% raised.
+%% `UNHEALTHY' states.
+%% Otherwise, an `InvalidStateException' is raised.
 %% A `ResourceNotFoundException' is thrown when the server does not
-%% exist. A `ValidationException' is raised when parameters of the
-%% request are not valid.
+%% exist. A `ValidationException' is
+%% raised when parameters of the request are not valid.
 -spec update_server_engine_attributes(aws_client:aws_client(), update_server_engine_attributes_request()) ->
     {ok, update_server_engine_attributes_response(), tuple()} |
     {error, any()} |
